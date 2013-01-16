@@ -263,10 +263,11 @@
     return-object v0
 .end method
 
-.method private static getCallInfosDistinctPersionId(Landroid/net/Uri;Landroid/database/Cursor;)Ljava/util/ArrayList;
+.method private static getCallInfosDistinctPersionId(Landroid/net/Uri;Landroid/database/Cursor;Landroid/content/Context;)Ljava/util/ArrayList;
     .locals 20
     .parameter "contactRef"
     .parameter "cursor"
+    .parameter "context"
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -749,17 +750,24 @@
 
     iput-object v0, v6, Lcom/android/internal/telephony/CallerInfo;->name:Ljava/lang/String;
 
-    .line 836
     move-object/from16 v0, p0
 
     iput-object v0, v6, Lcom/android/internal/telephony/CallerInfo;->contactRefUri:Landroid/net/Uri;
 
-    .line 838
     invoke-virtual {v2, v6}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    move-object/from16 v0, p2
+
+    move-object/from16 v1, p1
+
+    invoke-static {v0, v6, v1}, Lmiui/telephony/ExtraCallerInfo;->getExtraCallerInfo(Landroid/content/Context;Lcom/android/internal/telephony/CallerInfo;Landroid/database/Cursor;)Lmiui/telephony/ExtraCallerInfo;
+
+    move-result-object v0
+
+    iput-object v0, v6, Lcom/android/internal/telephony/CallerInfo;->extra:Lmiui/telephony/ExtraCallerInfo;
 
     goto/16 :goto_1
 
-    .line 805
     :cond_a
     const-string v17, "CallerInfo"
 
@@ -866,6 +874,12 @@
     .parameter "contactRef"
 
     .prologue
+    new-instance v1, Ljava/lang/Exception;
+
+    invoke-direct {v1}, Ljava/lang/Exception;-><init>()V
+
+    invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
+
     const/4 v2, 0x0
 
     .line 277
@@ -1323,11 +1337,12 @@
     goto :goto_0
 .end method
 
-.method public static getCallerInfoViaNumber(Landroid/net/Uri;Landroid/database/Cursor;Ljava/lang/String;)Lcom/android/internal/telephony/CallerInfo;
+.method public static getCallerInfoViaNumber(Landroid/net/Uri;Landroid/database/Cursor;Ljava/lang/String;Landroid/content/Context;)Lcom/android/internal/telephony/CallerInfo;
     .locals 12
     .parameter "contactRef"
     .parameter "cursor"
     .parameter "number"
+    .parameter "context"
 
     .prologue
     const/4 v11, 0x1
@@ -1356,33 +1371,6 @@
 
     move-result v7
 
-    .line 681
-    sget-boolean v8, Lcom/android/internal/telephony/CallerInfo;->VDBG:Z
-
-    if-eqz v8, :cond_0
-
-    const-string v8, "CallerInfo"
-
-    new-instance v9, Ljava/lang/StringBuilder;
-
-    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v10, "reject reason "
-
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9, v7}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-static {v8, v9}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
     .line 684
     :cond_0
     const-string v8, "call_allowed_contact_ids"
@@ -1391,14 +1379,12 @@
 
     move-result-object v1
 
-    .line 688
     .end local v2           #bundle:Landroid/os/Bundle;
     :cond_1
-    invoke-static {p0, p1}, Lcom/android/internal/telephony/CallerInfo;->getCallInfosDistinctPersionId(Landroid/net/Uri;Landroid/database/Cursor;)Ljava/util/ArrayList;
+    invoke-static {p0, p1, p3}, Lcom/android/internal/telephony/CallerInfo;->getCallInfosDistinctPersionId(Landroid/net/Uri;Landroid/database/Cursor;Landroid/content/Context;)Ljava/util/ArrayList;
 
     move-result-object v3
 
-    .line 689
     .local v3, candidateArray:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/internal/telephony/CallerInfo;>;"
     invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
 
