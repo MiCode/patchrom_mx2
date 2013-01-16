@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/stream_icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="86.0dip" android:layout_marginTop="14.5dip" />
+        <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:id="@id/message" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.5dip" android:layout_marginTop="17.5dip" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="@dimen/volume_panel_height" android:layout_height="@dimen/volume_panel_height">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:background="@drawable/ic_popup_volume_background" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <LinearLayout android:orientation="vertical" android:layout_width="@dimen/volume_panel_height" android:layout_height="wrap_content">
+                <ImageView android:layout_width="wrap_content" android:layout_height="@dimen/volume_icon_height" android:layout_marginTop="@dimen/volume_icon_margin_top" android:src="@drawable/ic_popup_volume_on" />
+                <RotateLayout android:id="@id/volume_seekbar" android:layout_width="@dimen/volume_seekbar_height" android:layout_height="@dimen/volume_seekbar_height">
+                    <ProgressBar android:gravity="center" android:id="@id/seekbar" android:layout_width="@dimen/volume_seekbar_height" android:layout_height="@dimen/volume_seekbar_width" android:progressDrawable="@drawable/volume_progress_drawable" style="?android:attr/progressBarStyleHorizontal" />
+                </RotateLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:background="?activatedBackgroundIndicator" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?listPreferredItemHeight"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="?listPreferredItemHeight" android:layout_toLeftOf="@id/extra_container" layout="@*android:layout/contact_list_item_common" />
+    <include android:id="@id/extra_container" android:layout_toRightOf="@id/text1" layout="@*android:layout/checkbox_and_time_layout" />
+</RelativeLayout>

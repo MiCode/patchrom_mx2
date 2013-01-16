@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="?listPreferredItemHeight"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:id="@id/icon_container" android:layout_width="@dimen/contactbadge_width" android:layout_height="wrap_content" android:minHeight="?listPreferredItemHeight" android:layout_toLeftOf="@id/text1" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_alignParentBottom="true">
+        <com.meizu.widget.RoundCornerContactBadge android:id="@id/icon" style="@*android:style/Widget.RoundCornerContactBadge.List" />
+    </LinearLayout>
+    <TwoLineListItem android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="?listPreferredItemHeight" android:layout_toRightOf="@id/icon_container" android:layout_alignWithParentIfMissing="true">
+        <TextView android:textAppearance="?textAppearanceMedium" android:ellipsize="end" android:id="@id/text1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="true" />
+        <TextView android:textAppearance="?textAppearanceSmall" android:ellipsize="end" android:id="@id/text2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/text1" android:layout_alignLeft="@id/text1" />
+    </TwoLineListItem>
+</RelativeLayout>

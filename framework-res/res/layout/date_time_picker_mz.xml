@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@drawable/timepicker_frame_middle" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/select_box" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="78.0dip" android:src="@drawable/timepicker_box_selected" android:scaleType="fitXY" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/colume_parent" android:paddingLeft="2.5dip" android:paddingRight="2.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:id="@id/colume1Layout" android:layout_width="0.0dip" android:layout_height="210.0dip" android:layout_weight="1.0">
+            <com.meizu.widget.ScrollTextView android:layout_gravity="center" android:id="@id/scroll1" android:paddingRight="1.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:textSize="12.0sp" android:textColor="#ff4c8599" android:gravity="center" android:id="@id/scroll1_text" android:paddingRight="4.0dip" android:layout_width="wrap_content" android:layout_height="27.0dip" android:layout_marginTop="91.0dip" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+        </FrameLayout>
+        <ImageView android:id="@id/divider_bar1" android:background="#ffc7c7c7" android:visibility="gone" android:layout_width="0.0px" android:layout_height="fill_parent" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip" />
+        <FrameLayout android:id="@id/colume2Layout" android:layout_width="0.0dip" android:layout_height="210.0dip" android:layout_weight="1.0">
+            <com.meizu.widget.ScrollTextView android:layout_gravity="center" android:id="@id/scroll2" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:textSize="12.0sp" android:textColor="#ff4c8599" android:gravity="center" android:id="@id/scroll2_text" android:paddingRight="6.5dip" android:layout_width="wrap_content" android:layout_height="27.0dip" android:layout_marginTop="91.0dip" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+        </FrameLayout>
+        <ImageView android:id="@id/divider_bar2" android:background="#ffc7c7c7" android:visibility="gone" android:layout_width="0.0px" android:layout_height="fill_parent" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip" />
+        <FrameLayout android:id="@id/colume3Layout" android:layout_width="0.0dip" android:layout_height="210.0dip" android:layout_weight="1.0">
+            <com.meizu.widget.ScrollTextView android:layout_gravity="center" android:id="@id/scroll3" android:paddingRight="3.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:textSize="12.0sp" android:textColor="#ff4c8599" android:gravity="center" android:id="@id/scroll3_text" android:paddingRight="6.0dip" android:layout_width="wrap_content" android:layout_height="27.0dip" android:layout_marginTop="91.0dip" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

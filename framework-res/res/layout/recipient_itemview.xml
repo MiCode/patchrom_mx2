@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view android:paddingTop="@dimen/recipient_text_padding" android:paddingBottom="@dimen/recipient_text_padding" android:layout_width="wrap_content" android:layout_height="wrap_content" class="com.meizu.widget.RecipientEdit$ItemView"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/recipient_text_size" android:textColor="@color/recipient_text_black" android:ellipsize="end" android:id="@id/text" android:background="@drawable/recipient_text" android:paddingLeft="@dimen/recipient_text_padding" android:paddingRight="@dimen/recipient_text_padding" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+</view>

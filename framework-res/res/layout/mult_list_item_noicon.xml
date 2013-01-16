@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableRow android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textAppearance="?textAppearanceMedium" android:ellipsize="end" android:id="@id/text1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="true" android:layout_weight="1.0" />
+        <TextView android:textAppearance="?textAppearanceSmall" android:textSize="10.0sp" android:ellipsize="end" android:gravity="right|center" android:layout_gravity="right|center" android:id="@id/date" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="6.0dip" android:minWidth="20.0dip" android:singleLine="true" />
+    </TableRow>
+    <TableRow android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textAppearance="?textAppearanceSmall" android:ellipsize="end" android:id="@id/text2" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLines="2" android:includeFontPadding="false" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="right|center" android:layout_gravity="right|center" android:orientation="vertical" android:id="@id/checkbox_lin" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:layout_marginRight="6.0dip">
+            <CheckBox android:gravity="center_vertical" android:layout_gravity="right" android:id="@id/checkbox" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@*android:style/Widget.DeviceDefault.CompoundButton.CheckButtonlessMultiple" />
+        </LinearLayout>
+    </TableRow>
+</TableLayout>

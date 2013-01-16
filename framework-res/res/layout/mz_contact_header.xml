@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.meizu.widget.RoundCornerContactBadge android:id="@id/photo" style="@*android:style/Widget.RoundCornerContactBadge.Sms" />
+    <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/mz_contact_header_text_paddingLeft" android:paddingRight="@dimen/mz_contact_header_text_paddingRight" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center_vertical" android:padding="1.0px" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?textAppearanceMedium" android:textColor="@color/mzcontactheader_text_color" android:ellipsize="end" android:id="@id/name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textAppearance="?textAppearanceSmall" android:textColor="@color/mzcontactheader_text_color" android:id="@id/phone_email_1" android:paddingLeft="11.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+        <TextView android:textAppearance="?textAppearanceSmall" android:textColor="@color/mzcontactheader_text_color" android:id="@id/phone_email_2" android:padding="1.0px" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+    <TextView android:textAppearance="?textAppearance" android:textColor="@color/mzcontactheader_text_detail" android:id="@id/count" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/anchor_view" android:background="@drawable/dropdown_ic_arrow" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/mz_contact_header_anchor_marginLeft" android:layout_marginRight="@dimen/mz_contact_header_anchor_marginRight" android:layout_marginBottom="@dimen/mz_contact_header_anchor_marginBottom" />
+    <com.meizu.widget.FlymeButton android:id="@id/flyme" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/mz_contact_header_flyme_marginLeft" />
+</LinearLayout>

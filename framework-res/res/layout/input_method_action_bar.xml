@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="@drawable/tab_background_mz" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="@dimen/action_bar_default_height_mz"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.internal.view.menu.KeyBackButton android:layout_gravity="left" android:background="?selectableItemBackground" android:layout_width="@dimen/action_button_min_width_mz" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/split_action_bar_padding" android:src="@drawable/ic_tab_back_mz" />
+</LinearLayout>

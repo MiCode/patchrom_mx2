@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="top" android:id="@id/unlockRoot" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="0.0dip" android:layout_alignParentTop="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="top" android:background="@drawable/lock_topbar_background" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="top|center" android:layout_gravity="top|center" android:orientation="vertical" android:id="@id/lockContentBox" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/time_margin_to_top">
+        <include android:visibility="visible" layout="@layout/keyguard_screen_weather_and_date_wedget" />
+    </LinearLayout>
+    <TextView android:textSize="14.0sp" android:textColor="@color/lock_battery_level_foreground" android:layout_gravity="top|right|center" android:id="@id/batteryLevel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="5.0dip" />
+    <ImageView android:layout_gravity="top|right|center" android:id="@id/emergencyCallButton" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/call_contact" />
+    <ViewStub android:layout_gravity="top|center" android:id="@id/chargingViewStub" android:visibility="gone" android:layout="@layout/lock_charging_view" android:inflatedId="@id/chargingViewSubTree" android:layout_width="269.0dip" android:layout_height="355.0dip" android:layout_marginTop="270.0dip" />
+    <com.meizu.internal.policy.impl.LockMusicView android:layout_gravity="top|center" android:id="@id/musicViewSe" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="130.0dip" />
+    <LinearLayout android:layout_gravity="top|center" android:orientation="vertical" android:id="@id/inputBox" android:background="@drawable/bg_lock_popup" android:layout_width="313.0dip" android:layout_height="138.5dip" android:layout_marginTop="198.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="@color/white" android:layout_gravity="center" android:id="@id/tips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.5dip" android:text="@string/find_phone_tips_enter_flyme" />
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="10.0dip" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/white" android:layout_gravity="left" android:id="@id/flymeAccount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" />
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="23.0dip" />
+        <EditText android:textAppearance="?textAppearanceMedium" android:textSize="18.0sp" android:textStyle="normal" android:textColor="@color/white" android:textColorHint="#99ffffff" android:gravity="bottom|left|center" android:layout_gravity="bottom|left|center" android:id="@id/password" android:background="@null" android:layout_width="273.0dip" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:hint="@string/lockscreen_glogin_password_hint" android:singleLine="true" android:inputType="textPassword" android:imeOptions="actionDone|flagForceAscii" android:imeActionLabel="@string/description_target_unlock" android:imeActionId="6" android:textCursorDrawable="@drawable/text_cursor_dark_mz" />
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="8.0dip" />
+        <LinearLayout android:layout_gravity="bottom|center" android:background="@drawable/textfield_activated_holo_dark_lock" android:layout_width="274.0dip" android:layout_height="wrap_content" />
+    </LinearLayout>
+</FrameLayout>

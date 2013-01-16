@@ -1,0 +1,57 @@
+From 98ea3dc8088dc6100e4035c5fdb0edb89a9dd915 Mon Sep 17 00:00:00 2001
+From: mochangming <mochangming@xiaomi.com>
+Date: Thu, 8 Nov 2012 22:57:18 +0800
+Subject: [PATCH] adjust signal strength bin
+
+---
+ .../settings/fuelgauge/BatteryHistoryChart.smali   |  792 ++++++++++----------
+ 1 files changed, 412 insertions(+), 380 deletions(-)
+
+--- a/Settings/smali/com/android/settings/fuelgauge/BatteryHistoryChart.smali
++++ b/Settings/smali/com/android/settings/fuelgauge/BatteryHistoryChart.smali
+@@ -937,6 +937,27 @@
+     .end packed-switch
+ .end method
+ 
++.method private adjustSignalStrengthBin(I)I
++    .locals 1
++    .parameter "bin"
++
++    .prologue
++    const/4 v0, 0x4
++
++    .local v0, signal_max:I
++    if-le p1, v0, :cond_0
++
++    .end local v0           #signal_max:I
++    :goto_0
++    return v0
++
++    .restart local v0       #signal_max:I
++    :cond_0
++    move v0, p1
++
++    goto :goto_0
++.end method
++
+ 
+ # virtual methods
+ .method finishPaths(IIIIILandroid/graphics/Path;IZZZZZLandroid/graphics/Path;)V
+@@ -3059,6 +3080,14 @@
+     shr-int/lit8 v20, v2, 0x4
+ 
+     .restart local v20       #bin:I
++    move-object/from16 v0, p0
++
++    move/from16 v1, v20
++
++    invoke-direct {v0, v1}, Lcom/android/settings/fuelgauge/BatteryHistoryChart;->adjustSignalStrengthBin(I)I
++
++    move-result v20
++
+     add-int/lit8 v20, v20, 0x2
+ 
+     goto/16 :goto_14
+-- 
+1.7.5.4
+

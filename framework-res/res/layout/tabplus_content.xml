@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.meizu.widget.TabHostPlus android:id="@id/tabhost" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <FrameLayout android:id="@id/tabcontent" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </LinearLayout>
+        <com.meizu.widget.TabWidgetPlus android:orientation="horizontal" android:id="@id/tabs" android:background="@drawable/tab_background_mz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</com.meizu.widget.TabHostPlus>

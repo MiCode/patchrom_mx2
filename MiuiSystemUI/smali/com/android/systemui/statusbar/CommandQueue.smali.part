@@ -1,0 +1,24 @@
+
+.method public setNavButtonVisible(Z)V
+    .locals 0
+    .parameter "visible"
+
+    .prologue
+    return-void
+.end method
+
+.method public showStatusbarInFullScreen(Z)V
+    .locals 0
+    .parameter "show"
+
+    .prologue
+    return-void
+.end method
+
+.method public updateStatusbarPos(Landroid/view/MotionEvent;)V
+    .locals 0
+    .parameter "event"
+
+    .prologue
+    return-void
+.end method

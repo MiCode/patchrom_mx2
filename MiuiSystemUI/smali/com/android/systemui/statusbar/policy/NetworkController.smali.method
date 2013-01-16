@@ -1,0 +1,80 @@
+.method updateNetworkName(ZLjava/lang/String;ZLjava/lang/String;)V
+    .locals 4
+    .parameter "showSpn"
+    .parameter "spn"
+    .parameter "showPlmn"
+    .parameter "plmn"
+
+    .prologue
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    .local v2, str:Ljava/lang/StringBuilder;
+    const/4 v1, 0x0
+
+    .local v1, something:Z
+    if-eqz p3, :cond_0
+
+    if-eqz p4, :cond_0
+
+    invoke-virtual {v2, p4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const/4 v1, 0x1
+
+    :cond_0
+    if-eqz p1, :cond_3
+
+    if-eqz p2, :cond_3
+
+    const/4 v0, 0x1
+
+    .local v0, show:Z
+    if-eqz v1, :cond_1
+
+    invoke-virtual {p2, p4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_4
+
+    iget-object v3, p0, Lcom/android/systemui/statusbar/policy/NetworkController;->mNetworkNameSeparator:Ljava/lang/String;
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    :cond_1
+    :goto_0
+    if-eqz v0, :cond_2
+
+    invoke-virtual {v2, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    :cond_2
+    const/4 v1, 0x1
+
+    .end local v0           #show:Z
+    :cond_3
+    if-eqz v1, :cond_5
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    iput-object v3, p0, Lcom/android/systemui/statusbar/policy/NetworkController;->mNetworkName:Ljava/lang/String;
+
+    :goto_1
+    return-void
+
+    .restart local v0       #show:Z
+    :cond_4
+    const/4 v0, 0x0
+
+    goto :goto_0
+
+    .end local v0           #show:Z
+    :cond_5
+    iget-object v3, p0, Lcom/android/systemui/statusbar/policy/NetworkController;->mNetworkNameDefault:Ljava/lang/String;
+
+    iput-object v3, p0, Lcom/android/systemui/statusbar/policy/NetworkController;->mNetworkName:Ljava/lang/String;
+
+    goto :goto_1
+.end method

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@drawable/timepicker_frame_middle" android:layout_width="@dimen/picker_width" android:layout_height="@dimen/picker_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:id="@id/select_box" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/timepicker_box_selected" android:scaleType="fitXY" />
+    <FrameLayout android:id="@id/column_parent" android:paddingLeft="@dimen/picker_padding_left" android:paddingRight="@dimen/picker_padding_right" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:layout_gravity="left" android:id="@id/column1Layout" android:layout_width="fill_parent" android:layout_height="@dimen/picker_height">
+            <com.meizu.widget.ScrollTextView android:layout_gravity="center" android:id="@id/scroll1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <TextView android:textSize="@dimen/picker_text_size" android:textColor="@color/picker_text_color" android:gravity="right|center" android:layout_gravity="right" android:id="@id/scroll1_text" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/picker_column_1_text_margin_right" />
+        </FrameLayout>
+    </FrameLayout>
+</FrameLayout>

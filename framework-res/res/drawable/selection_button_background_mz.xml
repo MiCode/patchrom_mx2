@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/selection_background">
+        <bitmap android:gravity="center" android:src="@drawable/btn_default_small_selected_num_background_mz" />
+    </item>
+    <item android:id="@id/selection_infiniti">
+        <bitmap android:gravity="center" android:src="@drawable/btn_default_small_selected_num_move_mz" />
+    </item>
+</layer-list>

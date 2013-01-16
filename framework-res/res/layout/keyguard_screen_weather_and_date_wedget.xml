@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.meizu.internal.policy.impl.DigitalClockAndWeatherForLockScreen android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/time" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="top|center" android:orientation="horizontal" android:id="@id/clock1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="@dimen/date_margin_to_time" />
+    <LinearLayout android:layout_gravity="top|center" android:orientation="horizontal" android:id="@id/dateBox" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/date_text_size" android:textColor="@color/lock_date_foreground" android:gravity="center_horizontal" android:id="@id/am_pm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" />
+        <LinearLayout android:layout_width="5.0dip" android:layout_height="wrap_content" />
+        <TextView android:textSize="@dimen/date_text_size" android:textColor="@color/lock_date_foreground" android:id="@id/temp_c" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <LinearLayout android:layout_width="8.0dip" android:layout_height="wrap_content" />
+        <TextView android:textSize="@dimen/date_text_size" android:textColor="@color/lock_date_foreground" android:gravity="center_horizontal" android:id="@id/date_week" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <ImageView android:layout_gravity="left" android:id="@id/weather_icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</com.meizu.internal.policy.impl.DigitalClockAndWeatherForLockScreen>

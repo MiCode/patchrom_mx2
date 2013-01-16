@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="emailAddressTypes">
+        <item>主要信箱</item>
+        <item>公司信箱</item>
+        <item>其他信箱</item>
+        <item>自訂</item>
+    </string-array>
+    <string-array name="imProtocols">
+        <item>AIM</item>
+        <item>Windows Live</item>
+        <item>Yahoo</item>
+        <item>Skype</item>
+        <item>QQ</item>
+        <item>Google Talk</item>
+        <item>ICQ</item>
+        <item>Jabber</item>
+    </string-array>
+    <string-array name="organizationTypes">
+        <item>工作</item>
+        <item>其他</item>
+        <item>自訂</item>
+    </string-array>
+    <string-array name="phoneTypes">
+        <item>住家電話</item>
+        <item>行動電話</item>
+        <item>公司電話</item>
+        <item>公司傳真</item>
+        <item>住家傳真</item>
+        <item>呼叫器</item>
+        <item>其他</item>
+        <item>自訂</item>
+    </string-array>
+    <string-array name="postalAddressTypes">
+        <item>住家</item>
+        <item>公司</item>
+        <item>其他</item>
+        <item>自訂</item>
+    </string-array>
+    <string-array name="system_ringtone_name_list">
+        <item>Beep-Beep-Beep Alarm</item>
+        <item>加州藍調</item>
+        <item>指揮家</item>
+        <item>夢想之城</item>
+        <item>靈動</item>
+        <item>家</item>
+        <item>生活</item>
+        <item>魅影</item>
+        <item>月下江南</item>
+        <item>雨紛飛</item>
+        <item>街頭地帶</item>
+        <item>秋日</item>
+        <item>風中騎士</item>
+        <item>BeeBeep Alarm</item>
+        <item>躍動</item>
+        <item>可愛呼喚</item>
+        <item>秒速</item>
+        <item>帝國</item>
+        <item>精靈</item>
+        <item>殿堂</item>
+        <item>凌波</item>
+        <item>科技矩陣</item>
+        <item>神秘之旅</item>
+        <item>牧童</item>
+        <item>弦音</item>
+        <item>頑皮</item>
+        <item>閃耀</item>
+        <item>靜夜</item>
+        <item>連接</item>
+        <item>Piezo Alarm</item>
+        <item>Buzzer Alarm</item>
+        <item>Ringing Alarm</item>
+        <item>Rooster Alarm</item>
+        <item>夢醒</item>
+        <item>清晨</item>
+        <item>翩翩</item>
+        <item>華爾茲</item>
+        <item>繽紛樂</item>
+        <item>晨露</item>
+        <item>東岸往事</item>
+        <item>放學</item>
+        <item>歡宴</item>
+        <item>經典鈴聲</item>
+        <item>靈動</item>
+        <item>孖寶兄弟</item>
+        <item>暮光之舞</item>
+        <item>水晶</item>
+        <item>晚安</item>
+        <item>不倒翁</item>
+        <item>心動</item>
+        <item>星際</item>
+        <item>夜色</item>
+        <item>月光美人魚</item>
+        <item>北極星</item>
+        <item>靜夜</item>
+        <item>禮物</item>
+        <item>漣漪</item>
+        <item>流星</item>
+        <item>巧克力盒</item>
+        <item>隧道</item>
+        <item>跳躍</item>
+        <item>小鬼頭</item>
+        <item>轉角</item>
+        <item>水滴</item>
+        <item>Flyme Tune Dream</item>
+        <item>Flyme Tune Guitar</item>
+        <item>Flyme Tune Piano</item>
+        <item>Flyme Tune Synth</item>
+        <item>Flyme Tune Rhythm</item>
+    </string-array>
+    <integer-array name="maps_starting_lat_lng">
+        <item>25022112</item>
+        <item>121478019</item>
+    </integer-array>
+    <integer-array name="maps_starting_zoom">
+        <item>3</item>
+    </integer-array>
+    <string-array name="imAddressTypes">
+        <item>住家</item>
+        <item>工作</item>
+        <item>其他</item>
+        <item>自訂</item>
+    </string-array>
+</resources>

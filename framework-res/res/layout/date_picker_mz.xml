@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@drawable/timepicker_frame_middle" android:layout_width="@dimen/picker_width" android:layout_height="@dimen/picker_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:id="@id/select_box" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/timepicker_box_selected" android:scaleType="fitXY" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/column_parent" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:id="@id/column1Layout" android:layout_width="0.0dip" android:layout_height="@dimen/picker_height" android:layout_weight="1.0">
+            <com.meizu.widget.ScrollTextView android:id="@id/scroll1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <TextView android:textSize="@dimen/picker_text_size" android:textColor="@color/picker_text_color" android:gravity="center" android:layout_gravity="right" android:id="@id/scroll1_text" android:layout_width="@dimen/picker_text_width" android:layout_height="fill_parent" />
+        </FrameLayout>
+        <ImageView android:id="@id/divider_bar1" android:visibility="gone" android:layout_width="0.0px" android:layout_height="fill_parent" />
+        <FrameLayout android:id="@id/column2Layout" android:layout_width="0.0dip" android:layout_height="@dimen/picker_height" android:layout_weight="1.0">
+            <com.meizu.widget.ScrollTextView android:id="@id/scroll2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <TextView android:textSize="@dimen/picker_text_size" android:textColor="@color/picker_text_color" android:gravity="center" android:layout_gravity="right" android:id="@id/scroll2_text" android:layout_width="@dimen/picker_text_width" android:layout_height="fill_parent" />
+        </FrameLayout>
+        <ImageView android:id="@id/divider_bar2" android:visibility="gone" android:layout_width="0.0px" android:layout_height="fill_parent" />
+        <FrameLayout android:id="@id/column3Layout" android:layout_width="@dimen/picker_year_column_width" android:layout_height="@dimen/picker_height" android:layout_weight="0.0">
+            <com.meizu.widget.ScrollTextView android:id="@id/scroll3" android:paddingRight="@dimen/picker_year_scroll_padding_right" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <TextView android:textSize="@dimen/picker_text_size" android:textColor="@color/picker_text_color" android:gravity="center" android:layout_gravity="right" android:id="@id/scroll3_text" android:layout_width="@dimen/picker_text_width" android:layout_height="fill_parent" />
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="top" android:id="@id/unlockRoot" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="top" android:background="@drawable/lock_topbar_background" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="top|center" android:layout_gravity="top|center" android:orientation="vertical" android:id="@id/lockContentBox" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/time_margin_to_top">
+        <include android:visibility="visible" layout="@layout/keyguard_screen_weather_and_date_wedget" />
+    </LinearLayout>
+    <TextView android:textSize="14.0sp" android:textColor="@color/lock_battery_level_foreground" android:layout_gravity="top|right|center" android:id="@id/batteryLevel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="5.0dip" android:shadowColor="@color/lock_music_name_shadow_foreground" android:shadowRadius="3.0" />
+    <com.meizu.internal.policy.impl.LockMusicView android:layout_gravity="top|center" android:id="@id/musicViewSe" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/music_margin_to_top" />
+    <ViewStub android:gravity="bottom" android:layout_gravity="bottom|center" android:id="@id/chargingViewStub" android:visibility="gone" android:layout="@layout/lock_charging_view" android:inflatedId="@id/chargingViewSubTree" android:layout_width="300.0dip" android:layout_height="364.0dip" android:layout_marginBottom="0.0dip" />
+    <LinearLayout android:layout_gravity="bottom|center" android:id="@id/unlockDividerBlue" android:background="@drawable/unlock_handle_blue" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="10.0dip" android:layout_marginBottom="0.0dip" />
+    <LinearLayout android:layout_gravity="bottom|center" android:id="@id/unlockDivider" android:background="@drawable/unlock_handle" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="10.0dip" android:layout_marginBottom="0.0dip" />
+    <ImageView android:layout_gravity="bottom|center" android:id="@id/emailIcon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="107.0dip" android:src="@drawable/ic_tray_unread_mail" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom|center" android:orientation="horizontal" android:id="@id/iconPlate" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/phoneIcon" android:paddingBottom="23.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="35.0dip" android:src="@drawable/ic_tray_phone" android:layout_weight="1.0" />
+        <ImageView android:id="@id/unlockIcon" android:paddingBottom="22.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_drag_unlock_sys" android:layout_weight="1.0" />
+        <ImageView android:id="@id/mmsIcon" android:paddingBottom="23.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="35.0dip" android:src="@drawable/ic_tray_sms" android:layout_weight="1.0" />
+    </LinearLayout>
+</FrameLayout>

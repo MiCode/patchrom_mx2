@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<operators>
+    <operator numeric="46000">
+        <language name="zh_rCN">
+            <long>中国移动</long>
+            <short>中国移动</short>
+        </language>
+        <language name="zh_rTW">
+            <long>中國移動</long>
+            <short>中國移動</short>
+        </language>
+        <language name="en_rUS">
+            <long>China Mobile</long>
+            <short>China Mobile</short>
+        </language>
+        <language name="en">
+            <long>China Mobile</long>
+            <short>China Mobile</short>
+        </language>
+    </operator>
+    <operator numeric="46001">
+        <language name="zh_rCN">
+            <long>中国联通</long>
+            <short>中国联通</short>
+        </language>
+        <language name="zh_rTW">
+            <long>中國聯通</long>
+            <short>中國聯通</short>
+        </language>
+        <language name="en_rUS">
+            <long>China Unicom</long>
+            <short>China Unicom</short>
+        </language>
+        <language name="en">
+            <long>China Unicom</long>
+            <short>China Unicom</short>
+        </language>
+    </operator>
+    <operator numeric="23001">
+        <language name="cs_rCZ">
+            <long>T-Mobile CZ</long>
+            <short>T-Mobile CZ</short>
+        </language>
+    </operator>
+    <operator numeric="23002">
+        <language name="cs_rCZ">
+            <long>Telefónica O2 CZ</long>
+            <short>Telefónica O2 CZ</short>
+        </language>
+    </operator>
+    <operator numeric="23003">
+        <language name="cs_rCZ">
+            <long>Vodafone CZ</long>
+            <short>Vodafone CZ</short>
+        </language>
+    </operator>
+    <operator numeric="23004">
+        <language name="cs_rCZ">
+            <long>MobilKom CZ</long>
+            <short>MobilKom CZ</short>
+        </language>
+    </operator>
+    <operator numeric="23098">
+        <language name="cs_rCZ">
+            <long>SŽDC CZ</long>
+            <short>SŽDC CZ</short>
+        </language>
+    </operator>
+    <operator numeric="23099">
+        <language name="cs_rCZ">
+            <long>Vodafone CZ</long>
+            <short>Vodafone CZ</short>
+        </language>
+    </operator>
+    <operator numeric="45400">
+        <language name="zh_rCN">
+            <long>one2free</long>
+            <short>one2free</short>
+        </language>
+        <language name="zh_rTW">
+            <long>one2free</long>
+            <short>one2free</short>
+        </language>
+        <language name="en_rUS">
+            <long>one2free</long>
+            <short>one2free</short>
+        </language>
+    </operator>
+    <operator numeric="45418">
+        <language name="zh_rCN">
+            <long>one2free</long>
+            <short>one2free</short>
+        </language>
+        <language name="zh_rTW">
+            <long>one2free</long>
+            <short>one2free</short>
+        </language>
+        <language name="en_rUS">
+            <long>one2free</long>
+            <short>one2free</short>
+        </language>
+    </operator>
+    <operator numeric="45402">
+        <language name="zh_rCN">
+            <long>one2free</long>
+            <short>one2free</short>
+        </language>
+        <language name="zh_rTW">
+            <long>one2free</long>
+            <short>one2free</short>
+        </language>
+        <language name="en_rUS">
+            <long>one2free</long>
+            <short>one2free</short>
+        </language>
+    </operator>
+    <operator numeric="45410">
+        <language name="zh_rCN">
+            <long>one2free</long>
+            <short>one2free</short>
+        </language>
+        <language name="zh_rTW">
+            <long>one2free</long>
+            <short>one2free</short>
+        </language>
+        <language name="en_rUS">
+            <long>one2free</long>
+            <short>one2free</short>
+        </language>
+    </operator>
+    <operator numeric="45406">
+        <language name="zh_rCN">
+            <long>SmarTone HK</long>
+            <short>SmarTone HK</short>
+        </language>
+        <language name="zh_rTW">
+            <long>SmarTone HK</long>
+            <short>SmarTone HK</short>
+        </language>
+        <language name="en_rUS">
+            <long>SmarTone HK</long>
+            <short>SmarTone HK</short>
+        </language>
+    </operator>
+    <operator numeric="45415">
+        <language name="zh_rCN">
+            <long>SmarTone HK</long>
+            <short>SmarTone HK</short>
+        </language>
+        <language name="zh_rTW">
+            <long>SmarTone HK</long>
+            <short>SmarTone HK</short>
+        </language>
+        <language name="en_rUS">
+            <long>SmarTone HK</long>
+            <short>SmarTone HK</short>
+        </language>
+    </operator>
+    <operator numeric="45417">
+        <language name="zh_rCN">
+            <long>SmarTone HK</long>
+            <short>SmarTone HK</short>
+        </language>
+        <language name="zh_rTW">
+            <long>SmarTone HK</long>
+            <short>SmarTone HK</short>
+        </language>
+        <language name="en_rUS">
+            <long>SmarTone HK</long>
+            <short>SmarTone HK</short>
+        </language>
+    </operator>
+</operators>

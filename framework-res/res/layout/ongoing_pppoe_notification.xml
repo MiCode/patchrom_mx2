@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="64.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:gravity="center" android:id="@id/pppoe_icon" android:background="@drawable/notify_panel_notification_icon_bg_tile" android:layout_width="64.0dip" android:layout_height="64.0dip" android:scaleType="center" />
+    <Chronometer android:textSize="16.0sp" android:ellipsize="marquee" android:id="@id/pppoe_title" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="8.0dip" android:singleLine="true" android:layout_toRightOf="@id/pppoe_icon" />
+    <TextView android:textSize="12.0sp" android:ellipsize="end" android:id="@id/pppoe_subTitle" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/pppoe_click_to_disconnect" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/pppoe_icon" android:layout_below="@id/pppoe_title" />
+</RelativeLayout>
