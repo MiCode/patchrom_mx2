@@ -38,7 +38,11 @@ include $(PORT_BUILD)/porting.mk
 
 # To define any local-target
 local-zip-misc:
-
+	@echo add recovery
+	cp -rf other/recovery/res $(ZIP_DIR)/system/media
+	cp -f other/recovery/recovery $(ZIP_DIR)/system/xbin
+	cp -f other/recovery/recovery.fstab $(ZIP_DIR)/system/etc
+	cp -f other/recovery/install-recovery.sh $(ZIP_DIR)/system/etc
 
 
 out/framework2.jar : out/framework.jar

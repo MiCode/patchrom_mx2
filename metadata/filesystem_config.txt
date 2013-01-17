@@ -303,7 +303,7 @@ system/etc/gpsconfig.xml 0 0 644
 system/etc/hosts 0 0 644
 system/etc/ibap 0 0 644
 system/etc/init.goldfish.sh 0 2000 550
-system/etc/install-recovery.sh 0 0 6755
+system/etc/install-recovery.sh 0 0 755
 system/etc/media_codecs.xml 0 0 644
 system/etc/media_profiles.xml 0 0 644
 system/etc/mkshrc 0 0 644
