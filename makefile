@@ -43,7 +43,8 @@ local-zip-misc:
 	cp -f other/recovery/recovery $(ZIP_DIR)/system/xbin
 	cp -f other/recovery/recovery.fstab $(ZIP_DIR)/system/etc
 	cp -f other/recovery/install-recovery.sh $(ZIP_DIR)/system/etc
-
+	@echo customize build.prop
+	cp -f other/build.prop $(ZIP_DIR)/system
 
 out/framework2.jar : out/framework.jar
 
