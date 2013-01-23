@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="def_screen_off_timeout">60000</integer>
+    <integer name="def_screen_brightness">180</integer>
+    <integer name="def_button_brightness">50</integer>
+    <integer name="def_screen_brightness_hk">255</integer>
+    <integer name="def_button_brightness_hk">100</integer>
+    <integer name="def_volume_ring_hk">7</integer>
+    <integer name="def_cpu_l">1</integer>
+    <integer name="def_network_preference">1</integer>
+    <integer name="def_power_sounds_enabled">1</integer>
+    <integer name="def_dock_sounds_enabled">0</integer>
+    <integer name="def_lockscreen_sounds_enabled">0</integer>
+    <integer name="def_lock_wallpaper_enabled">1</integer>
+    <integer name="def_live_wallpaper_enabled_in_lockscreen">1</integer>
+    <integer name="def_use_android_keyguard">0</integer>
+    <integer name="def_camera_sounds_enabled">1</integer>
+    <integer name="def_key_sounds_enabled">0</integer>
+    <integer name="def_dtmf_tone">0</integer>
+    <integer name="def_spdif_enabled">0</integer>
+    <integer name="def_auto_weather">1</integer>
+    <integer name="def_weather_temp_c_or_f">1</integer>
+    <integer name="def_weather_update_timeout">21600</integer>
+    <integer name="def_auto_mz_account">0</integer>
+    <integer name="def_ring_up">1</integer>
+    <integer name="def_user_rotation">0</integer>
+    <integer name="def_download_manager_max_bytes_over_mobile">-1</integer>
+    <integer name="def_download_manager_recommended_max_bytes_over_mobile">-1</integer>
+    <integer name="def_long_press_timeout_millis">500</integer>
+    <integer name="def_pointer_speed">0</integer>
+    <integer name="def_max_dhcp_retries">9</integer>
+    <integer name="def_meizu_app_font_size">0</integer>
+</resources>
