@@ -5608,49 +5608,6 @@
     :cond_0
     iput-boolean v2, p0, Landroid/app/Activity;->mCalled:Z
 
-    .line 1022
-    iget-object v0, p0, Landroid/app/Activity;->mWindow:Landroid/view/Window;
-
-    if-eqz v0, :cond_1
-
-    iget-object v0, p0, Landroid/app/Activity;->mWindow:Landroid/view/Window;
-
-    const/16 v1, 0x8
-
-    invoke-virtual {v0, v1}, Landroid/view/Window;->hasFeature(I)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    .line 1029
-    iget-object v0, p0, Landroid/app/Activity;->mActivityInfo:Landroid/content/pm/ActivityInfo;
-
-    if-eqz v0, :cond_1
-
-    iget-object v0, p0, Landroid/app/Activity;->mActivityInfo:Landroid/content/pm/ActivityInfo;
-
-    iget-object v0, v0, Landroid/content/pm/PackageItemInfo;->packageName:Ljava/lang/String;
-
-    if-eqz v0, :cond_1
-
-    iget-object v0, p0, Landroid/app/Activity;->mActivityInfo:Landroid/content/pm/ActivityInfo;
-
-    iget-object v0, v0, Landroid/content/pm/PackageItemInfo;->packageName:Ljava/lang/String;
-
-    const-string v1, "com.android.contacts"
-
-    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v0
-
-    if-nez v0, :cond_1
-
-    .line 1031
-    invoke-virtual {p0}, Landroid/app/Activity;->invalidateOptionsMenu()V
-
-    .line 1034
-    :cond_1
     return-void
 .end method
 
