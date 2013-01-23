@@ -2303,9 +2303,13 @@
 .end method
 
 .method public openAssetFile(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
-    .locals 15
+    .locals 13
     .parameter "uri"
     .parameter "mode"
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_CODE:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/FileNotFoundException;
@@ -2313,585 +2317,170 @@
     .end annotation
 
     .prologue
-    .line 726
-    invoke-static/range {p1 .. p1}, Landroid/media/RingtoneManager;->getDefaultType(Landroid/net/Uri;)I
-
-    move-result v13
-
-    .line 728
-    .local v13, ringtoneType:I
-    const/4 v1, -0x1
-
-    if-eq v13, v1, :cond_18
-
-    .line 729
-    invoke-virtual {p0}, Lcom/android/providers/settings/SettingsProvider;->getContext()Landroid/content/Context;
-
-    move-result-object v8
-
-    .line 732
-    .local v8, context:Landroid/content/Context;
-    invoke-static {v8, v13}, Landroid/media/RingtoneManager;->getActualDefaultRingtoneUri(Landroid/content/Context;I)Landroid/net/Uri;
-
-    move-result-object v14
-
-    .line 734
-    .local v14, soundUri:Landroid/net/Uri;
-    if-eqz v14, :cond_17
-
-    .line 737
-    const/4 v12, 0x0
-
-    .line 738
-    .local v12, oldString:Ljava/lang/String;
-    and-int/lit8 v1, v13, 0x1
-
-    if-eqz v1, :cond_1
-
-    .line 739
-    invoke-virtual {v8}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v1
-
-    const-string v3, "ringtone_sound_file_path"
-
-    invoke-static {v1, v3}, Landroid/provider/Settings$System;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v12
-
-    .line 751
-    :cond_0
-    :goto_0
-    if-eqz v12, :cond_c
-
-    invoke-static {v8, v14, v13}, Landroid/media/RingtoneManager;->getMusicFilePathForRingTone(Landroid/content/Context;Landroid/net/Uri;I)Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v12, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_c
-
-    .line 752
-    const/4 v1, -0x1
-
-    if-eq v13, v1, :cond_c
-
-    const/4 v1, 0x4
-
-    if-eq v13, v1, :cond_c
-
-    .line 753
-    and-int/lit8 v1, v13, 0x1
-
-    if-eqz v1, :cond_6
-
-    .line 754
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v3, 0x110000a
-
-    invoke-virtual {v1, v3}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    .line 844
-    .end local v8           #context:Landroid/content/Context;
-    .end local v12           #oldString:Ljava/lang/String;
-    .end local v14           #soundUri:Landroid/net/Uri;
-    :goto_1
-    return-object v1
-
-    .line 740
-    .restart local v8       #context:Landroid/content/Context;
-    .restart local v12       #oldString:Ljava/lang/String;
-    .restart local v14       #soundUri:Landroid/net/Uri;
-    :cond_1
-    and-int/lit8 v1, v13, 0x2
-
-    if-eqz v1, :cond_2
-
-    .line 741
-    invoke-virtual {v8}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v1
-
-    const-string v3, "notification_sound_file_path"
-
-    invoke-static {v1, v3}, Landroid/provider/Settings$System;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v12
-
-    goto :goto_0
-
-    .line 742
-    :cond_2
-    and-int/lit8 v1, v13, 0x4
-
-    if-eqz v1, :cond_3
-
-    .line 743
-    invoke-virtual {v8}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v1
-
-    const-string v3, "alarm_sound_file_path"
-
-    invoke-static {v1, v3}, Landroid/provider/Settings$System;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v12
-
-    goto :goto_0
-
-    .line 744
-    :cond_3
-    and-int/lit8 v1, v13, 0x8
-
-    if-eqz v1, :cond_4
-
-    .line 745
-    invoke-virtual {v8}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v1
-
-    const-string v3, "mms_sound_file_path"
-
-    invoke-static {v1, v3}, Landroid/provider/Settings$System;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v12
-
-    goto :goto_0
-
-    .line 746
-    :cond_4
-    and-int/lit8 v1, v13, 0x10
-
-    if-eqz v1, :cond_5
-
-    .line 747
-    invoke-virtual {v8}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v1
-
-    const-string v3, "email_sound_file_path"
-
-    invoke-static {v1, v3}, Landroid/provider/Settings$System;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v12
-
-    goto :goto_0
-
-    .line 748
-    :cond_5
-    and-int/lit8 v1, v13, 0x20
-
-    if-eqz v1, :cond_0
-
-    .line 749
-    invoke-virtual {v8}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v1
-
-    const-string v3, "calendar_sound_file_path"
-
-    invoke-static {v1, v3}, Landroid/provider/Settings$System;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v12
-
-    goto :goto_0
-
-    .line 756
-    :cond_6
-    and-int/lit8 v1, v13, 0x2
-
-    if-eqz v1, :cond_7
-
-    .line 757
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v3, 0x1100009
-
-    invoke-virtual {v1, v3}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    goto :goto_1
-
-    .line 759
-    :cond_7
-    and-int/lit8 v1, v13, 0x4
-
-    if-eqz v1, :cond_8
-
-    .line 760
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v3, 0x1100001
-
-    invoke-virtual {v1, v3}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    goto :goto_1
-
-    .line 762
-    :cond_8
-    and-int/lit8 v1, v13, 0x8
-
-    if-eqz v1, :cond_9
-
-    .line 763
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v3, 0x1100007
-
-    invoke-virtual {v1, v3}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    goto :goto_1
-
-    .line 765
-    :cond_9
-    and-int/lit8 v1, v13, 0x10
-
-    if-eqz v1, :cond_a
-
-    .line 766
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v3, 0x1100003
-
-    invoke-virtual {v1, v3}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    goto/16 :goto_1
-
-    .line 768
-    :cond_a
-    and-int/lit8 v1, v13, 0x20
-
-    if-eqz v1, :cond_b
-
-    .line 769
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v3, 0x1100002
-
-    invoke-virtual {v1, v3}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    goto/16 :goto_1
-
-    .line 772
-    :cond_b
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v3, 0x1100004
-
-    invoke-virtual {v1, v3}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    goto/16 :goto_1
-
-    .line 780
-    :cond_c
-    invoke-virtual {v14}, Landroid/net/Uri;->getAuthority()Ljava/lang/String;
-
-    move-result-object v7
-
-    .line 781
-    .local v7, authority:Ljava/lang/String;
-    const-string v1, "drm"
-
-    invoke-virtual {v7, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-static {p1}, Landroid/media/RingtoneManager;->getDefaultType(Landroid/net/Uri;)I
 
     move-result v11
 
-    .line 782
-    .local v11, isDrmAuthority:Z
-    if-nez v11, :cond_d
+    .local v11, ringtoneType:I
+    const/4 v0, -0x1
 
-    const-string v1, "media"
+    if-eq v11, v0, :cond_4
 
-    invoke-virtual {v7, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p0}, Lcom/android/providers/settings/SettingsProvider;->getContext()Landroid/content/Context;
 
-    move-result v1
+    move-result-object v7
 
-    if-eqz v1, :cond_f
+    .local v7, context:Landroid/content/Context;
+    invoke-static {v7, v11}, Landroid/media/RingtoneManager;->getActualDefaultRingtoneUri(Landroid/content/Context;I)Landroid/net/Uri;
 
-    .line 784
-    :cond_d
-    if-eqz v11, :cond_e
+    move-result-object v12
 
-    .line 789
+    .local v12, soundUri:Landroid/net/Uri;
+    if-eqz v12, :cond_3
+
+    invoke-static {v12}, Lcom/android/providers/settings/SettingsProvider$Injector;->getAuthority(Landroid/net/Uri;)Ljava/lang/String;
+
+    move-result-object v6
+
+    .local v6, authority:Ljava/lang/String;
+    invoke-static {v12, v11}, Lcom/android/providers/settings/SettingsProvider$Injector;->checkUriForExtraCases(Landroid/net/Uri;I)Landroid/net/Uri;
+
+    move-result-object v12
+
+    const-string v0, "drm"
+
+    invoke-virtual {v6, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v10
+
+    .local v10, isDrmAuthority:Z
+    if-nez v10, :cond_0
+
+    const-string v0, "media"
+
+    invoke-virtual {v6, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_2
+
+    :cond_0
+    if-eqz v10, :cond_1
+
     :try_start_0
-    invoke-static {v8}, Landroid/provider/DrmStore;->enforceAccessDrmPermission(Landroid/content/Context;)V
+    invoke-static {v7}, Landroid/provider/DrmStore;->enforceAccessDrmPermission(Landroid/content/Context;)V
     :try_end_0
-    .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 795
-    :cond_e
-    const/4 v2, 0x0
+    :cond_1
+    const/4 v1, 0x0
 
-    .line 797
-    .local v2, pfd:Landroid/os/ParcelFileDescriptor;
+    .local v1, pfd:Landroid/os/ParcelFileDescriptor;
     :try_start_1
-    invoke-virtual {v8}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+    invoke-virtual {v7}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v12, p2}, Landroid/content/ContentResolver;->openFileDescriptor(Landroid/net/Uri;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
 
     move-result-object v1
 
-    move-object/from16 v0, p2
+    new-instance v0, Landroid/content/res/AssetFileDescriptor;
 
-    invoke-virtual {v1, v14, v0}, Landroid/content/ContentResolver;->openFileDescriptor(Landroid/net/Uri;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    const-wide/16 v2, 0x0
+
+    const-wide/16 v4, -0x1
+
+    invoke-direct/range {v0 .. v5}, Landroid/content/res/AssetFileDescriptor;-><init>(Landroid/os/ParcelFileDescriptor;JJ)V
+    :try_end_1
+    .catch Ljava/io/FileNotFoundException; {:try_start_1 .. :try_end_1} :catch_1
+
+    .end local v1           #pfd:Landroid/os/ParcelFileDescriptor;
+    .end local v6           #authority:Ljava/lang/String;
+    .end local v7           #context:Landroid/content/Context;
+    .end local v10           #isDrmAuthority:Z
+    .end local v12           #soundUri:Landroid/net/Uri;
+    :goto_0
+    return-object v0
+
+    .restart local v6       #authority:Ljava/lang/String;
+    .restart local v7       #context:Landroid/content/Context;
+    .restart local v10       #isDrmAuthority:Z
+    .restart local v12       #soundUri:Landroid/net/Uri;
+    :catch_0
+    move-exception v8
+
+    .local v8, e:Ljava/lang/SecurityException;
+    new-instance v0, Ljava/io/FileNotFoundException;
+
+    invoke-virtual {v8}, Ljava/lang/SecurityException;->getMessage()Ljava/lang/String;
 
     move-result-object v2
 
-    .line 798
-    new-instance v1, Landroid/content/res/AssetFileDescriptor;
+    invoke-direct {v0, v2}, Ljava/io/FileNotFoundException;-><init>(Ljava/lang/String;)V
 
-    const-wide/16 v3, 0x0
+    throw v0
 
-    const-wide/16 v5, -0x1
+    .end local v8           #e:Ljava/lang/SecurityException;
+    .restart local v1       #pfd:Landroid/os/ParcelFileDescriptor;
+    :catch_1
+    move-exception v0
 
-    invoke-direct/range {v1 .. v6}, Landroid/content/res/AssetFileDescriptor;-><init>(Landroid/os/ParcelFileDescriptor;JJ)V
-    :try_end_1
-    .catch Ljava/io/FileNotFoundException; {:try_start_1 .. :try_end_1} :catch_0
-
-    goto/16 :goto_1
-
-    .line 799
-    :catch_0
-    move-exception v1
-
-    .line 805
-    .end local v2           #pfd:Landroid/os/ParcelFileDescriptor;
-    :cond_f
+    .end local v1           #pfd:Landroid/os/ParcelFileDescriptor;
+    :cond_2
     :try_start_2
-    move-object/from16 v0, p2
-
-    invoke-super {p0, v14, v0}, Landroid/content/ContentProvider;->openAssetFile(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+    invoke-super {p0, v12, p2}, Landroid/content/ContentProvider;->openAssetFile(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
     :try_end_2
     .catch Ljava/io/FileNotFoundException; {:try_start_2 .. :try_end_2} :catch_2
 
-    move-result-object v1
+    move-result-object v0
 
-    goto/16 :goto_1
+    goto :goto_0
 
-    .line 790
-    :catch_1
+    :catch_2
     move-exception v9
 
-    .line 791
-    .local v9, e:Ljava/lang/SecurityException;
-    new-instance v1, Ljava/io/FileNotFoundException;
+    .local v9, ex:Ljava/io/FileNotFoundException;
+    invoke-virtual {v7}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    invoke-virtual {v9}, Ljava/lang/SecurityException;->getMessage()Ljava/lang/String;
+    move-result-object v0
 
-    move-result-object v3
+    const v2, 0x1100004
 
-    invoke-direct {v1, v3}, Ljava/io/FileNotFoundException;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v2}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
 
-    throw v1
+    move-result-object v0
 
-    .line 806
-    .end local v9           #e:Ljava/lang/SecurityException;
-    :catch_2
-    move-exception v10
+    goto :goto_0
 
-    .line 810
-    .local v10, ex:Ljava/io/FileNotFoundException;
-    const/4 v1, -0x1
+    .end local v6           #authority:Ljava/lang/String;
+    .end local v9           #ex:Ljava/io/FileNotFoundException;
+    .end local v10           #isDrmAuthority:Z
+    :cond_3
+    new-instance v0, Ljava/io/FileNotFoundException;
 
-    if-eq v13, v1, :cond_16
+    invoke-direct {v0}, Ljava/io/FileNotFoundException;-><init>()V
 
-    .line 811
-    and-int/lit8 v1, v13, 0x1
+    throw v0
 
-    if-eqz v1, :cond_10
+    .end local v7           #context:Landroid/content/Context;
+    .end local v12           #soundUri:Landroid/net/Uri;
+    :cond_4
+    invoke-super {p0, p1, p2}, Landroid/content/ContentProvider;->openAssetFile(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
 
-    .line 812
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    move-result-object v0
 
-    move-result-object v1
-
-    const v3, 0x110000a
-
-    invoke-virtual {v1, v3}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    goto/16 :goto_1
-
-    .line 814
-    :cond_10
-    and-int/lit8 v1, v13, 0x2
-
-    if-eqz v1, :cond_11
-
-    .line 815
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v3, 0x1100009
-
-    invoke-virtual {v1, v3}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    goto/16 :goto_1
-
-    .line 817
-    :cond_11
-    and-int/lit8 v1, v13, 0x4
-
-    if-eqz v1, :cond_12
-
-    .line 818
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v3, 0x1100001
-
-    invoke-virtual {v1, v3}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    goto/16 :goto_1
-
-    .line 820
-    :cond_12
-    and-int/lit8 v1, v13, 0x8
-
-    if-eqz v1, :cond_13
-
-    .line 821
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v3, 0x1100007
-
-    invoke-virtual {v1, v3}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    goto/16 :goto_1
-
-    .line 823
-    :cond_13
-    and-int/lit8 v1, v13, 0x10
-
-    if-eqz v1, :cond_14
-
-    .line 824
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v3, 0x1100003
-
-    invoke-virtual {v1, v3}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    goto/16 :goto_1
-
-    .line 826
-    :cond_14
-    and-int/lit8 v1, v13, 0x20
-
-    if-eqz v1, :cond_15
-
-    .line 827
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v3, 0x1100002
-
-    invoke-virtual {v1, v3}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    goto/16 :goto_1
-
-    .line 830
-    :cond_15
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v3, 0x1100004
-
-    invoke-virtual {v1, v3}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    goto/16 :goto_1
-
-    .line 834
-    :cond_16
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v3, 0x1100004
-
-    invoke-virtual {v1, v3}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    goto/16 :goto_1
-
-    .line 840
-    .end local v7           #authority:Ljava/lang/String;
-    .end local v10           #ex:Ljava/io/FileNotFoundException;
-    .end local v11           #isDrmAuthority:Z
-    .end local v12           #oldString:Ljava/lang/String;
-    :cond_17
-    new-instance v1, Ljava/io/FileNotFoundException;
-
-    invoke-direct {v1}, Ljava/io/FileNotFoundException;-><init>()V
-
-    throw v1
-
-    .line 844
-    .end local v8           #context:Landroid/content/Context;
-    .end local v14           #soundUri:Landroid/net/Uri;
-    :cond_18
-    invoke-super/range {p0 .. p2}, Landroid/content/ContentProvider;->openAssetFile(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
-
-    move-result-object v1
-
-    goto/16 :goto_1
+    goto :goto_0
 .end method
 
 .method public openFile(Landroid/net/Uri;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     .locals 8
     .parameter "uri"
     .parameter "mode"
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_CODE:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/FileNotFoundException;
@@ -2899,46 +2488,42 @@
     .end annotation
 
     .prologue
-    .line 685
     invoke-static {p1}, Landroid/media/RingtoneManager;->getDefaultType(Landroid/net/Uri;)I
 
     move-result v4
 
-    .line 687
     .local v4, ringtoneType:I
     const/4 v6, -0x1
 
     if-eq v4, v6, :cond_2
 
-    .line 688
     invoke-virtual {p0}, Lcom/android/providers/settings/SettingsProvider;->getContext()Landroid/content/Context;
 
     move-result-object v1
 
-    .line 691
     .local v1, context:Landroid/content/Context;
     invoke-static {v1, v4}, Landroid/media/RingtoneManager;->getActualDefaultRingtoneUri(Landroid/content/Context;I)Landroid/net/Uri;
 
     move-result-object v5
 
-    .line 693
     .local v5, soundUri:Landroid/net/Uri;
     if-eqz v5, :cond_2
 
-    .line 695
-    invoke-virtual {v5}, Landroid/net/Uri;->getAuthority()Ljava/lang/String;
+    invoke-static {v5}, Lcom/android/providers/settings/SettingsProvider$Injector;->getAuthority(Landroid/net/Uri;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 696
     .local v0, authority:Ljava/lang/String;
+    invoke-static {v5, v4}, Lcom/android/providers/settings/SettingsProvider$Injector;->checkUriForExtraCases(Landroid/net/Uri;I)Landroid/net/Uri;
+
+    move-result-object v5
+
     const-string v6, "drm"
 
     invoke-virtual {v0, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    .line 697
     .local v3, isDrmAuthority:Z
     if-nez v3, :cond_0
 
@@ -2950,17 +2535,14 @@
 
     if-eqz v6, :cond_2
 
-    .line 699
     :cond_0
     if-eqz v3, :cond_1
 
-    .line 704
     :try_start_0
     invoke-static {v1}, Landroid/provider/DrmStore;->enforceAccessDrmPermission(Landroid/content/Context;)V
     :try_end_0
     .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 710
     :cond_1
     invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -2970,7 +2552,6 @@
 
     move-result-object v6
 
-    .line 715
     .end local v0           #authority:Ljava/lang/String;
     .end local v1           #context:Landroid/content/Context;
     .end local v3           #isDrmAuthority:Z
@@ -2978,7 +2559,6 @@
     :goto_0
     return-object v6
 
-    .line 705
     .restart local v0       #authority:Ljava/lang/String;
     .restart local v1       #context:Landroid/content/Context;
     .restart local v3       #isDrmAuthority:Z
@@ -2986,7 +2566,6 @@
     :catch_0
     move-exception v2
 
-    .line 706
     .local v2, e:Ljava/lang/SecurityException;
     new-instance v6, Ljava/io/FileNotFoundException;
 
@@ -2998,7 +2577,6 @@
 
     throw v6
 
-    .line 715
     .end local v0           #authority:Ljava/lang/String;
     .end local v1           #context:Landroid/content/Context;
     .end local v2           #e:Ljava/lang/SecurityException;
