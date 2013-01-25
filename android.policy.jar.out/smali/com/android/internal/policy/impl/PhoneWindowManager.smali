@@ -12449,6 +12449,22 @@
 
     .line 4260
     :sswitch_3
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p1
+
+    move/from16 v2, p2
+
+    move/from16 v3, p3
+
+    move/from16 v4, v21
+
+    invoke-direct {v0, v1, v2, v3, v4}, Lcom/android/internal/policy/impl/PhoneWindowManager;->doByPowerKey(Landroid/view/KeyEvent;IZI)I
+
+    move-result v21
+
+    goto/16 :goto_7
+
     and-int/lit8 v21, v21, -0x2
 
     .line 4261
@@ -21223,4 +21239,217 @@
     const/4 v8, 0x0
 
     goto :goto_0
+.end method
+
+.method private doByPowerKey(Landroid/view/KeyEvent;IZI)I
+    .locals 9
+    .parameter "event"
+    .parameter "policyFlags"
+    .parameter "isScreenOn"
+    .parameter "result"
+
+    .prologue
+    const/4 v5, 0x1
+
+    const/4 v6, 0x0
+
+    .line 3531
+    invoke-virtual {p1}, Landroid/view/KeyEvent;->getAction()I
+
+    move-result v7
+
+    if-nez v7, :cond_4
+
+    move v1, v5
+
+    .line 3532
+    .local v1, down:Z
+    :goto_0
+    invoke-virtual {p1}, Landroid/view/KeyEvent;->isCanceled()Z
+
+    move-result v0
+
+    .line 3533
+    .local v0, canceled:Z
+    and-int/lit8 p4, p4, -0x2
+
+    .line 3534
+    if-eqz v1, :cond_6
+
+    .line 3535
+    if-eqz p3, :cond_0
+
+    iget-boolean v7, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPowerKeyTriggered:Z
+
+    if-nez v7, :cond_0
+
+    invoke-virtual {p1}, Landroid/view/KeyEvent;->getFlags()I
+
+    move-result v7
+
+    and-int/lit16 v7, v7, 0x400
+
+    if-nez v7, :cond_0
+
+    .line 3537
+    iput-boolean v5, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPowerKeyTriggered:Z
+
+    .line 3538
+    invoke-virtual {p1}, Landroid/view/KeyEvent;->getDownTime()J
+
+    move-result-wide v7
+
+    iput-wide v7, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPowerKeyTime:J
+
+    .line 3539
+    invoke-direct {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->interceptScreenshotChord()V
+
+    .line 3542
+    :cond_0
+    invoke-static {}, Lcom/android/internal/policy/impl/PhoneWindowManager;->getTelephonyService()Lcom/android/internal/telephony/ITelephony;
+
+    move-result-object v4
+
+    .line 3543
+    .local v4, telephonyService:Lcom/android/internal/telephony/ITelephony;
+    const/4 v3, 0x0
+
+    .line 3544
+    .local v3, hungUp:Z
+    if-eqz v4, :cond_1
+
+    .line 3546
+    :try_start_0
+    invoke-interface {v4}, Lcom/android/internal/telephony/ITelephony;->isRinging()Z
+
+    move-result v7
+
+    if-eqz v7, :cond_5
+
+    .line 3549
+    invoke-interface {v4}, Lcom/android/internal/telephony/ITelephony;->silenceRinger()Z
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 3561
+    :cond_1
+    :goto_1
+    if-eqz p3, :cond_2
+
+    if-nez v3, :cond_2
+
+    iget-boolean v7, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mVolumeDownKeyTriggered:Z
+
+    if-nez v7, :cond_2
+
+    iget-boolean v7, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mVolumeUpKeyTriggered:Z
+
+    if-eqz v7, :cond_3
+
+    :cond_2
+    move v6, v5
+
+    :cond_3
+    invoke-direct {p0, v6}, Lcom/android/internal/policy/impl/PhoneWindowManager;->interceptPowerKeyDown(Z)V
+
+    .line 3572
+    .end local v3           #hungUp:Z
+    .end local v4           #telephonyService:Lcom/android/internal/telephony/ITelephony;
+    :goto_2
+    return p4
+
+    .end local v0           #canceled:Z
+    .end local v1           #down:Z
+    :cond_4
+    move v1, v6
+
+    .line 3531
+    goto :goto_0
+
+    .line 3550
+    .restart local v0       #canceled:Z
+    .restart local v1       #down:Z
+    .restart local v3       #hungUp:Z
+    .restart local v4       #telephonyService:Lcom/android/internal/telephony/ITelephony;
+    :cond_5
+    :try_start_1
+    iget v7, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mIncallPowerBehavior:I
+
+    and-int/lit8 v7, v7, 0x2
+
+    if-eqz v7, :cond_1
+
+    invoke-interface {v4}, Lcom/android/internal/telephony/ITelephony;->isOffhook()Z
+
+    move-result v7
+
+    if-eqz v7, :cond_1
+
+    .line 3555
+    invoke-interface {v4}, Lcom/android/internal/telephony/ITelephony;->endCall()Z
+    :try_end_1
+    .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_0
+
+    move-result v3
+
+    goto :goto_1
+
+    .line 3557
+    :catch_0
+    move-exception v2
+
+    .line 3558
+    .local v2, ex:Landroid/os/RemoteException;
+    const-string v7, "WindowManager"
+
+    const-string v8, "ITelephony threw RemoteException"
+
+    invoke-static {v7, v8, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto :goto_1
+
+    .line 3564
+    .end local v2           #ex:Landroid/os/RemoteException;
+    .end local v3           #hungUp:Z
+    .end local v4           #telephonyService:Lcom/android/internal/telephony/ITelephony;
+    :cond_6
+    iput-boolean v6, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPowerKeyTriggered:Z
+
+    .line 3565
+    invoke-direct {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->cancelPendingScreenshotChordAction()V
+
+    .line 3566
+    if-nez v0, :cond_7
+
+    iget-boolean v7, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPendingPowerKeyUpCanceled:Z
+
+    if-eqz v7, :cond_9
+
+    :cond_7
+    :goto_3
+    invoke-direct {p0, v5}, Lcom/android/internal/policy/impl/PhoneWindowManager;->interceptPowerKeyUp(Z)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_8
+
+    .line 3567
+    and-int/lit8 v5, p4, -0x3
+
+    or-int/lit8 p4, v5, 0x4
+
+    .line 3569
+    :cond_8
+    iput-boolean v6, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPendingPowerKeyUpCanceled:Z
+
+    .line 3570
+    invoke-static {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager$Injector;->sendPowerUpBroadcast(Lcom/android/internal/policy/impl/PhoneWindowManager;)V
+
+    goto :goto_2
+
+    :cond_9
+    move v5, v6
+
+    .line 3566
+    goto :goto_3
 .end method
