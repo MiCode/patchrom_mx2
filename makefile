@@ -45,6 +45,8 @@ local-zip-misc:
 	cp -f other/recovery/install-recovery.sh $(ZIP_DIR)/system/etc
 	@echo customize build.prop
 	cp -f other/build.prop $(ZIP_DIR)/system
+	@echo replace bootanimation
+	cp -f other/bootanimation $(ZIP_DIR)/system/bin
 
 out/framework2.jar : out/framework.jar
 
