@@ -9739,7 +9739,7 @@
 
     #invoke-virtual/range {v33 .. v34}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    invoke-direct/range {p0 .. p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->MenuKeyTrigger()V
+    invoke-direct/range {p0 .. p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->goToHome()V
 
     const/16 v33, 0x0
 
@@ -9861,10 +9861,14 @@
 
     iput-boolean v0, v1, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHomePressed:Z
 
-    .line 2047
+    invoke-direct/range {p0 .. p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->BackKeyTrigger()V
+
+    const-wide/16 v33, -0x1
+
+    goto/16 :goto_1
+
     if-nez v6, :cond_1d
 
-    .line 2054
     invoke-direct/range {p0 .. p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->isIncomingRing()Z
 
     move-result v16
@@ -21136,7 +21140,7 @@
     goto :goto_0
 .end method
 
-.method private MenuKeyTrigger()V
+.method private BackKeyTrigger()V
     .locals 4
 
     .prologue
@@ -21152,7 +21156,7 @@
     .line 1766
     iget-wide v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mDownTime:J
 
-    invoke-direct {p0, v3, v3, v0, v1}, Lcom/android/internal/policy/impl/PhoneWindowManager;->sendMenuKeyEvent(IIJ)V
+    invoke-direct {p0, v3, v3, v0, v1}, Lcom/android/internal/policy/impl/PhoneWindowManager;->sendBackKeyEvent(IIJ)V
 
     .line 1767
     const/4 v0, 0x1
@@ -21161,13 +21165,13 @@
 
     move-result-wide v1
 
-    invoke-direct {p0, v0, v3, v1, v2}, Lcom/android/internal/policy/impl/PhoneWindowManager;->sendMenuKeyEvent(IIJ)V
+    invoke-direct {p0, v0, v3, v1, v2}, Lcom/android/internal/policy/impl/PhoneWindowManager;->sendBackKeyEvent(IIJ)V
 
     .line 1768
     return-void
 .end method
 
-.method private sendMenuKeyEvent(IIJ)V
+.method private sendBackKeyEvent(IIJ)V
     .locals 15
     .parameter "action"
     .parameter "flags"
@@ -21452,4 +21456,63 @@
 
     .line 3566
     goto :goto_3
+.end method
+
+.method private goToHome()V
+    .locals 5
+
+    .prologue
+    .line 1763
+    const/4 v1, 0x0
+
+    .line 1764
+    .local v1, incomingRinging:Z
+    invoke-static {}, Lcom/android/internal/policy/impl/PhoneWindowManager;->getTelephonyService()Lcom/android/internal/telephony/ITelephony;
+
+    move-result-object v2
+
+    .line 1766
+    .local v2, telephonyService:Lcom/android/internal/telephony/ITelephony;
+    :try_start_0
+    invoke-interface {v2}, Lcom/android/internal/telephony/ITelephony;->isRinging()Z
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result v1
+
+    .line 1772
+    :goto_0
+    if-eqz v1, :cond_0
+
+    .line 1773
+    const-string v3, "WindowManager"
+
+    const-string v4, "Ignoring HOME; there\'s a ringing incoming call."
+
+    invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 1777
+    :goto_1
+    return-void
+
+    .line 1767
+    :catch_0
+    move-exception v0
+
+    .line 1769
+    .local v0, ex:Landroid/os/RemoteException;
+    const-string v3, "WindowManager"
+
+    const-string v4, "RemoteException from getPhoneInterface()"
+
+    invoke-static {v3, v4, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto :goto_0
+
+    .line 1775
+    .end local v0           #ex:Landroid/os/RemoteException;
+    :cond_0
+    invoke-virtual {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->launchHomeFromHotKey()V
+
+    goto :goto_1
 .end method
