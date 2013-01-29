@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ReviewControlIcon">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">32.0dip</item>
+        <item name="android:layout_height">32.0dip</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+    <style name="SettingPopupWindow">
+        <item name="android:visibility">gone</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">@dimen/setting_popup_right_margin</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <style name="PanoViewHorizontalBar">
+        <item name="android:background">#ff000000</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">0.0dip</item>
+        <item name="android:layout_weight">0.5</item>
+        <item name="android:alpha">1.0</item>
+    </style>
+    <style name="ReviewThumbnail">
+        <item name="android:layout_width">130.0dip</item>
+        <item name="android:layout_height">130.0dip</item>
+        <item name="android:layout_marginTop">20.0dip</item>
+        <item name="android:layout_marginRight">20.0dip</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
+</resources>

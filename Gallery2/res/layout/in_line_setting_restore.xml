@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.camera.ui.InLineSettingRestore android:background="@drawable/bg_pressed_exit_fading" style="@style/SettingRow"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/title" android:layout_width="fill_parent" style="@style/SettingItemText" />
+</com.android.camera.ui.InLineSettingRestore>

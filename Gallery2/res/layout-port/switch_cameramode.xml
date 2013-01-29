@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/switchCameraMode" android:onClick="onSwitchCameraModeClicked" style="@style/SwitchOtherMode_Vertical"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/ic_switch_video_bg" android:layout_width="@dimen/switch_other_mode_width" android:layout_height="@dimen/switch_other_mode_height">
+        <com.android.camera.ui.RotateImageView android:id="@id/switchCamera_img1" android:visibility="gone" android:layout_width="@dimen/switch_other_mode_height" android:layout_height="@dimen/switch_other_mode_height" android:src="@drawable/ic_switch_camera_normal" />
+        <com.android.camera.ui.RotateImageView android:id="@id/switchCamera_img2" android:visibility="gone" android:layout_width="@dimen/switch_other_mode_height" android:layout_height="@dimen/switch_other_mode_height" android:src="@drawable/ic_switch_video_pressed" />
+    </LinearLayout>
+</LinearLayout>

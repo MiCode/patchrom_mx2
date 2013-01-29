@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="@dimen/menu_back_control_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.camera.ui.RotateLayout android:id="@id/menu_indicators_v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/menu_list_v_height">
+            <ListView android:layout_gravity="center" android:orientation="vertical" android:id="@id/main_menu_v" android:background="@drawable/bg_menu_l" android:paddingLeft="@dimen/main_menu_list_padding_left" android:layout_width="@dimen/main_menu_list_width" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" android:choiceMode="singleChoice" android:overScrollMode="never" />
+            <View android:background="@null" android:layout_width="@dimen/menu_divider_width" android:layout_height="fill_parent" />
+            <ListView android:layout_gravity="center" android:orientation="vertical" android:id="@id/sub_menu_v" android:background="@drawable/bg_menu_r" android:paddingLeft="@dimen/main_menu_list_padding_left" android:paddingRight="@dimen/main_menu_list_padding_right" android:layout_width="@dimen/sub_menu_list_width" android:layout_height="fill_parent" android:divider="@null" android:choiceMode="singleChoice" android:overScrollMode="never" />
+        </LinearLayout>
+    </com.android.camera.ui.RotateLayout>
+</RelativeLayout>

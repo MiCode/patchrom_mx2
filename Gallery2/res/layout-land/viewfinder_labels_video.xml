@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.camera.ui.RotateLayout android:gravity="center_horizontal" android:id="@id/labels" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/recording_time_labels_mms_layout_margin_top" android:layout_marginTop="@dimen/recording_time_labels_mms_layout_margin_right" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <TextView android:textSize="@dimen/recording_time_labels_mms_text_size" android:textColor="@color/menu_item_disable_text_color" android:gravity="center" android:id="@id/recording_time" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/recording_time_labels_mms_text_layout_height" android:singleLine="true" android:shadowColor="@color/viewfinder_labels_txt_shadow_color" android:shadowRadius="3.0" />
+    </com.android.camera.ui.RotateLayout>
+</RelativeLayout>

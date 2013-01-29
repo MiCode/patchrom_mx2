@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/searchImage" android:background="@drawable/default_bg" android:layout_width="114.0dip" android:layout_height="152.0dip" android:src="@drawable/letv2" android:scaleType="center" />
+        <ImageView android:id="@id/image_cover" android:background="@drawable/picture_mask" android:layout_width="114.0dip" android:layout_height="152.0dip" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="18.0dip">
+        <TextView android:textSize="@dimen/channeldetail_title_size" android:textColor="@color/channeldetail_title_color" android:id="@id/labelText1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:singleLine="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/labelText2LinearLayout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip">
+            <TextView android:textSize="@dimen/channeldetail_label_size" android:textColor="@color/channeldetail_label_color" android:id="@id/labelText2_1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ImageView android:id="@id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/btn_star_on" />
+            <ImageView android:id="@id/imageView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/btn_star_on" />
+            <ImageView android:id="@id/imageView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/btn_star_on" />
+            <ImageView android:id="@id/imageView4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/btn_star_on" />
+            <ImageView android:id="@id/imageView5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/btn_star_on" />
+            <TextView android:textSize="@dimen/channeldetail_starnum_size" android:textColor="@color/channeldetail_starnum_color" android:id="@id/labelText2_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/channeldetail_label_size" android:textColor="@color/channeldetail_label_color" android:id="@id/labelText3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:singleLine="true" />
+        <TextView android:textSize="@dimen/channeldetail_label_size" android:textColor="@color/channeldetail_label_color" android:id="@id/labelText4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:singleLine="true" />
+        <TextView android:textSize="@dimen/channeldetail_label_size" android:textColor="@color/channeldetail_label_color" android:id="@id/labelText5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+</LinearLayout>

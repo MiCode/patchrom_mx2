@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="@dimen/flash_light_list_width" android:layout_height="fill_parent" android:minHeight="@dimen/flash_light_list_item_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/flash_light_list_icon" android:paddingLeft="@dimen/flash_light_list_item_icon_padding_left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_flash_on_holo_light" android:scaleType="center" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="@dimen/flash_light_list_item_text_size" android:textColor="#b3ffffff" android:id="@id/flash_light_list_text" android:paddingRight="@dimen/flash_light_list_item_text_padding_right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

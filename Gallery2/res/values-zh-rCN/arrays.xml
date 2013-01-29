@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="labeltype">
+        <item>评分</item>
+        <item>导演</item>
+        <item>主演</item>
+        <item>类型</item>
+        <item>地区</item>
+        <item>时长</item>
+        <item>更新</item>
+        <item>期数</item>
+        <item>歌手</item>
+        <item>风格</item>
+        <item>学校</item>
+        <item>学科</item>
+        <item>节目类型</item>
+        <item>专辑类型</item>
+        <item>组织</item>
+    </string-array>
+    <string-array name="camera_pic_size_array">
+        <item>2592x1944</item>
+        <item>2048x1536</item>
+        <item>1600x1200</item>
+        <item>1280x960</item>
+    </string-array>
+    <string-array name="camera_scence_array">
+        <item>自动</item>
+        <item>文字</item>
+        <item>夜晚</item>
+        <item>风景</item>
+    </string-array>
+    <string-array name="camera_white_balance">
+        <item>自动</item>
+        <item>荧光</item>
+        <item>日光</item>
+        <item>阴天</item>
+    </string-array>
+    <string-array name="camera_video_size_array">
+        <item>1280x720</item>
+        <item>1080x720</item>
+        <item>720x480</item>
+    </string-array>
+    <string-array name="camera_cameramenu_array">
+        <item>场景</item>
+        <item>白平衡</item>
+        <item>其他</item>
+    </string-array>
+    <string-array name="camera_menu_other_array">
+        <item>记录位置</item>
+        <item>手势拍照</item>
+    </string-array>
+    <string-array name="camera_main_menu_default_tip_array">
+        <item>自动</item>
+        <item>自动</item>
+        <item>5M</item>
+    </string-array>
+    <string-array name="camera_mx_cameramenu_array">
+        <item>拍摄模式</item>
+        <item>感光度</item>
+        <item>场景</item>
+        <item>白平衡</item>
+        <item>其他</item>
+    </string-array>
+    <string-array name="camera_mx_videomenu_array">
+        <item>视频尺寸</item>
+        <item>场景</item>
+        <item>白平衡</item>
+    </string-array>
+    <string-array name="camera_mx_pic_size_array">
+        <item>3264x2448</item>
+        <item>2560x1920</item>
+        <item>2048x1536</item>
+        <item>1600x1200</item>
+        <item>1280x960</item>
+    </string-array>
+    <string-array name="camera_mx_white_balance">
+        <item>自动</item>
+        <item>荧光</item>
+        <item>日光</item>
+        <item>白炽灯</item>
+    </string-array>
+    <string-array name="camera_mx_scence_array_photo">
+        <item>自动</item>
+        <item>文字</item>
+        <item>夜晚</item>
+        <item>风景</item>
+        <item>微距</item>
+    </string-array>
+    <string-array name="camera_mx_scence_array_clip">
+        <item>自动</item>
+        <item>肖像</item>
+        <item>风景</item>
+        <item>日落</item>
+        <item>微距</item>
+    </string-array>
+    <string-array name="camera_mx_flash_light_array">
+        <item>自动</item>
+        <item>打开</item>
+        <item>关闭</item>
+    </string-array>
+    <string-array name="video_camera_mx_flash_light_array">
+        <item>打开</item>
+        <item>关闭</item>
+    </string-array>
+    <string-array name="camera_mx_capture_mode_array">
+        <item>正常</item>
+        <item>全景</item>
+        <item>笑脸</item>
+        <item>连拍</item>
+    </string-array>
+    <string-array name="camera_mx_sensitivity_mode_array">
+        <item>自动</item>
+        <item>50</item>
+        <item>200</item>
+        <item>400</item>
+        <item>800</item>
+    </string-array>
+    <string-array name="camera_mx_wide_dynamic_mode_array">
+        <item>关闭</item>
+        <item>自动</item>
+        <item>低</item>
+        <item>中</item>
+        <item>高</item>
+    </string-array>
+    <string-array name="camera_mx_video_size_array">
+        <item>1920x1080</item>
+        <item>1280x720</item>
+        <item>1080x720</item>
+        <item>720x480</item>
+    </string-array>
+    <string-array name="camera_mx_menu_other_array">
+        <item>记录位置</item>
+        <item>宽动态</item>
+        <item>手势拍照</item>
+    </string-array>
+    <string-array name="camera_mx_main_menu_default_tip_array">
+        <item>正常</item>
+        <item>自动</item>
+        <item>自动</item>
+        <item>自动</item>
+        <item>8M</item>
+    </string-array>
+    <string-array name="video_mx_main_menu_default_tip_array">
+        <item>720P</item>
+        <item>自动</item>
+        <item>自动</item>
+    </string-array>
+    <string-array name="popupmenu_info">
+        <item>完整模式</item>
+        <item>允许竖屏</item>
+        <item>连续播放</item>
+        <item>重复播放</item>
+    </string-array>
+    <string-array name="bitrate_info">
+        <item>高清</item>
+        <item>流畅</item>
+    </string-array>
+    <string-array name="crop_aspect">
+        <item>无限制</item>
+        <item>1 : 1</item>
+        <item>3 : 2</item>
+        <item>4 : 3</item>
+        <item>16 : 10</item>
+    </string-array>
+</resources>

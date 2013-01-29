@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="135.0dip" style="@style/EffectsContainerExtra"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.gallery3d.photoeditor.actions.BrightnessAction android:contentDescription="@string/BrightnessFilter" style="@style/EffectExposure">
+        <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />
+        <TextView android:id="@id/effect_label" android:layout_marginLeft="-1.5dip" android:text="@string/brightnessfilter" style="@style/EffectLabelExtra" />
+    </com.android.gallery3d.photoeditor.actions.BrightnessAction>
+    <com.android.gallery3d.photoeditor.actions.ContrastAction android:contentDescription="@string/ContrastFilter" style="@style/EffectExposure">
+        <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />
+        <TextView android:id="@id/effect_label" android:text="@string/contrastfilter" style="@style/EffectLabelExtra" />
+    </com.android.gallery3d.photoeditor.actions.ContrastAction>
+    <com.android.gallery3d.photoeditor.actions.ColorTemperatureAction android:contentDescription="@string/ColorTemperatureFilter" style="@style/EffectExposure">
+        <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />
+        <TextView android:id="@id/effect_label" android:text="@string/temperature" style="@style/EffectLabelExtra" />
+    </com.android.gallery3d.photoeditor.actions.ColorTemperatureAction>
+    <com.android.gallery3d.photoeditor.actions.SaturationAction android:contentDescription="@string/SaturationFilter" style="@style/EffectExposure">
+        <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />
+        <TextView android:id="@id/effect_label" android:text="@string/saturation" style="@style/EffectLabelExtra" />
+    </com.android.gallery3d.photoeditor.actions.SaturationAction>
+</LinearLayout>

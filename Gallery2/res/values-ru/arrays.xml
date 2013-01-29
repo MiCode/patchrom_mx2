@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="labeltype">
+        <item>Рейтинг</item>
+        <item>Режиссёр</item>
+        <item>Актер</item>
+        <item>Категория</item>
+        <item>Область</item>
+        <item>Продолжительность</item>
+        <item>Обновление</item>
+        <item>Фазы</item>
+        <item>О.С.Т.</item>
+        <item>Стиль</item>
+        <item>Школа</item>
+        <item>Дисциплина</item>
+        <item>Виды программ</item>
+        <item>Стиль альбома</item>
+        <item>Компания</item>
+    </string-array>
+    <string-array name="camera_pic_size_array">
+        <item>2592x1944</item>
+        <item>2048x1536</item>
+        <item>1600x1200</item>
+        <item>1280x960</item>
+    </string-array>
+    <string-array name="camera_scence_array">
+        <item>Авто</item>
+        <item>Текст</item>
+        <item>Ночь</item>
+        <item>Ландшафт</item>
+    </string-array>
+    <string-array name="camera_white_balance">
+        <item>Авто</item>
+        <item>Лампа накал.</item>
+        <item>Дневн. свет</item>
+        <item>Пасмурно</item>
+    </string-array>
+    <string-array name="camera_video_size_array">
+        <item>1280x720</item>
+        <item>1080x720</item>
+        <item>720x480</item>
+    </string-array>
+    <string-array name="camera_cameramenu_array">
+        <item>Режим сцены</item>
+        <item>Баланс белого</item>
+        <item>Другое</item>
+    </string-array>
+    <string-array name="camera_menu_other_array">
+        <item>Местоположение</item>
+        <item>Съемка жестом</item>
+    </string-array>
+    <string-array name="camera_main_menu_default_tip_array">
+        <item>Авто</item>
+        <item>Авто</item>
+        <item>5M</item>
+    </string-array>
+    <string-array name="camera_mx_cameramenu_array">
+        <item>Режим съемки</item>
+        <item>ISO</item>
+        <item>Режим сцены</item>
+        <item>Баланс белого</item>
+        <item>Другое</item>
+    </string-array>
+    <string-array name="camera_mx_videomenu_array">
+        <item>Размер видео</item>
+        <item>Режим сцены</item>
+        <item>Баланс белого</item>
+    </string-array>
+    <string-array name="camera_mx_pic_size_array">
+        <item>3264x2448</item>
+        <item>2560x1920</item>
+        <item>2048x1536</item>
+        <item>1600x1200</item>
+        <item>1280x960</item>
+    </string-array>
+    <string-array name="camera_mx_white_balance">
+        <item>Авто</item>
+        <item>Флюоресцент</item>
+        <item>На улице</item>
+        <item>Лампа накал.</item>
+    </string-array>
+    <string-array name="camera_mx_scence_array_photo">
+        <item>Авто</item>
+        <item>Текст</item>
+        <item>Ночь</item>
+        <item>Ландшафт</item>
+        <item>Макро</item>
+    </string-array>
+    <string-array name="camera_mx_scence_array_clip">
+        <item>Авто</item>
+        <item>Портрет</item>
+        <item>Ландшафт</item>
+        <item>Закат</item>
+        <item>Макро</item>
+    </string-array>
+    <string-array name="camera_mx_flash_light_array">
+        <item>Авто</item>
+        <item>Вкл.</item>
+        <item>Выкл.</item>
+    </string-array>
+    <string-array name="video_camera_mx_flash_light_array">
+        <item>Вкл.</item>
+        <item>Выкл.</item>
+    </string-array>
+    <string-array name="camera_mx_capture_mode_array">
+        <item>Обычный</item>
+        <item>Панорама</item>
+        <item>Улыбка</item>
+        <item>Непрерывно</item>
+    </string-array>
+    <string-array name="camera_mx_sensitivity_mode_array">
+        <item>Авто</item>
+        <item>50</item>
+        <item>200</item>
+        <item>400</item>
+        <item>800</item>
+    </string-array>
+    <string-array name="camera_mx_wide_dynamic_mode_array">
+        <item>Выкл.</item>
+        <item>Авто</item>
+        <item>Низкий</item>
+        <item>Средний</item>
+        <item>Высокий</item>
+    </string-array>
+    <string-array name="camera_mx_video_size_array">
+        <item>1920x1080</item>
+        <item>1280x720</item>
+        <item>1080x720</item>
+        <item>720x480</item>
+    </string-array>
+    <string-array name="camera_mx_menu_other_array">
+        <item>Местоположение</item>
+        <item>WDR-режим</item>
+        <item>Съемка жестом</item>
+    </string-array>
+    <string-array name="camera_mx_main_menu_default_tip_array">
+        <item>Нормальный</item>
+        <item>Авто</item>
+        <item>Авто</item>
+        <item>Авто</item>
+        <item>8M</item>
+    </string-array>
+    <string-array name="video_mx_main_menu_default_tip_array">
+        <item>720P</item>
+        <item>Авто</item>
+        <item>Авто</item>
+    </string-array>
+    <string-array name="delayplay_choices">
+        <item>1 сек</item>
+        <item>2 сек</item>
+        <item>3 сек</item>
+        <item>4 сек</item>
+        <item>5 сек</item>
+    </string-array>
+    <string-array name="slideshow_choices">
+        <item>Нет</item>
+        <item>Случайно</item>
+        <item>Жалюзи</item>
+        <item>Затухание</item>
+        <item>Мозаика</item>
+    </string-array>
+    <string-array name="popupmenu_info">
+        <item>Полный режим</item>
+        <item>Авто вертикальный</item>
+        <item>Непрерывно</item>
+        <item>Повтор</item>
+    </string-array>
+    <string-array name="bitrate_info">
+        <item>Высокое качество</item>
+        <item>Плавность</item>
+    </string-array>
+    <string-array name="crop_aspect">
+        <item>Свободно</item>
+        <item>1 : 1</item>
+        <item>3 : 2</item>
+        <item>4 : 3</item>
+        <item>16 : 10</item>
+    </string-array>
+</resources>

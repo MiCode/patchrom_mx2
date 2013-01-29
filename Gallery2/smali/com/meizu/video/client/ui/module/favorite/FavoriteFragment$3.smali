@@ -1,0 +1,359 @@
+.class Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;
+.super Ljava/lang/Object;
+.source "FavoriteFragment.java"
+
+# interfaces
+.implements Landroid/widget/AbsListView$OnItemDragListener;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
+# instance fields
+.field final synthetic this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+
+# direct methods
+.method constructor <init>(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)V
+    .locals 0
+    .parameter
+
+    .prologue
+    .line 508
+    iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public getActionItemType(Landroid/view/MenuItem;)I
+    .locals 2
+    .parameter "menuItem"
+
+    .prologue
+    .line 547
+    invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
+
+    move-result v0
+
+    .line 548
+    .local v0, id:I
+    const v1, 0x7f0d0192
+
+    if-ne v0, v1, :cond_0
+
+    .line 549
+    const/4 v1, 0x1
+
+    .line 551
+    :goto_0
+    return v1
+
+    :cond_0
+    const/4 v1, 0x0
+
+    goto :goto_0
+.end method
+
+.method public onActionItemDragEnd()V
+    .locals 1
+
+    .prologue
+    .line 537
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
+    invoke-static {v0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$100(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Ljava/util/ArrayList;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 538
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mIsScreenHorizontal:Z
+    invoke-static {v0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$400(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 539
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    invoke-static {v0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$600(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Landroid/widget/GridView;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/widget/GridView;->finishMultiChoice()V
+
+    .line 544
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 541
+    :cond_1
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    invoke-static {v0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$500(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Landroid/widget/ListView;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/widget/ListView;->finishMultiChoice()V
+
+    goto :goto_0
+.end method
+
+.method public onActionItemDragStart()V
+    .locals 0
+
+    .prologue
+    .line 535
+    return-void
+.end method
+
+.method public onActionItemDrop(Landroid/view/MenuItem;IJ)V
+    .locals 6
+    .parameter "menuItem"
+    .parameter "position"
+    .parameter "id"
+
+    .prologue
+    const/4 v5, 0x2
+
+    .line 510
+    invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
+
+    move-result v1
+
+    .line 511
+    .local v1, itemId:I
+    const v2, 0x7f0d0192
+
+    if-ne v1, v2, :cond_2
+
+    .line 512
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoritesDBHelper:Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
+    invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$200(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
+
+    move-result-object v2
+
+    if-nez v2, :cond_0
+
+    .line 513
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    new-instance v3, Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
+
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    invoke-virtual {v4}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->getActivity()Landroid/app/Activity;
+
+    move-result-object v4
+
+    invoke-direct {v3, v4}, Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;-><init>(Landroid/content/Context;)V
+
+    #setter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoritesDBHelper:Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
+    invoke-static {v2, v3}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$202(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;)Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
+
+    .line 515
+    :cond_0
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
+    invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$100(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Ljava/util/ArrayList;
+
+    move-result-object v2
+
+    if-eqz v2, :cond_1
+
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
+    invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$100(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Ljava/util/ArrayList;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
+
+    move-result v2
+
+    if-ge p2, v2, :cond_1
+
+    .line 516
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    invoke-virtual {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->InitAdapter()V
+
+    .line 517
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
+    invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$100(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Ljava/util/ArrayList;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/meizu/video/client/ui/entity/FavoriteEntity;
+
+    .line 518
+    .local v0, favoriteEntity:Lcom/meizu/video/client/ui/entity/FavoriteEntity;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoritesDBHelper:Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
+    invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$200(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v0}, Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;->deleteFromFavorites(Lcom/meizu/video/client/ui/entity/FavoriteEntity;)I
+
+    .line 519
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
+    invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$100(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Ljava/util/ArrayList;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v0}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
+
+    .line 520
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
+    invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$800(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
+
+    move-result-object v2
+
+    iget-object v3, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
+    invoke-static {v3}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$100(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Ljava/util/ArrayList;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->setList(Ljava/util/ArrayList;)V
+
+    .line 521
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
+    invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$900(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Ljava/util/ArrayList;
+
+    move-result-object v2
+
+    if-nez v2, :cond_3
+
+    .line 522
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    new-instance v3, Ljava/util/ArrayList;
+
+    invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
+
+    #setter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
+    invoke-static {v2, v3}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$902(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;Ljava/util/ArrayList;)Ljava/util/ArrayList;
+
+    .line 526
+    :goto_0
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mSelectionButton:Lcom/meizu/widget/SelectionButton;
+    invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$1100(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Lcom/meizu/widget/SelectionButton;
+
+    move-result-object v2
+
+    iget-object v3, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
+    invoke-static {v3}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$900(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Ljava/util/ArrayList;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
+
+    move-result v3
+
+    invoke-virtual {v2, v3}, Lcom/meizu/widget/SelectionButton;->setCurrentCount(I)V
+
+    .line 527
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mSelectionButton:Lcom/meizu/widget/SelectionButton;
+    invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$1100(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Lcom/meizu/widget/SelectionButton;
+
+    move-result-object v2
+
+    iget-object v3, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
+    invoke-static {v3}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$100(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Ljava/util/ArrayList;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
+
+    move-result v3
+
+    invoke-virtual {v2, v3}, Lcom/meizu/widget/SelectionButton;->setTotalCount(I)V
+
+    .line 529
+    .end local v0           #favoriteEntity:Lcom/meizu/video/client/ui/entity/FavoriteEntity;
+    :cond_1
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    iget-object v2, v2, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->handler:Landroid/os/Handler;
+
+    invoke-virtual {v2, v5}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 530
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    iget-object v2, v2, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->handler:Landroid/os/Handler;
+
+    const-wide/16 v3, 0x64
+
+    invoke-virtual {v2, v5, v3, v4}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
+
+    .line 532
+    :cond_2
+    return-void
+
+    .line 524
+    .restart local v0       #favoriteEntity:Lcom/meizu/video/client/ui/entity/FavoriteEntity;
+    :cond_3
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
+    invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$900(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Ljava/util/ArrayList;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v0}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
+
+    goto :goto_0
+.end method

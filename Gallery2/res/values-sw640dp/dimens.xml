@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="pano_mosaic_surface_height">480.0dip</dimen>
+    <dimen name="pano_review_button_width">180.0dip</dimen>
+    <dimen name="setting_row_height">50.0dip</dimen>
+    <dimen name="setting_item_text_size">21.0dip</dimen>
+    <dimen name="setting_knob_width">50.0dip</dimen>
+    <dimen name="setting_item_text_width">130.0dip</dimen>
+    <dimen name="setting_popup_window_width">410.0dip</dimen>
+    <dimen name="setting_item_list_margin">24.0dip</dimen>
+    <dimen name="indicator_bar_width">13.0dip</dimen>
+    <dimen name="popup_title_text_size">22.0dip</dimen>
+    <dimen name="popup_title_frame_min_height">60.0dip</dimen>
+    <dimen name="big_setting_popup_window_width">590.0dip</dimen>
+    <dimen name="setting_item_icon_width">35.0dip</dimen>
+    <dimen name="effect_setting_item_icon_width">54.0dip</dimen>
+    <dimen name="effect_setting_item_text_size">21.0dip</dimen>
+    <dimen name="effect_setting_type_text_size">21.0dip</dimen>
+    <dimen name="effect_setting_type_text_min_height">34.0dip</dimen>
+    <dimen name="effect_setting_clear_text_size">23.0dip</dimen>
+    <dimen name="effect_setting_clear_text_min_height">44.0dip</dimen>
+    <dimen name="effect_setting_type_text_left_padding">26.0dip</dimen>
+    <dimen name="onscreen_indicators_height">36.0dip</dimen>
+    <dimen name="control_panel_min_length">260.0dip</dimen>
+    <dimen name="onscreen_exposure_indicator_text_size">18.0dip</dimen>
+    <dimen name="mode_picker_margin">32.0dip</dimen>
+</resources>

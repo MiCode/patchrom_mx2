@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout style="@style/VideoCaptureLayout_Vertical"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.camera.ui.RotateImageView android:id="@id/video_record_capture" android:src="@drawable/btn_record_capture" android:onClick="onRecordCaptureClicked" style="@style/VideoRecordCapture" />
+</FrameLayout>

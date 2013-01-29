@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/top_actionbar_background" style="@style/ActionBarInner"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/anchor_view" android:visibility="invisible" android:layout_width="1.0dip" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/actionbar_marked" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/doodle_text_layout" android:layout_width="@dimen/actionbar_button_w" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/actionbar_settingbtn_marginleft_port">
+            <ImageButton android:id="@id/doodle_text" android:src="@drawable/photoeditor_doodle_text" style="@style/DoodleSettingBtn" />
+            <ImageButton android:id="@id/doodle_text_background" style="@style/DoodleSettingBackground" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/doodle_shape_layout" android:layout_width="@dimen/actionbar_button_w" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/actionbar_settingbtn_marginleft_port" android:layout_toRightOf="@id/doodle_text_layout">
+            <ImageButton android:id="@id/doodle_shape" android:src="@drawable/photoeditor_btn_arrow" style="@style/DoodleSettingBtn" />
+            <ImageButton android:id="@id/doodle_shape_background" style="@style/DoodleSettingBackground" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/doodle_edit_layout" android:layout_width="@dimen/actionbar_button_w" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/actionbar_settingbtn_marginleft_port" android:layout_toRightOf="@id/doodle_shape_layout">
+            <ImageButton android:id="@id/doodle_edit" android:src="@drawable/photoeditor_doodle_edit" android:layout_toRightOf="@id/doodle_shape" style="@style/DoodleSettingBtn" />
+            <ImageButton android:id="@id/doodle_edit_background" android:visibility="visible" style="@style/DoodleSettingBackground" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/doodle_eraser_layout" android:layout_width="@dimen/actionbar_button_w" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/actionbar_settingbtn_marginleft_port" android:layout_toRightOf="@id/doodle_edit_layout">
+            <ImageButton android:id="@id/doodle_eraser" android:src="@drawable/photoeditor_doodle_eraser" style="@style/DoodleSettingBtn" />
+            <ImageButton android:id="@id/doodle_eraser_background" style="@style/DoodleSettingBackground" />
+        </RelativeLayout>
+        <ImageButton android:enabled="false" android:id="@id/doodle_redo_button" android:layout_marginRight="@dimen/actionbar_redobtn_marginright_port" android:src="@drawable/ic_doodle_redo_invalid" android:layout_alignParentRight="true" style="@style/DoodleSettingBtn" />
+        <ImageButton android:enabled="false" android:id="@id/doodle_undo_button" android:layout_marginRight="@dimen/actionbar_undobtn_marginright_port" android:src="@drawable/ic_doodle_undo_invalid" android:layout_toLeftOf="@id/doodle_redo_button" style="@style/DoodleSettingBtn" />
+        <ImageView android:background="@null" android:visibility="gone" android:layout_width="@dimen/actionbar_segmentationline_w" android:layout_height="@dimen/actionbar_segmentationline_h" android:layout_marginLeft="@dimen/actionbar_segmentationline_marginleft" android:src="@drawable/list_attachment_dotted_line" android:layout_toRightOf="@id/doodle_redo_button" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

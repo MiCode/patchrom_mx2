@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.camera.ui.RotateLayout android:id="@id/on_screen_indicators" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/OnScreenIndicators_Horizontal"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.android.camera.ui.RotateImageView android:id="@id/flash_light_btn" android:background="@drawable/btn_switch_camera_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_flash_auto_holo_light" android:scaleType="center" android:layout_alignParentBottom="true" android:onClick="onFlashLightClicked" />
+        <com.android.camera.ui.RotateImageView android:id="@id/capture_mode_img" android:paddingLeft="@dimen/capture_mode_img_padding_top" android:paddingBottom="@dimen/capture_mode_img_padding_left" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/capture_mode_img_margin_right" android:src="@drawable/ic_show_smiling_face" android:layout_alignParentBottom="true" />
+        <com.android.camera.ui.RotateImageView android:id="@id/switch_camera_btn" android:background="@drawable/btn_switch_camera_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_switch_photo_facing_holo_light" android:scaleType="center" android:layout_alignParentTop="true" android:onClick="onSwitchCameraClicked" />
+    </RelativeLayout>
+</com.android.camera.ui.RotateLayout>

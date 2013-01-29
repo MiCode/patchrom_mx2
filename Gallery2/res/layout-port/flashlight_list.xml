@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/flash_light_list_layout_margin" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.camera.ui.RotateLayout android:id="@id/flash_light_list_rotate_layout" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ListView android:layout_gravity="center" android:orientation="vertical" android:id="@id/flash_light_list" android:background="@drawable/camera_flashlight_list_bg" android:visibility="gone" android:layout_width="@dimen/flash_light_list_width" android:layout_height="@dimen/flash_light_list_height" android:listSelector="@android:color/transparent" android:divider="@android:color/transparent" android:choiceMode="singleChoice" android:overScrollMode="never" />
+    </com.android.camera.ui.RotateLayout>
+</FrameLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.camera.ModePicker android:id="@id/mode_picker" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/current_mode" android:background="@drawable/bg_mode_picker" android:layout_width="fill_parent" android:layout_height="55.0dip" android:contentDescription="@string/accessibility_mode_picker">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/empty">
+            <com.android.camera.ui.RotateImageView android:id="@id/mode_0" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="8.0dip" android:src="@null" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/empty" />
+            <com.android.camera.ui.RotateImageView android:id="@id/mode_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@null" android:scaleType="fitCenter" android:layout_centerInParent="true" android:contentDescription="@string/empty" />
+            <com.android.camera.ui.RotateImageView android:id="@id/mode_2" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="8.0dip" android:src="@null" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/empty" />
+        </RelativeLayout>
+        <View android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/mode_selection" android:background="@drawable/bg_switcher" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="163.0dip">
+        <View android:background="@color/mode_selection_border" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <com.android.camera.ui.RotateImageView android:id="@id/mode_panorama" android:background="@drawable/bg_pressed" android:layout_width="fill_parent" android:layout_height="54.0dip" android:src="@null" android:scaleType="center" android:contentDescription="@string/accessibility_switch_to_panorama" />
+        <com.android.camera.ui.RotateImageView android:id="@id/mode_video" android:background="@drawable/bg_pressed" android:layout_width="fill_parent" android:layout_height="54.0dip" android:src="@null" android:scaleType="center" android:contentDescription="@string/accessibility_switch_to_video" />
+        <com.android.camera.ui.RotateImageView android:id="@id/mode_camera" android:background="@drawable/bg_pressed" android:layout_width="fill_parent" android:layout_height="54.0dip" android:src="@null" android:scaleType="center" android:contentDescription="@string/accessibility_switch_to_camera" />
+    </LinearLayout>
+</com.android.camera.ModePicker>

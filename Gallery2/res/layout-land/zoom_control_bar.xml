@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/zoom_control_margin_bottom" android:layout_alignParentRight="true" android:layout_centerInParent="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/zoom_control_bar" android:background="@drawable/zoom_control_bg" android:visibility="gone" android:layout_width="@dimen/zoom_seekbar_bg_height" android:layout_height="@dimen/zoom_seekbar_bg_width">
+        <com.android.camera.ui.RotateImageView android:id="@id/less_icon" android:paddingBottom="@dimen/zoom_less_icon_padding_left" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_zoom_out_holo_light" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <com.android.camera.ui.RotateImageView android:id="@id/add_icon" android:paddingTop="@dimen/zoom_add_icon_padding_right" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_zoom_in_holo_light" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <com.android.camera.ui.RotateLayout android:layout_gravity="center" android:id="@id/zoom_seekbar_layout" android:layout_width="@dimen/zoom_seekbar_bg_width" android:layout_height="@dimen/zoom_seekbar_bg_width">
+        <SeekBar android:layout_gravity="center_vertical" android:id="@id/zoom_seekBar" android:visibility="gone" android:layout_width="@dimen/zoom_seekbar_width" android:layout_height="wrap_content" android:maxHeight="@dimen/zoom_seekbar_max_height" android:max="26" android:progress="1" android:progressDrawable="@drawable/zoom_bar" android:thumb="@drawable/ic_zoom_thumb" android:thumbOffset="@dimen/zoom_seekbar_thumb_offset" />
+    </com.android.camera.ui.RotateLayout>
+</FrameLayout>

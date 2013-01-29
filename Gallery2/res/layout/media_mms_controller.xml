@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageButton android:id="@id/play_icon" android:background="@drawable/video_btn_mms_pause" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/bottom_bar" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/mmsback" android:background="@drawable/video_btn_back" android:visibility="visible" android:layout_width="64.0dip" android:layout_height="fill_parent" android:layout_marginLeft="40.0dip" android:src="@drawable/ic_botton_back" android:scaleType="center" android:layout_alignParentLeft="true" />
+        <RelativeLayout android:id="@id/done_btn" android:background="@android:drawable/menuitem_background_mz" android:layout_width="90.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+            <TextView android:id="@id/complete_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="@string/save_str" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_tab_done_holo" android:layout_toLeftOf="@id/complete_text" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/video_btn_check_square_on" android:state_activated="true" />
+    <item android:state_checked="true" android:drawable="@drawable/video_btn_check_square_off" />
+    <item android:drawable="@drawable/video_btn_check_circle_off" />
+</selector>

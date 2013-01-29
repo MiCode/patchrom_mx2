@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/on_screen_indicators" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/OnScreenIndicators_Vertical"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.android.camera.ui.RotateImageView android:id="@id/flash_light_btn" android:background="@drawable/btn_switch_camera_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_flash_off_holo_light" android:scaleType="center" android:layout_alignParentLeft="true" android:onClick="onFlashLightClicked" />
+        <com.android.camera.ui.RotateImageView android:id="@id/switch_camera_btn" android:background="@drawable/btn_switch_camera_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_switch_photo_facing_holo_light" android:scaleType="center" android:layout_alignParentRight="true" android:onClick="onSwitchCameraClicked" />
+    </RelativeLayout>
+    <FrameLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <com.android.camera.ui.RotateLayout android:id="@id/flash_light_list_rotate_layout" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ListView android:layout_gravity="center" android:orientation="vertical" android:id="@id/flash_light_list" android:background="@drawable/video_flashlight_list_bg" android:visibility="gone" android:layout_width="@dimen/flash_light_list_width" android:layout_height="@dimen/video_flash_light_list_height" android:listSelector="@android:color/transparent" android:divider="@android:color/transparent" android:choiceMode="singleChoice" android:overScrollMode="never" />
+        </com.android.camera.ui.RotateLayout>
+    </FrameLayout>
+</RelativeLayout>

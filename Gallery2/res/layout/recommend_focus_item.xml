@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/recommend_image" android:background="@drawable/default_bg" android:layout_width="400.0dip" android:layout_height="203.5dip" android:src="@drawable/letv1" android:scaleType="center" />
+        <TextView android:textSize="@dimen/recomment_focus_title_size" android:textColor="@color/recomment_focus_title_color" android:gravity="center" android:id="@id/recommend_title" android:background="@color/recomment_focus_title_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="32.0dip" android:singleLine="true" android:layout_alignBottom="@id/recommend_image" />
+        <ImageView android:id="@id/recommend_image_cover" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="10.0dip" android:src="@drawable/letv2" android:layout_alignTop="@id/recommend_image" />
+        <ImageView android:id="@id/image_cover" android:background="@drawable/picture_mask" android:visibility="gone" android:layout_width="560.0dip" android:layout_height="240.0dip" />
+    </RelativeLayout>
+</LinearLayout>

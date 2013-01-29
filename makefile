@@ -12,7 +12,7 @@ local-out-zip-file := MIUI_mx2.zip
 local-miui-modified-apps := MiuiSystemUI Phone Bluetooth Settings
 
 # All apps from original ZIP, but has smali files chanded
-local-modified-apps := SettingsProvider
+local-modified-apps := SettingsProvider Gallery2
 
 # All apks from MIUI
 local-miui-removed-apps := SettingsProvider MediaProvider

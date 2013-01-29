@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/btn_email" android:id="@id/action_share_by_email" android:showAsAction="always" />
+    <item android:icon="@drawable/btn_share" android:id="@id/action_share" android:showAsAction="always" />
+    <item android:icon="@drawable/btn_delete" android:id="@id/action_delete" android:showAsAction="always" />
+    <item android:icon="@drawable/btn_more" android:id="@id/action_more" android:visible="false" android:showAsAction="always" />
+    <item android:icon="@drawable/btn_email" android:id="@id/action_select" android:visible="true" android:showAsAction="always" android:actionViewClass="com.meizu.widget.SelectionButton" />
+</menu>

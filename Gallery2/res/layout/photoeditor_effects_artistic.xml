@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="135.0dip" style="@style/EffectsContainer"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.gallery3d.photoeditor.actions.BlackAndWhiteAction android:contentDescription="@string/BlackAndWhiteFilter" style="@style/Effect">
+        <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />
+        <TextView android:id="@id/effect_label" android:text="@string/blackandwhite" style="@style/EffectLabel" />
+    </com.android.gallery3d.photoeditor.actions.BlackAndWhiteAction>
+    <com.android.gallery3d.photoeditor.actions.LomoAction android:contentDescription="@string/LomoFilter" style="@style/Effect">
+        <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />
+        <TextView android:id="@id/effect_label" android:text="@string/newlomofilter" style="@style/EffectLabel" />
+    </com.android.gallery3d.photoeditor.actions.LomoAction>
+    <com.android.gallery3d.photoeditor.actions.ReminisenceAction android:contentDescription="@string/ReminisenceFilter" style="@style/Effect">
+        <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />
+        <TextView android:id="@id/effect_label" android:text="@string/reminisence" style="@style/EffectLabel" />
+    </com.android.gallery3d.photoeditor.actions.ReminisenceAction>
+    <com.android.gallery3d.photoeditor.actions.PostcardAction android:contentDescription="@string/PostcardFilter" style="@style/Effect">
+        <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />
+        <TextView android:id="@id/effect_label" android:text="@string/postcard" style="@style/EffectLabel" />
+    </com.android.gallery3d.photoeditor.actions.PostcardAction>
+    <com.android.gallery3d.photoeditor.actions.CountryAction android:contentDescription="@string/CountryFilter" style="@style/Effect">
+        <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />
+        <TextView android:id="@id/effect_label" android:text="@string/countryfilter" style="@style/EffectLabel" />
+    </com.android.gallery3d.photoeditor.actions.CountryAction>
+    <com.android.gallery3d.photoeditor.actions.LightColorAction android:contentDescription="@string/LightColorFilter" style="@style/Effect">
+        <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />
+        <TextView android:id="@id/effect_label" android:text="@string/lightcolor" style="@style/EffectLabel" />
+    </com.android.gallery3d.photoeditor.actions.LightColorAction>
+    <com.android.gallery3d.photoeditor.actions.ColdNostalgiaAction android:contentDescription="@string/ColdNostalgiaFilter" style="@style/Effect">
+        <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />
+        <TextView android:id="@id/effect_label" android:text="@string/coldnostalgiafilter" style="@style/EffectLabel" />
+    </com.android.gallery3d.photoeditor.actions.ColdNostalgiaAction>
+    <com.android.gallery3d.photoeditor.actions.TimeAction android:contentDescription="@string/TimeFilter" style="@style/Effect">
+        <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />
+        <TextView android:id="@id/effect_label" android:text="@string/thetime" style="@style/EffectLabel" />
+    </com.android.gallery3d.photoeditor.actions.TimeAction>
+    <com.android.gallery3d.photoeditor.actions.GrassAction android:contentDescription="@string/GrassFilter" style="@style/Effect">
+        <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />
+        <TextView android:id="@id/effect_label" android:text="@string/grassfilter" style="@style/EffectLabel" />
+    </com.android.gallery3d.photoeditor.actions.GrassAction>
+    <com.android.gallery3d.photoeditor.actions.WarmAction android:contentDescription="@string/WarmFilter" style="@style/Effect">
+        <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />
+        <TextView android:id="@id/effect_label" android:text="@string/warmfilter" style="@style/EffectLabel" />
+    </com.android.gallery3d.photoeditor.actions.WarmAction>
+</LinearLayout>

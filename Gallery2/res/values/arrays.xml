@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="labeltype">
+        <item>score</item>
+        <item>director</item>
+        <item>actor</item>
+        <item>subcate</item>
+        <item>area</item>
+        <item>time_length</item>
+        <item>Update</item>
+        <item>Number</item>
+        <item>O.S.T.</item>
+        <item>Style</item>
+        <item>School</item>
+        <item>Subject</item>
+        <item>Program type</item>
+        <item>Album style</item>
+        <item>Organization</item>
+    </string-array>
+    <array name="pref_video_quality_entries_mx">
+        <item>@string/pref_video_quality_entry_1080p</item>
+        <item>@string/pref_video_quality_entry_720p</item>
+        <item>@string/pref_video_quality_entry_480p</item>
+    </array>
+    <array name="pref_video_quality_entries">
+        <item>@string/pref_video_quality_entry_720p</item>
+        <item>@string/pref_video_quality_entry_480p</item>
+    </array>
+    <array name="pref_video_quality_entryvalues_mx">
+        <item>6</item>
+        <item>@string/pref_video_quality_default</item>
+        <item>4</item>
+    </array>
+    <array name="pref_video_quality_entryvalues">
+        <item>@string/pref_video_quality_default</item>
+        <item>4</item>
+    </array>
+    <array name="pref_video_time_lapse_frame_interval_entries">
+        <item>@string/pref_camera_recordlocation_entry_off</item>
+        <item>@string/pref_video_time_lapse_frame_interval_entry_1000</item>
+        <item>@string/pref_video_time_lapse_frame_interval_entry_1500</item>
+        <item>@string/pref_video_time_lapse_frame_interval_entry_2000</item>
+        <item>@string/pref_video_time_lapse_frame_interval_entry_2500</item>
+        <item>@string/pref_video_time_lapse_frame_interval_entry_3000</item>
+        <item>@string/pref_video_time_lapse_frame_interval_entry_5000</item>
+        <item>@string/pref_video_time_lapse_frame_interval_entry_10000</item>
+    </array>
+    <string-array name="pref_video_time_lapse_frame_interval_entryvalues">
+        <item>0</item>
+        <item>1000</item>
+        <item>1500</item>
+        <item>2000</item>
+        <item>2500</item>
+        <item>3000</item>
+        <item>5000</item>
+        <item>10000</item>
+    </string-array>
+    <array name="pref_camera_picturesize_entries">
+        <item>@string/pref_camera_picturesize_entry_3264x2448</item>
+        <item>@string/pref_camera_picturesize_entry_2560x1920</item>
+        <item>@string/pref_camera_picturesize_entry_2048x1536</item>
+        <item>@string/pref_camera_picturesize_entry_1600x1200</item>
+    </array>
+    <string-array name="pref_camera_picturesize_entryvalues">
+        <item>3264x2448</item>
+        <item>2560x1920</item>
+        <item>2048x1536</item>
+        <item>1280x960</item>
+        <item>1600x1200</item>
+        <item>1280x720</item>
+        <item>640x480</item>
+    </string-array>
+    <array name="pref_camera_focusmode_entries">
+        <item>@string/pref_camera_focusmode_entry_auto</item>
+        <item>@string/pref_camera_focusmode_entry_infinity</item>
+        <item>@string/pref_camera_focusmode_entry_macro</item>
+    </array>
+    <string-array name="pref_camera_focusmode_entryvalues">
+        <item>auto</item>
+        <item>infinity</item>
+        <item>macro</item>
+    </string-array>
+    <array name="pref_camera_flashmode_entries">
+        <item>@string/pref_camera_flashmode_entry_auto</item>
+        <item>@string/pref_camera_flashmode_entry_on</item>
+        <item>@string/pref_camera_flashmode_entry_off</item>
+    </array>
+    <string-array name="pref_camera_flashmode_entryvalues">
+        <item>auto</item>
+        <item>on</item>
+        <item>off</item>
+    </string-array>
+    <array name="camera_flashmode_icons">
+        <item>@drawable/ic_flash_auto_holo_light</item>
+        <item>@drawable/ic_flash_on_holo_light</item>
+        <item>@drawable/ic_flash_off_holo_light</item>
+    </array>
+    <array name="camera_flashmode_largeicons">
+        <item>@drawable/ic_flash_auto_holo_light</item>
+        <item>@drawable/ic_flash_on_holo_light</item>
+        <item>@drawable/ic_flash_off_holo_light</item>
+    </array>
+    <array name="pref_camera_video_flashmode_entries">
+        <item>@string/pref_camera_flashmode_entry_on</item>
+        <item>@string/pref_camera_flashmode_entry_off</item>
+    </array>
+    <string-array name="pref_camera_video_flashmode_entryvalues">
+        <item>torch</item>
+        <item>off</item>
+    </string-array>
+    <array name="video_flashmode_icons">
+        <item>@drawable/ic_flash_on_holo_light</item>
+        <item>@drawable/ic_flash_off_holo_light</item>
+    </array>
+    <array name="video_flashmode_largeicons">
+        <item>@drawable/ic_flash_on_holo_light</item>
+        <item>@drawable/ic_flash_off_holo_light</item>
+    </array>
+    <string-array name="pref_camera_recordwdr_entryvalues">
+        <item>wdr-off</item>
+        <item>wdr-on</item>
+    </string-array>
+    <string-array name="pref_camera_recordgesture_entryvalues">
+        <item>gesture-off</item>
+        <item>gesture-on</item>
+    </string-array>
+    <array name="pref_camera_recordwdr_entries">
+        <item>@string/pref_camera_recordwdr_entry_off</item>
+        <item>@string/pref_camera_recordwdr_entry_on</item>
+    </array>
+    <array name="pref_camera_recordgesture_entries">
+        <item>@string/pref_camera_recordgesture_entry_off</item>
+        <item>@string/pref_camera_recordgesture_entry_on</item>
+    </array>
+    <string-array name="pref_camera_recordlocation_entryvalues">
+        <item>off</item>
+        <item>on</item>
+    </string-array>
+    <array name="pref_camera_recordlocation_entries">
+        <item>@string/pref_camera_recordlocation_entry_off</item>
+        <item>@string/pref_camera_recordlocation_entry_on</item>
+    </array>
+    <array name="pref_camera_whitebalance_entries">
+        <item>@string/pref_camera_whitebalance_entry_auto</item>
+        <item>@string/pref_camera_whitebalance_entry_incandescent</item>
+        <item>@string/pref_camera_whitebalance_entry_daylight</item>
+        <item>@string/pref_camera_whitebalance_entry_fluorescent</item>
+        <item>@string/pref_camera_whitebalance_entry_cloudy</item>
+    </array>
+    <string-array name="pref_camera_whitebalance_entryvalues">
+        <item>auto</item>
+        <item>incandescent</item>
+        <item>daylight</item>
+        <item>cloudy</item>
+    </string-array>
+    <string-array name="pref_camera_mx_whitebalance_entryvalues">
+        <item>auto</item>
+        <item>fluorescent</item>
+        <item>sunny</item>
+        <item>incandescent</item>
+    </string-array>
+    <array name="pref_camera_scenemode_entries">
+        <item>@string/pref_camera_scenemode_entry_auto</item>
+        <item>@string/pref_camera_scenemode_entry_action</item>
+        <item>@string/pref_camera_scenemode_entry_night</item>
+        <item>@string/pref_camera_scenemode_entry_sunset</item>
+        <item>@string/pref_camera_scenemode_entry_party</item>
+    </array>
+    <string-array name="pref_camera_scenemode_entryvalues">
+        <item>auto</item>
+        <item>letter</item>
+        <item>night</item>
+        <item>landscape</item>
+    </string-array>
+    <string-array name="pref_camera_mx_scenemode_entryvalues">
+        <item>auto</item>
+        <item>text</item>
+        <item>night-shot</item>
+        <item>landscape</item>
+        <item>micro</item>
+    </string-array>
+    <array name="camera_id_entries">
+        <item>@string/pref_camera_id_entry_back</item>
+        <item>@string/pref_camera_id_entry_front</item>
+    </array>
+    <array name="pref_video_effect_entries">
+        <item>@string/effect_none</item>
+        <item>@string/effect_goofy_face_squeeze</item>
+        <item>@string/effect_goofy_face_big_eyes</item>
+        <item>@string/effect_goofy_face_big_mouth</item>
+        <item>@string/effect_goofy_face_small_mouth</item>
+        <item>@string/effect_goofy_face_big_nose</item>
+        <item>@string/effect_goofy_face_small_eyes</item>
+        <item>@string/effect_backdropper_space</item>
+        <item>@string/effect_backdropper_sunset</item>
+        <item>@string/effect_backdropper_gallery</item>
+    </array>
+    <array name="pref_video_effect_entryvalues">
+        <item>@string/pref_video_effect_default</item>
+        <item>goofy_face/squeeze</item>
+        <item>goofy_face/big_eyes</item>
+        <item>goofy_face/big_mouth</item>
+        <item>goofy_face/small_mouth</item>
+        <item>goofy_face/big_nose</item>
+        <item>goofy_face/small_eyes</item>
+        <item>backdropper/file:///system/media/video/AndroidInSpace.480p.mp4</item>
+        <item>backdropper/file:///system/media/video/Sunset.480p.mp4</item>
+        <item>backdropper/gallery</item>
+    </array>
+    <string-array name="pref_camera_focusmode_default_array">
+        <item>continuous-picture</item>
+        <item>auto</item>
+    </string-array>
+    <string-array name="camera_pic_size_array">
+        <item>2592x1944</item>
+        <item>2048x1536</item>
+        <item>1600x1200</item>
+        <item>1280x960</item>
+    </string-array>
+    <string-array name="camera_scence_array">
+        <item>Auto</item>
+        <item>Text</item>
+        <item>Night</item>
+        <item>Landscape</item>
+    </string-array>
+    <string-array name="camera_white_balance">
+        <item>Auto</item>
+        <item>Incandescent</item>
+        <item>Daylight</item>
+        <item>Cloudy</item>
+    </string-array>
+    <string-array name="camera_video_size_array">
+        <item>1280x720</item>
+        <item>1080x720</item>
+        <item>720x480</item>
+    </string-array>
+    <string-array name="camera_cameramenu_array">
+        <item>Scene</item>
+        <item>White balance</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="camera_menu_other_array">
+        <item>Location</item>
+        <item>Gesture Capture</item>
+    </string-array>
+    <string-array name="camera_main_menu_default_tip_array">
+        <item>auto</item>
+        <item>auto</item>
+        <item>5M</item>
+    </string-array>
+    <string-array name="camera_mx_cameramenu_array">
+        <item>Capture mode</item>
+        <item>ISO</item>
+        <item>Scene</item>
+        <item>White balance</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="camera_mx_videomenu_array">
+        <item>Video Size</item>
+        <item>Scene</item>
+        <item>White Balance</item>
+    </string-array>
+    <string-array name="camera_mx_pic_size_array">
+        <item>3264x2448</item>
+        <item>2560x1920</item>
+        <item>2048x1536</item>
+        <item>1600x1200</item>
+        <item>1280x960</item>
+    </string-array>
+    <string-array name="camera_mx_white_balance">
+        <item>Auto</item>
+        <item>Fluorescent</item>
+        <item>Outdoors</item>
+        <item>Incandescent</item>
+    </string-array>
+    <string-array name="camera_mx_scence_array_photo">
+        <item>Auto</item>
+        <item>Text</item>
+        <item>Night</item>
+        <item>Landscape</item>
+        <item>Macro</item>
+    </string-array>
+    <string-array name="camera_mx_scence_array_clip">
+        <item>Auto</item>
+        <item>Portrait</item>
+        <item>Landscape</item>
+        <item>Sunset</item>
+        <item>Macro</item>
+    </string-array>
+    <string-array name="camera_mx_flash_light_array">
+        <item>Auto</item>
+        <item>On</item>
+        <item>Off</item>
+    </string-array>
+    <string-array name="video_camera_mx_flash_light_array">
+        <item>Open</item>
+        <item>Close</item>
+    </string-array>
+    <string-array name="camera_mx_capture_mode_array">
+        <item>Normal</item>
+        <item>Panorama</item>
+        <item>Smile</item>
+        <item>Burst</item>
+    </string-array>
+    <string-array name="camera_mx_sensitivity_mode_array">
+        <item>Auto</item>
+        <item>50</item>
+        <item>200</item>
+        <item>400</item>
+        <item>800</item>
+    </string-array>
+    <string-array name="camera_mx_wide_dynamic_mode_array">
+        <item>Off</item>
+        <item>Auto</item>
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+    <string-array name="camera_mx_video_size_array">
+        <item>1920x1080</item>
+        <item>1280x720</item>
+        <item>1080x720</item>
+        <item>720x480</item>
+    </string-array>
+    <string-array name="pref_camera_mx_pic_size_array">
+        <item>3264x2448</item>
+        <item>2560x1920</item>
+        <item>2048x1536</item>
+        <item>1600x1200</item>
+        <item>1280x960</item>
+    </string-array>
+    <string-array name="pref_camera_mx_white_balance">
+        <item>auto</item>
+        <item>incandescent</item>
+        <item>fluorescent</item>
+        <item>fluorescent-low</item>
+        <item>sunny</item>
+        <item>cloudy</item>
+        <item>shade</item>
+        <item>horizon</item>
+    </string-array>
+    <string-array name="pref_camera_mx_scence_array_photo">
+        <item>auto</item>
+        <item>text</item>
+        <item>portrait</item>
+        <item>landscape</item>
+        <item>sports</item>
+        <item>night-shot</item>
+        <item>sunset</item>
+        <item>micro</item>
+    </string-array>
+    <string-array name="pref_camera_mx_scence_array_clip">
+        <item>auto</item>
+        <item>portrait</item>
+        <item>landscape</item>
+        <item>sunset</item>
+        <item>micro</item>
+    </string-array>
+    <string-array name="pref_camera_mx_capture_mode_array">
+        <item>capture-normal</item>
+        <item>capture-panorama</item>
+        <item>capture-smile</item>
+        <item>capture-multi</item>
+    </string-array>
+    <string-array name="pref_camera_mx_sensitivity_mode_array">
+        <item>iso-auto</item>
+        <item>iso-50</item>
+        <item>iso-200</item>
+        <item>iso-400</item>
+        <item>iso-800</item>
+    </string-array>
+    <string-array name="pref_camera_mx_wide_dynamic_mode_array">
+        <item>wdr-off</item>
+        <item>wdr-auto</item>
+        <item>wdr-low</item>
+        <item>wdr-middle</item>
+        <item>wdr-high</item>
+    </string-array>
+    <string-array name="pref_camera_mx_flash_light_array">
+        <item>auto</item>
+        <item>on</item>
+        <item>off</item>
+    </string-array>
+    <string-array name="pref_video_camera_mx_flash_light_array">
+        <item>on</item>
+        <item>off</item>
+    </string-array>
+    <string-array name="camera_mx_menu_other_array">
+        <item>Location</item>
+        <item>WDR</item>
+        <item>Gesture Capture</item>
+    </string-array>
+    <string-array name="camera_mx_main_menu_default_tip_array">
+        <item>normal</item>
+        <item>auto</item>
+        <item>auto</item>
+        <item>auto</item>
+        <item>8M</item>
+    </string-array>
+    <string-array name="video_mx_main_menu_default_tip_array">
+        <item>720P</item>
+        <item>auto</item>
+        <item>auto</item>
+    </string-array>
+    <string-array name="delayplay_choices">
+        <item>1s</item>
+        <item>2s</item>
+        <item>3s</item>
+        <item>4s</item>
+        <item>5s</item>
+    </string-array>
+    <string-array name="slideshow_choices">
+        <item>None</item>
+        <item>Random</item>
+        <item>Shutters</item>
+        <item>Fade</item>
+        <item>Dissolve</item>
+    </string-array>
+    <array name="color_picker_colors">
+        <item>@color/color_picker_preset_color1</item>
+        <item>@color/color_picker_preset_color2</item>
+        <item>@color/color_picker_preset_color3</item>
+        <item>@color/color_picker_preset_color4</item>
+        <item>@color/color_picker_preset_color5</item>
+        <item>@color/color_picker_preset_color6</item>
+        <item>@color/color_picker_preset_color7</item>
+        <item>@color/color_picker_preset_color8</item>
+        <item>@color/color_picker_preset_color9</item>
+        <item>@color/color_picker_preset_color10</item>
+        <item>@color/color_picker_preset_color11</item>
+        <item>@color/color_picker_preset_color12</item>
+        <item>@color/color_picker_preset_color13</item>
+        <item>@color/color_picker_preset_color14</item>
+        <item>@color/color_picker_preset_color15</item>
+        <item>@color/color_picker_preset_color16</item>
+        <item>@color/color_picker_preset_color17</item>
+        <item>@color/color_picker_preset_color18</item>
+        <item>@color/color_picker_preset_color19</item>
+        <item>@color/color_picker_preset_color20</item>
+        <item>@color/color_picker_preset_color21</item>
+        <item>@color/color_picker_preset_color22</item>
+        <item>@color/color_picker_preset_color23</item>
+        <item>@color/color_picker_preset_color24</item>
+    </array>
+    <array name="crop_proportion">
+        <item>1:1</item>
+        <item>3:2</item>
+        <item>4:3</item>
+        <item>16:10</item>
+        <item>@string/no_limit</item>
+    </array>
+    <string-array name="popupmenu_info">
+        <item>Complete Mode</item>
+        <item>Allow Vertical</item>
+        <item>Queue Play</item>
+        <item>Repeat Play</item>
+    </string-array>
+    <string-array name="bitrate_info">
+        <item>High Quality</item>
+        <item>Smooth</item>
+    </string-array>
+    <string-array name="crop_aspect">
+        <item>Freely</item>
+        <item>1 : 1</item>
+        <item>3 : 2</item>
+        <item>4 : 3</item>
+        <item>16 : 10</item>
+    </string-array>
+</resources>

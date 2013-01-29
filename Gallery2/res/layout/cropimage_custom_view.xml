@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/photopage_infobar" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="18.0dip" android:textColor="#ff808080" android:gravity="left|center" android:id="@id/cropimage_title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="16.0dip" android:layout_alignParentLeft="true" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff808080" android:gravity="center" android:id="@id/cropimage_res" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="16.0dip" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/cropimage_listmore_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/ic_list_more2" android:layout_alignParentRight="true" />
+        <com.meizu.widget.GlowLinearLayout android:id="@id/cropimage_aspect_layout" android:clickable="true" android:addStatesFromChildren="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="6.0dip" android:layout_toLeftOf="@id/cropimage_listmore_icon">
+            <TextView android:textColor="#ff808080" android:gravity="right|center" android:id="@id/cropimage_aspect" android:clickable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        </com.meizu.widget.GlowLinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

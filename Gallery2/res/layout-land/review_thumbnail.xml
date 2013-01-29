@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout style="@style/ReviewThumbnailLayout_Horizontal"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.camera.ui.MaskedRotateImageView android:id="@id/thumbnail" android:focusable="false" android:visibility="gone" android:clickable="true" android:onClick="onThumbnailClicked" android:contentDescription="@string/accessibility_review_thumbnail" style="@style/ReviewThumbnail_Horizontal" />
+</FrameLayout>

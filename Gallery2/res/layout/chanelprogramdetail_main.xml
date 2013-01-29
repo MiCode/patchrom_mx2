@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/chanelProgramDetail_whole" android:background="@color/content_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:id="@id/chanelProgramDetail_Content" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/chanelProgramDetail_top">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:id="@id/chanelProgramDetail_top_space" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <include layout="@layout/chanelprogramdetail_image_introduction" />
+            <include layout="@layout/chanelprogramdetail_text_introduction" />
+            <include layout="@layout/chanelprogramdetail_episodes_tv" />
+            <include layout="@layout/chanelprogramdetail_episodes_variety" />
+            <include layout="@layout/chanelprogramdetail_comment" />
+            <include layout="@layout/chanelprogramdetail_similarvideo" />
+            <LinearLayout android:id="@id/chanelProgramDetail_bottom_space" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+    <include android:layout_below="@id/chanelProgramDetail_whole" layout="@layout/no_available_network" />
+    <include android:layout_below="@id/chanelProgramDetail_whole" layout="@layout/list_load_progressbar" />
+</RelativeLayout>

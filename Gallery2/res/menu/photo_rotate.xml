@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/prv/res/android">
+    <item android:icon="@drawable/btn_rotate_ccw" android:id="@id/action_rotate_ccw" android:showAsAction="always" />
+    <item android:icon="@drawable/btn_rotate_cw" android:id="@id/action_rotate_cw" android:showAsAction="always" />
+    <item android:icon="@android:drawable/ic_tab_done_mz" android:id="@id/action_rotate_close" android:title="@string/close" android:showAsAction="ifRoom|withTextAlways" android:showGravity="right" />
+</menu>

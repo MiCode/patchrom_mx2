@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.camera.ui.InLineSettingKnob style="@style/SettingRow"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/title" style="@style/SettingItemTitle" />
+    <Button android:id="@id/decrement" android:text="@string/setting_decrement" style="@style/SettingKnob" />
+    <TextView android:id="@id/current_setting" style="@style/SettingItemText" />
+    <Button android:id="@id/increment" android:text="@string/setting_increment" style="@style/SettingKnob" />
+</com.android.camera.ui.InLineSettingKnob>

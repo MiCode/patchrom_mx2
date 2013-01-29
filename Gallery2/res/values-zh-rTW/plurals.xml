@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="delete_selection">
+        <item quantity="other">刪除所選項？</item>
+        <item quantity="one">刪除所選項？</item>
+    </plurals>
+    <plurals name="number_of_items_selected">
+        <item quantity="other">已選取 %1$d 個</item>
+        <item quantity="zero">已選取 %1$d 個</item>
+        <item quantity="one">已選取 %1$d 個</item>
+    </plurals>
+    <plurals name="number_of_albums_selected">
+        <item quantity="other">已選取 %1$d 本</item>
+        <item quantity="zero">已選取 %1$d 本</item>
+        <item quantity="one">已選取 %1$d 本</item>
+    </plurals>
+    <plurals name="number_of_groups_selected">
+        <item quantity="other">已選取 %1$d 個</item>
+        <item quantity="zero">已選取 %1$d 個</item>
+        <item quantity="one">已選取 %1$d 個</item>
+    </plurals>
+    <plurals name="make_albums_available_offline">
+        <item quantity="other">正在將相簿設為可離線瀏覽。</item>
+        <item quantity="one">正在將相簿設為可離線瀏覽。</item>
+    </plurals>
+    <plurals name="infobar_num_video">
+        <item quantity="other">%1$d個</item>
+        <item quantity="zero">%1$d個</item>
+        <item quantity="one">%1$d個</item>
+    </plurals>
+    <plurals name="infobar_num_image">
+        <item quantity="other">%1$d張</item>
+        <item quantity="zero">%1$d張</item>
+        <item quantity="one">%1$d張</item>
+    </plurals>
+</resources>

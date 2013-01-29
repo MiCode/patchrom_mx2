@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#ff564323" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <TextView android:id="@id/chanelProgramDetailCommentTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:singleLine="true" android:layout_toLeftOf="@id/chanelProgramDetailCommentAuthor" />
+        <TextView android:id="@id/chanelProgramDetailCommentAuthor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_toLeftOf="@id/chanelProgramDetailCommentScore" />
+        <TextView android:id="@id/chanelProgramDetailCommentScore" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <TextView android:id="@id/chanelProgramDetailIntroductionContent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:maxLines="3" />
+</LinearLayout>

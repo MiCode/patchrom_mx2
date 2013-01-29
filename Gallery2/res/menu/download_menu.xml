@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/prv/res/android">
+    <item android:icon="@android:drawable/ic_tab_done_mz" android:id="@id/menu_download" android:title="@string/download" android:showAsAction="ifRoom|withTextAlways" android:showGravity="right" />
+    <item android:id="@id/menu_select" android:showAsAction="always" android:actionViewClass="com.meizu.widget.SelectionButton" android:showGravity="right" />
+</menu>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/photopage_infobar" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="14.0sp" android:textColor="#ff808080" android:ellipsize="middle" android:gravity="left" android:id="@id/photopage_infobar_set_name" android:layout_width="@dimen/infobar_title_max_len" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="4.5dip" android:singleLine="true" />
+            <TextView android:textSize="18.0sp" android:textColor="#ff808080" android:ellipsize="middle" android:gravity="left" android:id="@id/photopage_infobar_item_name" android:layout_width="@dimen/infobar_title_max_len" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="-4.0dip" android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout android:gravity="right" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="14.0sp" android:textColor="#ff808080" android:ellipsize="middle" android:gravity="right" android:id="@id/photopage_infobar_index" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.5dip" android:layout_marginRight="16.0dip" android:singleLine="true" />
+            <TextView android:textSize="18.0sp" android:textColor="#ff808080" android:ellipsize="middle" android:gravity="right" android:id="@id/photopage_infobar_size_res" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-4.0dip" android:layout_marginRight="16.0dip" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

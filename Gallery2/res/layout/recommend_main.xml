@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/recommend_whole" android:background="@color/content_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:gravity="center" android:id="@id/recommend_listview" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/black" android:cacheColorHint="@color/black" android:divider="@color/list_divier_color" android:dividerHeight="0.0dip" />
+    <include layout="@layout/no_available_network" />
+    <include layout="@layout/list_load_progressbar" />
+</RelativeLayout>

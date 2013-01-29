@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="@dimen/main_menu_list_width" android:layout_height="@dimen/menu_list_item_height" android:minHeight="@dimen/menu_list_item_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="@dimen/main_menu_list_item_height">
+        <TextView android:textSize="@dimen/main_menu_text1_text_size" android:textColor="@color/menu_item_unsel_text_color" android:id="@id/main_menu_text1" android:paddingLeft="@dimen/main_menu_text1_padding_left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="@dimen/main_menu_text2_text_size" android:textColor="@color/menu_item_disable_text_color" android:id="@id/main_menu_text2" android:paddingLeft="@dimen/main_menu_text1_padding_left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+    <View android:id="@id/list_divider1" android:background="@drawable/menu_list_divider_l" android:layout_width="fill_parent" android:layout_height="@dimen/main_menu_list_divider_height" android:layout_marginRight="@dimen/main_menu_list_divider_margin_right" />
+</LinearLayout>

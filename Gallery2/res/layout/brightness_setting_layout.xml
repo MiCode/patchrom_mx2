@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="right" android:orientation="vertical" android:id="@id/light_seekbar_layout" android:visibility="gone" android:layout_width="@dimen/brightness_setting_layout_w" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_menu_bright" />
+    <com.android.gallery3d.seekbar.VerSeekBar android:layout_gravity="center" android:id="@id/light_seekbar" android:layout_width="wrap_content" android:layout_height="@dimen/brightness_setting_seekbar_h" style="@style/Widget.Holo.SeekBar.Vertical" />
+</LinearLayout>

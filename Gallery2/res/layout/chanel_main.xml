@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/chanel_whole" android:background="@color/content_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <GridView android:gravity="center" android:id="@id/channel_gridview" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/no_available_network" />
+    <include layout="@layout/list_load_progressbar" />
+</RelativeLayout>

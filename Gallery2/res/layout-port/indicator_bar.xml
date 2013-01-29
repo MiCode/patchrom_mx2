@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.camera.ui.IndicatorControlBarContainer android:id="@id/indicator_control" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/indicator_bar_width">
+        <com.android.camera.ui.IndicatorControlBar android:id="@id/indicator_bar" android:paddingLeft="@dimen/indicator_bar_padding" android:paddingRight="@dimen/indicator_bar_padding" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true">
+            <com.android.camera.ui.ZoomControlBar android:id="@id/zoom_control" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <com.android.camera.ui.RotateImageView android:id="@id/second_level_indicator" android:background="@drawable/bg_pressed" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@null" android:contentDescription="@string/accessibility_second_level_indicators" />
+        </com.android.camera.ui.IndicatorControlBar>
+        <com.android.camera.ui.SecondLevelIndicatorControlBar android:id="@id/second_level_indicator_bar" android:background="@color/indicator_background" android:paddingLeft="@dimen/indicator_bar_padding" android:paddingRight="@dimen/indicator_bar_padding" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true">
+            <View android:id="@id/divider" android:background="@android:color/white" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+            <com.android.camera.ui.TwoStateImageView android:id="@id/back_to_first_level" android:background="@drawable/bg_pressed" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@null" android:contentDescription="@string/accessibility_back_to_first_level" />
+        </com.android.camera.ui.SecondLevelIndicatorControlBar>
+    </RelativeLayout>
+</com.android.camera.ui.IndicatorControlBarContainer>

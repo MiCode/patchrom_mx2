@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:orientation="horizontal" android:id="@id/pic_size_txt_layout" android:paddingLeft="@dimen/sub_menu_item_text1_padding_left" android:paddingTop="@dimen/pic_size_txt_layout_padding_top" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/main_menu_text1_text_size" android:textColor="@color/menu_item_unsel_text_color" android:id="@id/other_menu_text1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pref_camera_picturesize_title" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+            <TextView android:textSize="@dimen/sub_menu_picture_size_item_text2_text_size" android:textColor="@color/sub_menu_picture_size_item_text2_color" android:id="@id/other_menu_text2" android:paddingTop="@dimen/sub_menu_picture_size_item_text2_padding_top" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/sub_menu_picture_size_item_text2_margin_right" android:text="@string/pic_size_8m" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <SeekBar android:id="@id/pic_size_seekBar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/sub_menu_picture_size_item_seekbar_margin_left" android:layout_marginTop="@dimen/sub_menu_picture_size_item_seekbar_margin_top" android:layout_marginRight="@dimen/sub_menu_picture_size_item_seekbar_margin_right" android:maxHeight="@dimen/sub_menu_picture_size_item_seekbar_max_height" android:max="3" android:progress="0" android:progressDrawable="@drawable/ic_photo_size" android:thumb="@drawable/ic_pic_size_thumb" android:thumbOffset="@dimen/sub_menu_picture_size_item_seekbar_thumb_offset" />
+    </LinearLayout>
+</LinearLayout>

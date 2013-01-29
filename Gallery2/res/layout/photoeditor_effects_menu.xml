@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/effects_menu_root" android:background="#ff1f1f1f" style="@style/ActionBarInner"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/toggles" android:background="#e51f1f1f" android:paddingLeft="@dimen/effects_menu_padding_left" android:clipChildren="false" android:clipToPadding="false" style="@style/EffectsMenuContainer">
+        <com.meizu.widget.GlowImageButton android:id="@id/back_btn" android:layout_marginLeft="@dimen/effect_btn_back_marginleft" android:layout_marginRight="@dimen/effects_btn_back_marginright" android:src="@drawable/photoeditor_ic_tab_back" style="@style/EffectsMenuActionButton" />
+        <com.meizu.widget.GlowImageButton android:id="@id/artistic_button" android:layout_marginLeft="@dimen/effects_menu_margin_Left" android:src="@drawable/photoeditor_artistic" style="@style/EffectsMenuActionButton" />
+        <com.meizu.widget.GlowImageButton android:id="@id/exposure_button" android:layout_marginLeft="@dimen/effects_menu_exposure_margin_Left" android:layout_marginRight="@dimen/effects_menu_exposure_margin_Right" android:src="@drawable/photoeditor_exposure" style="@style/EffectsMenuActionButton" />
+        <com.meizu.widget.GlowImageButton android:id="@id/fix_button" android:visibility="gone" android:src="@drawable/photoeditor_effect_crop" style="@style/EffectsMenuActionButton" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/dividing_line" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/list_attachment_dotted_line" />
+        <Button android:textSize="14.0sp" android:textColor="#ff808080" android:id="@id/apply_action_button" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/effects_menu_save_button_margin_left" android:text="@string/effect_apply" android:drawableLeft="@drawable/ic_tab_done_holo" android:drawablePadding="@dimen/effects_menu_save_button_icon_and_text_margin" style="@style/TextActionButton" />
+        <com.meizu.widget.GlowLinearLayout android:enabled="false" android:id="@id/save_action_button" android:clickable="true" android:addStatesFromChildren="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <Button android:textSize="14.0sp" android:textColor="#ff808080" android:gravity="center" android:background="@null" android:paddingLeft="@dimen/action_button_padding_horizontal" android:paddingRight="@dimen/action_button_padding_horizontal" android:clickable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/effects_menu_save_button_margin_left" android:text="@string/save" android:drawableLeft="@drawable/ic_tab_done_holo" android:drawablePadding="@dimen/effects_menu_save_button_icon_and_text_margin" />
+        </com.meizu.widget.GlowLinearLayout>
+    </LinearLayout>
+</FrameLayout>

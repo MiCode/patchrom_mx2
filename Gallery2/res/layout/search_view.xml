@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="@color/search_customview_background_color" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText android:textSize="@dimen/search_customview_text_size" android:textColor="@color/search_customview_text_color" android:textColorHint="@color/search_customview_textHint_color" android:layout_gravity="center_vertical" android:id="@id/query_text" android:background="@null" android:paddingLeft="16.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/search" android:maxLines="1" android:singleLine="true" android:drawableLeft="@drawable/ic_tab_search" android:drawablePadding="8.0dip" android:layout_weight="1.0" android:imeOptions="actionSearch|flagNoExtractUi" android:textCursorDrawable="@null" />
+    <ImageView android:layout_gravity="right|center" android:id="@id/cancel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/ic_video_search_delete" android:layout_weight="5.0" />
+</LinearLayout>
