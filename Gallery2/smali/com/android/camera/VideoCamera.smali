@@ -12405,7 +12405,10 @@
 
     if-nez v0, :cond_0
 
-    .line 1214
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/android/camera/VideoCamera;->mIsGotoGallery:Z
+
     invoke-virtual {p0}, Lcom/android/camera/VideoCamera;->gotoGallery()V
 
     .line 1216

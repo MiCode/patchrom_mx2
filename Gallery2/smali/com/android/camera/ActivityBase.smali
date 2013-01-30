@@ -828,18 +828,17 @@
 .end method
 
 .method protected gotoGallery()V
-    .locals 2
+    .locals 1
 
     .prologue
-    .line 353
-    iget-object v0, p0, Lcom/android/camera/ActivityBase;->mAppBridge:Lcom/android/camera/ActivityBase$MyAppBridge;
+    iget-object v0, p0, Lcom/android/camera/ActivityBase;->mThumbnail:Lcom/android/camera/Thumbnail;
 
-    const/4 v1, 0x1
+    invoke-virtual {v0}, Lcom/android/camera/Thumbnail;->getUri()Landroid/net/Uri;
 
-    #calls: Lcom/android/camera/ActivityBase$MyAppBridge;->switchWithCaptureAnimation(I)V
-    invoke-static {v0, v1}, Lcom/android/camera/ActivityBase$MyAppBridge;->access$100(Lcom/android/camera/ActivityBase$MyAppBridge;I)V
+    move-result-object v0
 
-    .line 354
+    invoke-static {v0, p0}, Lcom/android/camera/Util;->viewUri(Landroid/net/Uri;Landroid/content/Context;)V
+
     return-void
 .end method
 

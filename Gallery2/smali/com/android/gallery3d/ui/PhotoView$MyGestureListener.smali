@@ -811,7 +811,8 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 1101
+    return v1
+
     iget-boolean v0, p0, Lcom/android/gallery3d/ui/PhotoView$MyGestureListener;->mIgnoreSwipingGesture:Z
 
     if-eqz v0, :cond_1
@@ -1215,7 +1216,8 @@
 
     const/4 v3, 0x1
 
-    .line 1055
+    return v3
+
     iget-boolean v2, p0, Lcom/android/gallery3d/ui/PhotoView$MyGestureListener;->mIgnoreSwipingGesture:Z
 
     if-eqz v2, :cond_1
@@ -1466,7 +1468,8 @@
     .locals 2
 
     .prologue
-    .line 1288
+    return-void
+
     iget-boolean v0, p0, Lcom/android/gallery3d/ui/PhotoView$MyGestureListener;->mIgnoreSwipingGesture:Z
 
     if-eqz v0, :cond_0

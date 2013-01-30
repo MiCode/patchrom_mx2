@@ -18344,6 +18344,10 @@
 
     .line 3321
     :cond_0
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/android/camera/VideoCamera;->mIsGotoGallery:Z
+
     invoke-virtual {p0}, Lcom/android/camera/Camera;->gotoGallery()V
 
     .line 3323
