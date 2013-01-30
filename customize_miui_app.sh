@@ -33,9 +33,13 @@ function appendPart() {
     done
 }
 
+function mergyResValues() {
+	$XMLMERGYTOOL $1/res/values $2/res/values
+}
 
 if [ $1 = "MiuiSystemUI" ];then
 	appendPart $1
+	mergyResValues $1 $2
 fi
 
 if [ $1 = "Phone" ];then
