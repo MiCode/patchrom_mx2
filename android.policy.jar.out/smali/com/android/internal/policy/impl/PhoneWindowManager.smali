@@ -15,7 +15,8 @@
         Lcom/android/internal/policy/impl/PhoneWindowManager$SettingsObserver;,
         Lcom/android/internal/policy/impl/PhoneWindowManager$PolicyHandler;,
         Lcom/android/internal/policy/impl/PhoneWindowManager$PointerLocationInputEventReceiver;,
-        Lcom/android/internal/policy/impl/PhoneWindowManager$Injector;
+        Lcom/android/internal/policy/impl/PhoneWindowManager$Injector;,
+        Lcom/android/internal/policy/impl/PhoneWindowManager$GestureDetector;
     }
 .end annotation
 
@@ -13367,7 +13368,8 @@
     .parameter "policyFlags"
 
     .prologue
-    .line 4555
+    invoke-static/range {p0 .. p1}, Lcom/android/internal/policy/impl/PhoneWindowManager$GestureDetector;->divideGestureRegion(Lcom/android/internal/policy/impl/PhoneWindowManager;Landroid/view/MotionEvent;)V
+
     const/4 v7, 0x1
 
     .line 4560
@@ -13574,7 +13576,12 @@
 
     iput-boolean v12, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHasBackGesture:Z
 
-    .line 4683
+    const/4 v12, 0x0
+
+    sget v13, Lcom/android/internal/policy/impl/PhoneWindowManager$GestureDetector;->mGestureRegion:I
+
+    if-ne v12, v13, :cond_extra_0
+
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v12
@@ -13609,7 +13616,23 @@
 
     invoke-virtual {v0, v12, v13, v14, v15}, Lcom/android/internal/policy/impl/PhoneWindowManager;->sendEvent(IIJ)V
 
-    .line 4687
+    :cond_extra_0
+    const/4 v12, 0x1
+
+    sget v13, Lcom/android/internal/policy/impl/PhoneWindowManager$GestureDetector;->mGestureRegion:I
+
+    if-ne v12, v13, :cond_extra_1
+
+    invoke-direct/range {p0 .. p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->triggerMenuKey()V
+
+    :cond_extra_1
+    const/4 v12, 0x2
+
+    sget v13, Lcom/android/internal/policy/impl/PhoneWindowManager$GestureDetector;->mGestureRegion:I
+
+    if-ne v12, v13, :cond_extra_2
+
+    :cond_extra_2
     const-string v12, "WindowManager"
 
     const-string v13, "mGestureBar.hideLw(true)"
@@ -18448,7 +18471,7 @@
 
     iget-wide v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mDownTime:J
 
-    const/16 v7, 0x52
+    const/4 v7, 0x4
 
     const/4 v9, 0x0
 
@@ -21140,7 +21163,7 @@
     goto :goto_0
 .end method
 
-.method private BackKeyTrigger()V
+.method private triggerMenuKey()V
     .locals 4
 
     .prologue
@@ -21156,7 +21179,7 @@
     .line 1766
     iget-wide v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mDownTime:J
 
-    invoke-direct {p0, v3, v3, v0, v1}, Lcom/android/internal/policy/impl/PhoneWindowManager;->sendBackKeyEvent(IIJ)V
+    invoke-direct {p0, v3, v3, v0, v1}, Lcom/android/internal/policy/impl/PhoneWindowManager;->sendMenuKeyEvent(IIJ)V
 
     .line 1767
     const/4 v0, 0x1
@@ -21165,13 +21188,13 @@
 
     move-result-wide v1
 
-    invoke-direct {p0, v0, v3, v1, v2}, Lcom/android/internal/policy/impl/PhoneWindowManager;->sendBackKeyEvent(IIJ)V
+    invoke-direct {p0, v0, v3, v1, v2}, Lcom/android/internal/policy/impl/PhoneWindowManager;->sendMenuKeyEvent(IIJ)V
 
     .line 1768
     return-void
 .end method
 
-.method private sendBackKeyEvent(IIJ)V
+.method private sendMenuKeyEvent(IIJ)V
     .locals 15
     .parameter "action"
     .parameter "flags"
@@ -21192,7 +21215,7 @@
 
     iget-wide v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mDownTime:J
 
-    const/4 v7, 0x4
+    const/16 v7, 0x52
 
     const/4 v9, 0x0
 
