@@ -129,6 +129,12 @@
     .end annotation
 .end field
 
+.field private mSkipSimStateChange:Z
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_FIELD:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+.end field
+
 .field private mTelephonyPlmn:Ljava/lang/CharSequence;
 
 .field private mTelephonySpn:Ljava/lang/CharSequence;
@@ -149,7 +155,8 @@
     .line 193
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 74
+    iput-boolean v4, p0, Lcom/android/internal/policy/impl/KeyguardUpdateMonitor;->mSkipSimStateChange:Z
+
     sget-object v2, Lcom/android/internal/telephony/IccCard$State;->READY:Lcom/android/internal/telephony/IccCard$State;
 
     iput-object v2, p0, Lcom/android/internal/policy/impl/KeyguardUpdateMonitor;->mSimState:Lcom/android/internal/telephony/IccCard$State;
@@ -951,10 +958,15 @@
     .parameter "simArgs"
 
     .prologue
-    .line 471
+    iget-boolean v2, p0, Lcom/android/internal/policy/impl/KeyguardUpdateMonitor;->mSkipSimStateChange:Z
+
+    if-eqz v2, :cond_miui_0
+
+    return-void
+
+    :cond_miui_0
     iget-object v1, p1, Lcom/android/internal/policy/impl/KeyguardUpdateMonitor$SimArgs;->simState:Lcom/android/internal/telephony/IccCard$State;
 
-    .line 478
     .local v1, state:Lcom/android/internal/telephony/IccCard$State;
     sget-object v2, Lcom/android/internal/telephony/IccCard$State;->UNKNOWN:Lcom/android/internal/telephony/IccCard$State;
 
@@ -1995,6 +2007,19 @@
     return-void
 .end method
 
+.method public setSkipSimStateChange(Z)V
+    .locals 0
+    .parameter "skip"
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+
+    .prologue
+    iput-boolean p1, p0, Lcom/android/internal/policy/impl/KeyguardUpdateMonitor;->mSkipSimStateChange:Z
+
+    return-void
+.end method
+
 .method public shouldShowBatteryInfo()Z
     .locals 1
 
@@ -2017,6 +2042,12 @@
     if-eqz v0, :cond_1
 
     :cond_0
+    invoke-static {}, Landroid/app/MiuiThemeHelper;->isScreenshotMode()Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
     const/4 v0, 0x1
 
     :goto_0
@@ -2026,4 +2057,16 @@
     const/4 v0, 0x0
 
     goto :goto_0
+.end method
+
+.method isSimPinSecure()Z
+    .locals 1
+
+    .prologue
+    .line 776
+    invoke-virtual {p0}, Lcom/android/internal/policy/impl/KeyguardUpdateMonitor;->isSimLocked()Z
+
+    move-result v0
+
+    return v0
 .end method

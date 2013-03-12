@@ -510,7 +510,7 @@
     .prologue
     .line 118
     .local p5, rList:Ljava/util/List;,"Ljava/util/List<Landroid/content/pm/ResolveInfo;>;"
-    const v2, 0x1030317
+    const v2, 0x60d003e
 
     move-object/from16 v0, p0
 
@@ -556,10 +556,11 @@
 
     iput-boolean v0, v1, Lcom/android/internal/app/ResolverActivity;->mAlwaysUseOption:Z
 
-    .line 128
-    const/4 v2, 0x3
-
     move-object/from16 v0, p0
+
+    invoke-static {v0}, Lcom/android/internal/app/ResolverActivity$Injector;->getMaxColumns(Lcom/android/internal/app/ResolverActivity;)I
+    
+    move-result v2
 
     iput v2, v0, Lcom/android/internal/app/ResolverActivity;->mMaxColumns:I
 
@@ -715,6 +716,12 @@
     .line 235
     :cond_2
     :goto_1
+    move/from16 v2, p6
+
+    move-object/from16 v0, p0
+
+    invoke-static {v0, v2}, Lcom/android/internal/app/ResolverActivity$Injector;->initialize(Lcom/android/internal/app/ResolverActivity;Z)V
+
     return-void
 
     .line 123
@@ -934,8 +941,15 @@
     :goto_2
     invoke-virtual/range {p0 .. p0}, Lcom/android/internal/app/ResolverActivity;->setupAlert()V
 
-    .line 200
-    if-eqz p6, :cond_2
+    move/from16 v2, p6
+
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v2}, Lcom/android/internal/app/ResolverActivity;->checkOption(Z)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2
 
     .line 202
     const v2, 0x10203b0
@@ -1972,5 +1986,45 @@
     invoke-virtual {p0}, Lcom/android/internal/app/ResolverActivity;->finish()V
 
     .line 387
+    return-void
+.end method
+
+.method private checkOption(Z)Z
+    .locals 1
+    .parameter "alwaysUseOption"
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+
+    .prologue
+    if-eqz p1, :cond_0
+
+    invoke-static {p0}, Lmiui/util/UiUtils;->isV5Ui(Landroid/content/Context;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method setAlwaysUseOption(Z)V
+    .locals 0
+    .parameter "alwaysUseOption"
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+
+    .prologue
+    iput-boolean p1, p0, Lcom/android/internal/app/ResolverActivity;->mAlwaysUseOption:Z
+
     return-void
 .end method

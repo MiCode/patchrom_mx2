@@ -126,11 +126,9 @@
     :try_start_0
     iget-object v7, p0, Lcom/android/server/AttributeCache;->mPackages:Ljava/util/WeakHashMap;
 
-    invoke-virtual {v7, p1}, Ljava/util/WeakHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-static {v7, p1}, Lcom/android/server/AttributeCache$Injector;->getPackage(Ljava/util/WeakHashMap;Ljava/lang/String;)Lcom/android/server/AttributeCache$Package;
 
     move-result-object v5
-
-    check-cast v5, Lcom/android/server/AttributeCache$Package;
 
     .line 100
     .local v5, pkg:Lcom/android/server/AttributeCache$Package;
@@ -249,7 +247,7 @@
     .restart local v5       #pkg:Lcom/android/server/AttributeCache$Package;
     iget-object v7, p0, Lcom/android/server/AttributeCache;->mPackages:Ljava/util/WeakHashMap;
 
-    invoke-virtual {v7, p1, v5}, Ljava/util/WeakHashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-static {v7, p1, v5}, Lcom/android/server/AttributeCache$Injector;->putPackage(Ljava/util/WeakHashMap;Ljava/lang/String;Lcom/android/server/AttributeCache$Package;)V
 
     .end local v0           #context:Landroid/content/Context;
     :cond_2

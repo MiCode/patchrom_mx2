@@ -5779,7 +5779,6 @@
     .locals 3
 
     .prologue
-    .line 6032
     const-string v0, "1"
 
     const-string v1, "ro.secure"
@@ -17830,6 +17829,10 @@
 
     :cond_2
     iput-boolean v5, p0, Lcom/android/server/wm/WindowManagerService;->mSafeMode:Z
+
+    const/4 v6, 0x0
+
+    iput-boolean v6, p0, Lcom/android/server/wm/WindowManagerService;->mSafeMode:Z
 
     .line 6867
     :try_start_0

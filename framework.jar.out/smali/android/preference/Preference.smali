@@ -87,6 +87,12 @@
 
 .field private mPreferenceManager:Landroid/preference/PreferenceManager;
 
+.field mPreferenceParent:Landroid/preference/PreferenceGroup;
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_FIELD:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+.end field
+
 .field private mRequiresKey:Z
 
 .field private mSelectable:Z
@@ -1739,6 +1745,8 @@
     .parameter "view"
 
     .prologue
+    invoke-static {p0, p1}, Landroid/preference/Preference$Injector;->onBindView(Landroid/preference/Preference;Landroid/view/View;)V
+
     const/4 v9, 0x1
 
     const/16 v5, 0x8
@@ -2882,6 +2890,19 @@
 
     .line 587
     :cond_0
+    return-void
+.end method
+
+.method public setParent(Landroid/preference/PreferenceGroup;)V
+    .locals 0
+    .parameter "parent"
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+
+    .prologue
+    iput-object p1, p0, Landroid/preference/Preference;->mPreferenceParent:Landroid/preference/PreferenceGroup;
+
     return-void
 .end method
 

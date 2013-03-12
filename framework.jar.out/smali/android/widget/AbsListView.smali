@@ -141,6 +141,12 @@
 
 .field mAdapterHasStableIds:Z
 
+.field mBottomLineDrawable:Landroid/graphics/drawable/Drawable;
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_FIELD:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+.end field
+
 .field private mCacheColorHint:I
 
 .field mCachingActive:Z
@@ -2308,6 +2314,8 @@
     iget v1, v1, Landroid/util/DisplayMetrics;->density:F
 
     iput v1, p0, Landroid/widget/AbsListView;->mDensityScale:F
+
+    invoke-static {p0}, Landroid/widget/AbsListView$Injector;->setChildSequenceStateTaggingListener(Landroid/widget/AbsListView;)V
 
     .line 836
     return-void
@@ -5096,6 +5104,8 @@
     .end local v1           #scrollY:I
     :cond_0
     :goto_0
+    invoke-static {p0, p1}, Landroid/widget/AbsListView$Injector;->drawBorder(Landroid/widget/AbsListView;Landroid/graphics/Canvas;)V
+
     return-void
 
     .line 4315
@@ -10115,9 +10125,13 @@
 
     if-eqz v28, :cond_ff
 
-    const/16 v28, 0x1
+    const/16 v28, 0x3
 
-    return v28
+    move-object/from16 v0, p1
+
+    move/from16 v1, v28
+ 
+    invoke-virtual {v0, v1}, Landroid/view/MotionEvent;->setAction(I)V
 
     :cond_ff
     invoke-virtual/range {p0 .. p0}, Landroid/widget/AbsListView;->isEnabled()Z
@@ -17813,7 +17827,10 @@
 
     iput-boolean v0, v1, Landroid/widget/AdapterView;->mBlockLayoutRequests:Z
 
-    .line 5568
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v13, v10}, Landroid/widget/AbsListView;->calcFirstPosition(ZI)V
+
     if-lez v10, :cond_8
 
     .line 5569
@@ -17851,26 +17868,6 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/AbsListView;->offsetChildrenTopAndBottom(I)V
 
-    .line 5582
-    if-eqz v13, :cond_a
-
-    .line 5583
-    move-object/from16 v0, p0
-
-    iget v0, v0, Landroid/widget/AdapterView;->mFirstPosition:I
-
-    move/from16 v37, v0
-
-    add-int v37, v37, v10
-
-    move/from16 v0, v37
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Landroid/widget/AdapterView;->mFirstPosition:I
-
-    .line 5587
-    :cond_a
     invoke-static/range {p2 .. p2}, Ljava/lang/Math;->abs(I)I
 
     move-result v3
@@ -19618,4 +19615,25 @@
     const/4 v0, 0x0
 
     goto :goto_0
+.end method
+
+.method private calcFirstPosition(ZI)V
+    .locals 1
+    .parameter "down"
+    .parameter "count"
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+
+    .prologue
+    if-eqz p1, :cond_0
+
+    iget v0, p0, Landroid/widget/AbsListView;->mFirstPosition:I
+
+    add-int/2addr v0, p2
+
+    iput v0, p0, Landroid/widget/AbsListView;->mFirstPosition:I
+
+    :cond_0
+    return-void
 .end method

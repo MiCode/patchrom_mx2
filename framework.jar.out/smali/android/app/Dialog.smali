@@ -232,7 +232,8 @@
     .line 173
     invoke-virtual {v1, v4}, Landroid/view/Window;->setDockActionBar(Z)V
 
-    .line 174
+    invoke-static {p0, p2}, Landroid/app/Dialog$Injector;->setDialogGravity(Landroid/app/Dialog;I)V
+
     return-void
 
     .end local v1           #w:Landroid/view/Window;
@@ -553,6 +554,8 @@
     iget-object v1, p0, Landroid/app/Dialog;->mDecor:Landroid/view/View;
 
     invoke-interface {v0, v1}, Landroid/view/WindowManager;->removeView(Landroid/view/View;)V
+
+    invoke-static {p0}, Landroid/app/Dialog$Injector;->onWindowHide(Landroid/app/Dialog;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -966,6 +969,35 @@
     move-result-object v0
 
     return-object v0
+.end method
+
+.method public getMiuiActionBar()Lmiui/v5/app/MiuiActionBar;
+    .locals 2
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+
+    .prologue
+    invoke-virtual {p0}, Landroid/app/Dialog;->getActionBar()Landroid/app/ActionBar;
+
+    move-result-object v0
+
+    .local v0, bar:Landroid/app/ActionBar;
+    instance-of v1, v0, Lmiui/v5/app/MiuiActionBar;
+
+    if-eqz v1, :cond_0
+
+    check-cast v0, Lmiui/v5/app/MiuiActionBar;
+
+    .end local v0           #bar:Landroid/app/ActionBar;
+    :goto_0
+    return-object v0
+
+    .restart local v0       #bar:Landroid/app/ActionBar;
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method
 
 .method public final getOwnerActivity()Landroid/app/Activity;
@@ -2501,14 +2533,12 @@
 
     if-eqz v2, :cond_4
 
-    .line 271
-    new-instance v2, Lcom/android/internal/app/ActionBarImpl;
+    invoke-static {p0}, Landroid/app/Dialog$Injector;->generateActionBar(Landroid/app/Dialog;)Lcom/android/internal/app/ActionBarImpl;
 
-    invoke-direct {v2, p0}, Lcom/android/internal/app/ActionBarImpl;-><init>(Landroid/app/Dialog;)V
+    move-result-object v2
 
     iput-object v2, p0, Landroid/app/Dialog;->mActionBar:Lcom/android/internal/app/ActionBarImpl;
 
-    .line 274
     :cond_4
     iget-object v2, p0, Landroid/app/Dialog;->mWindow:Landroid/view/Window;
 
@@ -2558,19 +2588,18 @@
 
     invoke-interface {v2, v3, v0}, Landroid/view/WindowManager;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 287
     const/4 v2, 0x1
 
     iput-boolean v2, p0, Landroid/app/Dialog;->mShowing:Z
 
-    .line 289
     invoke-direct {p0}, Landroid/app/Dialog;->sendShowMessage()V
+
+    invoke-static {p0}, Landroid/app/Dialog$Injector;->onWindowShow(Landroid/app/Dialog;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     goto :goto_0
 
-    .line 290
     :catchall_0
     move-exception v2
 
