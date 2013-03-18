@@ -1,0 +1,26 @@
+From e0f1e71da2fed3b350c8be7bdc63ad5af76208a7 Mon Sep 17 00:00:00 2001
+From: mochangming <mochangming@xiaomi.com>
+Date: Mon, 18 Mar 2013 10:57:10 +0800
+Subject: [PATCH] fix available internal memory
+
+---
+ .../android/settings/MiuiDeviceInfoSettings.smali  |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/Settings/smali/com/android/settings/MiuiDeviceInfoSettings.smali
++++ b/Settings/smali/com/android/settings/MiuiDeviceInfoSettings.smali
+@@ -234,9 +234,9 @@
+     iget-wide v1, v11, Lcom/android/settings/MiuiDeviceInfoSettings$SDCardInfo;->free:J
+ 
+     .local v1, availableSize:J
+-    sget-boolean v11, Lmiui/os/Build;->IS_XIAOMI:Z
++    #sget-boolean v11, Lmiui/os/Build;->IS_XIAOMI:Z
+ 
+-    if-eqz v11, :cond_0
++    #if-eqz v11, :cond_0
+ 
+     invoke-static {}, Landroid/os/Environment;->getDataDirectory()Ljava/io/File;
+ 
+-- 
+1.7.9.5
+
