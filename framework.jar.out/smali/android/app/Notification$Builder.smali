@@ -1278,21 +1278,21 @@
 .end method
 
 .method private generateActionButton(Landroid/app/Notification$Action;)Landroid/widget/RemoteViews;
-    .locals 7
+    .locals 5
     .parameter "action"
 
     .prologue
-    const v1, 0x102036f
+    const v4, 0x102036f
 
-    const/4 v3, 0x0
-
+    .line 1694
     iget-object v2, p1, Landroid/app/Notification$Action;->actionIntent:Landroid/app/PendingIntent;
 
     if-nez v2, :cond_1
 
-    const/4 v6, 0x1
+    const/4 v1, 0x1
 
-    .local v6, tombstone:Z
+    .line 1695
+    .local v1, tombstone:Z
     :goto_0
     new-instance v0, Landroid/widget/RemoteViews;
 
@@ -1300,49 +1300,48 @@
 
     invoke-virtual {v2}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v3
 
-    if-eqz v6, :cond_2
+    if-eqz v1, :cond_2
 
     const v2, 0x109008e
 
     :goto_1
-    invoke-direct {v0, v4, v2}, Landroid/widget/RemoteViews;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v3, v2}, Landroid/widget/RemoteViews;-><init>(Ljava/lang/String;I)V
 
+    .line 1702
     .local v0, button:Landroid/widget/RemoteViews;
     iget v2, p1, Landroid/app/Notification$Action;->icon:I
 
-    move v4, v3
+    invoke-virtual {v0, v4, v2}, Landroid/widget/RemoteViews;->setImageViewResource(II)V
 
-    move v5, v3
+    .line 1704
+    if-nez v1, :cond_0
 
-    invoke-virtual/range {v0 .. v5}, Landroid/widget/RemoteViews;->setTextViewCompoundDrawables(IIIII)V
-
-    iget-object v2, p1, Landroid/app/Notification$Action;->title:Ljava/lang/CharSequence;
-
-    invoke-virtual {v0, v1, v2}, Landroid/widget/RemoteViews;->setTextViewText(ILjava/lang/CharSequence;)V
-
-    if-nez v6, :cond_0
-
+    .line 1705
     iget-object v2, p1, Landroid/app/Notification$Action;->actionIntent:Landroid/app/PendingIntent;
 
-    invoke-virtual {v0, v1, v2}, Landroid/widget/RemoteViews;->setOnClickPendingIntent(ILandroid/app/PendingIntent;)V
+    invoke-virtual {v0, v4, v2}, Landroid/widget/RemoteViews;->setOnClickPendingIntent(ILandroid/app/PendingIntent;)V
 
+    .line 1707
     :cond_0
     iget-object v2, p1, Landroid/app/Notification$Action;->title:Ljava/lang/CharSequence;
 
-    invoke-virtual {v0, v1, v2}, Landroid/widget/RemoteViews;->setContentDescription(ILjava/lang/CharSequence;)V
+    invoke-virtual {v0, v4, v2}, Landroid/widget/RemoteViews;->setContentDescription(ILjava/lang/CharSequence;)V
 
+    .line 1708
     return-object v0
 
+    .line 1694
     .end local v0           #button:Landroid/widget/RemoteViews;
-    .end local v6           #tombstone:Z
+    .end local v1           #tombstone:Z
     :cond_1
-    move v6, v3
+    const/4 v1, 0x0
 
     goto :goto_0
 
-    .restart local v6       #tombstone:Z
+    .line 1695
+    .restart local v1       #tombstone:Z
     :cond_2
     const v2, 0x109008c
 

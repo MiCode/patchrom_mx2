@@ -9862,8 +9862,6 @@
 
     iput-boolean v0, v1, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHomePressed:Z
 
-    invoke-direct/range {p0 .. p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->BackKeyTrigger()V
-
     const-wide/16 v33, -0x1
 
     goto/16 :goto_1

@@ -16,11 +16,15 @@ then
 			rm -rf "$file"
 	done
 
+	rm -f $2/smali/android/text/util/LinkSpec.smali
+	for file in `find $2 -name Linkify*`; do
+		sed -i "s/android\/text\/util\/LinkSpec;/android\/text\/util\/Linkify\$LinkSpec;/g" $file
+	done
+
+
     # move some smali to create a separate $SEP_FRAME.jar
     # including: smali/miui smali/android/widget
 	mkdir -p "$BUILD_OUT/$SEP_FRAME/smali/android"
-	rm -rf $BUILD_OUT/$SEP_FRAME/smali/miui
-	mv "$BUILD_OUT/framework/smali/miui" "$BUILD_OUT/$SEP_FRAME/smali"
 	rm -rf $BUILD_OUT/$SEP_FRAME/smali/android/widget
 	mv "$BUILD_OUT/framework/smali/android/widget" "$BUILD_OUT/$SEP_FRAME/smali/android"
 
@@ -35,7 +39,6 @@ then
 			rm -rf "$file"
 	done
 
-	mv "$BUILD_OUT/$SEP_FRAME/smali/miui/"  "$BUILD_OUT/framework2/smali/miui"
 	mv "$BUILD_OUT/$SEP_FRAME/smali/android/widget/"  "$BUILD_OUT/framework2/smali/android/widget"
    
 fi
