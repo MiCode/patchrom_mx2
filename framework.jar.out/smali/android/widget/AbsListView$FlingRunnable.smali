@@ -99,7 +99,7 @@
     iget-object v0, p0, Landroid/widget/AbsListView$FlingRunnable;->this$0:Landroid/widget/AbsListView;
 
     #getter for: Landroid/widget/AbsListView;->mScrollY:I
-    invoke-static {v0}, Landroid/widget/AbsListView;->access$2100(Landroid/widget/AbsListView;)I
+    invoke-static {v0}, Landroid/widget/AbsListView;->access$2900(Landroid/widget/AbsListView;)I
 
     move-result v0
 
