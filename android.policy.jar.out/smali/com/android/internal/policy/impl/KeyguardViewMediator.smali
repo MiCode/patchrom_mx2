@@ -3957,7 +3957,7 @@
 
     iput-boolean v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mSystemReady:Z
 
-    invoke-direct {p0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->systemReady()V
+    invoke-direct {p0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->doKeyguardLocked()V
 
     monitor-exit p0
 
