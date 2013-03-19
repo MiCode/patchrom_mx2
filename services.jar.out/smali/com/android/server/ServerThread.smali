@@ -2610,7 +2610,8 @@
     :try_end_56
     .catch Ljava/lang/Throwable; {:try_start_56 .. :try_end_56} :catch_35
 
-    .line 786
+    goto :goto_3e
+
     :try_start_57
     invoke-virtual {v4}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
