@@ -217,7 +217,7 @@
 
     move-result-object v3
 
-    invoke-direct {v0, v3, v2}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;I)V
+    invoke-direct {v0, v3}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
     .line 595
     .local v0, errorDialog:Landroid/app/AlertDialog$Builder;
