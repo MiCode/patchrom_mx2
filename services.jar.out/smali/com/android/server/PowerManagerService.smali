@@ -2319,29 +2319,28 @@
     .locals 4
 
     .prologue
-    .line 2585
     invoke-direct {p0}, Lcom/android/server/PowerManagerService;->isScreenTurningOffLocked()Z
 
     move-result v1
 
     if-eqz v1, :cond_0
 
-    .line 2587
     iget-object v1, p0, Lcom/android/server/PowerManagerService;->mScreenBrightnessAnimator:Lcom/android/server/PowerManagerService$ScreenBrightnessAnimator;
 
-    invoke-virtual {v1}, Lcom/android/server/PowerManagerService$ScreenBrightnessAnimator;->cancelAnimation()V
+    const/4 v2, 0x2
 
-    .line 2589
+    const/4 v3, 0x0
+
+    invoke-static {p0, v1, v3, v2, v3}, Lcom/android/server/PowerManagerService$Injector;->animateTo(Lcom/android/server/PowerManagerService;Lcom/android/server/PowerManagerService$ScreenBrightnessAnimator;III)V
+
     :cond_0
     iget-boolean v0, p0, Lcom/android/server/PowerManagerService;->mUserActivityAllowed:Z
 
-    .line 2590
     .local v0, savedActivityAllowed:Z
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/android/server/PowerManagerService;->mUserActivityAllowed:Z
 
-    .line 2591
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v1
