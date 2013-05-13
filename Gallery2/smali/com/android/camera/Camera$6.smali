@@ -1,9 +1,6 @@
 .class Lcom/android/camera/Camera$6;
-.super Ljava/lang/Object;
+.super Landroid/telephony/PhoneStateListener;
 .source "Camera.java"
-
-# interfaces
-.implements Landroid/hardware/SensorEventListener;
 
 
 # annotations
@@ -27,220 +24,64 @@
     .parameter
 
     .prologue
-    .line 792
+    .line 797
     iput-object p1, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
 
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Landroid/telephony/PhoneStateListener;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onAccuracyChanged(Landroid/hardware/Sensor;I)V
-    .locals 0
-    .parameter "sensor"
-    .parameter "accuracy"
+.method public onCallStateChanged(ILjava/lang/String;)V
+    .locals 2
+    .parameter "state"
+    .parameter "incomingNumber"
 
     .prologue
+    .line 800
+    packed-switch p1, :pswitch_data_0
+
     .line 814
-    return-void
-.end method
-
-.method public onSensorChanged(Landroid/hardware/SensorEvent;)V
-    .locals 7
-    .parameter "event"
-
-    .prologue
-    const/4 v2, 0x0
-
-    .line 796
-    iget-object v3, p1, Landroid/hardware/SensorEvent;->values:[F
-
-    aget v1, v3, v2
-
-    .line 797
-    .local v1, distance:F
-    float-to-double v3, v1
-
-    const-wide/16 v5, 0x0
-
-    cmpl-double v3, v3, v5
-
-    if-ltz v3, :cond_1
-
-    iget-object v3, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
-
-    #getter for: Lcom/android/camera/Camera;->mProximitySensor:Landroid/hardware/Sensor;
-    invoke-static {v3}, Lcom/android/camera/Camera;->access$4500(Lcom/android/camera/Camera;)Landroid/hardware/Sensor;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Landroid/hardware/Sensor;->getMaximumRange()F
-
-    move-result v3
-
-    cmpg-float v3, v1, v3
-
-    if-gez v3, :cond_1
-
-    const/4 v0, 0x1
-
-    .line 798
-    .local v0, active:Z
     :goto_0
-    if-eqz v0, :cond_0
+    return-void
 
-    .line 799
-    invoke-static {}, Lcom/android/camera/CameraDeviceManager;->getCurCaptureMode()I
+    .line 802
+    :pswitch_0
+    iget-object v0, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
 
-    move-result v3
+    invoke-virtual {v0}, Lcom/android/camera/Camera;->finish()V
 
-    if-nez v3, :cond_0
-
-    iget-object v3, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
-
-    #getter for: Lcom/android/camera/Camera;->mIsProximityEnable:Z
-    invoke-static {v3}, Lcom/android/camera/Camera;->access$4600(Lcom/android/camera/Camera;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_0
-
-    iget-object v3, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
-
-    #getter for: Lcom/android/camera/Camera;->mIsMenuLongPress:Z
-    invoke-static {v3}, Lcom/android/camera/Camera;->access$4700(Lcom/android/camera/Camera;)Z
-
-    move-result v3
-
-    if-nez v3, :cond_0
-
-    iget-object v3, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
-
-    #getter for: Lcom/android/camera/Camera;->mIsCall_State_OffHook:Z
-    invoke-static {v3}, Lcom/android/camera/Camera;->access$4400(Lcom/android/camera/Camera;)Z
-
-    move-result v3
-
-    if-nez v3, :cond_0
-
-    iget-object v3, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
-
-    #getter for: Lcom/android/camera/Camera;->mInitCaptureMode:Z
-    invoke-static {v3}, Lcom/android/camera/Camera;->access$4800(Lcom/android/camera/Camera;)Z
-
-    move-result v3
-
-    if-nez v3, :cond_0
-
-    iget-object v3, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
-
-    #calls: Lcom/android/camera/Camera;->collapseMenuControl()Z
-    invoke-static {v3}, Lcom/android/camera/Camera;->access$4900(Lcom/android/camera/Camera;)Z
-
-    move-result v3
-
-    if-nez v3, :cond_0
-
-    iget-object v3, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
-
-    #getter for: Lcom/android/camera/Camera;->mIsImageCaptureIntent:Z
-    invoke-static {v3}, Lcom/android/camera/Camera;->access$5000(Lcom/android/camera/Camera;)Z
-
-    move-result v3
-
-    invoke-static {v3, v2}, Lcom/android/camera/Util;->isThirdPartyUseCamera(ZZ)Z
-
-    move-result v2
-
-    if-nez v2, :cond_0
-
-    iget-object v2, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
-
-    #getter for: Lcom/android/camera/Camera;->mIsShutterBtnLongPressed:Z
-    invoke-static {v2}, Lcom/android/camera/Camera;->access$5100(Lcom/android/camera/Camera;)Z
-
-    move-result v2
-
-    if-nez v2, :cond_0
-
-    iget-object v2, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
-
-    #getter for: Lcom/android/camera/Camera;->mIsPowerPressed:Z
-    invoke-static {v2}, Lcom/android/camera/Camera;->access$5200(Lcom/android/camera/Camera;)Z
-
-    move-result v2
-
-    if-nez v2, :cond_0
-
-    iget-object v2, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
-
-    invoke-virtual {v2}, Lcom/android/camera/Camera;->getIsShowCameraAppView()Z
-
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    iget-object v2, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
-
-    #getter for: Lcom/android/camera/Camera;->mIsCanProximityTakePicture:Z
-    invoke-static {v2}, Lcom/android/camera/Camera;->access$5300(Lcom/android/camera/Camera;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    iget-object v2, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
-
-    #getter for: Lcom/android/camera/Camera;->mIsDropFirstProximityCapture:Z
-    invoke-static {v2}, Lcom/android/camera/Camera;->access$5400(Lcom/android/camera/Camera;)Z
-
-    move-result v2
-
-    if-nez v2, :cond_0
-
-    iget-object v2, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
-
-    iget v2, v2, Lcom/android/camera/ActivityBase;->mCameraId:I
-
-    invoke-static {v2}, Lcom/android/camera/Util;->isBackCamera(I)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    .line 804
-    iget-object v2, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
-
-    #getter for: Lcom/android/camera/Camera;->mHandler:Landroid/os/Handler;
-    invoke-static {v2}, Lcom/android/camera/Camera;->access$1300(Lcom/android/camera/Camera;)Landroid/os/Handler;
-
-    move-result-object v2
-
-    const/16 v3, 0x10
-
-    invoke-virtual {v2, v3}, Landroid/os/Handler;->sendEmptyMessage(I)Z
-
-    .line 805
-    iget-object v2, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
-
-    #calls: Lcom/android/camera/Camera;->keepScreenOnAwhile()V
-    invoke-static {v2}, Lcom/android/camera/Camera;->access$5500(Lcom/android/camera/Camera;)V
+    goto :goto_0
 
     .line 806
-    iget-object v2, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
+    :pswitch_1
+    iget-object v0, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
 
-    invoke-virtual {v2}, Lcom/android/camera/Camera;->onShutterButtonClick()V
+    const/4 v1, 0x1
 
-    .line 809
-    :cond_0
-    return-void
+    #setter for: Lcom/android/camera/Camera;->mIsCall_State_OffHook:Z
+    invoke-static {v0, v1}, Lcom/android/camera/Camera;->access$4602(Lcom/android/camera/Camera;Z)Z
 
-    .end local v0           #active:Z
-    :cond_1
-    move v0, v2
+    goto :goto_0
 
-    .line 797
-    goto/16 :goto_0
+    .line 810
+    :pswitch_2
+    iget-object v0, p0, Lcom/android/camera/Camera$6;->this$0:Lcom/android/camera/Camera;
+
+    const/4 v1, 0x0
+
+    #setter for: Lcom/android/camera/Camera;->mIsCall_State_OffHook:Z
+    invoke-static {v0, v1}, Lcom/android/camera/Camera;->access$4602(Lcom/android/camera/Camera;Z)Z
+
+    goto :goto_0
+
+    .line 800
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_2
+        :pswitch_0
+        :pswitch_1
+    .end packed-switch
 .end method

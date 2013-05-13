@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 2443
+    .line 2657
     iput-object p1, p0, Lcom/android/camera/Camera$13;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,14 +41,14 @@
     .locals 2
 
     .prologue
-    .line 2446
+    .line 2660
     iget-object v0, p0, Lcom/android/camera/Camera$13;->this$0:Lcom/android/camera/Camera;
 
     const/4 v1, 0x0
 
     #setter for: Lcom/android/camera/Camera;->mInitCaptureMode:Z
-    invoke-static {v0, v1}, Lcom/android/camera/Camera;->access$4802(Lcom/android/camera/Camera;Z)Z
+    invoke-static {v0, v1}, Lcom/android/camera/Camera;->access$5002(Lcom/android/camera/Camera;Z)Z
 
-    .line 2447
+    .line 2661
     return-void
 .end method

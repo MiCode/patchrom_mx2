@@ -854,19 +854,19 @@
     .end annotation
 
     .prologue
-    .line 582
+    .line 583
     :try_start_0
     invoke-virtual {p0}, Lcom/android/gallery3d/ui/GLRootView;->unfreeze()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 584
+    .line 585
     invoke-super {p0}, Landroid/opengl/GLSurfaceView;->finalize()V
 
-    .line 586
+    .line 587
     return-void
 
-    .line 584
+    .line 585
     :catchall_0
     move-exception v0
 
@@ -932,7 +932,7 @@
     .locals 0
 
     .prologue
-    .line 590
+    .line 591
     return-object p0
 .end method
 
@@ -953,13 +953,13 @@
     .locals 0
 
     .prologue
-    .line 575
+    .line 576
     invoke-virtual {p0}, Lcom/android/gallery3d/ui/GLRootView;->unfreeze()V
 
-    .line 576
+    .line 577
     invoke-super {p0}, Landroid/opengl/GLSurfaceView;->onDetachedFromWindow()V
 
-    .line 577
+    .line 578
     return-void
 .end method
 
@@ -1070,19 +1070,19 @@
     .locals 1
 
     .prologue
-    .line 595
+    .line 596
     iget-object v0, p0, Lcom/android/gallery3d/ui/GLRootView;->mContentView:Lcom/android/gallery3d/ui/GLView;
 
     if-eqz v0, :cond_0
 
-    .line 596
+    .line 597
     iget-object v0, p0, Lcom/android/gallery3d/ui/GLRootView;->mContentView:Lcom/android/gallery3d/ui/GLView;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/GLView;->onStatusBarTapScrollTop()Z
 
     move-result v0
 
-    .line 598
+    .line 599
     :goto_0
     return v0
 
@@ -1503,9 +1503,12 @@
     .line 548
     .local v0, flags:I
     :goto_0
-    invoke-virtual {p0, v0}, Lcom/android/gallery3d/ui/GLRootView;->setSystemUiVisibility(I)V
+    invoke-virtual {p0}, Lcom/android/gallery3d/ui/GLRootView;->requestLayout()V
 
     .line 549
+    invoke-virtual {p0, v0}, Lcom/android/gallery3d/ui/GLRootView;->setSystemUiVisibility(I)V
+
+    .line 550
     return-void
 
     .line 540
@@ -1536,13 +1539,13 @@
     .parameter "h"
 
     .prologue
-    .line 557
+    .line 558
     invoke-virtual {p0}, Lcom/android/gallery3d/ui/GLRootView;->unfreeze()V
 
-    .line 558
+    .line 559
     invoke-super {p0, p1, p2, p3, p4}, Landroid/opengl/GLSurfaceView;->surfaceChanged(Landroid/view/SurfaceHolder;III)V
 
-    .line 559
+    .line 560
     return-void
 .end method
 
@@ -1551,13 +1554,13 @@
     .parameter "holder"
 
     .prologue
-    .line 563
+    .line 564
     invoke-virtual {p0}, Lcom/android/gallery3d/ui/GLRootView;->unfreeze()V
 
-    .line 564
+    .line 565
     invoke-super {p0, p1}, Landroid/opengl/GLSurfaceView;->surfaceCreated(Landroid/view/SurfaceHolder;)V
 
-    .line 565
+    .line 566
     return-void
 .end method
 
@@ -1566,13 +1569,13 @@
     .parameter "holder"
 
     .prologue
-    .line 569
+    .line 570
     invoke-virtual {p0}, Lcom/android/gallery3d/ui/GLRootView;->unfreeze()V
 
-    .line 570
+    .line 571
     invoke-super {p0, p1}, Landroid/opengl/GLSurfaceView;->surfaceDestroyed(Landroid/view/SurfaceHolder;)V
 
-    .line 571
+    .line 572
     return-void
 .end method
 

@@ -36,7 +36,7 @@
     .parameter "folder"
 
     .prologue
-    .line 60
+    .line 72
     if-nez p1, :cond_0
 
     new-instance v1, Ljava/lang/IllegalArgumentException;
@@ -47,7 +47,7 @@
 
     throw v1
 
-    .line 63
+    .line 75
     :cond_0
     :try_start_0
     iget-object v1, p0, Lmeizu/samba/server/SambaServerManager;->mService:Lmeizu/samba/server/ISambaServerManager;
@@ -58,15 +58,44 @@
 
     move-result v1
 
-    .line 65
+    .line 77
     :goto_0
     return v1
 
-    .line 64
+    .line 76
     :catch_0
     move-exception v0
 
-    .line 65
+    .line 77
+    .local v0, e:Landroid/os/RemoteException;
+    const/4 v1, 0x0
+
+    goto :goto_0
+.end method
+
+.method public isServerRunning()Z
+    .locals 2
+
+    .prologue
+    .line 59
+    :try_start_0
+    iget-object v1, p0, Lmeizu/samba/server/SambaServerManager;->mService:Lmeizu/samba/server/ISambaServerManager;
+
+    invoke-interface {v1}, Lmeizu/samba/server/ISambaServerManager;->isServerRunning()Z
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result v1
+
+    .line 61
+    :goto_0
+    return v1
+
+    .line 60
+    :catch_0
+    move-exception v0
+
+    .line 61
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, 0x0
 
@@ -78,7 +107,7 @@
     .parameter "folder"
 
     .prologue
-    .line 76
+    .line 88
     if-nez p1, :cond_0
 
     new-instance v1, Ljava/lang/IllegalArgumentException;
@@ -89,7 +118,7 @@
 
     throw v1
 
-    .line 79
+    .line 91
     :cond_0
     :try_start_0
     iget-object v1, p0, Lmeizu/samba/server/SambaServerManager;->mService:Lmeizu/samba/server/ISambaServerManager;
@@ -100,15 +129,15 @@
 
     move-result v1
 
-    .line 81
+    .line 93
     :goto_0
     return v1
 
-    .line 80
+    .line 92
     :catch_0
     move-exception v0
 
-    .line 81
+    .line 93
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, 0x0
 

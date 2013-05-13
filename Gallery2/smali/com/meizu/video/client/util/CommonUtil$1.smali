@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 666
+    .line 667
     iput-object p1, p0, Lcom/meizu/video/client/util/CommonUtil$1;->val$loginUrl:Ljava/lang/String;
 
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
@@ -38,11 +38,11 @@
     .locals 1
 
     .prologue
-    .line 668
+    .line 669
     iget-object v0, p0, Lcom/meizu/video/client/util/CommonUtil$1;->val$loginUrl:Ljava/lang/String;
 
     invoke-static {v0}, Lcom/meizu/video/client/util/HttpUtil;->doGet(Ljava/lang/String;)Ljava/lang/String;
 
-    .line 669
+    .line 670
     return-void
 .end method

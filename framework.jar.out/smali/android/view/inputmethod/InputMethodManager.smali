@@ -557,7 +557,7 @@
 .end method
 
 .method private setInputShown(Z)V
-    .locals 6
+    .locals 4
     .parameter "shown"
 
     .prologue
@@ -571,29 +571,6 @@
     iget-boolean v2, p0, Landroid/view/inputmethod/InputMethodManager;->mInputShown:Z
 
     if-eq v2, p1, :cond_0
-
-    .line 1859
-    const-string v2, "InputMethodManager"
-
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v5, "onInputShownChanged: "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v2, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 1860
     iput-boolean p1, p0, Landroid/view/inputmethod/InputMethodManager;->mInputShown:Z
@@ -3094,11 +3071,6 @@
     iget v1, v0, Landroid/view/inputmethod/EditorInfo;->imeOffset:I
 
     if-eq v1, p1, :cond_0
-
-    .line 1162
-    iget-object v1, p0, Landroid/view/inputmethod/InputMethodManager;->mServedView:Landroid/view/View;
-
-    invoke-virtual {p0, v1}, Landroid/view/inputmethod/InputMethodManager;->restartInput(Landroid/view/View;)V
 
     .line 1164
     :cond_0

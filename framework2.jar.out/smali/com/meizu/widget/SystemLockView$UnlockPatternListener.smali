@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 354
+    .line 358
     iput-object p1, p0, Lcom/meizu/widget/SystemLockView$UnlockPatternListener;->this$0:Lcom/meizu/widget/SystemLockView;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .parameter "x1"
 
     .prologue
-    .line 354
+    .line 358
     invoke-direct {p0, p1}, Lcom/meizu/widget/SystemLockView$UnlockPatternListener;-><init>(Lcom/meizu/widget/SystemLockView;)V
 
     return-void
@@ -63,13 +63,13 @@
     .end annotation
 
     .prologue
-    .line 366
+    .line 370
     .local p1, pattern:Ljava/util/List;,"Ljava/util/List<Lcom/meizu/widget/LockDigitView$Cell;>;"
     invoke-interface {p1}, Ljava/util/List;->size()I
 
     move-result v2
 
-    .line 367
+    .line 371
     .local v2, size:I
     add-int/lit8 v3, v2, -0x1
 
@@ -79,7 +79,7 @@
 
     check-cast v0, Lcom/meizu/widget/LockDigitView$Cell;
 
-    .line 368
+    .line 372
     .local v0, newCell:Lcom/meizu/widget/LockDigitView$Cell;
     iget-object v3, p0, Lcom/meizu/widget/SystemLockView$UnlockPatternListener;->this$0:Lcom/meizu/widget/SystemLockView;
 
@@ -88,7 +88,7 @@
 
     move-result-object v1
 
-    .line 369
+    .line 373
     .local v1, newNum:Ljava/lang/String;
     const-string v3, "left"
 
@@ -98,17 +98,17 @@
 
     if-eqz v3, :cond_0
 
-    .line 370
+    .line 374
     iget-object v3, p0, Lcom/meizu/widget/SystemLockView$UnlockPatternListener;->this$0:Lcom/meizu/widget/SystemLockView;
 
     #calls: Lcom/meizu/widget/SystemLockView;->notifyKeyLeftButtonClick()V
     invoke-static {v3}, Lcom/meizu/widget/SystemLockView;->access$200(Lcom/meizu/widget/SystemLockView;)V
 
-    .line 376
+    .line 380
     :goto_0
     return-void
 
-    .line 371
+    .line 375
     :cond_0
     const-string v3, "right"
 
@@ -118,7 +118,7 @@
 
     if-eqz v3, :cond_1
 
-    .line 372
+    .line 376
     iget-object v3, p0, Lcom/meizu/widget/SystemLockView$UnlockPatternListener;->this$0:Lcom/meizu/widget/SystemLockView;
 
     #calls: Lcom/meizu/widget/SystemLockView;->notifyKeyRightButtonClick()V
@@ -126,7 +126,7 @@
 
     goto :goto_0
 
-    .line 374
+    .line 378
     :cond_1
     iget-object v3, p0, Lcom/meizu/widget/SystemLockView$UnlockPatternListener;->this$0:Lcom/meizu/widget/SystemLockView;
 
@@ -140,12 +140,12 @@
     .locals 0
 
     .prologue
-    .line 362
+    .line 366
     return-void
 .end method
 
 .method public onPatternDetected(Ljava/util/List;)V
-    .locals 0
+    .locals 2
     .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -158,8 +158,32 @@
     .end annotation
 
     .prologue
-    .line 381
+    .line 385
     .local p1, pattern:Ljava/util/List;,"Ljava/util/List<Lcom/meizu/widget/LockDigitView$Cell;>;"
+    iget-object v0, p0, Lcom/meizu/widget/SystemLockView$UnlockPatternListener;->this$0:Lcom/meizu/widget/SystemLockView;
+
+    #getter for: Lcom/meizu/widget/SystemLockView;->mCellCount:I
+    invoke-static {v0}, Lcom/meizu/widget/SystemLockView;->access$500(Lcom/meizu/widget/SystemLockView;)I
+
+    move-result v0
+
+    iget-object v1, p0, Lcom/meizu/widget/SystemLockView$UnlockPatternListener;->this$0:Lcom/meizu/widget/SystemLockView;
+
+    #getter for: Lcom/meizu/widget/SystemLockView;->mMaxCellLength:I
+    invoke-static {v1}, Lcom/meizu/widget/SystemLockView;->access$600(Lcom/meizu/widget/SystemLockView;)I
+
+    move-result v1
+
+    if-lt v0, v1, :cond_0
+
+    .line 386
+    iget-object v0, p0, Lcom/meizu/widget/SystemLockView$UnlockPatternListener;->this$0:Lcom/meizu/widget/SystemLockView;
+
+    #calls: Lcom/meizu/widget/SystemLockView;->notifyCellFhish()V
+    invoke-static {v0}, Lcom/meizu/widget/SystemLockView;->access$700(Lcom/meizu/widget/SystemLockView;)V
+
+    .line 388
+    :cond_0
     return-void
 .end method
 
@@ -167,6 +191,6 @@
     .locals 0
 
     .prologue
-    .line 358
+    .line 362
     return-void
 .end method

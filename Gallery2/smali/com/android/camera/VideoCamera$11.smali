@@ -7,8 +7,8 @@
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Lcom/android/camera/VideoCamera;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/android/camera/VideoCamera;->onResume()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 2340
+    .line 1621
     iput-object p1, p0, Lcom/android/camera/VideoCamera$11;->this$0:Lcom/android/camera/VideoCamera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,30 +38,21 @@
 
 # virtual methods
 .method public run()V
-    .locals 4
+    .locals 3
 
     .prologue
-    .line 2342
-    new-instance v0, Lcom/android/camera/VideoCamera$GetThumbnailTask;
+    .line 1624
+    iget-object v0, p0, Lcom/android/camera/VideoCamera$11;->this$0:Lcom/android/camera/VideoCamera;
 
     iget-object v1, p0, Lcom/android/camera/VideoCamera$11;->this$0:Lcom/android/camera/VideoCamera;
 
-    const/4 v2, 0x0
+    #getter for: Lcom/android/camera/VideoCamera;->mStorageSpace:J
+    invoke-static {v1}, Lcom/android/camera/VideoCamera;->access$4800(Lcom/android/camera/VideoCamera;)J
 
-    invoke-direct {v0, v1, v2}, Lcom/android/camera/VideoCamera$GetThumbnailTask;-><init>(Lcom/android/camera/VideoCamera;Lcom/android/camera/VideoCamera$1;)V
+    move-result-wide v1
 
-    const/4 v1, 0x1
+    invoke-virtual {v0, v1, v2}, Lcom/android/camera/VideoCamera;->updateStorageHint(J)V
 
-    new-array v1, v1, [Ljava/lang/String;
-
-    const/4 v2, 0x0
-
-    const-string v3, ""
-
-    aput-object v3, v1, v2
-
-    invoke-virtual {v0, v1}, Lcom/android/camera/VideoCamera$GetThumbnailTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
-
-    .line 2343
+    .line 1625
     return-void
 .end method

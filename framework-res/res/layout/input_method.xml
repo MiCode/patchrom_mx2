@@ -7,7 +7,7 @@
     </LinearLayout>
     <RelativeLayout android:id="@id/inputAreaWithSmile" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <FrameLayout android:id="@id/inputArea" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <FrameLayout android:id="@id/smileInputArea" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_alignBottom="@id/inputArea" />
+        <FrameLayout android:id="@id/smileInputArea" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignBottom="@id/inputArea" />
     </RelativeLayout>
     <FrameLayout android:id="@id/actionInputArea" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

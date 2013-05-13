@@ -7,11 +7,11 @@
         <include layout="@layout/zoom_control_bar" />
         <include layout="@layout/exposure_control_bar" />
         <include layout="@layout/smile_indicators" />
-        <include layout="@layout/toast_indicators" />
         <include layout="@layout/panorama_indicators" />
         <include layout="@layout/capture_ani_indicator" />
     </com.android.camera.PreviewFrameLayout>
     <ImageView android:id="@id/capture_anim_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layerType="hardware" />
+    <include layout="@layout/toast_indicators" />
     <include layout="@layout/capture_ani" />
     <include layout="@layout/priority_indicators" />
     <include layout="@layout/flashlight_list" />

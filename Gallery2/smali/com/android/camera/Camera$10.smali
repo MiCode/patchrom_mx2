@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 1264
+    .line 1366
     iput-object p1, p0, Lcom/android/camera/Camera$10;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -35,89 +35,126 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 5
+    .locals 3
     .parameter "context"
     .parameter "intent"
 
     .prologue
-    .line 1267
+    .line 1369
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 1268
+    .line 1370
     .local v0, action:Ljava/lang/String;
-    const-string v2, "android.intent.action.BATTERY_CHANGED"
+    const-string v1, "android.intent.action.SCREEN_OFF"
 
-    invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v2
+    move-result v1
 
-    if-eqz v2, :cond_1
+    if-eqz v1, :cond_4
 
-    .line 1269
-    iget-object v2, p0, Lcom/android/camera/Camera$10;->this$0:Lcom/android/camera/Camera;
+    .line 1371
+    iget-object v1, p0, Lcom/android/camera/Camera$10;->this$0:Lcom/android/camera/Camera;
 
-    invoke-static {v2}, Lcom/android/camera/Util;->checkIsLowBattery(Landroid/content/Context;)Z
+    #calls: Lcom/android/camera/Camera;->isMeizuSystemCaptureIntent()Z
+    invoke-static {v1}, Lcom/android/camera/Camera;->access$7000(Lcom/android/camera/Camera;)Z
 
-    move-result v2
+    move-result v1
 
-    if-eqz v2, :cond_0
+    if-nez v1, :cond_0
 
-    .line 1270
-    iget-object v2, p0, Lcom/android/camera/Camera$10;->this$0:Lcom/android/camera/Camera;
+    iget-object v1, p0, Lcom/android/camera/Camera$10;->this$0:Lcom/android/camera/Camera;
 
-    invoke-virtual {v2}, Lcom/android/camera/Camera;->finish()V
+    #getter for: Lcom/android/camera/Camera;->mIsLockViewIntent:Z
+    invoke-static {v1}, Lcom/android/camera/Camera;->access$7100(Lcom/android/camera/Camera;)Z
 
-    .line 1279
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    .line 1373
     :cond_0
-    :goto_0
-    return-void
+    iget-object v1, p0, Lcom/android/camera/Camera$10;->this$0:Lcom/android/camera/Camera;
 
-    .line 1272
-    :cond_1
-    const-string v2, "android.intent.action.MEIZU_HDMI_STATUS_CHANGED"
-
-    invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    .line 1273
-    const-string v2, "multimedia.hdmi.status"
-
-    invoke-static {v2}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v1}, Lcom/android/camera/Camera;->getWindow()Landroid/view/Window;
 
     move-result-object v1
 
-    .line 1274
-    .local v1, s:Ljava/lang/String;
-    const-string v2, "available"
+    const/high16 v2, 0x8
 
-    invoke-virtual {v2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v2}, Landroid/view/Window;->clearFlags(I)V
 
-    move-result v2
+    .line 1374
+    iget-object v1, p0, Lcom/android/camera/Camera$10;->this$0:Lcom/android/camera/Camera;
 
-    if-eqz v2, :cond_0
+    #calls: Lcom/android/camera/Camera;->releaseLightScreen()V
+    invoke-static {v1}, Lcom/android/camera/Camera;->access$7200(Lcom/android/camera/Camera;)V
 
-    .line 1275
-    iget-object v2, p0, Lcom/android/camera/Camera$10;->this$0:Lcom/android/camera/Camera;
+    .line 1378
+    :cond_1
+    iget-object v1, p0, Lcom/android/camera/Camera$10;->this$0:Lcom/android/camera/Camera;
 
-    const v3, 0x7f0a00bb
+    #getter for: Lcom/android/camera/Camera;->mIsLockView:Z
+    invoke-static {v1}, Lcom/android/camera/Camera;->access$7300(Lcom/android/camera/Camera;)Z
 
-    const/4 v4, 0x1
+    move-result v1
 
-    invoke-static {v2, v3, v4}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
+    if-eqz v1, :cond_2
 
-    move-result-object v2
+    .line 1379
+    iget-object v1, p0, Lcom/android/camera/Camera$10;->this$0:Lcom/android/camera/Camera;
 
-    invoke-virtual {v2}, Landroid/widget/Toast;->show()V
+    invoke-virtual {v1}, Lcom/android/camera/Camera;->finish()V
 
-    .line 1276
-    iget-object v2, p0, Lcom/android/camera/Camera$10;->this$0:Lcom/android/camera/Camera;
+    .line 1384
+    :cond_2
+    iget-object v1, p0, Lcom/android/camera/Camera$10;->this$0:Lcom/android/camera/Camera;
 
-    invoke-virtual {v2}, Lcom/android/camera/Camera;->finish()V
+    #getter for: Lcom/android/camera/Camera;->mIsCall_State_OffHook:Z
+    invoke-static {v1}, Lcom/android/camera/Camera;->access$4600(Lcom/android/camera/Camera;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_3
+
+    iget-object v1, p0, Lcom/android/camera/Camera$10;->this$0:Lcom/android/camera/Camera;
+
+    iget-boolean v1, v1, Lcom/android/camera/ActivityBase;->mPaused:Z
+
+    if-eqz v1, :cond_3
+
+    .line 1385
+    iget-object v1, p0, Lcom/android/camera/Camera$10;->this$0:Lcom/android/camera/Camera;
+
+    const/4 v2, 0x1
+
+    #setter for: Lcom/android/camera/Camera;->mIsPowerPressed:Z
+    invoke-static {v1, v2}, Lcom/android/camera/Camera;->access$5402(Lcom/android/camera/Camera;Z)Z
+
+    .line 1391
+    :cond_3
+    :goto_0
+    return-void
+
+    .line 1388
+    :cond_4
+    const-string v1, "android.intent.action.KEYGUARD_UNLOCK"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_3
+
+    .line 1389
+    iget-object v1, p0, Lcom/android/camera/Camera$10;->this$0:Lcom/android/camera/Camera;
+
+    const/4 v2, 0x0
+
+    #setter for: Lcom/android/camera/Camera;->mIsPowerPressed:Z
+    invoke-static {v1, v2}, Lcom/android/camera/Camera;->access$5402(Lcom/android/camera/Camera;Z)Z
 
     goto :goto_0
 .end method

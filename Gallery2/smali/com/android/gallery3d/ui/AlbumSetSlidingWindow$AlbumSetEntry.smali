@@ -32,6 +32,8 @@
     .end annotation
 .end field
 
+.field private fontScale:F
+
 .field private labelLoader:Lcom/android/gallery3d/ui/BitmapLoader;
 
 .field public labelTexture:Lcom/android/gallery3d/ui/BitmapTexture;
@@ -91,7 +93,30 @@
     return-object p1
 .end method
 
-.method static synthetic access$200(Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumSetEntry;III)V
+.method static synthetic access$200(Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumSetEntry;)F
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 91
+    iget v0, p0, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumSetEntry;->fontScale:F
+
+    return v0
+.end method
+
+.method static synthetic access$202(Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumSetEntry;F)F
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 91
+    iput p1, p0, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumSetEntry;->fontScale:F
+
+    return p1
+.end method
+
+.method static synthetic access$300(Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumSetEntry;III)V
     .locals 0
     .parameter "x0"
     .parameter "x1"
@@ -112,18 +137,18 @@
     .parameter "coverMargin"
 
     .prologue
-    .line 109
+    .line 110
     move/from16 v3, p2
 
-    .line 113
+    .line 114
     .local v3, bottom:I
     add-int v12, p1, p3
 
-    .line 114
+    .line 115
     .local v12, lastRight:I
     move v15, v12
 
-    .line 116
+    .line 117
     .local v15, minLeft:I
     const/4 v8, 0x0
 
@@ -146,7 +171,7 @@
 
     if-gt v8, v0, :cond_3
 
-    .line 117
+    .line 118
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumSetEntry;->coverItem:Ljava/util/ArrayList;
@@ -167,45 +192,45 @@
 
     move-object/from16 v17, v0
 
-    .line 118
+    .line 119
     .local v17, rect:Landroid/graphics/Rect;
     invoke-virtual/range {v17 .. v17}, Landroid/graphics/Rect;->width()I
 
     move-result v20
 
-    .line 119
+    .line 120
     .local v20, width:I
     invoke-virtual/range {v17 .. v17}, Landroid/graphics/Rect;->height()I
 
     move-result v7
 
-    .line 121
+    .line 122
     .local v7, height:I
     sub-int v12, v12, p3
 
-    .line 123
+    .line 124
     move/from16 v18, v12
 
-    .line 125
+    .line 126
     .local v18, right:I
     sub-int v13, v18, v20
 
-    .line 127
+    .line 128
     .local v13, left:I
     if-gez v13, :cond_2
 
-    .line 128
+    .line 129
     const/4 v13, 0x0
 
-    .line 129
+    .line 130
     move/from16 v18, v20
 
-    .line 135
+    .line 136
     :cond_0
     :goto_1
     sub-int v19, v3, v7
 
-    .line 137
+    .line 138
     .local v19, top:I
     move-object/from16 v0, v17
 
@@ -215,22 +240,22 @@
 
     invoke-virtual {v0, v13, v1, v2, v3}, Landroid/graphics/Rect;->set(IIII)V
 
-    .line 139
+    .line 140
     if-ge v13, v15, :cond_1
 
-    .line 140
+    .line 141
     move v15, v13
 
-    .line 142
+    .line 143
     :cond_1
     move/from16 v12, v18
 
-    .line 116
+    .line 117
     add-int/lit8 v8, v8, 0x1
 
     goto :goto_0
 
-    .line 130
+    .line 131
     .end local v19           #top:I
     :cond_2
     move/from16 v0, v16
@@ -239,15 +264,15 @@
 
     if-le v13, v15, :cond_0
 
-    .line 131
+    .line 132
     move v13, v15
 
-    .line 132
+    .line 133
     add-int v18, v13, v20
 
     goto :goto_1
 
-    .line 145
+    .line 146
     .end local v7           #height:I
     .end local v13           #left:I
     .end local v17           #rect:Landroid/graphics/Rect;
@@ -260,10 +285,10 @@
 
     if-le v15, v0, :cond_4
 
-    .line 146
+    .line 147
     div-int/lit8 v15, v15, 0x2
 
-    .line 147
+    .line 148
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumSetEntry;->coverItem:Ljava/util/ArrayList;
@@ -288,7 +313,7 @@
 
     check-cast v5, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;
 
-    .line 148
+    .line 149
     .local v5, cover:Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;
     iget-object v0, v5, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;->rect:Landroid/graphics/Rect;
 
@@ -304,7 +329,7 @@
 
     goto :goto_2
 
-    .line 152
+    .line 153
     .end local v5           #cover:Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;
     .end local v9           #i$:Ljava/util/Iterator;
     :cond_4
@@ -324,7 +349,7 @@
     :goto_3
     if-ge v8, v10, :cond_9
 
-    .line 153
+    .line 154
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumSetEntry;->coverItem:Ljava/util/ArrayList;
@@ -339,29 +364,29 @@
 
     check-cast v5, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;
 
-    .line 154
+    .line 155
     .restart local v5       #cover:Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;
     if-nez v8, :cond_6
 
-    .line 155
+    .line 156
     const/16 v21, 0x0
 
     move/from16 v0, v21
 
     iput v0, v5, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;->shadowHeight:I
 
-    .line 152
+    .line 153
     :cond_5
     :goto_4
     add-int/lit8 v8, v8, 0x1
 
     goto :goto_3
 
-    .line 158
+    .line 159
     :cond_6
     const/4 v14, 0x0
 
-    .line 159
+    .line 160
     .local v14, maxHeight:I
     const/4 v11, 0x0
 
@@ -369,7 +394,7 @@
     :goto_5
     if-ge v11, v8, :cond_8
 
-    .line 160
+    .line 161
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumSetEntry;->coverItem:Ljava/util/ArrayList;
@@ -384,7 +409,7 @@
 
     check-cast v4, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;
 
-    .line 161
+    .line 162
     .local v4, c:Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;
     iget-object v0, v5, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;->rect:Landroid/graphics/Rect;
 
@@ -412,7 +437,7 @@
 
     if-lt v0, v1, :cond_7
 
-    .line 162
+    .line 163
     iget-object v0, v4, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;->rect:Landroid/graphics/Rect;
 
     move-object/from16 v21, v0
@@ -421,21 +446,21 @@
 
     move-result v6
 
-    .line 163
+    .line 164
     .local v6, h:I
     if-le v6, v14, :cond_7
 
-    .line 164
+    .line 165
     move v14, v6
 
-    .line 159
+    .line 160
     .end local v6           #h:I
     :cond_7
     add-int/lit8 v11, v11, 0x1
 
     goto :goto_5
 
-    .line 168
+    .line 169
     .end local v4           #c:Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;
     :cond_8
     iget-object v0, v5, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;->rect:Landroid/graphics/Rect;
@@ -450,7 +475,7 @@
 
     iput v0, v5, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;->shadowHeight:I
 
-    .line 169
+    .line 170
     iget v0, v5, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;->shadowHeight:I
 
     move/from16 v21, v0
@@ -459,12 +484,12 @@
 
     if-le v0, v14, :cond_5
 
-    .line 170
+    .line 171
     iput v14, v5, Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;->shadowHeight:I
 
     goto :goto_4
 
-    .line 173
+    .line 174
     .end local v5           #cover:Lcom/android/gallery3d/ui/AlbumSetSlidingWindow$AlbumCover;
     .end local v11           #k:I
     .end local v14           #maxHeight:I

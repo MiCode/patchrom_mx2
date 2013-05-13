@@ -43,7 +43,7 @@
     invoke-direct {p0, p1, p2}, Landroid/widget/RelativeLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 55
-    const v0, 0x7f020103
+    const v0, 0x7f0200fc
 
     invoke-virtual {p0, p1, v0}, Lcom/android/camera/ui/ZoomControl;->addImageView(Landroid/content/Context;I)Landroid/widget/ImageView;
 
@@ -52,7 +52,7 @@
     iput-object v0, p0, Lcom/android/camera/ui/ZoomControl;->mZoomIn:Landroid/widget/ImageView;
 
     .line 56
-    const v0, 0x7f020109
+    const v0, 0x7f020102
 
     invoke-virtual {p0, p1, v0}, Lcom/android/camera/ui/ZoomControl;->addImageView(Landroid/content/Context;I)Landroid/widget/ImageView;
 
@@ -61,7 +61,7 @@
     iput-object v0, p0, Lcom/android/camera/ui/ZoomControl;->mZoomSlider:Landroid/widget/ImageView;
 
     .line 57
-    const v0, 0x7f020106
+    const v0, 0x7f0200ff
 
     invoke-virtual {p0, p1, v0}, Lcom/android/camera/ui/ZoomControl;->addImageView(Landroid/content/Context;I)Landroid/widget/ImageView;
 
@@ -91,7 +91,7 @@
     invoke-virtual {v0, p2}, Lcom/android/camera/ui/RotateImageView;->setImageResource(I)V
 
     .line 68
-    const v1, 0x7f020109
+    const v1, 0x7f020102
 
     if-ne p2, v1, :cond_0
 
@@ -100,7 +100,7 @@
 
     move-result-object v1
 
-    const v2, 0x7f0a00a2
+    const v2, 0x7f0a00ac
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -121,7 +121,7 @@
 
     move-result-object v1
 
-    const v2, 0x7f0a00a9
+    const v2, 0x7f0a00b3
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

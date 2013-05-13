@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 204
+    .line 209
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumDataLoader$MySourceListener;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .parameter "x1"
 
     .prologue
-    .line 204
+    .line 209
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/AlbumDataLoader$MySourceListener;-><init>(Lcom/android/gallery3d/app/AlbumDataLoader;)V
 
     return-void
@@ -53,7 +53,7 @@
     .locals 1
 
     .prologue
-    .line 206
+    .line 211
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumDataLoader$MySourceListener;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumDataLoader;->mReloadTask:Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;
@@ -72,7 +72,7 @@
 
     invoke-virtual {v0}, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->notifyDirty()V
 
-    .line 207
+    .line 212
     :cond_0
     return-void
 .end method

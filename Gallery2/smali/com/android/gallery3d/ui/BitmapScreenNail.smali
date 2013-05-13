@@ -318,7 +318,7 @@
 
     int-to-float v4, p5
 
-    const v5, -0xddddde
+    const v5, 0x7f222222
 
     move-object v0, p1
 
@@ -371,7 +371,7 @@
     .line 158
     iget-object v1, p0, Lcom/android/gallery3d/ui/BitmapScreenNail;->mTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
-    const v2, -0xddddde
+    const v2, 0x7f222222
 
     invoke-direct {p0}, Lcom/android/gallery3d/ui/BitmapScreenNail;->getRatio()F
 
@@ -435,7 +435,7 @@
 
     move-result v4
 
-    const v5, -0xddddde
+    const v5, 0x7f222222
 
     move-object v0, p1
 

@@ -39,7 +39,7 @@
     .parameter
 
     .prologue
-    .line 427
+    .line 432
     iput-object p1, p0, Lcom/android/camera/CameraManager$CameraProxy$1;->this$1:Lcom/android/camera/CameraManager$CameraProxy;
 
     iput-object p2, p0, Lcom/android/camera/CameraManager$CameraProxy$1;->val$shutter:Landroid/hardware/Camera$ShutterCallback;
@@ -61,7 +61,7 @@
     .locals 5
 
     .prologue
-    .line 430
+    .line 435
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy$1;->this$1:Lcom/android/camera/CameraManager$CameraProxy;
 
     iget-object v0, v0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
@@ -81,7 +81,7 @@
 
     invoke-virtual {v0, v1, v2, v3, v4}, Landroid/hardware/Camera;->takePicture(Landroid/hardware/Camera$ShutterCallback;Landroid/hardware/Camera$PictureCallback;Landroid/hardware/Camera$PictureCallback;Landroid/hardware/Camera$PictureCallback;)V
 
-    .line 431
+    .line 436
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy$1;->this$1:Lcom/android/camera/CameraManager$CameraProxy;
 
     iget-object v0, v0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
@@ -93,6 +93,6 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->open()V
 
-    .line 432
+    .line 437
     return-void
 .end method

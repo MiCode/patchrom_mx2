@@ -25,7 +25,7 @@
     .parameter "x0"
 
     .prologue
-    .line 125
+    .line 128
     iput-object p1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$1;->this$0:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     invoke-direct {p0, p2}, Lcom/android/gallery3d/ui/SynchronizedHandler;-><init>(Lcom/android/gallery3d/ui/GLRoot;)V
@@ -40,7 +40,7 @@
     .parameter "message"
 
     .prologue
-    .line 128
+    .line 131
     iget v0, p1, Landroid/os/Message;->what:I
 
     if-nez v0, :cond_0
@@ -50,17 +50,17 @@
     :goto_0
     invoke-static {v0}, Lcom/android/gallery3d/common/Utils;->assertTrue(Z)V
 
-    .line 129
+    .line 132
     iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryUpdater;
 
     invoke-interface {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryUpdater;->updateEntry()V
 
-    .line 130
+    .line 133
     return-void
 
-    .line 128
+    .line 131
     :cond_0
     const/4 v0, 0x0
 

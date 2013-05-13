@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 485
+    .line 503
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumPage$4;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     iput-object p2, p0, Lcom/android/gallery3d/app/AlbumPage$4;->val$path:Lcom/android/gallery3d/data/Path;
@@ -48,40 +48,40 @@
     .parameter "event"
 
     .prologue
-    .line 488
+    .line 506
     invoke-virtual {p2}, Landroid/view/DragEvent;->getAction()I
 
     move-result v0
 
     sparse-switch v0, :sswitch_data_0
 
-    .line 497
+    .line 515
     :goto_0
     const/4 v0, 0x0
 
     return v0
 
-    .line 491
+    .line 509
     :sswitch_0
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$4;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #calls: Lcom/android/gallery3d/app/AlbumPage;->onDragEnd()V
-    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage;->access$1000(Lcom/android/gallery3d/app/AlbumPage;)V
+    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage;->access$1200(Lcom/android/gallery3d/app/AlbumPage;)V
 
     goto :goto_0
 
-    .line 494
+    .line 512
     :sswitch_1
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$4;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$4;->val$path:Lcom/android/gallery3d/data/Path;
 
     #calls: Lcom/android/gallery3d/app/AlbumPage;->onDragStarted(Lcom/android/gallery3d/data/Path;)V
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/AlbumPage;->access$1100(Lcom/android/gallery3d/app/AlbumPage;Lcom/android/gallery3d/data/Path;)V
+    invoke-static {v0, v1}, Lcom/android/gallery3d/app/AlbumPage;->access$1300(Lcom/android/gallery3d/app/AlbumPage;Lcom/android/gallery3d/data/Path;)V
 
     goto :goto_0
 
-    .line 488
+    .line 506
     nop
 
     :sswitch_data_0

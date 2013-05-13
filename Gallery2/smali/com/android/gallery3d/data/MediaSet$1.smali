@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 261
+    .line 267
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -44,7 +44,7 @@
     .locals 0
 
     .prologue
-    .line 263
+    .line 269
     return-void
 .end method
 
@@ -52,7 +52,7 @@
     .locals 1
 
     .prologue
-    .line 277
+    .line 283
     const/4 v0, 0x0
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -66,7 +66,7 @@
     .locals 1
 
     .prologue
-    .line 261
+    .line 267
     invoke-virtual {p0}, Lcom/android/gallery3d/data/MediaSet$1;->get()Ljava/lang/Integer;
 
     move-result-object v0
@@ -78,7 +78,7 @@
     .locals 1
 
     .prologue
-    .line 267
+    .line 273
     const/4 v0, 0x0
 
     return v0
@@ -88,7 +88,7 @@
     .locals 1
 
     .prologue
-    .line 272
+    .line 278
     const/4 v0, 0x1
 
     return v0
@@ -98,6 +98,6 @@
     .locals 0
 
     .prologue
-    .line 281
+    .line 287
     return-void
 .end method

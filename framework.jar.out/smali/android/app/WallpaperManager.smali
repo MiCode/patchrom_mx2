@@ -130,7 +130,7 @@
 
     .line 530
     .local v0, d:Landroid/view/Display;
-    invoke-virtual {v0, v1}, Landroid/view/Display;->getRealMetrics(Landroid/util/DisplayMetrics;)V
+    invoke-virtual {v0, v1}, Landroid/view/Display;->getMetricsMz(Landroid/util/DisplayMetrics;)V
 
     .line 531
     iget v3, v1, Landroid/util/DisplayMetrics;->widthPixels:I
@@ -234,25 +234,25 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 1219
+    .line 1205
     if-nez p0, :cond_1
 
     move-object p0, v4
 
-    .line 1269
+    .line 1255
     .end local p0
     :cond_0
     :goto_0
     return-object p0
 
-    .line 1223
+    .line 1209
     .restart local p0
     :cond_1
     sget v8, Landroid/util/DisplayMetrics;->DENSITY_DEVICE:I
 
     invoke-virtual {p0, v8}, Landroid/graphics/Bitmap;->setDensity(I)V
 
-    .line 1225
+    .line 1211
     if-lez p1, :cond_0
 
     if-lez p2, :cond_0
@@ -269,7 +269,7 @@
 
     if-eq v8, p2, :cond_0
 
-    .line 1232
+    .line 1218
     :cond_2
     :try_start_0
     sget-object v8, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
@@ -278,24 +278,24 @@
 
     move-result-object v4
 
-    .line 1233
+    .line 1219
     .local v4, newbm:Landroid/graphics/Bitmap;
     sget v8, Landroid/util/DisplayMetrics;->DENSITY_DEVICE:I
 
     invoke-virtual {v4, v8}, Landroid/graphics/Bitmap;->setDensity(I)V
 
-    .line 1235
+    .line 1221
     new-instance v0, Landroid/graphics/Canvas;
 
     invoke-direct {v0, v4}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
 
-    .line 1236
+    .line 1222
     .local v0, c:Landroid/graphics/Canvas;
     new-instance v7, Landroid/graphics/Rect;
 
     invoke-direct {v7}, Landroid/graphics/Rect;-><init>()V
 
-    .line 1237
+    .line 1223
     .local v7, targetRect:Landroid/graphics/Rect;
     invoke-virtual {p0}, Landroid/graphics/Bitmap;->getWidth()I
 
@@ -303,35 +303,35 @@
 
     iput v8, v7, Landroid/graphics/Rect;->right:I
 
-    .line 1238
+    .line 1224
     invoke-virtual {p0}, Landroid/graphics/Bitmap;->getHeight()I
 
     move-result v8
 
     iput v8, v7, Landroid/graphics/Rect;->bottom:I
 
-    .line 1240
+    .line 1226
     iget v8, v7, Landroid/graphics/Rect;->right:I
 
     sub-int v2, p1, v8
 
-    .line 1241
+    .line 1227
     .local v2, deltaw:I
     iget v8, v7, Landroid/graphics/Rect;->bottom:I
 
     sub-int v1, p2, v8
 
-    .line 1243
+    .line 1229
     .local v1, deltah:I
     if-gtz v2, :cond_3
 
     if-lez v1, :cond_4
 
-    .line 1246
+    .line 1232
     :cond_3
     if-le v2, v1, :cond_5
 
-    .line 1247
+    .line 1233
     int-to-float v8, p1
 
     iget v9, v7, Landroid/graphics/Rect;->right:I
@@ -340,7 +340,7 @@
 
     div-float v6, v8, v9
 
-    .line 1251
+    .line 1237
     .local v6, scale:F
     :goto_1
     iget v8, v7, Landroid/graphics/Rect;->right:I
@@ -353,7 +353,7 @@
 
     iput v8, v7, Landroid/graphics/Rect;->right:I
 
-    .line 1252
+    .line 1238
     iget v8, v7, Landroid/graphics/Rect;->bottom:I
 
     int-to-float v8, v8
@@ -364,17 +364,17 @@
 
     iput v8, v7, Landroid/graphics/Rect;->bottom:I
 
-    .line 1253
+    .line 1239
     iget v8, v7, Landroid/graphics/Rect;->right:I
 
     sub-int v2, p1, v8
 
-    .line 1254
+    .line 1240
     iget v8, v7, Landroid/graphics/Rect;->bottom:I
 
     sub-int v1, p2, v8
 
-    .line 1257
+    .line 1243
     .end local v6           #scale:F
     :cond_4
     div-int/lit8 v8, v2, 0x2
@@ -383,18 +383,18 @@
 
     invoke-virtual {v7, v8, v9}, Landroid/graphics/Rect;->offset(II)V
 
-    .line 1259
+    .line 1245
     new-instance v5, Landroid/graphics/Paint;
 
     invoke-direct {v5}, Landroid/graphics/Paint;-><init>()V
 
-    .line 1260
+    .line 1246
     .local v5, paint:Landroid/graphics/Paint;
     const/4 v8, 0x1
 
     invoke-virtual {v5, v8}, Landroid/graphics/Paint;->setFilterBitmap(Z)V
 
-    .line 1261
+    .line 1247
     new-instance v8, Landroid/graphics/PorterDuffXfermode;
 
     sget-object v9, Landroid/graphics/PorterDuff$Mode;->SRC:Landroid/graphics/PorterDuff$Mode;
@@ -403,25 +403,25 @@
 
     invoke-virtual {v5, v8}, Landroid/graphics/Paint;->setXfermode(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
 
-    .line 1262
+    .line 1248
     const/4 v8, 0x0
 
     invoke-virtual {v0, p0, v8, v7, v5}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
 
-    .line 1264
+    .line 1250
     invoke-virtual {p0}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 1265
+    .line 1251
     const/4 v8, 0x0
 
     invoke-virtual {v0, v8}, Landroid/graphics/Canvas;->setBitmap(Landroid/graphics/Bitmap;)V
 
     move-object p0, v4
 
-    .line 1266
+    .line 1252
     goto/16 :goto_0
 
-    .line 1249
+    .line 1235
     .end local v5           #paint:Landroid/graphics/Paint;
     :cond_5
     int-to-float v8, p2
@@ -437,7 +437,7 @@
     .restart local v6       #scale:F
     goto :goto_1
 
-    .line 1267
+    .line 1253
     .end local v0           #c:Landroid/graphics/Canvas;
     .end local v1           #deltah:I
     .end local v2           #deltaw:I
@@ -447,7 +447,7 @@
     :catch_0
     move-exception v3
 
-    .line 1268
+    .line 1254
     .local v3, e:Ljava/lang/OutOfMemoryError;
     sget-object v8, Landroid/app/WallpaperManager;->TAG:Ljava/lang/String;
 
@@ -527,12 +527,12 @@
     .end annotation
 
     .prologue
-    .line 991
+    .line 977
     const v2, 0x8000
 
     new-array v1, v2, [B
 
-    .line 993
+    .line 979
     .local v1, buffer:[B
     :goto_0
     invoke-virtual {p1, v1}, Ljava/io/InputStream;->read([B)I
@@ -542,14 +542,14 @@
     .local v0, amt:I
     if-lez v0, :cond_0
 
-    .line 994
+    .line 980
     const/4 v2, 0x0
 
     invoke-virtual {p2, v1, v2, v0}, Ljava/io/FileOutputStream;->write([BII)V
 
     goto :goto_0
 
-    .line 996
+    .line 982
     :cond_0
     return-void
 .end method
@@ -565,12 +565,12 @@
     .end annotation
 
     .prologue
-    .line 912
+    .line 898
     const v2, 0x8000
 
     new-array v1, v2, [B
 
-    .line 914
+    .line 900
     .local v1, buffer:[B
     :goto_0
     invoke-virtual {p1, v1}, Ljava/io/InputStream;->read([B)I
@@ -580,14 +580,14 @@
     .local v0, amt:I
     if-lez v0, :cond_0
 
-    .line 915
+    .line 901
     const/4 v2, 0x0
 
     invoke-virtual {p2, v1, v2, v0}, Ljava/io/FileOutputStream;->write([BII)V
 
     goto :goto_0
 
-    .line 917
+    .line 903
     :cond_0
     return-void
 .end method
@@ -603,12 +603,12 @@
     .end annotation
 
     .prologue
-    .line 1213
-    const v0, 0x10802af
+    .line 1199
+    const v0, 0x10802b3
 
     invoke-virtual {p0, v0}, Landroid/app/WallpaperManager;->setResource(I)V
 
-    .line 1214
+    .line 1200
     return-void
 .end method
 
@@ -621,12 +621,12 @@
     .end annotation
 
     .prologue
-    .line 1216
-    const v0, 0x10802ae
+    .line 1202
+    const v0, 0x10802b2
 
     invoke-virtual {p0, v0}, Landroid/app/WallpaperManager;->setResourceToLockWallpaper(I)V
 
-    .line 1217
+    .line 1203
     return-void
 .end method
 
@@ -635,7 +635,7 @@
     .parameter "windowToken"
 
     .prologue
-    .line 1194
+    .line 1180
     :try_start_0
     iget-object v0, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
@@ -661,11 +661,11 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1199
+    .line 1185
     :goto_0
     return-void
 
-    .line 1196
+    .line 1182
     :catch_0
     move-exception v0
 
@@ -676,12 +676,12 @@
     .locals 1
 
     .prologue
-    .line 773
+    .line 759
     sget-object v0, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     invoke-virtual {v0}, Landroid/app/WallpaperManager$Globals;->forgetLoadedLockWallpaper()V
 
-    .line 774
+    .line 760
     return-void
 .end method
 
@@ -689,12 +689,12 @@
     .locals 1
 
     .prologue
-    .line 769
+    .line 755
     sget-object v0, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     invoke-virtual {v0}, Landroid/app/WallpaperManager$Globals;->forgetLoadedWallpaper()V
 
-    .line 770
+    .line 756
     return-void
 .end method
 
@@ -702,7 +702,7 @@
     .locals 3
 
     .prologue
-    .line 750
+    .line 736
     sget-object v0, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     iget-object v1, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
@@ -722,7 +722,7 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 1061
+    .line 1047
     sget-object v2, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     #getter for: Landroid/app/WallpaperManager$Globals;->mService:Landroid/app/IWallpaperManager;
@@ -732,18 +732,18 @@
 
     if-nez v2, :cond_0
 
-    .line 1062
+    .line 1048
     sget-object v2, Landroid/app/WallpaperManager;->TAG:Ljava/lang/String;
 
     const-string v3, "WallpaperService not running"
 
     invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1069
+    .line 1055
     :goto_0
     return v1
 
-    .line 1066
+    .line 1052
     :cond_0
     :try_start_0
     sget-object v2, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
@@ -761,11 +761,11 @@
 
     goto :goto_0
 
-    .line 1067
+    .line 1053
     :catch_0
     move-exception v0
 
-    .line 1069
+    .line 1055
     .local v0, e:Landroid/os/RemoteException;
     goto :goto_0
 .end method
@@ -776,7 +776,7 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 1013
+    .line 999
     sget-object v2, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     #getter for: Landroid/app/WallpaperManager$Globals;->mService:Landroid/app/IWallpaperManager;
@@ -786,18 +786,18 @@
 
     if-nez v2, :cond_0
 
-    .line 1014
+    .line 1000
     sget-object v2, Landroid/app/WallpaperManager;->TAG:Ljava/lang/String;
 
     const-string v3, "WallpaperService not running"
 
     invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1021
+    .line 1007
     :goto_0
     return v1
 
-    .line 1018
+    .line 1004
     :cond_0
     :try_start_0
     sget-object v2, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
@@ -815,11 +815,11 @@
 
     goto :goto_0
 
-    .line 1019
+    .line 1005
     :catch_0
     move-exception v0
 
-    .line 1021
+    .line 1007
     .local v0, e:Landroid/os/RemoteException;
     goto :goto_0
 .end method
@@ -875,7 +875,7 @@
     .locals 5
 
     .prologue
-    .line 599
+    .line 594
     sget-object v2, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     iget-object v3, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
@@ -886,11 +886,11 @@
 
     move-result-object v0
 
-    .line 600
+    .line 595
     .local v0, bm:Landroid/graphics/Bitmap;
     if-eqz v0, :cond_0
 
-    .line 601
+    .line 596
     new-instance v1, Landroid/graphics/drawable/BitmapDrawable;
 
     iget-object v2, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
@@ -901,13 +901,13 @@
 
     invoke-direct {v1, v2, v0}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 602
+    .line 597
     .local v1, dr:Landroid/graphics/drawable/Drawable;
     const/4 v2, 0x0
 
     invoke-virtual {v1, v2}, Landroid/graphics/drawable/BitmapDrawable;->setDither(Z)V
 
-    .line 605
+    .line 600
     .end local v1           #dr:Landroid/graphics/drawable/Drawable;
     :goto_0
     return-object v1
@@ -919,52 +919,52 @@
 .end method
 
 .method public getDrawableOfLockWallpaperToLockScreen()Landroid/graphics/drawable/Drawable;
-    .locals 14
+    .locals 13
 
     .prologue
     const/4 v2, 0x0
 
-    const v13, 0x105000c
+    const v12, 0x1050015
 
-    const/4 v12, 0x1
+    const/4 v11, 0x1
 
     const/4 v1, 0x0
 
-    .line 609
+    .line 604
+    iget-object v9, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v9}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v9
+
+    invoke-virtual {v9, v12}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v7
+
+    .line 606
+    .local v7, statusBarHeight:I
+    sget-object v9, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
+
     iget-object v10, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v10}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v10
-
-    invoke-virtual {v10, v13}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v8
-
-    .line 611
-    .local v8, statusBarHeight:I
-    sget-object v10, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
-
-    iget-object v11, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v10, v11, v12}, Landroid/app/WallpaperManager$Globals;->peekLockWallpaperBitmap(Landroid/content/Context;Z)Landroid/graphics/Bitmap;
+    invoke-virtual {v9, v10, v11}, Landroid/app/WallpaperManager$Globals;->peekLockWallpaperBitmap(Landroid/content/Context;Z)Landroid/graphics/Bitmap;
 
     move-result-object v6
 
-    .line 613
+    .line 608
     .local v6, bm:Landroid/graphics/Bitmap;
-    if-eqz v6, :cond_1
+    if-eqz v6, :cond_0
 
-    .line 614
+    .line 609
     new-instance v0, Landroid/app/WallpaperManager$FastBitmapDrawable;
 
     invoke-direct {v0, v6, v2}, Landroid/app/WallpaperManager$FastBitmapDrawable;-><init>(Landroid/graphics/Bitmap;Landroid/app/WallpaperManager$1;)V
 
-    .line 615
+    .line 610
     .local v0, dr:Landroid/app/WallpaperManager$FastBitmapDrawable;
-    invoke-virtual {v0, v12}, Landroid/app/WallpaperManager$FastBitmapDrawable;->enableCut(Z)V
+    invoke-virtual {v0, v11}, Landroid/app/WallpaperManager$FastBitmapDrawable;->enableCut(Z)V
 
-    .line 616
+    .line 611
     new-instance v5, Landroid/graphics/Rect;
 
     invoke-virtual {v6}, Landroid/graphics/Bitmap;->getWidth()I
@@ -973,11 +973,11 @@
 
     invoke-virtual {v6}, Landroid/graphics/Bitmap;->getHeight()I
 
-    move-result v10
+    move-result v9
 
-    invoke-direct {v5, v1, v8, v2, v10}, Landroid/graphics/Rect;-><init>(IIII)V
+    invoke-direct {v5, v1, v7, v2, v9}, Landroid/graphics/Rect;-><init>(IIII)V
 
-    .line 619
+    .line 614
     .local v5, srcRect:Landroid/graphics/Rect;
     iget-object v2, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
@@ -985,115 +985,88 @@
 
     move-result-object v2
 
-    invoke-virtual {v2, v13}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+    invoke-virtual {v2, v12}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
-    move-result v9
+    move-result v8
 
-    .line 620
-    .local v9, statusHeight:I
-    invoke-virtual {v6}, Landroid/graphics/Bitmap;->getHeight()I
+    .line 615
+    .local v8, statusHeight:I
+    sget v2, Landroid/app/WallpaperManager;->SCREEN_H:I
 
-    move-result v4
+    sub-int v4, v2, v8
 
-    .line 621
+    .line 616
     .local v4, screenHeight:I
-    invoke-virtual {v6}, Landroid/graphics/Bitmap;->getWidth()I
+    sget v3, Landroid/app/WallpaperManager;->SCREEN_W:I
 
-    move-result v3
-
-    .line 622
     .local v3, screenWidth:I
-    iget-object v2, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
-
-    move-result-object v7
-
-    .line 623
-    .local v7, metrics:Landroid/util/DisplayMetrics;
-    if-eqz v7, :cond_0
-
-    .line 624
-    iget v2, v7, Landroid/util/DisplayMetrics;->heightPixels:I
-
-    sub-int v4, v2, v9
-
-    .line 625
-    iget v3, v7, Landroid/util/DisplayMetrics;->widthPixels:I
-
-    :cond_0
     move v2, v1
 
-    .line 628
+    .line 618
     invoke-virtual/range {v0 .. v5}, Landroid/app/WallpaperManager$FastBitmapDrawable;->setCutRect(IIIILandroid/graphics/Rect;)V
 
-    .line 631
+    .line 621
     .end local v0           #dr:Landroid/app/WallpaperManager$FastBitmapDrawable;
     .end local v3           #screenWidth:I
     .end local v4           #screenHeight:I
     .end local v5           #srcRect:Landroid/graphics/Rect;
-    .end local v7           #metrics:Landroid/util/DisplayMetrics;
-    .end local v9           #statusHeight:I
+    .end local v8           #statusHeight:I
     :goto_0
     return-object v0
 
-    :cond_1
+    :cond_0
     move-object v0, v2
 
     goto :goto_0
 .end method
 
 .method public getDrawableOfLockWallpaperToStatus()Landroid/graphics/drawable/Drawable;
-    .locals 11
+    .locals 10
 
     .prologue
     const/4 v2, 0x0
 
-    const/4 v10, 0x1
+    const/4 v9, 0x1
 
     const/4 v1, 0x0
 
-    .line 635
-    iget-object v8, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
+    .line 625
+    iget-object v7, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {v7}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v8
+    move-result-object v7
 
-    const v9, 0x105000c
+    const v8, 0x1050015
 
-    invoke-virtual {v8, v9}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+    invoke-virtual {v7, v8}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
     move-result v4
 
-    .line 637
+    .line 627
     .local v4, statusBarHeight:I
-    sget-object v8, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
+    sget-object v7, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
-    iget-object v9, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
+    iget-object v8, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v8, v9, v10}, Landroid/app/WallpaperManager$Globals;->peekLockWallpaperBitmap(Landroid/content/Context;Z)Landroid/graphics/Bitmap;
+    invoke-virtual {v7, v8, v9}, Landroid/app/WallpaperManager$Globals;->peekLockWallpaperBitmap(Landroid/content/Context;Z)Landroid/graphics/Bitmap;
 
     move-result-object v6
 
-    .line 639
+    .line 629
     .local v6, bm:Landroid/graphics/Bitmap;
-    if-eqz v6, :cond_1
+    if-eqz v6, :cond_0
 
-    .line 640
+    .line 630
     new-instance v0, Landroid/app/WallpaperManager$FastBitmapDrawable;
 
     invoke-direct {v0, v6, v2}, Landroid/app/WallpaperManager$FastBitmapDrawable;-><init>(Landroid/graphics/Bitmap;Landroid/app/WallpaperManager$1;)V
 
-    .line 641
+    .line 631
     .local v0, dr:Landroid/app/WallpaperManager$FastBitmapDrawable;
-    invoke-virtual {v0, v10}, Landroid/app/WallpaperManager$FastBitmapDrawable;->enableCut(Z)V
+    invoke-virtual {v0, v9}, Landroid/app/WallpaperManager$FastBitmapDrawable;->enableCut(Z)V
 
-    .line 642
+    .line 632
     new-instance v5, Landroid/graphics/Rect;
 
     invoke-virtual {v6}, Landroid/graphics/Bitmap;->getWidth()I
@@ -1102,96 +1075,74 @@
 
     invoke-direct {v5, v1, v1, v2, v4}, Landroid/graphics/Rect;-><init>(IIII)V
 
-    .line 644
+    .line 634
     .local v5, srcRect:Landroid/graphics/Rect;
-    invoke-virtual {v6}, Landroid/graphics/Bitmap;->getWidth()I
+    sget v3, Landroid/app/WallpaperManager;->SCREEN_W:I
 
-    move-result v3
-
-    .line 645
     .local v3, screenWidth:I
-    iget-object v2, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
-
-    move-result-object v7
-
-    .line 646
-    .local v7, metrics:Landroid/util/DisplayMetrics;
-    if-eqz v7, :cond_0
-
-    .line 647
-    iget v3, v7, Landroid/util/DisplayMetrics;->widthPixels:I
-
-    :cond_0
     move v2, v1
 
-    .line 650
+    .line 636
     invoke-virtual/range {v0 .. v5}, Landroid/app/WallpaperManager$FastBitmapDrawable;->setCutRect(IIIILandroid/graphics/Rect;)V
 
-    .line 653
+    .line 639
     .end local v0           #dr:Landroid/app/WallpaperManager$FastBitmapDrawable;
     .end local v3           #screenWidth:I
     .end local v5           #srcRect:Landroid/graphics/Rect;
-    .end local v7           #metrics:Landroid/util/DisplayMetrics;
     :goto_0
     return-object v0
 
-    :cond_1
+    :cond_0
     move-object v0, v2
 
     goto :goto_0
 .end method
 
 .method public getDrawableToLockSliding()Landroid/graphics/drawable/Drawable;
-    .locals 14
+    .locals 13
 
     .prologue
     const/4 v2, 0x0
 
-    const v13, 0x105000c
+    const v12, 0x1050015
 
-    const/4 v12, 0x1
+    const/4 v11, 0x1
 
     const/4 v1, 0x0
 
     .line 568
-    sget-object v10, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
+    sget-object v9, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
-    iget-object v11, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
+    iget-object v10, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v10, v11, v12}, Landroid/app/WallpaperManager$Globals;->peekWallpaperBitmap(Landroid/content/Context;Z)Landroid/graphics/Bitmap;
+    invoke-virtual {v9, v10, v11}, Landroid/app/WallpaperManager$Globals;->peekWallpaperBitmap(Landroid/content/Context;Z)Landroid/graphics/Bitmap;
 
     move-result-object v6
 
     .line 569
     .local v6, bm:Landroid/graphics/Bitmap;
-    if-eqz v6, :cond_1
+    if-eqz v6, :cond_0
 
     .line 570
-    iget-object v10, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
+    iget-object v9, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v10}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {v9}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v10
+    move-result-object v9
 
-    invoke-virtual {v10, v13}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+    invoke-virtual {v9, v12}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
-    move-result v8
+    move-result v7
 
     .line 572
-    .local v8, statusBarHeight:I
+    .local v7, statusBarHeight:I
     new-instance v0, Landroid/app/WallpaperManager$FastBitmapDrawable;
 
     invoke-direct {v0, v6, v2}, Landroid/app/WallpaperManager$FastBitmapDrawable;-><init>(Landroid/graphics/Bitmap;Landroid/app/WallpaperManager$1;)V
 
     .line 573
     .local v0, dr:Landroid/app/WallpaperManager$FastBitmapDrawable;
-    invoke-virtual {v0, v12}, Landroid/app/WallpaperManager$FastBitmapDrawable;->enableCut(Z)V
+    invoke-virtual {v0, v11}, Landroid/app/WallpaperManager$FastBitmapDrawable;->enableCut(Z)V
 
     .line 574
     new-instance v5, Landroid/graphics/Rect;
@@ -1200,31 +1151,31 @@
 
     move-result v2
 
-    sget v10, Landroid/app/WallpaperManager;->SCREEN_W:I
+    sget v9, Landroid/app/WallpaperManager;->SCREEN_W:I
 
-    sub-int/2addr v2, v10
+    sub-int/2addr v2, v9
 
     div-int/lit8 v2, v2, 0x2
 
-    sget v10, Landroid/app/WallpaperManager;->SCREEN_W:I
+    sget v9, Landroid/app/WallpaperManager;->SCREEN_W:I
 
     invoke-virtual {v6}, Landroid/graphics/Bitmap;->getWidth()I
 
-    move-result v11
+    move-result v10
 
-    sget v12, Landroid/app/WallpaperManager;->SCREEN_W:I
+    sget v11, Landroid/app/WallpaperManager;->SCREEN_W:I
 
-    sub-int/2addr v11, v12
+    sub-int/2addr v10, v11
 
-    div-int/lit8 v11, v11, 0x2
+    div-int/lit8 v10, v10, 0x2
 
-    add-int/2addr v10, v11
+    add-int/2addr v9, v10
 
     invoke-virtual {v6}, Landroid/graphics/Bitmap;->getHeight()I
 
-    move-result v11
+    move-result v10
 
-    invoke-direct {v5, v2, v8, v10, v11}, Landroid/graphics/Rect;-><init>(IIII)V
+    invoke-direct {v5, v2, v7, v9, v10}, Landroid/graphics/Rect;-><init>(IIII)V
 
     .line 577
     .local v5, srcRect:Landroid/graphics/Rect;
@@ -1234,64 +1185,37 @@
 
     move-result-object v2
 
-    invoke-virtual {v2, v13}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+    invoke-virtual {v2, v12}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
-    move-result v9
+    move-result v8
 
     .line 578
-    .local v9, statusHeight:I
-    invoke-virtual {v6}, Landroid/graphics/Bitmap;->getHeight()I
+    .local v8, statusHeight:I
+    sget v2, Landroid/app/WallpaperManager;->SCREEN_H:I
 
-    move-result v4
+    sub-int v4, v2, v8
 
     .line 579
     .local v4, screenHeight:I
-    invoke-virtual {v6}, Landroid/graphics/Bitmap;->getWidth()I
+    sget v3, Landroid/app/WallpaperManager;->SCREEN_W:I
 
-    move-result v3
-
-    .line 580
     .local v3, screenWidth:I
-    iget-object v2, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
-
-    move-result-object v7
-
-    .line 581
-    .local v7, metrics:Landroid/util/DisplayMetrics;
-    if-eqz v7, :cond_0
-
-    .line 582
-    iget v2, v7, Landroid/util/DisplayMetrics;->heightPixels:I
-
-    sub-int v4, v2, v9
-
-    .line 583
-    iget v3, v7, Landroid/util/DisplayMetrics;->widthPixels:I
-
-    :cond_0
     move v2, v1
 
-    .line 586
+    .line 581
     invoke-virtual/range {v0 .. v5}, Landroid/app/WallpaperManager$FastBitmapDrawable;->setCutRect(IIIILandroid/graphics/Rect;)V
 
-    .line 589
+    .line 584
     .end local v0           #dr:Landroid/app/WallpaperManager$FastBitmapDrawable;
     .end local v3           #screenWidth:I
     .end local v4           #screenHeight:I
     .end local v5           #srcRect:Landroid/graphics/Rect;
-    .end local v7           #metrics:Landroid/util/DisplayMetrics;
-    .end local v8           #statusBarHeight:I
-    .end local v9           #statusHeight:I
+    .end local v7           #statusBarHeight:I
+    .end local v8           #statusHeight:I
     :goto_0
     return-object v0
 
-    :cond_1
+    :cond_0
     move-object v0, v2
 
     goto :goto_0
@@ -1303,7 +1227,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 704
+    .line 690
     sget-object v1, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     iget-object v3, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
@@ -1314,16 +1238,16 @@
 
     move-result-object v0
 
-    .line 705
+    .line 691
     .local v0, bm:Landroid/graphics/Bitmap;
     if-eqz v0, :cond_0
 
-    .line 706
+    .line 692
     new-instance v1, Landroid/app/WallpaperManager$FastBitmapDrawable;
 
     invoke-direct {v1, v0, v2}, Landroid/app/WallpaperManager$FastBitmapDrawable;-><init>(Landroid/graphics/Bitmap;Landroid/app/WallpaperManager$1;)V
 
-    .line 708
+    .line 694
     :goto_0
     return-object v1
 
@@ -1339,7 +1263,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 712
+    .line 698
     sget-object v3, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     iget-object v4, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
@@ -1350,16 +1274,16 @@
 
     move-result-object v0
 
-    .line 713
+    .line 699
     .local v0, bm:Landroid/graphics/Bitmap;
     if-eqz v0, :cond_0
 
-    .line 714
+    .line 700
     new-instance v1, Landroid/app/WallpaperManager$FastBitmapDrawable;
 
     invoke-direct {v1, v0, v2}, Landroid/app/WallpaperManager$FastBitmapDrawable;-><init>(Landroid/graphics/Bitmap;Landroid/app/WallpaperManager$1;)V
 
-    .line 717
+    .line 703
     :goto_0
     return-object v1
 
@@ -1388,7 +1312,7 @@
     .locals 3
 
     .prologue
-    .line 759
+    .line 745
     sget-object v0, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     iget-object v1, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
@@ -1408,7 +1332,7 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 1032
+    .line 1018
     iget-object v7, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
     const-string/jumbo v8, "window"
@@ -1419,46 +1343,46 @@
 
     check-cast v6, Landroid/view/WindowManager;
 
-    .line 1033
+    .line 1019
     .local v6, wm:Landroid/view/WindowManager;
     invoke-interface {v6}, Landroid/view/WindowManager;->getDefaultDisplay()Landroid/view/Display;
 
     move-result-object v0
 
-    .line 1034
+    .line 1020
     .local v0, display:Landroid/view/Display;
     new-instance v1, Landroid/util/DisplayMetrics;
 
     invoke-direct {v1}, Landroid/util/DisplayMetrics;-><init>()V
 
-    .line 1035
+    .line 1021
     .local v1, dm:Landroid/util/DisplayMetrics;
-    invoke-virtual {v0, v1}, Landroid/view/Display;->getRealMetrics(Landroid/util/DisplayMetrics;)V
+    invoke-virtual {v0, v1}, Landroid/view/Display;->getMetricsMz(Landroid/util/DisplayMetrics;)V
 
-    .line 1036
+    .line 1022
     iget v5, v1, Landroid/util/DisplayMetrics;->widthPixels:I
 
-    .line 1037
+    .line 1023
     .local v5, width:I
     iget v2, v1, Landroid/util/DisplayMetrics;->heightPixels:I
 
-    .line 1038
+    .line 1024
     .local v2, height:I
     if-eqz v0, :cond_0
 
-    .line 1039
+    .line 1025
     if-ge v5, v2, :cond_1
 
     const/4 v3, 0x1
 
-    .line 1040
+    .line 1026
     .local v3, isPortrait:Z
     :goto_0
     if-eqz v3, :cond_2
 
     move v4, v5
 
-    .line 1044
+    .line 1030
     .end local v3           #isPortrait:Z
     :cond_0
     :goto_1
@@ -1467,14 +1391,14 @@
     :cond_1
     move v3, v4
 
-    .line 1039
+    .line 1025
     goto :goto_0
 
     .restart local v3       #isPortrait:Z
     :cond_2
     move v4, v2
 
-    .line 1040
+    .line 1026
     goto :goto_1
 .end method
 
@@ -1484,7 +1408,7 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 783
+    .line 769
     :try_start_0
     sget-object v2, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
@@ -1495,18 +1419,18 @@
 
     if-nez v2, :cond_0
 
-    .line 784
+    .line 770
     sget-object v2, Landroid/app/WallpaperManager;->TAG:Ljava/lang/String;
 
     const-string v3, "WallpaperService not running"
 
     invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 790
+    .line 776
     :goto_0
     return-object v1
 
-    .line 787
+    .line 773
     :cond_0
     sget-object v2, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
@@ -1523,11 +1447,11 @@
 
     goto :goto_0
 
-    .line 789
+    .line 775
     :catch_0
     move-exception v0
 
-    .line 790
+    .line 776
     .local v0, e:Landroid/os/RemoteException;
     goto :goto_0
 .end method
@@ -1538,7 +1462,7 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 1074
+    .line 1060
     iget-object v7, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
     const-string/jumbo v8, "window"
@@ -1549,46 +1473,46 @@
 
     check-cast v6, Landroid/view/WindowManager;
 
-    .line 1075
+    .line 1061
     .local v6, wm:Landroid/view/WindowManager;
     invoke-interface {v6}, Landroid/view/WindowManager;->getDefaultDisplay()Landroid/view/Display;
 
     move-result-object v0
 
-    .line 1076
+    .line 1062
     .local v0, display:Landroid/view/Display;
     new-instance v1, Landroid/util/DisplayMetrics;
 
     invoke-direct {v1}, Landroid/util/DisplayMetrics;-><init>()V
 
-    .line 1077
+    .line 1063
     .local v1, dm:Landroid/util/DisplayMetrics;
-    invoke-virtual {v0, v1}, Landroid/view/Display;->getRealMetrics(Landroid/util/DisplayMetrics;)V
+    invoke-virtual {v0, v1}, Landroid/view/Display;->getMetricsMz(Landroid/util/DisplayMetrics;)V
 
-    .line 1078
+    .line 1064
     iget v5, v1, Landroid/util/DisplayMetrics;->widthPixels:I
 
-    .line 1079
+    .line 1065
     .local v5, width:I
     iget v2, v1, Landroid/util/DisplayMetrics;->heightPixels:I
 
-    .line 1080
+    .line 1066
     .local v2, height:I
     if-eqz v0, :cond_0
 
-    .line 1081
+    .line 1067
     if-ge v5, v2, :cond_1
 
     const/4 v3, 0x1
 
-    .line 1082
+    .line 1068
     .local v3, isPortrait:Z
     :goto_0
     if-eqz v3, :cond_2
 
     move v4, v2
 
-    .line 1086
+    .line 1072
     .end local v3           #isPortrait:Z
     :cond_0
     :goto_1
@@ -1597,14 +1521,14 @@
     :cond_1
     move v3, v4
 
-    .line 1081
+    .line 1067
     goto :goto_0
 
     .restart local v3       #isPortrait:Z
     :cond_2
     move v4, v5
 
-    .line 1082
+    .line 1068
     goto :goto_1
 .end method
 
@@ -1614,7 +1538,7 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 665
+    .line 651
     sget-object v2, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     iget-object v3, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
@@ -1623,11 +1547,11 @@
 
     move-result-object v0
 
-    .line 666
+    .line 652
     .local v0, bm:Landroid/graphics/Bitmap;
     if-eqz v0, :cond_0
 
-    .line 667
+    .line 653
     new-instance v1, Landroid/graphics/drawable/BitmapDrawable;
 
     iget-object v2, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
@@ -1638,11 +1562,11 @@
 
     invoke-direct {v1, v2, v0}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 668
+    .line 654
     .local v1, dr:Landroid/graphics/drawable/Drawable;
     invoke-virtual {v1, v4}, Landroid/graphics/drawable/BitmapDrawable;->setDither(Z)V
 
-    .line 671
+    .line 657
     .end local v1           #dr:Landroid/graphics/drawable/Drawable;
     :goto_0
     return-object v1
@@ -1659,7 +1583,7 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 681
+    .line 667
     sget-object v2, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     iget-object v3, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
@@ -1668,11 +1592,11 @@
 
     move-result-object v0
 
-    .line 682
+    .line 668
     .local v0, bm:Landroid/graphics/Bitmap;
     if-eqz v0, :cond_0
 
-    .line 683
+    .line 669
     new-instance v1, Landroid/graphics/drawable/BitmapDrawable;
 
     iget-object v2, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
@@ -1683,11 +1607,11 @@
 
     invoke-direct {v1, v2, v0}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 684
+    .line 670
     .local v1, dr:Landroid/graphics/drawable/Drawable;
     invoke-virtual {v1, v4}, Landroid/graphics/drawable/BitmapDrawable;->setDither(Z)V
 
-    .line 687
+    .line 673
     .end local v1           #dr:Landroid/graphics/drawable/Drawable;
     :goto_0
     return-object v1
@@ -1704,7 +1628,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 728
+    .line 714
     sget-object v1, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     iget-object v3, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
@@ -1715,16 +1639,16 @@
 
     move-result-object v0
 
-    .line 729
+    .line 715
     .local v0, bm:Landroid/graphics/Bitmap;
     if-eqz v0, :cond_0
 
-    .line 730
+    .line 716
     new-instance v1, Landroid/app/WallpaperManager$FastBitmapDrawable;
 
     invoke-direct {v1, v0, v2}, Landroid/app/WallpaperManager$FastBitmapDrawable;-><init>(Landroid/graphics/Bitmap;Landroid/app/WallpaperManager$1;)V
 
-    .line 732
+    .line 718
     :goto_0
     return-object v1
 
@@ -1740,7 +1664,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 736
+    .line 722
     sget-object v3, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     iget-object v4, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
@@ -1751,16 +1675,16 @@
 
     move-result-object v0
 
-    .line 737
+    .line 723
     .local v0, bm:Landroid/graphics/Bitmap;
     if-eqz v0, :cond_0
 
-    .line 738
+    .line 724
     new-instance v1, Landroid/app/WallpaperManager$FastBitmapDrawable;
 
     invoke-direct {v1, v0, v2}, Landroid/app/WallpaperManager$FastBitmapDrawable;-><init>(Landroid/graphics/Bitmap;Landroid/app/WallpaperManager$1;)V
 
-    .line 741
+    .line 727
     :goto_0
     return-object v1
 
@@ -1780,7 +1704,7 @@
     .parameter "extras"
 
     .prologue
-    .line 1174
+    .line 1160
     :try_start_0
     iget-object v0, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
@@ -1810,11 +1734,11 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1180
+    .line 1166
     :goto_0
     return-void
 
-    .line 1177
+    .line 1163
     :catch_0
     move-exception v0
 
@@ -1831,7 +1755,7 @@
     .end annotation
 
     .prologue
-    .line 848
+    .line 834
     sget-object v3, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     #getter for: Landroid/app/WallpaperManager$Globals;->mService:Landroid/app/IWallpaperManager;
@@ -1841,19 +1765,19 @@
 
     if-nez v3, :cond_1
 
-    .line 849
+    .line 835
     sget-object v3, Landroid/app/WallpaperManager;->TAG:Ljava/lang/String;
 
     const-string v4, "WallpaperService not running"
 
     invoke-static {v3, v4}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 869
+    .line 855
     :cond_0
     :goto_0
     return-void
 
-    .line 853
+    .line 839
     :cond_1
     :try_start_0
     sget-object v3, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
@@ -1871,14 +1795,14 @@
 
     move-result-object v0
 
-    .line 854
+    .line 840
     .local v0, fd:Landroid/os/ParcelFileDescriptor;
     if-eqz v0, :cond_0
 
-    .line 857
+    .line 843
     const/4 v1, 0x0
 
-    .line 859
+    .line 845
     .local v1, fos:Ljava/io/FileOutputStream;
     :try_start_1
     new-instance v2, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;
@@ -1887,7 +1811,7 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 860
+    .line 846
     .end local v1           #fos:Ljava/io/FileOutputStream;
     .local v2, fos:Ljava/io/FileOutputStream;
     :try_start_2
@@ -1899,16 +1823,16 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 862
+    .line 848
     if-eqz v2, :cond_0
 
-    .line 863
+    .line 849
     :try_start_3
     invoke-virtual {v2}, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;->close()V
 
     goto :goto_0
 
-    .line 866
+    .line 852
     .end local v0           #fd:Landroid/os/ParcelFileDescriptor;
     .end local v2           #fos:Ljava/io/FileOutputStream;
     :catch_0
@@ -1916,7 +1840,7 @@
 
     goto :goto_0
 
-    .line 862
+    .line 848
     .restart local v0       #fd:Landroid/os/ParcelFileDescriptor;
     .restart local v1       #fos:Ljava/io/FileOutputStream;
     :catchall_0
@@ -1925,10 +1849,10 @@
     :goto_1
     if-eqz v1, :cond_2
 
-    .line 863
+    .line 849
     invoke-virtual {v1}, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;->close()V
 
-    .line 862
+    .line 848
     :cond_2
     throw v3
     :try_end_3
@@ -1956,7 +1880,7 @@
     .end annotation
 
     .prologue
-    .line 945
+    .line 931
     sget-object v3, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     #getter for: Landroid/app/WallpaperManager$Globals;->mService:Landroid/app/IWallpaperManager;
@@ -1966,19 +1890,19 @@
 
     if-nez v3, :cond_1
 
-    .line 946
+    .line 932
     sget-object v3, Landroid/app/WallpaperManager;->TAG:Ljava/lang/String;
 
     const-string v4, "WallpaperService not running"
 
     invoke-static {v3, v4}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 965
+    .line 951
     :cond_0
     :goto_0
     return-void
 
-    .line 950
+    .line 936
     :cond_1
     :try_start_0
     sget-object v3, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
@@ -1996,14 +1920,14 @@
 
     move-result-object v0
 
-    .line 951
+    .line 937
     .local v0, fd:Landroid/os/ParcelFileDescriptor;
     if-eqz v0, :cond_0
 
-    .line 954
+    .line 940
     const/4 v1, 0x0
 
-    .line 956
+    .line 942
     .local v1, fos:Ljava/io/FileOutputStream;
     :try_start_1
     new-instance v2, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;
@@ -2012,7 +1936,7 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 957
+    .line 943
     .end local v1           #fos:Ljava/io/FileOutputStream;
     .local v2, fos:Ljava/io/FileOutputStream;
     :try_start_2
@@ -2024,16 +1948,16 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 959
+    .line 945
     if-eqz v2, :cond_0
 
-    .line 960
+    .line 946
     :try_start_3
     invoke-virtual {v2}, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;->close()V
 
     goto :goto_0
 
-    .line 963
+    .line 949
     .end local v0           #fd:Landroid/os/ParcelFileDescriptor;
     .end local v2           #fos:Ljava/io/FileOutputStream;
     :catch_0
@@ -2041,7 +1965,7 @@
 
     goto :goto_0
 
-    .line 959
+    .line 945
     .restart local v0       #fd:Landroid/os/ParcelFileDescriptor;
     .restart local v1       #fos:Ljava/io/FileOutputStream;
     :catchall_0
@@ -2050,10 +1974,10 @@
     :goto_1
     if-eqz v1, :cond_2
 
-    .line 960
+    .line 946
     invoke-virtual {v1}, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;->close()V
 
-    .line 959
+    .line 945
     :cond_2
     throw v3
     :try_end_3
@@ -2081,7 +2005,7 @@
     .end annotation
 
     .prologue
-    .line 809
+    .line 795
     sget-object v4, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     #getter for: Landroid/app/WallpaperManager$Globals;->mService:Landroid/app/IWallpaperManager;
@@ -2091,19 +2015,19 @@
 
     if-nez v4, :cond_1
 
-    .line 810
+    .line 796
     sget-object v4, Landroid/app/WallpaperManager;->TAG:Ljava/lang/String;
 
     const-string v5, "WallpaperService not running"
 
     invoke-static {v4, v5}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 832
+    .line 818
     :cond_0
     :goto_0
     return-void
 
-    .line 814
+    .line 800
     :cond_1
     :try_start_0
     iget-object v4, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
@@ -2112,7 +2036,7 @@
 
     move-result-object v3
 
-    .line 816
+    .line 802
     .local v3, resources:Landroid/content/res/Resources;
     sget-object v4, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
@@ -2149,14 +2073,14 @@
 
     move-result-object v0
 
-    .line 818
+    .line 804
     .local v0, fd:Landroid/os/ParcelFileDescriptor;
     if-eqz v0, :cond_0
 
-    .line 819
+    .line 805
     const/4 v1, 0x0
 
-    .line 821
+    .line 807
     .local v1, fos:Ljava/io/FileOutputStream;
     :try_start_1
     new-instance v2, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;
@@ -2165,7 +2089,7 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 822
+    .line 808
     .end local v1           #fos:Ljava/io/FileOutputStream;
     .local v2, fos:Ljava/io/FileOutputStream;
     :try_start_2
@@ -2177,16 +2101,16 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 824
+    .line 810
     if-eqz v2, :cond_0
 
-    .line 825
+    .line 811
     :try_start_3
     invoke-virtual {v2}, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;->close()V
 
     goto :goto_0
 
-    .line 829
+    .line 815
     .end local v0           #fd:Landroid/os/ParcelFileDescriptor;
     .end local v2           #fos:Ljava/io/FileOutputStream;
     .end local v3           #resources:Landroid/content/res/Resources;
@@ -2195,7 +2119,7 @@
 
     goto :goto_0
 
-    .line 824
+    .line 810
     .restart local v0       #fd:Landroid/os/ParcelFileDescriptor;
     .restart local v1       #fos:Ljava/io/FileOutputStream;
     .restart local v3       #resources:Landroid/content/res/Resources;
@@ -2205,10 +2129,10 @@
     :goto_1
     if-eqz v1, :cond_2
 
-    .line 825
+    .line 811
     invoke-virtual {v1}, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;->close()V
 
-    .line 824
+    .line 810
     :cond_2
     throw v4
     :try_end_3
@@ -2236,7 +2160,7 @@
     .end annotation
 
     .prologue
-    .line 920
+    .line 906
     sget-object v4, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     #getter for: Landroid/app/WallpaperManager$Globals;->mService:Landroid/app/IWallpaperManager;
@@ -2246,19 +2170,19 @@
 
     if-nez v4, :cond_1
 
-    .line 921
+    .line 907
     sget-object v4, Landroid/app/WallpaperManager;->TAG:Ljava/lang/String;
 
     const-string v5, "WallpaperService not running"
 
     invoke-static {v4, v5}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 942
+    .line 928
     :cond_0
     :goto_0
     return-void
 
-    .line 925
+    .line 911
     :cond_1
     :try_start_0
     iget-object v4, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
@@ -2267,7 +2191,7 @@
 
     move-result-object v3
 
-    .line 927
+    .line 913
     .local v3, resources:Landroid/content/res/Resources;
     sget-object v4, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
@@ -2304,14 +2228,14 @@
 
     move-result-object v0
 
-    .line 929
+    .line 915
     .local v0, fd:Landroid/os/ParcelFileDescriptor;
     if-eqz v0, :cond_0
 
-    .line 930
+    .line 916
     const/4 v1, 0x0
 
-    .line 932
+    .line 918
     .local v1, fos:Ljava/io/FileOutputStream;
     :try_start_1
     new-instance v2, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;
@@ -2320,7 +2244,7 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 933
+    .line 919
     .end local v1           #fos:Ljava/io/FileOutputStream;
     .local v2, fos:Ljava/io/FileOutputStream;
     :try_start_2
@@ -2332,16 +2256,16 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 935
+    .line 921
     if-eqz v2, :cond_0
 
-    .line 936
+    .line 922
     :try_start_3
     invoke-virtual {v2}, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;->close()V
 
     goto :goto_0
 
-    .line 940
+    .line 926
     .end local v0           #fd:Landroid/os/ParcelFileDescriptor;
     .end local v2           #fos:Ljava/io/FileOutputStream;
     .end local v3           #resources:Landroid/content/res/Resources;
@@ -2350,7 +2274,7 @@
 
     goto :goto_0
 
-    .line 935
+    .line 921
     .restart local v0       #fd:Landroid/os/ParcelFileDescriptor;
     .restart local v1       #fos:Ljava/io/FileOutputStream;
     .restart local v3       #resources:Landroid/content/res/Resources;
@@ -2360,10 +2284,10 @@
     :goto_1
     if-eqz v1, :cond_2
 
-    .line 936
+    .line 922
     invoke-virtual {v1}, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;->close()V
 
-    .line 935
+    .line 921
     :cond_2
     throw v4
     :try_end_3
@@ -2391,7 +2315,7 @@
     .end annotation
 
     .prologue
-    .line 887
+    .line 873
     sget-object v3, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     #getter for: Landroid/app/WallpaperManager$Globals;->mService:Landroid/app/IWallpaperManager;
@@ -2401,19 +2325,19 @@
 
     if-nez v3, :cond_1
 
-    .line 888
+    .line 874
     sget-object v3, Landroid/app/WallpaperManager;->TAG:Ljava/lang/String;
 
     const-string v4, "WallpaperService not running"
 
     invoke-static {v3, v4}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 908
+    .line 894
     :cond_0
     :goto_0
     return-void
 
-    .line 892
+    .line 878
     :cond_1
     :try_start_0
     sget-object v3, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
@@ -2431,14 +2355,14 @@
 
     move-result-object v0
 
-    .line 893
+    .line 879
     .local v0, fd:Landroid/os/ParcelFileDescriptor;
     if-eqz v0, :cond_0
 
-    .line 896
+    .line 882
     const/4 v1, 0x0
 
-    .line 898
+    .line 884
     .local v1, fos:Ljava/io/FileOutputStream;
     :try_start_1
     new-instance v2, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;
@@ -2447,7 +2371,7 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 899
+    .line 885
     .end local v1           #fos:Ljava/io/FileOutputStream;
     .local v2, fos:Ljava/io/FileOutputStream;
     :try_start_2
@@ -2455,16 +2379,16 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 901
+    .line 887
     if-eqz v2, :cond_0
 
-    .line 902
+    .line 888
     :try_start_3
     invoke-virtual {v2}, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;->close()V
 
     goto :goto_0
 
-    .line 905
+    .line 891
     .end local v0           #fd:Landroid/os/ParcelFileDescriptor;
     .end local v2           #fos:Ljava/io/FileOutputStream;
     :catch_0
@@ -2472,7 +2396,7 @@
 
     goto :goto_0
 
-    .line 901
+    .line 887
     .restart local v0       #fd:Landroid/os/ParcelFileDescriptor;
     .restart local v1       #fos:Ljava/io/FileOutputStream;
     :catchall_0
@@ -2481,10 +2405,10 @@
     :goto_1
     if-eqz v1, :cond_2
 
-    .line 902
+    .line 888
     invoke-virtual {v1}, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;->close()V
 
-    .line 901
+    .line 887
     :cond_2
     throw v3
     :try_end_3
@@ -2512,7 +2436,7 @@
     .end annotation
 
     .prologue
-    .line 968
+    .line 954
     sget-object v3, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
     #getter for: Landroid/app/WallpaperManager$Globals;->mService:Landroid/app/IWallpaperManager;
@@ -2522,19 +2446,19 @@
 
     if-nez v3, :cond_1
 
-    .line 969
+    .line 955
     sget-object v3, Landroid/app/WallpaperManager;->TAG:Ljava/lang/String;
 
     const-string v4, "WallpaperService not running"
 
     invoke-static {v3, v4}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 988
+    .line 974
     :cond_0
     :goto_0
     return-void
 
-    .line 973
+    .line 959
     :cond_1
     :try_start_0
     sget-object v3, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
@@ -2552,14 +2476,14 @@
 
     move-result-object v0
 
-    .line 974
+    .line 960
     .local v0, fd:Landroid/os/ParcelFileDescriptor;
     if-eqz v0, :cond_0
 
-    .line 977
+    .line 963
     const/4 v1, 0x0
 
-    .line 979
+    .line 965
     .local v1, fos:Ljava/io/FileOutputStream;
     :try_start_1
     new-instance v2, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;
@@ -2568,7 +2492,7 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 980
+    .line 966
     .end local v1           #fos:Ljava/io/FileOutputStream;
     .local v2, fos:Ljava/io/FileOutputStream;
     :try_start_2
@@ -2576,16 +2500,16 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 982
+    .line 968
     if-eqz v2, :cond_0
 
-    .line 983
+    .line 969
     :try_start_3
     invoke-virtual {v2}, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;->close()V
 
     goto :goto_0
 
-    .line 986
+    .line 972
     .end local v0           #fd:Landroid/os/ParcelFileDescriptor;
     .end local v2           #fos:Ljava/io/FileOutputStream;
     :catch_0
@@ -2593,7 +2517,7 @@
 
     goto :goto_0
 
-    .line 982
+    .line 968
     .restart local v0       #fd:Landroid/os/ParcelFileDescriptor;
     .restart local v1       #fos:Ljava/io/FileOutputStream;
     :catchall_0
@@ -2602,10 +2526,10 @@
     :goto_1
     if-eqz v1, :cond_2
 
-    .line 983
+    .line 969
     invoke-virtual {v1}, Landroid/os/ParcelFileDescriptor$AutoCloseOutputStream;->close()V
 
-    .line 982
+    .line 968
     :cond_2
     throw v3
     :try_end_3
@@ -2629,13 +2553,13 @@
     .parameter "yStep"
 
     .prologue
-    .line 1153
+    .line 1139
     iput p1, p0, Landroid/app/WallpaperManager;->mWallpaperXStep:F
 
-    .line 1154
+    .line 1140
     iput p2, p0, Landroid/app/WallpaperManager;->mWallpaperYStep:F
 
-    .line 1155
+    .line 1141
     return-void
 .end method
 
@@ -2646,7 +2570,7 @@
     .parameter "yOffset"
 
     .prologue
-    .line 1136
+    .line 1122
     :try_start_0
     iget-object v0, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
@@ -2672,11 +2596,11 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1142
+    .line 1128
     :goto_0
     return-void
 
-    .line 1139
+    .line 1125
     :catch_0
     move-exception v0
 
@@ -2689,7 +2613,7 @@
     .parameter "minimumHeight"
 
     .prologue
-    .line 1110
+    .line 1096
     :try_start_0
     sget-object v0, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
@@ -2700,18 +2624,18 @@
 
     if-nez v0, :cond_0
 
-    .line 1111
+    .line 1097
     sget-object v0, Landroid/app/WallpaperManager;->TAG:Ljava/lang/String;
 
     const-string v1, "WallpaperService not running"
 
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1118
+    .line 1104
     :goto_0
     return-void
 
-    .line 1113
+    .line 1099
     :cond_0
     sget-object v0, Landroid/app/WallpaperManager;->sGlobals:Landroid/app/WallpaperManager$Globals;
 
@@ -2726,7 +2650,7 @@
 
     goto :goto_0
 
-    .line 1115
+    .line 1101
     :catch_0
     move-exception v0
 

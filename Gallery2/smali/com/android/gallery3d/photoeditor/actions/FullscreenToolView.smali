@@ -6,6 +6,8 @@
 # instance fields
 .field protected final displayBounds:Landroid/graphics/RectF;
 
+.field private final displayMatrix:Landroid/graphics/Matrix;
+
 .field private photoBounds:Landroid/graphics/RectF;
 
 .field private final photoMatrix:Landroid/graphics/Matrix;
@@ -18,7 +20,7 @@
     .parameter "attrs"
 
     .prologue
-    .line 37
+    .line 38
     invoke-direct {p0, p1, p2}, Landroid/view/View;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 32
@@ -35,7 +37,14 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoMatrix:Landroid/graphics/Matrix;
 
-    .line 38
+    .line 34
+    new-instance v0, Landroid/graphics/Matrix;
+
+    invoke-direct {v0}, Landroid/graphics/Matrix;-><init>()V
+
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayMatrix:Landroid/graphics/Matrix;
+
+    .line 39
     return-void
 .end method
 
@@ -45,7 +54,7 @@
     .locals 1
 
     .prologue
-    .line 71
+    .line 72
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoBounds:Landroid/graphics/RectF;
 
     invoke-virtual {v0}, Landroid/graphics/RectF;->height()F
@@ -59,7 +68,7 @@
     .locals 1
 
     .prologue
-    .line 67
+    .line 68
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoBounds:Landroid/graphics/RectF;
 
     invoke-virtual {v0}, Landroid/graphics/RectF;->width()F
@@ -67,6 +76,61 @@
     move-result v0
 
     return v0
+.end method
+
+.method protected mapDisplayPoint(FFLandroid/graphics/PointF;)V
+    .locals 5
+    .parameter "x"
+    .parameter "y"
+    .parameter "dst"
+
+    .prologue
+    const/4 v4, 0x1
+
+    const/4 v3, 0x0
+
+    const/4 v2, 0x0
+
+    .line 76
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
+
+    invoke-virtual {v1}, Landroid/graphics/RectF;->isEmpty()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    .line 77
+    invoke-virtual {p3, v2, v2}, Landroid/graphics/PointF;->set(FF)V
+
+    .line 83
+    :goto_0
+    return-void
+
+    .line 79
+    :cond_0
+    const/4 v1, 0x2
+
+    new-array v0, v1, [F
+
+    aput p1, v0, v3
+
+    aput p2, v0, v4
+
+    .line 80
+    .local v0, point:[F
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayMatrix:Landroid/graphics/Matrix;
+
+    invoke-virtual {v1, v0}, Landroid/graphics/Matrix;->mapPoints([F)V
+
+    .line 81
+    aget v1, v0, v3
+
+    aget v2, v0, v4
+
+    invoke-virtual {p3, v1, v2}, Landroid/graphics/PointF;->set(FF)V
+
+    goto :goto_0
 .end method
 
 .method protected mapPhotoPoint(FFLandroid/graphics/PointF;)V
@@ -82,7 +146,7 @@
 
     const/4 v2, 0x0
 
-    .line 75
+    .line 86
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoBounds:Landroid/graphics/RectF;
 
     invoke-virtual {v1}, Landroid/graphics/RectF;->isEmpty()Z
@@ -91,14 +155,14 @@
 
     if-eqz v1, :cond_0
 
-    .line 76
+    .line 87
     invoke-virtual {p3, v2, v2}, Landroid/graphics/PointF;->set(FF)V
 
-    .line 82
+    .line 93
     :goto_0
     return-void
 
-    .line 78
+    .line 89
     :cond_0
     const/4 v1, 0x2
 
@@ -108,13 +172,13 @@
 
     aput p2, v0, v4
 
-    .line 79
+    .line 90
     .local v0, point:[F
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoMatrix:Landroid/graphics/Matrix;
 
     invoke-virtual {v1, v0}, Landroid/graphics/Matrix;->mapPoints([F)V
 
-    .line 80
+    .line 91
     aget v1, v0, v3
 
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoBounds:Landroid/graphics/RectF;
@@ -146,7 +210,7 @@
     .parameter "dst"
 
     .prologue
-    .line 85
+    .line 96
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoBounds:Landroid/graphics/RectF;
 
     invoke-virtual {v0}, Landroid/graphics/RectF;->isEmpty()Z
@@ -155,20 +219,20 @@
 
     if-eqz v0, :cond_0
 
-    .line 86
+    .line 97
     invoke-virtual {p2}, Landroid/graphics/RectF;->setEmpty()V
 
-    .line 92
+    .line 103
     :goto_0
     return-void
 
-    .line 88
+    .line 99
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoMatrix:Landroid/graphics/Matrix;
 
     invoke-virtual {v0, p2, p1}, Landroid/graphics/Matrix;->mapRect(Landroid/graphics/RectF;Landroid/graphics/RectF;)Z
 
-    .line 89
+    .line 100
     iget v0, p2, Landroid/graphics/RectF;->left:F
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoBounds:Landroid/graphics/RectF;
@@ -224,40 +288,41 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 49
+    .line 50
     invoke-super {p0, p1, p2, p3, p4}, Landroid/view/View;->onSizeChanged(IIII)V
 
-    .line 51
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
-
-    invoke-virtual {v1}, Landroid/graphics/RectF;->setEmpty()V
-
     .line 52
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoMatrix:Landroid/graphics/Matrix;
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
 
-    invoke-virtual {v1}, Landroid/graphics/Matrix;->reset()V
+    invoke-virtual {v0}, Landroid/graphics/RectF;->setEmpty()V
 
     .line 53
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoBounds:Landroid/graphics/RectF;
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoMatrix:Landroid/graphics/Matrix;
 
-    invoke-virtual {v1}, Landroid/graphics/RectF;->isEmpty()Z
+    invoke-virtual {v0}, Landroid/graphics/Matrix;->reset()V
 
-    move-result v1
+    .line 54
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayMatrix:Landroid/graphics/Matrix;
 
-    if-eqz v1, :cond_0
+    invoke-virtual {v0}, Landroid/graphics/Matrix;->reset()V
 
-    .line 64
+    .line 55
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoBounds:Landroid/graphics/RectF;
+
+    invoke-virtual {v0}, Landroid/graphics/RectF;->isEmpty()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 65
     :goto_0
     return-void
 
-    .line 58
+    .line 60
     :cond_0
-    new-instance v0, Landroid/graphics/Matrix;
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayMatrix:Landroid/graphics/Matrix;
 
-    invoke-direct {v0}, Landroid/graphics/Matrix;-><init>()V
-
-    .line 59
-    .local v0, matrix:Landroid/graphics/Matrix;
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoBounds:Landroid/graphics/RectF;
 
     new-instance v2, Landroid/graphics/RectF;
@@ -272,19 +337,23 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/graphics/Matrix;->setRectToRect(Landroid/graphics/RectF;Landroid/graphics/RectF;Landroid/graphics/Matrix$ScaleToFit;)Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_1
+    if-eqz v0, :cond_1
 
-    .line 60
+    .line 61
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayMatrix:Landroid/graphics/Matrix;
+
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
 
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoBounds:Landroid/graphics/RectF;
 
     invoke-virtual {v0, v1, v2}, Landroid/graphics/Matrix;->mapRect(Landroid/graphics/RectF;Landroid/graphics/RectF;)Z
 
-    .line 63
+    .line 64
     :cond_1
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayMatrix:Landroid/graphics/Matrix;
+
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoMatrix:Landroid/graphics/Matrix;
 
     invoke-virtual {v0, v1}, Landroid/graphics/Matrix;->invert(Landroid/graphics/Matrix;)Z
@@ -297,9 +366,9 @@
     .parameter "photoBounds"
 
     .prologue
-    .line 44
+    .line 45
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->photoBounds:Landroid/graphics/RectF;
 
-    .line 45
+    .line 46
     return-void
 .end method

@@ -29,7 +29,7 @@
     .parameter
 
     .prologue
-    .line 1908
+    .line 1931
     iput-object p1, p0, Landroid/widget/Editor$Blink;->this$0:Landroid/widget/Editor;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -43,7 +43,7 @@
     .parameter "x1"
 
     .prologue
-    .line 1908
+    .line 1931
     invoke-direct {p0, p1}, Landroid/widget/Editor$Blink;-><init>(Landroid/widget/Editor;)V
 
     return-void
@@ -55,20 +55,20 @@
     .locals 1
 
     .prologue
-    .line 1928
+    .line 1951
     iget-boolean v0, p0, Landroid/widget/Editor$Blink;->mCancelled:Z
 
     if-nez v0, :cond_0
 
-    .line 1929
+    .line 1952
     invoke-virtual {p0, p0}, Landroid/widget/Editor$Blink;->removeCallbacks(Ljava/lang/Runnable;)V
 
-    .line 1930
+    .line 1953
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/widget/Editor$Blink;->mCancelled:Z
 
-    .line 1932
+    .line 1955
     :cond_0
     return-void
 .end method
@@ -77,35 +77,35 @@
     .locals 4
 
     .prologue
-    .line 1912
+    .line 1935
     iget-boolean v0, p0, Landroid/widget/Editor$Blink;->mCancelled:Z
 
     if-eqz v0, :cond_1
 
-    .line 1925
+    .line 1948
     :cond_0
     :goto_0
     return-void
 
-    .line 1916
+    .line 1939
     :cond_1
     invoke-virtual {p0, p0}, Landroid/widget/Editor$Blink;->removeCallbacks(Ljava/lang/Runnable;)V
 
-    .line 1918
+    .line 1941
     iget-object v0, p0, Landroid/widget/Editor$Blink;->this$0:Landroid/widget/Editor;
 
     #calls: Landroid/widget/Editor;->shouldBlink()Z
-    invoke-static {v0}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Z
+    invoke-static {v0}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 1919
+    .line 1942
     iget-object v0, p0, Landroid/widget/Editor$Blink;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v0}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v0}, Landroid/widget/Editor;->access$700(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v0
 
@@ -115,17 +115,17 @@
 
     if-eqz v0, :cond_2
 
-    .line 1920
+    .line 1943
     iget-object v0, p0, Landroid/widget/Editor$Blink;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v0}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v0}, Landroid/widget/Editor;->access$700(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v0
 
     invoke-virtual {v0}, Landroid/widget/TextView;->invalidateCursorPath()V
 
-    .line 1923
+    .line 1946
     :cond_2
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
@@ -144,11 +144,11 @@
     .locals 1
 
     .prologue
-    .line 1935
+    .line 1958
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/widget/Editor$Blink;->mCancelled:Z
 
-    .line 1936
+    .line 1959
     return-void
 .end method

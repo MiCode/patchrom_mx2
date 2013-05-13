@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1678
+    .line 1732
     iput-object p1, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator$5;->this$0:Lcom/android/internal/policy/impl/KeyguardViewMediator;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -37,15 +37,34 @@
 
 
 # virtual methods
+.method public enableKeyguardDownWithAnim(Z)V
+    .locals 1
+    .parameter "enable"
+
+    .prologue
+    .line 1776
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator$5;->this$0:Lcom/android/internal/policy/impl/KeyguardViewMediator;
+
+    #getter for: Lcom/android/internal/policy/impl/KeyguardViewMediator;->mKeyguardViewManager:Lcom/android/internal/policy/impl/KeyguardViewManager;
+    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$1500(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/KeyguardViewManager;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Lcom/android/internal/policy/impl/KeyguardViewManager;->enableKeyguardDownWithAnim(Z)V
+
+    .line 1777
+    return-void
+.end method
+
 .method public getActivityScreenshot()Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;
     .locals 1
 
     .prologue
-    .line 1702
+    .line 1756
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator$5;->this$0:Lcom/android/internal/policy/impl/KeyguardViewMediator;
 
     #getter for: Lcom/android/internal/policy/impl/KeyguardViewMediator;->mKeyguardViewManager:Lcom/android/internal/policy/impl/KeyguardViewManager;
-    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$3200(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/KeyguardViewManager;
+    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$1500(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/KeyguardViewManager;
 
     move-result-object v0
 
@@ -60,11 +79,11 @@
     .locals 1
 
     .prologue
-    .line 1707
+    .line 1761
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator$5;->this$0:Lcom/android/internal/policy/impl/KeyguardViewMediator;
 
     #getter for: Lcom/android/internal/policy/impl/KeyguardViewMediator;->mKeyguardViewManager:Lcom/android/internal/policy/impl/KeyguardViewManager;
-    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$3200(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/KeyguardViewManager;
+    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$1500(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/KeyguardViewManager;
 
     move-result-object v0
 
@@ -79,17 +98,17 @@
     .locals 1
 
     .prologue
-    .line 1687
+    .line 1741
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator$5;->this$0:Lcom/android/internal/policy/impl/KeyguardViewMediator;
 
     #getter for: Lcom/android/internal/policy/impl/KeyguardViewMediator;->mCallback:Lcom/android/internal/policy/impl/PhoneWindowManager;
-    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$3100(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/PhoneWindowManager;
+    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$1400(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     move-result-object v0
 
     invoke-virtual {v0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->cancelUnlock()V
 
-    .line 1688
+    .line 1742
     return-void
 .end method
 
@@ -98,17 +117,17 @@
     .parameter "posKeyguardX"
 
     .prologue
-    .line 1717
+    .line 1771
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator$5;->this$0:Lcom/android/internal/policy/impl/KeyguardViewMediator;
 
     #getter for: Lcom/android/internal/policy/impl/KeyguardViewMediator;->mCallback:Lcom/android/internal/policy/impl/PhoneWindowManager;
-    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$3100(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/PhoneWindowManager;
+    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$1400(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     move-result-object v0
 
     invoke-virtual {v0, p1}, Lcom/android/internal/policy/impl/PhoneWindowManager;->onlyMoveKeyguard(I)V
 
-    .line 1718
+    .line 1772
     return-void
 .end method
 
@@ -118,11 +137,11 @@
     .parameter "posKeyguard"
 
     .prologue
-    .line 1682
+    .line 1736
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator$5;->this$0:Lcom/android/internal/policy/impl/KeyguardViewMediator;
 
     #getter for: Lcom/android/internal/policy/impl/KeyguardViewMediator;->mCallback:Lcom/android/internal/policy/impl/PhoneWindowManager;
-    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$3100(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/PhoneWindowManager;
+    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$1400(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     move-result-object v0
 
@@ -130,7 +149,7 @@
 
     invoke-virtual {v0, p1, p2, v1}, Lcom/android/internal/policy/impl/PhoneWindowManager;->unlockTopWindowMove(IIZ)V
 
-    .line 1683
+    .line 1737
     return-void
 .end method
 
@@ -138,17 +157,17 @@
     .locals 1
 
     .prologue
-    .line 1692
+    .line 1746
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator$5;->this$0:Lcom/android/internal/policy/impl/KeyguardViewMediator;
 
     #getter for: Lcom/android/internal/policy/impl/KeyguardViewMediator;->mCallback:Lcom/android/internal/policy/impl/PhoneWindowManager;
-    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$3100(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/PhoneWindowManager;
+    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$1400(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     move-result-object v0
 
     invoke-virtual {v0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->realUnlockTopWindow()V
 
-    .line 1693
+    .line 1747
     return-void
 .end method
 
@@ -157,17 +176,17 @@
     .parameter "isSecure"
 
     .prologue
-    .line 1712
+    .line 1766
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator$5;->this$0:Lcom/android/internal/policy/impl/KeyguardViewMediator;
 
     #getter for: Lcom/android/internal/policy/impl/KeyguardViewMediator;->mKeyguardViewManager:Lcom/android/internal/policy/impl/KeyguardViewManager;
-    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$3200(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/KeyguardViewManager;
+    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$1500(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/KeyguardViewManager;
 
     move-result-object v0
 
     invoke-virtual {v0, p1}, Lcom/android/internal/policy/impl/KeyguardViewManager;->relayoutForPasswordKeyguard(Z)V
 
-    .line 1713
+    .line 1767
     return-void
 .end method
 
@@ -176,16 +195,16 @@
     .parameter "visible"
 
     .prologue
-    .line 1697
+    .line 1751
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator$5;->this$0:Lcom/android/internal/policy/impl/KeyguardViewMediator;
 
     #getter for: Lcom/android/internal/policy/impl/KeyguardViewMediator;->mKeyguardViewManager:Lcom/android/internal/policy/impl/KeyguardViewManager;
-    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$3200(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/KeyguardViewManager;
+    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$1500(Lcom/android/internal/policy/impl/KeyguardViewMediator;)Lcom/android/internal/policy/impl/KeyguardViewManager;
 
     move-result-object v0
 
     invoke-virtual {v0, p1}, Lcom/android/internal/policy/impl/KeyguardViewManager;->setKeyguardScreenshotVisible(Z)V
 
-    .line 1698
+    .line 1752
     return-void
 .end method

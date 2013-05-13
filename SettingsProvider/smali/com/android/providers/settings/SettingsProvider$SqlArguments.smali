@@ -30,10 +30,10 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 129
+    .line 134
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 130
+    .line 135
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
 
     move-result-object v0
@@ -46,7 +46,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 131
+    .line 136
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
 
     move-result-object v0
@@ -61,7 +61,7 @@
 
     iput-object v0, p0, Lcom/android/providers/settings/SettingsProvider$SqlArguments;->table:Ljava/lang/String;
 
-    .line 132
+    .line 137
     iget-object v0, p0, Lcom/android/providers/settings/SettingsProvider$SqlArguments;->table:Ljava/lang/String;
 
     invoke-static {v0}, Lcom/android/providers/settings/DatabaseHelper;->isValidTable(Ljava/lang/String;)Z
@@ -70,7 +70,7 @@
 
     if-nez v0, :cond_0
 
-    .line 133
+    .line 138
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -97,17 +97,17 @@
 
     throw v0
 
-    .line 135
+    .line 140
     :cond_0
     iput-object v2, p0, Lcom/android/providers/settings/SettingsProvider$SqlArguments;->where:Ljava/lang/String;
 
-    .line 136
+    .line 141
     iput-object v2, p0, Lcom/android/providers/settings/SettingsProvider$SqlArguments;->args:[Ljava/lang/String;
 
-    .line 140
+    .line 145
     return-void
 
-    .line 138
+    .line 143
     :cond_1
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -145,10 +145,10 @@
 
     const/4 v2, 0x0
 
-    .line 101
+    .line 106
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 102
+    .line 107
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
 
     move-result-object v0
@@ -159,7 +159,7 @@
 
     if-ne v0, v3, :cond_1
 
-    .line 103
+    .line 108
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
 
     move-result-object v0
@@ -172,7 +172,7 @@
 
     iput-object v0, p0, Lcom/android/providers/settings/SettingsProvider$SqlArguments;->table:Ljava/lang/String;
 
-    .line 104
+    .line 109
     iget-object v0, p0, Lcom/android/providers/settings/SettingsProvider$SqlArguments;->table:Ljava/lang/String;
 
     invoke-static {v0}, Lcom/android/providers/settings/DatabaseHelper;->isValidTable(Ljava/lang/String;)Z
@@ -181,7 +181,7 @@
 
     if-nez v0, :cond_0
 
-    .line 105
+    .line 110
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -208,18 +208,18 @@
 
     throw v0
 
-    .line 107
+    .line 112
     :cond_0
     iput-object p2, p0, Lcom/android/providers/settings/SettingsProvider$SqlArguments;->where:Ljava/lang/String;
 
-    .line 108
+    .line 113
     iput-object p3, p0, Lcom/android/providers/settings/SettingsProvider$SqlArguments;->args:[Ljava/lang/String;
 
-    .line 126
+    .line 131
     :goto_0
     return-void
 
-    .line 109
+    .line 114
     :cond_1
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
 
@@ -233,7 +233,7 @@
 
     if-eq v0, v1, :cond_2
 
-    .line 110
+    .line 115
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -258,7 +258,7 @@
 
     throw v0
 
-    .line 111
+    .line 116
     :cond_2
     invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -266,7 +266,7 @@
 
     if-nez v0, :cond_3
 
-    .line 112
+    .line 117
     new-instance v0, Ljava/lang/UnsupportedOperationException;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -291,7 +291,7 @@
 
     throw v0
 
-    .line 114
+    .line 119
     :cond_3
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
 
@@ -305,7 +305,7 @@
 
     iput-object v0, p0, Lcom/android/providers/settings/SettingsProvider$SqlArguments;->table:Ljava/lang/String;
 
-    .line 115
+    .line 120
     iget-object v0, p0, Lcom/android/providers/settings/SettingsProvider$SqlArguments;->table:Ljava/lang/String;
 
     invoke-static {v0}, Lcom/android/providers/settings/DatabaseHelper;->isValidTable(Ljava/lang/String;)Z
@@ -314,7 +314,7 @@
 
     if-nez v0, :cond_4
 
-    .line 116
+    .line 121
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -341,7 +341,7 @@
 
     throw v0
 
-    .line 118
+    .line 123
     :cond_4
     const-string v0, "system"
 
@@ -363,13 +363,13 @@
 
     if-eqz v0, :cond_6
 
-    .line 119
+    .line 124
     :cond_5
     const-string v0, "name=?"
 
     iput-object v0, p0, Lcom/android/providers/settings/SettingsProvider$SqlArguments;->where:Ljava/lang/String;
 
-    .line 120
+    .line 125
     new-array v1, v3, [Ljava/lang/String;
 
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
@@ -388,7 +388,7 @@
 
     goto/16 :goto_0
 
-    .line 122
+    .line 127
     :cond_6
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -414,7 +414,7 @@
 
     iput-object v0, p0, Lcom/android/providers/settings/SettingsProvider$SqlArguments;->where:Ljava/lang/String;
 
-    .line 123
+    .line 128
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/providers/settings/SettingsProvider$SqlArguments;->args:[Ljava/lang/String;

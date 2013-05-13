@@ -232,7 +232,7 @@
 
     move-result-object v8
 
-    const v10, 0x10900c2
+    const v10, 0x10900cb
 
     const/4 v11, 0x0
 

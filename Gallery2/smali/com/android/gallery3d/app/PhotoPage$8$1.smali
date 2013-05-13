@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 910
+    .line 957
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoPage$8$1;->this$1:Lcom/android/gallery3d/app/PhotoPage$8;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,10 +43,10 @@
     .parameter "msg"
 
     .prologue
-    .line 912
+    .line 959
     if-eqz p1, :cond_0
 
-    .line 914
+    .line 961
     const-string v0, "gallery.dlna"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -69,18 +69,18 @@
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/ui/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 918
+    .line 965
     :goto_0
     return-void
 
-    .line 917
+    .line 964
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$8$1;->this$1:Lcom/android/gallery3d/app/PhotoPage$8;
 
     iget-object v0, v0, Lcom/android/gallery3d/app/PhotoPage$8;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mDlnaClient:Landroid/media/dlna/DlnaClient;
-    invoke-static {v0}, Lcom/android/gallery3d/app/PhotoPage;->access$3500(Lcom/android/gallery3d/app/PhotoPage;)Landroid/media/dlna/DlnaClient;
+    invoke-static {v0}, Lcom/android/gallery3d/app/PhotoPage;->access$3900(Lcom/android/gallery3d/app/PhotoPage;)Landroid/media/dlna/DlnaClient;
 
     move-result-object v0
 

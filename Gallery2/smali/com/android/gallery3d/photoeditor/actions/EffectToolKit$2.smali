@@ -23,7 +23,7 @@
     .locals 3
 
     .prologue
-    .line 141
+    .line 140
     invoke-static {}, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit$ScaleType;->values()[Lcom/android/gallery3d/photoeditor/actions/EffectToolKit$ScaleType;
 
     move-result-object v0

@@ -58,12 +58,12 @@
     .locals 1
 
     .prologue
-    .line 380
+    .line 384
     const-string v0, "jni_eglfence"
 
     invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
-    .line 381
+    .line 385
     return-void
 .end method
 
@@ -246,6 +246,18 @@
     iget-boolean v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->outputTopFilter:Z
 
     return v0
+.end method
+
+.method static synthetic access$202(Lcom/android/gallery3d/photoeditor/FilterStack;Z)Z
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 35
+    iput-boolean p1, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->outputTopFilter:Z
+
+    return p1
 .end method
 
 .method static synthetic access$300(Lcom/android/gallery3d/photoeditor/FilterStack;)Lcom/android/gallery3d/photoeditor/Photo;
@@ -610,21 +622,21 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 215
+    .line 216
     invoke-virtual {p1, v1}, Lcom/android/gallery3d/photoeditor/filters/Filter;->setApplied(Z)V
 
-    .line 216
+    .line 217
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
 
     invoke-virtual {v0, p1}, Ljava/util/Stack;->push(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 217
+    .line 218
     iput-boolean v1, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->outputTopFilter:Z
 
-    .line 218
+    .line 219
     invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/FilterStack;->stackChanged()V
 
-    .line 219
+    .line 220
     return-void
 .end method
 
@@ -830,7 +842,7 @@
     .parameter "callback"
 
     .prologue
-    .line 295
+    .line 299
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
 
     new-instance v1, Lcom/android/gallery3d/photoeditor/FilterStack$6;
@@ -839,7 +851,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/PhotoView;->queue(Ljava/lang/Runnable;)V
 
-    .line 305
+    .line 309
     return-void
 .end method
 
@@ -858,7 +870,7 @@
     .end annotation
 
     .prologue
-    .line 285
+    .line 289
     .local p1, name:Ljava/lang/Class;,"Ljava/lang/Class<TT;>;"
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
 
@@ -880,7 +892,7 @@
 
     check-cast v0, Lcom/android/gallery3d/photoeditor/filters/Filter;
 
-    .line 286
+    .line 290
     .local v0, filter:Lcom/android/gallery3d/photoeditor/filters/Filter;
     invoke-virtual {p1, v0}, Ljava/lang/Class;->isInstance(Ljava/lang/Object;)Z
 
@@ -888,12 +900,12 @@
 
     if-eqz v2, :cond_0
 
-    .line 287
+    .line 291
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
 
     invoke-virtual {v2, v0}, Ljava/util/Stack;->remove(Ljava/lang/Object;)Z
 
-    .line 291
+    .line 295
     .end local v0           #filter:Lcom/android/gallery3d/photoeditor/filters/Filter;
     :goto_0
     return-object v0
@@ -918,7 +930,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/PhotoView;->queue(Ljava/lang/Runnable;)V
 
-    .line 199
+    .line 200
     return-void
 .end method
 
@@ -926,7 +938,7 @@
     .locals 2
 
     .prologue
-    .line 235
+    .line 236
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
 
     invoke-virtual {v0}, Ljava/util/Stack;->isEmpty()Z
@@ -935,7 +947,7 @@
 
     if-nez v0, :cond_0
 
-    .line 236
+    .line 237
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
@@ -952,7 +964,7 @@
 
     check-cast v0, Lcom/android/gallery3d/photoeditor/filters/Filter;
 
-    .line 238
+    .line 239
     :goto_0
     return-object v0
 
@@ -980,17 +992,17 @@
     .locals 2
 
     .prologue
-    .line 355
+    .line 359
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->paused:Z
 
-    .line 356
+    .line 360
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/PhotoView;->flush()V
 
-    .line 357
+    .line 361
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
 
     new-instance v1, Lcom/android/gallery3d/photoeditor/FilterStack$10;
@@ -999,12 +1011,12 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/PhotoView;->queueEvent(Ljava/lang/Runnable;)V
 
-    .line 370
+    .line 374
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/PhotoView;->onPause()V
 
-    .line 371
+    .line 375
     return-void
 .end method
 
@@ -1014,18 +1026,18 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 374
+    .line 378
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/PhotoView;->onResume()V
 
-    .line 375
+    .line 379
     iput-boolean v1, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->mAnimationEnable:Z
 
-    .line 376
+    .line 380
     iput-boolean v1, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->paused:Z
 
-    .line 377
+    .line 381
     return-void
 .end method
 
@@ -1036,12 +1048,12 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 248
+    .line 249
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/FilterStack;->getTopFilter()Lcom/android/gallery3d/photoeditor/filters/Filter;
 
     move-result-object v0
 
-    .line 249
+    .line 250
     .local v0, f:Lcom/android/gallery3d/photoeditor/filters/Filter;
     invoke-virtual {p1, v0}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
 
@@ -1049,28 +1061,28 @@
 
     if-eqz v2, :cond_1
 
-    .line 259
+    .line 260
     :cond_0
     :goto_0
     return v1
 
-    .line 251
+    .line 252
     :cond_1
     if-eqz v0, :cond_0
 
-    .line 252
+    .line 253
     invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/filters/Filter;->isApplied()Z
 
     move-result v2
 
     if-nez v2, :cond_0
 
-    .line 255
+    .line 256
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
 
     invoke-virtual {v1}, Ljava/util/Stack;->pop()Ljava/lang/Object;
 
-    .line 256
+    .line 257
     const/4 v1, 0x1
 
     goto :goto_0
@@ -1081,7 +1093,7 @@
     .parameter "filter"
 
     .prologue
-    .line 222
+    .line 223
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
 
     new-instance v1, Lcom/android/gallery3d/photoeditor/FilterStack$5;
@@ -1090,7 +1102,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/PhotoView;->queue(Ljava/lang/Runnable;)V
 
-    .line 232
+    .line 233
     return-void
 .end method
 
@@ -1099,7 +1111,7 @@
     .parameter "callback"
 
     .prologue
-    .line 323
+    .line 327
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
 
     new-instance v1, Lcom/android/gallery3d/photoeditor/FilterStack$8;
@@ -1108,7 +1120,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/PhotoView;->queue(Ljava/lang/Runnable;)V
 
-    .line 334
+    .line 338
     return-void
 .end method
 
@@ -1116,7 +1128,7 @@
     .locals 3
 
     .prologue
-    .line 275
+    .line 279
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
 
     invoke-virtual {v2}, Ljava/util/Stack;->iterator()Ljava/util/Iterator;
@@ -1137,7 +1149,7 @@
 
     check-cast v0, Lcom/android/gallery3d/photoeditor/filters/Filter;
 
-    .line 276
+    .line 280
     .local v0, f:Lcom/android/gallery3d/photoeditor/filters/Filter;
     invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/filters/Filter;->isReplaceable()Z
 
@@ -1145,15 +1157,15 @@
 
     if-nez v2, :cond_0
 
-    .line 277
+    .line 281
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
 
     invoke-virtual {v2, v0}, Ljava/util/Stack;->remove(Ljava/lang/Object;)Z
 
-    .line 278
+    .line 282
     const/4 v2, 0x1
 
-    .line 281
+    .line 285
     .end local v0           #f:Lcom/android/gallery3d/photoeditor/filters/Filter;
     :goto_0
     return v2
@@ -1169,27 +1181,44 @@
     .parameter "filter"
 
     .prologue
-    .line 263
-    invoke-virtual {p1}, Lcom/android/gallery3d/photoeditor/filters/Filter;->isReplaceable()Z
-
-    move-result v2
-
-    if-nez v2, :cond_1
+    const/4 v2, 0x0
 
     .line 264
-    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
+    invoke-virtual {p1}, Lcom/android/gallery3d/photoeditor/filters/Filter;->isReplaceable()Z
 
-    invoke-virtual {v2}, Ljava/util/Stack;->iterator()Ljava/util/Iterator;
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    .line 265
+    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
+
+    invoke-virtual {v3}, Ljava/util/Stack;->isEmpty()Z
+
+    move-result v3
+
+    if-eqz v3, :cond_1
+
+    .line 275
+    :cond_0
+    :goto_0
+    return v2
+
+    .line 268
+    :cond_1
+    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
+
+    invoke-virtual {v3}, Ljava/util/Stack;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
 
     .local v1, i$:Ljava/util/Iterator;
-    :cond_0
+    :cond_2
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result v2
+    move-result v3
 
-    if-eqz v2, :cond_1
+    if-eqz v3, :cond_0
 
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -1197,15 +1226,15 @@
 
     check-cast v0, Lcom/android/gallery3d/photoeditor/filters/Filter;
 
-    .line 265
+    .line 269
     .local v0, f:Lcom/android/gallery3d/photoeditor/filters/Filter;
     invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/filters/Filter;->isReplaceable()Z
 
-    move-result v2
+    move-result v3
 
-    if-nez v2, :cond_0
+    if-nez v3, :cond_2
 
-    .line 266
+    .line 270
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
 
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
@@ -1216,17 +1245,8 @@
 
     invoke-virtual {v2, p1, v3}, Ljava/util/Stack;->setElementAt(Ljava/lang/Object;I)V
 
-    .line 267
-    const/4 v2, 0x1
-
     .line 271
-    .end local v0           #f:Lcom/android/gallery3d/photoeditor/filters/Filter;
-    .end local v1           #i$:Ljava/util/Iterator;
-    :goto_0
-    return v2
-
-    :cond_1
-    const/4 v2, 0x0
+    const/4 v2, 0x1
 
     goto :goto_0
 .end method
@@ -1292,7 +1312,7 @@
     .parameter "callback"
 
     .prologue
-    .line 202
+    .line 203
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
 
     new-instance v1, Lcom/android/gallery3d/photoeditor/FilterStack$4;
@@ -1301,7 +1321,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/PhotoView;->queue(Ljava/lang/Runnable;)V
 
-    .line 212
+    .line 213
     return-void
 .end method
 
@@ -1309,7 +1329,7 @@
     .locals 2
 
     .prologue
-    .line 242
+    .line 243
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
 
     invoke-virtual {v0}, Ljava/util/Stack;->isEmpty()Z
@@ -1318,7 +1338,7 @@
 
     if-nez v0, :cond_0
 
-    .line 243
+    .line 244
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->appliedStack:Ljava/util/Stack;
@@ -1339,7 +1359,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/filters/Filter;->setApplied(Z)V
 
-    .line 245
+    .line 246
     :cond_0
     return-void
 .end method
@@ -1349,19 +1369,19 @@
     .parameter "callback"
 
     .prologue
-    .line 338
+    .line 342
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->queuedTopFilterChange:Ljava/lang/Runnable;
 
     if-eqz v0, :cond_0
 
-    .line 339
+    .line 343
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->queuedTopFilterChange:Ljava/lang/Runnable;
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/PhotoView;->remove(Ljava/lang/Runnable;)V
 
-    .line 341
+    .line 345
     :cond_0
     new-instance v0, Lcom/android/gallery3d/photoeditor/FilterStack$9;
 
@@ -1369,14 +1389,14 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->queuedTopFilterChange:Ljava/lang/Runnable;
 
-    .line 349
+    .line 353
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->queuedTopFilterChange:Ljava/lang/Runnable;
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/PhotoView;->queue(Ljava/lang/Runnable;)V
 
-    .line 350
+    .line 354
     return-void
 .end method
 
@@ -1385,7 +1405,7 @@
     .parameter "callback"
 
     .prologue
-    .line 308
+    .line 312
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
 
     new-instance v1, Lcom/android/gallery3d/photoeditor/FilterStack$7;
@@ -1394,6 +1414,6 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/PhotoView;->queue(Ljava/lang/Runnable;)V
 
-    .line 320
+    .line 324
     return-void
 .end method

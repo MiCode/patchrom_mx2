@@ -82,7 +82,7 @@
     iput-object v0, p0, Lcom/android/camera/ui/EffectSettingPopup;->mBackgroundItem:Ljava/util/ArrayList;
 
     .line 61
-    const v0, 0x7f0a0089
+    const v0, 0x7f0a0093
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -133,7 +133,7 @@
     invoke-super {p0}, Lcom/android/camera/ui/AbstractSettingPopup;->onFinishInflate()V
 
     .line 67
-    const v0, 0x7f0d0076
+    const v0, 0x7f0d007b
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ui/EffectSettingPopup;->findViewById(I)Landroid/view/View;
 
@@ -147,7 +147,7 @@
     invoke-virtual {v0, p0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
     .line 69
-    const v0, 0x7f0d0079
+    const v0, 0x7f0d007e
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ui/EffectSettingPopup;->findViewById(I)Landroid/view/View;
 
@@ -158,7 +158,7 @@
     iput-object v0, p0, Lcom/android/camera/ui/EffectSettingPopup;->mSillyFacesGrid:Landroid/widget/GridView;
 
     .line 70
-    const v0, 0x7f0d007d
+    const v0, 0x7f0d0082
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ui/EffectSettingPopup;->findViewById(I)Landroid/view/View;
 

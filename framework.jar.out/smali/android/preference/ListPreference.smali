@@ -11,6 +11,10 @@
 .end annotation
 
 
+# static fields
+.field private static mEllipsize:Landroid/text/TextUtils$TruncateAt;
+
+
 # instance fields
 .field private mClickedDialogEntryIndex:I
 
@@ -24,17 +28,29 @@
 
 
 # direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    .prologue
+    .line 46
+    sget-object v0, Landroid/text/TextUtils$TruncateAt;->END:Landroid/text/TextUtils$TruncateAt;
+
+    sput-object v0, Landroid/preference/ListPreference;->mEllipsize:Landroid/text/TextUtils$TruncateAt;
+
+    return-void
+.end method
+
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 1
     .parameter "context"
 
     .prologue
-    .line 64
+    .line 76
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Landroid/preference/ListPreference;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 65
+    .line 77
     return-void
 .end method
 
@@ -46,17 +62,17 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 46
+    .line 58
     invoke-direct {p0, p1, p2}, Landroid/preference/DialogPreference;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 48
+    .line 60
     sget-object v1, Lcom/android/internal/R$styleable;->ListPreference:[I
 
     invoke-virtual {p1, p2, v1, v2, v2}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    .line 50
+    .line 62
     .local v0, a:Landroid/content/res/TypedArray;
     invoke-virtual {v0, v2}, Landroid/content/res/TypedArray;->getTextArray(I)[Ljava/lang/CharSequence;
 
@@ -64,7 +80,7 @@
 
     iput-object v1, p0, Landroid/preference/ListPreference;->mEntries:[Ljava/lang/CharSequence;
 
-    .line 51
+    .line 63
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/content/res/TypedArray;->getTextArray(I)[Ljava/lang/CharSequence;
@@ -73,17 +89,17 @@
 
     iput-object v1, p0, Landroid/preference/ListPreference;->mEntryValues:[Ljava/lang/CharSequence;
 
-    .line 52
+    .line 64
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 57
+    .line 69
     sget-object v1, Lcom/android/internal/R$styleable;->Preference:[I
 
     invoke-virtual {p1, p2, v1, v2, v2}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    .line 59
+    .line 71
     const/4 v1, 0x7
 
     invoke-virtual {v0, v1}, Landroid/content/res/TypedArray;->getString(I)Ljava/lang/String;
@@ -92,10 +108,10 @@
 
     iput-object v1, p0, Landroid/preference/ListPreference;->mSummary:Ljava/lang/String;
 
-    .line 60
+    .line 72
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 61
+    .line 73
     return-void
 .end method
 
@@ -105,7 +121,7 @@
     .parameter "x1"
 
     .prologue
-    .line 38
+    .line 39
     iput p1, p0, Landroid/preference/ListPreference;->mClickedDialogEntryIndex:I
 
     return p1
@@ -115,7 +131,7 @@
     .locals 1
 
     .prologue
-    .line 224
+    .line 236
     iget-object v0, p0, Landroid/preference/ListPreference;->mValue:Ljava/lang/String;
 
     invoke-virtual {p0, v0}, Landroid/preference/ListPreference;->findIndexOfValue(Ljava/lang/String;)I
@@ -132,14 +148,14 @@
     .parameter "value"
 
     .prologue
-    .line 213
+    .line 225
     if-eqz p1, :cond_1
 
     iget-object v1, p0, Landroid/preference/ListPreference;->mEntryValues:[Ljava/lang/CharSequence;
 
     if-eqz v1, :cond_1
 
-    .line 214
+    .line 226
     iget-object v1, p0, Landroid/preference/ListPreference;->mEntryValues:[Ljava/lang/CharSequence;
 
     array-length v1, v1
@@ -150,7 +166,7 @@
     :goto_0
     if-ltz v0, :cond_1
 
-    .line 215
+    .line 227
     iget-object v1, p0, Landroid/preference/ListPreference;->mEntryValues:[Ljava/lang/CharSequence;
 
     aget-object v1, v1, v0
@@ -161,19 +177,19 @@
 
     if-eqz v1, :cond_0
 
-    .line 220
+    .line 232
     .end local v0           #i:I
     :goto_1
     return v0
 
-    .line 214
+    .line 226
     .restart local v0       #i:I
     :cond_0
     add-int/lit8 v0, v0, -0x1
 
     goto :goto_0
 
-    .line 220
+    .line 232
     .end local v0           #i:I
     :cond_1
     const/4 v0, -0x1
@@ -185,7 +201,7 @@
     .locals 1
 
     .prologue
-    .line 95
+    .line 107
     iget-object v0, p0, Landroid/preference/ListPreference;->mEntries:[Ljava/lang/CharSequence;
 
     return-object v0
@@ -195,12 +211,12 @@
     .locals 2
 
     .prologue
-    .line 202
+    .line 214
     invoke-direct {p0}, Landroid/preference/ListPreference;->getValueIndex()I
 
     move-result v0
 
-    .line 203
+    .line 215
     .local v0, index:I
     if-ltz v0, :cond_0
 
@@ -225,7 +241,7 @@
     .locals 1
 
     .prologue
-    .line 123
+    .line 135
     iget-object v0, p0, Landroid/preference/ListPreference;->mEntryValues:[Ljava/lang/CharSequence;
 
     return-object v0
@@ -235,12 +251,12 @@
     .locals 4
 
     .prologue
-    .line 148
+    .line 160
     invoke-virtual {p0}, Landroid/preference/ListPreference;->getEntry()Ljava/lang/CharSequence;
 
     move-result-object v0
 
-    .line 149
+    .line 161
     .local v0, entry:Ljava/lang/CharSequence;
     iget-object v1, p0, Landroid/preference/ListPreference;->mSummary:Ljava/lang/String;
 
@@ -248,13 +264,13 @@
 
     if-nez v0, :cond_1
 
-    .line 150
+    .line 162
     :cond_0
     invoke-super {p0}, Landroid/preference/DialogPreference;->getSummary()Ljava/lang/CharSequence;
 
     move-result-object v1
 
-    .line 152
+    .line 164
     :goto_0
     return-object v1
 
@@ -280,7 +296,7 @@
     .locals 1
 
     .prologue
-    .line 193
+    .line 205
     iget-object v0, p0, Landroid/preference/ListPreference;->mValue:Ljava/lang/String;
 
     return-object v0
@@ -291,10 +307,10 @@
     .parameter "positiveResult"
 
     .prologue
-    .line 262
+    .line 274
     invoke-super {p0, p1}, Landroid/preference/DialogPreference;->onDialogClosed(Z)V
 
-    .line 264
+    .line 276
     if-eqz p1, :cond_0
 
     iget v1, p0, Landroid/preference/ListPreference;->mClickedDialogEntryIndex:I
@@ -305,7 +321,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 265
+    .line 277
     iget-object v1, p0, Landroid/preference/ListPreference;->mEntryValues:[Ljava/lang/CharSequence;
 
     iget v2, p0, Landroid/preference/ListPreference;->mClickedDialogEntryIndex:I
@@ -316,7 +332,7 @@
 
     move-result-object v0
 
-    .line 266
+    .line 278
     .local v0, value:Ljava/lang/String;
     invoke-virtual {p0, v0}, Landroid/preference/ListPreference;->callChangeListener(Ljava/lang/Object;)Z
 
@@ -324,10 +340,10 @@
 
     if-eqz v1, :cond_0
 
-    .line 267
+    .line 279
     invoke-virtual {p0, v0}, Landroid/preference/ListPreference;->setValue(Ljava/lang/String;)V
 
-    .line 270
+    .line 282
     .end local v0           #value:Ljava/lang/String;
     :cond_0
     return-void
@@ -339,7 +355,7 @@
     .parameter "index"
 
     .prologue
-    .line 274
+    .line 286
     invoke-virtual {p1, p2}, Landroid/content/res/TypedArray;->getString(I)Ljava/lang/String;
 
     move-result-object v0
@@ -348,16 +364,16 @@
 .end method
 
 .method protected onPrepareDialogBuilder(Landroid/app/AlertDialog$Builder;)V
-    .locals 4
+    .locals 5
     .parameter "builder"
 
     .prologue
-    const/4 v3, 0x0
+    const/4 v4, 0x0
 
-    .line 229
+    .line 241
     invoke-super {p0, p1}, Landroid/preference/DialogPreference;->onPrepareDialogBuilder(Landroid/app/AlertDialog$Builder;)V
 
-    .line 231
+    .line 243
     iget-object v0, p0, Landroid/preference/ListPreference;->mEntries:[Ljava/lang/CharSequence;
 
     if-eqz v0, :cond_0
@@ -366,7 +382,7 @@
 
     if-nez v0, :cond_1
 
-    .line 232
+    .line 244
     :cond_0
     new-instance v0, Ljava/lang/IllegalStateException;
 
@@ -376,7 +392,7 @@
 
     throw v0
 
-    .line 236
+    .line 248
     :cond_1
     invoke-direct {p0}, Landroid/preference/ListPreference;->getValueIndex()I
 
@@ -384,7 +400,7 @@
 
     iput v0, p0, Landroid/preference/ListPreference;->mClickedDialogEntryIndex:I
 
-    .line 237
+    .line 249
     iget-object v0, p0, Landroid/preference/ListPreference;->mEntries:[Ljava/lang/CharSequence;
 
     iget v1, p0, Landroid/preference/ListPreference;->mClickedDialogEntryIndex:I
@@ -393,15 +409,17 @@
 
     invoke-direct {v2, p0}, Landroid/preference/ListPreference$1;-><init>(Landroid/preference/ListPreference;)V
 
-    invoke-virtual {p1, v0, v1, v2}, Landroid/app/AlertDialog$Builder;->setSingleChoiceItems([Ljava/lang/CharSequence;ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+    sget-object v3, Landroid/preference/ListPreference;->mEllipsize:Landroid/text/TextUtils$TruncateAt;
 
-    .line 256
-    invoke-virtual {p1, v3, v3}, Landroid/app/AlertDialog$Builder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+    invoke-virtual {p1, v0, v1, v2, v3}, Landroid/app/AlertDialog$Builder;->setSingleChoiceItems([Ljava/lang/CharSequence;ILandroid/content/DialogInterface$OnClickListener;Landroid/text/TextUtils$TruncateAt;)Landroid/app/AlertDialog$Builder;
 
-    .line 257
-    invoke-virtual {p1, v3, v3}, Landroid/app/AlertDialog$Builder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+    .line 268
+    invoke-virtual {p1, v4, v4}, Landroid/app/AlertDialog$Builder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
 
-    .line 258
+    .line 269
+    invoke-virtual {p1, v4, v4}, Landroid/app/AlertDialog$Builder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+
+    .line 270
     return-void
 .end method
 
@@ -410,7 +428,7 @@
     .parameter "state"
 
     .prologue
-    .line 297
+    .line 309
     if-eqz p1, :cond_0
 
     invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
@@ -425,21 +443,21 @@
 
     if-nez v1, :cond_1
 
-    .line 299
+    .line 311
     :cond_0
     invoke-super {p0, p1}, Landroid/preference/DialogPreference;->onRestoreInstanceState(Landroid/os/Parcelable;)V
 
-    .line 306
+    .line 318
     :goto_0
     return-void
 
     :cond_1
     move-object v0, p1
 
-    .line 303
+    .line 315
     check-cast v0, Landroid/preference/ListPreference$SavedState;
 
-    .line 304
+    .line 316
     .local v0, myState:Landroid/preference/ListPreference$SavedState;
     invoke-virtual {v0}, Landroid/preference/ListPreference$SavedState;->getSuperState()Landroid/os/Parcelable;
 
@@ -447,7 +465,7 @@
 
     invoke-super {p0, v1}, Landroid/preference/DialogPreference;->onRestoreInstanceState(Landroid/os/Parcelable;)V
 
-    .line 305
+    .line 317
     iget-object v1, v0, Landroid/preference/ListPreference$SavedState;->value:Ljava/lang/String;
 
     invoke-virtual {p0, v1}, Landroid/preference/ListPreference;->setValue(Ljava/lang/String;)V
@@ -459,12 +477,12 @@
     .locals 3
 
     .prologue
-    .line 284
+    .line 296
     invoke-super {p0}, Landroid/preference/DialogPreference;->onSaveInstanceState()Landroid/os/Parcelable;
 
     move-result-object v1
 
-    .line 285
+    .line 297
     .local v1, superState:Landroid/os/Parcelable;
     invoke-virtual {p0}, Landroid/preference/ListPreference;->isPersistent()Z
 
@@ -472,19 +490,19 @@
 
     if-eqz v2, :cond_0
 
-    .line 292
+    .line 304
     .end local v1           #superState:Landroid/os/Parcelable;
     :goto_0
     return-object v1
 
-    .line 290
+    .line 302
     .restart local v1       #superState:Landroid/os/Parcelable;
     :cond_0
     new-instance v0, Landroid/preference/ListPreference$SavedState;
 
     invoke-direct {v0, v1}, Landroid/preference/ListPreference$SavedState;-><init>(Landroid/os/Parcelable;)V
 
-    .line 291
+    .line 303
     .local v0, myState:Landroid/preference/ListPreference$SavedState;
     invoke-virtual {p0}, Landroid/preference/ListPreference;->getValue()Ljava/lang/String;
 
@@ -494,7 +512,7 @@
 
     move-object v1, v0
 
-    .line 292
+    .line 304
     goto :goto_0
 .end method
 
@@ -504,7 +522,7 @@
     .parameter "defaultValue"
 
     .prologue
-    .line 279
+    .line 291
     if-eqz p1, :cond_0
 
     iget-object v0, p0, Landroid/preference/ListPreference;->mValue:Ljava/lang/String;
@@ -517,10 +535,10 @@
     :goto_0
     invoke-virtual {p0, p2}, Landroid/preference/ListPreference;->setValue(Ljava/lang/String;)V
 
-    .line 280
+    .line 292
     return-void
 
-    .line 279
+    .line 291
     .restart local p2
     :cond_0
     check-cast p2, Ljava/lang/String;
@@ -528,12 +546,24 @@
     goto :goto_0
 .end method
 
+.method public setEllipsize(Landroid/text/TextUtils$TruncateAt;)V
+    .locals 0
+    .parameter "ellipsize"
+
+    .prologue
+    .line 54
+    sput-object p1, Landroid/preference/ListPreference;->mEllipsize:Landroid/text/TextUtils$TruncateAt;
+
+    .line 55
+    return-void
+.end method
+
 .method public setEntries(I)V
     .locals 1
     .parameter "entriesResId"
 
     .prologue
-    .line 86
+    .line 98
     invoke-virtual {p0}, Landroid/preference/ListPreference;->getContext()Landroid/content/Context;
 
     move-result-object v0
@@ -548,7 +578,7 @@
 
     invoke-virtual {p0, v0}, Landroid/preference/ListPreference;->setEntries([Ljava/lang/CharSequence;)V
 
-    .line 87
+    .line 99
     return-void
 .end method
 
@@ -557,10 +587,10 @@
     .parameter "entries"
 
     .prologue
-    .line 78
+    .line 90
     iput-object p1, p0, Landroid/preference/ListPreference;->mEntries:[Ljava/lang/CharSequence;
 
-    .line 79
+    .line 91
     return-void
 .end method
 
@@ -569,7 +599,7 @@
     .parameter "entryValuesResId"
 
     .prologue
-    .line 114
+    .line 126
     invoke-virtual {p0}, Landroid/preference/ListPreference;->getContext()Landroid/content/Context;
 
     move-result-object v0
@@ -584,7 +614,7 @@
 
     invoke-virtual {p0, v0}, Landroid/preference/ListPreference;->setEntryValues([Ljava/lang/CharSequence;)V
 
-    .line 115
+    .line 127
     return-void
 .end method
 
@@ -593,10 +623,10 @@
     .parameter "entryValues"
 
     .prologue
-    .line 106
+    .line 118
     iput-object p1, p0, Landroid/preference/ListPreference;->mEntryValues:[Ljava/lang/CharSequence;
 
-    .line 107
+    .line 119
     return-void
 .end method
 
@@ -605,27 +635,27 @@
     .parameter "summary"
 
     .prologue
-    .line 167
+    .line 179
     invoke-super {p0, p1}, Landroid/preference/DialogPreference;->setSummary(Ljava/lang/CharSequence;)V
 
-    .line 168
+    .line 180
     if-nez p1, :cond_1
 
     iget-object v0, p0, Landroid/preference/ListPreference;->mSummary:Ljava/lang/String;
 
     if-eqz v0, :cond_1
 
-    .line 169
+    .line 181
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/preference/ListPreference;->mSummary:Ljava/lang/String;
 
-    .line 173
+    .line 185
     :cond_0
     :goto_0
     return-void
 
-    .line 170
+    .line 182
     :cond_1
     if-eqz p1, :cond_0
 
@@ -637,7 +667,7 @@
 
     if-nez v0, :cond_0
 
-    .line 171
+    .line 183
     invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     move-result-object v0
@@ -652,13 +682,13 @@
     .parameter "value"
 
     .prologue
-    .line 133
+    .line 145
     iput-object p1, p0, Landroid/preference/ListPreference;->mValue:Ljava/lang/String;
 
-    .line 135
+    .line 147
     invoke-virtual {p0, p1}, Landroid/preference/ListPreference;->persistString(Ljava/lang/String;)Z
 
-    .line 136
+    .line 148
     return-void
 .end method
 
@@ -667,12 +697,12 @@
     .parameter "index"
 
     .prologue
-    .line 181
+    .line 193
     iget-object v0, p0, Landroid/preference/ListPreference;->mEntryValues:[Ljava/lang/CharSequence;
 
     if-eqz v0, :cond_0
 
-    .line 182
+    .line 194
     iget-object v0, p0, Landroid/preference/ListPreference;->mEntryValues:[Ljava/lang/CharSequence;
 
     aget-object v0, v0, p1
@@ -683,7 +713,7 @@
 
     invoke-virtual {p0, v0}, Landroid/preference/ListPreference;->setValue(Ljava/lang/String;)V
 
-    .line 184
+    .line 196
     :cond_0
     return-void
 .end method

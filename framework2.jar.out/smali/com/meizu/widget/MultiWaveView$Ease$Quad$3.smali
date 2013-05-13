@@ -22,7 +22,7 @@
     .locals 0
 
     .prologue
-    .line 1463
+    .line 1467
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -41,7 +41,7 @@
 
     const/high16 v2, 0x3f80
 
-    .line 1465
+    .line 1469
     div-float/2addr p1, v1
 
     cmpg-float v0, p1, v2

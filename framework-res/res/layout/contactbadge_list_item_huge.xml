@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="?activatedBackgroundIndicator" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/contactbadge_list_item_height_huge"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:id="@id/icon_container" android:layout_width="@dimen/contactbadge_width" android:layout_height="wrap_content" android:minHeight="@dimen/contactbadge_list_item_height_huge" android:layout_toLeftOf="@id/text1" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_alignParentBottom="true">
+        <com.meizu.widget.RoundCornerContactBadge android:id="@id/icon" style="@*android:style/Widget.RoundCornerContactBadge.List" />
+    </LinearLayout>
+    <TableLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/contactbadge_icon_text_padding" android:minHeight="@dimen/contactbadge_list_item_height_huge" android:layout_toRightOf="@id/icon_container" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignWithParentIfMissing="true">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?textAppearanceMedium" android:textSize="@dimen/contactbadge_text1_size_huge" android:ellipsize="middle" android:id="@id/text1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/contactbadge_text1_max_width_port" android:singleLine="true" android:includeFontPadding="false" />
+            <LinearLayout android:gravity="right|center" android:layout_gravity="right|center" android:orientation="vertical" android:paddingLeft="@dimen/contactbadge_date_padding_left" android:paddingRight="@dimen/contactbadge_date_padding_right" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <TextView android:textAppearance="?textAppearanceSmall" android:textSize="@dimen/contactbadge_date_text_size_normal" android:ellipsize="end" android:gravity="right|center" android:layout_gravity="right|center" android:id="@id/date" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?textAppearanceSmall" android:textSize="@dimen/contactbadge_text2_size_huge" android:ellipsize="end" android:id="@id/text2" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
+            <LinearLayout android:gravity="right|center" android:layout_gravity="right|center" android:orientation="vertical" android:id="@id/checkbox_lin" android:paddingRight="@dimen/contactbadge_checkbox_padding_right" android:layout_width="@dimen/contactbadge_checkbox_width" android:layout_height="fill_parent">
+                <CheckBox android:gravity="center_vertical" android:layout_gravity="right" android:id="@id/checkbox" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@*android:style/Widget.DeviceDefault.CompoundButton.CheckButtonlessMultiple" />
+            </LinearLayout>
+        </LinearLayout>
+    </TableLayout>
+</RelativeLayout>

@@ -44,7 +44,7 @@
 
     const/4 v2, 0x0
 
-    .line 103
+    .line 102
     new-instance v0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;
 
     const-string v1, "PasswordOrSimPin"
@@ -53,7 +53,7 @@
 
     sput-object v0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;->PasswordOrSimPin:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;
 
-    .line 108
+    .line 107
     new-instance v0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;
 
     const-string v1, "FindPhone"
@@ -62,7 +62,7 @@
 
     sput-object v0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;->FindPhone:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;
 
-    .line 113
+    .line 112
     new-instance v0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;
 
     const-string v1, "Unknown"
@@ -71,7 +71,7 @@
 
     sput-object v0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;->Unknown:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;
 
-    .line 99
+    .line 98
     const/4 v0, 0x3
 
     new-array v0, v0, [Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;
@@ -104,7 +104,7 @@
     .end annotation
 
     .prologue
-    .line 99
+    .line 98
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -115,7 +115,7 @@
     .parameter "name"
 
     .prologue
-    .line 99
+    .line 98
     const-class v0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -131,7 +131,7 @@
     .locals 1
 
     .prologue
-    .line 99
+    .line 98
     sget-object v0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;->$VALUES:[Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;
 
     invoke-virtual {v0}, [Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;->clone()Ljava/lang/Object;

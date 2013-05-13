@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 231
+    .line 238
     iput-object p1, p0, Lcom/android/gallery3d/ui/DialogDetailsView$4;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     iput-object p2, p0, Lcom/android/gallery3d/ui/DialogDetailsView$4;->val$contentView:Landroid/view/View;
@@ -47,24 +47,24 @@
     .parameter "address"
 
     .prologue
-    .line 235
+    .line 242
     invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 236
+    .line 243
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView$4;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     iget-object v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView$4;->val$contentView:Landroid/view/View;
 
-    const v2, 0x7f0d0073
+    const v2, 0x7f0d0078
 
     #calls: Lcom/android/gallery3d/ui/DialogDetailsView;->setTextViewInformation(Landroid/view/View;ILjava/lang/String;)V
     invoke-static {v0, v1, v2, p1}, Lcom/android/gallery3d/ui/DialogDetailsView;->access$400(Lcom/android/gallery3d/ui/DialogDetailsView;Landroid/view/View;ILjava/lang/String;)V
 
-    .line 238
+    .line 245
     :cond_0
     return-void
 .end method

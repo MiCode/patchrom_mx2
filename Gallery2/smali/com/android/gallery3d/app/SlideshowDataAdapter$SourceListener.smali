@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 147
+    .line 151
     iput-object p1, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter$SourceListener;->this$0:Lcom/android/gallery3d/app/SlideshowDataAdapter;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .parameter "x1"
 
     .prologue
-    .line 147
+    .line 151
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/SlideshowDataAdapter$SourceListener;-><init>(Lcom/android/gallery3d/app/SlideshowDataAdapter;)V
 
     return-void
@@ -53,12 +53,12 @@
     .locals 3
 
     .prologue
-    .line 149
+    .line 153
     iget-object v1, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter$SourceListener;->this$0:Lcom/android/gallery3d/app/SlideshowDataAdapter;
 
     monitor-enter v1
 
-    .line 150
+    .line 154
     :try_start_0
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter$SourceListener;->this$0:Lcom/android/gallery3d/app/SlideshowDataAdapter;
 
@@ -71,7 +71,7 @@
 
     invoke-virtual {v0, v2}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
 
-    .line 151
+    .line 155
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter$SourceListener;->this$0:Lcom/android/gallery3d/app/SlideshowDataAdapter;
 
     const/4 v2, 0x1
@@ -79,18 +79,18 @@
     #setter for: Lcom/android/gallery3d/app/SlideshowDataAdapter;->mDataReady:Z
     invoke-static {v0, v2}, Lcom/android/gallery3d/app/SlideshowDataAdapter;->access$202(Lcom/android/gallery3d/app/SlideshowDataAdapter;Z)Z
 
-    .line 152
+    .line 156
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter$SourceListener;->this$0:Lcom/android/gallery3d/app/SlideshowDataAdapter;
 
     invoke-virtual {v0}, Ljava/lang/Object;->notifyAll()V
 
-    .line 153
+    .line 157
     monitor-exit v1
 
-    .line 154
+    .line 158
     return-void
 
-    .line 153
+    .line 157
     :catchall_0
     move-exception v0
 

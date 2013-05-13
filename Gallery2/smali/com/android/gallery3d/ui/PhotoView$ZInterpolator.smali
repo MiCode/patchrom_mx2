@@ -24,13 +24,13 @@
     .parameter "foc"
 
     .prologue
-    .line 1792
+    .line 1847
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1793
+    .line 1848
     iput p1, p0, Lcom/android/gallery3d/ui/PhotoView$ZInterpolator;->focalLength:F
 
-    .line 1794
+    .line 1849
     return-void
 .end method
 
@@ -43,7 +43,7 @@
     .prologue
     const/high16 v3, 0x3f80
 
-    .line 1797
+    .line 1852
     iget v0, p0, Lcom/android/gallery3d/ui/PhotoView$ZInterpolator;->focalLength:F
 
     iget v1, p0, Lcom/android/gallery3d/ui/PhotoView$ZInterpolator;->focalLength:F

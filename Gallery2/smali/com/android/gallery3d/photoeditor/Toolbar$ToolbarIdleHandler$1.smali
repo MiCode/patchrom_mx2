@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 154
+    .line 160
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler$1;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;
 
     iput-object p2, p0, Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler$1;->val$tools:Ljava/util/List;
@@ -44,35 +44,35 @@
     .parameter "msg"
 
     .prologue
-    .line 158
+    .line 164
     iget v2, p1, Landroid/os/Message;->what:I
 
     packed-switch v2, :pswitch_data_0
 
-    .line 168
+    .line 174
     :cond_0
     return-void
 
-    .line 160
+    .line 166
     :pswitch_0
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler$1;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;
 
     #getter for: Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;->idle:Z
-    invoke-static {v2}, Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;->access$500(Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;)Z
+    invoke-static {v2}, Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;->access$600(Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;)Z
 
     move-result v2
 
     if-nez v2, :cond_0
 
-    .line 161
+    .line 167
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler$1;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;
 
     const/4 v3, 0x1
 
     #setter for: Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;->idle:Z
-    invoke-static {v2, v3}, Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;->access$502(Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;Z)Z
+    invoke-static {v2, v3}, Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;->access$602(Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;Z)Z
 
-    .line 162
+    .line 168
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler$1;->val$tools:Ljava/util/List;
 
     invoke-interface {v2}, Ljava/util/List;->iterator()Ljava/util/Iterator;
@@ -93,12 +93,12 @@
 
     check-cast v1, Landroid/view/View;
 
-    .line 163
+    .line 169
     .local v1, view:Landroid/view/View;
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler$1;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;
 
     #getter for: Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;->fadeOut:Landroid/view/animation/Animation;
-    invoke-static {v2}, Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;->access$600(Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;)Landroid/view/animation/Animation;
+    invoke-static {v2}, Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;->access$700(Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;)Landroid/view/animation/Animation;
 
     move-result-object v2
 
@@ -106,7 +106,7 @@
 
     goto :goto_0
 
-    .line 158
+    .line 164
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0

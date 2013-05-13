@@ -26,9 +26,11 @@
 # static fields
 .field private static final DESCRIPTOR:Ljava/lang/String; = "meizu.samba.server.ISambaServerManager"
 
-.field static final TRANSACTION_addSharedFolder:I = 0x3
+.field static final TRANSACTION_addSharedFolder:I = 0x4
 
-.field static final TRANSACTION_removeSharedFolder:I = 0x4
+.field static final TRANSACTION_isServerRunning:I = 0x3
+
+.field static final TRANSACTION_removeSharedFolder:I = 0x5
 
 .field static final TRANSACTION_startServer:I = 0x1
 
@@ -128,7 +130,7 @@
     .line 38
     sparse-switch p1, :sswitch_data_0
 
-    .line 92
+    .line 100
     invoke-super {p0, p1, p2, p3, p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v3
@@ -202,34 +204,16 @@
 
     invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 65
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v4
-
-    if-eqz v4, :cond_3
-
-    .line 66
-    sget-object v4, Lmeizu/samba/server/LocalSharedFolder;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v4, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Lmeizu/samba/server/LocalSharedFolder;
-
-    .line 71
-    .local v0, _arg0:Lmeizu/samba/server/LocalSharedFolder;
-    :goto_1
-    invoke-virtual {p0, v0}, Lmeizu/samba/server/ISambaServerManager$Stub;->addSharedFolder(Lmeizu/samba/server/LocalSharedFolder;)Z
+    .line 64
+    invoke-virtual {p0}, Lmeizu/samba/server/ISambaServerManager$Stub;->isServerRunning()Z
 
     move-result v1
 
-    .line 72
+    .line 65
     .restart local v1       #_result:Z
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    .line 73
+    .line 66
     if-eqz v1, :cond_2
 
     move v2, v3
@@ -239,30 +223,21 @@
 
     goto :goto_0
 
-    .line 69
-    .end local v0           #_arg0:Lmeizu/samba/server/LocalSharedFolder;
+    .line 71
     .end local v1           #_result:Z
-    :cond_3
-    const/4 v0, 0x0
-
-    .restart local v0       #_arg0:Lmeizu/samba/server/LocalSharedFolder;
-    goto :goto_1
-
-    .line 78
-    .end local v0           #_arg0:Lmeizu/samba/server/LocalSharedFolder;
     :sswitch_4
     const-string v4, "meizu.samba.server.ISambaServerManager"
 
     invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 80
+    .line 73
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v4
 
-    if-eqz v4, :cond_5
+    if-eqz v4, :cond_4
 
-    .line 81
+    .line 74
     sget-object v4, Lmeizu/samba/server/LocalSharedFolder;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v4, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -271,31 +246,84 @@
 
     check-cast v0, Lmeizu/samba/server/LocalSharedFolder;
 
+    .line 79
+    .local v0, _arg0:Lmeizu/samba/server/LocalSharedFolder;
+    :goto_1
+    invoke-virtual {p0, v0}, Lmeizu/samba/server/ISambaServerManager$Stub;->addSharedFolder(Lmeizu/samba/server/LocalSharedFolder;)Z
+
+    move-result v1
+
+    .line 80
+    .restart local v1       #_result:Z
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 81
+    if-eqz v1, :cond_3
+
+    move v2, v3
+
+    :cond_3
+    invoke-virtual {p3, v2}, Landroid/os/Parcel;->writeInt(I)V
+
+    goto :goto_0
+
+    .line 77
+    .end local v0           #_arg0:Lmeizu/samba/server/LocalSharedFolder;
+    .end local v1           #_result:Z
+    :cond_4
+    const/4 v0, 0x0
+
+    .restart local v0       #_arg0:Lmeizu/samba/server/LocalSharedFolder;
+    goto :goto_1
+
     .line 86
+    .end local v0           #_arg0:Lmeizu/samba/server/LocalSharedFolder;
+    :sswitch_5
+    const-string v4, "meizu.samba.server.ISambaServerManager"
+
+    invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 88
+    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v4
+
+    if-eqz v4, :cond_6
+
+    .line 89
+    sget-object v4, Lmeizu/samba/server/LocalSharedFolder;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v4, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lmeizu/samba/server/LocalSharedFolder;
+
+    .line 94
     .restart local v0       #_arg0:Lmeizu/samba/server/LocalSharedFolder;
     :goto_2
     invoke-virtual {p0, v0}, Lmeizu/samba/server/ISambaServerManager$Stub;->removeSharedFolder(Lmeizu/samba/server/LocalSharedFolder;)Z
 
     move-result v1
 
-    .line 87
+    .line 95
     .restart local v1       #_result:Z
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    .line 88
-    if-eqz v1, :cond_4
+    .line 96
+    if-eqz v1, :cond_5
 
     move v2, v3
 
-    :cond_4
+    :cond_5
     invoke-virtual {p3, v2}, Landroid/os/Parcel;->writeInt(I)V
 
-    goto :goto_0
+    goto/16 :goto_0
 
-    .line 84
+    .line 92
     .end local v0           #_arg0:Lmeizu/samba/server/LocalSharedFolder;
     .end local v1           #_result:Z
-    :cond_5
+    :cond_6
     const/4 v0, 0x0
 
     .restart local v0       #_arg0:Lmeizu/samba/server/LocalSharedFolder;
@@ -308,6 +336,7 @@
         0x2 -> :sswitch_2
         0x3 -> :sswitch_3
         0x4 -> :sswitch_4
+        0x5 -> :sswitch_5
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method

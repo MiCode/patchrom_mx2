@@ -23,10 +23,10 @@
     .locals 0
 
     .prologue
-    .line 1964
+    .line 1965
     invoke-direct {p0}, Landroid/app/Notification$Style;-><init>()V
 
-    .line 1965
+    .line 1966
     return-void
 .end method
 
@@ -35,13 +35,13 @@
     .parameter "builder"
 
     .prologue
-    .line 1967
+    .line 1968
     invoke-direct {p0}, Landroid/app/Notification$Style;-><init>()V
 
-    .line 1968
+    .line 1969
     invoke-virtual {p0, p1}, Landroid/app/Notification$BigTextStyle;->setBuilder(Landroid/app/Notification$Builder;)V
 
-    .line 1969
+    .line 1970
     return-void
 .end method
 
@@ -49,11 +49,11 @@
     .locals 8
 
     .prologue
-    const v7, 0x1020379
+    const v7, 0x1020375
 
     const/4 v2, 0x0
 
-    .line 1995
+    .line 1996
     iget-object v1, p0, Landroid/app/Notification$Style;->mBuilder:Landroid/app/Notification$Builder;
 
     #getter for: Landroid/app/Notification$Builder;->mContentText:Ljava/lang/CharSequence;
@@ -74,7 +74,7 @@
 
     const/4 v6, 0x1
 
-    .line 1996
+    .line 1997
     .local v6, hadThreeLines:Z
     :goto_0
     iget-object v1, p0, Landroid/app/Notification$Style;->mBuilder:Landroid/app/Notification$Builder;
@@ -84,19 +84,19 @@
     #setter for: Landroid/app/Notification$Builder;->mContentText:Ljava/lang/CharSequence;
     invoke-static {v1, v3}, Landroid/app/Notification$Builder;->access$702(Landroid/app/Notification$Builder;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
 
-    .line 1998
-    const v1, 0x1090093
+    .line 1999
+    const v1, 0x1090099
 
     invoke-virtual {p0, v1}, Landroid/app/Notification$BigTextStyle;->getStandardView(I)Landroid/widget/RemoteViews;
 
     move-result-object v0
 
-    .line 2000
+    .line 2001
     .local v0, contentView:Landroid/widget/RemoteViews;
     if-eqz v6, :cond_0
 
-    .line 2002
-    const v1, 0x1020374
+    .line 2003
+    const v1, 0x1020370
 
     move v3, v2
 
@@ -106,23 +106,23 @@
 
     invoke-virtual/range {v0 .. v5}, Landroid/widget/RemoteViews;->setViewPadding(IIIII)V
 
-    .line 2005
+    .line 2006
     :cond_0
     iget-object v1, p0, Landroid/app/Notification$BigTextStyle;->mBigText:Ljava/lang/CharSequence;
 
     invoke-virtual {v0, v7, v1}, Landroid/widget/RemoteViews;->setTextViewText(ILjava/lang/CharSequence;)V
 
-    .line 2006
+    .line 2007
     invoke-virtual {v0, v7, v2}, Landroid/widget/RemoteViews;->setViewVisibility(II)V
 
-    .line 2007
+    .line 2008
     const v1, 0x1020015
 
     const/16 v2, 0x8
 
     invoke-virtual {v0, v1, v2}, Landroid/widget/RemoteViews;->setViewVisibility(II)V
 
-    .line 2009
+    .line 2010
     return-object v0
 
     .end local v0           #contentView:Landroid/widget/RemoteViews;
@@ -130,7 +130,7 @@
     :cond_1
     move v6, v2
 
-    .line 1995
+    .line 1996
     goto :goto_0
 .end method
 
@@ -141,10 +141,10 @@
     .parameter "cs"
 
     .prologue
-    .line 1989
+    .line 1990
     iput-object p1, p0, Landroid/app/Notification$BigTextStyle;->mBigText:Ljava/lang/CharSequence;
 
-    .line 1990
+    .line 1991
     return-object p0
 .end method
 
@@ -152,10 +152,10 @@
     .locals 2
 
     .prologue
-    .line 2014
+    .line 2015
     invoke-virtual {p0}, Landroid/app/Notification$BigTextStyle;->checkBuilder()V
 
-    .line 2015
+    .line 2016
     iget-object v1, p0, Landroid/app/Notification$Style;->mBuilder:Landroid/app/Notification$Builder;
 
     #calls: Landroid/app/Notification$Builder;->buildUnstyled()Landroid/app/Notification;
@@ -163,7 +163,7 @@
 
     move-result-object v0
 
-    .line 2016
+    .line 2017
     .local v0, wip:Landroid/app/Notification;
     invoke-direct {p0}, Landroid/app/Notification$BigTextStyle;->makeBigContentView()Landroid/widget/RemoteViews;
 
@@ -171,7 +171,7 @@
 
     iput-object v1, v0, Landroid/app/Notification;->bigContentView:Landroid/widget/RemoteViews;
 
-    .line 2017
+    .line 2018
     return-object v0
 .end method
 
@@ -180,10 +180,10 @@
     .parameter "title"
 
     .prologue
-    .line 1976
+    .line 1977
     invoke-virtual {p0, p1}, Landroid/app/Notification$BigTextStyle;->internalSetBigContentTitle(Ljava/lang/CharSequence;)V
 
-    .line 1977
+    .line 1978
     return-object p0
 .end method
 
@@ -192,9 +192,9 @@
     .parameter "cs"
 
     .prologue
-    .line 1984
+    .line 1985
     invoke-virtual {p0, p1}, Landroid/app/Notification$BigTextStyle;->internalSetSummaryText(Ljava/lang/CharSequence;)V
 
-    .line 1985
+    .line 1986
     return-object p0
 .end method

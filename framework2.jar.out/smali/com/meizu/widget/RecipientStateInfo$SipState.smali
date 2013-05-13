@@ -30,6 +30,8 @@
 
 .field public static final enum SIP_NO:Lcom/meizu/widget/RecipientStateInfo$SipState;
 
+.field public static final enum SIP_OFFLINE:Lcom/meizu/widget/RecipientStateInfo$SipState;
+
 .field public static final enum SIP_UNCHECK:Lcom/meizu/widget/RecipientStateInfo$SipState;
 
 .field public static final enum SIP_YES:Lcom/meizu/widget/RecipientStateInfo$SipState;
@@ -37,9 +39,11 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 6
+    .locals 7
 
     .prologue
+    const/4 v6, 0x4
+
     const/4 v5, 0x3
 
     const/4 v4, 0x2
@@ -60,32 +64,41 @@
     .line 21
     new-instance v0, Lcom/meizu/widget/RecipientStateInfo$SipState;
 
-    const-string v1, "SIP_YES"
+    const-string v1, "SIP_OFFLINE"
 
     invoke-direct {v0, v1, v3}, Lcom/meizu/widget/RecipientStateInfo$SipState;-><init>(Ljava/lang/String;I)V
 
-    sput-object v0, Lcom/meizu/widget/RecipientStateInfo$SipState;->SIP_YES:Lcom/meizu/widget/RecipientStateInfo$SipState;
+    sput-object v0, Lcom/meizu/widget/RecipientStateInfo$SipState;->SIP_OFFLINE:Lcom/meizu/widget/RecipientStateInfo$SipState;
 
     .line 22
     new-instance v0, Lcom/meizu/widget/RecipientStateInfo$SipState;
 
-    const-string v1, "SIP_CHECKING"
+    const-string v1, "SIP_YES"
 
     invoke-direct {v0, v1, v4}, Lcom/meizu/widget/RecipientStateInfo$SipState;-><init>(Ljava/lang/String;I)V
 
-    sput-object v0, Lcom/meizu/widget/RecipientStateInfo$SipState;->SIP_CHECKING:Lcom/meizu/widget/RecipientStateInfo$SipState;
+    sput-object v0, Lcom/meizu/widget/RecipientStateInfo$SipState;->SIP_YES:Lcom/meizu/widget/RecipientStateInfo$SipState;
 
     .line 23
     new-instance v0, Lcom/meizu/widget/RecipientStateInfo$SipState;
 
-    const-string v1, "SIP_UNCHECK"
+    const-string v1, "SIP_CHECKING"
 
     invoke-direct {v0, v1, v5}, Lcom/meizu/widget/RecipientStateInfo$SipState;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/meizu/widget/RecipientStateInfo$SipState;->SIP_CHECKING:Lcom/meizu/widget/RecipientStateInfo$SipState;
+
+    .line 24
+    new-instance v0, Lcom/meizu/widget/RecipientStateInfo$SipState;
+
+    const-string v1, "SIP_UNCHECK"
+
+    invoke-direct {v0, v1, v6}, Lcom/meizu/widget/RecipientStateInfo$SipState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/meizu/widget/RecipientStateInfo$SipState;->SIP_UNCHECK:Lcom/meizu/widget/RecipientStateInfo$SipState;
 
     .line 19
-    const/4 v0, 0x4
+    const/4 v0, 0x5
 
     new-array v0, v0, [Lcom/meizu/widget/RecipientStateInfo$SipState;
 
@@ -93,17 +106,21 @@
 
     aput-object v1, v0, v2
 
-    sget-object v1, Lcom/meizu/widget/RecipientStateInfo$SipState;->SIP_YES:Lcom/meizu/widget/RecipientStateInfo$SipState;
+    sget-object v1, Lcom/meizu/widget/RecipientStateInfo$SipState;->SIP_OFFLINE:Lcom/meizu/widget/RecipientStateInfo$SipState;
 
     aput-object v1, v0, v3
 
-    sget-object v1, Lcom/meizu/widget/RecipientStateInfo$SipState;->SIP_CHECKING:Lcom/meizu/widget/RecipientStateInfo$SipState;
+    sget-object v1, Lcom/meizu/widget/RecipientStateInfo$SipState;->SIP_YES:Lcom/meizu/widget/RecipientStateInfo$SipState;
 
     aput-object v1, v0, v4
 
-    sget-object v1, Lcom/meizu/widget/RecipientStateInfo$SipState;->SIP_UNCHECK:Lcom/meizu/widget/RecipientStateInfo$SipState;
+    sget-object v1, Lcom/meizu/widget/RecipientStateInfo$SipState;->SIP_CHECKING:Lcom/meizu/widget/RecipientStateInfo$SipState;
 
     aput-object v1, v0, v5
+
+    sget-object v1, Lcom/meizu/widget/RecipientStateInfo$SipState;->SIP_UNCHECK:Lcom/meizu/widget/RecipientStateInfo$SipState;
+
+    aput-object v1, v0, v6
 
     sput-object v0, Lcom/meizu/widget/RecipientStateInfo$SipState;->$VALUES:[Lcom/meizu/widget/RecipientStateInfo$SipState;
 

@@ -6,6 +6,5 @@
     <include layout="@layout/video_record_capture" />
     <include layout="@layout/switch_cameramode" />
     <include layout="@layout/meizu_capture_finish" />
-    <include layout="@layout/menu_back_control" />
     <com.android.camera.ShutterButton android:id="@id/record_button" android:background="@drawable/btn_shutter_video" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/camera_shutter_btn_margin_bottom" android:layout_alignParentRight="true" android:layout_centerInParent="true" />
 </com.android.camera.ui.ControlPanelLayout>

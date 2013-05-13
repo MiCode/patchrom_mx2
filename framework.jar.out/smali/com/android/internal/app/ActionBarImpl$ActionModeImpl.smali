@@ -43,15 +43,15 @@
     .parameter "callback"
 
     .prologue
-    .line 905
+    .line 906
     iput-object p1, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     invoke-direct {p0}, Landroid/view/ActionMode;-><init>()V
 
-    .line 906
+    .line 907
     iput-object p2, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mCallback:Landroid/view/ActionMode$Callback;
 
-    .line 907
+    .line 908
     new-instance v0, Lcom/android/internal/view/menu/MenuBuilder;
 
     invoke-virtual {p1}, Lcom/android/internal/app/ActionBarImpl;->getThemedContext()Landroid/content/Context;
@@ -68,12 +68,12 @@
 
     iput-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mMenu:Lcom/android/internal/view/menu/MenuBuilder;
 
-    .line 909
+    .line 910
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mMenu:Lcom/android/internal/view/menu/MenuBuilder;
 
     invoke-virtual {v0, p0}, Lcom/android/internal/view/menu/MenuBuilder;->setCallback(Lcom/android/internal/view/menu/MenuBuilder$Callback;)V
 
-    .line 910
+    .line 911
     return-void
 .end method
 
@@ -83,12 +83,12 @@
     .locals 2
 
     .prologue
-    .line 964
+    .line 965
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mMenu:Lcom/android/internal/view/menu/MenuBuilder;
 
     invoke-virtual {v0}, Lcom/android/internal/view/menu/MenuBuilder;->stopDispatchingItemsChanged()V
 
-    .line 966
+    .line 967
     :try_start_0
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mCallback:Landroid/view/ActionMode$Callback;
 
@@ -100,15 +100,15 @@
 
     move-result v0
 
-    .line 968
+    .line 969
     iget-object v1, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mMenu:Lcom/android/internal/view/menu/MenuBuilder;
 
     invoke-virtual {v1}, Lcom/android/internal/view/menu/MenuBuilder;->startDispatchingItemsChanged()V
 
-    .line 966
+    .line 967
     return v0
 
-    .line 968
+    .line 969
     :catchall_0
     move-exception v0
 
@@ -127,18 +127,18 @@
 
     const/4 v2, 0x0
 
-    .line 924
+    .line 925
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     iget-object v0, v0, Lcom/android/internal/app/ActionBarImpl;->mActionMode:Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;
 
     if-eq v0, p0, :cond_0
 
-    .line 951
+    .line 952
     :goto_0
     return-void
 
-    .line 933
+    .line 934
     :cond_0
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
@@ -161,28 +161,28 @@
 
     if-nez v0, :cond_1
 
-    .line 936
+    .line 937
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     iput-object p0, v0, Lcom/android/internal/app/ActionBarImpl;->mDeferredDestroyActionMode:Landroid/view/ActionMode;
 
-    .line 937
+    .line 938
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     iget-object v1, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mCallback:Landroid/view/ActionMode$Callback;
 
     iput-object v1, v0, Lcom/android/internal/app/ActionBarImpl;->mDeferredModeDestroyCallback:Landroid/view/ActionMode$Callback;
 
-    .line 941
+    .line 942
     :goto_1
     iput-object v3, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mCallback:Landroid/view/ActionMode$Callback;
 
-    .line 942
+    .line 943
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     invoke-virtual {v0, v2}, Lcom/android/internal/app/ActionBarImpl;->animateToMode(Z)V
 
-    .line 945
+    .line 946
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     #getter for: Lcom/android/internal/app/ActionBarImpl;->mContextView:Lcom/android/internal/widget/ActionBarContextView;
@@ -192,7 +192,7 @@
 
     invoke-virtual {v0}, Lcom/android/internal/widget/ActionBarContextView;->closeMode()V
 
-    .line 946
+    .line 947
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     #getter for: Lcom/android/internal/app/ActionBarImpl;->mActionView:Lcom/android/internal/widget/ActionBarView;
@@ -204,14 +204,34 @@
 
     invoke-virtual {v0, v1}, Lcom/android/internal/widget/ActionBarView;->sendAccessibilityEvent(I)V
 
-    .line 948
+    .line 949
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     iput-object v3, v0, Lcom/android/internal/app/ActionBarImpl;->mActionMode:Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;
 
+    .line 950
+    iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
+
+    #getter for: Lcom/android/internal/app/ActionBarImpl;->mActionView:Lcom/android/internal/widget/ActionBarView;
+    invoke-static {v0}, Lcom/android/internal/app/ActionBarImpl;->access$1100(Lcom/android/internal/app/ActionBarImpl;)Lcom/android/internal/widget/ActionBarView;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v2}, Lcom/android/internal/widget/ActionBarView;->setInActionMode(Z)V
+
+    .line 951
+    iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
+
+    #getter for: Lcom/android/internal/app/ActionBarImpl;->mContextView:Lcom/android/internal/widget/ActionBarContextView;
+    invoke-static {v0}, Lcom/android/internal/app/ActionBarImpl;->access$1000(Lcom/android/internal/app/ActionBarImpl;)Lcom/android/internal/widget/ActionBarContextView;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v2}, Lcom/android/internal/widget/ActionBarContextView;->setInActionMode(Z)V
+
     goto :goto_0
 
-    .line 939
+    .line 940
     :cond_1
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mCallback:Landroid/view/ActionMode$Callback;
 
@@ -224,7 +244,7 @@
     .locals 1
 
     .prologue
-    .line 1021
+    .line 1022
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mCustomView:Ljava/lang/ref/WeakReference;
 
     if-eqz v0, :cond_0
@@ -250,7 +270,7 @@
     .locals 1
 
     .prologue
-    .line 919
+    .line 920
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mMenu:Lcom/android/internal/view/menu/MenuBuilder;
 
     return-object v0
@@ -260,7 +280,7 @@
     .locals 2
 
     .prologue
-    .line 914
+    .line 915
     new-instance v0, Landroid/view/MenuInflater;
 
     iget-object v1, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
@@ -278,7 +298,7 @@
     .locals 1
 
     .prologue
-    .line 1005
+    .line 1006
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     #getter for: Lcom/android/internal/app/ActionBarImpl;->mContextView:Lcom/android/internal/widget/ActionBarContextView;
@@ -297,7 +317,7 @@
     .locals 1
 
     .prologue
-    .line 1000
+    .line 1001
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     #getter for: Lcom/android/internal/app/ActionBarImpl;->mContextView:Lcom/android/internal/widget/ActionBarContextView;
@@ -316,12 +336,12 @@
     .locals 2
 
     .prologue
-    .line 955
+    .line 956
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mMenu:Lcom/android/internal/view/menu/MenuBuilder;
 
     invoke-virtual {v0}, Lcom/android/internal/view/menu/MenuBuilder;->stopDispatchingItemsChanged()V
 
-    .line 957
+    .line 958
     :try_start_0
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mCallback:Landroid/view/ActionMode$Callback;
 
@@ -331,15 +351,15 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 959
+    .line 960
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mMenu:Lcom/android/internal/view/menu/MenuBuilder;
 
     invoke-virtual {v0}, Lcom/android/internal/view/menu/MenuBuilder;->startDispatchingItemsChanged()V
 
-    .line 961
+    .line 962
     return-void
 
-    .line 959
+    .line 960
     :catchall_0
     move-exception v0
 
@@ -354,7 +374,7 @@
     .locals 1
 
     .prologue
-    .line 1016
+    .line 1017
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     #getter for: Lcom/android/internal/app/ActionBarImpl;->mContextView:Lcom/android/internal/widget/ActionBarContextView;
@@ -375,7 +395,7 @@
     .parameter "allMenusAreClosing"
 
     .prologue
-    .line 1033
+    .line 1034
     return-void
 .end method
 
@@ -384,7 +404,7 @@
     .parameter "menu"
 
     .prologue
-    .line 1049
+    .line 1050
     return-void
 .end method
 
@@ -394,19 +414,19 @@
     .parameter "item"
 
     .prologue
-    .line 1025
+    .line 1026
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mCallback:Landroid/view/ActionMode$Callback;
 
     if-eqz v0, :cond_0
 
-    .line 1026
+    .line 1027
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mCallback:Landroid/view/ActionMode$Callback;
 
     invoke-interface {v0, p0, p2}, Landroid/view/ActionMode$Callback;->onActionItemClicked(Landroid/view/ActionMode;Landroid/view/MenuItem;)Z
 
     move-result v0
 
-    .line 1028
+    .line 1029
     :goto_0
     return v0
 
@@ -421,20 +441,20 @@
     .parameter "menu"
 
     .prologue
-    .line 1052
+    .line 1053
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mCallback:Landroid/view/ActionMode$Callback;
 
     if-nez v0, :cond_0
 
-    .line 1057
+    .line 1058
     :goto_0
     return-void
 
-    .line 1055
+    .line 1056
     :cond_0
     invoke-virtual {p0}, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->invalidate()V
 
-    .line 1056
+    .line 1057
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     #getter for: Lcom/android/internal/app/ActionBarImpl;->mContextView:Lcom/android/internal/widget/ActionBarContextView;
@@ -454,20 +474,20 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 1036
+    .line 1037
     iget-object v1, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mCallback:Landroid/view/ActionMode$Callback;
 
     if-nez v1, :cond_1
 
-    .line 1037
+    .line 1038
     const/4 v0, 0x0
 
-    .line 1045
+    .line 1046
     :cond_0
     :goto_0
     return v0
 
-    .line 1040
+    .line 1041
     :cond_1
     invoke-virtual {p1}, Lcom/android/internal/view/menu/SubMenuBuilder;->hasVisibleItems()Z
 
@@ -475,7 +495,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 1044
+    .line 1045
     new-instance v1, Lcom/android/internal/view/menu/MenuPopupHelper;
 
     iget-object v2, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
@@ -496,7 +516,7 @@
     .parameter "view"
 
     .prologue
-    .line 974
+    .line 975
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     #getter for: Lcom/android/internal/app/ActionBarImpl;->mContextView:Lcom/android/internal/widget/ActionBarContextView;
@@ -506,14 +526,14 @@
 
     invoke-virtual {v0, p1}, Lcom/android/internal/widget/ActionBarContextView;->setCustomView(Landroid/view/View;)V
 
-    .line 975
+    .line 976
     new-instance v0, Ljava/lang/ref/WeakReference;
 
     invoke-direct {v0, p1}, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V
 
     iput-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->mCustomView:Ljava/lang/ref/WeakReference;
 
-    .line 976
+    .line 977
     return-void
 .end method
 
@@ -522,7 +542,7 @@
     .parameter "resId"
 
     .prologue
-    .line 995
+    .line 996
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     #getter for: Lcom/android/internal/app/ActionBarImpl;->mContext:Landroid/content/Context;
@@ -540,7 +560,7 @@
 
     invoke-virtual {p0, v0}, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->setSubtitle(Ljava/lang/CharSequence;)V
 
-    .line 996
+    .line 997
     return-void
 .end method
 
@@ -549,7 +569,7 @@
     .parameter "subtitle"
 
     .prologue
-    .line 980
+    .line 981
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     #getter for: Lcom/android/internal/app/ActionBarImpl;->mContextView:Lcom/android/internal/widget/ActionBarContextView;
@@ -559,7 +579,7 @@
 
     invoke-virtual {v0, p1}, Lcom/android/internal/widget/ActionBarContextView;->setSubtitle(Ljava/lang/CharSequence;)V
 
-    .line 981
+    .line 982
     return-void
 .end method
 
@@ -568,7 +588,7 @@
     .parameter "resId"
 
     .prologue
-    .line 990
+    .line 991
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     #getter for: Lcom/android/internal/app/ActionBarImpl;->mContext:Landroid/content/Context;
@@ -586,7 +606,7 @@
 
     invoke-virtual {p0, v0}, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->setTitle(Ljava/lang/CharSequence;)V
 
-    .line 991
+    .line 992
     return-void
 .end method
 
@@ -595,7 +615,7 @@
     .parameter "title"
 
     .prologue
-    .line 985
+    .line 986
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     #getter for: Lcom/android/internal/app/ActionBarImpl;->mContextView:Lcom/android/internal/widget/ActionBarContextView;
@@ -605,7 +625,7 @@
 
     invoke-virtual {v0, p1}, Lcom/android/internal/widget/ActionBarContextView;->setTitle(Ljava/lang/CharSequence;)V
 
-    .line 986
+    .line 987
     return-void
 .end method
 
@@ -614,10 +634,10 @@
     .parameter "titleOptional"
 
     .prologue
-    .line 1010
+    .line 1011
     invoke-super {p0, p1}, Landroid/view/ActionMode;->setTitleOptionalHint(Z)V
 
-    .line 1011
+    .line 1012
     iget-object v0, p0, Lcom/android/internal/app/ActionBarImpl$ActionModeImpl;->this$0:Lcom/android/internal/app/ActionBarImpl;
 
     #getter for: Lcom/android/internal/app/ActionBarImpl;->mContextView:Lcom/android/internal/widget/ActionBarContextView;
@@ -627,6 +647,6 @@
 
     invoke-virtual {v0, p1}, Lcom/android/internal/widget/ActionBarContextView;->setTitleOptional(Z)V
 
-    .line 1012
+    .line 1013
     return-void
 .end method

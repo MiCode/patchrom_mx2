@@ -27,16 +27,16 @@
     .parameter "notifyContent"
 
     .prologue
-    .line 2415
+    .line 2419
     iput-object p1, p0, Lcom/android/server/sip/SipSessionGroup$NotifyCommand;->this$0:Lcom/android/server/sip/SipSessionGroup;
 
-    .line 2416
+    .line 2420
     invoke-direct {p0, p1}, Ljava/util/EventObject;-><init>(Ljava/lang/Object;)V
 
-    .line 2417
+    .line 2421
     iput-object p2, p0, Lcom/android/server/sip/SipSessionGroup$NotifyCommand;->mNotifyContent:Ljava/lang/String;
 
-    .line 2418
+    .line 2422
     return-void
 .end method
 
@@ -46,7 +46,7 @@
     .locals 1
 
     .prologue
-    .line 2421
+    .line 2425
     iget-object v0, p0, Lcom/android/server/sip/SipSessionGroup$NotifyCommand;->mNotifyContent:Ljava/lang/String;
 
     return-object v0

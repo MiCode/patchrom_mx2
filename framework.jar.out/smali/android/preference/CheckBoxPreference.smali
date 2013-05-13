@@ -160,3 +160,33 @@
 
     return-void
 .end method
+
+.method protected performClick()V
+    .locals 2
+
+    .prologue
+    .line 74
+    const/4 v1, 0x0
+
+    .line 75
+    .local v1, preferenceScreen:Landroid/preference/PreferenceScreen;
+    invoke-virtual {p0}, Landroid/preference/CheckBoxPreference;->getPreferenceManager()Landroid/preference/PreferenceManager;
+
+    move-result-object v0
+
+    .line 76
+    .local v0, preferenceManager:Landroid/preference/PreferenceManager;
+    if-eqz v0, :cond_0
+
+    .line 77
+    invoke-virtual {v0}, Landroid/preference/PreferenceManager;->getPreferenceScreen()Landroid/preference/PreferenceScreen;
+
+    move-result-object v1
+
+    .line 80
+    :cond_0
+    invoke-super {p0, v1}, Landroid/preference/TwoStatePreference;->performClick(Landroid/preference/PreferenceScreen;)V
+
+    .line 81
+    return-void
+.end method

@@ -172,12 +172,12 @@
     const/4 v3, 0x0
 
     .line 165
-    const v1, 0x10900d0
+    const v1, 0x10900d9
 
     invoke-virtual {p0, v1}, Landroid/app/SearchDialog;->setContentView(I)V
 
     .line 168
-    const v1, 0x10203c1
+    const v1, 0x10203c2
 
     invoke-virtual {p0, v1}, Landroid/app/SearchDialog;->findViewById(I)Landroid/view/View;
 
@@ -190,7 +190,7 @@
     invoke-virtual {v0, p0}, Landroid/app/SearchDialog$SearchBar;->setSearchDialog(Landroid/app/SearchDialog;)V
 
     .line 170
-    const v1, 0x10203c3
+    const v1, 0x10203c4
 
     invoke-virtual {p0, v1}, Landroid/app/SearchDialog;->findViewById(I)Landroid/view/View;
 
@@ -252,7 +252,7 @@
     .line 186
     iget-object v1, p0, Landroid/app/SearchDialog;->mSearchView:Landroid/widget/SearchView;
 
-    const v2, 0x10203c5
+    const v2, 0x10203c6
 
     invoke-virtual {v1, v2}, Landroid/widget/SearchView;->findViewById(I)Landroid/view/View;
 
@@ -265,7 +265,7 @@
     .line 187
     iget-object v1, p0, Landroid/app/SearchDialog;->mSearchView:Landroid/widget/SearchView;
 
-    const v2, 0x10203ca
+    const v2, 0x10203cb
 
     invoke-virtual {v1, v2}, Landroid/widget/SearchView;->findViewById(I)Landroid/view/View;
 
@@ -276,7 +276,7 @@
     iput-object v1, p0, Landroid/app/SearchDialog;->mSearchAutoComplete:Landroid/widget/AutoCompleteTextView;
 
     .line 189
-    const v1, 0x10203c2
+    const v1, 0x10203c3
 
     invoke-virtual {p0, v1}, Landroid/app/SearchDialog;->findViewById(I)Landroid/view/View;
 
@@ -289,7 +289,7 @@
     .line 190
     iget-object v1, p0, Landroid/app/SearchDialog;->mSearchView:Landroid/widget/SearchView;
 
-    const v2, 0x10203c9
+    const v2, 0x10203ca
 
     invoke-virtual {v1, v2}, Landroid/widget/SearchView;->findViewById(I)Landroid/view/View;
 
@@ -306,7 +306,7 @@
 
     move-result-object v1
 
-    const v2, 0x108064e
+    const v2, 0x1080675
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -783,7 +783,7 @@
 
     move-result-object v1
 
-    const v2, 0x10103da
+    const v2, 0x10103dc
 
     const/4 v3, 0x1
 

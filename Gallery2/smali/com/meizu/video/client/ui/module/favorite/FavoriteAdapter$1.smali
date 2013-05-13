@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 292
+    .line 287
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
     iput-object p2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$1;->val$id_tag:Ljava/lang/String;
@@ -49,10 +49,10 @@
     .parameter "position"
 
     .prologue
-    .line 295
+    .line 290
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
-    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->gridView:Landroid/widget/GridView;
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mGridView:Landroid/widget/GridView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->access$000(Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;)Landroid/widget/GridView;
 
     move-result-object v1
@@ -61,7 +61,7 @@
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
-    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->gridView:Landroid/widget/GridView;
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mGridView:Landroid/widget/GridView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->access$000(Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;)Landroid/widget/GridView;
 
     move-result-object v1
@@ -74,7 +74,7 @@
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
-    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->gridView:Landroid/widget/GridView;
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mGridView:Landroid/widget/GridView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->access$000(Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;)Landroid/widget/GridView;
 
     move-result-object v1
@@ -87,10 +87,10 @@
 
     if-eqz v1, :cond_0
 
-    .line 296
+    .line 291
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
-    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->gridView:Landroid/widget/GridView;
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mGridView:Landroid/widget/GridView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->access$000(Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;)Landroid/widget/GridView;
 
     move-result-object v1
@@ -103,28 +103,22 @@
 
     check-cast v0, Landroid/widget/ImageView;
 
-    .line 297
+    .line 292
     .local v0, imageViewByTag:Landroid/widget/ImageView;
     if-eqz v0, :cond_0
 
-    .line 298
-    if-eqz p1, :cond_2
+    .line 293
+    if-eqz p1, :cond_0
 
-    .line 299
+    .line 294
     invoke-virtual {v0, p1}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
-    .line 300
-    sget-object v1, Landroid/widget/ImageView$ScaleType;->CENTER_CROP:Landroid/widget/ImageView$ScaleType;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
-
-    .line 307
+    .line 299
     .end local v0           #imageViewByTag:Landroid/widget/ImageView;
     :cond_0
-    :goto_0
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
-    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->listView:Landroid/widget/ListView;
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mListView:Landroid/widget/ListView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->access$100(Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;)Landroid/widget/ListView;
 
     move-result-object v1
@@ -133,7 +127,7 @@
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
-    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->listView:Landroid/widget/ListView;
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mListView:Landroid/widget/ListView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->access$100(Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;)Landroid/widget/ListView;
 
     move-result-object v1
@@ -146,7 +140,7 @@
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
-    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->listView:Landroid/widget/ListView;
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mListView:Landroid/widget/ListView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->access$100(Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;)Landroid/widget/ListView;
 
     move-result-object v1
@@ -159,10 +153,10 @@
 
     if-eqz v1, :cond_1
 
-    .line 308
+    .line 300
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
-    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->listView:Landroid/widget/ListView;
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mListView:Landroid/widget/ListView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->access$100(Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;)Landroid/widget/ListView;
 
     move-result-object v1
@@ -175,41 +169,18 @@
 
     check-cast v0, Landroid/widget/ImageView;
 
-    .line 309
+    .line 301
     .restart local v0       #imageViewByTag:Landroid/widget/ImageView;
     if-eqz v0, :cond_1
 
-    .line 310
-    if-eqz p1, :cond_3
+    .line 302
+    if-eqz p1, :cond_1
 
-    .line 311
+    .line 303
     invoke-virtual {v0, p1}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
-    .line 312
-    sget-object v1, Landroid/widget/ImageView$ScaleType;->CENTER_CROP:Landroid/widget/ImageView$ScaleType;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
-
-    .line 318
+    .line 307
     .end local v0           #imageViewByTag:Landroid/widget/ImageView;
     :cond_1
-    :goto_1
     return-void
-
-    .line 302
-    .restart local v0       #imageViewByTag:Landroid/widget/ImageView;
-    :cond_2
-    sget-object v1, Landroid/widget/ImageView$ScaleType;->CENTER:Landroid/widget/ImageView$ScaleType;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
-
-    goto :goto_0
-
-    .line 314
-    :cond_3
-    sget-object v1, Landroid/widget/ImageView$ScaleType;->CENTER:Landroid/widget/ImageView$ScaleType;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
-
-    goto :goto_1
 .end method

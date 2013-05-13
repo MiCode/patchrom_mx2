@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/camera/Camera;->startPreview()V
+    value = Lcom/android/camera/Camera;->showExposureControlBar()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 4732
+    .line 4689
     iput-object p1, p0, Lcom/android/camera/Camera$19;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,14 +41,18 @@
     .locals 2
 
     .prologue
-    .line 4735
+    .line 4692
     iget-object v0, p0, Lcom/android/camera/Camera$19;->this$0:Lcom/android/camera/Camera;
 
-    const/4 v1, 0x1
+    #getter for: Lcom/android/camera/Camera;->mExposureTextView:Landroid/widget/TextView;
+    invoke-static {v0}, Lcom/android/camera/Camera;->access$13100(Lcom/android/camera/Camera;)Landroid/widget/TextView;
 
-    #setter for: Lcom/android/camera/Camera;->mIsCanTouchFocus:Z
-    invoke-static {v0, v1}, Lcom/android/camera/Camera;->access$12702(Lcom/android/camera/Camera;Z)Z
+    move-result-object v0
 
-    .line 4736
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setVisibility(I)V
+
+    .line 4693
     return-void
 .end method

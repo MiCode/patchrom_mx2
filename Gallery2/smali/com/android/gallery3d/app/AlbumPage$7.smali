@@ -1,9 +1,6 @@
 .class Lcom/android/gallery3d/app/AlbumPage$7;
-.super Ljava/lang/Object;
+.super Lcom/android/gallery3d/ui/SlotView$SimpleListener;
 .source "AlbumPage.java"
-
-# interfaces
-.implements Landroid/view/View$OnClickListener;
 
 
 # annotations
@@ -27,50 +24,73 @@
     .parameter
 
     .prologue
-    .line 760
+    .line 793
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumPage$7;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Lcom/android/gallery3d/ui/SlotView$SimpleListener;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onClick(Landroid/view/View;)V
+.method public onDown(I)V
     .locals 1
-    .parameter "v"
+    .parameter "index"
 
     .prologue
-    .line 763
+    .line 796
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$7;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
-    iget-object v0, v0, Lcom/android/gallery3d/app/ActivityState;->mSelectionManager:Lcom/android/gallery3d/ui/SelectionManager;
+    #calls: Lcom/android/gallery3d/app/AlbumPage;->onDown(I)V
+    invoke-static {v0, p1}, Lcom/android/gallery3d/app/AlbumPage;->access$2200(Lcom/android/gallery3d/app/AlbumPage;I)V
 
-    invoke-virtual {v0}, Lcom/android/gallery3d/ui/SelectionManager;->isAllSelected()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 764
-    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$7;->this$0:Lcom/android/gallery3d/app/AlbumPage;
-
-    iget-object v0, v0, Lcom/android/gallery3d/app/ActivityState;->mSelectionManager:Lcom/android/gallery3d/ui/SelectionManager;
-
-    invoke-virtual {v0}, Lcom/android/gallery3d/ui/SelectionManager;->deSelectAll()V
-
-    .line 768
-    :goto_0
+    .line 797
     return-void
+.end method
 
-    .line 766
-    :cond_0
+.method public onLongTap(III)V
+    .locals 1
+    .parameter "slotIndex"
+    .parameter "x"
+    .parameter "y"
+
+    .prologue
+    .line 811
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$7;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
-    iget-object v0, v0, Lcom/android/gallery3d/app/ActivityState;->mSelectionManager:Lcom/android/gallery3d/ui/SelectionManager;
+    invoke-virtual {v0, p1, p2, p3}, Lcom/android/gallery3d/app/AlbumPage;->onLongTap(III)V
 
-    invoke-virtual {v0}, Lcom/android/gallery3d/ui/SelectionManager;->selectAll()V
+    .line 812
+    return-void
+.end method
 
-    goto :goto_0
+.method public onSingleTapUp(I)V
+    .locals 1
+    .parameter "slotIndex"
+
+    .prologue
+    .line 806
+    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$7;->this$0:Lcom/android/gallery3d/app/AlbumPage;
+
+    #calls: Lcom/android/gallery3d/app/AlbumPage;->onSingleTapUp(I)V
+    invoke-static {v0, p1}, Lcom/android/gallery3d/app/AlbumPage;->access$2400(Lcom/android/gallery3d/app/AlbumPage;I)V
+
+    .line 807
+    return-void
+.end method
+
+.method public onUp(Z)V
+    .locals 1
+    .parameter "followedByLongPress"
+
+    .prologue
+    .line 801
+    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$7;->this$0:Lcom/android/gallery3d/app/AlbumPage;
+
+    #calls: Lcom/android/gallery3d/app/AlbumPage;->onUp(Z)V
+    invoke-static {v0, p1}, Lcom/android/gallery3d/app/AlbumPage;->access$2300(Lcom/android/gallery3d/app/AlbumPage;Z)V
+
+    .line 802
+    return-void
 .end method

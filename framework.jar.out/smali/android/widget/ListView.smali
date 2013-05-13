@@ -431,7 +431,19 @@
     return-void
 .end method
 
-.method static synthetic access$500(Landroid/widget/ListView;)I
+.method static synthetic access$500(Landroid/widget/ListView;I)V
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 72
+    invoke-direct {p0, p1}, Landroid/widget/ListView;->correctTooLow(I)V
+
+    return-void
+.end method
+
+.method static synthetic access$600(Landroid/widget/ListView;)I
     .locals 1
     .parameter "x0"
 
@@ -442,7 +454,7 @@
     return v0
 .end method
 
-.method static synthetic access$600(Landroid/widget/ListView;II)V
+.method static synthetic access$700(Landroid/widget/ListView;II)V
     .locals 0
     .parameter "x0"
     .parameter "x1"
@@ -451,6 +463,18 @@
     .prologue
     .line 72
     invoke-direct {p0, p1, p2}, Landroid/widget/ListView;->downSelect(II)V
+
+    return-void
+.end method
+
+.method static synthetic access$800(Landroid/widget/ListView;I)V
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 72
+    invoke-direct {p0, p1}, Landroid/widget/ListView;->correctTooHigh(I)V
 
     return-void
 .end method
@@ -3974,7 +3998,11 @@
     .line 718
     iget-object v0, p0, Landroid/widget/AbsListView;->mListPadding:Landroid/graphics/Rect;
 
-    iget v7, v0, Landroid/graphics/Rect;->top:I
+    iget v0, v0, Landroid/graphics/Rect;->top:I
+
+    iget v1, p0, Landroid/widget/AbsListView;->mTopSpacing:I
+
+    sub-int v7, v0, v1
 
     .line 721
     :cond_0

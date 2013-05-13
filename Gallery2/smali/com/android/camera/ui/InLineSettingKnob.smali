@@ -157,7 +157,7 @@
     invoke-super {p0}, Lcom/android/camera/ui/InLineSettingItem;->onFinishInflate()V
 
     .line 100
-    const v0, 0x7f0d0092
+    const v0, 0x7f0d0097
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ui/InLineSettingKnob;->findViewById(I)Landroid/view/View;
 
@@ -175,7 +175,7 @@
     invoke-virtual {v0, v1}, Landroid/widget/Button;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V
 
     .line 102
-    const v0, 0x7f0d0090
+    const v0, 0x7f0d0095
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ui/InLineSettingKnob;->findViewById(I)Landroid/view/View;
 
@@ -193,7 +193,7 @@
     invoke-virtual {v0, v1}, Landroid/widget/Button;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V
 
     .line 104
-    const v0, 0x7f0d0091
+    const v0, 0x7f0d0096
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ui/InLineSettingKnob;->findViewById(I)Landroid/view/View;
 

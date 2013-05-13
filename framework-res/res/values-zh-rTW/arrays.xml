@@ -106,7 +106,7 @@
         <item>Flyme Tune Guitar</item>
         <item>Flyme Tune Piano</item>
         <item>Flyme Tune Synth</item>
-        <item>Flyme Tune Rhythm</item>
+        <item>Flyme Tune Theme</item>
     </string-array>
     <integer-array name="maps_starting_lat_lng">
         <item>25022112</item>

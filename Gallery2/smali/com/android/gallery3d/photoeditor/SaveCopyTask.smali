@@ -32,7 +32,11 @@
 
 .field private dateTaken:J
 
+.field private isShared:Z
+
 .field private final saveFileName:Ljava/lang/String;
+
+.field private saveFilePath:Ljava/lang/String;
 
 .field private saveFolderName:Ljava/lang/String;
 
@@ -42,38 +46,42 @@
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;Landroid/net/Uri;Lcom/android/gallery3d/photoeditor/SaveCopyTask$Callback;)V
+.method public constructor <init>(Landroid/content/Context;Landroid/net/Uri;ZLcom/android/gallery3d/photoeditor/SaveCopyTask$Callback;)V
     .locals 4
     .parameter "context"
     .parameter "sourceUri"
+    .parameter "isShared"
     .parameter "callback"
 
     .prologue
-    .line 71
+    .line 74
     invoke-direct {p0}, Landroid/os/AsyncTask;-><init>()V
 
-    .line 69
+    .line 71
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->dateTaken:J
 
-    .line 72
+    .line 75
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->context:Landroid/content/Context;
 
-    .line 73
+    .line 76
     iput-object p2, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->sourceUri:Landroid/net/Uri;
 
-    .line 74
-    iput-object p3, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->callback:Lcom/android/gallery3d/photoeditor/SaveCopyTask$Callback;
+    .line 77
+    iput-object p4, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->callback:Lcom/android/gallery3d/photoeditor/SaveCopyTask$Callback;
 
-    .line 75
+    .line 78
+    iput-boolean p3, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->isShared:Z
+
+    .line 79
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->dateTaken:J
 
-    .line 77
+    .line 81
     invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -88,12 +96,53 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->saveToastTip:Ljava/lang/String;
 
-    .line 78
-    const-string v0, "Photo/Edited"
+    .line 82
+    if-eqz p3, :cond_0
 
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {p1}, Landroid/content/Context;->getExternalCacheDir()Ljava/io/File;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string v1, "/PhotoEdited"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    :goto_0
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->albumName:Ljava/lang/String;
 
-    .line 79
+    .line 83
+    if-eqz p3, :cond_1
+
+    const-string v0, "share_temp"
+
+    :goto_1
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->saveFileName:Ljava/lang/String;
+
+    .line 85
+    return-void
+
+    .line 82
+    :cond_0
+    const-string v0, "Photo/Edited"
+
+    goto :goto_0
+
+    .line 83
+    :cond_1
     new-instance v0, Ljava/text/SimpleDateFormat;
 
     const-string v1, "\'IMG\'_yyyyMMdd_HHmmss"
@@ -110,10 +159,7 @@
 
     move-result-object v0
 
-    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->saveFileName:Ljava/lang/String;
-
-    .line 81
-    return-void
+    goto :goto_1
 .end method
 
 .method private getSaveDirectory()Ljava/io/File;
@@ -122,13 +168,51 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 139
+    .line 146
     const/4 v2, 0x1
 
     new-array v0, v2, [Ljava/io/File;
 
-    .line 147
+    .line 154
     .local v0, dir:[Ljava/io/File;
+    iget-boolean v2, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->isShared:Z
+
+    if-eqz v2, :cond_1
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->albumName:Ljava/lang/String;
+
+    .line 155
+    .local v1, directory:Ljava/lang/String;
+    :goto_0
+    new-instance v2, Ljava/io/File;
+
+    invoke-direct {v2, v1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    aput-object v2, v0, v4
+
+    .line 156
+    aget-object v2, v0, v4
+
+    invoke-virtual {v2}, Ljava/io/File;->isDirectory()Z
+
+    move-result v2
+
+    if-nez v2, :cond_0
+
+    .line 157
+    aget-object v2, v0, v4
+
+    invoke-virtual {v2}, Ljava/io/File;->mkdir()Z
+
+    .line 159
+    :cond_0
+    aget-object v2, v0, v4
+
+    return-object v2
+
+    .line 154
+    .end local v1           #directory:Ljava/lang/String;
+    :cond_1
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -161,33 +245,7 @@
 
     move-result-object v1
 
-    .line 148
-    .local v1, directory:Ljava/lang/String;
-    new-instance v2, Ljava/io/File;
-
-    invoke-direct {v2, v1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
-    aput-object v2, v0, v4
-
-    .line 149
-    aget-object v2, v0, v4
-
-    invoke-virtual {v2}, Ljava/io/File;->isDirectory()Z
-
-    move-result v2
-
-    if-nez v2, :cond_0
-
-    .line 150
-    aget-object v2, v0, v4
-
-    invoke-virtual {v2}, Ljava/io/File;->mkdir()Z
-
-    .line 152
-    :cond_0
-    aget-object v2, v0, v4
-
-    return-object v2
+    goto :goto_0
 .end method
 
 .method private insertContent(Ljava/io/File;II)Landroid/net/Uri;
@@ -199,7 +257,7 @@
     .prologue
     const/4 v8, 0x0
 
-    .line 159
+    .line 166
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v4
@@ -208,13 +266,13 @@
 
     div-long v0, v4, v6
 
-    .line 161
+    .line 168
     .local v0, now:J
     new-instance v3, Landroid/content/ContentValues;
 
     invoke-direct {v3}, Landroid/content/ContentValues;-><init>()V
 
-    .line 162
+    .line 169
     .local v3, values:Landroid/content/ContentValues;
     const-string v4, "title"
 
@@ -222,7 +280,7 @@
 
     invoke-virtual {v3, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 163
+    .line 170
     const-string v4, "_display_name"
 
     invoke-virtual {p1}, Ljava/io/File;->getName()Ljava/lang/String;
@@ -231,14 +289,14 @@
 
     invoke-virtual {v3, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 164
+    .line 171
     const-string v4, "mime_type"
 
     const-string v5, "image/jpeg"
 
     invoke-virtual {v3, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 165
+    .line 172
     const-string v4, "datetaken"
 
     iget-wide v5, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->dateTaken:J
@@ -249,7 +307,7 @@
 
     invoke-virtual {v3, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 166
+    .line 173
     const-string v4, "date_modified"
 
     invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
@@ -258,7 +316,7 @@
 
     invoke-virtual {v3, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 167
+    .line 174
     const-string v4, "date_added"
 
     invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
@@ -267,7 +325,7 @@
 
     invoke-virtual {v3, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 168
+    .line 175
     const-string v4, "orientation"
 
     invoke-static {v8}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -276,7 +334,7 @@
 
     invoke-virtual {v3, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 169
+    .line 176
     const-string v4, "_data"
 
     invoke-virtual {p1}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
@@ -285,7 +343,7 @@
 
     invoke-virtual {v3, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 170
+    .line 177
     const-string v4, "_size"
 
     invoke-virtual {p1}, Ljava/io/File;->length()J
@@ -298,7 +356,7 @@
 
     invoke-virtual {v3, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 171
+    .line 178
     const-string v4, "width"
 
     invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -307,7 +365,7 @@
 
     invoke-virtual {v3, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 172
+    .line 179
     const-string v4, "height"
 
     invoke-static {p3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -316,7 +374,7 @@
 
     invoke-virtual {v3, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 174
+    .line 181
     const/4 v4, 0x3
 
     new-array v2, v4, [Ljava/lang/String;
@@ -337,7 +395,7 @@
 
     aput-object v5, v2, v4
 
-    .line 179
+    .line 186
     .local v2, projection:[Ljava/lang/String;
     new-instance v4, Lcom/android/gallery3d/photoeditor/SaveCopyTask$1;
 
@@ -345,7 +403,7 @@
 
     invoke-direct {p0, v2, v4}, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->querySource([Ljava/lang/String;Lcom/android/gallery3d/photoeditor/SaveCopyTask$ContentResolverQueryCallback;)V
 
-    .line 195
+    .line 202
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->context:Landroid/content/Context;
 
     invoke-virtual {v4}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
@@ -367,18 +425,18 @@
     .parameter "callback"
 
     .prologue
-    .line 122
+    .line 129
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->context:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v0
 
-    .line 123
+    .line 130
     .local v0, contentResolver:Landroid/content/ContentResolver;
     const/4 v6, 0x0
 
-    .line 125
+    .line 132
     .local v6, cursor:Landroid/database/Cursor;
     :try_start_0
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->sourceUri:Landroid/net/Uri;
@@ -395,7 +453,7 @@
 
     move-result-object v6
 
-    .line 126
+    .line 133
     if-eqz v6, :cond_0
 
     invoke-interface {v6}, Landroid/database/Cursor;->moveToNext()Z
@@ -404,43 +462,43 @@
 
     if-eqz v1, :cond_0
 
-    .line 127
+    .line 134
     invoke-interface {p2, v6}, Lcom/android/gallery3d/photoeditor/SaveCopyTask$ContentResolverQueryCallback;->onCursorResult(Landroid/database/Cursor;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 132
+    .line 139
     :cond_0
     if-eqz v6, :cond_1
 
-    .line 133
+    .line 140
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
-    .line 136
+    .line 143
     :cond_1
     :goto_0
     return-void
 
-    .line 129
+    .line 136
     :catch_0
     move-exception v1
 
-    .line 132
+    .line 139
     if-eqz v6, :cond_1
 
-    .line 133
+    .line 140
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
     goto :goto_0
 
-    .line 132
+    .line 139
     :catchall_0
     move-exception v1
 
     if-eqz v6, :cond_2
 
-    .line 133
+    .line 140
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
     :cond_2
@@ -458,22 +516,22 @@
 
     const/4 v6, 0x0
 
-    .line 89
+    .line 93
     aget-object v4, p1, v6
 
     if-nez v4, :cond_0
 
-    .line 107
+    .line 112
     :goto_0
     return-object v3
 
-    .line 93
+    .line 97
     :cond_0
     invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->getSaveDirectory()Ljava/io/File;
 
     move-result-object v2
 
-    .line 94
+    .line 98
     .local v2, saveDirectory:Ljava/io/File;
     if-eqz v2, :cond_1
 
@@ -483,7 +541,7 @@
 
     if-nez v4, :cond_3
 
-    .line 95
+    .line 99
     :cond_1
     new-instance v2, Ljava/io/File;
 
@@ -496,11 +554,11 @@
 
     invoke-direct {v2, v4, v5}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
 
-    .line 97
+    .line 101
     .restart local v2       #saveDirectory:Ljava/io/File;
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->context:Landroid/content/Context;
 
-    const v5, 0x7f0a01a9
+    const v5, 0x7f0a01b4
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -508,11 +566,11 @@
 
     iput-object v4, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->saveFolderName:Ljava/lang/String;
 
-    .line 102
+    .line 106
     :goto_1
     aget-object v0, p1, v6
 
-    .line 103
+    .line 107
     .local v0, bitmap:Landroid/graphics/Bitmap;
     new-instance v4, Lcom/android/gallery3d/photoeditor/BitmapUtils;
 
@@ -528,7 +586,7 @@
 
     move-result-object v1
 
-    .line 105
+    .line 109
     .local v1, file:Ljava/io/File;
     if-eqz v1, :cond_2
 
@@ -544,14 +602,21 @@
 
     move-result-object v3
 
-    .line 106
+    .line 110
     .local v3, uri:Landroid/net/Uri;
     :cond_2
+    invoke-virtual {v1}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+
+    move-result-object v4
+
+    iput-object v4, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->saveFilePath:Ljava/lang/String;
+
+    .line 111
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
 
     goto :goto_0
 
-    .line 99
+    .line 103
     .end local v0           #bitmap:Landroid/graphics/Bitmap;
     .end local v1           #file:Ljava/io/File;
     .end local v3           #uri:Landroid/net/Uri;
@@ -588,18 +653,23 @@
     .prologue
     const/4 v6, 0x0
 
-    .line 112
-    if-nez p1, :cond_0
+    .line 117
+    iget-boolean v2, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->isShared:Z
+
+    if-nez v2, :cond_0
+
+    .line 118
+    if-nez p1, :cond_1
 
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->context:Landroid/content/Context;
 
-    const v3, 0x7f0a00c1
+    const v3, 0x7f0a00cc
 
     invoke-virtual {v2, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 114
+    .line 120
     .local v0, message:Ljava/lang/String;
     :goto_0
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->context:Landroid/content/Context;
@@ -608,7 +678,7 @@
 
     move-result-object v1
 
-    .line 115
+    .line 121
     .local v1, toast:Landroid/widget/Toast;
     const/16 v2, 0x50
 
@@ -620,24 +690,27 @@
 
     invoke-virtual {v1, v2, v6, v3}, Landroid/widget/Toast;->setGravity(III)V
 
-    .line 116
+    .line 122
     invoke-virtual {v1}, Landroid/widget/Toast;->show()V
 
-    .line 118
-    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->callback:Lcom/android/gallery3d/photoeditor/SaveCopyTask$Callback;
-
-    invoke-interface {v2, p1}, Lcom/android/gallery3d/photoeditor/SaveCopyTask$Callback;->onComplete(Landroid/net/Uri;)V
-
-    .line 119
-    return-void
-
-    .line 112
+    .line 125
     .end local v0           #message:Ljava/lang/String;
     .end local v1           #toast:Landroid/widget/Toast;
     :cond_0
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->callback:Lcom/android/gallery3d/photoeditor/SaveCopyTask$Callback;
+
+    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->saveFilePath:Ljava/lang/String;
+
+    invoke-interface {v2, p1, v3}, Lcom/android/gallery3d/photoeditor/SaveCopyTask$Callback;->onComplete(Landroid/net/Uri;Ljava/lang/String;)V
+
+    .line 126
+    return-void
+
+    .line 118
+    :cond_1
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask;->context:Landroid/content/Context;
 
-    const v3, 0x7f0a00c2
+    const v3, 0x7f0a00cd
 
     const/4 v4, 0x1
 

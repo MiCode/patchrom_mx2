@@ -1386,7 +1386,7 @@
 
     move-result-object v2
 
-    const v3, 0x1090104
+    const v3, 0x109010e
 
     const/4 v4, 0x0
 
@@ -1396,7 +1396,7 @@
 
     .line 1482
     .local v1, row:Landroid/view/View;
-    const v2, 0x1020369
+    const v2, 0x1020365
 
     invoke-virtual {v1, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1411,7 +1411,7 @@
     invoke-virtual {v2, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
     .line 1483
-    const v2, 0x10202fd
+    const v2, 0x10202f9
 
     invoke-virtual {v1, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -2382,7 +2382,7 @@
 
     move-result-object v6
 
-    const v7, 0x1090103
+    const v7, 0x109010d
 
     const/4 v8, 0x0
 
@@ -2392,7 +2392,7 @@
 
     .line 1518
     .local v4, textEntryView:Landroid/view/View;
-    const v6, 0x1020378
+    const v6, 0x1020374
 
     invoke-virtual {v4, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -2402,7 +2402,7 @@
 
     .line 1519
     .local v1, group:Landroid/view/ViewGroup;
-    const v6, 0x1040466
+    const v6, 0x104046a
 
     iget-object v7, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mSavedPeerConfig:Landroid/net/wifi/p2p/WifiP2pConfig;
 
@@ -2415,7 +2415,7 @@
     invoke-direct {p0, v1, v6, v7}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addRowToDialog(Landroid/view/ViewGroup;ILjava/lang/String;)V
 
     .line 1522
-    const v6, 0x10203fe
+    const v6, 0x1020401
 
     invoke-virtual {v4, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -2434,11 +2434,11 @@
 
     move-result-object v7
 
-    const v8, 0x1030317
+    const v8, 0x1030323
 
     invoke-direct {v6, v7, v8}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;I)V
 
-    const v7, 0x1040465
+    const v7, 0x1040469
 
     invoke-virtual {v3, v7}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -2452,7 +2452,7 @@
 
     move-result-object v6
 
-    const v7, 0x1040462
+    const v7, 0x1040466
 
     invoke-virtual {v3, v7}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -2466,7 +2466,7 @@
 
     move-result-object v6
 
-    const v7, 0x1040463
+    const v7, 0x1040467
 
     invoke-virtual {v3, v7}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -2515,7 +2515,7 @@
 
     .line 1556
     :pswitch_0
-    const v6, 0x10203fd
+    const v6, 0x1020400
 
     invoke-virtual {v4, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -2527,7 +2527,7 @@
 
     .line 1560
     :pswitch_1
-    const v6, 0x1040469
+    const v6, 0x104046d
 
     iget-object v7, v5, Landroid/net/wifi/WpsInfo;->pin:Ljava/lang/String;
 
@@ -2569,7 +2569,7 @@
 
     move-result-object v4
 
-    const v5, 0x1090103
+    const v5, 0x109010d
 
     invoke-virtual {v4, v5, v7}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
@@ -2577,7 +2577,7 @@
 
     .line 1493
     .local v3, textEntryView:Landroid/view/View;
-    const v4, 0x1020378
+    const v4, 0x1020374
 
     invoke-virtual {v3, v4}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -2587,7 +2587,7 @@
 
     .line 1494
     .local v1, group:Landroid/view/ViewGroup;
-    const v4, 0x1040467
+    const v4, 0x104046b
 
     invoke-direct {p0, p2}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->getDeviceName(Ljava/lang/String;)Ljava/lang/String;
 
@@ -2596,7 +2596,7 @@
     invoke-direct {p0, v1, v4, v5}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addRowToDialog(Landroid/view/ViewGroup;ILjava/lang/String;)V
 
     .line 1495
-    const v4, 0x1040469
+    const v4, 0x104046d
 
     invoke-direct {p0, v1, v4, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addRowToDialog(Landroid/view/ViewGroup;ILjava/lang/String;)V
 
@@ -2610,11 +2610,11 @@
 
     move-result-object v5
 
-    const v6, 0x1030317
+    const v6, 0x1030323
 
     invoke-direct {v4, v5, v6}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;I)V
 
-    const v5, 0x1040464
+    const v5, 0x1040468
 
     invoke-virtual {v2, v5}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -2679,11 +2679,11 @@
 
     move-result-object v3
 
-    const v4, 0x1030317
+    const v4, 0x1030323
 
     invoke-direct {v2, v3, v4}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;I)V
 
-    const v3, 0x104045d
+    const v3, 0x1040461
 
     invoke-virtual {v1, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -2693,7 +2693,7 @@
 
     move-result-object v2
 
-    const v3, 0x104045f
+    const v3, 0x1040463
 
     invoke-virtual {v1, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

@@ -67,77 +67,77 @@
 
 .field public static final fast_fade_out:I = 0x10a0027
 
-.field public static final input_method_enter:I = 0x10a002b
+.field public static final input_method_smile_enter:I = 0x10a0031
 
-.field public static final input_method_exit:I = 0x10a002c
+.field public static final input_method_smile_exit:I = 0x10a0032
 
 .field public static final linear_interpolator:I = 0x10a000b
 
-.field public static final lock_screen_behind_enter:I = 0x10a0031
+.field public static final lock_screen_behind_enter:I = 0x10a0033
 
-.field public static final lock_screen_wallpaper_behind_enter:I = 0x10a0034
+.field public static final lock_screen_wallpaper_behind_enter:I = 0x10a0036
 
 .field public static final overshoot_interpolator:I = 0x10a0008
 
-.field public static final push_down_in:I = 0x10a0039
+.field public static final push_down_in:I = 0x10a003b
 
-.field public static final push_down_out:I = 0x10a003b
+.field public static final push_down_out:I = 0x10a003d
 
-.field public static final push_left_in:I = 0x10a003e
+.field public static final push_left_in:I = 0x10a0040
 
-.field public static final push_left_out:I = 0x10a003f
+.field public static final push_left_out:I = 0x10a0041
 
-.field public static final push_right_in:I = 0x10a0040
+.field public static final push_right_in:I = 0x10a0042
 
-.field public static final push_right_out:I = 0x10a0041
+.field public static final push_right_out:I = 0x10a0043
 
-.field public static final push_up_in:I = 0x10a0042
+.field public static final push_up_in:I = 0x10a0044
 
-.field public static final push_up_out:I = 0x10a0044
+.field public static final push_up_out:I = 0x10a0046
 
-.field public static final screen_rotate_0_enter:I = 0x10a0049
+.field public static final screen_rotate_0_enter:I = 0x10a004b
 
-.field public static final screen_rotate_0_exit:I = 0x10a004a
+.field public static final screen_rotate_0_exit:I = 0x10a004c
 
-.field public static final screen_rotate_0_frame:I = 0x10a004b
+.field public static final screen_rotate_0_frame:I = 0x10a004d
 
-.field public static final screen_rotate_180_enter:I = 0x10a004c
+.field public static final screen_rotate_180_enter:I = 0x10a004e
 
-.field public static final screen_rotate_180_exit:I = 0x10a004d
+.field public static final screen_rotate_180_exit:I = 0x10a004f
 
-.field public static final screen_rotate_180_frame:I = 0x10a004e
+.field public static final screen_rotate_180_frame:I = 0x10a0050
 
-.field public static final screen_rotate_finish_enter:I = 0x10a004f
+.field public static final screen_rotate_finish_enter:I = 0x10a0051
 
-.field public static final screen_rotate_finish_exit:I = 0x10a0050
+.field public static final screen_rotate_finish_exit:I = 0x10a0052
 
-.field public static final screen_rotate_finish_frame:I = 0x10a0051
+.field public static final screen_rotate_finish_frame:I = 0x10a0053
 
-.field public static final screen_rotate_minus_90_enter:I = 0x10a0052
+.field public static final screen_rotate_minus_90_enter:I = 0x10a0054
 
-.field public static final screen_rotate_minus_90_exit:I = 0x10a0053
+.field public static final screen_rotate_minus_90_exit:I = 0x10a0055
 
-.field public static final screen_rotate_minus_90_frame:I = 0x10a0054
+.field public static final screen_rotate_minus_90_frame:I = 0x10a0056
 
-.field public static final screen_rotate_plus_90_enter:I = 0x10a0055
+.field public static final screen_rotate_plus_90_enter:I = 0x10a0057
 
-.field public static final screen_rotate_plus_90_exit:I = 0x10a0056
+.field public static final screen_rotate_plus_90_exit:I = 0x10a0058
 
-.field public static final screen_rotate_plus_90_frame:I = 0x10a0057
+.field public static final screen_rotate_plus_90_frame:I = 0x10a0059
 
-.field public static final screen_rotate_start_enter:I = 0x10a0058
+.field public static final screen_rotate_start_enter:I = 0x10a005a
 
-.field public static final screen_rotate_start_exit:I = 0x10a0059
+.field public static final screen_rotate_start_exit:I = 0x10a005b
 
-.field public static final screen_rotate_start_frame:I = 0x10a005a
+.field public static final screen_rotate_start_frame:I = 0x10a005c
 
-.field public static final slide_in_child_bottom:I = 0x10a0060
+.field public static final slide_in_child_bottom:I = 0x10a0062
 
 .field public static final slide_in_left:I = 0x10a0002
 
-.field public static final slide_in_right:I = 0x10a0061
+.field public static final slide_in_right:I = 0x10a0063
 
-.field public static final slide_out_left:I = 0x10a0064
+.field public static final slide_out_left:I = 0x10a0066
 
 .field public static final slide_out_right:I = 0x10a0003
 
@@ -145,7 +145,7 @@
 
 .field public static final translucent_exit_lock_panel:I = 0x10a000e
 
-.field public static final window_move_from_decor:I = 0x10a007a
+.field public static final window_move_from_decor:I = 0x10a007c
 
 
 # direct methods

@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1082
+    .line 1107
     iput-object p1, p0, Lcom/meizu/widget/MzContactHeaderWidget$2;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 3
 
     .prologue
-    .line 1085
+    .line 1110
     iget-object v1, p0, Lcom/meizu/widget/MzContactHeaderWidget$2;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
 
     #getter for: Lcom/meizu/widget/MzContactHeaderWidget;->mSipDestChecker:Lcom/meizu/widget/RecipientStateInfo$SipDestChecker;
@@ -51,7 +51,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 1086
+    .line 1111
     iget-object v1, p0, Lcom/meizu/widget/MzContactHeaderWidget$2;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
 
     #getter for: Lcom/meizu/widget/MzContactHeaderWidget;->mCheckedNumber:Ljava/util/ArrayList;
@@ -78,7 +78,7 @@
 
     check-cast v0, [Ljava/lang/String;
 
-    .line 1088
+    .line 1113
     .local v0, numbers:[Ljava/lang/String;
     iget-object v1, p0, Lcom/meizu/widget/MzContactHeaderWidget$2;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
 
@@ -89,7 +89,7 @@
 
     invoke-interface {v1, v0}, Lcom/meizu/widget/RecipientStateInfo$SipDestChecker;->checkSipDestAddrIsAvailable([Ljava/lang/String;)V
 
-    .line 1090
+    .line 1115
     .end local v0           #numbers:[Ljava/lang/String;
     :cond_0
     return-void

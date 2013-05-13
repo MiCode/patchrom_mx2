@@ -27,16 +27,16 @@
     .parameter "y"
 
     .prologue
-    .line 1922
+    .line 1939
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1923
+    .line 1940
     iput p1, p0, Lcom/meizu/widget/MultiWaveView$MyPoint;->x:F
 
-    .line 1924
+    .line 1941
     iput p2, p0, Lcom/meizu/widget/MultiWaveView$MyPoint;->y:F
 
-    .line 1925
+    .line 1942
     return-void
 .end method
 
@@ -46,7 +46,7 @@
     .locals 1
 
     .prologue
-    .line 1936
+    .line 1953
     iget v0, p0, Lcom/meizu/widget/MultiWaveView$MyPoint;->x:F
 
     return v0
@@ -56,7 +56,7 @@
     .locals 1
 
     .prologue
-    .line 1940
+    .line 1957
     iget v0, p0, Lcom/meizu/widget/MultiWaveView$MyPoint;->y:F
 
     return v0
@@ -67,10 +67,10 @@
     .parameter "x"
 
     .prologue
-    .line 1928
+    .line 1945
     iput p1, p0, Lcom/meizu/widget/MultiWaveView$MyPoint;->x:F
 
-    .line 1929
+    .line 1946
     return-void
 .end method
 
@@ -79,9 +79,9 @@
     .parameter "y"
 
     .prologue
-    .line 1932
+    .line 1949
     iput p1, p0, Lcom/meizu/widget/MultiWaveView$MyPoint;->y:F
 
-    .line 1933
+    .line 1950
     return-void
 .end method

@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 357
+    .line 361
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/FilterStack$10;->this$0:Lcom/android/gallery3d/photoeditor/FilterStack;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,10 +43,10 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 361
+    .line 365
     invoke-static {}, Lcom/android/gallery3d/photoeditor/filters/Filter;->releaseContext()V
 
-    .line 363
+    .line 367
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/FilterStack$10;->this$0:Lcom/android/gallery3d/photoeditor/FilterStack;
 
     #getter for: Lcom/android/gallery3d/photoeditor/FilterStack;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
@@ -58,13 +58,13 @@
 
     invoke-virtual {v1, v3, v2}, Lcom/android/gallery3d/photoeditor/PhotoView;->setPhoto(Lcom/android/gallery3d/photoeditor/Photo;Z)V
 
-    .line 364
+    .line 368
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/FilterStack$10;->this$0:Lcom/android/gallery3d/photoeditor/FilterStack;
 
     #setter for: Lcom/android/gallery3d/photoeditor/FilterStack;->source:Lcom/android/gallery3d/photoeditor/Photo;
     invoke-static {v1, v3}, Lcom/android/gallery3d/photoeditor/FilterStack;->access$302(Lcom/android/gallery3d/photoeditor/FilterStack;Lcom/android/gallery3d/photoeditor/Photo;)Lcom/android/gallery3d/photoeditor/Photo;
 
-    .line 365
+    .line 369
     const/4 v0, 0x0
 
     .local v0, i:I
@@ -80,7 +80,7 @@
 
     if-ge v0, v1, :cond_0
 
-    .line 366
+    .line 370
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/FilterStack$10;->this$0:Lcom/android/gallery3d/photoeditor/FilterStack;
 
     #getter for: Lcom/android/gallery3d/photoeditor/FilterStack;->buffers:[Lcom/android/gallery3d/photoeditor/Photo;
@@ -90,12 +90,12 @@
 
     aput-object v3, v1, v0
 
-    .line 365
+    .line 369
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 368
+    .line 372
     :cond_0
     return-void
 .end method

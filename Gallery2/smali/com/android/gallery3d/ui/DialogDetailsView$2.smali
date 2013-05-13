@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 189
+    .line 195
     iput-object p1, p0, Lcom/android/gallery3d/ui/DialogDetailsView$2;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,7 +43,7 @@
     .parameter "whichButton"
 
     .prologue
-    .line 191
+    .line 197
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView$2;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     #getter for: Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
@@ -53,6 +53,6 @@
 
     invoke-virtual {v0}, Landroid/app/AlertDialog;->dismiss()V
 
-    .line 192
+    .line 198
     return-void
 .end method

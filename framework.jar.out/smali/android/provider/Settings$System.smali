@@ -51,6 +51,8 @@
 
 .field public static final AUTO_CABC_VAULE:Ljava/lang/String; = "auto_cabc_value"
 
+.field public static final AUTO_LIGHT_DUAL:Ljava/lang/String; = "auto_light_dual"
+
 .field public static final AUTO_RECORD_ALERT_COUNT:Ljava/lang/String; = "auto_record_alert_count"
 
 .field public static final AUTO_RECORD_WHEN_CALLING:Ljava/lang/String; = "auto_record_when_calling"
@@ -271,15 +273,23 @@
 
 .field public static final MEIZU_FINDPHONE_HOST:Ljava/lang/String; = "findphone_host"
 
+.field public static final MEIZU_FIT_BRIGHTNESS_VALUE:Ljava/lang/String; = "meizu_fit_brightness_value"
+
+.field public static final MEIZU_FIT_SENSOR_VALUE:Ljava/lang/String; = "meizu_fit_sensor_value"
+
 .field public static final MEIZU_FLYME_HOST:Ljava/lang/String; = "flyme_host"
 
 .field public static final MEIZU_FUNAMBOL_HOST:Ljava/lang/String; = "funambol_host"
+
+.field public static final MEIZU_KEY_WAKEUP_TYPE:Ljava/lang/String; = "meizu_key_wakeup_type"
 
 .field public static final MEIZU_MEMBER_HOST:Ljava/lang/String; = "member_host"
 
 .field public static final MEIZU_MOVIE_HOST:Ljava/lang/String; = "movie_host"
 
 .field public static final MEIZU_MUSIC_LOSSLESS_HOST:Ljava/lang/String; = "music_lossless_host"
+
+.field public static final MEIZU_SWITCH_USB_FAST_CHARGER:Ljava/lang/String; = "meizu_switch_usb_fast_charger"
 
 .field public static final MEIZU_TOOLS_HOST:Ljava/lang/String; = "tools_host"
 
@@ -435,9 +445,9 @@
 
 .field public static final SPAM_CALL_FILTER_FROM_CLOUD_LEVEL:Ljava/lang/String; = "spam_call_filter_from_cloud_level"
 
-.field public static final STAY_ON_WHILE_PLUGGED_IN:Ljava/lang/String; = "stay_on_while_plugged_in"
+.field public static final STATUSBAR_BATTERY_PERCENT:Ljava/lang/String; = "statusbar_battery_percent"
 
-.field public static final STSTUSBAR_BATTERY_PERCENT:Ljava/lang/String; = "ststusbar_battery_percent"
+.field public static final STAY_ON_WHILE_PLUGGED_IN:Ljava/lang/String; = "stay_on_while_plugged_in"
 
 .field public static final SYS_PROP_SETTING_VERSION:Ljava/lang/String; = "sys.settings_system_version"
 
@@ -506,6 +516,8 @@
 .field public static final WAIT_FOR_DEBUGGER:Ljava/lang/String; = "wait_for_debugger"
 
 .field public static final WALLPAPER_ACTIVITY:Ljava/lang/String; = "wallpaper_activity"
+
+.field public static final WIFI_AP_SWITCH_DISPLAY_ON:Ljava/lang/String; = "wifi_ap_switch_display_on"
 
 .field public static final WIFI_MAX_DHCP_RETRY_COUNT:Ljava/lang/String; = "wifi_max_dhcp_retry_count"
     .annotation runtime Ljava/lang/Deprecated;
@@ -944,7 +956,7 @@
 
     sput-object v0, Landroid/provider/Settings$System;->CONTENT_URI:Landroid/net/Uri;
 
-    .line 1816
+    .line 1822
     const/16 v0, 0xb
 
     new-array v0, v0, [Ljava/lang/String;
@@ -1007,7 +1019,7 @@
 
     sput-object v0, Landroid/provider/Settings$System;->VOLUME_SETTINGS:[Ljava/lang/String;
 
-    .line 1848
+    .line 1854
     const-string/jumbo v0, "ringtone"
 
     invoke-static {v0}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
@@ -1016,7 +1028,7 @@
 
     sput-object v0, Landroid/provider/Settings$System;->DEFAULT_RINGTONE_URI:Landroid/net/Uri;
 
-    .line 1864
+    .line 1870
     const-string/jumbo v0, "notification_sound"
 
     invoke-static {v0}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
@@ -1025,7 +1037,7 @@
 
     sput-object v0, Landroid/provider/Settings$System;->DEFAULT_NOTIFICATION_URI:Landroid/net/Uri;
 
-    .line 1880
+    .line 1886
     const-string v0, "alarm_alert"
 
     invoke-static {v0}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
@@ -1034,7 +1046,7 @@
 
     sput-object v0, Landroid/provider/Settings$System;->DEFAULT_ALARM_ALERT_URI:Landroid/net/Uri;
 
-    .line 1883
+    .line 1889
     const-string/jumbo v0, "mms_sound"
 
     invoke-static {v0}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
@@ -1043,7 +1055,7 @@
 
     sput-object v0, Landroid/provider/Settings$System;->DEFAULT_MMS_SOUND_URI:Landroid/net/Uri;
 
-    .line 1885
+    .line 1891
     const-string v0, "email_sound"
 
     invoke-static {v0}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
@@ -1052,7 +1064,7 @@
 
     sput-object v0, Landroid/provider/Settings$System;->DEFAULT_EMAIL_SOUND_URI:Landroid/net/Uri;
 
-    .line 1887
+    .line 1893
     const-string v0, "calendar_sound"
 
     invoke-static {v0}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
@@ -1061,7 +1073,7 @@
 
     sput-object v0, Landroid/provider/Settings$System;->DEFAULT_CALENDAR_SOUND_URI:Landroid/net/Uri;
 
-    .line 2406
+    .line 2440
     const/16 v0, 0x42
 
     new-array v0, v0, [Ljava/lang/String;

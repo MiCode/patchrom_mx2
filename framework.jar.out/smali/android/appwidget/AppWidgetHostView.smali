@@ -205,7 +205,7 @@
 
     .line 165
     .local v3, r:Landroid/content/res/Resources;
-    const v4, 0x1050054
+    const v4, 0x105005d
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -214,7 +214,7 @@
     iput v4, p2, Landroid/graphics/Rect;->left:I
 
     .line 167
-    const v4, 0x1050056
+    const v4, 0x105005f
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -223,7 +223,7 @@
     iput v4, p2, Landroid/graphics/Rect;->right:I
 
     .line 169
-    const v4, 0x1050055
+    const v4, 0x105005e
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -232,7 +232,7 @@
     iput v4, p2, Landroid/graphics/Rect;->top:I
 
     .line 171
-    const v4, 0x1050057
+    const v4, 0x1050060
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -699,7 +699,7 @@
 
     .line 521
     .local v0, tv:Landroid/widget/TextView;
-    const v1, 0x10404b9
+    const v1, 0x10404bd
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(I)V
 

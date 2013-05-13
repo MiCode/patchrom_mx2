@@ -29,7 +29,7 @@
     .parameter
 
     .prologue
-    .line 1318
+    .line 1412
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumPage$MyDetailsSource;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,7 +43,7 @@
     .parameter "x1"
 
     .prologue
-    .line 1318
+    .line 1412
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/AlbumPage$MyDetailsSource;-><init>(Lcom/android/gallery3d/app/AlbumPage;)V
 
     return-void
@@ -56,7 +56,7 @@
     .parameter "indexHint"
 
     .prologue
-    .line 1332
+    .line 1426
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$MyDetailsSource;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mAlbumDataAdapter:Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;
@@ -70,17 +70,17 @@
 
     if-eqz v0, :cond_1
 
-    .line 1333
+    .line 1427
     iput p1, p0, Lcom/android/gallery3d/app/AlbumPage$MyDetailsSource;->mIndex:I
 
-    .line 1340
+    .line 1434
     :cond_0
     iget v0, p0, Lcom/android/gallery3d/app/AlbumPage$MyDetailsSource;->mIndex:I
 
     :goto_0
     return v0
 
-    .line 1335
+    .line 1429
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$MyDetailsSource;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
@@ -95,7 +95,7 @@
 
     iput v0, p0, Lcom/android/gallery3d/app/AlbumPage$MyDetailsSource;->mIndex:I
 
-    .line 1336
+    .line 1430
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$MyDetailsSource;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mAlbumDataAdapter:Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;
@@ -111,7 +111,7 @@
 
     if-nez v0, :cond_0
 
-    .line 1337
+    .line 1431
     const/4 v0, -0x1
 
     goto :goto_0
@@ -121,7 +121,7 @@
     .locals 3
 
     .prologue
-    .line 1344
+    .line 1438
     iget-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$MyDetailsSource;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mAlbumDataAdapter:Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;
@@ -135,11 +135,11 @@
 
     move-result-object v0
 
-    .line 1345
+    .line 1439
     .local v0, item:Lcom/android/gallery3d/data/MediaObject;
     if-eqz v0, :cond_0
 
-    .line 1346
+    .line 1440
     iget-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$MyDetailsSource;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mAlbumView:Lcom/android/gallery3d/ui/AlbumSlotRenderer;
@@ -153,12 +153,12 @@
 
     invoke-virtual {v1, v2}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->setHighlightItemPath(Lcom/android/gallery3d/data/Path;)V
 
-    .line 1347
+    .line 1441
     invoke-virtual {v0}, Lcom/android/gallery3d/data/MediaItem;->getDetails()Lcom/android/gallery3d/data/MediaDetails;
 
     move-result-object v1
 
-    .line 1349
+    .line 1443
     :goto_0
     return-object v1
 
@@ -172,7 +172,7 @@
     .locals 1
 
     .prologue
-    .line 1326
+    .line 1420
     iget v0, p0, Lcom/android/gallery3d/app/AlbumPage$MyDetailsSource;->mIndex:I
 
     return v0
@@ -182,7 +182,7 @@
     .locals 1
 
     .prologue
-    .line 1322
+    .line 1416
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$MyDetailsSource;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mAlbumDataAdapter:Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;

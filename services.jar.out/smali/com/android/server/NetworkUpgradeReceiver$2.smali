@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 73
+    .line 98
     iput-object p1, p0, Lcom/android/server/NetworkUpgradeReceiver$2;->this$0:Lcom/android/server/NetworkUpgradeReceiver;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,14 +43,14 @@
     .parameter "which"
 
     .prologue
-    .line 77
+    .line 102
     const-string v0, "NetworkUpgradeReceiver"
 
     const-string v1, "Upgrade later!"
 
     invoke-static {v0, v1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 78
+    .line 103
     iget-object v0, p0, Lcom/android/server/NetworkUpgradeReceiver$2;->this$0:Lcom/android/server/NetworkUpgradeReceiver;
 
     #getter for: Lcom/android/server/NetworkUpgradeReceiver;->mUpgradeTipsDialog:Landroid/app/AlertDialog;
@@ -60,7 +60,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 79
+    .line 104
     iget-object v0, p0, Lcom/android/server/NetworkUpgradeReceiver$2;->this$0:Lcom/android/server/NetworkUpgradeReceiver;
 
     #getter for: Lcom/android/server/NetworkUpgradeReceiver;->mUpgradeTipsDialog:Landroid/app/AlertDialog;
@@ -70,7 +70,7 @@
 
     invoke-virtual {v0}, Landroid/app/AlertDialog;->dismiss()V
 
-    .line 81
+    .line 106
     :cond_0
     return-void
 .end method

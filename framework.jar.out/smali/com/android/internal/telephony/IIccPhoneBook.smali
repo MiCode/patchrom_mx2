@@ -57,6 +57,22 @@
     .end annotation
 .end method
 
+.method public abstract hasAdditionalNumber()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract hasEmail()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract isUsim()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {

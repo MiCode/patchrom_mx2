@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 3083
+    .line 3321
     iput-object p1, p0, Lcom/android/camera/Camera$ShutterBtnLongClick;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .parameter "x1"
 
     .prologue
-    .line 3083
+    .line 3321
     invoke-direct {p0, p1}, Lcom/android/camera/Camera$ShutterBtnLongClick;-><init>(Lcom/android/camera/Camera;)V
 
     return-void
@@ -50,17 +50,19 @@
 
 # virtual methods
 .method public onLongClick(Landroid/view/View;)Z
-    .locals 3
+    .locals 4
     .parameter "v"
 
     .prologue
+    const/4 v3, 0x1
+
     const/4 v2, 0x0
 
-    .line 3086
+    .line 3324
     iget-object v0, p0, Lcom/android/camera/Camera$ShutterBtnLongClick;->this$0:Lcom/android/camera/Camera;
 
     #calls: Lcom/android/camera/Camera;->isCaptrueModeNormal(Z)Z
-    invoke-static {v0, v2}, Lcom/android/camera/Camera;->access$12100(Lcom/android/camera/Camera;Z)Z
+    invoke-static {v0, v2}, Lcom/android/camera/Camera;->access$12600(Lcom/android/camera/Camera;Z)Z
 
     move-result v0
 
@@ -79,27 +81,64 @@
     iget-object v0, p0, Lcom/android/camera/Camera$ShutterBtnLongClick;->this$0:Lcom/android/camera/Camera;
 
     #calls: Lcom/android/camera/Camera;->isLandscape()Z
-    invoke-static {v0}, Lcom/android/camera/Camera;->access$12200(Lcom/android/camera/Camera;)Z
+    invoke-static {v0}, Lcom/android/camera/Camera;->access$12700(Lcom/android/camera/Camera;)Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 3087
+    .line 3325
     iget-object v0, p0, Lcom/android/camera/Camera$ShutterBtnLongClick;->this$0:Lcom/android/camera/Camera;
 
-    const/4 v1, 0x1
-
     #setter for: Lcom/android/camera/Camera;->mIsShutterBtnLongPressed:Z
-    invoke-static {v0, v1}, Lcom/android/camera/Camera;->access$5102(Lcom/android/camera/Camera;Z)Z
+    invoke-static {v0, v3}, Lcom/android/camera/Camera;->access$5302(Lcom/android/camera/Camera;Z)Z
 
-    .line 3088
+    .line 3326
     iget-object v0, p0, Lcom/android/camera/Camera$ShutterBtnLongClick;->this$0:Lcom/android/camera/Camera;
 
     #setter for: Lcom/android/camera/Camera;->mIsShutterLongPressedFocusFinished:Z
-    invoke-static {v0, v2}, Lcom/android/camera/Camera;->access$9302(Lcom/android/camera/Camera;Z)Z
+    invoke-static {v0, v2}, Lcom/android/camera/Camera;->access$9702(Lcom/android/camera/Camera;Z)Z
 
-    .line 3089
+    .line 3327
+    iget-object v0, p0, Lcom/android/camera/Camera$ShutterBtnLongClick;->this$0:Lcom/android/camera/Camera;
+
+    #getter for: Lcom/android/camera/Camera;->mCameraState:I
+    invoke-static {v0}, Lcom/android/camera/Camera;->access$5700(Lcom/android/camera/Camera;)I
+
+    move-result v0
+
+    const/4 v1, 0x2
+
+    if-ne v0, v1, :cond_1
+
+    iget-object v0, p0, Lcom/android/camera/Camera$ShutterBtnLongClick;->this$0:Lcom/android/camera/Camera;
+
+    #getter for: Lcom/android/camera/Camera;->mIsLastTouchFocus:Z
+    invoke-static {v0}, Lcom/android/camera/Camera;->access$7800(Lcom/android/camera/Camera;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    .line 3328
+    iget-object v0, p0, Lcom/android/camera/Camera$ShutterBtnLongClick;->this$0:Lcom/android/camera/Camera;
+
+    #calls: Lcom/android/camera/Camera;->cancelFocus()V
+    invoke-static {v0}, Lcom/android/camera/Camera;->access$12800(Lcom/android/camera/Camera;)V
+
+    .line 3329
+    iget-object v0, p0, Lcom/android/camera/Camera$ShutterBtnLongClick;->this$0:Lcom/android/camera/Camera;
+
+    #setter for: Lcom/android/camera/Camera;->mIsShutterLongPressedCancelFocus:Z
+    invoke-static {v0, v3}, Lcom/android/camera/Camera;->access$9602(Lcom/android/camera/Camera;Z)Z
+
+    .line 3334
+    :cond_0
+    :goto_0
+    return v2
+
+    .line 3331
+    :cond_1
     iget-object v0, p0, Lcom/android/camera/Camera$ShutterBtnLongClick;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mFocusManager:Lcom/android/camera/FocusManager;
@@ -109,7 +148,5 @@
 
     invoke-virtual {v0}, Lcom/android/camera/FocusManager;->lockFocus()V
 
-    .line 3091
-    :cond_0
-    return v2
+    goto :goto_0
 .end method

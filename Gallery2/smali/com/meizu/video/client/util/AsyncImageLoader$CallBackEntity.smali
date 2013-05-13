@@ -15,9 +15,9 @@
 
 
 # instance fields
-.field bitmap:Landroid/graphics/Bitmap;
+.field mBitmap:Landroid/graphics/Bitmap;
 
-.field imageUrl:Ljava/lang/String;
+.field mImageUrl:Ljava/lang/String;
 
 .field final synthetic this$0:Lcom/meizu/video/client/util/AsyncImageLoader;
 
@@ -28,7 +28,7 @@
     .parameter
 
     .prologue
-    .line 34
+    .line 31
     iput-object p1, p0, Lcom/meizu/video/client/util/AsyncImageLoader$CallBackEntity;->this$0:Lcom/meizu/video/client/util/AsyncImageLoader;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V

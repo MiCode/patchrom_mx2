@@ -37,7 +37,7 @@
 
     const/4 v2, 0x0
 
-    .line 3448
+    .line 4795
     new-array v0, v3, [I
 
     const/high16 v1, 0x7f01
@@ -46,7 +46,7 @@
 
     sput-object v0, Lcom/android/camera/R$styleable;->CameraPreference:[I
 
-    .line 3475
+    .line 4822
     new-array v0, v3, [I
 
     const v1, 0x7f01000a
@@ -55,7 +55,7 @@
 
     sput-object v0, Lcom/android/camera/R$styleable;->GlowImageView:[I
 
-    .line 3504
+    .line 4851
     const/4 v0, 0x2
 
     new-array v0, v0, [I
@@ -64,14 +64,14 @@
 
     sput-object v0, Lcom/android/camera/R$styleable;->IconIndicator:[I
 
-    .line 3543
+    .line 4890
     new-array v0, v4, [I
 
     fill-array-data v0, :array_1
 
     sput-object v0, Lcom/android/camera/R$styleable;->IconListPreference:[I
 
-    .line 3604
+    .line 4951
     new-array v0, v4, [I
 
     fill-array-data v0, :array_2
@@ -80,7 +80,7 @@
 
     return-void
 
-    .line 3504
+    .line 4851
     nop
 
     :array_0
@@ -89,7 +89,7 @@
         0x6t 0x0t 0x1t 0x7ft
     .end array-data
 
-    .line 3543
+    .line 4890
     :array_1
     .array-data 0x4
         0x5t 0x0t 0x1t 0x7ft
@@ -98,7 +98,7 @@
         0x9t 0x0t 0x1t 0x7ft
     .end array-data
 
-    .line 3604
+    .line 4951
     :array_2
     .array-data 0x4
         0x1t 0x0t 0x1t 0x7ft
@@ -112,7 +112,7 @@
     .locals 0
 
     .prologue
-    .line 3437
+    .line 4784
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void

@@ -234,6 +234,14 @@
     .end annotation
 .end method
 
+.method public abstract updateKeyguardStatusBar(Z)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract updateStatusbarPos(Landroid/view/MotionEvent;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {

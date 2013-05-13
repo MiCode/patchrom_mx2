@@ -1,11 +1,11 @@
 .class Lcom/android/gallery3d/app/AlbumSetPage$5;
-.super Lcom/android/gallery3d/ui/SlotView$SimpleListener;
+.super Landroid/content/BroadcastReceiver;
 .source "AlbumSetPage.java"
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/gallery3d/app/AlbumSetPage;->initializeViews()V
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/android/gallery3d/app/AlbumSetPage;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -24,72 +24,67 @@
     .parameter
 
     .prologue
-    .line 701
+    .line 674
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumSetPage$5;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
 
-    invoke-direct {p0}, Lcom/android/gallery3d/ui/SlotView$SimpleListener;-><init>()V
+    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onDown(I)V
-    .locals 1
-    .parameter "index"
+.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+    .locals 4
+    .parameter "context"
+    .parameter "intent"
 
     .prologue
-    .line 704
-    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$5;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
+    const/4 v3, 0x1
 
-    #calls: Lcom/android/gallery3d/app/AlbumSetPage;->onDown(I)V
-    invoke-static {v0, p1}, Lcom/android/gallery3d/app/AlbumSetPage;->access$1600(Lcom/android/gallery3d/app/AlbumSetPage;I)V
+    .line 677
+    invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
-    .line 705
+    move-result-object v0
+
+    .line 678
+    .local v0, action:Ljava/lang/String;
+    const-string v1, "android.intent.action.MEDIA_MOUNTED"
+
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    .line 679
+    iget-object v1, p0, Lcom/android/gallery3d/app/AlbumSetPage$5;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
+
+    #calls: Lcom/android/gallery3d/app/AlbumSetPage;->setNoItemViewState(ZZ)V
+    invoke-static {v1, v3, v3}, Lcom/android/gallery3d/app/AlbumSetPage;->access$1500(Lcom/android/gallery3d/app/AlbumSetPage;ZZ)V
+
+    .line 683
+    :cond_0
+    :goto_0
     return-void
-.end method
 
-.method public onLongTap(III)V
-    .locals 1
-    .parameter "slotIndex"
-    .parameter "x"
-    .parameter "y"
+    .line 680
+    :cond_1
+    const-string v1, "android.intent.action.MEDIA_UNMOUNTED"
 
-    .prologue
-    .line 719
-    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$5;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    invoke-virtual {v0, p1, p2, p3}, Lcom/android/gallery3d/app/AlbumSetPage;->onLongTap(III)V
+    move-result v1
 
-    .line 720
-    return-void
-.end method
+    if-eqz v1, :cond_0
 
-.method public onSingleTapUp(I)V
-    .locals 1
-    .parameter "slotIndex"
+    .line 681
+    iget-object v1, p0, Lcom/android/gallery3d/app/AlbumSetPage$5;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
 
-    .prologue
-    .line 714
-    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$5;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
+    const/4 v2, 0x0
 
-    invoke-virtual {v0, p1}, Lcom/android/gallery3d/app/AlbumSetPage;->onSingleTapUp(I)V
+    #calls: Lcom/android/gallery3d/app/AlbumSetPage;->setNoItemViewState(ZZ)V
+    invoke-static {v1, v2, v3}, Lcom/android/gallery3d/app/AlbumSetPage;->access$1500(Lcom/android/gallery3d/app/AlbumSetPage;ZZ)V
 
-    .line 715
-    return-void
-.end method
-
-.method public onUp(Z)V
-    .locals 1
-    .parameter "followedByLongPress"
-
-    .prologue
-    .line 709
-    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$5;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
-
-    #calls: Lcom/android/gallery3d/app/AlbumSetPage;->onUp(Z)V
-    invoke-static {v0, p1}, Lcom/android/gallery3d/app/AlbumSetPage;->access$1700(Lcom/android/gallery3d/app/AlbumSetPage;Z)V
-
-    .line 710
-    return-void
+    goto :goto_0
 .end method

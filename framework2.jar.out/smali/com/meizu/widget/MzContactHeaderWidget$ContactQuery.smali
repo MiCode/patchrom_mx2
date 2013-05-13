@@ -35,7 +35,7 @@
     .locals 3
 
     .prologue
-    .line 94
+    .line 96
     const/4 v0, 0x6
 
     new-array v0, v0, [Ljava/lang/String;

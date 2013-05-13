@@ -405,15 +405,15 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 441
+    .line 445
     if-nez p1, :cond_1
 
-    .line 451
+    .line 455
     :cond_0
     :goto_0
     return v1
 
-    .line 444
+    .line 448
     :cond_1
     iget-object v2, p0, Lcom/android/server/am/UndertableStartingManagerService;->mActivityManager:Lcom/android/server/am/ActivityManagerService;
 
@@ -421,11 +421,11 @@
 
     move-result-object v0
 
-    .line 445
+    .line 449
     .local v0, top:Lcom/android/server/am/ActivityRecord;
     if-eqz v0, :cond_0
 
-    .line 448
+    .line 452
     iget-object v2, v0, Lcom/android/server/am/ActivityRecord;->intent:Landroid/content/Intent;
 
     invoke-virtual {p1, v2}, Landroid/content/Intent;->filterEquals(Landroid/content/Intent;)Z
@@ -434,7 +434,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 449
+    .line 453
     const/4 v1, 0x1
 
     goto :goto_0
@@ -447,16 +447,16 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 382
+    .line 386
     if-nez p1, :cond_0
 
     move v3, v4
 
-    .line 392
+    .line 396
     :goto_0
     return v3
 
-    .line 384
+    .line 388
     :cond_0
     const/4 v1, 0x0
 
@@ -470,7 +470,7 @@
 
     if-ge v1, v3, :cond_2
 
-    .line 385
+    .line 389
     sget-object v3, Lcom/android/server/am/UndertableStartingManagerService;->AUTO_CHECK_PACKAGE:Ljava/util/ArrayList;
 
     invoke-virtual {v3, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -485,7 +485,7 @@
 
     if-eqz v3, :cond_1
 
-    .line 386
+    .line 390
     sget-object v3, Lcom/android/server/am/UndertableStartingManagerService;->AUTO_STARTING_ACTIVITY:Ljava/util/ArrayList;
 
     invoke-virtual {v3, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -494,7 +494,7 @@
 
     check-cast v0, Landroid/content/ComponentName;
 
-    .line 387
+    .line 391
     .local v0, finishComponentName:Landroid/content/ComponentName;
     iget-object v3, p0, Lcom/android/server/am/UndertableStartingManagerService;->mActivityManager:Lcom/android/server/am/ActivityManagerService;
 
@@ -502,7 +502,7 @@
 
     move-result v2
 
-    .line 388
+    .line 392
     .local v2, ret:Z
     const-string v3, "UndertableStarting"
 
@@ -564,12 +564,12 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 389
+    .line 393
     const/4 v3, 0x1
 
     goto :goto_0
 
-    .line 384
+    .line 388
     .end local v0           #finishComponentName:Landroid/content/ComponentName;
     .end local v2           #ret:Z
     :cond_1
@@ -580,7 +580,7 @@
     :cond_2
     move v3, v4
 
-    .line 392
+    .line 396
     goto :goto_0
 .end method
 
@@ -1271,14 +1271,14 @@
     .parameter "pendingIntent"
 
     .prologue
-    const/4 v7, 0x0
-
     const/4 v6, 0x1
+
+    const/4 v7, 0x0
 
     .line 336
     if-nez p1, :cond_1
 
-    .line 378
+    .line 382
     :cond_0
     :goto_0
     return v7
@@ -1359,7 +1359,7 @@
 
     .line 357
     .local v3, sameWithTop:Z
-    if-nez v3, :cond_4
+    if-nez v3, :cond_5
 
     .line 364
     new-instance v0, Landroid/content/Intent;
@@ -1373,21 +1373,29 @@
     invoke-virtual {v0, v7}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
 
     .line 370
-    const-string v7, "LockView"
+    const/16 v7, 0x10
 
-    invoke-virtual {v0, v7, v6}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
+    invoke-virtual {v0, v7}, Landroid/content/Intent;->addMeizuFlags(I)Landroid/content/Intent;
 
     .line 371
-    const-string v7, "fastStarting"
-
-    invoke-virtual {v0, v7, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
+    if-nez v1, :cond_4
 
     .line 372
+    invoke-virtual {v0}, Landroid/content/Intent;->getMeizuFlags()I
+
+    move-result v7
+
+    and-int/lit16 v7, v7, -0x81
+
+    invoke-virtual {v0, v7}, Landroid/content/Intent;->setMeizuFlags(I)Landroid/content/Intent;
+
+    .line 376
+    :goto_2
     iget-object v7, p0, Lcom/android/server/am/UndertableStartingManagerService;->mContext:Landroid/content/Context;
 
     invoke-virtual {v7, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
 
-    .line 373
+    .line 377
     const-string v7, "UndertableStarting"
 
     new-instance v8, Ljava/lang/StringBuilder;
@@ -1411,10 +1419,10 @@
     invoke-static {v7, v8}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .end local v0           #intent:Landroid/content/Intent;
-    :goto_2
+    :goto_3
     move v7, v6
 
-    .line 378
+    .line 382
     goto :goto_0
 
     .end local v3           #sameWithTop:Z
@@ -1424,9 +1432,19 @@
     .line 351
     goto :goto_1
 
-    .line 375
+    .line 374
+    .restart local v0       #intent:Landroid/content/Intent;
     .restart local v3       #sameWithTop:Z
     :cond_4
+    const/16 v7, 0x80
+
+    invoke-virtual {v0, v7}, Landroid/content/Intent;->addMeizuFlags(I)Landroid/content/Intent;
+
+    goto :goto_2
+
+    .line 379
+    .end local v0           #intent:Landroid/content/Intent;
+    :cond_5
     const-string v7, "UndertableStarting"
 
     new-instance v8, Ljava/lang/StringBuilder;
@@ -1449,7 +1467,7 @@
 
     invoke-static {v7, v8}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto :goto_2
+    goto :goto_3
 .end method
 
 .method private startList()V
@@ -1599,24 +1617,24 @@
     .end annotation
 
     .prologue
-    .line 418
+    .line 422
     const-string v0, "UndertableStarting"
 
     const-string v1, "----------------disableAutoStarting--------------"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 419
+    .line 423
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/server/am/UndertableStartingManagerService;->mAutoStartingMode:Z
 
-    .line 420
+    .line 424
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/server/am/UndertableStartingManagerService;->mResetActivityRecor:Lcom/android/server/am/ActivityRecord;
 
-    .line 421
+    .line 425
     return-void
 .end method
 
@@ -1631,35 +1649,35 @@
     .prologue
     const/16 v6, 0x12f
 
-    .line 397
+    .line 401
     iget-object v3, p0, Lcom/android/server/am/UndertableStartingManagerService;->mAutoStartingWakeLock:Landroid/os/PowerManager$WakeLock;
 
     invoke-virtual {v3}, Landroid/os/PowerManager$WakeLock;->acquire()V
 
-    .line 398
+    .line 402
     const/4 v3, 0x1
 
     iput-boolean v3, p0, Lcom/android/server/am/UndertableStartingManagerService;->mAutoStartingMode:Z
 
-    .line 399
+    .line 403
     iget-object v3, p0, Lcom/android/server/am/UndertableStartingManagerService;->mActivityManager:Lcom/android/server/am/ActivityManagerService;
 
     invoke-virtual {v3}, Lcom/android/server/am/ActivityManagerService;->getTopHistory()Lcom/android/server/am/ActivityRecord;
 
     move-result-object v2
 
-    .line 400
+    .line 404
     .local v2, top:Lcom/android/server/am/ActivityRecord;
     if-eqz v2, :cond_0
 
-    .line 401
+    .line 405
     const-string v3, "UndertableStarting"
 
     const-string v4, "----------------enableAutoStarting--------------"
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 402
+    .line 406
     const/4 v1, 0x0
 
     .local v1, i:I
@@ -1672,7 +1690,7 @@
 
     if-ge v1, v3, :cond_0
 
-    .line 403
+    .line 407
     sget-object v3, Lcom/android/server/am/UndertableStartingManagerService;->AUTO_STARTING_ACTIVITY:Ljava/util/ArrayList;
 
     invoke-virtual {v3, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -1681,7 +1699,7 @@
 
     check-cast v0, Landroid/content/ComponentName;
 
-    .line 404
+    .line 408
     .local v0, component:Landroid/content/ComponentName;
     invoke-virtual {v0}, Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;
 
@@ -1699,10 +1717,10 @@
 
     if-eqz v3, :cond_1
 
-    .line 405
+    .line 409
     iput-object v2, p0, Lcom/android/server/am/UndertableStartingManagerService;->mResetActivityRecor:Lcom/android/server/am/ActivityRecord;
 
-    .line 406
+    .line 410
     const-string v3, "UndertableStarting"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -1751,7 +1769,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 412
+    .line 416
     .end local v0           #component:Landroid/content/ComponentName;
     .end local v1           #i:I
     :cond_0
@@ -1759,7 +1777,7 @@
 
     invoke-virtual {v3, v6}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 413
+    .line 417
     iget-object v3, p0, Lcom/android/server/am/UndertableStartingManagerService;->mHandler:Landroid/os/Handler;
 
     iget-object v4, p0, Lcom/android/server/am/UndertableStartingManagerService;->mHandler:Landroid/os/Handler;
@@ -1770,10 +1788,10 @@
 
     invoke-virtual {v3, v4}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 414
+    .line 418
     return-void
 
-    .line 402
+    .line 406
     .restart local v0       #component:Landroid/content/ComponentName;
     .restart local v1       #i:I
     :cond_1
@@ -1787,7 +1805,7 @@
     .parameter "packageName"
 
     .prologue
-    .line 455
+    .line 459
     iget-object v3, p0, Lcom/android/server/am/UndertableStartingManagerService;->mNotificationsByTime:Ljava/util/ArrayList;
 
     invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
@@ -1800,7 +1818,7 @@
     :goto_0
     if-ltz v0, :cond_1
 
-    .line 456
+    .line 460
     iget-object v3, p0, Lcom/android/server/am/UndertableStartingManagerService;->mNotificationsByTime:Ljava/util/ArrayList;
 
     invoke-virtual {v3, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -1809,7 +1827,7 @@
 
     check-cast v1, Lcom/android/internal/statusbar/StatusBarNotification;
 
-    .line 457
+    .line 461
     .local v1, ne:Lcom/android/internal/statusbar/StatusBarNotification;
     if-eqz v1, :cond_0
 
@@ -1821,24 +1839,24 @@
 
     if-eqz v3, :cond_0
 
-    .line 458
+    .line 462
     iget-object v3, v1, Lcom/android/internal/statusbar/StatusBarNotification;->notification:Landroid/app/Notification;
 
     iget-object v2, v3, Landroid/app/Notification;->contentIntent:Landroid/app/PendingIntent;
 
-    .line 462
+    .line 466
     .end local v1           #ne:Lcom/android/internal/statusbar/StatusBarNotification;
     :goto_1
     return-object v2
 
-    .line 455
+    .line 459
     .restart local v1       #ne:Lcom/android/internal/statusbar/StatusBarNotification;
     :cond_0
     add-int/lit8 v0, v0, -0x1
 
     goto :goto_0
 
-    .line 462
+    .line 466
     .end local v1           #ne:Lcom/android/internal/statusbar/StatusBarNotification;
     :cond_1
     const/4 v2, 0x0
@@ -1865,14 +1883,14 @@
     .end annotation
 
     .prologue
-    .line 429
+    .line 433
     .local p1, checkPackage:Ljava/util/List;,"Ljava/util/List<Ljava/lang/String;>;"
     .local p2, startActivity:Ljava/util/List;,"Ljava/util/List<Landroid/content/ComponentName;>;"
     sget-object v1, Lcom/android/server/am/UndertableStartingManagerService;->AUTO_CHECK_PACKAGE:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->clear()V
 
-    .line 430
+    .line 434
     const/4 v0, 0x0
 
     .local v0, i:I
@@ -1883,7 +1901,7 @@
 
     if-ge v0, v1, :cond_0
 
-    .line 431
+    .line 435
     sget-object v1, Lcom/android/server/am/UndertableStartingManagerService;->AUTO_CHECK_PACKAGE:Ljava/util/ArrayList;
 
     invoke-interface {p1, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -1892,18 +1910,18 @@
 
     invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 430
+    .line 434
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 434
+    .line 438
     :cond_0
     sget-object v1, Lcom/android/server/am/UndertableStartingManagerService;->AUTO_STARTING_ACTIVITY:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->clear()V
 
-    .line 435
+    .line 439
     const/4 v0, 0x0
 
     :goto_1
@@ -1913,7 +1931,7 @@
 
     if-ge v0, v1, :cond_1
 
-    .line 436
+    .line 440
     sget-object v1, Lcom/android/server/am/UndertableStartingManagerService;->AUTO_STARTING_ACTIVITY:Ljava/util/ArrayList;
 
     invoke-interface {p2, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -1922,12 +1940,12 @@
 
     invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 435
+    .line 439
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_1
 
-    .line 438
+    .line 442
     :cond_1
     return-void
 .end method
@@ -2099,7 +2117,7 @@
     .locals 1
 
     .prologue
-    .line 425
+    .line 429
     iget-boolean v0, p0, Lcom/android/server/am/UndertableStartingManagerService;->mAutoStartingMode:Z
 
     return v0

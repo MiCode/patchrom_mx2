@@ -87,7 +87,7 @@
     .line 58
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->slotViewSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
-    const v1, 0x7f0900b8
+    const v1, 0x7f0901b5
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -99,7 +99,7 @@
     .line 59
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->slotViewSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
-    const v1, 0x7f0900b9
+    const v1, 0x7f0901b6
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -111,7 +111,7 @@
     .line 60
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->slotViewSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
-    const v1, 0x7f0900d5
+    const v1, 0x7f0901d2
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -123,7 +123,7 @@
     .line 61
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->slotViewSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
-    const v1, 0x7f0900d6
+    const v1, 0x7f0901d3
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -135,7 +135,7 @@
     .line 62
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->slotViewSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
-    const v1, 0x7f0900d7
+    const v1, 0x7f0901d4
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -160,7 +160,7 @@
     .line 71
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->labelSpec:Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;
 
-    const v1, 0x7f0900c2
+    const v1, 0x7f0901bf
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -172,7 +172,7 @@
     .line 73
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->labelSpec:Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;
 
-    const v1, 0x7f0900c3
+    const v1, 0x7f0901c0
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -184,7 +184,7 @@
     .line 75
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->labelSpec:Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;
 
-    const v1, 0x7f0900c4
+    const v1, 0x7f0901c1
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -196,7 +196,7 @@
     .line 77
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->labelSpec:Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;
 
-    const v1, 0x7f0900c5
+    const v1, 0x7f0901c2
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -208,7 +208,7 @@
     .line 79
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->labelSpec:Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;
 
-    const v1, 0x7f0900c6
+    const v1, 0x7f0901c3
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -255,7 +255,7 @@
     .line 66
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->slotViewSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
-    const v1, 0x7f0900b7
+    const v1, 0x7f0901b4
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -270,7 +270,7 @@
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->labelSpec:Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;
 
-    const v1, 0x7f0900bb
+    const v1, 0x7f0901b8
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -282,7 +282,7 @@
     .line 84
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->labelSpec:Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;
 
-    const v1, 0x7f0900bc
+    const v1, 0x7f0901b9
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -294,7 +294,7 @@
     .line 86
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->labelSpec:Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;
 
-    const v1, 0x7f0900bd
+    const v1, 0x7f0901ba
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -306,7 +306,7 @@
     .line 88
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->labelSpec:Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;
 
-    const v1, 0x7f0900be
+    const v1, 0x7f0901bb
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -318,7 +318,7 @@
     .line 90
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->labelSpec:Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;
 
-    const v1, 0x7f0900bf
+    const v1, 0x7f0901bc
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -330,7 +330,7 @@
     .line 92
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->labelSpec:Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;
 
-    const v1, 0x7f0900c0
+    const v1, 0x7f0901bd
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I
@@ -342,7 +342,7 @@
     .line 94
     iget-object v0, p0, Lcom/android/gallery3d/app/Config$AlbumSetPage;->labelSpec:Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;
 
-    const v1, 0x7f0900c1
+    const v1, 0x7f0901be
 
     #calls: Lcom/android/gallery3d/app/Config;->getDimensionPixelSize(I)I
     invoke-static {v1}, Lcom/android/gallery3d/app/Config;->access$100(I)I

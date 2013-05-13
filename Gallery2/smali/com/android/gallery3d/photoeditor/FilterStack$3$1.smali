@@ -56,5 +56,15 @@
     invoke-interface {v0, v1}, Lcom/android/gallery3d/photoeditor/OnDoneBitmapCallback;->onDone(Landroid/graphics/Bitmap;)V
 
     .line 195
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack$3$1;->this$1:Lcom/android/gallery3d/photoeditor/FilterStack$3;
+
+    iget-object v0, v0, Lcom/android/gallery3d/photoeditor/FilterStack$3;->this$0:Lcom/android/gallery3d/photoeditor/FilterStack;
+
+    const/4 v1, 0x0
+
+    #setter for: Lcom/android/gallery3d/photoeditor/FilterStack;->outputTopFilter:Z
+    invoke-static {v0, v1}, Lcom/android/gallery3d/photoeditor/FilterStack;->access$202(Lcom/android/gallery3d/photoeditor/FilterStack;Z)Z
+
+    .line 196
     return-void
 .end method

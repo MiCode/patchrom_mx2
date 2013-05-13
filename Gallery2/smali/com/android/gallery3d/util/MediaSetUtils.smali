@@ -134,11 +134,33 @@
     sput v0, Lcom/android/gallery3d/util/MediaSetUtils;->IMPORTED_BUCKET_ID:I
 
     .line 36
+    sget-object v0, Lcom/android/gallery3d/util/BucketNames;->PHOTO:Ljava/lang/String;
+
+    invoke-static {v0}, Landroid/os/Environment;->getExternalStoragePublicDirectory(Ljava/lang/String;)Ljava/io/File;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/io/File;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    sput-object v0, Lcom/android/gallery3d/util/MediaSetUtils;->PHOTO_DIR:Ljava/lang/String;
+
+    .line 38
+    sget-object v0, Lcom/android/gallery3d/util/MediaSetUtils;->PHOTO_DIR:Ljava/lang/String;
+
+    invoke-static {v0}, Lcom/android/gallery3d/util/GalleryUtils;->getBucketId(Ljava/lang/String;)I
+
+    move-result v0
+
+    sput v0, Lcom/android/gallery3d/util/MediaSetUtils;->PHOTO_BUCKET_ID:I
+
+    .line 40
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    sget-object v1, Lcom/android/gallery3d/util/MediaSetUtils;->CAMERA_DIR:Ljava/lang/String;
+    sget-object v1, Lcom/android/gallery3d/util/MediaSetUtils;->PHOTO_DIR:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -162,7 +184,7 @@
 
     sput-object v0, Lcom/android/gallery3d/util/MediaSetUtils;->SCREENSHOT_DIR:Ljava/lang/String;
 
-    .line 37
+    .line 41
     sget-object v0, Lcom/android/gallery3d/util/MediaSetUtils;->SCREENSHOT_DIR:Ljava/lang/String;
 
     invoke-static {v0}, Lcom/android/gallery3d/util/GalleryUtils;->getBucketId(Ljava/lang/String;)I
@@ -170,28 +192,6 @@
     move-result v0
 
     sput v0, Lcom/android/gallery3d/util/MediaSetUtils;->SNAPSHOT_BUCKET_ID:I
-
-    .line 39
-    sget-object v0, Lcom/android/gallery3d/util/BucketNames;->PHOTO:Ljava/lang/String;
-
-    invoke-static {v0}, Landroid/os/Environment;->getExternalStoragePublicDirectory(Ljava/lang/String;)Ljava/io/File;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/io/File;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    sput-object v0, Lcom/android/gallery3d/util/MediaSetUtils;->PHOTO_DIR:Ljava/lang/String;
-
-    .line 41
-    sget-object v0, Lcom/android/gallery3d/util/MediaSetUtils;->PHOTO_DIR:Ljava/lang/String;
-
-    invoke-static {v0}, Lcom/android/gallery3d/util/GalleryUtils;->getBucketId(Ljava/lang/String;)I
-
-    move-result v0
-
-    sput v0, Lcom/android/gallery3d/util/MediaSetUtils;->PHOTO_BUCKET_ID:I
 
     .line 43
     new-instance v0, Ljava/lang/StringBuilder;

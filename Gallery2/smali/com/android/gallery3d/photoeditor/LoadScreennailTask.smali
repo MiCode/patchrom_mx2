@@ -54,7 +54,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f090124
+    const v1, 0x7f09028c
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -67,7 +67,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f090125
+    const v1, 0x7f09028d
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -609,7 +609,7 @@
     .line 135
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/LoadScreennailTask;->context:Landroid/content/Context;
 
-    const v2, 0x7f0a00c0
+    const v2, 0x7f0a00cb
 
     invoke-static {v1, v2, v3}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
 

@@ -374,7 +374,7 @@
     invoke-direct {p0}, Lcom/android/gallery3d/data/MtpContext;->notifyDirty()V
 
     .line 83
-    const v0, 0x7f0a0198
+    const v0, 0x7f0a01a3
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/data/MtpContext;->showToast(I)V
 
@@ -391,7 +391,7 @@
     invoke-direct {p0}, Lcom/android/gallery3d/data/MtpContext;->notifyDirty()V
 
     .line 88
-    const v0, 0x7f0a0199
+    const v0, 0x7f0a01a4
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/data/MtpContext;->showToast(I)V
 

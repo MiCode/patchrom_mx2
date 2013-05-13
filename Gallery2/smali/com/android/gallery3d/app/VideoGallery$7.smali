@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 843
+    .line 850
     iput-object p1, p0, Lcom/android/gallery3d/app/VideoGallery$7;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -40,7 +40,7 @@
     .parameter "intent"
 
     .prologue
-    .line 847
+    .line 854
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v2
@@ -53,10 +53,10 @@
 
     if-eqz v2, :cond_0
 
-    .line 848
+    .line 855
     const/4 v1, 0x0
 
-    .line 849
+    .line 856
     .local v1, fragment:Landroid/app/Fragment;
     iget-object v2, p0, Lcom/android/gallery3d/app/VideoGallery$7;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
@@ -64,7 +64,7 @@
 
     move-result-object v0
 
-    .line 850
+    .line 857
     .local v0, fm:Landroid/app/FragmentManager;
     invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->access$100()I
 
@@ -72,7 +72,7 @@
 
     packed-switch v2, :pswitch_data_0
 
-    .line 865
+    .line 872
     :goto_0
     iget-object v2, p0, Lcom/android/gallery3d/app/VideoGallery$7;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
@@ -82,13 +82,13 @@
 
     invoke-virtual {v2, v1, v3}, Lcom/android/gallery3d/app/VideoGallery;->chooseTabAgian(Landroid/app/Fragment;I)V
 
-    .line 867
+    .line 874
     .end local v0           #fm:Landroid/app/FragmentManager;
     .end local v1           #fragment:Landroid/app/Fragment;
     :cond_0
     return-void
 
-    .line 852
+    .line 859
     .restart local v0       #fm:Landroid/app/FragmentManager;
     .restart local v1       #fragment:Landroid/app/Fragment;
     :pswitch_0
@@ -98,10 +98,10 @@
 
     move-result-object v1
 
-    .line 853
+    .line 860
     goto :goto_0
 
-    .line 855
+    .line 862
     :pswitch_1
     const-string v2, "tag_rank"
 
@@ -109,10 +109,10 @@
 
     move-result-object v1
 
-    .line 856
+    .line 863
     goto :goto_0
 
-    .line 858
+    .line 865
     :pswitch_2
     const-string v2, "tag_channel"
 
@@ -120,10 +120,10 @@
 
     move-result-object v1
 
-    .line 859
+    .line 866
     goto :goto_0
 
-    .line 861
+    .line 868
     :pswitch_3
     const-string v2, "tag_search"
 
@@ -133,7 +133,7 @@
 
     goto :goto_0
 
-    .line 850
+    .line 857
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0

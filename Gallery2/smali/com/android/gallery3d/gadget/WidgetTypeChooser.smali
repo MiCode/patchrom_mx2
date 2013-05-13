@@ -36,17 +36,17 @@
     invoke-super {p0, p1}, Landroid/app/Activity;->onCreate(Landroid/os/Bundle;)V
 
     .line 45
-    const v2, 0x7f0a019e
+    const v2, 0x7f0a01a9
 
     invoke-virtual {p0, v2}, Lcom/android/gallery3d/gadget/WidgetTypeChooser;->setTitle(I)V
 
     .line 46
-    const v2, 0x7f04001c
+    const v2, 0x7f04001e
 
     invoke-virtual {p0, v2}, Lcom/android/gallery3d/gadget/WidgetTypeChooser;->setContentView(I)V
 
     .line 47
-    const v2, 0x7f0d0054
+    const v2, 0x7f0d0059
 
     invoke-virtual {p0, v2}, Lcom/android/gallery3d/gadget/WidgetTypeChooser;->findViewById(I)Landroid/view/View;
 
@@ -61,7 +61,7 @@
     invoke-virtual {v1, v2}, Landroid/widget/RadioGroup;->setOnCheckedChangeListener(Landroid/widget/RadioGroup$OnCheckedChangeListener;)V
 
     .line 50
-    const v2, 0x7f0d0058
+    const v2, 0x7f0d005d
 
     invoke-virtual {p0, v2}, Lcom/android/gallery3d/gadget/WidgetTypeChooser;->findViewById(I)Landroid/view/View;
 

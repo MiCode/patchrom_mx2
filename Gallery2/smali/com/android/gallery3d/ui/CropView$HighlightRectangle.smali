@@ -87,7 +87,7 @@
 
     move-result-object v1
 
-    const v2, 0x7f02005f
+    const v2, 0x7f02005b
 
     invoke-direct {v0, v1, v2}, Lcom/android/gallery3d/ui/ResourceTexture;-><init>(Landroid/content/Context;I)V
 
@@ -694,7 +694,7 @@
     .line 555
     iget v14, v7, Landroid/graphics/RectF;->left:F
 
-    const/high16 v15, 0x4100
+    const/high16 v15, 0x4180
 
     move-object/from16 v0, p0
 
@@ -721,7 +721,7 @@
     .local v5, left:F
     iget v14, v7, Landroid/graphics/RectF;->right:F
 
-    const/high16 v15, 0x4100
+    const/high16 v15, 0x4180
 
     move-object/from16 v0, p0
 
@@ -748,7 +748,7 @@
     .local v9, right:F
     iget v14, v7, Landroid/graphics/RectF;->top:F
 
-    const/high16 v15, 0x4100
+    const/high16 v15, 0x4180
 
     move-object/from16 v0, p0
 
@@ -775,7 +775,7 @@
     .local v12, top:F
     iget v14, v7, Landroid/graphics/RectF;->bottom:F
 
-    const/high16 v15, 0x4100
+    const/high16 v15, 0x4180
 
     move-object/from16 v0, p0
 
@@ -897,7 +897,7 @@
 
     cmpl-float v14, v14, v15
 
-    if-eqz v14, :cond_5
+    if-eqz v14, :cond_6
 
     .line 572
     move-object/from16 v0, p0
@@ -949,7 +949,7 @@
 
     cmpl-float v14, v14, v11
 
-    if-lez v14, :cond_8
+    if-lez v14, :cond_9
 
     .line 574
     invoke-virtual {v7}, Landroid/graphics/RectF;->width()F
@@ -966,7 +966,7 @@
 
     and-int/lit8 v14, v14, 0x8
 
-    if-eqz v14, :cond_7
+    if-eqz v14, :cond_8
 
     .line 576
     iget v14, v7, Landroid/graphics/RectF;->top:F
@@ -983,6 +983,7 @@
 
     .line 588
     .end local v4           #height:F
+    :cond_5
     :goto_1
     invoke-virtual {v7}, Landroid/graphics/RectF;->width()F
 
@@ -996,7 +997,7 @@
 
     cmpl-float v14, v14, v11
 
-    if-lez v14, :cond_b
+    if-lez v14, :cond_c
 
     .line 589
     invoke-virtual {v7}, Landroid/graphics/RectF;->height()F
@@ -1013,7 +1014,7 @@
 
     and-int/lit8 v14, v14, 0x1
 
-    if-eqz v14, :cond_a
+    if-eqz v14, :cond_b
 
     .line 591
     iget v14, v7, Landroid/graphics/RectF;->right:F
@@ -1031,7 +1032,7 @@
     .line 605
     .end local v11           #targetRatio:F
     .end local v13           #width:F
-    :cond_5
+    :cond_6
     :goto_2
     move-object/from16 v0, p0
 
@@ -1066,7 +1067,7 @@
 
     cmpg-float v14, v14, v15
 
-    if-gtz v14, :cond_d
+    if-gtz v14, :cond_e
 
     invoke-virtual {v8}, Landroid/graphics/RectF;->height()F
 
@@ -1076,7 +1077,7 @@
 
     cmpg-float v14, v14, v15
 
-    if-gtz v14, :cond_d
+    if-gtz v14, :cond_e
 
     .line 607
     move-object/from16 v0, p0
@@ -1088,7 +1089,7 @@
 
     move-result-object v14
 
-    if-nez v14, :cond_6
+    if-nez v14, :cond_7
 
     .line 608
     move-object/from16 v0, p0
@@ -1112,7 +1113,7 @@
 
     move-result-object v16
 
-    const v17, 0x7f020066
+    const v17, 0x7f020064
 
     invoke-direct/range {v15 .. v17}, Lcom/android/gallery3d/ui/NinePatchTexture;-><init>(Landroid/content/Context;I)V
 
@@ -1120,7 +1121,7 @@
     invoke-static {v14, v15}, Lcom/android/gallery3d/ui/CropView;->access$1202(Lcom/android/gallery3d/ui/CropView;Lcom/android/gallery3d/ui/NinePatchTexture;)Lcom/android/gallery3d/ui/NinePatchTexture;
 
     .line 610
-    :cond_6
+    :cond_7
     move-object/from16 v0, p0
 
     iget-object v14, v0, Lcom/android/gallery3d/ui/CropView$HighlightRectangle;->this$0:Lcom/android/gallery3d/ui/CropView;
@@ -1148,11 +1149,20 @@
 
     goto/16 :goto_0
 
-    .line 578
+    .line 577
     .end local v8           #rect:Landroid/graphics/RectF;
     .restart local v4       #height:F
     .restart local v11       #targetRatio:F
-    :cond_7
+    :cond_8
+    move-object/from16 v0, p0
+
+    iget v14, v0, Lcom/android/gallery3d/ui/CropView$HighlightRectangle;->mMovingEdges:I
+
+    and-int/lit8 v14, v14, 0x2
+
+    if-eqz v14, :cond_5
+
+    .line 578
     iget v14, v7, Landroid/graphics/RectF;->bottom:F
 
     sub-float/2addr v14, v4
@@ -1169,7 +1179,7 @@
 
     .line 581
     .end local v4           #height:F
-    :cond_8
+    :cond_9
     invoke-virtual {v7}, Landroid/graphics/RectF;->height()F
 
     move-result v14
@@ -1184,7 +1194,7 @@
 
     and-int/lit8 v14, v14, 0x1
 
-    if-eqz v14, :cond_9
+    if-eqz v14, :cond_a
 
     .line 583
     iget v14, v7, Landroid/graphics/RectF;->right:F
@@ -1201,8 +1211,17 @@
 
     goto/16 :goto_1
 
+    .line 584
+    :cond_a
+    move-object/from16 v0, p0
+
+    iget v14, v0, Lcom/android/gallery3d/ui/CropView$HighlightRectangle;->mMovingEdges:I
+
+    and-int/lit8 v14, v14, 0x4
+
+    if-eqz v14, :cond_5
+
     .line 585
-    :cond_9
     iget v14, v7, Landroid/graphics/RectF;->left:F
 
     add-float/2addr v14, v13
@@ -1217,8 +1236,17 @@
 
     goto/16 :goto_1
 
+    .line 592
+    :cond_b
+    move-object/from16 v0, p0
+
+    iget v14, v0, Lcom/android/gallery3d/ui/CropView$HighlightRectangle;->mMovingEdges:I
+
+    and-int/lit8 v14, v14, 0x4
+
+    if-eqz v14, :cond_6
+
     .line 593
-    :cond_a
     iget v14, v7, Landroid/graphics/RectF;->left:F
 
     add-float/2addr v14, v13
@@ -1235,7 +1263,7 @@
 
     .line 596
     .end local v13           #width:F
-    :cond_b
+    :cond_c
     invoke-virtual {v7}, Landroid/graphics/RectF;->width()F
 
     move-result v14
@@ -1250,7 +1278,7 @@
 
     and-int/lit8 v14, v14, 0x8
 
-    if-eqz v14, :cond_c
+    if-eqz v14, :cond_d
 
     .line 598
     iget v14, v7, Landroid/graphics/RectF;->top:F
@@ -1267,8 +1295,17 @@
 
     goto/16 :goto_2
 
+    .line 599
+    :cond_d
+    move-object/from16 v0, p0
+
+    iget v14, v0, Lcom/android/gallery3d/ui/CropView$HighlightRectangle;->mMovingEdges:I
+
+    and-int/lit8 v14, v14, 0x2
+
+    if-eqz v14, :cond_6
+
     .line 600
-    :cond_c
     iget v14, v7, Landroid/graphics/RectF;->bottom:F
 
     sub-float/2addr v14, v4
@@ -1287,7 +1324,7 @@
     .end local v4           #height:F
     .end local v11           #targetRatio:F
     .restart local v8       #rect:Landroid/graphics/RectF;
-    :cond_d
+    :cond_e
     invoke-virtual {v8}, Landroid/graphics/RectF;->width()F
 
     move-result v14
@@ -1296,7 +1333,7 @@
 
     cmpg-float v14, v14, v15
 
-    if-gtz v14, :cond_f
+    if-gtz v14, :cond_10
 
     .line 612
     move-object/from16 v0, p0
@@ -1308,7 +1345,7 @@
 
     move-result-object v14
 
-    if-nez v14, :cond_e
+    if-nez v14, :cond_f
 
     .line 613
     move-object/from16 v0, p0
@@ -1332,7 +1369,7 @@
 
     move-result-object v16
 
-    const v17, 0x7f020065
+    const v17, 0x7f020063
 
     invoke-direct/range {v15 .. v17}, Lcom/android/gallery3d/ui/NinePatchTexture;-><init>(Landroid/content/Context;I)V
 
@@ -1340,7 +1377,7 @@
     invoke-static {v14, v15}, Lcom/android/gallery3d/ui/CropView;->access$1402(Lcom/android/gallery3d/ui/CropView;Lcom/android/gallery3d/ui/NinePatchTexture;)Lcom/android/gallery3d/ui/NinePatchTexture;
 
     .line 615
-    :cond_e
+    :cond_f
     move-object/from16 v0, p0
 
     iget-object v14, v0, Lcom/android/gallery3d/ui/CropView$HighlightRectangle;->this$0:Lcom/android/gallery3d/ui/CropView;
@@ -1360,7 +1397,7 @@
     goto/16 :goto_3
 
     .line 616
-    :cond_f
+    :cond_10
     invoke-virtual {v8}, Landroid/graphics/RectF;->height()F
 
     move-result v14
@@ -1369,7 +1406,7 @@
 
     cmpg-float v14, v14, v15
 
-    if-gtz v14, :cond_11
+    if-gtz v14, :cond_12
 
     .line 617
     move-object/from16 v0, p0
@@ -1381,7 +1418,7 @@
 
     move-result-object v14
 
-    if-nez v14, :cond_10
+    if-nez v14, :cond_11
 
     .line 618
     move-object/from16 v0, p0
@@ -1405,7 +1442,7 @@
 
     move-result-object v16
 
-    const v17, 0x7f020064
+    const v17, 0x7f020062
 
     invoke-direct/range {v15 .. v17}, Lcom/android/gallery3d/ui/NinePatchTexture;-><init>(Landroid/content/Context;I)V
 
@@ -1413,7 +1450,7 @@
     invoke-static {v14, v15}, Lcom/android/gallery3d/ui/CropView;->access$1502(Lcom/android/gallery3d/ui/CropView;Lcom/android/gallery3d/ui/NinePatchTexture;)Lcom/android/gallery3d/ui/NinePatchTexture;
 
     .line 620
-    :cond_10
+    :cond_11
     move-object/from16 v0, p0
 
     iget-object v14, v0, Lcom/android/gallery3d/ui/CropView$HighlightRectangle;->this$0:Lcom/android/gallery3d/ui/CropView;
@@ -1433,7 +1470,7 @@
     goto/16 :goto_3
 
     .line 622
-    :cond_11
+    :cond_12
     move-object/from16 v0, p0
 
     iget-object v14, v0, Lcom/android/gallery3d/ui/CropView$HighlightRectangle;->this$0:Lcom/android/gallery3d/ui/CropView;

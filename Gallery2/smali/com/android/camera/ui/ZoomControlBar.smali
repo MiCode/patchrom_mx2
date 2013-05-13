@@ -75,7 +75,7 @@
     .line 55
     iget-object v0, p0, Lcom/android/camera/ui/ZoomControlBar;->mBar:Landroid/view/View;
 
-    const v1, 0x7f0201ae
+    const v1, 0x7f0201a7
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setBackgroundResource(I)V
 

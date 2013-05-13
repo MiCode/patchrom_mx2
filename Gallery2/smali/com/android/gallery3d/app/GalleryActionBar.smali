@@ -56,9 +56,9 @@
 
     new-instance v0, Lcom/android/gallery3d/app/GalleryActionBar$ActionItem;
 
-    const v4, 0x7f0a01a0
+    const v4, 0x7f0a01ab
 
-    const v5, 0x7f0a0161
+    const v5, 0x7f0a016c
 
     move v2, v1
 
@@ -68,11 +68,11 @@
 
     new-instance v4, Lcom/android/gallery3d/app/GalleryActionBar$ActionItem;
 
-    const v8, 0x7f0a01a2
+    const v8, 0x7f0a01ad
 
-    const v9, 0x7f0a0177
+    const v9, 0x7f0a0182
 
-    const v10, 0x7f0a015d
+    const v10, 0x7f0a0168
 
     move v5, v13
 
@@ -86,11 +86,11 @@
 
     new-instance v4, Lcom/android/gallery3d/app/GalleryActionBar$ActionItem;
 
-    const v8, 0x7f0a01a1
+    const v8, 0x7f0a01ac
 
-    const v9, 0x7f0a0176
+    const v9, 0x7f0a0181
 
-    const v10, 0x7f0a015e
+    const v10, 0x7f0a0169
 
     move v5, v12
 
@@ -108,9 +108,9 @@
 
     const/16 v5, 0x20
 
-    const v8, 0x7f0a01a3
+    const v8, 0x7f0a01ae
 
-    const v9, 0x7f0a0160
+    const v9, 0x7f0a016b
 
     move v6, v1
 
@@ -124,9 +124,9 @@
 
     const/16 v5, 0x8
 
-    const v8, 0x7f0a01a4
+    const v8, 0x7f0a01af
 
-    const v9, 0x7f0a015f
+    const v9, 0x7f0a016a
 
     move v6, v1
 
@@ -291,7 +291,7 @@
 
     .prologue
     .line 127
-    const v2, 0x7f0d0190
+    const v2, 0x7f0d01ae
 
     invoke-interface {p0, v2}, Landroid/view/Menu;->findItem(I)Landroid/view/MenuItem;
 
@@ -348,30 +348,6 @@
     iget-object v0, p0, Lcom/android/gallery3d/app/GalleryActionBar;->mActionBar:Landroid/app/ActionBar;
 
     return-object v0
-.end method
-
-.method public getHeight()I
-    .locals 1
-
-    .prologue
-    .line 157
-    iget-object v0, p0, Lcom/android/gallery3d/app/GalleryActionBar;->mActionBar:Landroid/app/ActionBar;
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Lcom/android/gallery3d/app/GalleryActionBar;->mActionBar:Landroid/app/ActionBar;
-
-    invoke-virtual {v0}, Landroid/app/ActionBar;->getHeight()I
-
-    move-result v0
-
-    :goto_0
-    return v0
-
-    :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
 .end method
 
 .method public hide()V

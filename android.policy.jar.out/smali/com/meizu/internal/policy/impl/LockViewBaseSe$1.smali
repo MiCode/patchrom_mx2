@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 214
+    .line 212
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$1;->this$0:Lcom/meizu/internal/policy/impl/LockViewBaseSe;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,14 +41,14 @@
     .locals 1
 
     .prologue
-    .line 221
+    .line 219
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$1;->this$0:Lcom/meizu/internal/policy/impl/LockViewBaseSe;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v0}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->goToUnlockScreen()V
 
-    .line 222
+    .line 220
     return-void
 .end method
 
@@ -56,13 +56,13 @@
     .locals 1
 
     .prologue
-    .line 216
+    .line 214
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$1;->this$0:Lcom/meizu/internal/policy/impl/LockViewBaseSe;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v0}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->pokeWakelock()V
 
-    .line 217
+    .line 215
     return-void
 .end method

@@ -40,15 +40,15 @@
     .parameter "item"
 
     .prologue
-    .line 1263
+    .line 1275
     iput-object p1, p0, Lcom/android/gallery3d/app/CropImage$LoadBitmapDataTask;->this$0:Lcom/android/gallery3d/app/CropImage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1264
+    .line 1276
     iput-object p2, p0, Lcom/android/gallery3d/app/CropImage$LoadBitmapDataTask;->mItem:Lcom/android/gallery3d/data/MediaItem;
 
-    .line 1265
+    .line 1277
     return-void
 .end method
 
@@ -59,7 +59,7 @@
     .parameter "jc"
 
     .prologue
-    .line 1267
+    .line 1279
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage$LoadBitmapDataTask;->mItem:Lcom/android/gallery3d/data/MediaItem;
 
     if-nez v0, :cond_0
@@ -92,7 +92,7 @@
     .parameter "x0"
 
     .prologue
-    .line 1260
+    .line 1272
     invoke-virtual {p0, p1}, Lcom/android/gallery3d/app/CropImage$LoadBitmapDataTask;->run(Lcom/android/gallery3d/util/ThreadPool$JobContext;)Landroid/graphics/Bitmap;
 
     move-result-object v0

@@ -26,12 +26,12 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 2490
+    .line 2519
     iput-object p1, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$GroupPartition;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientAdapter;
 
-    .line 2491
+    .line 2520
     invoke-direct {p0, v0, v0}, Lcom/meizu/widget/CompositeCursorAdapterMz$Partition;-><init>(ZZ)V
 
-    .line 2492
+    .line 2521
     return-void
 .end method

@@ -24,12 +24,12 @@
     .parameter
 
     .prologue
-    .line 344
+    .line 349
     iput-object p1, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 345
+    .line 350
     #getter for: Lcom/android/camera/CameraManager;->mCamera:Landroid/hardware/Camera;
     invoke-static {p1}, Lcom/android/camera/CameraManager;->access$000(Lcom/android/camera/CameraManager;)Landroid/hardware/Camera;
 
@@ -42,10 +42,10 @@
     :goto_0
     invoke-static {v0}, Lcom/android/camera/Util;->Assert(Z)V
 
-    .line 346
+    .line 351
     return-void
 
-    .line 345
+    .line 350
     :cond_0
     const/4 v0, 0x0
 
@@ -58,7 +58,7 @@
     .parameter "x1"
 
     .prologue
-    .line 343
+    .line 348
     invoke-direct {p0, p1}, Lcom/android/camera/CameraManager$CameraProxy;-><init>(Lcom/android/camera/CameraManager;)V
 
     return-void
@@ -71,7 +71,7 @@
     .parameter "cb"
 
     .prologue
-    .line 406
+    .line 411
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -81,7 +81,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 407
+    .line 412
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -97,7 +97,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 408
+    .line 413
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -107,15 +107,15 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 409
+    .line 414
     return-void
 .end method
 
-.method public cancelAutoFocus()V
+.method public cancelFocus()V
     .locals 2
 
     .prologue
-    .line 412
+    .line 625
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -125,7 +125,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 413
+    .line 626
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -133,11 +133,11 @@
 
     move-result-object v0
 
-    const/16 v1, 0xb
+    const/16 v1, 0x2a
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 414
+    .line 627
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -147,7 +147,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 415
+    .line 628
     return-void
 .end method
 
@@ -155,7 +155,7 @@
     .locals 2
 
     .prologue
-    .line 506
+    .line 511
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -165,7 +165,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 507
+    .line 512
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -177,7 +177,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 508
+    .line 513
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -187,7 +187,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 509
+    .line 514
     return-void
 .end method
 
@@ -195,7 +195,7 @@
     .locals 1
 
     .prologue
-    .line 349
+    .line 354
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCamera:Landroid/hardware/Camera;
@@ -210,7 +210,7 @@
     .locals 2
 
     .prologue
-    .line 551
+    .line 556
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -220,7 +220,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 552
+    .line 557
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -232,7 +232,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 553
+    .line 558
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -242,7 +242,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 554
+    .line 559
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraEv:I
@@ -258,7 +258,7 @@
     .parameter "num"
 
     .prologue
-    .line 532
+    .line 537
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -268,7 +268,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 533
+    .line 538
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -286,7 +286,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 534
+    .line 539
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -296,7 +296,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 535
+    .line 540
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mFaceArea:[I
@@ -311,7 +311,7 @@
     .locals 2
 
     .prologue
-    .line 518
+    .line 523
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -321,7 +321,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 519
+    .line 524
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -333,7 +333,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 520
+    .line 525
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -343,7 +343,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 521
+    .line 526
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mFaceNum:I
@@ -359,7 +359,7 @@
     .parameter "num"
 
     .prologue
-    .line 525
+    .line 530
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -369,7 +369,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 526
+    .line 531
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -387,7 +387,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 527
+    .line 532
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -397,7 +397,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 528
+    .line 533
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mFacePos:[I
@@ -412,7 +412,7 @@
     .locals 2
 
     .prologue
-    .line 499
+    .line 504
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -422,7 +422,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 500
+    .line 505
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -434,7 +434,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 501
+    .line 506
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -444,7 +444,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 502
+    .line 507
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSmileLevel:I
@@ -459,7 +459,7 @@
     .locals 2
 
     .prologue
-    .line 486
+    .line 491
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -469,7 +469,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 487
+    .line 492
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -481,7 +481,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 488
+    .line 493
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -491,7 +491,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 489
+    .line 494
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mParameters:Landroid/hardware/Camera$Parameters;
@@ -502,58 +502,11 @@
     return-object v0
 .end method
 
-.method public isOpenFlashCapture()I
-    .locals 2
-
-    .prologue
-    .line 558
-    iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
-
-    #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
-    invoke-static {v0}, Lcom/android/camera/CameraManager;->access$1100(Lcom/android/camera/CameraManager;)Landroid/os/ConditionVariable;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
-
-    .line 559
-    iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
-
-    #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
-    invoke-static {v0}, Lcom/android/camera/CameraManager;->access$1300(Lcom/android/camera/CameraManager;)Landroid/os/Handler;
-
-    move-result-object v0
-
-    const/16 v1, 0x29
-
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
-
-    .line 560
-    iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
-
-    #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
-    invoke-static {v0}, Lcom/android/camera/CameraManager;->access$1100(Lcom/android/camera/CameraManager;)Landroid/os/ConditionVariable;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
-
-    .line 561
-    iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
-
-    #getter for: Lcom/android/camera/CameraManager;->mFlashStatus:I
-    invoke-static {v0}, Lcom/android/camera/CameraManager;->access$1000(Lcom/android/camera/CameraManager;)I
-
-    move-result v0
-
-    return v0
-.end method
-
 .method public lock()V
     .locals 2
 
     .prologue
-    .line 374
+    .line 379
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -563,7 +516,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 375
+    .line 380
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -575,7 +528,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 376
+    .line 381
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -585,7 +538,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 377
+    .line 382
     return-void
 .end method
 
@@ -593,7 +546,7 @@
     .locals 2
 
     .prologue
-    .line 512
+    .line 517
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -603,7 +556,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 513
+    .line 518
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -615,7 +568,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 514
+    .line 519
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -625,7 +578,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 515
+    .line 520
     return-void
 .end method
 
@@ -634,7 +587,7 @@
     .parameter "mode"
 
     .prologue
-    .line 607
+    .line 612
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -644,7 +597,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 608
+    .line 613
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -662,7 +615,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 609
+    .line 614
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -672,7 +625,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 610
+    .line 615
     return-void
 .end method
 
@@ -685,7 +638,7 @@
     .end annotation
 
     .prologue
-    .line 359
+    .line 364
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -695,7 +648,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 360
+    .line 365
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -707,7 +660,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 361
+    .line 366
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -717,7 +670,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 362
+    .line 367
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mReconnectException:Ljava/io/IOException;
@@ -727,7 +680,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 363
+    .line 368
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mReconnectException:Ljava/io/IOException;
@@ -737,7 +690,7 @@
 
     throw v0
 
-    .line 365
+    .line 370
     :cond_0
     return-void
 .end method
@@ -746,7 +699,7 @@
     .locals 2
 
     .prologue
-    .line 353
+    .line 358
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -756,7 +709,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 354
+    .line 359
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -768,7 +721,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 355
+    .line 360
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -778,7 +731,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 356
+    .line 361
     return-void
 .end method
 
@@ -787,7 +740,7 @@
     .parameter "cb"
 
     .prologue
-    .line 418
+    .line 423
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -797,7 +750,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 419
+    .line 424
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -813,7 +766,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 420
+    .line 425
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -823,7 +776,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 421
+    .line 426
     return-void
 .end method
 
@@ -832,7 +785,7 @@
     .parameter "pos"
 
     .prologue
-    .line 601
+    .line 606
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -842,7 +795,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 602
+    .line 607
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -860,7 +813,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 603
+    .line 608
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -870,7 +823,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 604
+    .line 609
     return-void
 .end method
 
@@ -879,7 +832,7 @@
     .parameter "cb"
 
     .prologue
-    .line 589
+    .line 594
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -889,7 +842,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 590
+    .line 595
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -905,7 +858,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 591
+    .line 596
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -915,7 +868,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 592
+    .line 597
     return-void
 .end method
 
@@ -924,7 +877,7 @@
     .parameter "mode"
 
     .prologue
-    .line 583
+    .line 588
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -934,7 +887,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 584
+    .line 589
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -952,7 +905,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 585
+    .line 590
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -962,7 +915,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 586
+    .line 591
     return-void
 .end method
 
@@ -971,7 +924,7 @@
     .parameter "captureMode"
 
     .prologue
-    .line 565
+    .line 570
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -981,7 +934,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 566
+    .line 571
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -999,7 +952,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 567
+    .line 572
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1009,7 +962,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 568
+    .line 573
     return-void
 .end method
 
@@ -1018,7 +971,7 @@
     .parameter "degrees"
 
     .prologue
-    .line 438
+    .line 443
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1028,7 +981,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 439
+    .line 444
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -1046,7 +999,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 441
+    .line 446
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1056,7 +1009,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 442
+    .line 447
     return-void
 .end method
 
@@ -1065,7 +1018,7 @@
     .parameter "cb"
 
     .prologue
-    .line 469
+    .line 474
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1075,7 +1028,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 470
+    .line 475
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -1091,7 +1044,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 471
+    .line 476
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1101,54 +1054,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 472
-    return-void
-.end method
-
-.method public setFaceDetectionAngle(I)V
-    .locals 3
-    .parameter "degree"
-
-    .prologue
-    .line 571
-    iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
-
-    #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
-    invoke-static {v0}, Lcom/android/camera/CameraManager;->access$1100(Lcom/android/camera/CameraManager;)Landroid/os/ConditionVariable;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
-
-    .line 572
-    iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
-
-    #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
-    invoke-static {v0}, Lcom/android/camera/CameraManager;->access$1300(Lcom/android/camera/CameraManager;)Landroid/os/Handler;
-
-    move-result-object v0
-
-    const/16 v1, 0x21
-
-    const/4 v2, 0x0
-
-    invoke-virtual {v0, v1, p1, v2}, Landroid/os/Handler;->obtainMessage(III)Landroid/os/Message;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
-
-    .line 573
-    iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
-
-    #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
-    invoke-static {v0}, Lcom/android/camera/CameraManager;->access$1100(Lcom/android/camera/CameraManager;)Landroid/os/ConditionVariable;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
-
-    .line 574
+    .line 477
     return-void
 .end method
 
@@ -1157,7 +1063,7 @@
     .parameter "listener"
 
     .prologue
-    .line 451
+    .line 456
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1167,7 +1073,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 452
+    .line 457
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -1183,7 +1089,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 453
+    .line 458
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1193,7 +1099,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 454
+    .line 459
     return-void
 .end method
 
@@ -1202,7 +1108,7 @@
     .parameter "mode"
 
     .prologue
-    .line 595
+    .line 600
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1212,7 +1118,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 596
+    .line 601
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -1230,7 +1136,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 597
+    .line 602
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1240,7 +1146,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 598
+    .line 603
     return-void
 .end method
 
@@ -1249,7 +1155,7 @@
     .parameter "multiFileArray"
 
     .prologue
-    .line 577
+    .line 582
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1259,7 +1165,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 578
+    .line 583
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -1275,7 +1181,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 579
+    .line 584
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1285,7 +1191,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 580
+    .line 585
     return-void
 .end method
 
@@ -1294,7 +1200,7 @@
     .parameter "params"
 
     .prologue
-    .line 475
+    .line 480
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1304,7 +1210,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 476
+    .line 481
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -1320,7 +1226,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 477
+    .line 482
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1330,7 +1236,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 478
+    .line 483
     return-void
 .end method
 
@@ -1339,7 +1245,7 @@
     .parameter "cb"
 
     .prologue
-    .line 394
+    .line 399
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1349,7 +1255,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 395
+    .line 400
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -1365,7 +1271,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 396
+    .line 401
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1375,7 +1281,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 397
+    .line 402
     return-void
 .end method
 
@@ -1384,7 +1290,7 @@
     .parameter "surfaceTexture"
 
     .prologue
-    .line 380
+    .line 385
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -1400,7 +1306,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 381
+    .line 386
     return-void
 .end method
 
@@ -1409,7 +1315,7 @@
     .parameter "listener"
 
     .prologue
-    .line 445
+    .line 450
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1419,7 +1325,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 446
+    .line 451
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -1435,7 +1341,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 447
+    .line 452
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1445,7 +1351,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 448
+    .line 453
     return-void
 .end method
 
@@ -1453,7 +1359,7 @@
     .locals 2
 
     .prologue
-    .line 384
+    .line 389
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -1465,7 +1371,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 385
+    .line 390
     return-void
 .end method
 
@@ -1474,7 +1380,7 @@
     .parameter "zoomLevel"
 
     .prologue
-    .line 539
+    .line 544
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1484,7 +1390,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 540
+    .line 545
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -1502,7 +1408,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 541
+    .line 546
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1512,7 +1418,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 542
+    .line 547
     return-void
 .end method
 
@@ -1520,7 +1426,7 @@
     .locals 2
 
     .prologue
-    .line 545
+    .line 550
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1530,7 +1436,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 546
+    .line 551
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -1542,7 +1448,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 547
+    .line 552
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1552,7 +1458,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 548
+    .line 553
     return-void
 .end method
 
@@ -1560,7 +1466,7 @@
     .locals 2
 
     .prologue
-    .line 388
+    .line 393
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1570,7 +1476,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 389
+    .line 394
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -1582,7 +1488,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 390
+    .line 395
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1592,7 +1498,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 391
+    .line 396
     return-void
 .end method
 
@@ -1604,7 +1510,7 @@
     .parameter "jpeg"
 
     .prologue
-    .line 425
+    .line 430
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1614,7 +1520,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 427
+    .line 432
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -1638,7 +1544,7 @@
 
     invoke-virtual {v6, v0}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 434
+    .line 439
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1648,7 +1554,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 435
+    .line 440
     return-void
 .end method
 
@@ -1656,7 +1562,7 @@
     .locals 2
 
     .prologue
-    .line 368
+    .line 373
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1666,7 +1572,7 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->close()V
 
-    .line 369
+    .line 374
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
@@ -1678,7 +1584,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 370
+    .line 375
     iget-object v0, p0, Lcom/android/camera/CameraManager$CameraProxy;->this$0:Lcom/android/camera/CameraManager;
 
     #getter for: Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
@@ -1688,6 +1594,6 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 371
+    .line 376
     return-void
 .end method

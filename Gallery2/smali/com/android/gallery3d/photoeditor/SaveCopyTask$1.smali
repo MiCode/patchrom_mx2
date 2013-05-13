@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 179
+    .line 186
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask$1;->this$0:Lcom/android/gallery3d/photoeditor/SaveCopyTask;
 
     iput-object p2, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask$1;->val$values:Landroid/content/ContentValues;
@@ -49,7 +49,7 @@
     .prologue
     const-wide/16 v8, 0x0
 
-    .line 183
+    .line 190
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask$1;->val$values:Landroid/content/ContentValues;
 
     const-string v5, "datetaken"
@@ -66,14 +66,14 @@
 
     invoke-virtual {v4, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 185
+    .line 192
     const/4 v4, 0x1
 
     invoke-interface {p1, v4}, Landroid/database/Cursor;->getDouble(I)D
 
     move-result-wide v0
 
-    .line 186
+    .line 193
     .local v0, latitude:D
     const/4 v4, 0x2
 
@@ -81,7 +81,7 @@
 
     move-result-wide v2
 
-    .line 188
+    .line 195
     .local v2, longitude:D
     cmpl-double v4, v0, v8
 
@@ -91,7 +91,7 @@
 
     if-eqz v4, :cond_1
 
-    .line 189
+    .line 196
     :cond_0
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask$1;->val$values:Landroid/content/ContentValues;
 
@@ -103,7 +103,7 @@
 
     invoke-virtual {v4, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Double;)V
 
-    .line 190
+    .line 197
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/SaveCopyTask$1;->val$values:Landroid/content/ContentValues;
 
     const-string v5, "longitude"
@@ -114,7 +114,7 @@
 
     invoke-virtual {v4, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Double;)V
 
-    .line 192
+    .line 199
     :cond_1
     return-void
 .end method

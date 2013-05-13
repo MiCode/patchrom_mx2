@@ -286,12 +286,12 @@
 
     move-result v5
 
-    if-le v5, v1, :cond_b
+    if-le v5, v1, :cond_c
 
     :cond_1
     const/4 v5, 0x1
 
-    if-eq v4, v5, :cond_b
+    if-eq v4, v5, :cond_c
 
     .line 300
     const/4 v5, 0x2
@@ -480,8 +480,27 @@
     .restart local v2       #interpolator:Landroid/view/animation/Interpolator;
     goto/16 :goto_0
 
-    .line 328
+    .line 327
     :cond_a
+    const-string/jumbo v5, "valueArrayInterpolator"
+
+    invoke-virtual {v3, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_b
+
+    .line 328
+    new-instance v2, Landroid/view/animation/ValueArrayInterpolator;
+
+    .end local v2           #interpolator:Landroid/view/animation/Interpolator;
+    invoke-direct {v2, p0, v0}, Landroid/view/animation/ValueArrayInterpolator;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+
+    .restart local v2       #interpolator:Landroid/view/animation/Interpolator;
+    goto/16 :goto_0
+
+    .line 330
+    :cond_b
     new-instance v5, Ljava/lang/RuntimeException;
 
     new-instance v6, Ljava/lang/StringBuilder;
@@ -510,10 +529,10 @@
 
     throw v5
 
-    .line 333
+    .line 335
     .end local v0           #attrs:Landroid/util/AttributeSet;
     .end local v3           #name:Ljava/lang/String;
-    :cond_b
+    :cond_c
     return-object v2
 .end method
 
@@ -1137,7 +1156,7 @@
     .line 214
     .end local v0           #a:Landroid/view/animation/Animation;
     :cond_0
-    const v1, 0x10a0061
+    const v1, 0x10a0063
 
     invoke-static {p0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 
@@ -1153,7 +1172,7 @@
 
     .prologue
     .line 253
-    const v1, 0x10a0060
+    const v1, 0x10a0062
 
     invoke-static {p0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 
@@ -1216,7 +1235,7 @@
     .line 235
     .end local v0           #a:Landroid/view/animation/Animation;
     :cond_0
-    const v1, 0x10a0064
+    const v1, 0x10a0066
 
     invoke-static {p0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 

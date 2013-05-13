@@ -360,31 +360,9 @@
 
     move-result-object v9
 
-    const-string v2, "@@@@"
-
-    const-string v6, "1"
-
-    invoke-static {v2, v6}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
     iget v9, v9, Landroid/util/TypedValue;->resourceId:I
 
-    const-string v2, "@@@@"
-
-    const-string v6, "2"
-
-    invoke-static {v2, v6}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
     invoke-direct {v8, v4, v9}, Lcom/android/internal/widget/multiwaveview/TargetDrawable;-><init>(Landroid/content/res/Resources;I)V
-
-    const-string v2, "@@@@"
-
-    const-string v6, "3"
-
-    invoke-static {v2, v6}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    const/4 v6, 0x1
-
-    const/4 v2, 0x0
 
     iput-object v8, p0, Lcom/android/internal/widget/multiwaveview/GlowPadView;->mHandleDrawable:Lcom/android/internal/widget/multiwaveview/TargetDrawable;
 
@@ -5780,5 +5758,16 @@
     .prologue
     iput p1, p0, Lcom/android/internal/widget/multiwaveview/GlowPadView;->mGlowRadius:F
 
+    return-void
+.end method
+
+.method updateTargetPosition(IFFF)V
+    .locals 0
+    .parameter "i"
+    .parameter "centerX"
+    .parameter "centerY"
+    .parameter "angle"
+
+    .prologue
     return-void
 .end method

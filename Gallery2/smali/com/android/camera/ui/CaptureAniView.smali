@@ -174,7 +174,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f080041
+    const v1, 0x7f080046
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getColor(I)I
 
@@ -187,7 +187,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f090072
+    const v1, 0x7f09016f
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelOffset(I)I
 

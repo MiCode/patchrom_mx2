@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 2828
+    .line 3260
     iput-object p1, p0, Lcom/android/server/PowerManagerService$9;->this$0:Lcom/android/server/PowerManagerService;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 4
 
     .prologue
-    .line 2830
+    .line 3262
     iget-object v1, p0, Lcom/android/server/PowerManagerService$9;->this$0:Lcom/android/server/PowerManagerService;
 
     #getter for: Lcom/android/server/PowerManagerService;->mLocks:Lcom/android/server/PowerManagerService$LockList;
@@ -51,12 +51,12 @@
 
     monitor-enter v2
 
-    .line 2831
+    .line 3263
     :try_start_0
     iget-object v1, p0, Lcom/android/server/PowerManagerService$9;->this$0:Lcom/android/server/PowerManagerService;
 
     #getter for: Lcom/android/server/PowerManagerService;->mLightSensorPendingDecrease:Z
-    invoke-static {v1}, Lcom/android/server/PowerManagerService;->access$6500(Lcom/android/server/PowerManagerService;)Z
+    invoke-static {v1}, Lcom/android/server/PowerManagerService;->access$8000(Lcom/android/server/PowerManagerService;)Z
 
     move-result v1
 
@@ -65,57 +65,57 @@
     iget-object v1, p0, Lcom/android/server/PowerManagerService$9;->this$0:Lcom/android/server/PowerManagerService;
 
     #getter for: Lcom/android/server/PowerManagerService;->mLightSensorPendingIncrease:Z
-    invoke-static {v1}, Lcom/android/server/PowerManagerService;->access$6600(Lcom/android/server/PowerManagerService;)Z
+    invoke-static {v1}, Lcom/android/server/PowerManagerService;->access$8100(Lcom/android/server/PowerManagerService;)Z
 
     move-result v1
 
     if-eqz v1, :cond_1
 
-    .line 2832
+    .line 3264
     :cond_0
     iget-object v1, p0, Lcom/android/server/PowerManagerService$9;->this$0:Lcom/android/server/PowerManagerService;
 
     #getter for: Lcom/android/server/PowerManagerService;->mLightSensorPendingValue:F
-    invoke-static {v1}, Lcom/android/server/PowerManagerService;->access$6700(Lcom/android/server/PowerManagerService;)F
+    invoke-static {v1}, Lcom/android/server/PowerManagerService;->access$8200(Lcom/android/server/PowerManagerService;)F
 
     move-result v1
 
     float-to-int v0, v1
 
-    .line 2833
+    .line 3265
     .local v0, value:I
     iget-object v1, p0, Lcom/android/server/PowerManagerService$9;->this$0:Lcom/android/server/PowerManagerService;
 
     const/4 v3, 0x0
 
     #setter for: Lcom/android/server/PowerManagerService;->mLightSensorPendingDecrease:Z
-    invoke-static {v1, v3}, Lcom/android/server/PowerManagerService;->access$6502(Lcom/android/server/PowerManagerService;Z)Z
+    invoke-static {v1, v3}, Lcom/android/server/PowerManagerService;->access$8002(Lcom/android/server/PowerManagerService;Z)Z
 
-    .line 2834
+    .line 3266
     iget-object v1, p0, Lcom/android/server/PowerManagerService$9;->this$0:Lcom/android/server/PowerManagerService;
 
     const/4 v3, 0x0
 
     #setter for: Lcom/android/server/PowerManagerService;->mLightSensorPendingIncrease:Z
-    invoke-static {v1, v3}, Lcom/android/server/PowerManagerService;->access$6602(Lcom/android/server/PowerManagerService;Z)Z
+    invoke-static {v1, v3}, Lcom/android/server/PowerManagerService;->access$8102(Lcom/android/server/PowerManagerService;Z)Z
 
-    .line 2835
+    .line 3267
     iget-object v1, p0, Lcom/android/server/PowerManagerService$9;->this$0:Lcom/android/server/PowerManagerService;
 
     const/4 v3, 0x0
 
     #calls: Lcom/android/server/PowerManagerService;->lightSensorChangedLocked(IZ)V
-    invoke-static {v1, v0, v3}, Lcom/android/server/PowerManagerService;->access$6800(Lcom/android/server/PowerManagerService;IZ)V
+    invoke-static {v1, v0, v3}, Lcom/android/server/PowerManagerService;->access$8300(Lcom/android/server/PowerManagerService;IZ)V
 
-    .line 2837
+    .line 3269
     .end local v0           #value:I
     :cond_1
     monitor-exit v2
 
-    .line 2838
+    .line 3270
     return-void
 
-    .line 2837
+    .line 3269
     :catchall_0
     move-exception v1
 

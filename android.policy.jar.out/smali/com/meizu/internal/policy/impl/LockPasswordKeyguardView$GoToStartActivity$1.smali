@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1209
+    .line 1216
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$GoToStartActivity$1;->this$1:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$GoToStartActivity;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,6 +41,6 @@
     .locals 0
 
     .prologue
-    .line 1213
+    .line 1220
     return-void
 .end method

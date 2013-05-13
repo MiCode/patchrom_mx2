@@ -1,0 +1,7 @@
+version: 1.4.3
+apkFileName: ActionAssist.apk
+isFrameworkApk: false
+usesFramework:
+  ids:
+  - 1
+  - 6

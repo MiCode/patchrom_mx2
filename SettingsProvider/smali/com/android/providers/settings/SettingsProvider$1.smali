@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 215
+    .line 220
     iput-object p1, p0, Lcom/android/providers/settings/SettingsProvider$1;->this$0:Lcom/android/providers/settings/SettingsProvider;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -39,16 +39,16 @@
     .parameter "msg"
 
     .prologue
-    .line 217
+    .line 222
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 222
+    .line 227
     :goto_0
     return-void
 
-    .line 219
+    .line 224
     :pswitch_0
     iget-object v0, p0, Lcom/android/providers/settings/SettingsProvider$1;->this$0:Lcom/android/providers/settings/SettingsProvider;
 
@@ -57,7 +57,7 @@
 
     goto :goto_0
 
-    .line 217
+    .line 222
     :pswitch_data_0
     .packed-switch 0x3e9
         :pswitch_0

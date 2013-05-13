@@ -389,12 +389,8 @@
     .locals 1
 
     .prologue
-    .line 1189
-    sget-object v0, Landroid/os/Build;->MeizuSecurity:Ljava/lang/Boolean;
-
-    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
-
-    move-result v0
+    .line 1190
+    const/4 v0, 0x0
 
     return v0
 .end method
@@ -920,6 +916,9 @@
 .method protected dispatchNormalMessage(Lcom/android/internal/telephony/SmsMessageBase;)I
     .locals 14
     .parameter "sms"
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_CODE:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
 
     .prologue
     const/4 v1, 0x1
@@ -1203,7 +1202,7 @@
     .locals 1
 
     .prologue
-    .line 1193
+    .line 1194
     invoke-static {}, Lcom/android/internal/telephony/SMSDispatcher;->checkIsRequestSuperPermission()Z
 
     move-result v0
@@ -1516,7 +1515,7 @@
 
     .line 1005
     .local v4, r:Landroid/content/res/Resources;
-    const v5, 0x104046c
+    const v5, 0x1040470
 
     const/4 v6, 0x1
 
@@ -1548,7 +1547,7 @@
 
     invoke-direct {v5, v6}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
-    const v6, 0x104046b
+    const v6, 0x104046f
 
     invoke-virtual {v5, v6}, Landroid/app/AlertDialog$Builder;->setTitle(I)Landroid/app/AlertDialog$Builder;
 
@@ -1564,7 +1563,7 @@
 
     move-result-object v5
 
-    const v6, 0x104046d
+    const v6, 0x1040471
 
     invoke-virtual {v4, v6}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -1574,7 +1573,7 @@
 
     move-result-object v5
 
-    const v6, 0x104046e
+    const v6, 0x1040472
 
     invoke-virtual {v4, v6}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -1906,6 +1905,9 @@
     .parameter "timestamp"
     .parameter "destPort"
     .parameter "isCdmaWapPush"
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_CODE:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
 
     .prologue
     .line 537

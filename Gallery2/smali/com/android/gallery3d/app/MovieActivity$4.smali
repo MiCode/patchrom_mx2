@@ -1,9 +1,6 @@
 .class Lcom/android/gallery3d/app/MovieActivity$4;
-.super Ljava/lang/Object;
+.super Landroid/database/ContentObserver;
 .source "MovieActivity.java"
-
-# interfaces
-.implements Landroid/media/AudioManager$OnAudioFocusChangeListener;
 
 
 # annotations
@@ -22,44 +19,48 @@
 
 
 # direct methods
-.method constructor <init>(Lcom/android/gallery3d/app/MovieActivity;)V
+.method constructor <init>(Lcom/android/gallery3d/app/MovieActivity;Landroid/os/Handler;)V
     .locals 0
     .parameter
+    .parameter "x0"
 
     .prologue
-    .line 276
+    .line 450
     iput-object p1, p0, Lcom/android/gallery3d/app/MovieActivity$4;->this$0:Lcom/android/gallery3d/app/MovieActivity;
 
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onAudioFocusChange(I)V
+.method public onChange(Z)V
     .locals 1
-    .parameter "focusChange"
+    .parameter "selfChange"
 
     .prologue
-    .line 278
-    packed-switch p1, :pswitch_data_0
-
-    .line 283
-    :goto_0
-    return-void
-
-    .line 280
-    :pswitch_0
+    .line 452
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieActivity$4;->this$0:Lcom/android/gallery3d/app/MovieActivity;
 
-    invoke-virtual {v0}, Lcom/android/gallery3d/app/MovieActivity;->finish()V
+    #getter for: Lcom/android/gallery3d/app/MovieActivity;->mPlayer:Lcom/android/gallery3d/app/MoviePlayer;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MovieActivity;->access$600(Lcom/android/gallery3d/app/MovieActivity;)Lcom/android/gallery3d/app/MoviePlayer;
 
-    goto :goto_0
+    move-result-object v0
 
-    .line 278
-    :pswitch_data_0
-    .packed-switch -0x1
-        :pswitch_0
-    .end packed-switch
+    if-eqz v0, :cond_0
+
+    .line 453
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieActivity$4;->this$0:Lcom/android/gallery3d/app/MovieActivity;
+
+    #getter for: Lcom/android/gallery3d/app/MovieActivity;->mPlayer:Lcom/android/gallery3d/app/MoviePlayer;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MovieActivity;->access$600(Lcom/android/gallery3d/app/MovieActivity;)Lcom/android/gallery3d/app/MoviePlayer;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MoviePlayer;->systemSensorSettingChange()V
+
+    .line 455
+    :cond_0
+    return-void
 .end method

@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 138
+    .line 139
     iput-object p1, p0, Lcom/android/gallery3d/data/UriImage$1;->this$0:Lcom/android/gallery3d/data/UriImage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,20 +41,20 @@
     .locals 1
 
     .prologue
-    .line 140
+    .line 141
     monitor-enter p0
 
-    .line 141
+    .line 142
     :try_start_0
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
 
-    .line 142
+    .line 143
     monitor-exit p0
 
-    .line 143
+    .line 144
     return-void
 
-    .line 142
+    .line 143
     :catchall_0
     move-exception v0
 

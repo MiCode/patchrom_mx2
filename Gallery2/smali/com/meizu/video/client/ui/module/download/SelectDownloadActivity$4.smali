@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 681
+    .line 807
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/download/SelectDownloadActivity$4;->this$0:Lcom/meizu/video/client/ui/module/download/SelectDownloadActivity;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,21 +42,21 @@
     .parameter "menuItem"
 
     .prologue
-    .line 691
+    .line 817
     invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
 
     move-result v0
 
-    .line 692
+    .line 818
     .local v0, id:I
-    const v1, 0x7f0d0192
+    const v1, 0x7f0d01b0
 
     if-ne v0, v1, :cond_0
 
-    .line 693
+    .line 819
     const/4 v1, 0x1
 
-    .line 695
+    .line 821
     :goto_0
     return v1
 
@@ -70,7 +70,7 @@
     .locals 0
 
     .prologue
-    .line 688
+    .line 814
     return-void
 .end method
 
@@ -78,7 +78,7 @@
     .locals 0
 
     .prologue
-    .line 686
+    .line 812
     return-void
 .end method
 
@@ -89,6 +89,6 @@
     .parameter "id"
 
     .prologue
-    .line 683
+    .line 809
     return-void
 .end method

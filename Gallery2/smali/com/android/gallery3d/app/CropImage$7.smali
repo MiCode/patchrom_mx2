@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 420
+    .line 424
     iput-object p1, p0, Lcom/android/gallery3d/app/CropImage$7;->this$0:Lcom/android/gallery3d/app/CropImage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -44,12 +44,12 @@
     .prologue
     const/4 v6, 0x1
 
-    .line 424
+    .line 428
     invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
 
     move-result v2
 
-    .line 425
+    .line 429
     .local v2, which:I
     iget-object v3, p0, Lcom/android/gallery3d/app/CropImage$7;->this$0:Lcom/android/gallery3d/app/CropImage;
 
@@ -62,18 +62,18 @@
 
     if-ne v3, v4, :cond_0
 
-    .line 456
+    .line 460
     :goto_0
     return v6
 
-    .line 429
+    .line 433
     :cond_0
     packed-switch v2, :pswitch_data_0
 
-    .line 432
+    .line 436
     const/high16 v0, -0x4080
 
-    .line 448
+    .line 452
     .local v0, aspectRatio:F
     :goto_1
     iget-object v3, p0, Lcom/android/gallery3d/app/CropImage$7;->this$0:Lcom/android/gallery3d/app/CropImage;
@@ -83,7 +83,7 @@
     #setter for: Lcom/android/gallery3d/app/CropImage;->mCurrentAspect:I
     invoke-static {v3, v4}, Lcom/android/gallery3d/app/CropImage;->access$402(Lcom/android/gallery3d/app/CropImage;I)I
 
-    .line 449
+    .line 453
     iget-object v3, p0, Lcom/android/gallery3d/app/CropImage$7;->this$0:Lcom/android/gallery3d/app/CropImage;
 
     #getter for: Lcom/android/gallery3d/app/CropImage;->mPopupMenu:Landroid/widget/PopupMenu;
@@ -108,11 +108,11 @@
 
     move-result-object v1
 
-    .line 450
+    .line 454
     .local v1, mi:Landroid/view/MenuItem;
     invoke-interface {v1, v6}, Landroid/view/MenuItem;->setChecked(Z)Landroid/view/MenuItem;
 
-    .line 451
+    .line 455
     iget-object v3, p0, Lcom/android/gallery3d/app/CropImage$7;->this$0:Lcom/android/gallery3d/app/CropImage;
 
     #getter for: Lcom/android/gallery3d/app/CropImage;->mAspect:Landroid/widget/TextView;
@@ -138,7 +138,7 @@
 
     invoke-virtual {v3, v4}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 453
+    .line 457
     iget-object v3, p0, Lcom/android/gallery3d/app/CropImage$7;->this$0:Lcom/android/gallery3d/app/CropImage;
 
     #getter for: Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
@@ -148,7 +148,7 @@
 
     invoke-virtual {v3, v0}, Lcom/android/gallery3d/ui/CropView;->setAspectRatio(F)V
 
-    .line 454
+    .line 458
     iget-object v3, p0, Lcom/android/gallery3d/app/CropImage$7;->this$0:Lcom/android/gallery3d/app/CropImage;
 
     #getter for: Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
@@ -160,35 +160,35 @@
 
     goto :goto_0
 
-    .line 435
+    .line 439
     .end local v0           #aspectRatio:F
     .end local v1           #mi:Landroid/view/MenuItem;
     :pswitch_0
     const/high16 v0, 0x3f80
 
-    .line 436
+    .line 440
     .restart local v0       #aspectRatio:F
     goto :goto_1
 
-    .line 438
+    .line 442
     .end local v0           #aspectRatio:F
     :pswitch_1
     const/high16 v0, 0x3fc0
 
-    .line 439
+    .line 443
     .restart local v0       #aspectRatio:F
     goto :goto_1
 
-    .line 441
+    .line 445
     .end local v0           #aspectRatio:F
     :pswitch_2
     const v0, 0x3faaaaab
 
-    .line 442
+    .line 446
     .restart local v0       #aspectRatio:F
     goto :goto_1
 
-    .line 444
+    .line 448
     .end local v0           #aspectRatio:F
     :pswitch_3
     const v0, 0x3fcccccd
@@ -196,7 +196,7 @@
     .restart local v0       #aspectRatio:F
     goto :goto_1
 
-    .line 429
+    .line 433
     nop
 
     :pswitch_data_0

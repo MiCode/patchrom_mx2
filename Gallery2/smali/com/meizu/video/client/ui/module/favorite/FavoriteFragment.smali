@@ -20,31 +20,25 @@
 
 .field private TAG:Ljava/lang/String;
 
-.field private chanelDetail_progressbar_layout:Landroid/widget/LinearLayout;
-
-.field private currentStartListPosition:I
-
-.field private favoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
-
-.field private favoriteGridview:Landroid/widget/GridView;
-
-.field private favoriteListview:Landroid/widget/ListView;
-
-.field private favorite_whole:Landroid/widget/RelativeLayout;
-
-.field private favoritesDBHelper:Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
-
-.field handler:Landroid/os/Handler;
-
-.field private isLoading:Z
-
 .field itemDragListener:Landroid/widget/AbsListView$OnItemDragListener;
-
-.field private loader:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;
 
 .field private mActionCallback:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$ActionModeWrapper;
 
+.field private mChanelDetailProgressbarLayout:Landroid/widget/LinearLayout;
+
+.field private mCurrentStartListPosition:I
+
+.field private mFavoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
+
 .field private mFavoriteDataChange:Z
+
+.field private mFavoriteGridview:Landroid/widget/GridView;
+
+.field private mFavoriteListview:Landroid/widget/ListView;
+
+.field private mFavoriteWhole:Landroid/widget/RelativeLayout;
+
+.field private mFavoritesDBHelper:Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
 
 .field private mFavoritesDeleteListEntry:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
@@ -68,19 +62,27 @@
     .end annotation
 .end field
 
+.field mHandler:Landroid/os/Handler;
+
+.field private mIsLoading:Z
+
 .field private mIsScreenHorizontal:Z
 
+.field private mLoader:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;
+
+.field private mNoAvailableNetwork:Landroid/widget/LinearLayout;
+
 .field private mObserver:Landroid/database/ContentObserver;
+
+.field mOnFavoriteScroll:Landroid/widget/AbsListView$OnScrollListener;
+
+.field mOnSearchListItemClick:Landroid/widget/AdapterView$OnItemClickListener;
+
+.field private mRes:Landroid/content/res/Resources;
 
 .field private mSelectMenuItem:Landroid/view/MenuItem;
 
 .field private mSelectionButton:Lcom/meizu/widget/SelectionButton;
-
-.field private no_available_network:Landroid/widget/LinearLayout;
-
-.field onFavoriteScroll:Landroid/widget/AbsListView$OnScrollListener;
-
-.field onSearchListItemClick:Landroid/widget/AdapterView$OnItemClickListener;
 
 
 # direct methods
@@ -92,84 +94,84 @@
 
     const/4 v1, 0x0
 
-    .line 59
+    .line 55
     invoke-direct {p0}, Landroid/app/Fragment;-><init>()V
 
-    .line 61
+    .line 57
     const-string v0, "FavoriteFragment"
 
     iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->TAG:Ljava/lang/String;
 
-    .line 73
+    .line 67
     iput-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
 
-    .line 75
+    .line 69
     iput-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
 
-    .line 77
-    iput-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
+    .line 71
+    iput-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
-    .line 79
+    .line 73
     new-instance v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$ActionModeWrapper;
 
     invoke-direct {v0, p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$ActionModeWrapper;-><init>(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)V
 
     iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mActionCallback:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$ActionModeWrapper;
 
-    .line 81
-    iput-boolean v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->isLoading:Z
+    .line 75
+    iput-boolean v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mIsLoading:Z
 
-    .line 83
+    .line 77
     iput-boolean v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mIsScreenHorizontal:Z
 
-    .line 85
+    .line 79
     const/4 v0, 0x1
 
     iput v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->FRESH_CURRENT_PAGE:I
 
-    .line 87
+    .line 81
     const/4 v0, 0x2
 
     iput v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->CHECK_AND_FRESH_PAGE:I
 
-    .line 89
-    iput-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoritesDBHelper:Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
+    .line 83
+    iput-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDBHelper:Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
 
-    .line 100
-    iput v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->currentStartListPosition:I
+    .line 94
+    iput v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mCurrentStartListPosition:I
 
-    .line 102
+    .line 96
     iput-boolean v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteDataChange:Z
 
-    .line 257
+    .line 272
     new-instance v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;
 
     invoke-direct {v0, p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;-><init>(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)V
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->handler:Landroid/os/Handler;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mHandler:Landroid/os/Handler;
 
-    .line 308
+    .line 323
     new-instance v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$2;
 
     invoke-direct {v0, p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$2;-><init>(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)V
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->onSearchListItemClick:Landroid/widget/AdapterView$OnItemClickListener;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mOnSearchListItemClick:Landroid/widget/AdapterView$OnItemClickListener;
 
-    .line 508
+    .line 501
     new-instance v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;
 
     invoke-direct {v0, p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$3;-><init>(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)V
 
     iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->itemDragListener:Landroid/widget/AbsListView$OnItemDragListener;
 
-    .line 587
+    .line 580
     new-instance v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$4;
 
     invoke-direct {v0, p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$4;-><init>(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)V
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->onFavoriteScroll:Landroid/widget/AbsListView$OnScrollListener;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mOnFavoriteScroll:Landroid/widget/AbsListView$OnScrollListener;
 
-    .line 608
+    .line 601
     new-instance v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$5;
 
     new-instance v1, Landroid/os/Handler;
@@ -188,7 +190,7 @@
     .parameter "x0"
 
     .prologue
-    .line 59
+    .line 55
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
 
     return-object v0
@@ -200,7 +202,7 @@
     .parameter "x1"
 
     .prologue
-    .line 59
+    .line 55
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mSelectMenuItem:Landroid/view/MenuItem;
 
     return-object p1
@@ -212,7 +214,7 @@
     .parameter "x1"
 
     .prologue
-    .line 59
+    .line 55
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
 
     return-object p1
@@ -223,7 +225,7 @@
     .parameter "x0"
 
     .prologue
-    .line 59
+    .line 55
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mSelectionButton:Lcom/meizu/widget/SelectionButton;
 
     return-object v0
@@ -235,7 +237,7 @@
     .parameter "x1"
 
     .prologue
-    .line 59
+    .line 55
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mSelectionButton:Lcom/meizu/widget/SelectionButton;
 
     return-object p1
@@ -246,8 +248,8 @@
     .parameter "x0"
 
     .prologue
-    .line 59
-    iget v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->currentStartListPosition:I
+    .line 55
+    iget v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mCurrentStartListPosition:I
 
     return v0
 .end method
@@ -258,19 +260,42 @@
     .parameter "x1"
 
     .prologue
-    .line 59
-    iput p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->currentStartListPosition:I
+    .line 55
+    iput p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mCurrentStartListPosition:I
 
     return p1
 .end method
 
-.method static synthetic access$1402(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;Z)Z
+.method static synthetic access$1400(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Landroid/content/res/Resources;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 55
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mRes:Landroid/content/res/Resources;
+
+    return-object v0
+.end method
+
+.method static synthetic access$1402(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;Landroid/content/res/Resources;)Landroid/content/res/Resources;
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 59
+    .line 55
+    iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mRes:Landroid/content/res/Resources;
+
+    return-object p1
+.end method
+
+.method static synthetic access$1502(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;Z)Z
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 55
     iput-boolean p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteDataChange:Z
 
     return p1
@@ -281,8 +306,8 @@
     .parameter "x0"
 
     .prologue
-    .line 59
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoritesDBHelper:Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
+    .line 55
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDBHelper:Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
 
     return-object v0
 .end method
@@ -293,8 +318,8 @@
     .parameter "x1"
 
     .prologue
-    .line 59
-    iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoritesDBHelper:Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
+    .line 55
+    iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDBHelper:Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
 
     return-object p1
 .end method
@@ -304,8 +329,8 @@
     .parameter "x0"
 
     .prologue
-    .line 59
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->chanelDetail_progressbar_layout:Landroid/widget/LinearLayout;
+    .line 55
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mChanelDetailProgressbarLayout:Landroid/widget/LinearLayout;
 
     return-object v0
 .end method
@@ -315,7 +340,7 @@
     .parameter "x0"
 
     .prologue
-    .line 59
+    .line 55
     iget-boolean v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mIsScreenHorizontal:Z
 
     return v0
@@ -326,8 +351,8 @@
     .parameter "x0"
 
     .prologue
-    .line 59
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    .line 55
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
 
     return-object v0
 .end method
@@ -337,8 +362,8 @@
     .parameter "x0"
 
     .prologue
-    .line 59
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    .line 55
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
 
     return-object v0
 .end method
@@ -349,8 +374,8 @@
     .parameter "x1"
 
     .prologue
-    .line 59
-    iput-boolean p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->isLoading:Z
+    .line 55
+    iput-boolean p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mIsLoading:Z
 
     return p1
 .end method
@@ -360,8 +385,8 @@
     .parameter "x0"
 
     .prologue
-    .line 59
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
+    .line 55
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
     return-object v0
 .end method
@@ -371,7 +396,7 @@
     .parameter "x0"
 
     .prologue
-    .line 59
+    .line 55
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
 
     return-object v0
@@ -383,7 +408,7 @@
     .parameter "x1"
 
     .prologue
-    .line 59
+    .line 55
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
 
     return-object p1
@@ -395,25 +420,25 @@
     .prologue
     const/4 v2, 0x1
 
-    .line 224
-    iget-boolean v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->isLoading:Z
+    .line 239
+    iget-boolean v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mIsLoading:Z
 
     if-nez v0, :cond_0
 
-    .line 225
-    iput-boolean v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->isLoading:Z
+    .line 240
+    iput-boolean v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mIsLoading:Z
 
-    .line 226
+    .line 241
     new-instance v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;
 
     const/4 v1, 0x0
 
     invoke-direct {v0, p0, v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;-><init>(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;)V
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->loader:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mLoader:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;
 
-    .line 227
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->loader:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;
+    .line 242
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mLoader:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;
 
     new-array v1, v2, [Ljava/lang/Object;
 
@@ -427,24 +452,41 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
 
-    .line 229
+    .line 244
     :cond_0
     return-void
 .end method
 
 .method private initView(Landroid/view/View;)V
-    .locals 6
+    .locals 10
     .parameter "view"
 
     .prologue
-    const/high16 v5, 0x200
+    const v9, 0x7f090104
 
-    const/4 v4, 0x4
+    const v8, 0x7f090103
 
-    const-wide/high16 v2, 0x4016
+    const/high16 v7, 0x200
 
-    .line 183
-    const v0, 0x7f0d009b
+    const/4 v6, 0x4
+
+    const/4 v5, 0x0
+
+    .line 188
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mRes:Landroid/content/res/Resources;
+
+    if-nez v0, :cond_0
+
+    .line 189
+    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mRes:Landroid/content/res/Resources;
+
+    .line 192
+    :cond_0
+    const v0, 0x7f0d00a0
 
     invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -452,17 +494,15 @@
 
     check-cast v0, Landroid/widget/LinearLayout;
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->chanelDetail_progressbar_layout:Landroid/widget/LinearLayout;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mChanelDetailProgressbarLayout:Landroid/widget/LinearLayout;
 
-    .line 184
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->chanelDetail_progressbar_layout:Landroid/widget/LinearLayout;
+    .line 193
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mChanelDetailProgressbarLayout:Landroid/widget/LinearLayout;
 
-    const/4 v1, 0x0
+    invoke-virtual {v0, v5}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setVisibility(I)V
-
-    .line 186
-    const v0, 0x7f0d0085
+    .line 195
+    const v0, 0x7f0d008a
 
     invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -470,10 +510,10 @@
 
     check-cast v0, Landroid/widget/RelativeLayout;
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favorite_whole:Landroid/widget/RelativeLayout;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteWhole:Landroid/widget/RelativeLayout;
 
-    .line 188
-    const v0, 0x7f0d00eb
+    .line 197
+    const v0, 0x7f0d00ed
 
     invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -481,17 +521,17 @@
 
     check-cast v0, Landroid/widget/LinearLayout;
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->no_available_network:Landroid/widget/LinearLayout;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mNoAvailableNetwork:Landroid/widget/LinearLayout;
 
-    .line 189
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->no_available_network:Landroid/widget/LinearLayout;
+    .line 198
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mNoAvailableNetwork:Landroid/widget/LinearLayout;
 
     const/16 v1, 0x8
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 191
-    const v0, 0x7f0d0087
+    .line 200
+    const v0, 0x7f0d008c
 
     invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -499,47 +539,93 @@
 
     check-cast v0, Landroid/widget/GridView;
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
 
-    .line 192
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    .line 201
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
 
-    invoke-virtual {v0, v5}, Landroid/widget/GridView;->setScrollBarStyle(I)V
+    invoke-virtual {v0, v7}, Landroid/widget/GridView;->setScrollBarStyle(I)V
 
-    .line 193
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    .line 202
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
 
-    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->getActivity()Landroid/app/Activity;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mRes:Landroid/content/res/Resources;
 
-    move-result-object v1
+    const v2, 0x7f090106
 
-    invoke-static {v1, v2, v3}, Lcom/meizu/video/client/util/CommonUtil;->dip2px(Landroid/content/Context;D)I
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
     move-result v1
 
     invoke-virtual {v0, v1}, Landroid/widget/GridView;->setDockingBottom(I)V
 
-    .line 194
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    .line 203
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mActionCallback:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$ActionModeWrapper;
 
     invoke-virtual {v0, v1}, Landroid/widget/GridView;->setMultiChoiceModeListener(Landroid/widget/AbsListView$MultiChoiceModeListener;)V
 
-    .line 195
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    .line 204
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
 
-    invoke-virtual {v0, v4}, Landroid/widget/GridView;->setChoiceMode(I)V
+    invoke-virtual {v0, v6}, Landroid/widget/GridView;->setChoiceMode(I)V
 
-    .line 196
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    .line 205
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->itemDragListener:Landroid/widget/AbsListView$OnItemDragListener;
 
     invoke-virtual {v0, v1}, Landroid/widget/GridView;->setItemDragListener(Landroid/widget/AbsListView$OnItemDragListener;)V
 
-    .line 198
-    const v0, 0x7f0d0086
+    .line 207
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
+
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mRes:Landroid/content/res/Resources;
+
+    const v2, 0x7f0900f5
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    sget v2, Lcom/meizu/video/client/common/Constant;->actionBarSmallHeight:I
+
+    iget-object v3, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mRes:Landroid/content/res/Resources;
+
+    invoke-virtual {v3, v9}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v3
+
+    add-int/2addr v2, v3
+
+    iget-object v3, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mRes:Landroid/content/res/Resources;
+
+    const v4, 0x7f0900f6
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v3
+
+    invoke-virtual {v0, v1, v2, v3, v5}, Landroid/widget/GridView;->setPadding(IIII)V
+
+    .line 208
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
+
+    sget v1, Lcom/meizu/video/client/common/Constant;->actionBarSmallHeight:I
+
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mRes:Landroid/content/res/Resources;
+
+    invoke-virtual {v2, v9}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v2
+
+    add-int/2addr v1, v2
+
+    invoke-virtual {v0, v1}, Landroid/widget/GridView;->setTopSpacing(I)V
+
+    .line 210
+    const v0, 0x7f0d008b
 
     invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -547,55 +633,103 @@
 
     check-cast v0, Landroid/widget/ListView;
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
 
-    .line 199
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    .line 211
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
 
-    invoke-virtual {v0, v5}, Landroid/widget/ListView;->setScrollBarStyle(I)V
+    invoke-virtual {v0, v7}, Landroid/widget/ListView;->setScrollBarStyle(I)V
 
-    .line 200
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    .line 212
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
 
-    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->getActivity()Landroid/app/Activity;
+    sget v1, Lcom/meizu/video/client/common/Constant;->actionBarBigHeight:I
 
-    move-result-object v1
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mRes:Landroid/content/res/Resources;
 
-    invoke-static {v1, v2, v3}, Lcom/meizu/video/client/util/CommonUtil;->dip2px(Landroid/content/Context;D)I
+    const v3, 0x7f090105
 
-    move-result v1
+    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
-    add-int/lit8 v1, v1, 0x62
+    move-result v2
+
+    add-int/2addr v1, v2
 
     invoke-virtual {v0, v1}, Landroid/widget/ListView;->setDockingBottom(I)V
 
-    .line 201
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    .line 213
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mActionCallback:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$ActionModeWrapper;
 
     invoke-virtual {v0, v1}, Landroid/widget/ListView;->setMultiChoiceModeListener(Landroid/widget/AbsListView$MultiChoiceModeListener;)V
 
-    .line 202
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    .line 214
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
 
-    invoke-virtual {v0, v4}, Landroid/widget/ListView;->setChoiceMode(I)V
+    invoke-virtual {v0, v6}, Landroid/widget/ListView;->setChoiceMode(I)V
 
-    .line 203
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    .line 215
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/widget/ListView;->setEnableDragSelection(Z)V
 
-    .line 204
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    .line 216
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->itemDragListener:Landroid/widget/AbsListView$OnItemDragListener;
 
     invoke-virtual {v0, v1}, Landroid/widget/ListView;->setItemDragListener(Landroid/widget/AbsListView$OnItemDragListener;)V
 
-    .line 206
+    .line 218
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
+
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mRes:Landroid/content/res/Resources;
+
+    const v2, 0x7f0900f7
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    sget v2, Lcom/meizu/video/client/common/Constant;->actionBarBigHeight:I
+
+    iget-object v3, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mRes:Landroid/content/res/Resources;
+
+    invoke-virtual {v3, v8}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v3
+
+    add-int/2addr v2, v3
+
+    iget-object v3, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mRes:Landroid/content/res/Resources;
+
+    const v4, 0x7f0900f8
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v3
+
+    invoke-virtual {v0, v1, v2, v3, v5}, Landroid/widget/ListView;->setPadding(IIII)V
+
+    .line 219
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
+
+    sget v1, Lcom/meizu/video/client/common/Constant;->actionBarBigHeight:I
+
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mRes:Landroid/content/res/Resources;
+
+    invoke-virtual {v2, v8}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v2
+
+    add-int/2addr v1, v2
+
+    invoke-virtual {v0, v1}, Landroid/widget/ListView;->setTopSpacing(I)V
+
+    .line 221
     return-void
 .end method
 
@@ -603,7 +737,7 @@
     .locals 4
 
     .prologue
-    .line 601
+    .line 594
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v0
@@ -620,7 +754,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 602
+    .line 595
     return-void
 .end method
 
@@ -628,7 +762,7 @@
     .locals 2
 
     .prologue
-    .line 605
+    .line 598
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v0
@@ -641,7 +775,7 @@
 
     invoke-virtual {v0, v1}, Landroid/content/ContentResolver;->unregisterContentObserver(Landroid/database/ContentObserver;)V
 
-    .line 606
+    .line 599
     return-void
 .end method
 
@@ -651,12 +785,12 @@
     .locals 4
 
     .prologue
-    .line 300
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
+    .line 315
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
     if-nez v0, :cond_0
 
-    .line 301
+    .line 316
     new-instance v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->getActivity()Landroid/app/Activity;
@@ -669,32 +803,32 @@
 
     invoke-direct {v0, v1, v2, v3}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;-><init>(Landroid/content/Context;Ljava/util/ArrayList;Ljava/lang/String;)V
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
-    .line 302
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
+    .line 317
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
 
-    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
 
     invoke-virtual {v0, v1, v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->setView(Landroid/widget/ListView;Landroid/widget/GridView;)V
 
-    .line 303
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    .line 318
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
 
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
     invoke-virtual {v0, v1}, Landroid/widget/GridView;->setAdapter(Landroid/widget/ListAdapter;)V
 
-    .line 304
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    .line 319
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
 
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
     invoke-virtual {v0, v1}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V
 
-    .line 306
+    .line 321
     :cond_0
     return-void
 .end method
@@ -703,154 +837,196 @@
     .locals 2
 
     .prologue
-    .line 209
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    .line 224
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
 
     if-eqz v0, :cond_0
 
-    .line 210
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    .line 225
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
 
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->onSearchListItemClick:Landroid/widget/AdapterView$OnItemClickListener;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mOnSearchListItemClick:Landroid/widget/AdapterView$OnItemClickListener;
 
     invoke-virtual {v0, v1}, Landroid/widget/GridView;->setOnItemClickListener(Landroid/widget/AdapterView$OnItemClickListener;)V
 
-    .line 211
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    .line 226
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
 
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->onFavoriteScroll:Landroid/widget/AbsListView$OnScrollListener;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mOnFavoriteScroll:Landroid/widget/AbsListView$OnScrollListener;
 
     invoke-virtual {v0, v1}, Landroid/widget/GridView;->setOnScrollListener(Landroid/widget/AbsListView$OnScrollListener;)V
 
-    .line 213
+    .line 228
     :cond_0
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
 
     if-eqz v0, :cond_1
 
-    .line 214
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    .line 229
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
 
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->onSearchListItemClick:Landroid/widget/AdapterView$OnItemClickListener;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mOnSearchListItemClick:Landroid/widget/AdapterView$OnItemClickListener;
 
     invoke-virtual {v0, v1}, Landroid/widget/ListView;->setOnItemClickListener(Landroid/widget/AdapterView$OnItemClickListener;)V
 
-    .line 215
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    .line 230
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
 
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->onFavoriteScroll:Landroid/widget/AbsListView$OnScrollListener;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mOnFavoriteScroll:Landroid/widget/AbsListView$OnScrollListener;
 
     invoke-virtual {v0, v1}, Landroid/widget/ListView;->setOnScrollListener(Landroid/widget/AbsListView$OnScrollListener;)V
 
-    .line 217
+    .line 232
     :cond_1
     invoke-direct {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->registerFavoriteObserver()V
 
-    .line 218
+    .line 233
     return-void
 .end method
 
 .method public onConfigurationChanged(Landroid/content/res/Configuration;)V
-    .locals 3
+    .locals 5
     .parameter "newConfig"
 
     .prologue
-    const/4 v2, 0x1
+    const/4 v4, 0x1
 
-    .line 156
+    .line 155
     invoke-super {p0, p1}, Landroid/app/Fragment;->onConfigurationChanged(Landroid/content/res/Configuration;)V
 
+    .line 156
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
+
+    if-nez v2, :cond_0
+
     .line 157
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
+    new-instance v2, Ljava/util/ArrayList;
 
-    if-nez v0, :cond_0
+    invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V
 
-    .line 158
-    new-instance v0, Ljava/util/ArrayList;
+    iput-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
 
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
-
-    .line 160
+    .line 159
     :cond_0
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v0
+    move-result-object v2
 
-    invoke-virtual {v0}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+    invoke-virtual {v2}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
 
-    move-result-object v0
+    move-result-object v2
 
-    iget v0, v0, Landroid/content/res/Configuration;->orientation:I
+    iget v2, v2, Landroid/content/res/Configuration;->orientation:I
 
-    const/4 v1, 0x2
+    const/4 v3, 0x2
 
-    if-ne v0, v1, :cond_2
+    if-ne v2, v3, :cond_2
+
+    .line 160
+    iput-boolean v4, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mIsScreenHorizontal:Z
 
     .line 161
-    iput-boolean v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mIsScreenHorizontal:Z
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
+
+    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
+
+    move-result v2
+
+    if-lez v2, :cond_3
 
     .line 162
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
 
-    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
-
-    move-result v0
-
-    if-lez v0, :cond_1
+    invoke-virtual {v2}, Landroid/widget/ListView;->finishMultiChoice()V
 
     .line 163
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
 
-    invoke-virtual {v0}, Landroid/widget/ListView;->finishMultiChoice()V
+    invoke-virtual {v2}, Landroid/widget/GridView;->startMultiChoice()Z
 
     .line 164
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    const/4 v1, 0x0
 
-    invoke-virtual {v0}, Landroid/widget/GridView;->startMultiChoice()Z
-
-    .line 175
-    :cond_1
+    .local v1, i:I
     :goto_0
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->handler:Landroid/os/Handler;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
 
-    invoke-virtual {v0, v2}, Landroid/os/Handler;->removeMessages(I)V
+    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
 
-    .line 176
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->handler:Landroid/os/Handler;
+    move-result v2
 
-    invoke-virtual {v0, v2}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+    if-ge v1, v2, :cond_3
 
-    .line 177
-    return-void
+    .line 165
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
 
-    .line 168
-    :cond_2
-    const/4 v0, 0x0
+    invoke-virtual {v2, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
-    iput-boolean v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mIsScreenHorizontal:Z
+    move-result-object v0
 
-    .line 169
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
+    check-cast v0, Lcom/meizu/video/client/ui/entity/FavoriteEntity;
 
-    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
+    .line 166
+    .local v0, favoriteEntity:Lcom/meizu/video/client/ui/entity/FavoriteEntity;
+    if-eqz v0, :cond_1
 
-    move-result v0
+    invoke-virtual {v0}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->isSelected()Z
 
-    if-lez v0, :cond_1
+    move-result v2
 
-    .line 170
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    if-eqz v2, :cond_1
 
-    invoke-virtual {v0}, Landroid/widget/GridView;->finishMultiChoice()V
+    .line 167
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
 
-    .line 171
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    invoke-virtual {v2, v1, v4}, Landroid/widget/GridView;->setItemChecked(IZ)V
 
-    invoke-virtual {v0}, Landroid/widget/ListView;->startMultiChoice()Z
+    .line 164
+    :cond_1
+    add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
+
+    .line 172
+    .end local v0           #favoriteEntity:Lcom/meizu/video/client/ui/entity/FavoriteEntity;
+    .end local v1           #i:I
+    :cond_2
+    const/4 v2, 0x0
+
+    iput-boolean v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mIsScreenHorizontal:Z
+
+    .line 173
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
+
+    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
+
+    move-result v2
+
+    if-lez v2, :cond_3
+
+    .line 174
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
+
+    invoke-virtual {v2}, Landroid/widget/GridView;->finishMultiChoice()V
+
+    .line 175
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
+
+    invoke-virtual {v2}, Landroid/widget/ListView;->startMultiChoice()Z
+
+    .line 179
+    :cond_3
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v2, v4}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 180
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v2, v4}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    .line 181
+    return-void
 .end method
 
 .method public onCreateView(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;
@@ -862,20 +1038,31 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 106
-    const v3, 0x7f04002a
+    .line 102
+    const v3, 0x7f04002b
 
     invoke-virtual {p1, v3, p2, v2}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
     move-result-object v1
 
-    .line 107
+    .line 104
     .local v1, searchView:Landroid/view/View;
+    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->getActivity()Landroid/app/Activity;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    iput-object v3, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mRes:Landroid/content/res/Resources;
+
+    .line 106
     new-instance v0, Landroid/graphics/Point;
 
     invoke-direct {v0}, Landroid/graphics/Point;-><init>()V
 
-    .line 108
+    .line 107
     .local v0, outSize:Landroid/graphics/Point;
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->getActivity()Landroid/app/Activity;
 
@@ -891,7 +1078,7 @@
 
     invoke-virtual {v3, v0}, Landroid/view/Display;->getSize(Landroid/graphics/Point;)V
 
-    .line 109
+    .line 108
     iget v3, v0, Landroid/graphics/Point;->x:I
 
     iget v4, v0, Landroid/graphics/Point;->y:I
@@ -903,13 +1090,13 @@
     :cond_0
     iput-boolean v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mIsScreenHorizontal:Z
 
-    .line 110
+    .line 109
     invoke-direct {p0, v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->initView(Landroid/view/View;)V
 
-    .line 111
+    .line 110
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->initListeners()V
 
-    .line 113
+    .line 112
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v2
@@ -920,11 +1107,11 @@
 
     move-result-object v2
 
-    const v3, 0x7f0a01e9
+    const v3, 0x7f0a01f8
 
     invoke-virtual {v2, v3}, Lcom/android/gallery3d/app/GalleryActionBar;->setTitle(I)V
 
-    .line 115
+    .line 114
     return-object v1
 .end method
 
@@ -932,42 +1119,42 @@
     .locals 2
 
     .prologue
-    .line 120
+    .line 119
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_0
 
-    .line 121
+    .line 120
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
-    .line 122
+    .line 121
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
 
-    .line 125
+    .line 124
     :cond_0
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoritesDBHelper:Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDBHelper:Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
 
     if-eqz v0, :cond_1
 
-    .line 126
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoritesDBHelper:Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
+    .line 125
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDBHelper:Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;
 
     invoke-virtual {v0}, Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;->close()V
 
-    .line 129
+    .line 128
     :cond_1
     invoke-direct {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->unregisterFavoriteObserver()V
 
-    .line 131
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->loader:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;
+    .line 130
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mLoader:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;
 
     if-eqz v0, :cond_2
 
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->loader:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mLoader:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;
 
     invoke-virtual {v0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;->getStatus()Landroid/os/AsyncTask$Status;
 
@@ -977,18 +1164,18 @@
 
     if-ne v0, v1, :cond_2
 
-    .line 132
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->loader:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;
+    .line 131
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mLoader:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$LoadFavoriteListTask;->cancel(Z)Z
 
-    .line 134
+    .line 133
     :cond_2
     invoke-super {p0}, Landroid/app/Fragment;->onDestroy()V
 
-    .line 135
+    .line 134
     return-void
 .end method
 
@@ -1000,10 +1187,10 @@
 
     const/4 v1, 0x0
 
-    .line 139
+    .line 138
     invoke-super {p0}, Landroid/app/Fragment;->onResume()V
 
-    .line 140
+    .line 139
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_0
@@ -1020,46 +1207,46 @@
 
     if-eqz v0, :cond_3
 
-    .line 141
+    .line 140
     :cond_0
     iget-boolean v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteDataChange:Z
 
     if-eqz v0, :cond_2
 
-    .line 142
+    .line 141
     iput-boolean v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteDataChange:Z
 
-    .line 143
+    .line 142
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_1
 
-    .line 144
+    .line 143
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesListEntry:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
-    .line 146
+    .line 145
     :cond_1
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
 
     invoke-virtual {v0, v2}, Landroid/widget/GridView;->setVisibility(I)V
 
-    .line 147
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    .line 146
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
 
     invoke-virtual {v0, v2}, Landroid/widget/ListView;->setVisibility(I)V
 
-    .line 148
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->chanelDetail_progressbar_layout:Landroid/widget/LinearLayout;
+    .line 147
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mChanelDetailProgressbarLayout:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 150
+    .line 149
     :cond_2
     invoke-direct {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->initData()V
 
-    .line 152
+    .line 151
     :cond_3
     return-void
 .end method

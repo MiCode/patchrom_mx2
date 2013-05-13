@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 739
+    .line 761
     iput-object p1, p0, Lcom/android/camera/FocusManager$1;->this$0:Lcom/android/camera/FocusManager;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,7 +43,7 @@
     .parameter "accuracy"
 
     .prologue
-    .line 798
+    .line 820
     return-void
 .end method
 
@@ -52,10 +52,10 @@
     .parameter "event"
 
     .prologue
-    .line 743
+    .line 765
     const/4 v3, 0x0
 
-    .line 744
+    .line 766
     .local v3, isDetection:Z
     move-object/from16 v0, p0
 
@@ -68,14 +68,14 @@
 
     if-eqz v15, :cond_0
 
-    .line 745
+    .line 767
     const/4 v3, 0x1
 
-    .line 748
+    .line 770
     :cond_0
     if-eqz v3, :cond_4
 
-    .line 749
+    .line 771
     move-object/from16 v0, p1
 
     iget-object v15, v0, Landroid/hardware/SensorEvent;->values:[F
@@ -84,7 +84,7 @@
 
     aget v4, v15, v16
 
-    .line 750
+    .line 772
     .local v4, sensorValueX:F
     move-object/from16 v0, p1
 
@@ -94,7 +94,7 @@
 
     aget v5, v15, v16
 
-    .line 751
+    .line 773
     .local v5, sensorValueY:F
     move-object/from16 v0, p1
 
@@ -104,11 +104,11 @@
 
     aget v6, v15, v16
 
-    .line 753
+    .line 775
     .local v6, sensorValueZ:F
     const-wide/16 v1, 0x0
 
-    .line 754
+    .line 776
     .local v1, appliedAcceleration:D
     const v15, 0x411ce80a
 
@@ -122,11 +122,11 @@
 
     move-result-wide v9
 
-    .line 756
+    .line 778
     .local v9, x:D
     add-double/2addr v1, v9
 
-    .line 758
+    .line 780
     const v15, 0x411ce80a
 
     div-float v15, v5, v15
@@ -139,11 +139,11 @@
 
     move-result-wide v11
 
-    .line 760
+    .line 782
     .local v11, y:D
     add-double/2addr v1, v11
 
-    .line 762
+    .line 784
     const v15, 0x411ce80a
 
     div-float v15, v6, v15
@@ -156,18 +156,18 @@
 
     move-result-wide v13
 
-    .line 764
+    .line 786
     .local v13, z:D
     add-double/2addr v1, v13
 
-    .line 766
+    .line 788
     const-wide v15, 0x408f400000000000L
 
     mul-double/2addr v15, v1
 
     double-to-int v8, v15
 
-    .line 767
+    .line 789
     .local v8, value:I
     move-object/from16 v0, p0
 
@@ -184,7 +184,7 @@
 
     move-result v7
 
-    .line 769
+    .line 791
     .local v7, v:I
     move-object/from16 v0, p0
 
@@ -197,7 +197,7 @@
 
     if-nez v15, :cond_1
 
-    const/16 v15, 0x96
+    const/16 v15, 0x64
 
     if-le v7, v15, :cond_1
 
@@ -212,7 +212,7 @@
 
     if-eqz v15, :cond_1
 
-    .line 770
+    .line 792
     move-object/from16 v0, p0
 
     iget-object v15, v0, Lcom/android/camera/FocusManager$1;->this$0:Lcom/android/camera/FocusManager;
@@ -222,7 +222,7 @@
     #setter for: Lcom/android/camera/FocusManager;->mIsDetection:Z
     invoke-static/range {v15 .. v16}, Lcom/android/camera/FocusManager;->access$1002(Lcom/android/camera/FocusManager;Z)Z
 
-    .line 771
+    .line 793
     move-object/from16 v0, p0
 
     iget-object v15, v0, Lcom/android/camera/FocusManager$1;->this$0:Lcom/android/camera/FocusManager;
@@ -232,7 +232,7 @@
     #setter for: Lcom/android/camera/FocusManager;->mAccCount:I
     invoke-static/range {v15 .. v16}, Lcom/android/camera/FocusManager;->access$1102(Lcom/android/camera/FocusManager;I)I
 
-    .line 772
+    .line 794
     move-object/from16 v0, p0
 
     iget-object v15, v0, Lcom/android/camera/FocusManager$1;->this$0:Lcom/android/camera/FocusManager;
@@ -242,7 +242,7 @@
     #setter for: Lcom/android/camera/FocusManager;->mTimer:J
     invoke-static/range {v15 .. v17}, Lcom/android/camera/FocusManager;->access$1202(Lcom/android/camera/FocusManager;J)J
 
-    .line 776
+    .line 798
     :cond_1
     move-object/from16 v0, p0
 
@@ -255,7 +255,7 @@
 
     if-eqz v15, :cond_3
 
-    .line 777
+    .line 799
     move-object/from16 v0, p0
 
     iget-object v15, v0, Lcom/android/camera/FocusManager$1;->this$0:Lcom/android/camera/FocusManager;
@@ -271,13 +271,13 @@
 
     move-result v15
 
-    const/16 v16, 0x1e
+    const/16 v16, 0x32
 
     move/from16 v0, v16
 
     if-ge v15, v0, :cond_5
 
-    .line 778
+    .line 800
     move-object/from16 v0, p0
 
     iget-object v15, v0, Lcom/android/camera/FocusManager$1;->this$0:Lcom/android/camera/FocusManager;
@@ -289,7 +289,7 @@
 
     if-nez v15, :cond_2
 
-    .line 779
+    .line 801
     move-object/from16 v0, p0
 
     iget-object v15, v0, Lcom/android/camera/FocusManager$1;->this$0:Lcom/android/camera/FocusManager;
@@ -301,7 +301,7 @@
     #setter for: Lcom/android/camera/FocusManager;->mTimer:J
     invoke-static/range {v15 .. v17}, Lcom/android/camera/FocusManager;->access$1202(Lcom/android/camera/FocusManager;J)J
 
-    .line 781
+    .line 803
     :cond_2
     move-object/from16 v0, p0
 
@@ -309,7 +309,7 @@
 
     invoke-static {v15}, Lcom/android/camera/FocusManager;->access$1108(Lcom/android/camera/FocusManager;)I
 
-    .line 782
+    .line 804
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v15
@@ -333,14 +333,14 @@
 
     if-lez v15, :cond_3
 
-    .line 784
+    .line 806
     move-object/from16 v0, p0
 
     iget-object v15, v0, Lcom/android/camera/FocusManager$1;->this$0:Lcom/android/camera/FocusManager;
 
     invoke-virtual {v15}, Lcom/android/camera/FocusManager;->autoFocus()V
 
-    .line 791
+    .line 813
     :cond_3
     :goto_0
     move-object/from16 v0, p0
@@ -350,7 +350,7 @@
     #setter for: Lcom/android/camera/FocusManager;->mPreAccValue:I
     invoke-static {v15, v8}, Lcom/android/camera/FocusManager;->access$902(Lcom/android/camera/FocusManager;I)I
 
-    .line 793
+    .line 815
     .end local v1           #appliedAcceleration:D
     .end local v4           #sensorValueX:F
     .end local v5           #sensorValueY:F
@@ -363,7 +363,7 @@
     :cond_4
     return-void
 
-    .line 787
+    .line 809
     .restart local v1       #appliedAcceleration:D
     .restart local v4       #sensorValueX:F
     .restart local v5       #sensorValueY:F

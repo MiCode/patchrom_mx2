@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:id="@id/chanelprogramdetail_similarvideo" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/channeldetailprogram_similarvideo_title_size" android:textColor="@color/channeldetailprogram_similarvideo_title_color" android:gravity="bottom" android:id="@id/chanelprogramdetail_similarvideo_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="3.0dip" />
-    <ImageView android:gravity="fill_horizontal" android:layout_width="fill_parent" android:layout_height="1.0dip" android:src="@drawable/channeldetailprogram_diver_drawable" android:scaleType="fitXY" />
+    <TextView android:textSize="@dimen/channeldetailprogram_similarvideo_title_size" android:textColor="@color/channeldetailprogram_similarvideo_title_color" android:gravity="bottom" android:id="@id/chanelprogramdetail_similarvideo_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/similar_title_leftMarginNum" android:layout_marginRight="@dimen/similar_title_rightMarginNum" android:layout_marginBottom="@dimen/similar_title_bottomMarginNum" />
+    <ImageView android:gravity="fill_horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/similar_divider" android:src="@android:drawable/list_divider_light_mz_2px" android:scaleType="fitXY" />
     <HorizontalScrollView android:id="@id/horizontalScrollView1" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="horizontal" android:id="@id/chanelprogramdetail_similarvideo_imagegroup" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="10.0dip" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/chanelprogramdetail_similarvideo_imagegroup" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/similar_content_leftMarginNum" android:layout_marginTop="@dimen/similar_content_topMarginNum" android:layout_marginRight="@dimen/similar_content_rightMarginNum" />
     </HorizontalScrollView>
 </LinearLayout>

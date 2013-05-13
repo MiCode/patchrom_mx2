@@ -89,6 +89,24 @@
     .end annotation
 .end method
 
+.method public abstract getControlOpenPackages()Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getControlPasswordPackages()Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -148,14 +166,6 @@
 .end method
 
 .method public abstract screenTurnedOn()V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract setAccessControl(Ljava/lang/String;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

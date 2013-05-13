@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 302
+    .line 277
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/search/SearchAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
 
     iput-object p2, p0, Lcom/meizu/video/client/ui/module/search/SearchAdapter$1;->val$id_tag:Ljava/lang/String;
@@ -49,10 +49,10 @@
     .parameter "position"
 
     .prologue
-    .line 304
+    .line 279
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchAdapter;->gridView:Landroid/widget/GridView;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchAdapter;->mGridView:Landroid/widget/GridView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchAdapter;->access$000(Lcom/meizu/video/client/ui/module/search/SearchAdapter;)Landroid/widget/GridView;
 
     move-result-object v1
@@ -61,7 +61,7 @@
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchAdapter;->gridView:Landroid/widget/GridView;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchAdapter;->mGridView:Landroid/widget/GridView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchAdapter;->access$000(Lcom/meizu/video/client/ui/module/search/SearchAdapter;)Landroid/widget/GridView;
 
     move-result-object v1
@@ -74,10 +74,10 @@
 
     if-eqz v1, :cond_0
 
-    .line 305
+    .line 280
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchAdapter;->gridView:Landroid/widget/GridView;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchAdapter;->mGridView:Landroid/widget/GridView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchAdapter;->access$000(Lcom/meizu/video/client/ui/module/search/SearchAdapter;)Landroid/widget/GridView;
 
     move-result-object v1
@@ -90,33 +90,18 @@
 
     check-cast v0, Landroid/widget/ImageView;
 
-    .line 306
+    .line 281
     .local v0, imageViewByTag:Landroid/widget/ImageView;
     if-eqz v0, :cond_0
 
-    .line 307
-    if-eqz p1, :cond_1
+    .line 282
+    if-eqz p1, :cond_0
 
-    .line 308
+    .line 283
     invoke-virtual {v0, p1}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
-    .line 309
-    sget-object v1, Landroid/widget/ImageView$ScaleType;->CENTER_CROP:Landroid/widget/ImageView$ScaleType;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
-
-    .line 315
+    .line 287
     .end local v0           #imageViewByTag:Landroid/widget/ImageView;
     :cond_0
-    :goto_0
     return-void
-
-    .line 311
-    .restart local v0       #imageViewByTag:Landroid/widget/ImageView;
-    :cond_1
-    sget-object v1, Landroid/widget/ImageView$ScaleType;->CENTER:Landroid/widget/ImageView$ScaleType;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
-
-    goto :goto_0
 .end method

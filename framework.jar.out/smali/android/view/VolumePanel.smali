@@ -277,7 +277,7 @@
 
     .line 237
     .local v1, inflater:Landroid/view/LayoutInflater;
-    const v7, 0x10900fd
+    const v7, 0x1090107
 
     const/4 v8, 0x0
 
@@ -300,7 +300,7 @@
     .line 244
     iget-object v7, p0, Landroid/view/VolumePanel;->mView:Landroid/view/View;
 
-    const v8, 0x10203f5
+    const v8, 0x10203f8
 
     invoke-virtual {v7, v8}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -313,7 +313,7 @@
     .line 245
     iget-object v7, p0, Landroid/view/VolumePanel;->mView:Landroid/view/View;
 
-    const v8, 0x10203f6
+    const v8, 0x10203f9
 
     invoke-virtual {v7, v8}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -326,7 +326,7 @@
     .line 246
     iget-object v7, p0, Landroid/view/VolumePanel;->mView:Landroid/view/View;
 
-    const v8, 0x1020364
+    const v8, 0x1020360
 
     invoke-virtual {v7, v8}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -339,7 +339,7 @@
     .line 247
     iget-object v7, p0, Landroid/view/VolumePanel;->mView:Landroid/view/View;
 
-    const v8, 0x10203f7
+    const v8, 0x10203fa
 
     invoke-virtual {v7, v8}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -352,7 +352,7 @@
     .line 249
     new-instance v7, Landroid/view/VolumePanel$2;
 
-    const v8, 0x103030a
+    const v8, 0x1030316
 
     invoke-direct {v7, p0, p1, v8}, Landroid/view/VolumePanel$2;-><init>(Landroid/view/VolumePanel;Landroid/content/Context;I)V
 
@@ -412,7 +412,7 @@
 
     move-result-object v7
 
-    const v8, 0x105004e
+    const v8, 0x1050057
 
     invoke-virtual {v7, v8}, Landroid/content/res/Resources;->getDimensionPixelOffset(I)I
 
@@ -427,7 +427,7 @@
 
     move-result-object v7
 
-    const v8, 0x105004d
+    const v8, 0x1050056
 
     invoke-virtual {v7, v8}, Landroid/content/res/Resources;->getDimensionPixelOffset(I)I
 
@@ -803,7 +803,7 @@
     iput v5, v3, Landroid/view/VolumePanel$StreamControl;->streamType:I
 
     .line 368
-    const v6, 0x10900fe
+    const v6, 0x1090108
 
     invoke-virtual {v1, v6, v9}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
@@ -821,7 +821,7 @@
     .line 370
     iget-object v6, v3, Landroid/view/VolumePanel$StreamControl;->group:Landroid/view/ViewGroup;
 
-    const v7, 0x10203f8
+    const v7, 0x10203fb
 
     invoke-virtual {v6, v7}, Landroid/view/ViewGroup;->findViewById(I)Landroid/view/View;
 
@@ -901,7 +901,7 @@
     .line 380
     iget-object v6, v3, Landroid/view/VolumePanel$StreamControl;->group:Landroid/view/ViewGroup;
 
-    const v7, 0x10203f9
+    const v7, 0x10203fc
 
     invoke-virtual {v6, v7}, Landroid/view/ViewGroup;->findViewById(I)Landroid/view/View;
 
@@ -1607,7 +1607,7 @@
     .line 429
     iget-object v1, p1, Landroid/view/VolumePanel$StreamControl;->icon:Landroid/widget/ImageView;
 
-    const v2, 0x1080353
+    const v2, 0x1080365
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setImageResource(I)V
 
@@ -2344,9 +2344,9 @@
     .parameter "flags"
 
     .prologue
-    const v12, 0x108034d
+    const v12, 0x108035f
 
-    const v11, 0x108034c
+    const v11, 0x108035e
 
     const/4 v10, 0x2
 
@@ -2554,17 +2554,6 @@
 
     if-ne v5, v8, :cond_6
 
-    .line 717
-    const/4 v5, 0x4
-
-    invoke-virtual {p0, v5}, Landroid/view/VolumePanel;->obtainMessage(I)Landroid/os/Message;
-
-    move-result-object v5
-
-    const-wide/16 v6, 0x12c
-
-    invoke-virtual {p0, v5, v6, v7}, Landroid/view/VolumePanel;->sendMessageDelayed(Landroid/os/Message;J)Z
-
     .line 719
     :cond_6
     return-void
@@ -2585,7 +2574,7 @@
     .line 608
     iput-boolean v8, p0, Landroid/view/VolumePanel;->mRingIsSilent:Z
 
-    goto/16 :goto_0
+    goto :goto_0
 
     .line 615
     .end local v2           #ringuri:Landroid/net/Uri;
@@ -2609,9 +2598,9 @@
 
     .line 621
     :cond_7
-    const v5, 0x1080354
+    const v5, 0x1080366
 
-    const v6, 0x1080355
+    const v6, 0x1080367
 
     invoke-direct {p0, v5, v6}, Landroid/view/VolumePanel;->setMusicIcon(II)V
 
@@ -2666,9 +2655,9 @@
 
     .line 634
     :cond_a
-    const v5, 0x1080354
+    const v5, 0x1080366
 
-    const v6, 0x1080355
+    const v6, 0x1080367
 
     invoke-direct {p0, v5, v6}, Landroid/view/VolumePanel;->setMusicIcon(II)V
 
@@ -2761,8 +2750,6 @@
     goto/16 :goto_2
 
     .line 601
-    nop
-
     :sswitch_data_0
     .sparse-switch
         -0xc8 -> :sswitch_5

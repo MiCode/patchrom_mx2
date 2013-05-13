@@ -1855,7 +1855,7 @@
 
     iget-object v3, v3, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
-    const v4, 0x104043c
+    const v4, 0x104043e
 
     const/4 v5, 0x1
 
@@ -1889,7 +1889,7 @@
 
     .line 1141
     .local v32, notification:Landroid/app/Notification;
-    const v3, 0x10806bc
+    const v3, 0x10806e7
 
     move-object/from16 v0, v32
 
@@ -1944,7 +1944,7 @@
 
     iget-object v3, v3, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
-    const v4, 0x104043d
+    const v4, 0x104043f
 
     invoke-virtual {v3, v4}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -1990,7 +1990,7 @@
     .local v35, outId:[I
     const-string v3, "android"
 
-    const v4, 0x104043c
+    const v4, 0x104043e
 
     move-object/from16 v0, v29
 
@@ -2064,7 +2064,7 @@
     :try_start_1e
     const-string v3, "android"
 
-    const v4, 0x104043c
+    const v4, 0x104043e
 
     move-object/from16 v0, v29
 

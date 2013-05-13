@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 265
+    .line 269
     iput-object p1, p0, Lcom/android/gallery3d/app/CropImage$3;->this$0:Lcom/android/gallery3d/app/CropImage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,18 +43,18 @@
     .parameter "which"
 
     .prologue
-    .line 269
+    .line 273
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage$3;->this$0:Lcom/android/gallery3d/app/CropImage;
 
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/app/CropImage;->setOverwrite(Z)V
 
-    .line 270
+    .line 274
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage$3;->this$0:Lcom/android/gallery3d/app/CropImage;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/app/CropImage;->onSaveClicked()V
 
-    .line 271
+    .line 275
     return-void
 .end method

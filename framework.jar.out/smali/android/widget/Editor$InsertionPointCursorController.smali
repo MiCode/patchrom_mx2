@@ -31,7 +31,7 @@
     .parameter
 
     .prologue
-    .line 3678
+    .line 3771
     iput-object p1, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -45,7 +45,7 @@
     .parameter "x1"
 
     .prologue
-    .line 3678
+    .line 3771
     invoke-direct {p0, p1}, Landroid/widget/Editor$InsertionPointCursorController;-><init>(Landroid/widget/Editor;)V
 
     return-void
@@ -55,18 +55,18 @@
     .locals 2
 
     .prologue
-    .line 3730
+    .line 3823
     iget-object v0, p0, Landroid/widget/Editor$InsertionPointCursorController;->mMagnifier:Lcom/meizu/widget/MagnifierPopupWindow;
 
     if-nez v0, :cond_0
 
-    .line 3731
+    .line 3824
     new-instance v0, Lcom/meizu/widget/MagnifierPopupWindow;
 
     iget-object v1, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v1}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v1}, Landroid/widget/Editor;->access$700(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v1
 
@@ -78,12 +78,12 @@
 
     iput-object v0, p0, Landroid/widget/Editor$InsertionPointCursorController;->mMagnifier:Lcom/meizu/widget/MagnifierPopupWindow;
 
-    .line 3732
+    .line 3825
     iget-object v0, p0, Landroid/widget/Editor$InsertionPointCursorController;->mMagnifier:Lcom/meizu/widget/MagnifierPopupWindow;
 
     invoke-virtual {v0, p0}, Lcom/meizu/widget/MagnifierPopupWindow;->setOnDismissListener(Landroid/widget/PopupWindow$OnDismissListener;)V
 
-    .line 3735
+    .line 3828
     :cond_0
     iget-object v0, p0, Landroid/widget/Editor$InsertionPointCursorController;->mMagnifier:Lcom/meizu/widget/MagnifierPopupWindow;
 
@@ -96,7 +96,7 @@
     .locals 1
 
     .prologue
-    .line 3717
+    .line 3810
     iget-object v0, p0, Landroid/widget/Editor$InsertionPointCursorController;->mMagnifier:Lcom/meizu/widget/MagnifierPopupWindow;
 
     if-eqz v0, :cond_0
@@ -109,17 +109,17 @@
 
     if-eqz v0, :cond_0
 
-    .line 3718
+    .line 3811
     iget-object v0, p0, Landroid/widget/Editor$InsertionPointCursorController;->mMagnifier:Lcom/meizu/widget/MagnifierPopupWindow;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MagnifierPopupWindow;->dismiss()V
 
-    .line 3719
+    .line 3812
     iget-object v0, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
     invoke-virtual {v0}, Landroid/widget/Editor;->startSelectionActionMode()Z
 
-    .line 3721
+    .line 3814
     :cond_0
     return-void
 .end method
@@ -128,19 +128,19 @@
     .locals 1
 
     .prologue
-    .line 3683
+    .line 3776
     iget-object v0, p0, Landroid/widget/Editor$InsertionPointCursorController;->mMagnifier:Lcom/meizu/widget/MagnifierPopupWindow;
 
     if-eqz v0, :cond_0
 
-    .line 3684
+    .line 3777
     iget-object v0, p0, Landroid/widget/Editor$InsertionPointCursorController;->mMagnifier:Lcom/meizu/widget/MagnifierPopupWindow;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MagnifierPopupWindow;->isShowing()Z
 
     move-result v0
 
-    .line 3686
+    .line 3779
     :goto_0
     return v0
 
@@ -154,11 +154,11 @@
     .locals 2
 
     .prologue
-    .line 3739
+    .line 3832
     iget-object v1, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v1}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v1}, Landroid/widget/Editor;->access$700(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v1
 
@@ -166,21 +166,21 @@
 
     move-result-object v0
 
-    .line 3740
+    .line 3833
     .local v0, observer:Landroid/view/ViewTreeObserver;
     invoke-virtual {v0, p0}, Landroid/view/ViewTreeObserver;->removeOnTouchModeChangeListener(Landroid/view/ViewTreeObserver$OnTouchModeChangeListener;)V
 
-    .line 3742
+    .line 3835
     iget-object v1, p0, Landroid/widget/Editor$InsertionPointCursorController;->mMagnifier:Lcom/meizu/widget/MagnifierPopupWindow;
 
     if-eqz v1, :cond_0
 
-    .line 3743
+    .line 3836
     iget-object v1, p0, Landroid/widget/Editor$InsertionPointCursorController;->mMagnifier:Lcom/meizu/widget/MagnifierPopupWindow;
 
     invoke-virtual {v1}, Lcom/meizu/widget/MagnifierPopupWindow;->dismiss()V
 
-    .line 3744
+    .line 3837
     :cond_0
     return-void
 .end method
@@ -189,17 +189,17 @@
     .locals 1
 
     .prologue
-    .line 3763
+    .line 3856
     iget-object v0, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
     #calls: Landroid/widget/Editor;->getPositionListener()Landroid/widget/Editor$PositionListener;
-    invoke-static {v0}, Landroid/widget/Editor;->access$900(Landroid/widget/Editor;)Landroid/widget/Editor$PositionListener;
+    invoke-static {v0}, Landroid/widget/Editor;->access$1000(Landroid/widget/Editor;)Landroid/widget/Editor$PositionListener;
 
     move-result-object v0
 
     invoke-virtual {v0, p0}, Landroid/widget/Editor$PositionListener;->removeSubscriber(Landroid/widget/Editor$TextViewPositionListener;)V
 
-    .line 3764
+    .line 3857
     return-void
 .end method
 
@@ -210,19 +210,19 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 3747
+    .line 3840
     invoke-virtual {p0}, Landroid/widget/Editor$InsertionPointCursorController;->isShowing()Z
 
     move-result v1
 
     if-nez v1, :cond_1
 
-    .line 3754
+    .line 3847
     :cond_0
     :goto_0
     return v0
 
-    .line 3750
+    .line 3843
     :cond_1
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getActionMasked()I
 
@@ -232,7 +232,7 @@
 
     if-ne v1, v2, :cond_0
 
-    .line 3751
+    .line 3844
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
     move-result v0
@@ -243,7 +243,7 @@
 
     invoke-virtual {p0, v0, v1}, Landroid/widget/Editor$InsertionPointCursorController;->update(FF)V
 
-    .line 3752
+    .line 3845
     const/4 v0, 0x1
 
     goto :goto_0
@@ -254,13 +254,13 @@
     .parameter "isInTouchMode"
 
     .prologue
-    .line 3724
+    .line 3817
     if-nez p1, :cond_0
 
-    .line 3725
+    .line 3818
     invoke-virtual {p0}, Landroid/widget/Editor$InsertionPointCursorController;->hide()V
 
-    .line 3727
+    .line 3820
     :cond_0
     return-void
 .end method
@@ -269,7 +269,7 @@
     .locals 3
 
     .prologue
-    .line 3712
+    .line 3805
     iget-object v0, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
     iget v0, v0, Landroid/widget/Editor;->mLastDownPositionX:F
@@ -280,7 +280,7 @@
 
     invoke-virtual {p0, v0, v1}, Landroid/widget/Editor$InsertionPointCursorController;->update(FF)V
 
-    .line 3713
+    .line 3806
     iget-object v0, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
     invoke-static {}, Landroid/view/animation/AnimationUtils;->currentAnimationTimeMillis()J
@@ -288,9 +288,9 @@
     move-result-wide v1
 
     #setter for: Landroid/widget/Editor;->mLastScrollTime:J
-    invoke-static {v0, v1, v2}, Landroid/widget/Editor;->access$2302(Landroid/widget/Editor;J)J
+    invoke-static {v0, v1, v2}, Landroid/widget/Editor;->access$2402(Landroid/widget/Editor;J)J
 
-    .line 3714
+    .line 3807
     return-void
 .end method
 
@@ -300,11 +300,11 @@
     .parameter "y"
 
     .prologue
-    .line 3690
+    .line 3783
     iget-object v1, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v1}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v1}, Landroid/widget/Editor;->access$700(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v1
 
@@ -312,7 +312,7 @@
 
     move-result v0
 
-    .line 3693
+    .line 3786
     .local v0, offset:I
     invoke-virtual {p0}, Landroid/widget/Editor$InsertionPointCursorController;->isShowing()Z
 
@@ -323,7 +323,7 @@
     iget-object v1, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v1}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v1}, Landroid/widget/Editor;->access$700(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v1
 
@@ -340,7 +340,7 @@
     iget-object v3, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mLastScrollTime:J
-    invoke-static {v3}, Landroid/widget/Editor;->access$2300(Landroid/widget/Editor;)J
+    invoke-static {v3}, Landroid/widget/Editor;->access$2400(Landroid/widget/Editor;)J
 
     move-result-wide v3
 
@@ -352,11 +352,11 @@
 
     if-gez v1, :cond_0
 
-    .line 3709
+    .line 3802
     :goto_0
     return-void
 
-    .line 3698
+    .line 3791
     :cond_0
     iget-object v1, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
@@ -365,15 +365,15 @@
     move-result-wide v2
 
     #setter for: Landroid/widget/Editor;->mLastScrollTime:J
-    invoke-static {v1, v2, v3}, Landroid/widget/Editor;->access$2302(Landroid/widget/Editor;J)J
+    invoke-static {v1, v2, v3}, Landroid/widget/Editor;->access$2402(Landroid/widget/Editor;J)J
 
-    .line 3700
+    .line 3793
     if-ltz v0, :cond_2
 
     iget-object v1, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v1}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v1}, Landroid/widget/Editor;->access$700(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v1
 
@@ -386,7 +386,7 @@
     iget-object v1, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v1}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v1}, Landroid/widget/Editor;->access$700(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v1
 
@@ -396,12 +396,12 @@
 
     if-eq v0, v1, :cond_2
 
-    .line 3702
+    .line 3795
     :cond_1
     iget-object v1, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v1}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v1}, Landroid/widget/Editor;->access$700(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v1
 
@@ -413,7 +413,7 @@
 
     invoke-static {v1, v0}, Landroid/text/Selection;->setSelection(Landroid/text/Spannable;I)V
 
-    .line 3705
+    .line 3798
     :cond_2
     invoke-virtual {p0}, Landroid/widget/Editor$InsertionPointCursorController;->isShowing()Z
 
@@ -421,11 +421,11 @@
 
     if-nez v1, :cond_3
 
-    .line 3706
+    .line 3799
     iget-object v1, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
     #calls: Landroid/widget/Editor;->getPositionListener()Landroid/widget/Editor$PositionListener;
-    invoke-static {v1}, Landroid/widget/Editor;->access$900(Landroid/widget/Editor;)Landroid/widget/Editor$PositionListener;
+    invoke-static {v1}, Landroid/widget/Editor;->access$1000(Landroid/widget/Editor;)Landroid/widget/Editor$PositionListener;
 
     move-result-object v1
 
@@ -433,7 +433,7 @@
 
     invoke-virtual {v1, p0, v2}, Landroid/widget/Editor$PositionListener;->addSubscriber(Landroid/widget/Editor$TextViewPositionListener;Z)V
 
-    .line 3708
+    .line 3801
     :cond_3
     invoke-direct {p0}, Landroid/widget/Editor$InsertionPointCursorController;->getMagnifier()Lcom/meizu/widget/MagnifierPopupWindow;
 
@@ -442,7 +442,7 @@
     iget-object v2, p0, Landroid/widget/Editor$InsertionPointCursorController;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v2}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v2}, Landroid/widget/Editor;->access$700(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v2
 
@@ -461,13 +461,13 @@
     .parameter "parentScrolled"
 
     .prologue
-    .line 3759
+    .line 3852
     int-to-float v0, p1
 
     int-to-float v1, p2
 
     invoke-virtual {p0, v0, v1}, Landroid/widget/Editor$InsertionPointCursorController;->update(FF)V
 
-    .line 3760
+    .line 3853
     return-void
 .end method

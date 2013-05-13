@@ -505,7 +505,7 @@
 
     .prologue
     .line 55
-    const v0, 0x7f0d0099
+    const v0, 0x7f0d009e
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ui/SecondLevelIndicatorControlBar;->findViewById(I)Landroid/view/View;
 
@@ -514,7 +514,7 @@
     iput-object v0, p0, Lcom/android/camera/ui/SecondLevelIndicatorControlBar;->mDivider:Landroid/view/View;
 
     .line 56
-    const v0, 0x7f0d009a
+    const v0, 0x7f0d009f
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ui/SecondLevelIndicatorControlBar;->findViewById(I)Landroid/view/View;
 

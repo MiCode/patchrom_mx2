@@ -22,13 +22,16 @@
     .line 25
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 55
+    .line 61
     return-void
 .end method
 
 
 # virtual methods
 .method public abstract attachScreenNail()Lcom/android/gallery3d/ui/ScreenNail;
+.end method
+
+.method public abstract checkScreenOrientation()V
 .end method
 
 .method public describeContents()I
@@ -45,6 +48,9 @@
 .end method
 
 .method public abstract isPanorama()Z
+.end method
+
+.method public abstract onBackClicked()V
 .end method
 
 .method public abstract onDoubleTap(II)Z

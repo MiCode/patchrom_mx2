@@ -554,7 +554,7 @@
     .line 178
     iget-object v3, p0, Lcom/android/camera/VideoMainMenuAdapter;->mInflater:Landroid/view/LayoutInflater;
 
-    const v4, 0x7f040037
+    const v4, 0x7f040038
 
     invoke-virtual {v3, v4, v5}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
@@ -564,10 +564,10 @@
     :cond_0
     iget v3, p0, Lcom/android/camera/VideoMainMenuAdapter;->mCurSel:I
 
-    if-ne v3, p1, :cond_1
+    if-ne v3, p1, :cond_2
 
     .line 181
-    const v3, 0x7f020121
+    const v3, 0x7f02011a
 
     invoke-virtual {p2, v3}, Landroid/view/View;->setBackgroundResource(I)V
 
@@ -579,7 +579,7 @@
 
     add-int/lit8 v3, v3, -0x1
 
-    if-ne p1, v3, :cond_2
+    if-ne p1, v3, :cond_3
 
     .line 186
     iget-object v3, p0, Lcom/android/camera/VideoMainMenuAdapter;->mContext:Landroid/content/Context;
@@ -588,7 +588,7 @@
 
     move-result-object v3
 
-    const v4, 0x7f090053
+    const v4, 0x7f090151
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelOffset(I)I
 
@@ -598,7 +598,7 @@
 
     .line 192
     :goto_1
-    const v3, 0x7f0d00a2
+    const v3, 0x7f0d00a7
 
     invoke-virtual {p2, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -608,7 +608,7 @@
 
     .line 193
     .local v0, t1:Landroid/widget/TextView;
-    const v3, 0x7f0d00a3
+    const v3, 0x7f0d00a8
 
     invoke-virtual {p2, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -618,7 +618,7 @@
 
     .line 194
     .local v1, t2:Landroid/widget/TextView;
-    const v3, 0x7f0d00a4
+    const v3, 0x7f0d00a9
 
     invoke-virtual {p2, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -632,9 +632,14 @@
 
     add-int/lit8 v3, v3, -0x1
 
-    if-ne p1, v3, :cond_3
+    if-eq p1, v3, :cond_1
+
+    iget v3, p0, Lcom/android/camera/VideoMainMenuAdapter;->mCurSel:I
+
+    if-ne v3, p1, :cond_4
 
     .line 196
+    :cond_1
     invoke-virtual {v2, v5}, Landroid/view/View;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
 
     .line 200
@@ -643,7 +648,7 @@
 
     move-result v3
 
-    if-nez v3, :cond_4
+    if-nez v3, :cond_5
 
     .line 201
     iget-object v3, p0, Lcom/android/camera/VideoMainMenuAdapter;->mContext:Landroid/content/Context;
@@ -652,7 +657,7 @@
 
     move-result-object v3
 
-    const v4, 0x7f080037
+    const v4, 0x7f08003c
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getColor(I)I
 
@@ -682,20 +687,20 @@
     .end local v0           #t1:Landroid/widget/TextView;
     .end local v1           #t2:Landroid/widget/TextView;
     .end local v2           #v1:Landroid/view/View;
-    :cond_1
+    :cond_2
     invoke-virtual {p2, v5}, Landroid/view/View;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
 
     goto :goto_0
 
     .line 189
-    :cond_2
+    :cond_3
     iget-object v3, p0, Lcom/android/camera/VideoMainMenuAdapter;->mContext:Landroid/content/Context;
 
     invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v3
 
-    const v4, 0x7f090052
+    const v4, 0x7f090150
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelOffset(I)I
 
@@ -709,15 +714,15 @@
     .restart local v0       #t1:Landroid/widget/TextView;
     .restart local v1       #t2:Landroid/widget/TextView;
     .restart local v2       #v1:Landroid/view/View;
-    :cond_3
-    const v3, 0x7f02011e
+    :cond_4
+    const v3, 0x7f020117
 
     invoke-virtual {v2, v3}, Landroid/view/View;->setBackgroundResource(I)V
 
     goto :goto_2
 
     .line 204
-    :cond_4
+    :cond_5
     const/4 v3, -0x1
 
     invoke-virtual {v0, v3}, Landroid/widget/TextView;->setTextColor(I)V

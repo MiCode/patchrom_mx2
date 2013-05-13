@@ -7,6 +7,9 @@
 .method public abstract createKeyguardView(Landroid/content/Context;Lcom/android/internal/policy/impl/KeyguardViewCallback;Lcom/android/internal/policy/impl/KeyguardUpdateMonitor;Lcom/android/internal/policy/impl/KeyguardWindowController;)Lcom/android/internal/policy/impl/KeyguardViewBase;
 .end method
 
+.method public abstract disableExternalExit()Z
+.end method
+
 .method public abstract enableStatusbarExpand()Z
 .end method
 

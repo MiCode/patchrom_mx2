@@ -307,7 +307,7 @@
     invoke-virtual {p0, v2}, Lcom/meizu/widget/SystemLockView;->addView(Landroid/view/View;)V
 
     .line 164
-    const v2, 0x1020351
+    const v2, 0x102034d
 
     invoke-virtual {p0, v2}, Lcom/meizu/widget/SystemLockView;->findViewById(I)Landroid/view/View;
 
@@ -318,7 +318,7 @@
     iput-object v2, p0, Lcom/meizu/widget/SystemLockView;->mRoot:Landroid/widget/RelativeLayout;
 
     .line 165
-    const v2, 0x1020352
+    const v2, 0x102034e
 
     invoke-virtual {p0, v2}, Lcom/meizu/widget/SystemLockView;->findViewById(I)Landroid/view/View;
 
@@ -329,7 +329,7 @@
     iput-object v2, p0, Lcom/meizu/widget/SystemLockView;->mTipTextView:Landroid/widget/TextView;
 
     .line 166
-    const v2, 0x1020354
+    const v2, 0x1020350
 
     invoke-virtual {p0, v2}, Lcom/meizu/widget/SystemLockView;->findViewById(I)Landroid/view/View;
 
@@ -340,7 +340,7 @@
     iput-object v2, p0, Lcom/meizu/widget/SystemLockView;->mPasswordTextView:Landroid/widget/TextView;
 
     .line 167
-    const v2, 0x1020355
+    const v2, 0x1020351
 
     invoke-virtual {p0, v2}, Lcom/meizu/widget/SystemLockView;->findViewById(I)Landroid/view/View;
 
@@ -351,7 +351,7 @@
     iput-object v2, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButton:Landroid/widget/ImageView;
 
     .line 168
-    const v2, 0x1020332
+    const v2, 0x102032e
 
     invoke-virtual {p0, v2}, Lcom/meizu/widget/SystemLockView;->findViewById(I)Landroid/view/View;
 
@@ -362,7 +362,7 @@
     iput-object v2, p0, Lcom/meizu/widget/SystemLockView;->topDisplayGroup:Landroid/widget/LinearLayout;
 
     .line 169
-    const v2, 0x10202cd
+    const v2, 0x10202ca
 
     invoke-virtual {p0, v2}, Lcom/meizu/widget/SystemLockView;->findViewById(I)Landroid/view/View;
 
@@ -387,16 +387,41 @@
     invoke-virtual {v2, v5}, Lcom/meizu/widget/LockDigitView;->setShowPointIfEmpty(Z)V
 
     .line 172
+    iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mKeyPad:Lcom/meizu/widget/LockDigitView;
+
+    invoke-virtual {p0}, Lcom/meizu/widget/SystemLockView;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x1080234
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v3
+
+    invoke-virtual {p0}, Lcom/meizu/widget/SystemLockView;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v4
+
+    const v5, 0x1080235
+
+    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v4
+
+    invoke-virtual {v2, v3, v4}, Lcom/meizu/widget/LockDigitView;->setCellBackgroundDrawable(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
+
+    .line 174
     iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButton:Landroid/widget/ImageView;
 
     invoke-virtual {v2, p0}, Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 173
+    .line 175
     iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButton:Landroid/widget/ImageView;
 
     invoke-virtual {v2, p0}, Landroid/widget/ImageView;->setOnLongClickListener(Landroid/view/View$OnLongClickListener;)V
 
-    .line 175
+    .line 177
     const v2, 0x1020220
 
     invoke-virtual {p0, v2}, Lcom/meizu/widget/SystemLockView;->findViewById(I)Landroid/view/View;
@@ -407,14 +432,39 @@
 
     iput-object v2, p0, Lcom/meizu/widget/SystemLockView;->mSpecial:Lcom/meizu/widget/LockPasswordView;
 
-    .line 176
+    .line 178
     iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mSpecial:Lcom/meizu/widget/LockPasswordView;
 
     iget v3, p0, Lcom/meizu/widget/SystemLockView;->mMaxCellLength:I
 
     invoke-virtual {v2, v3}, Lcom/meizu/widget/LockPasswordView;->setMaxNum(I)V
 
-    .line 178
+    .line 179
+    iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mSpecial:Lcom/meizu/widget/LockPasswordView;
+
+    invoke-virtual {p0}, Lcom/meizu/widget/SystemLockView;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x108067b
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v3
+
+    invoke-virtual {p0}, Lcom/meizu/widget/SystemLockView;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v4
+
+    const v5, 0x108067c
+
+    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v4
+
+    invoke-virtual {v2, v3, v4}, Lcom/meizu/widget/LockPasswordView;->setCircleDrawable(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
+
+    .line 182
     iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mWindowRect:Landroid/graphics/Rect;
 
     invoke-virtual {v2}, Landroid/graphics/Rect;->height()I
@@ -423,24 +473,24 @@
 
     if-nez v2, :cond_0
 
-    .line 179
+    .line 183
     iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mWindowRect:Landroid/graphics/Rect;
 
     invoke-virtual {p0, v2}, Lcom/meizu/widget/SystemLockView;->getWindowVisibleDisplayFrame(Landroid/graphics/Rect;)V
 
-    .line 181
+    .line 185
     :cond_0
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->updateWidgetLayout()V
 
-    .line 182
+    .line 186
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->updatePasswordTextView()V
 
-    .line 184
+    .line 188
     iget v2, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButtonStat:I
 
     if-ne v2, v6, :cond_1
 
-    .line 185
+    .line 189
     iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButton:Landroid/widget/ImageView;
 
     invoke-virtual {p0}, Lcom/meizu/widget/SystemLockView;->getContext()Landroid/content/Context;
@@ -459,7 +509,7 @@
 
     invoke-virtual {v2, v3}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 189
+    .line 193
     :cond_1
     iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mPasswordTextView:Landroid/widget/TextView;
 
@@ -467,16 +517,16 @@
 
     move-result-object v1
 
-    .line 190
+    .line 194
     .local v1, tp:Landroid/text/TextPaint;
     invoke-virtual {v1, v6}, Landroid/text/TextPaint;->setFakeBoldText(Z)V
 
-    .line 191
+    .line 195
     sget-object v2, Landroid/graphics/Typeface;->DEFAULT_BOLD:Landroid/graphics/Typeface;
 
     invoke-virtual {v1, v2}, Landroid/text/TextPaint;->setTypeface(Landroid/graphics/Typeface;)Landroid/graphics/Typeface;
 
-    .line 192
+    .line 196
     const v2, 0x10a000d
 
     invoke-static {p1, v2}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
@@ -485,7 +535,7 @@
 
     iput-object v2, p0, Lcom/meizu/widget/SystemLockView;->mAppear:Landroid/view/animation/Animation;
 
-    .line 194
+    .line 198
     const v2, 0x10a000e
 
     invoke-static {p1, v2}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
@@ -494,7 +544,7 @@
 
     iput-object v2, p0, Lcom/meizu/widget/SystemLockView;->mDisappear:Landroid/view/animation/Animation;
 
-    .line 196
+    .line 200
     return-void
 .end method
 
@@ -546,19 +596,45 @@
     return-void
 .end method
 
+.method static synthetic access$500(Lcom/meizu/widget/SystemLockView;)I
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 44
+    iget v0, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
+
+    return v0
+.end method
+
+.method static synthetic access$600(Lcom/meizu/widget/SystemLockView;)I
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 44
+    iget v0, p0, Lcom/meizu/widget/SystemLockView;->mMaxCellLength:I
+
+    return v0
+.end method
+
+.method static synthetic access$700(Lcom/meizu/widget/SystemLockView;)V
+    .locals 0
+    .parameter "x0"
+
+    .prologue
+    .line 44
+    invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->notifyCellFhish()V
+
+    return-void
+.end method
+
 .method private addCell(Ljava/lang/String;)V
     .locals 2
     .parameter "pressedDigit"
 
     .prologue
-    .line 218
-    iget v0, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
-
-    iget v1, p0, Lcom/meizu/widget/SystemLockView;->mMaxCellLength:I
-
-    if-ge v0, v1, :cond_0
-
-    .line 219
+    .line 223
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -579,21 +655,20 @@
 
     iput-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
 
-    .line 220
+    .line 224
     iget v0, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
 
     add-int/lit8 v0, v0, 0x1
 
     iput v0, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
 
-    .line 221
+    .line 225
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->updatePasswordTextView()V
 
-    .line 222
+    .line 226
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->notifyCellAdded()V
 
-    .line 224
-    :cond_0
+    .line 228
     return-void
 .end method
 
@@ -602,18 +677,18 @@
     .parameter "cell"
 
     .prologue
-    .line 387
+    .line 394
     invoke-virtual {p1}, Lcom/meizu/widget/LockDigitView$Cell;->getRow()I
 
     move-result v2
 
-    .line 388
+    .line 395
     .local v2, r:I
     invoke-virtual {p1}, Lcom/meizu/widget/LockDigitView$Cell;->getColumn()I
 
     move-result v0
 
-    .line 389
+    .line 396
     .local v0, c:I
     mul-int/lit8 v4, v2, 0x3
 
@@ -621,47 +696,47 @@
 
     add-int/lit8 v1, v4, 0x1
 
-    .line 390
+    .line 397
     .local v1, num:I
     const/16 v4, 0xa
 
     if-ne v1, v4, :cond_0
 
-    .line 391
+    .line 398
     const-string v3, "left"
 
-    .line 399
+    .line 406
     .local v3, ret:Ljava/lang/String;
     :goto_0
     return-object v3
 
-    .line 392
+    .line 399
     .end local v3           #ret:Ljava/lang/String;
     :cond_0
     const/16 v4, 0xb
 
     if-ne v1, v4, :cond_1
 
-    .line 393
+    .line 400
     const-string v3, "0"
 
     .restart local v3       #ret:Ljava/lang/String;
     goto :goto_0
 
-    .line 394
+    .line 401
     .end local v3           #ret:Ljava/lang/String;
     :cond_1
     const/16 v4, 0xc
 
     if-ne v1, v4, :cond_2
 
-    .line 395
+    .line 402
     const-string v3, "right"
 
     .restart local v3       #ret:Ljava/lang/String;
     goto :goto_0
 
-    .line 397
+    .line 404
     .end local v3           #ret:Ljava/lang/String;
     :cond_2
     invoke-static {v1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
@@ -676,31 +751,20 @@
     .locals 2
 
     .prologue
-    .line 264
+    .line 268
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     if-eqz v0, :cond_0
 
-    .line 265
+    .line 269
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     iget-object v1, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
 
     invoke-interface {v0, v1}, Lcom/meizu/widget/SystemLockView$OnPanelListener;->onCellAdded(Ljava/lang/String;)V
 
-    .line 267
+    .line 274
     :cond_0
-    iget v0, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
-
-    iget v1, p0, Lcom/meizu/widget/SystemLockView;->mMaxCellLength:I
-
-    if-lt v0, v1, :cond_1
-
-    .line 268
-    invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->notifyCellFhish()V
-
-    .line 270
-    :cond_1
     return-void
 .end method
 
@@ -708,19 +772,19 @@
     .locals 2
 
     .prologue
-    .line 279
+    .line 283
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     if-eqz v0, :cond_0
 
-    .line 280
+    .line 284
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     iget-object v1, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
 
     invoke-interface {v0, v1}, Lcom/meizu/widget/SystemLockView$OnPanelListener;->onCellCleared(Ljava/lang/String;)V
 
-    .line 282
+    .line 286
     :cond_0
     return-void
 .end method
@@ -729,19 +793,19 @@
     .locals 2
 
     .prologue
-    .line 273
+    .line 277
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     if-eqz v0, :cond_0
 
-    .line 274
+    .line 278
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     iget-object v1, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
 
     invoke-interface {v0, v1}, Lcom/meizu/widget/SystemLockView$OnPanelListener;->onCellFhish(Ljava/lang/String;)V
 
-    .line 276
+    .line 280
     :cond_0
     return-void
 .end method
@@ -750,19 +814,19 @@
     .locals 2
 
     .prologue
-    .line 297
+    .line 301
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     if-eqz v0, :cond_0
 
-    .line 298
+    .line 302
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     iget-object v1, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
 
     invoke-interface {v0, v1}, Lcom/meizu/widget/SystemLockView$OnPanelListener;->onInputTextButtonClick(Ljava/lang/String;)V
 
-    .line 300
+    .line 304
     :cond_0
     return-void
 .end method
@@ -771,19 +835,19 @@
     .locals 2
 
     .prologue
-    .line 303
+    .line 307
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     if-eqz v0, :cond_0
 
-    .line 304
+    .line 308
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     iget-object v1, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
 
     invoke-interface {v0, v1}, Lcom/meizu/widget/SystemLockView$OnPanelListener;->onKeyLeftButtonClick(Ljava/lang/String;)V
 
-    .line 306
+    .line 310
     :cond_0
     return-void
 .end method
@@ -792,19 +856,19 @@
     .locals 2
 
     .prologue
-    .line 309
+    .line 313
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     if-eqz v0, :cond_0
 
-    .line 310
+    .line 314
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     iget-object v1, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
 
     invoke-interface {v0, v1}, Lcom/meizu/widget/SystemLockView$OnPanelListener;->onKeyRightButtonClick(Ljava/lang/String;)V
 
-    .line 312
+    .line 316
     :cond_0
     return-void
 .end method
@@ -813,19 +877,19 @@
     .locals 2
 
     .prologue
-    .line 291
+    .line 295
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     if-eqz v0, :cond_0
 
-    .line 292
+    .line 296
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     iget-object v1, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
 
     invoke-interface {v0, v1}, Lcom/meizu/widget/SystemLockView$OnPanelListener;->onLeftButtonClick(Ljava/lang/String;)V
 
-    .line 294
+    .line 298
     :cond_0
     return-void
 .end method
@@ -834,19 +898,19 @@
     .locals 2
 
     .prologue
-    .line 285
+    .line 289
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     if-eqz v0, :cond_0
 
-    .line 286
+    .line 290
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
     iget-object v1, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
 
     invoke-interface {v0, v1}, Lcom/meizu/widget/SystemLockView$OnPanelListener;->onRightButtonClick(Ljava/lang/String;)V
 
-    .line 288
+    .line 292
     :cond_0
     return-void
 .end method
@@ -855,34 +919,12 @@
     .locals 2
 
     .prologue
-    .line 252
+    .line 256
     iget v0, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
 
     if-nez v0, :cond_1
 
-    .line 253
-    iget-boolean v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButtonVisible:Z
-
-    if-eqz v0, :cond_0
-
-    iget v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButtonStat:I
-
-    if-nez v0, :cond_0
-
-    .line 254
-    iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButton:Landroid/widget/ImageView;
-
-    const/16 v1, 0x8
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
-
-    .line 261
-    :cond_0
-    :goto_0
-    return-void
-
     .line 257
-    :cond_1
     iget-boolean v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButtonVisible:Z
 
     if-eqz v0, :cond_0
@@ -892,6 +934,28 @@
     if-nez v0, :cond_0
 
     .line 258
+    iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButton:Landroid/widget/ImageView;
+
+    const/16 v1, 0x8
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
+
+    .line 265
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 261
+    :cond_1
+    iget-boolean v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButtonVisible:Z
+
+    if-eqz v0, :cond_0
+
+    iget v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButtonStat:I
+
+    if-nez v0, :cond_0
+
+    .line 262
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButton:Landroid/widget/ImageView;
 
     const/4 v1, 0x0
@@ -909,45 +973,45 @@
 
     const/4 v2, 0x0
 
-    .line 227
+    .line 231
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPasswordTextView:Landroid/widget/TextView;
 
     const-string v1, ""
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 228
+    .line 232
     iget v0, p0, Lcom/meizu/widget/SystemLockView;->mDispalyTextMode:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 247
+    .line 251
     :goto_0
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->updateDeleteButtonStatu()V
 
-    .line 248
+    .line 252
     invoke-virtual {p0}, Lcom/meizu/widget/SystemLockView;->invalidate()V
 
-    .line 249
+    .line 253
     return-void
 
-    .line 230
+    .line 234
     :pswitch_0
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPasswordTextView:Landroid/widget/TextView;
 
     invoke-virtual {v0, v3}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 231
+    .line 235
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mSpecial:Lcom/meizu/widget/LockPasswordView;
 
     invoke-virtual {v0, v2}, Lcom/meizu/widget/LockPasswordView;->setVisibility(I)V
 
-    .line 232
+    .line 236
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mSpecial:Lcom/meizu/widget/LockPasswordView;
 
     invoke-virtual {v0, v2}, Lcom/meizu/widget/LockPasswordView;->setHollowVisible(Z)V
 
-    .line 233
+    .line 237
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mSpecial:Lcom/meizu/widget/LockPasswordView;
 
     iget v1, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
@@ -956,18 +1020,18 @@
 
     goto :goto_0
 
-    .line 236
+    .line 240
     :pswitch_1
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPasswordTextView:Landroid/widget/TextView;
 
     invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 237
+    .line 241
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mSpecial:Lcom/meizu/widget/LockPasswordView;
 
     invoke-virtual {v0, v3}, Lcom/meizu/widget/LockPasswordView;->setVisibility(I)V
 
-    .line 238
+    .line 242
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPasswordTextView:Landroid/widget/TextView;
 
     iget-object v1, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
@@ -976,25 +1040,25 @@
 
     goto :goto_0
 
-    .line 241
+    .line 245
     :pswitch_2
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPasswordTextView:Landroid/widget/TextView;
 
     invoke-virtual {v0, v3}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 242
+    .line 246
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mSpecial:Lcom/meizu/widget/LockPasswordView;
 
     invoke-virtual {v0, v2}, Lcom/meizu/widget/LockPasswordView;->setVisibility(I)V
 
-    .line 243
+    .line 247
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mSpecial:Lcom/meizu/widget/LockPasswordView;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/LockPasswordView;->setHollowVisible(Z)V
 
-    .line 244
+    .line 248
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mSpecial:Lcom/meizu/widget/LockPasswordView;
 
     iget v1, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
@@ -1003,7 +1067,7 @@
 
     goto :goto_0
 
-    .line 228
+    .line 232
     nop
 
     :pswitch_data_0
@@ -1018,7 +1082,7 @@
     .locals 4
 
     .prologue
-    .line 199
+    .line 203
     iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mContext:Landroid/content/Context;
 
     const-string v3, "layout_inflater"
@@ -1029,9 +1093,9 @@
 
     check-cast v0, Landroid/view/LayoutInflater;
 
-    .line 201
+    .line 205
     .local v0, layoutInflater:Landroid/view/LayoutInflater;
-    const v2, 0x1020356
+    const v2, 0x1020352
 
     invoke-virtual {p0, v2}, Lcom/meizu/widget/SystemLockView;->findViewById(I)Landroid/view/View;
 
@@ -1039,21 +1103,21 @@
 
     check-cast v1, Landroid/view/ViewGroup;
 
-    .line 202
+    .line 206
     .local v1, widgetFrame:Landroid/view/ViewGroup;
     if-eqz v1, :cond_0
 
-    .line 203
+    .line 207
     iget v2, p0, Lcom/meizu/widget/SystemLockView;->mBottomLayoutResId:I
 
     if-eqz v2, :cond_2
 
-    .line 204
+    .line 208
     iget v2, p0, Lcom/meizu/widget/SystemLockView;->mBottomLayoutResId:I
 
     invoke-virtual {v0, v2, v1}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
-    .line 209
+    .line 213
     :cond_0
     :goto_0
     iget v2, p0, Lcom/meizu/widget/SystemLockView;->mBottomLayoutResId:I
@@ -1062,8 +1126,8 @@
 
     if-ne v2, v3, :cond_1
 
-    .line 210
-    const v2, 0x10203f0
+    .line 214
+    const v2, 0x10203f1
 
     invoke-virtual {p0, v2}, Lcom/meizu/widget/SystemLockView;->findViewById(I)Landroid/view/View;
 
@@ -1073,8 +1137,8 @@
 
     iput-object v2, p0, Lcom/meizu/widget/SystemLockView;->mLeftButton:Landroid/widget/Button;
 
-    .line 211
-    const v2, 0x10203f1
+    .line 215
+    const v2, 0x10203f2
 
     invoke-virtual {p0, v2}, Lcom/meizu/widget/SystemLockView;->findViewById(I)Landroid/view/View;
 
@@ -1084,21 +1148,21 @@
 
     iput-object v2, p0, Lcom/meizu/widget/SystemLockView;->mRightButton:Landroid/widget/Button;
 
-    .line 212
+    .line 216
     iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mLeftButton:Landroid/widget/Button;
 
     invoke-virtual {v2, p0}, Landroid/widget/Button;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 213
+    .line 217
     iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mRightButton:Landroid/widget/Button;
 
     invoke-virtual {v2, p0}, Landroid/widget/Button;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 215
+    .line 219
     :cond_1
     return-void
 
-    .line 206
+    .line 210
     :cond_2
     const/16 v2, 0x8
 
@@ -1116,43 +1180,43 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 493
+    .line 500
     iget v2, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
 
     if-lez v2, :cond_0
 
-    .line 494
+    .line 501
     if-eqz p1, :cond_1
 
-    .line 495
+    .line 502
     const-string v2, ""
 
     iput-object v2, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
 
-    .line 496
+    .line 503
     iput v3, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
 
-    .line 497
+    .line 504
     iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mKeyPad:Lcom/meizu/widget/LockDigitView;
 
     invoke-virtual {v2}, Lcom/meizu/widget/LockDigitView;->resetPattern()V
 
-    .line 506
+    .line 513
     :goto_0
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->updatePasswordTextView()V
 
-    .line 507
+    .line 514
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->notifyCellCleared()V
 
-    .line 509
+    .line 516
     :cond_0
     return-void
 
-    .line 499
+    .line 506
     :cond_1
     iget-object v1, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
 
-    .line 500
+    .line 507
     .local v1, numString:Ljava/lang/CharSequence;
     invoke-interface {v1}, Ljava/lang/CharSequence;->length()I
 
@@ -1164,7 +1228,7 @@
 
     move-result-object v0
 
-    .line 502
+    .line 509
     .local v0, newString:Ljava/lang/CharSequence;
     invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
@@ -1172,14 +1236,14 @@
 
     iput-object v2, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
 
-    .line 503
+    .line 510
     iget v2, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
 
     add-int/lit8 v2, v2, -0x1
 
     iput v2, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
 
-    .line 504
+    .line 511
     iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mKeyPad:Lcom/meizu/widget/LockDigitView;
 
     invoke-virtual {v2}, Lcom/meizu/widget/LockDigitView;->deleteLastCell()V
@@ -1194,40 +1258,40 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 515
+    .line 522
     iget v2, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
 
     if-lez v2, :cond_0
 
-    .line 516
+    .line 523
     if-eqz p1, :cond_1
 
-    .line 517
+    .line 524
     const-string v2, ""
 
     iput-object v2, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
 
-    .line 518
+    .line 525
     iput v3, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
 
-    .line 519
+    .line 526
     iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mKeyPad:Lcom/meizu/widget/LockDigitView;
 
     invoke-virtual {v2}, Lcom/meizu/widget/LockDigitView;->resetPattern()V
 
-    .line 528
+    .line 535
     :goto_0
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->updatePasswordTextView()V
 
-    .line 530
+    .line 537
     :cond_0
     return-void
 
-    .line 521
+    .line 528
     :cond_1
     iget-object v1, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
 
-    .line 522
+    .line 529
     .local v1, numString:Ljava/lang/CharSequence;
     invoke-interface {v1}, Ljava/lang/CharSequence;->length()I
 
@@ -1239,7 +1303,7 @@
 
     move-result-object v0
 
-    .line 524
+    .line 531
     .local v0, newString:Ljava/lang/CharSequence;
     invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
@@ -1247,14 +1311,14 @@
 
     iput-object v2, p0, Lcom/meizu/widget/SystemLockView;->mPassword:Ljava/lang/String;
 
-    .line 525
+    .line 532
     iget v2, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
 
     add-int/lit8 v2, v2, -0x1
 
     iput v2, p0, Lcom/meizu/widget/SystemLockView;->mCellCount:I
 
-    .line 526
+    .line 533
     iget-object v2, p0, Lcom/meizu/widget/SystemLockView;->mKeyPad:Lcom/meizu/widget/LockDigitView;
 
     invoke-virtual {v2}, Lcom/meizu/widget/LockDigitView;->deleteLastCell()V
@@ -1266,15 +1330,15 @@
     .locals 1
 
     .prologue
-    .line 646
+    .line 653
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mLeftButton:Landroid/widget/Button;
 
     if-eqz v0, :cond_0
 
-    .line 647
+    .line 654
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mLeftButton:Landroid/widget/Button;
 
-    .line 649
+    .line 656
     :goto_0
     return-object v0
 
@@ -1288,15 +1352,15 @@
     .locals 1
 
     .prologue
-    .line 636
+    .line 643
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mRightButton:Landroid/widget/Button;
 
     if-eqz v0, :cond_0
 
-    .line 637
+    .line 644
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mRightButton:Landroid/widget/Button;
 
-    .line 639
+    .line 646
     :goto_0
     return-object v0
 
@@ -1310,7 +1374,7 @@
     .locals 1
 
     .prologue
-    .line 565
+    .line 572
     iget v0, p0, Lcom/meizu/widget/SystemLockView;->mBottomLayoutResId:I
 
     return v0
@@ -1320,7 +1384,7 @@
     .locals 1
 
     .prologue
-    .line 442
+    .line 449
     iget-boolean v0, p0, Lcom/meizu/widget/SystemLockView;->mInStealthMode:Z
 
     return v0
@@ -1330,7 +1394,7 @@
     .locals 1
 
     .prologue
-    .line 449
+    .line 456
     iget-boolean v0, p0, Lcom/meizu/widget/SystemLockView;->mEnableHapticFeedback:Z
 
     return v0
@@ -1343,59 +1407,59 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 333
+    .line 337
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButton:Landroid/widget/ImageView;
 
     if-ne p1, v0, :cond_3
 
-    .line 334
+    .line 338
     iget v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButtonStat:I
 
     if-nez v0, :cond_1
 
-    .line 335
+    .line 339
     invoke-virtual {p0, v1}, Lcom/meizu/widget/SystemLockView;->clearCell(Z)V
 
-    .line 346
+    .line 350
     :cond_0
     :goto_0
     return-void
 
-    .line 336
+    .line 340
     :cond_1
     iget v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButtonStat:I
 
     if-ne v0, v1, :cond_2
 
-    .line 337
+    .line 341
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->notifyInputTextButtonClick()V
 
     goto :goto_0
 
-    .line 339
+    .line 343
     :cond_2
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->notifyInputTextButtonClick()V
 
     goto :goto_0
 
-    .line 341
+    .line 345
     :cond_3
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mLeftButton:Landroid/widget/Button;
 
     if-ne p1, v0, :cond_4
 
-    .line 342
+    .line 346
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->notifyLeftButtonClick()V
 
     goto :goto_0
 
-    .line 343
+    .line 347
     :cond_4
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mRightButton:Landroid/widget/Button;
 
     if-ne p1, v0, :cond_0
 
-    .line 344
+    .line 348
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->notifyRightButtonClick()V
 
     goto :goto_0
@@ -1408,41 +1472,41 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 316
+    .line 320
     iget-object v1, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButton:Landroid/widget/ImageView;
 
     if-ne p1, v1, :cond_2
 
-    .line 317
+    .line 321
     iget v1, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButtonStat:I
 
     if-nez v1, :cond_0
 
-    .line 318
+    .line 322
     invoke-virtual {p0, v0}, Lcom/meizu/widget/SystemLockView;->clearCell(Z)V
 
-    .line 328
+    .line 332
     :goto_0
     return v0
 
-    .line 320
+    .line 324
     :cond_0
     iget v1, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButtonStat:I
 
     if-ne v1, v0, :cond_1
 
-    .line 321
-    invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->notifyInputTextButtonClick()V
-
-    goto :goto_0
-
-    .line 324
-    :cond_1
+    .line 325
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->notifyInputTextButtonClick()V
 
     goto :goto_0
 
     .line 328
+    :cond_1
+    invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->notifyInputTextButtonClick()V
+
+    goto :goto_0
+
+    .line 332
     :cond_2
     const/4 v0, 0x0
 
@@ -1454,13 +1518,13 @@
     .parameter "hasWindowFocus"
 
     .prologue
-    .line 350
+    .line 354
     invoke-super {p0, p1}, Landroid/widget/LinearLayout;->onWindowFocusChanged(Z)V
 
-    .line 351
+    .line 355
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->updatePasswordTextView()V
 
-    .line 352
+    .line 356
     return-void
 .end method
 
@@ -1469,13 +1533,13 @@
     .parameter "mode"
 
     .prologue
-    .line 701
+    .line 708
     iput p1, p0, Lcom/meizu/widget/SystemLockView;->mDispalyTextMode:I
 
-    .line 702
+    .line 709
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->updatePasswordTextView()V
 
-    .line 703
+    .line 710
     return-void
 .end method
 
@@ -1484,12 +1548,12 @@
     .parameter "visibility"
 
     .prologue
-    .line 408
+    .line 415
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mSpecial:Lcom/meizu/widget/LockPasswordView;
 
     invoke-virtual {v0, p1}, Lcom/meizu/widget/LockPasswordView;->setHollowVisible(Z)V
 
-    .line 409
+    .line 416
     return-void
 .end method
 
@@ -1498,10 +1562,10 @@
     .parameter "inStealthMode"
 
     .prologue
-    .line 459
+    .line 466
     iput-boolean p1, p0, Lcom/meizu/widget/SystemLockView;->mInStealthMode:Z
 
-    .line 460
+    .line 467
     return-void
 .end method
 
@@ -1510,8 +1574,8 @@
     .parameter "resId"
 
     .prologue
-    .line 656
-    const v1, 0x1020332
+    .line 663
+    const v1, 0x102032e
 
     invoke-virtual {p0, v1}, Lcom/meizu/widget/SystemLockView;->findViewById(I)Landroid/view/View;
 
@@ -1519,24 +1583,24 @@
 
     check-cast v0, Landroid/view/ViewGroup;
 
-    .line 657
+    .line 664
     .local v0, widgetFrame:Landroid/view/ViewGroup;
     if-eqz v0, :cond_0
 
-    .line 658
+    .line 665
     if-nez p1, :cond_1
 
-    .line 659
+    .line 666
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 665
+    .line 672
     :cond_0
     :goto_0
     return-void
 
-    .line 661
+    .line 668
     :cond_1
     invoke-virtual {v0, p1}, Landroid/view/ViewGroup;->setBackgroundResource(I)V
 
@@ -1551,15 +1615,15 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 671
+    .line 678
     if-nez p1, :cond_0
 
-    .line 672
+    .line 679
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButtonStat:I
 
-    .line 673
+    .line 680
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButton:Landroid/widget/ImageView;
 
     invoke-virtual {p0}, Lcom/meizu/widget/SystemLockView;->getContext()Landroid/content/Context;
@@ -1578,18 +1642,18 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 683
+    .line 690
     :goto_0
     return-void
 
-    .line 675
+    .line 682
     :cond_0
     if-ne p1, v0, :cond_1
 
-    .line 676
+    .line 683
     iput v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButtonStat:I
 
-    .line 677
+    .line 684
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButton:Landroid/widget/ImageView;
 
     invoke-virtual {p0}, Lcom/meizu/widget/SystemLockView;->getContext()Landroid/content/Context;
@@ -1610,13 +1674,13 @@
 
     goto :goto_0
 
-    .line 680
+    .line 687
     :cond_1
     const/4 v0, 0x2
 
     iput v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButtonStat:I
 
-    .line 681
+    .line 688
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButton:Landroid/widget/ImageView;
 
     invoke-virtual {v0, p2}, Landroid/widget/ImageView;->setBackgroundResource(I)V
@@ -1629,24 +1693,24 @@
     .parameter "visibility"
 
     .prologue
-    .line 689
+    .line 696
     if-eqz p1, :cond_0
 
-    .line 690
+    .line 697
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButton:Landroid/widget/ImageView;
 
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
 
-    .line 694
+    .line 701
     :goto_0
     iput-boolean p1, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButtonVisible:Z
 
-    .line 695
+    .line 702
     return-void
 
-    .line 692
+    .line 699
     :cond_0
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mInputTextButton:Landroid/widget/ImageView;
 
@@ -1667,10 +1731,10 @@
 
     const/4 v2, 0x0
 
-    .line 429
+    .line 436
     if-eqz p1, :cond_0
 
-    .line 430
+    .line 437
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mKeyPad:Lcom/meizu/widget/LockDigitView;
 
     const-string v3, ""
@@ -1687,11 +1751,11 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/meizu/widget/LockDigitView;->setCellInfo(IILjava/lang/String;Landroid/graphics/drawable/Drawable;Z)V
 
-    .line 436
+    .line 443
     :goto_0
     return-void
 
-    .line 433
+    .line 440
     :cond_0
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mKeyPad:Lcom/meizu/widget/LockDigitView;
 
@@ -1717,12 +1781,12 @@
     .parameter "resid"
 
     .prologue
-    .line 593
+    .line 600
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mKeyPad:Lcom/meizu/widget/LockDigitView;
 
     invoke-virtual {v0, p1}, Lcom/meizu/widget/LockDigitView;->setBackgroundResource(I)V
 
-    .line 594
+    .line 601
     return-void
 .end method
 
@@ -1736,10 +1800,10 @@
 
     const/4 v2, 0x2
 
-    .line 416
+    .line 423
     if-eqz p1, :cond_0
 
-    .line 417
+    .line 424
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mKeyPad:Lcom/meizu/widget/LockDigitView;
 
     const-string v3, ""
@@ -1756,11 +1820,11 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/meizu/widget/LockDigitView;->setCellInfo(IILjava/lang/String;Landroid/graphics/drawable/Drawable;Z)V
 
-    .line 423
+    .line 430
     :goto_0
     return-void
 
-    .line 420
+    .line 427
     :cond_0
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mKeyPad:Lcom/meizu/widget/LockDigitView;
 
@@ -1786,17 +1850,17 @@
     .parameter "resid"
 
     .prologue
-    .line 600
+    .line 607
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mLeftButton:Landroid/widget/Button;
 
     if-eqz v0, :cond_0
 
-    .line 601
+    .line 608
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mLeftButton:Landroid/widget/Button;
 
     invoke-virtual {v0, p1}, Landroid/widget/Button;->setText(I)V
 
-    .line 603
+    .line 610
     :cond_0
     return-void
 .end method
@@ -1806,17 +1870,17 @@
     .parameter "text"
 
     .prologue
-    .line 609
+    .line 616
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mLeftButton:Landroid/widget/Button;
 
     if-eqz v0, :cond_0
 
-    .line 610
+    .line 617
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mLeftButton:Landroid/widget/Button;
 
     invoke-virtual {v0, p1}, Landroid/widget/Button;->setText(Ljava/lang/CharSequence;)V
 
-    .line 612
+    .line 619
     :cond_0
     return-void
 .end method
@@ -1826,7 +1890,7 @@
     .parameter "len"
 
     .prologue
-    .line 484
+    .line 491
     const/16 v0, 0x8
 
     invoke-static {p1, v0}, Ljava/lang/Math;->min(II)I
@@ -1835,17 +1899,17 @@
 
     iput v0, p0, Lcom/meizu/widget/SystemLockView;->mMaxCellLength:I
 
-    .line 485
+    .line 492
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mSpecial:Lcom/meizu/widget/LockPasswordView;
 
     iget v1, p0, Lcom/meizu/widget/SystemLockView;->mMaxCellLength:I
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/LockPasswordView;->setMaxNum(I)V
 
-    .line 486
+    .line 493
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->updatePasswordTextView()V
 
-    .line 487
+    .line 494
     return-void
 .end method
 
@@ -1854,12 +1918,12 @@
     .parameter "resid"
 
     .prologue
-    .line 586
+    .line 593
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mRoot:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, p1}, Landroid/widget/RelativeLayout;->setBackgroundResource(I)V
 
-    .line 587
+    .line 594
     return-void
 .end method
 
@@ -1868,10 +1932,10 @@
     .parameter "listener"
 
     .prologue
-    .line 536
+    .line 543
     iput-object p1, p0, Lcom/meizu/widget/SystemLockView;->mPanelListener:Lcom/meizu/widget/SystemLockView$OnPanelListener;
 
-    .line 537
+    .line 544
     return-void
 .end method
 
@@ -1880,12 +1944,12 @@
     .parameter "color"
 
     .prologue
-    .line 543
+    .line 550
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPasswordTextView:Landroid/widget/TextView;
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 544
+    .line 551
     return-void
 .end method
 
@@ -1894,12 +1958,12 @@
     .parameter "colors"
 
     .prologue
-    .line 550
+    .line 557
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mPasswordTextView:Landroid/widget/TextView;
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setTextColor(Landroid/content/res/ColorStateList;)V
 
-    .line 551
+    .line 558
     return-void
 .end method
 
@@ -1908,17 +1972,17 @@
     .parameter "resid"
 
     .prologue
-    .line 618
+    .line 625
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mRightButton:Landroid/widget/Button;
 
     if-eqz v0, :cond_0
 
-    .line 619
+    .line 626
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mRightButton:Landroid/widget/Button;
 
     invoke-virtual {v0, p1}, Landroid/widget/Button;->setText(I)V
 
-    .line 621
+    .line 628
     :cond_0
     return-void
 .end method
@@ -1928,17 +1992,17 @@
     .parameter "text"
 
     .prologue
-    .line 627
+    .line 634
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mRightButton:Landroid/widget/Button;
 
     if-eqz v0, :cond_0
 
-    .line 628
+    .line 635
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mRightButton:Landroid/widget/Button;
 
     invoke-virtual {v0, p1}, Landroid/widget/Button;->setText(Ljava/lang/CharSequence;)V
 
-    .line 630
+    .line 637
     :cond_0
     return-void
 .end method
@@ -1948,10 +2012,10 @@
     .parameter "tactileFeedbackEnabled"
 
     .prologue
-    .line 469
+    .line 476
     iput-boolean p1, p0, Lcom/meizu/widget/SystemLockView;->mEnableHapticFeedback:Z
 
-    .line 470
+    .line 477
     return-void
 .end method
 
@@ -1960,15 +2024,15 @@
     .parameter "tip"
 
     .prologue
-    .line 476
+    .line 483
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->mTipTextView:Landroid/widget/TextView;
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 477
+    .line 484
     invoke-virtual {p0}, Lcom/meizu/widget/SystemLockView;->invalidate()V
 
-    .line 478
+    .line 485
     return-void
 .end method
 
@@ -1978,10 +2042,10 @@
     .parameter "playAnimation"
 
     .prologue
-    .line 710
+    .line 717
     if-eqz p1, :cond_1
 
-    .line 711
+    .line 718
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->topDisplayGroup:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0}, Landroid/widget/LinearLayout;->getVisibility()I
@@ -1990,29 +2054,29 @@
 
     if-eqz v0, :cond_0
 
-    .line 712
+    .line 719
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->topDisplayGroup:Landroid/widget/LinearLayout;
 
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 713
+    .line 720
     if-eqz p2, :cond_0
 
-    .line 714
+    .line 721
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->topDisplayGroup:Landroid/widget/LinearLayout;
 
     iget-object v1, p0, Lcom/meizu/widget/SystemLockView;->mAppear:Landroid/view/animation/Animation;
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->startAnimation(Landroid/view/animation/Animation;)V
 
-    .line 725
+    .line 732
     :cond_0
     :goto_0
     return-void
 
-    .line 718
+    .line 725
     :cond_1
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->topDisplayGroup:Landroid/widget/LinearLayout;
 
@@ -2022,17 +2086,17 @@
 
     if-nez v0, :cond_0
 
-    .line 719
+    .line 726
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->topDisplayGroup:Landroid/widget/LinearLayout;
 
     const/4 v1, 0x4
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 720
+    .line 727
     if-eqz p2, :cond_0
 
-    .line 721
+    .line 728
     iget-object v0, p0, Lcom/meizu/widget/SystemLockView;->topDisplayGroup:Landroid/widget/LinearLayout;
 
     iget-object v1, p0, Lcom/meizu/widget/SystemLockView;->mDisappear:Landroid/view/animation/Animation;
@@ -2047,13 +2111,13 @@
     .parameter "layoutResId"
 
     .prologue
-    .line 557
+    .line 564
     iput p1, p0, Lcom/meizu/widget/SystemLockView;->mBottomLayoutResId:I
 
-    .line 558
+    .line 565
     invoke-direct {p0}, Lcom/meizu/widget/SystemLockView;->updateWidgetLayout()V
 
-    .line 559
+    .line 566
     return-void
 .end method
 
@@ -2062,8 +2126,8 @@
     .parameter "visibility"
 
     .prologue
-    .line 572
-    const v1, 0x1020356
+    .line 579
+    const v1, 0x1020352
 
     invoke-virtual {p0, v1}, Lcom/meizu/widget/SystemLockView;->findViewById(I)Landroid/view/View;
 
@@ -2071,24 +2135,24 @@
 
     check-cast v0, Landroid/view/ViewGroup;
 
-    .line 573
+    .line 580
     .local v0, widgetFrame:Landroid/view/ViewGroup;
     if-eqz v0, :cond_0
 
-    .line 574
+    .line 581
     if-eqz p1, :cond_1
 
-    .line 575
+    .line 582
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->setVisibility(I)V
 
-    .line 580
+    .line 587
     :cond_0
     :goto_0
     return-void
 
-    .line 577
+    .line 584
     :cond_1
     const/16 v1, 0x8
 

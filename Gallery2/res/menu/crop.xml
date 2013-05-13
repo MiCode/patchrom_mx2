@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
   xmlns:android="http://schemas.android.com/apk/prv/res/android">
-    <item android:icon="@android:drawable/ic_tab_done_mz" android:id="@id/action_crop_save" android:title="@string/save_str" android:showAsAction="ifRoom|withTextAlways" android:showGravity="right" />
+    <item android:icon="@android:drawable/ic_tab_done_mz" android:id="@id/action_crop_save" android:title="@string/save" android:showAsAction="ifRoom|withTextAlways" android:showGravity="right" />
 </menu>

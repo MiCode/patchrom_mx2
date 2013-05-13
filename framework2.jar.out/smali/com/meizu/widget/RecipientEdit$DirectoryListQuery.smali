@@ -41,12 +41,12 @@
     .locals 3
 
     .prologue
-    .line 3049
+    .line 3080
     sget-object v0, Landroid/provider/ContactsContract$Directory;->CONTENT_URI:Landroid/net/Uri;
 
     sput-object v0, Lcom/meizu/widget/RecipientEdit$DirectoryListQuery;->URI:Landroid/net/Uri;
 
-    .line 3054
+    .line 3085
     const/4 v0, 0x7
 
     new-array v0, v0, [Ljava/lang/String;
@@ -102,7 +102,7 @@
     .locals 0
 
     .prologue
-    .line 3048
+    .line 3079
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void

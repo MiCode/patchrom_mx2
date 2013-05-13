@@ -192,6 +192,7 @@
     <string name="numeric_date_format_dmy">EEE, d/M/yyyy</string>
     <string name="numeric_date_format_dym">EEE, d/yyyy/M</string>
     <string name="numeric_month_day" formatted="false">%-m/%-e</string>
+    <string name="calendar_day_of_week">EEE</string>
     <string name="common_name_prefixes" />
     <string name="common_name_suffixes" />
     <string name="common_last_name_prefixes" />
@@ -1049,6 +1050,7 @@ Touch OK to continue, or Cancel to stay on the current page."</string>
     <string name="weeks">weeks</string>
     <string name="year">year</string>
     <string name="years">years</string>
+    <string name="VideoView_connect_fail">Network connect fail !</string>
     <string name="relative_time">%1$s, %2$s</string>
     <string name="noon">noon</string>
     <string name="Noon">Noon</string>
@@ -1134,6 +1136,8 @@ Do you want to close it?"</string>
     <string name="ringtone_silent">Silent</string>
     <string name="ringtone_picker_title">Ringtones</string>
     <string name="ringtone_unknown">Unknown ringtone</string>
+    <string name="wifi_share_stop">Stop Wi-Fi document sharing</string>
+    <string name="wifi_share_start">Enabled Wi-Fi document sharing</string>
     <string name="wifi_available_sign_in">Sign into Wi-Fi network</string>
     <string name="wifi_available_sign_in_detailed">%1$s</string>
     <string name="wifi_watchdog_network_disabled">"Couldn't connect to Wi-Fi"</string>
@@ -1215,7 +1219,7 @@ Do you want to close it?"</string>
     <string name="ext_media_checking_notification_message">Checking for errors.</string>
     <string name="ext_media_nofs_notification_title">Blank SD card</string>
     <string name="ext_media_nofs_notification_message">SD card is blank or has unsupported filesystem.</string>
-    <string name="ext_media_unmountable_notification_title">Damaged USB storage</string>
+    <string name="ext_media_unmountable_notification_title">USB storage is damaged</string>
     <string name="ext_media_unmountable_notification_message">SD card is damaged. Try reformatting it.</string>
     <string name="ext_media_badremoval_notification_title">SD card unexpectedly removed</string>
     <string name="ext_media_badremoval_notification_message">Unmount SD card before removing to avoid data loss.</string>
@@ -1395,6 +1399,7 @@ for account %s."</string>
     <string name="default_audio_route_name_hdmi">HDMI audio</string>
     <string name="default_audio_route_category_name">System</string>
     <string name="bluetooth_a2dp_audio_route_name">Bluetooth audio</string>
+    <string name="askOpenBluetoothVisibility">Make Bluetooth can be found</string>
     <string name="media_route_chooser_grouping_done">Done</string>
     <string name="lock_tips_dialing">Dialing</string>
     <string name="calling">Call in progress</string>
@@ -1421,11 +1426,15 @@ for account %s."</string>
     <string name="activity_not_found">Application not found</string>
     <string name="emergency_call">emergency call</string>
     <string name="dial_emergency_error">Call not sent. %s is not an emergency number!</string>
+    <string name="loading_music_info">loading music information…</string>
     <string name="global_action_power_restart">Restart</string>
     <string name="recipient_hint_str">Recipient:</string>
     <string name="recipient_total_str">%d people</string>
     <string name="recipient_edit_imeActionLabel">OK</string>
     <string name="recipient_global_searching">Searching for global contacts...</string>
+    <string name="title_message">Message</string>
+    <string name="title_email">Email</string>
+    <string name="title_recipient">Recipient</string>
     <string name="select">Select</string>
     <string name="copyAll">Copy all</string>
     <string name="enable">Enable</string>
@@ -1457,4 +1466,7 @@ for account %s."</string>
     <string name="launcher_choose_hint">Setting/Customize set the default Launcher</string>
     <string name="chooseDefLauncher">choose default Launcher</string>
     <string name="external_storage_device_name">Devie%s</string>
+    <string name="permdesc_backupAccounts">Allows an application to backup or restore system accounts</string>
+    <string name="permlab_backupAccounts">Backup or restore system accounts</string>
+    <string name="update_battery_low">The battery is low,unable to update</string>
 </resources>

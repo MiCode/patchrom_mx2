@@ -153,7 +153,7 @@
     .line 65
     iget-object v2, p0, Lcom/android/camera/SubMenuAdapter;->mInflater:Landroid/view/LayoutInflater;
 
-    const v3, 0x7f040079
+    const v3, 0x7f04007e
 
     invoke-virtual {v2, v3, v4}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
@@ -171,7 +171,7 @@
 
     .line 68
     .local v0, ct:Landroid/widget/CheckedTextView;
-    const v2, 0x7f0d00a4
+    const v2, 0x7f0d00a9
 
     invoke-virtual {p2, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -219,7 +219,7 @@
 
     .line 72
     :cond_1
-    const v2, 0x7f02011f
+    const v2, 0x7f020118
 
     invoke-virtual {v1, v2}, Landroid/view/View;->setBackgroundResource(I)V
 

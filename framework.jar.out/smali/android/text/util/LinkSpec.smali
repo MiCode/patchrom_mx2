@@ -1,4 +1,4 @@
-.class public Landroid/text/util/LinkSpec;
+.class Landroid/text/util/LinkSpec;
 .super Ljava/lang/Object;
 .source "Linkify.java"
 

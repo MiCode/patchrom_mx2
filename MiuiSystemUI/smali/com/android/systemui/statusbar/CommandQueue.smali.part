@@ -22,3 +22,21 @@
     .prologue
     return-void
 .end method
+
+.method public requestStatusBarShot(Landroid/os/ParcelFileDescriptor;ILandroid/app/IUnlockScreenShotReceiver;)V
+    .locals 0
+    .parameter "fd"
+    .parameter "type"
+    .parameter "receiver"
+
+    .prologue
+    return-void
+.end method
+
+.method public updateKeyguardStatusBar(Z)V
+    .locals 0
+    .parameter "isKeyguardShow"
+
+    .prologue
+    return-void
+.end method

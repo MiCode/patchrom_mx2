@@ -35,7 +35,7 @@
     .line 41
     new-instance v0, Lcom/android/gallery3d/ui/NinePatchTexture;
 
-    const v1, 0x7f020178
+    const v1, 0x7f020173
 
     invoke-direct {v0, p1, v1}, Lcom/android/gallery3d/ui/NinePatchTexture;-><init>(Landroid/content/Context;I)V
 

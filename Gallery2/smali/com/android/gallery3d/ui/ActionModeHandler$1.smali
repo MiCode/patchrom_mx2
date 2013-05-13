@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 162
+    .line 165
     iput-object p1, p0, Lcom/android/gallery3d/ui/ActionModeHandler$1;->this$0:Lcom/android/gallery3d/ui/ActionModeHandler;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,7 +42,7 @@
     .parameter "confirmed"
 
     .prologue
-    .line 166
+    .line 169
     return-void
 .end method
 
@@ -50,7 +50,7 @@
     .locals 0
 
     .prologue
-    .line 164
+    .line 167
     return-void
 .end method
 
@@ -59,7 +59,7 @@
     .parameter "result"
 
     .prologue
-    .line 171
+    .line 174
     iget-object v0, p0, Lcom/android/gallery3d/ui/ActionModeHandler$1;->this$0:Lcom/android/gallery3d/ui/ActionModeHandler;
 
     #getter for: Lcom/android/gallery3d/ui/ActionModeHandler;->mSelectionManager:Lcom/android/gallery3d/ui/SelectionManager;
@@ -71,7 +71,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/ui/SelectionManager;->setDragItemPath(Lcom/android/gallery3d/data/Path;)V
 
-    .line 172
+    .line 175
     return-void
 .end method
 
@@ -80,6 +80,6 @@
     .parameter "index"
 
     .prologue
-    .line 168
+    .line 171
     return-void
 .end method

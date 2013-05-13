@@ -264,26 +264,29 @@
     .parameter "args"
 
     .prologue
-    #const-string v0, "1"
+    .line 649
+    const-string v0, "1"
 
-    #const-string/jumbo v1, "ro.debuggable"
+    const-string/jumbo v1, "ro.debuggable"
 
-    #invoke-static {v1}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v1}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
 
-    #move-result-object v1
+    move-result-object v1
 
-    #invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    #move-result v0
+    move-result v0
 
     #if-eqz v0, :cond_0
 
+    .line 650
     iget v0, p0, Lcom/android/internal/os/ZygoteConnection$Arguments;->debugFlags:I
 
     or-int/lit8 v0, v0, 0x1
 
     iput v0, p0, Lcom/android/internal/os/ZygoteConnection$Arguments;->debugFlags:I
 
+    .line 652
     :cond_0
     return-void
 .end method

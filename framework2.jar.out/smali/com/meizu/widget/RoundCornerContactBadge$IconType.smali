@@ -68,7 +68,7 @@
 
     const/4 v4, 0x0
 
-    .line 163
+    .line 157
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     const-string v1, "IC_NULL"
@@ -77,7 +77,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_NULL:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
-    .line 164
+    .line 158
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     const-string v1, "IC_CALL_LOG_CALLOUT"
@@ -86,7 +86,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_CALLOUT:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
-    .line 165
+    .line 159
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     const-string v1, "IC_CALL_LOG_CALLIN"
@@ -95,7 +95,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_CALLIN:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
-    .line 166
+    .line 160
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     const-string v1, "IC_CALL_LOG_MISSED"
@@ -104,7 +104,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_MISSED:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
-    .line 167
+    .line 161
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     const-string v1, "IC_CALL_LOG_REFUSED"
@@ -113,7 +113,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_REFUSED:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
-    .line 168
+    .line 162
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     const-string v1, "IC_CALL_LOG_RINGONCE"
@@ -126,7 +126,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_RINGONCE:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
-    .line 169
+    .line 163
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     const-string v1, "IC_CALL_LOG_RECORD"
@@ -139,7 +139,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_RECORD:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
-    .line 170
+    .line 164
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     const-string v1, "IC_CALL_LOG_RECORD_FAIL"
@@ -152,7 +152,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_RECORD_FAIL:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
-    .line 171
+    .line 165
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     const-string v1, "IC_CALL_LOG_VOICEMAIL"
@@ -165,7 +165,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_VOICEMAIL:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
-    .line 172
+    .line 166
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     const-string v1, "IC_SMS_HAS_UNREAD"
@@ -178,7 +178,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_SMS_HAS_UNREAD:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
-    .line 173
+    .line 167
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     const-string v1, "IC_SMS_HAS_NOTDELIVERED"
@@ -191,7 +191,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_SMS_HAS_NOTDELIVERED:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
-    .line 162
+    .line 156
     const/16 v0, 0xb
 
     new-array v0, v0, [Lcom/meizu/widget/RoundCornerContactBadge$IconType;
@@ -269,13 +269,13 @@
     .end annotation
 
     .prologue
-    .line 175
+    .line 169
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
-    .line 176
+    .line 170
     iput p3, p0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->iconTypeInt:I
 
-    .line 177
+    .line 171
     return-void
 .end method
 
@@ -284,7 +284,7 @@
     .parameter "name"
 
     .prologue
-    .line 162
+    .line 156
     const-class v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -300,7 +300,7 @@
     .locals 1
 
     .prologue
-    .line 162
+    .line 156
     sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->$VALUES:[Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     invoke-virtual {v0}, [Lcom/meizu/widget/RoundCornerContactBadge$IconType;->clone()Ljava/lang/Object;

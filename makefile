@@ -1,4 +1,4 @@
-#
+
 # Makefile for mx2
 #
 
@@ -9,10 +9,10 @@ local-zip-file := stockrom.zip
 local-out-zip-file := MIUI_mx2.zip
 
 #
-local-miui-modified-apps := MiuiSystemUI Phone Bluetooth Settings
+local-miui-modified-apps := MiuiSystemUI Phone Bluetooth Settings MiuiHome MiuiGallery Notes Mms
 
 # All apps from original ZIP, but has smali files chanded
-local-modified-apps := SettingsProvider Gallery2
+local-modified-apps := SettingsProvider Gallery2 ActionAssist
 
 # All apks from MIUI
 local-miui-removed-apps := SettingsProvider MediaProvider
@@ -60,6 +60,7 @@ out/framework2.jar : out/framework.jar
 	java -jar $(TOOL_DIR)/signapk.jar $(PORT_ROOT)/build/security/platform.x509.pem $(PORT_ROOT)/build/security/platform.pk8  $< $<.signed
 	@echo push -- to --- phone
 	adb remount
-	adb push $<.signed /system/app/$*
-	adb shell chmod 644 /system/app/$*
+	adb push $<.signed /data/local/tmp/$*
+	adb shell chmod 644 /data/local/tmp/$*
+	adb shell busybox mv -f /data/local/tmp/$* /system/app
 	

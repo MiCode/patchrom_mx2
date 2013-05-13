@@ -1,14 +1,11 @@
 .class Lcom/android/camera/VideoCamera$5;
-.super Ljava/lang/Object;
+.super Landroid/content/BroadcastReceiver;
 .source "VideoCamera.java"
-
-# interfaces
-.implements Ljava/lang/Runnable;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/camera/VideoCamera;->onCreate(Landroid/os/Bundle;)V
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/android/camera/VideoCamera;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,41 +24,130 @@
     .parameter
 
     .prologue
-    .line 682
+    .line 500
     iput-object p1, p0, Lcom/android/camera/VideoCamera$5;->this$0:Lcom/android/camera/VideoCamera;
 
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public run()V
-    .locals 2
+.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+    .locals 4
+    .parameter "context"
+    .parameter "intent"
 
     .prologue
-    .line 685
-    iget-object v0, p0, Lcom/android/camera/VideoCamera$5;->this$0:Lcom/android/camera/VideoCamera;
+    .line 503
+    invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
-    iget-object v0, v0, Lcom/android/camera/ActivityBase;->mCameraDevice:Lcom/android/camera/CameraManager$CameraProxy;
+    move-result-object v0
 
-    const/4 v1, 0x1
+    .line 504
+    .local v0, action:Ljava/lang/String;
+    const-string v2, "android.intent.action.SCREEN_OFF"
 
-    invoke-virtual {v0, v1}, Lcom/android/camera/CameraManager$CameraProxy;->setCameraMode(I)V
+    invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 686
-    iget-object v0, p0, Lcom/android/camera/VideoCamera$5;->this$0:Lcom/android/camera/VideoCamera;
+    move-result v2
 
-    #calls: Lcom/android/camera/VideoCamera;->readVideoPreferences()V
-    invoke-static {v0}, Lcom/android/camera/VideoCamera;->access$2900(Lcom/android/camera/VideoCamera;)V
+    if-eqz v2, :cond_3
 
-    .line 687
-    iget-object v0, p0, Lcom/android/camera/VideoCamera$5;->this$0:Lcom/android/camera/VideoCamera;
+    .line 505
+    iget-object v2, p0, Lcom/android/camera/VideoCamera$5;->this$0:Lcom/android/camera/VideoCamera;
 
-    #calls: Lcom/android/camera/VideoCamera;->startPreview()V
-    invoke-static {v0}, Lcom/android/camera/VideoCamera;->access$1100(Lcom/android/camera/VideoCamera;)V
+    #calls: Lcom/android/camera/VideoCamera;->isMeizuSystemCaptureIntent()Z
+    invoke-static {v2}, Lcom/android/camera/VideoCamera;->access$2600(Lcom/android/camera/VideoCamera;)Z
 
-    .line 688
+    move-result v2
+
+    if-nez v2, :cond_0
+
+    iget-object v2, p0, Lcom/android/camera/VideoCamera$5;->this$0:Lcom/android/camera/VideoCamera;
+
+    #getter for: Lcom/android/camera/VideoCamera;->mIsLockViewIntent:Z
+    invoke-static {v2}, Lcom/android/camera/VideoCamera;->access$2700(Lcom/android/camera/VideoCamera;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1
+
+    .line 507
+    :cond_0
+    iget-object v2, p0, Lcom/android/camera/VideoCamera$5;->this$0:Lcom/android/camera/VideoCamera;
+
+    invoke-virtual {v2}, Lcom/android/camera/VideoCamera;->getWindow()Landroid/view/Window;
+
+    move-result-object v1
+
+    .line 508
+    .local v1, win:Landroid/view/Window;
+    const/high16 v2, 0x8
+
+    invoke-virtual {v1, v2}, Landroid/view/Window;->clearFlags(I)V
+
+    .line 512
+    .end local v1           #win:Landroid/view/Window;
+    :cond_1
+    iget-object v2, p0, Lcom/android/camera/VideoCamera$5;->this$0:Lcom/android/camera/VideoCamera;
+
+    #getter for: Lcom/android/camera/VideoCamera;->mIsLockView:Z
+    invoke-static {v2}, Lcom/android/camera/VideoCamera;->access$2800(Lcom/android/camera/VideoCamera;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2
+
+    .line 513
+    iget-object v2, p0, Lcom/android/camera/VideoCamera$5;->this$0:Lcom/android/camera/VideoCamera;
+
+    invoke-virtual {v2}, Lcom/android/camera/VideoCamera;->finish()V
+
+    .line 515
+    :cond_2
+    iget-object v2, p0, Lcom/android/camera/VideoCamera$5;->this$0:Lcom/android/camera/VideoCamera;
+
+    #getter for: Lcom/android/camera/VideoCamera;->mIsGotoGallery:Z
+    invoke-static {v2}, Lcom/android/camera/VideoCamera;->access$1700(Lcom/android/camera/VideoCamera;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_3
+
+    iget-object v2, p0, Lcom/android/camera/VideoCamera$5;->this$0:Lcom/android/camera/VideoCamera;
+
+    iget-boolean v2, v2, Lcom/android/camera/ActivityBase;->mShowCameraAppView:Z
+
+    if-eqz v2, :cond_3
+
+    iget-object v2, p0, Lcom/android/camera/VideoCamera$5;->this$0:Lcom/android/camera/VideoCamera;
+
+    #getter for: Lcom/android/camera/VideoCamera;->mIsVideoCaptureIntent:Z
+    invoke-static {v2}, Lcom/android/camera/VideoCamera;->access$1800(Lcom/android/camera/VideoCamera;)Z
+
+    move-result v2
+
+    iget-object v3, p0, Lcom/android/camera/VideoCamera$5;->this$0:Lcom/android/camera/VideoCamera;
+
+    #getter for: Lcom/android/camera/VideoCamera;->mIsMeizuVideoIntent:Z
+    invoke-static {v3}, Lcom/android/camera/VideoCamera;->access$1900(Lcom/android/camera/VideoCamera;)Z
+
+    move-result v3
+
+    invoke-static {v2, v3}, Lcom/android/camera/Util;->isThirdPartyUseCamera(ZZ)Z
+
+    move-result v2
+
+    if-nez v2, :cond_3
+
+    .line 517
+    iget-object v2, p0, Lcom/android/camera/VideoCamera$5;->this$0:Lcom/android/camera/VideoCamera;
+
+    invoke-virtual {v2}, Lcom/android/camera/VideoCamera;->finish()V
+
+    .line 520
+    :cond_3
     return-void
 .end method

@@ -112,7 +112,7 @@ Only the three quirks included above are recognized at this point:
         <MediaCodec name="MP3Decoder" type="audio/mpeg-L1" />
         <MediaCodec name="MP3Decoder" type="audio/mpeg-L2" />
         <MediaCodec name="OMX.google.mp3.decoder" type="audio/mpeg" />
-        <MediaCodec name="OMX.google.amrnb.decoder" type="audio/amr" />
+        <MediaCodec name="OMX.google.amrnb.decoder" type="audio/3gpp" />
         <MediaCodec name="OMX.google.amrwb.decoder" type="audio/amr-wb" />
         <MediaCodec name="AACDecoder" type="audio/mp4a-latm" />
         <MediaCodec name="OMX.google.aac.decoder" type="audio/mp4a-latm" />
@@ -148,7 +148,7 @@ Only the three quirks included above are recognized at this point:
         <MediaCodec name="OMX.SEC.H263.Encoder" type="video/3gpp" />
         <MediaCodec name="AVCEncoder" type="video/avc" />
 
-        <MediaCodec name="OMX.google.amrnb.encoder" type="audio/amr" />
+        <MediaCodec name="OMX.google.amrnb.encoder" type="audio/3gpp" />
         <MediaCodec name="OMX.google.amrwb.encoder" type="audio/amr-wb" />
         <MediaCodec name="AACEncoder" type="audio/mp4a-latm" />
         <MediaCodec name="OMX.google.flac.encoder" type="audio/flac" />

@@ -18,16 +18,10 @@
 .method public abstract finishLoading()V
 .end method
 
-.method public abstract getSelectListShow()Z
+.method public abstract getShowingFlag()Z
 .end method
 
 .method public abstract getView()Landroid/view/View;
-.end method
-
-.method public abstract hideDlnaButton()V
-.end method
-
-.method public abstract hideSelectList(Z)V
 .end method
 
 .method public abstract initPreNextVideo()V
@@ -66,10 +60,13 @@
 .method public abstract setDlnaVideoState(I)V
 .end method
 
-.method public abstract setDlnaVolumeProgress(F)V
+.method public abstract setDlnaVolumeProgress(FZ)V
 .end method
 
 .method public abstract setIsDlnaMode(Z)V
+.end method
+
+.method public abstract setIsSilentMode(Z)V
 .end method
 
 .method public abstract setKeyVolumChange(Z)V
@@ -99,13 +96,13 @@
 .method public abstract setVideoTitle()V
 .end method
 
-.method public abstract showDlnaButton()V
-.end method
-
 .method public abstract showErrorMessage(Ljava/lang/String;)V
 .end method
 
 .method public abstract showLoading()V
+.end method
+
+.method public abstract showM03XPopMenu()V
 .end method
 
 .method public abstract showPaused()V
@@ -114,14 +111,5 @@
 .method public abstract showPlaying()V
 .end method
 
-.method public abstract updateSelectList(Ljava/util/ArrayList;)V
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Ljava/util/ArrayList",
-            "<",
-            "Ljava/lang/String;",
-            ">;)V"
-        }
-    .end annotation
+.method public abstract systemSensorSettingChange()V
 .end method

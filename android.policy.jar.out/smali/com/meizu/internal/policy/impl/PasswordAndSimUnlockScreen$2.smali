@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 155
+    .line 149
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$2;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,19 +42,19 @@
     .parameter "v"
 
     .prologue
-    .line 170
+    .line 164
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$2;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     #calls: Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->clearInput()V
     invoke-static {v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->access$100(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)V
 
-    .line 171
+    .line 165
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$2;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v0}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->pokeWakelock()V
 
-    .line 172
+    .line 166
     return-void
 .end method

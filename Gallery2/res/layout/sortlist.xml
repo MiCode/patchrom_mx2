@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true">
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/channeldetal_orderlist_item1" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="fill_parent">
-            <TextView android:textSize="@dimen/channeldetail_tab_title_size" android:textColor="@color/channeldetail_tab_title_color" android:gravity="center" android:id="@id/channeldetal_orderlist_text1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <ImageView android:id="@id/channeldetal_orderlist_image1" android:background="@drawable/view_pager_scroll" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="5.0dip" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/channeldetal_orderlist_item2" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="fill_parent">
-            <TextView android:textSize="@dimen/channeldetail_tab_title_size" android:textColor="@color/channeldetail_tab_title_color" android:gravity="center" android:id="@id/channeldetal_orderlist_text2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <ImageView android:id="@id/channeldetal_orderlist_image2" android:background="@drawable/view_pager_scroll" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="5.0dip" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/channeldetal_orderlist_item3" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="fill_parent">
-            <TextView android:textSize="@dimen/channeldetail_tab_title_size" android:textColor="@color/channeldetail_tab_title_color" android:gravity="center" android:id="@id/channeldetal_orderlist_text3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <ImageView android:id="@id/channeldetal_orderlist_image3" android:background="@drawable/view_pager_scroll" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="5.0dip" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="left|center" android:id="@id/up" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="?android:homeAsUpIndicator" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/channeldetail_tab_content" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/channeldetal_orderlist_item1" android:visibility="gone" android:layout_width="@dimen/channeldetail_tabItemWidth" android:layout_height="fill_parent" android:layout_marginRight="@dimen/channeldetail_tabItemRightMarginNum">
+                <TextView android:textSize="@dimen/channeldetail_tab_title_size" android:textColor="@color/channeldetail_tab_title_color" android:gravity="center" android:id="@id/channeldetal_orderlist_text1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ImageView android:id="@id/channeldetal_orderlist_image1" android:background="@drawable/view_pager_scroll" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/channeldetail_tabItemScrollImageHeight" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/channeldetal_orderlist_item2" android:visibility="gone" android:layout_width="@dimen/channeldetail_tabItemWidth" android:layout_height="fill_parent" android:layout_marginRight="@dimen/channeldetail_tabItemRightMarginNum">
+                <TextView android:textSize="@dimen/channeldetail_tab_title_size" android:textColor="@color/channeldetail_tab_title_color" android:gravity="center" android:id="@id/channeldetal_orderlist_text2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ImageView android:id="@id/channeldetal_orderlist_image2" android:background="@drawable/view_pager_scroll" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/channeldetail_tabItemScrollImageHeight" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/channeldetal_orderlist_item3" android:visibility="gone" android:layout_width="@dimen/channeldetail_tabItemWidth" android:layout_height="fill_parent" android:layout_marginRight="@dimen/channeldetail_tabItemRightMarginNum">
+                <TextView android:textSize="@dimen/channeldetail_tab_title_size" android:textColor="@color/channeldetail_tab_title_color" android:gravity="center" android:id="@id/channeldetal_orderlist_text3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ImageView android:id="@id/channeldetal_orderlist_image3" android:background="@drawable/view_pager_scroll" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/channeldetail_tabItemScrollImageHeight" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

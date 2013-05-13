@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 5904
+    .line 6095
     iput-object p1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$31;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -35,18 +35,22 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 2
+    .locals 3
     .parameter "context"
     .parameter "intent"
 
     .prologue
-    .line 5908
+    .line 6098
     iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$31;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
-    const/4 v1, 0x1
+    iget-object v0, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mPowerManager:Landroid/os/LocalPowerManager;
 
-    iput-boolean v1, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mIsShutDowning:Z
+    invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
-    .line 5910
+    move-result-wide v1
+
+    invoke-interface {v0, v1, v2}, Landroid/os/LocalPowerManager;->goToSleep(J)V
+
+    .line 6099
     return-void
 .end method

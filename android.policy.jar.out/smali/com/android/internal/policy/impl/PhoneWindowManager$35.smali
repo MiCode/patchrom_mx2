@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 6119
+    .line 6238
     iput-object p1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$35;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,49 +38,55 @@
 
 # virtual methods
 .method public run()V
-    .locals 6
+    .locals 4
 
     .prologue
-    const/4 v5, 0x1
+    const/4 v3, 0x0
 
-    .line 6122
-    new-instance v1, Landroid/graphics/Point;
+    .line 6243
+    invoke-static {}, Landroid/app/ActivityManagerNative;->isSystemReady()Z
 
-    invoke-direct {v1}, Landroid/graphics/Point;-><init>()V
+    move-result v1
 
-    .line 6123
-    .local v1, point:Landroid/graphics/Point;
-    iget-object v3, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$35;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
+    if-eqz v1, :cond_2
 
-    iget-object v3, v3, Lcom/android/internal/policy/impl/PhoneWindowManager;->mDisplay:Landroid/view/Display;
+    .line 6244
+    new-instance v0, Landroid/content/Intent;
 
-    invoke-virtual {v3, v1}, Landroid/view/Display;->getSize(Landroid/graphics/Point;)V
+    const-string v1, "meizu.intent.double_home_key"
 
-    .line 6124
-    iget v2, v1, Landroid/graphics/Point;->x:I
+    invoke-direct {v0, v1, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
 
-    .line 6125
-    .local v2, width:I
-    iget v0, v1, Landroid/graphics/Point;->y:I
+    .line 6245
+    .local v0, intent:Landroid/content/Intent;
+    sget-boolean v1, Lcom/android/internal/policy/impl/PhoneWindowManager;->sHasPermanentKey:Z
 
-    .line 6126
-    .local v0, height:I
-    if-ge v2, v0, :cond_0
+    if-nez v1, :cond_0
 
-    .line 6127
-    iget-object v3, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$35;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
+    iget-object v1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$35;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
-    invoke-virtual {v3}, Lcom/android/internal/policy/impl/PhoneWindowManager;->keyguardOn()Z
+    iget-boolean v1, v1, Lcom/android/internal/policy/impl/PhoneWindowManager;->mIsSystemAlert:Z
 
-    move-result v0
+    if-eqz v1, :cond_1
 
-    if-nez v0, :cond_0
-
-    #setter for: Lcom/android/internal/policy/impl/PhoneWindowManager;->mScreenDimByHome:Z
-    invoke-static {v3, v5}, Lcom/android/internal/policy/impl/PhoneWindowManager;->access$902(Lcom/android/internal/policy/impl/PhoneWindowManager;Z)Z
-
-    invoke-virtual {v3}, Lcom/android/internal/policy/impl/PhoneWindowManager;->toggleRecentApps()V
-
+    .line 6246
     :cond_0
+    const-string v1, "meizu_double_click_flag"
+
+    const-string v2, "com.meizu.recent.app"
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 6248
+    :cond_1
+    iget-object v1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$35;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
+
+    iget-object v1, v1, Lcom/android/internal/policy/impl/PhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v1, v0, v3}, Landroid/content/Context;->sendOrderedBroadcast(Landroid/content/Intent;Ljava/lang/String;)V
+
+    .line 6251
+    .end local v0           #intent:Landroid/content/Intent;
+    :cond_2
     return-void
 .end method

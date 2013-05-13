@@ -70,6 +70,8 @@
 
 .field final mTimeoutPeriod:J
 
+.field receiverPermission:Lcom/android/server/am/ReceiverPermission;
+
 
 # direct methods
 .method constructor <init>(Lcom/android/server/am/ActivityManagerService;Ljava/lang/String;J)V
@@ -79,57 +81,64 @@
     .parameter "timeoutPeriod"
 
     .prologue
-    .line 155
+    .line 160
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 74
+    .line 79
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mParallelBroadcasts:Ljava/util/ArrayList;
 
-    .line 83
+    .line 88
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mOrderedBroadcasts:Ljava/util/ArrayList;
 
-    .line 89
+    .line 94
     const/16 v0, 0x19
 
     new-array v0, v0, [Lcom/android/server/am/BroadcastRecord;
 
     iput-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mBroadcastHistory:[Lcom/android/server/am/BroadcastRecord;
 
-    .line 95
+    .line 100
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/server/am/BroadcastQueue;->mBroadcastsScheduled:Z
 
-    .line 109
+    .line 114
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcast:Lcom/android/server/am/BroadcastRecord;
 
-    .line 119
+    .line 124
     new-instance v0, Lcom/android/server/am/BroadcastQueue$1;
 
     invoke-direct {v0, p0}, Lcom/android/server/am/BroadcastQueue$1;-><init>(Lcom/android/server/am/BroadcastQueue;)V
 
     iput-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mHandler:Landroid/os/Handler;
 
-    .line 156
+    .line 161
     iput-object p1, p0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
 
-    .line 157
+    .line 162
     iput-object p2, p0, Lcom/android/server/am/BroadcastQueue;->mQueueName:Ljava/lang/String;
 
-    .line 158
+    .line 163
     iput-wide p3, p0, Lcom/android/server/am/BroadcastQueue;->mTimeoutPeriod:J
 
-    .line 159
+    .line 164
+    new-instance v0, Lcom/android/server/am/ReceiverPermission;
+
+    invoke-direct {v0, p1}, Lcom/android/server/am/ReceiverPermission;-><init>(Lcom/android/server/am/ActivityManagerService;)V
+
+    iput-object v0, p0, Lcom/android/server/am/BroadcastQueue;->receiverPermission:Lcom/android/server/am/ReceiverPermission;
+
+    .line 165
     return-void
 .end method
 
@@ -140,16 +149,16 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 897
+    .line 916
     iget v0, p1, Lcom/android/server/am/BroadcastRecord;->callingUid:I
 
     if-gez v0, :cond_0
 
-    .line 905
+    .line 924
     :goto_0
     return-void
 
-    .line 901
+    .line 920
     :cond_0
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mBroadcastHistory:[Lcom/android/server/am/BroadcastRecord;
 
@@ -161,14 +170,14 @@
 
     invoke-static {v0, v4, v1, v2, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 903
+    .line 922
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v0
 
     iput-wide v0, p1, Lcom/android/server/am/BroadcastRecord;->finishTime:J
 
-    .line 904
+    .line 923
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mBroadcastHistory:[Lcom/android/server/am/BroadcastRecord;
 
     aput-object p1, v0, v4
@@ -189,16 +198,16 @@
 
     const/4 v11, 0x0
 
-    .line 371
+    .line 377
     const/4 v10, 0x0
 
-    .line 372
+    .line 378
     .local v10, skip:Z
     iget-object v0, p2, Lcom/android/server/am/BroadcastFilter;->requiredPermission:Ljava/lang/String;
 
     if-eqz v0, :cond_0
 
-    .line 373
+    .line 379
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
 
     iget-object v1, p2, Lcom/android/server/am/BroadcastFilter;->requiredPermission:Ljava/lang/String;
@@ -211,11 +220,11 @@
 
     move-result v9
 
-    .line 375
+    .line 381
     .local v9, perm:I
     if-eqz v9, :cond_0
 
-    .line 376
+    .line 382
     const-string v0, "BroadcastQueue"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -308,17 +317,17 @@
 
     invoke-static {v0, v1}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 382
+    .line 388
     const/4 v10, 0x1
 
-    .line 385
+    .line 391
     .end local v9           #perm:I
     :cond_0
     iget-object v0, p1, Lcom/android/server/am/BroadcastRecord;->requiredPermission:Ljava/lang/String;
 
     if-eqz v0, :cond_1
 
-    .line 386
+    .line 392
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
 
     iget-object v1, p1, Lcom/android/server/am/BroadcastRecord;->requiredPermission:Ljava/lang/String;
@@ -335,11 +344,11 @@
 
     move-result v9
 
-    .line 388
+    .line 394
     .restart local v9       #perm:I
-    if-eqz v9, :cond_1
+    if-eqz v9, :cond_4
 
-    .line 389
+    .line 395
     const-string v0, "BroadcastQueue"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -458,18 +467,19 @@
 
     invoke-static {v0, v1}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 397
+    .line 404
     const/4 v10, 0x1
 
-    .line 401
+    .line 414
     .end local v9           #perm:I
     :cond_1
+    :goto_0
     if-nez v10, :cond_3
 
-    .line 405
+    .line 418
     if-eqz p3, :cond_2
 
-    .line 406
+    .line 419
     iget-object v0, p2, Lcom/android/server/am/BroadcastFilter;->receiverList:Lcom/android/server/am/ReceiverList;
 
     iget-object v0, v0, Lcom/android/server/am/ReceiverList;->receiver:Landroid/content/IIntentReceiver;
@@ -480,46 +490,46 @@
 
     iput-object v0, p1, Lcom/android/server/am/BroadcastRecord;->receiver:Landroid/os/IBinder;
 
-    .line 407
+    .line 420
     iput-object p2, p1, Lcom/android/server/am/BroadcastRecord;->curFilter:Lcom/android/server/am/BroadcastFilter;
 
-    .line 408
+    .line 421
     iget-object v0, p2, Lcom/android/server/am/BroadcastFilter;->receiverList:Lcom/android/server/am/ReceiverList;
 
     iput-object p1, v0, Lcom/android/server/am/ReceiverList;->curBroadcast:Lcom/android/server/am/BroadcastRecord;
 
-    .line 409
+    .line 422
     const/4 v0, 0x2
 
     iput v0, p1, Lcom/android/server/am/BroadcastRecord;->state:I
 
-    .line 410
+    .line 423
     iget-object v0, p2, Lcom/android/server/am/BroadcastFilter;->receiverList:Lcom/android/server/am/ReceiverList;
 
     iget-object v0, v0, Lcom/android/server/am/ReceiverList;->app:Lcom/android/server/am/ProcessRecord;
 
     if-eqz v0, :cond_2
 
-    .line 416
+    .line 429
     iget-object v0, p2, Lcom/android/server/am/BroadcastFilter;->receiverList:Lcom/android/server/am/ReceiverList;
 
     iget-object v0, v0, Lcom/android/server/am/ReceiverList;->app:Lcom/android/server/am/ProcessRecord;
 
     iput-object v0, p1, Lcom/android/server/am/BroadcastRecord;->curApp:Lcom/android/server/am/ProcessRecord;
 
-    .line 417
+    .line 430
     iget-object v0, p2, Lcom/android/server/am/BroadcastFilter;->receiverList:Lcom/android/server/am/ReceiverList;
 
     iget-object v0, v0, Lcom/android/server/am/ReceiverList;->app:Lcom/android/server/am/ProcessRecord;
 
     iput-object p1, v0, Lcom/android/server/am/ProcessRecord;->curReceiver:Lcom/android/server/am/BroadcastRecord;
 
-    .line 418
+    .line 431
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
 
     invoke-virtual {v0}, Lcom/android/server/am/ActivityManagerService;->updateOomAdjLocked()V
 
-    .line 427
+    .line 440
     :cond_2
     :try_start_0
     iget-object v0, p2, Lcom/android/server/am/BroadcastFilter;->receiverList:Lcom/android/server/am/ReceiverList;
@@ -548,26 +558,54 @@
 
     invoke-static/range {v0 .. v7}, Lcom/android/server/am/BroadcastQueue;->performReceiveLocked(Lcom/android/server/am/ProcessRecord;Landroid/content/IIntentReceiver;Landroid/content/Intent;ILjava/lang/String;Landroid/os/Bundle;ZZ)V
 
-    .line 430
+    .line 443
     if-eqz p3, :cond_3
 
-    .line 431
+    .line 444
     const/4 v0, 0x3
 
     iput v0, p1, Lcom/android/server/am/BroadcastRecord;->state:I
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 445
+    .line 458
     :cond_3
-    :goto_0
+    :goto_1
     return-void
 
-    .line 433
+    .line 406
+    .restart local v9       #perm:I
+    :cond_4
+    iget-object v0, p0, Lcom/android/server/am/BroadcastQueue;->receiverPermission:Lcom/android/server/am/ReceiverPermission;
+
+    iget-object v1, p1, Lcom/android/server/am/BroadcastRecord;->requiredPermission:Ljava/lang/String;
+
+    iget-object v2, p2, Lcom/android/server/am/BroadcastFilter;->receiverList:Lcom/android/server/am/ReceiverList;
+
+    iget v2, v2, Lcom/android/server/am/ReceiverList;->pid:I
+
+    iget-object v3, p2, Lcom/android/server/am/BroadcastFilter;->receiverList:Lcom/android/server/am/ReceiverList;
+
+    iget v3, v3, Lcom/android/server/am/ReceiverList;->uid:I
+
+    invoke-virtual {v0, v1, v2, v3, v9}, Lcom/android/server/am/ReceiverPermission;->checkLimitedPermission(Ljava/lang/String;III)I
+
+    move-result v9
+
+    .line 408
+    if-eqz v9, :cond_1
+
+    .line 409
+    const/4 v10, 0x1
+
+    goto :goto_0
+
+    .line 446
+    .end local v9           #perm:I
     :catch_0
     move-exception v8
 
-    .line 434
+    .line 447
     .local v8, e:Landroid/os/RemoteException;
     const-string v0, "BroadcastQueue"
 
@@ -593,35 +631,35 @@
 
     invoke-static {v0, v1, v8}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 435
+    .line 448
     if-eqz p3, :cond_3
 
-    .line 436
+    .line 449
     iput-object v11, p1, Lcom/android/server/am/BroadcastRecord;->receiver:Landroid/os/IBinder;
 
-    .line 437
+    .line 450
     iput-object v11, p1, Lcom/android/server/am/BroadcastRecord;->curFilter:Lcom/android/server/am/BroadcastFilter;
 
-    .line 438
+    .line 451
     iget-object v0, p2, Lcom/android/server/am/BroadcastFilter;->receiverList:Lcom/android/server/am/ReceiverList;
 
     iput-object v11, v0, Lcom/android/server/am/ReceiverList;->curBroadcast:Lcom/android/server/am/BroadcastRecord;
 
-    .line 439
+    .line 452
     iget-object v0, p2, Lcom/android/server/am/BroadcastFilter;->receiverList:Lcom/android/server/am/ReceiverList;
 
     iget-object v0, v0, Lcom/android/server/am/ReceiverList;->app:Lcom/android/server/am/ProcessRecord;
 
     if-eqz v0, :cond_3
 
-    .line 440
+    .line 453
     iget-object v0, p2, Lcom/android/server/am/BroadcastFilter;->receiverList:Lcom/android/server/am/ReceiverList;
 
     iget-object v0, v0, Lcom/android/server/am/ReceiverList;->app:Lcom/android/server/am/ProcessRecord;
 
     iput-object v11, v0, Lcom/android/server/am/ProcessRecord;->curReceiver:Lcom/android/server/am/BroadcastRecord;
 
-    goto :goto_0
+    goto :goto_1
 .end method
 
 .method private static performReceiveLocked(Lcom/android/server/am/ProcessRecord;Landroid/content/IIntentReceiver;Landroid/content/Intent;ILjava/lang/String;Landroid/os/Bundle;ZZ)V
@@ -641,14 +679,14 @@
     .end annotation
 
     .prologue
-    .line 359
+    .line 365
     if-eqz p0, :cond_0
 
     iget-object v0, p0, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
     if-eqz v0, :cond_0
 
-    .line 362
+    .line 368
     iget-object v0, p0, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
     move-object v1, p1
@@ -667,11 +705,11 @@
 
     invoke-interface/range {v0 .. v7}, Landroid/app/IApplicationThread;->scheduleRegisteredReceiver(Landroid/content/IIntentReceiver;Landroid/content/Intent;ILjava/lang/String;Landroid/os/Bundle;ZZ)V
 
-    .line 367
+    .line 373
     :goto_0
     return-void
 
-    .line 365
+    .line 371
     :cond_0
     invoke-interface/range {p1 .. p7}, Landroid/content/IIntentReceiver;->performReceive(Landroid/content/Intent;ILjava/lang/String;Landroid/os/Bundle;ZZ)V
 
@@ -693,19 +731,19 @@
 
     const/4 v9, 0x0
 
-    .line 203
+    .line 209
     iget-object v0, p2, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
     if-nez v0, :cond_0
 
-    .line 204
+    .line 210
     new-instance v0, Landroid/os/RemoteException;
 
     invoke-direct {v0}, Landroid/os/RemoteException;-><init>()V
 
     throw v0
 
-    .line 206
+    .line 212
     :cond_0
     iget-object v0, p2, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
@@ -715,28 +753,28 @@
 
     iput-object v0, p1, Lcom/android/server/am/BroadcastRecord;->receiver:Landroid/os/IBinder;
 
-    .line 207
+    .line 213
     iput-object p2, p1, Lcom/android/server/am/BroadcastRecord;->curApp:Lcom/android/server/am/ProcessRecord;
 
-    .line 208
+    .line 214
     iput-object p1, p2, Lcom/android/server/am/ProcessRecord;->curReceiver:Lcom/android/server/am/BroadcastRecord;
 
-    .line 209
+    .line 215
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
 
     invoke-virtual {v0, p2, v1, v1}, Lcom/android/server/am/ActivityManagerService;->updateLruProcessLocked(Lcom/android/server/am/ProcessRecord;ZZ)V
 
-    .line 212
+    .line 218
     iget-object v0, p1, Lcom/android/server/am/BroadcastRecord;->intent:Landroid/content/Intent;
 
     iget-object v1, p1, Lcom/android/server/am/BroadcastRecord;->curComponent:Landroid/content/ComponentName;
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
 
-    .line 214
+    .line 220
     const/4 v8, 0x0
 
-    .line 219
+    .line 225
     .local v8, started:Z
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
@@ -753,7 +791,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/server/am/ActivityManagerService;->ensurePackageDexOpt(Ljava/lang/String;)V
 
-    .line 220
+    .line 226
     iget-object v0, p2, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
     new-instance v1, Landroid/content/Intent;
@@ -786,38 +824,38 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 225
+    .line 231
     const/4 v8, 0x1
 
-    .line 227
+    .line 233
     if-nez v8, :cond_1
 
-    .line 230
+    .line 236
     iput-object v9, p1, Lcom/android/server/am/BroadcastRecord;->receiver:Landroid/os/IBinder;
 
-    .line 231
+    .line 237
     iput-object v9, p1, Lcom/android/server/am/BroadcastRecord;->curApp:Lcom/android/server/am/ProcessRecord;
 
-    .line 232
+    .line 238
     iput-object v9, p2, Lcom/android/server/am/ProcessRecord;->curReceiver:Lcom/android/server/am/BroadcastRecord;
 
-    .line 235
+    .line 241
     :cond_1
     return-void
 
-    .line 227
+    .line 233
     :catchall_0
     move-exception v0
 
     if-nez v8, :cond_2
 
-    .line 230
+    .line 236
     iput-object v9, p1, Lcom/android/server/am/BroadcastRecord;->receiver:Landroid/os/IBinder;
 
-    .line 231
+    .line 237
     iput-object v9, p1, Lcom/android/server/am/BroadcastRecord;->curApp:Lcom/android/server/am/ProcessRecord;
 
-    .line 232
+    .line 238
     iput-object v9, p2, Lcom/android/server/am/ProcessRecord;->curReceiver:Lcom/android/server/am/BroadcastRecord;
 
     :cond_2
@@ -831,17 +869,17 @@
     .parameter "fromMsg"
 
     .prologue
-    .line 806
+    .line 825
     if-eqz p1, :cond_0
 
-    .line 807
+    .line 826
     const/4 v1, 0x0
 
     move-object/from16 v0, p0
 
     iput-boolean v1, v0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcastTimeoutMessage:Z
 
-    .line 810
+    .line 829
     :cond_0
     move-object/from16 v0, p0
 
@@ -853,18 +891,18 @@
 
     if-nez v1, :cond_2
 
-    .line 894
+    .line 913
     :cond_1
     :goto_0
     return-void
 
-    .line 814
+    .line 833
     :cond_2
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v12
 
-    .line 815
+    .line 834
     .local v12, now:J
     move-object/from16 v0, p0
 
@@ -878,11 +916,11 @@
 
     check-cast v2, Lcom/android/server/am/BroadcastRecord;
 
-    .line 816
+    .line 835
     .local v2, r:Lcom/android/server/am/BroadcastRecord;
     if-eqz p1, :cond_4
 
-    .line 817
+    .line 836
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
@@ -891,7 +929,7 @@
 
     if-eqz v1, :cond_3
 
-    .line 819
+    .line 838
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
@@ -900,7 +938,7 @@
 
     iput-boolean v3, v1, Lcom/android/server/am/ActivityManagerService;->mDidDexOpt:Z
 
-    .line 820
+    .line 839
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v3
@@ -911,7 +949,7 @@
 
     add-long v14, v3, v5
 
-    .line 821
+    .line 840
     .local v14, timeoutTime:J
     move-object/from16 v0, p0
 
@@ -919,7 +957,7 @@
 
     goto :goto_0
 
-    .line 824
+    .line 843
     .end local v14           #timeoutTime:J
     :cond_3
     move-object/from16 v0, p0
@@ -930,7 +968,7 @@
 
     if-eqz v1, :cond_1
 
-    .line 831
+    .line 850
     iget-wide v3, v2, Lcom/android/server/am/BroadcastRecord;->receiverTime:J
 
     move-object/from16 v0, p0
@@ -939,20 +977,20 @@
 
     add-long v14, v3, v5
 
-    .line 832
+    .line 851
     .restart local v14       #timeoutTime:J
     cmp-long v1, v14, v12
 
     if-lez v1, :cond_4
 
-    .line 841
+    .line 860
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v14, v15}, Lcom/android/server/am/BroadcastQueue;->setBroadcastTimeoutLocked(J)V
 
     goto :goto_0
 
-    .line 846
+    .line 865
     .end local v14           #timeoutTime:J
     :cond_4
     const-string v1, "BroadcastQueue"
@@ -1009,22 +1047,22 @@
 
     invoke-static {v1, v3}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 848
+    .line 867
     iput-wide v12, v2, Lcom/android/server/am/BroadcastRecord;->receiverTime:J
 
-    .line 849
+    .line 868
     iget v1, v2, Lcom/android/server/am/BroadcastRecord;->anrCount:I
 
     add-int/lit8 v1, v1, 0x1
 
     iput v1, v2, Lcom/android/server/am/BroadcastRecord;->anrCount:I
 
-    .line 852
+    .line 871
     iget v1, v2, Lcom/android/server/am/BroadcastRecord;->nextReceiver:I
 
     if-gtz v1, :cond_5
 
-    .line 853
+    .line 872
     const-string v1, "BroadcastQueue"
 
     const-string v3, "Timeout on receiver with nextReceiver <= 0"
@@ -1033,15 +1071,15 @@
 
     goto/16 :goto_0
 
-    .line 857
+    .line 876
     :cond_5
     const/4 v9, 0x0
 
-    .line 858
+    .line 877
     .local v9, app:Lcom/android/server/am/ProcessRecord;
     const/4 v8, 0x0
 
-    .line 860
+    .line 879
     .local v8, anrMessage:Ljava/lang/String;
     iget-object v1, v2, Lcom/android/server/am/BroadcastRecord;->receivers:Ljava/util/List;
 
@@ -1053,7 +1091,7 @@
 
     move-result-object v11
 
-    .line 861
+    .line 880
     .local v11, curReceiver:Ljava/lang/Object;
     const-string v1, "BroadcastQueue"
 
@@ -1077,22 +1115,22 @@
 
     invoke-static {v1, v3}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 862
+    .line 881
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v2}, Lcom/android/server/am/BroadcastQueue;->logBroadcastReceiverDiscardLocked(Lcom/android/server/am/BroadcastRecord;)V
 
-    .line 863
+    .line 882
     instance-of v1, v11, Lcom/android/server/am/BroadcastFilter;
 
     if-eqz v1, :cond_9
 
     move-object v10, v11
 
-    .line 864
+    .line 883
     check-cast v10, Lcom/android/server/am/BroadcastFilter;
 
-    .line 865
+    .line 884
     .local v10, bf:Lcom/android/server/am/BroadcastFilter;
     iget-object v1, v10, Lcom/android/server/am/BroadcastFilter;->receiverList:Lcom/android/server/am/ReceiverList;
 
@@ -1108,7 +1146,7 @@
 
     if-eq v1, v3, :cond_6
 
-    .line 867
+    .line 886
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
@@ -1117,7 +1155,7 @@
 
     monitor-enter v3
 
-    .line 868
+    .line 887
     :try_start_0
     move-object/from16 v0, p0
 
@@ -1139,18 +1177,18 @@
 
     move-object v9, v0
 
-    .line 870
+    .line 889
     monitor-exit v3
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 876
+    .line 895
     .end local v10           #bf:Lcom/android/server/am/BroadcastFilter;
     :cond_6
     :goto_1
     if-eqz v9, :cond_7
 
-    .line 877
+    .line 896
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -1175,7 +1213,7 @@
 
     move-result-object v8
 
-    .line 880
+    .line 899
     :cond_7
     move-object/from16 v0, p0
 
@@ -1183,14 +1221,14 @@
 
     if-ne v1, v2, :cond_8
 
-    .line 881
+    .line 900
     const/4 v1, 0x0
 
     move-object/from16 v0, p0
 
     iput-object v1, v0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcast:Lcom/android/server/am/BroadcastRecord;
 
-    .line 885
+    .line 904
     :cond_8
     iget v3, v2, Lcom/android/server/am/BroadcastRecord;->resultCode:I
 
@@ -1206,13 +1244,13 @@
 
     invoke-virtual/range {v1 .. v7}, Lcom/android/server/am/BroadcastQueue;->finishReceiverLocked(Lcom/android/server/am/BroadcastRecord;ILjava/lang/String;Landroid/os/Bundle;ZZ)Z
 
-    .line 887
+    .line 906
     invoke-virtual/range {p0 .. p0}, Lcom/android/server/am/BroadcastQueue;->scheduleBroadcastsLocked()V
 
-    .line 889
+    .line 908
     if-eqz v8, :cond_1
 
-    .line 892
+    .line 911
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lcom/android/server/am/BroadcastQueue;->mHandler:Landroid/os/Handler;
@@ -1227,7 +1265,7 @@
 
     goto/16 :goto_0
 
-    .line 870
+    .line 889
     .restart local v10       #bf:Lcom/android/server/am/BroadcastFilter;
     :catchall_0
     move-exception v1
@@ -1239,7 +1277,7 @@
 
     throw v1
 
-    .line 873
+    .line 892
     .end local v10           #bf:Lcom/android/server/am/BroadcastFilter;
     :cond_9
     iget-object v9, v2, Lcom/android/server/am/BroadcastRecord;->curApp:Lcom/android/server/am/ProcessRecord;
@@ -1251,24 +1289,24 @@
     .locals 2
 
     .prologue
-    .line 799
+    .line 818
     iget-boolean v0, p0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcastTimeoutMessage:Z
 
     if-eqz v0, :cond_0
 
-    .line 800
+    .line 819
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0xc9
 
     invoke-virtual {v0, v1, p0}, Landroid/os/Handler;->removeMessages(ILjava/lang/Object;)V
 
-    .line 801
+    .line 820
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcastTimeoutMessage:Z
 
-    .line 803
+    .line 822
     :cond_0
     return-void
 .end method
@@ -1284,7 +1322,7 @@
     .parameter "needSep"
 
     .prologue
-    .line 937
+    .line 956
     iget-object v4, p0, Lcom/android/server/am/BroadcastQueue;->mParallelBroadcasts:Ljava/util/ArrayList;
 
     invoke-virtual {v4}, Ljava/util/ArrayList;->size()I
@@ -1305,11 +1343,11 @@
 
     if-eqz v4, :cond_b
 
-    .line 939
+    .line 958
     :cond_0
     const/4 v2, 0x0
 
-    .line 940
+    .line 959
     .local v2, printed:Z
     iget-object v4, p0, Lcom/android/server/am/BroadcastQueue;->mParallelBroadcasts:Ljava/util/ArrayList;
 
@@ -1323,7 +1361,7 @@
     :goto_0
     if-ltz v1, :cond_4
 
-    .line 941
+    .line 960
     iget-object v4, p0, Lcom/android/server/am/BroadcastQueue;->mParallelBroadcasts:Ljava/util/ArrayList;
 
     invoke-virtual {v4, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -1332,7 +1370,7 @@
 
     check-cast v0, Lcom/android/server/am/BroadcastRecord;
 
-    .line 942
+    .line 961
     .local v0, br:Lcom/android/server/am/BroadcastRecord;
     if-eqz p6, :cond_1
 
@@ -1344,30 +1382,30 @@
 
     if-nez v4, :cond_1
 
-    .line 940
+    .line 959
     :goto_1
     add-int/lit8 v1, v1, -0x1
 
     goto :goto_0
 
-    .line 945
+    .line 964
     :cond_1
     if-nez v2, :cond_3
 
-    .line 946
+    .line 965
     if-eqz p7, :cond_2
 
-    .line 947
+    .line 966
     invoke-virtual {p2}, Ljava/io/PrintWriter;->println()V
 
-    .line 948
+    .line 967
     const/4 p7, 0x0
 
-    .line 950
+    .line 969
     :cond_2
     const/4 v2, 0x1
 
-    .line 951
+    .line 970
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
@@ -1396,7 +1434,7 @@
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 953
+    .line 972
     :cond_3
     new-instance v4, Ljava/lang/StringBuilder;
 
@@ -1424,22 +1462,22 @@
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 954
+    .line 973
     const-string v4, "    "
 
     invoke-virtual {v0, p2, v4}, Lcom/android/server/am/BroadcastRecord;->dump(Ljava/io/PrintWriter;Ljava/lang/String;)V
 
     goto :goto_1
 
-    .line 956
+    .line 975
     .end local v0           #br:Lcom/android/server/am/BroadcastRecord;
     :cond_4
     const/4 v2, 0x0
 
-    .line 957
+    .line 976
     const/4 p7, 0x1
 
-    .line 958
+    .line 977
     iget-object v4, p0, Lcom/android/server/am/BroadcastQueue;->mOrderedBroadcasts:Ljava/util/ArrayList;
 
     invoke-virtual {v4}, Ljava/util/ArrayList;->size()I
@@ -1451,7 +1489,7 @@
     :goto_2
     if-ltz v1, :cond_8
 
-    .line 959
+    .line 978
     iget-object v4, p0, Lcom/android/server/am/BroadcastQueue;->mOrderedBroadcasts:Ljava/util/ArrayList;
 
     invoke-virtual {v4, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -1460,7 +1498,7 @@
 
     check-cast v0, Lcom/android/server/am/BroadcastRecord;
 
-    .line 960
+    .line 979
     .restart local v0       #br:Lcom/android/server/am/BroadcastRecord;
     if-eqz p6, :cond_5
 
@@ -1472,27 +1510,27 @@
 
     if-nez v4, :cond_5
 
-    .line 958
+    .line 977
     :goto_3
     add-int/lit8 v1, v1, -0x1
 
     goto :goto_2
 
-    .line 963
+    .line 982
     :cond_5
     if-nez v2, :cond_7
 
-    .line 964
+    .line 983
     if-eqz p7, :cond_6
 
-    .line 965
+    .line 984
     invoke-virtual {p2}, Ljava/io/PrintWriter;->println()V
 
-    .line 967
+    .line 986
     :cond_6
     const/4 p7, 0x1
 
-    .line 968
+    .line 987
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
@@ -1521,7 +1559,7 @@
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 970
+    .line 989
     :cond_7
     new-instance v4, Ljava/lang/StringBuilder;
 
@@ -1549,7 +1587,7 @@
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 971
+    .line 990
     iget-object v4, p0, Lcom/android/server/am/BroadcastQueue;->mOrderedBroadcasts:Ljava/util/ArrayList;
 
     invoke-virtual {v4, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -1564,7 +1602,7 @@
 
     goto :goto_3
 
-    .line 973
+    .line 992
     .end local v0           #br:Lcom/android/server/am/BroadcastRecord;
     :cond_8
     if-eqz p6, :cond_9
@@ -1583,14 +1621,14 @@
 
     if-eqz v4, :cond_b
 
-    .line 975
+    .line 994
     :cond_9
     if-eqz p7, :cond_a
 
-    .line 976
+    .line 995
     invoke-virtual {p2}, Ljava/io/PrintWriter;->println()V
 
-    .line 978
+    .line 997
     :cond_a
     new-instance v4, Ljava/lang/StringBuilder;
 
@@ -1620,29 +1658,29 @@
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 979
+    .line 998
     iget-object v4, p0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcast:Lcom/android/server/am/BroadcastRecord;
 
     if-eqz v4, :cond_d
 
-    .line 980
+    .line 999
     iget-object v4, p0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcast:Lcom/android/server/am/BroadcastRecord;
 
     const-string v5, "    "
 
     invoke-virtual {v4, p2, v5}, Lcom/android/server/am/BroadcastRecord;->dump(Ljava/io/PrintWriter;Ljava/lang/String;)V
 
-    .line 984
+    .line 1003
     :goto_4
     const/4 p7, 0x1
 
-    .line 988
+    .line 1007
     .end local v1           #i:I
     .end local v2           #printed:Z
     :cond_b
     const/4 v2, 0x0
 
-    .line 989
+    .line 1008
     .restart local v2       #printed:Z
     const/4 v1, 0x0
 
@@ -1652,22 +1690,22 @@
 
     if-ge v1, v4, :cond_c
 
-    .line 990
+    .line 1009
     iget-object v4, p0, Lcom/android/server/am/BroadcastQueue;->mBroadcastHistory:[Lcom/android/server/am/BroadcastRecord;
 
     aget-object v3, v4, v1
 
-    .line 991
+    .line 1010
     .local v3, r:Lcom/android/server/am/BroadcastRecord;
     if-nez v3, :cond_e
 
-    .line 1017
+    .line 1036
     .end local v3           #r:Lcom/android/server/am/BroadcastRecord;
     :cond_c
     :goto_6
     return p7
 
-    .line 982
+    .line 1001
     :cond_d
     const-string v4, "    (null)"
 
@@ -1675,7 +1713,7 @@
 
     goto :goto_4
 
-    .line 994
+    .line 1013
     .restart local v3       #r:Lcom/android/server/am/BroadcastRecord;
     :cond_e
     if-eqz p6, :cond_f
@@ -1688,27 +1726,27 @@
 
     if-nez v4, :cond_f
 
-    .line 989
+    .line 1008
     :goto_7
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_5
 
-    .line 997
+    .line 1016
     :cond_f
     if-nez v2, :cond_11
 
-    .line 998
+    .line 1017
     if-eqz p7, :cond_10
 
-    .line 999
+    .line 1018
     invoke-virtual {p2}, Ljava/io/PrintWriter;->println()V
 
-    .line 1001
+    .line 1020
     :cond_10
     const/4 p7, 0x1
 
-    .line 1002
+    .line 1021
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
@@ -1737,14 +1775,14 @@
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 1003
+    .line 1022
     const/4 v2, 0x1
 
-    .line 1005
+    .line 1024
     :cond_11
     if-eqz p5, :cond_12
 
-    .line 1006
+    .line 1025
     const-string v4, "  Historical Broadcast #"
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
@@ -1755,27 +1793,27 @@
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 1007
+    .line 1026
     const-string v4, "    "
 
     invoke-virtual {v3, p2, v4}, Lcom/android/server/am/BroadcastRecord;->dump(Ljava/io/PrintWriter;Ljava/lang/String;)V
 
     goto :goto_7
 
-    .line 1009
+    .line 1028
     :cond_12
     const/16 v4, 0x32
 
     if-lt v1, v4, :cond_13
 
-    .line 1010
+    .line 1029
     const-string v4, "  ..."
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
     goto :goto_6
 
-    .line 1013
+    .line 1032
     :cond_13
     const-string v4, "  #"
 
@@ -1797,12 +1835,12 @@
     .parameter "r"
 
     .prologue
-    .line 170
+    .line 176
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mOrderedBroadcasts:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 171
+    .line 177
     return-void
 .end method
 
@@ -1811,12 +1849,12 @@
     .parameter "r"
 
     .prologue
-    .line 166
+    .line 172
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mParallelBroadcasts:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 167
+    .line 173
     return-void
 .end method
 
@@ -1836,20 +1874,20 @@
 
     const/4 v6, 0x0
 
-    .line 322
+    .line 328
     iget v0, p1, Lcom/android/server/am/BroadcastRecord;->state:I
 
-    .line 323
+    .line 329
     .local v0, state:I
     iput v1, p1, Lcom/android/server/am/BroadcastRecord;->state:I
 
-    .line 324
+    .line 330
     if-nez v0, :cond_0
 
-    .line 325
+    .line 331
     if-eqz p6, :cond_0
 
-    .line 326
+    .line 332
     const-string v3, "BroadcastQueue"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -1880,67 +1918,67 @@
 
     invoke-static {v3, v4}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 329
+    .line 335
     :cond_0
     iput-object v6, p1, Lcom/android/server/am/BroadcastRecord;->receiver:Landroid/os/IBinder;
 
-    .line 330
+    .line 336
     iget-object v3, p1, Lcom/android/server/am/BroadcastRecord;->intent:Landroid/content/Intent;
 
     invoke-virtual {v3, v6}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
 
-    .line 331
+    .line 337
     iget-object v3, p1, Lcom/android/server/am/BroadcastRecord;->curApp:Lcom/android/server/am/ProcessRecord;
 
     if-eqz v3, :cond_1
 
-    .line 332
+    .line 338
     iget-object v3, p1, Lcom/android/server/am/BroadcastRecord;->curApp:Lcom/android/server/am/ProcessRecord;
 
     iput-object v6, v3, Lcom/android/server/am/ProcessRecord;->curReceiver:Lcom/android/server/am/BroadcastRecord;
 
-    .line 334
+    .line 340
     :cond_1
     iget-object v3, p1, Lcom/android/server/am/BroadcastRecord;->curFilter:Lcom/android/server/am/BroadcastFilter;
 
     if-eqz v3, :cond_2
 
-    .line 335
+    .line 341
     iget-object v3, p1, Lcom/android/server/am/BroadcastRecord;->curFilter:Lcom/android/server/am/BroadcastFilter;
 
     iget-object v3, v3, Lcom/android/server/am/BroadcastFilter;->receiverList:Lcom/android/server/am/ReceiverList;
 
     iput-object v6, v3, Lcom/android/server/am/ReceiverList;->curBroadcast:Lcom/android/server/am/BroadcastRecord;
 
-    .line 337
+    .line 343
     :cond_2
     iput-object v6, p1, Lcom/android/server/am/BroadcastRecord;->curFilter:Lcom/android/server/am/BroadcastFilter;
 
-    .line 338
+    .line 344
     iput-object v6, p1, Lcom/android/server/am/BroadcastRecord;->curApp:Lcom/android/server/am/ProcessRecord;
 
-    .line 339
+    .line 345
     iput-object v6, p1, Lcom/android/server/am/BroadcastRecord;->curComponent:Landroid/content/ComponentName;
 
-    .line 340
+    .line 346
     iput-object v6, p1, Lcom/android/server/am/BroadcastRecord;->curReceiver:Landroid/content/pm/ActivityInfo;
 
-    .line 341
+    .line 347
     iput-object v6, p0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcast:Lcom/android/server/am/BroadcastRecord;
 
-    .line 343
+    .line 349
     iput p2, p1, Lcom/android/server/am/BroadcastRecord;->resultCode:I
 
-    .line 344
+    .line 350
     iput-object p3, p1, Lcom/android/server/am/BroadcastRecord;->resultData:Ljava/lang/String;
 
-    .line 345
+    .line 351
     iput-object p4, p1, Lcom/android/server/am/BroadcastRecord;->resultExtras:Landroid/os/Bundle;
 
-    .line 346
+    .line 352
     iput-boolean p5, p1, Lcom/android/server/am/BroadcastRecord;->resultAbort:Z
 
-    .line 351
+    .line 357
     if-eq v0, v2, :cond_3
 
     const/4 v3, 0x3
@@ -1959,7 +1997,7 @@
     .parameter "receiver"
 
     .prologue
-    .line 310
+    .line 316
     iget-object v1, p0, Lcom/android/server/am/BroadcastQueue;->mOrderedBroadcasts:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
@@ -1968,7 +2006,7 @@
 
     if-lez v1, :cond_0
 
-    .line 311
+    .line 317
     iget-object v1, p0, Lcom/android/server/am/BroadcastQueue;->mOrderedBroadcasts:Ljava/util/ArrayList;
 
     const/4 v2, 0x0
@@ -1979,7 +2017,7 @@
 
     check-cast v0, Lcom/android/server/am/BroadcastRecord;
 
-    .line 312
+    .line 318
     .local v0, r:Lcom/android/server/am/BroadcastRecord;
     if-eqz v0, :cond_0
 
@@ -1987,7 +2025,7 @@
 
     if-ne v1, p1, :cond_0
 
-    .line 316
+    .line 322
     .end local v0           #r:Lcom/android/server/am/BroadcastRecord;
     :goto_0
     return-object v0
@@ -2003,7 +2041,7 @@
     .parameter "pid"
 
     .prologue
-    .line 162
+    .line 168
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcast:Lcom/android/server/am/BroadcastRecord;
 
     if-eqz v0, :cond_0
@@ -2042,12 +2080,12 @@
 
     const/4 v5, 0x0
 
-    .line 908
+    .line 927
     iget v2, p1, Lcom/android/server/am/BroadcastRecord;->nextReceiver:I
 
     if-lez v2, :cond_1
 
-    .line 909
+    .line 928
     iget-object v2, p1, Lcom/android/server/am/BroadcastRecord;->receivers:Ljava/util/List;
 
     iget v3, p1, Lcom/android/server/am/BroadcastRecord;->nextReceiver:I
@@ -2058,7 +2096,7 @@
 
     move-result-object v1
 
-    .line 910
+    .line 929
     .local v1, curReceiver:Ljava/lang/Object;
     instance-of v2, v1, Lcom/android/server/am/BroadcastFilter;
 
@@ -2066,10 +2104,10 @@
 
     move-object v0, v1
 
-    .line 911
+    .line 930
     check-cast v0, Lcom/android/server/am/BroadcastFilter;
 
-    .line 912
+    .line 931
     .local v0, bf:Lcom/android/server/am/BroadcastFilter;
     const/16 v2, 0x7548
 
@@ -2115,13 +2153,13 @@
 
     invoke-static {v2, v3}, Landroid/util/EventLog;->writeEvent(I[Ljava/lang/Object;)I
 
-    .line 933
+    .line 952
     .end local v0           #bf:Lcom/android/server/am/BroadcastFilter;
     .end local v1           #curReceiver:Ljava/lang/Object;
     :goto_0
     return-void
 
-    .line 918
+    .line 937
     .restart local v1       #curReceiver:Ljava/lang/Object;
     :cond_0
     const/16 v2, 0x7549
@@ -2169,7 +2207,7 @@
 
     goto :goto_0
 
-    .line 925
+    .line 944
     :cond_1
     const-string v2, "BroadcastQueue"
 
@@ -2193,7 +2231,7 @@
 
     invoke-static {v2, v3}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 927
+    .line 946
     const/16 v2, 0x7549
 
     new-array v3, v9, [Ljava/lang/Object;
@@ -2238,7 +2276,7 @@
     .parameter "fromMsg"
 
     .prologue
-    .line 448
+    .line 461
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
@@ -2247,7 +2285,7 @@
 
     monitor-enter v34
 
-    .line 456
+    .line 469
     :try_start_0
     move-object/from16 v0, p0
 
@@ -2255,17 +2293,17 @@
 
     invoke-virtual {v3}, Lcom/android/server/am/ActivityManagerService;->updateCpuStats()V
 
-    .line 458
+    .line 471
     if-eqz p1, :cond_0
 
-    .line 459
+    .line 472
     const/4 v3, 0x0
 
     move-object/from16 v0, p0
 
     iput-boolean v3, v0, Lcom/android/server/am/BroadcastQueue;->mBroadcastsScheduled:Z
 
-    .line 463
+    .line 476
     :cond_0
     :goto_0
     move-object/from16 v0, p0
@@ -2278,7 +2316,7 @@
 
     if-lez v3, :cond_2
 
-    .line 464
+    .line 477
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/BroadcastQueue;->mParallelBroadcasts:Ljava/util/ArrayList;
@@ -2291,7 +2329,7 @@
 
     check-cast v27, Lcom/android/server/am/BroadcastRecord;
 
-    .line 465
+    .line 478
     .local v27, r:Lcom/android/server/am/BroadcastRecord;
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
@@ -2301,7 +2339,7 @@
 
     iput-wide v5, v0, Lcom/android/server/am/BroadcastRecord;->dispatchTime:J
 
-    .line 466
+    .line 479
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v5
@@ -2310,7 +2348,7 @@
 
     iput-wide v5, v0, Lcom/android/server/am/BroadcastRecord;->dispatchClockTime:J
 
-    .line 467
+    .line 480
     move-object/from16 v0, v27
 
     iget-object v3, v0, Lcom/android/server/am/BroadcastRecord;->receivers:Ljava/util/List;
@@ -2319,7 +2357,7 @@
 
     move-result v12
 
-    .line 470
+    .line 483
     .local v12, N:I
     const/16 v17, 0x0
 
@@ -2329,7 +2367,7 @@
 
     if-ge v0, v12, :cond_1
 
-    .line 471
+    .line 484
     move-object/from16 v0, v27
 
     iget-object v3, v0, Lcom/android/server/am/BroadcastRecord;->receivers:Ljava/util/List;
@@ -2340,7 +2378,7 @@
 
     move-result-object v30
 
-    .line 475
+    .line 488
     .local v30, target:Ljava/lang/Object;
     check-cast v30, Lcom/android/server/am/BroadcastFilter;
 
@@ -2355,12 +2393,12 @@
 
     invoke-direct {v0, v1, v2, v3}, Lcom/android/server/am/BroadcastQueue;->deliverToRegisteredReceiverLocked(Lcom/android/server/am/BroadcastRecord;Lcom/android/server/am/BroadcastFilter;Z)V
 
-    .line 470
+    .line 483
     add-int/lit8 v17, v17, 0x1
 
     goto :goto_1
 
-    .line 477
+    .line 490
     :cond_1
     move-object/from16 v0, p0
 
@@ -2370,7 +2408,7 @@
 
     goto :goto_0
 
-    .line 787
+    .line 806
     .end local v12           #N:I
     .end local v17           #i:I
     .end local v27           #r:Lcom/android/server/am/BroadcastRecord;
@@ -2383,7 +2421,7 @@
 
     throw v3
 
-    .line 487
+    .line 500
     :cond_2
     :try_start_1
     move-object/from16 v0, p0
@@ -2392,7 +2430,7 @@
 
     if-eqz v3, :cond_5
 
-    .line 495
+    .line 508
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
@@ -2403,7 +2441,7 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 496
+    .line 509
     :try_start_2
     move-object/from16 v0, p0
 
@@ -2427,34 +2465,34 @@
 
     const/16 v19, 0x1
 
-    .line 498
+    .line 511
     .local v19, isDead:Z
     :goto_2
     monitor-exit v5
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 499
+    .line 512
     if-nez v19, :cond_4
 
-    .line 501
+    .line 514
     :try_start_3
     monitor-exit v34
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    .line 788
+    .line 807
     .end local v19           #isDead:Z
     :goto_3
     return-void
 
-    .line 496
+    .line 509
     :cond_3
     const/16 v19, 0x0
 
     goto :goto_2
 
-    .line 498
+    .line 511
     :catchall_1
     move-exception v3
 
@@ -2466,7 +2504,7 @@
     :try_start_5
     throw v3
 
-    .line 503
+    .line 516
     .restart local v19       #isDead:Z
     :cond_4
     const-string v3, "BroadcastQueue"
@@ -2517,7 +2555,7 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 506
+    .line 519
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcast:Lcom/android/server/am/BroadcastRecord;
@@ -2526,7 +2564,7 @@
 
     iput v5, v3, Lcom/android/server/am/BroadcastRecord;->state:I
 
-    .line 507
+    .line 520
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcast:Lcom/android/server/am/BroadcastRecord;
@@ -2537,19 +2575,19 @@
 
     iput v5, v3, Lcom/android/server/am/BroadcastRecord;->nextReceiver:I
 
-    .line 508
+    .line 521
     const/4 v3, 0x0
 
     move-object/from16 v0, p0
 
     iput-object v3, v0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcast:Lcom/android/server/am/BroadcastRecord;
 
-    .line 512
+    .line 525
     .end local v19           #isDead:Z
     :cond_5
     const/16 v21, 0x0
 
-    .line 515
+    .line 528
     .local v21, looped:Z
     :cond_6
     move-object/from16 v0, p0
@@ -2562,30 +2600,30 @@
 
     if-nez v3, :cond_8
 
-    .line 517
+    .line 530
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
 
     invoke-virtual {v3}, Lcom/android/server/am/ActivityManagerService;->scheduleAppGcsLocked()V
 
-    .line 518
+    .line 531
     if-eqz v21, :cond_7
 
-    .line 522
+    .line 535
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
 
     invoke-virtual {v3}, Lcom/android/server/am/ActivityManagerService;->updateOomAdjLocked()V
 
-    .line 524
+    .line 537
     :cond_7
     monitor-exit v34
 
     goto :goto_3
 
-    .line 526
+    .line 539
     :cond_8
     move-object/from16 v0, p0
 
@@ -2599,11 +2637,11 @@
 
     check-cast v27, Lcom/android/server/am/BroadcastRecord;
 
-    .line 527
+    .line 540
     .restart local v27       #r:Lcom/android/server/am/BroadcastRecord;
     const/16 v16, 0x0
 
-    .line 537
+    .line 550
     .local v16, forceReceive:Z
     move-object/from16 v0, v27
 
@@ -2619,7 +2657,7 @@
 
     move-result v25
 
-    .line 538
+    .line 551
     .local v25, numReceivers:I
     :goto_4
     move-object/from16 v0, p0
@@ -2640,12 +2678,12 @@
 
     if-lez v3, :cond_9
 
-    .line 539
+    .line 552
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v23
 
-    .line 540
+    .line 553
     .local v23, now:J
     if-lez v25, :cond_9
 
@@ -2673,7 +2711,7 @@
 
     if-lez v3, :cond_9
 
-    .line 542
+    .line 555
     const-string v3, "BroadcastQueue"
 
     new-instance v5, Ljava/lang/StringBuilder;
@@ -2800,24 +2838,24 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 551
+    .line 564
     const/4 v3, 0x0
 
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v3}, Lcom/android/server/am/BroadcastQueue;->broadcastTimeoutLocked(Z)V
 
-    .line 552
+    .line 565
     const/16 v16, 0x1
 
-    .line 553
+    .line 566
     const/4 v3, 0x0
 
     move-object/from16 v0, v27
 
     iput v3, v0, Lcom/android/server/am/BroadcastRecord;->state:I
 
-    .line 557
+    .line 570
     .end local v23           #now:J
     :cond_9
     move-object/from16 v0, v27
@@ -2826,19 +2864,19 @@
 
     if-eqz v3, :cond_b
 
-    .line 562
+    .line 575
     monitor-exit v34
 
     goto/16 :goto_3
 
-    .line 537
+    .line 550
     .end local v25           #numReceivers:I
     :cond_a
     const/16 v25, 0x0
 
     goto/16 :goto_4
 
-    .line 565
+    .line 578
     .restart local v25       #numReceivers:I
     :cond_b
     move-object/from16 v0, v27
@@ -2863,7 +2901,7 @@
 
     if-eqz v16, :cond_e
 
-    .line 569
+    .line 582
     :cond_c
     move-object/from16 v0, v27
 
@@ -2873,7 +2911,7 @@
 
     if-eqz v3, :cond_d
 
-    .line 577
+    .line 590
     :try_start_6
     move-object/from16 v0, v27
 
@@ -2909,7 +2947,7 @@
 
     invoke-static/range {v3 .. v10}, Lcom/android/server/am/BroadcastQueue;->performReceiveLocked(Lcom/android/server/am/ProcessRecord;Landroid/content/IIntentReceiver;Landroid/content/Intent;ILjava/lang/String;Landroid/os/Bundle;ZZ)V
 
-    .line 582
+    .line 595
     const/4 v3, 0x0
 
     move-object/from16 v0, v27
@@ -2919,20 +2957,20 @@
     .catchall {:try_start_6 .. :try_end_6} :catchall_0
     .catch Landroid/os/RemoteException; {:try_start_6 .. :try_end_6} :catch_0
 
-    .line 591
+    .line 604
     :cond_d
     :goto_5
     :try_start_7
     invoke-virtual/range {p0 .. p0}, Lcom/android/server/am/BroadcastQueue;->cancelBroadcastTimeoutLocked()V
 
-    .line 597
+    .line 610
     move-object/from16 v0, p0
 
     move-object/from16 v1, v27
 
     invoke-direct {v0, v1}, Lcom/android/server/am/BroadcastQueue;->addBroadcastToHistoryLocked(Lcom/android/server/am/BroadcastRecord;)V
 
-    .line 598
+    .line 611
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/BroadcastQueue;->mOrderedBroadcasts:Ljava/util/ArrayList;
@@ -2941,17 +2979,17 @@
 
     invoke-virtual {v3, v5}, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
 
-    .line 599
+    .line 612
     const/16 v27, 0x0
 
-    .line 600
+    .line 613
     const/16 v21, 0x1
 
-    .line 603
+    .line 616
     :cond_e
     if-eqz v27, :cond_6
 
-    .line 606
+    .line 619
     move-object/from16 v0, v27
 
     iget v0, v0, Lcom/android/server/am/BroadcastRecord;->nextReceiver:I
@@ -2964,7 +3002,7 @@
 
     iput v3, v0, Lcom/android/server/am/BroadcastRecord;->nextReceiver:I
 
-    .line 610
+    .line 623
     .local v28, recIdx:I
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
@@ -2974,10 +3012,10 @@
 
     iput-wide v5, v0, Lcom/android/server/am/BroadcastRecord;->receiverTime:J
 
-    .line 611
+    .line 624
     if-nez v28, :cond_f
 
-    .line 612
+    .line 625
     move-object/from16 v0, v27
 
     iget-wide v5, v0, Lcom/android/server/am/BroadcastRecord;->receiverTime:J
@@ -2986,7 +3024,7 @@
 
     iput-wide v5, v0, Lcom/android/server/am/BroadcastRecord;->dispatchTime:J
 
-    .line 613
+    .line 626
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v5
@@ -2995,7 +3033,7 @@
 
     iput-wide v5, v0, Lcom/android/server/am/BroadcastRecord;->dispatchClockTime:J
 
-    .line 617
+    .line 630
     :cond_f
     move-object/from16 v0, p0
 
@@ -3003,7 +3041,7 @@
 
     if-nez v3, :cond_10
 
-    .line 618
+    .line 631
     move-object/from16 v0, v27
 
     iget-wide v5, v0, Lcom/android/server/am/BroadcastRecord;->receiverTime:J
@@ -3014,7 +3052,7 @@
 
     add-long v32, v5, v7
 
-    .line 622
+    .line 635
     .local v32, timeoutTime:J
     move-object/from16 v0, p0
 
@@ -3022,7 +3060,7 @@
 
     invoke-virtual {v0, v1, v2}, Lcom/android/server/am/BroadcastQueue;->setBroadcastTimeoutLocked(J)V
 
-    .line 625
+    .line 638
     .end local v32           #timeoutTime:J
     :cond_10
     move-object/from16 v0, v27
@@ -3035,7 +3073,7 @@
 
     move-result-object v22
 
-    .line 626
+    .line 639
     .local v22, nextReceiver:Ljava/lang/Object;
     move-object/from16 v0, v22
 
@@ -3043,14 +3081,14 @@
 
     if-eqz v3, :cond_13
 
-    .line 629
+    .line 642
     move-object/from16 v0, v22
 
     check-cast v0, Lcom/android/server/am/BroadcastFilter;
 
     move-object v15, v0
 
-    .line 634
+    .line 647
     .local v15, filter:Lcom/android/server/am/BroadcastFilter;
     move-object/from16 v0, v27
 
@@ -3062,7 +3100,7 @@
 
     invoke-direct {v0, v1, v15, v3}, Lcom/android/server/am/BroadcastQueue;->deliverToRegisteredReceiverLocked(Lcom/android/server/am/BroadcastRecord;Lcom/android/server/am/BroadcastFilter;Z)V
 
-    .line 635
+    .line 648
     move-object/from16 v0, v27
 
     iget-object v3, v0, Lcom/android/server/am/BroadcastRecord;->receiver:Landroid/os/IBinder;
@@ -3075,7 +3113,7 @@
 
     if-nez v3, :cond_12
 
-    .line 641
+    .line 654
     :cond_11
     const/4 v3, 0x0
 
@@ -3083,23 +3121,23 @@
 
     iput v3, v0, Lcom/android/server/am/BroadcastRecord;->state:I
 
-    .line 642
+    .line 655
     invoke-virtual/range {p0 .. p0}, Lcom/android/server/am/BroadcastQueue;->scheduleBroadcastsLocked()V
 
-    .line 644
+    .line 657
     :cond_12
     monitor-exit v34
 
     goto/16 :goto_3
 
-    .line 583
+    .line 596
     .end local v15           #filter:Lcom/android/server/am/BroadcastFilter;
     .end local v22           #nextReceiver:Ljava/lang/Object;
     .end local v28           #recIdx:I
     :catch_0
     move-exception v14
 
-    .line 584
+    .line 597
     .local v14, e:Landroid/os/RemoteException;
     const-string v3, "BroadcastQueue"
 
@@ -3143,7 +3181,7 @@
 
     goto/16 :goto_5
 
-    .line 650
+    .line 663
     .end local v14           #e:Landroid/os/RemoteException;
     .restart local v22       #nextReceiver:Ljava/lang/Object;
     .restart local v28       #recIdx:I
@@ -3154,11 +3192,11 @@
 
     move-object/from16 v18, v0
 
-    .line 653
+    .line 666
     .local v18, info:Landroid/content/pm/ResolveInfo;
     const/16 v29, 0x0
 
-    .line 654
+    .line 667
     .local v29, skip:Z
     move-object/from16 v0, p0
 
@@ -3196,11 +3234,11 @@
 
     move-result v26
 
-    .line 657
+    .line 670
     .local v26, perm:I
     if-eqz v26, :cond_14
 
-    .line 658
+    .line 671
     move-object/from16 v0, v18
 
     iget-object v3, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
@@ -3209,7 +3247,7 @@
 
     if-nez v3, :cond_17
 
-    .line 659
+    .line 672
     const-string v3, "BroadcastQueue"
 
     new-instance v5, Ljava/lang/StringBuilder;
@@ -3338,11 +3376,11 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 675
+    .line 688
     :goto_6
     const/16 v29, 0x1
 
-    .line 677
+    .line 690
     :cond_14
     move-object/from16 v0, v18
 
@@ -3364,7 +3402,7 @@
 
     if-eqz v3, :cond_15
 
-    .line 680
+    .line 693
     :try_start_8
     invoke-static {}, Landroid/app/AppGlobals;->getPackageManager()Landroid/content/pm/IPackageManager;
 
@@ -3389,11 +3427,11 @@
 
     move-result v26
 
-    .line 686
+    .line 699
     :goto_7
-    if-eqz v26, :cond_15
+    if-eqz v26, :cond_18
 
-    .line 687
+    .line 700
     :try_start_9
     const-string v3, "BroadcastQueue"
 
@@ -3487,11 +3525,12 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 693
+    .line 706
     const/16 v29, 0x1
 
-    .line 696
+    .line 715
     :cond_15
+    :goto_8
     move-object/from16 v0, v27
 
     iget-object v3, v0, Lcom/android/server/am/BroadcastRecord;->curApp:Lcom/android/server/am/ProcessRecord;
@@ -3506,43 +3545,43 @@
 
     if-eqz v3, :cond_16
 
-    .line 702
+    .line 721
     const/16 v29, 0x1
 
-    .line 705
+    .line 724
     :cond_16
-    if-eqz v29, :cond_18
+    if-eqz v29, :cond_19
 
-    .line 709
+    .line 728
     const/4 v3, 0x0
 
     move-object/from16 v0, v27
 
     iput-object v3, v0, Lcom/android/server/am/BroadcastRecord;->receiver:Landroid/os/IBinder;
 
-    .line 710
+    .line 729
     const/4 v3, 0x0
 
     move-object/from16 v0, v27
 
     iput-object v3, v0, Lcom/android/server/am/BroadcastRecord;->curFilter:Lcom/android/server/am/BroadcastFilter;
 
-    .line 711
+    .line 730
     const/4 v3, 0x0
 
     move-object/from16 v0, v27
 
     iput v3, v0, Lcom/android/server/am/BroadcastRecord;->state:I
 
-    .line 712
+    .line 731
     invoke-virtual/range {p0 .. p0}, Lcom/android/server/am/BroadcastQueue;->scheduleBroadcastsLocked()V
 
-    .line 713
+    .line 732
     monitor-exit v34
 
     goto/16 :goto_3
 
-    .line 667
+    .line 680
     :cond_17
     const-string v3, "BroadcastQueue"
 
@@ -3672,33 +3711,70 @@
 
     goto/16 :goto_6
 
-    .line 683
+    .line 696
     :catch_1
     move-exception v14
 
-    .line 684
+    .line 697
     .restart local v14       #e:Landroid/os/RemoteException;
     const/16 v26, -0x1
 
     goto/16 :goto_7
 
-    .line 716
+    .line 708
     .end local v14           #e:Landroid/os/RemoteException;
     :cond_18
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/am/BroadcastQueue;->receiverPermission:Lcom/android/server/am/ReceiverPermission;
+
+    invoke-virtual {v3}, Lcom/android/server/am/ReceiverPermission;->getPhoneLimitedPermission()Ljava/util/ArrayList;
+
+    move-result-object v3
+
+    move-object/from16 v0, v27
+
+    iget-object v5, v0, Lcom/android/server/am/BroadcastRecord;->requiredPermission:Ljava/lang/String;
+
+    invoke-virtual {v3, v5}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_15
+
+    move-object/from16 v0, v18
+
+    iget-object v3, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
+
+    iget-object v3, v3, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
+
+    iget v3, v3, Landroid/content/pm/ApplicationInfo;->flags:I
+
+    and-int/lit8 v3, v3, 0x1
+
+    if-nez v3, :cond_15
+
+    .line 711
+    const/16 v29, 0x1
+
+    goto/16 :goto_8
+
+    .line 735
+    :cond_19
     const/4 v3, 0x1
 
     move-object/from16 v0, v27
 
     iput v3, v0, Lcom/android/server/am/BroadcastRecord;->state:I
 
-    .line 717
+    .line 736
     move-object/from16 v0, v18
 
     iget-object v3, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
     iget-object v4, v3, Landroid/content/pm/ActivityInfo;->processName:Ljava/lang/String;
 
-    .line 718
+    .line 737
     .local v4, targetProcess:Ljava/lang/String;
     new-instance v3, Landroid/content/ComponentName;
 
@@ -3722,16 +3798,16 @@
 
     iput-object v3, v0, Lcom/android/server/am/BroadcastRecord;->curComponent:Landroid/content/ComponentName;
 
-    .line 721
+    .line 740
     move-object/from16 v0, v27
 
     iget v3, v0, Lcom/android/server/am/BroadcastRecord;->callingUid:I
 
     const/16 v5, 0x3e8
 
-    if-eq v3, v5, :cond_19
+    if-eq v3, v5, :cond_1a
 
-    .line 722
+    .line 741
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
@@ -3752,15 +3828,15 @@
 
     move-result v20
 
-    .line 724
+    .line 743
     .local v20, isSingleton:Z
-    if-eqz v20, :cond_1a
+    if-eqz v20, :cond_1b
 
     const/16 v31, 0x0
 
-    .line 725
+    .line 744
     .local v31, targetUserId:I
-    :goto_8
+    :goto_9
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
@@ -3779,10 +3855,10 @@
 
     iput-object v3, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
-    .line 727
+    .line 746
     .end local v20           #isSingleton:Z
     .end local v31           #targetUserId:I
-    :cond_19
+    :cond_1a
     move-object/from16 v0, v18
 
     iget-object v3, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
@@ -3793,7 +3869,7 @@
     :try_end_9
     .catchall {:try_start_9 .. :try_end_9} :catchall_0
 
-    .line 736
+    .line 755
     :try_start_a
     invoke-static {}, Landroid/app/AppGlobals;->getPackageManager()Landroid/content/pm/IPackageManager;
 
@@ -3823,8 +3899,8 @@
     .catch Landroid/os/RemoteException; {:try_start_a .. :try_end_a} :catch_4
     .catch Ljava/lang/IllegalArgumentException; {:try_start_a .. :try_end_a} :catch_2
 
-    .line 745
-    :goto_9
+    .line 764
+    :goto_a
     :try_start_b
     move-object/from16 v0, p0
 
@@ -3842,17 +3918,17 @@
 
     move-result-object v13
 
-    .line 747
+    .line 766
     .local v13, app:Lcom/android/server/am/ProcessRecord;
-    if-eqz v13, :cond_1b
+    if-eqz v13, :cond_1c
 
     iget-object v3, v13, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
     :try_end_b
     .catchall {:try_start_b .. :try_end_b} :catchall_0
 
-    if-eqz v3, :cond_1b
+    if-eqz v3, :cond_1c
 
-    .line 749
+    .line 768
     :try_start_c
     move-object/from16 v0, v18
 
@@ -3862,7 +3938,7 @@
 
     invoke-virtual {v13, v3}, Lcom/android/server/am/ProcessRecord;->addPackage(Ljava/lang/String;)Z
 
-    .line 750
+    .line 769
     move-object/from16 v0, p0
 
     move-object/from16 v1, v27
@@ -3872,16 +3948,16 @@
     .catchall {:try_start_c .. :try_end_c} :catchall_0
     .catch Landroid/os/RemoteException; {:try_start_c .. :try_end_c} :catch_3
 
-    .line 751
+    .line 770
     :try_start_d
     monitor-exit v34
 
     goto/16 :goto_3
 
-    .line 724
+    .line 743
     .end local v13           #app:Lcom/android/server/am/ProcessRecord;
     .restart local v20       #isSingleton:Z
-    :cond_1a
+    :cond_1b
     move-object/from16 v0, v27
 
     iget v3, v0, Lcom/android/server/am/BroadcastRecord;->callingUid:I
@@ -3890,14 +3966,14 @@
 
     move-result v31
 
-    goto :goto_8
+    goto :goto_9
 
-    .line 739
+    .line 758
     .end local v20           #isSingleton:Z
     :catch_2
     move-exception v14
 
-    .line 740
+    .line 759
     .local v14, e:Ljava/lang/IllegalArgumentException;
     const-string v3, "BroadcastQueue"
 
@@ -3939,15 +4015,15 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto :goto_9
+    goto :goto_a
 
-    .line 752
+    .line 771
     .end local v14           #e:Ljava/lang/IllegalArgumentException;
     .restart local v13       #app:Lcom/android/server/am/ProcessRecord;
     :catch_3
     move-exception v14
 
-    .line 753
+    .line 772
     .local v14, e:Landroid/os/RemoteException;
     const-string v3, "BroadcastQueue"
 
@@ -3975,9 +4051,9 @@
 
     invoke-static {v3, v5, v14}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 765
+    .line 784
     .end local v14           #e:Landroid/os/RemoteException;
-    :cond_1b
+    :cond_1c
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/BroadcastQueue;->mService:Lcom/android/server/am/ActivityManagerService;
@@ -4018,11 +4094,11 @@
 
     and-int/2addr v10, v11
 
-    if-eqz v10, :cond_1c
+    if-eqz v10, :cond_1d
 
     const/4 v10, 0x1
 
-    :goto_a
+    :goto_b
     const/4 v11, 0x0
 
     invoke-virtual/range {v3 .. v11}, Lcom/android/server/am/ActivityManagerService;->startProcessLocked(Ljava/lang/String;Landroid/content/pm/ApplicationInfo;ZILjava/lang/String;Landroid/content/ComponentName;ZZ)Lcom/android/server/am/ProcessRecord;
@@ -4033,9 +4109,9 @@
 
     iput-object v3, v0, Lcom/android/server/am/BroadcastRecord;->curApp:Lcom/android/server/am/ProcessRecord;
 
-    if-nez v3, :cond_1d
+    if-nez v3, :cond_1e
 
-    .line 773
+    .line 792
     const-string v3, "BroadcastQueue"
 
     new-instance v5, Ljava/lang/StringBuilder;
@@ -4104,14 +4180,14 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 777
+    .line 796
     move-object/from16 v0, p0
 
     move-object/from16 v1, v27
 
     invoke-virtual {v0, v1}, Lcom/android/server/am/BroadcastQueue;->logBroadcastReceiverDiscardLocked(Lcom/android/server/am/BroadcastRecord;)V
 
-    .line 778
+    .line 797
     move-object/from16 v0, v27
 
     iget v7, v0, Lcom/android/server/am/BroadcastRecord;->resultCode:I
@@ -4136,55 +4212,55 @@
 
     invoke-virtual/range {v5 .. v11}, Lcom/android/server/am/BroadcastQueue;->finishReceiverLocked(Lcom/android/server/am/BroadcastRecord;ILjava/lang/String;Landroid/os/Bundle;ZZ)Z
 
-    .line 780
+    .line 799
     invoke-virtual/range {p0 .. p0}, Lcom/android/server/am/BroadcastQueue;->scheduleBroadcastsLocked()V
 
-    .line 781
+    .line 800
     const/4 v3, 0x0
 
     move-object/from16 v0, v27
 
     iput v3, v0, Lcom/android/server/am/BroadcastRecord;->state:I
 
-    .line 782
+    .line 801
     monitor-exit v34
 
     goto/16 :goto_3
 
-    .line 765
-    :cond_1c
+    .line 784
+    :cond_1d
     const/4 v10, 0x0
 
-    goto :goto_a
+    goto :goto_b
 
-    .line 785
-    :cond_1d
+    .line 804
+    :cond_1e
     move-object/from16 v0, v27
 
     move-object/from16 v1, p0
 
     iput-object v0, v1, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcast:Lcom/android/server/am/BroadcastRecord;
 
-    .line 786
+    .line 805
     move/from16 v0, v28
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcastRecvIndex:I
 
-    .line 787
+    .line 806
     monitor-exit v34
     :try_end_d
     .catchall {:try_start_d .. :try_end_d} :catchall_0
 
     goto/16 :goto_3
 
-    .line 738
+    .line 757
     .end local v13           #app:Lcom/android/server/am/ProcessRecord;
     :catch_4
     move-exception v3
 
-    goto/16 :goto_9
+    goto/16 :goto_a
 .end method
 
 .method public final replaceOrderedBroadcastLocked(Lcom/android/server/am/BroadcastRecord;)Z
@@ -4192,7 +4268,7 @@
     .parameter "r"
 
     .prologue
-    .line 187
+    .line 193
     iget-object v1, p0, Lcom/android/server/am/BroadcastQueue;->mOrderedBroadcasts:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
@@ -4205,7 +4281,7 @@
     :goto_0
     if-lez v0, :cond_1
 
-    .line 188
+    .line 194
     iget-object v2, p1, Lcom/android/server/am/BroadcastRecord;->intent:Landroid/content/Intent;
 
     iget-object v1, p0, Lcom/android/server/am/BroadcastQueue;->mOrderedBroadcasts:Ljava/util/ArrayList;
@@ -4224,25 +4300,25 @@
 
     if-eqz v1, :cond_0
 
-    .line 192
+    .line 198
     iget-object v1, p0, Lcom/android/server/am/BroadcastQueue;->mOrderedBroadcasts:Ljava/util/ArrayList;
 
     invoke-virtual {v1, v0, p1}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
 
-    .line 193
+    .line 199
     const/4 v1, 0x1
 
-    .line 196
+    .line 202
     :goto_1
     return v1
 
-    .line 187
+    .line 193
     :cond_0
     add-int/lit8 v0, v0, -0x1
 
     goto :goto_0
 
-    .line 196
+    .line 202
     :cond_1
     const/4 v1, 0x0
 
@@ -4254,7 +4330,7 @@
     .parameter "r"
 
     .prologue
-    .line 174
+    .line 180
     iget-object v1, p0, Lcom/android/server/am/BroadcastQueue;->mParallelBroadcasts:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
@@ -4267,7 +4343,7 @@
     :goto_0
     if-ltz v0, :cond_1
 
-    .line 175
+    .line 181
     iget-object v2, p1, Lcom/android/server/am/BroadcastRecord;->intent:Landroid/content/Intent;
 
     iget-object v1, p0, Lcom/android/server/am/BroadcastQueue;->mParallelBroadcasts:Ljava/util/ArrayList;
@@ -4286,25 +4362,25 @@
 
     if-eqz v1, :cond_0
 
-    .line 179
+    .line 185
     iget-object v1, p0, Lcom/android/server/am/BroadcastQueue;->mParallelBroadcasts:Ljava/util/ArrayList;
 
     invoke-virtual {v1, v0, p1}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
 
-    .line 180
+    .line 186
     const/4 v1, 0x1
 
-    .line 183
+    .line 189
     :goto_1
     return v1
 
-    .line 174
+    .line 180
     :cond_0
     add-int/lit8 v0, v0, -0x1
 
     goto :goto_0
 
-    .line 183
+    .line 189
     :cond_1
     const/4 v1, 0x0
 
@@ -4315,16 +4391,16 @@
     .locals 3
 
     .prologue
-    .line 302
+    .line 308
     iget-boolean v0, p0, Lcom/android/server/am/BroadcastQueue;->mBroadcastsScheduled:Z
 
     if-eqz v0, :cond_0
 
-    .line 307
+    .line 313
     :goto_0
     return-void
 
-    .line 305
+    .line 311
     :cond_0
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mHandler:Landroid/os/Handler;
 
@@ -4338,7 +4414,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 306
+    .line 312
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/server/am/BroadcastQueue;->mBroadcastsScheduled:Z
@@ -4351,14 +4427,14 @@
     .parameter "app"
 
     .prologue
-    .line 238
+    .line 244
     const/4 v7, 0x0
 
-    .line 239
+    .line 245
     .local v7, didSomething:Z
     iget-object v1, p0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcast:Lcom/android/server/am/BroadcastRecord;
 
-    .line 240
+    .line 246
     .local v1, br:Lcom/android/server/am/BroadcastRecord;
     if-eqz v1, :cond_0
 
@@ -4370,29 +4446,29 @@
 
     if-ne v0, v2, :cond_0
 
-    .line 242
+    .line 248
     const/4 v0, 0x0
 
     :try_start_0
     iput-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcast:Lcom/android/server/am/BroadcastRecord;
 
-    .line 243
+    .line 249
     invoke-direct {p0, v1, p1}, Lcom/android/server/am/BroadcastQueue;->processCurBroadcastLocked(Lcom/android/server/am/BroadcastRecord;Lcom/android/server/am/ProcessRecord;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 244
+    .line 250
     const/4 v7, 0x1
 
-    .line 257
+    .line 263
     :cond_0
     return v7
 
-    .line 245
+    .line 251
     :catch_0
     move-exception v8
 
-    .line 246
+    .line 252
     .local v8, e:Ljava/lang/Exception;
     const-string v0, "BroadcastQueue"
 
@@ -4422,10 +4498,10 @@
 
     invoke-static {v0, v2, v8}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 248
+    .line 254
     invoke-virtual {p0, v1}, Lcom/android/server/am/BroadcastQueue;->logBroadcastReceiverDiscardLocked(Lcom/android/server/am/BroadcastRecord;)V
 
-    .line 249
+    .line 255
     iget v2, v1, Lcom/android/server/am/BroadcastRecord;->resultCode:I
 
     iget-object v3, v1, Lcom/android/server/am/BroadcastRecord;->resultData:Ljava/lang/String;
@@ -4440,15 +4516,15 @@
 
     invoke-virtual/range {v0 .. v6}, Lcom/android/server/am/BroadcastQueue;->finishReceiverLocked(Lcom/android/server/am/BroadcastRecord;ILjava/lang/String;Landroid/os/Bundle;ZZ)Z
 
-    .line 251
+    .line 257
     invoke-virtual {p0}, Lcom/android/server/am/BroadcastQueue;->scheduleBroadcastsLocked()V
 
-    .line 253
+    .line 259
     const/4 v0, 0x0
 
     iput v0, v1, Lcom/android/server/am/BroadcastRecord;->state:I
 
-    .line 254
+    .line 260
     new-instance v0, Ljava/lang/RuntimeException;
 
     invoke-virtual {v8}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
@@ -4465,12 +4541,12 @@
     .parameter "timeoutTime"
 
     .prologue
-    .line 791
+    .line 810
     iget-boolean v1, p0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcastTimeoutMessage:Z
 
     if-nez v1, :cond_0
 
-    .line 792
+    .line 811
     iget-object v1, p0, Lcom/android/server/am/BroadcastQueue;->mHandler:Landroid/os/Handler;
 
     const/16 v2, 0xc9
@@ -4479,18 +4555,18 @@
 
     move-result-object v0
 
-    .line 793
+    .line 812
     .local v0, msg:Landroid/os/Message;
     iget-object v1, p0, Lcom/android/server/am/BroadcastQueue;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v1, v0, p1, p2}, Landroid/os/Handler;->sendMessageAtTime(Landroid/os/Message;J)Z
 
-    .line 794
+    .line 813
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcastTimeoutMessage:Z
 
-    .line 796
+    .line 815
     .end local v0           #msg:Landroid/os/Message;
     :cond_0
     return-void
@@ -4503,21 +4579,21 @@
     .prologue
     const/4 v6, 0x1
 
-    .line 271
+    .line 277
     const/4 v7, 0x0
 
-    .line 272
+    .line 278
     .local v7, reschedule:Z
     iget-object v1, p1, Lcom/android/server/am/ProcessRecord;->curReceiver:Lcom/android/server/am/BroadcastRecord;
 
-    .line 273
+    .line 279
     .local v1, r:Lcom/android/server/am/BroadcastRecord;
     if-eqz v1, :cond_0
 
-    .line 277
+    .line 283
     invoke-virtual {p0, v1}, Lcom/android/server/am/BroadcastQueue;->logBroadcastReceiverDiscardLocked(Lcom/android/server/am/BroadcastRecord;)V
 
-    .line 278
+    .line 284
     iget v2, v1, Lcom/android/server/am/BroadcastRecord;->resultCode:I
 
     iget-object v3, v1, Lcom/android/server/am/BroadcastRecord;->resultData:Ljava/lang/String;
@@ -4530,24 +4606,24 @@
 
     invoke-virtual/range {v0 .. v6}, Lcom/android/server/am/BroadcastQueue;->finishReceiverLocked(Lcom/android/server/am/BroadcastRecord;ILjava/lang/String;Landroid/os/Bundle;ZZ)Z
 
-    .line 280
+    .line 286
     const/4 v7, 0x1
 
-    .line 283
+    .line 289
     :cond_0
     iget-object v1, p0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcast:Lcom/android/server/am/BroadcastRecord;
 
-    .line 284
+    .line 290
     if-eqz v1, :cond_1
 
     iget-object v0, v1, Lcom/android/server/am/BroadcastRecord;->curApp:Lcom/android/server/am/ProcessRecord;
 
     if-ne v0, p1, :cond_1
 
-    .line 287
+    .line 293
     invoke-virtual {p0, v1}, Lcom/android/server/am/BroadcastQueue;->logBroadcastReceiverDiscardLocked(Lcom/android/server/am/BroadcastRecord;)V
 
-    .line 288
+    .line 294
     iget v2, v1, Lcom/android/server/am/BroadcastRecord;->resultCode:I
 
     iget-object v3, v1, Lcom/android/server/am/BroadcastRecord;->resultData:Ljava/lang/String;
@@ -4560,17 +4636,17 @@
 
     invoke-virtual/range {v0 .. v6}, Lcom/android/server/am/BroadcastQueue;->finishReceiverLocked(Lcom/android/server/am/BroadcastRecord;ILjava/lang/String;Landroid/os/Bundle;ZZ)Z
 
-    .line 290
+    .line 296
     const/4 v7, 0x1
 
-    .line 292
+    .line 298
     :cond_1
     if-eqz v7, :cond_2
 
-    .line 293
+    .line 299
     invoke-virtual {p0}, Lcom/android/server/am/BroadcastQueue;->scheduleBroadcastsLocked()V
 
-    .line 295
+    .line 301
     :cond_2
     return-void
 .end method
@@ -4580,10 +4656,10 @@
     .parameter "pid"
 
     .prologue
-    .line 261
+    .line 267
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcast:Lcom/android/server/am/BroadcastRecord;
 
-    .line 262
+    .line 268
     .local v0, br:Lcom/android/server/am/BroadcastRecord;
     if-eqz v0, :cond_0
 
@@ -4593,25 +4669,25 @@
 
     if-ne v1, p1, :cond_0
 
-    .line 263
+    .line 269
     const/4 v1, 0x0
 
     iput v1, v0, Lcom/android/server/am/BroadcastRecord;->state:I
 
-    .line 264
+    .line 270
     iget v1, p0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcastRecvIndex:I
 
     iput v1, v0, Lcom/android/server/am/BroadcastRecord;->nextReceiver:I
 
-    .line 265
+    .line 271
     const/4 v1, 0x0
 
     iput-object v1, p0, Lcom/android/server/am/BroadcastQueue;->mPendingBroadcast:Lcom/android/server/am/BroadcastRecord;
 
-    .line 266
+    .line 272
     invoke-virtual {p0}, Lcom/android/server/am/BroadcastQueue;->scheduleBroadcastsLocked()V
 
-    .line 268
+    .line 274
     :cond_0
     return-void
 .end method

@@ -27,16 +27,16 @@
     .parameter "weight"
 
     .prologue
-    .line 1807
+    .line 1817
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1808
+    .line 1818
     iput-object p1, p0, Landroid/hardware/Camera$Area;->rect:Landroid/graphics/Rect;
 
-    .line 1809
+    .line 1819
     iput p2, p0, Landroid/hardware/Camera$Area;->weight:I
 
-    .line 1810
+    .line 1820
     return-void
 .end method
 
@@ -49,12 +49,12 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 1820
+    .line 1830
     instance-of v2, p1, Landroid/hardware/Camera$Area;
 
     if-nez v2, :cond_1
 
-    .line 1829
+    .line 1839
     :cond_0
     :goto_0
     return v1
@@ -62,21 +62,21 @@
     :cond_1
     move-object v0, p1
 
-    .line 1823
+    .line 1833
     check-cast v0, Landroid/hardware/Camera$Area;
 
-    .line 1824
+    .line 1834
     .local v0, a:Landroid/hardware/Camera$Area;
     iget-object v2, p0, Landroid/hardware/Camera$Area;->rect:Landroid/graphics/Rect;
 
     if-nez v2, :cond_3
 
-    .line 1825
+    .line 1835
     iget-object v2, v0, Landroid/hardware/Camera$Area;->rect:Landroid/graphics/Rect;
 
     if-nez v2, :cond_0
 
-    .line 1829
+    .line 1839
     :cond_2
     iget v2, p0, Landroid/hardware/Camera$Area;->weight:I
 
@@ -88,7 +88,7 @@
 
     goto :goto_0
 
-    .line 1827
+    .line 1837
     :cond_3
     iget-object v2, p0, Landroid/hardware/Camera$Area;->rect:Landroid/graphics/Rect;
 

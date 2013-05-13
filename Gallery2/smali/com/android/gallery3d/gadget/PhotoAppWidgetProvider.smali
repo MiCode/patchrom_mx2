@@ -28,7 +28,7 @@
 
     move-result-object v0
 
-    const v2, 0x7f04004b
+    const v2, 0x7f04004d
 
     invoke-direct {v1, v0, v2}, Landroid/widget/RemoteViews;-><init>(Ljava/lang/String;I)V
 
@@ -46,7 +46,7 @@
     move-result-object v0
 
     .line 100
-    const v2, 0x7f0d00fd
+    const v2, 0x7f0d0101
 
     invoke-virtual {v1, v2, v0}, Landroid/widget/RemoteViews;->setImageViewBitmap(ILandroid/graphics/Bitmap;)V
     :try_end_0
@@ -87,7 +87,7 @@
     move-result-object v0
 
     .line 112
-    const v2, 0x7f0d00fd
+    const v2, 0x7f0d0101
 
     invoke-virtual {v1, v2, v0}, Landroid/widget/RemoteViews;->setOnClickPendingIntent(ILandroid/app/PendingIntent;)V
     :try_end_1
@@ -173,7 +173,7 @@
 
     move-result-object v1
 
-    const v2, 0x7f040003
+    const v2, 0x7f040004
 
     invoke-direct {v0, v1, v2}, Landroid/widget/RemoteViews;-><init>(Ljava/lang/String;I)V
 

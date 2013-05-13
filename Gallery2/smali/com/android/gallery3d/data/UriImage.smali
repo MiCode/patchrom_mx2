@@ -41,22 +41,22 @@
     .parameter "contentType"
 
     .prologue
-    .line 63
+    .line 64
     invoke-static {}, Lcom/android/gallery3d/data/UriImage;->nextVersionNumber()J
 
     move-result-wide v0
 
     invoke-direct {p0, p2, v0, v1}, Lcom/android/gallery3d/data/MediaItem;-><init>(Lcom/android/gallery3d/data/Path;J)V
 
-    .line 55
+    .line 56
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/android/gallery3d/data/UriImage;->mState:I
 
-    .line 64
+    .line 65
     iput-object p3, p0, Lcom/android/gallery3d/data/UriImage;->mUri:Landroid/net/Uri;
 
-    .line 65
+    .line 66
     invoke-static {p1}, Lcom/android/gallery3d/common/Utils;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v0
@@ -65,10 +65,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/data/UriImage;->mApplication:Lcom/android/gallery3d/app/GalleryApp;
 
-    .line 66
+    .line 67
     iput-object p4, p0, Lcom/android/gallery3d/data/UriImage;->mContentType:Ljava/lang/String;
 
-    .line 67
+    .line 68
     return-void
 .end method
 
@@ -78,7 +78,7 @@
     .parameter "x1"
 
     .prologue
-    .line 42
+    .line 43
     invoke-direct {p0, p1}, Lcom/android/gallery3d/data/UriImage;->prepareInputFile(Lcom/android/gallery3d/util/ThreadPool$JobContext;)Z
 
     move-result v0
@@ -91,7 +91,7 @@
     .parameter "x0"
 
     .prologue
-    .line 42
+    .line 43
     iget-object v0, p0, Lcom/android/gallery3d/data/UriImage;->mFileDescriptor:Landroid/os/ParcelFileDescriptor;
 
     return-object v0
@@ -103,7 +103,7 @@
     .parameter "x1"
 
     .prologue
-    .line 42
+    .line 43
     iput p1, p0, Lcom/android/gallery3d/data/UriImage;->mWidth:I
 
     return p1
@@ -115,7 +115,7 @@
     .parameter "x1"
 
     .prologue
-    .line 42
+    .line 43
     iput p1, p0, Lcom/android/gallery3d/data/UriImage;->mHeight:I
 
     return p1
@@ -125,7 +125,7 @@
     .locals 2
 
     .prologue
-    .line 233
+    .line 234
     const-string v0, "file"
 
     iget-object v1, p0, Lcom/android/gallery3d/data/UriImage;->mUri:Landroid/net/Uri;
@@ -146,52 +146,52 @@
     .parameter "jc"
 
     .prologue
-    .line 80
+    .line 81
     invoke-direct {p0, p1}, Lcom/android/gallery3d/data/UriImage;->openOrDownloadInner(Lcom/android/gallery3d/util/ThreadPool$JobContext;)I
 
     move-result v0
 
-    .line 81
+    .line 82
     .local v0, state:I
     monitor-enter p0
 
-    .line 82
+    .line 83
     :try_start_0
     iput v0, p0, Lcom/android/gallery3d/data/UriImage;->mState:I
 
-    .line 83
+    .line 84
     iget v1, p0, Lcom/android/gallery3d/data/UriImage;->mState:I
 
     const/4 v2, 0x2
 
     if-eq v1, v2, :cond_0
 
-    .line 84
+    .line 85
     iget-object v1, p0, Lcom/android/gallery3d/data/UriImage;->mFileDescriptor:Landroid/os/ParcelFileDescriptor;
 
     if-eqz v1, :cond_0
 
-    .line 85
+    .line 86
     iget-object v1, p0, Lcom/android/gallery3d/data/UriImage;->mFileDescriptor:Landroid/os/ParcelFileDescriptor;
 
     invoke-static {v1}, Lcom/android/gallery3d/common/Utils;->closeSilently(Landroid/os/ParcelFileDescriptor;)V
 
-    .line 86
+    .line 87
     const/4 v1, 0x0
 
     iput-object v1, p0, Lcom/android/gallery3d/data/UriImage;->mFileDescriptor:Landroid/os/ParcelFileDescriptor;
 
-    .line 89
+    .line 90
     :cond_0
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
 
-    .line 90
+    .line 91
     monitor-exit p0
 
-    .line 91
+    .line 92
     return-void
 
-    .line 90
+    .line 91
     :catchall_0
     move-exception v1
 
@@ -213,14 +213,14 @@
 
     const/4 v6, -0x1
 
-    .line 94
+    .line 95
     iget-object v8, p0, Lcom/android/gallery3d/data/UriImage;->mUri:Landroid/net/Uri;
 
     invoke-virtual {v8}, Landroid/net/Uri;->getScheme()Ljava/lang/String;
 
     move-result-object v2
 
-    .line 95
+    .line 96
     .local v2, scheme:Ljava/lang/String;
     const-string v8, "content"
 
@@ -246,7 +246,7 @@
 
     if-eqz v8, :cond_4
 
-    .line 99
+    .line 100
     :cond_0
     :try_start_0
     const-string v8, "image/jpeg"
@@ -259,7 +259,7 @@
 
     if-eqz v8, :cond_1
 
-    .line 100
+    .line 101
     iget-object v8, p0, Lcom/android/gallery3d/data/UriImage;->mApplication:Lcom/android/gallery3d/app/GalleryApp;
 
     invoke-interface {v8}, Lcom/android/gallery3d/app/GalleryApp;->getContentResolver()Landroid/content/ContentResolver;
@@ -272,7 +272,7 @@
 
     move-result-object v1
 
-    .line 102
+    .line 103
     .local v1, is:Ljava/io/InputStream;
     invoke-static {v1}, Lcom/android/gallery3d/data/Exif;->getOrientation(Ljava/io/InputStream;)I
 
@@ -280,10 +280,10 @@
 
     iput v8, p0, Lcom/android/gallery3d/data/UriImage;->mRotation:I
 
-    .line 103
+    .line 104
     invoke-static {v1}, Lcom/android/gallery3d/common/Utils;->closeSilently(Ljava/io/Closeable;)V
 
-    .line 105
+    .line 106
     .end local v1           #is:Ljava/io/InputStream;
     :cond_1
     iget-object v8, p0, Lcom/android/gallery3d/data/UriImage;->mApplication:Lcom/android/gallery3d/app/GalleryApp;
@@ -302,7 +302,7 @@
 
     iput-object v8, p0, Lcom/android/gallery3d/data/UriImage;->mFileDescriptor:Landroid/os/ParcelFileDescriptor;
 
-    .line 107
+    .line 108
     invoke-interface {p1}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->isCancelled()Z
     :try_end_0
     .catch Ljava/io/FileNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
@@ -311,7 +311,7 @@
 
     if-eqz v6, :cond_3
 
-    .line 132
+    .line 133
     :cond_2
     :goto_0
     return v5
@@ -319,14 +319,14 @@
     :cond_3
     move v5, v7
 
-    .line 108
+    .line 109
     goto :goto_0
 
-    .line 109
+    .line 110
     :catch_0
     move-exception v0
 
-    .line 110
+    .line 111
     .local v0, e:Ljava/io/FileNotFoundException;
     const-string v5, "UriImage"
 
@@ -354,10 +354,10 @@
 
     move v5, v6
 
-    .line 111
+    .line 112
     goto :goto_0
 
-    .line 115
+    .line 116
     .end local v0           #e:Ljava/io/FileNotFoundException;
     :cond_4
     :try_start_1
@@ -375,7 +375,7 @@
 
     move-result-object v4
 
-    .line 116
+    .line 117
     .local v4, url:Ljava/net/URL;
     iget-object v8, p0, Lcom/android/gallery3d/data/UriImage;->mApplication:Lcom/android/gallery3d/app/GalleryApp;
 
@@ -389,19 +389,19 @@
 
     iput-object v8, p0, Lcom/android/gallery3d/data/UriImage;->mCacheEntry:Lcom/android/gallery3d/data/DownloadCache$Entry;
 
-    .line 117
+    .line 118
     invoke-interface {p1}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->isCancelled()Z
 
     move-result v8
 
     if-nez v8, :cond_2
 
-    .line 118
+    .line 119
     iget-object v5, p0, Lcom/android/gallery3d/data/UriImage;->mCacheEntry:Lcom/android/gallery3d/data/DownloadCache$Entry;
 
     if-nez v5, :cond_5
 
-    .line 119
+    .line 120
     const-string v5, "UriImage"
 
     new-instance v7, Ljava/lang/StringBuilder;
@@ -426,10 +426,10 @@
 
     move v5, v6
 
-    .line 120
+    .line 121
     goto :goto_0
 
-    .line 122
+    .line 123
     :cond_5
     const-string v5, "image/jpeg"
 
@@ -441,7 +441,7 @@
 
     if-eqz v5, :cond_6
 
-    .line 123
+    .line 124
     new-instance v1, Ljava/io/FileInputStream;
 
     iget-object v5, p0, Lcom/android/gallery3d/data/UriImage;->mCacheEntry:Lcom/android/gallery3d/data/DownloadCache$Entry;
@@ -450,7 +450,7 @@
 
     invoke-direct {v1, v5}, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
 
-    .line 124
+    .line 125
     .restart local v1       #is:Ljava/io/InputStream;
     invoke-static {v1}, Lcom/android/gallery3d/data/Exif;->getOrientation(Ljava/io/InputStream;)I
 
@@ -458,10 +458,10 @@
 
     iput v5, p0, Lcom/android/gallery3d/data/UriImage;->mRotation:I
 
-    .line 125
+    .line 126
     invoke-static {v1}, Lcom/android/gallery3d/common/Utils;->closeSilently(Ljava/io/Closeable;)V
 
-    .line 127
+    .line 128
     .end local v1           #is:Ljava/io/InputStream;
     :cond_6
     iget-object v5, p0, Lcom/android/gallery3d/data/UriImage;->mCacheEntry:Lcom/android/gallery3d/data/DownloadCache$Entry;
@@ -480,15 +480,15 @@
 
     move v5, v7
 
-    .line 129
+    .line 130
     goto/16 :goto_0
 
-    .line 130
+    .line 131
     .end local v4           #url:Ljava/net/URL;
     :catch_1
     move-exception v3
 
-    .line 131
+    .line 132
     .local v3, t:Ljava/lang/Throwable;
     const-string v5, "UriImage"
 
@@ -498,7 +498,7 @@
 
     move v5, v6
 
-    .line 132
+    .line 133
     goto/16 :goto_0
 .end method
 
@@ -511,18 +511,18 @@
 
     const/4 v0, 0x0
 
-    .line 138
+    .line 139
     new-instance v2, Lcom/android/gallery3d/data/UriImage$1;
 
     invoke-direct {v2, p0}, Lcom/android/gallery3d/data/UriImage$1;-><init>(Lcom/android/gallery3d/data/UriImage;)V
 
     invoke-interface {p1, v2}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->setCancelListener(Lcom/android/gallery3d/util/ThreadPool$CancelListener;)V
 
-    .line 147
+    .line 148
     :goto_0
     monitor-enter p0
 
-    .line 148
+    .line 149
     :try_start_0
     invoke-interface {p1}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->isCancelled()Z
 
@@ -532,32 +532,32 @@
 
     monitor-exit p0
 
-    .line 155
+    .line 156
     :goto_1
     return v0
 
-    .line 149
+    .line 150
     :cond_0
     iget v2, p0, Lcom/android/gallery3d/data/UriImage;->mState:I
 
     if-nez v2, :cond_1
 
-    .line 150
+    .line 151
     const/4 v2, 0x1
 
     iput v2, p0, Lcom/android/gallery3d/data/UriImage;->mState:I
 
-    .line 164
+    .line 165
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 166
+    .line 167
     invoke-direct {p0, p1}, Lcom/android/gallery3d/data/UriImage;->openFileOrDownloadTempFile(Lcom/android/gallery3d/util/ThreadPool$JobContext;)V
 
     goto :goto_0
 
-    .line 152
+    .line 153
     :cond_1
     :try_start_1
     iget v2, p0, Lcom/android/gallery3d/data/UriImage;->mState:I
@@ -566,12 +566,12 @@
 
     if-ne v2, v3, :cond_2
 
-    .line 153
+    .line 154
     monitor-exit p0
 
     goto :goto_1
 
-    .line 164
+    .line 165
     :catchall_0
     move-exception v0
 
@@ -581,7 +581,7 @@
 
     throw v0
 
-    .line 154
+    .line 155
     :cond_2
     :try_start_2
     iget v2, p0, Lcom/android/gallery3d/data/UriImage;->mState:I
@@ -590,7 +590,7 @@
 
     if-ne v2, v3, :cond_3
 
-    .line 155
+    .line 156
     monitor-exit p0
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
@@ -599,7 +599,7 @@
 
     goto :goto_1
 
-    .line 158
+    .line 159
     :cond_3
     :try_start_3
     invoke-virtual {p0}, Ljava/lang/Object;->wait()V
@@ -607,7 +607,7 @@
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
     .catch Ljava/lang/InterruptedException; {:try_start_3 .. :try_end_3} :catch_0
 
-    .line 162
+    .line 163
     :goto_2
     :try_start_4
     monitor-exit p0
@@ -616,7 +616,7 @@
 
     goto :goto_0
 
-    .line 159
+    .line 160
     :catch_0
     move-exception v2
 
@@ -625,6 +625,120 @@
 
 
 # virtual methods
+.method public delete()V
+    .locals 6
+
+    .prologue
+    .line 315
+    iget-object v3, p0, Lcom/android/gallery3d/data/UriImage;->mUri:Landroid/net/Uri;
+
+    if-eqz v3, :cond_0
+
+    const-string v3, "file"
+
+    iget-object v4, p0, Lcom/android/gallery3d/data/UriImage;->mUri:Landroid/net/Uri;
+
+    invoke-virtual {v4}, Landroid/net/Uri;->getScheme()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    .line 316
+    iget-object v3, p0, Lcom/android/gallery3d/data/UriImage;->mUri:Landroid/net/Uri;
+
+    invoke-virtual {v3}, Landroid/net/Uri;->getPath()Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 317
+    .local v2, filePath:Ljava/lang/String;
+    new-instance v1, Ljava/io/File;
+
+    invoke-direct {v1, v2}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    .line 319
+    .local v1, file:Ljava/io/File;
+    const/4 v3, 0x1
+
+    const/4 v4, 0x0
+
+    :try_start_0
+    invoke-virtual {v1, v3, v4}, Ljava/io/File;->setReadable(ZZ)Z
+
+    .line 320
+    const/4 v3, 0x1
+
+    const/4 v4, 0x0
+
+    invoke-virtual {v1, v3, v4}, Ljava/io/File;->setWritable(ZZ)Z
+
+    .line 321
+    invoke-virtual {v1}, Ljava/io/File;->exists()Z
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    invoke-virtual {v1}, Ljava/io/File;->isFile()Z
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    .line 322
+    invoke-virtual {v1}, Ljava/io/File;->delete()Z
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 328
+    .end local v1           #file:Ljava/io/File;
+    .end local v2           #filePath:Ljava/lang/String;
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 324
+    .restart local v1       #file:Ljava/io/File;
+    .restart local v2       #filePath:Ljava/lang/String;
+    :catch_0
+    move-exception v0
+
+    .line 325
+    .local v0, e:Ljava/lang/Exception;
+    const-string v3, "Gallery2"
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "Uri delete exception "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v0}, Ljava/lang/Exception;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v3, v4}, Lcom/android/gallery3d/data/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_0
+.end method
+
 .method protected finalize()V
     .locals 1
     .annotation system Ldalvik/annotation/Throws;
@@ -634,27 +748,27 @@
     .end annotation
 
     .prologue
-    .line 272
+    .line 273
     :try_start_0
     iget-object v0, p0, Lcom/android/gallery3d/data/UriImage;->mFileDescriptor:Landroid/os/ParcelFileDescriptor;
 
     if-eqz v0, :cond_0
 
-    .line 273
+    .line 274
     iget-object v0, p0, Lcom/android/gallery3d/data/UriImage;->mFileDescriptor:Landroid/os/ParcelFileDescriptor;
 
     invoke-static {v0}, Lcom/android/gallery3d/common/Utils;->closeSilently(Landroid/os/ParcelFileDescriptor;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 276
+    .line 277
     :cond_0
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 278
+    .line 279
     return-void
 
-    .line 276
+    .line 277
     :catchall_0
     move-exception v0
 
@@ -667,7 +781,7 @@
     .locals 1
 
     .prologue
-    .line 243
+    .line 244
     iget-object v0, p0, Lcom/android/gallery3d/data/UriImage;->mUri:Landroid/net/Uri;
 
     return-object v0
@@ -677,12 +791,12 @@
     .locals 4
 
     .prologue
-    .line 248
+    .line 249
     invoke-super {p0}, Lcom/android/gallery3d/data/MediaItem;->getDetails()Lcom/android/gallery3d/data/MediaDetails;
 
     move-result-object v0
 
-    .line 249
+    .line 250
     .local v0, details:Lcom/android/gallery3d/data/MediaDetails;
     iget v2, p0, Lcom/android/gallery3d/data/UriImage;->mWidth:I
 
@@ -692,7 +806,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 250
+    .line 251
     const/4 v2, 0x5
 
     iget v3, p0, Lcom/android/gallery3d/data/UriImage;->mWidth:I
@@ -703,7 +817,7 @@
 
     invoke-virtual {v0, v2, v3}, Lcom/android/gallery3d/data/MediaDetails;->addDetail(ILjava/lang/Object;)V
 
-    .line 251
+    .line 252
     const/4 v2, 0x6
 
     iget v3, p0, Lcom/android/gallery3d/data/UriImage;->mHeight:I
@@ -714,20 +828,20 @@
 
     invoke-virtual {v0, v2, v3}, Lcom/android/gallery3d/data/MediaDetails;->addDetail(ILjava/lang/Object;)V
 
-    .line 253
+    .line 254
     :cond_0
     iget-object v2, p0, Lcom/android/gallery3d/data/UriImage;->mContentType:Ljava/lang/String;
 
     if-eqz v2, :cond_1
 
-    .line 254
+    .line 255
     const/16 v2, 0x9
 
     iget-object v3, p0, Lcom/android/gallery3d/data/UriImage;->mContentType:Ljava/lang/String;
 
     invoke-virtual {v0, v2, v3}, Lcom/android/gallery3d/data/MediaDetails;->addDetail(ILjava/lang/Object;)V
 
-    .line 256
+    .line 257
     :cond_1
     const-string v2, "file"
 
@@ -743,23 +857,23 @@
 
     if-eqz v2, :cond_2
 
-    .line 257
+    .line 258
     iget-object v2, p0, Lcom/android/gallery3d/data/UriImage;->mUri:Landroid/net/Uri;
 
     invoke-virtual {v2}, Landroid/net/Uri;->getPath()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 258
+    .line 259
     .local v1, filePath:Ljava/lang/String;
     const/16 v2, 0xc8
 
     invoke-virtual {v0, v2, v1}, Lcom/android/gallery3d/data/MediaDetails;->addDetail(ILjava/lang/Object;)V
 
-    .line 259
+    .line 260
     invoke-static {v0, v1}, Lcom/android/gallery3d/data/MediaDetails;->extractExifInfo(Lcom/android/gallery3d/data/MediaDetails;Ljava/lang/String;)V
 
-    .line 261
+    .line 262
     .end local v1           #filePath:Ljava/lang/String;
     :cond_2
     return-object v0
@@ -769,7 +883,7 @@
     .locals 1
 
     .prologue
-    .line 287
+    .line 288
     iget v0, p0, Lcom/android/gallery3d/data/UriImage;->mHeight:I
 
     return v0
@@ -779,7 +893,7 @@
     .locals 1
 
     .prologue
-    .line 238
+    .line 239
     const/4 v0, 0x2
 
     return v0
@@ -789,7 +903,7 @@
     .locals 1
 
     .prologue
-    .line 266
+    .line 267
     iget-object v0, p0, Lcom/android/gallery3d/data/UriImage;->mContentType:Ljava/lang/String;
 
     return-object v0
@@ -799,7 +913,7 @@
     .locals 1
 
     .prologue
-    .line 309
+    .line 310
     iget-object v0, p0, Lcom/android/gallery3d/data/UriImage;->mUri:Landroid/net/Uri;
 
     if-eqz v0, :cond_0
@@ -823,7 +937,7 @@
     .locals 1
 
     .prologue
-    .line 292
+    .line 293
     iget v0, p0, Lcom/android/gallery3d/data/UriImage;->mRotation:I
 
     return v0
@@ -833,7 +947,7 @@
     .locals 3
 
     .prologue
-    .line 297
+    .line 298
     iget-object v1, p0, Lcom/android/gallery3d/data/UriImage;->mContentType:Ljava/lang/String;
 
     const-string v2, "image/gif"
@@ -844,7 +958,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 298
+    .line 299
     new-instance v0, Lcom/android/gallery3d/ui/GifScreenNail;
 
     invoke-virtual {p0}, Lcom/android/gallery3d/data/UriImage;->getContentUri()Landroid/net/Uri;
@@ -855,7 +969,7 @@
 
     invoke-direct {v0, v1, v2}, Lcom/android/gallery3d/ui/GifScreenNail;-><init>(Landroid/net/Uri;Lcom/android/gallery3d/app/GalleryApp;)V
 
-    .line 299
+    .line 300
     .local v0, sn:Lcom/android/gallery3d/ui/GifScreenNail;
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/GifScreenNail;->getWidth()I
 
@@ -863,14 +977,14 @@
 
     iput v1, p0, Lcom/android/gallery3d/data/UriImage;->mWidth:I
 
-    .line 300
+    .line 301
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/GifScreenNail;->getHeight()I
 
     move-result v1
 
     iput v1, p0, Lcom/android/gallery3d/data/UriImage;->mHeight:I
 
-    .line 303
+    .line 304
     .end local v0           #sn:Lcom/android/gallery3d/ui/GifScreenNail;
     :goto_0
     return-object v0
@@ -885,10 +999,10 @@
     .locals 2
 
     .prologue
-    .line 220
+    .line 221
     const/16 v0, 0x220
 
-    .line 221
+    .line 222
     .local v0, supported:I
     invoke-direct {p0}, Lcom/android/gallery3d/data/UriImage;->isSharable()Z
 
@@ -898,7 +1012,7 @@
 
     or-int/lit8 v0, v0, 0x4
 
-    .line 222
+    .line 223
     :cond_0
     iget-object v1, p0, Lcom/android/gallery3d/data/UriImage;->mContentType:Ljava/lang/String;
 
@@ -908,10 +1022,10 @@
 
     if-eqz v1, :cond_1
 
-    .line 223
+    .line 224
     or-int/lit8 v0, v0, 0x40
 
-    .line 225
+    .line 226
     :cond_1
     return v0
 .end method
@@ -920,7 +1034,7 @@
     .locals 1
 
     .prologue
-    .line 282
+    .line 283
     iget v0, p0, Lcom/android/gallery3d/data/UriImage;->mWidth:I
 
     return v0
@@ -940,7 +1054,7 @@
     .end annotation
 
     .prologue
-    .line 71
+    .line 72
     new-instance v1, Lcom/android/gallery3d/data/UriImage$BitmapJob;
 
     invoke-virtual {p0}, Lcom/android/gallery3d/data/UriImage;->getSupportedOperations()I
@@ -977,7 +1091,7 @@
     .end annotation
 
     .prologue
-    .line 76
+    .line 77
     new-instance v0, Lcom/android/gallery3d/data/UriImage$RegionDecoderJob;
 
     const/4 v1, 0x0

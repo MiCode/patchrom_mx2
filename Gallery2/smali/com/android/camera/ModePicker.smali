@@ -67,7 +67,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f08002c
+    const v1, 0x7f080031
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getColor(I)I
 
@@ -260,7 +260,7 @@
     invoke-super {p0}, Landroid/widget/RelativeLayout;->onFinishInflate()V
 
     .line 83
-    const v0, 0x7f0d00e4
+    const v0, 0x7f0d00e6
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ModePicker;->findViewById(I)Landroid/view/View;
 
@@ -280,7 +280,7 @@
 
     const/4 v2, 0x2
 
-    const v0, 0x7f0d00e5
+    const v0, 0x7f0d00e7
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ModePicker;->findViewById(I)Landroid/view/View;
 
@@ -295,7 +295,7 @@
 
     const/4 v2, 0x1
 
-    const v0, 0x7f0d00e6
+    const v0, 0x7f0d00e8
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ModePicker;->findViewById(I)Landroid/view/View;
 
@@ -310,7 +310,7 @@
 
     const/4 v2, 0x0
 
-    const v0, 0x7f0d00e7
+    const v0, 0x7f0d00e9
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ModePicker;->findViewById(I)Landroid/view/View;
 
@@ -557,7 +557,7 @@
     aget-object v4, v0, v2
 
     .local v4, v:Lcom/android/camera/ui/TwoStateImageView;
-    invoke-virtual {v4, v1}, Lcom/android/camera/ui/TwoStateImageView;->enableFilter(Z)V
+    invoke-virtual {v4, v1}, Lcom/android/camera/ui/RotateImageView;->enableFilter(Z)V
 
     add-int/lit8 v2, v2, 0x1
 

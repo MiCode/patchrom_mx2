@@ -11,8 +11,16 @@
     <dimen name="action_bar_subtitle_top_margin">-2.0dip</dimen>
     <dimen name="action_bar_subtitle_bottom_margin">4.0dip</dimen>
     <dimen name="keyguard_lockscreen_clock_font_size">70.0sp</dimen>
-    <dimen name="recipient_max_height">76.0dip</dimen>
-    <dimen name="recipient_padding_left">45.0dip</dimen>
-    <dimen name="recipient_padding_right">35.0dip</dimen>
-    <dimen name="alert_dialog_max_height_mz">277.0dip</dimen>
+    <dimen name="recipient_max_height">67.0dip</dimen>
+    <dimen name="recipient_padding_left">24.0dip</dimen>
+    <dimen name="recipient_padding_right">28.0dip</dimen>
+    <dimen name="recipient_list_item_padding_left">8.0dip</dimen>
+    <dimen name="recipient_list_item_padding_right">8.0dip</dimen>
+    <dimen name="alert_dialog_max_height_mz">232.0dip</dimen>
+    <dimen name="emo_padding_left_mz">26.0dip</dimen>
+    <dimen name="emo_padding_right_mz">26.5dip</dimen>
+    <dimen name="emo_padding_top_mz">10.0dip</dimen>
+    <dimen name="emo_padding_bottom_mz">10.0dip</dimen>
+    <dimen name="emo_panel_height_mz">156.0dip</dimen>
+    <dimen name="emo_panel_width_mz">480.0dip</dimen>
 </resources>

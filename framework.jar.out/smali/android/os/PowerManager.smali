@@ -15,12 +15,10 @@
 # static fields
 .field public static final ACQUIRE_CAUSES_WAKEUP:I = 0x10000000
 
-#the value of this static final field might be set in the static constructor
-.field public static final BRIGHTNESS_DIM:I = 0x0
+.field public static final BRIGHTNESS_DIM:I = 0x2
 
 .field public static final BRIGHTNESS_LOW_BATTERY:I = 0xa
 
-#the value of this static final field might be set in the static constructor
 .field public static final BRIGHTNESS_OFF:I = 0x0
 
 .field public static final BRIGHTNESS_ON:I = 0xff
@@ -66,53 +64,6 @@
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 1
-
-    .prologue
-    .line 217
-    sget-object v0, Landroid/os/Build;->IS_MX2:Ljava/lang/Boolean;
-
-    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    const/16 v0, 0x3c
-
-    :goto_0
-    sput v0, Landroid/os/PowerManager;->BRIGHTNESS_DIM:I
-
-    .line 223
-    sget-object v0, Landroid/os/Build;->IS_MX2:Ljava/lang/Boolean;
-
-    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    const/4 v0, 0x0
-
-    :goto_1
-    sput v0, Landroid/os/PowerManager;->BRIGHTNESS_OFF:I
-
-    return-void
-
-    .line 217
-    :cond_0
-    const/16 v0, 0x8a
-
-    goto :goto_0
-
-    .line 223
-    :cond_1
-    const/16 v0, 0x82
-
-    goto :goto_1
-.end method
-
 .method private constructor <init>()V
     .locals 0
 
@@ -146,32 +97,17 @@
 
 # virtual methods
 .method public checkLockState()I
-    .locals 2
+    .locals 1
 
     .prologue
-    .line 618
-    :try_start_0
-    iget-object v1, p0, Landroid/os/PowerManager;->mService:Landroid/os/IPowerManager;
+    .line 625
+    const/4 v0, 0x3
 
-    invoke-interface {v1}, Landroid/os/IPowerManager;->checkLockState()I
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-virtual {p0, v0}, Landroid/os/PowerManager;->doCheckState(I)I
 
-    move-result v1
+    move-result v0
 
-    .line 620
-    :goto_0
-    return v1
-
-    .line 619
-    :catch_0
-    move-exception v0
-
-    .line 620
-    .local v0, e:Landroid/os/RemoteException;
-    const/4 v1, -0x1
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public doCheckState(I)I
@@ -179,7 +115,7 @@
     .parameter "handle"
 
     .prologue
-    .line 674
+    .line 678
     :try_start_0
     iget-object v1, p0, Landroid/os/PowerManager;->mService:Landroid/os/IPowerManager;
 
@@ -189,15 +125,15 @@
 
     move-result v1
 
-    .line 676
+    .line 680
     :goto_0
     return v1
 
-    .line 675
+    .line 679
     :catch_0
     move-exception v0
 
-    .line 676
+    .line 680
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, -0x3
 
@@ -210,7 +146,7 @@
     .parameter "rsaData"
 
     .prologue
-    .line 661
+    .line 665
     :try_start_0
     iget-object v1, p0, Landroid/os/PowerManager;->mService:Landroid/os/IPowerManager;
 
@@ -220,15 +156,15 @@
 
     move-result v1
 
-    .line 663
+    .line 667
     :goto_0
     return v1
 
-    .line 662
+    .line 666
     :catch_0
     move-exception v0
 
-    .line 663
+    .line 667
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, -0x3
 
@@ -241,7 +177,7 @@
     .parameter "inData"
 
     .prologue
-    .line 647
+    .line 651
     :try_start_0
     iget-object v1, p0, Landroid/os/PowerManager;->mService:Landroid/os/IPowerManager;
 
@@ -251,15 +187,15 @@
 
     move-result v1
 
-    .line 649
+    .line 653
     :goto_0
     return v1
 
-    .line 648
+    .line 652
     :catch_0
     move-exception v0
 
-    .line 649
+    .line 653
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, -0x3
 
@@ -480,33 +416,14 @@
 .end method
 
 .method public setLockState(I)I
-    .locals 2
+    .locals 1
     .parameter "lock"
 
     .prologue
-    .line 633
-    :try_start_0
-    iget-object v1, p0, Landroid/os/PowerManager;->mService:Landroid/os/IPowerManager;
+    .line 640
+    const/4 v0, -0x1
 
-    invoke-interface {v1, p1}, Landroid/os/IPowerManager;->setLockState(I)I
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-
-    move-result v1
-
-    .line 635
-    :goto_0
-    return v1
-
-    .line 634
-    :catch_0
-    move-exception v0
-
-    .line 635
-    .local v0, e:Landroid/os/RemoteException;
-    const/4 v1, -0x1
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public userActivity(JZ)V

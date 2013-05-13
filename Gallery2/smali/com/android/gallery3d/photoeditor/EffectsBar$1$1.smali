@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 184
+    .line 191
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1$1;->this$1:Lcom/android/gallery3d/photoeditor/EffectsBar$1;
 
     iput p2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1$1;->val$effectsId:I
@@ -46,7 +46,7 @@
     .locals 2
 
     .prologue
-    .line 188
+    .line 195
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1$1;->this$1:Lcom/android/gallery3d/photoeditor/EffectsBar$1;
 
     iget-object v0, v0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
@@ -56,6 +56,6 @@
     #calls: Lcom/android/gallery3d/photoeditor/EffectsBar;->createEffectsGallery(I)V
     invoke-static {v0, v1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->access$1100(Lcom/android/gallery3d/photoeditor/EffectsBar;I)V
 
-    .line 189
+    .line 196
     return-void
 .end method

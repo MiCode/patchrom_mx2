@@ -208,6 +208,16 @@
     return v0
 .end method
 
+.method public getRemoteVideoHeadDuration()J
+    .locals 2
+
+    .prologue
+    .line 44
+    iget-wide v0, p0, Lcom/android/gallery3d/app/RemoteVideoPlayList;->remoteVideoHeadDuration:J
+
+    return-wide v0
+.end method
+
 .method public getRemoteVideoHighMmsid()Ljava/lang/String;
     .locals 1
 
@@ -256,6 +266,16 @@
     iget-object v0, p0, Lcom/android/gallery3d/app/RemoteVideoPlayList;->remoteVideoStandardPlayURL:Ljava/lang/String;
 
     return-object v0
+.end method
+
+.method public getRemoteVideoTailDuration()J
+    .locals 2
+
+    .prologue
+    .line 52
+    iget-wide v0, p0, Lcom/android/gallery3d/app/RemoteVideoPlayList;->remoteVideoTailDuration:J
+
+    return-wide v0
 .end method
 
 .method public getRemoteVideoTitle()Ljava/lang/String;

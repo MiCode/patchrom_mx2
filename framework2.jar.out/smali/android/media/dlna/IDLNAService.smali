@@ -54,3 +54,11 @@
         }
     .end annotation
 .end method
+
+.method public abstract setOnlineMusicURL(Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method

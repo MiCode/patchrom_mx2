@@ -36,7 +36,7 @@
     .locals 2
 
     .prologue
-    .line 8864
+    .line 8873
     sget-object v0, Landroid/provider/ContactsContract;->AUTHORITY_URI:Landroid/net/Uri;
 
     const-string/jumbo v1, "speed_dial"
@@ -54,7 +54,7 @@
     .locals 0
 
     .prologue
-    .line 8859
+    .line 8868
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void

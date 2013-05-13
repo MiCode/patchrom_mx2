@@ -33,7 +33,7 @@
     .parameter
 
     .prologue
-    .line 332
+    .line 340
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$3;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     iput-object p2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$3;->val$scrollview:Landroid/view/ViewGroup;
@@ -51,7 +51,7 @@
     .locals 3
 
     .prologue
-    .line 334
+    .line 342
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$3;->val$scrollview:Landroid/view/ViewGroup;
 
     check-cast v0, Landroid/widget/HorizontalScrollView;
@@ -62,6 +62,6 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/widget/HorizontalScrollView;->smoothScrollTo(II)V
 
-    .line 335
+    .line 343
     return-void
 .end method

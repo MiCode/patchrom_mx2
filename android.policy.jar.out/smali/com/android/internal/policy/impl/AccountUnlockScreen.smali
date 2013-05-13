@@ -64,12 +64,12 @@
 
     move-result-object v0
 
-    const v1, 0x1090062
+    const v1, 0x1090066
 
     invoke-virtual {v0, v1, p0, v5}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
     .line 95
-    const v0, 0x1020307
+    const v0, 0x1020303
 
     invoke-virtual {p0, v0}, Lcom/android/internal/policy/impl/AccountUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -90,13 +90,13 @@
 
     if-eqz v0, :cond_0
 
-    const v0, 0x1040374
+    const v0, 0x1040375
 
     :goto_0
     invoke-virtual {v1, v0}, Landroid/widget/TextView;->setText(I)V
 
     .line 100
-    const v0, 0x1020309
+    const v0, 0x1020305
 
     invoke-virtual {p0, v0}, Lcom/android/internal/policy/impl/AccountUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -107,7 +107,7 @@
     iput-object v0, p0, Lcom/android/internal/policy/impl/AccountUnlockScreen;->mInstructions:Landroid/widget/TextView;
 
     .line 102
-    const v0, 0x102030a
+    const v0, 0x1020306
 
     invoke-virtual {p0, v0}, Lcom/android/internal/policy/impl/AccountUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -192,7 +192,7 @@
 
     .line 96
     :cond_0
-    const v0, 0x1040373
+    const v0, 0x1040374
 
     goto :goto_0
 .end method
@@ -569,7 +569,7 @@
 
     iget-object v1, p0, Lcom/android/internal/policy/impl/AccountUnlockScreen;->mContext:Landroid/content/Context;
 
-    const v2, 0x104037b
+    const v2, 0x104037c
 
     invoke-virtual {v1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 

@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 165
+    .line 166
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$2;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
     iput p2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$2;->val$position:I
@@ -45,16 +45,9 @@
 .method public onClick(Landroid/view/View;)V
     .locals 2
     .parameter "v"
-    .annotation build Landroid/annotation/SuppressLint;
-        value = {
-            "ResourceAsColor",
-            "ResourceAsColor",
-            "ResourceAsColor"
-        }
-    .end annotation
 
     .prologue
-    .line 171
+    .line 169
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$2;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
     #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
@@ -66,14 +59,14 @@
 
     invoke-virtual {v0, v1}, Landroid/support/v4/view/ViewPager;->setCurrentItem(I)V
 
-    .line 173
+    .line 171
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$2;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
     iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$2;->val$position:I
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->changeTabView(I)V
 
-    .line 174
+    .line 172
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$2;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
     iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$2;->val$position:I
@@ -81,11 +74,11 @@
     #setter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mSelectedPos:I
     invoke-static {v0, v1}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->access$102(Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;I)I
 
-    .line 175
+    .line 173
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$2;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
     invoke-virtual {v0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->checkDataAndUpdateView()V
 
-    .line 176
+    .line 174
     return-void
 .end method

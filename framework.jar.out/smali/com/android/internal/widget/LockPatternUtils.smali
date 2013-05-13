@@ -3775,7 +3775,7 @@
     .locals 5
 
     .prologue
-    const-wide/32 v3, 0x10000
+    const-wide/32 v3, 0x20000
 
     .line 685
     const-string v1, "lockscreen.password_type"
@@ -7858,7 +7858,7 @@
     if-ne p2, v3, :cond_1
 
     .line 1096
-    const v2, 0x1040351
+    const v2, 0x1040352
 
     .line 1097
     .local v2, textId:I
@@ -7888,11 +7888,11 @@
 
     .line 1100
     :cond_1
-    const v2, 0x1040350
+    const v2, 0x1040351
 
     .line 1101
     .restart local v2       #textId:I
-    const v0, 0x1080381
+    const v0, 0x1080391
 
     .line 1102
     .local v0, emergencyIcon:I

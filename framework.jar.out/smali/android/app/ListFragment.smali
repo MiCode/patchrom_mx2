@@ -180,7 +180,7 @@
     .line 392
     .restart local v2       #root:Landroid/view/View;
     :cond_4
-    const v3, 0x102034d
+    const v3, 0x1020349
 
     invoke-virtual {v2, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -206,7 +206,7 @@
 
     .line 399
     :goto_3
-    const v3, 0x102034b
+    const v3, 0x1020347
 
     invoke-virtual {v2, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -215,7 +215,7 @@
     iput-object v3, p0, Landroid/app/ListFragment;->mProgressContainer:Landroid/view/View;
 
     .line 400
-    const v3, 0x102034c
+    const v3, 0x1020348
 
     invoke-virtual {v2, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 

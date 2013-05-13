@@ -142,7 +142,6 @@
 
     const/4 v4, 0x0
 
-    .line 328
     invoke-direct {p0}, Landroid/app/IUiModeManager$Stub;-><init>()V
 
     iput v3, p0, Lcom/android/server/UiModeManagerService;->mNormalType:I
@@ -153,102 +152,82 @@
 
     iput-object v2, p0, Lcom/android/server/UiModeManagerService;->mLock:Ljava/lang/Object;
 
-    .line 87
     iput v4, p0, Lcom/android/server/UiModeManagerService;->mDockState:I
 
-    .line 88
     iput v4, p0, Lcom/android/server/UiModeManagerService;->mLastBroadcastState:I
 
-    .line 90
     iput v3, p0, Lcom/android/server/UiModeManagerService;->mNightMode:I
 
-    .line 91
     iput-boolean v4, p0, Lcom/android/server/UiModeManagerService;->mCarModeEnabled:Z
 
-    .line 92
     iput-boolean v4, p0, Lcom/android/server/UiModeManagerService;->mCharging:Z
 
-    .line 99
     iput v4, p0, Lcom/android/server/UiModeManagerService;->mCurUiMode:I
 
-    .line 100
     iput v4, p0, Lcom/android/server/UiModeManagerService;->mSetUiMode:I
 
-    .line 102
     iput-boolean v4, p0, Lcom/android/server/UiModeManagerService;->mHoldingConfiguration:Z
 
-    .line 103
     new-instance v2, Landroid/content/res/Configuration;
 
     invoke-direct {v2}, Landroid/content/res/Configuration;-><init>()V
 
     iput-object v2, p0, Lcom/android/server/UiModeManagerService;->mConfiguration:Landroid/content/res/Configuration;
 
-    .line 128
     new-instance v2, Lcom/android/server/UiModeManagerService$1;
 
     invoke-direct {v2, p0}, Lcom/android/server/UiModeManagerService$1;-><init>(Lcom/android/server/UiModeManagerService;)V
 
     iput-object v2, p0, Lcom/android/server/UiModeManagerService;->mResultReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 209
     new-instance v2, Lcom/android/server/UiModeManagerService$2;
 
     invoke-direct {v2, p0}, Lcom/android/server/UiModeManagerService$2;-><init>(Lcom/android/server/UiModeManagerService;)V
 
     iput-object v2, p0, Lcom/android/server/UiModeManagerService;->mTwilightUpdateReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 218
     new-instance v2, Lcom/android/server/UiModeManagerService$3;
 
     invoke-direct {v2, p0}, Lcom/android/server/UiModeManagerService$3;-><init>(Lcom/android/server/UiModeManagerService;)V
 
     iput-object v2, p0, Lcom/android/server/UiModeManagerService;->mDockModeReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 227
     new-instance v2, Lcom/android/server/UiModeManagerService$4;
 
     invoke-direct {v2, p0}, Lcom/android/server/UiModeManagerService$4;-><init>(Lcom/android/server/UiModeManagerService;)V
 
     iput-object v2, p0, Lcom/android/server/UiModeManagerService;->mBatteryReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 239
     new-instance v2, Lcom/android/server/UiModeManagerService$5;
 
     invoke-direct {v2, p0}, Lcom/android/server/UiModeManagerService$5;-><init>(Lcom/android/server/UiModeManagerService;)V
 
     iput-object v2, p0, Lcom/android/server/UiModeManagerService;->mUpdateLocationReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 256
     new-instance v2, Lcom/android/server/UiModeManagerService$6;
 
     invoke-direct {v2, p0}, Lcom/android/server/UiModeManagerService$6;-><init>(Lcom/android/server/UiModeManagerService;)V
 
     iput-object v2, p0, Lcom/android/server/UiModeManagerService;->mEmptyLocationListener:Landroid/location/LocationListener;
 
-    .line 270
     new-instance v2, Lcom/android/server/UiModeManagerService$7;
 
     invoke-direct {v2, p0}, Lcom/android/server/UiModeManagerService$7;-><init>(Lcom/android/server/UiModeManagerService;)V
 
     iput-object v2, p0, Lcom/android/server/UiModeManagerService;->mLocationListener:Landroid/location/LocationListener;
 
-    .line 654
     new-instance v2, Lcom/android/server/UiModeManagerService$8;
 
     invoke-direct {v2, p0}, Lcom/android/server/UiModeManagerService$8;-><init>(Lcom/android/server/UiModeManagerService;)V
 
     iput-object v2, p0, Lcom/android/server/UiModeManagerService;->mHandler:Landroid/os/Handler;
 
-    .line 329
     iput-object p1, p0, Lcom/android/server/UiModeManagerService;->mContext:Landroid/content/Context;
 
-    .line 331
     const-string v2, "uimode"
 
     invoke-static {v2, p0}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
 
-    .line 333
     iget-object v2, p0, Lcom/android/server/UiModeManagerService;->mContext:Landroid/content/Context;
 
     const-string v5, "alarm"
@@ -364,7 +343,7 @@
 
     move-result-object v2
 
-    const v5, 0x10e0011
+    const v5, 0x10e0012
 
     invoke-virtual {v2, v5}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -377,7 +356,7 @@
 
     move-result-object v2
 
-    const v5, 0x10e0013
+    const v5, 0x10e0014
 
     invoke-virtual {v2, v5}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -395,7 +374,7 @@
 
     move-result-object v2
 
-    const v5, 0x10e0012
+    const v5, 0x10e0013
 
     invoke-virtual {v2, v5}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -684,7 +663,7 @@
 
     .line 638
     .local v1, n:Landroid/app/Notification;
-    const v2, 0x10806ab
+    const v2, 0x10806d5
 
     iput v2, v1, Landroid/app/Notification;->icon:I
 
@@ -708,7 +687,7 @@
 
     iget-object v4, p0, Lcom/android/server/UiModeManagerService;->mContext:Landroid/content/Context;
 
-    const v5, 0x10404d8
+    const v5, 0x10404dc
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -716,7 +695,7 @@
 
     iget-object v5, p0, Lcom/android/server/UiModeManagerService;->mContext:Landroid/content/Context;
 
-    const v6, 0x10404d9
+    const v6, 0x10404dd
 
     invoke-virtual {v5, v6}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 

@@ -49,7 +49,7 @@
 
     .prologue
     .line 48
-    const v0, 0x7f0d0149
+    const v0, 0x7f0d0164
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PreviewFrameLayout;->findViewById(I)Landroid/view/View;
 

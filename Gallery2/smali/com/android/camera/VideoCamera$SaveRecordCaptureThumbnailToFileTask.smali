@@ -35,7 +35,7 @@
     .parameter
 
     .prologue
-    .line 2326
+    .line 2452
     iput-object p1, p0, Lcom/android/camera/VideoCamera$SaveRecordCaptureThumbnailToFileTask;->this$0:Lcom/android/camera/VideoCamera;
 
     invoke-direct {p0}, Landroid/os/AsyncTask;-><init>()V
@@ -49,7 +49,7 @@
     .parameter "x1"
 
     .prologue
-    .line 2326
+    .line 2452
     invoke-direct {p0, p1}, Lcom/android/camera/VideoCamera$SaveRecordCaptureThumbnailToFileTask;-><init>(Lcom/android/camera/VideoCamera;)V
 
     return-void
@@ -62,7 +62,7 @@
     .parameter "x0"
 
     .prologue
-    .line 2326
+    .line 2452
     check-cast p1, [Lcom/android/camera/Thumbnail;
 
     .end local p1
@@ -78,10 +78,10 @@
     .parameter "params"
 
     .prologue
-    .line 2330
+    .line 2456
     array-length v2, p1
 
-    .line 2331
+    .line 2457
     .local v2, n:I
     iget-object v3, p0, Lcom/android/camera/VideoCamera$SaveRecordCaptureThumbnailToFileTask;->this$0:Lcom/android/camera/VideoCamera;
 
@@ -89,28 +89,34 @@
 
     move-result-object v0
 
-    .line 2332
+    .line 2458
     .local v0, filesDir:Ljava/io/File;
     const/4 v1, 0x0
 
     .local v1, i:I
     :goto_0
-    if-ge v1, v2, :cond_0
+    if-ge v1, v2, :cond_1
 
-    .line 2333
+    .line 2459
+    aget-object v3, p1, v1
+
+    if-eqz v3, :cond_0
+
+    .line 2460
     aget-object v3, p1, v1
 
     const/4 v4, 0x0
 
     invoke-virtual {v3, v0, v4}, Lcom/android/camera/Thumbnail;->saveLastThumbnailToFile(Ljava/io/File;I)V
 
-    .line 2332
+    .line 2458
+    :cond_0
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 2335
-    :cond_0
+    .line 2462
+    :cond_1
     const/4 v3, 0x0
 
     return-object v3

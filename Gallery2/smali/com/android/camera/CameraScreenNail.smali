@@ -89,14 +89,14 @@
 
     const/high16 v2, 0x3f80
 
-    .line 194
+    .line 195
     iget-object v0, p0, Lcom/android/camera/CameraScreenNail;->mAnimTexture:Lcom/android/gallery3d/ui/RawTexture;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/RawTexture;->getWidth()I
 
     move-result v5
 
-    .line 195
+    .line 196
     .local v5, width:I
     iget-object v0, p0, Lcom/android/camera/CameraScreenNail;->mAnimTexture:Lcom/android/gallery3d/ui/RawTexture;
 
@@ -104,25 +104,25 @@
 
     move-result v6
 
-    .line 196
+    .line 197
     .local v6, height:I
     iget-object v0, p0, Lcom/android/camera/CameraScreenNail;->mAnimTexture:Lcom/android/gallery3d/ui/RawTexture;
 
     invoke-interface {p1, v0}, Lcom/android/gallery3d/ui/GLCanvas;->beginRenderTarget(Lcom/android/gallery3d/ui/RawTexture;)V
 
-    .line 199
+    .line 200
     const/4 v0, 0x0
 
     int-to-float v1, v6
 
     invoke-interface {p1, v0, v1}, Lcom/android/gallery3d/ui/GLCanvas;->translate(FF)V
 
-    .line 200
+    .line 201
     const/high16 v0, -0x4080
 
     invoke-interface {p1, v2, v0, v2}, Lcom/android/gallery3d/ui/GLCanvas;->scale(FFF)V
 
-    .line 201
+    .line 202
     invoke-virtual {p0}, Lcom/android/camera/CameraScreenNail;->getSurfaceTexture()Landroid/graphics/SurfaceTexture;
 
     move-result-object v0
@@ -131,7 +131,7 @@
 
     invoke-virtual {v0, v1}, Landroid/graphics/SurfaceTexture;->getTransformMatrix([F)V
 
-    .line 202
+    .line 203
     iget-object v1, p0, Lcom/android/gallery3d/ui/SurfaceTextureScreenNail;->mExtTexture:Lcom/android/gallery3d/ui/ExtTexture;
 
     iget-object v2, p0, Lcom/android/camera/CameraScreenNail;->mTextureTransformMatrix:[F
@@ -142,10 +142,10 @@
 
     invoke-interface/range {v0 .. v6}, Lcom/android/gallery3d/ui/GLCanvas;->drawTexture(Lcom/android/gallery3d/ui/BasicTexture;[FIIII)V
 
-    .line 204
+    .line 205
     invoke-interface {p1}, Lcom/android/gallery3d/ui/GLCanvas;->endRenderTarget()V
 
-    .line 205
+    .line 206
     return-void
 .end method
 
@@ -203,9 +203,10 @@
     throw v0
 .end method
 
-.method public animateCapture(I)V
+.method public animateCapture(IZ)V
     .locals 2
     .parameter "animOrientation"
+    .parameter "isRecordCapture"
 
     .prologue
     .line 114
@@ -220,22 +221,27 @@
     invoke-virtual {v0, p1}, Lcom/android/camera/CaptureAnimManager;->setOrientation(I)V
 
     .line 116
+    iget-object v0, p0, Lcom/android/camera/CameraScreenNail;->mCaptureAnimManager:Lcom/android/camera/CaptureAnimManager;
+
+    invoke-virtual {v0, p2}, Lcom/android/camera/CaptureAnimManager;->setRecordCapture(Z)V
+
+    .line 117
     iget-object v0, p0, Lcom/android/camera/CameraScreenNail;->mListener:Lcom/android/camera/CameraScreenNail$Listener;
 
     invoke-interface {v0}, Lcom/android/camera/CameraScreenNail$Listener;->requestRender()V
 
-    .line 117
+    .line 118
     const/4 v0, 0x1
 
     iput v0, p0, Lcom/android/camera/CameraScreenNail;->mAnimState:I
 
-    .line 118
+    .line 119
     monitor-exit v1
 
-    .line 119
+    .line 120
     return-void
 
-    .line 118
+    .line 119
     :catchall_0
     move-exception v0
 
@@ -339,10 +345,10 @@
     .parameter "height"
 
     .prologue
-    .line 122
+    .line 123
     invoke-super/range {p0 .. p5}, Lcom/android/gallery3d/ui/SurfaceTextureScreenNail;->draw(Lcom/android/gallery3d/ui/GLCanvas;IIII)V
 
-    .line 123
+    .line 124
     return-void
 .end method
 
@@ -355,12 +361,12 @@
     .parameter "height"
 
     .prologue
-    .line 127
+    .line 128
     iget-object v14, p0, Lcom/android/camera/CameraScreenNail;->mLock:Ljava/lang/Object;
 
     monitor-enter v14
 
-    .line 128
+    .line 129
     :try_start_0
     iget-boolean v4, p0, Lcom/android/camera/CameraScreenNail;->mVisible:Z
 
@@ -370,13 +376,13 @@
 
     iput-boolean v4, p0, Lcom/android/camera/CameraScreenNail;->mVisible:Z
 
-    .line 129
+    .line 130
     :cond_0
     invoke-virtual {p0}, Lcom/android/camera/CameraScreenNail;->getSurfaceTexture()Landroid/graphics/SurfaceTexture;
 
     move-result-object v13
 
-    .line 130
+    .line 131
     .local v13, surfaceTexture:Landroid/graphics/SurfaceTexture;
     if-eqz v13, :cond_1
 
@@ -387,25 +393,25 @@
     :cond_1
     monitor-exit v14
 
-    .line 191
+    .line 192
     :goto_0
     return-void
 
-    .line 132
+    .line 133
     :cond_2
     iget v4, p0, Lcom/android/camera/CameraScreenNail;->mAnimState:I
 
     if-nez v4, :cond_3
 
-    .line 133
+    .line 134
     invoke-super/range {p0 .. p5}, Lcom/android/gallery3d/ui/SurfaceTextureScreenNail;->draw(Lcom/android/gallery3d/ui/GLCanvas;IIII)V
 
-    .line 134
+    .line 135
     monitor-exit v14
 
     goto :goto_0
 
-    .line 190
+    .line 191
     .end local v13           #surfaceTexture:Landroid/graphics/SurfaceTexture;
     :catchall_0
     move-exception v4
@@ -416,7 +422,7 @@
 
     throw v4
 
-    .line 137
+    .line 138
     .restart local v13       #surfaceTexture:Landroid/graphics/SurfaceTexture;
     :cond_3
     :try_start_1
@@ -424,7 +430,7 @@
 
     packed-switch v4, :pswitch_data_0
 
-    .line 167
+    .line 168
     :goto_1
     :pswitch_0
     iget v4, p0, Lcom/android/camera/CameraScreenNail;->mAnimState:I
@@ -439,7 +445,7 @@
 
     if-ne v4, v5, :cond_5
 
-    .line 169
+    .line 170
     :cond_4
     iget v4, p0, Lcom/android/camera/CameraScreenNail;->mAnimState:I
 
@@ -447,7 +453,7 @@
 
     if-ne v4, v5, :cond_6
 
-    .line 170
+    .line 171
     iget-object v4, p0, Lcom/android/camera/CameraScreenNail;->mCaptureAnimManager:Lcom/android/camera/CaptureAnimManager;
 
     iget-object v5, p0, Lcom/android/camera/CameraScreenNail;->mAnimTexture:Lcom/android/gallery3d/ui/RawTexture;
@@ -458,17 +464,17 @@
 
     move-result v12
 
-    .line 177
+    .line 178
     .local v12, drawn:Z
     :goto_2
     if-eqz v12, :cond_7
 
-    .line 178
+    .line 179
     iget-object v4, p0, Lcom/android/camera/CameraScreenNail;->mListener:Lcom/android/camera/CameraScreenNail$Listener;
 
     invoke-interface {v4}, Lcom/android/camera/CameraScreenNail$Listener;->requestRender()V
 
-    .line 190
+    .line 191
     .end local v12           #drawn:Z
     :cond_5
     :goto_3
@@ -476,11 +482,11 @@
 
     goto :goto_0
 
-    .line 139
+    .line 140
     :pswitch_1
     invoke-direct/range {p0 .. p1}, Lcom/android/camera/CameraScreenNail;->copyPreviewTexture(Lcom/android/gallery3d/ui/GLCanvas;)V
 
-    .line 140
+    .line 141
     iget-object v4, p0, Lcom/android/camera/CameraScreenNail;->mSwitchAnimManager:Lcom/android/camera/SwitchAnimManager;
 
     move/from16 v0, p4
@@ -489,21 +495,21 @@
 
     invoke-virtual {v4, v0, v1}, Lcom/android/camera/SwitchAnimManager;->setReviewDrawingSize(II)V
 
-    .line 141
+    .line 142
     iget-object v4, p0, Lcom/android/camera/CameraScreenNail;->mListener:Lcom/android/camera/CameraScreenNail$Listener;
 
     invoke-interface {v4}, Lcom/android/camera/CameraScreenNail$Listener;->onPreviewTextureCopied()V
 
-    .line 142
+    .line 143
     const/4 v4, 0x4
 
     iput v4, p0, Lcom/android/camera/CameraScreenNail;->mAnimState:I
 
-    .line 150
+    .line 151
     :pswitch_2
     invoke-virtual {v13}, Landroid/graphics/SurfaceTexture;->updateTexImage()V
 
-    .line 153
+    .line 154
     iget-object v4, p0, Lcom/android/camera/CameraScreenNail;->mSwitchAnimManager:Lcom/android/camera/SwitchAnimManager;
 
     iget-object v10, p0, Lcom/android/camera/CameraScreenNail;->mAnimTexture:Lcom/android/gallery3d/ui/RawTexture;
@@ -520,29 +526,29 @@
 
     invoke-virtual/range {v4 .. v10}, Lcom/android/camera/SwitchAnimManager;->drawDarkPreviewWithoutScale(Lcom/android/gallery3d/ui/GLCanvas;IIIILcom/android/gallery3d/ui/RawTexture;)Z
 
-    .line 155
+    .line 156
     monitor-exit v14
 
     goto :goto_0
 
-    .line 157
+    .line 158
     :pswitch_3
     iget-object v4, p0, Lcom/android/camera/CameraScreenNail;->mSwitchAnimManager:Lcom/android/camera/SwitchAnimManager;
 
     invoke-virtual {v4}, Lcom/android/camera/SwitchAnimManager;->startAnimation()V
 
-    .line 158
+    .line 159
     const/4 v4, 0x7
 
     iput v4, p0, Lcom/android/camera/CameraScreenNail;->mAnimState:I
 
     goto :goto_1
 
-    .line 161
+    .line 162
     :pswitch_4
     invoke-direct/range {p0 .. p1}, Lcom/android/camera/CameraScreenNail;->copyPreviewTexture(Lcom/android/gallery3d/ui/GLCanvas;)V
 
-    .line 162
+    .line 163
     iget-object v4, p0, Lcom/android/camera/CameraScreenNail;->mCaptureAnimManager:Lcom/android/camera/CaptureAnimManager;
 
     move/from16 v0, p2
@@ -555,14 +561,14 @@
 
     invoke-virtual {v4, v0, v1, v2, v3}, Lcom/android/camera/CaptureAnimManager;->startAnimation(IIII)V
 
-    .line 163
+    .line 164
     const/4 v4, 0x2
 
     iput v4, p0, Lcom/android/camera/CameraScreenNail;->mAnimState:I
 
     goto :goto_1
 
-    .line 174
+    .line 175
     :cond_6
     iget-object v4, p0, Lcom/android/camera/CameraScreenNail;->mSwitchAnimManager:Lcom/android/camera/SwitchAnimManager;
 
@@ -587,7 +593,7 @@
     .restart local v12       #drawn:Z
     goto :goto_2
 
-    .line 183
+    .line 184
     :cond_7
     iget v4, p0, Lcom/android/camera/CameraScreenNail;->mAnimState:I
 
@@ -595,25 +601,25 @@
 
     if-ne v4, v5, :cond_8
 
-    .line 184
+    .line 185
     iget-object v4, p0, Lcom/android/camera/CameraScreenNail;->mListener:Lcom/android/camera/CameraScreenNail$Listener;
 
-    invoke-interface {v4}, Lcom/android/camera/CameraScreenNail$Listener;->onSwichAnimationEnd()V
+    invoke-interface {v4}, Lcom/android/camera/CameraScreenNail$Listener;->onSwitchAnimationEnd()V
 
-    .line 186
+    .line 187
     :cond_8
     const/4 v4, 0x0
 
     iput v4, p0, Lcom/android/camera/CameraScreenNail;->mAnimState:I
 
-    .line 187
+    .line 188
     invoke-super/range {p0 .. p5}, Lcom/android/gallery3d/ui/SurfaceTextureScreenNail;->draw(Lcom/android/gallery3d/ui/GLCanvas;IIII)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_3
 
-    .line 137
+    .line 138
     nop
 
     :pswitch_data_0
@@ -631,24 +637,24 @@
     .locals 2
 
     .prologue
-    .line 209
+    .line 210
     iget-object v1, p0, Lcom/android/camera/CameraScreenNail;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 210
+    .line 211
     const/4 v0, 0x0
 
     :try_start_0
     iput-boolean v0, p0, Lcom/android/camera/CameraScreenNail;->mVisible:Z
 
-    .line 211
+    .line 212
     monitor-exit v1
 
-    .line 212
+    .line 213
     return-void
 
-    .line 211
+    .line 212
     :catchall_0
     move-exception v0
 
@@ -664,48 +670,48 @@
     .parameter "surfaceTexture"
 
     .prologue
-    .line 223
+    .line 224
     iget-object v1, p0, Lcom/android/camera/CameraScreenNail;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 224
+    .line 225
     const/4 v0, 0x1
 
     :try_start_0
     iput-boolean v0, p0, Lcom/android/camera/CameraScreenNail;->mFirstFrameArrived:Z
 
-    .line 225
+    .line 226
     iget-boolean v0, p0, Lcom/android/camera/CameraScreenNail;->mVisible:Z
 
     if-eqz v0, :cond_1
 
-    .line 226
+    .line 227
     iget v0, p0, Lcom/android/camera/CameraScreenNail;->mAnimState:I
 
     const/4 v2, 0x5
 
     if-ne v0, v2, :cond_0
 
-    .line 227
+    .line 228
     const/4 v0, 0x6
 
     iput v0, p0, Lcom/android/camera/CameraScreenNail;->mAnimState:I
 
-    .line 231
+    .line 232
     :cond_0
     iget-object v0, p0, Lcom/android/camera/CameraScreenNail;->mListener:Lcom/android/camera/CameraScreenNail$Listener;
 
     invoke-interface {v0}, Lcom/android/camera/CameraScreenNail$Listener;->requestRender()V
 
-    .line 233
+    .line 234
     :cond_1
     monitor-exit v1
 
-    .line 234
+    .line 235
     return-void
 
-    .line 233
+    .line 234
     :catchall_0
     move-exception v0
 
@@ -720,24 +726,24 @@
     .locals 2
 
     .prologue
-    .line 216
+    .line 217
     iget-object v1, p0, Lcom/android/camera/CameraScreenNail;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 217
+    .line 218
     const/4 v0, 0x0
 
     :try_start_0
     iput-boolean v0, p0, Lcom/android/camera/CameraScreenNail;->mVisible:Z
 
-    .line 218
+    .line 219
     monitor-exit v1
 
-    .line 219
+    .line 220
     return-void
 
-    .line 218
+    .line 219
     :catchall_0
     move-exception v0
 
@@ -789,24 +795,24 @@
     .parameter "height"
 
     .prologue
-    .line 241
+    .line 242
     iget-object v1, p0, Lcom/android/camera/CameraScreenNail;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 242
+    .line 243
     :try_start_0
     iget-object v0, p0, Lcom/android/camera/CameraScreenNail;->mSwitchAnimManager:Lcom/android/camera/SwitchAnimManager;
 
     invoke-virtual {v0, p1, p2}, Lcom/android/camera/SwitchAnimManager;->setPreviewFrameLayoutSize(II)V
 
-    .line 243
+    .line 244
     monitor-exit v1
 
-    .line 244
+    .line 245
     return-void
 
-    .line 243
+    .line 244
     :catchall_0
     move-exception v0
 

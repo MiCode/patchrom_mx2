@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheckedTextView android:textAppearance="?textAppearanceMedium" android:ellipsize="marquee" android:gravity="center_vertical" android:id="@id/locale" android:paddingLeft="@dimen/preference_item_padding_side" android:paddingRight="?scrollbarSize" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:checkMark="@drawable/btn_check_multiple_mz" android:minHeight="?listPreferredItemHeight"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="@dimen/preference_item_padding_side" android:paddingRight="?scrollbarSize" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?listPreferredItemHeight"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textAppearance="?textAppearanceMedium" android:id="@id/locale" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" />
+    <CheckBox android:gravity="center" android:layout_gravity="center" android:id="@id/checkbox" android:background="@drawable/btn_check_single_mz" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:button="@null" android:layout_alignParentRight="true" />
+</RelativeLayout>

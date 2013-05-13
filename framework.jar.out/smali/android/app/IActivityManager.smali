@@ -35,6 +35,8 @@
 
 .field public static final BROADCAST_INTENT_TRANSACTION:I = 0xe
 
+.field public static final CANCEL_DISMISS_KEYGUARD_ON_NEXT_ACTIVITY_TRANSACTION:I = 0x9e
+
 .field public static final CANCEL_INTENT_SENDER_TRANSACTION:I = 0x40
 
 .field public static final CHECK_GRANT_URI_PERMISSION_TRANSACTION:I = 0x77
@@ -48,6 +50,8 @@
 .field public static final CLOSE_SYSTEM_DIALOGS_TRANSACTION:I = 0x61
 
 .field public static final CRASH_APPLICATION_TRANSACTION:I = 0x72
+
+.field public static final DELAY_DISMISS_KEYGUARD_ON_NEXT_ACTIVITY_TRANSACTION:I = 0x9f
 
 .field public static final DISMISS_KEYGUARD_ON_NEXT_ACTIVITY_TRANSACTION:I = 0x8b
 
@@ -401,6 +405,14 @@
     .end annotation
 .end method
 
+.method public abstract cancelDismissKeyguardOnNextActivity()V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract cancelIntentSender(Landroid/content/IIntentSender;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -458,6 +470,14 @@
 .end method
 
 .method public abstract dismissKeyguardOnNextActivity()V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract dismissKeyguardOnNextActivity(J)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

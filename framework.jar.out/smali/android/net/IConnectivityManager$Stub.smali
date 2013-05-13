@@ -26,6 +26,8 @@
 # static fields
 .field private static final DESCRIPTOR:Ljava/lang/String; = "android.net.IConnectivityManager"
 
+.field static final TRANSACTION_deleteVpnProfile:I = 0x31
+
 .field static final TRANSACTION_establishVpn:I = 0x2a
 
 .field static final TRANSACTION_getActiveLinkProperties:I = 0x8
@@ -39,6 +41,8 @@
 .field static final TRANSACTION_getAllNetworkInfo:I = 0x6
 
 .field static final TRANSACTION_getAllNetworkState:I = 0xa
+
+.field static final TRANSACTION_getAllVpnKeys:I = 0x2e
 
 .field static final TRANSACTION_getGlobalProxy:I = 0x24
 
@@ -70,6 +74,12 @@
 
 .field static final TRANSACTION_getTetheringErroredIfaces:I = 0x1d
 
+.field static final TRANSACTION_getVpnProfile:I = 0x30
+
+.field static final TRANSACTION_getVpnProfileDefaultKey:I = 0x34
+
+.field static final TRANSACTION_getVpnProfileVersion:I = 0x32
+
 .field static final TRANSACTION_isActiveNetworkMetered:I = 0xc
 
 .field static final TRANSACTION_isNetworkSupported:I = 0x7
@@ -79,6 +89,8 @@
 .field static final TRANSACTION_prepareVpn:I = 0x29
 
 .field static final TRANSACTION_protectVpn:I = 0x28
+
+.field static final TRANSACTION_putVpnProfile:I = 0x2f
 
 .field static final TRANSACTION_reportInetCondition:I = 0x23
 
@@ -103,6 +115,12 @@
 .field static final TRANSACTION_setRadios:I = 0xd
 
 .field static final TRANSACTION_setUsbTethering:I = 0x21
+
+.field static final TRANSACTION_setVpnProfileDefaultKey:I = 0x35
+
+.field static final TRANSACTION_setVpnProfileStore:I = 0x2d
+
+.field static final TRANSACTION_setVpnProfileVersion:I = 0x33
 
 .field static final TRANSACTION_startLegacyVpn:I = 0x2b
 
@@ -208,7 +226,7 @@
     .line 42
     sparse-switch p1, :sswitch_data_0
 
-    .line 548
+    .line 637
     invoke-super {p0, p1, p2, p3, p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v5
@@ -1668,6 +1686,269 @@
 
     goto/16 :goto_0
 
+    .line 549
+    .end local v3           #_result:Lcom/android/internal/net/LegacyVpnInfo;
+    :sswitch_2d
+    const-string v4, "android.net.IConnectivityManager"
+
+    invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 551
+    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v4
+
+    invoke-static {v4}, Lcom/android/internal/net/IVpnProfileStore$Stub;->asInterface(Landroid/os/IBinder;)Lcom/android/internal/net/IVpnProfileStore;
+
+    move-result-object v0
+
+    .line 552
+    .local v0, _arg0:Lcom/android/internal/net/IVpnProfileStore;
+    invoke-virtual {p0, v0}, Landroid/net/IConnectivityManager$Stub;->setVpnProfileStore(Lcom/android/internal/net/IVpnProfileStore;)V
+
+    .line 553
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    goto/16 :goto_0
+
+    .line 558
+    .end local v0           #_arg0:Lcom/android/internal/net/IVpnProfileStore;
+    :sswitch_2e
+    const-string v4, "android.net.IConnectivityManager"
+
+    invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 559
+    invoke-virtual {p0}, Landroid/net/IConnectivityManager$Stub;->getAllVpnKeys()[Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 560
+    .local v3, _result:[Ljava/lang/String;
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 561
+    invoke-virtual {p3, v3}, Landroid/os/Parcel;->writeStringArray([Ljava/lang/String;)V
+
+    goto/16 :goto_0
+
+    .line 566
+    .end local v3           #_result:[Ljava/lang/String;
+    :sswitch_2f
+    const-string v4, "android.net.IConnectivityManager"
+
+    invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 568
+    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 570
+    .local v0, _arg0:Ljava/lang/String;
+    invoke-virtual {p2}, Landroid/os/Parcel;->createByteArray()[B
+
+    move-result-object v1
+
+    .line 571
+    .local v1, _arg1:[B
+    invoke-virtual {p0, v0, v1}, Landroid/net/IConnectivityManager$Stub;->putVpnProfile(Ljava/lang/String;[B)V
+
+    .line 572
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    goto/16 :goto_0
+
+    .line 577
+    .end local v0           #_arg0:Ljava/lang/String;
+    .end local v1           #_arg1:[B
+    :sswitch_30
+    const-string v6, "android.net.IConnectivityManager"
+
+    invoke-virtual {p2, v6}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 579
+    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 581
+    .restart local v0       #_arg0:Ljava/lang/String;
+    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v6
+
+    if-eqz v6, :cond_1e
+
+    move v1, v5
+
+    .line 582
+    .local v1, _arg1:Z
+    :goto_b
+    invoke-virtual {p0, v0, v1}, Landroid/net/IConnectivityManager$Stub;->getVpnProfile(Ljava/lang/String;Z)[B
+
+    move-result-object v3
+
+    .line 583
+    .local v3, _result:[B
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 584
+    invoke-virtual {p3, v3}, Landroid/os/Parcel;->writeByteArray([B)V
+
+    goto/16 :goto_0
+
+    .end local v1           #_arg1:Z
+    .end local v3           #_result:[B
+    :cond_1e
+    move v1, v4
+
+    .line 581
+    goto :goto_b
+
+    .line 589
+    .end local v0           #_arg0:Ljava/lang/String;
+    :sswitch_31
+    const-string v6, "android.net.IConnectivityManager"
+
+    invoke-virtual {p2, v6}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 591
+    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 592
+    .restart local v0       #_arg0:Ljava/lang/String;
+    invoke-virtual {p0, v0}, Landroid/net/IConnectivityManager$Stub;->deleteVpnProfile(Ljava/lang/String;)Z
+
+    move-result v3
+
+    .line 593
+    .local v3, _result:Z
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 594
+    if-eqz v3, :cond_1f
+
+    move v4, v5
+
+    :cond_1f
+    invoke-virtual {p3, v4}, Landroid/os/Parcel;->writeInt(I)V
+
+    goto/16 :goto_0
+
+    .line 599
+    .end local v0           #_arg0:Ljava/lang/String;
+    .end local v3           #_result:Z
+    :sswitch_32
+    const-string v4, "android.net.IConnectivityManager"
+
+    invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 601
+    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 602
+    .restart local v0       #_arg0:Ljava/lang/String;
+    invoke-virtual {p0, v0}, Landroid/net/IConnectivityManager$Stub;->getVpnProfileVersion(Ljava/lang/String;)I
+
+    move-result v3
+
+    .line 603
+    .local v3, _result:I
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 604
+    invoke-virtual {p3, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    goto/16 :goto_0
+
+    .line 609
+    .end local v0           #_arg0:Ljava/lang/String;
+    .end local v3           #_result:I
+    :sswitch_33
+    const-string v6, "android.net.IConnectivityManager"
+
+    invoke-virtual {p2, v6}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 611
+    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 613
+    .restart local v0       #_arg0:Ljava/lang/String;
+    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v1
+
+    .line 614
+    .local v1, _arg1:I
+    invoke-virtual {p0, v0, v1}, Landroid/net/IConnectivityManager$Stub;->setVpnProfileVersion(Ljava/lang/String;I)Z
+
+    move-result v3
+
+    .line 615
+    .local v3, _result:Z
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 616
+    if-eqz v3, :cond_20
+
+    move v4, v5
+
+    :cond_20
+    invoke-virtual {p3, v4}, Landroid/os/Parcel;->writeInt(I)V
+
+    goto/16 :goto_0
+
+    .line 621
+    .end local v0           #_arg0:Ljava/lang/String;
+    .end local v1           #_arg1:I
+    .end local v3           #_result:Z
+    :sswitch_34
+    const-string v4, "android.net.IConnectivityManager"
+
+    invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 622
+    invoke-virtual {p0}, Landroid/net/IConnectivityManager$Stub;->getVpnProfileDefaultKey()Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 623
+    .local v3, _result:Ljava/lang/String;
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 624
+    invoke-virtual {p3, v3}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    goto/16 :goto_0
+
+    .line 629
+    .end local v3           #_result:Ljava/lang/String;
+    :sswitch_35
+    const-string v4, "android.net.IConnectivityManager"
+
+    invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 631
+    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 632
+    .restart local v0       #_arg0:Ljava/lang/String;
+    invoke-virtual {p0, v0}, Landroid/net/IConnectivityManager$Stub;->setVpnProfileDefaultKey(Ljava/lang/String;)V
+
+    .line 633
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    goto/16 :goto_0
+
     .line 42
     :sswitch_data_0
     .sparse-switch
@@ -1715,6 +1996,15 @@
         0x2a -> :sswitch_2a
         0x2b -> :sswitch_2b
         0x2c -> :sswitch_2c
+        0x2d -> :sswitch_2d
+        0x2e -> :sswitch_2e
+        0x2f -> :sswitch_2f
+        0x30 -> :sswitch_30
+        0x31 -> :sswitch_31
+        0x32 -> :sswitch_32
+        0x33 -> :sswitch_33
+        0x34 -> :sswitch_34
+        0x35 -> :sswitch_35
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method

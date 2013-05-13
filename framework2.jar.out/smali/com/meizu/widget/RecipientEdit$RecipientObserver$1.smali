@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 3194
+    .line 3225
     iput-object p1, p0, Lcom/meizu/widget/RecipientEdit$RecipientObserver$1;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientObserver;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 7
 
     .prologue
-    .line 3197
+    .line 3228
     const/4 v0, 0x0
 
     .local v0, i:I
@@ -51,7 +51,7 @@
     iget-object v4, v4, Lcom/meizu/widget/RecipientEdit$RecipientObserver;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mRecipientDataList:Ljava/util/ArrayList;
-    invoke-static {v4}, Lcom/meizu/widget/RecipientEdit;->access$400(Lcom/meizu/widget/RecipientEdit;)Ljava/util/ArrayList;
+    invoke-static {v4}, Lcom/meizu/widget/RecipientEdit;->access$600(Lcom/meizu/widget/RecipientEdit;)Ljava/util/ArrayList;
 
     move-result-object v4
 
@@ -61,13 +61,13 @@
 
     if-ge v0, v4, :cond_2
 
-    .line 3198
+    .line 3229
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientObserver$1;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientObserver;
 
     iget-object v4, v4, Lcom/meizu/widget/RecipientEdit$RecipientObserver;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mRecipientDataList:Ljava/util/ArrayList;
-    invoke-static {v4}, Lcom/meizu/widget/RecipientEdit;->access$400(Lcom/meizu/widget/RecipientEdit;)Ljava/util/ArrayList;
+    invoke-static {v4}, Lcom/meizu/widget/RecipientEdit;->access$600(Lcom/meizu/widget/RecipientEdit;)Ljava/util/ArrayList;
 
     move-result-object v4
 
@@ -77,7 +77,7 @@
 
     check-cast v3, Ljava/lang/String;
 
-    .line 3199
+    .line 3230
     .local v3, phoneOrEmail:Ljava/lang/String;
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientObserver$1;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientObserver;
 
@@ -88,7 +88,7 @@
 
     move-result-object v1
 
-    .line 3200
+    .line 3231
     .local v1, name:Ljava/lang/String;
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientObserver$1;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientObserver;
 
@@ -105,7 +105,7 @@
 
     check-cast v2, Ljava/lang/String;
 
-    .line 3202
+    .line 3233
     .local v2, oldName:Ljava/lang/String;
     invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -124,10 +124,10 @@
 
     if-eqz v4, :cond_0
 
-    .line 3203
+    .line 3234
     move-object v1, v2
 
-    .line 3206
+    .line 3237
     :cond_0
     invoke-static {v1, v2}, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
 
@@ -135,7 +135,7 @@
 
     if-nez v4, :cond_1
 
-    .line 3207
+    .line 3238
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientObserver$1;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientObserver;
 
     iget-object v4, v4, Lcom/meizu/widget/RecipientEdit$RecipientObserver;->this$0:Lcom/meizu/widget/RecipientEdit;
@@ -150,13 +150,13 @@
 
     invoke-virtual {v4, v5}, Lcom/meizu/widget/RecipientEdit;->post(Ljava/lang/Runnable;)Z
 
-    .line 3197
+    .line 3228
     :cond_1
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 3210
+    .line 3241
     .end local v1           #name:Ljava/lang/String;
     .end local v2           #oldName:Ljava/lang/String;
     .end local v3           #phoneOrEmail:Ljava/lang/String;

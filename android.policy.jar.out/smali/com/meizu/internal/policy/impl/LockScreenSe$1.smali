@@ -38,7 +38,7 @@
 
 # virtual methods
 .method public onMusicVisibleChanged(Z)V
-    .locals 4
+    .locals 2
     .parameter "visible"
 
     .prologue
@@ -56,26 +56,6 @@
 
     .line 47
     if-eqz p1, :cond_0
-
-    .line 48
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockScreenSe$1;->this$0:Lcom/meizu/internal/policy/impl/LockScreenSe;
-
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockScreenSe$1;->this$0:Lcom/meizu/internal/policy/impl/LockScreenSe;
-
-    iget-object v1, v1, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mResetDateShow:Ljava/lang/Runnable;
-
-    invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/LockScreenSe;->removeCallbacks(Ljava/lang/Runnable;)Z
-
-    .line 49
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockScreenSe$1;->this$0:Lcom/meizu/internal/policy/impl/LockScreenSe;
-
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockScreenSe$1;->this$0:Lcom/meizu/internal/policy/impl/LockScreenSe;
-
-    iget-object v1, v1, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mResetDateShow:Ljava/lang/Runnable;
-
-    const-wide/16 v2, 0x2710
-
-    invoke-virtual {v0, v1, v2, v3}, Lcom/meizu/internal/policy/impl/LockScreenSe;->postDelayed(Ljava/lang/Runnable;J)Z
 
     .line 51
     :cond_0

@@ -178,12 +178,16 @@
 
     if-eqz v0, :cond_0
 
-    .line 139
     iget-object v0, p0, Landroid/widget/EditText;->mOnKeyPreImeListener:Landroid/widget/EditText$OnKeyPreImeListener;
 
     invoke-interface {v0, p0, p1, p2}, Landroid/widget/EditText$OnKeyPreImeListener;->onKeyPreIme(Landroid/view/View;ILandroid/view/KeyEvent;)Z
 
     move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 139
+    const/4 v0, 0x1
 
     .line 141
     :goto_0

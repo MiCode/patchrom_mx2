@@ -39,7 +39,7 @@
     .parameter
 
     .prologue
-    .line 599
+    .line 602
     iput-object p1, p0, Lcom/android/gallery3d/data/LocalAlbumSet$AlbumsLoader;->this$0:Lcom/android/gallery3d/data/LocalAlbumSet;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -53,7 +53,7 @@
     .parameter "x1"
 
     .prologue
-    .line 599
+    .line 602
     invoke-direct {p0, p1}, Lcom/android/gallery3d/data/LocalAlbumSet$AlbumsLoader;-><init>(Lcom/android/gallery3d/data/LocalAlbumSet;)V
 
     return-void
@@ -66,7 +66,7 @@
     .parameter "x0"
 
     .prologue
-    .line 599
+    .line 602
     invoke-virtual {p0, p1}, Lcom/android/gallery3d/data/LocalAlbumSet$AlbumsLoader;->run(Lcom/android/gallery3d/util/ThreadPool$JobContext;)Ljava/util/ArrayList;
 
     move-result-object v0
@@ -90,7 +90,7 @@
     .end annotation
 
     .prologue
-    .line 606
+    .line 609
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/gallery3d/data/LocalAlbumSet$AlbumsLoader;->this$0:Lcom/android/gallery3d/data/LocalAlbumSet;
@@ -102,7 +102,7 @@
 
     move-result-object v15
 
-    .line 608
+    .line 611
     .local v15, entries:[Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;
     invoke-interface/range {p1 .. p1}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->isCancelled()Z
 
@@ -112,15 +112,15 @@
 
     const/4 v13, 0x0
 
-    .line 630
+    .line 633
     :cond_0
     return-object v13
 
-    .line 610
+    .line 613
     :cond_1
     const/16 v21, 0x0
 
-    .line 613
+    .line 616
     .local v21, offset:I
     invoke-static {}, Lcom/android/gallery3d/data/LocalAlbumSet;->access$300()[I
 
@@ -148,7 +148,7 @@
 
     aget v17, v14, v18
 
-    .line 614
+    .line 617
     .local v17, i:I
     move/from16 v0, v17
 
@@ -157,7 +157,7 @@
 
     move-result v19
 
-    .line 615
+    .line 618
     .local v19, index:I
     const/4 v2, -0x1
 
@@ -165,7 +165,7 @@
 
     if-eq v0, v2, :cond_4
 
-    .line 616
+    .line 619
     add-int/lit8 v21, v22, 0x1
 
     .end local v22           #offset:I
@@ -177,7 +177,7 @@
     #calls: Lcom/android/gallery3d/data/LocalAlbumSet;->circularShiftRight([Ljava/lang/Object;II)V
     invoke-static {v15, v0, v1}, Lcom/android/gallery3d/data/LocalAlbumSet;->access$500([Ljava/lang/Object;II)V
 
-    .line 613
+    .line 616
     :goto_1
     add-int/lit8 v18, v18, 0x1
 
@@ -187,7 +187,7 @@
     .restart local v22       #offset:I
     goto :goto_0
 
-    .line 620
+    .line 623
     .end local v17           #i:I
     .end local v19           #index:I
     :cond_2
@@ -195,7 +195,7 @@
 
     invoke-direct {v13}, Ljava/util/ArrayList;-><init>()V
 
-    .line 621
+    .line 624
     .local v13, albums:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/gallery3d/data/MediaSet;>;"
     move-object/from16 v0, p0
 
@@ -210,7 +210,7 @@
 
     move-result-object v3
 
-    .line 622
+    .line 625
     .local v3, dataManager:Lcom/android/gallery3d/data/DataManager;
     move-object v14, v15
 
@@ -230,7 +230,7 @@
 
     aget-object v16, v14, v18
 
-    .line 623
+    .line 626
     .local v16, entry:Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;
     move-object/from16 v0, p0
 
@@ -287,16 +287,16 @@
 
     move-result-object v12
 
-    .line 627
+    .line 630
     .local v12, album:Lcom/android/gallery3d/data/MediaSet;
     invoke-virtual {v13, v12}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 622
+    .line 625
     add-int/lit8 v18, v18, 0x1
 
     goto :goto_2
 
-    .line 623
+    .line 626
     .end local v12           #album:Lcom/android/gallery3d/data/MediaSet;
     :cond_3
     invoke-virtual/range {v16 .. v16}, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->getTotalItemCount()I

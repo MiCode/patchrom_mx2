@@ -26,18 +26,18 @@
     .parameter "center"
 
     .prologue
-    .line 430
+    .line 431
     invoke-direct {p0}, Lcom/android/gallery3d/ui/SlotView$SlotAnimation;-><init>()V
 
-    .line 427
+    .line 428
     const/16 v0, 0x3e8
 
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$ScatteringAnimation;->PHOTO_DISTANCE:I
 
-    .line 431
+    .line 432
     iput-object p1, p0, Lcom/android/gallery3d/ui/SlotView$ScatteringAnimation;->mCenter:Lcom/android/gallery3d/ui/RelativePosition;
 
-    .line 432
+    .line 433
     return-void
 .end method
 
@@ -52,7 +52,7 @@
     .prologue
     const/high16 v4, 0x3f80
 
-    .line 436
+    .line 437
     iget-object v0, p0, Lcom/android/gallery3d/ui/SlotView$ScatteringAnimation;->mCenter:Lcom/android/gallery3d/ui/RelativePosition;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/RelativePosition;->getX()F
@@ -107,11 +107,11 @@
 
     invoke-interface {p1, v0, v1, v2}, Lcom/android/gallery3d/ui/GLCanvas;->translate(FFF)V
 
-    .line 440
+    .line 441
     iget v0, p0, Lcom/android/gallery3d/ui/SlotView$SlotAnimation;->mProgress:F
 
     invoke-interface {p1, v0}, Lcom/android/gallery3d/ui/GLCanvas;->setAlpha(F)V
 
-    .line 441
+    .line 442
     return-void
 .end method

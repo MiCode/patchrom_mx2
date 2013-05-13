@@ -45,79 +45,73 @@
     .parameter "y"
 
     .prologue
-    .line 2423
+    .line 2623
     move-object/from16 v0, p1
 
     iput-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
-    .line 2424
+    .line 2624
     invoke-direct {p0}, Landroid/view/View$DragShadowBuilder;-><init>()V
 
-    .line 2421
+    .line 2621
     const/4 v11, -0x1
 
     iput v11, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mState:I
 
-    .line 2426
+    .line 2626
     move-object/from16 v0, p2
 
     iput-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mEntry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
-    .line 2427
+    .line 2627
     move/from16 v0, p3
 
     iput v0, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mWidth:I
 
-    .line 2428
+    .line 2628
     move/from16 v0, p4
 
     iput v0, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mHeight:I
 
-    .line 2429
+    .line 2629
     move/from16 v0, p5
 
     iput v0, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mX:I
 
-    .line 2430
+    .line 2630
     move/from16 v0, p6
 
     iput v0, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mY:I
 
-    .line 2432
+    .line 2632
     new-instance v11, Landroid/graphics/Paint;
 
     invoke-direct {v11}, Landroid/graphics/Paint;-><init>()V
 
     iput-object v11, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mPaint:Landroid/graphics/Paint;
 
-    .line 2433
+    .line 2633
     iget-object v11, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mPaint:Landroid/graphics/Paint;
 
     const/4 v12, 0x1
 
     invoke-virtual {v11, v12}, Landroid/graphics/Paint;->setFilterBitmap(Z)V
 
-    .line 2434
+    .line 2634
     iget-object v11, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mPaint:Landroid/graphics/Paint;
 
     const/4 v12, 0x1
 
     invoke-virtual {v11, v12}, Landroid/graphics/Paint;->setAntiAlias(Z)V
 
-    .line 2436
-    move-object/from16 v0, p2
+    .line 2635
+    iget-object v11, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mPaint:Landroid/graphics/Paint;
 
-    iget-object v11, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->item:Lcom/android/gallery3d/data/MediaItem;
+    const/16 v12, 0xd8
 
-    invoke-virtual {v11}, Lcom/android/gallery3d/data/MediaItem;->getLockState()I
+    invoke-virtual {v11, v12}, Landroid/graphics/Paint;->setAlpha(I)V
 
-    move-result v6
-
-    .line 2437
-    .local v6, lockState:I
-    if-lez v6, :cond_4
-
-    .line 2438
+    .line 2637
     move-object/from16 v0, p2
 
     iget-object v11, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->rect:Landroid/graphics/Rect;
@@ -128,20 +122,20 @@
 
     iget-object v8, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->rect:Landroid/graphics/Rect;
 
-    .line 2439
+    .line 2638
     .local v8, rect:Landroid/graphics/Rect;
     :goto_0
     invoke-virtual {v8}, Landroid/graphics/Rect;->width()I
 
     move-result v10
 
-    .line 2440
+    .line 2639
     .local v10, w:I
     invoke-virtual {v8}, Landroid/graphics/Rect;->height()I
 
     move-result v3
 
-    .line 2441
+    .line 2640
     .local v3, h:I
     move-object/from16 v0, p2
 
@@ -153,7 +147,7 @@
 
     if-eqz v11, :cond_0
 
-    .line 2442
+    .line 2641
     move v9, v10
 
     .local v9, t:I
@@ -161,35 +155,48 @@
 
     move v3, v9
 
-    .line 2445
+    .line 2643
     .end local v9           #t:I
     :cond_0
+    move-object/from16 v0, p2
+
+    iget-object v11, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->item:Lcom/android/gallery3d/data/MediaItem;
+
+    invoke-virtual {v11}, Lcom/android/gallery3d/data/MediaItem;->getLockState()I
+
+    move-result v6
+
+    .line 2644
+    .local v6, lockState:I
+    if-lez v6, :cond_4
+
+    .line 2645
     sget-object v11, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
     invoke-static {v10, v3, v11}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
 
     move-result-object v1
 
-    .line 2446
+    .line 2646
     .local v1, bm:Landroid/graphics/Bitmap;
     const v11, -0xddddde
 
     invoke-virtual {v1, v11}, Landroid/graphics/Bitmap;->eraseColor(I)V
 
-    .line 2448
+    .line 2648
     const/16 v11, 0x10
 
     if-eq v6, v11, :cond_2
 
-    .line 2449
+    .line 2649
     new-instance v2, Landroid/graphics/Canvas;
 
     invoke-direct {v2, v1}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
 
-    .line 2450
+    .line 2650
     .local v2, canvas:Landroid/graphics/Canvas;
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mLockIcon:Landroid/graphics/Bitmap;
-    invoke-static/range {p1 .. p1}, Lcom/android/gallery3d/app/AlbumPage;->access$7700(Lcom/android/gallery3d/app/AlbumPage;)Landroid/graphics/Bitmap;
+    invoke-static/range {p1 .. p1}, Lcom/android/gallery3d/app/AlbumPage;->access$7900(Lcom/android/gallery3d/app/AlbumPage;)Landroid/graphics/Bitmap;
 
     move-result-object v11
 
@@ -197,10 +204,10 @@
 
     move-result v5
 
-    .line 2451
+    .line 2651
     .local v5, iconWidth:I
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mLockIcon:Landroid/graphics/Bitmap;
-    invoke-static/range {p1 .. p1}, Lcom/android/gallery3d/app/AlbumPage;->access$7700(Lcom/android/gallery3d/app/AlbumPage;)Landroid/graphics/Bitmap;
+    invoke-static/range {p1 .. p1}, Lcom/android/gallery3d/app/AlbumPage;->access$7900(Lcom/android/gallery3d/app/AlbumPage;)Landroid/graphics/Bitmap;
 
     move-result-object v11
 
@@ -208,7 +215,7 @@
 
     move-result v4
 
-    .line 2452
+    .line 2652
     .local v4, iconHeight:I
     move-object/from16 v0, p2
 
@@ -220,7 +227,7 @@
 
     if-eqz v11, :cond_1
 
-    .line 2453
+    .line 2653
     move v9, v5
 
     .restart local v9       #t:I
@@ -228,14 +235,14 @@
 
     move v4, v9
 
-    .line 2455
+    .line 2655
     .end local v9           #t:I
     :cond_1
     new-instance v7, Landroid/graphics/Rect;
 
     invoke-direct {v7}, Landroid/graphics/Rect;-><init>()V
 
-    .line 2456
+    .line 2656
     .local v7, r:Landroid/graphics/Rect;
     sub-int v11, v10, v5
 
@@ -243,30 +250,30 @@
 
     iput v11, v7, Landroid/graphics/Rect;->left:I
 
-    .line 2457
+    .line 2657
     sub-int v11, v3, v4
 
     div-int/lit8 v11, v11, 0x2
 
     iput v11, v7, Landroid/graphics/Rect;->top:I
 
-    .line 2458
+    .line 2658
     iget v11, v7, Landroid/graphics/Rect;->left:I
 
     add-int/2addr v11, v5
 
     iput v11, v7, Landroid/graphics/Rect;->right:I
 
-    .line 2459
+    .line 2659
     iget v11, v7, Landroid/graphics/Rect;->top:I
 
     add-int/2addr v11, v4
 
     iput v11, v7, Landroid/graphics/Rect;->bottom:I
 
-    .line 2460
+    .line 2660
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mLockIcon:Landroid/graphics/Bitmap;
-    invoke-static/range {p1 .. p1}, Lcom/android/gallery3d/app/AlbumPage;->access$7700(Lcom/android/gallery3d/app/AlbumPage;)Landroid/graphics/Bitmap;
+    invoke-static/range {p1 .. p1}, Lcom/android/gallery3d/app/AlbumPage;->access$7900(Lcom/android/gallery3d/app/AlbumPage;)Landroid/graphics/Bitmap;
 
     move-result-object v11
 
@@ -280,7 +287,7 @@
 
     invoke-static {v2, v11, v12, v13, v7}, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->drawRotatedBitmap(Landroid/graphics/Canvas;Landroid/graphics/Bitmap;Landroid/graphics/Paint;ILandroid/graphics/Rect;)V
 
-    .line 2462
+    .line 2662
     .end local v2           #canvas:Landroid/graphics/Canvas;
     .end local v4           #iconHeight:I
     .end local v5           #iconWidth:I
@@ -288,15 +295,16 @@
     :cond_2
     iput-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mBitmap:Landroid/graphics/Bitmap;
 
-    .line 2467
-    .end local v1           #bm:Landroid/graphics/Bitmap;
-    .end local v3           #h:I
-    .end local v8           #rect:Landroid/graphics/Rect;
-    .end local v10           #w:I
+    .line 2671
     :goto_1
     return-void
 
-    .line 2438
+    .line 2637
+    .end local v1           #bm:Landroid/graphics/Bitmap;
+    .end local v3           #h:I
+    .end local v6           #lockState:I
+    .end local v8           #rect:Landroid/graphics/Rect;
+    .end local v10           #w:I
     :cond_3
     new-instance v8, Landroid/graphics/Rect;
 
@@ -310,9 +318,13 @@
 
     invoke-direct {v8, v11, v12, v13, v14}, Landroid/graphics/Rect;-><init>(IIII)V
 
-    goto :goto_0
+    goto/16 :goto_0
 
-    .line 2464
+    .line 2664
+    .restart local v3       #h:I
+    .restart local v6       #lockState:I
+    .restart local v8       #rect:Landroid/graphics/Rect;
+    .restart local v10       #w:I
     :cond_4
     move-object/from16 v0, p2
 
@@ -328,11 +340,29 @@
 
     invoke-interface {v11, v12}, Lcom/android/gallery3d/util/ThreadPool$Job;->run(Lcom/android/gallery3d/util/ThreadPool$JobContext;)Ljava/lang/Object;
 
-    move-result-object v11
+    move-result-object v1
 
-    check-cast v11, Landroid/graphics/Bitmap;
+    check-cast v1, Landroid/graphics/Bitmap;
 
-    iput-object v11, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mBitmap:Landroid/graphics/Bitmap;
+    .line 2665
+    .restart local v1       #bm:Landroid/graphics/Bitmap;
+    if-nez v1, :cond_5
+
+    .line 2666
+    sget-object v11, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    invoke-static {v10, v3, v11}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    move-result-object v1
+
+    .line 2667
+    const v11, -0xddddde
+
+    invoke-virtual {v1, v11}, Landroid/graphics/Bitmap;->eraseColor(I)V
+
+    .line 2669
+    :cond_5
+    iput-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mBitmap:Landroid/graphics/Bitmap;
 
     goto :goto_1
 .end method
@@ -346,12 +376,12 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 2477
+    .line 2681
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mEntry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
     iget v1, v3, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->rotation:I
 
-    .line 2479
+    .line 2683
     .local v1, rotation:I
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mEntry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
@@ -363,7 +393,7 @@
 
     iget-object v0, v3, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->rect:Landroid/graphics/Rect;
 
-    .line 2481
+    .line 2685
     .local v0, destRect:Landroid/graphics/Rect;
     :goto_0
     if-eqz v1, :cond_2
@@ -372,35 +402,35 @@
 
     if-eq v1, v3, :cond_2
 
-    .line 2482
+    .line 2686
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mBitmap:Landroid/graphics/Bitmap;
 
     iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mPaint:Landroid/graphics/Paint;
 
     invoke-static {p1, v3, v4, v1, v0}, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->drawRotatedBitmap(Landroid/graphics/Canvas;Landroid/graphics/Bitmap;Landroid/graphics/Paint;ILandroid/graphics/Rect;)V
 
-    .line 2488
+    .line 2692
     :goto_1
     iget v3, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mState:I
 
     if-nez v3, :cond_3
 
-    .line 2489
+    .line 2693
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mNormal:Landroid/graphics/NinePatch;
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage;->access$7800(Lcom/android/gallery3d/app/AlbumPage;)Landroid/graphics/NinePatch;
+    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage;->access$8000(Lcom/android/gallery3d/app/AlbumPage;)Landroid/graphics/NinePatch;
 
     move-result-object v3
 
     invoke-virtual {v3, p1, v0}, Landroid/graphics/NinePatch;->draw(Landroid/graphics/Canvas;Landroid/graphics/Rect;)V
 
-    .line 2493
+    .line 2697
     :cond_0
     :goto_2
     return-void
 
-    .line 2479
+    .line 2683
     .end local v0           #destRect:Landroid/graphics/Rect;
     :cond_1
     new-instance v0, Landroid/graphics/Rect;
@@ -413,7 +443,7 @@
 
     goto :goto_0
 
-    .line 2484
+    .line 2688
     .restart local v0       #destRect:Landroid/graphics/Rect;
     :cond_2
     new-instance v2, Landroid/graphics/Rect;
@@ -432,7 +462,7 @@
 
     invoke-direct {v2, v5, v5, v3, v4}, Landroid/graphics/Rect;-><init>(IIII)V
 
-    .line 2485
+    .line 2689
     .local v2, srcRect:Landroid/graphics/Rect;
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mBitmap:Landroid/graphics/Bitmap;
 
@@ -442,7 +472,7 @@
 
     goto :goto_1
 
-    .line 2490
+    .line 2694
     .end local v2           #srcRect:Landroid/graphics/Rect;
     :cond_3
     iget v3, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mState:I
@@ -451,11 +481,11 @@
 
     if-ne v3, v4, :cond_0
 
-    .line 2491
+    .line 2695
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mWarning:Landroid/graphics/NinePatch;
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage;->access$7900(Lcom/android/gallery3d/app/AlbumPage;)Landroid/graphics/NinePatch;
+    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage;->access$8100(Lcom/android/gallery3d/app/AlbumPage;)Landroid/graphics/NinePatch;
 
     move-result-object v3
 
@@ -470,21 +500,21 @@
     .parameter "shadowTouchPoint"
 
     .prologue
-    .line 2471
+    .line 2675
     iget v0, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mWidth:I
 
     iget v1, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mHeight:I
 
     invoke-virtual {p1, v0, v1}, Landroid/graphics/Point;->set(II)V
 
-    .line 2472
+    .line 2676
     iget v0, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mX:I
 
     iget v1, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mY:I
 
     invoke-virtual {p2, v0, v1}, Landroid/graphics/Point;->set(II)V
 
-    .line 2473
+    .line 2677
     return-void
 .end method
 
@@ -493,19 +523,19 @@
     .parameter "state"
 
     .prologue
-    .line 2496
+    .line 2700
     iget v0, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mState:I
 
     if-eq v0, p1, :cond_0
 
-    .line 2497
+    .line 2701
     iput p1, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->mState:I
 
-    .line 2498
+    .line 2702
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$DragPhotoBuilder;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage;->access$2800(Lcom/android/gallery3d/app/AlbumPage;)Landroid/os/Handler;
+    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage;->access$900(Lcom/android/gallery3d/app/AlbumPage;)Landroid/os/Handler;
 
     move-result-object v0
 
@@ -517,7 +547,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
-    .line 2500
+    .line 2704
     :cond_0
     return-void
 .end method

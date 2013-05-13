@@ -234,6 +234,9 @@
     .parameter "callType"
     .parameter "start"
     .parameter "duration"
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_CODE:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
 
     .prologue
     .line 508
@@ -653,14 +656,12 @@
 
     .line 738
     :cond_6
-    new-instance v20, Landroid/content/ContentValues;
+    new-instance v0, Landroid/content/ContentValues;
 
     const/16 v3, 0xf
 
-    move-object/from16 v0, v20
-
     invoke-direct {v0, v3}, Landroid/content/ContentValues;-><init>(I)V
-
+    
     invoke-static {v0}, Landroid/provider/CallLog$Injector;->getExtraCallLogValues(Landroid/content/ContentValues;)Landroid/content/ContentValues;
 
     move-result-object v20
@@ -860,15 +861,12 @@
 
     move-result-object v18
 
-    .line 790
     .local v18, result:Landroid/net/Uri;
     :goto_3
     invoke-static/range {p1 .. p1}, Landroid/provider/CallLog$Injector;->removeExpiredEntries(Landroid/content/Context;)V
 
-    .line 792
     return-object v18
 
-    .line 648
     .end local v11           #isEmergency:Z
     .end local v12           #isVoiceMailNumber:Z
     .end local v14           #personId:J

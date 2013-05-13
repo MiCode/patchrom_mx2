@@ -25,13 +25,13 @@
     .parameter "context"
 
     .prologue
-    .line 2761
+    .line 2977
     iput-object p1, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
 
-    .line 2762
+    .line 2978
     invoke-direct {p0, p2}, Landroid/view/OrientationEventListener;-><init>(Landroid/content/Context;)V
 
-    .line 2763
+    .line 2979
     return-void
 .end method
 
@@ -44,24 +44,24 @@
     .prologue
     const/4 v5, 0x6
 
-    .line 2770
+    .line 2986
     const/4 v2, -0x1
 
     if-ne p1, v2, :cond_1
 
-    .line 2791
+    .line 3007
     :cond_0
     :goto_0
     return-void
 
-    .line 2771
+    .line 2987
     :cond_1
     iget-object v2, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
 
     iget-object v3, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mOrientation:I
-    invoke-static {v3}, Lcom/android/camera/Camera;->access$10700(Lcom/android/camera/Camera;)I
+    invoke-static {v3}, Lcom/android/camera/Camera;->access$11200(Lcom/android/camera/Camera;)I
 
     move-result v3
 
@@ -70,13 +70,13 @@
     move-result v3
 
     #setter for: Lcom/android/camera/Camera;->mOrientation:I
-    invoke-static {v2, v3}, Lcom/android/camera/Camera;->access$10702(Lcom/android/camera/Camera;I)I
+    invoke-static {v2, v3}, Lcom/android/camera/Camera;->access$11202(Lcom/android/camera/Camera;I)I
 
-    .line 2774
+    .line 2990
     iget-object v2, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mOrientation:I
-    invoke-static {v2}, Lcom/android/camera/Camera;->access$10700(Lcom/android/camera/Camera;)I
+    invoke-static {v2}, Lcom/android/camera/Camera;->access$11200(Lcom/android/camera/Camera;)I
 
     move-result v2
 
@@ -90,21 +90,21 @@
 
     rem-int/lit16 v1, v2, 0x168
 
-    .line 2776
+    .line 2992
     .local v1, orientationCompensation:I
     iget-object v2, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
 
     #calls: Lcom/android/camera/Camera;->checkIsForbitPanoramaOrientation(I)Z
-    invoke-static {v2, v1}, Lcom/android/camera/Camera;->access$11500(Lcom/android/camera/Camera;I)Z
+    invoke-static {v2, v1}, Lcom/android/camera/Camera;->access$11900(Lcom/android/camera/Camera;I)Z
 
     move-result v0
 
-    .line 2777
+    .line 2993
     .local v0, isForbitOrientation:Z
     iget-object v2, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mOrientationCompensation:I
-    invoke-static {v2}, Lcom/android/camera/Camera;->access$10200(Lcom/android/camera/Camera;)I
+    invoke-static {v2}, Lcom/android/camera/Camera;->access$12000(Lcom/android/camera/Camera;)I
 
     move-result v2
 
@@ -123,7 +123,7 @@
     iget-object v2, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mIsForbitOrientation:Z
-    invoke-static {v2}, Lcom/android/camera/Camera;->access$10000(Lcom/android/camera/Camera;)Z
+    invoke-static {v2}, Lcom/android/camera/Camera;->access$10400(Lcom/android/camera/Camera;)Z
 
     move-result v2
 
@@ -132,28 +132,28 @@
     :cond_2
     if-nez v0, :cond_3
 
-    .line 2779
+    .line 2995
     iget-object v2, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
 
     #setter for: Lcom/android/camera/Camera;->mOrientationCompensation:I
-    invoke-static {v2, v1}, Lcom/android/camera/Camera;->access$10202(Lcom/android/camera/Camera;I)I
+    invoke-static {v2, v1}, Lcom/android/camera/Camera;->access$12002(Lcom/android/camera/Camera;I)I
 
-    .line 2780
+    .line 2996
     iget-object v2, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
 
     iget-object v3, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mOrientationCompensation:I
-    invoke-static {v3}, Lcom/android/camera/Camera;->access$10200(Lcom/android/camera/Camera;)I
+    invoke-static {v3}, Lcom/android/camera/Camera;->access$12000(Lcom/android/camera/Camera;)I
 
     move-result v3
 
     const/4 v4, 0x1
 
     #calls: Lcom/android/camera/Camera;->setOrientationIndicator(IZ)V
-    invoke-static {v2, v3, v4}, Lcom/android/camera/Camera;->access$11600(Lcom/android/camera/Camera;IZ)V
+    invoke-static {v2, v3, v4}, Lcom/android/camera/Camera;->access$12100(Lcom/android/camera/Camera;IZ)V
 
-    .line 2781
+    .line 2997
     iget-object v2, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
 
     iget-object v2, v2, Lcom/android/camera/ActivityBase;->mCameraDevice:Lcom/android/camera/CameraManager$CameraProxy;
@@ -168,23 +168,7 @@
 
     if-ne v2, v3, :cond_3
 
-    .line 2782
-    iget-object v2, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
-
-    iget-object v2, v2, Lcom/android/camera/ActivityBase;->mCameraDevice:Lcom/android/camera/CameraManager$CameraProxy;
-
-    iget-object v3, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
-
-    #getter for: Lcom/android/camera/Camera;->mOrientationCompensation:I
-    invoke-static {v3}, Lcom/android/camera/Camera;->access$10200(Lcom/android/camera/Camera;)I
-
-    move-result v3
-
-    add-int/lit8 v3, v3, 0x5a
-
-    invoke-virtual {v2, v3}, Lcom/android/camera/CameraManager$CameraProxy;->setFaceDetectionAngle(I)V
-
-    .line 2787
+    .line 3003
     :cond_3
     iget-object v2, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
 
@@ -199,7 +183,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 2788
+    .line 3004
     iget-object v2, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mHandler:Landroid/os/Handler;
@@ -209,11 +193,11 @@
 
     invoke-virtual {v2, v5}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2789
+    .line 3005
     iget-object v2, p0, Lcom/android/camera/Camera$MyOrientationEventListener;->this$0:Lcom/android/camera/Camera;
 
     #calls: Lcom/android/camera/Camera;->showTapToFocusToast()V
     invoke-static {v2}, Lcom/android/camera/Camera;->access$2100(Lcom/android/camera/Camera;)V
 
-    goto/16 :goto_0
+    goto :goto_0
 .end method

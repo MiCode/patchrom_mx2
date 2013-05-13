@@ -31,12 +31,12 @@
     .parameter
 
     .prologue
-    .line 806
+    .line 807
     iput-object p1, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 808
+    .line 809
     const/4 v0, 0x2
 
     new-array v0, v0, [I
@@ -52,7 +52,7 @@
     .parameter "x1"
 
     .prologue
-    .line 806
+    .line 807
     invoke-direct {p0, p1}, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;-><init>(Lcom/android/gallery3d/ui/SlotView;)V
 
     return-void
@@ -63,22 +63,22 @@
     .parameter "byLongPress"
 
     .prologue
-    .line 829
+    .line 830
     iget-boolean v0, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->isDown:Z
 
     if-nez v0, :cond_0
 
-    .line 832
+    .line 833
     :goto_0
     return-void
 
-    .line 830
+    .line 831
     :cond_0
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->isDown:Z
 
-    .line 831
+    .line 832
     iget-object v0, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
     #getter for: Lcom/android/gallery3d/ui/SlotView;->mListener:Lcom/android/gallery3d/ui/SlotView$Listener;
@@ -98,7 +98,7 @@
     .parameter "e"
 
     .prologue
-    .line 836
+    .line 837
     const/4 v0, 0x0
 
     return v0
@@ -114,10 +114,10 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 842
+    .line 843
     invoke-direct {p0, v2}, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->cancelDown(Z)V
 
-    .line 843
+    .line 844
     iget-object v3, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
     #getter for: Lcom/android/gallery3d/ui/SlotView;->mLayout:Lcom/android/gallery3d/ui/SlotView$Layout;
@@ -129,19 +129,19 @@
 
     move-result v0
 
-    .line 844
+    .line 845
     .local v0, scrollLimit:I
     if-nez v0, :cond_0
 
-    .line 849
+    .line 850
     :goto_0
     return v2
 
-    .line 845
+    .line 846
     :cond_0
     move v1, p4
 
-    .line 846
+    .line 847
     .local v1, velocity:F
     iget-object v3, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
@@ -156,7 +156,7 @@
 
     invoke-virtual {v3, v4, v2, v0}, Lcom/android/gallery3d/ui/ScrollerHelper;->fling(III)V
 
-    .line 847
+    .line 848
     iget-object v2, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
     #getter for: Lcom/android/gallery3d/ui/SlotView;->mUIListener:Lcom/android/gallery3d/ui/UserInteractionListener;
@@ -175,13 +175,13 @@
 
     invoke-interface {v2}, Lcom/android/gallery3d/ui/UserInteractionListener;->onUserInteractionBegin()V
 
-    .line 848
+    .line 849
     :cond_1
     iget-object v2, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
     invoke-virtual {v2}, Lcom/android/gallery3d/ui/SlotView;->invalidate()V
 
-    .line 849
+    .line 850
     const/4 v2, 0x1
 
     goto :goto_0
@@ -194,10 +194,10 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 881
+    .line 882
     invoke-direct {p0, v1}, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->cancelDown(Z)V
 
-    .line 882
+    .line 883
     iget-object v1, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
     #getter for: Lcom/android/gallery3d/ui/SlotView;->mDownInScrolling:Z
@@ -207,17 +207,17 @@
 
     if-eqz v1, :cond_0
 
-    .line 890
+    .line 891
     :goto_0
     return-void
 
-    .line 883
+    .line 884
     :cond_0
     iget-object v1, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
     invoke-virtual {v1}, Lcom/android/gallery3d/ui/SlotView;->lockRendering()V
 
-    .line 885
+    .line 886
     :try_start_0
     iget-object v1, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
@@ -240,7 +240,7 @@
 
     move-result v0
 
-    .line 886
+    .line 887
     .local v0, index:I
     const/4 v1, -0x1
 
@@ -269,7 +269,7 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 888
+    .line 889
     :cond_1
     iget-object v1, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
@@ -296,15 +296,15 @@
     .parameter "distanceY"
 
     .prologue
-    .line 855
+    .line 856
     const/4 v3, 0x0
 
     invoke-direct {p0, v3}, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->cancelDown(Z)V
 
-    .line 856
+    .line 857
     move v0, p4
 
-    .line 857
+    .line 858
     .local v0, distance:F
     iget-object v3, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
@@ -317,7 +317,7 @@
 
     move-result v1
 
-    .line 858
+    .line 859
     .local v1, limit:I
     iget-object v3, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
@@ -331,13 +331,13 @@
 
     if-le v3, v1, :cond_1
 
-    .line 859
+    .line 860
     :cond_0
     const/high16 v3, 0x4040
 
     div-float/2addr v0, v3
 
-    .line 861
+    .line 862
     :cond_1
     iget-object v3, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
@@ -374,7 +374,7 @@
 
     move-result v2
 
-    .line 863
+    .line 864
     .local v2, overDistance:I
     iget-object v3, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
@@ -387,7 +387,7 @@
 
     if-eqz v2, :cond_2
 
-    .line 864
+    .line 865
     iget-object v3, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
     #getter for: Lcom/android/gallery3d/ui/SlotView;->mPaper:Lcom/android/gallery3d/ui/Paper;
@@ -399,13 +399,13 @@
 
     invoke-virtual {v3, v4}, Lcom/android/gallery3d/ui/Paper;->overScroll(F)V
 
-    .line 866
+    .line 867
     :cond_2
     iget-object v3, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
     invoke-virtual {v3}, Lcom/android/gallery3d/ui/SlotView;->invalidate()V
 
-    .line 867
+    .line 868
     const/4 v3, 0x1
 
     return v3
@@ -416,18 +416,18 @@
     .parameter "e"
 
     .prologue
-    .line 814
+    .line 815
     iget-object v2, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
     invoke-virtual {v2}, Lcom/android/gallery3d/ui/SlotView;->getGLRoot()Lcom/android/gallery3d/ui/GLRoot;
 
     move-result-object v1
 
-    .line 815
+    .line 816
     .local v1, root:Lcom/android/gallery3d/ui/GLRoot;
     invoke-interface {v1}, Lcom/android/gallery3d/ui/GLRoot;->lockRenderThread()V
 
-    .line 817
+    .line 818
     :try_start_0
     iget-boolean v2, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->isDown:Z
     :try_end_0
@@ -435,14 +435,14 @@
 
     if-eqz v2, :cond_0
 
-    .line 824
+    .line 825
     invoke-interface {v1}, Lcom/android/gallery3d/ui/GLRoot;->unlockRenderThread()V
 
-    .line 826
+    .line 827
     :goto_0
     return-void
 
-    .line 818
+    .line 819
     :cond_0
     :try_start_1
     iget-object v2, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
@@ -466,18 +466,18 @@
 
     move-result v0
 
-    .line 819
+    .line 820
     .local v0, index:I
     const/4 v2, -0x1
 
     if-eq v0, v2, :cond_1
 
-    .line 820
+    .line 821
     const/4 v2, 0x1
 
     iput-boolean v2, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->isDown:Z
 
-    .line 821
+    .line 822
     iget-object v2, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
     #getter for: Lcom/android/gallery3d/ui/SlotView;->mListener:Lcom/android/gallery3d/ui/SlotView$Listener;
@@ -489,7 +489,7 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 824
+    .line 825
     :cond_1
     invoke-interface {v1}, Lcom/android/gallery3d/ui/GLRoot;->unlockRenderThread()V
 
@@ -511,12 +511,12 @@
     .prologue
     const/4 v5, 0x1
 
-    .line 872
+    .line 873
     const/4 v1, 0x0
 
     invoke-direct {p0, v1}, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->cancelDown(Z)V
 
-    .line 873
+    .line 874
     iget-object v1, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
     #getter for: Lcom/android/gallery3d/ui/SlotView;->mDownInScrolling:Z
@@ -526,12 +526,12 @@
 
     if-eqz v1, :cond_1
 
-    .line 876
+    .line 877
     :cond_0
     :goto_0
     return v5
 
-    .line 874
+    .line 875
     :cond_1
     iget-object v1, p0, Lcom/android/gallery3d/ui/SlotView$MyGestureListener;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
@@ -554,7 +554,7 @@
 
     move-result v0
 
-    .line 875
+    .line 876
     .local v0, index:I
     const/4 v1, -0x1
 

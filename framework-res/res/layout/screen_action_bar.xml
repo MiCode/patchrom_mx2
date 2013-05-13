@@ -7,7 +7,7 @@
     </com.android.internal.widget.ActionBarContainer>
     <FrameLayout android:id="@id/content" android:layout_width="fill_parent" android:layout_height="0.0dip" android:foreground="?windowContentOverlay" android:layout_weight="1.0" android:foregroundGravity="fill_horizontal|top|center" />
     <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.android.internal.widget.ActionBarContainer android:gravity="center" android:layout_gravity="bottom" android:id="@id/split_action_bar" android:visibility="gone" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" style="?android:attr/actionBarSplitStyle" />
+        <com.android.internal.widget.MzActionBarContainer android:gravity="center" android:layout_gravity="bottom" android:id="@id/split_action_bar" android:visibility="gone" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="0.0dip" style="?android:attr/actionBarSplitStyle" />
         <FrameLayout android:id="@id/extra_content" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </FrameLayout>
 </LinearLayout>

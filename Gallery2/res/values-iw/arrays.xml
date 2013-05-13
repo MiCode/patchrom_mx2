@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="labeltype">
+        <item>ציון</item>
+        <item>במאי</item>
+        <item>שחקן</item>
+        <item>קטגוריה</item>
+        <item>איזור</item>
+        <item>אורך</item>
+        <item>עדכון</item>
+        <item>מספר</item>
+        <item>פסקול</item>
+        <item>סגנון</item>
+        <item>בית ספר</item>
+        <item>נושא</item>
+        <item>סוג תוכנית</item>
+        <item>סגנון אלבום</item>
+        <item>ארגון</item>
+    </string-array>
+    <string-array name="camera_pic_size_array">
+        <item>2592x1944</item>
+        <item>2048x1536</item>
+        <item>1600x1200</item>
+        <item>1280x960</item>
+    </string-array>
+    <string-array name="camera_scence_array">
+        <item>"אוטו'"</item>
+        <item>טקסט</item>
+        <item>לילה</item>
+        <item>אופקי</item>
+    </string-array>
+    <string-array name="camera_white_balance">
+        <item>"אוטו'"</item>
+        <item>להט</item>
+        <item>אור-יום</item>
+        <item>מעונן</item>
+    </string-array>
+    <string-array name="camera_video_size_array">
+        <item>1280x720</item>
+        <item>1080x720</item>
+        <item>720x480</item>
+    </string-array>
+    <string-array name="camera_cameramenu_array">
+        <item>סצנה</item>
+        <item>איזון-לבן</item>
+        <item>אחר</item>
+    </string-array>
+    <string-array name="camera_menu_other_array">
+        <item>מיקום</item>
+        <item>לכידת תנועה</item>
+    </string-array>
+    <string-array name="camera_main_menu_default_tip_array">
+        <item>"אוטו'"</item>
+        <item>"אוטו'"</item>
+        <item>5M</item>
+    </string-array>
+    <string-array name="camera_mx_cameramenu_array">
+        <item>מצב לכידה</item>
+        <item>ISO</item>
+        <item>סצנה</item>
+        <item>איזון-לבן</item>
+        <item>אחר</item>
+    </string-array>
+    <string-array name="camera_mx_videomenu_array">
+        <item>גודל וידאו</item>
+        <item>סצנה</item>
+        <item>איזון-לבן</item>
+    </string-array>
+    <string-array name="camera_mx_pic_size_array">
+        <item>3264x2448</item>
+        <item>2560x1920</item>
+        <item>2048x1536</item>
+        <item>1600x1200</item>
+        <item>1280x960</item>
+    </string-array>
+    <string-array name="camera_mx_white_balance">
+        <item>"אוטו'"</item>
+        <item>אור לבן</item>
+        <item>חוץ</item>
+        <item>להט</item>
+    </string-array>
+    <string-array name="camera_mx_scence_array_photo">
+        <item>"אוטו'"</item>
+        <item>טקסט</item>
+        <item>לילה</item>
+        <item>אופקי</item>
+        <item>מאקרו</item>
+    </string-array>
+    <string-array name="camera_mx_scence_array_clip">
+        <item>"אוטו'"</item>
+        <item>אנכי</item>
+        <item>אופקי</item>
+        <item>שקיעה</item>
+        <item>מאקרו</item>
+    </string-array>
+    <string-array name="camera_mx_flash_light_array">
+        <item>"אוטו'"</item>
+        <item>פועל</item>
+        <item>מכובה</item>
+    </string-array>
+    <string-array name="video_camera_mx_flash_light_array">
+        <item>פתוח</item>
+        <item>סגור</item>
+    </string-array>
+    <string-array name="camera_mx_capture_mode_array">
+        <item>רגיל</item>
+        <item>פנורמה</item>
+        <item>חיוך</item>
+        <item>צרור</item>
+    </string-array>
+    <string-array name="camera_mx_sensitivity_mode_array">
+        <item>"אוטו'"</item>
+        <item>50</item>
+        <item>200</item>
+        <item>400</item>
+        <item>800</item>
+    </string-array>
+    <string-array name="camera_mx_wide_dynamic_mode_array">
+        <item>כבוי</item>
+        <item>"אוטו'"</item>
+        <item>נמוך</item>
+        <item>בינוני</item>
+        <item>גבוה</item>
+    </string-array>
+    <string-array name="camera_mx_video_size_array">
+        <item>1920x1080</item>
+        <item>1280x720</item>
+        <item>1080x720</item>
+        <item>720x480</item>
+    </string-array>
+    <string-array name="pref_camera_mx_pic_size_array">
+        <item>3264x2448</item>
+        <item>2560x1920</item>
+        <item>2048x1536</item>
+        <item>1600x1200</item>
+        <item>1280x960</item>
+    </string-array>
+    <string-array name="pref_camera_mx_white_balance">
+        <item>"אוטו'"</item>
+        <item>תאורה בוהקת</item>
+        <item>תאורה זוהרת</item>
+        <item>תאורה זוהרת חלשה</item>
+        <item>שמשי</item>
+        <item>מעונן</item>
+        <item>מוצלל</item>
+        <item>אופק</item>
+    </string-array>
+    <string-array name="pref_camera_mx_scence_array_photo">
+        <item>"אוטו'"</item>
+        <item>כיתוב</item>
+        <item>אנכי</item>
+        <item>אופקי</item>
+        <item>ספורט</item>
+        <item>צילום לילה</item>
+        <item>שקיעה</item>
+        <item>מיקרו</item>
+    </string-array>
+    <string-array name="pref_camera_mx_scence_array_clip">
+        <item>"אוטו'"</item>
+        <item>אנכי</item>
+        <item>אופקי</item>
+        <item>שקיעה</item>
+        <item>מיקרו</item>
+    </string-array>
+    <string-array name="pref_camera_mx_wide_dynamic_mode_array">
+        <item>תחום דינמי רחב מכובה</item>
+        <item>תחום דינמי רחב אוטומטי</item>
+        <item>תחום דינמי רחב נמוך</item>
+        <item>תחום דינמי רחב בינוני</item>
+        <item>תחום דינמי רחב גבוה</item>
+    </string-array>
+    <string-array name="pref_camera_mx_flash_light_array">
+        <item>"אוטו'"</item>
+        <item>מופעל</item>
+        <item>מכובה</item>
+    </string-array>
+    <string-array name="pref_video_camera_mx_flash_light_array">
+        <item>פועל</item>
+        <item>מכובה</item>
+    </string-array>
+    <string-array name="camera_mx_menu_other_array">
+        <item>מיקום</item>
+        <item>WDR</item>
+        <item>לכידת תנועה</item>
+    </string-array>
+    <string-array name="camera_mx_main_menu_default_tip_array">
+        <item>רגיל</item>
+        <item>"אוטו'"</item>
+        <item>"אוטו'"</item>
+        <item>"אוטו'"</item>
+        <item>8M</item>
+    </string-array>
+    <string-array name="video_mx_main_menu_default_tip_array">
+        <item>720P</item>
+        <item>"אוטו'"</item>
+        <item>"אוטו'"</item>
+    </string-array>
+    <string-array name="popupmenu_info">
+        <item>מצב השלמה</item>
+        <item>אפשר אנכי</item>
+        <item>הוסף לרשימת נגינה</item>
+        <item>נגן שוב</item>
+    </string-array>
+    <string-array name="bitrate_info">
+        <item>איכות גבוהה</item>
+        <item>חלק</item>
+    </string-array>
+    <string-array name="crop_aspect">
+        <item>בחופשיות</item>
+        <item>1:1</item>
+        <item>3:2</item>
+        <item>4:3</item>
+        <item>16:10</item>
+    </string-array>
+</resources>

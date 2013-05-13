@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 444
+    .line 678
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$12$1;->this$1:Lcom/android/gallery3d/photoeditor/PhotoEditor$12;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,57 +38,50 @@
 
 # virtual methods
 .method public run()V
-    .locals 3
+    .locals 2
 
     .prologue
-    .line 448
+    .line 683
+    new-instance v0, Lcom/android/gallery3d/photoeditor/PhotoEditor$12$1$1;
+
+    invoke-direct {v0, p0}, Lcom/android/gallery3d/photoeditor/PhotoEditor$12$1$1;-><init>(Lcom/android/gallery3d/photoeditor/PhotoEditor$12$1;)V
+
+    .line 690
+    .local v0, callback:Lcom/android/gallery3d/photoeditor/OnDoneCallback;
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$12$1;->this$1:Lcom/android/gallery3d/photoeditor/PhotoEditor$12;
 
-    iget-object v1, v1, Lcom/android/gallery3d/photoeditor/PhotoEditor$12;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
-
-    #getter for: Lcom/android/gallery3d/photoeditor/PhotoEditor;->saveUri:Landroid/net/Uri;
-    invoke-static {v1}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->access$1500(Lcom/android/gallery3d/photoeditor/PhotoEditor;)Landroid/net/Uri;
-
-    move-result-object v1
+    iget-boolean v1, v1, Lcom/android/gallery3d/photoeditor/PhotoEditor$12;->val$undo:Z
 
     if-eqz v1, :cond_0
 
-    .line 449
-    new-instance v0, Landroid/content/Intent;
-
-    const-string v1, "android.intent.action.SEND"
-
-    invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
-
-    .line 450
-    .local v0, intent:Landroid/content/Intent;
-    const-string v1, "android.intent.extra.STREAM"
-
-    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$12$1;->this$1:Lcom/android/gallery3d/photoeditor/PhotoEditor$12;
-
-    iget-object v2, v2, Lcom/android/gallery3d/photoeditor/PhotoEditor$12;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
-
-    #getter for: Lcom/android/gallery3d/photoeditor/PhotoEditor;->saveUri:Landroid/net/Uri;
-    invoke-static {v2}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->access$1500(Lcom/android/gallery3d/photoeditor/PhotoEditor;)Landroid/net/Uri;
-
-    move-result-object v2
-
-    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
-
-    .line 451
-    const-string v1, "image/*"
-
-    invoke-virtual {v0, v1}, Landroid/content/Intent;->setType(Ljava/lang/String;)Landroid/content/Intent;
-
-    .line 452
+    .line 691
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$12$1;->this$1:Lcom/android/gallery3d/photoeditor/PhotoEditor$12;
 
     iget-object v1, v1, Lcom/android/gallery3d/photoeditor/PhotoEditor$12;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
-    invoke-virtual {v1, v0}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->startActivity(Landroid/content/Intent;)V
+    #getter for: Lcom/android/gallery3d/photoeditor/PhotoEditor;->filterStack:Lcom/android/gallery3d/photoeditor/FilterStack;
+    invoke-static {v1}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->access$1100(Lcom/android/gallery3d/photoeditor/PhotoEditor;)Lcom/android/gallery3d/photoeditor/FilterStack;
 
-    .line 454
-    .end local v0           #intent:Landroid/content/Intent;
-    :cond_0
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Lcom/android/gallery3d/photoeditor/FilterStack;->undo(Lcom/android/gallery3d/photoeditor/OnDoneCallback;)V
+
+    .line 695
+    :goto_0
     return-void
+
+    .line 693
+    :cond_0
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$12$1;->this$1:Lcom/android/gallery3d/photoeditor/PhotoEditor$12;
+
+    iget-object v1, v1, Lcom/android/gallery3d/photoeditor/PhotoEditor$12;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
+
+    #getter for: Lcom/android/gallery3d/photoeditor/PhotoEditor;->filterStack:Lcom/android/gallery3d/photoeditor/FilterStack;
+    invoke-static {v1}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->access$1100(Lcom/android/gallery3d/photoeditor/PhotoEditor;)Lcom/android/gallery3d/photoeditor/FilterStack;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Lcom/android/gallery3d/photoeditor/FilterStack;->redo(Lcom/android/gallery3d/photoeditor/OnDoneCallback;)V
+
+    goto :goto_0
 .end method

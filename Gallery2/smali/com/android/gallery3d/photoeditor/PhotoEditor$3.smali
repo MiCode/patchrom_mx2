@@ -1,14 +1,11 @@
 .class Lcom/android/gallery3d/photoeditor/PhotoEditor$3;
-.super Ljava/lang/Object;
+.super Landroid/content/BroadcastReceiver;
 .source "PhotoEditor.java"
-
-# interfaces
-.implements Landroid/view/View$OnClickListener;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/gallery3d/photoeditor/PhotoEditor;->setSystemActionBarOnClickListener()V
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/android/gallery3d/photoeditor/PhotoEditor;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,41 +17,78 @@
 # instance fields
 .field final synthetic this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
-.field final synthetic val$customView:Landroid/view/View;
-
 
 # direct methods
-.method constructor <init>(Lcom/android/gallery3d/photoeditor/PhotoEditor;Landroid/view/View;)V
+.method constructor <init>(Lcom/android/gallery3d/photoeditor/PhotoEditor;)V
     .locals 0
-    .parameter
     .parameter
 
     .prologue
-    .line 222
+    .line 286
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$3;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
-    iput-object p2, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$3;->val$customView:Landroid/view/View;
-
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onClick(Landroid/view/View;)V
-    .locals 2
-    .parameter "v"
+.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+    .locals 4
+    .parameter "context"
+    .parameter "intent"
 
     .prologue
-    .line 225
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$3;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
+    .line 289
+    invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$3;->val$customView:Landroid/view/View;
+    move-result-object v0
 
-    #calls: Lcom/android/gallery3d/photoeditor/PhotoEditor;->enterDoodleEraserMode(Landroid/view/View;)V
-    invoke-static {v0, v1}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->access$300(Lcom/android/gallery3d/photoeditor/PhotoEditor;Landroid/view/View;)V
+    .line 290
+    .local v0, action:Ljava/lang/String;
+    const-string v1, "com.meizu.recent.show"
 
-    .line 226
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    .line 291
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$3;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
+
+    invoke-virtual {v1}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->getWindow()Landroid/view/Window;
+
+    move-result-object v1
+
+    invoke-static {}, Lcom/android/gallery3d/util/GalleryUtils;->getSystemBrightnessValue()I
+
+    move-result v2
+
+    const/4 v3, 0x0
+
+    invoke-static {v1, v2, v3}, Lcom/android/gallery3d/util/GalleryUtils;->setWindowBrightness(Landroid/view/Window;IZ)V
+
+    .line 295
+    :cond_0
+    :goto_0
     return-void
+
+    .line 292
+    :cond_1
+    const-string v1, "com.meizu.recent.dimiss"
+
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    .line 293
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$3;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
+
+    invoke-static {v1}, Lcom/android/gallery3d/util/GalleryUtils;->initGalleryBrightness(Landroid/content/Context;)V
+
+    goto :goto_0
 .end method

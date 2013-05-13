@@ -4,8 +4,6 @@
 
 
 # instance fields
-.field private final DISABLED_ALPHA:F
-
 .field private mFilterEnabled:Z
 
 
@@ -15,12 +13,12 @@
     .parameter "context"
 
     .prologue
-    .line 35
+    .line 36
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Lcom/android/camera/ui/TwoStateImageView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 36
+    .line 37
     return-void
 .end method
 
@@ -30,20 +28,15 @@
     .parameter "attrs"
 
     .prologue
-    .line 31
+    .line 32
     invoke-direct {p0, p1, p2}, Landroid/widget/ImageView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 27
-    const v0, 0x3ecccccd
-
-    iput v0, p0, Lcom/android/camera/ui/TwoStateImageView;->DISABLED_ALPHA:F
-
-    .line 28
+    .line 29
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/camera/ui/TwoStateImageView;->mFilterEnabled:Z
 
-    .line 32
+    .line 33
     return-void
 .end method
 
@@ -54,10 +47,10 @@
     .parameter "enabled"
 
     .prologue
-    .line 51
+    .line 52
     iput-boolean p1, p0, Lcom/android/camera/ui/TwoStateImageView;->mFilterEnabled:Z
 
-    .line 52
+    .line 53
     return-void
 .end method
 
@@ -66,32 +59,32 @@
     .parameter "enabled"
 
     .prologue
-    .line 40
+    .line 41
     invoke-super {p0, p1}, Landroid/widget/ImageView;->setEnabled(Z)V
 
-    .line 41
+    .line 42
     iget-boolean v0, p0, Lcom/android/camera/ui/TwoStateImageView;->mFilterEnabled:Z
 
     if-eqz v0, :cond_0
 
-    .line 42
+    .line 43
     if-eqz p1, :cond_1
 
-    .line 43
-    const/high16 v0, 0x3f80
+    .line 44
+    const/16 v0, 0xff
 
-    invoke-virtual {p0, v0}, Lcom/android/camera/ui/TwoStateImageView;->setAlpha(F)V
+    invoke-virtual {p0, v0}, Lcom/android/camera/ui/TwoStateImageView;->setAlpha(I)V
 
-    .line 48
+    .line 49
     :cond_0
     :goto_0
     return-void
 
-    .line 45
+    .line 46
     :cond_1
-    const v0, 0x3ecccccd
+    const/16 v0, 0x66
 
-    invoke-virtual {p0, v0}, Lcom/android/camera/ui/TwoStateImageView;->setAlpha(F)V
+    invoke-virtual {p0, v0}, Lcom/android/camera/ui/TwoStateImageView;->setAlpha(I)V
 
     goto :goto_0
 .end method

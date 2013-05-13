@@ -23,15 +23,15 @@
     .locals 2
 
     .prologue
-    .line 404
+    .line 405
     invoke-direct {p0}, Lcom/android/gallery3d/anim/Animation;-><init>()V
 
-    .line 402
+    .line 403
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$SlotAnimation;->mProgress:F
 
-    .line 405
+    .line 406
     new-instance v0, Landroid/view/animation/DecelerateInterpolator;
 
     const/high16 v1, 0x4080
@@ -40,12 +40,12 @@
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/ui/SlotView$SlotAnimation;->setInterpolator(Landroid/view/animation/Interpolator;)V
 
-    .line 406
+    .line 407
     const/16 v0, 0x5dc
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/ui/SlotView$SlotAnimation;->setDuration(I)V
 
-    .line 407
+    .line 408
     return-void
 .end method
 
@@ -59,9 +59,9 @@
     .parameter "progress"
 
     .prologue
-    .line 411
+    .line 412
     iput p1, p0, Lcom/android/gallery3d/ui/SlotView$SlotAnimation;->mProgress:F
 
-    .line 412
+    .line 413
     return-void
 .end method

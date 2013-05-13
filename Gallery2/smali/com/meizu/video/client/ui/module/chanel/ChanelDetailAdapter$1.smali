@@ -52,7 +52,7 @@
     .line 234
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;
 
-    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;->gridView:Landroid/widget/GridView;
+    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;->mGridView:Landroid/widget/GridView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;->access$000(Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;)Landroid/widget/GridView;
 
     move-result-object v1
@@ -61,7 +61,7 @@
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;
 
-    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;->gridView:Landroid/widget/GridView;
+    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;->mGridView:Landroid/widget/GridView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;->access$000(Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;)Landroid/widget/GridView;
 
     move-result-object v1
@@ -77,7 +77,7 @@
     .line 235
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;
 
-    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;->gridView:Landroid/widget/GridView;
+    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;->mGridView:Landroid/widget/GridView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;->access$000(Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;)Landroid/widget/GridView;
 
     move-result-object v1
@@ -95,28 +95,13 @@
     if-eqz v0, :cond_0
 
     .line 237
-    if-eqz p1, :cond_1
+    if-eqz p1, :cond_0
 
     .line 238
     invoke-virtual {v0, p1}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
-    .line 239
-    sget-object v1, Landroid/widget/ImageView$ScaleType;->CENTER_CROP:Landroid/widget/ImageView$ScaleType;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
-
-    .line 245
+    .line 242
     .end local v0           #imageViewByTag:Landroid/widget/ImageView;
     :cond_0
-    :goto_0
     return-void
-
-    .line 241
-    .restart local v0       #imageViewByTag:Landroid/widget/ImageView;
-    :cond_1
-    sget-object v1, Landroid/widget/ImageView$ScaleType;->CENTER:Landroid/widget/ImageView$ScaleType;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
-
-    goto :goto_0
 .end method

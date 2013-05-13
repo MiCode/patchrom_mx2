@@ -167,6 +167,14 @@
     .end annotation
 .end method
 
+.method public abstract enableFromWidget()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract enableNoAutoConnect()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {

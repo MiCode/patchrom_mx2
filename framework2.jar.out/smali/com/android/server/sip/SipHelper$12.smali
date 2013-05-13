@@ -33,7 +33,7 @@
     .parameter
 
     .prologue
-    .line 1093
+    .line 1131
     iput-object p1, p0, Lcom/android/server/sip/SipHelper$12;->this$0:Lcom/android/server/sip/SipHelper;
 
     iput-object p2, p0, Lcom/android/server/sip/SipHelper$12;->val$inviteTransaction:Ljavax/sip/ServerTransaction;
@@ -51,7 +51,7 @@
     .locals 3
 
     .prologue
-    .line 1096
+    .line 1134
     :try_start_0
     iget-object v1, p0, Lcom/android/server/sip/SipHelper$12;->val$inviteTransaction:Ljavax/sip/ServerTransaction;
 
@@ -61,15 +61,15 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1100
+    .line 1138
     :goto_0
     return-void
 
-    .line 1097
+    .line 1135
     :catch_0
     move-exception v0
 
-    .line 1098
+    .line 1136
     .local v0, e:Ljava/lang/Exception;
     invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
 

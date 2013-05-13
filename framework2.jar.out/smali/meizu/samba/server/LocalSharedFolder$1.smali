@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 108
+    .line 109
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -45,7 +45,7 @@
     .parameter "x0"
 
     .prologue
-    .line 108
+    .line 109
     invoke-virtual {p0, p1}, Lmeizu/samba/server/LocalSharedFolder$1;->createFromParcel(Landroid/os/Parcel;)Lmeizu/samba/server/LocalSharedFolder;
 
     move-result-object v0
@@ -60,7 +60,7 @@
     .prologue
     const/4 v4, 0x1
 
-    .line 110
+    .line 111
     new-instance v0, Lmeizu/samba/server/LocalSharedFolder;
 
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
@@ -115,7 +115,7 @@
     .parameter "x0"
 
     .prologue
-    .line 108
+    .line 109
     invoke-virtual {p0, p1}, Lmeizu/samba/server/LocalSharedFolder$1;->newArray(I)[Lmeizu/samba/server/LocalSharedFolder;
 
     move-result-object v0
@@ -128,7 +128,7 @@
     .parameter "size"
 
     .prologue
-    .line 121
+    .line 122
     new-array v0, p1, [Lmeizu/samba/server/LocalSharedFolder;
 
     return-object v0

@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 3823
+    .line 3939
     iput-object p1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$14;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,7 +43,7 @@
     .parameter "accuracy"
 
     .prologue
-    .line 3842
+    .line 3958
     return-void
 .end method
 
@@ -54,10 +54,10 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 3825
+    .line 3941
     monitor-enter p0
 
-    .line 3826
+    .line 3942
     :try_start_0
     iget-object v2, p1, Landroid/hardware/SensorEvent;->values:[F
 
@@ -65,7 +65,7 @@
 
     aget v1, v2, v3
 
-    .line 3829
+    .line 3945
     .local v1, distance:F
     float-to-double v2, v1
 
@@ -83,7 +83,7 @@
 
     const/4 v0, 0x1
 
-    .line 3832
+    .line 3948
     .local v0, active:Z
     :cond_0
     iget-object v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$14;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
@@ -92,27 +92,27 @@
 
     if-eqz v2, :cond_1
 
-    .line 3833
+    .line 3949
     const-string v2, "WindowManager"
 
     const-string v3, "enableProximityLockLocked"
 
     invoke-static {v2, v3}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3836
+    .line 3952
     :cond_1
     iget-object v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$14;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     #calls: Lcom/android/internal/policy/impl/PhoneWindowManager;->proximityChangedLocked(Z)V
     invoke-static {v2, v0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->access$500(Lcom/android/internal/policy/impl/PhoneWindowManager;Z)V
 
-    .line 3837
+    .line 3953
     monitor-exit p0
 
-    .line 3838
+    .line 3954
     return-void
 
-    .line 3837
+    .line 3953
     .end local v0           #active:Z
     .end local v1           #distance:F
     :catchall_0

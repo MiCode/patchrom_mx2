@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1193
+    .line 1243
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumSetPage$MyLoadingListener;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .parameter "x1"
 
     .prologue
-    .line 1193
+    .line 1243
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/AlbumSetPage$MyLoadingListener;-><init>(Lcom/android/gallery3d/app/AlbumSetPage;)V
 
     return-void
@@ -53,15 +53,15 @@
     .locals 2
 
     .prologue
-    .line 1201
+    .line 1251
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$MyLoadingListener;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
 
     const/4 v1, 0x1
 
     #calls: Lcom/android/gallery3d/app/AlbumSetPage;->clearLoadingBit(I)V
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/AlbumSetPage;->access$2700(Lcom/android/gallery3d/app/AlbumSetPage;I)V
+    invoke-static {v0, v1}, Lcom/android/gallery3d/app/AlbumSetPage;->access$2800(Lcom/android/gallery3d/app/AlbumSetPage;I)V
 
-    .line 1202
+    .line 1252
     return-void
 .end method
 
@@ -69,14 +69,14 @@
     .locals 2
 
     .prologue
-    .line 1196
+    .line 1246
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$MyLoadingListener;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
 
     const/4 v1, 0x1
 
     #calls: Lcom/android/gallery3d/app/AlbumSetPage;->setLoadingBit(I)V
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/AlbumSetPage;->access$2900(Lcom/android/gallery3d/app/AlbumSetPage;I)V
+    invoke-static {v0, v1}, Lcom/android/gallery3d/app/AlbumSetPage;->access$3000(Lcom/android/gallery3d/app/AlbumSetPage;I)V
 
-    .line 1197
+    .line 1247
     return-void
 .end method

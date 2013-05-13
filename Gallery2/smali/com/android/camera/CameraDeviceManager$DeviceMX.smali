@@ -22,7 +22,7 @@
     .locals 0
 
     .prologue
-    .line 262
+    .line 310
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -34,48 +34,48 @@
     .locals 2
 
     .prologue
-    .line 356
+    .line 404
     new-instance v0, Lcom/android/camera/CameraDeviceManager$ICameraDevice$CameraMenuInfo;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$ICameraDevice$CameraMenuInfo;-><init>()V
 
-    .line 357
+    .line 405
     .local v0, cameraMenuInfo:Lcom/android/camera/CameraDeviceManager$ICameraDevice$CameraMenuInfo;
     const v1, 0x7f0b002a
 
     iput v1, v0, Lcom/android/camera/CameraDeviceManager$ICameraDevice$CameraMenuInfo;->mMainMenuKeyArrayId:I
 
-    .line 358
+    .line 406
     const v1, 0x7f0b0040
 
     iput v1, v0, Lcom/android/camera/CameraDeviceManager$ICameraDevice$CameraMenuInfo;->mMainMenuDefaultValueArrayId:I
 
-    .line 359
+    .line 407
     const v1, 0x7f0b002e
 
     iput v1, v0, Lcom/android/camera/CameraDeviceManager$ICameraDevice$CameraMenuInfo;->mSceneMenuKeyArrayId:I
 
-    .line 360
+    .line 408
     const v1, 0x7f0b001e
 
     iput v1, v0, Lcom/android/camera/CameraDeviceManager$ICameraDevice$CameraMenuInfo;->mSceneMenuValueArrayId:I
 
-    .line 361
+    .line 409
     const v1, 0x7f0b002d
 
     iput v1, v0, Lcom/android/camera/CameraDeviceManager$ICameraDevice$CameraMenuInfo;->mWhiteBalanceKeyArrayId:I
 
-    .line 362
+    .line 410
     const v1, 0x7f0b001b
 
     iput v1, v0, Lcom/android/camera/CameraDeviceManager$ICameraDevice$CameraMenuInfo;->mWhiteBalanceValueArrayId:I
 
-    .line 363
+    .line 411
     const v1, 0x7f0b003f
 
     iput v1, v0, Lcom/android/camera/CameraDeviceManager$ICameraDevice$CameraMenuInfo;->mMainOtherMenuKeyArrayId:I
 
-    .line 364
+    .line 412
     return-object v0
 .end method
 
@@ -83,10 +83,20 @@
     .locals 1
 
     .prologue
-    .line 295
+    .line 343
     invoke-static {}, Lcom/android/camera/Util;->getCurCaptureMode()I
 
     move-result v0
+
+    return v0
+.end method
+
+.method public getEachExposureValue()F
+    .locals 1
+
+    .prologue
+    .line 432
+    const/high16 v0, 0x3f80
 
     return v0
 .end method
@@ -95,7 +105,7 @@
     .locals 1
 
     .prologue
-    .line 351
+    .line 399
     const/4 v0, 0x1
 
     return v0
@@ -105,8 +115,18 @@
     .locals 1
 
     .prologue
-    .line 341
+    .line 389
     const/4 v0, 0x1
+
+    return v0
+.end method
+
+.method public getIsSupportComprehensivePano()Z
+    .locals 1
+
+    .prologue
+    .line 437
+    const/4 v0, 0x0
 
     return v0
 .end method
@@ -115,7 +135,7 @@
     .locals 1
 
     .prologue
-    .line 374
+    .line 422
     const/4 v0, 0x1
 
     return v0
@@ -125,7 +145,7 @@
     .locals 1
 
     .prologue
-    .line 280
+    .line 328
     const/4 v0, 0x1
 
     return v0
@@ -135,7 +155,7 @@
     .locals 1
 
     .prologue
-    .line 369
+    .line 417
     const/4 v0, 0x1
 
     return v0
@@ -145,8 +165,28 @@
     .locals 1
 
     .prologue
-    .line 336
+    .line 384
     const/4 v0, 0x1
+
+    return v0
+.end method
+
+.method public getIsSupportNavigationBar()Z
+    .locals 1
+
+    .prologue
+    .line 427
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public getPanoraMaxValue()I
+    .locals 1
+
+    .prologue
+    .line 442
+    const/16 v0, 0x13
 
     return v0
 .end method
@@ -159,32 +199,32 @@
     .parameter "previewHeight"
 
     .prologue
-    .line 321
+    .line 369
     const/16 v0, 0x18
 
-    .line 322
+    .line 370
     .local v0, focusPosNum:I
     if-eqz p3, :cond_0
 
     if-nez p4, :cond_1
 
-    .line 323
+    .line 371
     :cond_0
     const/4 v5, -0x1
 
-    .line 331
+    .line 379
     :goto_0
     return v5
 
-    .line 325
+    .line 373
     :cond_1
     div-int/lit8 v3, p3, 0x7
 
-    .line 326
+    .line 374
     .local v3, unit_x:I
     div-int/lit8 v4, p4, 0x7
 
-    .line 327
+    .line 375
     .local v4, unit_y:I
     sub-int v5, p3, p1
 
@@ -192,14 +232,14 @@
 
     move-result p1
 
-    .line 328
+    .line 376
     div-int v1, p1, v3
 
-    .line 329
+    .line 377
     .local v1, num_x:I
     div-int v2, p2, v4
 
-    .line 330
+    .line 378
     .local v2, num_y:I
     mul-int/lit8 v5, v1, 0x7
 
@@ -207,6 +247,6 @@
 
     move v5, v0
 
-    .line 331
+    .line 379
     goto :goto_0
 .end method

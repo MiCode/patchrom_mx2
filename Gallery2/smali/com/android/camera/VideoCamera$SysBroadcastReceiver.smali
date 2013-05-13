@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 514
+    .line 524
     iput-object p1, p0, Lcom/android/camera/VideoCamera$SysBroadcastReceiver;->this$0:Lcom/android/camera/VideoCamera;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -38,7 +38,7 @@
     .parameter "x1"
 
     .prologue
-    .line 514
+    .line 524
     invoke-direct {p0, p1}, Lcom/android/camera/VideoCamera$SysBroadcastReceiver;-><init>(Lcom/android/camera/VideoCamera;)V
 
     return-void
@@ -52,12 +52,12 @@
     .parameter "intent"
 
     .prologue
-    .line 517
+    .line 527
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 518
+    .line 528
     .local v0, action:Ljava/lang/String;
     const-string v2, "android.intent.action.BATTERY_CHANGED"
 
@@ -67,7 +67,7 @@
 
     if-eqz v2, :cond_1
 
-    .line 519
+    .line 529
     iget-object v2, p0, Lcom/android/camera/VideoCamera$SysBroadcastReceiver;->this$0:Lcom/android/camera/VideoCamera;
 
     invoke-static {v2}, Lcom/android/camera/Util;->checkIsLowBattery(Landroid/content/Context;)Z
@@ -76,17 +76,17 @@
 
     if-eqz v2, :cond_0
 
-    .line 520
+    .line 530
     iget-object v2, p0, Lcom/android/camera/VideoCamera$SysBroadcastReceiver;->this$0:Lcom/android/camera/VideoCamera;
 
     invoke-virtual {v2}, Lcom/android/camera/VideoCamera;->finish()V
 
-    .line 529
+    .line 539
     :cond_0
     :goto_0
     return-void
 
-    .line 522
+    .line 532
     :cond_1
     const-string v2, "android.intent.action.MEIZU_HDMI_STATUS_CHANGED"
 
@@ -96,14 +96,14 @@
 
     if-eqz v2, :cond_0
 
-    .line 523
+    .line 533
     const-string v2, "multimedia.hdmi.status"
 
     invoke-static {v2}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 524
+    .line 534
     .local v1, s:Ljava/lang/String;
     const-string v2, "available"
 
@@ -113,10 +113,10 @@
 
     if-eqz v2, :cond_0
 
-    .line 525
+    .line 535
     iget-object v2, p0, Lcom/android/camera/VideoCamera$SysBroadcastReceiver;->this$0:Lcom/android/camera/VideoCamera;
 
-    const v3, 0x7f0a00bb
+    const v3, 0x7f0a00c5
 
     const/4 v4, 0x1
 
@@ -126,7 +126,7 @@
 
     invoke-virtual {v2}, Landroid/widget/Toast;->show()V
 
-    .line 526
+    .line 536
     iget-object v2, p0, Lcom/android/camera/VideoCamera$SysBroadcastReceiver;->this$0:Lcom/android/camera/VideoCamera;
 
     invoke-virtual {v2}, Lcom/android/camera/VideoCamera;->finish()V

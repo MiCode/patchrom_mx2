@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 238
+    .line 250
     iput-object p1, p0, Landroid/preference/ListPreference$1;->this$0:Landroid/preference/ListPreference;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,22 +43,22 @@
     .parameter "which"
 
     .prologue
-    .line 240
+    .line 252
     iget-object v0, p0, Landroid/preference/ListPreference$1;->this$0:Landroid/preference/ListPreference;
 
     #setter for: Landroid/preference/ListPreference;->mClickedDialogEntryIndex:I
     invoke-static {v0, p2}, Landroid/preference/ListPreference;->access$002(Landroid/preference/ListPreference;I)I
 
-    .line 246
+    .line 258
     iget-object v0, p0, Landroid/preference/ListPreference$1;->this$0:Landroid/preference/ListPreference;
 
     const/4 v1, -0x1
 
     invoke-virtual {v0, p1, v1}, Landroid/preference/ListPreference;->onClick(Landroid/content/DialogInterface;I)V
 
-    .line 247
+    .line 259
     invoke-interface {p1}, Landroid/content/DialogInterface;->dismiss()V
 
-    .line 248
+    .line 260
     return-void
 .end method

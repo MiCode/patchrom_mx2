@@ -52,7 +52,7 @@
 
     const/4 v2, 0x0
 
-    .line 42
+    .line 40
     new-instance v0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit$ScaleType;
 
     const-string v1, "LIGHT"
@@ -93,7 +93,7 @@
 
     sput-object v0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit$ScaleType;->GENERIC:Lcom/android/gallery3d/photoeditor/actions/EffectToolKit$ScaleType;
 
-    .line 41
+    .line 39
     const/4 v0, 0x5
 
     new-array v0, v0, [Lcom/android/gallery3d/photoeditor/actions/EffectToolKit$ScaleType;
@@ -134,7 +134,7 @@
     .end annotation
 
     .prologue
-    .line 41
+    .line 39
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -145,7 +145,7 @@
     .parameter
 
     .prologue
-    .line 41
+    .line 39
     const-class v0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit$ScaleType;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -161,7 +161,7 @@
     .locals 1
 
     .prologue
-    .line 41
+    .line 39
     sget-object v0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit$ScaleType;->$VALUES:[Lcom/android/gallery3d/photoeditor/actions/EffectToolKit$ScaleType;
 
     invoke-virtual {v0}, [Lcom/android/gallery3d/photoeditor/actions/EffectToolKit$ScaleType;->clone()Ljava/lang/Object;

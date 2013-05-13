@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/recommend_whole" android:background="@color/content_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:orientation="vertical" android:id="@id/recommend_whole" android:background="@color/content_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:gravity="center" android:id="@id/recommend_listview" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/black" android:cacheColorHint="@color/black" android:divider="@color/list_divier_color" android:dividerHeight="0.0dip" />
+    <FrameLayout android:id="@id/actionbar_top_bottom_bg" android:background="@color/actionbar_top_bottombackground_color" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ListView android:gravity="center" android:id="@id/recommend_listview" android:background="@null" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/black" android:cacheColorHint="@color/black" android:divider="@color/list_divier_color" android:dividerHeight="@dimen/recommend_listview_divider" />
     <include layout="@layout/no_available_network" />
     <include layout="@layout/list_load_progressbar" />
-</RelativeLayout>
+</FrameLayout>

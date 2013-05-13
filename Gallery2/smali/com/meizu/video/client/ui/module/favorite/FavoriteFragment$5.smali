@@ -25,7 +25,7 @@
     .parameter "x0"
 
     .prologue
-    .line 608
+    .line 601
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$5;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -40,18 +40,18 @@
     .parameter "selfChange"
 
     .prologue
-    .line 611
+    .line 604
     invoke-super {p0, p1}, Landroid/database/ContentObserver;->onChange(Z)V
 
-    .line 612
+    .line 605
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$5;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
     const/4 v1, 0x1
 
     #setter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteDataChange:Z
-    invoke-static {v0, v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$1402(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;Z)Z
+    invoke-static {v0, v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$1502(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;Z)Z
 
-    .line 613
+    .line 606
     return-void
 .end method
 
@@ -61,17 +61,17 @@
     .parameter "uri"
 
     .prologue
-    .line 617
+    .line 610
     invoke-super {p0, p1, p2}, Landroid/database/ContentObserver;->onChange(ZLandroid/net/Uri;)V
 
-    .line 618
+    .line 611
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$5;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
     const/4 v1, 0x1
 
     #setter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteDataChange:Z
-    invoke-static {v0, v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$1402(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;Z)Z
+    invoke-static {v0, v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$1502(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;Z)Z
 
-    .line 619
+    .line 612
     return-void
 .end method

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="emailAddressTypes">
+        <item>בית</item>
+        <item>עבודה</item>
+        <item>אחר</item>
+        <item>בהתאמה אישית</item>
+    </string-array>
+    <string-array name="imProtocols">
+        <item>AIM</item>
+        <item>Windows Live</item>
+        <item>Yahoo</item>
+        <item>Skype</item>
+        <item>QQ</item>
+        <item>Google Talk</item>
+        <item>ICQ</item>
+        <item>Jabber</item>
+    </string-array>
+    <string-array name="organizationTypes">
+        <item>עבודה</item>
+        <item>אחר</item>
+        <item>בהתאמה אישית</item>
+    </string-array>
+    <string-array name="phoneTypes">
+        <item>בית</item>
+        <item>נייד</item>
+        <item>עבודה</item>
+        <item>פקס בעבודה</item>
+        <item>פקס בבית</item>
+        <item>זימונית</item>
+        <item>אחר</item>
+        <item>בהתאמה אישית</item>
+    </string-array>
+    <string-array name="postalAddressTypes">
+        <item>בית</item>
+        <item>עבודה</item>
+        <item>אחר</item>
+        <item>בהתאמה אישית</item>
+    </string-array>
+    <string-array name="system_ringtone_name_list">
+        <item>התרעת ביפ-ביפ-ביפ</item>
+        <item>בלוז קולי</item>
+        <item>מפקד</item>
+        <item>עיר החלומות</item>
+        <item>נסחף</item>
+        <item>עיר הבית</item>
+        <item>חיים</item>
+        <item>מיי-יינג</item>
+        <item>אור ירח מעל יאנגנאן</item>
+        <item>גשם שוטף</item>
+        <item>רחוב</item>
+        <item>סתיו</item>
+        <item>אביר צעצוע</item>
+        <item>התרעת ביביפ</item>
+        <item>תנועה</item>
+        <item>שיחה חמודה</item>
+        <item>מילת-קוד</item>
+        <item>אימפריה</item>
+        <item>פיות פרחים</item>
+        <item>לפוטה</item>
+        <item>קריסטל קטן</item>
+        <item>מטריצה</item>
+        <item>מסע מסתורי</item>
+        <item>הרועה</item>
+        <item>טהור</item>
+        <item>שעשוע</item>
+        <item>זריחה</item>
+        <item>לילה שקט</item>
+        <item>קישור</item>
+        <item>התרעה לחוצה</item>
+        <item>התרעה מזמזמת</item>
+        <item>התרעה מצלצלת</item>
+        <item>התרעת תרנגול</item>
+        <item>התעוררות</item>
+        <item>שחר</item>
+        <item>אלגנטי</item>
+        <item>וואלס</item>
+        <item>שמחה מהפנטת</item>
+        <item>טל בוקר</item>
+        <item>ריף גיטרה</item>
+        <item>אחרי בית-ספר</item>
+        <item>קלטי</item>
+        <item>צלצול קלאסי</item>
+        <item>רעננות</item>
+        <item>המסך הושלם בהצלחה</item>
+        <item>ריקוד בין-ערביים</item>
+        <item>קריסטל</item>
+        <item>לילה טוב</item>
+        <item>נופל</item>
+        <item>שמש זורחת</item>
+        <item>חללי</item>
+        <item>טיול לילי</item>
+        <item>בת-ים באור ירח</item>
+        <item>כוכב הצפון</item>
+        <item>שקט הלילה</item>
+        <item>מתנת יום-הולדת</item>
+        <item>גלים</item>
+        <item>מטאור</item>
+        <item>קופסת שוקולד</item>
+        <item>מנהרה</item>
+        <item>חרגול</item>
+        <item>בדחן</item>
+        <item>קונור</item>
+        <item>טיפה</item>
+        <item>Flyme חלום</item>
+        <item>Flyme גיטרה</item>
+        <item>Flyme פסנתר</item>
+        <item>Flyme סינתיסייזר</item>
+        <item>Flyme מנגינה</item>
+    </string-array>
+    <string-array name="imAddressTypes">
+        <item>בית</item>
+        <item>עבודה</item>
+        <item>אחר</item>
+        <item>בהתאמה אישית</item>
+    </string-array>
+</resources>

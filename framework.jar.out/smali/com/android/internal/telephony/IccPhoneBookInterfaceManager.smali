@@ -300,6 +300,74 @@
 .method public abstract getAdnRecordsSize(I)[I
 .end method
 
+.method public hasAdditionalNumber()Z
+    .locals 2
+
+    .prologue
+    const/4 v0, 0x0
+
+    .line 341
+    invoke-virtual {p0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->isUsim()Z
+
+    move-result v1
+
+    if-nez v1, :cond_1
+
+    .line 349
+    :cond_0
+    :goto_0
+    return v0
+
+    .line 345
+    :cond_1
+    iget-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->adnCache:Lcom/android/internal/telephony/AdnRecordCache;
+
+    if-eqz v1, :cond_0
+
+    .line 346
+    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->adnCache:Lcom/android/internal/telephony/AdnRecordCache;
+
+    invoke-virtual {v0}, Lcom/android/internal/telephony/AdnRecordCache;->hasAdditionalNumber()Z
+
+    move-result v0
+
+    goto :goto_0
+.end method
+
+.method public hasEmail()Z
+    .locals 2
+
+    .prologue
+    const/4 v0, 0x0
+
+    .line 361
+    invoke-virtual {p0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->isUsim()Z
+
+    move-result v1
+
+    if-nez v1, :cond_1
+
+    .line 369
+    :cond_0
+    :goto_0
+    return v0
+
+    .line 365
+    :cond_1
+    iget-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->adnCache:Lcom/android/internal/telephony/AdnRecordCache;
+
+    if-eqz v1, :cond_0
+
+    .line 366
+    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->adnCache:Lcom/android/internal/telephony/AdnRecordCache;
+
+    invoke-virtual {v0}, Lcom/android/internal/telephony/AdnRecordCache;->hasEmail()Z
+
+    move-result v0
+
+    goto :goto_0
+.end method
+
 .method public isUsim()Z
     .locals 2
 
@@ -330,6 +398,19 @@
     const/4 v0, 0x0
 
     goto :goto_0
+.end method
+
+.method public getFreeAdn()I
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->adnCache:Lcom/android/internal/telephony/AdnRecordCache;
+
+    invoke-virtual {v0}, Lcom/android/internal/telephony/AdnRecordCache;->getFreeAdn()I
+
+    move-result v0
+
+    return v0
 .end method
 
 .method protected abstract logd(Ljava/lang/String;)V
@@ -981,17 +1062,4 @@
     .end local v0           #e:Ljava/lang/InterruptedException;
     :cond_0
     return-void
-.end method
-
-.method public getFreeAdn()I
-    .locals 1
-
-    .prologue
-    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->adnCache:Lcom/android/internal/telephony/AdnRecordCache;
-
-    invoke-virtual {v0}, Lcom/android/internal/telephony/AdnRecordCache;->getFreeAdn()I
-
-    move-result v0
-
-    return v0
 .end method

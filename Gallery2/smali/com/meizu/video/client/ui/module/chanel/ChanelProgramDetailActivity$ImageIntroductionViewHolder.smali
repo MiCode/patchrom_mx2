@@ -15,33 +15,33 @@
 
 
 # instance fields
-.field chanelProgramDetailImage:Landroid/widget/ImageView;
+.field mChanelProgramDetailImage:Landroid/widget/ImageView;
 
-.field download:Landroid/widget/Button;
+.field mDownload:Landroid/widget/Button;
 
-.field favorite:Landroid/widget/Button;
+.field mFavorite:Landroid/widget/Button;
 
-.field imageView1:Landroid/widget/ImageView;
+.field mImageView1:Landroid/widget/ImageView;
 
-.field imageView2:Landroid/widget/ImageView;
+.field mImageView2:Landroid/widget/ImageView;
 
-.field imageView3:Landroid/widget/ImageView;
+.field mImageView3:Landroid/widget/ImageView;
 
-.field imageView4:Landroid/widget/ImageView;
+.field mImageView4:Landroid/widget/ImageView;
 
-.field imageView5:Landroid/widget/ImageView;
+.field mImageView5:Landroid/widget/ImageView;
 
-.field labelText2LinearLayout:Landroid/widget/LinearLayout;
+.field mLabelText21:Landroid/widget/TextView;
 
-.field labelText2_1:Landroid/widget/TextView;
+.field mLabelText22:Landroid/widget/TextView;
 
-.field labelText2_2:Landroid/widget/TextView;
+.field mLabelText2LinearLayout:Landroid/widget/LinearLayout;
 
-.field labelText3:Landroid/widget/TextView;
+.field mLabelText3:Landroid/widget/TextView;
 
-.field labelText4:Landroid/widget/TextView;
+.field mLabelText4:Landroid/widget/TextView;
 
-.field labelText5:Landroid/widget/TextView;
+.field mLabelText5:Landroid/widget/TextView;
 
 .field final synthetic this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
@@ -52,7 +52,7 @@
     .parameter
 
     .prologue
-    .line 1077
+    .line 1091
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$ImageIntroductionViewHolder;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V

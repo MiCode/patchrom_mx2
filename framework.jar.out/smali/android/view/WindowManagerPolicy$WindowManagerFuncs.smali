@@ -29,7 +29,7 @@
 .method public abstract cancelUnlock()V
 .end method
 
-.method public abstract findBaseAppWindow(Landroid/view/WindowManagerPolicy$WindowState;)Landroid/view/WindowManagerPolicy$WindowState;
+.method public abstract findTopAppWindow(Landroid/view/WindowManagerPolicy$WindowState;II)Landroid/view/WindowManagerPolicy$WindowState;
 .end method
 
 .method public abstract getLidState()I

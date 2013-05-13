@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 3481
+    .line 3597
     iput-object p1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$10;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 5
 
     .prologue
-    .line 3483
+    .line 3599
     :try_start_0
     iget-object v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$10;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
@@ -49,23 +49,23 @@
 
     move-result-object v1
 
-    .line 3484
+    .line 3600
     .local v1, statusbar:Lcom/android/internal/statusbar/IStatusBarService;
     if-eqz v1, :cond_1
 
-    .line 3485
+    .line 3601
     iget-object v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$10;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     iget-boolean v2, v2, Lcom/android/internal/policy/impl/PhoneWindowManager;->mTopIsFullscreen:Z
 
     if-nez v2, :cond_0
 
-    .line 3486
+    .line 3602
     const/4 v2, 0x0
 
     invoke-interface {v1, v2}, Lcom/android/internal/statusbar/IStatusBarService;->showStatusbarInFullScreen(Z)V
 
-    .line 3489
+    .line 3605
     :cond_0
     const/4 v2, 0x0
 
@@ -88,17 +88,17 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 3495
+    .line 3611
     .end local v1           #statusbar:Lcom/android/internal/statusbar/IStatusBarService;
     :cond_1
     :goto_0
     return-void
 
-    .line 3491
+    .line 3607
     :catch_0
     move-exception v0
 
-    .line 3493
+    .line 3609
     .local v0, ex:Landroid/os/RemoteException;
     iget-object v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$10;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 

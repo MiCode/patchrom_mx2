@@ -37,7 +37,7 @@
     .parameter
 
     .prologue
-    .line 1133
+    .line 1137
     iput-object p1, p0, Lcom/android/gallery3d/app/CropImage$10;->this$0:Lcom/android/gallery3d/app/CropImage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -61,7 +61,7 @@
     .end annotation
 
     .prologue
-    .line 1135
+    .line 1139
     .local p1, future:Lcom/android/gallery3d/util/Future;,"Lcom/android/gallery3d/util/Future<Landroid/graphics/BitmapRegionDecoder;>;"
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage$10;->this$0:Lcom/android/gallery3d/app/CropImage;
 
@@ -70,14 +70,14 @@
     #setter for: Lcom/android/gallery3d/app/CropImage;->mLoadTask:Lcom/android/gallery3d/util/Future;
     invoke-static {v1, v2}, Lcom/android/gallery3d/app/CropImage;->access$1702(Lcom/android/gallery3d/app/CropImage;Lcom/android/gallery3d/util/Future;)Lcom/android/gallery3d/util/Future;
 
-    .line 1136
+    .line 1140
     invoke-interface {p1}, Lcom/android/gallery3d/util/Future;->get()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Landroid/graphics/BitmapRegionDecoder;
 
-    .line 1137
+    .line 1141
     .local v0, decoder:Landroid/graphics/BitmapRegionDecoder;
     invoke-interface {p1}, Lcom/android/gallery3d/util/Future;->isCancelled()Z
 
@@ -85,17 +85,17 @@
 
     if-eqz v1, :cond_1
 
-    .line 1138
+    .line 1142
     if-eqz v0, :cond_0
 
     invoke-virtual {v0}, Landroid/graphics/BitmapRegionDecoder;->recycle()V
 
-    .line 1143
+    .line 1147
     :cond_0
     :goto_0
     return-void
 
-    .line 1141
+    .line 1145
     :cond_1
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage$10;->this$0:Lcom/android/gallery3d/app/CropImage;
 

@@ -25,13 +25,13 @@
     .parameter "looper"
 
     .prologue
-    .line 3140
+    .line 3171
     iput-object p1, p0, Lcom/meizu/widget/RecipientEdit$HistoryHandler;->this$0:Lcom/meizu/widget/RecipientEdit;
 
-    .line 3141
+    .line 3172
     invoke-direct {p0, p2}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
 
-    .line 3142
+    .line 3173
     return-void
 .end method
 
@@ -42,16 +42,16 @@
     .parameter "msg"
 
     .prologue
-    .line 3146
+    .line 3177
     iget v7, p1, Landroid/os/Message;->what:I
 
     packed-switch v7, :pswitch_data_0
 
-    .line 3176
+    .line 3207
     :goto_0
     return-void
 
-    .line 3148
+    .line 3179
     :pswitch_0
     iget-object v7, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
@@ -61,7 +61,7 @@
 
     check-cast v2, [Ljava/lang/String;
 
-    .line 3149
+    .line 3180
     .local v2, entries:[Ljava/lang/String;
     iget-object v7, p0, Lcom/meizu/widget/RecipientEdit$HistoryHandler;->this$0:Lcom/meizu/widget/RecipientEdit;
 
@@ -72,7 +72,7 @@
 
     monitor-enter v8
 
-    .line 3150
+    .line 3181
     :try_start_0
     iget-object v7, p0, Lcom/meizu/widget/RecipientEdit$HistoryHandler;->this$0:Lcom/meizu/widget/RecipientEdit;
 
@@ -83,7 +83,7 @@
 
     if-eqz v7, :cond_0
 
-    .line 3151
+    .line 3182
     iget-object v7, p0, Lcom/meizu/widget/RecipientEdit$HistoryHandler;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mDbHelper:Lcom/meizu/widget/RecipientDbHelper;
@@ -93,7 +93,7 @@
 
     invoke-static {v7, v2}, Lcom/meizu/widget/RecipientEmailHistory;->saveHistory(Lcom/meizu/widget/RecipientDbHelper;[Ljava/lang/String;)V
 
-    .line 3155
+    .line 3186
     :goto_1
     monitor-exit v8
 
@@ -108,7 +108,7 @@
 
     throw v7
 
-    .line 3153
+    .line 3184
     :cond_0
     :try_start_1
     iget-object v7, p0, Lcom/meizu/widget/RecipientEdit$HistoryHandler;->this$0:Lcom/meizu/widget/RecipientEdit;
@@ -124,7 +124,7 @@
 
     goto :goto_1
 
-    .line 3159
+    .line 3190
     .end local v2           #entries:[Ljava/lang/String;
     :pswitch_1
     iget-object v7, p0, Lcom/meizu/widget/RecipientEdit$HistoryHandler;->this$0:Lcom/meizu/widget/RecipientEdit;
@@ -136,7 +136,7 @@
 
     monitor-enter v8
 
-    .line 3160
+    .line 3191
     :try_start_2
     iget-object v7, p0, Lcom/meizu/widget/RecipientEdit$HistoryHandler;->this$0:Lcom/meizu/widget/RecipientEdit;
 
@@ -147,7 +147,7 @@
 
     if-eqz v7, :cond_1
 
-    .line 3161
+    .line 3192
     iget-object v7, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v7, [Ljava/lang/String;
@@ -158,31 +158,31 @@
 
     move-object v4, v0
 
-    .line 3162
+    .line 3193
     .local v4, obj:[Ljava/lang/String;
     const/4 v7, 0x0
 
     aget-object v5, v4, v7
 
-    .line 3163
+    .line 3194
     .local v5, phoneOrEmail:Ljava/lang/String;
     const/4 v7, 0x1
 
     aget-object v3, v4, v7
 
-    .line 3165
+    .line 3196
     .local v3, name:Ljava/lang/String;
     new-instance v6, Landroid/content/ContentValues;
 
     invoke-direct {v6}, Landroid/content/ContentValues;-><init>()V
 
-    .line 3166
+    .line 3197
     .local v6, values:Landroid/content/ContentValues;
     const-string v7, "display_name"
 
     invoke-virtual {v6, v7, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 3167
+    .line 3198
     iget-object v7, p0, Lcom/meizu/widget/RecipientEdit$HistoryHandler;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mDbHelper:Lcom/meizu/widget/RecipientDbHelper;
@@ -194,7 +194,7 @@
 
     move-result-object v1
 
-    .line 3168
+    .line 3199
     .local v1, db:Landroid/database/sqlite/SQLiteDatabase;
     const-string v7, "email"
 
@@ -210,7 +210,7 @@
 
     invoke-virtual {v1, v7, v6, v9, v10}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
-    .line 3173
+    .line 3204
     .end local v1           #db:Landroid/database/sqlite/SQLiteDatabase;
     .end local v3           #name:Ljava/lang/String;
     .end local v4           #obj:[Ljava/lang/String;
@@ -230,7 +230,7 @@
 
     throw v7
 
-    .line 3146
+    .line 3177
     nop
 
     :pswitch_data_0

@@ -395,6 +395,129 @@
     goto :goto_0
 .end method
 
+.method public checkSelectedNumExceed(I)Z
+    .locals 9
+    .parameter "limit"
+
+    .prologue
+    const/4 v4, 0x1
+
+    const/4 v5, 0x0
+
+    .line 311
+    iget v6, p0, Lcom/android/gallery3d/ui/SelectionManager;->mPage:I
+
+    packed-switch v6, :pswitch_data_0
+
+    .line 314
+    iget-object v6, p0, Lcom/android/gallery3d/ui/SelectionManager;->mSourceMediaSet:Lcom/android/gallery3d/data/MediaSet;
+
+    invoke-virtual {v6}, Lcom/android/gallery3d/data/MediaSet;->getSubMediaSetCount()I
+
+    move-result v2
+
+    .line 315
+    .local v2, subCount:I
+    const/4 v3, 0x0
+
+    .line 316
+    .local v3, total:I
+    const/4 v0, 0x0
+
+    .local v0, i:I
+    :goto_0
+    if-ge v0, v2, :cond_1
+
+    if-gt v3, p1, :cond_1
+
+    .line 317
+    iget-object v6, p0, Lcom/android/gallery3d/ui/SelectionManager;->mSourceMediaSet:Lcom/android/gallery3d/data/MediaSet;
+
+    invoke-virtual {v6, v0}, Lcom/android/gallery3d/data/MediaSet;->getSubMediaSet(I)Lcom/android/gallery3d/data/MediaSet;
+
+    move-result-object v1
+
+    .line 318
+    .local v1, sub:Lcom/android/gallery3d/data/MediaSet;
+    if-eqz v1, :cond_0
+
+    .line 319
+    iget-boolean v6, p0, Lcom/android/gallery3d/ui/SelectionManager;->mInverseSelection:Z
+
+    iget-object v7, p0, Lcom/android/gallery3d/ui/SelectionManager;->mClickedSet:Ljava/util/Set;
+
+    invoke-virtual {v1}, Lcom/android/gallery3d/data/MediaSet;->getPath()Lcom/android/gallery3d/data/Path;
+
+    move-result-object v8
+
+    invoke-interface {v7, v8}, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+
+    move-result v7
+
+    xor-int/2addr v6, v7
+
+    if-eqz v6, :cond_0
+
+    .line 320
+    invoke-virtual {v1}, Lcom/android/gallery3d/data/MediaSet;->getTotalMediaItemCount()I
+
+    move-result v6
+
+    add-int/2addr v3, v6
+
+    .line 316
+    :cond_0
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_0
+
+    .line 324
+    .end local v1           #sub:Lcom/android/gallery3d/data/MediaSet;
+    :cond_1
+    if-le v3, p1, :cond_3
+
+    .line 327
+    .end local v0           #i:I
+    .end local v2           #subCount:I
+    .end local v3           #total:I
+    :cond_2
+    :goto_1
+    return v4
+
+    .restart local v0       #i:I
+    .restart local v2       #subCount:I
+    .restart local v3       #total:I
+    :cond_3
+    move v4, v5
+
+    .line 324
+    goto :goto_1
+
+    .line 327
+    .end local v0           #i:I
+    .end local v2           #subCount:I
+    .end local v3           #total:I
+    :pswitch_0
+    invoke-virtual {p0}, Lcom/android/gallery3d/ui/SelectionManager;->getSelectedCount()I
+
+    move-result v6
+
+    if-gt v6, p1, :cond_2
+
+    move v4, v5
+
+    goto :goto_1
+
+    .line 311
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x2
+        :pswitch_0
+        :pswitch_0
+    .end packed-switch
+.end method
+
 .method public deSelectAll()V
     .locals 1
 

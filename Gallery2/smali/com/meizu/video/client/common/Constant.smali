@@ -6,12 +6,17 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/meizu/video/client/common/Constant$DataSourceUri;,
         Lcom/meizu/video/client/common/Constant$InterfaceType;
     }
 .end annotation
 
 
 # static fields
+.field public static actionBarBigHeight:I
+
+.field public static actionBarSmallHeight:I
+
 .field public static areaTypeAreaYearOrderListEntity:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -88,54 +93,62 @@
     .locals 1
 
     .prologue
-    .line 27
+    const/16 v0, 0x62
+
+    .line 25
+    sput v0, Lcom/meizu/video/client/common/Constant;->actionBarSmallHeight:I
+
+    .line 26
+    sput v0, Lcom/meizu/video/client/common/Constant;->actionBarBigHeight:I
+
+    .line 31
     const/4 v0, 0x2
 
     sput v0, Lcom/meizu/video/client/common/Constant;->dataFromType:I
 
-    .line 347
+    .line 166
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     sput-object v0, Lcom/meizu/video/client/common/Constant;->channelListEntity:Ljava/util/ArrayList;
 
-    .line 348
+    .line 167
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     sput-object v0, Lcom/meizu/video/client/common/Constant;->cateTypeAreaYearOrderListEntity:Ljava/util/ArrayList;
 
-    .line 349
+    .line 168
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     sput-object v0, Lcom/meizu/video/client/common/Constant;->areaTypeAreaYearOrderListEntity:Ljava/util/ArrayList;
 
-    .line 350
+    .line 169
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     sput-object v0, Lcom/meizu/video/client/common/Constant;->yearTypeAreaYearOrderListEntity:Ljava/util/ArrayList;
 
-    .line 351
+    .line 170
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     sput-object v0, Lcom/meizu/video/client/common/Constant;->orderTypeAreaYearOrderListEntity:Ljava/util/ArrayList;
 
-    .line 368
+    .line 187
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     sput-object v0, Lcom/meizu/video/client/common/Constant;->episodesListEntity:Ljava/util/ArrayList;
 
-    .line 378
+    .line 197
     const-string v0, ""
 
     sput-object v0, Lcom/meizu/video/client/common/Constant;->did:Ljava/lang/String;
@@ -147,10 +160,10 @@
     .locals 0
 
     .prologue
-    .line 18
+    .line 22
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 334
+    .line 221
     return-void
 .end method
 
@@ -167,7 +180,7 @@
     .end annotation
 
     .prologue
-    .line 357
+    .line 176
     sget-object v0, Lcom/meizu/video/client/common/Constant;->areaTypeAreaYearOrderListEntity:Ljava/util/ArrayList;
 
     return-object v0
@@ -186,7 +199,7 @@
     .end annotation
 
     .prologue
-    .line 354
+    .line 173
     sget-object v0, Lcom/meizu/video/client/common/Constant;->cateTypeAreaYearOrderListEntity:Ljava/util/ArrayList;
 
     return-object v0
@@ -205,7 +218,7 @@
     .end annotation
 
     .prologue
-    .line 366
+    .line 185
     sget-object v0, Lcom/meizu/video/client/common/Constant;->channelListEntity:Ljava/util/ArrayList;
 
     return-object v0
@@ -224,7 +237,7 @@
     .end annotation
 
     .prologue
-    .line 370
+    .line 189
     sget-object v0, Lcom/meizu/video/client/common/Constant;->episodesListEntity:Ljava/util/ArrayList;
 
     return-object v0
@@ -243,7 +256,7 @@
     .end annotation
 
     .prologue
-    .line 363
+    .line 182
     sget-object v0, Lcom/meizu/video/client/common/Constant;->orderTypeAreaYearOrderListEntity:Ljava/util/ArrayList;
 
     return-object v0
@@ -262,7 +275,7 @@
     .end annotation
 
     .prologue
-    .line 360
+    .line 179
     sget-object v0, Lcom/meizu/video/client/common/Constant;->yearTypeAreaYearOrderListEntity:Ljava/util/ArrayList;
 
     return-object v0
@@ -282,10 +295,10 @@
     .end annotation
 
     .prologue
-    .line 373
+    .line 192
     .local p0, episodesList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/EpisodesEntity;>;"
     sput-object p0, Lcom/meizu/video/client/common/Constant;->episodesListEntity:Ljava/util/ArrayList;
 
-    .line 374
+    .line 193
     return-void
 .end method

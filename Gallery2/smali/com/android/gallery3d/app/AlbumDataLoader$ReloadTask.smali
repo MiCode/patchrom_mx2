@@ -32,18 +32,18 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 324
+    .line 329
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
 
-    .line 326
+    .line 331
     iput-boolean v0, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->mActive:Z
 
-    .line 327
+    .line 332
     iput-boolean v0, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->mDirty:Z
 
-    .line 328
+    .line 333
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->mIsLoading:Z
@@ -57,7 +57,7 @@
     .parameter "x1"
 
     .prologue
-    .line 324
+    .line 329
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;-><init>(Lcom/android/gallery3d/app/AlbumDataLoader;)V
 
     return-void
@@ -68,20 +68,20 @@
     .parameter "loading"
 
     .prologue
-    .line 331
+    .line 336
     iget-boolean v0, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->mIsLoading:Z
 
     if-ne v0, p1, :cond_0
 
-    .line 334
+    .line 339
     :goto_0
     return-void
 
-    .line 332
+    .line 337
     :cond_0
     iput-boolean p1, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->mIsLoading:Z
 
-    .line 333
+    .line 338
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumDataLoader;->mMainHandler:Landroid/os/Handler;
@@ -110,7 +110,7 @@
     .locals 1
 
     .prologue
-    .line 373
+    .line 378
     monitor-enter p0
 
     const/4 v0, 0x1
@@ -118,17 +118,17 @@
     :try_start_0
     iput-boolean v0, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->mDirty:Z
 
-    .line 374
+    .line 379
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 375
+    .line 380
     monitor-exit p0
 
     return-void
 
-    .line 373
+    .line 378
     :catchall_0
     move-exception v0
 
@@ -145,15 +145,15 @@
 
     const/4 v5, 0x0
 
-    .line 338
+    .line 343
     const/16 v6, 0xa
 
     invoke-static {v6}, Landroid/os/Process;->setThreadPriority(I)V
 
-    .line 340
+    .line 345
     const/4 v1, 0x0
 
-    .line 341
+    .line 346
     .local v1, updateComplete:Z
     :cond_0
     :goto_0
@@ -161,10 +161,10 @@
 
     if-eqz v6, :cond_5
 
-    .line 342
+    .line 347
     monitor-enter p0
 
-    .line 343
+    .line 348
     :try_start_0
     iget-boolean v6, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->mActive:Z
 
@@ -176,20 +176,20 @@
 
     if-eqz v1, :cond_1
 
-    .line 344
+    .line 349
     const/4 v6, 0x0
 
     invoke-direct {p0, v6}, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->updateLoading(Z)V
 
-    .line 345
+    .line 350
     invoke-static {p0}, Lcom/android/gallery3d/common/Utils;->waitWithoutInterrupt(Ljava/lang/Object;)V
 
-    .line 346
+    .line 351
     monitor-exit p0
 
     goto :goto_0
 
-    .line 348
+    .line 353
     :catchall_0
     move-exception v4
 
@@ -205,18 +205,18 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 349
+    .line 354
     iput-boolean v5, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->mDirty:Z
 
-    .line 350
+    .line 355
     invoke-direct {p0, v4}, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->updateLoading(Z)V
 
-    .line 352
+    .line 357
     sget-object v6, Lcom/android/gallery3d/data/DataManager;->LOCK:Ljava/lang/Object;
 
     monitor-enter v6
 
-    .line 353
+    .line 358
     :try_start_2
     iget-object v7, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
@@ -229,13 +229,13 @@
 
     move-result-wide v2
 
-    .line 354
+    .line 359
     .local v2, version:J
     monitor-exit v6
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 355
+    .line 360
     iget-object v6, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     new-instance v7, Lcom/android/gallery3d/app/AlbumDataLoader$GetUpdateInfo;
@@ -251,22 +251,22 @@
 
     check-cast v0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;
 
-    .line 356
+    .line 361
     .local v0, info:Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;
     if-nez v0, :cond_4
 
     move v1, v4
 
-    .line 357
+    .line 362
     :goto_1
     if-nez v1, :cond_0
 
-    .line 358
+    .line 363
     sget-object v6, Lcom/android/gallery3d/data/DataManager;->LOCK:Ljava/lang/Object;
 
     monitor-enter v6
 
-    .line 359
+    .line 364
     :try_start_3
     iget-wide v7, v0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;->version:J
 
@@ -274,7 +274,7 @@
 
     if-eqz v7, :cond_2
 
-    .line 360
+    .line 365
     iget-object v7, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumDataLoader;->mSource:Lcom/android/gallery3d/data/MediaSet;
@@ -288,16 +288,16 @@
 
     iput v7, v0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;->size:I
 
-    .line 361
+    .line 366
     iput-wide v2, v0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;->version:J
 
-    .line 363
+    .line 368
     :cond_2
     iget v7, v0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;->reloadCount:I
 
     if-lez v7, :cond_3
 
-    .line 364
+    .line 369
     iget-object v7, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumDataLoader;->mSource:Lcom/android/gallery3d/data/MediaSet;
@@ -315,13 +315,13 @@
 
     iput-object v7, v0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;->items:Ljava/util/ArrayList;
 
-    .line 366
+    .line 371
     :cond_3
     monitor-exit v6
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_2
 
-    .line 367
+    .line 372
     iget-object v6, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     new-instance v7, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;
@@ -335,7 +335,7 @@
 
     goto :goto_0
 
-    .line 354
+    .line 359
     .end local v0           #info:Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;
     .end local v2           #version:J
     :catchall_1
@@ -353,10 +353,10 @@
     :cond_4
     move v1, v5
 
-    .line 356
+    .line 361
     goto :goto_1
 
-    .line 366
+    .line 371
     :catchall_2
     move-exception v4
 
@@ -367,13 +367,13 @@
 
     throw v4
 
-    .line 369
+    .line 374
     .end local v0           #info:Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;
     .end local v2           #version:J
     :cond_5
     invoke-direct {p0, v5}, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->updateLoading(Z)V
 
-    .line 370
+    .line 375
     return-void
 .end method
 
@@ -381,7 +381,7 @@
     .locals 1
 
     .prologue
-    .line 378
+    .line 383
     monitor-enter p0
 
     const/4 v0, 0x0
@@ -389,17 +389,17 @@
     :try_start_0
     iput-boolean v0, p0, Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;->mActive:Z
 
-    .line 379
+    .line 384
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 380
+    .line 385
     monitor-exit p0
 
     return-void
 
-    .line 378
+    .line 383
     :catchall_0
     move-exception v0
 

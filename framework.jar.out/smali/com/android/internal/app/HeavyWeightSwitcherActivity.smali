@@ -150,35 +150,18 @@
     iput-object v0, p0, Lcom/android/internal/app/HeavyWeightSwitcherActivity;->mNewApp:Ljava/lang/String;
 
     .line 74
-    const v0, 0x1090056
+    const v0, 0x1090059
 
     invoke-virtual {p0, v0}, Lcom/android/internal/app/HeavyWeightSwitcherActivity;->setContentView(I)V
 
     .line 76
-    const v1, 0x10202ef
+    const v1, 0x10202eb
 
-    const v2, 0x10202f0
+    const v2, 0x10202ec
 
-    const v3, 0x10202f1
+    const v3, 0x10202ed
 
     iget-object v4, p0, Lcom/android/internal/app/HeavyWeightSwitcherActivity;->mCurApp:Ljava/lang/String;
-
-    const v5, 0x1040440
-
-    const v6, 0x1040441
-
-    move-object v0, p0
-
-    invoke-virtual/range {v0 .. v6}, Lcom/android/internal/app/HeavyWeightSwitcherActivity;->setIconAndText(IIILjava/lang/String;II)V
-
-    .line 78
-    const v1, 0x10202f3
-
-    const v2, 0x10202f4
-
-    const v3, 0x10202f5
-
-    iget-object v4, p0, Lcom/android/internal/app/HeavyWeightSwitcherActivity;->mNewApp:Ljava/lang/String;
 
     const v5, 0x1040442
 
@@ -188,8 +171,25 @@
 
     invoke-virtual/range {v0 .. v6}, Lcom/android/internal/app/HeavyWeightSwitcherActivity;->setIconAndText(IIILjava/lang/String;II)V
 
+    .line 78
+    const v1, 0x10202ef
+
+    const v2, 0x10202f0
+
+    const v3, 0x10202f1
+
+    iget-object v4, p0, Lcom/android/internal/app/HeavyWeightSwitcherActivity;->mNewApp:Ljava/lang/String;
+
+    const v5, 0x1040444
+
+    const v6, 0x1040445
+
+    move-object v0, p0
+
+    invoke-virtual/range {v0 .. v6}, Lcom/android/internal/app/HeavyWeightSwitcherActivity;->setIconAndText(IIILjava/lang/String;II)V
+
     .line 81
-    const v0, 0x10202ee
+    const v0, 0x10202ea
 
     invoke-virtual {p0, v0}, Lcom/android/internal/app/HeavyWeightSwitcherActivity;->findViewById(I)Landroid/view/View;
 
@@ -202,7 +202,7 @@
     invoke-virtual {v7, v0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
     .line 83
-    const v0, 0x10202f2
+    const v0, 0x10202ee
 
     invoke-virtual {p0, v0}, Lcom/android/internal/app/HeavyWeightSwitcherActivity;->findViewById(I)Landroid/view/View;
 

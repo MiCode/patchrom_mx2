@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 4690
+    .line 4832
     iput-object p1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$18;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,14 +41,14 @@
     .locals 2
 
     .prologue
-    .line 4692
+    .line 4834
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "com.meizu.action.HIDE_GESTURE_BAR"
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 4693
+    .line 4836
     .local v0, i:Landroid/content/Intent;
     iget-object v1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$18;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
@@ -56,6 +56,6 @@
 
     invoke-virtual {v1, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 4694
+    .line 4837
     return-void
 .end method

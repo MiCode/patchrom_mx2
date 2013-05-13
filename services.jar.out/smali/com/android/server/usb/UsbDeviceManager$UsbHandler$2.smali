@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 306
+    .line 316
     iput-object p1, p0, Lcom/android/server/usb/UsbDeviceManager$UsbHandler$2;->this$1:Lcom/android/server/usb/UsbDeviceManager$UsbHandler;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -42,14 +42,14 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 312
+    .line 322
     const-string v2, "securityLock"
 
     invoke-virtual {p2, v2, v0}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
 
     move-result v1
 
-    .line 313
+    .line 323
     .local v1, lock:Z
     invoke-static {}, Lcom/android/server/usb/UsbDeviceManager;->access$300()Ljava/lang/String;
 
@@ -75,7 +75,7 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 314
+    .line 324
     const-string v2, "securityLock"
 
     invoke-virtual {p2, v2, v0}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
@@ -84,17 +84,17 @@
 
     if-eqz v2, :cond_0
 
-    .line 315
+    .line 325
     iget-object v2, p0, Lcom/android/server/usb/UsbDeviceManager$UsbHandler$2;->this$1:Lcom/android/server/usb/UsbDeviceManager$UsbHandler;
 
     #calls: Lcom/android/server/usb/UsbDeviceManager$UsbHandler;->setAdbEnabled(Z)V
     invoke-static {v2, v0}, Lcom/android/server/usb/UsbDeviceManager$UsbHandler;->access$400(Lcom/android/server/usb/UsbDeviceManager$UsbHandler;Z)V
 
-    .line 321
+    .line 331
     :goto_0
     return-void
 
-    .line 317
+    .line 327
     :cond_0
     iget-object v2, p0, Lcom/android/server/usb/UsbDeviceManager$UsbHandler$2;->this$1:Lcom/android/server/usb/UsbDeviceManager$UsbHandler;
 
@@ -115,7 +115,7 @@
 
     const/4 v0, 0x1
 
-    .line 319
+    .line 329
     .local v0, enable:Z
     :cond_1
     iget-object v2, p0, Lcom/android/server/usb/UsbDeviceManager$UsbHandler$2;->this$1:Lcom/android/server/usb/UsbDeviceManager$UsbHandler;

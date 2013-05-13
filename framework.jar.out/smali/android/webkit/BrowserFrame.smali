@@ -711,7 +711,7 @@
     .line 1183
     iget-object v0, p0, Landroid/webkit/BrowserFrame;->mContext:Landroid/content/Context;
 
-    const v1, 0x1040594
+    const v1, 0x104059d
 
     const/4 v2, 0x0
 
@@ -1122,7 +1122,7 @@
     .line 984
     .end local v2           #resid:I
     :pswitch_2
-    const v2, 0x1080117
+    const v2, 0x1080116
 
     .line 985
     .restart local v2       #resid:I
@@ -1135,7 +1135,7 @@
 
     move-result-object v4
 
-    const v5, 0x10404d4
+    const v5, 0x10404d8
 
     invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -1149,7 +1149,7 @@
 
     move-result-object v4
 
-    const v5, 0x10404d6
+    const v5, 0x10404da
 
     invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -1163,7 +1163,7 @@
 
     move-result-object v4
 
-    const v5, 0x10404d7
+    const v5, 0x10404db
 
     invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -1177,7 +1177,7 @@
 
     move-result-object v4
 
-    const v5, 0x10404d5
+    const v5, 0x10404d9
 
     invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

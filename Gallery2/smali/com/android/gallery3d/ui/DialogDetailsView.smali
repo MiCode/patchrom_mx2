@@ -79,58 +79,58 @@
     .parameter "source"
 
     .prologue
-    .line 122
+    .line 123
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 94
+    .line 95
     new-instance v0, Lcom/android/gallery3d/ui/DialogDetailsView$1;
 
     invoke-direct {v0, p0}, Lcom/android/gallery3d/ui/DialogDetailsView$1;-><init>(Lcom/android/gallery3d/ui/DialogDetailsView;)V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mMainHandler:Landroid/os/Handler;
 
-    .line 333
+    .line 340
     new-instance v0, Lcom/android/gallery3d/ui/DialogDetailsView$5;
 
     invoke-direct {v0, p0}, Lcom/android/gallery3d/ui/DialogDetailsView$5;-><init>(Lcom/android/gallery3d/ui/DialogDetailsView;)V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mFocusChangeListener:Landroid/view/View$OnFocusChangeListener;
 
-    .line 455
+    .line 464
     new-instance v0, Lcom/android/gallery3d/ui/DialogDetailsView$6;
 
     invoke-direct {v0, p0}, Lcom/android/gallery3d/ui/DialogDetailsView$6;-><init>(Lcom/android/gallery3d/ui/DialogDetailsView;)V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->NeutralBtnClick:Landroid/content/DialogInterface$OnClickListener;
 
-    .line 466
+    .line 475
     new-instance v0, Lcom/android/gallery3d/ui/DialogDetailsView$7;
 
     invoke-direct {v0, p0}, Lcom/android/gallery3d/ui/DialogDetailsView$7;-><init>(Lcom/android/gallery3d/ui/DialogDetailsView;)V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mPositiveBtnClick:Landroid/content/DialogInterface$OnClickListener;
 
-    .line 477
+    .line 486
     new-instance v0, Lcom/android/gallery3d/ui/DialogDetailsView$8;
 
     invoke-direct {v0, p0}, Lcom/android/gallery3d/ui/DialogDetailsView$8;-><init>(Lcom/android/gallery3d/ui/DialogDetailsView;)V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mHeightEditWatcher:Landroid/text/TextWatcher;
 
-    .line 512
+    .line 521
     new-instance v0, Lcom/android/gallery3d/ui/DialogDetailsView$9;
 
     invoke-direct {v0, p0}, Lcom/android/gallery3d/ui/DialogDetailsView$9;-><init>(Lcom/android/gallery3d/ui/DialogDetailsView;)V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mWidthEditWatcher:Landroid/text/TextWatcher;
 
-    .line 123
+    .line 124
     iput-object p1, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
 
-    .line 124
+    .line 125
     iput-object p2, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSource:Lcom/android/gallery3d/ui/DetailsHelper$DetailsSource;
 
-    .line 125
+    .line 126
     return-void
 .end method
 
@@ -141,7 +141,7 @@
     .parameter "x2"
 
     .prologue
-    .line 56
+    .line 57
     invoke-direct {p0, p1, p2}, Lcom/android/gallery3d/ui/DialogDetailsView;->showToast(ILjava/lang/String;)V
 
     return-void
@@ -152,7 +152,7 @@
     .parameter "x0"
 
     .prologue
-    .line 56
+    .line 57
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mProgressDialog:Landroid/app/ProgressDialog;
 
     return-object v0
@@ -163,7 +163,7 @@
     .parameter "x0"
 
     .prologue
-    .line 56
+    .line 57
     iget v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageH:I
 
     return v0
@@ -174,7 +174,7 @@
     .parameter "x0"
 
     .prologue
-    .line 56
+    .line 57
     iget v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mNewWidth:I
 
     return v0
@@ -186,7 +186,7 @@
     .parameter "x1"
 
     .prologue
-    .line 56
+    .line 57
     iput p1, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mNewWidth:I
 
     return p1
@@ -197,7 +197,7 @@
     .parameter "x0"
 
     .prologue
-    .line 56
+    .line 57
     iget v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageW:I
 
     return v0
@@ -208,7 +208,7 @@
     .parameter "x0"
 
     .prologue
-    .line 56
+    .line 57
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mWidthEdit:Landroid/widget/EditText;
 
     return-object v0
@@ -219,7 +219,7 @@
     .parameter "x0"
 
     .prologue
-    .line 56
+    .line 57
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mFilePath:Ljava/lang/String;
 
     return-object v0
@@ -230,7 +230,7 @@
     .parameter "x0"
 
     .prologue
-    .line 56
+    .line 57
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mNewTitle:Ljava/lang/String;
 
     return-object v0
@@ -241,7 +241,7 @@
     .parameter "x0"
 
     .prologue
-    .line 56
+    .line 57
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSaveFileHelper:Lcom/android/gallery3d/ui/DetailsSaveFileHelper;
 
     return-object v0
@@ -252,34 +252,34 @@
     .parameter "x0"
 
     .prologue
-    .line 56
+    .line 57
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mMainHandler:Landroid/os/Handler;
 
     return-object v0
 .end method
 
-.method static synthetic access$1800(Lcom/android/gallery3d/ui/DialogDetailsView;ILjava/lang/String;)V
+.method static synthetic access$1800(Lcom/android/gallery3d/ui/DialogDetailsView;)Lcom/android/gallery3d/app/GalleryActivity;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 57
+    iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
+
+    return-object v0
+.end method
+
+.method static synthetic access$1900(Lcom/android/gallery3d/ui/DialogDetailsView;ILjava/lang/String;)V
     .locals 0
     .parameter "x0"
     .parameter "x1"
     .parameter "x2"
 
     .prologue
-    .line 56
+    .line 57
     invoke-direct {p0, p1, p2}, Lcom/android/gallery3d/ui/DialogDetailsView;->sendShowToasMessage(ILjava/lang/String;)V
 
     return-void
-.end method
-
-.method static synthetic access$1900(Lcom/android/gallery3d/ui/DialogDetailsView;)Lcom/android/gallery3d/app/GalleryActivity;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 56
-    iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
-
-    return-object v0
 .end method
 
 .method static synthetic access$200(Lcom/android/gallery3d/ui/DialogDetailsView;)Landroid/app/AlertDialog;
@@ -287,7 +287,7 @@
     .parameter "x0"
 
     .prologue
-    .line 56
+    .line 57
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
 
     return-object v0
@@ -298,7 +298,7 @@
     .parameter "x0"
 
     .prologue
-    .line 56
+    .line 57
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDetails:Lcom/android/gallery3d/data/MediaDetails;
 
     return-object v0
@@ -309,7 +309,7 @@
     .parameter "x0"
 
     .prologue
-    .line 56
+    .line 57
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mListener:Lcom/android/gallery3d/ui/DetailsHelper$CloseListener;
 
     return-object v0
@@ -323,7 +323,7 @@
     .parameter "x3"
 
     .prologue
-    .line 56
+    .line 57
     invoke-direct {p0, p1, p2, p3}, Lcom/android/gallery3d/ui/DialogDetailsView;->setTextViewInformation(Landroid/view/View;ILjava/lang/String;)V
 
     return-void
@@ -335,7 +335,7 @@
     .parameter "x1"
 
     .prologue
-    .line 56
+    .line 57
     invoke-direct {p0, p1}, Lcom/android/gallery3d/ui/DialogDetailsView;->checkTextViewLocation(Landroid/view/View;)V
 
     return-void
@@ -346,7 +346,7 @@
     .parameter "x0"
 
     .prologue
-    .line 56
+    .line 57
     invoke-direct {p0}, Lcom/android/gallery3d/ui/DialogDetailsView;->checkNeedUpdate()Z
 
     move-result v0
@@ -360,7 +360,7 @@
     .parameter "x1"
 
     .prologue
-    .line 56
+    .line 57
     invoke-direct {p0, p1}, Lcom/android/gallery3d/ui/DialogDetailsView;->beginSaveFile(Z)V
 
     return-void
@@ -371,7 +371,7 @@
     .parameter "x0"
 
     .prologue
-    .line 56
+    .line 57
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mHeightEdit:Landroid/widget/EditText;
 
     return-object v0
@@ -382,7 +382,7 @@
     .parameter "x0"
 
     .prologue
-    .line 56
+    .line 57
     iget v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mNewHeight:I
 
     return v0
@@ -394,7 +394,7 @@
     .parameter "x1"
 
     .prologue
-    .line 56
+    .line 57
     iput p1, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mNewHeight:I
 
     return p1
@@ -407,23 +407,23 @@
     .prologue
     const/4 v9, 0x0
 
-    const v8, 0x7f0a01e7
+    const v8, 0x7f0a01f6
 
     const/4 v5, 0x0
 
-    .line 548
+    .line 557
     invoke-direct {p0}, Lcom/android/gallery3d/ui/DialogDetailsView;->checkIsAcceptable()Z
 
     move-result v0
 
     if-eqz v0, :cond_4
 
-    .line 549
+    .line 558
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSaveFileHelper:Lcom/android/gallery3d/ui/DetailsSaveFileHelper;
 
     if-nez v0, :cond_0
 
-    .line 550
+    .line 559
     new-instance v0, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;
 
     iget-object v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
@@ -434,13 +434,13 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSaveFileHelper:Lcom/android/gallery3d/ui/DetailsSaveFileHelper;
 
-    .line 552
+    .line 561
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mProgressDialog:Landroid/app/ProgressDialog;
 
     if-nez v0, :cond_1
 
-    .line 553
+    .line 562
     new-instance v0, Landroid/app/ProgressDialog;
 
     iget-object v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
@@ -449,18 +449,23 @@
 
     move-result-object v1
 
-    const v2, 0x1030317
+    const v2, 0x1030323
 
     invoke-direct {v0, v1, v2}, Landroid/app/ProgressDialog;-><init>(Landroid/content/Context;I)V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mProgressDialog:Landroid/app/ProgressDialog;
 
-    .line 554
+    .line 563
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mProgressDialog:Landroid/app/ProgressDialog;
 
     invoke-virtual {v0, v5}, Landroid/app/ProgressDialog;->setCanceledOnTouchOutside(Z)V
 
-    .line 556
+    .line 564
+    iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mProgressDialog:Landroid/app/ProgressDialog;
+
+    invoke-virtual {v0, v5}, Landroid/app/ProgressDialog;->setCancelable(Z)V
+
+    .line 566
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSaveFileHelper:Lcom/android/gallery3d/ui/DetailsSaveFileHelper;
 
@@ -496,11 +501,11 @@
 
     move-result-object v6
 
-    .line 557
+    .line 567
     .local v6, newPath:Ljava/lang/String;
     if-eqz p1, :cond_5
 
-    .line 558
+    .line 568
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageTitle:Ljava/lang/String;
 
     iget-object v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mNewTitle:Ljava/lang/String;
@@ -511,7 +516,7 @@
 
     if-nez v0, :cond_6
 
-    .line 559
+    .line 569
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSaveFileHelper:Lcom/android/gallery3d/ui/DetailsSaveFileHelper;
 
     invoke-virtual {v0, v6}, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->isFileExists(Ljava/lang/String;)Z
@@ -520,16 +525,16 @@
 
     if-eqz v0, :cond_6
 
-    .line 560
+    .line 570
     invoke-direct {p0, v8, v9}, Lcom/android/gallery3d/ui/DialogDetailsView;->showToast(ILjava/lang/String;)V
 
-    .line 578
+    .line 588
     .end local v6           #newPath:Ljava/lang/String;
     :cond_4
     :goto_0
     return-void
 
-    .line 565
+    .line 575
     .restart local v6       #newPath:Ljava/lang/String;
     :cond_5
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSaveFileHelper:Lcom/android/gallery3d/ui/DetailsSaveFileHelper;
@@ -540,12 +545,12 @@
 
     if-eqz v0, :cond_6
 
-    .line 566
+    .line 576
     invoke-direct {p0, v8, v9}, Lcom/android/gallery3d/ui/DialogDetailsView;->showToast(ILjava/lang/String;)V
 
     goto :goto_0
 
-    .line 570
+    .line 580
     :cond_6
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mMainHandler:Landroid/os/Handler;
 
@@ -553,7 +558,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 571
+    .line 581
     iget v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mNewWidth:I
 
     iget v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageW:I
@@ -566,16 +571,16 @@
 
     if-ne v0, v1, :cond_7
 
-    .line 572
+    .line 582
     invoke-direct {p0, p1, v6}, Lcom/android/gallery3d/ui/DialogDetailsView;->renameFile(ZLjava/lang/String;)V
 
-    .line 576
+    .line 586
     :goto_1
     invoke-virtual {p0}, Lcom/android/gallery3d/ui/DialogDetailsView;->hide()V
 
     goto :goto_0
 
-    .line 574
+    .line 584
     :cond_7
     invoke-direct {p0, p1, v6}, Lcom/android/gallery3d/ui/DialogDetailsView;->createFile(ZLjava/lang/String;)V
 
@@ -590,7 +595,7 @@
 
     const/4 v3, 0x0
 
-    .line 416
+    .line 425
     iget-object v4, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mTitleEdit:Landroid/widget/EditText;
 
     invoke-virtual {v4}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
@@ -601,7 +606,7 @@
 
     move-result-object v1
 
-    .line 417
+    .line 426
     .local v1, newTitle:Ljava/lang/String;
     invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -609,16 +614,16 @@
 
     if-eqz v4, :cond_0
 
-    .line 418
-    const v4, 0x7f0a01df
+    .line 427
+    const v4, 0x7f0a01ee
 
     invoke-direct {p0, v4, v5}, Lcom/android/gallery3d/ui/DialogDetailsView;->showToast(ILjava/lang/String;)V
 
-    .line 444
+    .line 453
     :goto_0
     return v3
 
-    .line 423
+    .line 432
     :cond_0
     invoke-static {v1}, Lcom/android/gallery3d/common/Utils;->isFileNameLegal(Ljava/lang/String;)Z
 
@@ -626,14 +631,14 @@
 
     if-nez v4, :cond_1
 
-    .line 424
-    const v4, 0x7f0a01dd
+    .line 433
+    const v4, 0x7f0a01ec
 
     invoke-direct {p0, v4, v5}, Lcom/android/gallery3d/ui/DialogDetailsView;->showToast(ILjava/lang/String;)V
 
     goto :goto_0
 
-    .line 428
+    .line 437
     :cond_1
     iget-object v4, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mWidthEdit:Landroid/widget/EditText;
 
@@ -645,7 +650,7 @@
 
     move-result-object v2
 
-    .line 429
+    .line 438
     .local v2, widthString:Ljava/lang/String;
     iget-object v4, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mHeightEdit:Landroid/widget/EditText;
 
@@ -657,7 +662,7 @@
 
     move-result-object v0
 
-    .line 432
+    .line 441
     .local v0, heightString:Ljava/lang/String;
     invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -671,15 +676,15 @@
 
     if-eqz v4, :cond_3
 
-    .line 433
+    .line 442
     :cond_2
-    const v4, 0x7f0a01de
+    const v4, 0x7f0a01ed
 
     invoke-direct {p0, v4, v5}, Lcom/android/gallery3d/ui/DialogDetailsView;->showToast(ILjava/lang/String;)V
 
     goto :goto_0
 
-    .line 437
+    .line 446
     :cond_3
     iget v4, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mNewWidth:I
 
@@ -693,9 +698,9 @@
 
     if-le v4, v5, :cond_5
 
-    .line 438
+    .line 447
     :cond_4
-    const v4, 0x7f0a01e0
+    const v4, 0x7f0a01ef
 
     iget v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageW:I
 
@@ -709,7 +714,7 @@
 
     goto :goto_0
 
-    .line 440
+    .line 449
     :cond_5
     iget v4, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mNewWidth:I
 
@@ -723,9 +728,9 @@
 
     if-ge v4, v5, :cond_7
 
-    .line 441
+    .line 450
     :cond_6
-    const v4, 0x7f0a01e1
+    const v4, 0x7f0a01f0
 
     iget v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mMinImageW:I
 
@@ -739,7 +744,7 @@
 
     goto :goto_0
 
-    .line 444
+    .line 453
     :cond_7
     const/4 v3, 0x1
 
@@ -750,7 +755,7 @@
     .locals 2
 
     .prologue
-    .line 448
+    .line 457
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mTitleEdit:Landroid/widget/EditText;
 
     invoke-virtual {v0}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
@@ -763,7 +768,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mNewTitle:Ljava/lang/String;
 
-    .line 449
+    .line 458
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mNewTitle:Ljava/lang/String;
 
     iget-object v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageTitle:Ljava/lang/String;
@@ -786,11 +791,11 @@
 
     if-eq v0, v1, :cond_1
 
-    .line 450
+    .line 459
     :cond_0
     const/4 v0, 0x1
 
-    .line 452
+    .line 461
     :goto_0
     return v0
 
@@ -801,188 +806,228 @@
 .end method
 
 .method private checkTextViewLocation(Landroid/view/View;)V
-    .locals 11
+    .locals 13
     .parameter "contentView"
 
     .prologue
-    const v10, 0x7f0d0071
+    const v12, 0x7f0d0076
 
-    const v9, 0x7f0d0070
+    const v11, 0x7f0d0075
 
-    const/4 v8, 0x3
+    const/4 v10, 0x3
 
-    const v7, 0x7f0d006f
+    const v9, 0x7f0d0074
 
-    const/4 v6, -0x2
+    const/4 v8, -0x2
 
-    .line 343
-    invoke-virtual {p1, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Landroid/view/View;->getWidth()I
-
-    move-result v4
-
+    .line 350
     invoke-virtual {p1, v9}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
-    move-result-object v5
+    move-result-object v6
 
-    invoke-virtual {v5}, Landroid/view/View;->getWidth()I
+    invoke-virtual {v6}, Landroid/view/View;->getWidth()I
 
-    move-result v5
+    move-result v6
 
-    add-int/2addr v4, v5
+    invoke-virtual {p1, v11}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
-    invoke-virtual {p1, v10}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    move-result-object v7
 
-    move-result-object v5
+    invoke-virtual {v7}, Landroid/view/View;->getWidth()I
 
-    invoke-virtual {v5}, Landroid/view/View;->getWidth()I
+    move-result v7
 
-    move-result v5
+    add-int/2addr v6, v7
 
-    add-int/2addr v4, v5
+    invoke-virtual {p1, v12}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
-    const v5, 0x7f0d0072
+    move-result-object v7
 
-    invoke-virtual {p1, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    invoke-virtual {v7}, Landroid/view/View;->getWidth()I
 
-    move-result-object v5
+    move-result v7
 
-    invoke-virtual {v5}, Landroid/view/View;->getWidth()I
+    add-int/2addr v6, v7
 
-    move-result v5
+    const v7, 0x7f0d0077
 
-    add-int v2, v4, v5
+    invoke-virtual {p1, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
-    .line 347
-    .local v2, textViewTotalWidth:I
-    iget-object v4, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
+    move-result-object v7
 
-    invoke-interface {v4}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
+    invoke-virtual {v7}, Landroid/view/View;->getWidth()I
 
-    move-result-object v4
+    move-result v7
 
-    invoke-virtual {v4}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    add-int v4, v6, v7
 
-    move-result-object v4
+    .line 354
+    .local v4, textViewTotalWidth:I
+    iget-object v6, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
 
-    const v5, 0x7f090119
+    invoke-interface {v6}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
 
-    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+    move-result-object v6
+
+    invoke-virtual {v6}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v6
+
+    const v7, 0x7f09021b
+
+    invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
     move-result v0
 
-    .line 348
+    .line 355
     .local v0, leftMargin:I
-    iget-object v4, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
+    iget-object v6, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
 
-    invoke-interface {v4}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
+    invoke-interface {v6}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
 
-    move-result-object v4
+    move-result-object v6
 
-    invoke-virtual {v4}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {v6}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v4
+    move-result-object v6
 
-    const v5, 0x7f090117
+    const v7, 0x7f090219
 
-    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v3
-
-    .line 349
-    .local v3, topMargin:I
-    mul-int/lit8 v4, v0, 0x4
-
-    add-int/2addr v4, v2
-
-    invoke-virtual {p1}, Landroid/view/View;->getWidth()I
+    invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
     move-result v5
 
-    if-le v4, v5, :cond_0
-
-    .line 351
-    new-instance v1, Landroid/widget/RelativeLayout$LayoutParams;
-
-    invoke-direct {v1, v6, v6}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
-
-    .line 352
-    .local v1, params:Landroid/widget/RelativeLayout$LayoutParams;
-    invoke-virtual {v1, v8, v7}, Landroid/widget/RelativeLayout$LayoutParams;->addRule(II)V
-
-    .line 353
-    iput v3, v1, Landroid/widget/RelativeLayout$LayoutParams;->topMargin:I
-
-    .line 354
-    invoke-virtual {p1, v9}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v4
-
-    invoke-virtual {v4, v1}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
-
     .line 356
-    new-instance v1, Landroid/widget/RelativeLayout$LayoutParams;
+    .local v5, topMargin:I
+    iget-object v6, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
 
-    .end local v1           #params:Landroid/widget/RelativeLayout$LayoutParams;
-    invoke-direct {v1, v6, v6}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
+    invoke-interface {v6}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
+
+    move-result-object v6
+
+    invoke-virtual {v6}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v6
+
+    const v7, 0x7f09020b
+
+    invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
 
     .line 357
-    .restart local v1       #params:Landroid/widget/RelativeLayout$LayoutParams;
-    const/4 v4, 0x1
+    .local v1, paddingLeft:I
+    iget-object v6, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
 
-    invoke-virtual {v1, v4, v9}, Landroid/widget/RelativeLayout$LayoutParams;->addRule(II)V
+    invoke-interface {v6}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
+
+    move-result-object v6
+
+    invoke-virtual {v6}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v6
+
+    const v7, 0x7f09020c
+
+    invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v2
 
     .line 358
-    invoke-virtual {v1, v8, v7}, Landroid/widget/RelativeLayout$LayoutParams;->addRule(II)V
+    .local v2, paddingRight:I
+    mul-int/lit8 v6, v0, 0x3
 
-    .line 359
-    iput v0, v1, Landroid/widget/RelativeLayout$LayoutParams;->leftMargin:I
+    add-int/2addr v6, v4
+
+    invoke-virtual {p1}, Landroid/view/View;->getWidth()I
+
+    move-result v7
+
+    sub-int/2addr v7, v1
+
+    sub-int/2addr v7, v2
+
+    if-le v6, v7, :cond_0
 
     .line 360
-    iput v3, v1, Landroid/widget/RelativeLayout$LayoutParams;->topMargin:I
+    new-instance v3, Landroid/widget/RelativeLayout$LayoutParams;
+
+    invoke-direct {v3, v8, v8}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
 
     .line 361
-    invoke-virtual {p1, v10}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    .local v3, params:Landroid/widget/RelativeLayout$LayoutParams;
+    invoke-virtual {v3, v10, v9}, Landroid/widget/RelativeLayout$LayoutParams;->addRule(II)V
 
-    move-result-object v4
-
-    invoke-virtual {v4, v1}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+    .line 362
+    iput v5, v3, Landroid/widget/RelativeLayout$LayoutParams;->topMargin:I
 
     .line 363
-    new-instance v1, Landroid/widget/RelativeLayout$LayoutParams;
+    invoke-virtual {p1, v11}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
-    .end local v1           #params:Landroid/widget/RelativeLayout$LayoutParams;
-    invoke-direct {v1, v6, v6}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
+    move-result-object v6
 
-    .line 364
-    .restart local v1       #params:Landroid/widget/RelativeLayout$LayoutParams;
-    const/4 v4, 0x1
-
-    invoke-virtual {v1, v4, v10}, Landroid/widget/RelativeLayout$LayoutParams;->addRule(II)V
+    invoke-virtual {v6, v3}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
     .line 365
-    invoke-virtual {v1, v8, v7}, Landroid/widget/RelativeLayout$LayoutParams;->addRule(II)V
+    new-instance v3, Landroid/widget/RelativeLayout$LayoutParams;
+
+    .end local v3           #params:Landroid/widget/RelativeLayout$LayoutParams;
+    invoke-direct {v3, v8, v8}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
 
     .line 366
-    iput v0, v1, Landroid/widget/RelativeLayout$LayoutParams;->leftMargin:I
+    .restart local v3       #params:Landroid/widget/RelativeLayout$LayoutParams;
+    const/4 v6, 0x1
+
+    invoke-virtual {v3, v6, v11}, Landroid/widget/RelativeLayout$LayoutParams;->addRule(II)V
 
     .line 367
-    iput v3, v1, Landroid/widget/RelativeLayout$LayoutParams;->topMargin:I
+    invoke-virtual {v3, v10, v9}, Landroid/widget/RelativeLayout$LayoutParams;->addRule(II)V
 
     .line 368
-    const v4, 0x7f0d0072
+    iput v0, v3, Landroid/widget/RelativeLayout$LayoutParams;->leftMargin:I
 
-    invoke-virtual {p1, v4}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v4
-
-    invoke-virtual {v4, v1}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+    .line 369
+    iput v5, v3, Landroid/widget/RelativeLayout$LayoutParams;->topMargin:I
 
     .line 370
-    .end local v1           #params:Landroid/widget/RelativeLayout$LayoutParams;
+    invoke-virtual {p1, v12}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v6
+
+    invoke-virtual {v6, v3}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 372
+    new-instance v3, Landroid/widget/RelativeLayout$LayoutParams;
+
+    .end local v3           #params:Landroid/widget/RelativeLayout$LayoutParams;
+    invoke-direct {v3, v8, v8}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
+
+    .line 373
+    .restart local v3       #params:Landroid/widget/RelativeLayout$LayoutParams;
+    const/4 v6, 0x1
+
+    invoke-virtual {v3, v6, v12}, Landroid/widget/RelativeLayout$LayoutParams;->addRule(II)V
+
+    .line 374
+    invoke-virtual {v3, v10, v9}, Landroid/widget/RelativeLayout$LayoutParams;->addRule(II)V
+
+    .line 375
+    iput v0, v3, Landroid/widget/RelativeLayout$LayoutParams;->leftMargin:I
+
+    .line 376
+    iput v5, v3, Landroid/widget/RelativeLayout$LayoutParams;->topMargin:I
+
+    .line 377
+    const v6, 0x7f0d0077
+
+    invoke-virtual {p1, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v6
+
+    invoke-virtual {v6, v3}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 379
+    .end local v3           #params:Landroid/widget/RelativeLayout$LayoutParams;
     :cond_0
     return-void
 .end method
@@ -993,7 +1038,7 @@
     .parameter "newPath"
 
     .prologue
-    .line 581
+    .line 591
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSaveFileHelper:Lcom/android/gallery3d/ui/DetailsSaveFileHelper;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->getBackgroundHandler()Landroid/os/Handler;
@@ -1006,7 +1051,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 595
+    .line 613
     return-void
 .end method
 
@@ -1016,7 +1061,7 @@
     .parameter "height"
 
     .prologue
-    .line 412
+    .line 421
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -1056,7 +1101,7 @@
     .parameter "newPath"
 
     .prologue
-    .line 598
+    .line 616
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSaveFileHelper:Lcom/android/gallery3d/ui/DetailsSaveFileHelper;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->getBackgroundHandler()Landroid/os/Handler;
@@ -1069,7 +1114,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 611
+    .line 637
     return-void
 .end method
 
@@ -1079,361 +1124,393 @@
     .parameter "tip"
 
     .prologue
-    .line 398
+    .line 407
     invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;
 
     move-result-object v0
 
-    .line 399
+    .line 408
     .local v0, msg:Landroid/os/Message;
     const/16 v1, 0x3e8
 
     iput v1, v0, Landroid/os/Message;->what:I
 
-    .line 400
+    .line 409
     iput-object p2, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    .line 401
+    .line 410
     iput p1, v0, Landroid/os/Message;->arg1:I
 
-    .line 402
+    .line 411
     iget-object v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mMainHandler:Landroid/os/Handler;
 
     invoke-virtual {v1, v0}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 403
+    .line 412
     return-void
 .end method
 
 .method private setDetails(Lcom/android/gallery3d/data/MediaDetails;)V
-    .locals 11
+    .locals 13
     .parameter "details"
 
     .prologue
-    const/4 v7, 0x2
+    const/4 v9, 0x2
 
-    const/4 v10, 0x1
+    const/4 v12, 0x1
 
-    const/4 v9, 0x0
+    const/4 v11, 0x0
 
-    const/4 v8, 0x0
-
-    .line 150
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
-
-    if-eqz v5, :cond_0
-
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
-
-    invoke-virtual {v5}, Lcom/android/gallery3d/data/MediaItem;->getMediaType()I
-
-    move-result v5
-
-    if-ne v7, v5, :cond_0
+    const/4 v10, 0x0
 
     .line 151
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
-    invoke-interface {v5}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
+    if-eqz v7, :cond_0
 
-    move-result-object v5
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
-    const-string v6, "layout_inflater"
+    invoke-virtual {v7}, Lcom/android/gallery3d/data/MediaItem;->getMediaType()I
 
-    invoke-virtual {v5, v6}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    move-result v7
+
+    if-ne v9, v7, :cond_0
+
+    .line 152
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
+
+    invoke-interface {v7}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
+
+    move-result-object v7
+
+    const-string v8, "layout_inflater"
+
+    invoke-virtual {v7, v8}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v3
 
     check-cast v3, Landroid/view/LayoutInflater;
 
-    .line 152
+    .line 153
     .local v3, layoutInflater:Landroid/view/LayoutInflater;
-    const v5, 0x7f040021
+    const v7, 0x7f040023
 
-    invoke-virtual {v3, v5, v9}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
+    invoke-virtual {v3, v7, v11}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
     move-result-object v0
 
-    .line 154
-    .local v0, contentView:Landroid/view/View;
-    const v5, 0x7f0d006b
-
-    invoke-virtual {v0, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v5
-
-    check-cast v5, Landroid/widget/EditText;
-
-    iput-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mWidthEdit:Landroid/widget/EditText;
-
     .line 155
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mWidthEdit:Landroid/widget/EditText;
+    .local v0, contentView:Landroid/view/View;
+    const v7, 0x7f0d006f
 
-    iget-object v6, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mWidthEditWatcher:Landroid/text/TextWatcher;
+    invoke-virtual {v0, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
-    invoke-virtual {v5, v6}, Landroid/widget/EditText;->addTextChangedListener(Landroid/text/TextWatcher;)V
+    move-result-object v7
 
-    .line 157
-    const v5, 0x7f0d006c
+    check-cast v7, Landroid/widget/EditText;
 
-    invoke-virtual {v0, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    iput-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mWidthEdit:Landroid/widget/EditText;
 
-    move-result-object v5
+    .line 156
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mWidthEdit:Landroid/widget/EditText;
 
-    check-cast v5, Landroid/widget/EditText;
+    iget-object v8, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mWidthEditWatcher:Landroid/text/TextWatcher;
 
-    iput-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mHeightEdit:Landroid/widget/EditText;
+    invoke-virtual {v7, v8}, Landroid/widget/EditText;->addTextChangedListener(Landroid/text/TextWatcher;)V
 
     .line 158
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mHeightEdit:Landroid/widget/EditText;
+    const v7, 0x7f0d0071
 
-    iget-object v6, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mHeightEditWatcher:Landroid/text/TextWatcher;
+    invoke-virtual {v0, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
-    invoke-virtual {v5, v6}, Landroid/widget/EditText;->addTextChangedListener(Landroid/text/TextWatcher;)V
+    move-result-object v7
 
-    .line 160
-    const v5, 0x7f0d0066
+    check-cast v7, Landroid/widget/EditText;
 
-    invoke-virtual {v0, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    iput-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mHeightEdit:Landroid/widget/EditText;
 
-    move-result-object v5
+    .line 159
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mHeightEdit:Landroid/widget/EditText;
 
-    check-cast v5, Landroid/widget/EditText;
+    iget-object v8, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mHeightEditWatcher:Landroid/text/TextWatcher;
 
-    iput-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mTitleEdit:Landroid/widget/EditText;
+    invoke-virtual {v7, v8}, Landroid/widget/EditText;->addTextChangedListener(Landroid/text/TextWatcher;)V
 
-    .line 162
-    invoke-direct {p0, v0, p1}, Lcom/android/gallery3d/ui/DialogDetailsView;->setDialogDetails(Landroid/view/View;Lcom/android/gallery3d/data/MediaDetails;)V
+    .line 161
+    const v7, 0x7f0d006c
+
+    invoke-virtual {v0, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v7
+
+    check-cast v7, Landroid/widget/EditText;
+
+    iput-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mTitleEdit:Landroid/widget/EditText;
+
+    .line 163
+    const v7, 0x7f0d006a
+
+    invoke-virtual {v0, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v6
+
+    check-cast v6, Landroid/widget/TextView;
 
     .line 164
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mFocusChangeListener:Landroid/view/View$OnFocusChangeListener;
+    .local v6, titleText:Landroid/widget/TextView;
+    const v7, 0x7f0d006e
 
-    invoke-virtual {v0, v5}, Landroid/view/View;->setOnFocusChangeListener(Landroid/view/View$OnFocusChangeListener;)V
-
-    .line 166
-    const v2, 0x1030317
-
-    .line 167
-    .local v2, dialogStyle:I
-    new-instance v6, Landroid/app/AlertDialog$Builder;
-
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
-
-    check-cast v5, Landroid/app/Activity;
-
-    invoke-direct {v6, v5, v2}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;I)V
-
-    invoke-virtual {v6, v0}, Landroid/app/AlertDialog$Builder;->setView(Landroid/view/View;)Landroid/app/AlertDialog$Builder;
-
-    move-result-object v5
-
-    iget-object v6, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
-
-    invoke-interface {v6}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
-
-    move-result-object v6
-
-    const v7, 0x7f0a0148
-
-    invoke-virtual {v6, v7}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
-    move-result-object v6
-
-    invoke-virtual {v5, v6, v9}, Landroid/app/AlertDialog$Builder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
-
-    move-result-object v5
-
-    iget-object v6, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
-
-    invoke-interface {v6}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
-
-    move-result-object v6
-
-    const v7, 0x7f0a01c2
-
-    invoke-virtual {v6, v7}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
-    move-result-object v6
-
-    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->NeutralBtnClick:Landroid/content/DialogInterface$OnClickListener;
-
-    invoke-virtual {v5, v6, v7}, Landroid/app/AlertDialog$Builder;->setNeutralButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
-
-    move-result-object v5
-
-    iget-object v6, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
-
-    invoke-interface {v6}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
-
-    move-result-object v6
-
-    const v7, 0x7f0a01c3
-
-    invoke-virtual {v6, v7}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
-    move-result-object v6
-
-    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mPositiveBtnClick:Landroid/content/DialogInterface$OnClickListener;
-
-    invoke-virtual {v5, v6, v7}, Landroid/app/AlertDialog$Builder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
-
-    move-result-object v5
-
-    invoke-virtual {v5}, Landroid/app/AlertDialog$Builder;->create()Landroid/app/AlertDialog;
-
-    move-result-object v5
-
-    iput-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
-
-    .line 174
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
-
-    invoke-virtual {v5, v8}, Landroid/app/AlertDialog;->setCanceledOnTouchOutside(Z)V
-
-    .line 175
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
-
-    const/4 v6, -0x2
-
-    invoke-virtual {v5, v6, v10}, Landroid/app/AlertDialog;->setButtonClickDismiss(IZ)V
-
-    .line 176
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
-
-    const/4 v6, -0x3
-
-    invoke-virtual {v5, v6, v8}, Landroid/app/AlertDialog;->setButtonClickDismiss(IZ)V
-
-    .line 177
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
-
-    const/4 v6, -0x1
-
-    invoke-virtual {v5, v6, v8}, Landroid/app/AlertDialog;->setButtonClickDismiss(IZ)V
-
-    .line 198
-    .end local v0           #contentView:Landroid/view/View;
-    .end local v2           #dialogStyle:I
-    .end local v3           #layoutInflater:Landroid/view/LayoutInflater;
-    :goto_0
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
-
-    new-instance v6, Lcom/android/gallery3d/ui/DialogDetailsView$3;
-
-    invoke-direct {v6, p0}, Lcom/android/gallery3d/ui/DialogDetailsView$3;-><init>(Lcom/android/gallery3d/ui/DialogDetailsView;)V
-
-    invoke-virtual {v5, v6}, Landroid/app/AlertDialog;->setOnDismissListener(Landroid/content/DialogInterface$OnDismissListener;)V
-
-    .line 205
-    return-void
-
-    .line 179
-    :cond_0
-    new-instance v5, Lcom/android/gallery3d/ui/DialogDetailsView$DetailsAdapter;
-
-    invoke-direct {v5, p0, p1}, Lcom/android/gallery3d/ui/DialogDetailsView$DetailsAdapter;-><init>(Lcom/android/gallery3d/ui/DialogDetailsView;Lcom/android/gallery3d/data/MediaDetails;)V
-
-    iput-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mAdapter:Lcom/android/gallery3d/ui/DialogDetailsView$DetailsAdapter;
-
-    .line 180
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
-
-    invoke-interface {v5}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
-
-    move-result-object v5
-
-    const v6, 0x7f0a0150
-
-    invoke-virtual {v5, v6}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
-    move-result-object v5
-
-    new-array v6, v7, [Ljava/lang/Object;
-
-    iget v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mIndex:I
-
-    add-int/lit8 v7, v7, 0x1
-
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v7
-
-    aput-object v7, v6, v8
-
-    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSource:Lcom/android/gallery3d/ui/DetailsHelper$DetailsSource;
-
-    invoke-interface {v7}, Lcom/android/gallery3d/ui/DetailsHelper$DetailsSource;->size()I
-
-    move-result v7
-
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v7
-
-    aput-object v7, v6, v10
-
-    invoke-static {v5, v6}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    invoke-virtual {v0, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v4
 
+    check-cast v4, Landroid/widget/TextView;
+
+    .line 165
+    .local v4, sizeText:Landroid/widget/TextView;
+    sget-object v7, Landroid/text/TextUtils$TruncateAt;->END_SMALL:Landroid/text/TextUtils$TruncateAt;
+
+    invoke-virtual {v6, v7}, Landroid/widget/TextView;->setEllipsize(Landroid/text/TextUtils$TruncateAt;)V
+
+    .line 166
+    sget-object v7, Landroid/text/TextUtils$TruncateAt;->END_SMALL:Landroid/text/TextUtils$TruncateAt;
+
+    invoke-virtual {v4, v7}, Landroid/widget/TextView;->setEllipsize(Landroid/text/TextUtils$TruncateAt;)V
+
+    .line 168
+    invoke-direct {p0, v0, p1}, Lcom/android/gallery3d/ui/DialogDetailsView;->setDialogDetails(Landroid/view/View;Lcom/android/gallery3d/data/MediaDetails;)V
+
+    .line 170
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mFocusChangeListener:Landroid/view/View$OnFocusChangeListener;
+
+    invoke-virtual {v0, v7}, Landroid/view/View;->setOnFocusChangeListener(Landroid/view/View$OnFocusChangeListener;)V
+
+    .line 172
+    const v2, 0x1030323
+
+    .line 173
+    .local v2, dialogStyle:I
+    new-instance v8, Landroid/app/AlertDialog$Builder;
+
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
+
+    check-cast v7, Landroid/app/Activity;
+
+    invoke-direct {v8, v7, v2}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;I)V
+
+    invoke-virtual {v8, v0}, Landroid/app/AlertDialog$Builder;->setView(Landroid/view/View;)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v7
+
+    iget-object v8, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
+
+    invoke-interface {v8}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
+
+    move-result-object v8
+
+    const v9, 0x7f0a0153
+
+    invoke-virtual {v8, v9}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object v8
+
+    invoke-virtual {v7, v8, v11}, Landroid/app/AlertDialog$Builder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v7
+
+    iget-object v8, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
+
+    invoke-interface {v8}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
+
+    move-result-object v8
+
+    const v9, 0x7f0a01d1
+
+    invoke-virtual {v8, v9}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object v8
+
+    iget-object v9, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->NeutralBtnClick:Landroid/content/DialogInterface$OnClickListener;
+
+    invoke-virtual {v7, v8, v9}, Landroid/app/AlertDialog$Builder;->setNeutralButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v7
+
+    iget-object v8, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
+
+    invoke-interface {v8}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
+
+    move-result-object v8
+
+    const v9, 0x7f0a01d2
+
+    invoke-virtual {v8, v9}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object v8
+
+    iget-object v9, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mPositiveBtnClick:Landroid/content/DialogInterface$OnClickListener;
+
+    invoke-virtual {v7, v8, v9}, Landroid/app/AlertDialog$Builder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v7
+
+    invoke-virtual {v7}, Landroid/app/AlertDialog$Builder;->create()Landroid/app/AlertDialog;
+
+    move-result-object v7
+
+    iput-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
+
+    .line 180
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
+
+    invoke-virtual {v7, v10}, Landroid/app/AlertDialog;->setCanceledOnTouchOutside(Z)V
+
+    .line 181
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
+
+    const/4 v8, -0x2
+
+    invoke-virtual {v7, v8, v12}, Landroid/app/AlertDialog;->setButtonClickDismiss(IZ)V
+
+    .line 182
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
+
+    const/4 v8, -0x3
+
+    invoke-virtual {v7, v8, v10}, Landroid/app/AlertDialog;->setButtonClickDismiss(IZ)V
+
     .line 183
-    .local v4, title:Ljava/lang/String;
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
 
-    invoke-interface {v5}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
+    const/4 v8, -0x1
+
+    invoke-virtual {v7, v8, v10}, Landroid/app/AlertDialog;->setButtonClickDismiss(IZ)V
+
+    .line 204
+    .end local v0           #contentView:Landroid/view/View;
+    .end local v2           #dialogStyle:I
+    .end local v3           #layoutInflater:Landroid/view/LayoutInflater;
+    .end local v4           #sizeText:Landroid/widget/TextView;
+    .end local v6           #titleText:Landroid/widget/TextView;
+    :goto_0
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
+
+    new-instance v8, Lcom/android/gallery3d/ui/DialogDetailsView$3;
+
+    invoke-direct {v8, p0}, Lcom/android/gallery3d/ui/DialogDetailsView$3;-><init>(Lcom/android/gallery3d/ui/DialogDetailsView;)V
+
+    invoke-virtual {v7, v8}, Landroid/app/AlertDialog;->setOnDismissListener(Landroid/content/DialogInterface$OnDismissListener;)V
+
+    .line 211
+    return-void
+
+    .line 185
+    :cond_0
+    new-instance v7, Lcom/android/gallery3d/ui/DialogDetailsView$DetailsAdapter;
+
+    invoke-direct {v7, p0, p1}, Lcom/android/gallery3d/ui/DialogDetailsView$DetailsAdapter;-><init>(Lcom/android/gallery3d/ui/DialogDetailsView;Lcom/android/gallery3d/data/MediaDetails;)V
+
+    iput-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mAdapter:Lcom/android/gallery3d/ui/DialogDetailsView$DetailsAdapter;
+
+    .line 186
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
+
+    invoke-interface {v7}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
+
+    move-result-object v7
+
+    const v8, 0x7f0a015b
+
+    invoke-virtual {v7, v8}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object v7
+
+    new-array v8, v9, [Ljava/lang/Object;
+
+    iget v9, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mIndex:I
+
+    add-int/lit8 v9, v9, 0x1
+
+    invoke-static {v9}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v9
+
+    aput-object v9, v8, v10
+
+    iget-object v9, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSource:Lcom/android/gallery3d/ui/DetailsHelper$DetailsSource;
+
+    invoke-interface {v9}, Lcom/android/gallery3d/ui/DetailsHelper$DetailsSource;->size()I
+
+    move-result v9
+
+    invoke-static {v9}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v9
+
+    aput-object v9, v8, v12
+
+    invoke-static {v7, v8}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v5
 
-    invoke-static {v5}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+    .line 189
+    .local v5, title:Ljava/lang/String;
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
 
-    move-result-object v5
+    invoke-interface {v7}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
 
-    const v6, 0x7f040022
+    move-result-object v7
 
-    invoke-virtual {v5, v6, v9, v8}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
+    invoke-static {v7}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+
+    move-result-object v7
+
+    const v8, 0x7f040024
+
+    invoke-virtual {v7, v8, v11, v10}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
     move-result-object v1
 
     check-cast v1, Landroid/widget/ListView;
 
-    .line 185
+    .line 191
     .local v1, detailsList:Landroid/widget/ListView;
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mAdapter:Lcom/android/gallery3d/ui/DialogDetailsView$DetailsAdapter;
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mAdapter:Lcom/android/gallery3d/ui/DialogDetailsView$DetailsAdapter;
 
-    invoke-virtual {v1, v5}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V
+    invoke-virtual {v1, v7}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V
 
-    .line 186
-    new-instance v6, Landroid/app/AlertDialog$Builder;
+    .line 192
+    new-instance v8, Landroid/app/AlertDialog$Builder;
 
-    iget-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
 
-    check-cast v5, Landroid/app/Activity;
+    check-cast v7, Landroid/app/Activity;
 
-    invoke-direct {v6, v5}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v8, v7}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
-    invoke-virtual {v6, v1}, Landroid/app/AlertDialog$Builder;->setView(Landroid/view/View;)Landroid/app/AlertDialog$Builder;
+    invoke-virtual {v8, v1}, Landroid/app/AlertDialog$Builder;->setView(Landroid/view/View;)Landroid/app/AlertDialog$Builder;
 
-    move-result-object v5
+    move-result-object v7
 
-    invoke-virtual {v5, v4}, Landroid/app/AlertDialog$Builder;->setTitle(Ljava/lang/CharSequence;)Landroid/app/AlertDialog$Builder;
+    invoke-virtual {v7, v5}, Landroid/app/AlertDialog$Builder;->setTitle(Ljava/lang/CharSequence;)Landroid/app/AlertDialog$Builder;
 
-    move-result-object v5
+    move-result-object v7
 
-    const v6, 0x7f0a0151
+    const v8, 0x7f0a015c
 
-    new-instance v7, Lcom/android/gallery3d/ui/DialogDetailsView$2;
+    new-instance v9, Lcom/android/gallery3d/ui/DialogDetailsView$2;
 
-    invoke-direct {v7, p0}, Lcom/android/gallery3d/ui/DialogDetailsView$2;-><init>(Lcom/android/gallery3d/ui/DialogDetailsView;)V
+    invoke-direct {v9, p0}, Lcom/android/gallery3d/ui/DialogDetailsView$2;-><init>(Lcom/android/gallery3d/ui/DialogDetailsView;)V
 
-    invoke-virtual {v5, v6, v7}, Landroid/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+    invoke-virtual {v7, v8, v9}, Landroid/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
 
-    move-result-object v5
+    move-result-object v7
 
-    invoke-virtual {v5}, Landroid/app/AlertDialog$Builder;->create()Landroid/app/AlertDialog;
+    invoke-virtual {v7}, Landroid/app/AlertDialog$Builder;->create()Landroid/app/AlertDialog;
 
-    move-result-object v5
+    move-result-object v7
 
-    iput-object v5, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
+    iput-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
 
     goto :goto_0
 .end method
@@ -1446,7 +1523,7 @@
     .prologue
     const/16 v8, 0x20
 
-    .line 208
+    .line 214
     invoke-virtual {p2}, Lcom/android/gallery3d/data/MediaDetails;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
@@ -1466,11 +1543,11 @@
 
     check-cast v0, Ljava/util/Map$Entry;
 
-    .line 209
+    .line 215
     .local v0, detail:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Ljava/lang/Integer;Ljava/lang/Object;>;"
     const-string v6, ""
 
-    .line 210
+    .line 216
     .local v6, value:Ljava/lang/String;
     invoke-interface {v0}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
@@ -1486,7 +1563,7 @@
 
     goto :goto_0
 
-    .line 212
+    .line 218
     :sswitch_0
     invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
@@ -1496,24 +1573,31 @@
 
     move-result-object v6
 
-    .line 213
+    .line 219
     invoke-static {v6}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v7
 
     if-nez v7, :cond_0
 
-    .line 214
+    .line 220
     iput-object v6, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageTitle:Ljava/lang/String;
 
-    .line 215
+    .line 221
     iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mTitleEdit:Landroid/widget/EditText;
 
     invoke-direct {p0, v7, v6}, Lcom/android/gallery3d/ui/DialogDetailsView;->setEditTextInformation(Landroid/widget/EditText;Ljava/lang/String;)V
 
+    .line 222
+    iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mTitleEdit:Landroid/widget/EditText;
+
+    sget-object v9, Landroid/text/TextUtils$TruncateAt;->MIDDLE_SMALL:Landroid/text/TextUtils$TruncateAt;
+
+    invoke-virtual {v7, v9}, Landroid/widget/EditText;->setEllipsize(Landroid/text/TextUtils$TruncateAt;)V
+
     goto :goto_0
 
-    .line 221
+    .line 228
     :sswitch_1
     invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
@@ -1522,7 +1606,7 @@
     .end local v6           #value:Ljava/lang/String;
     check-cast v6, Ljava/lang/String;
 
-    .line 222
+    .line 229
     .restart local v6       #value:Ljava/lang/String;
     invoke-static {v6}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -1530,7 +1614,7 @@
 
     if-nez v7, :cond_0
 
-    .line 223
+    .line 230
     const-string v7, "-"
 
     const-string v9, "/"
@@ -1539,14 +1623,14 @@
 
     move-result-object v6
 
-    .line 224
-    const v7, 0x7f0d006e
+    .line 231
+    const v7, 0x7f0d0073
 
     invoke-direct {p0, p1, v7, v6}, Lcom/android/gallery3d/ui/DialogDetailsView;->setTextViewInformation(Landroid/view/View;ILjava/lang/String;)V
 
     goto :goto_0
 
-    .line 230
+    .line 237
     :sswitch_2
     invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
@@ -1558,7 +1642,7 @@
 
     check-cast v4, [D
 
-    .line 231
+    .line 238
     .local v4, latlng:[D
     iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
 
@@ -1570,7 +1654,7 @@
 
     goto :goto_0
 
-    .line 244
+    .line 251
     .end local v4           #latlng:[D
     :sswitch_3
     iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
@@ -1593,21 +1677,21 @@
 
     move-result-object v6
 
-    .line 246
+    .line 253
     invoke-static {v6}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v7
 
     if-nez v7, :cond_0
 
-    .line 247
-    const v7, 0x7f0d006d
+    .line 254
+    const v7, 0x7f0d0072
 
     invoke-direct {p0, p1, v7, v6}, Lcom/android/gallery3d/ui/DialogDetailsView;->setTextViewInformation(Landroid/view/View;ILjava/lang/String;)V
 
     goto/16 :goto_0
 
-    .line 253
+    .line 260
     :sswitch_4
     invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
@@ -1617,14 +1701,14 @@
 
     move-result-object v6
 
-    .line 254
+    .line 261
     invoke-static {v6}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v7
 
     if-nez v7, :cond_0
 
-    .line 255
+    .line 262
     new-instance v7, Ljava/lang/StringBuilder;
 
     invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
@@ -1643,14 +1727,14 @@
 
     move-result-object v6
 
-    .line 256
-    const v7, 0x7f0d0070
+    .line 263
+    const v7, 0x7f0d0075
 
     invoke-direct {p0, p1, v7, v6}, Lcom/android/gallery3d/ui/DialogDetailsView;->setTextViewInformation(Landroid/view/View;ILjava/lang/String;)V
 
     goto/16 :goto_0
 
-    .line 262
+    .line 269
     :sswitch_5
     invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
@@ -1660,14 +1744,14 @@
 
     move-result-object v6
 
-    .line 263
+    .line 270
     invoke-static {v6}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v7
 
     if-nez v7, :cond_0
 
-    .line 264
+    .line 271
     new-instance v7, Ljava/lang/StringBuilder;
 
     invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
@@ -1686,14 +1770,14 @@
 
     move-result-object v6
 
-    .line 265
-    const v7, 0x7f0d0071
+    .line 272
+    const v7, 0x7f0d0076
 
     invoke-direct {p0, p1, v7, v6}, Lcom/android/gallery3d/ui/DialogDetailsView;->setTextViewInformation(Landroid/view/View;ILjava/lang/String;)V
 
     goto/16 :goto_0
 
-    .line 271
+    .line 278
     :sswitch_6
     invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
@@ -1703,14 +1787,14 @@
 
     move-result-object v6
 
-    .line 272
+    .line 279
     invoke-static {v6}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v7
 
     if-nez v7, :cond_0
 
-    .line 273
+    .line 280
     new-instance v7, Ljava/lang/StringBuilder;
 
     invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
@@ -1729,14 +1813,14 @@
 
     move-result-object v6
 
-    .line 274
-    const v7, 0x7f0d0072
+    .line 281
+    const v7, 0x7f0d0077
 
     invoke-direct {p0, p1, v7, v6}, Lcom/android/gallery3d/ui/DialogDetailsView;->setTextViewInformation(Landroid/view/View;ILjava/lang/String;)V
 
     goto/16 :goto_0
 
-    .line 288
+    .line 295
     :sswitch_7
     invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
@@ -1746,21 +1830,21 @@
 
     move-result-object v6
 
-    .line 289
+    .line 296
     invoke-static {v6}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v7
 
     if-nez v7, :cond_0
 
-    .line 290
-    const v7, 0x7f0d006f
+    .line 297
+    const v7, 0x7f0d0074
 
     invoke-direct {p0, p1, v7, v6}, Lcom/android/gallery3d/ui/DialogDetailsView;->setTextViewInformation(Landroid/view/View;ILjava/lang/String;)V
 
     goto/16 :goto_0
 
-    .line 296
+    .line 303
     :sswitch_8
     invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
@@ -1770,17 +1854,17 @@
 
     move-result-object v6
 
-    .line 297
+    .line 304
     invoke-static {v6}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v7
 
     if-nez v7, :cond_0
 
-    .line 298
+    .line 305
     iput-object v6, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mFilePath:Ljava/lang/String;
 
-    .line 299
+    .line 306
     const-string v7, "."
 
     invoke-virtual {v6, v7}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
@@ -1795,19 +1879,19 @@
 
     move-result-object v6
 
-    .line 300
+    .line 307
     invoke-virtual {v6}, Ljava/lang/String;->toUpperCase()Ljava/lang/String;
 
     move-result-object v6
 
-    .line 301
-    const v7, 0x7f0d0067
+    .line 308
+    const v7, 0x7f0d006b
 
     invoke-direct {p0, p1, v7, v6}, Lcom/android/gallery3d/ui/DialogDetailsView;->setTextViewInformation(Landroid/view/View;ILjava/lang/String;)V
 
     goto/16 :goto_0
 
-    .line 308
+    .line 315
     .end local v0           #detail:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Ljava/lang/Integer;Ljava/lang/Object;>;"
     .end local v6           #value:Ljava/lang/String;
     :cond_1
@@ -1817,7 +1901,7 @@
 
     move-result v3
 
-    .line 309
+    .line 316
     .local v3, itemWidth:I
     iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
@@ -1825,7 +1909,7 @@
 
     move-result v2
 
-    .line 310
+    .line 317
     .local v2, itemHeight:I
     iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
@@ -1837,22 +1921,22 @@
 
     if-eqz v7, :cond_2
 
-    .line 311
+    .line 318
     move v5, v3
 
-    .line 312
+    .line 319
     .local v5, temp:I
     move v3, v2
 
-    .line 313
+    .line 320
     move v2, v5
 
-    .line 316
+    .line 323
     .end local v5           #temp:I
     :cond_2
     iput v2, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageH:I
 
-    .line 317
+    .line 324
     iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mHeightEdit:Landroid/widget/EditText;
 
     iget v9, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageH:I
@@ -1863,15 +1947,15 @@
 
     invoke-direct {p0, v7, v9}, Lcom/android/gallery3d/ui/DialogDetailsView;->setEditTextInformation(Landroid/widget/EditText;Ljava/lang/String;)V
 
-    .line 318
+    .line 325
     iget v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageH:I
 
     if-gt v7, v8, :cond_3
 
-    .line 319
+    .line 326
     invoke-direct {p0}, Lcom/android/gallery3d/ui/DialogDetailsView;->setEditTextDisabled()V
 
-    .line 321
+    .line 328
     :cond_3
     iget v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageH:I
 
@@ -1886,15 +1970,15 @@
     :goto_1
     iput v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mMinImageH:I
 
-    .line 322
+    .line 329
     iget v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageH:I
 
     iput v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mNewHeight:I
 
-    .line 324
+    .line 331
     iput v3, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageW:I
 
-    .line 325
+    .line 332
     iget-object v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mWidthEdit:Landroid/widget/EditText;
 
     iget v9, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageW:I
@@ -1905,15 +1989,15 @@
 
     invoke-direct {p0, v7, v9}, Lcom/android/gallery3d/ui/DialogDetailsView;->setEditTextInformation(Landroid/widget/EditText;Ljava/lang/String;)V
 
-    .line 326
+    .line 333
     iget v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageW:I
 
     if-gt v7, v8, :cond_4
 
-    .line 327
+    .line 334
     invoke-direct {p0}, Lcom/android/gallery3d/ui/DialogDetailsView;->setEditTextDisabled()V
 
-    .line 329
+    .line 336
     :cond_4
     iget v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageW:I
 
@@ -1928,21 +2012,23 @@
     :cond_5
     iput v8, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mMinImageW:I
 
-    .line 330
+    .line 337
     iget v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mImageW:I
 
     iput v7, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mNewWidth:I
 
-    .line 331
+    .line 338
     return-void
 
     :cond_6
     move v7, v8
 
-    .line 321
+    .line 328
     goto :goto_1
 
-    .line 210
+    .line 216
+    nop
+
     :sswitch_data_0
     .sparse-switch
         0x1 -> :sswitch_0
@@ -1961,21 +2047,21 @@
     .locals 3
 
     .prologue
-    const v2, 0x7f080047
+    const v2, 0x7f08004d
 
     const/4 v1, 0x0
 
-    .line 391
+    .line 400
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mHeightEdit:Landroid/widget/EditText;
 
     invoke-virtual {v0, v1}, Landroid/widget/EditText;->setEnabled(Z)V
 
-    .line 392
+    .line 401
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mWidthEdit:Landroid/widget/EditText;
 
     invoke-virtual {v0, v1}, Landroid/widget/EditText;->setEnabled(Z)V
 
-    .line 393
+    .line 402
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mHeightEdit:Landroid/widget/EditText;
 
     iget-object v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
@@ -1994,7 +2080,7 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/EditText;->setTextColor(I)V
 
-    .line 394
+    .line 403
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mWidthEdit:Landroid/widget/EditText;
 
     iget-object v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
@@ -2013,7 +2099,7 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/EditText;->setTextColor(I)V
 
-    .line 395
+    .line 404
     return-void
 .end method
 
@@ -2025,19 +2111,19 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 384
+    .line 393
     invoke-virtual {p1, p2}, Landroid/widget/EditText;->setText(Ljava/lang/CharSequence;)V
 
-    .line 385
+    .line 394
     invoke-virtual {p1, p2}, Landroid/widget/EditText;->setHint(Ljava/lang/CharSequence;)V
 
-    .line 386
+    .line 395
     invoke-virtual {p1, v0}, Landroid/widget/EditText;->setEllipsisSmall(Z)V
 
-    .line 387
+    .line 396
     invoke-virtual {p1, v0}, Landroid/widget/EditText;->setSelectAllOnFocus(Z)V
 
-    .line 388
+    .line 397
     return-void
 .end method
 
@@ -2048,23 +2134,23 @@
     .parameter "value"
 
     .prologue
-    .line 373
+    .line 382
     invoke-virtual {p1, p2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
     check-cast v0, Landroid/widget/TextView;
 
-    .line 379
+    .line 388
     .local v0, textView:Landroid/widget/TextView;
     invoke-virtual {v0, p3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 380
+    .line 389
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 381
+    .line 390
     return-void
 .end method
 
@@ -2076,7 +2162,7 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 406
+    .line 415
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mContext:Lcom/android/gallery3d/app/GalleryActivity;
 
     invoke-interface {v0}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
@@ -2109,7 +2195,7 @@
 
     invoke-virtual {v0}, Landroid/widget/Toast;->show()V
 
-    .line 409
+    .line 418
     return-void
 .end method
 
@@ -2119,12 +2205,12 @@
     .locals 1
 
     .prologue
-    .line 134
+    .line 135
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
 
     invoke-virtual {v0}, Landroid/app/AlertDialog;->hide()V
 
-    .line 135
+    .line 136
     return-void
 .end method
 
@@ -2132,17 +2218,17 @@
     .locals 2
 
     .prologue
-    .line 747
+    .line 773
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSaveFileHelper:Lcom/android/gallery3d/ui/DetailsSaveFileHelper;
 
     if-eqz v0, :cond_0
 
-    .line 748
+    .line 774
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSaveFileHelper:Lcom/android/gallery3d/ui/DetailsSaveFileHelper;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->pause()V
 
-    .line 750
+    .line 776
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mMainHandler:Landroid/os/Handler;
 
@@ -2150,7 +2236,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 751
+    .line 777
     return-void
 .end method
 
@@ -2159,25 +2245,25 @@
     .parameter "indexHint"
 
     .prologue
-    .line 138
+    .line 139
     iget-object v2, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSource:Lcom/android/gallery3d/ui/DetailsHelper$DetailsSource;
 
     invoke-interface {v2, p1}, Lcom/android/gallery3d/ui/DetailsHelper$DetailsSource;->findIndex(I)I
 
     move-result v1
 
-    .line 139
+    .line 140
     .local v1, index:I
     const/4 v2, -0x1
 
     if-ne v1, v2, :cond_1
 
-    .line 147
+    .line 148
     :cond_0
     :goto_0
     return-void
 
-    .line 140
+    .line 141
     :cond_1
     iget-object v2, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSource:Lcom/android/gallery3d/ui/DetailsHelper$DetailsSource;
 
@@ -2185,11 +2271,11 @@
 
     move-result-object v0
 
-    .line 141
+    .line 142
     .local v0, details:Lcom/android/gallery3d/data/MediaDetails;
     if-eqz v0, :cond_0
 
-    .line 142
+    .line 143
     iget v2, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mIndex:I
 
     if-ne v2, v1, :cond_2
@@ -2198,14 +2284,14 @@
 
     if-eq v2, v0, :cond_0
 
-    .line 143
+    .line 144
     :cond_2
     iput v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mIndex:I
 
-    .line 144
+    .line 145
     iput-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDetails:Lcom/android/gallery3d/data/MediaDetails;
 
-    .line 145
+    .line 146
     invoke-direct {p0, v0}, Lcom/android/gallery3d/ui/DialogDetailsView;->setDetails(Lcom/android/gallery3d/data/MediaDetails;)V
 
     goto :goto_0
@@ -2216,10 +2302,10 @@
     .parameter "listener"
 
     .prologue
-    .line 736
+    .line 762
     iput-object p1, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mListener:Lcom/android/gallery3d/ui/DetailsHelper$CloseListener;
 
-    .line 737
+    .line 763
     return-void
 .end method
 
@@ -2228,20 +2314,20 @@
     .parameter "item"
 
     .prologue
-    .line 740
+    .line 766
     iput-object p1, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
-    .line 741
+    .line 767
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSaveFileHelper:Lcom/android/gallery3d/ui/DetailsSaveFileHelper;
 
     if-eqz v0, :cond_0
 
-    .line 742
+    .line 768
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSaveFileHelper:Lcom/android/gallery3d/ui/DetailsSaveFileHelper;
 
     invoke-virtual {v0, p1}, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->setCurrentItem(Lcom/android/gallery3d/data/MediaItem;)V
 
-    .line 744
+    .line 770
     :cond_0
     return-void
 .end method
@@ -2250,7 +2336,7 @@
     .locals 2
 
     .prologue
-    .line 128
+    .line 129
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mSource:Lcom/android/gallery3d/ui/DetailsHelper$DetailsSource;
 
     invoke-interface {v0}, Lcom/android/gallery3d/ui/DetailsHelper$DetailsSource;->getIndex()I
@@ -2259,18 +2345,18 @@
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/ui/DialogDetailsView;->reloadDetails(I)V
 
-    .line 129
+    .line 130
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
 
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/app/AlertDialog;->setAutoShowSoftInput(Z)V
 
-    .line 130
+    .line 131
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView;->mDialog:Landroid/app/AlertDialog;
 
     invoke-virtual {v0}, Landroid/app/AlertDialog;->show()V
 
-    .line 131
+    .line 132
     return-void
 .end method

@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 178
+    .line 172
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$3;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,14 +42,14 @@
     .parameter "v"
 
     .prologue
-    .line 181
+    .line 177
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$3;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v0}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->pokeWakelock()V
 
-    .line 182
+    .line 178
     invoke-static {}, Landroid/telephony/TelephonyManager;->getDefault()Landroid/telephony/TelephonyManager;
 
     move-result-object v0
@@ -60,7 +60,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 184
+    .line 180
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$3;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     #getter for: Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mLockPatternUtils:Lcom/android/internal/widget/LockPatternUtils;
@@ -70,11 +70,11 @@
 
     invoke-virtual {v0}, Lcom/android/internal/widget/LockPatternUtils;->resumeCall()Z
 
-    .line 189
+    .line 185
     :goto_0
     return-void
 
-    .line 186
+    .line 182
     :cond_0
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$3;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 

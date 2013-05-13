@@ -356,7 +356,7 @@
     :cond_0
     iget-object v0, p0, Landroid/net/pppoe/PppoeStateTracker;->mNotificationManager:Landroid/app/NotificationManager;
 
-    const v1, 0x1090099
+    const v1, 0x109009f
 
     invoke-virtual {v0, v1}, Landroid/app/NotificationManager;->cancel(I)V
 
@@ -1040,7 +1040,7 @@
     .locals 11
 
     .prologue
-    const v10, 0x1090099
+    const v10, 0x109009f
 
     const/4 v9, 0x0
 
@@ -1089,7 +1089,7 @@
 
     .line 254
     .local v8, notification:Landroid/app/Notification;
-    const v1, 0x10806f1
+    const v1, 0x108071d
 
     iput v1, v8, Landroid/app/Notification;->icon:I
 
@@ -1112,9 +1112,9 @@
 
     .line 260
     .local v0, contentView:Landroid/widget/RemoteViews;
-    const v1, 0x1020388
+    const v1, 0x1020384
 
-    const v5, 0x10806b1
+    const v5, 0x10806db
 
     invoke-virtual {v0, v1, v5}, Landroid/widget/RemoteViews;->setImageViewResource(II)V
 
@@ -1137,14 +1137,14 @@
     .local v4, expandedViewLine1:Ljava/lang/String;
     iget-object v1, p0, Landroid/net/pppoe/PppoeStateTracker;->mContext:Landroid/content/Context;
 
-    const v5, 0x104053b
+    const v5, 0x104053f
 
     invoke-virtual {v1, v5}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
     move-result-object v4
 
     .line 269
-    const v1, 0x1020389
+    const v1, 0x1020385
 
     const/4 v5, 0x1
 

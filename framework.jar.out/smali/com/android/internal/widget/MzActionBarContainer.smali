@@ -3,57 +3,24 @@
 .source "MzActionBarContainer.java"
 
 
-# annotations
-.annotation system Ldalvik/annotation/MemberClasses;
-    value = {
-        Lcom/android/internal/widget/MzActionBarContainer$ActionItemContainer;
-    }
-.end annotation
-
-
 # static fields
-.field private static final MSG_PERFORM_CLICK:I
+.field private static final TAG:Ljava/lang/String; = "MzActionBarContainer"
 
 
 # instance fields
-.field private mActionItemList:Ljava/util/List;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/List",
-            "<",
-            "Lcom/android/internal/app/DockActionItem;",
-            ">;"
-        }
-    .end annotation
-.end field
-
 .field private mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
-.field private mCallback:Lcom/android/internal/app/IDockActionCallback;
+.field private mBackIcon:Landroid/graphics/drawable/Drawable;
+
+.field private mBackImeIcon:Landroid/graphics/drawable/Drawable;
 
 .field private mEnableBackButton:Z
 
 .field private mExtraPadding:I
 
-.field private mHandler:Landroid/os/Handler;
-
-.field private mHasDockService:Z
-
-.field private mLostFocused:Z
-
-.field mManager:Lcom/android/internal/app/DockActionBarManager;
-
 .field private mMenuView:Landroid/view/View;
 
-.field private mNeedDockActionBar:Z
-
 .field private mOrientatinPortrait:Z
-
-.field private mResumed:Z
-
-.field private mShowMenuWhenTabAtBottom:Z
-
-.field private final tag:Ljava/lang/String;
 
 
 # direct methods
@@ -62,69 +29,25 @@
     .parameter "context"
 
     .prologue
-    const/4 v1, 0x0
-
-    .line 33
+    .line 22
     invoke-direct {p0, p1}, Lcom/android/internal/widget/ActionBarContainer;-><init>(Landroid/content/Context;)V
 
-    .line 41
-    const-string v0, "MzActionBarContainer"
+    .line 146
+    const/4 v0, 0x0
 
-    iput-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->tag:Ljava/lang/String;
+    iput-boolean v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mEnableBackButton:Z
 
-    .line 42
-    iput-boolean v1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mNeedDockActionBar:Z
-
-    .line 43
-    iput-boolean v1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mHasDockService:Z
-
-    .line 249
-    new-instance v0, Lcom/android/internal/widget/MzActionBarContainer$1;
-
-    invoke-direct {v0, p0}, Lcom/android/internal/widget/MzActionBarContainer$1;-><init>(Lcom/android/internal/widget/MzActionBarContainer;)V
-
-    iput-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mHandler:Landroid/os/Handler;
-
-    .line 411
-    iput-boolean v1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mResumed:Z
-
-    .line 412
-    iput-boolean v1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mLostFocused:Z
-
-    .line 438
-    iput-boolean v1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mShowMenuWhenTabAtBottom:Z
-
-    .line 448
-    iput-boolean v1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mEnableBackButton:Z
-
-    .line 490
+    .line 202
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mOrientatinPortrait:Z
 
-    .line 35
-    iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    if-nez v0, :cond_0
-
-    .line 36
-    new-instance v0, Lcom/android/internal/app/DockActionBarManager;
-
-    invoke-virtual {p0}, Lcom/android/internal/widget/MzActionBarContainer;->getContext()Landroid/content/Context;
-
-    move-result-object v1
-
-    invoke-direct {v0, v1}, Lcom/android/internal/app/DockActionBarManager;-><init>(Landroid/content/Context;)V
-
-    iput-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    .line 38
-    :cond_0
+    .line 24
     invoke-virtual {p0}, Lcom/android/internal/widget/MzActionBarContainer;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
 
-    const v1, 0x10500dc
+    const v1, 0x1050101
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -132,7 +55,7 @@
 
     iput v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mExtraPadding:I
 
-    .line 39
+    .line 25
     return-void
 .end method
 
@@ -142,69 +65,25 @@
     .parameter "attrs"
 
     .prologue
-    const/4 v1, 0x0
-
-    .line 24
+    .line 16
     invoke-direct {p0, p1, p2}, Lcom/android/internal/widget/ActionBarContainer;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 41
-    const-string v0, "MzActionBarContainer"
+    .line 146
+    const/4 v0, 0x0
 
-    iput-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->tag:Ljava/lang/String;
+    iput-boolean v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mEnableBackButton:Z
 
-    .line 42
-    iput-boolean v1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mNeedDockActionBar:Z
-
-    .line 43
-    iput-boolean v1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mHasDockService:Z
-
-    .line 249
-    new-instance v0, Lcom/android/internal/widget/MzActionBarContainer$1;
-
-    invoke-direct {v0, p0}, Lcom/android/internal/widget/MzActionBarContainer$1;-><init>(Lcom/android/internal/widget/MzActionBarContainer;)V
-
-    iput-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mHandler:Landroid/os/Handler;
-
-    .line 411
-    iput-boolean v1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mResumed:Z
-
-    .line 412
-    iput-boolean v1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mLostFocused:Z
-
-    .line 438
-    iput-boolean v1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mShowMenuWhenTabAtBottom:Z
-
-    .line 448
-    iput-boolean v1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mEnableBackButton:Z
-
-    .line 490
+    .line 202
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mOrientatinPortrait:Z
 
-    .line 26
-    iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    if-nez v0, :cond_0
-
-    .line 27
-    new-instance v0, Lcom/android/internal/app/DockActionBarManager;
-
-    invoke-virtual {p0}, Lcom/android/internal/widget/MzActionBarContainer;->getContext()Landroid/content/Context;
-
-    move-result-object v1
-
-    invoke-direct {v0, v1}, Lcom/android/internal/app/DockActionBarManager;-><init>(Landroid/content/Context;)V
-
-    iput-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    .line 29
-    :cond_0
+    .line 18
     invoke-virtual {p0}, Lcom/android/internal/widget/MzActionBarContainer;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
 
-    const v1, 0x10500dc
+    const v1, 0x1050101
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -212,396 +91,8 @@
 
     iput v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mExtraPadding:I
 
-    .line 30
+    .line 19
     return-void
-.end method
-
-.method static synthetic access$000(Lcom/android/internal/widget/MzActionBarContainer;)Ljava/util/List;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 21
-    iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    return-object v0
-.end method
-
-.method static synthetic access$100(Lcom/android/internal/widget/MzActionBarContainer;)Landroid/os/Handler;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 21
-    iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mHandler:Landroid/os/Handler;
-
-    return-object v0
-.end method
-
-.method private deactive()V
-    .locals 6
-
-    .prologue
-    .line 346
-    iget-object v3, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    if-nez v3, :cond_0
-
-    .line 347
-    new-instance v3, Lcom/android/internal/app/DockActionBarManager;
-
-    invoke-virtual {p0}, Lcom/android/internal/widget/MzActionBarContainer;->getContext()Landroid/content/Context;
-
-    move-result-object v4
-
-    invoke-direct {v3, v4}, Lcom/android/internal/app/DockActionBarManager;-><init>(Landroid/content/Context;)V
-
-    iput-object v3, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    .line 350
-    :cond_0
-    iget-object v3, p0, Lcom/android/internal/widget/MzActionBarContainer;->mCallback:Lcom/android/internal/app/IDockActionCallback;
-
-    if-nez v3, :cond_1
-
-    .line 351
-    new-instance v3, Lcom/android/internal/widget/MzActionBarContainer$4;
-
-    invoke-direct {v3, p0}, Lcom/android/internal/widget/MzActionBarContainer$4;-><init>(Lcom/android/internal/widget/MzActionBarContainer;)V
-
-    iput-object v3, p0, Lcom/android/internal/widget/MzActionBarContainer;->mCallback:Lcom/android/internal/app/IDockActionCallback;
-
-    .line 359
-    :cond_1
-    const/4 v2, 0x0
-
-    .line 360
-    .local v2, moreMemu:Lcom/android/internal/app/DockActionItem;
-    iget-object v3, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    if-eqz v3, :cond_3
-
-    .line 361
-    iget-object v3, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    invoke-interface {v3}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
-    move-result-object v0
-
-    .local v0, i$:Ljava/util/Iterator;
-    :cond_2
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Lcom/android/internal/app/DockActionItem;
-
-    .line 362
-    .local v1, item:Lcom/android/internal/app/DockActionItem;
-    iget v3, v1, Lcom/android/internal/app/DockActionItem;->mType:I
-
-    const/4 v4, 0x2
-
-    if-ne v3, v4, :cond_2
-
-    .line 363
-    iget-object v3, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    invoke-interface {v3, v1}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
-
-    .line 364
-    move-object v2, v1
-
-    .line 371
-    .end local v0           #i$:Ljava/util/Iterator;
-    .end local v1           #item:Lcom/android/internal/app/DockActionItem;
-    :cond_3
-    :try_start_0
-    iget-object v3, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    invoke-virtual {v3}, Lcom/android/internal/app/DockActionBarManager;->getInstance()Lcom/android/internal/app/IDockActionBar;
-
-    move-result-object v3
-
-    if-eqz v3, :cond_4
-
-    .line 372
-    iget-object v3, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    invoke-virtual {v3}, Lcom/android/internal/app/DockActionBarManager;->getInstance()Lcom/android/internal/app/IDockActionBar;
-
-    move-result-object v3
-
-    iget-object v4, p0, Lcom/android/internal/widget/MzActionBarContainer;->mCallback:Lcom/android/internal/app/IDockActionCallback;
-
-    iget-object v5, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    invoke-interface {v3, v4, v5}, Lcom/android/internal/app/IDockActionBar;->deactive(Lcom/android/internal/app/IDockActionCallback;Ljava/util/List;)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 382
-    :cond_4
-    :goto_0
-    if-eqz v2, :cond_5
-
-    .line 383
-    iget-object v3, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    invoke-interface {v3, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-
-    .line 385
-    :cond_5
-    return-void
-
-    .line 374
-    :catch_0
-    move-exception v3
-
-    goto :goto_0
-.end method
-
-.method private dock()V
-    .locals 8
-
-    .prologue
-    .line 261
-    iget-object v5, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    if-nez v5, :cond_0
-
-    .line 262
-    new-instance v5, Lcom/android/internal/app/DockActionBarManager;
-
-    invoke-virtual {p0}, Lcom/android/internal/widget/MzActionBarContainer;->getContext()Landroid/content/Context;
-
-    move-result-object v6
-
-    invoke-direct {v5, v6}, Lcom/android/internal/app/DockActionBarManager;-><init>(Landroid/content/Context;)V
-
-    iput-object v5, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    .line 265
-    :cond_0
-    iget-object v5, p0, Lcom/android/internal/widget/MzActionBarContainer;->mCallback:Lcom/android/internal/app/IDockActionCallback;
-
-    if-nez v5, :cond_1
-
-    .line 266
-    new-instance v5, Lcom/android/internal/widget/MzActionBarContainer$2;
-
-    invoke-direct {v5, p0}, Lcom/android/internal/widget/MzActionBarContainer$2;-><init>(Lcom/android/internal/widget/MzActionBarContainer;)V
-
-    iput-object v5, p0, Lcom/android/internal/widget/MzActionBarContainer;->mCallback:Lcom/android/internal/app/IDockActionCallback;
-
-    .line 285
-    :cond_1
-    const/4 v4, 0x0
-
-    .line 286
-    .local v4, needMenu:Z
-    const/4 v3, 0x0
-
-    .line 287
-    .local v3, moreMemu:Lcom/android/internal/app/DockActionItem;
-    iget-object v5, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    if-eqz v5, :cond_4
-
-    .line 288
-    const/4 v1, 0x0
-
-    .line 289
-    .local v1, isTab:Z
-    iget-object v5, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    invoke-interface {v5}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
-    move-result-object v0
-
-    .local v0, i$:Ljava/util/Iterator;
-    :cond_2
-    :goto_0
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v5
-
-    if-eqz v5, :cond_3
-
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Lcom/android/internal/app/DockActionItem;
-
-    .line 290
-    .local v2, item:Lcom/android/internal/app/DockActionItem;
-    iget v5, v2, Lcom/android/internal/app/DockActionItem;->mType:I
-
-    const/4 v6, 0x2
-
-    if-ne v5, v6, :cond_7
-
-    .line 291
-    iget-object v5, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    invoke-interface {v5, v2}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
-
-    .line 292
-    move-object v3, v2
-
-    .line 293
-    const/4 v4, 0x1
-
-    .line 300
-    .end local v2           #item:Lcom/android/internal/app/DockActionItem;
-    :cond_3
-    if-eqz v1, :cond_4
-
-    .line 301
-    iget-boolean v4, p0, Lcom/android/internal/widget/MzActionBarContainer;->mShowMenuWhenTabAtBottom:Z
-
-    .line 307
-    .end local v0           #i$:Ljava/util/Iterator;
-    .end local v1           #isTab:Z
-    :cond_4
-    :try_start_0
-    iget-object v5, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    invoke-virtual {v5}, Lcom/android/internal/app/DockActionBarManager;->getInstance()Lcom/android/internal/app/IDockActionBar;
-
-    move-result-object v5
-
-    if-eqz v5, :cond_5
-
-    .line 308
-    iget-object v5, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    invoke-virtual {v5}, Lcom/android/internal/app/DockActionBarManager;->getInstance()Lcom/android/internal/app/IDockActionBar;
-
-    move-result-object v5
-
-    iget-object v6, p0, Lcom/android/internal/widget/MzActionBarContainer;->mCallback:Lcom/android/internal/app/IDockActionCallback;
-
-    iget-object v7, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    invoke-interface {v5, v6, v7, v4}, Lcom/android/internal/app/IDockActionBar;->dock(Lcom/android/internal/app/IDockActionCallback;Ljava/util/List;Z)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 318
-    :cond_5
-    :goto_1
-    if-eqz v3, :cond_6
-
-    .line 319
-    iget-object v5, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    invoke-interface {v5, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-
-    .line 321
-    :cond_6
-    return-void
-
-    .line 295
-    .restart local v0       #i$:Ljava/util/Iterator;
-    .restart local v1       #isTab:Z
-    .restart local v2       #item:Lcom/android/internal/app/DockActionItem;
-    :cond_7
-    iget v5, v2, Lcom/android/internal/app/DockActionItem;->mType:I
-
-    const/4 v6, 0x1
-
-    if-ne v5, v6, :cond_2
-
-    .line 296
-    const/4 v1, 0x1
-
-    goto :goto_0
-
-    .line 310
-    .end local v0           #i$:Ljava/util/Iterator;
-    .end local v1           #isTab:Z
-    .end local v2           #item:Lcom/android/internal/app/DockActionItem;
-    :catch_0
-    move-exception v5
-
-    goto :goto_1
-.end method
-
-.method private findActionMenuView()Lcom/android/internal/view/menu/ActionMenuView;
-    .locals 4
-
-    .prologue
-    .line 388
-    invoke-virtual {p0}, Lcom/android/internal/widget/MzActionBarContainer;->getChildCount()I
-
-    move-result v1
-
-    .line 389
-    .local v1, childCount:I
-    const/4 v0, 0x0
-
-    .line 390
-    .local v0, child:Landroid/view/View;
-    const/4 v2, 0x0
-
-    .local v2, i:I
-    :goto_0
-    if-ge v2, v1, :cond_1
-
-    .line 391
-    invoke-virtual {p0, v2}, Lcom/android/internal/widget/MzActionBarContainer;->getChildAt(I)Landroid/view/View;
-
-    move-result-object v0
-
-    .line 392
-    instance-of v3, v0, Lcom/android/internal/view/menu/ActionMenuView;
-
-    if-eqz v3, :cond_0
-
-    invoke-virtual {v0}, Landroid/view/View;->getVisibility()I
-
-    move-result v3
-
-    if-nez v3, :cond_0
-
-    move-object v3, v0
-
-    check-cast v3, Lcom/android/internal/view/menu/ActionMenuView;
-
-    invoke-virtual {v3}, Lcom/android/internal/view/menu/ActionMenuView;->getChildCount()I
-
-    move-result v3
-
-    if-lez v3, :cond_0
-
-    move-object v3, v0
-
-    .line 394
-    check-cast v3, Lcom/android/internal/view/menu/ActionMenuView;
-
-    .line 397
-    :goto_1
-    return-object v3
-
-    .line 390
-    :cond_0
-    add-int/lit8 v2, v2, 0x1
-
-    goto :goto_0
-
-    .line 397
-    :cond_1
-    const/4 v3, 0x0
-
-    goto :goto_1
 .end method
 
 .method private removeBackButton(Landroid/view/View;)V
@@ -609,269 +100,31 @@
     .parameter "button"
 
     .prologue
-    .line 468
+    .line 168
     if-eqz p1, :cond_0
 
-    .line 469
+    .line 169
     invoke-virtual {p1}, Landroid/view/View;->getParent()Landroid/view/ViewParent;
 
     move-result-object v0
 
     check-cast v0, Landroid/view/ViewGroup;
 
-    .line 470
+    .line 170
     .local v0, parent:Landroid/view/ViewGroup;
     if-eqz v0, :cond_0
 
-    .line 471
+    .line 171
     invoke-virtual {v0, p1}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
 
-    .line 474
+    .line 174
     .end local v0           #parent:Landroid/view/ViewGroup;
     :cond_0
     return-void
 .end method
 
-.method private undock()V
-    .locals 2
-
-    .prologue
-    .line 324
-    iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    if-nez v0, :cond_0
-
-    .line 325
-    new-instance v0, Lcom/android/internal/app/DockActionBarManager;
-
-    invoke-virtual {p0}, Lcom/android/internal/widget/MzActionBarContainer;->getContext()Landroid/content/Context;
-
-    move-result-object v1
-
-    invoke-direct {v0, v1}, Lcom/android/internal/app/DockActionBarManager;-><init>(Landroid/content/Context;)V
-
-    iput-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    .line 328
-    :cond_0
-    iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mCallback:Lcom/android/internal/app/IDockActionCallback;
-
-    if-nez v0, :cond_1
-
-    .line 329
-    new-instance v0, Lcom/android/internal/widget/MzActionBarContainer$3;
-
-    invoke-direct {v0, p0}, Lcom/android/internal/widget/MzActionBarContainer$3;-><init>(Lcom/android/internal/widget/MzActionBarContainer;)V
-
-    iput-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mCallback:Lcom/android/internal/app/IDockActionCallback;
-
-    .line 337
-    :cond_1
-    :try_start_0
-    iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    invoke-virtual {v0}, Lcom/android/internal/app/DockActionBarManager;->getInstance()Lcom/android/internal/app/IDockActionBar;
-
-    move-result-object v0
-
-    if-eqz v0, :cond_2
-
-    .line 338
-    iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    invoke-virtual {v0}, Lcom/android/internal/app/DockActionBarManager;->getInstance()Lcom/android/internal/app/IDockActionBar;
-
-    move-result-object v0
-
-    iget-object v1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mCallback:Lcom/android/internal/app/IDockActionCallback;
-
-    invoke-interface {v0, v1}, Lcom/android/internal/app/IDockActionBar;->undock(Lcom/android/internal/app/IDockActionCallback;)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 343
-    :cond_2
-    :goto_0
-    return-void
-
-    .line 340
-    :catch_0
-    move-exception v0
-
-    goto :goto_0
-.end method
-
 
 # virtual methods
-.method public changeFocus(Z)V
-    .locals 1
-    .parameter "focused"
-
-    .prologue
-    .line 429
-    iget-boolean v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mResumed:Z
-
-    if-eqz v0, :cond_1
-
-    if-nez p1, :cond_1
-
-    .line 430
-    invoke-direct {p0}, Lcom/android/internal/widget/MzActionBarContainer;->deactive()V
-
-    .line 431
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mLostFocused:Z
-
-    .line 436
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 432
-    :cond_1
-    iget-boolean v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mLostFocused:Z
-
-    if-eqz v0, :cond_0
-
-    .line 433
-    const/4 v0, 0x0
-
-    iput-boolean v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mLostFocused:Z
-
-    .line 434
-    invoke-direct {p0}, Lcom/android/internal/widget/MzActionBarContainer;->dock()V
-
-    goto :goto_0
-.end method
-
-.method public hasItemChanged(Ljava/util/List;)Z
-    .locals 8
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Ljava/util/List",
-            "<",
-            "Lcom/android/internal/app/DockActionItem;",
-            ">;)Z"
-        }
-    .end annotation
-
-    .prologue
-    .local p1, menuItems:Ljava/util/List;,"Ljava/util/List<Lcom/android/internal/app/DockActionItem;>;"
-    const/4 v4, 0x0
-
-    const/4 v5, 0x1
-
-    .line 215
-    iget-object v6, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    if-nez v6, :cond_1
-
-    if-nez p1, :cond_1
-
-    .line 233
-    :cond_0
-    :goto_0
-    return v4
-
-    .line 217
-    :cond_1
-    iget-object v6, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    if-eqz v6, :cond_2
-
-    if-nez p1, :cond_3
-
-    :cond_2
-    move v4, v5
-
-    .line 218
-    goto :goto_0
-
-    .line 219
-    :cond_3
-    iget-object v6, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    invoke-interface {v6}, Ljava/util/List;->size()I
-
-    move-result v6
-
-    invoke-interface {p1}, Ljava/util/List;->size()I
-
-    move-result v7
-
-    if-eq v6, v7, :cond_4
-
-    move v4, v5
-
-    .line 220
-    goto :goto_0
-
-    .line 222
-    :cond_4
-    iget-object v6, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    invoke-interface {v6}, Ljava/util/List;->size()I
-
-    move-result v3
-
-    .line 225
-    .local v3, size:I
-    const/4 v0, 0x0
-
-    .local v0, i:I
-    :goto_1
-    if-ge v0, v3, :cond_0
-
-    .line 226
-    iget-object v6, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    invoke-interface {v6, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Lcom/android/internal/app/DockActionItem;
-
-    .line 227
-    .local v2, oldItem:Lcom/android/internal/app/DockActionItem;
-    invoke-interface {p1, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Lcom/android/internal/app/DockActionItem;
-
-    .line 228
-    .local v1, newItem:Lcom/android/internal/app/DockActionItem;
-    invoke-virtual {v2, v1}, Lcom/android/internal/app/DockActionItem;->equals(Lcom/android/internal/app/DockActionItem;)Z
-
-    move-result v6
-
-    if-nez v6, :cond_5
-
-    move v4, v5
-
-    .line 229
-    goto :goto_0
-
-    .line 225
-    :cond_5
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_1
-.end method
-
-.method public needDockActionBar()Z
-    .locals 1
-
-    .prologue
-    .line 51
-    iget-boolean v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mNeedDockActionBar:Z
-
-    return v0
-.end method
-
 .method protected onConfigurationChanged(Landroid/content/res/Configuration;)V
     .locals 2
     .parameter "newConfig"
@@ -879,10 +132,10 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 492
+    .line 204
     invoke-super {p0, p1}, Lcom/android/internal/widget/ActionBarContainer;->onConfigurationChanged(Landroid/content/res/Configuration;)V
 
-    .line 494
+    .line 206
     iget v1, p1, Landroid/content/res/Configuration;->orientation:I
 
     if-ne v1, v0, :cond_0
@@ -890,10 +143,10 @@
     :goto_0
     iput-boolean v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mOrientatinPortrait:Z
 
-    .line 495
+    .line 207
     return-void
 
-    .line 494
+    .line 206
     :cond_0
     const/4 v0, 0x0
 
@@ -901,7 +154,7 @@
 .end method
 
 .method public onLayout(ZIIII)V
-    .locals 17
+    .locals 13
     .parameter "changed"
     .parameter "l"
     .parameter "t"
@@ -909,980 +162,702 @@
     .parameter "b"
 
     .prologue
-    .line 148
-    move-object/from16 v0, p0
+    .line 99
+    iget-object v10, p0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
 
-    iget-object v14, v0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
+    if-eqz v10, :cond_1
 
-    if-eqz v14, :cond_4
+    iget-object v10, p0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
 
-    move-object/from16 v0, p0
+    invoke-virtual {v10}, Lcom/android/internal/widget/ScrollingTabContainerView;->getVisibility()I
 
-    iget-object v14, v0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
+    move-result v10
 
-    invoke-virtual {v14}, Lcom/android/internal/widget/ScrollingTabContainerView;->getVisibility()I
+    const/16 v11, 0x8
 
-    move-result v14
+    if-eq v10, v11, :cond_1
 
-    const/16 v15, 0x8
+    iget-object v10, p0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
 
-    if-eq v14, v15, :cond_4
+    invoke-virtual {v10}, Lcom/android/internal/widget/ScrollingTabContainerView;->isShowAtBottom()Z
 
-    move-object/from16 v0, p0
+    move-result v10
 
-    iget-object v14, v0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
+    if-eqz v10, :cond_1
 
-    invoke-virtual {v14}, Lcom/android/internal/widget/ScrollingTabContainerView;->isShowAtBottom()Z
+    const/4 v6, 0x1
 
-    move-result v14
-
-    if-eqz v14, :cond_4
-
-    const/4 v8, 0x1
-
-    .line 151
-    .local v8, hasTabAtBottom:Z
+    .line 102
+    .local v6, hasTabAtBottom:Z
     :goto_0
-    const/4 v10, 0x0
+    if-eqz v6, :cond_2
 
-    .line 152
-    .local v10, itemList:Ljava/util/List;,"Ljava/util/List<Lcom/android/internal/app/DockActionItem;>;"
-    move-object/from16 v0, p0
-
-    iget-boolean v14, v0, Lcom/android/internal/widget/MzActionBarContainer;->mNeedDockActionBar:Z
-
-    if-eqz v14, :cond_6
-
-    move-object/from16 v0, p0
-
-    iget-object v14, v0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    invoke-virtual {v14}, Lcom/android/internal/app/DockActionBarManager;->getInstance()Lcom/android/internal/app/IDockActionBar;
-
-    move-result-object v14
-
-    if-eqz v14, :cond_6
-
-    if-nez v8, :cond_0
-
-    move-object/from16 v0, p0
-
-    iget-boolean v14, v0, Lcom/android/internal/widget/ActionBarContainer;->mIsSplit:Z
-
-    if-eqz v14, :cond_6
-
-    .line 154
-    :cond_0
+    .line 103
     invoke-super/range {p0 .. p5}, Lcom/android/internal/widget/ActionBarContainer;->onLayout(ZIIII)V
 
-    .line 156
-    const/4 v7, 0x0
-
-    .line 157
-    .local v7, container:Lcom/android/internal/widget/MzActionBarContainer$ActionItemContainer;
-    if-eqz v8, :cond_5
-
-    .line 158
-    move-object/from16 v0, p0
-
-    iget-object v7, v0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
-
-    .line 166
-    :cond_1
+    .line 134
+    :cond_0
     :goto_1
-    if-eqz v7, :cond_2
-
-    .line 167
-    const/4 v14, 0x0
-
-    const/4 v15, 0x0
-
-    invoke-interface {v7, v14, v15}, Lcom/android/internal/widget/MzActionBarContainer$ActionItemContainer;->layoutActionItems(II)V
-
-    .line 168
-    invoke-interface {v7}, Lcom/android/internal/widget/MzActionBarContainer$ActionItemContainer;->getActionItems()Ljava/util/List;
-
-    move-result-object v10
-
-    .line 171
-    :cond_2
-    move-object/from16 v0, p0
-
-    invoke-virtual {v0, v10}, Lcom/android/internal/widget/MzActionBarContainer;->hasItemChanged(Ljava/util/List;)Z
-
-    move-result v14
-
-    if-eqz v14, :cond_3
-
-    .line 172
-    move-object/from16 v0, p0
-
-    invoke-virtual {v0, v10}, Lcom/android/internal/widget/MzActionBarContainer;->updateCache(Ljava/util/List;)V
-
-    .line 173
-    move-object/from16 v0, p0
-
-    iget-boolean v14, v0, Lcom/android/internal/widget/MzActionBarContainer;->mResumed:Z
-
-    if-eqz v14, :cond_3
-
-    .line 174
-    invoke-direct/range {p0 .. p0}, Lcom/android/internal/widget/MzActionBarContainer;->dock()V
-
-    .line 212
-    .end local v7           #container:Lcom/android/internal/widget/MzActionBarContainer$ActionItemContainer;
-    :cond_3
-    :goto_2
     return-void
 
-    .line 148
-    .end local v8           #hasTabAtBottom:Z
-    .end local v10           #itemList:Ljava/util/List;,"Ljava/util/List<Lcom/android/internal/app/DockActionItem;>;"
-    :cond_4
-    const/4 v8, 0x0
+    .line 99
+    .end local v6           #hasTabAtBottom:Z
+    :cond_1
+    const/4 v6, 0x0
 
     goto :goto_0
 
-    .line 160
-    .restart local v7       #container:Lcom/android/internal/widget/MzActionBarContainer$ActionItemContainer;
-    .restart local v8       #hasTabAtBottom:Z
-    .restart local v10       #itemList:Ljava/util/List;,"Ljava/util/List<Lcom/android/internal/app/DockActionItem;>;"
-    :cond_5
-    invoke-direct/range {p0 .. p0}, Lcom/android/internal/widget/MzActionBarContainer;->findActionMenuView()Lcom/android/internal/view/menu/ActionMenuView;
+    .line 105
+    .restart local v6       #hasTabAtBottom:Z
+    :cond_2
+    const/4 v1, 0x0
 
-    move-result-object v12
+    .line 106
+    .local v1, backButtonWidth:I
+    const/4 v0, 0x0
 
-    .line 161
-    .local v12, menuView:Lcom/android/internal/view/menu/ActionMenuView;
-    if-eqz v12, :cond_1
+    .line 107
+    .local v0, backButtonHeight:I
+    iget-object v10, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
-    .line 162
-    move-object v7, v12
+    if-eqz v10, :cond_3
 
-    goto :goto_1
+    .line 108
+    iget-object v10, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
-    .line 179
-    .end local v7           #container:Lcom/android/internal/widget/MzActionBarContainer$ActionItemContainer;
-    .end local v12           #menuView:Lcom/android/internal/view/menu/ActionMenuView;
-    :cond_6
-    if-eqz v8, :cond_7
+    invoke-virtual {v10}, Lcom/android/internal/view/menu/KeyBackButton;->getMeasuredWidth()I
 
-    .line 180
+    move-result v10
+
+    iget v11, p0, Lcom/android/internal/widget/MzActionBarContainer;->mExtraPadding:I
+
+    add-int v1, v10, v11
+
+    .line 109
+    iget-object v10, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
+
+    invoke-virtual {v10}, Lcom/android/internal/view/menu/KeyBackButton;->getMeasuredHeight()I
+
+    move-result v0
+
+    .line 112
+    :cond_3
     invoke-super/range {p0 .. p5}, Lcom/android/internal/widget/ActionBarContainer;->onLayout(ZIIII)V
+
+    .line 114
+    invoke-virtual {p0}, Lcom/android/internal/widget/MzActionBarContainer;->getChildCount()I
+
+    move-result v3
+
+    .line 116
+    .local v3, childCount:I
+    const/4 v7, 0x0
+
+    .local v7, i:I
+    :goto_2
+    if-ge v7, v3, :cond_4
+
+    .line 117
+    invoke-virtual {p0, v7}, Lcom/android/internal/widget/MzActionBarContainer;->getChildAt(I)Landroid/view/View;
+
+    move-result-object v2
+
+    .line 118
+    .local v2, child:Landroid/view/View;
+    invoke-virtual {v2}, Landroid/view/View;->getLeft()I
+
+    move-result v10
+
+    add-int v4, v10, v1
+
+    .line 119
+    .local v4, childLeft:I
+    invoke-virtual {v2}, Landroid/view/View;->getRight()I
+
+    move-result v10
+
+    add-int v5, v10, v1
+
+    .line 120
+    .local v5, childRight:I
+    invoke-virtual {v2, v4}, Landroid/view/View;->setLeft(I)V
+
+    .line 121
+    invoke-virtual {v2, v5}, Landroid/view/View;->setRight(I)V
+
+    .line 116
+    add-int/lit8 v7, v7, 0x1
 
     goto :goto_2
 
-    .line 182
-    :cond_7
-    const/4 v2, 0x0
+    .line 124
+    .end local v2           #child:Landroid/view/View;
+    .end local v4           #childLeft:I
+    .end local v5           #childRight:I
+    :cond_4
+    iget-object v10, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
-    .line 183
-    .local v2, backButtonWidth:I
-    const/4 v1, 0x0
+    if-eqz v10, :cond_5
 
-    .line 184
-    .local v1, backButtonHeight:I
-    move-object/from16 v0, p0
+    .line 125
+    iget-object v10, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
-    iget-object v14, v0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
+    iget v11, p0, Lcom/android/internal/widget/MzActionBarContainer;->mExtraPadding:I
 
-    if-eqz v14, :cond_8
+    const/4 v12, 0x0
 
-    .line 185
-    move-object/from16 v0, p0
+    invoke-virtual {v10, v11, v12, v1, v0}, Lcom/android/internal/view/menu/KeyBackButton;->layout(IIII)V
 
-    iget-object v14, v0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
+    .line 128
+    :cond_5
+    iget-object v10, p0, Lcom/android/internal/widget/MzActionBarContainer;->mMenuView:Landroid/view/View;
 
-    invoke-virtual {v14}, Lcom/android/internal/view/menu/KeyBackButton;->getMeasuredWidth()I
+    if-eqz v10, :cond_0
 
-    move-result v14
+    .line 129
+    iget v10, p0, Lcom/android/internal/widget/MzActionBarContainer;->mExtraPadding:I
 
-    move-object/from16 v0, p0
+    sub-int v8, p4, v10
 
-    iget v15, v0, Lcom/android/internal/widget/MzActionBarContainer;->mExtraPadding:I
+    .line 130
+    .local v8, menuRight:I
+    iget-object v10, p0, Lcom/android/internal/widget/MzActionBarContainer;->mMenuView:Landroid/view/View;
 
-    add-int v2, v14, v15
+    invoke-virtual {v10}, Landroid/view/View;->getMeasuredWidth()I
 
-    .line 186
-    move-object/from16 v0, p0
+    move-result v9
 
-    iget-object v14, v0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
+    .line 131
+    .local v9, menuWidth:I
+    iget-object v10, p0, Lcom/android/internal/widget/MzActionBarContainer;->mMenuView:Landroid/view/View;
 
-    invoke-virtual {v14}, Lcom/android/internal/view/menu/KeyBackButton;->getMeasuredHeight()I
+    sub-int v11, v8, v9
 
-    move-result v1
+    const/4 v12, 0x0
 
-    .line 189
-    :cond_8
-    invoke-super/range {p0 .. p5}, Lcom/android/internal/widget/ActionBarContainer;->onLayout(ZIIII)V
+    invoke-virtual {v10, v11, v12, v8, v0}, Landroid/view/View;->layout(IIII)V
 
-    .line 191
-    invoke-virtual/range {p0 .. p0}, Lcom/android/internal/widget/MzActionBarContainer;->getChildCount()I
-
-    move-result v4
-
-    .line 193
-    .local v4, childCount:I
-    const/4 v9, 0x0
-
-    .local v9, i:I
-    :goto_3
-    if-ge v9, v4, :cond_9
-
-    .line 194
-    move-object/from16 v0, p0
-
-    invoke-virtual {v0, v9}, Lcom/android/internal/widget/MzActionBarContainer;->getChildAt(I)Landroid/view/View;
-
-    move-result-object v3
-
-    .line 195
-    .local v3, child:Landroid/view/View;
-    invoke-virtual {v3}, Landroid/view/View;->getLeft()I
-
-    move-result v14
-
-    add-int v5, v14, v2
-
-    .line 196
-    .local v5, childLeft:I
-    invoke-virtual {v3}, Landroid/view/View;->getRight()I
-
-    move-result v14
-
-    add-int v6, v14, v2
-
-    .line 197
-    .local v6, childRight:I
-    invoke-virtual {v3, v5}, Landroid/view/View;->setLeft(I)V
-
-    .line 198
-    invoke-virtual {v3, v6}, Landroid/view/View;->setRight(I)V
-
-    .line 193
-    add-int/lit8 v9, v9, 0x1
-
-    goto :goto_3
-
-    .line 201
-    .end local v3           #child:Landroid/view/View;
-    .end local v5           #childLeft:I
-    .end local v6           #childRight:I
-    :cond_9
-    move-object/from16 v0, p0
-
-    iget-object v14, v0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
-
-    if-eqz v14, :cond_a
-
-    .line 202
-    move-object/from16 v0, p0
-
-    iget-object v14, v0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
-
-    move-object/from16 v0, p0
-
-    iget v15, v0, Lcom/android/internal/widget/MzActionBarContainer;->mExtraPadding:I
-
-    const/16 v16, 0x0
-
-    move/from16 v0, v16
-
-    invoke-virtual {v14, v15, v0, v2, v1}, Lcom/android/internal/view/menu/KeyBackButton;->layout(IIII)V
-
-    .line 205
-    :cond_a
-    move-object/from16 v0, p0
-
-    iget-object v14, v0, Lcom/android/internal/widget/MzActionBarContainer;->mMenuView:Landroid/view/View;
-
-    if-eqz v14, :cond_3
-
-    .line 206
-    move-object/from16 v0, p0
-
-    iget v14, v0, Lcom/android/internal/widget/MzActionBarContainer;->mExtraPadding:I
-
-    sub-int v11, p4, v14
-
-    .line 207
-    .local v11, menuRight:I
-    move-object/from16 v0, p0
-
-    iget-object v14, v0, Lcom/android/internal/widget/MzActionBarContainer;->mMenuView:Landroid/view/View;
-
-    invoke-virtual {v14}, Landroid/view/View;->getMeasuredWidth()I
-
-    move-result v13
-
-    .line 208
-    .local v13, menuWidth:I
-    move-object/from16 v0, p0
-
-    iget-object v14, v0, Lcom/android/internal/widget/MzActionBarContainer;->mMenuView:Landroid/view/View;
-
-    sub-int v15, v11, v13
-
-    const/16 v16, 0x0
-
-    move/from16 v0, v16
-
-    invoke-virtual {v14, v15, v0, v11, v1}, Landroid/view/View;->layout(IIII)V
-
-    goto/16 :goto_2
+    goto :goto_1
 .end method
 
 .method public onMeasure(II)V
-    .locals 23
+    .locals 19
     .parameter "widthMeasureSpec"
     .parameter "heightMeasureSpec"
 
     .prologue
-    .line 56
+    .line 32
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
-    if-eqz v21, :cond_3
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
-
-    move-object/from16 v21, v0
-
-    invoke-virtual/range {v21 .. v21}, Lcom/android/internal/widget/ScrollingTabContainerView;->getVisibility()I
-
-    move-result v21
-
-    const/16 v22, 0x8
-
-    move/from16 v0, v21
-
-    move/from16 v1, v22
-
-    if-eq v0, v1, :cond_3
+    if-eqz v17, :cond_2
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual/range {v21 .. v21}, Lcom/android/internal/widget/ScrollingTabContainerView;->isShowAtBottom()Z
+    invoke-virtual/range {v17 .. v17}, Lcom/android/internal/widget/ScrollingTabContainerView;->getVisibility()I
 
-    move-result v21
+    move-result v17
 
-    if-eqz v21, :cond_3
+    const/16 v18, 0x8
 
-    const/4 v9, 0x1
+    move/from16 v0, v17
 
-    .line 59
-    .local v9, hasTabAtBottom:Z
+    move/from16 v1, v18
+
+    if-eq v0, v1, :cond_2
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
+
+    move-object/from16 v17, v0
+
+    invoke-virtual/range {v17 .. v17}, Lcom/android/internal/widget/ScrollingTabContainerView;->isShowAtBottom()Z
+
+    move-result v17
+
+    if-eqz v17, :cond_2
+
+    const/4 v8, 0x1
+
+    .line 35
+    .local v8, hasTabAtBottom:Z
     :goto_0
-    move-object/from16 v0, p0
+    if-eqz v8, :cond_4
 
-    iget-boolean v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mNeedDockActionBar:Z
-
-    move/from16 v21, v0
-
-    if-eqz v21, :cond_5
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mManager:Lcom/android/internal/app/DockActionBarManager;
-
-    move-object/from16 v21, v0
-
-    invoke-virtual/range {v21 .. v21}, Lcom/android/internal/app/DockActionBarManager;->getInstance()Lcom/android/internal/app/IDockActionBar;
-
-    move-result-object v21
-
-    if-eqz v21, :cond_5
-
-    if-nez v9, :cond_0
-
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lcom/android/internal/widget/ActionBarContainer;->mIsSplit:Z
-
-    move/from16 v21, v0
-
-    if-eqz v21, :cond_5
-
-    .line 61
-    :cond_0
-    const/16 v21, 0x0
-
-    const/high16 v22, 0x4000
-
-    invoke-static/range {v21 .. v22}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
-
-    move-result p2
-
-    .line 62
-    invoke-super/range {p0 .. p2}, Lcom/android/internal/widget/ActionBarContainer;->onMeasure(II)V
-
-    .line 64
-    const/4 v6, 0x0
-
-    .line 65
-    .local v6, container:Lcom/android/internal/widget/MzActionBarContainer$ActionItemContainer;
-    if-eqz v9, :cond_4
-
-    .line 66
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
-
-    .line 74
-    :cond_1
-    :goto_1
-    if-eqz v6, :cond_2
-
-    .line 75
-    const/16 v21, 0x80
-
-    const/high16 v22, 0x4000
-
-    invoke-static/range {v21 .. v22}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
-
-    move-result v12
-
-    .line 76
-    .local v12, itemWidthMeasureSpec:I
-    const/16 v21, 0x56
-
-    const/high16 v22, 0x4000
-
-    invoke-static/range {v21 .. v22}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
-
-    move-result v13
-
-    .line 77
-    .local v13, itemheightMeasureSpec:I
-    invoke-interface {v6, v12, v13}, Lcom/android/internal/widget/MzActionBarContainer$ActionItemContainer;->measureActionItems(II)V
-
-    .line 142
-    .end local v6           #container:Lcom/android/internal/widget/MzActionBarContainer$ActionItemContainer;
-    .end local v12           #itemWidthMeasureSpec:I
-    .end local v13           #itemheightMeasureSpec:I
-    :cond_2
-    :goto_2
-    return-void
-
-    .line 56
-    .end local v9           #hasTabAtBottom:Z
-    :cond_3
-    const/4 v9, 0x0
-
-    goto :goto_0
-
-    .line 68
-    .restart local v6       #container:Lcom/android/internal/widget/MzActionBarContainer$ActionItemContainer;
-    .restart local v9       #hasTabAtBottom:Z
-    :cond_4
-    invoke-direct/range {p0 .. p0}, Lcom/android/internal/widget/MzActionBarContainer;->findActionMenuView()Lcom/android/internal/view/menu/ActionMenuView;
-
-    move-result-object v15
-
-    .line 69
-    .local v15, menuView:Lcom/android/internal/view/menu/ActionMenuView;
-    if-eqz v15, :cond_1
-
-    .line 70
-    move-object v6, v15
-
-    goto :goto_1
-
-    .line 81
-    .end local v6           #container:Lcom/android/internal/widget/MzActionBarContainer$ActionItemContainer;
-    .end local v15           #menuView:Lcom/android/internal/view/menu/ActionMenuView;
-    :cond_5
-    if-eqz v9, :cond_9
-
-    .line 82
+    .line 36
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
-    if-eqz v21, :cond_6
+    if-eqz v17, :cond_0
 
-    .line 83
+    .line 37
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
 
-    move-object/from16 v22, v0
+    move-object/from16 v18, v0
 
     move-object/from16 v0, p0
 
     iget-boolean v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mOrientatinPortrait:Z
 
-    move/from16 v21, v0
+    move/from16 v17, v0
 
-    if-eqz v21, :cond_8
+    if-eqz v17, :cond_3
 
-    const/16 v21, 0x1
+    const/16 v17, 0x1
 
-    :goto_3
-    move-object/from16 v0, v22
+    :goto_1
+    move-object/from16 v0, v18
 
-    move/from16 v1, v21
+    move/from16 v1, v17
 
     invoke-virtual {v0, v1}, Lcom/android/internal/widget/ScrollingTabContainerView;->setBackButtonEnable(Z)V
 
-    .line 86
-    :cond_6
+    .line 40
+    :cond_0
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
-    if-eqz v21, :cond_7
+    if-eqz v17, :cond_1
 
-    .line 87
+    .line 41
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
     move-object/from16 v0, p0
 
-    move-object/from16 v1, v21
+    move-object/from16 v1, v17
 
     invoke-direct {v0, v1}, Lcom/android/internal/widget/MzActionBarContainer;->removeBackButton(Landroid/view/View;)V
 
-    .line 89
-    :cond_7
+    .line 43
+    :cond_1
     invoke-super/range {p0 .. p2}, Lcom/android/internal/widget/ActionBarContainer;->onMeasure(II)V
 
-    goto :goto_2
-
-    .line 83
-    :cond_8
-    const/16 v21, 0x0
-
-    goto :goto_3
-
-    .line 91
-    :cond_9
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
-
-    move-object/from16 v21, v0
-
-    if-eqz v21, :cond_a
-
-    .line 92
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
-
-    move-object/from16 v21, v0
-
-    const/16 v22, 0x0
-
-    invoke-virtual/range {v21 .. v22}, Lcom/android/internal/widget/ScrollingTabContainerView;->setBackButtonEnable(Z)V
-
-    .line 94
-    :cond_a
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
-
-    move-object/from16 v21, v0
-
-    if-eqz v21, :cond_b
-
     .line 95
-    const/16 v21, 0x0
+    :goto_2
+    return-void
 
-    const/16 v22, 0x0
+    .line 32
+    .end local v8           #hasTabAtBottom:Z
+    :cond_2
+    const/4 v8, 0x0
 
-    invoke-static/range {v21 .. v22}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
+    goto :goto_0
 
-    move-result v20
+    .line 37
+    .restart local v8       #hasTabAtBottom:Z
+    :cond_3
+    const/16 v17, 0x0
 
-    .line 96
-    .local v20, widthSpec:I
-    const/16 v21, 0x0
+    goto :goto_1
 
-    const/16 v22, 0x0
+    .line 45
+    :cond_4
+    move-object/from16 v0, p0
 
-    invoke-static/range {v21 .. v22}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
+    iget-object v0, v0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
 
-    move-result v11
+    move-object/from16 v17, v0
 
-    .line 97
-    .local v11, heightSpec:I
+    if-eqz v17, :cond_5
+
+    .line 46
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Lcom/android/internal/widget/ScrollingTabContainerView;
+
+    move-object/from16 v17, v0
+
+    const/16 v18, 0x0
+
+    invoke-virtual/range {v17 .. v18}, Lcom/android/internal/widget/ScrollingTabContainerView;->setBackButtonEnable(Z)V
+
+    .line 48
+    :cond_5
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
-    move-object/from16 v0, v21
+    if-eqz v17, :cond_6
 
-    move/from16 v1, v20
+    .line 49
+    const/16 v17, 0x0
 
-    invoke-virtual {v0, v1, v11}, Lcom/android/internal/view/menu/KeyBackButton;->measure(II)V
+    const/16 v18, 0x0
 
-    .line 100
-    .end local v11           #heightSpec:I
-    .end local v20           #widthSpec:I
-    :cond_b
+    invoke-static/range {v17 .. v18}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
+
+    move-result v16
+
+    .line 50
+    .local v16, widthSpec:I
+    const/16 v17, 0x0
+
+    const/16 v18, 0x0
+
+    invoke-static/range {v17 .. v18}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
+
+    move-result v10
+
+    .line 51
+    .local v10, heightSpec:I
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
+
+    move-object/from16 v17, v0
+
+    move-object/from16 v0, v17
+
+    move/from16 v1, v16
+
+    invoke-virtual {v0, v1, v10}, Lcom/android/internal/view/menu/KeyBackButton;->measure(II)V
+
+    .line 54
+    .end local v10           #heightSpec:I
+    .end local v16           #widthSpec:I
+    :cond_6
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mMenuView:Landroid/view/View;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
-    if-eqz v21, :cond_c
+    if-eqz v17, :cond_7
 
-    .line 101
-    const/16 v21, 0x0
+    .line 55
+    const/16 v17, 0x0
 
-    const/16 v22, 0x0
+    const/16 v18, 0x0
 
-    invoke-static/range {v21 .. v22}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
+    invoke-static/range {v17 .. v18}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
 
-    move-result v20
+    move-result v16
 
-    .line 102
-    .restart local v20       #widthSpec:I
-    const/16 v21, 0x0
+    .line 56
+    .restart local v16       #widthSpec:I
+    const/16 v17, 0x0
 
-    const/16 v22, 0x0
+    const/16 v18, 0x0
 
-    invoke-static/range {v21 .. v22}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
+    invoke-static/range {v17 .. v18}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
 
-    move-result v11
+    move-result v10
 
-    .line 103
-    .restart local v11       #heightSpec:I
+    .line 57
+    .restart local v10       #heightSpec:I
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mMenuView:Landroid/view/View;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
-    move-object/from16 v0, v21
+    move-object/from16 v0, v17
 
-    move/from16 v1, v20
+    move/from16 v1, v16
 
-    invoke-virtual {v0, v1, v11}, Landroid/view/View;->measure(II)V
+    invoke-virtual {v0, v1, v10}, Landroid/view/View;->measure(II)V
 
-    .line 106
-    .end local v11           #heightSpec:I
-    .end local v20           #widthSpec:I
-    :cond_c
+    .line 60
+    .end local v10           #heightSpec:I
+    .end local v16           #widthSpec:I
+    :cond_7
     const/4 v2, 0x0
 
-    .line 107
+    .line 61
     .local v2, backButtonWidth:I
     const/4 v3, 0x0
 
-    .line 108
+    .line 62
     .local v3, backButtonWidthExtra:I
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
-    if-eqz v21, :cond_d
+    if-eqz v17, :cond_8
 
-    .line 109
+    .line 63
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual/range {v21 .. v21}, Lcom/android/internal/view/menu/KeyBackButton;->getMeasuredWidth()I
+    invoke-virtual/range {v17 .. v17}, Lcom/android/internal/view/menu/KeyBackButton;->getMeasuredWidth()I
 
     move-result v2
 
-    .line 110
+    .line 64
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mExtraPadding:I
 
-    move/from16 v21, v0
+    move/from16 v17, v0
 
-    add-int v3, v2, v21
+    add-int v3, v2, v17
 
-    .line 113
-    :cond_d
-    const/16 v16, 0x0
+    .line 67
+    :cond_8
+    const/4 v12, 0x0
 
-    .line 114
-    .local v16, menuWidth:I
-    const/16 v17, 0x0
+    .line 68
+    .local v12, menuWidth:I
+    const/4 v13, 0x0
 
-    .line 115
-    .local v17, menuWidthExtra:I
+    .line 69
+    .local v13, menuWidthExtra:I
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mMenuView:Landroid/view/View;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
-    if-eqz v21, :cond_e
+    if-eqz v17, :cond_9
 
-    .line 116
+    .line 70
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mMenuView:Landroid/view/View;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual/range {v21 .. v21}, Landroid/view/View;->getMeasuredWidth()I
+    invoke-virtual/range {v17 .. v17}, Landroid/view/View;->getMeasuredWidth()I
 
-    move-result v16
+    move-result v12
 
-    .line 117
+    .line 71
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mExtraPadding:I
 
-    move/from16 v21, v0
+    move/from16 v17, v0
 
-    add-int v17, v2, v21
+    add-int v13, v2, v17
 
-    .line 120
-    :cond_e
+    .line 74
+    :cond_9
     invoke-static/range {p1 .. p1}, Landroid/view/View$MeasureSpec;->getSize(I)I
 
-    move-result v21
+    move-result v17
 
-    sub-int v21, v21, v3
+    sub-int v17, v17, v3
 
-    sub-int v7, v21, v17
+    sub-int v6, v17, v13
 
-    .line 121
-    .local v7, contentWidth:I
-    const/high16 v21, 0x4000
+    .line 75
+    .local v6, contentWidth:I
+    const/high16 v17, 0x4000
 
-    move/from16 v0, v21
+    move/from16 v0, v17
 
-    invoke-static {v7, v0}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
+    invoke-static {v6, v0}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
 
-    move-result v8
+    move-result v7
 
-    .line 123
-    .local v8, contentWidthSpec:I
+    .line 77
+    .local v7, contentWidthSpec:I
     move-object/from16 v0, p0
 
     move/from16 v1, p2
 
-    invoke-super {v0, v8, v1}, Lcom/android/internal/widget/ActionBarContainer;->onMeasure(II)V
+    invoke-super {v0, v7, v1}, Lcom/android/internal/widget/ActionBarContainer;->onMeasure(II)V
 
-    .line 125
+    .line 79
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
-    if-eqz v21, :cond_f
+    if-eqz v17, :cond_a
 
-    .line 126
-    const/high16 v21, 0x4000
+    .line 80
+    const/high16 v17, 0x4000
 
-    move/from16 v0, v21
+    move/from16 v0, v17
 
     invoke-static {v2, v0}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
 
     move-result v5
 
-    .line 127
+    .line 81
     .local v5, buttonWidthSpec:I
     invoke-virtual/range {p0 .. p0}, Lcom/android/internal/widget/MzActionBarContainer;->getMeasuredHeight()I
 
-    move-result v21
+    move-result v17
 
-    const/high16 v22, 0x4000
+    const/high16 v18, 0x4000
 
-    invoke-static/range {v21 .. v22}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
+    invoke-static/range {v17 .. v18}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
 
     move-result v4
 
-    .line 128
+    .line 82
     .local v4, buttonHeightSpec:I
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
-    move-object/from16 v0, v21
+    move-object/from16 v0, v17
 
     invoke-virtual {v0, v5, v4}, Lcom/android/internal/view/menu/KeyBackButton;->measure(II)V
 
-    .line 131
+    .line 85
     .end local v4           #buttonHeightSpec:I
     .end local v5           #buttonWidthSpec:I
-    :cond_f
+    :cond_a
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mMenuView:Landroid/view/View;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
-    if-eqz v21, :cond_10
+    if-eqz v17, :cond_b
 
-    .line 132
-    const/high16 v21, 0x4000
+    .line 86
+    const/high16 v17, 0x4000
 
-    move/from16 v0, v16
+    move/from16 v0, v17
 
-    move/from16 v1, v21
-
-    invoke-static {v0, v1}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
-
-    move-result v18
-
-    .line 133
-    .local v18, menuWidthSpec:I
-    invoke-virtual/range {p0 .. p0}, Lcom/android/internal/widget/MzActionBarContainer;->getMeasuredHeight()I
-
-    move-result v21
-
-    const/high16 v22, 0x4000
-
-    invoke-static/range {v21 .. v22}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
+    invoke-static {v12, v0}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
 
     move-result v14
 
-    .line 134
-    .local v14, menuHeightSpec:I
+    .line 87
+    .local v14, menuWidthSpec:I
+    invoke-virtual/range {p0 .. p0}, Lcom/android/internal/widget/MzActionBarContainer;->getMeasuredHeight()I
+
+    move-result v17
+
+    const/high16 v18, 0x4000
+
+    invoke-static/range {v17 .. v18}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
+
+    move-result v11
+
+    .line 88
+    .local v11, menuHeightSpec:I
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/widget/MzActionBarContainer;->mMenuView:Landroid/view/View;
 
-    move-object/from16 v21, v0
+    move-object/from16 v17, v0
 
-    move-object/from16 v0, v21
+    move-object/from16 v0, v17
 
-    move/from16 v1, v18
+    invoke-virtual {v0, v14, v11}, Landroid/view/View;->measure(II)V
 
-    invoke-virtual {v0, v1, v14}, Landroid/view/View;->measure(II)V
-
-    .line 137
-    .end local v14           #menuHeightSpec:I
-    .end local v18           #menuWidthSpec:I
-    :cond_10
+    .line 91
+    .end local v11           #menuHeightSpec:I
+    .end local v14           #menuWidthSpec:I
+    :cond_b
     invoke-static/range {p1 .. p1}, Landroid/view/View$MeasureSpec;->getSize(I)I
 
-    move-result v19
+    move-result v15
 
-    .line 138
-    .local v19, width:I
+    .line 92
+    .local v15, width:I
     invoke-virtual/range {p0 .. p0}, Lcom/android/internal/widget/MzActionBarContainer;->getMeasuredHeight()I
 
-    move-result v10
+    move-result v9
 
-    .line 139
-    .local v10, height:I
+    .line 93
+    .local v9, height:I
     move-object/from16 v0, p0
 
-    move/from16 v1, v19
-
-    invoke-virtual {v0, v1, v10}, Lcom/android/internal/widget/MzActionBarContainer;->setMeasuredDimension(II)V
+    invoke-virtual {v0, v15, v9}, Lcom/android/internal/widget/MzActionBarContainer;->setMeasuredDimension(II)V
 
     goto/16 :goto_2
-.end method
-
-.method public pause()V
-    .locals 1
-
-    .prologue
-    .line 425
-    const/4 v0, 0x0
-
-    iput-boolean v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mResumed:Z
-
-    .line 426
-    return-void
 .end method
 
 .method public requestLayout()V
     .locals 0
 
     .prologue
-    .line 408
+    .line 138
     invoke-super {p0}, Lcom/android/internal/widget/ActionBarContainer;->requestLayout()V
 
-    .line 409
+    .line 139
     return-void
 .end method
 
-.method public resume()V
+.method public setBackButtonDrawable(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
     .locals 1
+    .parameter "backIcon"
+    .parameter "backImeIcon"
 
     .prologue
-    .line 415
-    const/4 v0, 0x1
+    .line 215
+    if-eqz p1, :cond_0
 
-    iput-boolean v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mResumed:Z
+    .line 216
+    iput-object p1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackIcon:Landroid/graphics/drawable/Drawable;
 
-    .line 416
-    const/4 v0, 0x0
+    .line 217
+    iput-object p2, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackImeIcon:Landroid/graphics/drawable/Drawable;
 
-    iput-boolean v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mLostFocused:Z
-
-    .line 417
-    invoke-virtual {p0}, Lcom/android/internal/widget/MzActionBarContainer;->needDockActionBar()Z
-
-    move-result v0
+    .line 219
+    iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
     if-eqz v0, :cond_0
 
-    .line 418
-    invoke-direct {p0}, Lcom/android/internal/widget/MzActionBarContainer;->dock()V
+    .line 220
+    iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
-    .line 422
-    :goto_0
-    return-void
+    invoke-virtual {v0, p1, p2}, Lcom/android/internal/view/menu/KeyBackButton;->setIcon(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
 
-    .line 420
+    .line 223
     :cond_0
-    invoke-direct {p0}, Lcom/android/internal/widget/MzActionBarContainer;->undock()V
-
-    goto :goto_0
+    return-void
 .end method
 
 .method public setBackButtonEnable(ZZ)V
-    .locals 2
+    .locals 3
     .parameter "enable"
     .parameter "addBackButton"
 
     .prologue
-    goto :goto_miui_0
-
+    .line 150
     iput-boolean p1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mEnableBackButton:Z
 
+    .line 151
     if-eqz p2, :cond_2
 
     iget-boolean v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mEnableBackButton:Z
 
     if-eqz v0, :cond_2
 
-    .line 454
+    .line 152
     iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
     if-nez v0, :cond_0
 
-    .line 455
+    .line 153
     new-instance v0, Lcom/android/internal/view/menu/KeyBackButton;
 
     iget-object v1, p0, Landroid/view/View;->mContext:Landroid/content/Context;
@@ -1891,23 +866,39 @@
 
     iput-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
-    .line 458
+    .line 154
+    iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
+
+    iget-object v1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackIcon:Landroid/graphics/drawable/Drawable;
+
+    iget-object v2, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackImeIcon:Landroid/graphics/drawable/Drawable;
+
+    invoke-virtual {v0, v1, v2}, Lcom/android/internal/view/menu/KeyBackButton;->setIcon(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
+
+    .line 155
+    iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
+
+    const v1, 0x10804f1
+
+    invoke-virtual {v0, v1}, Lcom/android/internal/view/menu/KeyBackButton;->setImageResource(I)V
+
+    .line 158
     :cond_0
     iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
     invoke-direct {p0, v0}, Lcom/android/internal/widget/MzActionBarContainer;->removeBackButton(Landroid/view/View;)V
 
-    .line 459
+    .line 159
     iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
     invoke-virtual {p0, v0}, Lcom/android/internal/widget/MzActionBarContainer;->addView(Landroid/view/View;)V
 
-    .line 460
+    .line 160
     invoke-virtual {p0}, Lcom/android/internal/widget/MzActionBarContainer;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
 
-    const v1, 0x10807a4
+    const v1, 0x10807d1
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -1915,23 +906,23 @@
 
     invoke-virtual {p0, v0}, Lcom/android/internal/widget/MzActionBarContainer;->setSplitBackground(Landroid/graphics/drawable/Drawable;)V
 
-    .line 465
+    .line 165
     :cond_1
     :goto_0
     return-void
 
-    :goto_miui_0
+    .line 161
     :cond_2
     iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
     if-eqz v0, :cond_1
 
-    .line 462
+    .line 162
     iget-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
 
     invoke-direct {p0, v0}, Lcom/android/internal/widget/MzActionBarContainer;->removeBackButton(Landroid/view/View;)V
 
-    .line 463
+    .line 163
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mBackButton:Lcom/android/internal/view/menu/KeyBackButton;
@@ -1939,63 +930,106 @@
     goto :goto_0
 .end method
 
-.method public setEnableDockActionBar(Z)V
-    .locals 0
-    .parameter "enable"
-
-    .prologue
-    .line 47
-    iput-boolean p1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mNeedDockActionBar:Z
-
-    .line 48
-    return-void
-.end method
-
 .method public setMenu(Landroid/view/View;)V
-    .locals 3
+    .locals 6
     .parameter "menu"
 
     .prologue
-    .line 478
-    if-eqz p1, :cond_1
+    .line 178
+    if-eqz p1, :cond_2
 
-    .line 479
+    .line 179
     invoke-virtual {p1}, Landroid/view/View;->getParent()Landroid/view/ViewParent;
 
-    move-result-object v0
+    move-result-object v3
 
-    check-cast v0, Landroid/view/ViewGroup;
+    check-cast v3, Landroid/view/ViewGroup;
 
-    .line 480
-    .local v0, parent:Landroid/view/ViewGroup;
-    if-eqz v0, :cond_0
+    .line 180
+    .local v3, parent:Landroid/view/ViewGroup;
+    if-eqz v3, :cond_0
 
-    .line 481
-    invoke-virtual {v0, p1}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
+    .line 181
+    invoke-virtual {v3, p1}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
 
-    .line 484
+    .line 184
     :cond_0
     invoke-virtual {p0, p1}, Lcom/android/internal/widget/MzActionBarContainer;->addView(Landroid/view/View;)V
 
-    .line 485
+    .line 185
+    instance-of v4, p1, Landroid/view/ViewGroup;
+
+    if-eqz v4, :cond_1
+
+    move-object v4, p1
+
+    .line 186
+    check-cast v4, Landroid/view/ViewGroup;
+
+    const/4 v5, 0x0
+
+    invoke-virtual {v4, v5}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+
+    move-result-object v0
+
+    .line 187
+    .local v0, child:Landroid/view/View;
+    if-eqz v0, :cond_1
+
+    .line 188
+    invoke-virtual {v0}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+
+    move-result-object v2
+
+    .line 189
+    .local v2, lp:Landroid/view/ViewGroup$LayoutParams;
+    instance-of v4, v2, Lcom/android/internal/view/menu/ActionMenuView$LayoutParams;
+
+    if-eqz v4, :cond_1
+
+    .line 190
+    check-cast v2, Lcom/android/internal/view/menu/ActionMenuView$LayoutParams;
+
+    .end local v2           #lp:Landroid/view/ViewGroup$LayoutParams;
+    iget-boolean v1, v2, Lcom/android/internal/view/menu/ActionMenuView$LayoutParams;->isOverflowButton:Z
+
+    .line 191
+    .local v1, isOverflowButton:Z
+    if-eqz v1, :cond_1
+
+    instance-of v4, v0, Landroid/widget/ImageView;
+
+    if-eqz v4, :cond_1
+
+    .line 192
+    check-cast v0, Landroid/widget/ImageView;
+
+    .end local v0           #child:Landroid/view/View;
+    const v4, 0x1080488
+
+    invoke-virtual {v0, v4}, Landroid/widget/ImageView;->setImageResource(I)V
+
+    .line 197
+    .end local v1           #isOverflowButton:Z
+    :cond_1
     invoke-virtual {p0}, Lcom/android/internal/widget/MzActionBarContainer;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v1
+    move-result-object v4
 
-    const v2, 0x10807a4
+    const v5, 0x10807d1
 
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    move-result-object v1
+    move-result-object v4
 
-    invoke-virtual {p0, v1}, Lcom/android/internal/widget/MzActionBarContainer;->setSplitBackground(Landroid/graphics/drawable/Drawable;)V
+    invoke-virtual {p0, v4}, Lcom/android/internal/widget/MzActionBarContainer;->setSplitBackground(Landroid/graphics/drawable/Drawable;)V
 
-    .line 487
-    .end local v0           #parent:Landroid/view/ViewGroup;
-    :cond_1
+    .line 199
+    .end local v3           #parent:Landroid/view/ViewGroup;
+    :cond_2
     iput-object p1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mMenuView:Landroid/view/View;
 
-    .line 488
+    .line 200
     return-void
 .end method
 
@@ -2004,57 +1038,9 @@
     .parameter "visibility"
 
     .prologue
-    .line 445
+    .line 143
     invoke-super {p0, p1}, Lcom/android/internal/widget/ActionBarContainer;->setVisibility(I)V
 
-    .line 446
+    .line 144
     return-void
-.end method
-
-.method public showMenuWhenTabAtBottom(Z)V
-    .locals 0
-    .parameter "showMenu"
-
-    .prologue
-    .line 440
-    iput-boolean p1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mShowMenuWhenTabAtBottom:Z
-
-    .line 441
-    return-void
-.end method
-
-.method public updateCache(Ljava/util/List;)V
-    .locals 1
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Ljava/util/List",
-            "<",
-            "Lcom/android/internal/app/DockActionItem;",
-            ">;)V"
-        }
-    .end annotation
-
-    .prologue
-    .line 238
-    .local p1, actionItems:Ljava/util/List;,"Ljava/util/List<Lcom/android/internal/app/DockActionItem;>;"
-    if-nez p1, :cond_0
-
-    .line 239
-    new-instance v0, Ljava/util/ArrayList;
-
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    iput-object v0, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    .line 243
-    :goto_0
-    return-void
-
-    .line 241
-    :cond_0
-    iput-object p1, p0, Lcom/android/internal/widget/MzActionBarContainer;->mActionItemList:Ljava/util/List;
-
-    goto :goto_0
 .end method

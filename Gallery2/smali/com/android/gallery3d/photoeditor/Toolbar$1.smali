@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 53
+    .line 54
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/Toolbar$1;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,16 +43,16 @@
     .parameter "child"
 
     .prologue
-    .line 58
+    .line 59
     invoke-virtual {p2}, Landroid/view/View;->getId()I
 
     move-result v0
 
-    const v1, 0x7f0d0120
+    const v1, 0x7f0d0136
 
     if-eq v0, v1, :cond_0
 
-    .line 59
+    .line 60
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/Toolbar$1;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/Toolbar;->tools:Ljava/util/List;
@@ -62,8 +62,27 @@
 
     invoke-interface {v0, p2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 61
+    .line 62
     :cond_0
+    invoke-virtual {p2}, Landroid/view/View;->getId()I
+
+    move-result v0
+
+    const v1, 0x7f0d0138
+
+    if-ne v0, v1, :cond_1
+
+    .line 63
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/Toolbar$1;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar;
+
+    check-cast p2, Lcom/android/gallery3d/photoeditor/EffectsBar;
+
+    .end local p2
+    #setter for: Lcom/android/gallery3d/photoeditor/Toolbar;->mEffectBar:Lcom/android/gallery3d/photoeditor/EffectsBar;
+    invoke-static {v0, p2}, Lcom/android/gallery3d/photoeditor/Toolbar;->access$202(Lcom/android/gallery3d/photoeditor/Toolbar;Lcom/android/gallery3d/photoeditor/EffectsBar;)Lcom/android/gallery3d/photoeditor/EffectsBar;
+
+    .line 65
+    :cond_1
     return-void
 .end method
 
@@ -73,7 +92,7 @@
     .parameter "child"
 
     .prologue
-    .line 65
+    .line 69
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/Toolbar$1;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/Toolbar;->tools:Ljava/util/List;
@@ -83,6 +102,6 @@
 
     invoke-interface {v0, p2}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
 
-    .line 66
+    .line 70
     return-void
 .end method

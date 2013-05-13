@@ -48,7 +48,7 @@
 
     const/4 v2, 0x0
 
-    .line 93
+    .line 94
     new-instance v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     const-string v1, "noPlugging"
@@ -81,7 +81,7 @@
 
     sput-object v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->plugged:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
-    .line 92
+    .line 93
     const/4 v0, 0x4
 
     new-array v0, v0, [Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
@@ -118,7 +118,7 @@
     .end annotation
 
     .prologue
-    .line 92
+    .line 93
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -129,7 +129,7 @@
     .parameter "name"
 
     .prologue
-    .line 92
+    .line 93
     const-class v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -145,7 +145,7 @@
     .locals 1
 
     .prologue
-    .line 92
+    .line 93
     sget-object v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->$VALUES:[Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     invoke-virtual {v0}, [Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->clone()Ljava/lang/Object;

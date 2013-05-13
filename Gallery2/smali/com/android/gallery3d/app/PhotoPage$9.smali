@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 924
+    .line 971
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoPage$9;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,12 +42,12 @@
     .parameter "v"
 
     .prologue
-    .line 927
+    .line 974
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$9;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #calls: Lcom/android/gallery3d/app/PhotoPage;->showDLNADlg()V
-    invoke-static {v0}, Lcom/android/gallery3d/app/PhotoPage;->access$3600(Lcom/android/gallery3d/app/PhotoPage;)V
+    invoke-static {v0}, Lcom/android/gallery3d/app/PhotoPage;->access$4000(Lcom/android/gallery3d/app/PhotoPage;)V
 
-    .line 928
+    .line 975
     return-void
 .end method

@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 172
+    .line 179
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
 
     return-void
@@ -30,7 +30,7 @@
     .parameter "x0"
 
     .prologue
-    .line 172
+    .line 179
     invoke-direct {p0}, Lcom/android/camera/Util$MainHandler;-><init>()V
 
     return-void
@@ -43,16 +43,16 @@
     .parameter "msg"
 
     .prologue
-    .line 174
+    .line 181
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 180
+    .line 187
     :goto_0
     return-void
 
-    .line 176
+    .line 183
     :pswitch_0
     const/4 v0, 0x1
 
@@ -60,7 +60,7 @@
 
     goto :goto_0
 
-    .line 174
+    .line 181
     nop
 
     :pswitch_data_0

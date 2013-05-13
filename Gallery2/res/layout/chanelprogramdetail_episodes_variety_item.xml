@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/chanelprogramdetail_episodes_variety_item" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.meizu.video.client.common.DragViewLinearLayout android:orientation="vertical" android:id="@id/chanelprogramdetail_episodes_variety_item" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/channeldetailprogram_variety_content_size" android:textColor="@color/channeldetailprogram_variety_content_color" android:gravity="center_vertical" android:id="@id/chanelprogramdetail_episodes_variety_text" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:singleLine="true" android:layout_toLeftOf="@android:id/checkbox" />
-    <CheckBox android:gravity="center" android:id="@android:id/checkbox" android:focusable="false" android:layout_width="@dimen/check_box_width" android:layout_height="fill_parent" android:minHeight="@dimen/small_item_height" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/Video.Online.CheckButtonlessMultiple" />
-</RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/channeldetailprogram_variety_content_size" android:textColor="@color/channeldetailprogram_variety_content_color" android:gravity="center_vertical" android:id="@id/chanelprogramdetail_episodes_variety_text" android:layout_width="fill_parent" android:layout_height="@dimen/episodes_variety_item_height" android:layout_marginLeft="@dimen/episodes_variety_content_item_leftMarginNum" android:layout_marginRight="@dimen/episodes_variety_content_item_rightMarginNum" android:singleLine="true" android:layout_toLeftOf="@android:id/checkbox" />
+        <CheckBox android:gravity="center" android:id="@android:id/checkbox" android:focusable="false" android:layout_width="@dimen/check_box_width" android:layout_height="fill_parent" android:minHeight="@dimen/small_item_height" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@*android:style/Widget.DeviceDefault.CompoundButton.CheckButtonlessMultiple" />
+    </RelativeLayout>
+</com.meizu.video.client.common.DragViewLinearLayout>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.android.camera.ui.RotateLayout android:id="@id/toast_indicators_with_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="bottom|center" android:id="@id/toast_layout" android:paddingBottom="@dimen/toast_with_bg_layout_padding_bottom" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/toast_text_size" android:textColor="@color/menu_item_unsel_text_color" android:gravity="center" android:id="@id/toast_text" android:background="@drawable/video_time_background" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/video_saving" android:singleLine="true" />
-    </RelativeLayout>
-</com.android.camera.ui.RotateLayout>

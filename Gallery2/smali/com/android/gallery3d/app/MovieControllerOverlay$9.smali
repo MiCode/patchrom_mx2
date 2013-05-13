@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1073
+    .line 943
     iput-object p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$9;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,31 +38,33 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .locals 1
+    .locals 3
     .parameter "v"
 
     .prologue
-    .line 1076
+    .line 946
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$9;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
-    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$3100(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+    new-instance v1, Landroid/widget/PopupMenu;
 
-    move-result-object v0
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$9;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    if-eqz v0, :cond_0
+    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    invoke-static {v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6300(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
 
-    .line 1077
+    move-result-object v2
+
+    invoke-direct {v1, v2, p1}, Landroid/widget/PopupMenu;-><init>(Landroid/content/Context;Landroid/view/View;)V
+
+    #setter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
+    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6202(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/widget/PopupMenu;)Landroid/widget/PopupMenu;
+
+    .line 947
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$9;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
-    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$3100(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+    #calls: Lcom/android/gallery3d/app/MovieControllerOverlay;->showPopMenu()V
+    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6400(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
 
-    move-result-object v0
-
-    invoke-interface {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->finishVideo()V
-
-    .line 1079
-    :cond_0
+    .line 948
     return-void
 .end method

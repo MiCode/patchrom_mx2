@@ -29,12 +29,12 @@
     .parameter
 
     .prologue
-    .line 564
+    .line 623
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$6;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 565
+    .line 624
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$6;->imm:Landroid/view/inputmethod/InputMethodManager;
@@ -52,13 +52,13 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 569
+    .line 628
     :try_start_0
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$6;->imm:Landroid/view/inputmethod/InputMethodManager;
 
     if-nez v0, :cond_0
 
-    .line 570
+    .line 629
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$6;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     invoke-virtual {v0}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->getActivity()Landroid/app/Activity;
@@ -75,7 +75,7 @@
 
     iput-object v0, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$6;->imm:Landroid/view/inputmethod/InputMethodManager;
 
-    .line 572
+    .line 631
     :cond_0
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$6;->imm:Landroid/view/inputmethod/InputMethodManager;
 
@@ -85,7 +85,7 @@
 
     if-eqz v0, :cond_1
 
-    .line 573
+    .line 632
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$6;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mQueryText:Landroid/widget/EditText;
@@ -95,7 +95,7 @@
 
     invoke-virtual {v0}, Landroid/widget/EditText;->clearFocus()V
 
-    .line 574
+    .line 633
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$6;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     const/4 v1, 0x0
@@ -103,7 +103,7 @@
     #setter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mbShowing:Z
     invoke-static {v0, v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$2402(Lcom/meizu/video/client/ui/module/search/SearchFragment;Z)Z
 
-    .line 575
+    .line 634
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$6;->imm:Landroid/view/inputmethod/InputMethodManager;
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$6;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
@@ -123,12 +123,12 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 579
+    .line 638
     :cond_1
     :goto_0
     return v3
 
-    .line 577
+    .line 636
     :catch_0
     move-exception v0
 

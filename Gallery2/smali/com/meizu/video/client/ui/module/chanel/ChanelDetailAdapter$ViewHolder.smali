@@ -15,31 +15,31 @@
 
 
 # instance fields
-.field chanelDetailImage:Landroid/widget/ImageView;
+.field mChanelDetailImage:Landroid/widget/ImageView;
 
-.field imageView1:Landroid/widget/ImageView;
+.field mImageView1:Landroid/widget/ImageView;
 
-.field imageView2:Landroid/widget/ImageView;
+.field mImageView2:Landroid/widget/ImageView;
 
-.field imageView3:Landroid/widget/ImageView;
+.field mImageView3:Landroid/widget/ImageView;
 
-.field imageView4:Landroid/widget/ImageView;
+.field mImageView4:Landroid/widget/ImageView;
 
-.field imageView5:Landroid/widget/ImageView;
+.field mImageView5:Landroid/widget/ImageView;
 
-.field labelText1:Landroid/widget/TextView;
+.field mLabelText1:Landroid/widget/TextView;
 
-.field labelText2LinearLayout:Landroid/widget/LinearLayout;
+.field mLabelText21:Landroid/widget/TextView;
 
-.field labelText2_1:Landroid/widget/TextView;
+.field mLabelText22:Landroid/widget/TextView;
 
-.field labelText2_2:Landroid/widget/TextView;
+.field mLabelText2LinearLayout:Landroid/widget/LinearLayout;
 
-.field labelText3:Landroid/widget/TextView;
+.field mLabelText3:Landroid/widget/TextView;
 
-.field labelText4:Landroid/widget/TextView;
+.field mLabelText4:Landroid/widget/TextView;
 
-.field labelText5:Landroid/widget/TextView;
+.field mLabelText5:Landroid/widget/TextView;
 
 .field final synthetic this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;
 
@@ -50,7 +50,7 @@
     .parameter
 
     .prologue
-    .line 56
+    .line 60
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter$ViewHolder;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailAdapter;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V

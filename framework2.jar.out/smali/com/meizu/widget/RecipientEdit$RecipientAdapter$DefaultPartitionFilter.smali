@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 2512
+    .line 2541
     iput-object p1, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DefaultPartitionFilter;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientAdapter;
 
     invoke-direct {p0}, Landroid/widget/Filter;-><init>()V
@@ -38,7 +38,7 @@
     .parameter "x1"
 
     .prologue
-    .line 2512
+    .line 2541
     invoke-direct {p0, p1}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DefaultPartitionFilter;-><init>(Lcom/meizu/widget/RecipientEdit$RecipientAdapter;)V
 
     return-void
@@ -51,7 +51,7 @@
     .parameter "resultValue"
 
     .prologue
-    .line 2543
+    .line 2572
     const/4 v0, 0x0
 
     return-object v0
@@ -64,7 +64,7 @@
     .prologue
     const/4 v7, 0x0
 
-    .line 2516
+    .line 2545
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DefaultPartitionFilter;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientAdapter;
 
     #getter for: Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDefaultData:Ljava/util/LinkedHashMap;
@@ -74,27 +74,27 @@
 
     invoke-virtual {v4}, Ljava/util/LinkedHashMap;->clear()V
 
-    .line 2517
+    .line 2546
     if-nez p1, :cond_1
 
     const-string v1, ""
 
-    .line 2518
+    .line 2547
     .local v1, filter:Ljava/lang/String;
     :goto_0
     new-instance v3, Landroid/widget/Filter$FilterResults;
 
     invoke-direct {v3}, Landroid/widget/Filter$FilterResults;-><init>()V
 
-    .line 2519
+    .line 2548
     .local v3, results:Landroid/widget/Filter$FilterResults;
     const/4 v2, 0x0
 
-    .line 2520
+    .line 2549
     .local v2, groupCursor:Landroid/database/Cursor;
     const/4 v0, 0x0
 
-    .line 2521
+    .line 2550
     .local v0, contactCursor:Landroid/database/Cursor;
     invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -102,7 +102,7 @@
 
     if-nez v4, :cond_0
 
-    .line 2523
+    .line 2552
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DefaultPartitionFilter;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientAdapter;
 
     #calls: Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->getGroupData(Ljava/lang/String;)Landroid/database/Cursor;
@@ -110,7 +110,7 @@
 
     move-result-object v2
 
-    .line 2525
+    .line 2554
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DefaultPartitionFilter;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientAdapter;
 
     const-wide/16 v5, -0x1
@@ -120,7 +120,7 @@
 
     move-result-object v0
 
-    .line 2528
+    .line 2557
     :cond_0
     const/4 v4, 0x2
 
@@ -134,10 +134,10 @@
 
     iput-object v4, v3, Landroid/widget/Filter$FilterResults;->values:Ljava/lang/Object;
 
-    .line 2529
+    .line 2558
     return-object v3
 
-    .line 2517
+    .line 2546
     .end local v0           #contactCursor:Landroid/database/Cursor;
     .end local v1           #filter:Ljava/lang/String;
     .end local v2           #groupCursor:Landroid/database/Cursor;
@@ -160,12 +160,12 @@
     .parameter "results"
 
     .prologue
-    .line 2534
+    .line 2563
     iget-object v1, p2, Landroid/widget/Filter$FilterResults;->values:Ljava/lang/Object;
 
     if-eqz v1, :cond_0
 
-    .line 2535
+    .line 2564
     iget-object v1, p2, Landroid/widget/Filter$FilterResults;->values:Ljava/lang/Object;
 
     check-cast v1, [Landroid/database/Cursor;
@@ -174,7 +174,7 @@
 
     check-cast v0, [Landroid/database/Cursor;
 
-    .line 2536
+    .line 2565
     .local v0, cursors:[Landroid/database/Cursor;
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DefaultPartitionFilter;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientAdapter;
 
@@ -189,7 +189,7 @@
     #calls: Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->onDefaultLoadFinished(Ljava/lang/CharSequence;Landroid/database/Cursor;Landroid/database/Cursor;)V
     invoke-static {v1, p1, v2, v3}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->access$2900(Lcom/meizu/widget/RecipientEdit$RecipientAdapter;Ljava/lang/CharSequence;Landroid/database/Cursor;Landroid/database/Cursor;)V
 
-    .line 2538
+    .line 2567
     .end local v0           #cursors:[Landroid/database/Cursor;
     :cond_0
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DefaultPartitionFilter;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientAdapter;
@@ -200,6 +200,6 @@
 
     iput v1, p2, Landroid/widget/Filter$FilterResults;->count:I
 
-    .line 2539
+    .line 2568
     return-void
 .end method

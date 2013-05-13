@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:background="@color/photoeditor_toolbar_background" android:clipChildren="false" android:clipToPadding="false" style="@style/ActionBarInner"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:clipChildren="false" android:clipToPadding="false" android:layout_height="48.0dip" style="@style/ActionBarLinearLayout">
-        <com.meizu.widget.GlowImageButton android:id="@id/action_bar_back" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="3.5dip" android:src="@drawable/photoeditor_ic_tab_back" />
-        <TextView android:textSize="18.0sp" android:textColor="#ff808080" android:layout_gravity="center_vertical" android:id="@id/action_bar_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.5dip" android:text="@string/edit" />
-    </LinearLayout>
-    <LinearLayout android:layout_alignParentRight="true" style="@style/ActionBarLinearLayout">
-        <Spinner android:id="@id/action_bar_spinner" android:background="@drawable/spinner_ab_default_light_mz" android:visibility="gone" android:layout_width="200.0dip" android:layout_height="fill_parent" android:layout_marginRight="16.0dip" />
+    <LinearLayout android:clipChildren="false" android:clipToPadding="false" android:layout_height="@dimen/photoeditor_actionbar_height" style="@style/ActionBarLinearLayout">
+        <com.meizu.widget.GlowImageButton android:id="@id/action_bar_back" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/photoeditor_actionbar_back_marginleft" android:layout_marginRight="@dimen/photoeditor_actionbar_back_marginright" android:src="@drawable/photoeditor_ic_tab_back" />
+        <TextView android:textSize="@dimen/photoeditor_actionbar_title_size" android:textColor="#ff808080" android:layout_gravity="center_vertical" android:id="@id/action_bar_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@android:dimen/action_bar_padding_left_mz" android:text="@string/edit" />
     </LinearLayout>
     <LinearLayout android:visibility="gone" android:layout_alignParentRight="true" style="@style/ActionBarLinearLayout">
         <ImageButton android:id="@id/undo_button" android:src="@drawable/photoeditor_undo" style="@style/ImageActionButton" />
@@ -17,12 +14,12 @@
         </ViewSwitcher>
     </LinearLayout>
     <LinearLayout android:id="@id/actionbar_toggles" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_alignParentRight="true" style="@style/EffectsMenuContainerExtra">
-        <com.meizu.widget.GlowImageButton android:id="@id/actionbar_artistic_button" android:layout_marginRight="-4.0dip" android:src="@drawable/photoeditor_artistic" style="@style/EffectsMenuActionButtonExtra" />
-        <com.meizu.widget.GlowImageButton android:id="@id/actionbar_exposure_button" android:layout_marginRight="9.0dip" android:src="@drawable/photoeditor_exposure" style="@style/EffectsMenuActionButtonExtra" />
+        <com.meizu.widget.GlowImageButton android:id="@id/actionbar_artistic_button" android:layout_marginRight="@dimen/photoeditor_actionbar_artistic_button_marginright" android:src="@drawable/photoeditor_artistic" style="@style/EffectsMenuActionButtonExtra" />
+        <com.meizu.widget.GlowImageButton android:id="@id/actionbar_exposure_button" android:layout_marginRight="@dimen/photoeditor_actionbar_exposure_button_marginright" android:src="@drawable/photoeditor_exposure" style="@style/EffectsMenuActionButtonExtra" />
         <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/list_attachment_dotted_line" />
         <Button android:textSize="14.0sp" android:textColor="#ff808080" android:id="@id/actionbar_apply_action_button" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="0.0dip" android:text="@string/effect_apply" android:drawableLeft="@drawable/ic_tab_done_holo" style="@style/TextActionButton" />
-        <com.meizu.widget.GlowLinearLayout android:enabled="false" android:id="@id/actionbar_save_action_button" android:clickable="true" android:addStatesFromChildren="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <Button android:textSize="14.0sp" android:textColor="#ff808080" android:gravity="center" android:id="@id/actionbar_save_action_button" android:background="@null" android:paddingLeft="@dimen/action_button_padding_horizontal" android:paddingRight="@dimen/action_button_padding_horizontal" android:clickable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="-2.5dip" android:text="@string/save" android:drawableLeft="@drawable/ic_tab_done_holo" android:drawablePadding="4.0dip" />
+        <com.meizu.widget.GlowLinearLayout android:enabled="false" android:id="@id/actionbar_save_action_button_layout" android:clickable="true" android:addStatesFromChildren="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <Button android:enabled="false" android:textSize="@dimen/effects_menu_button_textsize" android:textColor="@color/photoeditor_savebutton_color" android:gravity="center" android:id="@id/actionbar_save_action_button" android:background="@null" android:paddingLeft="@dimen/action_button_padding_horizontal" android:paddingRight="@dimen/action_button_padding_horizontal" android:clickable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/photoeditor_actionbar_save_button_marginright" android:text="@string/save" android:drawableLeft="@drawable/photoeditor_save_button_icon" android:drawablePadding="@dimen/photoeditor_actionbar_save_button_drawablepadding" />
         </com.meizu.widget.GlowLinearLayout>
     </LinearLayout>
 </RelativeLayout>

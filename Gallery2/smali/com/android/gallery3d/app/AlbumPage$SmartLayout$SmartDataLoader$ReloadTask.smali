@@ -99,59 +99,59 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 2106
+    .line 2306
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
 
-    .line 2107
+    .line 2307
     iput-boolean v1, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mActive:Z
 
-    .line 2108
+    .line 2308
     iput-boolean v1, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mDirty:Z
 
-    .line 2109
+    .line 2309
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mIsLoading:Z
 
-    .line 2117
+    .line 2317
     const/4 v0, -0x1
 
     iput v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateIndex:I
 
-    .line 2118
+    .line 2318
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdatedItems:Ljava/util/ArrayList;
 
-    .line 2229
+    .line 2429
     new-instance v0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask$1;
 
     invoke-direct {v0, p0}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask$1;-><init>(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)V
 
     iput-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateItemCallable:Ljava/util/concurrent/Callable;
 
-    .line 2237
+    .line 2437
     iput-boolean v1, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mAllLocked:Z
 
-    .line 2239
+    .line 2439
     new-instance v0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask$2;
 
     invoke-direct {v0, p0}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask$2;-><init>(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)V
 
     iput-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mItemComsumer:Lcom/android/gallery3d/data/MediaSet$ItemConsumer;
 
-    .line 2263
+    .line 2463
     new-instance v0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask$3;
 
     invoke-direct {v0, p0}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask$3;-><init>(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)V
 
     iput-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mGetUpdateInfoCallable:Ljava/util/concurrent/Callable;
 
-    .line 2277
+    .line 2477
     new-instance v0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask$4;
 
     invoke-direct {v0, p0}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask$4;-><init>(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)V
@@ -167,44 +167,10 @@
     .parameter "x1"
 
     .prologue
-    .line 2106
+    .line 2306
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;-><init>(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)V
 
     return-void
-.end method
-
-.method static synthetic access$6200(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 2106
-    iget v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateIndex:I
-
-    return v0
-.end method
-
-.method static synthetic access$6202(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 2106
-    iput p1, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateIndex:I
-
-    return p1
-.end method
-
-.method static synthetic access$6300(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)Ljava/util/ArrayList;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 2106
-    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdatedItems:Ljava/util/ArrayList;
-
-    return-object v0
 .end method
 
 .method static synthetic access$6400(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)I
@@ -212,13 +178,47 @@
     .parameter "x0"
 
     .prologue
-    .line 2106
+    .line 2306
+    iget v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateIndex:I
+
+    return v0
+.end method
+
+.method static synthetic access$6402(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;I)I
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 2306
+    iput p1, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateIndex:I
+
+    return p1
+.end method
+
+.method static synthetic access$6500(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)Ljava/util/ArrayList;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 2306
+    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdatedItems:Ljava/util/ArrayList;
+
+    return-object v0
+.end method
+
+.method static synthetic access$6600(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)I
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 2306
     iget v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdatedItemCount:I
 
     return v0
 .end method
 
-.method static synthetic access$6500(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;ILjava/util/ArrayList;I)V
+.method static synthetic access$6700(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;ILjava/util/ArrayList;I)V
     .locals 0
     .parameter "x0"
     .parameter "x1"
@@ -226,44 +226,21 @@
     .parameter "x3"
 
     .prologue
-    .line 2106
+    .line 2306
     invoke-direct {p0, p1, p2, p3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->updateItems(ILjava/util/ArrayList;I)V
 
     return-void
 .end method
 
-.method static synthetic access$6600(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)Ljava/util/concurrent/Callable;
+.method static synthetic access$6800(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)Ljava/util/concurrent/Callable;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 2106
+    .line 2306
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateItemCallable:Ljava/util/concurrent/Callable;
 
     return-object v0
-.end method
-
-.method static synthetic access$6800(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 2106
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mAllLocked:Z
-
-    return v0
-.end method
-
-.method static synthetic access$6802(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 2106
-    iput-boolean p1, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mAllLocked:Z
-
-    return p1
 .end method
 
 .method static synthetic access$7000(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)Z
@@ -271,44 +248,44 @@
     .parameter "x0"
 
     .prologue
-    .line 2106
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mActive:Z
+    .line 2306
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mAllLocked:Z
 
     return v0
 .end method
 
-.method static synthetic access$7100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 2106
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mDirty:Z
-
-    return v0
-.end method
-
-.method static synthetic access$7200(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 2106
-    iget v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateVisibleStart:I
-
-    return v0
-.end method
-
-.method static synthetic access$7202(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;I)I
+.method static synthetic access$7002(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;Z)Z
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 2106
-    iput p1, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateVisibleStart:I
+    .line 2306
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mAllLocked:Z
 
     return p1
+.end method
+
+.method static synthetic access$7200(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)Z
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 2306
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mActive:Z
+
+    return v0
+.end method
+
+.method static synthetic access$7300(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)Z
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 2306
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mDirty:Z
+
+    return v0
 .end method
 
 .method static synthetic access$7400(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)I
@@ -316,8 +293,8 @@
     .parameter "x0"
 
     .prologue
-    .line 2106
-    iget v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateCount:I
+    .line 2306
+    iget v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateVisibleStart:I
 
     return v0
 .end method
@@ -328,18 +305,41 @@
     .parameter "x1"
 
     .prologue
-    .line 2106
+    .line 2306
+    iput p1, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateVisibleStart:I
+
+    return p1
+.end method
+
+.method static synthetic access$7600(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)I
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 2306
+    iget v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateCount:I
+
+    return v0
+.end method
+
+.method static synthetic access$7602(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;I)I
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 2306
     iput p1, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateCount:I
 
     return p1
 .end method
 
-.method static synthetic access$7500(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)Ljava/util/ArrayList;
+.method static synthetic access$7700(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;)Ljava/util/ArrayList;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 2106
+    .line 2306
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdatedVisibleItems:Ljava/util/ArrayList;
 
     return-object v0
@@ -351,15 +351,15 @@
     .prologue
     const/4 v2, 0x1
 
-    .line 2346
+    .line 2546
     iput-boolean v2, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mAllLocked:Z
 
-    .line 2347
+    .line 2547
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdatedItems:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
-    .line 2348
+    .line 2548
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v0, v0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
@@ -367,7 +367,7 @@
     iget-object v0, v0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
-    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage;->access$1700(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/data/MediaSet;
+    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage;->access$2000(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/data/MediaSet;
 
     move-result-object v0
 
@@ -375,7 +375,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/data/MediaSet;->enumerateMediaItems(Lcom/android/gallery3d/data/MediaSet$ItemConsumer;)V
 
-    .line 2349
+    .line 2549
     iget-boolean v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mAllLocked:Z
 
     if-eqz v0, :cond_0
@@ -387,13 +387,13 @@
     iget-object v0, v0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mAllItemLocked:Z
-    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage;->access$6900(Lcom/android/gallery3d/app/AlbumPage;)Z
+    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage;->access$7100(Lcom/android/gallery3d/app/AlbumPage;)Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 2350
+    .line 2550
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v0, v0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
@@ -401,9 +401,9 @@
     iget-object v0, v0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #setter for: Lcom/android/gallery3d/app/AlbumPage;->mAllItemLocked:Z
-    invoke-static {v0, v2}, Lcom/android/gallery3d/app/AlbumPage;->access$6902(Lcom/android/gallery3d/app/AlbumPage;Z)Z
+    invoke-static {v0, v2}, Lcom/android/gallery3d/app/AlbumPage;->access$7102(Lcom/android/gallery3d/app/AlbumPage;Z)Z
 
-    .line 2351
+    .line 2551
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v0, v0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
@@ -411,7 +411,7 @@
     iget-object v0, v0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage;->access$2800(Lcom/android/gallery3d/app/AlbumPage;)Landroid/os/Handler;
+    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage;->access$900(Lcom/android/gallery3d/app/AlbumPage;)Landroid/os/Handler;
 
     move-result-object v0
 
@@ -419,7 +419,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 2353
+    .line 2553
     :cond_0
     return-void
 .end method
@@ -440,26 +440,26 @@
     .end annotation
 
     .prologue
-    .line 2121
+    .line 2321
     .local p2, updatedItem:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/gallery3d/data/MediaItem;>;"
     const/4 v4, 0x0
 
-    .line 2122
+    .line 2322
     .local v4, needLayout:Z
     const/4 v7, 0x0
 
-    .line 2123
+    .line 2323
     .local v7, visibilityChanged:Z
     const/4 v0, 0x0
 
-    .line 2124
+    .line 2324
     .local v0, countChanged:Z
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mSlots:Ljava/util/ArrayList;
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$4900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
 
     move-result-object v8
 
@@ -467,30 +467,30 @@
 
     move-result v6
 
-    .line 2126
+    .line 2326
     .local v6, slotCountBefore:I
     if-ge p1, v6, :cond_0
 
-    .line 2127
+    .line 2327
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     const/4 v9, 0x0
 
     #setter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->mFirstLoad:Z
-    invoke-static {v8, v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$5202(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;Z)Z
+    invoke-static {v8, v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$5402(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;Z)Z
 
-    .line 2130
+    .line 2330
     :cond_0
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->mFirstLoad:Z
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$5200(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)Z
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$5400(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)Z
 
     move-result v8
 
     if-eqz v8, :cond_4
 
-    .line 2131
+    .line 2331
     invoke-virtual {p2}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
 
     move-result-object v2
@@ -509,7 +509,7 @@
 
     check-cast v3, Lcom/android/gallery3d/data/MediaItem;
 
-    .line 2132
+    .line 2332
     .local v3, item:Lcom/android/gallery3d/data/MediaItem;
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
@@ -519,7 +519,7 @@
 
     goto :goto_0
 
-    .line 2134
+    .line 2334
     .end local v3           #item:Lcom/android/gallery3d/data/MediaItem;
     :cond_1
     invoke-virtual {p2}, Ljava/util/ArrayList;->size()I
@@ -528,32 +528,32 @@
 
     add-int/2addr p1, v8
 
-    .line 2135
+    .line 2335
     const/4 v7, 0x1
 
-    .line 2186
+    .line 2386
     :cond_2
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mSlotCount:I
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)I
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5300(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)I
 
     move-result v8
 
     if-lt p1, v8, :cond_3
 
-    .line 2187
+    .line 2387
     if-eqz v4, :cond_f
 
-    .line 2188
+    .line 2388
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mSlots:Ljava/util/ArrayList;
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$4900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
 
     move-result-object v8
 
@@ -562,7 +562,7 @@
     iget-object v9, v9, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mRow:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;
-    invoke-static {v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5300(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;
+    invoke-static {v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5500(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;
 
     move-result-object v9
 
@@ -572,28 +572,28 @@
 
     invoke-virtual {v8, v9}, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
 
-    .line 2189
+    .line 2389
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mRow:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5300(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5500(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;
 
     move-result-object v8
 
     invoke-virtual {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;->clear()V
 
-    .line 2193
+    .line 2393
     :goto_1
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     const/4 v9, 0x0
 
     #setter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->mFirstLoad:Z
-    invoke-static {v8, v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$5202(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;Z)Z
+    invoke-static {v8, v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$5402(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;Z)Z
 
-    .line 2196
+    .line 2396
     :cond_3
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
@@ -601,10 +601,10 @@
 
     invoke-virtual {v8, v4, v7, v0, v6}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->updateIfNeeded(ZZZI)V
 
-    .line 2197
+    .line 2397
     return-void
 
-    .line 2138
+    .line 2338
     .end local v2           #i$:Ljava/util/Iterator;
     :cond_4
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
@@ -612,7 +612,7 @@
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mRow:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5300(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5500(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;
 
     move-result-object v8
 
@@ -622,13 +622,13 @@
 
     if-lez v8, :cond_5
 
-    .line 2139
+    .line 2339
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mSlots:Ljava/util/ArrayList;
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$4900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
 
     move-result-object v8
 
@@ -637,7 +637,7 @@
     iget-object v9, v9, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mRow:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;
-    invoke-static {v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5300(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;
+    invoke-static {v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5500(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;
 
     move-result-object v9
 
@@ -647,29 +647,29 @@
 
     invoke-virtual {v8, v9}, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
 
-    .line 2140
+    .line 2340
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mRow:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5300(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5500(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;
 
     move-result-object v8
 
     invoke-virtual {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SlotRow;->clear()V
 
-    .line 2141
+    .line 2341
     const/4 v4, 0x1
 
-    .line 2144
+    .line 2344
     :cond_5
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mSlots:Ljava/util/ArrayList;
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$4900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
 
     move-result-object v8
 
@@ -679,14 +679,14 @@
 
     if-le v8, p3, :cond_7
 
-    .line 2145
+    .line 2345
     :goto_2
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mSlots:Ljava/util/ArrayList;
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$4900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
 
     move-result-object v8
 
@@ -696,13 +696,13 @@
 
     if-le v8, p3, :cond_6
 
-    .line 2146
+    .line 2346
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mSlots:Ljava/util/ArrayList;
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$4900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
 
     move-result-object v8
 
@@ -711,7 +711,7 @@
     iget-object v9, v9, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mSlots:Ljava/util/ArrayList;
-    invoke-static {v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$4900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
+    invoke-static {v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
 
     move-result-object v9
 
@@ -725,45 +725,45 @@
 
     goto :goto_2
 
-    .line 2148
+    .line 2348
     :cond_6
     const/4 v4, 0x1
 
-    .line 2151
+    .line 2351
     :cond_7
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mSlotCount:I
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)I
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5300(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)I
 
     move-result v8
 
     if-eq p3, v8, :cond_8
 
-    .line 2152
+    .line 2352
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #setter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mSlotCount:I
-    invoke-static {v8, p3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5102(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;I)I
+    invoke-static {v8, p3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5302(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;I)I
 
-    .line 2153
+    .line 2353
     const/4 v0, 0x1
 
-    .line 2154
+    .line 2354
     const/4 v7, 0x1
 
-    .line 2157
+    .line 2357
     :cond_8
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mSlots:Ljava/util/ArrayList;
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$4900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
 
     move-result-object v8
 
@@ -771,17 +771,17 @@
 
     move-result v5
 
-    .line 2159
+    .line 2359
     .local v5, slotCount:I
     invoke-static {p1, v5}, Ljava/lang/Math;->min(II)I
 
     move-result v1
 
-    .line 2160
+    .line 2360
     .local v1, endIndex:I
     if-lez v1, :cond_c
 
-    .line 2161
+    .line 2361
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v9, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
@@ -791,7 +791,7 @@
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mSlots:Ljava/util/ArrayList;
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$4900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
 
     move-result-object v8
 
@@ -806,9 +806,9 @@
     iget v8, v8, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mBucketId:I
 
     #setter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mLastBucketId:I
-    invoke-static {v9, v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5402(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;I)I
+    invoke-static {v9, v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5602(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;I)I
 
-    .line 2166
+    .line 2366
     :goto_3
     invoke-virtual {p2}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
 
@@ -828,17 +828,17 @@
 
     check-cast v3, Lcom/android/gallery3d/data/MediaItem;
 
-    .line 2167
+    .line 2367
     .restart local v3       #item:Lcom/android/gallery3d/data/MediaItem;
     if-lt p1, v5, :cond_e
 
-    .line 2168
+    .line 2368
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mAllItemLoaded:Z
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5500(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Z
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5700(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Z
 
     move-result v8
 
@@ -846,7 +846,7 @@
 
     if-eqz v4, :cond_a
 
-    .line 2169
+    .line 2369
     :cond_9
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
@@ -855,34 +855,34 @@
     const/4 v9, 0x0
 
     #setter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mAllItemLoaded:Z
-    invoke-static {v8, v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5502(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;Z)Z
+    invoke-static {v8, v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5702(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;Z)Z
 
-    .line 2170
+    .line 2370
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #calls: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->layout()V
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5600(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)V
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5800(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)V
 
-    .line 2171
+    .line 2371
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     const/4 v9, 0x1
 
     #setter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->mFirstLoad:Z
-    invoke-static {v8, v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$5202(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;Z)Z
+    invoke-static {v8, v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$5402(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;Z)Z
 
-    .line 2172
+    .line 2372
     const/4 v4, 0x0
 
-    .line 2173
+    .line 2373
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mAllItemLoaded:Z
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5500(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Z
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5700(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Z
 
     move-result v8
 
@@ -893,7 +893,7 @@
     :goto_5
     invoke-static {v8}, Lcom/android/gallery3d/common/Utils;->assertTrue(Z)V
 
-    .line 2175
+    .line 2375
     :cond_a
     iget-object v8, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
@@ -901,17 +901,17 @@
 
     invoke-virtual {v8, v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->addItem(Lcom/android/gallery3d/data/MediaItem;)V
 
-    .line 2176
+    .line 2376
     const/4 v7, 0x1
 
-    .line 2182
+    .line 2382
     :cond_b
     :goto_6
     add-int/lit8 p1, p1, 0x1
 
     goto :goto_4
 
-    .line 2163
+    .line 2363
     .end local v2           #i$:Ljava/util/Iterator;
     .end local v3           #item:Lcom/android/gallery3d/data/MediaItem;
     :cond_c
@@ -926,16 +926,16 @@
     iget-object v9, v9, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mSetBucketId:I
-    invoke-static {v9}, Lcom/android/gallery3d/app/AlbumPage;->access$4500(Lcom/android/gallery3d/app/AlbumPage;)I
+    invoke-static {v9}, Lcom/android/gallery3d/app/AlbumPage;->access$4700(Lcom/android/gallery3d/app/AlbumPage;)I
 
     move-result v9
 
     #setter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mLastBucketId:I
-    invoke-static {v8, v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5402(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;I)I
+    invoke-static {v8, v9}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5602(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;I)I
 
     goto :goto_3
 
-    .line 2173
+    .line 2373
     .restart local v2       #i$:Ljava/util/Iterator;
     .restart local v3       #item:Lcom/android/gallery3d/data/MediaItem;
     :cond_d
@@ -943,7 +943,7 @@
 
     goto :goto_5
 
-    .line 2178
+    .line 2378
     :cond_e
     invoke-direct {p0, v3, p1}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->updateSlot(Lcom/android/gallery3d/data/MediaItem;I)Z
 
@@ -951,12 +951,12 @@
 
     if-eqz v8, :cond_b
 
-    .line 2179
+    .line 2379
     const/4 v4, 0x1
 
     goto :goto_6
 
-    .line 2191
+    .line 2391
     .end local v1           #endIndex:I
     .end local v3           #item:Lcom/android/gallery3d/data/MediaItem;
     .end local v5           #slotCount:I
@@ -966,7 +966,7 @@
     iget-object v8, v8, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #calls: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->flushRow()V
-    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5700(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)V
+    invoke-static {v8}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)V
 
     goto/16 :goto_1
 .end method
@@ -976,20 +976,20 @@
     .parameter "loading"
 
     .prologue
-    .line 2286
+    .line 2486
     iget-boolean v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mIsLoading:Z
 
     if-ne v0, p1, :cond_0
 
-    .line 2289
+    .line 2489
     :goto_0
     return-void
 
-    .line 2287
+    .line 2487
     :cond_0
     iput-boolean p1, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mIsLoading:Z
 
-    .line 2288
+    .line 2488
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v0, v0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
@@ -997,7 +997,7 @@
     iget-object v0, v0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage;->access$2800(Lcom/android/gallery3d/app/AlbumPage;)Landroid/os/Handler;
+    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage;->access$900(Lcom/android/gallery3d/app/AlbumPage;)Landroid/os/Handler;
 
     move-result-object v1
 
@@ -1022,17 +1022,17 @@
     .parameter "index"
 
     .prologue
-    .line 2200
+    .line 2400
     const/4 v0, 0x0
 
-    .line 2201
+    .line 2401
     .local v0, needLayout:Z
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v3, v3, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mSlots:Ljava/util/ArrayList;
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$4900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
+    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Ljava/util/ArrayList;
 
     move-result-object v3
 
@@ -1042,7 +1042,7 @@
 
     check-cast v2, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;
 
-    .line 2202
+    .line 2402
     .local v2, oldSlot:Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;
     invoke-virtual {p1}, Lcom/android/gallery3d/data/MediaItem;->getDataVersion()J
 
@@ -1052,9 +1052,9 @@
 
     cmp-long v3, v3, v5
 
-    if-eqz v3, :cond_3
+    if-eqz v3, :cond_2
 
-    .line 2203
+    .line 2403
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v3, v3, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
@@ -1064,137 +1064,112 @@
     iget-object v4, v4, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mTmpSlot:Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;
-    invoke-static {v4}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5800(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;
+    invoke-static {v4}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$6000(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;
 
     move-result-object v4
 
     #calls: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->makeAlbumSlot(Lcom/android/gallery3d/data/MediaItem;Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;)Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;
-    invoke-static {v3, p1, v4}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;Lcom/android/gallery3d/data/MediaItem;Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;)Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;
+    invoke-static {v3, p1, v4}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$6100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;Lcom/android/gallery3d/data/MediaItem;Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;)Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;
 
     move-result-object v1
 
-    .line 2204
+    .line 2404
     .local v1, newSlot:Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v3, v3, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mIsVideo:Z
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$3900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Z
+    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$4100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;)Z
 
     move-result v3
 
-    if-nez v3, :cond_1
+    if-nez v3, :cond_0
 
-    .line 2205
-    iget-object v3, v1, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mRect:Landroid/graphics/Rect;
+    .line 2405
+    iget v3, v1, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mWidth:I
 
-    invoke-virtual {v3}, Landroid/graphics/Rect;->width()I
+    iget v4, v2, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mWidth:I
 
-    move-result v3
+    if-eq v3, v4, :cond_0
 
-    iget-object v4, v2, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mRect:Landroid/graphics/Rect;
+    .line 2406
+    iget v3, v1, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mWidth:I
 
-    invoke-virtual {v4}, Landroid/graphics/Rect;->width()I
+    iput v3, v2, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mWidth:I
 
-    move-result v4
-
-    if-ne v3, v4, :cond_0
-
-    iget-object v3, v1, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mRect:Landroid/graphics/Rect;
-
-    invoke-virtual {v3}, Landroid/graphics/Rect;->height()I
-
-    move-result v3
-
-    iget-object v4, v2, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mRect:Landroid/graphics/Rect;
-
-    invoke-virtual {v4}, Landroid/graphics/Rect;->height()I
-
-    move-result v4
-
-    if-eq v3, v4, :cond_1
-
-    .line 2206
-    :cond_0
-    iget-object v3, v2, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mRect:Landroid/graphics/Rect;
-
-    iget-object v4, v1, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mRect:Landroid/graphics/Rect;
-
-    invoke-virtual {v3, v4}, Landroid/graphics/Rect;->set(Landroid/graphics/Rect;)V
-
-    .line 2207
+    .line 2407
     const/4 v0, 0x1
 
-    .line 2210
-    :cond_1
+    .line 2410
+    :cond_0
     iget-object v3, v1, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mItem:Lcom/android/gallery3d/data/MediaItem;
 
     iput-object v3, v2, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mItem:Lcom/android/gallery3d/data/MediaItem;
 
-    .line 2211
+    .line 2411
     iget-wide v3, v1, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mVersion:J
 
     iput-wide v3, v2, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mVersion:J
 
-    .line 2213
+    .line 2413
     iget v3, v1, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mBucketId:I
 
     iget v4, v2, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mBucketId:I
 
-    if-eq v3, v4, :cond_2
+    if-eq v3, v4, :cond_1
 
-    .line 2214
+    .line 2414
     iget v3, v1, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mBucketId:I
 
     iput v3, v2, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mBucketId:I
 
-    .line 2215
+    .line 2415
     const/4 v0, 0x1
 
-    .line 2218
-    :cond_2
+    .line 2418
+    :cond_1
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->mDataListener:Lcom/android/gallery3d/app/AlbumDataLoader$DataListener;
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$4600(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)Lcom/android/gallery3d/app/AlbumDataLoader$DataListener;
+    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$4800(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)Lcom/android/gallery3d/app/AlbumDataLoader$DataListener;
 
     move-result-object v3
 
-    if-eqz v3, :cond_3
+    if-eqz v3, :cond_2
 
-    .line 2219
+    .line 2419
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->mActiveStart:I
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$6000(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)I
+    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$6200(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)I
 
     move-result v3
 
-    if-lt p2, v3, :cond_3
+    if-lt p2, v3, :cond_2
 
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->mActiveEnd:I
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$6100(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)I
+    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$6300(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)I
 
     move-result v3
 
-    if-ge p2, v3, :cond_3
+    if-ge p2, v3, :cond_2
 
-    .line 2220
+    .line 2420
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->mDataListener:Lcom/android/gallery3d/app/AlbumDataLoader$DataListener;
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$4600(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)Lcom/android/gallery3d/app/AlbumDataLoader$DataListener;
+    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$4800(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)Lcom/android/gallery3d/app/AlbumDataLoader$DataListener;
 
     move-result-object v3
 
     invoke-interface {v3, p2}, Lcom/android/gallery3d/app/AlbumDataLoader$DataListener;->onContentChanged(I)V
 
-    .line 2224
+    .line 2424
     .end local v1           #newSlot:Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;
-    :cond_3
+    :cond_2
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v3, v3, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
@@ -1202,9 +1177,9 @@
     iget v4, v2, Lcom/android/gallery3d/app/AlbumPage$AlbumSlot;->mBucketId:I
 
     #setter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->mLastBucketId:I
-    invoke-static {v3, v4}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5402(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;I)I
+    invoke-static {v3, v4}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->access$5602(Lcom/android/gallery3d/app/AlbumPage$SmartLayout;I)I
 
-    .line 2226
+    .line 2426
     return v0
 .end method
 
@@ -1214,7 +1189,7 @@
     .locals 2
 
     .prologue
-    .line 2356
+    .line 2556
     monitor-enter p0
 
     const/4 v0, 0x1
@@ -1222,25 +1197,25 @@
     :try_start_0
     iput-boolean v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mDirty:Z
 
-    .line 2357
+    .line 2557
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     const/4 v1, 0x0
 
     #setter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->mFirstLoad:Z
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$5202(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;Z)Z
+    invoke-static {v0, v1}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$5402(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;Z)Z
 
-    .line 2358
+    .line 2558
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 2359
+    .line 2559
     monitor-exit p0
 
     return-void
 
-    .line 2356
+    .line 2556
     :catchall_0
     move-exception v0
 
@@ -1255,22 +1230,22 @@
     .prologue
     const/4 v7, 0x0
 
-    .line 2293
+    .line 2493
     const/16 v3, 0xa
 
     invoke-static {v3}, Landroid/os/Process;->setThreadPriority(I)V
 
-    .line 2295
+    .line 2495
     :cond_0
     :goto_0
     iget-boolean v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mActive:Z
 
     if-eqz v3, :cond_6
 
-    .line 2296
+    .line 2496
     monitor-enter p0
 
-    .line 2297
+    .line 2497
     :try_start_0
     iget-boolean v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mActive:Z
 
@@ -1280,20 +1255,20 @@
 
     if-nez v3, :cond_1
 
-    .line 2298
+    .line 2498
     const/4 v3, 0x0
 
     invoke-direct {p0, v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->updateLoading(Z)V
 
-    .line 2299
+    .line 2499
     invoke-static {p0}, Lcom/android/gallery3d/common/Utils;->waitWithoutInterrupt(Ljava/lang/Object;)V
 
-    .line 2300
+    .line 2500
     monitor-exit p0
 
     goto :goto_0
 
-    .line 2302
+    .line 2502
     :catchall_0
     move-exception v3
 
@@ -1309,20 +1284,20 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 2303
+    .line 2503
     iput-boolean v7, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mDirty:Z
 
-    .line 2304
+    .line 2504
     const/4 v3, 0x1
 
     invoke-direct {p0, v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->updateLoading(Z)V
 
-    .line 2306
+    .line 2506
     sget-object v4, Lcom/android/gallery3d/data/DataManager;->LOCK:Ljava/lang/Object;
 
     monitor-enter v4
 
-    .line 2307
+    .line 2507
     :try_start_2
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
@@ -1331,7 +1306,7 @@
     iget-object v3, v3, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage;->access$1700(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/data/MediaSet;
+    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage;->access$2000(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/data/MediaSet;
 
     move-result-object v3
 
@@ -1339,17 +1314,17 @@
 
     move-result-wide v1
 
-    .line 2308
+    .line 2508
     .local v1, version:J
     monitor-exit v4
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 2309
+    .line 2509
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->mSetVersion:J
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$7600(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)J
+    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$7800(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)J
 
     move-result-wide v3
 
@@ -1357,22 +1332,22 @@
 
     if-eqz v3, :cond_0
 
-    .line 2310
+    .line 2510
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     #setter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->mSetVersion:J
-    invoke-static {v3, v1, v2}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$7602(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;J)J
+    invoke-static {v3, v1, v2}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$7802(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;J)J
 
-    .line 2312
+    .line 2512
     sget-object v4, Lcom/android/gallery3d/data/DataManager;->LOCK:Ljava/lang/Object;
 
     monitor-enter v4
 
-    .line 2313
+    .line 2513
     :try_start_3
     iget v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdatedItemCount:I
 
-    .line 2314
+    .line 2514
     .local v0, oldCount:I
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
@@ -1381,7 +1356,7 @@
     iget-object v3, v3, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage;->access$1700(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/data/MediaSet;
+    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage;->access$2000(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/data/MediaSet;
 
     move-result-object v3
 
@@ -1391,12 +1366,12 @@
 
     iput v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdatedItemCount:I
 
-    .line 2315
+    .line 2515
     iget v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdatedItemCount:I
 
     if-eq v0, v3, :cond_2
 
-    .line 2316
+    .line 2516
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v3, v3, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->this$1:Lcom/android/gallery3d/app/AlbumPage$SmartLayout;
@@ -1404,7 +1379,7 @@
     iget-object v3, v3, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mHandler:Landroid/os/Handler;
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage;->access$2800(Lcom/android/gallery3d/app/AlbumPage;)Landroid/os/Handler;
+    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage;->access$900(Lcom/android/gallery3d/app/AlbumPage;)Landroid/os/Handler;
 
     move-result-object v3
 
@@ -1412,28 +1387,28 @@
 
     invoke-virtual {v3, v5}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 2318
+    .line 2518
     :cond_2
     monitor-exit v4
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_2
 
-    .line 2320
+    .line 2520
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->mFirstLoad:Z
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$5200(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)Z
+    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$5400(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)Z
 
     move-result v3
 
     if-eqz v3, :cond_3
 
-    .line 2321
+    .line 2521
     invoke-direct {p0}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->enumerateMediaItems()V
 
     goto :goto_0
 
-    .line 2308
+    .line 2508
     .end local v0           #oldCount:I
     .end local v1           #version:J
     :catchall_1
@@ -1446,7 +1421,7 @@
 
     throw v3
 
-    .line 2318
+    .line 2518
     .restart local v1       #version:J
     :catchall_2
     move-exception v3
@@ -1458,7 +1433,7 @@
 
     throw v3
 
-    .line 2323
+    .line 2523
     .restart local v0       #oldCount:I
     :cond_3
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
@@ -1466,9 +1441,9 @@
     iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mGetUpdateInfoCallable:Ljava/util/concurrent/Callable;
 
     #calls: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->executeAndWait(Ljava/util/concurrent/Callable;)Ljava/lang/Object;
-    invoke-static {v3, v4}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$6700(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;Ljava/util/concurrent/Callable;)Ljava/lang/Object;
+    invoke-static {v3, v4}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$6900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;Ljava/util/concurrent/Callable;)Ljava/lang/Object;
 
-    .line 2324
+    .line 2524
     iget v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateVisibleStart:I
 
     if-nez v3, :cond_4
@@ -1483,18 +1458,18 @@
 
     if-eqz v3, :cond_4
 
-    .line 2327
+    .line 2527
     invoke-direct {p0}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->enumerateMediaItems()V
 
     goto/16 :goto_0
 
-    .line 2329
+    .line 2529
     :cond_4
     sget-object v4, Lcom/android/gallery3d/data/DataManager;->LOCK:Ljava/lang/Object;
 
     monitor-enter v4
 
-    .line 2330
+    .line 2530
     :try_start_6
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
@@ -1503,7 +1478,7 @@
     iget-object v3, v3, Lcom/android/gallery3d/app/AlbumPage$SmartLayout;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage;->access$1700(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/data/MediaSet;
+    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumPage;->access$2000(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/data/MediaSet;
 
     move-result-object v3
 
@@ -1517,41 +1492,41 @@
 
     iput-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdatedVisibleItems:Ljava/util/ArrayList;
 
-    .line 2331
+    .line 2531
     monitor-exit v4
     :try_end_6
     .catchall {:try_start_6 .. :try_end_6} :catchall_3
 
-    .line 2332
+    .line 2532
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdateVisibleCallable:Ljava/util/concurrent/Callable;
 
     #calls: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->executeAndWait(Ljava/util/concurrent/Callable;)Ljava/lang/Object;
-    invoke-static {v3, v4}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$6700(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;Ljava/util/concurrent/Callable;)Ljava/lang/Object;
+    invoke-static {v3, v4}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$6900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;Ljava/util/concurrent/Callable;)Ljava/lang/Object;
 
-    .line 2333
+    .line 2533
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdatedVisibleItems:Ljava/util/ArrayList;
 
     if-eqz v3, :cond_5
 
-    .line 2334
+    .line 2534
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdatedVisibleItems:Ljava/util/ArrayList;
 
     invoke-virtual {v3}, Ljava/util/ArrayList;->clear()V
 
-    .line 2335
+    .line 2535
     const/4 v3, 0x0
 
     iput-object v3, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mUpdatedVisibleItems:Ljava/util/ArrayList;
 
-    .line 2337
+    .line 2537
     :cond_5
     invoke-direct {p0}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->enumerateMediaItems()V
 
     goto/16 :goto_0
 
-    .line 2331
+    .line 2531
     :catchall_3
     move-exception v3
 
@@ -1562,13 +1537,13 @@
 
     throw v3
 
-    .line 2342
+    .line 2542
     .end local v0           #oldCount:I
     .end local v1           #version:J
     :cond_6
     invoke-direct {p0, v7}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->updateLoading(Z)V
 
-    .line 2343
+    .line 2543
     return-void
 .end method
 
@@ -1576,7 +1551,7 @@
     .locals 1
 
     .prologue
-    .line 2362
+    .line 2562
     monitor-enter p0
 
     const/4 v0, 0x0
@@ -1584,17 +1559,17 @@
     :try_start_0
     iput-boolean v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->mActive:Z
 
-    .line 2363
+    .line 2563
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 2364
+    .line 2564
     monitor-exit p0
 
     return-void
 
-    .line 2362
+    .line 2562
     :catchall_0
     move-exception v0
 

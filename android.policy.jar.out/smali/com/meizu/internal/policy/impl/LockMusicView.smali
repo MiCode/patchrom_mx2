@@ -56,12 +56,12 @@
     .parameter "context"
 
     .prologue
-    .line 87
+    .line 85
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Lcom/meizu/internal/policy/impl/LockMusicView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 88
+    .line 86
     return-void
 .end method
 
@@ -71,12 +71,12 @@
     .parameter "attrs"
 
     .prologue
-    .line 83
+    .line 81
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, p2, v0}, Lcom/meizu/internal/policy/impl/LockMusicView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 84
+    .line 82
     return-void
 .end method
 
@@ -91,34 +91,34 @@
 
     const/4 v0, 0x0
 
-    .line 56
+    .line 54
     invoke-direct {p0, p1, p2, p3}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 49
+    .line 47
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicAppName:Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
 
-    .line 52
+    .line 50
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mLockWidgetCallback:Lcom/meizu/internal/policy/impl/ILockWidget;
 
-    .line 53
+    .line 51
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mLockMusicWidgetCallback:Lcom/meizu/internal/policy/impl/LockMusicView$ILockMusicWidget;
 
-    .line 258
+    .line 256
     iput-boolean v3, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mWaitStartMediaService:Z
 
-    .line 58
+    .line 56
     invoke-static {p1}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
     move-result-object v0
 
-    const v1, 0x1090080
+    const v1, 0x1090084
 
     const/4 v2, 0x1
 
     invoke-virtual {v0, v1, p0, v2}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
-    .line 60
-    const v0, 0x1020357
+    .line 58
+    const v0, 0x1020353
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->findViewById(I)Landroid/view/View;
 
@@ -128,15 +128,15 @@
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicTips:Landroid/widget/TextView;
 
-    .line 61
+    .line 59
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicTips:Landroid/widget/TextView;
 
     const/4 v1, 0x4
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 62
-    const v0, 0x102035c
+    .line 60
+    const v0, 0x1020358
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->findViewById(I)Landroid/view/View;
 
@@ -146,13 +146,13 @@
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mArtistTips:Landroid/widget/TextView;
 
-    .line 63
+    .line 61
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mArtistTips:Landroid/widget/TextView;
 
     invoke-virtual {v0, v3}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 64
-    const v0, 0x1020359
+    .line 62
+    const v0, 0x1020355
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->findViewById(I)Landroid/view/View;
 
@@ -162,8 +162,8 @@
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicPrev:Landroid/widget/ImageButton;
 
-    .line 65
-    const v0, 0x102035b
+    .line 63
+    const v0, 0x1020357
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->findViewById(I)Landroid/view/View;
 
@@ -173,8 +173,8 @@
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicNext:Landroid/widget/ImageButton;
 
-    .line 66
-    const v0, 0x102035a
+    .line 64
+    const v0, 0x1020356
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->findViewById(I)Landroid/view/View;
 
@@ -184,22 +184,22 @@
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicPause:Landroid/widget/ImageButton;
 
-    .line 67
+    .line 65
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicPrev:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, p0}, Landroid/widget/ImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 68
+    .line 66
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicNext:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, p0}, Landroid/widget/ImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 69
+    .line 67
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicPause:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, p0}, Landroid/widget/ImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 70
+    .line 68
     return-void
 .end method
 
@@ -207,7 +207,7 @@
     .locals 1
 
     .prologue
-    .line 130
+    .line 126
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicTips:Landroid/widget/TextView;
 
     invoke-virtual {v0}, Landroid/widget/TextView;->isFocused()Z
@@ -216,53 +216,14 @@
 
     if-nez v0, :cond_0
 
-    .line 131
+    .line 127
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicTips:Landroid/widget/TextView;
 
     invoke-virtual {v0}, Landroid/widget/TextView;->requestFocus()Z
 
-    .line 133
+    .line 129
     :cond_0
     return-void
-.end method
-
-.method private setPauseButtonImage()V
-    .locals 2
-
-    .prologue
-    .line 122
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
-
-    invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->isMusicPlaying()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 123
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicPause:Landroid/widget/ImageButton;
-
-    const v1, 0x1080338
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
-
-    .line 127
-    :goto_0
-    return-void
-
-    .line 125
-    :cond_0
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicPause:Landroid/widget/ImageButton;
-
-    const v1, 0x1080339
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
-
-    goto :goto_0
 .end method
 
 
@@ -271,17 +232,17 @@
     .locals 1
 
     .prologue
-    .line 116
+    .line 112
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     if-eqz v0, :cond_0
 
-    .line 117
+    .line 113
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     invoke-virtual {v0, p0}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->removeCallback(Ljava/lang/Object;)V
 
-    .line 119
+    .line 115
     :cond_0
     return-void
 .end method
@@ -290,7 +251,7 @@
     .locals 1
 
     .prologue
-    .line 278
+    .line 276
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicTips:Landroid/widget/TextView;
 
     invoke-virtual {v0}, Landroid/widget/TextView;->getVisibility()I
@@ -315,62 +276,62 @@
     .parameter "v"
 
     .prologue
-    .line 169
+    .line 166
     const/4 v0, -0x1
 
-    .line 170
+    .line 167
     .local v0, keyCode:I
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicPrev:Landroid/widget/ImageButton;
 
     if-ne p1, v1, :cond_2
 
-    .line 171
+    .line 168
     const/16 v0, 0x58
 
-    .line 179
+    .line 175
     :cond_0
     :goto_0
     const/4 v1, -0x1
 
     if-eq v0, v1, :cond_1
 
-    .line 180
+    .line 176
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     invoke-virtual {v1, v0}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->sendMediaButtonClick(I)V
 
-    .line 181
+    .line 177
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mLockWidgetCallback:Lcom/meizu/internal/policy/impl/ILockWidget;
 
     if-eqz v1, :cond_1
 
-    .line 182
+    .line 178
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mLockWidgetCallback:Lcom/meizu/internal/policy/impl/ILockWidget;
 
     invoke-interface {v1}, Lcom/meizu/internal/policy/impl/ILockWidget;->onTouchScreen()V
 
-    .line 185
+    .line 181
     :cond_1
     return-void
 
-    .line 172
+    .line 169
     :cond_2
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicNext:Landroid/widget/ImageButton;
 
     if-ne p1, v1, :cond_3
 
-    .line 173
+    .line 170
     const/16 v0, 0x57
 
     goto :goto_0
 
-    .line 174
+    .line 171
     :cond_3
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicPause:Landroid/widget/ImageButton;
 
     if-ne p1, v1, :cond_0
 
-    .line 175
+    .line 172
     const/16 v0, 0x55
 
     goto :goto_0
@@ -385,10 +346,10 @@
     .parameter "b"
 
     .prologue
-    .line 79
+    .line 77
     invoke-super/range {p0 .. p5}, Landroid/widget/LinearLayout;->onLayout(ZIIII)V
 
-    .line 80
+    .line 78
     return-void
 .end method
 
@@ -398,10 +359,10 @@
     .parameter "heightMeasureSpec"
 
     .prologue
-    .line 74
+    .line 72
     invoke-super {p0, p1, p2}, Landroid/widget/LinearLayout;->onMeasure(II)V
 
-    .line 75
+    .line 73
     return-void
 .end method
 
@@ -409,17 +370,17 @@
     .locals 1
 
     .prologue
-    .line 188
+    .line 184
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->getVisibility()I
 
     move-result v0
 
     if-nez v0, :cond_1
 
-    .line 189
+    .line 185
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->updateMusicInfo()V
 
-    .line 190
+    .line 186
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->getMusicName()Ljava/lang/String;
@@ -440,18 +401,18 @@
 
     if-eqz v0, :cond_1
 
-    .line 192
+    .line 188
     :cond_0
     const/16 v0, 0x8
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->setVisibility(I)V
 
-    .line 193
+    .line 189
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->showMusicName(Z)V
 
-    .line 196
+    .line 192
     :cond_1
     return-void
 .end method
@@ -461,10 +422,10 @@
     .parameter "appName"
 
     .prologue
-    .line 255
+    .line 253
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicAppName:Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
 
-    .line 256
+    .line 254
     return-void
 .end method
 
@@ -472,24 +433,24 @@
     .locals 2
 
     .prologue
-    .line 287
+    .line 285
     const/16 v0, 0x8
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->setVisibility(I)V
 
-    .line 288
+    .line 286
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mLockMusicWidgetCallback:Lcom/meizu/internal/policy/impl/LockMusicView$ILockMusicWidget;
 
     if-eqz v0, :cond_0
 
-    .line 289
+    .line 287
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mLockMusicWidgetCallback:Lcom/meizu/internal/policy/impl/LockMusicView$ILockMusicWidget;
 
     const/4 v1, 0x0
 
     invoke-interface {v0, v1}, Lcom/meizu/internal/policy/impl/LockMusicView$ILockMusicWidget;->onMusicVisibleChanged(Z)V
 
-    .line 290
+    .line 288
     :cond_0
     return-void
 .end method
@@ -502,15 +463,15 @@
 
     const/4 v1, 0x0
 
-    .line 224
+    .line 222
     iget-boolean v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mWaitStartMediaService:Z
 
     if-eqz v0, :cond_3
 
-    .line 225
+    .line 223
     iput-boolean v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mWaitStartMediaService:Z
 
-    .line 226
+    .line 224
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->getMusicName()Ljava/lang/String;
@@ -531,34 +492,34 @@
 
     if-eqz v0, :cond_2
 
-    .line 228
+    .line 226
     :cond_0
     invoke-virtual {p0, v2}, Lcom/meizu/internal/policy/impl/LockMusicView;->setVisibility(I)V
 
-    .line 229
+    .line 227
     invoke-virtual {p0, v1}, Lcom/meizu/internal/policy/impl/LockMusicView;->showMusicName(Z)V
 
-    .line 234
+    .line 232
     :goto_0
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->updateMusicInfo()V
 
-    .line 252
+    .line 250
     :cond_1
     :goto_1
     return-void
 
-    .line 231
+    .line 229
     :cond_2
     invoke-virtual {p0, v1}, Lcom/meizu/internal/policy/impl/LockMusicView;->setVisibility(I)V
 
-    .line 232
+    .line 230
     const/4 v0, 0x1
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->showMusicName(Z)V
 
     goto :goto_0
 
-    .line 235
+    .line 233
     :cond_3
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->getVisibility()I
 
@@ -566,13 +527,13 @@
 
     if-nez v0, :cond_5
 
-    .line 236
+    .line 234
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->updateMusicInfo()V
 
-    .line 237
-    invoke-direct {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->setPauseButtonImage()V
+    .line 235
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->setPauseButtonImage()V
 
-    .line 238
+    .line 236
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->isMusicPlaying()Z
@@ -581,7 +542,7 @@
 
     if-nez v0, :cond_1
 
-    .line 239
+    .line 237
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->getMusicName()Ljava/lang/String;
@@ -602,16 +563,16 @@
 
     if-eqz v0, :cond_1
 
-    .line 241
+    .line 239
     :cond_4
     invoke-virtual {p0, v2}, Lcom/meizu/internal/policy/impl/LockMusicView;->setVisibility(I)V
 
-    .line 242
+    .line 240
     invoke-virtual {p0, v1}, Lcom/meizu/internal/policy/impl/LockMusicView;->showMusicName(Z)V
 
     goto :goto_1
 
-    .line 247
+    .line 245
     :cond_5
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
@@ -621,13 +582,13 @@
 
     if-eqz v0, :cond_1
 
-    .line 248
+    .line 246
     invoke-virtual {p0, v1}, Lcom/meizu/internal/policy/impl/LockMusicView;->setVisibility(I)V
 
-    .line 249
+    .line 247
     invoke-virtual {p0, v1}, Lcom/meizu/internal/policy/impl/LockMusicView;->showMusicName(Z)V
 
-    .line 250
+    .line 248
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->updateMusicInfo()V
 
     goto :goto_1
@@ -637,17 +598,20 @@
     .locals 1
 
     .prologue
-    .line 199
+    .line 195
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->getVisibility()I
 
     move-result v0
 
     if-nez v0, :cond_1
 
-    .line 200
+    .line 196
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->updateMusicInfo()V
 
-    .line 201
+    .line 197
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->setPauseButtonImage()V
+
+    .line 198
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->getMusicName()Ljava/lang/String;
@@ -668,18 +632,18 @@
 
     if-eqz v0, :cond_1
 
-    .line 203
+    .line 200
     :cond_0
     const/16 v0, 0x8
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->setVisibility(I)V
 
-    .line 204
+    .line 201
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->showMusicName(Z)V
 
-    .line 207
+    .line 204
     :cond_1
     return-void
 .end method
@@ -688,20 +652,20 @@
     .locals 1
 
     .prologue
-    .line 210
+    .line 207
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->getVisibility()I
 
     move-result v0
 
     if-nez v0, :cond_1
 
-    .line 211
+    .line 208
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->updateMusicInfo()V
 
-    .line 212
-    invoke-direct {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->setPauseButtonImage()V
+    .line 209
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->setPauseButtonImage()V
 
-    .line 213
+    .line 210
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->isMusicPlaying()Z
@@ -710,12 +674,12 @@
 
     if-nez v0, :cond_0
 
-    .line 221
+    .line 219
     :cond_0
     :goto_0
     return-void
 
-    .line 216
+    .line 213
     :cond_1
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
@@ -725,18 +689,21 @@
 
     if-eqz v0, :cond_0
 
-    .line 217
+    .line 214
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->setVisibility(I)V
 
-    .line 218
+    .line 215
     const/4 v0, 0x1
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->showMusicName(Z)V
 
-    .line 219
+    .line 216
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->updateMusicInfo()V
+
+    .line 217
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->setPauseButtonImage()V
 
     goto :goto_0
 .end method
@@ -746,10 +713,10 @@
     .parameter "controllerMonitor"
 
     .prologue
-    .line 91
+    .line 89
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
-    .line 92
+    .line 90
     return-void
 .end method
 
@@ -758,15 +725,15 @@
     .parameter "musicLockWidgetCallface"
 
     .prologue
-    .line 99
+    .line 97
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mLockMusicWidgetCallback:Lcom/meizu/internal/policy/impl/LockMusicView$ILockMusicWidget;
 
-    .line 100
+    .line 98
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mLockMusicWidgetCallback:Lcom/meizu/internal/policy/impl/LockMusicView$ILockMusicWidget;
 
     if-eqz v0, :cond_0
 
-    .line 101
+    .line 99
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mLockMusicWidgetCallback:Lcom/meizu/internal/policy/impl/LockMusicView$ILockMusicWidget;
 
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicTips:Landroid/widget/TextView;
@@ -782,11 +749,11 @@
     :goto_0
     invoke-interface {v1, v0}, Lcom/meizu/internal/policy/impl/LockMusicView$ILockMusicWidget;->onMusicVisibleChanged(Z)V
 
-    .line 104
+    .line 102
     :cond_0
     return-void
 
-    .line 101
+    .line 99
     :cond_1
     const/4 v0, 0x0
 
@@ -798,11 +765,50 @@
     .parameter "lockWidgetCallface"
 
     .prologue
-    .line 95
+    .line 93
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mLockWidgetCallback:Lcom/meizu/internal/policy/impl/ILockWidget;
 
-    .line 96
+    .line 94
     return-void
+.end method
+
+.method public setPauseButtonImage()V
+    .locals 2
+
+    .prologue
+    .line 118
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
+    invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->isMusicPlaying()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 119
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicPause:Landroid/widget/ImageButton;
+
+    const v1, 0x1080349
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
+
+    .line 123
+    :goto_0
+    return-void
+
+    .line 121
+    :cond_0
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicPause:Landroid/widget/ImageButton;
+
+    const v1, 0x108034a
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
+
+    goto :goto_0
 .end method
 
 .method public showMusicName(Z)V
@@ -810,7 +816,7 @@
     .parameter "visible"
 
     .prologue
-    .line 281
+    .line 279
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicTips:Landroid/widget/TextView;
 
     if-eqz p1, :cond_1
@@ -820,21 +826,21 @@
     :goto_0
     invoke-virtual {v1, v0}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 282
+    .line 280
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mLockMusicWidgetCallback:Lcom/meizu/internal/policy/impl/LockMusicView$ILockMusicWidget;
 
     if-eqz v0, :cond_0
 
-    .line 283
+    .line 281
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mLockMusicWidgetCallback:Lcom/meizu/internal/policy/impl/LockMusicView$ILockMusicWidget;
 
     invoke-interface {v0, p1}, Lcom/meizu/internal/policy/impl/LockMusicView$ILockMusicWidget;->onMusicVisibleChanged(Z)V
 
-    .line 284
+    .line 282
     :cond_0
     return-void
 
-    .line 281
+    .line 279
     :cond_1
     const/4 v0, 0x4
 
@@ -845,33 +851,33 @@
     .locals 3
 
     .prologue
-    .line 260
+    .line 258
     iget-boolean v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mWaitStartMediaService:Z
 
     if-eqz v1, :cond_0
 
-    .line 275
+    .line 273
     :goto_0
     return-void
 
-    .line 262
+    .line 260
     :cond_0
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mWaitStartMediaService:Z
 
-    .line 263
+    .line 261
     new-instance v0, Landroid/content/Intent;
 
     invoke-direct {v0}, Landroid/content/Intent;-><init>()V
 
-    .line 264
+    .line 262
     .local v0, intent:Landroid/content/Intent;
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicAppName:Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
 
     if-nez v1, :cond_1
 
-    .line 265
+    .line 263
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     invoke-virtual {v1}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->getMusicAppName()Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
@@ -880,7 +886,7 @@
 
     iput-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicAppName:Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
 
-    .line 267
+    .line 265
     :cond_1
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicAppName:Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
 
@@ -888,12 +894,12 @@
 
     if-ne v1, v2, :cond_2
 
-    .line 268
+    .line 266
     const-string v1, "com.android.musiconline.COMMAND"
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 273
+    .line 271
     :goto_1
     const-string v1, "command"
 
@@ -901,14 +907,14 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 274
+    .line 272
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
     goto :goto_0
 
-    .line 270
+    .line 268
     :cond_2
     const-string v1, "com.android.music.COMMAND"
 
@@ -921,29 +927,28 @@
     .locals 2
 
     .prologue
-    .line 107
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+    .line 105
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
-    if-nez v0, :cond_0
+    if-nez v1, :cond_0
 
-    .line 113
+    .line 109
     :goto_0
     return-void
 
-    .line 109
+    .line 107
     :cond_0
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicTips:Landroid/widget/TextView;
-
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     invoke-virtual {v1}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->getMusicName()Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    .line 108
+    .local v0, musicName:Ljava/lang/String;
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockMusicView;->mMusicTips:Landroid/widget/TextView;
 
-    .line 111
-    invoke-direct {p0}, Lcom/meizu/internal/policy/impl/LockMusicView;->setPauseButtonImage()V
+    invoke-virtual {v1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
     goto :goto_0
 .end method

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/prv/res/android">
+    <item android:icon="@android:drawable/ic_tab_done_mz" android:id="@id/action_get_multi_confirm" android:title="@string/ok" android:showAsAction="ifRoom|withTextAlways" android:showGravity="right" />
+</menu>

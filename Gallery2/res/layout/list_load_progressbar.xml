@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:id="@id/loading_line" android:layout_width="fill_parent" android:layout_height="56.0dip">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="56.0dip">
+    <LinearLayout android:gravity="center_vertical" android:id="@id/loading_line" android:layout_width="fill_parent" android:layout_height="@dimen/load_progress_height">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/load_progress_height">
             <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
                 <ProgressBar android:layout_gravity="center_vertical" android:id="@id/progressBar1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                <TextView android:textSize="14.0sp" android:layout_gravity="center_vertical" android:id="@id/LoadingText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/loading" />
+                <TextView android:textSize="@dimen/load_progress_text_size" android:layout_gravity="center_vertical" android:id="@id/LoadingText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/load_progress_text_leftMarginNum" android:text="@string/video_loading" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

@@ -145,13 +145,13 @@
     if-ne v0, v7, :cond_0
 
     .line 84
-    const v0, 0x1090069
+    const v0, 0x109006d
 
     invoke-virtual {v6, v0, p0, v7}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
     .line 90
     :goto_0
-    const v0, 0x102032e
+    const v0, 0x102032a
 
     invoke-virtual {p0, v0}, Lcom/android/internal/policy/impl/SimUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -162,7 +162,7 @@
     iput-object v0, p0, Lcom/android/internal/policy/impl/SimUnlockScreen;->mHeaderText:Landroid/widget/TextView;
 
     .line 91
-    const v0, 0x1020330
+    const v0, 0x102032c
 
     invoke-virtual {p0, v0}, Lcom/android/internal/policy/impl/SimUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -173,7 +173,7 @@
     iput-object v0, p0, Lcom/android/internal/policy/impl/SimUnlockScreen;->mPinText:Landroid/widget/TextView;
 
     .line 92
-    const v0, 0x1020331
+    const v0, 0x102032d
 
     invoke-virtual {p0, v0}, Lcom/android/internal/policy/impl/SimUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -200,7 +200,7 @@
     .line 97
     iget-object v0, p0, Lcom/android/internal/policy/impl/SimUnlockScreen;->mHeaderText:Landroid/widget/TextView;
 
-    const v1, 0x1040341
+    const v1, 0x1040342
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(I)V
 
@@ -237,7 +237,7 @@
 
     .line 86
     :cond_0
-    const v0, 0x109006a
+    const v0, 0x109006e
 
     invoke-virtual {v6, v0, p0, v7}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
@@ -357,7 +357,7 @@
     .line 208
     iget-object v0, p0, Lcom/android/internal/policy/impl/SimUnlockScreen;->mHeaderText:Landroid/widget/TextView;
 
-    const v1, 0x1040118
+    const v1, 0x1040119
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(I)V
 
@@ -433,7 +433,7 @@
 
     iget-object v1, p0, Lcom/android/internal/policy/impl/SimUnlockScreen;->mContext:Landroid/content/Context;
 
-    const v2, 0x104036a
+    const v2, 0x104036b
 
     invoke-virtual {v1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -765,7 +765,7 @@
     .line 121
     iget-object v0, p0, Lcom/android/internal/policy/impl/SimUnlockScreen;->mHeaderText:Landroid/widget/TextView;
 
-    const v1, 0x1040341
+    const v1, 0x1040342
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(I)V
 

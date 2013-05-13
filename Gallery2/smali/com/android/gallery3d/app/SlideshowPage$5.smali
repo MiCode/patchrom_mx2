@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 257
+    .line 261
     iput-object p1, p0, Lcom/android/gallery3d/app/SlideshowPage$5;->this$0:Lcom/android/gallery3d/app/SlideshowPage;
 
     iput-object p2, p0, Lcom/android/gallery3d/app/SlideshowPage$5;->val$localPath:Ljava/lang/String;
@@ -48,10 +48,10 @@
     .parameter "msg"
 
     .prologue
-    .line 259
+    .line 263
     if-eqz p1, :cond_0
 
-    .line 261
+    .line 265
     const-string v0, "gallery.dlna"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -74,11 +74,11 @@
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/ui/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 275
+    .line 279
     :goto_0
     return-void
 
-    .line 265
+    .line 269
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage$5;->this$0:Lcom/android/gallery3d/app/SlideshowPage;
 

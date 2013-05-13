@@ -36,7 +36,7 @@
     .parameter
 
     .prologue
-    .line 549
+    .line 615
     iput-object p1, p0, Lcom/android/gallery3d/ui/MenuExecutor$2;->this$0:Lcom/android/gallery3d/ui/MenuExecutor;
 
     iput-object p2, p0, Lcom/android/gallery3d/ui/MenuExecutor$2;->val$context:Landroid/content/Context;
@@ -53,10 +53,12 @@
 
 # virtual methods
 .method public run()V
-    .locals 4
+    .locals 5
 
     .prologue
-    .line 553
+    const/4 v4, 0x0
+
+    .line 619
     :try_start_0
     iget-object v1, p0, Lcom/android/gallery3d/ui/MenuExecutor$2;->val$context:Landroid/content/Context;
 
@@ -66,18 +68,13 @@
 
     move-result-object v0
 
-    .line 554
+    .line 621
     .local v0, intent:Landroid/content/Intent;
-    const-string v1, "com.android.email"
-
-    invoke-virtual {v0, v1}, Landroid/content/Intent;->addExcludeName(Ljava/lang/String;)V
-
-    .line 555
     iget-object v1, p0, Lcom/android/gallery3d/ui/MenuExecutor$2;->val$context:Landroid/content/Context;
 
     iget-object v2, p0, Lcom/android/gallery3d/ui/MenuExecutor$2;->val$context:Landroid/content/Context;
 
-    const v3, 0x7f0a0149
+    const v3, 0x7f0a0154
 
     invoke-virtual {v2, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -91,21 +88,27 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 557
+    .line 623
     iget-object v1, p0, Lcom/android/gallery3d/ui/MenuExecutor$2;->val$dlg:Landroid/app/ProgressDialog;
 
     if-eqz v1, :cond_0
 
-    .line 558
+    .line 624
     iget-object v1, p0, Lcom/android/gallery3d/ui/MenuExecutor$2;->val$dlg:Landroid/app/ProgressDialog;
 
     invoke-virtual {v1}, Landroid/app/ProgressDialog;->dismiss()V
 
-    .line 561
+    .line 625
+    iget-object v1, p0, Lcom/android/gallery3d/ui/MenuExecutor$2;->this$0:Lcom/android/gallery3d/ui/MenuExecutor;
+
+    #setter for: Lcom/android/gallery3d/ui/MenuExecutor;->mGettingRotatedUri:Z
+    invoke-static {v1, v4}, Lcom/android/gallery3d/ui/MenuExecutor;->access$1002(Lcom/android/gallery3d/ui/MenuExecutor;Z)Z
+
+    .line 628
     :cond_0
     return-void
 
-    .line 557
+    .line 623
     .end local v0           #intent:Landroid/content/Intent;
     :catchall_0
     move-exception v1
@@ -114,10 +117,16 @@
 
     if-eqz v2, :cond_1
 
-    .line 558
+    .line 624
     iget-object v2, p0, Lcom/android/gallery3d/ui/MenuExecutor$2;->val$dlg:Landroid/app/ProgressDialog;
 
     invoke-virtual {v2}, Landroid/app/ProgressDialog;->dismiss()V
+
+    .line 625
+    iget-object v2, p0, Lcom/android/gallery3d/ui/MenuExecutor$2;->this$0:Lcom/android/gallery3d/ui/MenuExecutor;
+
+    #setter for: Lcom/android/gallery3d/ui/MenuExecutor;->mGettingRotatedUri:Z
+    invoke-static {v2, v4}, Lcom/android/gallery3d/ui/MenuExecutor;->access$1002(Lcom/android/gallery3d/ui/MenuExecutor;Z)Z
 
     :cond_1
     throw v1

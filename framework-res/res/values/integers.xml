@@ -4,6 +4,7 @@
     <integer name="config_mediumAnimTime">400</integer>
     <integer name="config_longAnimTime">500</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <integer name="notification_big_text_max_line">5</integer>
     <integer name="config_soundEffectVolumeDb">-6</integer>
     <integer name="config_lockSoundVolumeDb">-6</integer>
     <integer name="config_activityShortDur">150</integer>
@@ -34,7 +35,7 @@
     <integer name="config_notificationsBatteryLedOn">125</integer>
     <integer name="config_notificationsBatteryLedOff">2875</integer>
     <integer name="config_longPressOnHomeBehavior">2</integer>
-    <integer name="config_screenBrightnessDim">60</integer>
+    <integer name="config_screenBrightnessDim">2</integer>
     <integer name="config_lightSensorWarmupTime">0</integer>
     <integer name="config_virtualKeyQuietTimeMillis">250</integer>
     <integer name="config_datause_polling_period_sec">600</integer>
@@ -57,4 +58,12 @@
     <integer name="preferences_right_pane_weight">6</integer>
     <integer name="preference_screen_header_scrollbarStyle">33554432</integer>
     <integer name="preference_fragment_scrollbarStyle">33554432</integer>
+    <integer name="chevron_incremental_delay">288</integer>
+    <integer name="chevron_animation_duration">1080</integer>
+    <integer name="max_count_of_edot">6</integer>
+    <integer name="count_of_edot_type">3</integer>
+    <integer name="drag_escape_velocity_down">200</integer>
+    <integer name="drag_escape_velocity_up">2500</integer>
+    <integer name="emo_row_count_mz">4</integer>
+    <integer name="emo_col_count_mz">6</integer>
 </resources>

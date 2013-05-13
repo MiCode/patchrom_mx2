@@ -79,7 +79,7 @@
     iput-object v1, p0, Lcom/meizu/preference/EditTextPreference;->mParams:Landroid/widget/LinearLayout$LayoutParams;
 
     .line 59
-    const v1, 0x10900a8
+    const v1, 0x10900b0
 
     invoke-virtual {p0, v1}, Lcom/meizu/preference/EditTextPreference;->setLayoutResource(I)V
 
@@ -161,7 +161,7 @@
     invoke-virtual {p1, v2}, Landroid/widget/EditText;->setId(I)V
 
     .line 77
-    const v2, 0x106008f
+    const v2, 0x1060097
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getColorStateList(I)Landroid/content/res/ColorStateList;
 
@@ -212,16 +212,24 @@
 
     .line 92
     .local v0, inputType:I
+    const/high16 v2, 0x10
+
+    or-int/2addr v0, v2
+
+    .line 93
+    invoke-virtual {p1, v0}, Landroid/widget/EditText;->setInputType(I)V
+
+    .line 94
     invoke-static {v0}, Lcom/meizu/preference/EditTextPreference;->isPasswordInputType(I)Z
 
     move-result v2
 
     if-nez v2, :cond_0
 
-    .line 93
+    .line 95
     invoke-virtual {p1, v4}, Landroid/widget/EditText;->setSingleLine(Z)V
 
-    .line 94
+    .line 96
     :cond_0
     return-void
 .end method
@@ -231,10 +239,10 @@
     .parameter "inputType"
 
     .prologue
-    .line 97
+    .line 99
     and-int/lit16 v0, p0, 0xfff
 
-    .line 99
+    .line 101
     .local v0, variation:I
     const/16 v1, 0x81
 
@@ -266,7 +274,7 @@
     .locals 1
 
     .prologue
-    .line 240
+    .line 242
     iget-object v0, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
     return-object v0
@@ -276,7 +284,7 @@
     .locals 2
 
     .prologue
-    .line 200
+    .line 202
     iget-object v1, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
     invoke-virtual {v1}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
@@ -287,7 +295,7 @@
 
     move-result-object v0
 
-    .line 201
+    .line 203
     .local v0, value:Ljava/lang/String;
     iget-object v1, p0, Lcom/meizu/preference/EditTextPreference;->mText:Ljava/lang/String;
 
@@ -303,10 +311,10 @@
 
     if-eqz v1, :cond_0
 
-    .line 202
+    .line 204
     invoke-virtual {p0, v0}, Lcom/meizu/preference/EditTextPreference;->setText(Ljava/lang/String;)V
 
-    .line 204
+    .line 206
     :cond_0
     iget-object v1, p0, Lcom/meizu/preference/EditTextPreference;->mText:Ljava/lang/String;
 
@@ -318,32 +326,32 @@
     .parameter "view"
 
     .prologue
-    .line 127
+    .line 129
     invoke-super {p0, p1}, Landroid/preference/Preference;->onBindView(Landroid/view/View;)V
 
-    .line 129
+    .line 131
     iget-object v0, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
     iget-object v1, p0, Lcom/meizu/preference/EditTextPreference;->mText:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Landroid/widget/EditText;->setText(Ljava/lang/CharSequence;)V
 
-    .line 130
+    .line 132
     sget-object v0, Lcom/meizu/preference/EditTextPreference;->focusClass:Lcom/meizu/preference/EditTextPreference;
 
     if-ne v0, p0, :cond_0
 
-    .line 131
+    .line 133
     iget-object v0, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
     invoke-virtual {v0}, Landroid/widget/EditText;->requestFocus()Z
 
-    .line 132
+    .line 134
     iget-object v0, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
     invoke-virtual {v0}, Landroid/widget/EditText;->requestFocusFromTouch()Z
 
-    .line 135
+    .line 137
     :cond_0
     return-void
 .end method
@@ -353,12 +361,12 @@
     .parameter "parent"
 
     .prologue
-    .line 109
+    .line 111
     invoke-super {p0, p1}, Landroid/preference/Preference;->onCreateView(Landroid/view/ViewGroup;)Landroid/view/View;
 
     move-result-object v1
 
-    .line 111
+    .line 113
     .local v1, layout:Landroid/view/View;
     iget-object v3, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
@@ -366,14 +374,14 @@
 
     move-result-object v2
 
-    .line 112
+    .line 114
     .local v2, oldParent:Landroid/view/ViewParent;
     if-eq v2, v1, :cond_1
 
-    .line 113
+    .line 115
     if-eqz v2, :cond_0
 
-    .line 114
+    .line 116
     check-cast v2, Landroid/view/ViewGroup;
 
     .end local v2           #oldParent:Landroid/view/ViewParent;
@@ -381,9 +389,9 @@
 
     invoke-virtual {v2, v3}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
 
-    .line 117
+    .line 119
     :cond_0
-    const v3, 0x1020393
+    const v3, 0x1020394
 
     invoke-virtual {v1, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -391,18 +399,18 @@
 
     check-cast v0, Landroid/view/ViewGroup;
 
-    .line 118
+    .line 120
     .local v0, container:Landroid/view/ViewGroup;
     if-eqz v0, :cond_1
 
-    .line 119
+    .line 121
     iget-object v3, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
     iget-object v4, p0, Lcom/meizu/preference/EditTextPreference;->mParams:Landroid/widget/LinearLayout$LayoutParams;
 
     invoke-virtual {v0, v3, v4}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 122
+    .line 124
     .end local v0           #container:Landroid/view/ViewGroup;
     :cond_1
     return-object v1
@@ -416,10 +424,10 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 224
+    .line 226
     invoke-super {p0, p1, p2}, Landroid/preference/Preference;->onDependencyChanged(Landroid/preference/Preference;Z)V
 
-    .line 225
+    .line 227
     iget-object v3, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
     if-nez p2, :cond_1
@@ -429,19 +437,19 @@
     :goto_0
     invoke-virtual {v3, v1}, Landroid/widget/EditText;->setFocusableInTouchMode(Z)V
 
-    .line 226
+    .line 228
     if-eqz p2, :cond_0
 
-    .line 227
+    .line 229
     invoke-static {}, Landroid/view/inputmethod/InputMethodManager;->peekInstance()Landroid/view/inputmethod/InputMethodManager;
 
     move-result-object v0
 
-    .line 228
+    .line 230
     .local v0, imm:Landroid/view/inputmethod/InputMethodManager;
     if-eqz v0, :cond_0
 
-    .line 229
+    .line 231
     iget-object v1, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
     invoke-virtual {v1}, Landroid/widget/EditText;->getWindowToken()Landroid/os/IBinder;
@@ -450,7 +458,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/view/inputmethod/InputMethodManager;->hideSoftInputFromWindow(Landroid/os/IBinder;I)Z
 
-    .line 232
+    .line 234
     .end local v0           #imm:Landroid/view/inputmethod/InputMethodManager;
     :cond_0
     return-void
@@ -458,7 +466,7 @@
     :cond_1
     move v1, v2
 
-    .line 225
+    .line 227
     goto :goto_0
 .end method
 
@@ -468,15 +476,15 @@
     .parameter "hasFocus"
 
     .prologue
-    .line 138
+    .line 140
     const/4 v1, 0x1
 
     if-ne p2, v1, :cond_1
 
-    .line 140
+    .line 142
     sput-object p0, Lcom/meizu/preference/EditTextPreference;->focusClass:Lcom/meizu/preference/EditTextPreference;
 
-    .line 141
+    .line 143
     iget-object v1, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
     invoke-virtual {v1}, Landroid/widget/EditText;->length()I
@@ -485,7 +493,7 @@
 
     if-lez v1, :cond_0
 
-    .line 142
+    .line 144
     iget-object v1, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
     iget-object v2, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
@@ -496,12 +504,12 @@
 
     invoke-virtual {v1, v2}, Landroid/widget/EditText;->setSelection(I)V
 
-    .line 149
+    .line 151
     :cond_0
     :goto_0
     return-void
 
-    .line 145
+    .line 147
     :cond_1
     iget-object v1, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
@@ -513,7 +521,7 @@
 
     move-result-object v0
 
-    .line 146
+    .line 148
     .local v0, value:Ljava/lang/String;
     invoke-virtual {p0, v0}, Lcom/meizu/preference/EditTextPreference;->callChangeListener(Ljava/lang/Object;)Z
 
@@ -521,7 +529,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 147
+    .line 149
     invoke-virtual {p0, v0}, Lcom/meizu/preference/EditTextPreference;->setText(Ljava/lang/String;)V
 
     goto :goto_0
@@ -533,7 +541,7 @@
     .parameter "index"
 
     .prologue
-    .line 209
+    .line 211
     invoke-virtual {p1, p2}, Landroid/content/res/TypedArray;->getString(I)Ljava/lang/String;
 
     move-result-object v0
@@ -546,7 +554,7 @@
     .parameter "state"
 
     .prologue
-    .line 265
+    .line 267
     if-eqz p1, :cond_0
 
     invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
@@ -561,21 +569,21 @@
 
     if-nez v1, :cond_1
 
-    .line 267
+    .line 269
     :cond_0
     invoke-super {p0, p1}, Landroid/preference/Preference;->onRestoreInstanceState(Landroid/os/Parcelable;)V
 
-    .line 274
+    .line 276
     :goto_0
     return-void
 
     :cond_1
     move-object v0, p1
 
-    .line 271
+    .line 273
     check-cast v0, Lcom/meizu/preference/EditTextPreference$SavedState;
 
-    .line 272
+    .line 274
     .local v0, myState:Lcom/meizu/preference/EditTextPreference$SavedState;
     invoke-virtual {v0}, Lcom/meizu/preference/EditTextPreference$SavedState;->getSuperState()Landroid/os/Parcelable;
 
@@ -583,7 +591,7 @@
 
     invoke-super {p0, v1}, Landroid/preference/Preference;->onRestoreInstanceState(Landroid/os/Parcelable;)V
 
-    .line 273
+    .line 275
     iget-object v1, v0, Lcom/meizu/preference/EditTextPreference$SavedState;->text:Ljava/lang/String;
 
     invoke-virtual {p0, v1}, Lcom/meizu/preference/EditTextPreference;->setText(Ljava/lang/String;)V
@@ -595,12 +603,12 @@
     .locals 3
 
     .prologue
-    .line 252
+    .line 254
     invoke-super {p0}, Landroid/preference/Preference;->onSaveInstanceState()Landroid/os/Parcelable;
 
     move-result-object v1
 
-    .line 253
+    .line 255
     .local v1, superState:Landroid/os/Parcelable;
     invoke-virtual {p0}, Lcom/meizu/preference/EditTextPreference;->isPersistent()Z
 
@@ -608,19 +616,19 @@
 
     if-eqz v2, :cond_0
 
-    .line 260
+    .line 262
     .end local v1           #superState:Landroid/os/Parcelable;
     :goto_0
     return-object v1
 
-    .line 258
+    .line 260
     .restart local v1       #superState:Landroid/os/Parcelable;
     :cond_0
     new-instance v0, Lcom/meizu/preference/EditTextPreference$SavedState;
 
     invoke-direct {v0, v1}, Lcom/meizu/preference/EditTextPreference$SavedState;-><init>(Landroid/os/Parcelable;)V
 
-    .line 259
+    .line 261
     .local v0, myState:Lcom/meizu/preference/EditTextPreference$SavedState;
     invoke-virtual {p0}, Lcom/meizu/preference/EditTextPreference;->getText()Ljava/lang/String;
 
@@ -630,7 +638,7 @@
 
     move-object v1, v0
 
-    .line 260
+    .line 262
     goto :goto_0
 .end method
 
@@ -640,7 +648,7 @@
     .parameter "defaultValue"
 
     .prologue
-    .line 214
+    .line 216
     if-eqz p1, :cond_0
 
     iget-object v0, p0, Lcom/meizu/preference/EditTextPreference;->mText:Ljava/lang/String;
@@ -653,10 +661,10 @@
     :goto_0
     invoke-virtual {p0, p2}, Lcom/meizu/preference/EditTextPreference;->setText(Ljava/lang/String;)V
 
-    .line 215
+    .line 217
     return-void
 
-    .line 214
+    .line 216
     .restart local p2
     :cond_0
     check-cast p2, Ljava/lang/String;
@@ -669,7 +677,7 @@
     .parameter "dialogTitleResId"
 
     .prologue
-    .line 153
+    .line 155
     invoke-virtual {p0}, Lcom/meizu/preference/EditTextPreference;->getContext()Landroid/content/Context;
 
     move-result-object v0
@@ -680,7 +688,7 @@
 
     invoke-virtual {p0, v0}, Lcom/meizu/preference/EditTextPreference;->setDialogTitle(Ljava/lang/CharSequence;)V
 
-    .line 154
+    .line 156
     return-void
 .end method
 
@@ -689,13 +697,13 @@
     .parameter "dialogTitle"
 
     .prologue
-    .line 157
+    .line 159
     check-cast p1, Ljava/lang/String;
 
     .end local p1
     invoke-super {p0, p1}, Landroid/preference/Preference;->setTitle(Ljava/lang/CharSequence;)V
 
-    .line 158
+    .line 160
     return-void
 .end method
 
@@ -704,7 +712,7 @@
     .parameter "summaryResId"
 
     .prologue
-    .line 163
+    .line 165
     invoke-virtual {p0}, Lcom/meizu/preference/EditTextPreference;->getContext()Landroid/content/Context;
 
     move-result-object v0
@@ -715,7 +723,7 @@
 
     invoke-virtual {p0, v0}, Lcom/meizu/preference/EditTextPreference;->setSummary(Ljava/lang/CharSequence;)V
 
-    .line 164
+    .line 166
     return-void
 .end method
 
@@ -724,13 +732,13 @@
     .parameter "summary"
 
     .prologue
-    .line 168
+    .line 170
     check-cast p1, Ljava/lang/String;
 
     .end local p1
     invoke-virtual {p0, p1}, Lcom/meizu/preference/EditTextPreference;->setText(Ljava/lang/String;)V
 
-    .line 169
+    .line 171
     return-void
 .end method
 
@@ -739,26 +747,26 @@
     .parameter "text"
 
     .prologue
-    .line 177
+    .line 179
     invoke-virtual {p0}, Lcom/meizu/preference/EditTextPreference;->shouldDisableDependents()Z
 
     move-result v1
 
-    .line 179
+    .line 181
     .local v1, wasBlocking:Z
     iput-object p1, p0, Lcom/meizu/preference/EditTextPreference;->mText:Ljava/lang/String;
 
-    .line 181
+    .line 183
     invoke-virtual {p0, p1}, Lcom/meizu/preference/EditTextPreference;->persistString(Ljava/lang/String;)Z
 
-    .line 184
+    .line 186
     iget-object v2, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
     if-eqz v2, :cond_0
 
     if-eqz p1, :cond_0
 
-    .line 185
+    .line 187
     iget-object v2, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
     invoke-virtual {v2}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
@@ -775,25 +783,25 @@
 
     if-nez v2, :cond_0
 
-    .line 186
+    .line 188
     iget-object v2, p0, Lcom/meizu/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
     invoke-virtual {v2, p1}, Landroid/widget/EditText;->setText(Ljava/lang/CharSequence;)V
 
-    .line 188
+    .line 190
     :cond_0
     invoke-virtual {p0}, Lcom/meizu/preference/EditTextPreference;->shouldDisableDependents()Z
 
     move-result v0
 
-    .line 189
+    .line 191
     .local v0, isBlocking:Z
     if-eq v0, v1, :cond_1
 
-    .line 190
+    .line 192
     invoke-virtual {p0, v0}, Lcom/meizu/preference/EditTextPreference;->notifyDependencyChange(Z)V
 
-    .line 192
+    .line 194
     :cond_1
     return-void
 .end method
@@ -802,7 +810,7 @@
     .locals 1
 
     .prologue
-    .line 219
+    .line 221
     iget-object v0, p0, Lcom/meizu/preference/EditTextPreference;->mText:Ljava/lang/String;
 
     invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z

@@ -3,12 +3,12 @@
 .source "AlbumSetPage.java"
 
 # interfaces
-.implements Landroid/content/DialogInterface$OnClickListener;
+.implements Lcom/android/gallery3d/ui/ActionModeHandler$ActionModeListener;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/gallery3d/app/AlbumSetPage;->onItemSelected(Landroid/view/MenuItem;)Z
+    value = Lcom/android/gallery3d/app/AlbumSetPage;->initializeViews()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,20 +20,15 @@
 # instance fields
 .field final synthetic this$0:Lcom/android/gallery3d/app/AlbumSetPage;
 
-.field final synthetic val$finalItem:Landroid/view/MenuItem;
-
 
 # direct methods
-.method constructor <init>(Lcom/android/gallery3d/app/AlbumSetPage;Landroid/view/MenuItem;)V
+.method constructor <init>(Lcom/android/gallery3d/app/AlbumSetPage;)V
     .locals 0
-    .parameter
     .parameter
 
     .prologue
-    .line 934
+    .line 747
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
-
-    iput-object p2, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->val$finalItem:Landroid/view/MenuItem;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
@@ -42,99 +37,122 @@
 
 
 # virtual methods
-.method public onClick(Landroid/content/DialogInterface;I)V
-    .locals 6
-    .parameter "dialog"
-    .parameter "which"
+.method public onActionItemClicked(Landroid/view/MenuItem;)Z
+    .locals 1
+    .parameter "item"
 
     .prologue
-    const/4 v5, 0x0
+    .line 750
+    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
 
-    .line 938
-    const/4 v3, -0x1
+    invoke-virtual {v0, p1}, Lcom/android/gallery3d/app/AlbumSetPage;->onItemSelected(Landroid/view/MenuItem;)Z
 
-    if-ne p2, v3, :cond_1
+    move-result v0
 
-    .line 939
-    const/4 v1, 0x0
+    return v0
+.end method
 
-    .line 940
-    .local v1, deleteOriginal:Z
-    iget-object v3, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
+.method public onCreateActionMode(Landroid/view/ActionMode;Landroid/view/Menu;)Z
+    .locals 3
+    .parameter "mode"
+    .parameter "menu"
 
-    #getter for: Lcom/android/gallery3d/app/AlbumSetPage;->mRemoveFileDlg:Landroid/app/AlertDialog;
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumSetPage;->access$2300(Lcom/android/gallery3d/app/AlbumSetPage;)Landroid/app/AlertDialog;
+    .prologue
+    .line 755
+    iget-object v1, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
 
-    move-result-object v3
+    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
 
-    if-eqz v3, :cond_0
-
-    .line 941
-    iget-object v3, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
-
-    #getter for: Lcom/android/gallery3d/app/AlbumSetPage;->mRemoveFileDlg:Landroid/app/AlertDialog;
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumSetPage;->access$2300(Lcom/android/gallery3d/app/AlbumSetPage;)Landroid/app/AlertDialog;
-
-    move-result-object v3
-
-    const v4, 0x7f0d0156
-
-    invoke-virtual {v3, v4}, Landroid/app/AlertDialog;->findViewById(I)Landroid/view/View;
+    #getter for: Lcom/android/gallery3d/app/AlbumSetPage;->mActionModeHandler:Lcom/android/gallery3d/ui/ActionModeHandler;
+    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumSetPage;->access$2000(Lcom/android/gallery3d/app/AlbumSetPage;)Lcom/android/gallery3d/ui/ActionModeHandler;
 
     move-result-object v0
 
-    check-cast v0, Landroid/widget/CheckBox;
+    const v2, 0x7f0d01b2
 
-    .line 942
-    .local v0, cb:Landroid/widget/CheckBox;
-    if-eqz v0, :cond_0
+    invoke-virtual {v0, v2}, Lcom/android/gallery3d/ui/ActionModeHandler;->findActionView(I)Landroid/view/View;
 
-    .line 943
-    invoke-virtual {v0}, Landroid/widget/CheckBox;->isChecked()Z
+    move-result-object v0
+
+    check-cast v0, Lcom/meizu/widget/SelectionButton;
+
+    #setter for: Lcom/android/gallery3d/app/AlbumSetPage;->mSelectionButton:Lcom/meizu/widget/SelectionButton;
+    invoke-static {v1, v0}, Lcom/android/gallery3d/app/AlbumSetPage;->access$1902(Lcom/android/gallery3d/app/AlbumSetPage;Lcom/meizu/widget/SelectionButton;)Lcom/meizu/widget/SelectionButton;
+
+    .line 756
+    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
+
+    #getter for: Lcom/android/gallery3d/app/AlbumSetPage;->mSelectionButton:Lcom/meizu/widget/SelectionButton;
+    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumSetPage;->access$1900(Lcom/android/gallery3d/app/AlbumSetPage;)Lcom/meizu/widget/SelectionButton;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
+
+    #getter for: Lcom/android/gallery3d/app/AlbumSetPage;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
+    invoke-static {v1}, Lcom/android/gallery3d/app/AlbumSetPage;->access$2100(Lcom/android/gallery3d/app/AlbumSetPage;)Lcom/android/gallery3d/data/MediaSet;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lcom/android/gallery3d/data/MediaSet;->getSubMediaSetCount()I
 
     move-result v1
 
-    .line 947
-    .end local v0           #cb:Landroid/widget/CheckBox;
+    invoke-virtual {v0, v1}, Lcom/meizu/widget/SelectionButton;->setTotalCount(I)V
+
+    .line 757
+    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
+
+    #getter for: Lcom/android/gallery3d/app/AlbumSetPage;->mSelectionButton:Lcom/meizu/widget/SelectionButton;
+    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumSetPage;->access$1900(Lcom/android/gallery3d/app/AlbumSetPage;)Lcom/meizu/widget/SelectionButton;
+
+    move-result-object v0
+
+    new-instance v1, Lcom/android/gallery3d/app/AlbumSetPage$7$1;
+
+    invoke-direct {v1, p0}, Lcom/android/gallery3d/app/AlbumSetPage$7$1;-><init>(Lcom/android/gallery3d/app/AlbumSetPage$7;)V
+
+    invoke-virtual {v0, v1}, Lcom/meizu/widget/SelectionButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    .line 767
+    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/ActivityState;->mSelectionManager:Lcom/android/gallery3d/ui/SelectionManager;
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/ui/SelectionManager;->inSelectionMode()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 768
+    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
+
+    #getter for: Lcom/android/gallery3d/app/AlbumSetPage;->mSelectionButton:Lcom/meizu/widget/SelectionButton;
+    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumSetPage;->access$1900(Lcom/android/gallery3d/app/AlbumSetPage;)Lcom/meizu/widget/SelectionButton;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
+
+    iget-object v1, v1, Lcom/android/gallery3d/app/ActivityState;->mSelectionManager:Lcom/android/gallery3d/ui/SelectionManager;
+
+    invoke-virtual {v1}, Lcom/android/gallery3d/ui/SelectionManager;->getSelectedCount()I
+
+    move-result v1
+
+    invoke-virtual {v0, v1}, Lcom/meizu/widget/SelectionButton;->setCurrentCount(I)V
+
+    .line 771
     :cond_0
-    iget-object v3, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
+    new-instance v0, Lcom/android/gallery3d/app/AlbumSetPage$7$2;
 
-    #calls: Lcom/android/gallery3d/app/AlbumSetPage;->removeCustomFolder(Z)Z
-    invoke-static {v3, v1}, Lcom/android/gallery3d/app/AlbumSetPage;->access$2400(Lcom/android/gallery3d/app/AlbumSetPage;Z)Z
+    invoke-direct {v0, p0}, Lcom/android/gallery3d/app/AlbumSetPage$7$2;-><init>(Lcom/android/gallery3d/app/AlbumSetPage$7;)V
 
-    .line 948
-    iget-object v3, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
+    invoke-virtual {p1, v0}, Landroid/view/ActionMode;->setActionItemDragListener(Landroid/view/ActionMode$OnActionItemDragListener;)V
 
-    iget-object v3, v3, Lcom/android/gallery3d/app/ActivityState;->mSelectionManager:Lcom/android/gallery3d/ui/SelectionManager;
+    .line 798
+    const/4 v0, 0x1
 
-    invoke-virtual {v3}, Lcom/android/gallery3d/ui/SelectionManager;->inSelectionMode()Z
-
-    move-result v3
-
-    if-eqz v3, :cond_1
-
-    .line 949
-    new-instance v2, Lcom/android/gallery3d/ui/MenuExecutor;
-
-    iget-object v3, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
-
-    iget-object v3, v3, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
-
-    iget-object v4, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
-
-    iget-object v4, v4, Lcom/android/gallery3d/app/ActivityState;->mSelectionManager:Lcom/android/gallery3d/ui/SelectionManager;
-
-    invoke-direct {v2, v3, v4}, Lcom/android/gallery3d/ui/MenuExecutor;-><init>(Lcom/android/gallery3d/app/GalleryActivity;Lcom/android/gallery3d/ui/SelectionManager;)V
-
-    .line 950
-    .local v2, executor:Lcom/android/gallery3d/ui/MenuExecutor;
-    iget-object v3, p0, Lcom/android/gallery3d/app/AlbumSetPage$7;->val$finalItem:Landroid/view/MenuItem;
-
-    invoke-virtual {v2, v3, v5, v5}, Lcom/android/gallery3d/ui/MenuExecutor;->onMenuClicked(Landroid/view/MenuItem;Ljava/lang/String;Lcom/android/gallery3d/ui/MenuExecutor$ProgressListener;)V
-
-    .line 953
-    .end local v1           #deleteOriginal:Z
-    .end local v2           #executor:Lcom/android/gallery3d/ui/MenuExecutor;
-    :cond_1
-    return-void
+    return v0
 .end method

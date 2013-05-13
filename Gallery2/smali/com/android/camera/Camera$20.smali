@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/camera/Camera;->onRestorePreferencesClicked()V
+    value = Lcom/android/camera/Camera;->startPreview()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 5480
+    .line 5049
     iput-object p1, p0, Lcom/android/camera/Camera$20;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,15 +38,17 @@
 
 # virtual methods
 .method public run()V
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 5483
+    .line 5052
     iget-object v0, p0, Lcom/android/camera/Camera$20;->this$0:Lcom/android/camera/Camera;
 
-    #calls: Lcom/android/camera/Camera;->restorePreferences()V
-    invoke-static {v0}, Lcom/android/camera/Camera;->access$13000(Lcom/android/camera/Camera;)V
+    const/4 v1, 0x1
 
-    .line 5484
+    #setter for: Lcom/android/camera/Camera;->mIsCanTouchFocus:Z
+    invoke-static {v0, v1}, Lcom/android/camera/Camera;->access$13202(Lcom/android/camera/Camera;Z)Z
+
+    .line 5053
     return-void
 .end method

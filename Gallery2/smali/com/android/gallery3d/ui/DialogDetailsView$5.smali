@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 333
+    .line 340
     iput-object p1, p0, Lcom/android/gallery3d/ui/DialogDetailsView$5;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,16 +43,16 @@
     .parameter "hasFocus"
 
     .prologue
-    .line 336
+    .line 343
     if-eqz p2, :cond_0
 
-    .line 337
+    .line 344
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView$5;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     #calls: Lcom/android/gallery3d/ui/DialogDetailsView;->checkTextViewLocation(Landroid/view/View;)V
     invoke-static {v0, p1}, Lcom/android/gallery3d/ui/DialogDetailsView;->access$500(Lcom/android/gallery3d/ui/DialogDetailsView;Landroid/view/View;)V
 
-    .line 339
+    .line 346
     :cond_0
     return-void
 .end method

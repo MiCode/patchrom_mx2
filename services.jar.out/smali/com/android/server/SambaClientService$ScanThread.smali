@@ -14,10 +14,25 @@
 .end annotation
 
 
+# static fields
+.field private static final SAMBA_PORT:I = 0x1bd
+
+
 # instance fields
 .field private mExecutor:Ljava/util/concurrent/ExecutorService;
 
 .field private mRunning:Z
+
+.field private mTaskList:Ljava/util/Collection;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/Collection",
+            "<",
+            "Lcom/android/server/SambaClientService$Task;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field final synthetic this$0:Lcom/android/server/SambaClientService;
 
@@ -28,22 +43,22 @@
     .parameter
 
     .prologue
-    .line 344
+    .line 398
     iput-object p1, p0, Lcom/android/server/SambaClientService$ScanThread;->this$0:Lcom/android/server/SambaClientService;
 
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
 
-    .line 342
+    .line 394
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/server/SambaClientService$ScanThread;->mRunning:Z
 
-    .line 345
+    .line 399
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/server/SambaClientService$ScanThread;->mRunning:Z
 
-    .line 346
+    .line 400
     return-void
 .end method
 
@@ -53,176 +68,298 @@
     .locals 3
 
     .prologue
-    .line 348
-    const/4 v0, 0x0
+    .line 404
+    const/4 v2, 0x0
 
-    iput-boolean v0, p0, Lcom/android/server/SambaClientService$ScanThread;->mRunning:Z
+    iput-boolean v2, p0, Lcom/android/server/SambaClientService$ScanThread;->mRunning:Z
 
-    .line 349
-    iget-object v0, p0, Lcom/android/server/SambaClientService$ScanThread;->mExecutor:Ljava/util/concurrent/ExecutorService;
+    .line 405
+    iget-object v2, p0, Lcom/android/server/SambaClientService$ScanThread;->mExecutor:Ljava/util/concurrent/ExecutorService;
 
-    if-eqz v0, :cond_0
+    if-eqz v2, :cond_1
 
-    .line 350
-    iget-object v0, p0, Lcom/android/server/SambaClientService$ScanThread;->mExecutor:Ljava/util/concurrent/ExecutorService;
+    .line 406
+    iget-object v2, p0, Lcom/android/server/SambaClientService$ScanThread;->mTaskList:Ljava/util/Collection;
 
-    invoke-interface {v0}, Ljava/util/concurrent/ExecutorService;->shutdownNow()Ljava/util/List;
+    if-eqz v2, :cond_0
 
-    .line 351
-    iget-object v0, p0, Lcom/android/server/SambaClientService$ScanThread;->this$0:Lcom/android/server/SambaClientService;
+    .line 407
+    iget-object v2, p0, Lcom/android/server/SambaClientService$ScanThread;->mTaskList:Ljava/util/Collection;
 
-    const-string v1, "SCAN_STOPED"
+    invoke-interface {v2}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
 
-    const-string v2, ""
+    move-result-object v0
 
-    #calls: Lcom/android/server/SambaClientService;->updateScanResults(Ljava/lang/String;Ljava/lang/String;)V
-    invoke-static {v0, v1, v2}, Lcom/android/server/SambaClientService;->access$100(Lcom/android/server/SambaClientService;Ljava/lang/String;Ljava/lang/String;)V
+    .line 408
+    .local v0, ite:Ljava/util/Iterator;,"Ljava/util/Iterator<Lcom/android/server/SambaClientService$Task;>;"
+    :goto_0
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
-    .line 354
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    .line 409
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/android/server/SambaClientService$Task;
+
+    .line 410
+    .local v1, task:Lcom/android/server/SambaClientService$Task;
+    invoke-virtual {v1}, Lcom/android/server/SambaClientService$Task;->cancel()V
+
+    goto :goto_0
+
+    .line 413
+    .end local v0           #ite:Ljava/util/Iterator;,"Ljava/util/Iterator<Lcom/android/server/SambaClientService$Task;>;"
+    .end local v1           #task:Lcom/android/server/SambaClientService$Task;
     :cond_0
+    iget-object v2, p0, Lcom/android/server/SambaClientService$ScanThread;->mExecutor:Ljava/util/concurrent/ExecutorService;
+
+    invoke-interface {v2}, Ljava/util/concurrent/ExecutorService;->shutdownNow()Ljava/util/List;
+
+    .line 415
+    iget-object v2, p0, Lcom/android/server/SambaClientService$ScanThread;->mTaskList:Ljava/util/Collection;
+
+    invoke-interface {v2}, Ljava/util/Collection;->clear()V
+
+    .line 418
+    :cond_1
     return-void
 .end method
 
 .method public run()V
-    .locals 10
+    .locals 12
 
     .prologue
-    .line 359
-    iget-object v7, p0, Lcom/android/server/SambaClientService$ScanThread;->this$0:Lcom/android/server/SambaClientService;
+    .line 424
+    iget-object v8, p0, Lcom/android/server/SambaClientService$ScanThread;->this$0:Lcom/android/server/SambaClientService;
 
     #getter for: Lcom/android/server/SambaClientService;->mScanIp:Ljava/lang/String;
-    invoke-static {v7}, Lcom/android/server/SambaClientService;->access$200(Lcom/android/server/SambaClientService;)Ljava/lang/String;
+    invoke-static {v8}, Lcom/android/server/SambaClientService;->access$200(Lcom/android/server/SambaClientService;)Ljava/lang/String;
+
+    move-result-object v8
+
+    if-nez v8, :cond_1
+
+    .line 466
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 428
+    :cond_1
+    iget-object v8, p0, Lcom/android/server/SambaClientService$ScanThread;->this$0:Lcom/android/server/SambaClientService;
+
+    #getter for: Lcom/android/server/SambaClientService;->mScanIp:Ljava/lang/String;
+    invoke-static {v8}, Lcom/android/server/SambaClientService;->access$200(Lcom/android/server/SambaClientService;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 360
+    .line 429
     .local v0, IP:Ljava/lang/String;
-    const-string v7, "SambaClientService"
+    const-string v8, "SambaClientService"
 
-    new-instance v8, Ljava/lang/StringBuilder;
+    new-instance v9, Ljava/lang/StringBuilder;
 
-    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v9, "IP:"
+    const-string v10, "IP:"
 
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v8
+    move-result-object v9
 
-    invoke-virtual {v8, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v8
+    move-result-object v9
 
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v8
+    move-result-object v9
 
-    invoke-static {v7, v8}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v8, v9}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 361
-    const/16 v7, 0x2e
+    .line 430
+    const/16 v8, 0x2e
 
-    invoke-virtual {v0, v7}, Ljava/lang/String;->lastIndexOf(I)I
+    invoke-virtual {v0, v8}, Ljava/lang/String;->lastIndexOf(I)I
 
-    move-result v3
+    move-result v5
 
-    .line 363
-    .local v3, lastPoint:I
-    const/4 v7, 0x0
+    .line 431
+    .local v5, lastPoint:I
+    if-lez v5, :cond_0
 
-    add-int/lit8 v3, v3, 0x1
+    .line 434
+    const/4 v8, 0x0
 
-    invoke-virtual {v0, v7, v3}, Ljava/lang/String;->substring(II)Ljava/lang/String;
-
-    move-result-object v2
-
-    .line 365
-    .local v2, ipHead:Ljava/lang/String;
-    invoke-static {}, Ljava/util/concurrent/Executors;->newCachedThreadPool()Ljava/util/concurrent/ExecutorService;
-
-    move-result-object v7
-
-    iput-object v7, p0, Lcom/android/server/SambaClientService$ScanThread;->mExecutor:Ljava/util/concurrent/ExecutorService;
-
-    .line 366
-    new-instance v4, Ljava/util/LinkedList;
-
-    invoke-direct {v4}, Ljava/util/LinkedList;-><init>()V
-
-    .line 368
-    .local v4, list:Ljava/util/Collection;,"Ljava/util/Collection<Ljava/util/concurrent/Callable<Ljava/lang/Long;>;>;"
-    const/4 v6, 0x0
-
-    .line 369
-    .local v6, taskList:Ljava/util/Collection;,"Ljava/util/Collection<Ljava/util/concurrent/Future<Ljava/lang/Long;>;>;"
-    const/4 v5, 0x1
-
-    .local v5, tail:I
-    :goto_0
-    const/16 v7, 0xff
-
-    if-ge v5, v7, :cond_0
-
-    .line 370
-    new-instance v7, Lcom/android/server/SambaClientService$Task;
-
-    iget-object v8, p0, Lcom/android/server/SambaClientService$ScanThread;->this$0:Lcom/android/server/SambaClientService;
-
-    const/16 v9, 0x1bd
-
-    invoke-direct {v7, v8, v2, v5, v9}, Lcom/android/server/SambaClientService$Task;-><init>(Lcom/android/server/SambaClientService;Ljava/lang/String;II)V
-
-    invoke-interface {v4, v7}, Ljava/util/Collection;->add(Ljava/lang/Object;)Z
-
-    .line 369
     add-int/lit8 v5, v5, 0x1
 
-    goto :goto_0
+    invoke-virtual {v0, v8, v5}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
-    .line 374
-    :cond_0
+    move-result-object v3
+
+    .line 435
+    .local v3, ipHead:Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
+    move-result v8
+
+    invoke-virtual {v0, v5, v8}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 436
+    .local v4, ipTail:Ljava/lang/String;
+    const/4 v2, 0x0
+
+    .line 438
+    .local v2, iTail:I
     :try_start_0
-    iget-object v7, p0, Lcom/android/server/SambaClientService$ScanThread;->mExecutor:Ljava/util/concurrent/ExecutorService;
-
-    invoke-interface {v7, v4}, Ljava/util/concurrent/ExecutorService;->invokeAll(Ljava/util/Collection;)Ljava/util/List;
+    invoke-static {v4}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
     :try_end_0
-    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result-object v6
+    move-result v2
 
-    .line 379
+    .line 444
+    invoke-static {}, Ljava/util/concurrent/Executors;->newCachedThreadPool()Ljava/util/concurrent/ExecutorService;
+
+    move-result-object v8
+
+    iput-object v8, p0, Lcom/android/server/SambaClientService$ScanThread;->mExecutor:Ljava/util/concurrent/ExecutorService;
+
+    .line 445
+    new-instance v8, Ljava/util/LinkedList;
+
+    invoke-direct {v8}, Ljava/util/LinkedList;-><init>()V
+
+    iput-object v8, p0, Lcom/android/server/SambaClientService$ScanThread;->mTaskList:Ljava/util/Collection;
+
+    .line 447
+    const/4 v7, 0x0
+
+    .line 448
+    .local v7, taskList:Ljava/util/Collection;,"Ljava/util/Collection<Ljava/util/concurrent/Future<Ljava/lang/Long;>;>;"
+    const/4 v6, 0x1
+
+    .local v6, tail:I
     :goto_1
-    iget-object v7, p0, Lcom/android/server/SambaClientService$ScanThread;->mExecutor:Ljava/util/concurrent/ExecutorService;
+    const/16 v8, 0xff
 
-    invoke-interface {v7}, Ljava/util/concurrent/ExecutorService;->shutdown()V
+    if-ge v6, v8, :cond_3
 
-    .line 381
-    iget-object v7, p0, Lcom/android/server/SambaClientService$ScanThread;->this$0:Lcom/android/server/SambaClientService;
+    .line 449
+    if-eq v6, v2, :cond_2
 
-    const-string v8, "SCAN_STOPED"
+    .line 450
+    iget-object v8, p0, Lcom/android/server/SambaClientService$ScanThread;->mTaskList:Ljava/util/Collection;
 
-    const-string v9, ""
+    new-instance v9, Lcom/android/server/SambaClientService$Task;
 
-    #calls: Lcom/android/server/SambaClientService;->updateScanResults(Ljava/lang/String;Ljava/lang/String;)V
-    invoke-static {v7, v8, v9}, Lcom/android/server/SambaClientService;->access$100(Lcom/android/server/SambaClientService;Ljava/lang/String;Ljava/lang/String;)V
+    iget-object v10, p0, Lcom/android/server/SambaClientService$ScanThread;->this$0:Lcom/android/server/SambaClientService;
 
-    .line 383
-    const-string v7, "SambaClientService"
+    const/16 v11, 0x1bd
 
-    const-string v8, "ScanThread over"
+    invoke-direct {v9, v10, v3, v6, v11}, Lcom/android/server/SambaClientService$Task;-><init>(Lcom/android/server/SambaClientService;Ljava/lang/String;II)V
 
-    invoke-static {v7, v8}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-interface {v8, v9}, Ljava/util/Collection;->add(Ljava/lang/Object;)Z
 
-    .line 384
-    return-void
+    .line 448
+    :cond_2
+    add-int/lit8 v6, v6, 0x1
 
-    .line 375
+    goto :goto_1
+
+    .line 439
+    .end local v6           #tail:I
+    .end local v7           #taskList:Ljava/util/Collection;,"Ljava/util/Collection<Ljava/util/concurrent/Future<Ljava/lang/Long;>;>;"
     :catch_0
     move-exception v1
 
-    .line 377
+    .line 440
+    .local v1, e:Ljava/lang/NumberFormatException;
+    const-string v8, "SambaClientService"
+
+    new-instance v9, Ljava/lang/StringBuilder;
+
+    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v10, "NumberFormatException:"
+
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
+    invoke-virtual {v9, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v9
+
+    invoke-static {v8, v9}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_0
+
+    .line 455
+    .end local v1           #e:Ljava/lang/NumberFormatException;
+    .restart local v6       #tail:I
+    .restart local v7       #taskList:Ljava/util/Collection;,"Ljava/util/Collection<Ljava/util/concurrent/Future<Ljava/lang/Long;>;>;"
+    :cond_3
+    :try_start_1
+    iget-object v8, p0, Lcom/android/server/SambaClientService$ScanThread;->mExecutor:Ljava/util/concurrent/ExecutorService;
+
+    iget-object v9, p0, Lcom/android/server/SambaClientService$ScanThread;->mTaskList:Ljava/util/Collection;
+
+    invoke-interface {v8, v9}, Ljava/util/concurrent/ExecutorService;->invokeAll(Ljava/util/Collection;)Ljava/util/List;
+    :try_end_1
+    .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_1
+
+    move-result-object v7
+
+    .line 460
+    :goto_2
+    iget-object v8, p0, Lcom/android/server/SambaClientService$ScanThread;->mExecutor:Ljava/util/concurrent/ExecutorService;
+
+    invoke-interface {v8}, Ljava/util/concurrent/ExecutorService;->shutdown()V
+
+    .line 462
+    iget-boolean v8, p0, Lcom/android/server/SambaClientService$ScanThread;->mRunning:Z
+
+    if-eqz v8, :cond_4
+
+    .line 463
+    iget-object v8, p0, Lcom/android/server/SambaClientService$ScanThread;->this$0:Lcom/android/server/SambaClientService;
+
+    const-string v9, "SCAN_STOPED"
+
+    const-string v10, ""
+
+    #calls: Lcom/android/server/SambaClientService;->updateScanResults(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v8, v9, v10}, Lcom/android/server/SambaClientService;->access$300(Lcom/android/server/SambaClientService;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 465
+    :cond_4
+    const-string v8, "SambaClientService"
+
+    const-string v9, "ScanThread over"
+
+    invoke-static {v8, v9}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto/16 :goto_0
+
+    .line 456
+    :catch_1
+    move-exception v1
+
+    .line 458
     .local v1, e:Ljava/lang/InterruptedException;
     invoke-virtual {v1}, Ljava/lang/InterruptedException;->printStackTrace()V
 
-    goto :goto_1
+    goto :goto_2
 .end method

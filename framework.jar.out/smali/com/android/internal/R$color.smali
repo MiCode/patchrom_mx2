@@ -23,13 +23,19 @@
 
 .field public static final black:I = 0x106000c
 
-.field public static final bright_foreground_light_mz:I = 0x106006a
+.field public static final bright_foreground_light_mz:I = 0x106006b
 
-.field public static final config_defaultNotificationColor:I = 0x1060085
+.field public static final calendar_color:I = 0x1060088
+
+.field public static final calendar_dayofweek_color:I = 0x1060087
+
+.field public static final calendar_shadowcolor:I = 0x1060089
+
+.field public static final config_defaultNotificationColor:I = 0x106008c
 
 .field public static final darker_gray:I = 0x1060000
 
-.field public static final foreground_mz_hight_light:I = 0x106006e
+.field public static final foreground_mz_hight_light:I = 0x106006f
 
 .field public static final holo_blue_bright:I = 0x106001b
 
@@ -51,15 +57,15 @@
 
 .field public static final holo_red_light:I = 0x1060016
 
-.field public static final mz_alert_message_text_color_dark:I = 0x106007f
+.field public static final mz_alert_message_text_color_dark:I = 0x1060081
 
-.field public static final mz_alert_message_text_color_light:I = 0x106007e
+.field public static final mz_alert_message_text_color_light:I = 0x1060080
 
-.field public static final mz_alert_title_text_color_highlight:I = 0x1060080
+.field public static final mz_alert_title_text_color_highlight:I = 0x1060082
 
-.field public static final picker_selected_color:I = 0x1060082
+.field public static final picker_selected_color:I = 0x1060084
 
-.field public static final picker_unselected_color:I = 0x1060081
+.field public static final picker_unselected_color:I = 0x1060083
 
 .field public static final primary_text_dark:I = 0x1060001
 
@@ -67,13 +73,13 @@
 
 .field public static final primary_text_light:I = 0x1060003
 
-.field public static final primary_text_light_mz:I = 0x106008f
+.field public static final primary_text_light_mz:I = 0x1060097
 
 .field public static final primary_text_light_nodisable:I = 0x1060004
 
-.field public static final recipient_dropdown_background:I = 0x106007b
+.field public static final recipient_dropdown_background:I = 0x106007d
 
-.field public static final recipient_text_black:I = 0x106007a
+.field public static final recipient_text_black:I = 0x106007c
 
 .field public static final secondary_text_dark:I = 0x1060005
 
@@ -85,7 +91,7 @@
 
 .field public static final tab_indicator_text:I = 0x1060009
 
-.field public static final tab_indicator_text_v4:I = 0x106009b
+.field public static final tab_indicator_text_v4:I = 0x10600a3
 
 .field public static final tertiary_text_dark:I = 0x1060010
 
@@ -103,7 +109,7 @@
     .locals 0
 
     .prologue
-    .line 10874
+    .line 10956
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void

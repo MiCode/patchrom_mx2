@@ -149,7 +149,7 @@
     if-gt v2, v3, :cond_0
 
     .line 98
-    const v2, 0x10807a7
+    const v2, 0x10807d4
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -158,7 +158,7 @@
     iput-object v2, p0, Lcom/meizu/widget/TabWidgetPlus;->mBottomLeftStrip:Landroid/graphics/drawable/Drawable;
 
     .line 100
-    const v2, 0x10807a9
+    const v2, 0x10807d6
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -180,7 +180,7 @@
 
     .line 104
     :cond_0
-    const v2, 0x10807a6
+    const v2, 0x10807d3
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -189,7 +189,7 @@
     iput-object v2, p0, Lcom/meizu/widget/TabWidgetPlus;->mBottomLeftStrip:Landroid/graphics/drawable/Drawable;
 
     .line 106
-    const v2, 0x10807a8
+    const v2, 0x10807d5
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 

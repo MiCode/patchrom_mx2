@@ -40,15 +40,15 @@
     .parameter "item"
 
     .prologue
-    .line 675
+    .line 678
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoDataAdapter$FullImageJob;->this$0:Lcom/android/gallery3d/app/PhotoDataAdapter;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 676
+    .line 679
     iput-object p2, p0, Lcom/android/gallery3d/app/PhotoDataAdapter$FullImageJob;->mItem:Lcom/android/gallery3d/data/MediaItem;
 
-    .line 677
+    .line 680
     return-void
 .end method
 
@@ -59,7 +59,7 @@
     .parameter "jc"
 
     .prologue
-    .line 681
+    .line 684
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoDataAdapter$FullImageJob;->this$0:Lcom/android/gallery3d/app/PhotoDataAdapter;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/PhotoDataAdapter$FullImageJob;->mItem:Lcom/android/gallery3d/data/MediaItem;
@@ -71,10 +71,10 @@
 
     if-eqz v0, :cond_0
 
-    .line 682
+    .line 685
     const/4 v0, 0x0
 
-    .line 684
+    .line 687
     :goto_0
     return-object v0
 
@@ -99,7 +99,7 @@
     .parameter "x0"
 
     .prologue
-    .line 672
+    .line 675
     invoke-virtual {p0, p1}, Lcom/android/gallery3d/app/PhotoDataAdapter$FullImageJob;->run(Lcom/android/gallery3d/util/ThreadPool$JobContext;)Landroid/graphics/BitmapRegionDecoder;
 
     move-result-object v0

@@ -43,18 +43,18 @@
     .parameter "info"
 
     .prologue
-    .line 688
+    .line 720
     iput-object p1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker$EntryLabelJob;->this$0:Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 689
+    .line 721
     iput-object p2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker$EntryLabelJob;->mTitle:Ljava/lang/String;
 
-    .line 690
+    .line 722
     iput-object p3, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker$EntryLabelJob;->mInfo:Ljava/lang/String;
 
-    .line 691
+    .line 723
     return-void
 .end method
 
@@ -65,7 +65,7 @@
     .parameter "jc"
 
     .prologue
-    .line 695
+    .line 727
     move-object/from16 v0, p0
 
     iget-object v6, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker$EntryLabelJob;->this$0:Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;
@@ -75,20 +75,20 @@
 
     move-result-object v21
 
-    .line 697
+    .line 729
     .local v21, s:Lcom/android/gallery3d/ui/AlbumSlotRenderer$LabelSpec;
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker$EntryLabelJob;->mTitle:Ljava/lang/String;
 
-    .line 698
+    .line 730
     .local v4, title:Ljava/lang/String;
     if-nez v4, :cond_0
 
-    .line 699
+    .line 731
     const-string v4, ""
 
-    .line 701
+    .line 733
     :cond_0
     move-object/from16 v0, p0
 
@@ -96,11 +96,11 @@
 
     move-object/from16 v19, v0
 
-    .line 706
+    .line 738
     .local v19, info:Ljava/lang/String;
     monitor-enter p0
 
-    .line 707
+    .line 739
     :try_start_0
     move-object/from16 v0, p0
 
@@ -111,7 +111,7 @@
 
     move-result v20
 
-    .line 708
+    .line 740
     .local v20, labelWidth:I
     move-object/from16 v0, p0
 
@@ -126,19 +126,19 @@
 
     move-result-object v15
 
-    .line 709
+    .line 741
     .local v15, bitmap:Landroid/graphics/Bitmap;
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 711
+    .line 743
     if-nez v15, :cond_1
 
-    .line 712
+    .line 744
     const/16 v18, 0x2
 
-    .line 713
+    .line 745
     .local v18, borders:I
     add-int v6, v20, v18
 
@@ -154,26 +154,26 @@
 
     move-result-object v15
 
-    .line 717
+    .line 749
     .end local v18           #borders:I
     :cond_1
     invoke-virtual {v15}, Landroid/graphics/Bitmap;->getWidth()I
 
     move-result v17
 
-    .line 718
+    .line 750
     .local v17, bitmapWidth:I
     invoke-virtual {v15}, Landroid/graphics/Bitmap;->getHeight()I
 
     move-result v16
 
-    .line 720
+    .line 752
     .local v16, bitmapHeight:I
     new-instance v1, Landroid/graphics/Canvas;
 
     invoke-direct {v1, v15}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
 
-    .line 721
+    .line 753
     .local v1, canvas:Landroid/graphics/Canvas;
     const/4 v6, 0x1
 
@@ -185,19 +185,19 @@
 
     invoke-virtual {v1, v6, v7, v8, v9}, Landroid/graphics/Canvas;->clipRect(IIII)Z
 
-    .line 725
+    .line 757
     const/4 v6, 0x0
 
     invoke-virtual {v15, v6}, Landroid/graphics/Bitmap;->eraseColor(I)V
 
-    .line 727
+    .line 759
     const/high16 v6, 0x3f80
 
     const/high16 v7, 0x3f80
 
     invoke-virtual {v1, v6, v7}, Landroid/graphics/Canvas;->translate(FF)V
 
-    .line 730
+    .line 762
     invoke-interface/range {p1 .. p1}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->isCancelled()Z
 
     move-result v6
@@ -206,12 +206,12 @@
 
     const/4 v15, 0x0
 
-    .line 747
+    .line 779
     .end local v15           #bitmap:Landroid/graphics/Bitmap;
     :goto_0
     return-object v15
 
-    .line 709
+    .line 741
     .end local v1           #canvas:Landroid/graphics/Canvas;
     .end local v16           #bitmapHeight:I
     .end local v17           #bitmapWidth:I
@@ -226,7 +226,7 @@
 
     throw v6
 
-    .line 731
+    .line 763
     .restart local v1       #canvas:Landroid/graphics/Canvas;
     .restart local v15       #bitmap:Landroid/graphics/Bitmap;
     .restart local v16       #bitmapHeight:I
@@ -256,7 +256,7 @@
 
     move-result-object v4
 
-    .line 733
+    .line 765
     move-object/from16 v0, p0
 
     iget-object v6, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker$EntryLabelJob;->this$0:Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;
@@ -276,19 +276,19 @@
 
     float-to-int v5, v6
 
-    .line 734
+    .line 766
     .local v5, textWidth:I
     sub-int v6, v20, v5
 
     div-int/lit8 v2, v6, 0x2
 
-    .line 735
+    .line 767
     .local v2, x:I
     move-object/from16 v0, v21
 
     iget v3, v0, Lcom/android/gallery3d/ui/AlbumSlotRenderer$LabelSpec;->titleOffset:I
 
-    .line 736
+    .line 768
     .local v3, y:I
     move-object/from16 v0, p0
 
@@ -314,7 +314,7 @@
 
     invoke-static/range {v1 .. v9}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->drawText(Landroid/graphics/Canvas;IILjava/lang/String;ILandroid/text/TextPaint;Landroid/graphics/Paint$FontMetricsInt;Landroid/text/TextUtils$TruncateAt;Z)V
 
-    .line 740
+    .line 772
     invoke-interface/range {p1 .. p1}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->isCancelled()Z
 
     move-result v6
@@ -325,7 +325,7 @@
 
     goto :goto_0
 
-    .line 741
+    .line 773
     :cond_3
     move-object/from16 v0, p0
 
@@ -348,12 +348,12 @@
 
     float-to-int v5, v6
 
-    .line 742
+    .line 774
     sub-int v6, v20, v5
 
     div-int/lit8 v2, v6, 0x2
 
-    .line 743
+    .line 775
     move-object/from16 v0, v21
 
     iget v6, v0, Lcom/android/gallery3d/ui/AlbumSlotRenderer$LabelSpec;->labelBackgroundHeight:I
@@ -362,9 +362,17 @@
 
     iget v7, v0, Lcom/android/gallery3d/ui/AlbumSlotRenderer$LabelSpec;->infoFontSize:I
 
+    int-to-float v7, v7
+
+    sget v8, Lcom/android/gallery3d/common/Utils;->sFontScale:F
+
+    mul-float/2addr v7, v8
+
+    float-to-int v7, v7
+
     sub-int v3, v6, v7
 
-    .line 744
+    .line 776
     move-object/from16 v0, p0
 
     iget-object v6, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker$EntryLabelJob;->this$0:Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;
@@ -407,7 +415,7 @@
     .parameter "x0"
 
     .prologue
-    .line 684
+    .line 716
     invoke-virtual {p0, p1}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker$EntryLabelJob;->run(Lcom/android/gallery3d/util/ThreadPool$JobContext;)Landroid/graphics/Bitmap;
 
     move-result-object v0

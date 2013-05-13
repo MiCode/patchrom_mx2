@@ -917,6 +917,7 @@
     <string name="weeks">周</string>
     <string name="year">年</string>
     <string name="years">年</string>
+    <string name="VideoView_connect_fail">网络连接失败</string>
     <string name="relative_time">%1$s，%2$s</string>
     <string name="noon">中午</string>
     <string name="Noon">中午</string>
@@ -1002,6 +1003,8 @@
     <string name="ringtone_silent">静音</string>
     <string name="ringtone_picker_title">铃声</string>
     <string name="ringtone_unknown">未知铃声</string>
+    <string name="wifi_share_stop">关闭WLAN文件共享</string>
+    <string name="wifi_share_start">已启用WLAN文件共享</string>
     <string name="wifi_available_sign_in">登录到 WLAN 网络</string>
     <string name="wifi_watchdog_network_disabled">无法连接到 WLAN</string>
     <string name="wifi_watchdog_network_disabled_detailed">" 互联网连接状况不佳。"</string>
@@ -1031,7 +1034,7 @@
     <string name="sim_restart_button">重新启动</string>
     <string name="time_picker_dialog_title">设置时间</string>
     <string name="date_picker_dialog_title">设置日期</string>
-    <string name="date_time_set">设置</string>
+    <string name="date_time_set">确定</string>
     <string name="date_time_done">完成</string>
     <string name="default_permission_group">默认</string>
     <string name="no_permissions">不需要任何权限</string>
@@ -1065,7 +1068,7 @@
     <string name="extmedia_format_message">您卡上的所有数据都会丢失。</string>
     <string name="extmedia_format_button_format">格式化</string>
     <string name="adb_active_notification_title">已连接 USB 调试</string>
-    <string name="adb_active_notification_message">触摸可停用 USB 调试。</string>
+    <string name="adb_active_notification_message">触摸可停用 USB 调试</string>
     <string name="select_input_method">选择输入法</string>
     <string name="configure_input_methods">设置输入法</string>
     <string name="use_physical_keyboard">物理键盘</string>
@@ -1142,8 +1145,8 @@
     <string name="no_matches">无匹配项</string>
     <string name="find_on_page">在网页上查找</string>
     <string name="action_mode_done">完成</string>
-    <string name="progress_unmounting">正在卸载 存储盘...</string>
-    <string name="progress_erasing">正在清除 存储盘的数据...</string>
+    <string name="progress_unmounting">正在卸载 存储盘..</string>
+    <string name="progress_erasing">正在清除 存储盘的数据..</string>
     <string name="format_error">无法清除 存储盘。</string>
     <string name="media_bad_removal">SD 卡尚未卸载就被移除。</string>
     <string name="media_checking">目前正在检查 存储盘。</string>
@@ -1258,6 +1261,7 @@
     <string name="default_audio_route_name_hdmi">HDMI 音频</string>
     <string name="default_audio_route_category_name">系统</string>
     <string name="bluetooth_a2dp_audio_route_name">蓝牙音频</string>
+    <string name="askOpenBluetoothVisibility">打开蓝牙可被发现</string>
     <string name="media_route_chooser_grouping_done">完成</string>
     <string name="lock_tips_dialing">正在呼叫</string>
     <string name="calling">正在通话</string>
@@ -1284,11 +1288,15 @@
     <string name="activity_not_found">未安装应用程序</string>
     <string name="emergency_call">紧急呼叫</string>
     <string name="dial_emergency_error">电话未拨出，%s 不是紧急呼救号码！</string>
+    <string name="loading_music_info">加载音乐信息…</string>
     <string name="global_action_power_restart">重新启动</string>
     <string name="recipient_hint_str">收件人</string>
     <string name="recipient_total_str">共%d人</string>
     <string name="recipient_edit_imeActionLabel">确定</string>
     <string name="recipient_global_searching">正在查找全球联系人...</string>
+    <string name="title_message">信息</string>
+    <string name="title_email">邮件</string>
+    <string name="title_recipient">收件人</string>
     <string name="select">选择</string>
     <string name="copyAll">全部复制</string>
     <string name="enable">启用</string>
@@ -1320,4 +1328,7 @@
     <string name="launcher_choose_hint">\"设置/个性化\"里可更改默认桌面</string>
     <string name="chooseDefLauncher">选择默认桌面</string>
     <string name="external_storage_device_name">我的设备%s</string>
+    <string name="permdesc_backupAccounts">允许该应用备份或还原系统帐户</string>
+    <string name="permlab_backupAccounts">备份或还原设备上的系统帐户</string>
+    <string name="update_battery_low">电量低于20%,无法更新</string>
 </resources>

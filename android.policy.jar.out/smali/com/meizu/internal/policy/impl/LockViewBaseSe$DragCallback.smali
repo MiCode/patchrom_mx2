@@ -15,6 +15,9 @@
 
 
 # virtual methods
+.method public abstract enableKeyguardDownWithAnim(Z)V
+.end method
+
 .method public abstract getActivityScreenshot()Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;
 .end method
 

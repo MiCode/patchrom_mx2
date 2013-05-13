@@ -195,7 +195,7 @@
 
     .line 119
     :cond_0
-    const v0, 0x7f020028
+    const v0, 0x7f020020
 
     invoke-virtual {p1, v0}, Landroid/widget/CheckedTextView;->setCheckMarkDrawable(I)V
 
@@ -254,7 +254,7 @@
     .prologue
     const/4 v9, 0x1
 
-    const v8, 0x7f040044
+    const v8, 0x7f040045
 
     const v7, 0x1020014
 
@@ -286,14 +286,14 @@
     .line 128
     iget-object v4, p0, Lcom/android/camera/OtherMenuAdapter;->mInflater:Landroid/view/LayoutInflater;
 
-    const v5, 0x7f040062
+    const v5, 0x7f040067
 
     invoke-virtual {v4, v5, v6}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
     move-result-object p2
 
     .line 129
-    const v4, 0x7f0d013a
+    const v4, 0x7f0d0155
 
     invoke-virtual {p2, v4}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -316,7 +316,7 @@
 
     .line 135
     :goto_0
-    const v4, 0x7f0d013b
+    const v4, 0x7f0d0156
 
     invoke-virtual {p2, v4}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -326,7 +326,7 @@
 
     .line 136
     .local v3, t2:Landroid/widget/TextView;
-    const v4, 0x7f0d013c
+    const v4, 0x7f0d0157
 
     invoke-virtual {p2, v4}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 

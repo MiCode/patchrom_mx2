@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 415
+    .line 429
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$5;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 1
 
     .prologue
-    .line 417
+    .line 431
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$5;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     #getter for: Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
@@ -55,7 +55,7 @@
 
     if-nez v0, :cond_0
 
-    .line 418
+    .line 432
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$5;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     #getter for: Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
@@ -65,20 +65,20 @@
 
     invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockEmergencyCallView;->clearText()V
 
-    .line 419
+    .line 433
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$5;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     #calls: Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->showKeypadView()V
     invoke-static {v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->access$700(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)V
 
-    .line 420
+    .line 434
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$5;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v0}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->pokeWakelock()V
 
-    .line 423
+    .line 437
     :cond_0
     return-void
 .end method

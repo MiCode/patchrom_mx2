@@ -64,6 +64,8 @@
 
 .field public static final COLUMN_LAST_UPDATESRC:Ljava/lang/String; = "lastUpdateSrc"
 
+.field public static final COLUMN_MD5:Ljava/lang/String; = "md5"
+
 .field public static final COLUMN_MEDIAPROVIDER_URI:Ljava/lang/String; = "mediaprovider_uri"
 
 .field public static final COLUMN_MEDIA_SCANNED:Ljava/lang/String; = "scanned"
@@ -260,7 +262,7 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 584
+    .line 587
     if-eq p0, v0, :cond_0
 
     const/4 v1, 0x3
@@ -282,7 +284,7 @@
     .parameter "status"
 
     .prologue
-    .line 567
+    .line 570
     const/16 v0, 0x190
 
     if-lt p0, v0, :cond_0
@@ -307,7 +309,7 @@
     .parameter "status"
 
     .prologue
-    .line 593
+    .line 596
     const/16 v0, 0xc8
 
     if-lt p0, v0, :cond_0
@@ -342,7 +344,7 @@
     .parameter "status"
 
     .prologue
-    .line 560
+    .line 563
     const/16 v0, 0x190
 
     if-lt p0, v0, :cond_0
@@ -367,7 +369,7 @@
     .parameter "status"
 
     .prologue
-    .line 546
+    .line 549
     const/16 v0, 0x64
 
     if-lt p0, v0, :cond_0
@@ -392,7 +394,7 @@
     .parameter "status"
 
     .prologue
-    .line 574
+    .line 577
     const/16 v0, 0x1f4
 
     if-lt p0, v0, :cond_0
@@ -417,7 +419,7 @@
     .parameter "status"
 
     .prologue
-    .line 553
+    .line 556
     const/16 v0, 0xc8
 
     if-lt p0, v0, :cond_0
@@ -442,10 +444,10 @@
     .parameter "status"
 
     .prologue
-    .line 757
+    .line 760
     sparse-switch p0, :sswitch_data_0
 
-    .line 782
+    .line 785
     invoke-static {p0}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
 
     move-result-object v0
@@ -453,151 +455,151 @@
     :goto_0
     return-object v0
 
-    .line 758
+    .line 761
     :sswitch_0
     const-string v0, "PENDING"
 
     goto :goto_0
 
-    .line 759
+    .line 762
     :sswitch_1
     const-string v0, "RUNNING"
 
     goto :goto_0
 
-    .line 760
+    .line 763
     :sswitch_2
     const-string v0, "PAUSED_BY_APP"
 
     goto :goto_0
 
-    .line 761
+    .line 764
     :sswitch_3
     const-string v0, "WAITING_TO_RETRY"
 
     goto :goto_0
 
-    .line 762
+    .line 765
     :sswitch_4
     const-string v0, "WAITING_FOR_NETWORK"
 
     goto :goto_0
 
-    .line 763
+    .line 766
     :sswitch_5
     const-string v0, "QUEUED_FOR_WIFI"
 
     goto :goto_0
 
-    .line 764
+    .line 767
     :sswitch_6
     const-string v0, "INSUFFICIENT_SPACE_ERROR"
 
     goto :goto_0
 
-    .line 765
+    .line 768
     :sswitch_7
     const-string v0, "DEVICE_NOT_FOUND_ERROR"
 
     goto :goto_0
 
-    .line 766
+    .line 769
     :sswitch_8
     const-string v0, "SUCCESS"
 
     goto :goto_0
 
-    .line 767
+    .line 770
     :sswitch_9
     const-string v0, "BAD_REQUEST"
 
     goto :goto_0
 
-    .line 768
+    .line 771
     :sswitch_a
     const-string v0, "NOT_ACCEPTABLE"
 
     goto :goto_0
 
-    .line 769
+    .line 772
     :sswitch_b
     const-string v0, "LENGTH_REQUIRED"
 
     goto :goto_0
 
-    .line 770
+    .line 773
     :sswitch_c
     const-string v0, "PRECONDITION_FAILED"
 
     goto :goto_0
 
-    .line 771
+    .line 774
     :sswitch_d
     const-string v0, "FILE_ALREADY_EXISTS_ERROR"
 
     goto :goto_0
 
-    .line 772
+    .line 775
     :sswitch_e
     const-string v0, "CANNOT_RESUME"
 
     goto :goto_0
 
-    .line 773
+    .line 776
     :sswitch_f
     const-string v0, "CANCELED"
 
     goto :goto_0
 
-    .line 774
+    .line 777
     :sswitch_10
     const-string v0, "UNKNOWN_ERROR"
 
     goto :goto_0
 
-    .line 775
+    .line 778
     :sswitch_11
     const-string v0, "FILE_ERROR"
 
     goto :goto_0
 
-    .line 776
+    .line 779
     :sswitch_12
     const-string v0, "UNHANDLED_REDIRECT"
 
     goto :goto_0
 
-    .line 777
+    .line 780
     :sswitch_13
     const-string v0, "UNHANDLED_HTTP_CODE"
 
     goto :goto_0
 
-    .line 778
+    .line 781
     :sswitch_14
     const-string v0, "HTTP_DATA_ERROR"
 
     goto :goto_0
 
-    .line 779
+    .line 782
     :sswitch_15
     const-string v0, "HTTP_EXCEPTION"
 
     goto :goto_0
 
-    .line 780
+    .line 783
     :sswitch_16
     const-string v0, "TOO_MANY_REDIRECTS"
 
     goto :goto_0
 
-    .line 781
+    .line 784
     :sswitch_17
     const-string v0, "BLOCKED"
 
     goto :goto_0
 
-    .line 757
+    .line 760
     :sswitch_data_0
     .sparse-switch
         0xbe -> :sswitch_0

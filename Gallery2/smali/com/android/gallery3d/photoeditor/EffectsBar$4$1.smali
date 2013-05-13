@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 368
+    .line 376
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$4$1;->this$1:Lcom/android/gallery3d/photoeditor/EffectsBar$4;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,7 +43,7 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 372
+    .line 380
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$4$1;->this$1:Lcom/android/gallery3d/photoeditor/EffectsBar$4;
 
     iget-object v0, v0, Lcom/android/gallery3d/photoeditor/EffectsBar$4;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
@@ -51,13 +51,13 @@
     #calls: Lcom/android/gallery3d/photoeditor/EffectsBar;->exitActiveEffect(Ljava/lang/Runnable;)Z
     invoke-static {v0, v1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->access$1300(Lcom/android/gallery3d/photoeditor/EffectsBar;Ljava/lang/Runnable;)Z
 
-    .line 373
+    .line 381
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$4$1;->this$1:Lcom/android/gallery3d/photoeditor/EffectsBar$4;
 
     iget-object v0, v0, Lcom/android/gallery3d/photoeditor/EffectsBar$4;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->exit(Ljava/lang/Runnable;)Z
 
-    .line 374
+    .line 382
     return-void
 .end method

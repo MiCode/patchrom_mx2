@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 925
+    .line 950
     iput-object p1, p0, Lcom/meizu/widget/RecipientEdit$4;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -54,7 +54,7 @@
     .end annotation
 
     .prologue
-    .line 927
+    .line 952
     .local p1, parent:Landroid/widget/AdapterView;,"Landroid/widget/AdapterView<*>;"
     const v5, 0x1020014
 
@@ -64,7 +64,7 @@
 
     check-cast v3, Landroid/widget/TextView;
 
-    .line 928
+    .line 953
     .local v3, text1:Landroid/widget/TextView;
     const v5, 0x1020015
 
@@ -74,7 +74,7 @@
 
     check-cast v4, Landroid/widget/TextView;
 
-    .line 929
+    .line 954
     .local v4, text2:Landroid/widget/TextView;
     invoke-virtual {v3}, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
 
@@ -84,7 +84,7 @@
 
     move-result-object v2
 
-    .line 930
+    .line 955
     .local v2, name:Ljava/lang/String;
     invoke-virtual {v4}, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
 
@@ -94,7 +94,7 @@
 
     move-result-object v1
 
-    .line 931
+    .line 956
     .local v1, data:Ljava/lang/String;
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$4;->this$0:Lcom/meizu/widget/RecipientEdit;
 
@@ -109,7 +109,7 @@
 
     check-cast v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;
 
-    .line 932
+    .line 957
     .local v0, adapter:Lcom/meizu/widget/RecipientEdit$RecipientAdapter;
     invoke-virtual {v0, p3}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->isGroupData(I)Z
 
@@ -117,13 +117,13 @@
 
     if-eqz v5, :cond_1
 
-    .line 933
+    .line 958
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$4;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #calls: Lcom/meizu/widget/RecipientEdit;->addGroupData(J)I
     invoke-static {v5, p4, p5}, Lcom/meizu/widget/RecipientEdit;->access$2300(Lcom/meizu/widget/RecipientEdit;J)I
 
-    .line 942
+    .line 967
     :goto_0
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$4;->this$0:Lcom/meizu/widget/RecipientEdit;
 
@@ -144,7 +144,7 @@
 
     if-ne v5, v6, :cond_0
 
-    .line 943
+    .line 968
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$4;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mOnRecipientFirstAddListener:Lcom/meizu/widget/RecipientEdit$OnRecipientFirstAddListener;
@@ -154,11 +154,11 @@
 
     invoke-interface {v5}, Lcom/meizu/widget/RecipientEdit$OnRecipientFirstAddListener;->onRecipientFirstAdd()V
 
-    .line 945
+    .line 970
     :cond_0
     return-void
 
-    .line 935
+    .line 960
     :cond_1
     invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -166,14 +166,14 @@
 
     if-eqz v5, :cond_2
 
-    .line 936
+    .line 961
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$4;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     invoke-virtual {v5, v2}, Lcom/meizu/widget/RecipientEdit;->addRecipient(Ljava/lang/CharSequence;)Z
 
     goto :goto_0
 
-    .line 938
+    .line 963
     :cond_2
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$4;->this$0:Lcom/meizu/widget/RecipientEdit;
 

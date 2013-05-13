@@ -1,9 +1,6 @@
 .class Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$1;
-.super Ljava/lang/Object;
+.super Landroid/os/Handler;
 .source "LockPasswordKeyguardView.java"
-
-# interfaces
-.implements Ljava/lang/Runnable;
 
 
 # annotations
@@ -30,95 +27,122 @@
     .line 191
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$1;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Landroid/os/Handler;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public run()V
-    .locals 4
+.method public handleMessage(Landroid/os/Message;)V
+    .locals 6
+    .parameter "msg"
 
     .prologue
-    .line 193
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$1;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
+    const/4 v2, 0x1
+
+    const/4 v3, 0x0
+
+    .line 194
+    iget v4, p1, Landroid/os/Message;->what:I
+
+    packed-switch v4, :pswitch_data_0
+
+    .line 215
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 196
+    :pswitch_0
+    iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$1;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->mMode:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;
-    invoke-static {v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$000(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;
+    invoke-static {v4}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$000(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;
 
     move-result-object v1
 
-    .line 197
+    .line 200
     .local v1, mode:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;
     const/4 v0, 0x0
 
-    .line 198
+    .line 201
     .local v0, dismissAfterCreation:Z
-    sget-object v2, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;->UnlockScreen:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;
+    sget-object v4, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;->UnlockScreen:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;
 
-    if-ne v1, v2, :cond_2
+    if-ne v1, v4, :cond_2
 
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$1;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
+    iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$1;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     #calls: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->getUnlockMode()Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;
-    invoke-static {v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$100(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;
+    invoke-static {v4}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$100(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;
 
-    move-result-object v2
+    move-result-object v4
 
-    sget-object v3, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;->Unknown:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;
+    sget-object v5, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;->Unknown:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$UnlockMode;
 
-    if-ne v2, v3, :cond_2
+    if-ne v4, v5, :cond_2
 
-    .line 200
+    .line 203
     sget-object v1, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;->LockScreen:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;
 
-    .line 201
+    .line 204
     const/4 v0, 0x1
 
-    .line 205
-    :cond_0
-    :goto_0
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$1;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
+    .line 208
+    :cond_1
+    :goto_1
+    iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$1;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
-    const/4 v3, 0x1
+    iget v5, p1, Landroid/os/Message;->arg1:I
 
+    if-ne v5, v2, :cond_3
+
+    :goto_2
     #calls: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->updateScreen(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;Z)V
-    invoke-static {v2, v1, v3}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$300(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;Z)V
+    invoke-static {v4, v1, v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$300(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;Z)V
 
-    .line 206
-    if-eqz v0, :cond_1
+    .line 209
+    if-eqz v0, :cond_0
 
-    .line 207
+    .line 210
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$1;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     iget-object v2, v2, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->mKeyguardScreenCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
-    const/4 v3, 0x0
-
     invoke-interface {v2, v3}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->keyguardDone(Z)V
 
-    .line 209
-    :cond_1
-    return-void
+    goto :goto_0
 
-    .line 202
+    .line 205
     :cond_2
-    sget-object v2, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;->LockScreen:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;
+    sget-object v4, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;->LockScreen:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;
 
-    if-ne v1, v2, :cond_0
+    if-ne v1, v4, :cond_1
 
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$1;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
+    iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$1;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     #calls: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->isSecure()Z
-    invoke-static {v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$200(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Z
+    invoke-static {v4}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$200(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Z
 
-    move-result v2
+    move-result v4
 
-    if-eqz v2, :cond_0
+    if-eqz v4, :cond_1
 
-    .line 203
+    .line 206
     sget-object v1, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;->UnlockScreen:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$Mode;
 
-    goto :goto_0
+    goto :goto_1
+
+    :cond_3
+    move v2, v3
+
+    .line 208
+    goto :goto_2
+
+    .line 194
+    :pswitch_data_0
+    .packed-switch 0x3e9
+        :pswitch_0
+    .end packed-switch
 .end method

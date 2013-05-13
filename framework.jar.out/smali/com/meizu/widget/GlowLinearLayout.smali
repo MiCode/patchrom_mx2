@@ -85,12 +85,12 @@
 
     .prologue
     .line 41
+    invoke-super {p0, p1}, Landroid/widget/LinearLayout;->dispatchDraw(Landroid/graphics/Canvas;)V
+
+    .line 42
     iget-object v0, p0, Lcom/meizu/widget/GlowLinearLayout;->mDelegate:Lcom/meizu/widget/GlowDelegate;
 
     invoke-virtual {v0, p1}, Lcom/meizu/widget/GlowDelegate;->onDraw(Landroid/graphics/Canvas;)V
-
-    .line 42
-    invoke-super {p0, p1}, Landroid/widget/LinearLayout;->dispatchDraw(Landroid/graphics/Canvas;)V
 
     .line 43
     return-void

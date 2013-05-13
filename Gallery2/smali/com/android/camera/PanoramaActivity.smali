@@ -823,7 +823,7 @@
 
     .prologue
     .line 726
-    const v0, 0x7f040048
+    const v0, 0x7f040049
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->setContentView(I)V
 
@@ -844,7 +844,7 @@
     iput-object v0, p0, Lcom/android/camera/PanoramaActivity;->mCaptureLayout:Landroid/widget/LinearLayout;
 
     .line 729
-    const v0, 0x7f080034
+    const v0, 0x7f080039
 
     invoke-virtual {v1, v0}, Landroid/content/res/Resources;->getColor(I)I
 
@@ -853,7 +853,7 @@
     iput v0, p0, Lcom/android/camera/PanoramaActivity;->mIndicatorColor:I
 
     .line 730
-    const v0, 0x7f080035
+    const v0, 0x7f08003a
 
     invoke-virtual {v1, v0}, Landroid/content/res/Resources;->getColor(I)I
 
@@ -862,7 +862,7 @@
     iput v0, p0, Lcom/android/camera/PanoramaActivity;->mIndicatorColorFast:I
 
     .line 731
-    const v0, 0x7f0d00f8
+    const v0, 0x7f0d00fa
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -875,7 +875,7 @@
     .line 732
     new-instance v0, Lcom/android/camera/RotateDialogController;
 
-    const v2, 0x7f040070
+    const v2, 0x7f040075
 
     invoke-direct {v0, p0, v2}, Lcom/android/camera/RotateDialogController;-><init>(Landroid/app/Activity;I)V
 
@@ -1380,7 +1380,7 @@
     .line 879
     iget-object v0, p0, Lcom/android/camera/PanoramaActivity;->mShutterButton:Lcom/android/camera/ShutterButton;
 
-    const v1, 0x7f020048
+    const v1, 0x7f020044
 
     invoke-virtual {v0, v1}, Lcom/android/camera/ShutterButton;->setBackgroundResource(I)V
 
@@ -1481,7 +1481,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f0a0079
+    const v1, 0x7f0a0083
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -1631,7 +1631,7 @@
     .parameter
 
     .prologue
-    const v5, 0x7f080032
+    const v5, 0x7f080037
 
     const/4 v4, 0x2
 
@@ -1643,7 +1643,7 @@
     iput v1, p0, Lcom/android/camera/PanoramaActivity;->mCaptureState:I
 
     .line 655
-    const v0, 0x7f0d0144
+    const v0, 0x7f0d015f
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1665,7 +1665,7 @@
     .line 657
     iget-object v0, p0, Lcom/android/camera/PanoramaActivity;->mPanoProgressBar:Lcom/android/camera/PanoProgressBar;
 
-    const v2, 0x7f080033
+    const v2, 0x7f080038
 
     invoke-virtual {p1, v2}, Landroid/content/res/Resources;->getColor(I)I
 
@@ -1690,7 +1690,7 @@
     invoke-virtual {v0, v2}, Lcom/android/camera/PanoProgressBar;->setOnDirectionChangeListener(Lcom/android/camera/PanoProgressBar$OnDirectionChangeListener;)V
 
     .line 669
-    const v0, 0x7f0d0145
+    const v0, 0x7f0d0160
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1699,7 +1699,7 @@
     iput-object v0, p0, Lcom/android/camera/PanoramaActivity;->mLeftIndicator:Landroid/view/View;
 
     .line 670
-    const v0, 0x7f0d0146
+    const v0, 0x7f0d0161
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1718,7 +1718,7 @@
     invoke-virtual {v0, v1}, Landroid/view/View;->setEnabled(Z)V
 
     .line 673
-    const v0, 0x7f0d0148
+    const v0, 0x7f0d0163
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1729,7 +1729,7 @@
     iput-object v0, p0, Lcom/android/camera/PanoramaActivity;->mTooFastPrompt:Landroid/widget/TextView;
 
     .line 675
-    const v0, 0x7f0d0142
+    const v0, 0x7f0d015d
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1743,7 +1743,7 @@
     invoke-virtual {v0, p0}, Landroid/view/View;->addOnLayoutChangeListener(Landroid/view/View$OnLayoutChangeListener;)V
 
     .line 678
-    const v0, 0x7f0d00f4
+    const v0, 0x7f0d00f6
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1779,7 +1779,7 @@
     .line 682
     iget-object v0, p0, Lcom/android/camera/PanoramaActivity;->mSavingProgressBar:Lcom/android/camera/PanoProgressBar;
 
-    const v2, 0x7f080034
+    const v2, 0x7f080039
 
     invoke-virtual {p1, v2}, Landroid/content/res/Resources;->getColor(I)I
 
@@ -1788,7 +1788,7 @@
     invoke-virtual {v0, v2}, Lcom/android/camera/PanoProgressBar;->setDoneColor(I)V
 
     .line 684
-    const v0, 0x7f0d0141
+    const v0, 0x7f0d015c
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1799,7 +1799,7 @@
     iput-object v0, p0, Lcom/android/camera/PanoramaActivity;->mCaptureIndicator:Lcom/android/camera/ui/RotateLayout;
 
     .line 686
-    const v0, 0x7f0d015a
+    const v0, 0x7f0d0174
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1826,7 +1826,7 @@
     iput v0, p0, Lcom/android/camera/ActivityBase;->mThumbnailViewWidth:I
 
     .line 690
-    const v0, 0x7f0d00ef
+    const v0, 0x7f0d00f1
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1835,7 +1835,7 @@
     iput-object v0, p0, Lcom/android/camera/PanoramaActivity;->mReviewLayout:Landroid/view/View;
 
     .line 691
-    const v0, 0x7f0d00f1
+    const v0, 0x7f0d00f3
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1846,7 +1846,7 @@
     iput-object v0, p0, Lcom/android/camera/PanoramaActivity;->mReview:Landroid/widget/ImageView;
 
     .line 693
-    const v0, 0x7f0d00df
+    const v0, 0x7f0d00e1
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1885,7 +1885,7 @@
     .line 699
     iget-object v0, p0, Lcom/android/camera/PanoramaActivity;->mShutterButton:Lcom/android/camera/ShutterButton;
 
-    const v2, 0x7f020048
+    const v2, 0x7f020044
 
     invoke-virtual {v0, v2}, Lcom/android/camera/ShutterButton;->setBackgroundResource(I)V
 
@@ -1912,7 +1912,7 @@
 
     new-array v2, v0, [Lcom/android/camera/ui/Rotatable;
 
-    const v0, 0x7f0d0143
+    const v0, 0x7f0d015e
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1922,7 +1922,7 @@
 
     aput-object v0, v2, v1
 
-    const v0, 0x7f0d0147
+    const v0, 0x7f0d0162
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1932,7 +1932,7 @@
 
     aput-object v0, v2, v3
 
-    const v0, 0x7f0d00f2
+    const v0, 0x7f0d00f4
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1944,7 +1944,7 @@
 
     const/4 v3, 0x3
 
-    const v0, 0x7f0d00f3
+    const v0, 0x7f0d00f5
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1956,7 +1956,7 @@
 
     const/4 v3, 0x4
 
-    const v0, 0x7f0d00f5
+    const v0, 0x7f0d00f7
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -1968,7 +1968,7 @@
 
     const/4 v3, 0x5
 
-    const v0, 0x7f0d00f7
+    const v0, 0x7f0d00f9
 
     invoke-virtual {p0, v0}, Lcom/android/camera/PanoramaActivity;->findViewById(I)Landroid/view/View;
 
@@ -3244,14 +3244,14 @@
     move-result-object v1
 
     .line 1017
-    const v3, 0x7f040064
+    const v3, 0x7f040069
 
     iget-object v4, p0, Lcom/android/camera/PanoramaActivity;->mCaptureLayout:Landroid/widget/LinearLayout;
 
     invoke-virtual {v1, v3, v4}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
     .line 1018
-    const v3, 0x7f040009
+    const v3, 0x7f04000a
 
     iget-object v4, p0, Lcom/android/camera/PanoramaActivity;->mCaptureLayout:Landroid/widget/LinearLayout;
 
@@ -3265,7 +3265,7 @@
     invoke-virtual {v3, v4}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
 
     .line 1021
-    const v3, 0x7f040047
+    const v3, 0x7f040048
 
     iget-object v4, p0, Lcom/android/camera/PanoramaActivity;->mPanoLayout:Landroid/view/ViewGroup;
 
@@ -3443,7 +3443,7 @@
 
     .line 294
     .local v0, appRes:Landroid/content/res/Resources;
-    const v3, 0x7f0a0082
+    const v3, 0x7f0a008c
 
     invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -3452,7 +3452,7 @@
     iput-object v3, p0, Lcom/android/camera/PanoramaActivity;->mPreparePreviewString:Ljava/lang/String;
 
     .line 295
-    const v3, 0x7f0a0084
+    const v3, 0x7f0a008e
 
     invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -3461,7 +3461,7 @@
     iput-object v3, p0, Lcom/android/camera/PanoramaActivity;->mDialogTitle:Ljava/lang/String;
 
     .line 296
-    const v3, 0x7f0a0075
+    const v3, 0x7f0a007f
 
     invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -3470,7 +3470,7 @@
     iput-object v3, p0, Lcom/android/camera/PanoramaActivity;->mDialogOkString:Ljava/lang/String;
 
     .line 297
-    const v3, 0x7f0a0083
+    const v3, 0x7f0a008d
 
     invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -3479,7 +3479,7 @@
     iput-object v3, p0, Lcom/android/camera/PanoramaActivity;->mDialogPanoramaFailedString:Ljava/lang/String;
 
     .line 298
-    const v3, 0x7f0a0086
+    const v3, 0x7f0a0090
 
     invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -3745,7 +3745,7 @@
     if-eqz v0, :cond_0
 
     .line 1050
-    const v0, 0x7f0a0018
+    const v0, 0x7f0a0022
 
     invoke-static {p0, v0}, Lcom/android/camera/Util;->showErrorAndFinish(Landroid/app/Activity;I)V
 
@@ -3760,7 +3760,7 @@
     if-eqz v0, :cond_1
 
     .line 1053
-    const v0, 0x7f0a0019
+    const v0, 0x7f0a0023
 
     invoke-static {p0, v0}, Lcom/android/camera/Util;->showErrorAndFinish(Landroid/app/Activity;I)V
 
@@ -4099,7 +4099,7 @@
     .line 542
     iget-object v0, p0, Lcom/android/camera/PanoramaActivity;->mShutterButton:Lcom/android/camera/ShutterButton;
 
-    const v1, 0x7f020049
+    const v1, 0x7f020045
 
     invoke-virtual {v0, v1}, Lcom/android/camera/ShutterButton;->setBackgroundResource(I)V
 

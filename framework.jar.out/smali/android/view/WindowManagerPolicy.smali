@@ -136,6 +136,9 @@
 .method public abstract adjustWindowParamsLw(Landroid/view/WindowManager$LayoutParams;)V
 .end method
 
+.method public abstract afterDisplayReady()V
+.end method
+
 .method public abstract allowAppAnimationsLw()Z
 .end method
 

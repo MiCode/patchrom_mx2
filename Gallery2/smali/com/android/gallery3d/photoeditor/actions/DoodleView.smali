@@ -2,25 +2,20 @@
 .super Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;
 .source "DoodleView.java"
 
-# interfaces
-.implements Lcom/android/gallery3d/photoeditor/DoodleShapeDialog$OnShapeChangeListener;
-.implements Lcom/android/gallery3d/photoeditor/DoodleTextDialog$OnTextSettingChangeListener;
-.implements Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog$OnEraserParamsListener;
-.implements Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog$OnDoodlePaintParamsListener;
-
 
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;,
+        Lcom/android/gallery3d/photoeditor/actions/DoodleView$GestureListener;,
+        Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleViewChanged;,
         Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
     }
 .end annotation
 
 
 # instance fields
-.field private final DEFAULT_PAINT_ALPHA:I
-
-.field private final DEFAULT_PAINT_COLOR:I
+.field private actionLineLength:F
 
 .field private bitmap:Landroid/graphics/Bitmap;
 
@@ -28,13 +23,35 @@
 
 .field private final bitmapPaint:Landroid/graphics/Paint;
 
+.field private colorPickCanvas:Landroid/graphics/Canvas;
+
+.field private colorPickFilter:Landroid/graphics/Bitmap;
+
+.field private final colorPickPadding:I
+
+.field private colorPickPath:Landroid/graphics/Path;
+
+.field private colorPickResource:Landroid/graphics/Bitmap;
+
 .field private final displayMatrix:Landroid/graphics/Matrix;
 
 .field private doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
-.field private doodleColor:I
-
 .field private final doodlePaint:Landroid/graphics/Paint;
+
+.field private doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+.field private doodleViewChangeListener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleViewChanged;
+
+.field private dragFirstPoint:Landroid/graphics/PointF;
+
+.field private dragLastPoint:Landroid/graphics/PointF;
+
+.field private dragLineRatio:F
+
+.field private dragRectOffsetX:F
+
+.field private dragRectOffsetY:F
 
 .field private final drawingMatrix:Landroid/graphics/Matrix;
 
@@ -53,19 +70,29 @@
 
 .field private final eraserPaint:Landroid/graphics/Paint;
 
+.field private imageSourceBmp:Landroid/graphics/Bitmap;
+
 .field private inputMethodManager:Landroid/view/inputmethod/InputMethodManager;
 
-.field private isVertical:Z
+.field private isColorPickerMode:Z
+
+.field private isLongPress:Z
 
 .field private final lastPoint:Landroid/graphics/PointF;
 
+.field private lineDistanceX:F
+
+.field private lineDistanceY:F
+
+.field private lineLength:F
+
+.field private lineShapeAngle:F
+
 .field private listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
 
-.field private mColorAlpha:I
+.field private longPressDoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
 .field private mDoodleMode:I
-
-.field private mDoodlePaintSize:F
 
 .field private mDoodles:Ljava/util/Vector;
     .annotation system Ldalvik/annotation/Signature;
@@ -78,13 +105,11 @@
     .end annotation
 .end field
 
-.field private mEraserPaintSize:F
+.field private mGuestureListenr:Landroid/view/GestureDetector;
 
-.field private mEraserSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;
+.field private mInputShownChangeListener:Landroid/view/inputmethod/InputMethodManager$InputShownChangeListener;
 
 .field private mPaintScale:F
-
-.field private mPaintSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;
 
 .field private mRedoDoodles:Ljava/util/Stack;
     .annotation system Ldalvik/annotation/Signature;
@@ -99,33 +124,25 @@
 
 .field private mRedoFlag:Z
 
-.field private mShapeSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;
-
-.field private mTextSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
-
 .field private mUndoFlag:Z
+
+.field private magnifierCenterX:F
+
+.field private magnifierCenterY:F
 
 .field private oldBoundsHeight:F
 
 .field private oldBoundsWidth:F
 
-.field private redoBtn:Landroid/widget/ImageButton;
-
-.field private saveMenuItem:Landroid/view/MenuItem;
-
-.field private screenWidth:I
-
-.field private selectedShapeId:I
-
-.field private shapeBtn:Landroid/widget/ImageButton;
-
-.field private shapeColor:I
+.field private shapeDownPoint:Landroid/graphics/PointF;
 
 .field private shapeHelper:Lcom/android/gallery3d/photoeditor/actions/DoodleShapeHelper;
 
 .field private final shapePaint:Landroid/graphics/Paint;
 
-.field private textColor:I
+.field private shapeUpPoint:Landroid/graphics/PointF;
+
+.field private sourceBmpCanvas:Landroid/graphics/Canvas;
 
 .field private textDoodle:Ljava/util/Vector;
     .annotation system Ldalvik/annotation/Signature;
@@ -138,28 +155,22 @@
     .end annotation
 .end field
 
-.field private textSize:F
-
-.field private undoBtn:Landroid/widget/ImageButton;
-
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .locals 5
+    .locals 4
     .parameter "context"
     .parameter "attrs"
 
     .prologue
-    const/16 v4, 0x98
+    const/high16 v3, 0x3f80
 
-    const/4 v3, 0x0
+    const/4 v2, 0x0
 
-    const/high16 v2, -0x1
-
-    .line 135
+    .line 150
     invoke-direct {p0, p1, p2}, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 80
+    .line 86
     new-instance v0, Landroid/graphics/Paint;
 
     const/4 v1, 0x6
@@ -168,150 +179,146 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapPaint:Landroid/graphics/Paint;
 
-    .line 81
+    .line 87
     invoke-static {}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->createPaint()Landroid/graphics/Paint;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodlePaint:Landroid/graphics/Paint;
 
-    .line 82
+    .line 88
     invoke-static {}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->createEraserPaint()Landroid/graphics/Paint;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->eraserPaint:Landroid/graphics/Paint;
 
-    .line 83
+    .line 89
     invoke-static {}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->createPaint()Landroid/graphics/Paint;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapePaint:Landroid/graphics/Paint;
 
-    .line 84
+    .line 90
     new-instance v0, Landroid/graphics/PointF;
 
     invoke-direct {v0}, Landroid/graphics/PointF;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
 
-    .line 85
+    .line 91
     new-instance v0, Landroid/graphics/Path;
 
     invoke-direct {v0}, Landroid/graphics/Path;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawingPath:Landroid/graphics/Path;
 
-    .line 86
+    .line 92
     new-instance v0, Landroid/graphics/Matrix;
 
     invoke-direct {v0}, Landroid/graphics/Matrix;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawingMatrix:Landroid/graphics/Matrix;
 
-    .line 87
+    .line 93
     new-instance v0, Landroid/graphics/Matrix;
 
     invoke-direct {v0}, Landroid/graphics/Matrix;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->displayMatrix:Landroid/graphics/Matrix;
 
-    .line 97
-    iput-boolean v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mUndoFlag:Z
+    .line 100
+    iput-boolean v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mUndoFlag:Z
 
-    .line 98
-    iput-boolean v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoFlag:Z
+    .line 101
+    iput-boolean v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoFlag:Z
 
-    .line 99
+    .line 102
+    iput-boolean v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isLongPress:Z
+
+    .line 103
     new-instance v0, Ljava/util/Vector;
 
     invoke-direct {v0}, Ljava/util/Vector;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
 
-    .line 100
+    .line 104
     new-instance v0, Ljava/util/Stack;
 
     invoke-direct {v0}, Ljava/util/Stack;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoDoodles:Ljava/util/Stack;
 
+    .line 108
+    iput v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
+
+    .line 110
+    iput v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
+
     .line 112
-    iput v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->DEFAULT_PAINT_COLOR:I
-
-    .line 113
-    iput v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->DEFAULT_PAINT_ALPHA:I
-
-    .line 114
-    iput v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
-
-    .line 115
-    iput v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->selectedShapeId:I
-
-    .line 118
-    iput v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mColorAlpha:I
-
-    .line 122
     new-instance v0, Ljava/util/Vector;
 
     invoke-direct {v0}, Ljava/util/Vector;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textDoodle:Ljava/util/Vector;
 
-    .line 136
-    invoke-static {v2}, Landroid/graphics/Color;->red(I)I
+    .line 123
+    new-instance v0, Landroid/graphics/PointF;
 
-    move-result v0
+    invoke-direct {v0}, Landroid/graphics/PointF;-><init>()V
 
-    invoke-static {v2}, Landroid/graphics/Color;->green(I)I
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
 
-    move-result v1
+    .line 124
+    new-instance v0, Landroid/graphics/PointF;
 
-    invoke-static {v2}, Landroid/graphics/Color;->blue(I)I
+    invoke-direct {v0}, Landroid/graphics/PointF;-><init>()V
 
-    move-result v2
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeUpPoint:Landroid/graphics/PointF;
 
-    invoke-static {v4, v0, v1, v2}, Landroid/graphics/Color;->argb(IIII)I
+    .line 125
+    new-instance v0, Landroid/graphics/PointF;
 
-    move-result v0
+    invoke-direct {v0}, Landroid/graphics/PointF;-><init>()V
 
-    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleColor:I
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragFirstPoint:Landroid/graphics/PointF;
 
-    .line 138
-    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    .line 126
+    new-instance v0, Landroid/graphics/PointF;
 
-    move-result-object v0
+    invoke-direct {v0}, Landroid/graphics/PointF;-><init>()V
 
-    const v1, 0x7f080050
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragLastPoint:Landroid/graphics/PointF;
 
-    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getColor(I)I
+    .line 127
+    const/high16 v0, 0x3f00
 
-    move-result v0
+    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragLineRatio:F
 
-    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeColor:I
+    .line 128
+    iput v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragRectOffsetX:F
 
-    .line 139
-    const/high16 v0, -0x100
+    .line 129
+    iput v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragRectOffsetY:F
 
-    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textColor:I
+    .line 137
+    iput-boolean v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isColorPickerMode:Z
 
-    .line 140
-    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    .line 147
+    const/16 v0, 0x14
 
-    move-result-object v0
+    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickPadding:I
 
-    const v1, 0x7f0901a2
+    .line 415
+    new-instance v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$3;
 
-    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+    invoke-direct {v0, p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$3;-><init>(Lcom/android/gallery3d/photoeditor/actions/DoodleView;)V
 
-    move-result v0
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mInputShownChangeListener:Landroid/view/inputmethod/InputMethodManager$InputShownChangeListener;
 
-    int-to-float v0, v0
-
-    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textSize:F
-
-    .line 141
+    .line 151
     const-string v0, "input_method"
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -322,327 +329,841 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->inputMethodManager:Landroid/view/inputmethod/InputMethodManager;
 
-    .line 142
+    .line 152
+    new-instance v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    invoke-direct {v0, p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;-><init>(Lcom/android/gallery3d/photoeditor/actions/DoodleView;)V
+
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    .line 153
+    new-instance v0, Landroid/view/GestureDetector;
+
+    new-instance v1, Lcom/android/gallery3d/photoeditor/actions/DoodleView$GestureListener;
+
+    const/4 v2, 0x0
+
+    invoke-direct {v1, p0, v2}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$GestureListener;-><init>(Lcom/android/gallery3d/photoeditor/actions/DoodleView;Lcom/android/gallery3d/photoeditor/actions/DoodleView$1;)V
+
+    invoke-direct {v0, p1, v1}, Landroid/view/GestureDetector;-><init>(Landroid/content/Context;Landroid/view/GestureDetector$OnGestureListener;)V
+
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mGuestureListenr:Landroid/view/GestureDetector;
+
+    .line 154
     return-void
 .end method
 
+.method static synthetic access$100(Lcom/android/gallery3d/photoeditor/actions/DoodleView;)Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleViewChanged;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 58
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleViewChangeListener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleViewChanged;
+
+    return-object v0
+.end method
+
+.method static synthetic access$1000(Lcom/android/gallery3d/photoeditor/actions/DoodleView;)Landroid/graphics/Bitmap;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 58
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
+
+    return-object v0
+.end method
+
+.method static synthetic access$1100(Lcom/android/gallery3d/photoeditor/actions/DoodleView;Lcom/android/gallery3d/photoeditor/actions/Doodle;)V
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 58
+    invoke-direct {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawSingleDoodle(Lcom/android/gallery3d/photoeditor/actions/Doodle;)V
+
+    return-void
+.end method
+
+.method static synthetic access$1200(Lcom/android/gallery3d/photoeditor/actions/DoodleView;)F
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 58
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragLineRatio:F
+
+    return v0
+.end method
+
+.method static synthetic access$1202(Lcom/android/gallery3d/photoeditor/actions/DoodleView;F)F
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 58
+    iput p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragLineRatio:F
+
+    return p1
+.end method
+
+.method static synthetic access$1300(Lcom/android/gallery3d/photoeditor/actions/DoodleView;)F
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 58
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->actionLineLength:F
+
+    return v0
+.end method
+
+.method static synthetic access$1400(Lcom/android/gallery3d/photoeditor/actions/DoodleView;)F
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 58
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineLength:F
+
+    return v0
+.end method
+
+.method static synthetic access$1500(Lcom/android/gallery3d/photoeditor/actions/DoodleView;FF)V
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+    .parameter "x2"
+
+    .prologue
+    .line 58
+    invoke-direct {p0, p1, p2}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getDragLinePoint(FF)V
+
+    return-void
+.end method
+
+.method static synthetic access$1602(Lcom/android/gallery3d/photoeditor/actions/DoodleView;F)F
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 58
+    iput p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragRectOffsetY:F
+
+    return p1
+.end method
+
+.method static synthetic access$1702(Lcom/android/gallery3d/photoeditor/actions/DoodleView;F)F
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 58
+    iput p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragRectOffsetX:F
+
+    return p1
+.end method
+
+.method static synthetic access$1800(Lcom/android/gallery3d/photoeditor/actions/DoodleView;FF)V
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+    .parameter "x2"
+
+    .prologue
+    .line 58
+    invoke-direct {p0, p1, p2}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getDragRectPoint(FF)V
+
+    return-void
+.end method
+
+.method static synthetic access$200(Lcom/android/gallery3d/photoeditor/actions/DoodleView;)Ljava/util/Vector;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 58
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textDoodle:Ljava/util/Vector;
+
+    return-object v0
+.end method
+
+.method static synthetic access$300(Lcom/android/gallery3d/photoeditor/actions/DoodleView;)V
+    .locals 0
+    .parameter "x0"
+
+    .prologue
+    .line 58
+    invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->addTextString()V
+
+    return-void
+.end method
+
+.method static synthetic access$400(Lcom/android/gallery3d/photoeditor/actions/DoodleView;)Ljava/util/Vector;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 58
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
+
+    return-object v0
+.end method
+
+.method static synthetic access$500(Lcom/android/gallery3d/photoeditor/actions/DoodleView;)Lcom/android/gallery3d/photoeditor/actions/Doodle;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 58
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->longPressDoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    return-object v0
+.end method
+
+.method static synthetic access$502(Lcom/android/gallery3d/photoeditor/actions/DoodleView;Lcom/android/gallery3d/photoeditor/actions/Doodle;)Lcom/android/gallery3d/photoeditor/actions/Doodle;
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 58
+    iput-object p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->longPressDoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    return-object p1
+.end method
+
+.method static synthetic access$600(Lcom/android/gallery3d/photoeditor/actions/DoodleView;)Landroid/graphics/PointF;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 58
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
+
+    return-object v0
+.end method
+
+.method static synthetic access$700(Lcom/android/gallery3d/photoeditor/actions/DoodleView;)Landroid/graphics/PointF;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 58
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeUpPoint:Landroid/graphics/PointF;
+
+    return-object v0
+.end method
+
+.method static synthetic access$800(Lcom/android/gallery3d/photoeditor/actions/DoodleView;FF)Z
+    .locals 1
+    .parameter "x0"
+    .parameter "x1"
+    .parameter "x2"
+
+    .prologue
+    .line 58
+    invoke-direct {p0, p1, p2}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->checkLongPressPoint(FF)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic access$902(Lcom/android/gallery3d/photoeditor/actions/DoodleView;Z)Z
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 58
+    iput-boolean p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isLongPress:Z
+
+    return p1
+.end method
+
 .method private addEditText(FF)V
-    .locals 11
+    .locals 17
     .parameter "x"
     .parameter "y"
 
     .prologue
-    const/4 v7, -0x2
+    .line 280
+    invoke-virtual/range {p0 .. p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getParent()Landroid/view/ViewParent;
 
-    const/high16 v10, 0x4000
+    move-result-object v13
 
-    const/4 v8, 0x0
+    if-eqz v13, :cond_6
 
-    .line 295
-    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getParent()Landroid/view/ViewParent;
+    .line 281
+    invoke-virtual/range {p0 .. p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getParent()Landroid/view/ViewParent;
 
-    move-result-object v6
+    move-result-object v4
 
-    if-eqz v6, :cond_2
+    check-cast v4, Landroid/widget/FrameLayout;
 
-    .line 296
-    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getParent()Landroid/view/ViewParent;
+    .line 282
+    .local v4, group:Landroid/widget/FrameLayout;
+    new-instance v3, Landroid/widget/EditText;
 
-    move-result-object v1
+    invoke-virtual/range {p0 .. p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getContext()Landroid/content/Context;
 
-    check-cast v1, Landroid/widget/FrameLayout;
+    move-result-object v13
 
-    .line 297
-    .local v1, group:Landroid/widget/FrameLayout;
-    new-instance v0, Landroid/widget/EditText;
+    invoke-direct {v3, v13}, Landroid/widget/EditText;-><init>(Landroid/content/Context;)V
 
-    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getContext()Landroid/content/Context;
+    .line 284
+    .local v3, edit:Landroid/widget/EditText;
+    new-instance v10, Landroid/widget/FrameLayout$LayoutParams;
 
-    move-result-object v6
+    const/4 v13, -0x2
 
-    invoke-direct {v0, v6}, Landroid/widget/EditText;-><init>(Landroid/content/Context;)V
+    const/4 v14, -0x2
 
-    .line 300
-    .local v0, edit:Landroid/widget/EditText;
-    new-instance v5, Landroid/widget/FrameLayout$LayoutParams;
+    invoke-direct {v10, v13, v14}, Landroid/widget/FrameLayout$LayoutParams;-><init>(II)V
 
-    invoke-direct {v5, v7, v7}, Landroid/widget/FrameLayout$LayoutParams;-><init>(II)V
+    .line 286
+    .local v10, params:Landroid/widget/FrameLayout$LayoutParams;
+    invoke-static/range {p1 .. p1}, Ljava/lang/Math;->round(F)I
 
-    .line 301
-    .local v5, params:Landroid/widget/FrameLayout$LayoutParams;
-    invoke-static {p1}, Ljava/lang/Math;->round(F)I
+    move-result v5
 
-    move-result v6
+    .line 287
+    .local v5, leftMargin:I
+    const/16 v11, 0x1e
 
-    iput v6, v5, Landroid/widget/FrameLayout$LayoutParams;->leftMargin:I
+    .line 288
+    .local v11, textViewMinWidth:I
+    move-object/from16 v0, p0
 
-    .line 302
-    iget v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textSize:F
+    iget-object v13, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
 
-    iget v7, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
+    iget v13, v13, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->textSize:F
 
-    mul-float/2addr v6, v7
+    const/high16 v14, 0x4000
 
-    sub-float v6, p2, v6
+    div-float/2addr v13, v14
 
-    invoke-static {v6}, Ljava/lang/Math;->round(F)I
+    sub-float v13, p2, v13
 
-    move-result v6
+    invoke-static {v13}, Ljava/lang/Math;->round(F)I
 
-    iput v6, v5, Landroid/widget/FrameLayout$LayoutParams;->topMargin:I
+    move-result v12
 
-    .line 303
-    const/16 v6, 0x1e
+    .line 289
+    .local v12, topMargin:I
+    invoke-virtual/range {p0 .. p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getHeight()I
 
-    invoke-virtual {v0, v6}, Landroid/widget/EditText;->setMinimumWidth(I)V
+    move-result v13
 
-    .line 304
-    iget v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textColor:I
+    int-to-float v13, v13
 
-    invoke-virtual {v0, v6}, Landroid/widget/EditText;->setTextColor(I)V
+    move-object/from16 v0, p0
 
-    .line 305
-    iget v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textSize:F
+    iget-object v14, v0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
 
-    invoke-virtual {v0, v8, v6}, Landroid/widget/EditText;->setTextSize(IF)V
+    invoke-virtual {v14}, Landroid/graphics/RectF;->height()F
 
-    .line 306
-    const/high16 v6, 0x200
+    move-result v14
 
-    invoke-virtual {v0, v6}, Landroid/widget/EditText;->setImeOptions(I)V
+    sub-float/2addr v13, v14
 
-    .line 307
-    const/4 v6, 0x0
+    invoke-static {v13}, Ljava/lang/Math;->abs(F)F
 
-    invoke-virtual {v0, v6}, Landroid/widget/EditText;->setBackground(Landroid/graphics/drawable/Drawable;)V
+    move-result v13
 
-    .line 308
-    invoke-virtual {v0, v8, v8, v8, v8}, Landroid/widget/EditText;->setPadding(IIII)V
+    const/high16 v14, 0x4000
 
-    .line 309
-    invoke-virtual {v0, v5}, Landroid/widget/EditText;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+    div-float/2addr v13, v14
 
-    .line 310
-    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getWidth()I
-
-    move-result v6
-
-    int-to-float v6, v6
-
-    iget-object v7, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
-
-    invoke-virtual {v7}, Landroid/graphics/RectF;->width()F
-
-    move-result v7
-
-    sub-float/2addr v6, v7
-
-    div-float/2addr v6, v10
-
-    iget-object v7, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
-
-    invoke-virtual {v7}, Landroid/graphics/RectF;->width()F
-
-    move-result v7
-
-    add-float/2addr v6, v7
-
-    sub-float/2addr v6, p1
-
-    invoke-static {v6}, Ljava/lang/Math;->round(F)I
-
-    move-result v3
-
-    .line 311
-    .local v3, maxWidth:I
-    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getHeight()I
-
-    move-result v6
-
-    int-to-float v6, v6
-
-    iget-object v7, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
-
-    invoke-virtual {v7}, Landroid/graphics/RectF;->height()F
-
-    move-result v7
-
-    sub-float/2addr v6, v7
-
-    div-float/2addr v6, v10
-
-    iget-object v7, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
-
-    invoke-virtual {v7}, Landroid/graphics/RectF;->height()F
-
-    move-result v7
-
-    add-float/2addr v6, v7
-
-    sub-float/2addr v6, p2
-
-    iget v7, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textSize:F
-
-    iget v8, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
-
-    mul-float/2addr v7, v8
-
-    sub-float/2addr v6, v7
-
-    invoke-static {v6}, Ljava/lang/Math;->round(F)I
+    invoke-static {v13}, Ljava/lang/Math;->round(F)I
 
     move-result v2
 
+    .line 290
+    .local v2, displaysLoactionY:I
+    invoke-virtual/range {p0 .. p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getWidth()I
+
+    move-result v13
+
+    int-to-float v13, v13
+
+    move-object/from16 v0, p0
+
+    iget-object v14, v0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
+
+    invoke-virtual {v14}, Landroid/graphics/RectF;->width()F
+
+    move-result v14
+
+    sub-float/2addr v13, v14
+
+    const/high16 v14, 0x4000
+
+    div-float/2addr v13, v14
+
+    invoke-static {v13}, Ljava/lang/Math;->abs(F)F
+
+    move-result v13
+
+    invoke-static {v13}, Ljava/lang/Math;->round(F)I
+
+    move-result v1
+
+    .line 291
+    .local v1, displaysLoactionX:I
+    move-object/from16 v0, p0
+
+    iget-object v13, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v13, v13, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->textSize:F
+
+    invoke-static {v13}, Ljava/lang/Math;->round(F)I
+
+    move-result v13
+
+    if-ge v11, v13, :cond_0
+
+    .line 292
+    move-object/from16 v0, p0
+
+    iget-object v13, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v13, v13, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->textSize:F
+
+    invoke-static {v13}, Ljava/lang/Math;->round(F)I
+
+    move-result v11
+
+    .line 294
+    :cond_0
+    add-int v13, v5, v11
+
+    int-to-float v13, v13
+
+    int-to-float v14, v1
+
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
+
+    invoke-virtual {v15}, Landroid/graphics/RectF;->width()F
+
+    move-result v15
+
+    add-float/2addr v14, v15
+
+    cmpl-float v13, v13, v14
+
+    if-lez v13, :cond_1
+
+    .line 295
+    int-to-float v13, v1
+
+    move-object/from16 v0, p0
+
+    iget-object v14, v0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
+
+    invoke-virtual {v14}, Landroid/graphics/RectF;->width()F
+
+    move-result v14
+
+    add-float/2addr v13, v14
+
+    invoke-static {v13}, Ljava/lang/Math;->round(F)I
+
+    move-result v13
+
+    sub-int v5, v13, v11
+
+    .line 297
+    :cond_1
+    if-ge v12, v2, :cond_2
+
+    .line 298
+    move v12, v2
+
+    .line 301
+    :cond_2
+    new-instance v9, Landroid/graphics/Paint;
+
+    invoke-direct {v9}, Landroid/graphics/Paint;-><init>()V
+
+    .line 302
+    .local v9, paint:Landroid/graphics/Paint;
+    move-object/from16 v0, p0
+
+    iget-object v13, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v13, v13, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->textSize:F
+
+    invoke-virtual {v9, v13}, Landroid/graphics/Paint;->setTextSize(F)V
+
+    .line 303
+    int-to-float v13, v12
+
+    invoke-virtual {v9}, Landroid/graphics/Paint;->descent()F
+
+    move-result v14
+
+    invoke-virtual {v9}, Landroid/graphics/Paint;->ascent()F
+
+    move-result v15
+
+    sub-float/2addr v14, v15
+
+    add-float/2addr v13, v14
+
+    int-to-float v14, v2
+
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
+
+    invoke-virtual {v15}, Landroid/graphics/RectF;->height()F
+
+    move-result v15
+
+    add-float/2addr v14, v15
+
+    cmpl-float v13, v13, v14
+
+    if-lez v13, :cond_3
+
+    .line 304
+    int-to-float v13, v2
+
+    move-object/from16 v0, p0
+
+    iget-object v14, v0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
+
+    invoke-virtual {v14}, Landroid/graphics/RectF;->height()F
+
+    move-result v14
+
+    add-float/2addr v13, v14
+
+    invoke-virtual {v9}, Landroid/graphics/Paint;->descent()F
+
+    move-result v14
+
+    invoke-virtual {v9}, Landroid/graphics/Paint;->ascent()F
+
+    move-result v15
+
+    sub-float/2addr v14, v15
+
+    sub-float/2addr v13, v14
+
+    invoke-static {v13}, Ljava/lang/Math;->round(F)I
+
+    move-result v12
+
+    .line 307
+    :cond_3
+    const/4 v13, 0x0
+
+    invoke-virtual {v3, v13}, Landroid/widget/EditText;->setIncludeFontPadding(Z)V
+
+    .line 308
+    invoke-virtual {v3, v11}, Landroid/widget/EditText;->setMinimumWidth(I)V
+
+    .line 309
+    move-object/from16 v0, p0
+
+    iget-object v13, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v13, v13, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->textColor:I
+
+    invoke-virtual {v3, v13}, Landroid/widget/EditText;->setTextColor(I)V
+
+    .line 310
+    const/4 v13, 0x0
+
+    move-object/from16 v0, p0
+
+    iget-object v14, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v14, v14, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->textSize:F
+
+    invoke-virtual {v3, v13, v14}, Landroid/widget/EditText;->setTextSize(IF)V
+
+    .line 311
+    const/high16 v13, 0x200
+
+    invoke-virtual {v3, v13}, Landroid/widget/EditText;->setImeOptions(I)V
+
     .line 312
-    .local v2, maxHeight:I
-    invoke-virtual {v0, v3}, Landroid/widget/EditText;->setMaxWidth(I)V
+    const/4 v13, 0x0
+
+    invoke-virtual {v3, v13}, Landroid/widget/EditText;->setBackground(Landroid/graphics/drawable/Drawable;)V
 
     .line 313
-    invoke-virtual {v0, v2}, Landroid/widget/EditText;->setMaxHeight(I)V
+    const/4 v13, 0x0
+
+    const/4 v14, 0x0
+
+    const/4 v15, 0x0
+
+    const/16 v16, 0x0
+
+    move/from16 v0, v16
+
+    invoke-virtual {v3, v13, v14, v15, v0}, Landroid/widget/EditText;->setPadding(IIII)V
 
     .line 314
-    invoke-virtual {v1, v0}, Landroid/widget/FrameLayout;->addView(Landroid/view/View;)V
+    const/4 v13, 0x3
 
-    .line 315
-    invoke-virtual {v0}, Landroid/widget/EditText;->requestFocus()Z
+    invoke-virtual {v3, v13}, Landroid/widget/EditText;->setGravity(I)V
 
     .line 316
-    iget-object v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->inputMethodManager:Landroid/view/inputmethod/InputMethodManager;
+    int-to-float v13, v1
 
-    const/4 v7, 0x1
+    move-object/from16 v0, p0
 
-    invoke-virtual {v6, v0, v7}, Landroid/view/inputmethod/InputMethodManager;->showSoftInput(Landroid/view/View;I)Z
+    iget-object v14, v0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
 
-    .line 318
-    iget-object v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
+    invoke-virtual {v14}, Landroid/graphics/RectF;->width()F
 
-    if-nez v6, :cond_0
+    move-result v14
 
-    .line 319
-    new-instance v6, Ljava/util/Vector;
+    add-float/2addr v13, v14
 
-    invoke-direct {v6}, Ljava/util/Vector;-><init>()V
+    int-to-float v14, v5
 
-    iput-object v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
+    sub-float/2addr v13, v14
 
-    .line 321
-    :cond_0
-    iget-object v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
-
-    invoke-virtual {v6, v0}, Ljava/util/Vector;->add(Ljava/lang/Object;)Z
-
-    .line 323
-    iget-object v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
-
-    if-eqz v6, :cond_1
-
-    .line 324
-    new-instance v4, Landroid/graphics/PointF;
-
-    invoke-direct {v4}, Landroid/graphics/PointF;-><init>()V
-
-    .line 325
-    .local v4, newPoint:Landroid/graphics/PointF;
-    iget v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textSize:F
-
-    iget v7, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
-
-    mul-float/2addr v6, v7
-
-    sub-float v6, p2, v6
-
-    invoke-virtual {p0, p1, v6, v4}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mapPhotoPoint(FFLandroid/graphics/PointF;)V
-
-    .line 326
-    iget-object v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
-
-    invoke-virtual {v6, v4}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->changeDoodleFirstPoint(Landroid/graphics/PointF;)V
-
-    .line 328
-    .end local v4           #newPoint:Landroid/graphics/PointF;
-    :cond_1
-    iget-object v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
-
-    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getWidth()I
+    invoke-static {v13}, Ljava/lang/Math;->round(F)I
 
     move-result v7
 
-    int-to-float v7, v7
+    .line 317
+    .local v7, maxWidth:I
+    int-to-float v13, v2
 
-    iget-object v8, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
+    move-object/from16 v0, p0
 
-    invoke-virtual {v8}, Landroid/graphics/RectF;->width()F
+    iget-object v14, v0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
 
-    move-result v8
+    invoke-virtual {v14}, Landroid/graphics/RectF;->height()F
 
-    sub-float/2addr v7, v8
+    move-result v14
 
-    div-float/2addr v7, v10
+    add-float/2addr v13, v14
 
-    sub-float v7, p1, v7
+    int-to-float v14, v12
 
-    iget-object v8, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
+    sub-float/2addr v13, v14
 
-    invoke-virtual {v8}, Landroid/graphics/RectF;->width()F
+    invoke-static {v13}, Ljava/lang/Math;->round(F)I
 
-    move-result v8
+    move-result v6
 
-    div-float/2addr v7, v8
+    .line 319
+    .local v6, maxHeight:I
+    iput v5, v10, Landroid/widget/FrameLayout$LayoutParams;->leftMargin:I
 
-    iput v7, v6, Landroid/graphics/PointF;->x:F
+    .line 320
+    iput v12, v10, Landroid/widget/FrameLayout$LayoutParams;->topMargin:I
 
-    .line 329
-    iget-object v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
+    .line 322
+    invoke-virtual {v3, v7}, Landroid/widget/EditText;->setMaxWidth(I)V
 
-    iget v7, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textSize:F
+    .line 323
+    invoke-virtual {v3, v6}, Landroid/widget/EditText;->setMaxHeight(I)V
 
-    iget v8, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
+    .line 324
+    invoke-virtual {v3, v10}, Landroid/widget/EditText;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    mul-float/2addr v7, v8
+    .line 326
+    invoke-virtual {v4, v3}, Landroid/widget/FrameLayout;->addView(Landroid/view/View;)V
 
-    sub-float v7, p2, v7
+    .line 327
+    invoke-virtual {v3}, Landroid/widget/EditText;->requestFocus()Z
 
-    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getHeight()I
+    .line 328
+    new-instance v13, Lcom/android/gallery3d/photoeditor/actions/DoodleView$2;
 
-    move-result v8
+    move-object/from16 v0, p0
 
-    int-to-float v8, v8
+    invoke-direct {v13, v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$2;-><init>(Lcom/android/gallery3d/photoeditor/actions/DoodleView;)V
 
-    iget-object v9, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
+    invoke-virtual {v3, v13}, Landroid/widget/EditText;->addTextChangedListener(Landroid/text/TextWatcher;)V
 
-    invoke-virtual {v9}, Landroid/graphics/RectF;->height()F
+    .line 348
+    move-object/from16 v0, p0
 
-    move-result v9
+    iget-object v13, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->inputMethodManager:Landroid/view/inputmethod/InputMethodManager;
 
-    sub-float/2addr v8, v9
+    const/4 v14, 0x1
 
-    div-float/2addr v8, v10
+    invoke-virtual {v13, v3, v14}, Landroid/view/inputmethod/InputMethodManager;->showSoftInput(Landroid/view/View;I)Z
 
-    sub-float/2addr v7, v8
+    .line 350
+    move-object/from16 v0, p0
 
-    iget-object v8, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
+    iget-object v13, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
 
-    invoke-virtual {v8}, Landroid/graphics/RectF;->height()F
+    if-nez v13, :cond_4
 
-    move-result v8
+    .line 351
+    new-instance v13, Ljava/util/Vector;
 
-    div-float/2addr v7, v8
+    invoke-direct {v13}, Ljava/util/Vector;-><init>()V
 
-    iput v7, v6, Landroid/graphics/PointF;->y:F
+    move-object/from16 v0, p0
 
-    .line 330
-    invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->addLastPointIntoDoodle()V
+    iput-object v13, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
 
-    .line 331
-    invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->finishDoodle()V
+    .line 353
+    :cond_4
+    move-object/from16 v0, p0
 
-    .line 333
-    .end local v0           #edit:Landroid/widget/EditText;
-    .end local v1           #group:Landroid/widget/FrameLayout;
-    .end local v2           #maxHeight:I
-    .end local v3           #maxWidth:I
-    .end local v5           #params:Landroid/widget/FrameLayout$LayoutParams;
-    :cond_2
+    iget-object v13, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
+
+    invoke-virtual {v13, v3}, Ljava/util/Vector;->add(Ljava/lang/Object;)Z
+
+    .line 355
+    move-object/from16 v0, p0
+
+    iget-object v13, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    if-eqz v13, :cond_5
+
+    .line 356
+    new-instance v8, Landroid/graphics/PointF;
+
+    invoke-direct {v8}, Landroid/graphics/PointF;-><init>()V
+
+    .line 357
+    .local v8, newPoint:Landroid/graphics/PointF;
+    int-to-float v13, v5
+
+    int-to-float v14, v12
+
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v13, v14, v8}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mapPhotoPoint(FFLandroid/graphics/PointF;)V
+
+    .line 358
+    move-object/from16 v0, p0
+
+    iget-object v13, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    invoke-virtual {v13, v8}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->changeDoodleFirstPoint(Landroid/graphics/PointF;)V
+
+    .line 360
+    .end local v8           #newPoint:Landroid/graphics/PointF;
+    :cond_5
+    move-object/from16 v0, p0
+
+    iget-object v13, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
+
+    int-to-float v14, v5
+
+    invoke-virtual/range {p0 .. p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getWidth()I
+
+    move-result v15
+
+    int-to-float v15, v15
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
+
+    move-object/from16 v16, v0
+
+    invoke-virtual/range {v16 .. v16}, Landroid/graphics/RectF;->width()F
+
+    move-result v16
+
+    sub-float v15, v15, v16
+
+    const/high16 v16, 0x4000
+
+    div-float v15, v15, v16
+
+    sub-float/2addr v14, v15
+
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
+
+    invoke-virtual {v15}, Landroid/graphics/RectF;->width()F
+
+    move-result v15
+
+    div-float/2addr v14, v15
+
+    iput v14, v13, Landroid/graphics/PointF;->x:F
+
+    .line 361
+    move-object/from16 v0, p0
+
+    iget-object v13, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
+
+    int-to-float v14, v12
+
+    invoke-virtual/range {p0 .. p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getHeight()I
+
+    move-result v15
+
+    int-to-float v15, v15
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
+
+    move-object/from16 v16, v0
+
+    invoke-virtual/range {v16 .. v16}, Landroid/graphics/RectF;->height()F
+
+    move-result v16
+
+    sub-float v15, v15, v16
+
+    const/high16 v16, 0x4000
+
+    div-float v15, v15, v16
+
+    sub-float/2addr v14, v15
+
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
+
+    invoke-virtual {v15}, Landroid/graphics/RectF;->height()F
+
+    move-result v15
+
+    div-float/2addr v14, v15
+
+    iput v14, v13, Landroid/graphics/PointF;->y:F
+
+    .line 362
+    invoke-direct/range {p0 .. p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->addLastPointIntoDoodle()V
+
+    .line 363
+    invoke-direct/range {p0 .. p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->finishDoodle()V
+
+    .line 365
+    .end local v1           #displaysLoactionX:I
+    .end local v2           #displaysLoactionY:I
+    .end local v3           #edit:Landroid/widget/EditText;
+    .end local v4           #group:Landroid/widget/FrameLayout;
+    .end local v5           #leftMargin:I
+    .end local v6           #maxHeight:I
+    .end local v7           #maxWidth:I
+    .end local v9           #paint:Landroid/graphics/Paint;
+    .end local v10           #params:Landroid/widget/FrameLayout$LayoutParams;
+    .end local v11           #textViewMinWidth:I
+    .end local v12           #topMargin:I
+    :cond_6
     return-void
 .end method
 
@@ -650,12 +1171,12 @@
     .locals 4
 
     .prologue
-    .line 469
+    .line 510
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
     if-eqz v0, :cond_1
 
-    .line 470
+    .line 511
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
     new-instance v1, Landroid/graphics/PointF;
@@ -672,23 +1193,23 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->addControlPoint(Landroid/graphics/PointF;)Z
 
-    .line 471
+    .line 512
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
 
     if-eqz v0, :cond_0
 
-    .line 472
+    .line 513
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;->onDoodleChanged(Lcom/android/gallery3d/photoeditor/actions/Doodle;)V
 
-    .line 474
+    .line 515
     :cond_0
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->invalidate()V
 
-    .line 476
+    .line 517
     :cond_1
     return-void
 .end method
@@ -697,19 +1218,19 @@
     .locals 3
 
     .prologue
-    .line 354
+    .line 386
     invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->checkEditTextState()V
 
-    .line 355
+    .line 387
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
 
     if-nez v1, :cond_1
 
-    .line 359
+    .line 391
     :cond_0
     return-void
 
-    .line 356
+    .line 388
     :cond_1
     const/4 v0, 0x0
 
@@ -723,7 +1244,7 @@
 
     if-ge v0, v1, :cond_0
 
-    .line 357
+    .line 389
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
@@ -744,26 +1265,225 @@
 
     invoke-interface {v2, v0, v1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;->onDoodleTextStringAdd(ILjava/lang/String;)V
 
-    .line 356
+    .line 388
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
+.end method
+
+.method private calculateFilterXY(FFZ)V
+    .locals 4
+    .parameter "x"
+    .parameter "y"
+    .parameter "isFinish"
+
+    .prologue
+    const/4 v1, 0x0
+
+    .line 789
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getPhotoWidth()F
+
+    move-result v0
+
+    mul-float/2addr v0, p1
+
+    cmpg-float v0, v0, v1
+
+    if-gez v0, :cond_2
+
+    move v0, v1
+
+    :goto_0
+    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterX:F
+
+    .line 790
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getPhotoHeight()F
+
+    move-result v0
+
+    mul-float/2addr v0, p2
+
+    cmpg-float v0, v0, v1
+
+    if-gez v0, :cond_3
+
+    :goto_1
+    iput v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterY:F
+
+    .line 791
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterX:F
+
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getPhotoWidth()F
+
+    move-result v1
+
+    cmpl-float v0, v0, v1
+
+    if-lez v0, :cond_4
+
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getPhotoWidth()F
+
+    move-result v0
+
+    :goto_2
+    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterX:F
+
+    .line 792
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterY:F
+
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getPhotoHeight()F
+
+    move-result v1
+
+    cmpl-float v0, v0, v1
+
+    if-lez v0, :cond_5
+
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getPhotoHeight()F
+
+    move-result v0
+
+    :goto_3
+    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterY:F
+
+    .line 794
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleViewChangeListener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleViewChanged;
+
+    if-eqz v0, :cond_0
+
+    .line 795
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterX:F
+
+    invoke-static {v0}, Ljava/lang/Math;->round(F)I
+
+    move-result v0
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->imageSourceBmp:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v1}, Landroid/graphics/Bitmap;->getWidth()I
+
+    move-result v1
+
+    if-ge v0, v1, :cond_0
+
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterY:F
+
+    invoke-static {v0}, Ljava/lang/Math;->round(F)I
+
+    move-result v0
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->imageSourceBmp:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v1}, Landroid/graphics/Bitmap;->getHeight()I
+
+    move-result v1
+
+    if-ge v0, v1, :cond_0
+
+    .line 797
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleViewChangeListener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleViewChanged;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->imageSourceBmp:Landroid/graphics/Bitmap;
+
+    iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterX:F
+
+    invoke-static {v2}, Ljava/lang/Math;->round(F)I
+
+    move-result v2
+
+    iget v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterY:F
+
+    invoke-static {v3}, Ljava/lang/Math;->round(F)I
+
+    move-result v3
+
+    invoke-virtual {v1, v2, v3}, Landroid/graphics/Bitmap;->getPixel(II)I
+
+    move-result v1
+
+    invoke-interface {v0, v1, p3}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleViewChanged;->onDoodleColorPickChange(IZ)V
+
+    .line 799
+    if-nez p3, :cond_6
+
+    const/4 v0, 0x1
+
+    :goto_4
+    iput-boolean v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isColorPickerMode:Z
+
+    .line 802
+    :cond_0
+    iget-boolean v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isColorPickerMode:Z
+
+    if-nez v0, :cond_1
+
+    .line 803
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->imageSourceBmp:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
+
+    .line 804
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->imageSourceBmp:Landroid/graphics/Bitmap;
+
+    .line 806
+    :cond_1
+    return-void
+
+    .line 789
+    :cond_2
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getPhotoWidth()F
+
+    move-result v0
+
+    mul-float/2addr v0, p1
+
+    goto :goto_0
+
+    .line 790
+    :cond_3
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getPhotoHeight()F
+
+    move-result v0
+
+    mul-float v1, p2, v0
+
+    goto :goto_1
+
+    .line 791
+    :cond_4
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterX:F
+
+    goto :goto_2
+
+    .line 792
+    :cond_5
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterY:F
+
+    goto :goto_3
+
+    .line 799
+    :cond_6
+    const/4 v0, 0x0
+
+    goto :goto_4
 .end method
 
 .method private checkEditTextState()V
     .locals 4
 
     .prologue
-    .line 362
+    .line 394
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
 
     if-nez v2, :cond_1
 
-    .line 377
+    .line 409
     :cond_0
     return-void
 
-    .line 364
+    .line 396
     :cond_1
     const/4 v0, 0x0
 
@@ -777,7 +1497,7 @@
 
     if-ge v0, v2, :cond_0
 
-    .line 365
+    .line 397
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
 
     invoke-virtual {v2, v0}, Ljava/util/Vector;->get(I)Ljava/lang/Object;
@@ -794,7 +1514,7 @@
 
     move-result-object v1
 
-    .line 366
+    .line 398
     .local v1, textString:Ljava/lang/String;
     invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -802,7 +1522,7 @@
 
     if-eqz v2, :cond_3
 
-    .line 367
+    .line 399
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
 
     invoke-virtual {v2, v0}, Ljava/util/Vector;->get(I)Ljava/lang/Object;
@@ -813,12 +1533,12 @@
 
     invoke-direct {p0, v2}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->removeEditText(Landroid/widget/EditText;)V
 
-    .line 368
+    .line 400
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textDoodle:Ljava/util/Vector;
 
     if-eqz v2, :cond_2
 
-    .line 369
+    .line 401
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textDoodle:Ljava/util/Vector;
 
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textDoodle:Ljava/util/Vector;
@@ -829,25 +1549,425 @@
 
     invoke-virtual {v2, v3}, Ljava/util/Vector;->remove(Ljava/lang/Object;)Z
 
-    .line 371
+    .line 403
     :cond_2
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
 
     if-eqz v2, :cond_3
 
-    .line 372
+    .line 404
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
 
     invoke-interface {v2, v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;->onDoodleTextStringDelete(I)V
 
-    .line 373
+    .line 405
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
 
     invoke-interface {v2, v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;->onTextDoodleRemoved(I)V
 
-    .line 364
+    .line 396
     :cond_3
     add-int/lit8 v0, v0, 0x1
+
+    goto :goto_0
+.end method
+
+.method private checkLongPressPoint(FF)Z
+    .locals 1
+    .parameter "x"
+    .parameter "y"
+
+    .prologue
+    .line 841
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->longPressDoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getSelectedShapeId()I
+
+    move-result v0
+
+    packed-switch v0, :pswitch_data_0
+
+    .line 849
+    invoke-direct {p0, p1, p2}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->checkShapeRectLongPress(FF)Z
+
+    move-result v0
+
+    :goto_0
+    return v0
+
+    .line 845
+    :pswitch_0
+    invoke-direct {p0, p1, p2}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->checkShapeLineLongPress(FF)Z
+
+    move-result v0
+
+    goto :goto_0
+
+    .line 841
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method private checkShapeLineLongPress(FF)Z
+    .locals 6
+    .parameter
+    .parameter
+
+    .prologue
+    .line 868
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
+
+    iget v0, v0, Landroid/graphics/PointF;->y:F
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeUpPoint:Landroid/graphics/PointF;
+
+    iget v1, v1, Landroid/graphics/PointF;->y:F
+
+    sub-float/2addr v0, v1
+
+    invoke-static {v0}, Ljava/lang/Math;->abs(F)F
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineDistanceY:F
+
+    .line 869
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
+
+    iget v0, v0, Landroid/graphics/PointF;->x:F
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeUpPoint:Landroid/graphics/PointF;
+
+    iget v1, v1, Landroid/graphics/PointF;->x:F
+
+    sub-float/2addr v0, v1
+
+    invoke-static {v0}, Ljava/lang/Math;->abs(F)F
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineDistanceX:F
+
+    .line 870
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineDistanceX:F
+
+    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineDistanceX:F
+
+    mul-float/2addr v0, v1
+
+    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineDistanceY:F
+
+    iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineDistanceY:F
+
+    mul-float/2addr v1, v2
+
+    add-float/2addr v0, v1
+
+    float-to-double v0, v0
+
+    invoke-static {v0, v1}, Ljava/lang/Math;->sqrt(D)D
+
+    move-result-wide v0
+
+    double-to-float v0, v0
+
+    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineLength:F
+
+    .line 872
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
+
+    iget v0, v0, Landroid/graphics/PointF;->y:F
+
+    sub-float v0, p2, v0
+
+    invoke-static {v0}, Ljava/lang/Math;->abs(F)F
+
+    move-result v0
+
+    .line 873
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
+
+    iget v1, v1, Landroid/graphics/PointF;->x:F
+
+    sub-float v1, p1, v1
+
+    invoke-static {v1}, Ljava/lang/Math;->abs(F)F
+
+    move-result v1
+
+    .line 874
+    mul-float v2, v1, v1
+
+    mul-float v3, v0, v0
+
+    add-float/2addr v2, v3
+
+    float-to-double v2, v2
+
+    invoke-static {v2, v3}, Ljava/lang/Math;->sqrt(D)D
+
+    move-result-wide v2
+
+    double-to-float v2, v2
+
+    iput v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->actionLineLength:F
+
+    .line 877
+    iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineDistanceY:F
+
+    iget v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineDistanceX:F
+
+    div-float/2addr v2, v3
+
+    float-to-double v2, v2
+
+    invoke-static {v2, v3}, Ljava/lang/Math;->atan(D)D
+
+    move-result-wide v2
+
+    double-to-float v2, v2
+
+    iput v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineShapeAngle:F
+
+    .line 879
+    div-float/2addr v0, v1
+
+    float-to-double v0, v0
+
+    invoke-static {v0, v1}, Ljava/lang/Math;->atan(D)D
+
+    move-result-wide v0
+
+    double-to-float v0, v0
+
+    .line 882
+    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineShapeAngle:F
+
+    sub-float/2addr v1, v0
+
+    invoke-static {v1}, Ljava/lang/Math;->abs(F)F
+
+    move-result v1
+
+    .line 885
+    iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->actionLineLength:F
+
+    float-to-double v3, v1
+
+    invoke-static {v3, v4}, Ljava/lang/Math;->sin(D)D
+
+    move-result-wide v3
+
+    double-to-float v3, v3
+
+    mul-float/2addr v2, v3
+
+    .line 886
+    iget v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineLength:F
+
+    float-to-double v4, v1
+
+    invoke-static {v4, v5}, Ljava/lang/Math;->cos(D)D
+
+    move-result-wide v4
+
+    double-to-float v1, v4
+
+    div-float v1, v3, v1
+
+    .line 888
+    const/high16 v3, 0x41f0
+
+    cmpg-float v2, v2, v3
+
+    if-gtz v2, :cond_0
+
+    cmpg-float v0, v0, v1
+
+    if-gtz v0, :cond_0
+
+    .line 889
+    const/4 v0, 0x1
+
+    .line 891
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method private checkShapeRectLongPress(FF)Z
+    .locals 6
+    .parameter "x"
+    .parameter "y"
+
+    .prologue
+    .line 856
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
+
+    iget v4, v4, Landroid/graphics/PointF;->x:F
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeUpPoint:Landroid/graphics/PointF;
+
+    iget v5, v5, Landroid/graphics/PointF;->x:F
+
+    invoke-static {v4, v5}, Ljava/lang/Math;->min(FF)F
+
+    move-result v2
+
+    .line 857
+    .local v2, minX:F
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
+
+    iget v4, v4, Landroid/graphics/PointF;->x:F
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeUpPoint:Landroid/graphics/PointF;
+
+    iget v5, v5, Landroid/graphics/PointF;->x:F
+
+    invoke-static {v4, v5}, Ljava/lang/Math;->max(FF)F
+
+    move-result v0
+
+    .line 858
+    .local v0, maxX:F
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
+
+    iget v4, v4, Landroid/graphics/PointF;->y:F
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeUpPoint:Landroid/graphics/PointF;
+
+    iget v5, v5, Landroid/graphics/PointF;->y:F
+
+    invoke-static {v4, v5}, Ljava/lang/Math;->min(FF)F
+
+    move-result v3
+
+    .line 859
+    .local v3, minY:F
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
+
+    iget v4, v4, Landroid/graphics/PointF;->y:F
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeUpPoint:Landroid/graphics/PointF;
+
+    iget v5, v5, Landroid/graphics/PointF;->y:F
+
+    invoke-static {v4, v5}, Ljava/lang/Math;->max(FF)F
+
+    move-result v1
+
+    .line 860
+    .local v1, maxY:F
+    cmpl-float v4, p1, v2
+
+    if-ltz v4, :cond_0
+
+    cmpg-float v4, p1, v0
+
+    if-gtz v4, :cond_0
+
+    cmpl-float v4, p2, v3
+
+    if-ltz v4, :cond_0
+
+    cmpg-float v4, p2, v1
+
+    if-gtz v4, :cond_0
+
+    .line 861
+    const/4 v4, 0x1
+
+    .line 863
+    :goto_0
+    return v4
+
+    :cond_0
+    const/4 v4, 0x0
+
+    goto :goto_0
+.end method
+
+.method private dragToDraw(Landroid/graphics/Canvas;)V
+    .locals 6
+    .parameter "canvas"
+
+    .prologue
+    .line 809
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
+
+    invoke-virtual {v0}, Ljava/util/Vector;->isEmpty()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 817
+    :goto_0
+    return-void
+
+    .line 812
+    :cond_0
+    new-instance v4, Landroid/graphics/PointF;
+
+    invoke-direct {v4}, Landroid/graphics/PointF;-><init>()V
+
+    .line 813
+    .local v4, firstPoint:Landroid/graphics/PointF;
+    new-instance v5, Landroid/graphics/PointF;
+
+    invoke-direct {v5}, Landroid/graphics/PointF;-><init>()V
+
+    .line 814
+    .local v5, lastPoint:Landroid/graphics/PointF;
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragFirstPoint:Landroid/graphics/PointF;
+
+    iget v0, v0, Landroid/graphics/PointF;->x:F
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragFirstPoint:Landroid/graphics/PointF;
+
+    iget v1, v1, Landroid/graphics/PointF;->y:F
+
+    invoke-virtual {p0, v0, v1, v4}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mapPhotoPoint(FFLandroid/graphics/PointF;)V
+
+    .line 815
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragLastPoint:Landroid/graphics/PointF;
+
+    iget v0, v0, Landroid/graphics/PointF;->x:F
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragLastPoint:Landroid/graphics/PointF;
+
+    iget v1, v1, Landroid/graphics/PointF;->y:F
+
+    invoke-virtual {p0, v0, v1, v5}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mapPhotoPoint(FFLandroid/graphics/PointF;)V
+
+    .line 816
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->longPressDoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getColor()I
+
+    move-result v2
+
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->longPressDoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getSelectedShapeId()I
+
+    move-result v3
+
+    move-object v0, p0
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawShape(Landroid/graphics/Canvas;IILandroid/graphics/PointF;Landroid/graphics/PointF;)V
 
     goto :goto_0
 .end method
@@ -859,7 +1979,7 @@
     .prologue
     const/4 v6, 0x0
 
-    .line 693
+    .line 709
     new-instance v2, Landroid/graphics/RectF;
 
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getPhotoWidth()F
@@ -872,7 +1992,7 @@
 
     invoke-direct {v2, v6, v6, v3, v4}, Landroid/graphics/RectF;-><init>(FFFF)V
 
-    .line 694
+    .line 710
     .local v2, r:Landroid/graphics/RectF;
     invoke-virtual {v2}, Landroid/graphics/RectF;->isEmpty()Z
 
@@ -880,7 +2000,7 @@
 
     if-nez v3, :cond_1
 
-    .line 695
+    .line 711
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
 
     if-eqz v3, :cond_0
@@ -917,7 +2037,7 @@
 
     if-eqz v3, :cond_3
 
-    .line 696
+    .line 712
     :cond_0
     invoke-virtual {v2}, Landroid/graphics/RectF;->width()F
 
@@ -939,7 +2059,7 @@
 
     iput-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
 
-    .line 698
+    .line 714
     new-instance v3, Landroid/graphics/Canvas;
 
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
@@ -948,7 +2068,7 @@
 
     iput-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapCanvas:Landroid/graphics/Canvas;
 
-    .line 704
+    .line 720
     :cond_1
     :goto_0
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
@@ -957,7 +2077,7 @@
 
     move-result-object v1
 
-    .line 705
+    .line 721
     .local v1, iter:Ljava/util/Iterator;,"Ljava/util/Iterator<Lcom/android/gallery3d/photoeditor/actions/Doodle;>;"
     :cond_2
     :goto_1
@@ -967,23 +2087,23 @@
 
     if-eqz v3, :cond_4
 
-    .line 706
+    .line 722
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
-    .line 707
+    .line 723
     .local v0, item:Lcom/android/gallery3d/photoeditor/actions/Doodle;
     if-eqz v0, :cond_2
 
-    .line 708
+    .line 724
     invoke-direct {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawSingleDoodle(Lcom/android/gallery3d/photoeditor/actions/Doodle;)V
 
     goto :goto_1
 
-    .line 700
+    .line 716
     .end local v0           #item:Lcom/android/gallery3d/photoeditor/actions/Doodle;
     .end local v1           #iter:Ljava/util/Iterator;,"Ljava/util/Iterator<Lcom/android/gallery3d/photoeditor/actions/Doodle;>;"
     :cond_3
@@ -995,33 +2115,552 @@
 
     goto :goto_0
 
-    .line 712
+    .line 728
     .restart local v1       #iter:Ljava/util/Iterator;,"Ljava/util/Iterator<Lcom/android/gallery3d/photoeditor/actions/Doodle;>;"
     :cond_4
     invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I
 
-    .line 713
+    .line 729
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
 
     invoke-virtual {p1, v3}, Landroid/graphics/Canvas;->clipRect(Landroid/graphics/RectF;)Z
 
-    .line 714
+    .line 730
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->displayMatrix:Landroid/graphics/Matrix;
 
     invoke-virtual {p1, v3}, Landroid/graphics/Canvas;->concat(Landroid/graphics/Matrix;)V
 
-    .line 715
+    .line 731
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
 
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapPaint:Landroid/graphics/Paint;
 
     invoke-virtual {p1, v3, v6, v6, v4}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
 
-    .line 716
+    .line 732
     invoke-virtual {p1}, Landroid/graphics/Canvas;->restore()V
 
-    .line 717
+    .line 733
     return-void
+.end method
+
+.method private drawColorPickFilter(Landroid/graphics/Canvas;)V
+    .locals 11
+    .parameter
+
+    .prologue
+    const/high16 v5, 0x4180
+
+    const/4 v10, 0x0
+
+    .line 895
+    invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I
+
+    .line 896
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
+
+    invoke-virtual {p1, v0}, Landroid/graphics/Canvas;->clipRect(Landroid/graphics/RectF;)Z
+
+    .line 897
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->displayMatrix:Landroid/graphics/Matrix;
+
+    invoke-virtual {p1, v0}, Landroid/graphics/Canvas;->concat(Landroid/graphics/Matrix;)V
+
+    .line 900
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickResource:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v0}, Landroid/graphics/Bitmap;->getWidth()I
+
+    move-result v0
+
+    int-to-float v0, v0
+
+    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
+
+    mul-float/2addr v0, v1
+
+    invoke-static {v0}, Ljava/lang/Math;->round(F)I
+
+    move-result v6
+
+    .line 901
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickResource:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v0}, Landroid/graphics/Bitmap;->getHeight()I
+
+    move-result v0
+
+    int-to-float v0, v0
+
+    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
+
+    mul-float/2addr v0, v1
+
+    invoke-static {v0}, Ljava/lang/Math;->round(F)I
+
+    move-result v7
+
+    .line 903
+    const/high16 v0, 0x41a0
+
+    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
+
+    mul-float/2addr v0, v1
+
+    invoke-static {v0}, Ljava/lang/Math;->round(F)I
+
+    move-result v2
+
+    .line 905
+    new-instance v8, Landroid/graphics/Rect;
+
+    invoke-direct {v8}, Landroid/graphics/Rect;-><init>()V
+
+    .line 906
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterX:F
+
+    invoke-static {v0}, Ljava/lang/Math;->round(F)I
+
+    move-result v0
+
+    div-int/lit8 v1, v6, 0x8
+
+    sub-int/2addr v0, v1
+
+    iput v0, v8, Landroid/graphics/Rect;->left:I
+
+    .line 907
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterY:F
+
+    invoke-static {v0}, Ljava/lang/Math;->round(F)I
+
+    move-result v0
+
+    div-int/lit8 v1, v7, 0x8
+
+    sub-int/2addr v0, v1
+
+    iput v0, v8, Landroid/graphics/Rect;->top:I
+
+    .line 908
+    iget v0, v8, Landroid/graphics/Rect;->left:I
+
+    div-int/lit8 v1, v6, 0x4
+
+    add-int/2addr v0, v1
+
+    iput v0, v8, Landroid/graphics/Rect;->right:I
+
+    .line 909
+    iget v0, v8, Landroid/graphics/Rect;->top:I
+
+    div-int/lit8 v1, v7, 0x4
+
+    add-int/2addr v0, v1
+
+    iput v0, v8, Landroid/graphics/Rect;->bottom:I
+
+    .line 911
+    new-instance v9, Landroid/graphics/Rect;
+
+    sub-int v0, v6, v2
+
+    sub-int v1, v7, v2
+
+    invoke-direct {v9, v2, v2, v0, v1}, Landroid/graphics/Rect;-><init>(IIII)V
+
+    .line 913
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickPath:Landroid/graphics/Path;
+
+    invoke-virtual {v0}, Landroid/graphics/Path;->reset()V
+
+    .line 914
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickPath:Landroid/graphics/Path;
+
+    new-instance v1, Landroid/graphics/RectF;
+
+    invoke-direct {v1, v9}, Landroid/graphics/RectF;-><init>(Landroid/graphics/Rect;)V
+
+    iget v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
+
+    mul-float/2addr v3, v5
+
+    iget v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
+
+    mul-float/2addr v4, v5
+
+    sget-object v5, Landroid/graphics/Path$Direction;->CW:Landroid/graphics/Path$Direction;
+
+    invoke-virtual {v0, v1, v3, v4, v5}, Landroid/graphics/Path;->addRoundRect(Landroid/graphics/RectF;FFLandroid/graphics/Path$Direction;)V
+
+    .line 915
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickFilter:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v0, v10}, Landroid/graphics/Bitmap;->eraseColor(I)V
+
+    .line 916
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickCanvas:Landroid/graphics/Canvas;
+
+    invoke-virtual {v0}, Landroid/graphics/Canvas;->save()I
+
+    .line 917
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickCanvas:Landroid/graphics/Canvas;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickPath:Landroid/graphics/Path;
+
+    invoke-virtual {v0, v1}, Landroid/graphics/Canvas;->clipPath(Landroid/graphics/Path;)Z
+
+    .line 918
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->imageSourceBmp:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v0}, Landroid/graphics/Bitmap;->getHeight()I
+
+    move-result v0
+
+    iget v1, v8, Landroid/graphics/Rect;->bottom:I
+
+    sub-int/2addr v0, v1
+
+    if-gtz v0, :cond_2
+
+    .line 919
+    iget v0, v8, Landroid/graphics/Rect;->bottom:I
+
+    div-int/lit8 v1, v2, 0x4
+
+    sub-int/2addr v0, v1
+
+    iput v0, v8, Landroid/graphics/Rect;->bottom:I
+
+    .line 920
+    iget v0, v8, Landroid/graphics/Rect;->top:I
+
+    div-int/lit8 v1, v2, 0x4
+
+    add-int/2addr v0, v1
+
+    iput v0, v8, Landroid/graphics/Rect;->top:I
+
+    .line 921
+    iget v0, v8, Landroid/graphics/Rect;->bottom:I
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->imageSourceBmp:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v1}, Landroid/graphics/Bitmap;->getHeight()I
+
+    move-result v1
+
+    sub-int/2addr v0, v1
+
+    mul-int/lit8 v3, v0, 0x4
+
+    .line 922
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickCanvas:Landroid/graphics/Canvas;
+
+    int-to-float v1, v2
+
+    sub-int v3, v7, v3
+
+    sub-int v2, v3, v2
+
+    int-to-float v2, v2
+
+    int-to-float v3, v6
+
+    int-to-float v4, v7
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapPaint:Landroid/graphics/Paint;
+
+    invoke-virtual/range {v0 .. v5}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
+
+    .line 933
+    :cond_0
+    :goto_0
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickCanvas:Landroid/graphics/Canvas;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->imageSourceBmp:Landroid/graphics/Bitmap;
+
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapPaint:Landroid/graphics/Paint;
+
+    invoke-virtual {v0, v1, v8, v9, v2}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
+
+    .line 934
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickCanvas:Landroid/graphics/Canvas;
+
+    invoke-virtual {v0}, Landroid/graphics/Canvas;->restore()V
+
+    .line 936
+    iput v10, v8, Landroid/graphics/Rect;->top:I
+
+    iput v10, v8, Landroid/graphics/Rect;->left:I
+
+    .line 937
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickResource:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v0}, Landroid/graphics/Bitmap;->getWidth()I
+
+    move-result v0
+
+    iput v0, v8, Landroid/graphics/Rect;->right:I
+
+    .line 938
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickResource:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v0}, Landroid/graphics/Bitmap;->getHeight()I
+
+    move-result v0
+
+    iput v0, v8, Landroid/graphics/Rect;->bottom:I
+
+    .line 939
+    iput v10, v9, Landroid/graphics/Rect;->top:I
+
+    iput v10, v9, Landroid/graphics/Rect;->left:I
+
+    .line 940
+    iput v6, v9, Landroid/graphics/Rect;->right:I
+
+    .line 941
+    iput v7, v9, Landroid/graphics/Rect;->bottom:I
+
+    .line 942
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickCanvas:Landroid/graphics/Canvas;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickResource:Landroid/graphics/Bitmap;
+
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapPaint:Landroid/graphics/Paint;
+
+    invoke-virtual {v0, v1, v8, v9, v2}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
+
+    .line 944
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterX:F
+
+    invoke-static {v0}, Ljava/lang/Math;->round(F)I
+
+    move-result v0
+
+    div-int/lit8 v1, v6, 0x2
+
+    sub-int/2addr v0, v1
+
+    iput v0, v9, Landroid/graphics/Rect;->left:I
+
+    .line 945
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterY:F
+
+    invoke-static {v0}, Ljava/lang/Math;->round(F)I
+
+    move-result v0
+
+    mul-int/lit8 v1, v7, 0x3
+
+    div-int/lit8 v1, v1, 0x2
+
+    sub-int/2addr v0, v1
+
+    iput v0, v9, Landroid/graphics/Rect;->top:I
+
+    .line 946
+    iget v0, v9, Landroid/graphics/Rect;->top:I
+
+    div-int/lit8 v1, v7, 0x2
+
+    add-int/2addr v0, v1
+
+    if-gez v0, :cond_1
+
+    .line 947
+    neg-int v0, v7
+
+    div-int/lit8 v0, v0, 0x2
+
+    iput v0, v9, Landroid/graphics/Rect;->top:I
+
+    .line 948
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterX:F
+
+    invoke-static {v0}, Ljava/lang/Math;->round(F)I
+
+    move-result v0
+
+    mul-int/lit8 v1, v6, 0x3
+
+    div-int/lit8 v1, v1, 0x2
+
+    sub-int/2addr v0, v1
+
+    iput v0, v9, Landroid/graphics/Rect;->left:I
+
+    .line 949
+    iget v0, v9, Landroid/graphics/Rect;->left:I
+
+    div-int/lit8 v1, v6, 0x2
+
+    add-int/2addr v0, v1
+
+    if-gez v0, :cond_1
+
+    .line 950
+    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->magnifierCenterX:F
+
+    invoke-static {v0}, Ljava/lang/Math;->round(F)I
+
+    move-result v0
+
+    div-int/lit8 v1, v6, 0x2
+
+    add-int/2addr v0, v1
+
+    iput v0, v9, Landroid/graphics/Rect;->left:I
+
+    .line 953
+    :cond_1
+    iget v0, v9, Landroid/graphics/Rect;->left:I
+
+    add-int/2addr v0, v6
+
+    iput v0, v9, Landroid/graphics/Rect;->right:I
+
+    .line 954
+    iget v0, v9, Landroid/graphics/Rect;->top:I
+
+    add-int/2addr v0, v7
+
+    iput v0, v9, Landroid/graphics/Rect;->bottom:I
+
+    .line 955
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickFilter:Landroid/graphics/Bitmap;
+
+    iget v1, v9, Landroid/graphics/Rect;->left:I
+
+    int-to-float v1, v1
+
+    iget v2, v9, Landroid/graphics/Rect;->top:I
+
+    int-to-float v2, v2
+
+    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapPaint:Landroid/graphics/Paint;
+
+    invoke-virtual {p1, v0, v1, v2, v3}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
+
+    .line 956
+    invoke-virtual {p1}, Landroid/graphics/Canvas;->restore()V
+
+    .line 957
+    return-void
+
+    .line 923
+    :cond_2
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->imageSourceBmp:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v0}, Landroid/graphics/Bitmap;->getWidth()I
+
+    move-result v0
+
+    iget v1, v8, Landroid/graphics/Rect;->right:I
+
+    sub-int/2addr v0, v1
+
+    if-gtz v0, :cond_3
+
+    .line 924
+    iget v0, v8, Landroid/graphics/Rect;->right:I
+
+    div-int/lit8 v1, v2, 0x4
+
+    sub-int/2addr v0, v1
+
+    iput v0, v8, Landroid/graphics/Rect;->right:I
+
+    .line 925
+    iget v0, v8, Landroid/graphics/Rect;->left:I
+
+    div-int/lit8 v1, v2, 0x4
+
+    add-int/2addr v0, v1
+
+    iput v0, v8, Landroid/graphics/Rect;->left:I
+
+    .line 926
+    iget v0, v8, Landroid/graphics/Rect;->right:I
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->imageSourceBmp:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v1}, Landroid/graphics/Bitmap;->getWidth()I
+
+    move-result v1
+
+    sub-int/2addr v0, v1
+
+    mul-int/lit8 v1, v0, 0x4
+
+    .line 927
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickCanvas:Landroid/graphics/Canvas;
+
+    sub-int v1, v6, v1
+
+    sub-int/2addr v1, v2
+
+    int-to-float v1, v1
+
+    int-to-float v2, v2
+
+    int-to-float v3, v6
+
+    int-to-float v4, v7
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapPaint:Landroid/graphics/Paint;
+
+    invoke-virtual/range {v0 .. v5}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
+
+    goto/16 :goto_0
+
+    .line 928
+    :cond_3
+    iget v0, v8, Landroid/graphics/Rect;->left:I
+
+    if-gez v0, :cond_0
+
+    .line 929
+    iget v0, v8, Landroid/graphics/Rect;->left:I
+
+    div-int/lit8 v1, v2, 0x4
+
+    add-int/2addr v0, v1
+
+    iput v0, v8, Landroid/graphics/Rect;->left:I
+
+    .line 930
+    iget v0, v8, Landroid/graphics/Rect;->right:I
+
+    div-int/lit8 v1, v2, 0x4
+
+    sub-int/2addr v0, v1
+
+    iput v0, v8, Landroid/graphics/Rect;->right:I
+
+    .line 931
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickCanvas:Landroid/graphics/Canvas;
+
+    iget v1, v8, Landroid/graphics/Rect;->left:I
+
+    add-int/2addr v1, v2
+
+    int-to-float v1, v1
+
+    int-to-float v2, v2
+
+    div-int/lit8 v3, v6, 0x2
+
+    int-to-float v3, v3
+
+    int-to-float v4, v7
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapPaint:Landroid/graphics/Paint;
+
+    invoke-virtual/range {v0 .. v5}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
+
+    goto/16 :goto_0
 .end method
 
 .method private drawDoodle(Landroid/graphics/Canvas;)V
@@ -1029,14 +2668,14 @@
     .parameter "canvas"
 
     .prologue
-    .line 232
+    .line 214
     if-eqz p1, :cond_0
 
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
     if-eqz v0, :cond_0
 
-    .line 233
+    .line 215
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodlePaint:Landroid/graphics/Paint;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
@@ -1047,7 +2686,7 @@
 
     invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setColor(I)V
 
-    .line 234
+    .line 216
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawingMatrix:Landroid/graphics/Matrix;
@@ -1056,14 +2695,14 @@
 
     invoke-virtual {v0, v1, v2}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDrawingPath(Landroid/graphics/Matrix;Landroid/graphics/Path;)V
 
-    .line 235
+    .line 217
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawingPath:Landroid/graphics/Path;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodlePaint:Landroid/graphics/Paint;
 
     invoke-virtual {p1, v0, v1}, Landroid/graphics/Canvas;->drawPath(Landroid/graphics/Path;Landroid/graphics/Paint;)V
 
-    .line 237
+    .line 219
     :cond_0
     return-void
 .end method
@@ -1077,19 +2716,19 @@
     .parameter "lastPoint"
 
     .prologue
-    .line 248
+    .line 230
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeHelper:Lcom/android/gallery3d/photoeditor/actions/DoodleShapeHelper;
 
     if-nez v0, :cond_0
 
-    .line 249
+    .line 231
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapePaint:Landroid/graphics/Paint;
 
     const/4 v1, 0x7
 
     invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setFlags(I)V
 
-    .line 250
+    .line 232
     new-instance v0, Lcom/android/gallery3d/photoeditor/actions/DoodleShapeHelper;
 
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getContext()Landroid/content/Context;
@@ -1110,7 +2749,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeHelper:Lcom/android/gallery3d/photoeditor/actions/DoodleShapeHelper;
 
-    .line 252
+    .line 234
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeHelper:Lcom/android/gallery3d/photoeditor/actions/DoodleShapeHelper;
 
@@ -1128,7 +2767,7 @@
 
     invoke-virtual/range {v0 .. v6}, Lcom/android/gallery3d/photoeditor/actions/DoodleShapeHelper;->drawShape(Landroid/graphics/Canvas;IILandroid/graphics/PointF;Landroid/graphics/PointF;F)V
 
-    .line 253
+    .line 235
     return-void
 .end method
 
@@ -1137,7 +2776,7 @@
     .parameter "doodle"
 
     .prologue
-    .line 720
+    .line 736
     invoke-virtual {p1}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDoodleMode()I
 
     move-result v0
@@ -1146,28 +2785,27 @@
 
     if-eq v0, v1, :cond_1
 
-    .line 721
-    iget-object v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodlePaint:Landroid/graphics/Paint;
-
-    .line 722
-    .local v6, drawPaint:Landroid/graphics/Paint;
+    .line 738
     invoke-virtual {p1}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDoodleMode()I
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 723
-    iget-object v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodlePaint:Landroid/graphics/Paint;
+    .line 739
+    invoke-static {}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->createPaint()Landroid/graphics/Paint;
 
-    .line 724
+    move-result-object v6
+
+    .line 740
+    .local v6, drawPaint:Landroid/graphics/Paint;
     invoke-virtual {p1}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getColor()I
 
     move-result v0
 
     invoke-virtual {v6, v0}, Landroid/graphics/Paint;->setColor(I)V
 
-    .line 729
+    .line 745
     :goto_0
     invoke-virtual {p1}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getPaintSize()F
 
@@ -1175,38 +2813,40 @@
 
     invoke-virtual {v6, v0}, Landroid/graphics/Paint;->setStrokeWidth(F)V
 
-    .line 730
+    .line 746
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawingMatrix:Landroid/graphics/Matrix;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawingPath:Landroid/graphics/Path;
 
     invoke-virtual {p1, v0, v1}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDrawingPath(Landroid/graphics/Matrix;Landroid/graphics/Path;)V
 
-    .line 731
+    .line 747
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapCanvas:Landroid/graphics/Canvas;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawingPath:Landroid/graphics/Path;
 
     invoke-virtual {v0, v1, v6}, Landroid/graphics/Canvas;->drawPath(Landroid/graphics/Path;Landroid/graphics/Paint;)V
 
-    .line 735
+    .line 752
     .end local v6           #drawPaint:Landroid/graphics/Paint;
     :goto_1
     return-void
 
-    .line 726
-    .restart local v6       #drawPaint:Landroid/graphics/Paint;
+    .line 742
     :cond_0
-    iget-object v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->eraserPaint:Landroid/graphics/Paint;
+    invoke-static {}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->createEraserPaint()Landroid/graphics/Paint;
 
-    .line 727
+    move-result-object v6
+
+    .line 743
+    .restart local v6       #drawPaint:Landroid/graphics/Paint;
     const/high16 v0, -0x100
 
     invoke-virtual {v6, v0}, Landroid/graphics/Paint;->setColor(I)V
 
     goto :goto_0
 
-    .line 733
+    .line 750
     .end local v6           #drawPaint:Landroid/graphics/Paint;
     :cond_1
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapCanvas:Landroid/graphics/Canvas;
@@ -1219,7 +2859,7 @@
 
     move-result v3
 
-    invoke-virtual {p1}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDownPonit()Landroid/graphics/PointF;
+    invoke-virtual {p1}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDownPoint()Landroid/graphics/PointF;
 
     move-result-object v4
 
@@ -1239,21 +2879,21 @@
     .parameter "canvas"
 
     .prologue
-    .line 240
+    .line 222
     if-eqz p1, :cond_0
 
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
     if-eqz v0, :cond_0
 
-    .line 241
+    .line 223
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->eraserPaint:Landroid/graphics/Paint;
 
     const/high16 v1, -0x100
 
     invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setColor(I)V
 
-    .line 242
+    .line 224
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawingMatrix:Landroid/graphics/Matrix;
@@ -1262,14 +2902,14 @@
 
     invoke-virtual {v0, v1, v2}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDrawingPath(Landroid/graphics/Matrix;Landroid/graphics/Path;)V
 
-    .line 243
+    .line 225
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawingPath:Landroid/graphics/Path;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->eraserPaint:Landroid/graphics/Paint;
 
     invoke-virtual {p1, v0, v1}, Landroid/graphics/Canvas;->drawPath(Landroid/graphics/Path;Landroid/graphics/Paint;)V
 
-    .line 245
+    .line 227
     :cond_0
     return-void
 .end method
@@ -1278,126 +2918,461 @@
     .locals 3
 
     .prologue
-    const/4 v2, 0x1
+    .line 483
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
-    .line 442
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
-
-    if-eqz v0, :cond_3
-
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
-
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->isEmpty()Z
-
-    move-result v0
-
-    if-nez v0, :cond_3
-
-    .line 444
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapCanvas:Landroid/graphics/Canvas;
-
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->selectToDraw(Landroid/graphics/Canvas;)V
-
-    .line 445
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
-
-    if-eqz v0, :cond_0
-
-    .line 446
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
+    if-eqz v1, :cond_4
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
-    invoke-interface {v0, v1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;->onDoodleFinished(Lcom/android/gallery3d/photoeditor/actions/Doodle;)V
+    invoke-virtual {v1}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->isEmpty()Z
 
-    .line 448
+    move-result v1
+
+    if-nez v1, :cond_4
+
+    .line 485
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapCanvas:Landroid/graphics/Canvas;
+
+    invoke-direct {p0, v1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->selectToDraw(Landroid/graphics/Canvas;)V
+
+    .line 486
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
+
+    if-eqz v1, :cond_0
+
+    .line 487
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
+
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    invoke-interface {v1, v2}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;->onDoodleFinished(Lcom/android/gallery3d/photoeditor/actions/Doodle;)V
+
+    .line 489
     :cond_0
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
-
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDoodleMode()I
-
-    move-result v0
-
-    const/4 v1, 0x3
-
-    if-eq v0, v1, :cond_4
-
-    .line 449
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
-
-    if-eqz v0, :cond_2
-
-    .line 450
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
-
-    invoke-virtual {v0}, Ljava/util/Vector;->isEmpty()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    .line 451
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoDoodles:Ljava/util/Stack;
-
-    invoke-virtual {v0}, Ljava/util/Stack;->clear()V
-
-    .line 453
-    :cond_1
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
-
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
-    invoke-virtual {v0, v1}, Ljava/util/Vector;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v1}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDoodleMode()I
 
-    .line 454
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->undoBtn:Landroid/widget/ImageButton;
+    move-result v1
 
-    invoke-virtual {v0}, Landroid/widget/ImageButton;->isEnabled()Z
+    const/4 v2, 0x3
 
-    move-result v0
+    if-ne v1, v2, :cond_5
 
-    if-nez v0, :cond_2
+    const/4 v0, 0x1
 
-    .line 455
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->undoBtn:Landroid/widget/ImageButton;
-
-    invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setEnabled(Z)V
-
-    .line 462
-    :cond_2
+    .line 490
+    .local v0, isText:Z
     :goto_0
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->saveMenuItem:Landroid/view/MenuItem;
+    if-nez v0, :cond_6
 
-    invoke-interface {v0, v2}, Landroid/view/MenuItem;->setEnabled(Z)Landroid/view/MenuItem;
+    .line 491
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
 
-    .line 463
+    if-eqz v1, :cond_2
+
+    .line 492
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
+
+    invoke-virtual {v1}, Ljava/util/Vector;->isEmpty()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    .line 493
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoDoodles:Ljava/util/Stack;
+
+    invoke-virtual {v1}, Ljava/util/Stack;->clear()V
+
+    .line 495
+    :cond_1
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
+
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    invoke-virtual {v1, v2}, Ljava/util/Vector;->add(Ljava/lang/Object;)Z
+
+    .line 497
+    :cond_2
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleViewChangeListener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleViewChanged;
+
+    if-eqz v1, :cond_3
+
+    .line 498
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleViewChangeListener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleViewChanged;
+
+    invoke-interface {v1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleViewChanged;->onDoodleModified()V
+
+    .line 504
+    :cond_3
+    :goto_1
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->invalidate()V
 
-    .line 465
-    :cond_3
-    const/4 v0, 0x0
+    .line 506
+    .end local v0           #isText:Z
+    :cond_4
+    const/4 v1, 0x0
 
-    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+    iput-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
-    .line 466
+    .line 507
     return-void
 
-    .line 460
-    :cond_4
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textDoodle:Ljava/util/Vector;
-
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
-
-    invoke-virtual {v0, v1}, Ljava/util/Vector;->add(Ljava/lang/Object;)Z
+    .line 489
+    :cond_5
+    const/4 v0, 0x0
 
     goto :goto_0
+
+    .line 501
+    .restart local v0       #isText:Z
+    :cond_6
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textDoodle:Ljava/util/Vector;
+
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    invoke-virtual {v1, v2}, Ljava/util/Vector;->add(Ljava/lang/Object;)Z
+
+    goto :goto_1
+.end method
+
+.method private getDragLinePoint(FF)V
+    .locals 7
+    .parameter "x"
+    .parameter "y"
+
+    .prologue
+    const/4 v3, 0x1
+
+    const/4 v2, -0x1
+
+    .line 820
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
+
+    iget v4, v4, Landroid/graphics/PointF;->x:F
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeUpPoint:Landroid/graphics/PointF;
+
+    iget v5, v5, Landroid/graphics/PointF;->x:F
+
+    cmpg-float v4, v4, v5
+
+    if-gez v4, :cond_0
+
+    move v0, v2
+
+    .line 821
+    .local v0, offsetX:I
+    :goto_0
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
+
+    iget v4, v4, Landroid/graphics/PointF;->y:F
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeUpPoint:Landroid/graphics/PointF;
+
+    iget v5, v5, Landroid/graphics/PointF;->y:F
+
+    cmpg-float v4, v4, v5
+
+    if-gez v4, :cond_1
+
+    move v1, v2
+
+    .line 822
+    .local v1, offsetY:I
+    :goto_1
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragFirstPoint:Landroid/graphics/PointF;
+
+    iget v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineLength:F
+
+    iget v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragLineRatio:F
+
+    mul-float/2addr v3, v4
+
+    iget v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineShapeAngle:F
+
+    float-to-double v4, v4
+
+    invoke-static {v4, v5}, Ljava/lang/Math;->cos(D)D
+
+    move-result-wide v4
+
+    double-to-float v4, v4
+
+    mul-float/2addr v3, v4
+
+    int-to-float v4, v0
+
+    mul-float/2addr v3, v4
+
+    add-float/2addr v3, p1
+
+    iput v3, v2, Landroid/graphics/PointF;->x:F
+
+    .line 823
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragFirstPoint:Landroid/graphics/PointF;
+
+    iget v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineLength:F
+
+    iget v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragLineRatio:F
+
+    mul-float/2addr v3, v4
+
+    iget v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineShapeAngle:F
+
+    float-to-double v4, v4
+
+    invoke-static {v4, v5}, Ljava/lang/Math;->sin(D)D
+
+    move-result-wide v4
+
+    double-to-float v4, v4
+
+    mul-float/2addr v3, v4
+
+    int-to-float v4, v1
+
+    mul-float/2addr v3, v4
+
+    add-float/2addr v3, p2
+
+    iput v3, v2, Landroid/graphics/PointF;->y:F
+
+    .line 825
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragLastPoint:Landroid/graphics/PointF;
+
+    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragFirstPoint:Landroid/graphics/PointF;
+
+    iget v3, v3, Landroid/graphics/PointF;->x:F
+
+    iget v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineLength:F
+
+    iget v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineShapeAngle:F
+
+    float-to-double v5, v5
+
+    invoke-static {v5, v6}, Ljava/lang/Math;->cos(D)D
+
+    move-result-wide v5
+
+    double-to-float v5, v5
+
+    mul-float/2addr v4, v5
+
+    neg-int v5, v0
+
+    int-to-float v5, v5
+
+    mul-float/2addr v4, v5
+
+    add-float/2addr v3, v4
+
+    iput v3, v2, Landroid/graphics/PointF;->x:F
+
+    .line 826
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragLastPoint:Landroid/graphics/PointF;
+
+    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragFirstPoint:Landroid/graphics/PointF;
+
+    iget v3, v3, Landroid/graphics/PointF;->y:F
+
+    iget v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineLength:F
+
+    iget v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lineShapeAngle:F
+
+    float-to-double v5, v5
+
+    invoke-static {v5, v6}, Ljava/lang/Math;->sin(D)D
+
+    move-result-wide v5
+
+    double-to-float v5, v5
+
+    mul-float/2addr v4, v5
+
+    neg-int v5, v1
+
+    int-to-float v5, v5
+
+    mul-float/2addr v4, v5
+
+    add-float/2addr v3, v4
+
+    iput v3, v2, Landroid/graphics/PointF;->y:F
+
+    .line 827
+    return-void
+
+    .end local v0           #offsetX:I
+    .end local v1           #offsetY:I
+    :cond_0
+    move v0, v3
+
+    .line 820
+    goto :goto_0
+
+    .restart local v0       #offsetX:I
+    :cond_1
+    move v1, v3
+
+    .line 821
+    goto :goto_1
+.end method
+
+.method private getDragRectPoint(FF)V
+    .locals 6
+    .parameter "x"
+    .parameter "y"
+
+    .prologue
+    const/4 v3, 0x1
+
+    const/4 v2, -0x1
+
+    .line 831
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
+
+    iget v4, v4, Landroid/graphics/PointF;->x:F
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeUpPoint:Landroid/graphics/PointF;
+
+    iget v5, v5, Landroid/graphics/PointF;->x:F
+
+    cmpg-float v4, v4, v5
+
+    if-gez v4, :cond_0
+
+    move v0, v2
+
+    .line 832
+    .local v0, offsetX:I
+    :goto_0
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
+
+    iget v4, v4, Landroid/graphics/PointF;->y:F
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeUpPoint:Landroid/graphics/PointF;
+
+    iget v5, v5, Landroid/graphics/PointF;->y:F
+
+    cmpg-float v4, v4, v5
+
+    if-gez v4, :cond_1
+
+    move v1, v2
+
+    .line 833
+    .local v1, offsetY:I
+    :goto_1
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragFirstPoint:Landroid/graphics/PointF;
+
+    iget v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragRectOffsetX:F
+
+    int-to-float v4, v0
+
+    mul-float/2addr v3, v4
+
+    add-float/2addr v3, p1
+
+    iput v3, v2, Landroid/graphics/PointF;->x:F
+
+    .line 834
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragFirstPoint:Landroid/graphics/PointF;
+
+    iget v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragRectOffsetY:F
+
+    int-to-float v4, v1
+
+    mul-float/2addr v3, v4
+
+    add-float/2addr v3, p2
+
+    iput v3, v2, Landroid/graphics/PointF;->y:F
+
+    .line 836
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragLastPoint:Landroid/graphics/PointF;
+
+    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragFirstPoint:Landroid/graphics/PointF;
+
+    iget v3, v3, Landroid/graphics/PointF;->x:F
+
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
+
+    iget v4, v4, Landroid/graphics/PointF;->x:F
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeUpPoint:Landroid/graphics/PointF;
+
+    iget v5, v5, Landroid/graphics/PointF;->x:F
+
+    sub-float/2addr v4, v5
+
+    invoke-static {v4}, Ljava/lang/Math;->abs(F)F
+
+    move-result v4
+
+    int-to-float v5, v0
+
+    mul-float/2addr v4, v5
+
+    sub-float/2addr v3, v4
+
+    iput v3, v2, Landroid/graphics/PointF;->x:F
+
+    .line 837
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragLastPoint:Landroid/graphics/PointF;
+
+    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragFirstPoint:Landroid/graphics/PointF;
+
+    iget v3, v3, Landroid/graphics/PointF;->y:F
+
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeDownPoint:Landroid/graphics/PointF;
+
+    iget v4, v4, Landroid/graphics/PointF;->y:F
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeUpPoint:Landroid/graphics/PointF;
+
+    iget v5, v5, Landroid/graphics/PointF;->y:F
+
+    sub-float/2addr v4, v5
+
+    invoke-static {v4}, Ljava/lang/Math;->abs(F)F
+
+    move-result v4
+
+    int-to-float v5, v1
+
+    mul-float/2addr v4, v5
+
+    sub-float/2addr v3, v4
+
+    iput v3, v2, Landroid/graphics/PointF;->y:F
+
+    .line 838
+    return-void
+
+    .end local v0           #offsetX:I
+    .end local v1           #offsetY:I
+    :cond_0
+    move v0, v3
+
+    .line 831
+    goto :goto_0
+
+    .restart local v0       #offsetX:I
+    :cond_1
+    move v1, v3
+
+    .line 832
+    goto :goto_1
 .end method
 
 .method private hideInputMethod()V
     .locals 3
 
     .prologue
-    .line 380
+    .line 412
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->inputMethodManager:Landroid/view/inputmethod/InputMethodManager;
 
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getWindowToken()Landroid/os/IBinder;
@@ -1408,7 +3383,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/view/inputmethod/InputMethodManager;->hideSoftInputFromWindow(Landroid/os/IBinder;I)Z
 
-    .line 381
+    .line 413
     return-void
 .end method
 
@@ -1419,7 +3394,7 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 742
+    .line 759
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoDoodles:Ljava/util/Stack;
 
     invoke-virtual {v1}, Ljava/util/Stack;->lastElement()Ljava/lang/Object;
@@ -1428,7 +3403,7 @@
 
     check-cast v0, Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
-    .line 743
+    .line 760
     .local v0, doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
 
@@ -1436,74 +3411,117 @@
 
     move-result v1
 
-    if-nez v1, :cond_2
+    if-nez v1, :cond_1
 
-    .line 744
+    .line 761
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
 
     invoke-virtual {v1, v0}, Ljava/util/Vector;->add(Ljava/lang/Object;)Z
 
-    .line 745
+    .line 762
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
 
     if-eqz v1, :cond_0
 
-    .line 746
+    .line 763
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
 
     invoke-interface {v1, v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;->onDoodleFinished(Lcom/android/gallery3d/photoeditor/actions/Doodle;)V
 
-    .line 748
+    .line 765
     :cond_0
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoDoodles:Ljava/util/Stack;
 
     invoke-virtual {v1, v0}, Ljava/util/Stack;->remove(Ljava/lang/Object;)Z
 
-    .line 749
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoDoodles:Ljava/util/Stack;
-
-    invoke-virtual {v1}, Ljava/util/Stack;->isEmpty()Z
-
-    move-result v1
-
-    if-eqz v1, :cond_1
-
-    .line 750
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->redoBtn:Landroid/widget/ImageButton;
-
-    const/4 v2, 0x0
-
-    invoke-virtual {v1, v2}, Landroid/widget/ImageButton;->setEnabled(Z)V
-
-    .line 753
-    :cond_1
+    .line 767
     invoke-direct {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawSingleDoodle(Lcom/android/gallery3d/photoeditor/actions/Doodle;)V
 
-    .line 754
+    .line 768
     invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I
 
-    .line 755
+    .line 769
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
 
     invoke-virtual {p1, v1}, Landroid/graphics/Canvas;->clipRect(Landroid/graphics/RectF;)Z
 
-    .line 756
+    .line 770
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->displayMatrix:Landroid/graphics/Matrix;
 
     invoke-virtual {p1, v1}, Landroid/graphics/Canvas;->concat(Landroid/graphics/Matrix;)V
 
-    .line 757
+    .line 771
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
 
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapPaint:Landroid/graphics/Paint;
 
     invoke-virtual {p1, v1, v3, v3, v2}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
 
-    .line 758
+    .line 772
     invoke-virtual {p1}, Landroid/graphics/Canvas;->restore()V
 
-    .line 760
-    :cond_2
+    .line 774
+    :cond_1
+    return-void
+.end method
+
+.method private refreshDragDoodle()V
+    .locals 4
+
+    .prologue
+    .line 777
+    new-instance v0, Landroid/graphics/PointF;
+
+    invoke-direct {v0}, Landroid/graphics/PointF;-><init>()V
+
+    .line 778
+    .local v0, firstPoint:Landroid/graphics/PointF;
+    new-instance v1, Landroid/graphics/PointF;
+
+    invoke-direct {v1}, Landroid/graphics/PointF;-><init>()V
+
+    .line 779
+    .local v1, lastPoint:Landroid/graphics/PointF;
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragFirstPoint:Landroid/graphics/PointF;
+
+    iget v2, v2, Landroid/graphics/PointF;->x:F
+
+    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragFirstPoint:Landroid/graphics/PointF;
+
+    iget v3, v3, Landroid/graphics/PointF;->y:F
+
+    invoke-virtual {p0, v2, v3, v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mapPhotoPoint(FFLandroid/graphics/PointF;)V
+
+    .line 780
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragLastPoint:Landroid/graphics/PointF;
+
+    iget v2, v2, Landroid/graphics/PointF;->x:F
+
+    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragLastPoint:Landroid/graphics/PointF;
+
+    iget v3, v3, Landroid/graphics/PointF;->y:F
+
+    invoke-virtual {p0, v2, v3, v1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mapPhotoPoint(FFLandroid/graphics/PointF;)V
+
+    .line 782
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->longPressDoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    invoke-virtual {v2, v0}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->changeDoodleFirstPoint(Landroid/graphics/PointF;)V
+
+    .line 783
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->longPressDoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    invoke-virtual {v2, v1}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->changeDoodleLastPoint(Landroid/graphics/PointF;)V
+
+    .line 784
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->longPressDoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    invoke-direct {p0, v2}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawSingleDoodle(Lcom/android/gallery3d/photoeditor/actions/Doodle;)V
+
+    .line 785
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->invalidate()V
+
+    .line 786
     return-void
 .end method
 
@@ -1512,14 +3530,14 @@
     .parameter "editText"
 
     .prologue
-    .line 336
+    .line 368
     invoke-virtual {p1}, Landroid/widget/EditText;->getParent()Landroid/view/ViewParent;
 
     move-result-object v1
 
     if-eqz v1, :cond_0
 
-    .line 337
+    .line 369
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
 
     invoke-virtual {v1}, Ljava/util/Vector;->lastElement()Ljava/lang/Object;
@@ -1534,11 +3552,11 @@
 
     check-cast v0, Landroid/view/ViewGroup;
 
-    .line 338
+    .line 370
     .local v0, group:Landroid/view/ViewGroup;
     invoke-virtual {v0, p1}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
 
-    .line 339
+    .line 371
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
 
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
@@ -1549,7 +3567,7 @@
 
     invoke-virtual {v1, v2}, Ljava/util/Vector;->remove(I)Ljava/lang/Object;
 
-    .line 341
+    .line 373
     .end local v0           #group:Landroid/view/ViewGroup;
     :cond_0
     return-void
@@ -1560,42 +3578,46 @@
     .parameter "canvas"
 
     .prologue
-    .line 391
+    .line 432
     iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 409
+    .line 450
     :cond_0
     :goto_0
     return-void
 
-    .line 393
+    .line 434
     :pswitch_0
     invoke-direct {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawDoodle(Landroid/graphics/Canvas;)V
 
     goto :goto_0
 
-    .line 398
+    .line 439
     :pswitch_1
     invoke-direct {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->eraserDoodle(Landroid/graphics/Canvas;)V
 
     goto :goto_0
 
-    .line 403
+    .line 444
     :pswitch_2
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
     if-eqz v0, :cond_0
 
-    .line 404
-    iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeColor:I
+    .line 445
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
 
-    iget v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->selectedShapeId:I
+    iget v2, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->shapeColor:I
+
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v3, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->selectedShapeId:I
 
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDownPonit()Landroid/graphics/PointF;
+    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDownPoint()Landroid/graphics/PointF;
 
     move-result-object v4
 
@@ -1609,7 +3631,7 @@
 
     goto :goto_0
 
-    .line 391
+    .line 432
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -1623,16 +3645,16 @@
     .parameter "enabled"
 
     .prologue
-    .line 344
+    .line 376
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
 
     if-nez v1, :cond_1
 
-    .line 351
+    .line 383
     :cond_0
     return-void
 
-    .line 347
+    .line 379
     :cond_1
     const/4 v0, 0x0
 
@@ -1646,7 +3668,7 @@
 
     if-ge v0, v1, :cond_0
 
-    .line 348
+    .line 380
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
 
     invoke-virtual {v1, v0}, Ljava/util/Vector;->get(I)Ljava/lang/Object;
@@ -1657,41 +3679,40 @@
 
     invoke-virtual {v1, p1}, Landroid/widget/EditText;->setEnabled(Z)V
 
-    .line 347
+    .line 379
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 .end method
 
 .method private startDoodle()V
-    .locals 8
+    .locals 11
 
     .prologue
-    .line 413
+    .line 454
     iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 439
+    .line 480
     :goto_0
     return-void
 
-    .line 415
+    .line 456
     :pswitch_0
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->eraserPaint:Landroid/graphics/Paint;
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
 
-    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserPaintSize:F
+    iget v3, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->eraserPaintSize:F
 
-    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStrokeWidth(F)V
-
-    .line 416
+    .line 457
+    .local v3, curPaintSize:F
     new-instance v0, Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
-    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleColor:I
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v1, v1, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->doodleColor:I
 
     iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
-
-    iget v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserPaintSize:F
 
     new-instance v4, Landroid/graphics/PointF;
 
@@ -1713,22 +3734,22 @@
 
     goto :goto_0
 
-    .line 421
+    .line 462
+    .end local v3           #curPaintSize:F
     :pswitch_1
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodlePaint:Landroid/graphics/Paint;
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
 
-    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodlePaintSize:F
+    iget v3, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->doodlePaintSize:F
 
-    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStrokeWidth(F)V
-
-    .line 422
+    .line 463
+    .restart local v3       #curPaintSize:F
     new-instance v0, Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
-    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleColor:I
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v1, v1, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->doodleColor:I
 
     iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
-
-    iget v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodlePaintSize:F
 
     new-instance v4, Landroid/graphics/PointF;
 
@@ -1750,43 +3771,50 @@
 
     goto :goto_0
 
-    .line 427
+    .line 468
+    .end local v3           #curPaintSize:F
     :pswitch_2
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapePaint:Landroid/graphics/Paint;
 
     invoke-virtual {v0}, Landroid/graphics/Paint;->getStrokeWidth()F
 
-    move-result v4
+    move-result v3
 
-    .line 428
-    .local v4, curPaintSize:F
-    new-instance v0, Lcom/android/gallery3d/photoeditor/actions/Doodle;
+    .line 469
+    .restart local v3       #curPaintSize:F
+    new-instance v4, Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
-    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeColor:I
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
 
-    iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
+    iget v5, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->shapeColor:I
 
-    iget v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->selectedShapeId:I
+    iget v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
 
-    new-instance v5, Landroid/graphics/PointF;
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
 
-    iget-object v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
+    iget v7, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->selectedShapeId:I
 
-    iget v6, v6, Landroid/graphics/PointF;->x:F
+    new-instance v9, Landroid/graphics/PointF;
 
-    iget-object v7, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
 
-    iget v7, v7, Landroid/graphics/PointF;->y:F
+    iget v0, v0, Landroid/graphics/PointF;->x:F
 
-    invoke-direct {v5, v6, v7}, Landroid/graphics/PointF;-><init>(FF)V
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
 
-    iget v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
+    iget v1, v1, Landroid/graphics/PointF;->y:F
 
-    invoke-direct/range {v0 .. v6}, Lcom/android/gallery3d/photoeditor/actions/Doodle;-><init>(IIIFLandroid/graphics/PointF;F)V
+    invoke-direct {v9, v0, v1}, Landroid/graphics/PointF;-><init>(FF)V
 
-    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+    iget v10, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
 
-    .line 429
+    move v8, v3
+
+    invoke-direct/range {v4 .. v10}, Lcom/android/gallery3d/photoeditor/actions/Doodle;-><init>(IIIFLandroid/graphics/PointF;F)V
+
+    iput-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    .line 470
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mContext:Landroid/content/Context;
@@ -1795,44 +3823,50 @@
 
     goto :goto_0
 
-    .line 434
-    .end local v4           #curPaintSize:F
+    .line 475
+    .end local v3           #curPaintSize:F
     :pswitch_3
-    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textSize:F
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v0, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->textSize:F
 
     iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
 
-    mul-float v4, v0, v1
+    mul-float v3, v0, v1
 
-    .line 435
-    .restart local v4       #curPaintSize:F
-    new-instance v1, Lcom/android/gallery3d/photoeditor/actions/Doodle;
+    .line 476
+    .restart local v3       #curPaintSize:F
+    new-instance v0, Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
-    iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textColor:I
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
 
-    iget v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
+    iget v1, v1, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->textColor:I
 
-    new-instance v5, Landroid/graphics/PointF;
+    iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
 
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
+    new-instance v4, Landroid/graphics/PointF;
 
-    iget v0, v0, Landroid/graphics/PointF;->x:F
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
+
+    iget v5, v5, Landroid/graphics/PointF;->x:F
 
     iget-object v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
 
     iget v6, v6, Landroid/graphics/PointF;->y:F
 
-    invoke-direct {v5, v0, v6}, Landroid/graphics/PointF;-><init>(FF)V
+    invoke-direct {v4, v5, v6}, Landroid/graphics/PointF;-><init>(FF)V
 
-    iget v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
+    iget v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
 
-    invoke-direct/range {v1 .. v6}, Lcom/android/gallery3d/photoeditor/actions/Doodle;-><init>(IIFLandroid/graphics/PointF;F)V
+    invoke-direct/range {v0 .. v5}, Lcom/android/gallery3d/photoeditor/actions/Doodle;-><init>(IIFLandroid/graphics/PointF;F)V
 
-    iput-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
     goto/16 :goto_0
 
-    .line 413
+    .line 454
+    nop
+
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_1
@@ -1847,95 +3881,11 @@
     .parameter "canvas"
 
     .prologue
-    .line 738
+    .line 755
     invoke-direct {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawAllDoodles(Landroid/graphics/Canvas;)V
 
-    .line 739
+    .line 756
     return-void
-.end method
-
-.method private updataShapeButtonSelected(I)V
-    .locals 2
-    .parameter "selected"
-
-    .prologue
-    .line 658
-    packed-switch p1, :pswitch_data_0
-
-    .line 689
-    :goto_0
-    return-void
-
-    .line 660
-    :pswitch_0
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeBtn:Landroid/widget/ImageButton;
-
-    const v1, 0x7f020132
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
-
-    goto :goto_0
-
-    .line 665
-    :pswitch_1
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeBtn:Landroid/widget/ImageButton;
-
-    const v1, 0x7f020134
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
-
-    goto :goto_0
-
-    .line 670
-    :pswitch_2
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeBtn:Landroid/widget/ImageButton;
-
-    const v1, 0x7f020137
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
-
-    goto :goto_0
-
-    .line 675
-    :pswitch_3
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeBtn:Landroid/widget/ImageButton;
-
-    const v1, 0x7f020136
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
-
-    goto :goto_0
-
-    .line 680
-    :pswitch_4
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeBtn:Landroid/widget/ImageButton;
-
-    const v1, 0x7f020135
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
-
-    goto :goto_0
-
-    .line 685
-    :pswitch_5
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeBtn:Landroid/widget/ImageButton;
-
-    const v1, 0x7f020133
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
-
-    goto :goto_0
-
-    .line 658
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-        :pswitch_1
-        :pswitch_2
-        :pswitch_3
-        :pswitch_4
-        :pswitch_5
-    .end packed-switch
 .end method
 
 .method private updateEditTextLocation(IIFF)V
@@ -1946,16 +3896,16 @@
     .parameter "scaleY"
 
     .prologue
-    .line 256
+    .line 238
     iget-object v9, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
 
     if-nez v9, :cond_0
 
-    .line 292
+    .line 277
     :goto_0
     return-void
 
-    .line 261
+    .line 243
     :cond_0
     const/4 v1, 0x0
 
@@ -1967,9 +3917,9 @@
 
     move-result v9
 
-    if-ge v1, v9, :cond_1
+    if-ge v1, v9, :cond_2
 
-    .line 262
+    .line 244
     iget-object v9, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->editTextList:Ljava/util/Vector;
 
     invoke-virtual {v9, v1}, Ljava/util/Vector;->get(I)Ljava/lang/Object;
@@ -1978,7 +3928,7 @@
 
     check-cast v0, Landroid/widget/EditText;
 
-    .line 264
+    .line 246
     .local v0, edit:Landroid/widget/EditText;
     invoke-virtual {v0}, Landroid/widget/EditText;->getTextSize()F
 
@@ -1986,13 +3936,13 @@
 
     mul-float v6, v9, p3
 
-    .line 265
+    .line 247
     .local v6, scaleSize:F
     const/4 v9, 0x0
 
     invoke-virtual {v0, v9, v6}, Landroid/widget/EditText;->setTextSize(IF)V
 
-    .line 267
+    .line 249
     iget-object v9, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textDoodle:Ljava/util/Vector;
 
     invoke-virtual {v9, v1}, Ljava/util/Vector;->get(I)Ljava/lang/Object;
@@ -2005,7 +3955,7 @@
 
     move-result-object v5
 
-    .line 268
+    .line 250
     .local v5, point:Landroid/graphics/PointF;
     iget v9, v5, Landroid/graphics/PointF;->x:F
 
@@ -2021,7 +3971,7 @@
 
     move-result v7
 
-    .line 269
+    .line 251
     .local v7, x:I
     iget v9, v5, Landroid/graphics/PointF;->y:F
 
@@ -2037,7 +3987,7 @@
 
     move-result v8
 
-    .line 270
+    .line 252
     .local v8, y:I
     int-to-float v9, p1
 
@@ -2059,7 +4009,7 @@
 
     add-int/2addr v7, v9
 
-    .line 271
+    .line 253
     int-to-float v9, p2
 
     iget-object v10, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
@@ -2080,14 +4030,14 @@
 
     add-int/2addr v8, v9
 
-    .line 273
+    .line 255
     invoke-virtual {v0}, Landroid/widget/EditText;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
     move-result-object v4
 
     check-cast v4, Landroid/widget/FrameLayout$LayoutParams;
 
-    .line 274
+    .line 256
     .local v4, params:Landroid/widget/FrameLayout$LayoutParams;
     invoke-virtual {v0}, Landroid/widget/EditText;->getWidth()I
 
@@ -2117,7 +4067,7 @@
 
     iput v9, v4, Landroid/widget/FrameLayout$LayoutParams;->leftMargin:I
 
-    .line 275
+    .line 257
     invoke-virtual {v0}, Landroid/widget/EditText;->getHeight()I
 
     move-result v9
@@ -2146,10 +4096,10 @@
 
     iput v9, v4, Landroid/widget/FrameLayout$LayoutParams;->topMargin:I
 
-    .line 276
+    .line 258
     invoke-virtual {v0, v4}, Landroid/widget/EditText;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 278
+    .line 260
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getWidth()I
 
     move-result v9
@@ -2186,7 +4136,7 @@
 
     move-result v3
 
-    .line 279
+    .line 261
     .local v3, maxWidth:I
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getHeight()I
 
@@ -2224,19 +4174,40 @@
 
     move-result v2
 
-    .line 280
+    .line 262
     .local v2, maxHeight:I
+    int-to-float v9, v2
+
+    iget-object v10, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v10, v10, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->textSize:F
+
+    cmpg-float v9, v9, v10
+
+    if-gez v9, :cond_1
+
+    .line 263
+    iget-object v9, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v9, v9, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->textSize:F
+
+    invoke-static {v9}, Ljava/lang/Math;->round(F)I
+
+    move-result v2
+
+    .line 265
+    :cond_1
     invoke-virtual {v0, v3}, Landroid/widget/EditText;->setMaxWidth(I)V
 
-    .line 281
+    .line 266
     invoke-virtual {v0, v2}, Landroid/widget/EditText;->setMaxHeight(I)V
 
-    .line 261
+    .line 243
     add-int/lit8 v1, v1, 0x1
 
     goto/16 :goto_1
 
-    .line 286
+    .line 271
     .end local v0           #edit:Landroid/widget/EditText;
     .end local v2           #maxHeight:I
     .end local v3           #maxWidth:I
@@ -2245,7 +4216,7 @@
     .end local v6           #scaleSize:F
     .end local v7           #x:I
     .end local v8           #y:I
-    :cond_1
+    :cond_2
     new-instance v9, Lcom/android/gallery3d/photoeditor/actions/DoodleView$1;
 
     invoke-direct {v9, p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$1;-><init>(Lcom/android/gallery3d/photoeditor/actions/DoodleView;)V
@@ -2255,133 +4226,28 @@
     goto/16 :goto_0
 .end method
 
-.method private updateSettingsWindow(I)V
-    .locals 2
-    .parameter "width"
-
-    .prologue
-    .line 216
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;
-
-    if-eqz v0, :cond_1
-
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;
-
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;->isShowing()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    .line 217
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;
-
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;->dismiss()V
-
-    .line 218
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;
-
-    iget-boolean v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isVertical:Z
-
-    invoke-virtual {v0, p1, v1}, Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;->update(IZ)V
-
-    .line 229
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 219
-    :cond_1
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;
-
-    if-eqz v0, :cond_2
-
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;
-
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;->isShowing()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_2
-
-    .line 220
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;
-
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;->dismiss()V
-
-    .line 221
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;
-
-    iget-boolean v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isVertical:Z
-
-    invoke-virtual {v0, p1, v1}, Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;->update(IZ)V
-
-    goto :goto_0
-
-    .line 222
-    :cond_2
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mShapeSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;
-
-    if-eqz v0, :cond_3
-
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mShapeSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;
-
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;->isShowing()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_3
-
-    .line 223
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mShapeSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;
-
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;->dismiss()V
-
-    .line 224
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mShapeSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;
-
-    iget-boolean v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isVertical:Z
-
-    invoke-virtual {v0, p1, v1}, Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;->update(IZ)V
-
-    goto :goto_0
-
-    .line 225
-    :cond_3
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mTextSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mTextSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
-
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->isShowing()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 226
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mTextSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
-
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->dismiss()V
-
-    .line 227
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mTextSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
-
-    iget-boolean v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isVertical:Z
-
-    invoke-virtual {v0, p1, v1}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->update(IZ)V
-
-    goto :goto_0
-.end method
-
 
 # virtual methods
-.method public checkEraserMode()V
+.method public addInputMethodChangeListener()V
+    .locals 2
+
+    .prologue
+    .line 165
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->inputMethodManager:Landroid/view/inputmethod/InputMethodManager;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mInputShownChangeListener:Landroid/view/inputmethod/InputMethodManager$InputShownChangeListener;
+
+    invoke-virtual {v0, v1}, Landroid/view/inputmethod/InputMethodManager;->addInputShownChangeListener(Landroid/view/inputmethod/InputMethodManager$InputShownChangeListener;)V
+
+    .line 166
+    return-void
+.end method
+
+.method public checkDoodleTextMode()V
     .locals 1
 
     .prologue
-    .line 563
+    .line 645
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->inputMethodManager:Landroid/view/inputmethod/InputMethodManager;
 
     invoke-virtual {v0}, Landroid/view/inputmethod/InputMethodManager;->isSoftInputShown()Z
@@ -2390,24 +4256,19 @@
 
     if-eqz v0, :cond_0
 
-    .line 564
+    .line 646
     invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->hideInputMethod()V
 
-    .line 565
-    invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->addTextString()V
-
-    .line 567
+    .line 648
     :cond_0
     return-void
 .end method
 
 .method public clearDoodles()V
-    .locals 2
+    .locals 1
 
     .prologue
-    const/4 v1, 0x0
-
-    .line 795
+    .line 1062
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
 
     invoke-virtual {v0}, Ljava/util/Vector;->size()I
@@ -2416,103 +4277,60 @@
 
     if-lez v0, :cond_0
 
-    .line 796
+    .line 1063
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mUndoFlag:Z
 
-    .line 797
+    .line 1064
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
 
     invoke-virtual {v0}, Ljava/util/Vector;->removeAllElements()V
 
-    .line 798
+    .line 1065
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
 
     invoke-interface {v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;->onDoodleRmovedAll()V
 
-    .line 799
+    .line 1066
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->invalidate()V
 
-    .line 801
+    .line 1068
     :cond_0
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->undoBtn:Landroid/widget/ImageButton;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setEnabled(Z)V
-
-    .line 802
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->redoBtn:Landroid/widget/ImageButton;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setEnabled(Z)V
-
-    .line 803
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->saveMenuItem:Landroid/view/MenuItem;
-
-    invoke-interface {v0, v1}, Landroid/view/MenuItem;->setEnabled(Z)Landroid/view/MenuItem;
-
-    .line 804
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;
-
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;->dismiss()V
-
-    .line 805
     return-void
 .end method
 
-.method public dismissDialog()V
+.method public exitColorPickMode()V
     .locals 1
 
     .prologue
-    .line 642
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;
+    .line 698
+    const/4 v0, 0x0
 
-    if-eqz v0, :cond_1
+    iput-boolean v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isColorPickerMode:Z
 
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;
+    .line 699
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->imageSourceBmp:Landroid/graphics/Bitmap;
 
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;->isShowing()Z
+    invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
 
-    move-result v0
+    .line 700
+    const/4 v0, 0x0
 
-    if-eqz v0, :cond_1
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->imageSourceBmp:Landroid/graphics/Bitmap;
 
-    .line 643
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;
+    .line 701
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->invalidate()V
 
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;->dismiss()V
-
-    .line 649
-    :cond_0
-    :goto_0
+    .line 702
     return-void
-
-    .line 646
-    :cond_1
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;
-
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;->isShowing()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 647
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;
-
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;->dismiss()V
-
-    goto :goto_0
 .end method
 
 .method public getDoodleMode()I
     .locals 1
 
     .prologue
-    .line 638
+    .line 705
     iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
 
     return v0
@@ -2527,91 +4345,93 @@
 
     const/4 v2, 0x0
 
-    .line 764
+    .line 961
     invoke-super {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->onDraw(Landroid/graphics/Canvas;)V
 
-    .line 765
+    .line 962
     iget-boolean v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mUndoFlag:Z
-
-    if-eqz v0, :cond_0
-
-    .line 766
-    invoke-direct {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->undo(Landroid/graphics/Canvas;)V
-
-    .line 767
-    iput-boolean v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mUndoFlag:Z
-
-    .line 785
-    :goto_0
-    return-void
-
-    .line 771
-    :cond_0
-    iget-boolean v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoFlag:Z
 
     if-eqz v0, :cond_1
 
-    .line 772
+    .line 963
+    invoke-direct {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->undo(Landroid/graphics/Canvas;)V
+
+    .line 964
+    iput-boolean v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mUndoFlag:Z
+
+    .line 990
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 968
+    :cond_1
+    iget-boolean v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoFlag:Z
+
+    if-eqz v0, :cond_2
+
+    .line 969
     invoke-direct {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->redo(Landroid/graphics/Canvas;)V
 
-    .line 773
+    .line 970
     iput-boolean v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoFlag:Z
 
     goto :goto_0
 
-    .line 777
-    :cond_1
+    .line 974
+    :cond_2
     invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I
 
-    .line 778
+    .line 975
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
 
     invoke-virtual {p1, v0}, Landroid/graphics/Canvas;->clipRect(Landroid/graphics/RectF;)Z
 
-    .line 779
+    .line 976
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->displayMatrix:Landroid/graphics/Matrix;
 
     invoke-virtual {p1, v0}, Landroid/graphics/Canvas;->concat(Landroid/graphics/Matrix;)V
 
-    .line 780
+    .line 977
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
 
-    if-eqz v0, :cond_2
+    if-eqz v0, :cond_3
 
-    .line 781
+    .line 978
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapPaint:Landroid/graphics/Paint;
 
     invoke-virtual {p1, v0, v2, v2, v1}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
 
-    .line 783
-    :cond_2
-    invoke-direct {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->selectToDraw(Landroid/graphics/Canvas;)V
+    .line 980
+    :cond_3
+    iget-boolean v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isLongPress:Z
 
-    .line 784
+    if-eqz v0, :cond_4
+
+    .line 981
+    invoke-direct {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->dragToDraw(Landroid/graphics/Canvas;)V
+
+    .line 985
+    :goto_1
     invoke-virtual {p1}, Landroid/graphics/Canvas;->restore()V
 
+    .line 987
+    iget-boolean v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isColorPickerMode:Z
+
+    if-eqz v0, :cond_0
+
+    .line 988
+    invoke-direct {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawColorPickFilter(Landroid/graphics/Canvas;)V
+
     goto :goto_0
-.end method
 
-.method public onShapeChange(II)V
-    .locals 0
-    .parameter "shapeID"
-    .parameter "color"
+    .line 983
+    :cond_4
+    invoke-direct {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->selectToDraw(Landroid/graphics/Canvas;)V
 
-    .prologue
-    .line 826
-    iput p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->selectedShapeId:I
-
-    .line 827
-    iput p2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeColor:I
-
-    .line 828
-    invoke-direct {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->updataShapeButtonSelected(I)V
-
-    .line 829
-    return-void
+    goto :goto_1
 .end method
 
 .method protected onSizeChanged(IIII)V
@@ -2626,10 +4446,10 @@
 
     const/4 v6, 0x0
 
-    .line 177
+    .line 174
     invoke-super {p0, p1, p2, p3, p4}, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->onSizeChanged(IIII)V
 
-    .line 179
+    .line 176
     new-instance v0, Landroid/graphics/RectF;
 
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getPhotoWidth()F
@@ -2642,7 +4462,7 @@
 
     invoke-direct {v0, v6, v6, v3, v4}, Landroid/graphics/RectF;-><init>(FFFF)V
 
-    .line 180
+    .line 177
     .local v0, r:Landroid/graphics/RectF;
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
 
@@ -2654,7 +4474,7 @@
 
     if-nez v3, :cond_0
 
-    .line 181
+    .line 178
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getPhotoWidth()F
 
     move-result v3
@@ -2677,47 +4497,47 @@
 
     iput v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
 
-    .line 182
-    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodlePaint:Landroid/graphics/Paint;
+    .line 180
+    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
 
-    invoke-virtual {v3}, Landroid/graphics/Paint;->getStrokeWidth()F
+    iget v4, v3, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->doodlePaintSize:F
 
-    move-result v3
+    iget v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
 
-    iget v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
+    mul-float/2addr v4, v5
 
-    mul-float/2addr v3, v4
+    iput v4, v3, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->doodlePaintSize:F
 
-    iput v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodlePaintSize:F
+    .line 181
+    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v4, v3, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->eraserPaintSize:F
+
+    iget v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
+
+    mul-float/2addr v4, v5
+
+    iput v4, v3, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->eraserPaintSize:F
 
     .line 183
-    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->eraserPaint:Landroid/graphics/Paint;
-
-    invoke-virtual {v3}, Landroid/graphics/Paint;->getStrokeWidth()F
-
-    move-result v3
-
-    iget v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
-
-    mul-float/2addr v3, v4
-
-    iput v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserPaintSize:F
-
-    .line 184
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodlePaint:Landroid/graphics/Paint;
 
-    iget v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodlePaintSize:F
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v4, v4, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->doodlePaintSize:F
+
+    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setStrokeWidth(F)V
+
+    .line 184
+    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->eraserPaint:Landroid/graphics/Paint;
+
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v4, v4, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->eraserPaintSize:F
 
     invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setStrokeWidth(F)V
 
     .line 185
-    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->eraserPaint:Landroid/graphics/Paint;
-
-    iget v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserPaintSize:F
-
-    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setStrokeWidth(F)V
-
-    .line 186
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapePaint:Landroid/graphics/Paint;
 
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapePaint:Landroid/graphics/Paint;
@@ -2732,7 +4552,7 @@
 
     invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setStrokeWidth(F)V
 
-    .line 188
+    .line 187
     invoke-virtual {v0}, Landroid/graphics/RectF;->width()F
 
     move-result v3
@@ -2753,7 +4573,7 @@
 
     iput-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
 
-    .line 190
+    .line 189
     new-instance v3, Landroid/graphics/Canvas;
 
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
@@ -2761,6 +4581,13 @@
     invoke-direct {v3, v4}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
 
     iput-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapCanvas:Landroid/graphics/Canvas;
+
+    .line 190
+    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapPaint:Landroid/graphics/Paint;
+
+    const/high16 v4, -0x100
+
+    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setColor(I)V
 
     .line 193
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->drawingMatrix:Landroid/graphics/Matrix;
@@ -2821,22 +4648,8 @@
 
     invoke-virtual {v3, v4, v5, v6}, Lcom/android/gallery3d/photoeditor/actions/DoodleShapeHelper;->resetDrawingParams(FFLandroid/graphics/Paint;)V
 
-    .line 202
+    .line 205
     :cond_1
-    iput p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->screenWidth:I
-
-    .line 203
-    if-le p2, p1, :cond_2
-
-    const/4 v3, 0x1
-
-    :goto_0
-    iput-boolean v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isVertical:Z
-
-    .line 204
-    invoke-direct {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->updateSettingsWindow(I)V
-
-    .line 208
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
 
     invoke-virtual {v3}, Landroid/graphics/RectF;->width()F
@@ -2847,7 +4660,7 @@
 
     div-float v1, v3, v4
 
-    .line 209
+    .line 206
     .local v1, scaleX:F
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
 
@@ -2859,7 +4672,7 @@
 
     div-float v2, v3, v4
 
-    .line 210
+    .line 207
     .local v2, scaleY:F
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
 
@@ -2869,7 +4682,7 @@
 
     iput v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->oldBoundsWidth:F
 
-    .line 211
+    .line 208
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->displayBounds:Landroid/graphics/RectF;
 
     invoke-virtual {v3}, Landroid/graphics/RectF;->height()F
@@ -2878,118 +4691,138 @@
 
     iput v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->oldBoundsHeight:F
 
-    .line 212
+    .line 209
     invoke-direct {p0, p1, p2, v1, v2}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->updateEditTextLocation(IIFF)V
 
-    .line 213
-    return-void
-
-    .line 203
-    .end local v1           #scaleX:F
-    .end local v2           #scaleY:F
-    :cond_2
-    const/4 v3, 0x0
-
-    goto :goto_0
-.end method
-
-.method public onTextSettingChangeListener(FI)V
-    .locals 0
-    .parameter "textSize"
-    .parameter "color"
-
-    .prologue
-    .line 833
-    iput p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textSize:F
-
-    .line 834
-    iput p2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textColor:I
-
-    .line 835
+    .line 210
     return-void
 .end method
 
 .method public onTouchEvent(Landroid/view/MotionEvent;)Z
-    .locals 7
+    .locals 9
     .parameter "event"
 
     .prologue
-    const/high16 v6, 0x4000
+    const/high16 v8, 0x4000
 
     const/high16 v5, 0x3f80
 
-    .line 480
+    const/4 v6, 0x0
+
+    const/4 v7, 0x1
+
+    .line 521
     invoke-super {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
-    .line 482
+    .line 523
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isEnabled()Z
 
     move-result v4
 
     if-eqz v4, :cond_0
 
-    .line 483
+    .line 524
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getParent()Landroid/view/ViewParent;
+
+    move-result-object v4
+
+    invoke-interface {v4, v7}, Landroid/view/ViewParent;->requestDisallowInterceptTouchEvent(Z)V
+
+    .line 525
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
     move-result v2
 
-    .line 484
+    .line 526
     .local v2, x:F
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
     move-result v3
 
-    .line 486
+    .line 528
     .local v3, y:F
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mGuestureListenr:Landroid/view/GestureDetector;
+
+    if-eqz v4, :cond_1
+
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mGuestureListenr:Landroid/view/GestureDetector;
+
+    invoke-virtual {v4, p1}, Landroid/view/GestureDetector;->onTouchEvent(Landroid/view/MotionEvent;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_1
+
+    .line 610
+    .end local v2           #x:F
+    .end local v3           #y:F
+    :cond_0
+    :goto_0
+    return v7
+
+    .line 532
+    .restart local v2       #x:F
+    .restart local v3       #y:F
+    :cond_1
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getAction()I
 
     move-result v4
 
     packed-switch v4, :pswitch_data_0
 
-    .line 525
-    .end local v2           #x:F
-    .end local v3           #y:F
-    :cond_0
-    :goto_0
-    const/4 v4, 0x1
+    goto :goto_0
 
-    return v4
-
-    .line 488
-    .restart local v2       #x:F
-    .restart local v3       #y:F
+    .line 534
     :pswitch_0
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
 
     invoke-virtual {p0, v2, v3, v4}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mapPhotoPoint(FFLandroid/graphics/PointF;)V
 
-    .line 489
+    .line 535
+    iget-boolean v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isColorPickerMode:Z
+
+    if-eqz v4, :cond_2
+
+    .line 536
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
+
+    iget v4, v4, Landroid/graphics/PointF;->x:F
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
+
+    iget v5, v5, Landroid/graphics/PointF;->y:F
+
+    invoke-direct {p0, v4, v5, v6}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->calculateFilterXY(FFZ)V
+
+    .line 537
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->invalidate()V
+
+    goto :goto_0
+
+    .line 539
+    :cond_2
     iget v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
 
     const/4 v5, 0x3
 
-    if-ne v4, v5, :cond_2
+    if-ne v4, v5, :cond_4
 
-    .line 490
+    .line 540
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->inputMethodManager:Landroid/view/inputmethod/InputMethodManager;
 
     invoke-virtual {v4}, Landroid/view/inputmethod/InputMethodManager;->isSoftInputShown()Z
 
     move-result v4
 
-    if-eqz v4, :cond_1
+    if-eqz v4, :cond_3
 
-    .line 491
+    .line 541
     invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->hideInputMethod()V
-
-    .line 492
-    invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->addTextString()V
 
     goto :goto_0
 
-    .line 495
-    :cond_1
+    .line 544
+    :cond_3
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getWidth()I
 
     move-result v4
@@ -3004,9 +4837,9 @@
 
     sub-float/2addr v4, v5
 
-    div-float v0, v4, v6
+    div-float v0, v4, v8
 
-    .line 496
+    .line 545
     .local v0, photoStartX:F
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getHeight()I
 
@@ -3022,9 +4855,9 @@
 
     sub-float/2addr v4, v5
 
-    div-float v1, v4, v6
+    div-float v1, v4, v8
 
-    .line 497
+    .line 546
     .local v1, photoStartY:F
     cmpl-float v4, v2, v0
 
@@ -3058,48 +4891,137 @@
 
     if-gez v4, :cond_0
 
-    .line 499
+    .line 548
     invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->startDoodle()V
 
-    .line 500
+    .line 549
     invoke-direct {p0, v2, v3}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->addEditText(FF)V
 
     goto :goto_0
 
-    .line 503
+    .line 552
     .end local v0           #photoStartX:F
     .end local v1           #photoStartY:F
-    :cond_2
+    :cond_4
     invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->startDoodle()V
 
     goto :goto_0
 
-    .line 508
+    .line 558
     :pswitch_1
+    iget-boolean v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isColorPickerMode:Z
+
+    if-eqz v4, :cond_5
+
+    .line 559
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
 
     invoke-virtual {p0, v2, v3, v4}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mapPhotoPoint(FFLandroid/graphics/PointF;)V
 
-    .line 509
+    .line 560
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
+
+    iget v4, v4, Landroid/graphics/PointF;->x:F
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
+
+    iget v5, v5, Landroid/graphics/PointF;->y:F
+
+    invoke-direct {p0, v4, v5, v6}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->calculateFilterXY(FFZ)V
+
+    .line 561
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->invalidate()V
+
+    goto/16 :goto_0
+
+    .line 563
+    :cond_5
+    iget-boolean v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isLongPress:Z
+
+    if-nez v4, :cond_7
+
+    .line 564
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
+
+    invoke-virtual {p0, v2, v3, v4}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mapPhotoPoint(FFLandroid/graphics/PointF;)V
+
+    .line 565
     iget v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
 
     const/4 v5, 0x2
 
-    if-eq v4, v5, :cond_3
+    if-eq v4, v5, :cond_6
 
-    .line 510
+    .line 566
     invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->addLastPointIntoDoodle()V
 
-    goto :goto_0
+    goto/16 :goto_0
 
-    .line 512
-    :cond_3
+    .line 568
+    :cond_6
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->invalidate()V
 
-    goto :goto_0
+    goto/16 :goto_0
 
-    .line 519
+    .line 571
+    :cond_7
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->longPressDoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    invoke-virtual {v4}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getSelectedShapeId()I
+
+    move-result v4
+
+    packed-switch v4, :pswitch_data_1
+
+    .line 580
+    invoke-direct {p0, v2, v3}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getDragRectPoint(FF)V
+
+    .line 584
+    :goto_1
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->invalidate()V
+
+    goto/16 :goto_0
+
+    .line 575
     :pswitch_2
+    invoke-direct {p0, v2, v3}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getDragLinePoint(FF)V
+
+    goto :goto_1
+
+    .line 592
+    :pswitch_3
+    iget-boolean v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isColorPickerMode:Z
+
+    if-eqz v4, :cond_8
+
+    .line 593
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
+
+    invoke-virtual {p0, v2, v3, v4}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mapPhotoPoint(FFLandroid/graphics/PointF;)V
+
+    .line 594
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
+
+    iget v4, v4, Landroid/graphics/PointF;->x:F
+
+    iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->lastPoint:Landroid/graphics/PointF;
+
+    iget v5, v5, Landroid/graphics/PointF;->y:F
+
+    invoke-direct {p0, v4, v5, v7}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->calculateFilterXY(FFZ)V
+
+    .line 595
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->invalidate()V
+
+    goto/16 :goto_0
+
+    .line 597
+    :cond_8
+    iget-boolean v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isLongPress:Z
+
+    if-nez v4, :cond_9
+
+    .line 598
     add-float v4, v2, v5
 
     add-float/2addr v5, v3
@@ -3108,297 +5030,496 @@
 
     invoke-virtual {p0, v4, v5, v6}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mapPhotoPoint(FFLandroid/graphics/PointF;)V
 
-    .line 520
+    .line 599
     invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->addLastPointIntoDoodle()V
 
-    .line 521
+    .line 600
     invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->finishDoodle()V
 
-    goto :goto_0
+    goto/16 :goto_0
 
-    .line 486
-    nop
+    .line 602
+    :cond_9
+    const/4 v4, 0x0
 
+    iput-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    .line 603
+    iput-boolean v6, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isLongPress:Z
+
+    .line 604
+    invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->refreshDragDoodle()V
+
+    goto/16 :goto_0
+
+    .line 532
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
-        :pswitch_2
+        :pswitch_3
         :pswitch_1
+        :pswitch_3
+    .end packed-switch
+
+    .line 571
+    :pswitch_data_1
+    .packed-switch 0x0
+        :pswitch_2
+        :pswitch_2
         :pswitch_2
     .end packed-switch
+.end method
+
+.method public redo(Z)Z
+    .locals 2
+    .parameter "redoFlag"
+
+    .prologue
+    .line 631
+    const/4 v0, 0x0
+
+    .line 632
+    .local v0, canRedo:Z
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoDoodles:Ljava/util/Stack;
+
+    invoke-virtual {v1}, Ljava/util/Stack;->size()I
+
+    move-result v1
+
+    if-lez v1, :cond_0
+
+    .line 633
+    iput-boolean p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoFlag:Z
+
+    .line 634
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->invalidate()V
+
+    .line 636
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoDoodles:Ljava/util/Stack;
+
+    invoke-virtual {v1}, Ljava/util/Stack;->size()I
+
+    move-result v1
+
+    add-int/lit8 v1, v1, -0x1
+
+    if-eqz v1, :cond_1
+
+    const/4 v0, 0x1
+
+    .line 639
+    :cond_0
+    :goto_0
+    return v0
+
+    .line 636
+    :cond_1
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public removeInputMethodChangeListener()V
+    .locals 2
+
+    .prologue
+    .line 169
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->inputMethodManager:Landroid/view/inputmethod/InputMethodManager;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mInputShownChangeListener:Landroid/view/inputmethod/InputMethodManager$InputShownChangeListener;
+
+    invoke-virtual {v0, v1}, Landroid/view/inputmethod/InputMethodManager;->removeInputShownChangeListener(Landroid/view/inputmethod/InputMethodManager$InputShownChangeListener;)V
+
+    .line 170
+    return-void
 .end method
 
 .method public saveTextString()V
     .locals 0
 
     .prologue
-    .line 571
+    .line 652
     invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->addTextString()V
 
-    .line 572
+    .line 653
     return-void
 .end method
 
-.method public setActionBarCustomView(Landroid/view/View;)V
+.method public setColorPickMode()V
     .locals 4
-    .parameter "view"
-
-    .prologue
-    const/4 v3, 0x1
-
-    const/4 v2, 0x0
-
-    .line 149
-    const v0, 0x7f0d0132
-
-    invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/ImageButton;
-
-    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->undoBtn:Landroid/widget/ImageButton;
-
-    .line 150
-    const v0, 0x7f0d0133
-
-    invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/ImageButton;
-
-    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->redoBtn:Landroid/widget/ImageButton;
-
-    .line 151
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->undoBtn:Landroid/widget/ImageButton;
-
-    const v1, 0x7f020148
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
-
-    .line 152
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->redoBtn:Landroid/widget/ImageButton;
-
-    const v1, 0x7f020145
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
-
-    .line 153
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
-
-    invoke-virtual {v0}, Ljava/util/Vector;->isEmpty()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 154
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->undoBtn:Landroid/widget/ImageButton;
-
-    invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setEnabled(Z)V
-
-    .line 159
-    :goto_0
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoDoodles:Ljava/util/Stack;
-
-    invoke-virtual {v0}, Ljava/util/Stack;->isEmpty()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    .line 160
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->redoBtn:Landroid/widget/ImageButton;
-
-    invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setEnabled(Z)V
-
-    .line 164
-    :goto_1
-    return-void
-
-    .line 156
-    :cond_0
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->undoBtn:Landroid/widget/ImageButton;
-
-    invoke-virtual {v0, v3}, Landroid/widget/ImageButton;->setEnabled(Z)V
-
-    goto :goto_0
-
-    .line 162
-    :cond_1
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->redoBtn:Landroid/widget/ImageButton;
-
-    invoke-virtual {v0, v3}, Landroid/widget/ImageButton;->setEnabled(Z)V
-
-    goto :goto_1
-.end method
-
-.method public setEditMode(Landroid/view/View;)V
-    .locals 4
-    .parameter "anchor"
 
     .prologue
     const/4 v3, 0x0
 
-    .line 591
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->inputMethodManager:Landroid/view/inputmethod/InputMethodManager;
+    .line 685
+    const/4 v0, 0x1
 
-    invoke-virtual {v0}, Landroid/view/inputmethod/InputMethodManager;->isSoftInputShown()Z
+    iput-boolean v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isColorPickerMode:Z
 
-    move-result v0
+    .line 686
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickResource:Landroid/graphics/Bitmap;
 
-    if-eqz v0, :cond_0
+    if-nez v0, :cond_0
 
-    .line 592
-    invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->hideInputMethod()V
+    .line 687
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getResources()Landroid/content/res/Resources;
 
-    .line 593
-    invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->addTextString()V
+    move-result-object v0
 
-    .line 595
-    :cond_0
-    invoke-direct {p0, v3}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->setEditTextEnabled(Z)V
+    const v1, 0x7f0200a8
 
-    .line 596
-    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
+    invoke-static {v0, v1}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
-    if-nez v0, :cond_2
+    move-result-object v0
 
-    .line 597
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickResource:Landroid/graphics/Bitmap;
 
-    if-nez v0, :cond_1
+    .line 688
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickResource:Landroid/graphics/Bitmap;
 
-    .line 598
-    new-instance v0, Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;
-
-    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getContext()Landroid/content/Context;
-
-    move-result-object v1
-
-    invoke-direct {v0, v1}, Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;-><init>(Landroid/content/Context;)V
-
-    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;
-
-    .line 599
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;
-
-    invoke-virtual {v0, p0}, Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;->setOnDoodlePaintParamsListener(Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog$OnDoodlePaintParamsListener;)V
-
-    .line 601
-    :cond_1
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;
-
-    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->screenWidth:I
-
-    iget-boolean v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isVertical:Z
-
-    invoke-virtual {v0, p1, v1, v2}, Lcom/android/gallery3d/photoeditor/actions/DoodlePaintDialog;->show(Landroid/view/View;IZ)V
-
-    .line 603
-    :cond_2
-    iput v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
-
-    .line 604
-    return-void
-.end method
-
-.method public setEraserMode(Landroid/view/View;)V
-    .locals 4
-    .parameter "anchor"
-
-    .prologue
-    const/4 v3, 0x1
-
-    .line 575
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->inputMethodManager:Landroid/view/inputmethod/InputMethodManager;
-
-    invoke-virtual {v0}, Landroid/view/inputmethod/InputMethodManager;->isSoftInputShown()Z
+    invoke-virtual {v0}, Landroid/graphics/Bitmap;->getWidth()I
 
     move-result v0
 
-    if-eqz v0, :cond_0
-
-    .line 576
-    invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->hideInputMethod()V
-
-    .line 577
-    invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->addTextString()V
-
-    .line 579
-    :cond_0
-    const/4 v0, 0x0
-
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->setEditTextEnabled(Z)V
-
-    .line 580
-    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
-
-    if-ne v0, v3, :cond_2
-
-    .line 581
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;
-
-    if-nez v0, :cond_1
-
-    .line 582
-    new-instance v0, Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;
-
-    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getContext()Landroid/content/Context;
-
-    move-result-object v1
-
-    invoke-direct {v0, v1}, Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;-><init>(Landroid/content/Context;)V
-
-    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;
-
-    .line 583
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;
-
-    invoke-virtual {v0, p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;->setOnEraserParamsListener(Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog$OnEraserParamsListener;)V
-
-    .line 585
-    :cond_1
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserSettingDialog:Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;
-
-    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->screenWidth:I
-
-    iget-boolean v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isVertical:Z
-
-    invoke-virtual {v0, p1, v1, v2}, Lcom/android/gallery3d/photoeditor/actions/DoodleEraserDialog;->show(Landroid/view/View;IZ)V
-
-    .line 587
-    :cond_2
-    iput v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
-
-    .line 588
-    return-void
-.end method
-
-.method public setEraserPaintSize(I)V
-    .locals 2
-    .parameter "size"
-
-    .prologue
-    .line 789
-    int-to-float v0, p1
+    int-to-float v0, v0
 
     iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
 
     mul-float/2addr v0, v1
 
-    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserPaintSize:F
+    invoke-static {v0}, Ljava/lang/Math;->round(F)I
 
-    .line 790
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->eraserPaint:Landroid/graphics/Paint;
+    move-result v0
 
-    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mEraserPaintSize:F
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickResource:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v1}, Landroid/graphics/Bitmap;->getHeight()I
+
+    move-result v1
+
+    int-to-float v1, v1
+
+    iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
+
+    mul-float/2addr v1, v2
+
+    invoke-static {v1}, Ljava/lang/Math;->round(F)I
+
+    move-result v1
+
+    sget-object v2, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    invoke-static {v0, v1, v2}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickFilter:Landroid/graphics/Bitmap;
+
+    .line 690
+    new-instance v0, Landroid/graphics/Canvas;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickFilter:Landroid/graphics/Bitmap;
+
+    invoke-direct {v0, v1}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
+
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickCanvas:Landroid/graphics/Canvas;
+
+    .line 691
+    new-instance v0, Landroid/graphics/Canvas;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->imageSourceBmp:Landroid/graphics/Bitmap;
+
+    invoke-direct {v0, v1}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
+
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->sourceBmpCanvas:Landroid/graphics/Canvas;
+
+    .line 692
+    new-instance v0, Landroid/graphics/Path;
+
+    invoke-direct {v0}, Landroid/graphics/Path;-><init>()V
+
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->colorPickPath:Landroid/graphics/Path;
+
+    .line 694
+    :cond_0
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->sourceBmpCanvas:Landroid/graphics/Canvas;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
+
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmapPaint:Landroid/graphics/Paint;
+
+    invoke-virtual {v0, v1, v3, v3, v2}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
+
+    .line 695
+    return-void
+.end method
+
+.method public setDoodlePaintAlpha(I)V
+    .locals 4
+    .parameter "alpha"
+
+    .prologue
+    .line 1080
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iput p1, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->doodleColorAlpha:I
+
+    .line 1081
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v1, v1, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->doodleColor:I
+
+    invoke-static {v1}, Landroid/graphics/Color;->red(I)I
+
+    move-result v1
+
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v2, v2, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->doodleColor:I
+
+    invoke-static {v2}, Landroid/graphics/Color;->green(I)I
+
+    move-result v2
+
+    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v3, v3, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->doodleColor:I
+
+    invoke-static {v3}, Landroid/graphics/Color;->blue(I)I
+
+    move-result v3
+
+    invoke-static {p1, v1, v2, v3}, Landroid/graphics/Color;->argb(IIII)I
+
+    move-result v1
+
+    iput v1, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->doodleColor:I
+
+    .line 1083
+    return-void
+.end method
+
+.method public setDoodlePaintColor(I)V
+    .locals 5
+    .parameter "color"
+
+    .prologue
+    .line 1071
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v1, v1, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->doodleColorAlpha:I
+
+    invoke-static {p1}, Landroid/graphics/Color;->red(I)I
+
+    move-result v2
+
+    invoke-static {p1}, Landroid/graphics/Color;->green(I)I
+
+    move-result v3
+
+    invoke-static {p1}, Landroid/graphics/Color;->blue(I)I
+
+    move-result v4
+
+    invoke-static {v1, v2, v3, v4}, Landroid/graphics/Color;->argb(IIII)I
+
+    move-result v1
+
+    iput v1, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->doodleColor:I
+
+    .line 1072
+    return-void
+.end method
+
+.method public setDoodlePaintSize(I)V
+    .locals 3
+    .parameter "size"
+
+    .prologue
+    .line 1075
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    int-to-float v1, p1
+
+    iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
+
+    mul-float/2addr v1, v2
+
+    iput v1, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->doodlePaintSize:F
+
+    .line 1076
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodlePaint:Landroid/graphics/Paint;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v1, v1, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->doodlePaintSize:F
 
     invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStrokeWidth(F)V
 
-    .line 791
+    .line 1077
     return-void
+.end method
+
+.method public setEditMode()V
+    .locals 2
+
+    .prologue
+    const/4 v1, 0x0
+
+    .line 664
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->inputMethodManager:Landroid/view/inputmethod/InputMethodManager;
+
+    invoke-virtual {v0}, Landroid/view/inputmethod/InputMethodManager;->isSoftInputShown()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 665
+    invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->hideInputMethod()V
+
+    .line 667
+    :cond_0
+    invoke-direct {p0, v1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->setEditTextEnabled(Z)V
+
+    .line 668
+    iput v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
+
+    .line 669
+    return-void
+.end method
+
+.method public setEraserMode()V
+    .locals 1
+
+    .prologue
+    .line 656
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->inputMethodManager:Landroid/view/inputmethod/InputMethodManager;
+
+    invoke-virtual {v0}, Landroid/view/inputmethod/InputMethodManager;->isSoftInputShown()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 657
+    invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->hideInputMethod()V
+
+    .line 659
+    :cond_0
+    const/4 v0, 0x0
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->setEditTextEnabled(Z)V
+
+    .line 660
+    const/4 v0, 0x1
+
+    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
+
+    .line 661
+    return-void
+.end method
+
+.method public setEraserPaintSize(I)V
+    .locals 3
+    .parameter "size"
+
+    .prologue
+    .line 1057
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    int-to-float v1, p1
+
+    iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
+
+    mul-float/2addr v1, v2
+
+    iput v1, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->eraserPaintSize:F
+
+    .line 1058
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->eraserPaint:Landroid/graphics/Paint;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iget v1, v1, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->eraserPaintSize:F
+
+    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStrokeWidth(F)V
+
+    .line 1059
+    return-void
+.end method
+
+.method public setImageSourceBmp(Landroid/graphics/Bitmap;)V
+    .locals 3
+    .parameter "bmp"
+
+    .prologue
+    const/4 v2, 0x1
+
+    .line 1097
+    invoke-virtual {p1}, Landroid/graphics/Bitmap;->getWidth()I
+
+    move-result v0
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v1}, Landroid/graphics/Bitmap;->getWidth()I
+
+    move-result v1
+
+    if-ne v0, v1, :cond_0
+
+    invoke-virtual {p1}, Landroid/graphics/Bitmap;->getHeight()I
+
+    move-result v0
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v1}, Landroid/graphics/Bitmap;->getHeight()I
+
+    move-result v1
+
+    if-eq v0, v1, :cond_1
+
+    .line 1098
+    :cond_0
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v0}, Landroid/graphics/Bitmap;->getWidth()I
+
+    move-result v0
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->bitmap:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v1}, Landroid/graphics/Bitmap;->getHeight()I
+
+    move-result v1
+
+    invoke-static {p1, v0, v1, v2}, Landroid/graphics/Bitmap;->createScaledBitmap(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->imageSourceBmp:Landroid/graphics/Bitmap;
+
+    .line 1102
+    :goto_0
+    return-void
+
+    .line 1100
+    :cond_1
+    sget-object v0, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    invoke-virtual {p1, v0, v2}, Landroid/graphics/Bitmap;->copy(Landroid/graphics/Bitmap$Config;Z)Landroid/graphics/Bitmap;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->imageSourceBmp:Landroid/graphics/Bitmap;
+
+    goto :goto_0
 .end method
 
 .method public setOnDoodleChangeListener(Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;)V
@@ -3406,102 +5527,22 @@
     .parameter "listener"
 
     .prologue
-    .line 145
+    .line 157
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
 
-    .line 146
+    .line 158
     return-void
 .end method
 
-.method public setPaintAlpha(I)V
-    .locals 3
-    .parameter "alpha"
+.method public setOnDoodleViewChanged(Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleViewChanged;)V
+    .locals 0
+    .parameter "listener"
 
     .prologue
-    .line 820
-    iput p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mColorAlpha:I
+    .line 161
+    iput-object p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleViewChangeListener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleViewChanged;
 
-    .line 821
-    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleColor:I
-
-    invoke-static {v0}, Landroid/graphics/Color;->red(I)I
-
-    move-result v0
-
-    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleColor:I
-
-    invoke-static {v1}, Landroid/graphics/Color;->green(I)I
-
-    move-result v1
-
-    iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleColor:I
-
-    invoke-static {v2}, Landroid/graphics/Color;->blue(I)I
-
-    move-result v2
-
-    invoke-static {p1, v0, v1, v2}, Landroid/graphics/Color;->argb(IIII)I
-
-    move-result v0
-
-    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleColor:I
-
-    .line 822
-    return-void
-.end method
-
-.method public setPaintColor(I)V
-    .locals 4
-    .parameter "color"
-
-    .prologue
-    .line 809
-    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mColorAlpha:I
-
-    invoke-static {p1}, Landroid/graphics/Color;->red(I)I
-
-    move-result v1
-
-    invoke-static {p1}, Landroid/graphics/Color;->green(I)I
-
-    move-result v2
-
-    invoke-static {p1}, Landroid/graphics/Color;->blue(I)I
-
-    move-result v3
-
-    invoke-static {v0, v1, v2, v3}, Landroid/graphics/Color;->argb(IIII)I
-
-    move-result v0
-
-    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleColor:I
-
-    .line 810
-    return-void
-.end method
-
-.method public setPaintSize(I)V
-    .locals 2
-    .parameter "size"
-
-    .prologue
-    .line 814
-    int-to-float v0, p1
-
-    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mPaintScale:F
-
-    mul-float/2addr v0, v1
-
-    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodlePaintSize:F
-
-    .line 815
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodlePaint:Landroid/graphics/Paint;
-
-    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodlePaintSize:F
-
-    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStrokeWidth(F)V
-
-    .line 816
+    .line 162
     return-void
 .end method
 
@@ -3510,115 +5551,37 @@
     .parameter "x0"
 
     .prologue
-    .line 54
+    .line 58
     invoke-super {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->setPhotoBounds(Landroid/graphics/RectF;)V
 
     return-void
 .end method
 
-.method public setRedoFlag(Z)V
-    .locals 2
-    .parameter "redoFlag"
+.method public setShapeChange(II)V
+    .locals 1
+    .parameter "shapeID"
+    .parameter "color"
 
     .prologue
-    const/4 v1, 0x1
+    .line 1086
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
 
-    .line 549
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoDoodles:Ljava/util/Stack;
+    iput p1, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->selectedShapeId:I
 
-    invoke-virtual {v0}, Ljava/util/Stack;->size()I
+    .line 1087
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
 
-    move-result v0
+    iput p2, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->shapeColor:I
 
-    if-lez v0, :cond_1
-
-    .line 550
-    iput-boolean p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoFlag:Z
-
-    .line 551
-    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->invalidate()V
-
-    .line 553
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->saveMenuItem:Landroid/view/MenuItem;
-
-    invoke-interface {v0}, Landroid/view/MenuItem;->isEnabled()Z
-
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    .line 554
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->saveMenuItem:Landroid/view/MenuItem;
-
-    invoke-interface {v0, v1}, Landroid/view/MenuItem;->setEnabled(Z)Landroid/view/MenuItem;
-
-    .line 556
-    :cond_0
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->undoBtn:Landroid/widget/ImageButton;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setEnabled(Z)V
-
-    .line 558
-    :cond_1
+    .line 1088
     return-void
 .end method
 
-.method public setSaveMenuItem(Landroid/view/MenuItem;)V
-    .locals 2
-    .parameter "item"
+.method public setShapeMode()V
+    .locals 1
 
     .prologue
-    .line 167
-    iput-object p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->saveMenuItem:Landroid/view/MenuItem;
-
-    .line 168
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
-
-    invoke-virtual {v0}, Ljava/util/Vector;->isEmpty()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->textDoodle:Ljava/util/Vector;
-
-    invoke-virtual {v0}, Ljava/util/Vector;->isEmpty()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 169
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->saveMenuItem:Landroid/view/MenuItem;
-
-    const/4 v1, 0x0
-
-    invoke-interface {v0, v1}, Landroid/view/MenuItem;->setEnabled(Z)Landroid/view/MenuItem;
-
-    .line 173
-    :goto_0
-    return-void
-
-    .line 171
-    :cond_0
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->saveMenuItem:Landroid/view/MenuItem;
-
-    const/4 v1, 0x1
-
-    invoke-interface {v0, v1}, Landroid/view/MenuItem;->setEnabled(Z)Landroid/view/MenuItem;
-
-    goto :goto_0
-.end method
-
-.method public setShapeMode(Landroid/view/View;Landroid/widget/ImageButton;)V
-    .locals 4
-    .parameter "anchor"
-    .parameter "shapeButton"
-
-    .prologue
-    const/4 v3, 0x2
-
-    .line 607
+    .line 672
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->inputMethodManager:Landroid/view/inputmethod/InputMethodManager;
 
     invoke-virtual {v0}, Landroid/view/inputmethod/InputMethodManager;->isSoftInputShown()Z
@@ -3627,234 +5590,138 @@
 
     if-eqz v0, :cond_0
 
-    .line 608
+    .line 673
     invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->hideInputMethod()V
 
-    .line 609
-    invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->addTextString()V
-
-    .line 611
+    .line 675
     :cond_0
     const/4 v0, 0x0
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->setEditTextEnabled(Z)V
 
-    .line 612
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeBtn:Landroid/widget/ImageButton;
+    .line 676
+    const/4 v0, 0x2
 
-    if-nez v0, :cond_1
+    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
 
-    .line 613
-    iput-object p2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeBtn:Landroid/widget/ImageButton;
-
-    .line 615
-    :cond_1
-    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
-
-    if-ne v0, v3, :cond_3
-
-    .line 616
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mShapeSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;
-
-    if-nez v0, :cond_2
-
-    .line 617
-    new-instance v0, Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;
-
-    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getContext()Landroid/content/Context;
-
-    move-result-object v1
-
-    invoke-direct {v0, v1}, Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;-><init>(Landroid/content/Context;)V
-
-    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mShapeSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;
-
-    .line 618
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mShapeSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;
-
-    invoke-virtual {v0, p0}, Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;->setOnShapeChangeListener(Lcom/android/gallery3d/photoeditor/DoodleShapeDialog$OnShapeChangeListener;)V
-
-    .line 620
-    :cond_2
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mShapeSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;
-
-    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->screenWidth:I
-
-    iget-boolean v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isVertical:Z
-
-    invoke-virtual {v0, p1, v1, v2}, Lcom/android/gallery3d/photoeditor/DoodleShapeDialog;->show(Landroid/view/View;IZ)V
-
-    .line 622
-    :cond_3
-    iput v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
-
-    .line 623
+    .line 677
     return-void
 .end method
 
-.method public setTextMode(Landroid/view/View;)V
-    .locals 4
-    .parameter "anchor"
+.method public setTextMode()V
+    .locals 1
 
     .prologue
-    const/4 v3, 0x3
-
-    .line 626
+    .line 680
     const/4 v0, 0x1
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->setEditTextEnabled(Z)V
 
-    .line 627
-    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
+    .line 681
+    const/4 v0, 0x3
 
-    if-ne v0, v3, :cond_1
+    iput v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
 
-    .line 628
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mTextSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
-
-    if-nez v0, :cond_0
-
-    .line 629
-    new-instance v0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
-
-    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->getContext()Landroid/content/Context;
-
-    move-result-object v1
-
-    invoke-direct {v0, v1}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;-><init>(Landroid/content/Context;)V
-
-    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mTextSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
-
-    .line 630
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mTextSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
-
-    invoke-virtual {v0, p0}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->setOnTextSettingChangeListener(Lcom/android/gallery3d/photoeditor/DoodleTextDialog$OnTextSettingChangeListener;)V
-
-    .line 632
-    :cond_0
-    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mTextSettingDialog:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
-
-    iget v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->screenWidth:I
-
-    iget-boolean v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->isVertical:Z
-
-    invoke-virtual {v0, p1, v1, v2}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->show(Landroid/view/View;IZ)V
-
-    .line 634
-    :cond_1
-    iput v3, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodleMode:I
-
-    .line 635
+    .line 682
     return-void
 .end method
 
-.method public setUndoFlag(Z)V
+.method public setTextSettingChange(IFI)V
+    .locals 1
+    .parameter "selectedId"
+    .parameter "textSize"
+    .parameter "color"
+
+    .prologue
+    .line 1091
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iput p2, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->textSize:F
+
+    .line 1092
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iput p3, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->textColor:I
+
+    .line 1093
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->doodleParams:Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;
+
+    iput p1, v0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$DoodleParams;->selectedTextId:I
+
+    .line 1094
+    return-void
+.end method
+
+.method public undo(Z)Z
     .locals 3
     .parameter "undoFlag"
 
     .prologue
-    const/4 v2, 0x0
-
-    .line 529
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
-
-    invoke-virtual {v1}, Ljava/util/Vector;->size()I
-
-    move-result v1
-
-    if-lez v1, :cond_1
-
-    .line 530
-    iput-boolean p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mUndoFlag:Z
-
-    .line 531
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
-
-    invoke-virtual {v1}, Ljava/util/Vector;->lastElement()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Lcom/android/gallery3d/photoeditor/actions/Doodle;
-
-    .line 532
-    .local v0, removeDoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoDoodles:Ljava/util/Stack;
-
-    invoke-virtual {v1, v0}, Ljava/util/Stack;->add(Ljava/lang/Object;)Z
-
-    .line 533
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
-
-    invoke-virtual {v1, v0}, Ljava/util/Vector;->remove(Ljava/lang/Object;)Z
-
-    .line 534
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
-
-    invoke-interface {v1, v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;->onDoodleRemoved(Lcom/android/gallery3d/photoeditor/actions/Doodle;)V
-
-    .line 535
-    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->invalidate()V
-
-    .line 537
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
-
-    invoke-virtual {v1}, Ljava/util/Vector;->isEmpty()Z
-
-    move-result v1
-
-    if-eqz v1, :cond_0
-
-    .line 538
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->undoBtn:Landroid/widget/ImageButton;
-
-    invoke-virtual {v1, v2}, Landroid/widget/ImageButton;->setEnabled(Z)V
-
-    .line 539
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->saveMenuItem:Landroid/view/MenuItem;
-
-    invoke-interface {v1, v2}, Landroid/view/MenuItem;->setEnabled(Z)Landroid/view/MenuItem;
-
-    .line 542
-    :cond_0
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->redoBtn:Landroid/widget/ImageButton;
-
-    invoke-virtual {v1}, Landroid/widget/ImageButton;->isEnabled()Z
-
-    move-result v1
-
-    if-nez v1, :cond_1
-
-    .line 543
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->redoBtn:Landroid/widget/ImageButton;
-
-    const/4 v2, 0x1
-
-    invoke-virtual {v1, v2}, Landroid/widget/ImageButton;->setEnabled(Z)V
-
-    .line 546
-    .end local v0           #removeDoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
-    :cond_1
-    return-void
-.end method
-
-.method public updataShapeButton(Landroid/widget/ImageButton;)V
-    .locals 1
-    .parameter "button"
-
-    .prologue
-    .line 652
+    .line 614
     const/4 v0, 0x0
 
-    iput-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeBtn:Landroid/widget/ImageButton;
+    .line 615
+    .local v0, canUndo:Z
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
 
-    .line 653
-    iput-object p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->shapeBtn:Landroid/widget/ImageButton;
+    invoke-virtual {v2}, Ljava/util/Vector;->size()I
 
-    .line 654
-    iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->selectedShapeId:I
+    move-result v2
 
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->updataShapeButtonSelected(I)V
+    if-lez v2, :cond_0
 
-    .line 655
-    return-void
+    .line 616
+    iput-boolean p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mUndoFlag:Z
+
+    .line 617
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
+
+    invoke-virtual {v2}, Ljava/util/Vector;->lastElement()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/android/gallery3d/photoeditor/actions/Doodle;
+
+    .line 618
+    .local v1, removeDoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mRedoDoodles:Ljava/util/Stack;
+
+    invoke-virtual {v2, v1}, Ljava/util/Stack;->add(Ljava/lang/Object;)Z
+
+    .line 619
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
+
+    invoke-virtual {v2, v1}, Ljava/util/Vector;->remove(Ljava/lang/Object;)Z
+
+    .line 620
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->listener:Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;
+
+    invoke-interface {v2, v1}, Lcom/android/gallery3d/photoeditor/actions/DoodleView$OnDoodleChangeListener;->onDoodleRemoved(Lcom/android/gallery3d/photoeditor/actions/Doodle;)V
+
+    .line 621
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->invalidate()V
+
+    .line 623
+    iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->mDoodles:Ljava/util/Vector;
+
+    invoke-virtual {v2}, Ljava/util/Vector;->isEmpty()Z
+
+    move-result v2
+
+    if-nez v2, :cond_1
+
+    const/4 v0, 0x1
+
+    .line 627
+    .end local v1           #removeDoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+    :cond_0
+    :goto_0
+    return v0
+
+    .line 623
+    .restart local v1       #removeDoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
+    :cond_1
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method

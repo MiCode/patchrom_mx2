@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1988
+    .line 2179
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$1;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,11 +41,11 @@
     .locals 1
 
     .prologue
-    .line 1991
+    .line 2182
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$1;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->mReloadTask:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;
-    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$4700(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;
+    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$4900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;
 
     move-result-object v0
 
@@ -54,13 +54,13 @@
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$1;->this$2:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->mReloadTask:Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;
-    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$4700(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;
+    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;->access$4900(Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader;)Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;
 
     move-result-object v0
 
     invoke-virtual {v0}, Lcom/android/gallery3d/app/AlbumPage$SmartLayout$SmartDataLoader$ReloadTask;->notifyDirty()V
 
-    .line 1992
+    .line 2183
     :cond_0
     return-void
 .end method

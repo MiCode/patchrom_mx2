@@ -96,7 +96,7 @@
 
 .field static final TRANSACTION_isRadioOn:I = 0xb
 
-.field static final TRANSACTION_isRealIncomingCall:I = 0x34
+.field static final TRANSACTION_isRealIncomingCallAndFore:I = 0x34
 
 .field static final TRANSACTION_isRinging:I = 0x9
 
@@ -1504,7 +1504,7 @@
     invoke-virtual {p2, v7}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
     .line 490
-    invoke-virtual {p0}, Lcom/android/internal/telephony/ITelephony$Stub;->isRealIncomingCall()Z
+    invoke-virtual {p0}, Lcom/android/internal/telephony/ITelephony$Stub;->isRealIncomingCallAndFore()Z
 
     move-result v2
 

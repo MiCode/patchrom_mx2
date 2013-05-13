@@ -1,11 +1,14 @@
 .class Landroid/widget/AbsListView$7;
-.super Landroid/view/inputmethod/InputConnectionWrapper;
+.super Ljava/lang/Object;
 .source "AbsListView.java"
+
+# interfaces
+.implements Ljava/lang/Runnable;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/widget/AbsListView;->onCreateInputConnection(Landroid/view/inputmethod/EditorInfo;)Landroid/view/inputmethod/InputConnection;
+    value = Landroid/widget/AbsListView;->clearScrollingCache()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -19,109 +22,83 @@
 
 
 # direct methods
-.method constructor <init>(Landroid/widget/AbsListView;Landroid/view/inputmethod/InputConnection;Z)V
+.method constructor <init>(Landroid/widget/AbsListView;)V
     .locals 0
     .parameter
-    .parameter "x0"
-    .parameter "x1"
 
     .prologue
-    .line 6351
+    .line 5436
     iput-object p1, p0, Landroid/widget/AbsListView$7;->this$0:Landroid/widget/AbsListView;
 
-    invoke-direct {p0, p2, p3}, Landroid/view/inputmethod/InputConnectionWrapper;-><init>(Landroid/view/inputmethod/InputConnection;Z)V
+    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public performEditorAction(I)Z
-    .locals 4
-    .parameter "editorAction"
+.method public run()V
+    .locals 3
 
     .prologue
-    const/4 v1, 0x0
+    const/4 v2, 0x0
 
-    .line 6363
-    const/4 v2, 0x6
+    .line 5438
+    iget-object v0, p0, Landroid/widget/AbsListView$7;->this$0:Landroid/widget/AbsListView;
 
-    if-ne p1, v2, :cond_1
+    iget-boolean v0, v0, Landroid/widget/AbsListView;->mCachingStarted:Z
 
-    .line 6364
-    iget-object v2, p0, Landroid/widget/AbsListView$7;->this$0:Landroid/widget/AbsListView;
+    if-eqz v0, :cond_1
 
-    invoke-virtual {v2}, Landroid/widget/AbsListView;->getContext()Landroid/content/Context;
+    .line 5439
+    iget-object v0, p0, Landroid/widget/AbsListView$7;->this$0:Landroid/widget/AbsListView;
 
-    move-result-object v2
+    iget-object v1, p0, Landroid/widget/AbsListView$7;->this$0:Landroid/widget/AbsListView;
 
-    const-string v3, "input_method"
+    iput-boolean v2, v1, Landroid/widget/AbsListView;->mCachingActive:Z
 
-    invoke-virtual {v2, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    iput-boolean v2, v0, Landroid/widget/AbsListView;->mCachingStarted:Z
 
-    move-result-object v0
+    .line 5440
+    iget-object v0, p0, Landroid/widget/AbsListView$7;->this$0:Landroid/widget/AbsListView;
 
-    check-cast v0, Landroid/view/inputmethod/InputMethodManager;
+    #calls: Landroid/widget/AbsListView;->setChildrenDrawnWithCacheEnabled(Z)V
+    invoke-static {v0, v2}, Landroid/widget/AbsListView;->access$3200(Landroid/widget/AbsListView;Z)V
 
-    .line 6367
-    .local v0, imm:Landroid/view/inputmethod/InputMethodManager;
-    if-eqz v0, :cond_0
+    .line 5441
+    iget-object v0, p0, Landroid/widget/AbsListView$7;->this$0:Landroid/widget/AbsListView;
 
-    .line 6368
-    iget-object v2, p0, Landroid/widget/AbsListView$7;->this$0:Landroid/widget/AbsListView;
+    #getter for: Landroid/view/ViewGroup;->mPersistentDrawingCache:I
+    invoke-static {v0}, Landroid/widget/AbsListView;->access$3300(Landroid/widget/AbsListView;)I
 
-    invoke-virtual {v2}, Landroid/widget/AbsListView;->getWindowToken()Landroid/os/IBinder;
+    move-result v0
 
-    move-result-object v2
+    and-int/lit8 v0, v0, 0x2
 
-    invoke-virtual {v0, v2, v1}, Landroid/view/inputmethod/InputMethodManager;->hideSoftInputFromWindow(Landroid/os/IBinder;I)Z
+    if-nez v0, :cond_0
 
-    .line 6370
+    .line 5442
+    iget-object v0, p0, Landroid/widget/AbsListView$7;->this$0:Landroid/widget/AbsListView;
+
+    #calls: Landroid/widget/AbsListView;->setChildrenDrawingCacheEnabled(Z)V
+    invoke-static {v0, v2}, Landroid/widget/AbsListView;->access$3400(Landroid/widget/AbsListView;Z)V
+
+    .line 5444
     :cond_0
-    const/4 v1, 0x1
+    iget-object v0, p0, Landroid/widget/AbsListView$7;->this$0:Landroid/widget/AbsListView;
 
-    .line 6372
-    .end local v0           #imm:Landroid/view/inputmethod/InputMethodManager;
+    invoke-virtual {v0}, Landroid/widget/AbsListView;->isAlwaysDrawnWithCacheEnabled()Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    .line 5445
+    iget-object v0, p0, Landroid/widget/AbsListView$7;->this$0:Landroid/widget/AbsListView;
+
+    invoke-virtual {v0}, Landroid/widget/AbsListView;->invalidate()V
+
+    .line 5448
     :cond_1
-    return v1
-.end method
-
-.method public reportFullscreenMode(Z)Z
-    .locals 1
-    .parameter "enabled"
-
-    .prologue
-    .line 6356
-    iget-object v0, p0, Landroid/widget/AbsListView$7;->this$0:Landroid/widget/AbsListView;
-
-    #getter for: Landroid/widget/AbsListView;->mDefInputConnection:Landroid/view/inputmethod/InputConnection;
-    invoke-static {v0}, Landroid/widget/AbsListView;->access$3400(Landroid/widget/AbsListView;)Landroid/view/inputmethod/InputConnection;
-
-    move-result-object v0
-
-    invoke-interface {v0, p1}, Landroid/view/inputmethod/InputConnection;->reportFullscreenMode(Z)Z
-
-    move-result v0
-
-    return v0
-.end method
-
-.method public sendKeyEvent(Landroid/view/KeyEvent;)Z
-    .locals 1
-    .parameter "event"
-
-    .prologue
-    .line 6380
-    iget-object v0, p0, Landroid/widget/AbsListView$7;->this$0:Landroid/widget/AbsListView;
-
-    #getter for: Landroid/widget/AbsListView;->mDefInputConnection:Landroid/view/inputmethod/InputConnection;
-    invoke-static {v0}, Landroid/widget/AbsListView;->access$3400(Landroid/widget/AbsListView;)Landroid/view/inputmethod/InputConnection;
-
-    move-result-object v0
-
-    invoke-interface {v0, p1}, Landroid/view/inputmethod/InputConnection;->sendKeyEvent(Landroid/view/KeyEvent;)Z
-
-    move-result v0
-
-    return v0
+    return-void
 .end method

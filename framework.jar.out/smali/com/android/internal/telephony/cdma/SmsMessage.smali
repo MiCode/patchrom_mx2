@@ -544,7 +544,7 @@
     goto :goto_0
 .end method
 
-.method static declared-synchronized getNextMessageId()I
+.method private static declared-synchronized getNextMessageId()I
     .locals 6
 
     .prologue

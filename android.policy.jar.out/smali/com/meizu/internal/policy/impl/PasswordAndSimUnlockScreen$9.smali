@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 983
+    .line 1014
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$9;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 1
 
     .prologue
-    .line 986
+    .line 1017
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$9;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
@@ -52,19 +52,19 @@
 
     if-nez v0, :cond_0
 
-    .line 987
+    .line 1018
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$9;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     #calls: Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->setKeypadAsPoint()V
     invoke-static {v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->access$000(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)V
 
-    .line 990
+    .line 1021
     :cond_0
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$9;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     #calls: Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->clearInput()V
     invoke-static {v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->access$100(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)V
 
-    .line 991
+    .line 1022
     return-void
 .end method

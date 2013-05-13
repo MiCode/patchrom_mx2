@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 266
+    .line 283
     iput-object p1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer$MyDataModelListener;->this$0:Lcom/android/gallery3d/ui/AlbumSlotRenderer;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .parameter "x1"
 
     .prologue
-    .line 266
+    .line 283
     invoke-direct {p0, p1}, Lcom/android/gallery3d/ui/AlbumSlotRenderer$MyDataModelListener;-><init>(Lcom/android/gallery3d/ui/AlbumSlotRenderer;)V
 
     return-void
@@ -53,7 +53,7 @@
     .locals 1
 
     .prologue
-    .line 269
+    .line 286
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer$MyDataModelListener;->this$0:Lcom/android/gallery3d/ui/AlbumSlotRenderer;
 
     #getter for: Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSlotView:Lcom/android/gallery3d/ui/SlotView;
@@ -63,7 +63,7 @@
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/SlotView;->invalidate()V
 
-    .line 270
+    .line 287
     return-void
 .end method
 
@@ -72,7 +72,7 @@
     .parameter "size"
 
     .prologue
-    .line 274
+    .line 291
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer$MyDataModelListener;->this$0:Lcom/android/gallery3d/ui/AlbumSlotRenderer;
 
     #getter for: Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSlotView:Lcom/android/gallery3d/ui/SlotView;
@@ -82,6 +82,6 @@
 
     invoke-virtual {v0, p1}, Lcom/android/gallery3d/ui/SlotView;->setSlotCount(I)Z
 
-    .line 275
+    .line 292
     return-void
 .end method

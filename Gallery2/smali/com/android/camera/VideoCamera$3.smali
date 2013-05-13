@@ -1,6 +1,9 @@
 .class Lcom/android/camera/VideoCamera$3;
-.super Landroid/telephony/PhoneStateListener;
+.super Ljava/lang/Object;
 .source "VideoCamera.java"
+
+# interfaces
+.implements Ljava/lang/Runnable;
 
 
 # annotations
@@ -24,40 +27,25 @@
     .parameter
 
     .prologue
-    .line 454
+    .line 361
     iput-object p1, p0, Lcom/android/camera/VideoCamera$3;->this$0:Lcom/android/camera/VideoCamera;
 
-    invoke-direct {p0}, Landroid/telephony/PhoneStateListener;-><init>()V
+    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onCallStateChanged(ILjava/lang/String;)V
+.method public run()V
     .locals 1
-    .parameter "state"
-    .parameter "incomingNumber"
 
     .prologue
-    .line 457
-    packed-switch p1, :pswitch_data_0
-
-    .line 463
-    :goto_0
-    return-void
-
-    .line 459
-    :pswitch_0
+    .line 364
     iget-object v0, p0, Lcom/android/camera/VideoCamera$3;->this$0:Lcom/android/camera/VideoCamera;
 
     invoke-virtual {v0}, Lcom/android/camera/VideoCamera;->finish()V
 
-    goto :goto_0
-
-    .line 457
-    :pswitch_data_0
-    .packed-switch 0x1
-        :pswitch_0
-    .end packed-switch
+    .line 365
+    return-void
 .end method

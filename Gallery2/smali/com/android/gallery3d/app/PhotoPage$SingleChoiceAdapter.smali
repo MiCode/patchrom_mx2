@@ -62,29 +62,29 @@
     .end annotation
 
     .prologue
-    .line 1036
+    .line 1083
     .local p0, this:Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;,"Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter<TT;>;"
     .local p2, objects:Ljava/util/List;,"Ljava/util/List<TT;>;"
     invoke-direct {p0}, Landroid/widget/BaseAdapter;-><init>()V
 
-    .line 1037
+    .line 1084
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0, p2}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
 
     iput-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->mObjects:Ljava/util/List;
 
-    .line 1038
+    .line 1085
     invoke-virtual {p0, p3}, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->setSelection(I)V
 
-    .line 1039
+    .line 1086
     invoke-static {p1}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->mInflater:Landroid/view/LayoutInflater;
 
-    .line 1040
+    .line 1087
     return-void
 .end method
 
@@ -102,7 +102,7 @@
     .end annotation
 
     .prologue
-    .line 1032
+    .line 1079
     .local p0, this:Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;,"Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter<TT;>;"
     .local p2, objects:[Ljava/lang/Object;,"[TT;"
     if-nez p2, :cond_0
@@ -114,13 +114,13 @@
     :goto_0
     invoke-direct {p0, p1, v0, p3}, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;-><init>(Landroid/content/Context;Ljava/util/List;I)V
 
-    .line 1033
+    .line 1080
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->mContext:Landroid/content/Context;
 
-    .line 1034
+    .line 1081
     return-void
 
-    .line 1032
+    .line 1079
     :cond_0
     invoke-static {p2}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
 
@@ -135,16 +135,16 @@
     .locals 1
 
     .prologue
-    .line 1080
+    .line 1127
     .local p0, this:Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;,"Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter<TT;>;"
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->mObjects:Ljava/util/List;
 
     if-nez v0, :cond_0
 
-    .line 1081
+    .line 1128
     const/4 v0, 0x0
 
-    .line 1083
+    .line 1130
     :goto_0
     return v0
 
@@ -168,7 +168,7 @@
     .end annotation
 
     .prologue
-    .line 1051
+    .line 1098
     .local p0, this:Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;,"Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter<TT;>;"
     invoke-virtual {p0}, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->getCount()I
 
@@ -178,10 +178,10 @@
 
     if-le p1, v0, :cond_0
 
-    .line 1052
+    .line 1099
     const/4 v0, 0x0
 
-    .line 1054
+    .line 1101
     :goto_0
     return-object v0
 
@@ -200,7 +200,7 @@
     .parameter "position"
 
     .prologue
-    .line 1087
+    .line 1134
     .local p0, this:Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;,"Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter<TT;>;"
     int-to-long v0, p1
 
@@ -219,24 +219,24 @@
 
     const/4 v3, 0x1
 
-    .line 1091
+    .line 1138
     if-nez p2, :cond_0
 
-    .line 1092
+    .line 1139
     iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->mInflater:Landroid/view/LayoutInflater;
 
-    const v2, 0x7f040025
+    const v2, 0x10900e5
 
     invoke-virtual {v1, v2, v4}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
     move-result-object p2
 
-    .line 1093
+    .line 1140
     new-instance v0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;
 
     invoke-direct {v0, p0, v4}, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;-><init>(Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;Lcom/android/gallery3d/app/PhotoPage$1;)V
 
-    .line 1094
+    .line 1141
     .local v0, vh:Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;,"Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter<TT;>.ViewHolder;"
     const v1, 0x1020014
 
@@ -248,22 +248,22 @@
 
     iput-object v1, v0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;->mCheckText:Landroid/widget/CheckedTextView;
 
-    .line 1095
+    .line 1142
     iget-object v1, v0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;->mCheckText:Landroid/widget/CheckedTextView;
 
     invoke-virtual {v1, v3}, Landroid/widget/CheckedTextView;->setSingleLine(Z)V
 
-    .line 1096
+    .line 1143
     iget-object v1, v0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;->mCheckText:Landroid/widget/CheckedTextView;
 
     sget-object v2, Landroid/text/TextUtils$TruncateAt;->MARQUEE:Landroid/text/TextUtils$TruncateAt;
 
     invoke-virtual {v1, v2}, Landroid/widget/CheckedTextView;->setEllipsize(Landroid/text/TextUtils$TruncateAt;)V
 
-    .line 1097
+    .line 1144
     invoke-virtual {p2, v0}, Landroid/view/View;->setTag(Ljava/lang/Object;)V
 
-    .line 1099
+    .line 1146
     .end local v0           #vh:Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;,"Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter<TT;>.ViewHolder;"
     :cond_0
     invoke-virtual {p2}, Landroid/view/View;->getTag()Ljava/lang/Object;
@@ -272,7 +272,7 @@
 
     check-cast v0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;
 
-    .line 1100
+    .line 1147
     .restart local v0       #vh:Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;,"Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter<TT;>.ViewHolder;"
     iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->mObjects:Ljava/util/List;
 
@@ -282,7 +282,7 @@
 
     if-eqz v1, :cond_1
 
-    .line 1101
+    .line 1148
     iget-object v1, v0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;->mCheckText:Landroid/widget/CheckedTextView;
 
     iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->mObjects:Ljava/util/List;
@@ -297,62 +297,28 @@
 
     invoke-virtual {v1, v2}, Landroid/widget/CheckedTextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 1102
+    .line 1149
     iget v1, p0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->mInWhich:I
 
     if-ne v1, p1, :cond_2
 
-    .line 1103
+    .line 1150
     iget-object v1, v0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;->mCheckText:Landroid/widget/CheckedTextView;
 
     invoke-virtual {v1, v3}, Landroid/widget/CheckedTextView;->setChecked(Z)V
 
-    .line 1104
-    iget-object v1, v0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;->mCheckText:Landroid/widget/CheckedTextView;
-
-    iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v2
-
-    const v3, 0x7f080053
-
-    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getColor(I)I
-
-    move-result v2
-
-    invoke-virtual {v1, v2}, Landroid/widget/CheckedTextView;->setTextColor(I)V
-
-    .line 1110
+    .line 1155
     :cond_1
     :goto_0
     return-object p2
 
-    .line 1106
+    .line 1152
     :cond_2
     iget-object v1, v0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;->mCheckText:Landroid/widget/CheckedTextView;
 
     const/4 v2, 0x0
 
     invoke-virtual {v1, v2}, Landroid/widget/CheckedTextView;->setChecked(Z)V
-
-    .line 1107
-    iget-object v1, v0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;->mCheckText:Landroid/widget/CheckedTextView;
-
-    iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v2
-
-    const v3, 0x7f080052
-
-    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getColor(I)I
-
-    move-result v2
-
-    invoke-virtual {v1, v2}, Landroid/widget/CheckedTextView;->setTextColor(I)V
 
     goto :goto_0
 .end method
@@ -369,28 +335,28 @@
     .end annotation
 
     .prologue
-    .line 1058
+    .line 1105
     .local p0, this:Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;,"Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter<TT;>;"
     .local p1, objects:Ljava/util/List;,"Ljava/util/List<TT;>;"
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->mObjects:Ljava/util/List;
 
     if-eqz v0, :cond_0
 
-    .line 1059
+    .line 1106
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->mObjects:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->clear()V
 
-    .line 1061
+    .line 1108
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->mObjects:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->addAll(Ljava/util/Collection;)Z
 
-    .line 1062
+    .line 1109
     invoke-virtual {p0}, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->notifyDataSetChanged()V
 
-    .line 1063
+    .line 1110
     return-void
 .end method
 
@@ -399,25 +365,25 @@
     .parameter "which"
 
     .prologue
-    .line 1066
+    .line 1113
     .local p0, this:Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;,"Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter<TT;>;"
     if-gez p1, :cond_1
 
-    .line 1067
+    .line 1114
     const/4 p1, 0x0
 
-    .line 1071
+    .line 1118
     :cond_0
     :goto_0
     iput p1, p0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->mInWhich:I
 
-    .line 1072
+    .line 1119
     invoke-virtual {p0}, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->notifyDataSetChanged()V
 
-    .line 1073
+    .line 1120
     return-void
 
-    .line 1068
+    .line 1115
     :cond_1
     invoke-virtual {p0}, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->getCount()I
 
@@ -425,7 +391,7 @@
 
     if-le p1, v0, :cond_0
 
-    .line 1069
+    .line 1116
     invoke-virtual {p0}, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;->getCount()I
 
     move-result v0

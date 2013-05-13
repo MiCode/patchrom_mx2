@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 453
+    .line 459
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumSetPage$2;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
 
     iput-object p2, p0, Lcom/android/gallery3d/app/AlbumSetPage$2;->val$path:Lcom/android/gallery3d/data/Path;
@@ -48,20 +48,20 @@
     .parameter "event"
 
     .prologue
-    .line 456
+    .line 462
     invoke-virtual {p2}, Landroid/view/DragEvent;->getAction()I
 
     move-result v0
 
     sparse-switch v0, :sswitch_data_0
 
-    .line 465
+    .line 471
     :goto_0
     const/4 v0, 0x0
 
     return v0
 
-    .line 459
+    .line 465
     :sswitch_0
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$2;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
 
@@ -70,7 +70,7 @@
 
     goto :goto_0
 
-    .line 462
+    .line 468
     :sswitch_1
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$2;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
 
@@ -81,7 +81,7 @@
 
     goto :goto_0
 
-    .line 456
+    .line 462
     nop
 
     :sswitch_data_0

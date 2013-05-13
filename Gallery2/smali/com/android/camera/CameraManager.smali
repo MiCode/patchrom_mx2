@@ -64,7 +64,7 @@
     .locals 3
 
     .prologue
-    .line 110
+    .line 111
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     .line 46
@@ -74,18 +74,18 @@
 
     iput-object v1, p0, Lcom/android/camera/CameraManager;->mSig:Landroid/os/ConditionVariable;
 
-    .line 111
+    .line 112
     new-instance v0, Landroid/os/HandlerThread;
 
     const-string v1, "Camera Handler Thread"
 
     invoke-direct {v0, v1}, Landroid/os/HandlerThread;-><init>(Ljava/lang/String;)V
 
-    .line 112
+    .line 113
     .local v0, ht:Landroid/os/HandlerThread;
     invoke-virtual {v0}, Landroid/os/HandlerThread;->start()V
 
-    .line 113
+    .line 114
     new-instance v1, Lcom/android/camera/CameraManager$CameraHandler;
 
     invoke-virtual {v0}, Landroid/os/HandlerThread;->getLooper()Landroid/os/Looper;
@@ -96,7 +96,7 @@
 
     iput-object v1, p0, Lcom/android/camera/CameraManager;->mCameraHandler:Landroid/os/Handler;
 
-    .line 114
+    .line 115
     return-void
 .end method
 
@@ -121,17 +121,6 @@
     iput-object p1, p0, Lcom/android/camera/CameraManager;->mCamera:Landroid/hardware/Camera;
 
     return-object p1
-.end method
-
-.method static synthetic access$1000(Lcom/android/camera/CameraManager;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 41
-    iget v0, p0, Lcom/android/camera/CameraManager;->mFlashStatus:I
-
-    return v0
 .end method
 
 .method static synthetic access$1002(Lcom/android/camera/CameraManager;I)I
@@ -357,7 +346,7 @@
     .locals 1
 
     .prologue
-    .line 107
+    .line 108
     sget-object v0, Lcom/android/camera/CameraManager;->sCameraManager:Lcom/android/camera/CameraManager;
 
     return-object v0
@@ -372,29 +361,29 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 334
+    .line 339
     invoke-static {p1}, Landroid/hardware/Camera;->open(I)Landroid/hardware/Camera;
 
     move-result-object v1
 
     iput-object v1, p0, Lcom/android/camera/CameraManager;->mCamera:Landroid/hardware/Camera;
 
-    .line 335
+    .line 340
     iget-object v1, p0, Lcom/android/camera/CameraManager;->mCamera:Landroid/hardware/Camera;
 
     if-eqz v1, :cond_0
 
-    .line 336
+    .line 341
     new-instance v1, Lcom/android/camera/CameraManager$CameraProxy;
 
     invoke-direct {v1, p0, v0}, Lcom/android/camera/CameraManager$CameraProxy;-><init>(Lcom/android/camera/CameraManager;Lcom/android/camera/CameraManager$1;)V
 
     iput-object v1, p0, Lcom/android/camera/CameraManager;->mCameraProxy:Lcom/android/camera/CameraManager$CameraProxy;
 
-    .line 337
+    .line 342
     iget-object v0, p0, Lcom/android/camera/CameraManager;->mCameraProxy:Lcom/android/camera/CameraManager$CameraProxy;
 
-    .line 339
+    .line 344
     :cond_0
     return-object v0
 .end method

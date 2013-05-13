@@ -49,13 +49,12 @@
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen$FormatChangeObserver;->this$0:Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;
 
     #calls: Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->setDateFormat()V
-    invoke-static {v0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->access$400(Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;)V
+    invoke-static {v0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->access$300(Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;)V
 
     .line 139
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen$FormatChangeObserver;->this$0:Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;
 
-    #calls: Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->updateTime()V
-    invoke-static {v0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->access$200(Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;)V
+    invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->updateTime()V
 
     .line 140
     return-void

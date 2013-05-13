@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 201
+    .line 199
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$WallpaperObserver$1;->this$1:Lcom/meizu/internal/policy/impl/LockViewBaseSe$WallpaperObserver;
 
     iput-object p2, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$WallpaperObserver$1;->val$action:Ljava/lang/String;
@@ -46,7 +46,7 @@
     .locals 2
 
     .prologue
-    .line 204
+    .line 202
     const-string v0, "android.intent.action.LOCK_WALLPAPER_CHANGED"
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$WallpaperObserver$1;->val$action:Ljava/lang/String;
@@ -57,7 +57,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 205
+    .line 203
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$WallpaperObserver$1;->this$1:Lcom/meizu/internal/policy/impl/LockViewBaseSe$WallpaperObserver;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$WallpaperObserver;->this$0:Lcom/meizu/internal/policy/impl/LockViewBaseSe;
@@ -76,10 +76,10 @@
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 207
+    .line 205
     invoke-static {}, Ljava/lang/System;->gc()V
 
-    .line 209
+    .line 207
     :cond_0
     return-void
 .end method

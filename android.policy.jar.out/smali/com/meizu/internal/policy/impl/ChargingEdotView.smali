@@ -22,17 +22,7 @@
 
 .field private static final COST_OF_ILLUMINANT_OUT:I = 0xc8
 
-.field private static final DIP_ANIMATE_EXTERNAL_EDGE:I = 0xa
-
-.field private static final DIP_BATTERY_CAPACITY:I = 0x5c
-
 .field private static final DIP_BATTERY_CAPACITY_GAP:I = 0x0
-
-.field private static final DIP_BOX_BOTTOM_HEIGHT:I = 0xb
-
-.field private static final DIP_MAX_EDOT_RADIUS:I = 0x35
-
-.field private static final EDOT_TYPE_COUNT:I = 0x3
 
 .field private static final INTERVAL_BORN_EDOT:I = 0x2bc
 
@@ -41,8 +31,6 @@
 .field private static final INTERVAL_UPDATE_EDOT_FOR_DIED:I = 0x10
 
 .field private static final LOW_LEVEL:I = 0xa
-
-.field private static final MAX_EDOT_COUNT:I = 0x6
 
 .field private static final MAX_ILLUMINANT_COUNT:I = 0x4
 
@@ -66,16 +54,16 @@
 
 .field private static final MSG_UPDATE_ILLUMINANT_FOR_OUT:I = 0x3ef
 
-.field private static final PX_ANIMATE_FADE_IN_SPACE:I = 0x32
-
-.field private static final PX_ANIMATE_FADE_OUT_SPACE:I = 0x1e
-
-.field private static final PX_ANIMATE_VERTICAL_SPACE:I = 0x1ea
-
 .field public static final TAG_CHARGING:Ljava/lang/String; = "KeyguardCharging"
 
 
 # instance fields
+.field private ANIMATE_FADE_IN_SPACE:I
+
+.field private ANIMATE_FADE_OUT_SPACE:I
+
+.field private ANIMATE_VERTICAL_SPACE:I
+
 .field private final ANIM_BORNING:I
 
 .field private final ANIM_CHARGING:I
@@ -83,6 +71,18 @@
 .field private final ANIM_PLUGGING:I
 
 .field private final ANIM_QUITING:I
+
+.field private BATTERY_CAPACITY:I
+
+.field private BOX_BOTTOM_HEIGHT:I
+
+.field private EDOT_TYPE_COUNT:I
+
+.field private GAP_BETWEEN_BATTERY_AND_EDOT:I
+
+.field private MAX_EDOT_COUNT:I
+
+.field private MAX_HORIZONTAL_EDOT_RADIUS:I
 
 .field mAnimMode:I
 
@@ -173,14 +173,14 @@
     .parameter "context"
 
     .prologue
-    .line 284
+    .line 297
     const/4 v0, 0x0
 
     const/4 v1, 0x0
 
     invoke-direct {p0, p1, v0, v1}, Lcom/meizu/internal/policy/impl/ChargingEdotView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 285
+    .line 298
     return-void
 .end method
 
@@ -190,25 +190,23 @@
     .parameter "attrs"
 
     .prologue
-    .line 288
+    .line 301
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, p2, v0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 289
+    .line 302
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
-    .locals 12
+    .locals 11
     .parameter "context"
     .parameter "attrs"
     .parameter "defStyle"
 
     .prologue
-    const-wide/16 v10, 0x0
-
-    const/4 v9, 0x6
+    const-wide/16 v9, 0x0
 
     const/4 v6, 0x1
 
@@ -216,112 +214,105 @@
 
     const/4 v7, 0x0
 
-    .line 254
+    .line 255
     invoke-direct {p0, p1, p2, p3}, Landroid/view/View;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 83
+    .line 84
     new-array v3, v8, [I
 
     fill-array-data v3, :array_0
 
     iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->sLightBegin:[I
 
-    .line 84
+    .line 85
     new-array v3, v8, [I
 
     fill-array-data v3, :array_1
 
     iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->sLightEnd:[I
 
-    .line 85
+    .line 86
     new-array v3, v8, [I
 
     fill-array-data v3, :array_2
 
     iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->sIlluminantOutBegin:[I
 
-    .line 86
+    .line 87
     new-array v3, v8, [I
 
     fill-array-data v3, :array_3
 
     iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->sIlluminantOutEnd:[I
 
-    .line 87
+    .line 88
     iput v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIM_CHARGING:I
 
-    .line 88
+    .line 89
     const/16 v3, 0x10
 
     iput v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIM_BORNING:I
 
-    .line 89
+    .line 90
     const/16 v3, 0x100
 
     iput v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIM_QUITING:I
 
-    .line 90
+    .line 91
     const/16 v3, 0x1000
 
     iput v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIM_PLUGGING:I
 
-    .line 96
+    .line 97
     iput v7, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
-    .line 97
+    .line 98
     sget-object v3, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->noPlugging:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
-    .line 98
+    .line 99
     iput v7, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mPluggingFrameCount:I
 
-    .line 99
+    .line 100
     iput v7, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mQuittingFrameCount:I
 
-    .line 119
+    .line 120
     new-array v3, v8, [Landroid/graphics/drawable/Drawable;
 
     iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminants:[Landroid/graphics/drawable/Drawable;
 
-    .line 156
+    .line 157
     iput-boolean v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mToRight:Z
 
-    .line 158
+    .line 159
     const/4 v3, -0x1
 
     iput v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mLastEdotType:I
 
-    .line 159
+    .line 160
     iput v7, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mTypeCount:I
 
-    .line 161
+    .line 162
     const-wide/16 v3, -0x1
 
     iput-wide v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mStopTime:J
 
-    .line 163
+    .line 164
     new-instance v3, Landroid/util/DisplayMetrics;
 
     invoke-direct {v3}, Landroid/util/DisplayMetrics;-><init>()V
 
     iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDisplayMetrics:Landroid/util/DisplayMetrics;
 
-    .line 168
-    new-instance v3, Ljava/util/ArrayList;
-
-    invoke-direct {v3, v9}, Ljava/util/ArrayList;-><init>(I)V
-
-    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotList:Ljava/util/ArrayList;
-
-    .line 203
+    .line 204
     new-instance v3, Ljava/util/ArrayList;
 
     invoke-direct {v3, v8}, Ljava/util/ArrayList;-><init>(I)V
 
     iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminantInfoList:Ljava/util/ArrayList;
 
-    .line 210
+    .line 211
     new-instance v3, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;
 
     const/4 v4, 0x0
@@ -330,43 +321,30 @@
 
     iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
-    .line 496
+    .line 509
     iput v7, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminantDuration:I
 
-    .line 497
-    iput-wide v10, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminantStartTime:J
+    .line 510
+    iput-wide v9, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminantStartTime:J
 
-    .line 498
+    .line 511
     const-wide/16 v3, -0x2710
 
     iput-wide v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminantQuitTop:J
 
-    .line 499
-    iput-wide v10, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryOutStartTime:J
+    .line 512
+    iput-wide v9, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryOutStartTime:J
 
-    .line 500
+    .line 513
     iput v7, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryAlpha:I
 
-    .line 565
-    const/16 v3, 0x35
+    .line 578
+    iget v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->MAX_HORIZONTAL_EDOT_RADIUS:I
 
     iput v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mTest:I
 
-    .line 888
+    .line 901
     iput-boolean v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDrawBattery:Z
-
-    .line 256
-    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v3
-
-    const v4, 0x10800e6
-
-    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v3
-
-    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryFill:Landroid/graphics/drawable/Drawable;
 
     .line 257
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getResources()Landroid/content/res/Resources;
@@ -379,35 +357,33 @@
 
     move-result-object v3
 
-    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mWarningBatteryFill:Landroid/graphics/drawable/Drawable;
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryFill:Landroid/graphics/drawable/Drawable;
 
     .line 258
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getResources()Landroid/content/res/Resources;
 
     move-result-object v3
 
-    const v4, 0x10800e0
+    const v4, 0x10800e8
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v3
+
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mWarningBatteryFill:Landroid/graphics/drawable/Drawable;
+
+    .line 259
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x10800e1
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v3
 
     iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryBox:Landroid/graphics/drawable/Drawable;
-
-    .line 259
-    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminants:[Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v4
-
-    const v5, 0x10800e2
-
-    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v4
-
-    aput-object v4, v3, v7
 
     .line 260
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminants:[Landroid/graphics/drawable/Drawable;
@@ -422,29 +398,27 @@
 
     move-result-object v4
 
-    aput-object v4, v3, v6
+    aput-object v4, v3, v7
 
     .line 261
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminants:[Landroid/graphics/drawable/Drawable;
 
-    const/4 v4, 0x2
-
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v5
+    move-result-object v4
 
-    const v6, 0x10800e4
+    const v5, 0x10800e4
 
-    invoke-virtual {v5, v6}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    move-result-object v5
+    move-result-object v4
 
-    aput-object v5, v3, v4
+    aput-object v4, v3, v6
 
     .line 262
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminants:[Landroid/graphics/drawable/Drawable;
 
-    const/4 v4, 0x3
+    const/4 v4, 0x2
 
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getResources()Landroid/content/res/Resources;
 
@@ -459,6 +433,36 @@
     aput-object v5, v3, v4
 
     .line 263
+    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminants:[Landroid/graphics/drawable/Drawable;
+
+    const/4 v4, 0x3
+
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v5
+
+    const v6, 0x10800e6
+
+    invoke-virtual {v5, v6}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v5
+
+    aput-object v5, v3, v4
+
+    .line 264
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x10800eb
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v3
+
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotSmall:Landroid/graphics/drawable/Drawable;
+
+    .line 265
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getResources()Landroid/content/res/Resources;
 
     move-result-object v3
@@ -469,9 +473,9 @@
 
     move-result-object v3
 
-    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotSmall:Landroid/graphics/drawable/Drawable;
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotMin:Landroid/graphics/drawable/Drawable;
 
-    .line 264
+    .line 266
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getResources()Landroid/content/res/Resources;
 
     move-result-object v3
@@ -482,48 +486,199 @@
 
     move-result-object v3
 
-    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotMin:Landroid/graphics/drawable/Drawable;
-
-    .line 265
-    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v3
-
-    const v4, 0x10800e8
-
-    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v3
-
     iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotMiddle:Landroid/graphics/drawable/Drawable;
 
-    .line 267
+    .line 270
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getContext()Landroid/content/Context;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x105014a
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v3
+
+    iput v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->BATTERY_CAPACITY:I
+
+    .line 271
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getContext()Landroid/content/Context;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x105014b
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v3
+
+    iput v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->BOX_BOTTOM_HEIGHT:I
+
+    .line 272
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getContext()Landroid/content/Context;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x105014c
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v3
+
+    iput v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->MAX_HORIZONTAL_EDOT_RADIUS:I
+
+    .line 273
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getContext()Landroid/content/Context;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x105014d
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v3
+
+    iput v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->GAP_BETWEEN_BATTERY_AND_EDOT:I
+
+    .line 274
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getContext()Landroid/content/Context;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x105014e
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v3
+
+    iput v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIMATE_VERTICAL_SPACE:I
+
+    .line 275
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getContext()Landroid/content/Context;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x105014f
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v3
+
+    iput v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIMATE_FADE_OUT_SPACE:I
+
+    .line 276
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getContext()Landroid/content/Context;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x1050150
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v3
+
+    iput v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIMATE_FADE_IN_SPACE:I
+
+    .line 277
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getContext()Landroid/content/Context;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x10e003c
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getInteger(I)I
+
+    move-result v3
+
+    iput v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->MAX_EDOT_COUNT:I
+
+    .line 278
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getContext()Landroid/content/Context;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x10e003d
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getInteger(I)I
+
+    move-result v3
+
+    iput v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->EDOT_TYPE_COUNT:I
+
+    .line 280
     iput v7, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryLevel:I
 
-    .line 269
+    .line 281
+    new-instance v3, Ljava/util/ArrayList;
+
+    iget v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->MAX_EDOT_COUNT:I
+
+    invoke-direct {v3, v4}, Ljava/util/ArrayList;-><init>(I)V
+
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotList:Ljava/util/ArrayList;
+
+    .line 282
     const/4 v0, 0x0
 
     .local v0, i:I
     :goto_0
-    if-ge v0, v9, :cond_0
+    iget v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->MAX_EDOT_COUNT:I
 
-    .line 270
+    if-ge v0, v3, :cond_0
+
+    .line 283
     new-instance v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
 
     invoke-direct {v1, p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;-><init>(Lcom/meizu/internal/policy/impl/ChargingEdotView;)V
 
-    .line 271
+    .line 284
     .local v1, info:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotList:Ljava/util/ArrayList;
 
     invoke-virtual {v3, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 269
+    .line 282
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 274
+    .line 287
     .end local v1           #info:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     :cond_0
     const/4 v0, 0x0
@@ -531,23 +686,23 @@
     :goto_1
     if-ge v0, v8, :cond_1
 
-    .line 275
+    .line 288
     new-instance v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;
 
     invoke-direct {v1, p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;-><init>(Lcom/meizu/internal/policy/impl/ChargingEdotView;)V
 
-    .line 276
+    .line 289
     .local v1, info:Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminantInfoList:Ljava/util/ArrayList;
 
     invoke-virtual {v3, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 274
+    .line 287
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_1
 
-    .line 279
+    .line 292
     .end local v1           #info:Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;
     :cond_1
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mContext:Landroid/content/Context;
@@ -560,7 +715,7 @@
 
     check-cast v2, Landroid/view/WindowManager;
 
-    .line 280
+    .line 293
     .local v2, windowManager:Landroid/view/WindowManager;
     invoke-interface {v2}, Landroid/view/WindowManager;->getDefaultDisplay()Landroid/view/Display;
 
@@ -570,10 +725,10 @@
 
     invoke-virtual {v3, v4}, Landroid/view/Display;->getMetrics(Landroid/util/DisplayMetrics;)V
 
-    .line 281
+    .line 294
     return-void
 
-    .line 83
+    .line 84
     nop
 
     :array_0
@@ -584,7 +739,7 @@
         0xbt 0x0t 0x0t 0x0t
     .end array-data
 
-    .line 84
+    .line 85
     :array_1
     .array-data 0x4
         0x15t 0x0t 0x0t 0x0t
@@ -593,7 +748,7 @@
         0x15t 0x0t 0x0t 0x0t
     .end array-data
 
-    .line 85
+    .line 86
     :array_2
     .array-data 0x4
         0x1t 0x0t 0x0t 0x0t
@@ -602,7 +757,7 @@
         0x5t 0x0t 0x0t 0x0t
     .end array-data
 
-    .line 86
+    .line 87
     :array_3
     .array-data 0x4
         0xat 0x0t 0x0t 0x0t
@@ -738,18 +893,18 @@
     .locals 15
 
     .prologue
-    .line 567
+    .line 580
     iget v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
     and-int/lit8 v11, v11, 0x10
 
     if-nez v11, :cond_0
 
-    .line 662
+    .line 675
     :goto_0
     return-void
 
-    .line 569
+    .line 582
     :cond_0
     iget-object v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminants:[Landroid/graphics/drawable/Drawable;
 
@@ -761,7 +916,7 @@
 
     move-result-object v5
 
-    .line 570
+    .line 583
     .local v5, rcIlluminant:Landroid/graphics/Rect;
     iget-object v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryBox:Landroid/graphics/drawable/Drawable;
 
@@ -769,7 +924,7 @@
 
     move-result-object v4
 
-    .line 571
+    .line 584
     .local v4, rcBatteryBox:Landroid/graphics/Rect;
     iget v11, v5, Landroid/graphics/Rect;->bottom:I
 
@@ -779,7 +934,7 @@
 
     if-nez v11, :cond_2
 
-    .line 572
+    .line 585
     :cond_1
     iget-object v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
@@ -787,7 +942,7 @@
 
     invoke-virtual {v11, v12}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 573
+    .line 586
     iget-object v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     iget-object v12, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -804,11 +959,11 @@
 
     goto :goto_0
 
-    .line 577
+    .line 590
     :cond_2
     const/4 v2, 0x0
 
-    .line 578
+    .line 591
     .local v2, i:I
     const/4 v2, 0x0
 
@@ -821,7 +976,7 @@
 
     if-ge v2, v11, :cond_4
 
-    .line 579
+    .line 592
     iget-object v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotList:Ljava/util/ArrayList;
 
     invoke-virtual {v11, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -830,18 +985,18 @@
 
     check-cast v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
 
-    .line 580
+    .line 593
     .local v1, edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     iget-boolean v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->isLive:Z
 
     if-nez v11, :cond_d
 
-    .line 581
+    .line 594
     const/4 v11, 0x1
 
     iput-boolean v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->isLive:Z
 
-    .line 584
+    .line 597
     invoke-static {}, Ljava/lang/Math;->random()D
 
     move-result-wide v11
@@ -850,7 +1005,9 @@
 
     mul-double/2addr v11, v13
 
-    const-wide/high16 v13, 0x4008
+    iget v13, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->EDOT_TYPE_COUNT:I
+
+    int-to-double v13, v13
 
     rem-double/2addr v11, v13
 
@@ -858,24 +1015,24 @@
 
     iput v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->edotType:I
 
-    .line 585
+    .line 598
     iget v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mLastEdotType:I
 
     iget v12, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->edotType:I
 
     if-eq v11, v12, :cond_6
 
-    .line 586
+    .line 599
     iget v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->edotType:I
 
     iput v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mLastEdotType:I
 
-    .line 587
+    .line 600
     const/4 v11, 0x0
 
     iput v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mTypeCount:I
 
-    .line 596
+    .line 609
     :goto_2
     iget v11, v5, Landroid/graphics/Rect;->left:I
 
@@ -885,17 +1042,17 @@
 
     div-int/lit8 v3, v11, 0x2
 
-    .line 597
+    .line 610
     .local v3, middle:I
     const/4 v0, 0x0
 
-    .line 598
+    .line 611
     .local v0, edotH:I
     iget v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->edotType:I
 
     if-nez v11, :cond_8
 
-    .line 599
+    .line 612
     iget-object v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotSmall:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v11}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
@@ -906,25 +1063,25 @@
 
     sub-int/2addr v3, v11
 
-    .line 600
+    .line 613
     iget-object v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotSmall:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v11}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
 
     move-result v0
 
-    .line 601
+    .line 614
     const/16 v11, 0xaf0
 
     iput v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->verticalDuration:I
 
-    .line 612
+    .line 625
     :goto_3
     iget-object v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
     iput v3, v11, Landroid/graphics/Point;->x:I
 
-    .line 613
+    .line 626
     iget-object v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
     iget v12, v5, Landroid/graphics/Rect;->bottom:I
@@ -933,26 +1090,26 @@
 
     iput v12, v11, Landroid/graphics/Point;->y:I
 
-    .line 614
+    .line 627
     iget-object v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
     iget v11, v11, Landroid/graphics/Point;->y:I
 
     iput v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->startY:I
 
-    .line 615
+    .line 628
     iget-object v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
     iget v11, v11, Landroid/graphics/Point;->x:I
 
     iput v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->startX:I
 
-    .line 616
+    .line 629
     iget-boolean v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mToRight:Z
 
     iput-boolean v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->toRight:Z
 
-    .line 617
+    .line 630
     iget-boolean v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mToRight:Z
 
     if-nez v11, :cond_a
@@ -962,24 +1119,28 @@
     :goto_4
     iput-boolean v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mToRight:Z
 
-    .line 619
-    iget v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->verticalDuration:I
+    .line 632
+    iget v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIMATE_FADE_IN_SPACE:I
 
-    mul-int/lit8 v11, v11, 0x32
+    iget v12, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->verticalDuration:I
 
-    div-int/lit16 v11, v11, 0x1ea
+    mul-int/2addr v11, v12
+
+    iget v12, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIMATE_VERTICAL_SPACE:I
+
+    div-int/2addr v11, v12
 
     iput v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alphaDuration:I
 
-    .line 620
+    .line 633
     const/4 v11, 0x0
 
     iput v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alpha:I
 
-    .line 623
+    .line 636
     const/16 v11, 0x8
 
-    const/16 v12, 0x35
+    iget v12, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->MAX_HORIZONTAL_EDOT_RADIUS:I
 
     invoke-direct {p0, v11, v12}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getRandomPosition(II)I
 
@@ -987,29 +1148,31 @@
 
     iput v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->radius:I
 
-    .line 626
+    .line 639
     iget v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->radius:I
 
     const/16 v12, 0x14
 
     if-ge v11, v12, :cond_b
 
-    .line 628
+    .line 641
     iget v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->verticalDuration:I
 
     div-int/lit8 v11, v11, 0x4
 
     iput v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->horizontalDuration:I
 
-    .line 636
+    .line 649
     :cond_3
     :goto_5
     const/4 v11, 0x0
 
     iput v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->horizontalAnimType:I
 
-    .line 637
-    const/high16 v11, 0x43f5
+    .line 650
+    iget v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIMATE_VERTICAL_SPACE:I
+
+    int-to-float v11, v11
 
     iget v12, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->verticalDuration:I
 
@@ -1019,7 +1182,7 @@
 
     iput v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->lastV:F
 
-    .line 641
+    .line 654
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v11
@@ -1030,7 +1193,7 @@
 
     iput-wide v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alphaStartTime:J
 
-    .line 650
+    .line 663
     .end local v0           #edotH:I
     .end local v1           #edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     .end local v3           #middle:I
@@ -1043,54 +1206,38 @@
 
     if-eq v2, v11, :cond_5
 
-    .line 651
+    .line 664
     iget v11, v4, Landroid/graphics/Rect;->left:I
 
-    const/high16 v12, 0x4120
-
-    iget-object v13, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDisplayMetrics:Landroid/util/DisplayMetrics;
-
-    iget v13, v13, Landroid/util/DisplayMetrics;->density:F
-
-    mul-float/2addr v12, v13
-
-    float-to-int v12, v12
+    iget v12, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->GAP_BETWEEN_BATTERY_AND_EDOT:I
 
     sub-int v8, v11, v12
 
-    .line 652
+    .line 665
     .local v8, uLeft:I
     iget v11, v4, Landroid/graphics/Rect;->right:I
 
-    const/high16 v12, 0x4120
-
-    iget-object v13, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDisplayMetrics:Landroid/util/DisplayMetrics;
-
-    iget v13, v13, Landroid/util/DisplayMetrics;->density:F
-
-    mul-float/2addr v12, v13
-
-    float-to-int v12, v12
+    iget v12, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->GAP_BETWEEN_BATTERY_AND_EDOT:I
 
     add-int v9, v11, v12
 
-    .line 653
+    .line 666
     .local v9, uRight:I
     iget v11, v4, Landroid/graphics/Rect;->bottom:I
 
     add-int/lit8 v10, v11, -0xa
 
-    .line 654
+    .line 667
     .local v10, uTop:I
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getBottom()I
 
     move-result v7
 
-    .line 655
+    .line 668
     .local v7, uBottom:I
     invoke-virtual {p0, v8, v10, v9, v7}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->invalidate(IIII)V
 
-    .line 659
+    .line 672
     .end local v7           #uBottom:I
     .end local v8           #uLeft:I
     .end local v9           #uRight:I
@@ -1098,7 +1245,7 @@
     :cond_5
     const/16 v6, 0x2bc
 
-    .line 660
+    .line 673
     .local v6, time:I
     iget-object v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
@@ -1106,7 +1253,7 @@
 
     invoke-virtual {v11, v12}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 661
+    .line 674
     iget-object v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     iget-object v12, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -1123,7 +1270,7 @@
 
     goto/16 :goto_0
 
-    .line 588
+    .line 601
     .end local v6           #time:I
     .restart local v1       #edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     :cond_6
@@ -1133,12 +1280,12 @@
 
     if-lt v11, v12, :cond_7
 
-    .line 589
+    .line 602
     const/4 v11, 0x0
 
     iput v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mTypeCount:I
 
-    .line 590
+    .line 603
     iget v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->edotType:I
 
     add-int/lit8 v11, v11, 0x1
@@ -1151,7 +1298,7 @@
 
     goto/16 :goto_2
 
-    .line 592
+    .line 605
     :cond_7
     iget v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mTypeCount:I
 
@@ -1161,7 +1308,7 @@
 
     goto/16 :goto_2
 
-    .line 602
+    .line 615
     .restart local v0       #edotH:I
     .restart local v3       #middle:I
     :cond_8
@@ -1171,7 +1318,7 @@
 
     if-ne v11, v12, :cond_9
 
-    .line 603
+    .line 616
     iget-object v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotMin:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v11}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
@@ -1182,12 +1329,12 @@
 
     sub-int/2addr v3, v11
 
-    .line 604
+    .line 617
     const/16 v11, 0xe10
 
     iput v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->verticalDuration:I
 
-    .line 605
+    .line 618
     iget-object v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotMin:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v11}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
@@ -1196,7 +1343,7 @@
 
     goto/16 :goto_3
 
-    .line 607
+    .line 620
     :cond_9
     iget-object v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotMiddle:Landroid/graphics/drawable/Drawable;
 
@@ -1208,12 +1355,12 @@
 
     sub-int/2addr v3, v11
 
-    .line 608
+    .line 621
     const/16 v11, 0xfa0
 
     iput v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->verticalDuration:I
 
-    .line 609
+    .line 622
     iget-object v11, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotMiddle:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v11}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
@@ -1222,13 +1369,13 @@
 
     goto/16 :goto_3
 
-    .line 617
+    .line 630
     :cond_a
     const/4 v11, 0x0
 
     goto/16 :goto_4
 
-    .line 629
+    .line 642
     :cond_b
     iget v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->radius:I
 
@@ -1242,7 +1389,7 @@
 
     if-ge v11, v12, :cond_c
 
-    .line 631
+    .line 644
     iget v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->verticalDuration:I
 
     div-int/lit8 v11, v11, 0x6
@@ -1251,7 +1398,7 @@
 
     goto/16 :goto_5
 
-    .line 632
+    .line 645
     :cond_c
     iget v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->radius:I
 
@@ -1259,7 +1406,7 @@
 
     if-lt v11, v12, :cond_3
 
-    .line 634
+    .line 647
     iget v11, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->verticalDuration:I
 
     div-int/lit8 v11, v11, 0x6
@@ -1268,7 +1415,7 @@
 
     goto/16 :goto_5
 
-    .line 578
+    .line 591
     .end local v0           #edotH:I
     .end local v3           #middle:I
     :cond_d
@@ -1283,15 +1430,15 @@
     .parameter "max"
 
     .prologue
-    .line 558
+    .line 571
     if-gt p2, p1, :cond_0
 
-    .line 562
+    .line 575
     .end local p1
     :goto_0
     return p1
 
-    .line 560
+    .line 573
     .restart local p1
     :cond_0
     new-instance v0, Ljava/util/Random;
@@ -1302,7 +1449,7 @@
 
     invoke-direct {v0, v2, v3}, Ljava/util/Random;-><init>(J)V
 
-    .line 561
+    .line 574
     .local v0, rand:Ljava/util/Random;
     invoke-virtual {v0}, Ljava/util/Random;->nextInt()I
 
@@ -1321,7 +1468,7 @@
     .local v1, ret:I
     move p1, v1
 
-    .line 562
+    .line 575
     goto :goto_0
 .end method
 
@@ -1333,17 +1480,17 @@
 
     const/16 v7, 0x15
 
-    .line 997
+    .line 1010
     iget v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mPluggingFrameCount:I
 
     add-int/lit8 v5, v5, 0x1
 
     iput v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mPluggingFrameCount:I
 
-    .line 998
+    .line 1011
     const/4 v3, 0x0
 
-    .line 999
+    .line 1012
     .local v3, more:Z
     const/4 v1, 0x0
 
@@ -1353,7 +1500,7 @@
 
     if-ge v1, v5, :cond_2
 
-    .line 1000
+    .line 1013
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminantInfoList:Ljava/util/ArrayList;
 
     invoke-virtual {v5, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -1362,7 +1509,7 @@
 
     check-cast v2, Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;
 
-    .line 1001
+    .line 1014
     .local v2, info:Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;
     iget v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mPluggingFrameCount:I
 
@@ -1372,10 +1519,10 @@
 
     if-ge v5, v6, :cond_0
 
-    .line 1002
+    .line 1015
     const/4 v3, 0x1
 
-    .line 1004
+    .line 1017
     :cond_0
     iget v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mPluggingFrameCount:I
 
@@ -1393,7 +1540,7 @@
 
     if-lt v5, v6, :cond_1
 
-    .line 1005
+    .line 1018
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->sLightEnd:[I
 
     aget v5, v5, v1
@@ -1406,7 +1553,7 @@
 
     add-int/lit8 v0, v5, 0x1
 
-    .line 1006
+    .line 1019
     .local v0, duration:I
     iget v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mPluggingFrameCount:I
 
@@ -1418,7 +1565,7 @@
 
     add-int/lit8 v4, v5, 0x1
 
-    .line 1007
+    .line 1020
     .local v4, rate:I
     mul-int/lit16 v5, v4, 0xff
 
@@ -1426,10 +1573,10 @@
 
     iput v5, v2, Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;->mAlpha:I
 
-    .line 1008
+    .line 1021
     if-nez v1, :cond_1
 
-    .line 1009
+    .line 1022
     mul-int/lit8 v5, v4, 0x64
 
     div-int/2addr v5, v0
@@ -1438,7 +1585,7 @@
 
     iput v5, v2, Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;->mScaleX:F
 
-    .line 999
+    .line 1012
     .end local v0           #duration:I
     .end local v4           #rate:I
     :cond_1
@@ -1446,7 +1593,7 @@
 
     goto :goto_0
 
-    .line 1014
+    .line 1027
     .end local v2           #info:Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;
     :cond_2
     iget v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mPluggingFrameCount:I
@@ -1459,10 +1606,10 @@
 
     if-gt v5, v7, :cond_3
 
-    .line 1015
+    .line 1028
     const/16 v0, 0xb
 
-    .line 1016
+    .line 1029
     .restart local v0       #duration:I
     iget v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mPluggingFrameCount:I
 
@@ -1470,7 +1617,7 @@
 
     add-int/lit8 v4, v5, 0x1
 
-    .line 1017
+    .line 1030
     .restart local v4       #rate:I
     mul-int/lit16 v5, v4, 0xff
 
@@ -1478,7 +1625,7 @@
 
     iput v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryAlpha:I
 
-    .line 1019
+    .line 1032
     .end local v0           #duration:I
     .end local v4           #rate:I
     :cond_3
@@ -1486,19 +1633,19 @@
 
     if-ge v5, v7, :cond_4
 
-    .line 1020
+    .line 1033
     const/4 v3, 0x1
 
-    .line 1022
+    .line 1035
     :cond_4
     if-eqz v3, :cond_6
 
-    .line 1023
+    .line 1036
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v5, v8}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1024
+    .line 1037
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -1511,40 +1658,40 @@
 
     invoke-virtual {v5, v6, v7, v8}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
-    .line 1034
+    .line 1047
     :cond_5
     :goto_1
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->invalidate()V
 
-    .line 1035
+    .line 1048
     return-void
 
-    .line 1026
+    .line 1039
     :cond_6
     const/4 v5, 0x0
 
     iput v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mPluggingFrameCount:I
 
-    .line 1027
+    .line 1040
     iget v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
     and-int/lit16 v5, v5, -0x1001
 
     iput v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
-    .line 1028
+    .line 1041
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     sget-object v6, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->noPlugging:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     if-ne v5, v6, :cond_7
 
-    .line 1029
+    .line 1042
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->realStopChargingAndPlugin()V
 
     goto :goto_1
 
-    .line 1030
+    .line 1043
     :cond_7
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
@@ -1552,7 +1699,7 @@
 
     if-ne v5, v6, :cond_5
 
-    .line 1031
+    .line 1044
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->startChargingEdot()V
 
     goto :goto_1
@@ -1564,17 +1711,17 @@
     .prologue
     const/16 v7, 0x3ef
 
-    .line 932
+    .line 945
     iget v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mQuittingFrameCount:I
 
     add-int/lit8 v5, v5, 0x1
 
     iput v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mQuittingFrameCount:I
 
-    .line 933
+    .line 946
     const/4 v3, 0x0
 
-    .line 934
+    .line 947
     .local v3, more:Z
     const/4 v1, 0x0
 
@@ -1584,7 +1731,7 @@
 
     if-ge v1, v5, :cond_2
 
-    .line 935
+    .line 948
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminantInfoList:Ljava/util/ArrayList;
 
     invoke-virtual {v5, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -1593,7 +1740,7 @@
 
     check-cast v2, Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;
 
-    .line 936
+    .line 949
     .local v2, info:Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;
     iget v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mQuittingFrameCount:I
 
@@ -1603,10 +1750,10 @@
 
     if-ge v5, v6, :cond_0
 
-    .line 937
+    .line 950
     const/4 v3, 0x1
 
-    .line 939
+    .line 952
     :cond_0
     iget v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mQuittingFrameCount:I
 
@@ -1624,7 +1771,7 @@
 
     if-lt v5, v6, :cond_1
 
-    .line 940
+    .line 953
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->sIlluminantOutEnd:[I
 
     aget v5, v5, v1
@@ -1637,7 +1784,7 @@
 
     add-int/lit8 v0, v5, 0x1
 
-    .line 941
+    .line 954
     .local v0, duration:I
     iget v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mQuittingFrameCount:I
 
@@ -1649,7 +1796,7 @@
 
     add-int/lit8 v4, v5, 0x1
 
-    .line 942
+    .line 955
     .local v4, rate:I
     mul-int/lit16 v5, v4, 0xff
 
@@ -1659,7 +1806,7 @@
 
     iput v5, v2, Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;->mAlpha:I
 
-    .line 934
+    .line 947
     .end local v0           #duration:I
     .end local v4           #rate:I
     :cond_1
@@ -1667,26 +1814,26 @@
 
     goto :goto_0
 
-    .line 945
+    .line 958
     .end local v2           #info:Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;
     :cond_2
     if-nez v3, :cond_3
 
-    .line 947
+    .line 960
     iget v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
     and-int/lit8 v5, v5, -0x2
 
     iput v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
-    .line 948
+    .line 961
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     const/16 v6, 0x3e9
 
     invoke-virtual {v5, v6}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 949
+    .line 962
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -1699,20 +1846,20 @@
 
     invoke-virtual {v5, v6}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 954
+    .line 967
     :goto_1
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->invalidate()V
 
-    .line 955
+    .line 968
     return-void
 
-    .line 951
+    .line 964
     :cond_3
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v5, v7}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 952
+    .line 965
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -1732,7 +1879,7 @@
     .locals 3
 
     .prologue
-    .line 488
+    .line 501
     const/4 v1, 0x0
 
     .local v1, i:I
@@ -1745,7 +1892,7 @@
 
     if-ge v1, v2, :cond_1
 
-    .line 489
+    .line 502
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotList:Ljava/util/ArrayList;
 
     invoke-virtual {v2, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -1754,29 +1901,29 @@
 
     check-cast v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
 
-    .line 490
+    .line 503
     .local v0, edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     iget-boolean v2, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->isLive:Z
 
     if-eqz v2, :cond_0
 
-    .line 491
+    .line 504
     const/4 v2, 0x0
 
     iput-boolean v2, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->isLive:Z
 
-    .line 488
+    .line 501
     :cond_0
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 493
+    .line 506
     .end local v0           #edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     :cond_1
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->invalidate()V
 
-    .line 494
+    .line 507
     return-void
 .end method
 
@@ -1784,29 +1931,29 @@
     .locals 4
 
     .prologue
-    .line 518
+    .line 531
     iget v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
     or-int/lit16 v0, v0, 0x100
 
     iput v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
-    .line 519
+    .line 532
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->stopBornEdot()V
 
-    .line 522
+    .line 535
     const/16 v0, 0xc8
 
     iput v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminantDuration:I
 
-    .line 523
+    .line 536
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminantStartTime:J
 
-    .line 524
+    .line 537
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -1821,12 +1968,12 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
-    .line 525
+    .line 538
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mQuittingFrameCount:I
 
-    .line 526
+    .line 539
     return-void
 .end method
 
@@ -1836,18 +1983,18 @@
     .prologue
     const-wide/16 v8, -0x1
 
-    .line 452
+    .line 465
     iget-wide v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mStopTime:J
 
     cmp-long v4, v4, v8
 
     if-nez v4, :cond_0
 
-    .line 464
+    .line 477
     :goto_0
     return-void
 
-    .line 454
+    .line 467
     :cond_0
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
@@ -1857,7 +2004,7 @@
 
     sub-long v2, v4, v6
 
-    .line 455
+    .line 468
     .local v2, offset:J
     const/4 v1, 0x0
 
@@ -1871,7 +2018,7 @@
 
     if-ge v1, v4, :cond_2
 
-    .line 456
+    .line 469
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotList:Ljava/util/ArrayList;
 
     invoke-virtual {v4, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -1880,40 +2027,40 @@
 
     check-cast v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
 
-    .line 457
+    .line 470
     .local v0, edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     iget-boolean v4, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->isLive:Z
 
     if-eqz v4, :cond_1
 
-    .line 458
+    .line 471
     iget-wide v4, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alphaStartTime:J
 
     add-long/2addr v4, v2
 
     iput-wide v4, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alphaStartTime:J
 
-    .line 459
+    .line 472
     iget-wide v4, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->horizontalStartTime:J
 
     add-long/2addr v4, v2
 
     iput-wide v4, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->horizontalStartTime:J
 
-    .line 460
+    .line 473
     iget-wide v4, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->verticalStartTime:J
 
     add-long/2addr v4, v2
 
     iput-wide v4, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->verticalStartTime:J
 
-    .line 455
+    .line 468
     :cond_1
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_1
 
-    .line 463
+    .line 476
     .end local v0           #edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     :cond_2
     iput-wide v8, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mStopTime:J
@@ -1922,16 +2069,16 @@
 .end method
 
 .method private startEdoitDiedAnim()V
-    .locals 11
+    .locals 12
 
     .prologue
-    const/16 v10, 0x3ed
+    const/16 v11, 0x3ed
 
-    const/16 v9, 0xff
+    const/16 v10, 0xff
 
-    const/high16 v8, 0x3f80
+    const/high16 v9, 0x3f80
 
-    .line 780
+    .line 793
     const/4 v2, 0x0
 
     .local v2, i:I
@@ -1944,7 +2091,7 @@
 
     if-ge v2, v6, :cond_6
 
-    .line 781
+    .line 794
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotList:Ljava/util/ArrayList;
 
     invoke-virtual {v6, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -1953,19 +2100,19 @@
 
     check-cast v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
 
-    .line 782
+    .line 795
     .local v1, edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     iget-boolean v6, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->isLive:Z
 
     if-nez v6, :cond_0
 
-    .line 780
+    .line 793
     :goto_1
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 784
+    .line 797
     :cond_0
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
@@ -1975,7 +2122,7 @@
 
     iput-wide v6, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->horizontalStartTime:J
 
-    .line 785
+    .line 798
     iget v6, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->startY:I
 
     iget-object v7, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
@@ -1986,15 +2133,17 @@
 
     int-to-float v6, v6
 
-    const/high16 v7, 0x43f5
+    iget v7, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIMATE_VERTICAL_SPACE:I
+
+    int-to-float v7, v7
 
     div-float/2addr v6, v7
 
-    sub-float v4, v8, v6
+    sub-float v4, v9, v6
 
-    .line 786
+    .line 799
     .local v4, rate:F
-    invoke-static {v4, v8}, Ljava/lang/Math;->min(FF)F
+    invoke-static {v4, v9}, Ljava/lang/Math;->min(FF)F
 
     move-result v6
 
@@ -2004,33 +2153,35 @@
 
     move-result v4
 
-    .line 787
+    .line 800
     const/high16 v6, 0x447a
 
     mul-float/2addr v6, v4
 
     float-to-int v0, v6
 
-    .line 788
+    .line 801
     .local v0, duration:I
     const/16 v6, 0x384
 
     if-lt v0, v6, :cond_3
 
-    .line 789
+    .line 802
     add-int/lit16 v0, v0, -0xc8
 
-    .line 793
+    .line 806
     :cond_1
     :goto_2
     iput v0, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->verticalDuration:I
 
     iput v0, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->horizontalDuration:I
 
-    .line 794
-    iget v6, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->startY:I
+    .line 807
+    iget v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIMATE_VERTICAL_SPACE:I
 
-    rsub-int v6, v6, 0x1ea
+    iget v7, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->startY:I
+
+    sub-int/2addr v6, v7
 
     iget-object v7, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
@@ -2040,7 +2191,7 @@
 
     iput v6, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->spaceForDiedY:I
 
-    .line 797
+    .line 810
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminants:[Landroid/graphics/drawable/Drawable;
 
     const/4 v7, 0x0
@@ -2051,7 +2202,7 @@
 
     move-result-object v5
 
-    .line 798
+    .line 811
     .local v5, rcIlluminant:Landroid/graphics/Rect;
     iget v6, v5, Landroid/graphics/Rect;->left:I
 
@@ -2061,13 +2212,13 @@
 
     div-int/lit8 v3, v6, 0x2
 
-    .line 799
+    .line 812
     .local v3, middle:I
     iget v6, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->edotType:I
 
     if-nez v6, :cond_4
 
-    .line 800
+    .line 813
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotSmall:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v6}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
@@ -2078,7 +2229,7 @@
 
     sub-int/2addr v3, v6
 
-    .line 807
+    .line 820
     :goto_3
     iget-object v6, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
@@ -2088,10 +2239,10 @@
 
     iput v6, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->spaceForDiedX:I
 
-    .line 809
+    .line 822
     iget v6, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alpha:I
 
-    if-ge v6, v9, :cond_2
+    if-ge v6, v10, :cond_2
 
     iget-object v6, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
@@ -2099,16 +2250,18 @@
 
     iget v7, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->startY:I
 
-    add-int/lit8 v7, v7, -0x32
+    iget v8, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIMATE_FADE_IN_SPACE:I
+
+    sub-int/2addr v7, v8
 
     add-int/lit8 v7, v7, -0x14
 
     if-lt v6, v7, :cond_2
 
-    .line 810
-    iput v9, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alpha:I
+    .line 823
+    iput v10, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alpha:I
 
-    .line 812
+    .line 825
     :cond_2
     iget-object v6, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
@@ -2116,19 +2269,19 @@
 
     iput v6, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->startX:I
 
-    .line 813
+    .line 826
     iget-object v6, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
     iget v6, v6, Landroid/graphics/Point;->y:I
 
     iput v6, v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->startY:I
 
-    .line 816
+    .line 829
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->invalidate()V
 
-    goto :goto_1
+    goto/16 :goto_1
 
-    .line 790
+    .line 803
     .end local v3           #middle:I
     .end local v5           #rcIlluminant:Landroid/graphics/Rect;
     :cond_3
@@ -2136,12 +2289,12 @@
 
     if-lt v0, v6, :cond_1
 
-    .line 791
+    .line 804
     add-int/lit8 v0, v0, -0x64
 
     goto :goto_2
 
-    .line 801
+    .line 814
     .restart local v3       #middle:I
     .restart local v5       #rcIlluminant:Landroid/graphics/Rect;
     :cond_4
@@ -2151,7 +2304,7 @@
 
     if-ne v6, v7, :cond_5
 
-    .line 802
+    .line 815
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotMin:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v6}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
@@ -2164,7 +2317,7 @@
 
     goto :goto_3
 
-    .line 804
+    .line 817
     :cond_5
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotMiddle:Landroid/graphics/drawable/Drawable;
 
@@ -2178,7 +2331,7 @@
 
     goto :goto_3
 
-    .line 819
+    .line 832
     .end local v0           #duration:I
     .end local v1           #edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     .end local v3           #middle:I
@@ -2187,14 +2340,14 @@
     :cond_6
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
-    invoke-virtual {v6, v10}, Landroid/os/Handler;->removeMessages(I)V
+    invoke-virtual {v6, v11}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 820
+    .line 833
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     iget-object v7, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
-    invoke-virtual {v7, v10}, Landroid/os/Handler;->obtainMessage(I)Landroid/os/Message;
+    invoke-virtual {v7, v11}, Landroid/os/Handler;->obtainMessage(I)Landroid/os/Message;
 
     move-result-object v7
 
@@ -2202,7 +2355,7 @@
 
     invoke-virtual {v6, v7, v8, v9}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
-    .line 822
+    .line 835
     return-void
 .end method
 
@@ -2212,19 +2365,19 @@
     .prologue
     const/16 v2, 0x3ec
 
-    .line 482
+    .line 495
     iget v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
     and-int/lit8 v0, v0, -0x11
 
     iput v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
-    .line 483
+    .line 496
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v2}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 484
+    .line 497
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -2235,7 +2388,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 485
+    .line 498
     return-void
 .end method
 
@@ -2251,12 +2404,12 @@
 
     const/4 v6, 0x0
 
-    .line 961
+    .line 974
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v1
 
-    .line 962
+    .line 975
     .local v1, current:J
     iget-wide v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryOutStartTime:J
 
@@ -2268,7 +2421,7 @@
 
     div-float v3, v4, v5
 
-    .line 963
+    .line 976
     .local v3, rate:F
     invoke-static {v3, v8}, Ljava/lang/Math;->min(FF)F
 
@@ -2280,62 +2433,62 @@
 
     move-result v3
 
-    .line 964
+    .line 977
     mul-float/2addr v3, v3
 
-    .line 965
+    .line 978
     const/high16 v4, 0x437f
 
     mul-float/2addr v4, v3
 
     float-to-int v0, v4
 
-    .line 966
+    .line 979
     .local v0, alpha:I
     rsub-int v4, v0, 0xff
 
     iput v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryAlpha:I
 
-    .line 969
+    .line 982
     cmpl-float v4, v3, v8
 
     if-nez v4, :cond_1
 
-    .line 970
+    .line 983
     iget v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
     and-int/lit16 v4, v4, -0x101
 
     iput v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
-    .line 971
+    .line 984
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     sget-object v5, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->noPlugging:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     if-eq v4, v5, :cond_0
 
-    .line 973
+    .line 986
     iput-boolean v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDelayChargingAnimting:Z
 
-    .line 974
+    .line 987
     const/4 v4, 0x1
 
     iget-boolean v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDrawBattery:Z
 
     invoke-virtual {p0, v4, v5}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->setVisible(ZZ)V
 
-    .line 976
+    .line 989
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v4, v7}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 977
+    .line 990
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v4, v9}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 978
+    .line 991
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -2346,30 +2499,30 @@
 
     invoke-virtual {v4, v5}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 979
+    .line 992
     const/16 v4, 0x1000
 
     iput v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
-    .line 980
+    .line 993
     iput v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mPluggingFrameCount:I
 
-    .line 982
+    .line 995
     const-string v4, "KeyguardCharging"
 
     const-string v5, "updateBatteryBoxOut and plug again"
 
     invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 994
+    .line 1007
     :goto_0
     return-void
 
-    .line 986
+    .line 999
     :cond_0
     invoke-virtual {p0, v6, v6}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->setVisible(ZZ)V
 
-    .line 987
+    .line 1000
     const-string v4, "KeyguardCharging"
 
     const-string v5, "updateBatteryBoxOut and The end "
@@ -2378,7 +2531,7 @@
 
     goto :goto_0
 
-    .line 990
+    .line 1003
     :cond_1
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryBox:Landroid/graphics/drawable/Drawable;
 
@@ -2388,12 +2541,12 @@
 
     invoke-virtual {p0, v4}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->invalidate(Landroid/graphics/Rect;)V
 
-    .line 991
+    .line 1004
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v4, v7}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 992
+    .line 1005
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -2413,7 +2566,7 @@
     .locals 27
 
     .prologue
-    .line 665
+    .line 678
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
@@ -2424,15 +2577,15 @@
 
     if-nez v23, :cond_0
 
-    .line 774
+    .line 787
     :goto_0
     return-void
 
-    .line 667
+    .line 680
     :cond_0
     const/4 v12, 0x1
 
-    .line 668
+    .line 681
     .local v12, isAlldead:Z
     move-object/from16 v0, p0
 
@@ -2444,7 +2597,7 @@
 
     move-result-object v15
 
-    .line 669
+    .line 682
     .local v15, rcBatteryBox:Landroid/graphics/Rect;
     const/4 v11, 0x0
 
@@ -2464,7 +2617,7 @@
 
     if-ge v11, v0, :cond_e
 
-    .line 670
+    .line 683
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotList:Ljava/util/ArrayList;
@@ -2479,7 +2632,7 @@
 
     check-cast v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
 
-    .line 671
+    .line 684
     .local v8, edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     iget-boolean v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->isLive:Z
 
@@ -2487,10 +2640,10 @@
 
     if-eqz v23, :cond_5
 
-    .line 672
+    .line 685
     const/4 v12, 0x0
 
-    .line 675
+    .line 688
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminants:[Landroid/graphics/drawable/Drawable;
@@ -2505,7 +2658,7 @@
 
     move-result-object v16
 
-    .line 676
+    .line 689
     .local v16, rcIlluminant:Landroid/graphics/Rect;
     move-object/from16 v0, v16
 
@@ -2523,7 +2676,7 @@
 
     div-int/lit8 v13, v23, 0x2
 
-    .line 677
+    .line 690
     .local v13, middle:I
     iget v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->edotType:I
 
@@ -2531,7 +2684,7 @@
 
     if-nez v23, :cond_6
 
-    .line 678
+    .line 691
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotSmall:Landroid/graphics/drawable/Drawable;
@@ -2546,13 +2699,13 @@
 
     sub-int v13, v13, v23
 
-    .line 686
+    .line 699
     :goto_2
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v6
 
-    .line 687
+    .line 700
     .local v6, currentTime:J
     iget-wide v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->verticalStartTime:J
 
@@ -2578,7 +2731,7 @@
 
     div-float v21, v23, v24
 
-    .line 688
+    .line 701
     .local v21, verticalTime:F
     const/high16 v23, 0x3f80
 
@@ -2596,8 +2749,18 @@
 
     move-result v21
 
-    .line 689
-    const/high16 v23, 0x43f5
+    .line 702
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIMATE_VERTICAL_SPACE:I
+
+    move/from16 v23, v0
+
+    move/from16 v0, v23
+
+    int-to-float v0, v0
+
+    move/from16 v23, v0
 
     mul-float v23, v23, v21
 
@@ -2607,7 +2770,7 @@
 
     move/from16 v22, v0
 
-    .line 690
+    .line 703
     .local v22, yOffset:I
     iget-object v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
@@ -2625,8 +2788,20 @@
 
     iput v0, v1, Landroid/graphics/Point;->y:I
 
-    .line 693
-    const/16 v23, 0x1cc
+    .line 706
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIMATE_VERTICAL_SPACE:I
+
+    move/from16 v23, v0
+
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->ANIMATE_FADE_OUT_SPACE:I
+
+    move/from16 v24, v0
+
+    sub-int v23, v23, v24
 
     move/from16 v0, v22
 
@@ -2634,17 +2809,17 @@
 
     if-lt v0, v1, :cond_9
 
-    .line 694
+    .line 707
     iget v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alphaDuration:I
 
     move/from16 v23, v0
 
     if-nez v23, :cond_8
 
-    .line 695
+    .line 708
     iput-wide v6, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alphaStartTime:J
 
-    .line 696
+    .line 709
     iget-wide v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->verticalStartTime:J
 
     move-wide/from16 v23, v0
@@ -2677,7 +2852,7 @@
 
     iput v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alphaDuration:I
 
-    .line 712
+    .line 725
     :cond_1
     :goto_3
     iget-wide v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->horizontalStartTime:J
@@ -2704,7 +2879,7 @@
 
     div-float v10, v23, v24
 
-    .line 713
+    .line 726
     .local v10, horizontalTime:F
     const/high16 v23, 0x3f80
 
@@ -2720,10 +2895,10 @@
 
     move-result v10
 
-    .line 714
+    .line 727
     const/4 v14, 0x0
 
-    .line 715
+    .line 728
     .local v14, offset:I
     iget v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->horizontalAnimType:I
 
@@ -2731,7 +2906,7 @@
 
     if-nez v23, :cond_a
 
-    .line 717
+    .line 730
     const/high16 v23, 0x3f80
 
     const/high16 v24, 0x3f80
@@ -2762,7 +2937,7 @@
 
     float-to-int v14, v0
 
-    .line 722
+    .line 735
     :cond_2
     :goto_4
     iget-boolean v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->toRight:Z
@@ -2771,7 +2946,7 @@
 
     if-eqz v23, :cond_b
 
-    .line 723
+    .line 736
     iget-object v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
     move-object/from16 v23, v0
@@ -2788,7 +2963,7 @@
 
     iput v0, v1, Landroid/graphics/Point;->x:I
 
-    .line 728
+    .line 741
     :goto_5
     iget-object v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
@@ -2806,7 +2981,7 @@
 
     move-result v9
 
-    .line 733
+    .line 746
     .local v9, gap:I
     const/high16 v23, 0x3f80
 
@@ -2814,7 +2989,7 @@
 
     if-nez v23, :cond_4
 
-    .line 734
+    .line 747
     iget v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->radius:I
 
     move/from16 v23, v0
@@ -2823,7 +2998,7 @@
 
     if-lt v9, v0, :cond_d
 
-    .line 735
+    .line 748
     iget-object v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
     move-object/from16 v23, v0
@@ -2838,7 +3013,7 @@
 
     iput v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->startX:I
 
-    .line 736
+    .line 749
     iget-boolean v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->toRight:Z
 
     move/from16 v23, v0
@@ -2852,14 +3027,14 @@
 
     iput-boolean v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->toRight:Z
 
-    .line 737
+    .line 750
     const/16 v23, 0x1
 
     move/from16 v0, v23
 
     iput v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->horizontalAnimType:I
 
-    .line 742
+    .line 755
     :cond_3
     :goto_7
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
@@ -2870,7 +3045,7 @@
 
     iput-wide v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->horizontalStartTime:J
 
-    .line 752
+    .line 765
     :cond_4
     move/from16 v0, v21
 
@@ -2884,14 +3059,14 @@
 
     if-nez v23, :cond_5
 
-    .line 753
+    .line 766
     const/16 v23, 0x0
 
     move/from16 v0, v23
 
     iput-boolean v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->isLive:Z
 
-    .line 669
+    .line 682
     .end local v6           #currentTime:J
     .end local v9           #gap:I
     .end local v10           #horizontalTime:F
@@ -2905,7 +3080,7 @@
 
     goto/16 :goto_1
 
-    .line 679
+    .line 692
     .restart local v13       #middle:I
     .restart local v16       #rcIlluminant:Landroid/graphics/Rect;
     :cond_6
@@ -2921,7 +3096,7 @@
 
     if-ne v0, v1, :cond_7
 
-    .line 680
+    .line 693
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotMin:Landroid/graphics/drawable/Drawable;
@@ -2938,7 +3113,7 @@
 
     goto/16 :goto_2
 
-    .line 682
+    .line 695
     :cond_7
     move-object/from16 v0, p0
 
@@ -2956,7 +3131,7 @@
 
     goto/16 :goto_2
 
-    .line 698
+    .line 711
     .restart local v6       #currentTime:J
     .restart local v21       #verticalTime:F
     .restart local v22       #yOffset:I
@@ -2985,7 +3160,7 @@
 
     div-float v5, v23, v24
 
-    .line 699
+    .line 712
     .local v5, alphaTime:F
     const/high16 v23, 0x3f80
 
@@ -3001,7 +3176,7 @@
 
     move-result v5
 
-    .line 700
+    .line 713
     const/high16 v23, 0x437f
 
     mul-float v23, v23, v5
@@ -3024,7 +3199,7 @@
 
     goto/16 :goto_3
 
-    .line 702
+    .line 715
     .end local v5           #alphaTime:F
     :cond_9
     iget v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alphaDuration:I
@@ -3033,7 +3208,7 @@
 
     if-eqz v23, :cond_1
 
-    .line 703
+    .line 716
     iget-wide v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alphaStartTime:J
 
     move-wide/from16 v23, v0
@@ -3058,7 +3233,7 @@
 
     div-float v5, v23, v24
 
-    .line 704
+    .line 717
     .restart local v5       #alphaTime:F
     const/high16 v23, 0x3f80
 
@@ -3074,7 +3249,7 @@
 
     move-result v5
 
-    .line 705
+    .line 718
     const/high16 v23, 0x437f
 
     mul-float v23, v23, v5
@@ -3089,7 +3264,7 @@
 
     iput v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alpha:I
 
-    .line 706
+    .line 719
     iget v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alpha:I
 
     move/from16 v23, v0
@@ -3102,7 +3277,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 707
+    .line 720
     const/16 v23, 0x0
 
     move/from16 v0, v23
@@ -3111,7 +3286,7 @@
 
     goto/16 :goto_3
 
-    .line 718
+    .line 731
     .end local v5           #alphaTime:F
     .restart local v10       #horizontalTime:F
     .restart local v14       #offset:I
@@ -3128,7 +3303,7 @@
 
     if-ne v0, v1, :cond_2
 
-    .line 720
+    .line 733
     mul-float v23, v10, v10
 
     iget v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->radius:I
@@ -3149,7 +3324,7 @@
 
     goto/16 :goto_4
 
-    .line 725
+    .line 738
     :cond_b
     iget-object v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
@@ -3169,18 +3344,18 @@
 
     goto/16 :goto_5
 
-    .line 736
+    .line 749
     .restart local v9       #gap:I
     :cond_c
     const/16 v23, 0x0
 
     goto/16 :goto_6
 
-    .line 738
+    .line 751
     :cond_d
     if-nez v9, :cond_3
 
-    .line 739
+    .line 752
     iget-object v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
     move-object/from16 v23, v0
@@ -3195,7 +3370,7 @@
 
     iput v0, v8, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->startX:I
 
-    .line 740
+    .line 753
     const/16 v23, 0x0
 
     move/from16 v0, v23
@@ -3204,7 +3379,7 @@
 
     goto/16 :goto_7
 
-    .line 762
+    .line 775
     .end local v6           #currentTime:J
     .end local v8           #edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     .end local v9           #gap:I
@@ -3219,61 +3394,29 @@
 
     move/from16 v23, v0
 
-    const/high16 v24, 0x4120
-
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDisplayMetrics:Landroid/util/DisplayMetrics;
-
-    move-object/from16 v25, v0
-
-    move-object/from16 v0, v25
-
-    iget v0, v0, Landroid/util/DisplayMetrics;->density:F
-
-    move/from16 v25, v0
-
-    mul-float v24, v24, v25
-
-    move/from16 v0, v24
-
-    float-to-int v0, v0
+    iget v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->GAP_BETWEEN_BATTERY_AND_EDOT:I
 
     move/from16 v24, v0
 
     sub-int v18, v23, v24
 
-    .line 763
+    .line 776
     .local v18, uLeft:I
     iget v0, v15, Landroid/graphics/Rect;->right:I
 
     move/from16 v23, v0
 
-    const/high16 v24, 0x4120
-
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDisplayMetrics:Landroid/util/DisplayMetrics;
-
-    move-object/from16 v25, v0
-
-    move-object/from16 v0, v25
-
-    iget v0, v0, Landroid/util/DisplayMetrics;->density:F
-
-    move/from16 v25, v0
-
-    mul-float v24, v24, v25
-
-    move/from16 v0, v24
-
-    float-to-int v0, v0
+    iget v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->GAP_BETWEEN_BATTERY_AND_EDOT:I
 
     move/from16 v24, v0
 
     add-int v19, v23, v24
 
-    .line 764
+    .line 777
     .local v19, uRight:I
     move-object/from16 v0, p0
 
@@ -3293,13 +3436,13 @@
 
     add-int/lit8 v20, v23, -0xa
 
-    .line 765
+    .line 778
     .local v20, uTop:I
     invoke-virtual/range {p0 .. p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getBottom()I
 
     move-result v17
 
-    .line 766
+    .line 779
     .local v17, uBottom:I
     move-object/from16 v0, p0
 
@@ -3313,7 +3456,7 @@
 
     invoke-virtual {v0, v1, v2, v3, v4}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->invalidate(IIII)V
 
-    .line 768
+    .line 781
     if-eqz v12, :cond_f
 
     move-object/from16 v0, p0
@@ -3326,7 +3469,7 @@
 
     if-nez v23, :cond_f
 
-    .line 769
+    .line 782
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
@@ -3343,7 +3486,7 @@
 
     goto/16 :goto_0
 
-    .line 771
+    .line 784
     :cond_f
     move-object/from16 v0, p0
 
@@ -3355,7 +3498,7 @@
 
     invoke-virtual/range {v23 .. v24}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 772
+    .line 785
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -3385,7 +3528,7 @@
     .locals 26
 
     .prologue
-    .line 829
+    .line 842
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
@@ -3400,15 +3543,15 @@
 
     if-nez v22, :cond_0
 
-    .line 886
+    .line 899
     :goto_0
     return-void
 
-    .line 831
+    .line 844
     :cond_0
     const/4 v3, 0x1
 
-    .line 832
+    .line 845
     .local v3, allDied:Z
     const/4 v9, 0x0
 
@@ -3428,7 +3571,7 @@
 
     if-ge v9, v0, :cond_3
 
-    .line 833
+    .line 846
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotList:Ljava/util/ArrayList;
@@ -3443,7 +3586,7 @@
 
     check-cast v7, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
 
-    .line 834
+    .line 847
     .local v7, edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     iget-boolean v0, v7, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->isLive:Z
 
@@ -3451,15 +3594,15 @@
 
     if-eqz v22, :cond_2
 
-    .line 835
+    .line 848
     const/4 v3, 0x0
 
-    .line 838
+    .line 851
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v5
 
-    .line 839
+    .line 852
     .local v5, current:J
     long-to-float v0, v5
 
@@ -3477,7 +3620,7 @@
 
     sub-float v12, v22, v23
 
-    .line 840
+    .line 853
     .local v12, time:F
     long-to-float v0, v5
 
@@ -3507,7 +3650,7 @@
 
     div-float v17, v22, v23
 
-    .line 841
+    .line 854
     .local v17, verticalRate:F
     const/high16 v22, 0x3f80
 
@@ -3525,7 +3668,7 @@
 
     move-result v17
 
-    .line 842
+    .line 855
     mul-float v22, v17, v17
 
     iget v0, v7, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->spaceForDiedY:I
@@ -3546,7 +3689,7 @@
 
     move/from16 v20, v0
 
-    .line 843
+    .line 856
     .local v20, yOffset1:I
     iget v0, v7, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->lastV:F
 
@@ -3582,11 +3725,11 @@
 
     move/from16 v21, v0
 
-    .line 845
+    .line 858
     .local v21, yOffset2:I
     add-int v19, v20, v21
 
-    .line 846
+    .line 859
     .local v19, yOffset:I
     iget-object v0, v7, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
@@ -3604,7 +3747,7 @@
 
     iput v0, v1, Landroid/graphics/Point;->y:I
 
-    .line 849
+    .line 862
     iget-wide v0, v7, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->horizontalStartTime:J
 
     move-wide/from16 v22, v0
@@ -3629,7 +3772,7 @@
 
     div-float v8, v22, v23
 
-    .line 850
+    .line 863
     .local v8, horizonalRate:F
     const/high16 v22, 0x3f80
 
@@ -3645,7 +3788,7 @@
 
     move-result v8
 
-    .line 851
+    .line 864
     mul-float v22, v8, v8
 
     iget v0, v7, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->spaceForDiedX:I
@@ -3666,7 +3809,7 @@
 
     move/from16 v18, v0
 
-    .line 852
+    .line 865
     .local v18, xOffset:I
     iget-object v0, v7, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
@@ -3684,7 +3827,7 @@
 
     iput v0, v1, Landroid/graphics/Point;->x:I
 
-    .line 855
+    .line 868
     iget v0, v7, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->horizontalDuration:I
 
     move/from16 v22, v0
@@ -3707,7 +3850,7 @@
 
     long-to-float v10, v0
 
-    .line 856
+    .line 869
     .local v10, leftTime:F
     const/high16 v22, 0x4316
 
@@ -3715,12 +3858,12 @@
 
     if-gez v22, :cond_1
 
-    .line 857
+    .line 870
     const/high16 v22, 0x4316
 
     div-float v4, v10, v22
 
-    .line 858
+    .line 871
     .local v4, alphaRate:F
     const/high16 v22, 0x3f80
 
@@ -3736,7 +3879,7 @@
 
     move-result v4
 
-    .line 859
+    .line 872
     const/high16 v22, 0x437f
 
     mul-float v22, v22, v4
@@ -3751,7 +3894,7 @@
 
     iput v0, v7, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alpha:I
 
-    .line 862
+    .line 875
     .end local v4           #alphaRate:F
     :cond_1
     const/high16 v22, 0x3f80
@@ -3760,14 +3903,14 @@
 
     if-nez v22, :cond_2
 
-    .line 863
+    .line 876
     const/16 v22, 0x0
 
     move/from16 v0, v22
 
     iput-boolean v0, v7, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->isLive:Z
 
-    .line 832
+    .line 845
     .end local v5           #current:J
     .end local v8           #horizonalRate:F
     .end local v10           #leftTime:F
@@ -3782,7 +3925,7 @@
 
     goto/16 :goto_1
 
-    .line 870
+    .line 883
     .end local v7           #edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     :cond_3
     move-object/from16 v0, p0
@@ -3795,67 +3938,35 @@
 
     move-result-object v11
 
-    .line 871
+    .line 884
     .local v11, rcBatteryBox:Landroid/graphics/Rect;
     iget v0, v11, Landroid/graphics/Rect;->left:I
 
     move/from16 v22, v0
 
-    const/high16 v23, 0x4120
-
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDisplayMetrics:Landroid/util/DisplayMetrics;
-
-    move-object/from16 v24, v0
-
-    move-object/from16 v0, v24
-
-    iget v0, v0, Landroid/util/DisplayMetrics;->density:F
-
-    move/from16 v24, v0
-
-    mul-float v23, v23, v24
-
-    move/from16 v0, v23
-
-    float-to-int v0, v0
+    iget v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->GAP_BETWEEN_BATTERY_AND_EDOT:I
 
     move/from16 v23, v0
 
     sub-int v14, v22, v23
 
-    .line 872
+    .line 885
     .local v14, uLeft:I
     iget v0, v11, Landroid/graphics/Rect;->right:I
 
     move/from16 v22, v0
 
-    const/high16 v23, 0x4120
-
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDisplayMetrics:Landroid/util/DisplayMetrics;
-
-    move-object/from16 v24, v0
-
-    move-object/from16 v0, v24
-
-    iget v0, v0, Landroid/util/DisplayMetrics;->density:F
-
-    move/from16 v24, v0
-
-    mul-float v23, v23, v24
-
-    move/from16 v0, v23
-
-    float-to-int v0, v0
+    iget v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->GAP_BETWEEN_BATTERY_AND_EDOT:I
 
     move/from16 v23, v0
 
     add-int v15, v22, v23
 
-    .line 873
+    .line 886
     .local v15, uRight:I
     move-object/from16 v0, p0
 
@@ -3875,13 +3986,13 @@
 
     add-int/lit8 v16, v22, -0xa
 
-    .line 874
+    .line 887
     .local v16, uTop:I
     invoke-virtual/range {p0 .. p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->getBottom()I
 
     move-result v13
 
-    .line 875
+    .line 888
     .local v13, uBottom:I
     move-object/from16 v0, p0
 
@@ -3889,10 +4000,10 @@
 
     invoke-virtual {v0, v14, v1, v15, v13}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->invalidate(IIII)V
 
-    .line 877
+    .line 890
     if-nez v3, :cond_4
 
-    .line 878
+    .line 891
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -3903,7 +4014,7 @@
 
     invoke-virtual/range {v22 .. v23}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 879
+    .line 892
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -3928,7 +4039,7 @@
 
     goto/16 :goto_0
 
-    .line 882
+    .line 895
     :cond_4
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
@@ -3940,7 +4051,7 @@
 
     iput-wide v0, v2, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryOutStartTime:J
 
-    .line 883
+    .line 896
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -3951,7 +4062,7 @@
 
     invoke-virtual/range {v22 .. v23}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 884
+    .line 897
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -3985,7 +4096,7 @@
     .prologue
     const/16 v3, 0x3f2
 
-    .line 414
+    .line 427
     const-string v0, "KeyguardCharging"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -4022,23 +4133,23 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 415
+    .line 428
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     sget-object v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->plugged:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     if-ne v0, v1, :cond_1
 
-    .line 427
+    .line 440
     :cond_0
     :goto_0
     return-void
 
-    .line 418
+    .line 431
     :cond_1
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->stopBornEdot()V
 
-    .line 419
+    .line 432
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     sget-object v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->pause:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
@@ -4051,13 +4162,13 @@
 
     if-nez v0, :cond_3
 
-    .line 420
+    .line 433
     :cond_2
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v3}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 421
+    .line 434
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -4068,7 +4179,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 423
+    .line 436
     :cond_3
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
@@ -4082,7 +4193,7 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 425
+    .line 438
     :cond_4
     sget-object v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->plugged:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
@@ -4095,7 +4206,7 @@
     .locals 1
 
     .prologue
-    .line 1038
+    .line 1051
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     return-object v0
@@ -4106,24 +4217,24 @@
     .parameter "canvas"
 
     .prologue
-    .line 336
+    .line 349
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryBox:Landroid/graphics/drawable/Drawable;
 
     iget v7, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryAlpha:I
 
     invoke-virtual {v6, v7}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 337
+    .line 350
     iget-boolean v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDrawBattery:Z
 
     if-eqz v6, :cond_0
 
-    .line 338
+    .line 351
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryBox:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v6, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 339
+    .line 352
     :cond_0
     iget v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryLevel:I
 
@@ -4131,24 +4242,24 @@
 
     if-ge v6, v7, :cond_3
 
-    .line 340
+    .line 353
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mWarningBatteryFill:Landroid/graphics/drawable/Drawable;
 
     iget v7, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryAlpha:I
 
     invoke-virtual {v6, v7}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 341
+    .line 354
     iget-boolean v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDrawBattery:Z
 
     if-eqz v6, :cond_1
 
-    .line 342
+    .line 355
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mWarningBatteryFill:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v6, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 351
+    .line 364
     :cond_1
     :goto_0
     const/4 v3, 0x0
@@ -4163,7 +4274,7 @@
 
     if-ge v3, v6, :cond_4
 
-    .line 352
+    .line 365
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotList:Ljava/util/ArrayList;
 
     invoke-virtual {v6, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -4172,21 +4283,21 @@
 
     check-cast v2, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
 
-    .line 353
+    .line 366
     .local v2, edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     iget-boolean v6, v2, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->isLive:Z
 
     if-eqz v6, :cond_2
 
-    .line 354
+    .line 367
     iget v6, v2, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->edotType:I
 
     packed-switch v6, :pswitch_data_0
 
-    .line 365
+    .line 378
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotMiddle:Landroid/graphics/drawable/Drawable;
 
-    .line 368
+    .line 381
     .local v1, edot:Landroid/graphics/drawable/Drawable;
     :goto_2
     iget-object v6, v2, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
@@ -4199,7 +4310,7 @@
 
     add-int v5, v6, v7
 
-    .line 369
+    .line 382
     .local v5, r:I
     iget-object v6, v2, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
@@ -4211,7 +4322,7 @@
 
     add-int v0, v6, v7
 
-    .line 370
+    .line 383
     .local v0, b:I
     iget-object v6, v2, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
@@ -4223,15 +4334,15 @@
 
     invoke-virtual {v1, v6, v7, v5, v0}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    .line 371
+    .line 384
     iget v6, v2, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alpha:I
 
     invoke-virtual {v1, v6}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 372
+    .line 385
     invoke-virtual {v1, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 351
+    .line 364
     .end local v0           #b:I
     .end local v1           #edot:Landroid/graphics/drawable/Drawable;
     .end local v5           #r:I
@@ -4240,7 +4351,7 @@
 
     goto :goto_1
 
-    .line 344
+    .line 357
     .end local v2           #edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     .end local v3           #i:I
     :cond_3
@@ -4250,47 +4361,47 @@
 
     invoke-virtual {v6, v7}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 345
+    .line 358
     iget-boolean v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDrawBattery:Z
 
     if-eqz v6, :cond_1
 
-    .line 346
+    .line 359
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryFill:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v6, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
     goto :goto_0
 
-    .line 356
+    .line 369
     .restart local v2       #edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     .restart local v3       #i:I
     :pswitch_0
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotSmall:Landroid/graphics/drawable/Drawable;
 
-    .line 357
+    .line 370
     .restart local v1       #edot:Landroid/graphics/drawable/Drawable;
     goto :goto_2
 
-    .line 359
+    .line 372
     .end local v1           #edot:Landroid/graphics/drawable/Drawable;
     :pswitch_1
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotMin:Landroid/graphics/drawable/Drawable;
 
-    .line 360
+    .line 373
     .restart local v1       #edot:Landroid/graphics/drawable/Drawable;
     goto :goto_2
 
-    .line 362
+    .line 375
     .end local v1           #edot:Landroid/graphics/drawable/Drawable;
     :pswitch_2
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mEdotMiddle:Landroid/graphics/drawable/Drawable;
 
-    .line 363
+    .line 376
     .restart local v1       #edot:Landroid/graphics/drawable/Drawable;
     goto :goto_2
 
-    .line 377
+    .line 390
     .end local v1           #edot:Landroid/graphics/drawable/Drawable;
     .end local v2           #edotInfo:Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;
     :cond_4
@@ -4301,7 +4412,7 @@
 
     if-ge v3, v6, :cond_5
 
-    .line 378
+    .line 391
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminantInfoList:Ljava/util/ArrayList;
 
     invoke-virtual {v6, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -4310,7 +4421,7 @@
 
     check-cast v4, Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;
 
-    .line 379
+    .line 392
     .local v4, info:Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminants:[Landroid/graphics/drawable/Drawable;
 
@@ -4320,24 +4431,24 @@
 
     invoke-virtual {v6, v7}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 387
+    .line 400
     iget-object v6, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminants:[Landroid/graphics/drawable/Drawable;
 
     aget-object v6, v6, v3
 
     invoke-virtual {v6, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 377
+    .line 390
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_3
 
-    .line 390
+    .line 403
     .end local v4           #info:Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;
     :cond_5
     return-void
 
-    .line 354
+    .line 367
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -4355,7 +4466,7 @@
     .parameter "bottom"
 
     .prologue
-    .line 293
+    .line 306
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
@@ -4370,11 +4481,11 @@
 
     if-eqz v17, :cond_1
 
-    .line 332
+    .line 345
     :cond_0
     return-void
 
-    .line 295
+    .line 308
     :cond_1
     move-object/from16 v0, p0
 
@@ -4386,7 +4497,7 @@
 
     move-result v8
 
-    .line 296
+    .line 309
     .local v8, dwBatteryBox:I
     move-object/from16 v0, p0
 
@@ -4398,7 +4509,7 @@
 
     move-result v4
 
-    .line 299
+    .line 312
     .local v4, dhBatteryBox:I
     sub-int v17, p4, v8
 
@@ -4406,19 +4517,19 @@
 
     div-int/lit8 v14, v17, 0x2
 
-    .line 300
+    .line 313
     .local v14, l:I
     move/from16 v16, p3
 
-    .line 301
+    .line 314
     .local v16, t:I
     add-int v15, v14, v8
 
-    .line 302
+    .line 315
     .local v15, r:I
     add-int v3, v16, v4
 
-    .line 303
+    .line 316
     .local v3, b:I
     move-object/from16 v0, p0
 
@@ -4432,7 +4543,7 @@
 
     invoke-virtual {v0, v14, v1, v15, v3}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    .line 306
+    .line 319
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryFill:Landroid/graphics/drawable/Drawable;
@@ -4443,7 +4554,7 @@
 
     move-result v9
 
-    .line 307
+    .line 320
     .local v9, dwBatteryFill:I
     move-object/from16 v0, p0
 
@@ -4455,7 +4566,7 @@
 
     move-result v5
 
-    .line 308
+    .line 321
     .local v5, dhBatteryFill:I
     move-object/from16 v0, p0
 
@@ -4467,7 +4578,7 @@
 
     move-result v7
 
-    .line 309
+    .line 322
     .local v7, dhWarningBatteryFill:I
     move-object/from16 v0, p0
 
@@ -4475,37 +4586,17 @@
 
     move/from16 v17, v0
 
-    mul-int/lit8 v17, v17, 0x5c
-
-    move/from16 v0, v17
-
-    int-to-float v0, v0
-
-    move/from16 v17, v0
-
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDisplayMetrics:Landroid/util/DisplayMetrics;
-
-    move-object/from16 v18, v0
-
-    move-object/from16 v0, v18
-
-    iget v0, v0, Landroid/util/DisplayMetrics;->density:F
+    iget v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->BATTERY_CAPACITY:I
 
     move/from16 v18, v0
 
-    mul-float v17, v17, v18
+    mul-int v17, v17, v18
 
-    const/high16 v18, 0x42c8
+    div-int/lit8 v11, v17, 0x64
 
-    div-float v17, v17, v18
-
-    move/from16 v0, v17
-
-    float-to-int v11, v0
-
-    .line 310
+    .line 323
     .local v11, fillHeight:I
     int-to-float v0, v11
 
@@ -4533,12 +4624,12 @@
 
     float-to-int v11, v0
 
-    .line 311
+    .line 324
     if-ge v11, v5, :cond_2
 
     move v11, v5
 
-    .line 312
+    .line 325
     :cond_2
     sub-int v17, p4, v9
 
@@ -4546,38 +4637,22 @@
 
     div-int/lit8 v14, v17, 0x2
 
-    .line 313
+    .line 326
     add-int v15, v14, v9
 
-    .line 314
-    const/high16 v17, 0x4130
-
+    .line 327
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDisplayMetrics:Landroid/util/DisplayMetrics;
-
-    move-object/from16 v18, v0
-
-    move-object/from16 v0, v18
-
-    iget v0, v0, Landroid/util/DisplayMetrics;->density:F
-
-    move/from16 v18, v0
-
-    mul-float v17, v17, v18
-
-    move/from16 v0, v17
-
-    float-to-int v0, v0
+    iget v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->BOX_BOTTOM_HEIGHT:I
 
     move/from16 v17, v0
 
     sub-int v3, v3, v17
 
-    .line 315
+    .line 328
     sub-int v16, v3, v11
 
-    .line 316
+    .line 329
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryLevel:I
@@ -4592,7 +4667,7 @@
 
     if-ge v0, v1, :cond_3
 
-    .line 317
+    .line 330
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mWarningBatteryFill:Landroid/graphics/drawable/Drawable;
@@ -4607,7 +4682,7 @@
 
     invoke-virtual {v0, v14, v1, v15, v3}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    .line 322
+    .line 335
     :goto_0
     const/4 v12, 0x0
 
@@ -4619,7 +4694,7 @@
 
     if-ge v12, v0, :cond_0
 
-    .line 323
+    .line 336
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminantInfoList:Ljava/util/ArrayList;
@@ -4634,7 +4709,7 @@
 
     check-cast v13, Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;
 
-    .line 324
+    .line 337
     .local v13, info:Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;
     move-object/from16 v0, p0
 
@@ -4648,7 +4723,7 @@
 
     move-result v10
 
-    .line 325
+    .line 338
     .local v10, dwIlluminant:I
     move-object/from16 v0, p0
 
@@ -4662,7 +4737,7 @@
 
     move-result v6
 
-    .line 326
+    .line 339
     .local v6, dhIlluminant:I
     sub-int v17, p4, v10
 
@@ -4670,10 +4745,10 @@
 
     div-int/lit8 v14, v17, 0x2
 
-    .line 327
+    .line 340
     add-int v15, v14, v10
 
-    .line 328
+    .line 341
     iget-object v0, v13, Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;->mPosition:Landroid/graphics/Point;
 
     move-object/from16 v17, v0
@@ -4682,7 +4757,7 @@
 
     iput v14, v0, Landroid/graphics/Point;->x:I
 
-    .line 329
+    .line 342
     iget-object v0, v13, Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;->mPosition:Landroid/graphics/Point;
 
     move-object/from16 v17, v0
@@ -4695,7 +4770,7 @@
 
     iput v0, v1, Landroid/graphics/Point;->y:I
 
-    .line 330
+    .line 343
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mIlluminants:[Landroid/graphics/drawable/Drawable;
@@ -4714,12 +4789,12 @@
 
     invoke-virtual {v0, v14, v1, v15, v2}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    .line 322
+    .line 335
     add-int/lit8 v12, v12, 0x1
 
     goto :goto_1
 
-    .line 319
+    .line 332
     .end local v6           #dhIlluminant:I
     .end local v10           #dwIlluminant:I
     .end local v12           #i:I
@@ -4744,33 +4819,33 @@
     .locals 4
 
     .prologue
-    .line 469
+    .line 482
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     sget-object v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->charging:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     if-ne v0, v1, :cond_0
 
-    .line 470
+    .line 483
     sget-object v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->pause:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
-    .line 471
+    .line 484
     iget v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
     and-int/lit8 v0, v0, -0x2
 
     iput v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
-    .line 472
+    .line 485
     iget v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
     and-int/lit8 v0, v0, -0x11
 
     iput v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
-    .line 473
+    .line 486
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -4783,7 +4858,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 474
+    .line 487
     const-string v0, "KeyguardCharging"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -4810,7 +4885,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 476
+    .line 489
     :cond_0
     return-void
 .end method
@@ -4822,53 +4897,43 @@
     .prologue
     const/16 v6, 0xa
 
-    .line 532
+    .line 545
     iget v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryLevel:I
 
     if-ne v3, p1, :cond_0
 
-    .line 555
+    .line 568
     :goto_0
     return-void
 
-    .line 535
+    .line 548
     :cond_0
     iget v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryLevel:I
 
     if-ge v3, v6, :cond_1
 
-    .line 536
+    .line 549
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mWarningBatteryFill:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v3}, Landroid/graphics/drawable/Drawable;->getBounds()Landroid/graphics/Rect;
 
     move-result-object v2
 
-    .line 541
+    .line 554
     .local v2, oldBound:Landroid/graphics/Rect;
     :goto_1
     iput p1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryLevel:I
 
-    .line 542
+    .line 555
     iget v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryLevel:I
 
-    mul-int/lit8 v3, v3, 0x5c
+    iget v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->BATTERY_CAPACITY:I
 
-    int-to-float v3, v3
+    mul-int/2addr v3, v4
 
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDisplayMetrics:Landroid/util/DisplayMetrics;
+    div-int/lit8 v1, v3, 0x64
 
-    iget v4, v4, Landroid/util/DisplayMetrics;->density:F
-
-    mul-float/2addr v3, v4
-
-    const/high16 v4, 0x42c8
-
-    div-float/2addr v3, v4
-
-    float-to-int v1, v3
-
-    .line 543
+    .line 556
     .local v1, fillHeight:I
     int-to-float v3, v1
 
@@ -4884,12 +4949,12 @@
 
     float-to-int v1, v3
 
-    .line 545
+    .line 558
     iget v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryLevel:I
 
     if-ge v3, v6, :cond_2
 
-    .line 546
+    .line 559
     iget v3, v2, Landroid/graphics/Rect;->bottom:I
 
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mWarningBatteryFill:Landroid/graphics/drawable/Drawable;
@@ -4902,18 +4967,18 @@
 
     iput v3, v2, Landroid/graphics/Rect;->top:I
 
-    .line 547
+    .line 560
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mWarningBatteryFill:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v3, v2}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
 
-    .line 554
+    .line 567
     :goto_2
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->invalidate()V
 
     goto :goto_0
 
-    .line 538
+    .line 551
     .end local v1           #fillHeight:I
     .end local v2           #oldBound:Landroid/graphics/Rect;
     :cond_1
@@ -4926,7 +4991,7 @@
     .restart local v2       #oldBound:Landroid/graphics/Rect;
     goto :goto_1
 
-    .line 549
+    .line 562
     .restart local v1       #fillHeight:I
     :cond_2
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryFill:Landroid/graphics/drawable/Drawable;
@@ -4935,13 +5000,13 @@
 
     move-result v0
 
-    .line 550
+    .line 563
     .local v0, dhBatteryFill:I
     if-ge v1, v0, :cond_3
 
     move v1, v0
 
-    .line 551
+    .line 564
     :cond_3
     iget v3, v2, Landroid/graphics/Rect;->bottom:I
 
@@ -4949,7 +5014,7 @@
 
     iput v3, v2, Landroid/graphics/Rect;->top:I
 
-    .line 552
+    .line 565
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mBatteryFill:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v3, v2}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
@@ -4963,25 +5028,25 @@
     .parameter "batteryShow"
 
     .prologue
-    .line 890
+    .line 903
     if-eqz p1, :cond_0
 
-    .line 891
+    .line 904
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->setVisibility(I)V
 
-    .line 892
+    .line 905
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->requestLayout()V
 
-    .line 896
+    .line 909
     :goto_0
     iput-boolean p2, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDrawBattery:Z
 
-    .line 897
+    .line 910
     return-void
 
-    .line 894
+    .line 907
     :cond_0
     const/16 v0, 0x8
 
@@ -4998,7 +5063,7 @@
 
     const/16 v3, 0x3e9
 
-    .line 433
+    .line 446
     const-string v0, "KeyguardCharging"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -5035,19 +5100,19 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 434
+    .line 447
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     sget-object v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->noPlugging:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     if-ne v0, v1, :cond_1
 
-    .line 449
+    .line 462
     :cond_0
     :goto_0
     return-void
 
-    .line 436
+    .line 449
     :cond_1
     iget v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
@@ -5055,44 +5120,44 @@
 
     if-nez v0, :cond_0
 
-    .line 438
+    .line 451
     const/16 v0, 0x11
 
     iput v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
-    .line 439
+    .line 452
     sget-object v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->charging:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
-    .line 441
+    .line 454
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v3}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 442
+    .line 455
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v4}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 443
+    .line 456
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0x3eb
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 444
+    .line 457
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0x3ec
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 446
+    .line 459
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->renewEdotStartTime()V
 
-    .line 447
+    .line 460
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -5103,7 +5168,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 448
+    .line 461
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -5124,18 +5189,18 @@
     .prologue
     const/16 v2, 0x3f1
 
-    .line 394
+    .line 407
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     sget-object v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->noPlugging:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     if-eq v0, v1, :cond_0
 
-    .line 408
+    .line 421
     :goto_0
     return-void
 
-    .line 397
+    .line 410
     :cond_0
     if-eqz p1, :cond_1
 
@@ -5144,33 +5209,33 @@
     :goto_1
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
-    .line 400
+    .line 413
     iget v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
     and-int/lit16 v0, v0, 0x100
 
     if-eqz v0, :cond_2
 
-    .line 401
+    .line 414
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDelayChargingAnimting:Z
 
     goto :goto_0
 
-    .line 397
+    .line 410
     :cond_1
     sget-object v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->plugged:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     goto :goto_1
 
-    .line 403
+    .line 416
     :cond_2
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v2}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 404
+    .line 417
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -5181,12 +5246,12 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 405
+    .line 418
     const/16 v0, 0x1000
 
     iput v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
-    .line 406
+    .line 419
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mPluggingFrameCount:I
@@ -5198,37 +5263,37 @@
     .locals 2
 
     .prologue
-    .line 506
+    .line 519
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mDelayChargingAnimting:Z
 
-    .line 507
+    .line 520
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     sget-object v1, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->noPlugging:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     if-ne v0, v1, :cond_1
 
-    .line 515
+    .line 528
     :cond_0
     :goto_0
     return-void
 
-    .line 510
+    .line 523
     :cond_1
     sget-object v0, Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;->noPlugging:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mState:Lcom/meizu/internal/policy/impl/ChargingEdotView$ChargingState;
 
-    .line 511
+    .line 524
     iget v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView;->mAnimMode:I
 
     and-int/lit16 v0, v0, 0x1000
 
     if-nez v0, :cond_0
 
-    .line 514
+    .line 527
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/ChargingEdotView;->realStopChargingAndPlugin()V
 
     goto :goto_0

@@ -30,22 +30,35 @@
 
 
 # direct methods
-.method constructor <init>(Lcom/android/internal/app/AlertController$AlertParams;Landroid/content/Context;II[Ljava/lang/CharSequence;Lcom/android/internal/app/AlertController$RecycleListView;)V
-    .locals 0
+.method constructor <init>(Lcom/android/internal/app/AlertController$AlertParams;Landroid/content/Context;II[Ljava/lang/CharSequence;Landroid/text/TextUtils$TruncateAt;Lcom/android/internal/app/AlertController$RecycleListView;)V
+    .locals 6
     .parameter
     .parameter "x0"
     .parameter "x1"
     .parameter "x2"
     .parameter "x3"
+    .parameter "x4"
     .parameter
 
     .prologue
-    .line 1209
+    .line 1295
     iput-object p1, p0, Lcom/android/internal/app/AlertController$AlertParams$1;->this$0:Lcom/android/internal/app/AlertController$AlertParams;
 
-    iput-object p6, p0, Lcom/android/internal/app/AlertController$AlertParams$1;->val$listView:Lcom/android/internal/app/AlertController$RecycleListView;
+    iput-object p7, p0, Lcom/android/internal/app/AlertController$AlertParams$1;->val$listView:Lcom/android/internal/app/AlertController$RecycleListView;
 
-    invoke-direct {p0, p2, p3, p4, p5}, Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;II[Ljava/lang/Object;)V
+    move-object v0, p0
+
+    move-object v1, p2
+
+    move v2, p3
+
+    move v3, p4
+
+    move-object v4, p5
+
+    move-object v5, p6
+
+    invoke-direct/range {v0 .. v5}, Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;II[Ljava/lang/Object;Landroid/text/TextUtils$TruncateAt;)V
 
     return-void
 .end method
@@ -59,12 +72,12 @@
     .parameter "parent"
 
     .prologue
-    .line 1212
+    .line 1298
     invoke-super {p0, p1, p2, p3}, Landroid/widget/ArrayAdapter;->getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
 
     move-result-object v1
 
-    .line 1213
+    .line 1299
     .local v1, view:Landroid/view/View;
     iget-object v2, p0, Lcom/android/internal/app/AlertController$AlertParams$1;->this$0:Lcom/android/internal/app/AlertController$AlertParams;
 
@@ -72,25 +85,25 @@
 
     if-eqz v2, :cond_0
 
-    .line 1214
+    .line 1300
     iget-object v2, p0, Lcom/android/internal/app/AlertController$AlertParams$1;->this$0:Lcom/android/internal/app/AlertController$AlertParams;
 
     iget-object v2, v2, Lcom/android/internal/app/AlertController$AlertParams;->mCheckedItems:[Z
 
     aget-boolean v0, v2, p1
 
-    .line 1215
+    .line 1301
     .local v0, isItemChecked:Z
     if-eqz v0, :cond_0
 
-    .line 1216
+    .line 1302
     iget-object v2, p0, Lcom/android/internal/app/AlertController$AlertParams$1;->val$listView:Lcom/android/internal/app/AlertController$RecycleListView;
 
     const/4 v3, 0x1
 
     invoke-virtual {v2, p1, v3}, Lcom/android/internal/app/AlertController$RecycleListView;->setItemChecked(IZ)V
 
-    .line 1219
+    .line 1305
     .end local v0           #isItemChecked:Z
     :cond_0
     return-object v1

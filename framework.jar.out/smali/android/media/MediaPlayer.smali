@@ -95,6 +95,10 @@
 
 .field public static final MEDIA_MIMETYPE_TEXT_SUBRIP:Ljava/lang/String; = "application/x-subrip"
 
+.field public static final MEDIA_NETWORK_CONNECT_FAIL_MAX:I = -0x3e9
+
+.field public static final MEDIA_NETWORK_CONNECT_FAIL_MIN:I = -0x3ed
+
 .field private static final MEDIA_NOP:I = 0x0
 
 .field private static final MEDIA_PLAYBACK_COMPLETE:I = 0x2
@@ -857,7 +861,7 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 2590
+    .line 2594
     if-eq p1, v0, :cond_0
 
     const/4 v1, 0x2
@@ -3423,10 +3427,10 @@
     .parameter "listener"
 
     .prologue
-    .line 2581
+    .line 2585
     iput-object p1, p0, Landroid/media/MediaPlayer;->mOnInfoListener:Landroid/media/MediaPlayer$OnInfoListener;
 
-    .line 2582
+    .line 2586
     return-void
 .end method
 

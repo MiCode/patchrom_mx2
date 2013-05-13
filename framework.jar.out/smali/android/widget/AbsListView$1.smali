@@ -3,7 +3,7 @@
 .source "AbsListView.java"
 
 # interfaces
-.implements Landroid/view/ActionMode$BackPressedListener;
+.implements Ljava/lang/Runnable;
 
 
 # annotations
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 2171
+    .line 2184
     iput-object p1, p0, Landroid/widget/AbsListView$1;->this$0:Landroid/widget/AbsListView;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -37,38 +37,23 @@
 
 
 # virtual methods
-.method public onBackPressed()Z
-    .locals 1
+.method public run()V
+    .locals 2
 
     .prologue
-    .line 2176
+    .line 2186
     iget-object v0, p0, Landroid/widget/AbsListView$1;->this$0:Landroid/widget/AbsListView;
 
-    invoke-virtual {v0}, Landroid/widget/AbsListView;->getCheckedItemCount()I
+    invoke-virtual {v0}, Landroid/widget/AbsListView;->startMultiChoice()Z
 
-    move-result v0
-
-    if-lez v0, :cond_0
-
-    .line 2177
+    .line 2187
     iget-object v0, p0, Landroid/widget/AbsListView$1;->this$0:Landroid/widget/AbsListView;
 
-    invoke-virtual {v0}, Landroid/widget/AbsListView;->clearChoices()V
+    const/4 v1, 0x0
 
-    .line 2178
-    iget-object v0, p0, Landroid/widget/AbsListView$1;->this$0:Landroid/widget/AbsListView;
+    #setter for: Landroid/widget/AbsListView;->mMultiChoiceDelayRunnable:Ljava/lang/Runnable;
+    invoke-static {v0, v1}, Landroid/widget/AbsListView;->access$102(Landroid/widget/AbsListView;Ljava/lang/Runnable;)Ljava/lang/Runnable;
 
-    invoke-virtual {v0}, Landroid/widget/AbsListView;->requestLayout()V
-
-    .line 2179
-    const/4 v0, 0x1
-
-    .line 2181
-    :goto_0
-    return v0
-
-    :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    .line 2188
+    return-void
 .end method

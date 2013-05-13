@@ -31,16 +31,16 @@
     .parameter "bottom"
 
     .prologue
-    .line 1341
+    .line 1345
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1342
+    .line 1346
     iput p1, p0, Landroid/text/Layout$RectRow;->top:I
 
-    .line 1343
+    .line 1347
     iput p2, p0, Landroid/text/Layout$RectRow;->bottom:I
 
-    .line 1344
+    .line 1348
     return-void
 .end method
 
@@ -49,7 +49,7 @@
     .parameter "pt"
 
     .prologue
-    .line 1392
+    .line 1396
     const/16 v0, 0x20
 
     shr-long v0, p1, v0
@@ -64,7 +64,7 @@
     .parameter "pt"
 
     .prologue
-    .line 1396
+    .line 1400
     const-wide/16 v0, -0x1
 
     and-long/2addr v0, p1
@@ -80,7 +80,7 @@
     .parameter "right"
 
     .prologue
-    .line 1388
+    .line 1392
     int-to-long v0, p1
 
     const/16 v2, 0x20
@@ -102,19 +102,19 @@
     .parameter "right"
 
     .prologue
-    .line 1347
+    .line 1351
     iget-object v1, p0, Landroid/text/Layout$RectRow;->mList:[J
 
     if-nez v1, :cond_0
 
-    .line 1348
+    .line 1352
     const/16 v1, 0x20
 
     new-array v1, v1, [J
 
     iput-object v1, p0, Landroid/text/Layout$RectRow;->mList:[J
 
-    .line 1350
+    .line 1354
     :cond_0
     iget v1, p0, Landroid/text/Layout$RectRow;->mCount:I
 
@@ -124,7 +124,7 @@
 
     if-ne v1, v2, :cond_1
 
-    .line 1351
+    .line 1355
     iget-object v1, p0, Landroid/text/Layout$RectRow;->mList:[J
 
     iget v2, p0, Landroid/text/Layout$RectRow;->mCount:I
@@ -137,21 +137,21 @@
 
     iput-object v1, p0, Landroid/text/Layout$RectRow;->mList:[J
 
-    .line 1353
+    .line 1357
     :cond_1
     if-le p1, p2, :cond_2
 
-    .line 1354
+    .line 1358
     move v0, p1
 
-    .line 1355
+    .line 1359
     .local v0, tmp:I
     move p1, p2
 
-    .line 1356
+    .line 1360
     move p2, v0
 
-    .line 1358
+    .line 1362
     .end local v0           #tmp:I
     :cond_2
     iget-object v1, p0, Landroid/text/Layout$RectRow;->mList:[J
@@ -168,7 +168,7 @@
 
     aput-wide v3, v1, v2
 
-    .line 1359
+    .line 1363
     return-void
 .end method
 
@@ -178,29 +178,29 @@
     .prologue
     const/4 v9, 0x0
 
-    .line 1362
+    .line 1366
     iget v7, p0, Landroid/text/Layout$RectRow;->mCount:I
 
     if-gtz v7, :cond_0
 
-    .line 1363
+    .line 1367
     new-array v7, v9, [Landroid/graphics/RectF;
 
-    .line 1384
+    .line 1388
     :goto_0
     return-object v7
 
-    .line 1365
+    .line 1369
     :cond_0
     const/4 v2, 0x0
 
-    .line 1366
+    .line 1370
     .local v2, index:I
     iget v7, p0, Landroid/text/Layout$RectRow;->mCount:I
 
     new-array v0, v7, [Landroid/graphics/RectF;
 
-    .line 1367
+    .line 1371
     .local v0, a:[Landroid/graphics/RectF;
     iget-object v7, p0, Landroid/text/Layout$RectRow;->mList:[J
 
@@ -208,10 +208,10 @@
 
     invoke-static {v7, v9, v8}, Ljava/util/Arrays;->sort([JII)V
 
-    .line 1368
+    .line 1372
     const/4 v5, 0x0
 
-    .line 1369
+    .line 1373
     .local v5, r:Landroid/graphics/RectF;
     const/4 v1, 0x0
 
@@ -221,7 +221,7 @@
 
     if-ge v1, v7, :cond_4
 
-    .line 1370
+    .line 1374
     iget-object v7, p0, Landroid/text/Layout$RectRow;->mList:[J
 
     aget-wide v7, v7, v1
@@ -232,7 +232,7 @@
 
     int-to-float v4, v7
 
-    .line 1371
+    .line 1375
     .local v4, left:F
     iget-object v7, p0, Landroid/text/Layout$RectRow;->mList:[J
 
@@ -244,7 +244,7 @@
 
     int-to-float v6, v7
 
-    .line 1372
+    .line 1376
     .local v6, right:F
     if-eqz v5, :cond_1
 
@@ -264,11 +264,11 @@
 
     if-gez v7, :cond_3
 
-    .line 1374
+    .line 1378
     :cond_1
     if-eqz v5, :cond_2
 
-    .line 1375
+    .line 1379
     add-int/lit8 v3, v2, 0x1
 
     .end local v2           #index:I
@@ -277,7 +277,7 @@
 
     move v2, v3
 
-    .line 1376
+    .line 1380
     .end local v3           #index:I
     .restart local v2       #index:I
     :cond_2
@@ -294,14 +294,14 @@
 
     invoke-direct {v5, v4, v7, v6, v8}, Landroid/graphics/RectF;-><init>(FFFF)V
 
-    .line 1369
+    .line 1373
     .restart local v5       #r:Landroid/graphics/RectF;
     :goto_2
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_1
 
-    .line 1378
+    .line 1382
     :cond_3
     iget v7, v5, Landroid/graphics/RectF;->left:F
 
@@ -311,7 +311,7 @@
 
     iput v7, v5, Landroid/graphics/RectF;->left:F
 
-    .line 1379
+    .line 1383
     iget v7, v5, Landroid/graphics/RectF;->right:F
 
     invoke-static {v7, v6}, Ljava/lang/Math;->max(FF)F
@@ -322,13 +322,13 @@
 
     goto :goto_2
 
-    .line 1382
+    .line 1386
     .end local v4           #left:F
     .end local v6           #right:F
     :cond_4
     if-eqz v5, :cond_5
 
-    .line 1383
+    .line 1387
     add-int/lit8 v3, v2, 0x1
 
     .end local v2           #index:I
@@ -337,7 +337,7 @@
 
     move v2, v3
 
-    .line 1384
+    .line 1388
     .end local v3           #index:I
     .restart local v2       #index:I
     :cond_5

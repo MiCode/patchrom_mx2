@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 272
+    .line 285
     iput-object p1, p0, Lcom/meizu/widget/RecipientEdit$1;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -44,7 +44,7 @@
     .parameter "event"
 
     .prologue
-    .line 274
+    .line 287
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$1;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mOnKeyPreImeListener:Landroid/widget/EditText$OnKeyPreImeListener;
@@ -54,7 +54,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 275
+    .line 288
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$1;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mOnKeyPreImeListener:Landroid/widget/EditText$OnKeyPreImeListener;
@@ -68,7 +68,7 @@
 
     move-result v0
 
-    .line 277
+    .line 290
     :goto_0
     return v0
 

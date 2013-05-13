@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 352
+    .line 354
     iput-object p1, p0, Lcom/android/camera/VideoCamera$2;->this$0:Lcom/android/camera/VideoCamera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 2
 
     .prologue
-    .line 355
+    .line 357
     iget-object v0, p0, Lcom/android/camera/VideoCamera$2;->this$0:Lcom/android/camera/VideoCamera;
 
     #getter for: Lcom/android/camera/VideoCamera;->mBackControlImg:Lcom/android/camera/ui/RotateImageView;
@@ -49,10 +49,10 @@
 
     move-result-object v0
 
-    const v1, 0x7f02007b
+    const v1, 0x7f02007a
 
     invoke-virtual {v0, v1}, Lcom/android/camera/ui/RotateImageView;->setImageResource(I)V
 
-    .line 356
+    .line 358
     return-void
 .end method

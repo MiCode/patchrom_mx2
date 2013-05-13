@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 257
+    .line 272
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -45,18 +45,18 @@
 
     const/4 v3, 0x0
 
-    .line 261
+    .line 276
     invoke-super {p0, p1}, Landroid/os/Handler;->handleMessage(Landroid/os/Message;)V
 
-    .line 262
+    .line 277
     if-nez p1, :cond_1
 
-    .line 296
+    .line 311
     :cond_0
     :goto_0
     return-void
 
-    .line 265
+    .line 280
     :cond_1
     iget v2, p1, Landroid/os/Message;->what:I
 
@@ -64,18 +64,18 @@
 
     goto :goto_0
 
-    .line 267
+    .line 282
     :pswitch_0
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->chanelDetail_progressbar_layout:Landroid/widget/LinearLayout;
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mChanelDetailProgressbarLayout:Landroid/widget/LinearLayout;
     invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$300(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Landroid/widget/LinearLayout;
 
     move-result-object v2
 
     invoke-virtual {v2, v4}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 268
+    .line 283
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
     #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mIsScreenHorizontal:Z
@@ -85,42 +85,42 @@
 
     if-eqz v2, :cond_2
 
-    .line 269
+    .line 284
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
     invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$500(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Landroid/widget/ListView;
 
     move-result-object v2
 
     invoke-virtual {v2, v4}, Landroid/widget/ListView;->setVisibility(I)V
 
-    .line 270
+    .line 285
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
     invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$600(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Landroid/widget/GridView;
 
     move-result-object v2
 
     invoke-virtual {v2, v3}, Landroid/widget/GridView;->setVisibility(I)V
 
-    .line 275
+    .line 290
     :goto_1
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
-    #setter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->isLoading:Z
+    #setter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mIsLoading:Z
     invoke-static {v2, v3}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$702(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;Z)Z
 
-    .line 276
+    .line 291
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
     invoke-virtual {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->InitAdapter()V
 
-    .line 277
+    .line 292
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
     invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$800(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
     move-result-object v2
@@ -134,41 +134,41 @@
 
     invoke-virtual {v2, v3}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->setList(Ljava/util/ArrayList;)V
 
-    .line 278
+    .line 293
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteAdapter:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
     invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$800(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;
 
     move-result-object v2
 
     invoke-virtual {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->notifyDataSetChanged()V
 
-    .line 279
+    .line 294
     invoke-virtual {p0, v5}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->removeMessages(I)V
 
-    .line 280
+    .line 295
     const-wide/16 v2, 0x64
 
     invoke-virtual {p0, v5, v2, v3}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->sendEmptyMessageDelayed(IJ)Z
 
     goto :goto_0
 
-    .line 272
+    .line 287
     :cond_2
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteGridview:Landroid/widget/GridView;
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteGridview:Landroid/widget/GridView;
     invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$600(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Landroid/widget/GridView;
 
     move-result-object v2
 
     invoke-virtual {v2, v4}, Landroid/widget/GridView;->setVisibility(I)V
 
-    .line 273
+    .line 288
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->favoriteListview:Landroid/widget/ListView;
+    #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoriteListview:Landroid/widget/ListView;
     invoke-static {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$500(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;)Landroid/widget/ListView;
 
     move-result-object v2
@@ -177,7 +177,7 @@
 
     goto :goto_1
 
-    .line 283
+    .line 298
     :pswitch_1
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
@@ -201,7 +201,7 @@
 
     if-nez v2, :cond_0
 
-    .line 284
+    .line 299
     :cond_3
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
@@ -213,7 +213,7 @@
 
     move-result-object v0
 
-    .line 286
+    .line 301
     .local v0, fm:Landroid/app/FragmentManager;
     const-string v2, "tag_favorite"
 
@@ -221,7 +221,7 @@
 
     move-result-object v1
 
-    .line 287
+    .line 302
     .local v1, fragment:Landroid/app/Fragment;
     if-eqz v1, :cond_0
 
@@ -231,7 +231,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 288
+    .line 303
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$1;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
     invoke-virtual {v2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->getActivity()Landroid/app/Activity;
@@ -244,11 +244,11 @@
 
     move-result-object v2
 
-    const v3, 0x7f0a01d3
+    const v3, 0x7f0a01e2
 
     invoke-virtual {v2, v3}, Lcom/android/gallery3d/app/GalleryActionBar;->setTitle(I)V
 
-    .line 289
+    .line 304
     invoke-virtual {v0}, Landroid/app/FragmentManager;->beginTransaction()Landroid/app/FragmentTransaction;
 
     move-result-object v2
@@ -261,7 +261,7 @@
 
     goto/16 :goto_0
 
-    .line 265
+    .line 280
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0

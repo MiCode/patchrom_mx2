@@ -24,6 +24,9 @@
 .method public abstract getHeader(I)Ljava/lang/String;
 .end method
 
+.method public abstract getRowHeight(I)I
+.end method
+
 .method public abstract isActive(I)Z
 .end method
 

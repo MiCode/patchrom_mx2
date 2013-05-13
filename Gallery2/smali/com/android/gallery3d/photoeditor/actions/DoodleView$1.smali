@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 286
+    .line 271
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$1;->this$0:Lcom/android/gallery3d/photoeditor/actions/DoodleView;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,11 +41,11 @@
     .locals 1
 
     .prologue
-    .line 288
+    .line 273
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/DoodleView$1;->this$0:Lcom/android/gallery3d/photoeditor/actions/DoodleView;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/DoodleView;->requestLayout()V
 
-    .line 289
+    .line 274
     return-void
 .end method

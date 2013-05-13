@@ -2298,13 +2298,25 @@
 .end method
 
 .method public isDeviceDefaultTheme()Z
-    .locals 1
+    .locals 3
 
     .prologue
-    .line 2609
-    const/4 v0, 0x0
+    const/4 v2, 0x0
 
-    return v0
+    .line 2609
+    sget-object v1, Lcom/android/internal/R$styleable;->ThemeDeviceDefault:[I
+
+    invoke-virtual {p0, v1}, Landroid/content/Context;->obtainStyledAttributes([I)Landroid/content/res/TypedArray;
+
+    move-result-object v0
+
+    .line 2610
+    .local v0, a:Landroid/content/res/TypedArray;
+    invoke-virtual {v0, v2, v2}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+
+    move-result v1
+
+    return v1
 .end method
 
 .method public isRestricted()Z

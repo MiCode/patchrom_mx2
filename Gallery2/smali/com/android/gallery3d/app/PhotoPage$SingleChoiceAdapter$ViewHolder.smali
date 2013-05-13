@@ -26,7 +26,7 @@
     .parameter
 
     .prologue
-    .line 1075
+    .line 1122
     .local p0, this:Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;,"Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter<TT;>.ViewHolder;"
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;->this$0:Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;
 
@@ -41,7 +41,7 @@
     .parameter "x1"
 
     .prologue
-    .line 1075
+    .line 1122
     .local p0, this:Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;,"Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter<TT;>.ViewHolder;"
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter$ViewHolder;-><init>(Lcom/android/gallery3d/app/PhotoPage$SingleChoiceAdapter;)V
 

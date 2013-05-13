@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 198
+    .line 202
     iput-object p1, p0, Lcom/android/gallery3d/app/SlideshowPage$3;->this$0:Lcom/android/gallery3d/app/SlideshowPage;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -40,12 +40,12 @@
     .parameter "intent"
 
     .prologue
-    .line 201
+    .line 205
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 202
+    .line 206
     .local v0, action:Ljava/lang/String;
     const-string v2, "media.dlnaservice.action.devicesChanged"
 
@@ -55,7 +55,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 203
+    .line 207
     const-string v2, "renderer_count"
 
     const/4 v3, 0x0
@@ -64,7 +64,7 @@
 
     move-result v1
 
-    .line 204
+    .line 208
     .local v1, num:I
     iget-object v2, p0, Lcom/android/gallery3d/app/SlideshowPage$3;->this$0:Lcom/android/gallery3d/app/SlideshowPage;
 
@@ -75,19 +75,19 @@
 
     if-nez v2, :cond_0
 
-    .line 205
+    .line 209
     iget-object v2, p0, Lcom/android/gallery3d/app/SlideshowPage$3;->this$0:Lcom/android/gallery3d/app/SlideshowPage;
 
     #calls: Lcom/android/gallery3d/app/SlideshowPage;->dlnaOnPause()V
     invoke-static {v2}, Lcom/android/gallery3d/app/SlideshowPage;->access$500(Lcom/android/gallery3d/app/SlideshowPage;)V
 
-    .line 206
+    .line 210
     iget-object v2, p0, Lcom/android/gallery3d/app/SlideshowPage$3;->this$0:Lcom/android/gallery3d/app/SlideshowPage;
 
     #calls: Lcom/android/gallery3d/app/SlideshowPage;->dlnaOnDestroy()V
     invoke-static {v2}, Lcom/android/gallery3d/app/SlideshowPage;->access$600(Lcom/android/gallery3d/app/SlideshowPage;)V
 
-    .line 209
+    .line 213
     .end local v1           #num:I
     :cond_0
     return-void

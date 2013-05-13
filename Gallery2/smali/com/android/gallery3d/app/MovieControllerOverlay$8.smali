@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 959
+    .line 932
     iput-object p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,117 +38,62 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .locals 7
+    .locals 5
     .parameter "v"
 
     .prologue
-    const/4 v6, 0x1
+    const/16 v4, 0x3ec
 
-    const/4 v5, 0x0
+    const/4 v3, 0x0
 
-    .line 962
-    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
+    .line 935
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    new-instance v3, Landroid/widget/PopupMenu;
+    #setter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCanGesture:Z
+    invoke-static {v0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6102(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
 
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
+    .line 936
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-    invoke-static {v4}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6100(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
+    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$500(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/os/Handler;
 
-    move-result-object v4
+    move-result-object v0
 
-    invoke-direct {v3, v4, p1}, Landroid/widget/PopupMenu;-><init>(Landroid/content/Context;Landroid/view/View;)V
+    invoke-virtual {v0, v4}, Landroid/os/Handler;->removeMessages(I)V
 
-    #setter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
-    invoke-static {v2, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6002(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/widget/PopupMenu;)Landroid/widget/PopupMenu;
+    .line 937
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    .line 963
-    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
+    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$500(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/os/Handler;
 
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6000(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/PopupMenu;
+    move-result-object v0
 
-    move-result-object v2
+    const-wide/16 v1, 0x12c
 
-    invoke-virtual {v2}, Landroid/widget/PopupMenu;->getMenu()Landroid/view/Menu;
+    invoke-virtual {v0, v4, v1, v2}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    move-result-object v1
+    .line 938
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    .line 964
-    .local v1, menu:Landroid/view/Menu;
-    const/4 v0, 0x0
+    const/4 v1, 0x1
 
-    .local v0, i:I
-    :goto_0
-    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
+    #setter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsTimeTextListShow:Z
+    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$5802(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
 
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuInfo:[Ljava/lang/String;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6200(Lcom/android/gallery3d/app/MovieControllerOverlay;)[Ljava/lang/String;
+    .line 939
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    move-result-object v2
+    #setter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAudioTrackListShow:Z
+    invoke-static {v0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$5702(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
 
-    array-length v2, v2
+    .line 940
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    if-ge v0, v2, :cond_0
+    #setter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
+    invoke-static {v0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$5902(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
 
-    .line 965
-    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
-
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuInfo:[Ljava/lang/String;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6200(Lcom/android/gallery3d/app/MovieControllerOverlay;)[Ljava/lang/String;
-
-    move-result-object v2
-
-    aget-object v2, v2, v0
-
-    invoke-interface {v1, v5, v0, v5, v2}, Landroid/view/Menu;->add(IIILjava/lang/CharSequence;)Landroid/view/MenuItem;
-
-    .line 964
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_0
-
-    .line 967
-    :cond_0
-    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
-
-    #setter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuShowing:Z
-    invoke-static {v2, v6}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$1102(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
-
-    .line 968
-    invoke-interface {v1, v5, v6, v5}, Landroid/view/Menu;->setGroupCheckable(IZZ)V
-
-    .line 969
-    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
-
-    #calls: Lcom/android/gallery3d/app/MovieControllerOverlay;->setMenuItemCheck()V
-    invoke-static {v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6300(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
-
-    .line 970
-    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
-
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6000(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/PopupMenu;
-
-    move-result-object v2
-
-    new-instance v3, Lcom/android/gallery3d/app/MovieControllerOverlay$8$1;
-
-    invoke-direct {v3, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$8$1;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay$8;)V
-
-    invoke-virtual {v2, v3}, Landroid/widget/PopupMenu;->setOnMenuItemClickListener(Landroid/widget/PopupMenu$OnMenuItemClickListener;)V
-
-    .line 1025
-    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$8;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
-
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6000(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/PopupMenu;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Landroid/widget/PopupMenu;->show()V
-
-    .line 1027
+    .line 941
     return-void
 .end method

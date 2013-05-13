@@ -26,21 +26,21 @@
     .parameter
 
     .prologue
-    .line 1403
+    .line 761
     iput-object p1, p0, Landroid/webkit/WebViewClassic$MagnifierHrefsController;->this$0:Landroid/webkit/WebViewClassic;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1404
+    .line 762
     new-instance v0, Landroid/webkit/MagnifierHrefsPopupWindow;
 
     #getter for: Landroid/webkit/WebViewClassic;->mContext:Landroid/content/Context;
-    invoke-static {p1}, Landroid/webkit/WebViewClassic;->access$700(Landroid/webkit/WebViewClassic;)Landroid/content/Context;
+    invoke-static {p1}, Landroid/webkit/WebViewClassic;->access$900(Landroid/webkit/WebViewClassic;)Landroid/content/Context;
 
     move-result-object v1
 
     #getter for: Landroid/webkit/WebViewClassic;->mWebViewCore:Landroid/webkit/WebViewCore;
-    invoke-static {p1}, Landroid/webkit/WebViewClassic;->access$1200(Landroid/webkit/WebViewClassic;)Landroid/webkit/WebViewCore;
+    invoke-static {p1}, Landroid/webkit/WebViewClassic;->access$800(Landroid/webkit/WebViewClassic;)Landroid/webkit/WebViewCore;
 
     move-result-object v2
 
@@ -48,7 +48,7 @@
 
     iput-object v0, p0, Landroid/webkit/WebViewClassic$MagnifierHrefsController;->mMagnifierHrefs:Landroid/webkit/MagnifierHrefsPopupWindow;
 
-    .line 1405
+    .line 763
     return-void
 .end method
 
@@ -58,7 +58,7 @@
     .locals 1
 
     .prologue
-    .line 1420
+    .line 778
     iget-object v0, p0, Landroid/webkit/WebViewClassic$MagnifierHrefsController;->mMagnifierHrefs:Landroid/webkit/MagnifierHrefsPopupWindow;
 
     invoke-virtual {v0}, Landroid/webkit/MagnifierHrefsPopupWindow;->getPicScale()F
@@ -72,7 +72,7 @@
     .locals 1
 
     .prologue
-    .line 1416
+    .line 774
     iget-object v0, p0, Landroid/webkit/WebViewClassic$MagnifierHrefsController;->mMagnifierHrefs:Landroid/webkit/MagnifierHrefsPopupWindow;
 
     invoke-virtual {v0}, Landroid/webkit/MagnifierHrefsPopupWindow;->getRect()Landroid/graphics/Rect;
@@ -86,12 +86,12 @@
     .locals 1
 
     .prologue
-    .line 1424
+    .line 782
     iget-object v0, p0, Landroid/webkit/WebViewClassic$MagnifierHrefsController;->mMagnifierHrefs:Landroid/webkit/MagnifierHrefsPopupWindow;
 
     invoke-virtual {v0}, Landroid/webkit/MagnifierHrefsPopupWindow;->dismiss()V
 
-    .line 1425
+    .line 783
     return-void
 .end method
 
@@ -99,7 +99,7 @@
     .locals 1
 
     .prologue
-    .line 1412
+    .line 770
     iget-object v0, p0, Landroid/webkit/WebViewClassic$MagnifierHrefsController;->mMagnifierHrefs:Landroid/webkit/MagnifierHrefsPopupWindow;
 
     invoke-virtual {v0}, Landroid/webkit/MagnifierHrefsPopupWindow;->isShowing()Z
@@ -118,7 +118,7 @@
     .parameter "picScale"
 
     .prologue
-    .line 1408
+    .line 766
     iget-object v0, p0, Landroid/webkit/WebViewClassic$MagnifierHrefsController;->mMagnifierHrefs:Landroid/webkit/MagnifierHrefsPopupWindow;
 
     iget-object v1, p0, Landroid/webkit/WebViewClassic$MagnifierHrefsController;->this$0:Landroid/webkit/WebViewClassic;
@@ -140,6 +140,6 @@
 
     invoke-virtual/range {v0 .. v6}, Landroid/webkit/MagnifierHrefsPopupWindow;->showMagnifier(Landroid/view/View;IILandroid/graphics/Rect;Landroid/graphics/Picture;F)V
 
-    .line 1409
+    .line 767
     return-void
 .end method

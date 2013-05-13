@@ -46,7 +46,7 @@
     .locals 1
 
     .prologue
-    .line 107
+    .line 108
     new-instance v0, Lmeizu/samba/server/LocalSharedFolder$1;
 
     invoke-direct {v0}, Lmeizu/samba/server/LocalSharedFolder$1;-><init>()V
@@ -160,10 +160,6 @@
 
     .line 58
     :cond_5
-    sget-object v0, Lmeizu/samba/server/LocalSharedFolder$SharedMode;->MODE_USER:Lmeizu/samba/server/LocalSharedFolder$SharedMode;
-
-    if-ne p3, v0, :cond_6
-
     const-string v0, ""
 
     invoke-virtual {p5, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -172,35 +168,29 @@
 
     if-eqz v0, :cond_6
 
-    .line 59
-    new-instance v0, Ljava/lang/IllegalArgumentException;
+    .line 60
+    sget-object p3, Lmeizu/samba/server/LocalSharedFolder$SharedMode;->MODE_SHARE:Lmeizu/samba/server/LocalSharedFolder$SharedMode;
 
-    const-string v1, "in user mode user cannot be null or empty"
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw v0
-
-    .line 62
+    .line 63
     :cond_6
     iput-object p1, p0, Lmeizu/samba/server/LocalSharedFolder;->path:Ljava/lang/String;
 
-    .line 63
+    .line 64
     iput-object p2, p0, Lmeizu/samba/server/LocalSharedFolder;->description:Ljava/lang/String;
 
-    .line 64
+    .line 65
     iput-object p3, p0, Lmeizu/samba/server/LocalSharedFolder;->mode:Lmeizu/samba/server/LocalSharedFolder$SharedMode;
 
-    .line 65
+    .line 66
     iput-boolean p4, p0, Lmeizu/samba/server/LocalSharedFolder;->writable:Z
 
-    .line 66
+    .line 67
     iput-object p5, p0, Lmeizu/samba/server/LocalSharedFolder;->user:Ljava/lang/String;
 
-    .line 67
+    .line 68
     iput-object p6, p0, Lmeizu/samba/server/LocalSharedFolder;->password:Ljava/lang/String;
 
-    .line 68
+    .line 69
     return-void
 .end method
 
@@ -210,7 +200,7 @@
     .locals 1
 
     .prologue
-    .line 93
+    .line 94
     const/4 v0, 0x0
 
     return v0
@@ -220,16 +210,16 @@
     .locals 4
 
     .prologue
-    .line 73
+    .line 74
     new-instance v1, Ljava/lang/StringBuffer;
 
     invoke-direct {v1}, Ljava/lang/StringBuffer;-><init>()V
 
-    .line 74
+    .line 75
     .local v1, sb:Ljava/lang/StringBuffer;
     const-string v0, "<none>"
 
-    .line 75
+    .line 76
     .local v0, none:Ljava/lang/String;
     const-string v2, "path: "
 
@@ -325,14 +315,14 @@
     :goto_4
     invoke-virtual {v2, v0}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    .line 88
+    .line 89
     invoke-virtual {v1}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
 
     move-result-object v2
 
     return-object v2
 
-    .line 75
+    .line 76
     .restart local v0       #none:Ljava/lang/String;
     :cond_0
     iget-object v2, p0, Lmeizu/samba/server/LocalSharedFolder;->path:Ljava/lang/String;
@@ -366,17 +356,17 @@
     .parameter "flags"
 
     .prologue
-    .line 98
+    .line 99
     iget-object v0, p0, Lmeizu/samba/server/LocalSharedFolder;->path:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 99
+    .line 100
     iget-object v0, p0, Lmeizu/samba/server/LocalSharedFolder;->description:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 100
+    .line 101
     iget-object v0, p0, Lmeizu/samba/server/LocalSharedFolder;->mode:Lmeizu/samba/server/LocalSharedFolder$SharedMode;
 
     invoke-virtual {v0}, Lmeizu/samba/server/LocalSharedFolder$SharedMode;->ordinal()I
@@ -385,7 +375,7 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 101
+    .line 102
     iget-boolean v0, p0, Lmeizu/samba/server/LocalSharedFolder;->writable:Z
 
     if-eqz v0, :cond_0
@@ -395,20 +385,20 @@
     :goto_0
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 102
+    .line 103
     iget-object v0, p0, Lmeizu/samba/server/LocalSharedFolder;->user:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 103
+    .line 104
     iget-object v0, p0, Lmeizu/samba/server/LocalSharedFolder;->password:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 104
+    .line 105
     return-void
 
-    .line 101
+    .line 102
     :cond_0
     const/4 v0, 0x0
 

@@ -26,7 +26,7 @@
     .parameter "x1"
 
     .prologue
-    .line 5385
+    .line 5350
     iput-object p1, p0, Landroid/media/AudioService$5;->this$0:Landroid/media/AudioService;
 
     invoke-direct {p0, p2, p3}, Landroid/os/TokenWatcher;-><init>(Landroid/os/Handler;Ljava/lang/String;)V
@@ -40,34 +40,34 @@
     .locals 2
 
     .prologue
-    .line 5398
+    .line 5363
     iget-object v0, p0, Landroid/media/AudioService$5;->this$0:Landroid/media/AudioService;
 
     iget-object v1, v0, Landroid/media/AudioService;->mVolumeLockTokenWatcher:Landroid/os/TokenWatcher;
 
     monitor-enter v1
 
-    .line 5399
+    .line 5364
     :try_start_0
     iget-object v0, p0, Landroid/media/AudioService$5;->this$0:Landroid/media/AudioService;
 
     #calls: Landroid/media/AudioService;->realDisableChangeVolume()V
     invoke-static {v0}, Landroid/media/AudioService;->access$9400(Landroid/media/AudioService;)V
 
-    .line 5400
+    .line 5365
     iget-object v0, p0, Landroid/media/AudioService$5;->this$0:Landroid/media/AudioService;
 
     iget-object v0, v0, Landroid/media/AudioService;->mVolumeLockTokenWatcher:Landroid/os/TokenWatcher;
 
     invoke-virtual {v0}, Ljava/lang/Object;->notifyAll()V
 
-    .line 5401
+    .line 5366
     monitor-exit v1
 
-    .line 5402
+    .line 5367
     return-void
 
-    .line 5401
+    .line 5366
     :catchall_0
     move-exception v0
 
@@ -82,34 +82,34 @@
     .locals 2
 
     .prologue
-    .line 5389
+    .line 5354
     iget-object v0, p0, Landroid/media/AudioService$5;->this$0:Landroid/media/AudioService;
 
     iget-object v1, v0, Landroid/media/AudioService;->mVolumeLockTokenWatcher:Landroid/os/TokenWatcher;
 
     monitor-enter v1
 
-    .line 5390
+    .line 5355
     :try_start_0
     iget-object v0, p0, Landroid/media/AudioService$5;->this$0:Landroid/media/AudioService;
 
     #calls: Landroid/media/AudioService;->realEnableChangeVolume()V
     invoke-static {v0}, Landroid/media/AudioService;->access$9300(Landroid/media/AudioService;)V
 
-    .line 5391
+    .line 5356
     iget-object v0, p0, Landroid/media/AudioService$5;->this$0:Landroid/media/AudioService;
 
     iget-object v0, v0, Landroid/media/AudioService;->mVolumeLockTokenWatcher:Landroid/os/TokenWatcher;
 
     invoke-virtual {v0}, Ljava/lang/Object;->notifyAll()V
 
-    .line 5392
+    .line 5357
     monitor-exit v1
 
-    .line 5394
+    .line 5359
     return-void
 
-    .line 5392
+    .line 5357
     :catchall_0
     move-exception v0
 

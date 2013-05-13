@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 675
+    .line 683
     iput-object p1, p0, Landroid/app/Dialog$2;->this$0:Landroid/app/Dialog;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,12 +41,12 @@
     .locals 16
 
     .prologue
-    .line 678
+    .line 686
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v1
 
-    .line 680
+    .line 688
     .local v1, now:J
     new-instance v0, Landroid/view/KeyEvent;
 
@@ -70,7 +70,7 @@
 
     invoke-direct/range {v0 .. v12}, Landroid/view/KeyEvent;-><init>(JJIIIIIIII)V
 
-    .line 685
+    .line 693
     .local v0, down:Landroid/view/KeyEvent;
     new-instance v3, Landroid/view/KeyEvent;
 
@@ -96,7 +96,7 @@
 
     invoke-direct/range {v3 .. v15}, Landroid/view/KeyEvent;-><init>(JJIIIIIIII)V
 
-    .line 690
+    .line 698
     .local v3, up:Landroid/view/KeyEvent;
     invoke-static {}, Landroid/hardware/input/InputManager;->getInstance()Landroid/hardware/input/InputManager;
 
@@ -106,7 +106,7 @@
 
     invoke-virtual {v4, v0, v5}, Landroid/hardware/input/InputManager;->injectInputEvent(Landroid/view/InputEvent;I)Z
 
-    .line 693
+    .line 701
     invoke-static {}, Landroid/hardware/input/InputManager;->getInstance()Landroid/hardware/input/InputManager;
 
     move-result-object v4
@@ -115,6 +115,6 @@
 
     invoke-virtual {v4, v3, v5}, Landroid/hardware/input/InputManager;->injectInputEvent(Landroid/view/InputEvent;I)Z
 
-    .line 695
+    .line 703
     return-void
 .end method

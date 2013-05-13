@@ -26,18 +26,18 @@
     .parameter "realDrawable"
 
     .prologue
-    .line 1704
+    .line 1708
     invoke-direct {p0}, Landroid/graphics/drawable/Drawable;-><init>()V
 
-    .line 1702
+    .line 1706
     const/high16 v0, 0x3f80
 
     iput v0, p0, Lcom/meizu/widget/MultiWaveView$TargetDrawable$DrawableWithAlpha;->mAlpha:F
 
-    .line 1705
+    .line 1709
     iput-object p1, p0, Lcom/meizu/widget/MultiWaveView$TargetDrawable$DrawableWithAlpha;->mRealDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 1706
+    .line 1710
     return-void
 .end method
 
@@ -48,7 +48,7 @@
     .parameter "canvas"
 
     .prologue
-    .line 1714
+    .line 1718
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView$TargetDrawable$DrawableWithAlpha;->mRealDrawable:Landroid/graphics/drawable/Drawable;
 
     iget v1, p0, Lcom/meizu/widget/MultiWaveView$TargetDrawable$DrawableWithAlpha;->mAlpha:F
@@ -63,12 +63,12 @@
 
     invoke-virtual {v0, v1}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 1715
+    .line 1719
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView$TargetDrawable$DrawableWithAlpha;->mRealDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 1716
+    .line 1720
     return-void
 .end method
 
@@ -76,7 +76,7 @@
     .locals 1
 
     .prologue
-    .line 1711
+    .line 1715
     iget v0, p0, Lcom/meizu/widget/MultiWaveView$TargetDrawable$DrawableWithAlpha;->mAlpha:F
 
     return v0
@@ -86,7 +86,7 @@
     .locals 1
 
     .prologue
-    .line 1727
+    .line 1731
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView$TargetDrawable$DrawableWithAlpha;->mRealDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v0}, Landroid/graphics/drawable/Drawable;->getOpacity()I
@@ -101,10 +101,10 @@
     .parameter "alpha"
 
     .prologue
-    .line 1708
+    .line 1712
     iput p1, p0, Lcom/meizu/widget/MultiWaveView$TargetDrawable$DrawableWithAlpha;->mAlpha:F
 
-    .line 1709
+    .line 1713
     return-void
 .end method
 
@@ -113,12 +113,12 @@
     .parameter "alpha"
 
     .prologue
-    .line 1719
+    .line 1723
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView$TargetDrawable$DrawableWithAlpha;->mRealDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 1720
+    .line 1724
     return-void
 .end method
 
@@ -127,11 +127,11 @@
     .parameter "cf"
 
     .prologue
-    .line 1723
+    .line 1727
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView$TargetDrawable$DrawableWithAlpha;->mRealDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->setColorFilter(Landroid/graphics/ColorFilter;)V
 
-    .line 1724
+    .line 1728
     return-void
 .end method

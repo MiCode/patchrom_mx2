@@ -39,6 +39,8 @@
 
 .field private hsize:D
 
+.field private isExistOrDownload:Z
+
 .field private isLastPlayPosition:Z
 
 .field private isSelected:Z
@@ -67,7 +69,7 @@
     .locals 1
 
     .prologue
-    .line 178
+    .line 186
     new-instance v0, Lcom/meizu/video/client/ui/entity/EpisodesEntity$1;
 
     invoke-direct {v0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity$1;-><init>()V
@@ -81,9 +83,9 @@
     .locals 4
 
     .prologue
-    const/4 v3, 0x0
+    const-wide/16 v2, 0x0
 
-    const-wide/16 v1, 0x0
+    const/4 v1, 0x0
 
     .line 15
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -149,10 +151,10 @@
     iput-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->hmid:Ljava/lang/String;
 
     .line 30
-    iput-wide v1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->lsize:D
+    iput-wide v2, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->lsize:D
 
     .line 31
-    iput-wide v1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->hsize:D
+    iput-wide v2, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->hsize:D
 
     .line 32
     const-string v0, ""
@@ -175,10 +177,13 @@
     iput-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->flag:Ljava/lang/String;
 
     .line 40
-    iput-boolean v3, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isSelected:Z
+    iput-boolean v1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isSelected:Z
 
     .line 42
-    iput-boolean v3, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isLastPlayPosition:Z
+    iput-boolean v1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isLastPlayPosition:Z
+
+    .line 44
+    iput-boolean v1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isExistOrDownload:Z
 
     return-void
 .end method
@@ -266,10 +271,10 @@
     .end annotation
 
     .prologue
-    .line 169
+    .line 177
     const/4 v1, 0x0
 
-    .line 171
+    .line 179
     .local v1, episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
     :try_start_0
     invoke-super {p0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
@@ -284,11 +289,11 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 175
+    .line 183
     :goto_0
     return-object v1
 
-    .line 172
+    .line 180
     :catch_0
     move-exception v2
 
@@ -316,7 +321,7 @@
     .locals 1
 
     .prologue
-    .line 198
+    .line 206
     const/4 v0, 0x0
 
     return v0
@@ -326,7 +331,7 @@
     .locals 1
 
     .prologue
-    .line 99
+    .line 101
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->download_address:Ljava/lang/String;
 
     return-object v0
@@ -336,7 +341,7 @@
     .locals 1
 
     .prologue
-    .line 135
+    .line 137
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->download_address_other:Ljava/lang/String;
 
     return-object v0
@@ -346,7 +351,7 @@
     .locals 1
 
     .prologue
-    .line 147
+    .line 149
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->flag:Ljava/lang/String;
 
     return-object v0
@@ -356,7 +361,7 @@
     .locals 1
 
     .prologue
-    .line 81
+    .line 83
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->head_duration:Ljava/lang/String;
 
     return-object v0
@@ -366,7 +371,7 @@
     .locals 1
 
     .prologue
-    .line 111
+    .line 113
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->hmid:Ljava/lang/String;
 
     return-object v0
@@ -376,7 +381,7 @@
     .locals 1
 
     .prologue
-    .line 105
+    .line 107
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->lmid:Ljava/lang/String;
 
     return-object v0
@@ -386,7 +391,7 @@
     .locals 1
 
     .prologue
-    .line 93
+    .line 95
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->play_address:Ljava/lang/String;
 
     return-object v0
@@ -396,7 +401,7 @@
     .locals 1
 
     .prologue
-    .line 129
+    .line 131
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->play_address_other:Ljava/lang/String;
 
     return-object v0
@@ -406,7 +411,7 @@
     .locals 1
 
     .prologue
-    .line 141
+    .line 143
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->progression:Ljava/lang/String;
 
     return-object v0
@@ -416,7 +421,7 @@
     .locals 1
 
     .prologue
-    .line 87
+    .line 89
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->tail_duration:Ljava/lang/String;
 
     return-object v0
@@ -426,7 +431,7 @@
     .locals 1
 
     .prologue
-    .line 63
+    .line 65
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->title:Ljava/lang/String;
 
     return-object v0
@@ -436,17 +441,27 @@
     .locals 1
 
     .prologue
-    .line 45
+    .line 47
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->vid:Ljava/lang/String;
 
     return-object v0
+.end method
+
+.method public isExistOrDownload()Z
+    .locals 1
+
+    .prologue
+    .line 168
+    iget-boolean v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isExistOrDownload:Z
+
+    return v0
 .end method
 
 .method public isLastPlayPosition()Z
     .locals 1
 
     .prologue
-    .line 160
+    .line 162
     iget-boolean v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isLastPlayPosition:Z
 
     return v0
@@ -456,7 +471,7 @@
     .locals 1
 
     .prologue
-    .line 153
+    .line 155
     iget-boolean v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isSelected:Z
 
     return v0
@@ -467,10 +482,10 @@
     .parameter "cid"
 
     .prologue
-    .line 54
+    .line 56
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->cid:Ljava/lang/String;
 
-    .line 55
+    .line 57
     return-void
 .end method
 
@@ -479,10 +494,10 @@
     .parameter "description"
 
     .prologue
-    .line 72
+    .line 74
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->description:Ljava/lang/String;
 
-    .line 73
+    .line 75
     return-void
 .end method
 
@@ -491,10 +506,10 @@
     .parameter "download_address"
 
     .prologue
-    .line 102
+    .line 104
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->download_address:Ljava/lang/String;
 
-    .line 103
+    .line 105
     return-void
 .end method
 
@@ -503,10 +518,10 @@
     .parameter "download_address_other"
 
     .prologue
-    .line 138
+    .line 140
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->download_address_other:Ljava/lang/String;
 
-    .line 139
+    .line 141
     return-void
 .end method
 
@@ -515,10 +530,22 @@
     .parameter "duration"
 
     .prologue
-    .line 78
+    .line 80
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->duration:Ljava/lang/String;
 
-    .line 79
+    .line 81
+    return-void
+.end method
+
+.method public setExistOrDownload(Z)V
+    .locals 0
+    .parameter "isExistOrDownload"
+
+    .prologue
+    .line 171
+    iput-boolean p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isExistOrDownload:Z
+
+    .line 172
     return-void
 .end method
 
@@ -527,10 +554,10 @@
     .parameter "flag"
 
     .prologue
-    .line 150
+    .line 152
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->flag:Ljava/lang/String;
 
-    .line 151
+    .line 153
     return-void
 .end method
 
@@ -539,10 +566,10 @@
     .parameter "head_duration"
 
     .prologue
-    .line 84
+    .line 86
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->head_duration:Ljava/lang/String;
 
-    .line 85
+    .line 87
     return-void
 .end method
 
@@ -551,10 +578,10 @@
     .parameter "hmid"
 
     .prologue
-    .line 114
+    .line 116
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->hmid:Ljava/lang/String;
 
-    .line 115
+    .line 117
     return-void
 .end method
 
@@ -563,10 +590,10 @@
     .parameter "hsize"
 
     .prologue
-    .line 126
+    .line 128
     iput-wide p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->hsize:D
 
-    .line 127
+    .line 129
     return-void
 .end method
 
@@ -575,10 +602,10 @@
     .parameter "isLastPlayPosition"
 
     .prologue
-    .line 163
+    .line 165
     iput-boolean p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isLastPlayPosition:Z
 
-    .line 164
+    .line 166
     return-void
 .end method
 
@@ -587,10 +614,10 @@
     .parameter "lmid"
 
     .prologue
-    .line 108
+    .line 110
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->lmid:Ljava/lang/String;
 
-    .line 109
+    .line 111
     return-void
 .end method
 
@@ -599,10 +626,10 @@
     .parameter "lsize"
 
     .prologue
-    .line 120
+    .line 122
     iput-wide p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->lsize:D
 
-    .line 121
+    .line 123
     return-void
 .end method
 
@@ -611,10 +638,10 @@
     .parameter "mmsid"
 
     .prologue
-    .line 60
+    .line 62
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->mmsid:Ljava/lang/String;
 
-    .line 61
+    .line 63
     return-void
 .end method
 
@@ -623,10 +650,10 @@
     .parameter "play_address"
 
     .prologue
-    .line 96
+    .line 98
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->play_address:Ljava/lang/String;
 
-    .line 97
+    .line 99
     return-void
 .end method
 
@@ -635,10 +662,10 @@
     .parameter "play_address_other"
 
     .prologue
-    .line 132
+    .line 134
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->play_address_other:Ljava/lang/String;
 
-    .line 133
+    .line 135
     return-void
 .end method
 
@@ -647,10 +674,10 @@
     .parameter "progression"
 
     .prologue
-    .line 144
+    .line 146
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->progression:Ljava/lang/String;
 
-    .line 145
+    .line 147
     return-void
 .end method
 
@@ -659,10 +686,10 @@
     .parameter "isSelected"
 
     .prologue
-    .line 156
+    .line 158
     iput-boolean p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isSelected:Z
 
-    .line 157
+    .line 159
     return-void
 .end method
 
@@ -671,10 +698,10 @@
     .parameter "tail_duration"
 
     .prologue
-    .line 90
+    .line 92
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->tail_duration:Ljava/lang/String;
 
-    .line 91
+    .line 93
     return-void
 .end method
 
@@ -683,10 +710,10 @@
     .parameter "title"
 
     .prologue
-    .line 66
+    .line 68
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->title:Ljava/lang/String;
 
-    .line 67
+    .line 69
     return-void
 .end method
 
@@ -695,10 +722,10 @@
     .parameter "vid"
 
     .prologue
-    .line 48
+    .line 50
     iput-object p1, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->vid:Ljava/lang/String;
 
-    .line 49
+    .line 51
     return-void
 .end method
 
@@ -708,36 +735,36 @@
     .parameter "flags"
 
     .prologue
-    .line 202
+    .line 210
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->download_address:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 203
+    .line 211
     iget-wide v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->lsize:D
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeDouble(D)V
 
-    .line 204
+    .line 212
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->download_address_other:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 205
+    .line 213
     iget-wide v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->hsize:D
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeDouble(D)V
 
-    .line 206
+    .line 214
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->title:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 207
+    .line 215
     iget-object v0, p0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->progression:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 208
+    .line 216
     return-void
 .end method

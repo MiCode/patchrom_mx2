@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 201
+    .line 197
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$4;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,7 +42,7 @@
     .parameter "v"
 
     .prologue
-    .line 205
+    .line 201
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$4;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
@@ -53,7 +53,7 @@
 
     if-nez v0, :cond_0
 
-    .line 206
+    .line 202
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$4;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
@@ -62,7 +62,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/LockMusicView;->showMusicName(Z)V
 
-    .line 208
+    .line 204
     :cond_0
     return-void
 .end method

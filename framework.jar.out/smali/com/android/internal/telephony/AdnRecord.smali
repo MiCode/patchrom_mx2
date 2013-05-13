@@ -533,7 +533,9 @@
 
     .line 551
     :cond_4
-    invoke-static {p1}, Lcom/android/internal/telephony/AdnRecord;->getAdnBytes(Ljava/lang/String;)[B
+    add-int/lit8 v5, p0, -0xe
+
+    invoke-static {p1, v5}, Lcom/android/internal/telephony/AdnRecord;->getAdnBytes(Ljava/lang/String;I)[B
 
     move-result-object v1
 
@@ -926,19 +928,19 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 883
+    .line 897
     invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v4
 
     if-eqz v4, :cond_1
 
-    .line 905
+    .line 919
     :cond_0
     :goto_0
     return v1
 
-    .line 887
+    .line 901
     :cond_1
     :try_start_0
     invoke-static {p0}, Landroid/telephony/PhoneNumberUtils;->numberToCalledPartyBCD(Ljava/lang/String;)[B
@@ -947,25 +949,25 @@
 
     move-result-object v3
 
-    .line 892
+    .line 906
     .local v3, numberBytes:[B
     if-eqz v3, :cond_0
 
-    .line 895
+    .line 909
     array-length v0, v3
 
-    .line 897
+    .line 911
     .local v0, bytes:I
     const/16 v4, 0xb
 
     if-le v0, v4, :cond_0
 
-    .line 900
+    .line 914
     add-int/lit8 v4, v0, -0xb
 
     div-int/lit8 v1, v4, 0xa
 
-    .line 901
+    .line 915
     .local v1, cnt:I
     add-int/lit8 v4, v0, -0xb
 
@@ -973,39 +975,41 @@
 
     if-eqz v4, :cond_0
 
-    .line 902
+    .line 916
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 888
+    .line 902
     .end local v0           #bytes:I
     .end local v1           #cnt:I
     .end local v3           #numberBytes:[B
     :catch_0
     move-exception v2
 
-    .line 889
+    .line 903
     .local v2, e:Ljava/lang/Exception;
     goto :goto_0
 .end method
 
-.method private static getAdnBytes(Ljava/lang/String;)[B
-    .locals 2
+.method private static getAdnBytes(Ljava/lang/String;I)[B
+    .locals 3
     .parameter "str"
+    .parameter "maxBytesToReturn"
 
     .prologue
+    const/4 v1, 0x0
+
     .line 839
     invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v1
+    move-result v2
 
-    if-eqz v1, :cond_1
+    if-eqz v2, :cond_1
 
-    .line 840
-    const/4 v0, 0x0
+    move-object v0, v1
 
-    .line 847
+    .line 861
     :cond_0
     :goto_0
     return-object v0
@@ -1018,13 +1022,51 @@
 
     .line 843
     .local v0, ret:[B
-    if-nez v0, :cond_0
+    if-nez v0, :cond_2
 
     .line 844
-    invoke-static {p0}, Lcom/android/internal/telephony/AdnByteArray;->stringToAdnUcs2(Ljava/lang/String;)[B
+    invoke-static {p0}, Lcom/android/internal/telephony/AdnByteArray;->stringToAdnUcs2StartsWith80(Ljava/lang/String;)[B
 
     move-result-object v0
 
+    .line 847
+    :cond_2
+    if-eqz v0, :cond_3
+
+    array-length v2, v0
+
+    if-le v2, p1, :cond_0
+
+    .line 851
+    :cond_3
+    invoke-static {p0}, Lcom/android/internal/telephony/AdnByteArray;->stringToAdnUcs2StartsWith81(Ljava/lang/String;)[B
+
+    move-result-object v0
+
+    .line 852
+    if-eqz v0, :cond_4
+
+    array-length v2, v0
+
+    if-le v2, p1, :cond_0
+
+    .line 856
+    :cond_4
+    invoke-static {p0}, Lcom/android/internal/telephony/AdnByteArray;->stringToAdnUcs2StartsWith82(Ljava/lang/String;)[B
+
+    move-result-object v0
+
+    .line 857
+    if-eqz v0, :cond_5
+
+    array-length v2, v0
+
+    if-le v2, p1, :cond_0
+
+    :cond_5
+    move-object v0, v1
+
+    .line 861
     goto :goto_0
 .end method
 
@@ -1127,7 +1169,7 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 851
+    .line 865
     iget-object v2, p0, Lcom/android/internal/telephony/AdnRecord;->alphaTag:Ljava/lang/String;
 
     invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
@@ -1136,20 +1178,22 @@
 
     if-eqz v2, :cond_1
 
-    .line 859
+    .line 873
     :cond_0
     :goto_0
     return v1
 
-    .line 854
+    .line 868
     :cond_1
     iget-object v2, p0, Lcom/android/internal/telephony/AdnRecord;->alphaTag:Ljava/lang/String;
 
-    invoke-static {v2}, Lcom/android/internal/telephony/AdnRecord;->getAdnBytes(Ljava/lang/String;)[B
+    add-int/lit8 v3, p1, -0xe
+
+    invoke-static {v2, v3}, Lcom/android/internal/telephony/AdnRecord;->getAdnBytes(Ljava/lang/String;I)[B
 
     move-result-object v0
 
-    .line 856
+    .line 870
     .local v0, tagBytes:[B
     if-eqz v0, :cond_2
 
@@ -1159,7 +1203,7 @@
 
     if-le v2, v3, :cond_0
 
-    .line 857
+    .line 871
     :cond_2
     const/4 v1, 0x0
 
@@ -1370,35 +1414,29 @@
 
     iput-object v3, p0, Lcom/android/internal/telephony/AdnRecord;->sortKey:Ljava/lang/String;
 
-    .line 319
     array-length v3, p1
 
     add-int/lit8 v1, v3, -0xe
 
-    .line 321
     .local v1, footerOffset:I
     aget-byte v3, p1, v1
 
     and-int/lit16 v2, v3, 0xff
 
-    .line 323
     .local v2, numberLength:I
     const/16 v3, 0xff
 
     if-le v2, v3, :cond_1
 
-    .line 325
     const-string v3, ""
 
     iput-object v3, p0, Lcom/android/internal/telephony/AdnRecord;->number:Ljava/lang/String;
 
-    .line 350
     .end local v1           #footerOffset:I
     .end local v2           #numberLength:I
     :goto_0
     return-void
 
-    .line 336
     .restart local v1       #footerOffset:I
     .restart local v2       #numberLength:I
     :cond_1
@@ -2028,7 +2066,9 @@
     .line 262
     iget-object v5, p0, Lcom/android/internal/telephony/AdnRecord;->alphaTag:Ljava/lang/String;
 
-    invoke-static {v5}, Lcom/android/internal/telephony/AdnRecord;->getAdnBytes(Ljava/lang/String;)[B
+    add-int/lit8 v6, p1, -0xe
+
+    invoke-static {v5, v6}, Lcom/android/internal/telephony/AdnRecord;->getAdnBytes(Ljava/lang/String;I)[B
 
     move-result-object v2
 
@@ -2497,19 +2537,19 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 863
+    .line 877
     invoke-direct {p0}, Lcom/android/internal/telephony/AdnRecord;->isNumberLegal()Z
 
     move-result v1
 
     if-nez v1, :cond_1
 
-    .line 875
+    .line 889
     :cond_0
     :goto_0
     return v0
 
-    .line 866
+    .line 880
     :cond_1
     invoke-direct {p0}, Lcom/android/internal/telephony/AdnRecord;->isAdditionalNumberLegal()Z
 
@@ -2517,21 +2557,21 @@
 
     if-eqz v1, :cond_0
 
-    .line 869
+    .line 883
     invoke-direct {p0}, Lcom/android/internal/telephony/AdnRecord;->isEmailsLegal()Z
 
     move-result v1
 
     if-eqz v1, :cond_0
 
-    .line 872
+    .line 886
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/AdnRecord;->isAlphaTagLegal(I)Z
 
     move-result v1
 
     if-eqz v1, :cond_0
 
-    .line 875
+    .line 889
     const/4 v0, 0x1
 
     goto :goto_0

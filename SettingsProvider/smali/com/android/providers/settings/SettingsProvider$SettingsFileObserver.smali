@@ -29,15 +29,15 @@
     .parameter "path"
 
     .prologue
-    .line 254
+    .line 259
     iput-object p1, p0, Lcom/android/providers/settings/SettingsProvider$SettingsFileObserver;->this$0:Lcom/android/providers/settings/SettingsProvider;
 
-    .line 255
+    .line 260
     const/16 v0, 0x38a
 
     invoke-direct {p0, p2, v0}, Landroid/os/FileObserver;-><init>(Ljava/lang/String;I)V
 
-    .line 251
+    .line 256
     new-instance v0, Ljava/util/concurrent/atomic/AtomicBoolean;
 
     const/4 v1, 0x0
@@ -46,10 +46,10 @@
 
     iput-object v0, p0, Lcom/android/providers/settings/SettingsProvider$SettingsFileObserver;->mIsDirty:Ljava/util/concurrent/atomic/AtomicBoolean;
 
-    .line 258
+    .line 263
     iput-object p2, p0, Lcom/android/providers/settings/SettingsProvider$SettingsFileObserver;->mPath:Ljava/lang/String;
 
-    .line 259
+    .line 264
     return-void
 .end method
 
@@ -63,7 +63,7 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 262
+    .line 267
     invoke-static {}, Lcom/android/providers/settings/SettingsProvider;->access$100()Ljava/util/concurrent/atomic/AtomicInteger;
 
     move-result-object v1
@@ -72,16 +72,16 @@
 
     move-result v0
 
-    .line 263
+    .line 268
     .local v0, modsInFlight:I
     if-lez v0, :cond_1
 
-    .line 276
+    .line 281
     :cond_0
     :goto_0
     return-void
 
-    .line 267
+    .line 272
     :cond_1
     const-string v1, "SettingsProvider"
 
@@ -117,7 +117,7 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 268
+    .line 273
     iget-object v1, p0, Lcom/android/providers/settings/SettingsProvider$SettingsFileObserver;->mIsDirty:Ljava/util/concurrent/atomic/AtomicBoolean;
 
     const/4 v2, 0x1
@@ -128,7 +128,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 273
+    .line 278
     const-string v1, "SettingsProvider"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -153,13 +153,13 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 274
+    .line 279
     iget-object v1, p0, Lcom/android/providers/settings/SettingsProvider$SettingsFileObserver;->this$0:Lcom/android/providers/settings/SettingsProvider;
 
     #calls: Lcom/android/providers/settings/SettingsProvider;->fullyPopulateCaches()V
     invoke-static {v1}, Lcom/android/providers/settings/SettingsProvider;->access$200(Lcom/android/providers/settings/SettingsProvider;)V
 
-    .line 275
+    .line 280
     iget-object v1, p0, Lcom/android/providers/settings/SettingsProvider$SettingsFileObserver;->mIsDirty:Ljava/util/concurrent/atomic/AtomicBoolean;
 
     invoke-virtual {v1, v4}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V

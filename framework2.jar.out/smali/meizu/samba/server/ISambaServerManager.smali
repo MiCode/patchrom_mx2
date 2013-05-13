@@ -23,6 +23,14 @@
     .end annotation
 .end method
 
+.method public abstract isServerRunning()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract removeSharedFolder(Lmeizu/samba/server/LocalSharedFolder;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {

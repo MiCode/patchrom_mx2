@@ -48,4 +48,9 @@ fi
 
 if [ $1 = "Settings" ];then
 	applyPatch $1 $2
+	mergyResValues $1 $2
+fi
+
+if [ $1 = "MiuiGallery" ];then
+	mergyResValues $1 $2
 fi

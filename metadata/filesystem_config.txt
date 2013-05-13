@@ -23,6 +23,8 @@ system/app/Contacts.apk 0 0 644
 system/app/Contacts.odex 0 0 644
 system/app/ContactsProvider.apk 0 0 644
 system/app/ContactsProvider.odex 0 0 644
+system/app/ContactsSocialWidget.apk 0 0 644
+system/app/ContactsSocialWidget.odex 0 0 644
 system/app/DefaultContainerService.apk 0 0 644
 system/app/DefaultContainerService.odex 0 0 644
 system/app/DLNAServer.apk 0 0 644
@@ -44,7 +46,11 @@ system/app/Gallery2.odex 0 0 644
 system/app/GenieWidget.apk 0 0 644
 system/app/GoogleCalendarSyncAdapter.apk 0 0 644
 system/app/GoogleContactsSyncAdapter.apk 0 0 644
+system/app/GoogleCurrents.apk 0 0 644
+system/app/GoogleFeedback.apk 0 0 644
 system/app/GoogleLoginService.apk 0 0 644
+system/app/GooglePlus.apk 0 0 644
+system/app/GoogleQuickSearchBox.apk 0 0 644
 system/app/GoogleServicesFramework.apk 0 0 644
 system/app/GoogleTranslate.apk 0 0 644
 system/app/HTMLViewer.apk 0 0 644
@@ -118,7 +124,6 @@ system/app/Unzip.odex 0 0 644
 system/app/UserDictionaryProvider.apk 0 0 644
 system/app/UserDictionaryProvider.odex 0 0 644
 system/app/Vending.apk 0 0 644
-system/app/VoiceSearch.apk 0 0 644
 system/app/VpnDialogs.apk 0 0 644
 system/app/VpnDialogs.odex 0 0 644
 system/app/WapiSetting.apk 0 0 644
@@ -251,6 +256,7 @@ system/bin/svc 0 2000 755
 system/bin/sync 0 2000 755
 system/bin/syncatd 0 2000 755
 system/bin/system_server 0 2000 755
+system/bin/tar 0 2000 755
 system/bin/tc 0 2000 755
 system/bin/testspeedrate 0 2000 755
 system/bin/toolbox 0 2000 755
@@ -627,9 +633,11 @@ system/lib/libbtio.so 0 0 644
 system/lib/libcamera_client.so 0 0 644
 system/lib/libcameraservice.so 0 0 644
 system/lib/libcec.so 0 0 644
+system/lib/libcfgdevparam.so 0 0 644
 system/lib/libchromium_net.so 0 0 644
 system/lib/libclcore.bc 0 0 644
 system/lib/libclcore_neon.bc 0 0 644
+system/lib/libclientvision-new-v7a.so 0 0 644
 system/lib/libcommon_time_client.so 0 0 644
 system/lib/libcorkscrew.so 0 0 644
 system/lib/libcryptor-1.0.0.so 0 0 644
@@ -666,11 +674,13 @@ system/lib/libfimg4x.so 0 0 644
 system/lib/libfimg.so 0 0 644
 system/lib/libgabi++.so 0 0 644
 system/lib/libgccdemangle.so 0 0 644
+system/lib/libgcomm_jni.so 0 0 644
 system/lib/libgetSubFileList_22.so 0 0 644
 system/lib/libGLES_trace.so 0 0 644
 system/lib/libGLESv1_CM.so 0 0 644
 system/lib/libGLESv2.so 0 0 644
 system/lib/libglib.so 0 0 644
+system/lib/libgoogle_recognizer_jni.so 0 0 644
 system/lib/libgui.so 0 0 644
 system/lib/libhardware_legacy.so 0 0 644
 system/lib/libhardware.so 0 0 644
@@ -682,6 +692,7 @@ system/lib/libhwjpeg.so 0 0 644
 system/lib/libhwui.so 0 0 644
 system/lib/libicui18n.so 0 0 644
 system/lib/libicuuc.so 0 0 644
+system/lib/libimageutils-new-v7a.so 0 0 644
 system/lib/libinput.so 0 0 644
 system/lib/libion.so 0 0 644
 system/lib/libiprouteutil.so 0 0 644
@@ -781,7 +792,6 @@ system/lib/libvideoeditor_jni.so 0 0 644
 system/lib/libvideoeditor_osal.so 0 0 644
 system/lib/libvideoeditorplayer.so 0 0 644
 system/lib/libvideoeditor_videofilters.so 0 0 644
-system/lib/libvoicesearch.so 0 0 644
 system/lib/libvorbisidec.so 0 0 644
 system/lib/libwebcore.so 0 0 644
 system/lib/libwebrtc_audio_preprocessing.so 0 0 644
@@ -791,6 +801,7 @@ system/lib/libwvm.so 0 0 644
 system/lib/libWVStreamControlAPI_L1.so 0 0 644
 system/lib/libxgold-ril.so 0 0 644
 system/lib/libz.so 0 0 644
+system/lib/libzxing-new-v7a.so 0 0 644
 system/lib/omx 0 0 755
 system/lib/omx/libOMX.SEC.AVC.Decoder.so 0 0 644
 system/lib/omx/libOMX.SEC.AVC.Encoder.so 0 0 644
@@ -858,9 +869,9 @@ system/media/audio/ringtones/Crystal.ogg 0 0 644
 system/media/audio/ringtones/Feast.ogg 0 0 644
 system/media/audio/ringtones/Flyme_Tune_Dream.ogg 0 0 644
 system/media/audio/ringtones/Flyme_Tune_Guitar.ogg 0 0 644
-system/media/audio/ringtones/Flyme_Tune_Paino.ogg 0 0 644
-system/media/audio/ringtones/Flyme_Tune_Rhythm.ogg 0 0 644
+system/media/audio/ringtones/Flyme_Tune_Piano.ogg 0 0 644
 system/media/audio/ringtones/Flyme_Tune_Synth.ogg 0 0 644
+system/media/audio/ringtones/Flyme_Tune_Theme.ogg 0 0 644
 system/media/audio/ringtones/Good_Night.ogg 0 0 644
 system/media/audio/ringtones/Home.ogg 0 0 644
 system/media/audio/ringtones/Leave_School.ogg 0 0 644
@@ -908,6 +919,7 @@ system/tts/lang_pico/fr-FR_nk0_sg.bin 0 0 644
 system/tts/lang_pico/fr-FR_ta.bin 0 0 644
 system/tts/lang_pico/it-IT_cm0_sg.bin 0 0 644
 system/tts/lang_pico/it-IT_ta.bin 0 0 644
+system/userdata.tar 0 0 644
 system/usr 0 0 755
 system/usr/icu 0 0 755
 system/usr/icu/icudt48l.dat 0 0 644
@@ -949,9 +961,9 @@ system/usr/share/zoneinfo/zoneinfo.dat 0 0 644
 system/usr/share/zoneinfo/zoneinfo.idx 0 0 644
 system/usr/share/zoneinfo/zoneinfo.version 0 0 644
 system/xbin 0 0 755
-system/xbin/busybox 0 0 755
+system/xbin/busybox 0 0 6755
 system/xbin/dexdump 0 0 644
 system/xbin/insecure 0 2000 6755
 system/xbin/oemfix 0 2000 6755
-system/xbin/shelld 0 2000 0755
+system/xbin/shelld 0 1000 6750
 system/xbin/recovery 0 0 755

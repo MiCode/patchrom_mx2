@@ -18,6 +18,9 @@
 .method public abstract onDoubleTap(FF)Z
 .end method
 
+.method public abstract onDoubleTapEvent(Landroid/view/MotionEvent;)Z
+.end method
+
 .method public abstract onDown(FF)V
 .end method
 

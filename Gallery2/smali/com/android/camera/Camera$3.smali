@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 245
+    .line 252
     iput-object p1, p0, Lcom/android/camera/Camera$3;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 1
 
     .prologue
-    .line 248
+    .line 255
     iget-object v0, p0, Lcom/android/camera/Camera$3;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mFocusManager:Lcom/android/camera/FocusManager;
@@ -51,7 +51,7 @@
 
     invoke-virtual {v0}, Lcom/android/camera/FocusManager;->clearHoldFocusIndicator()V
 
-    .line 249
+    .line 256
     iget-object v0, p0, Lcom/android/camera/Camera$3;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mFocusManager:Lcom/android/camera/FocusManager;
@@ -61,6 +61,6 @@
 
     invoke-virtual {v0}, Lcom/android/camera/FocusManager;->resetTouchFocus()V
 
-    .line 250
+    .line 257
     return-void
 .end method

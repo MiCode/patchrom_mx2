@@ -36,7 +36,7 @@
     .parameter
 
     .prologue
-    .line 66
+    .line 70
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/EffectsMenu$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsMenu;
 
     iput p2, p0, Lcom/android/gallery3d/photoeditor/EffectsMenu$1;->val$toggleId:I
@@ -56,7 +56,7 @@
     .locals 5
 
     .prologue
-    .line 70
+    .line 74
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsMenu$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsMenu;
 
     iget v2, p0, Lcom/android/gallery3d/photoeditor/EffectsMenu$1;->val$toggleId:I
@@ -69,7 +69,7 @@
 
     move-result v0
 
-    .line 71
+    .line 75
     .local v0, selected:Z
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsMenu$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsMenu;
 
@@ -85,6 +85,6 @@
 
     invoke-virtual {v1, v2, v3}, Lcom/android/gallery3d/photoeditor/EffectsMenu;->setViewSelected(IZ)V
 
-    .line 72
+    .line 76
     return-void
 .end method

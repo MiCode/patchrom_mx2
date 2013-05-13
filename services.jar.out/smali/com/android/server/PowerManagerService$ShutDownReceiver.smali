@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 473
+    .line 537
     iput-object p1, p0, Lcom/android/server/PowerManagerService$ShutDownReceiver;->this$0:Lcom/android/server/PowerManagerService;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -38,7 +38,7 @@
     .parameter "x1"
 
     .prologue
-    .line 473
+    .line 537
     invoke-direct {p0, p1}, Lcom/android/server/PowerManagerService$ShutDownReceiver;-><init>(Lcom/android/server/PowerManagerService;)V
 
     return-void
@@ -52,7 +52,16 @@
     .parameter "intent"
 
     .prologue
-    .line 478
+    .line 542
+    sget-object v0, Landroid/os/Build;->IS_MX2:Ljava/lang/Boolean;
+
+    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 543
     iget-object v0, p0, Lcom/android/server/PowerManagerService$ShutDownReceiver;->this$0:Lcom/android/server/PowerManagerService;
 
     #getter for: Lcom/android/server/PowerManagerService;->mButtonLight:Lcom/android/server/LightsService$Light;
@@ -64,6 +73,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/server/LightsService$Light;->setLightButtonState(I)V
 
-    .line 479
+    .line 545
+    :cond_0
     return-void
 .end method

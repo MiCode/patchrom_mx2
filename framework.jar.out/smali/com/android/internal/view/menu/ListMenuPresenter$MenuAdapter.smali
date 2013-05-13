@@ -327,7 +327,7 @@
 
     iget-object v2, v2, Lcom/android/internal/view/menu/ListMenuPresenter;->mInflater:Landroid/view/LayoutInflater;
 
-    const v3, 0x109007a
+    const v3, 0x109007e
 
     invoke-virtual {v2, v3, p3, v4}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 

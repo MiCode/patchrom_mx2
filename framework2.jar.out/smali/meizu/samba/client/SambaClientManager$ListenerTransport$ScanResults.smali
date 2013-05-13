@@ -28,21 +28,21 @@
     .parameter
 
     .prologue
-    .line 68
+    .line 69
     iput-object p1, p0, Lmeizu/samba/client/SambaClientManager$ListenerTransport$ScanResults;->this$1:Lmeizu/samba/client/SambaClientManager$ListenerTransport;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 66
+    .line 67
     const-string v0, ""
 
     iput-object v0, p0, Lmeizu/samba/client/SambaClientManager$ListenerTransport$ScanResults;->addr:Ljava/lang/String;
 
-    .line 67
+    .line 68
     const-string v0, ""
 
     iput-object v0, p0, Lmeizu/samba/client/SambaClientManager$ListenerTransport$ScanResults;->folderList:Ljava/lang/String;
 
-    .line 70
+    .line 71
     return-void
 .end method

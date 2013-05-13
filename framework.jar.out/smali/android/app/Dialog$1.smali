@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 123
+    .line 126
     iput-object p1, p0, Landroid/app/Dialog$1;->this$0:Landroid/app/Dialog;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,11 +41,11 @@
     .locals 1
 
     .prologue
-    .line 125
+    .line 128
     iget-object v0, p0, Landroid/app/Dialog$1;->this$0:Landroid/app/Dialog;
 
     invoke-virtual {v0}, Landroid/app/Dialog;->dismissDialog()V
 
-    .line 126
+    .line 129
     return-void
 .end method

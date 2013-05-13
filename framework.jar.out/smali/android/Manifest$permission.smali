@@ -59,6 +59,8 @@
 
 .field public static final BACKUP:Ljava/lang/String; = "android.permission.BACKUP"
 
+.field public static final BACKUP_ACCOUNTS:Ljava/lang/String; = "android.permission.BACKUP_ACCOUNTS"
+
 .field public static final BATTERY_STATS:Ljava/lang/String; = "android.permission.BATTERY_STATS"
 
 .field public static final BIND_ACCESSIBILITY_SERVICE:Ljava/lang/String; = "android.permission.BIND_ACCESSIBILITY_SERVICE"

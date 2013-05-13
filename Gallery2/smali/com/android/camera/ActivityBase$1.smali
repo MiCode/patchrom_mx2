@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 111
+    .line 116
     iput-object p1, p0, Lcom/android/camera/ActivityBase$1;->this$0:Lcom/android/camera/ActivityBase;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -40,23 +40,23 @@
     .parameter "intent"
 
     .prologue
-    .line 114
+    .line 119
     iget-object v0, p0, Lcom/android/camera/ActivityBase$1;->this$0:Lcom/android/camera/ActivityBase;
 
     iget-boolean v0, v0, Lcom/android/camera/ActivityBase;->mShowCameraAppView:Z
 
     if-eqz v0, :cond_0
 
-    .line 115
+    .line 120
     iget-object v0, p0, Lcom/android/camera/ActivityBase$1;->this$0:Lcom/android/camera/ActivityBase;
 
     invoke-virtual {v0}, Lcom/android/camera/ActivityBase;->getLastThumbnailUncached()V
 
-    .line 119
+    .line 124
     :goto_0
     return-void
 
-    .line 117
+    .line 122
     :cond_0
     iget-object v0, p0, Lcom/android/camera/ActivityBase$1;->this$0:Lcom/android/camera/ActivityBase;
 

@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 310
+    .line 317
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$2$1;->this$1:Lcom/android/gallery3d/photoeditor/EffectsBar$2;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,6 +41,6 @@
     .locals 0
 
     .prologue
-    .line 313
+    .line 320
     return-void
 .end method

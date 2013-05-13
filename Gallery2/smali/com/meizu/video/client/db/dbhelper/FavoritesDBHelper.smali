@@ -10,7 +10,7 @@
 
 .field private mContext:Landroid/content/Context;
 
-.field private videoOnlineDBHelper:Lcom/meizu/video/client/db/VideoOnlineDBHelper;
+.field private mVideoOnlineDBHelper:Lcom/meizu/video/client/db/VideoOnlineDBHelper;
 
 
 # direct methods
@@ -28,7 +28,7 @@
     iput-object v0, p0, Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;->TAG:Ljava/lang/String;
 
     .line 46
-    iget-object v0, p0, Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;->videoOnlineDBHelper:Lcom/meizu/video/client/db/VideoOnlineDBHelper;
+    iget-object v0, p0, Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;->mVideoOnlineDBHelper:Lcom/meizu/video/client/db/VideoOnlineDBHelper;
 
     if-nez v0, :cond_0
 
@@ -37,7 +37,7 @@
 
     move-result-object v0
 
-    iput-object v0, p0, Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;->videoOnlineDBHelper:Lcom/meizu/video/client/db/VideoOnlineDBHelper;
+    iput-object v0, p0, Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;->mVideoOnlineDBHelper:Lcom/meizu/video/client/db/VideoOnlineDBHelper;
 
     .line 49
     :cond_0
@@ -352,7 +352,7 @@
 
     .prologue
     .line 196
-    iget-object v0, p0, Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;->videoOnlineDBHelper:Lcom/meizu/video/client/db/VideoOnlineDBHelper;
+    iget-object v0, p0, Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;->mVideoOnlineDBHelper:Lcom/meizu/video/client/db/VideoOnlineDBHelper;
 
     invoke-virtual {v0}, Lcom/meizu/video/client/db/VideoOnlineDBHelper;->close()V
 
@@ -657,7 +657,7 @@
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 178
-    iget-object v5, p0, Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;->videoOnlineDBHelper:Lcom/meizu/video/client/db/VideoOnlineDBHelper;
+    iget-object v5, p0, Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;->mVideoOnlineDBHelper:Lcom/meizu/video/client/db/VideoOnlineDBHelper;
 
     invoke-virtual {v5}, Lcom/meizu/video/client/db/VideoOnlineDBHelper;->getReadableDatabase()Landroid/database/sqlite/SQLiteDatabase;
 
@@ -868,7 +868,7 @@
 
     .line 109
     :cond_0
-    iget-object v4, p0, Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;->videoOnlineDBHelper:Lcom/meizu/video/client/db/VideoOnlineDBHelper;
+    iget-object v4, p0, Lcom/meizu/video/client/db/dbhelper/FavoritesDBHelper;->mVideoOnlineDBHelper:Lcom/meizu/video/client/db/VideoOnlineDBHelper;
 
     invoke-virtual {v4}, Lcom/meizu/video/client/db/VideoOnlineDBHelper;->getReadableDatabase()Landroid/database/sqlite/SQLiteDatabase;
 

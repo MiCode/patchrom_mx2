@@ -184,7 +184,7 @@
     .line 139
     const/16 v4, 0x67
 
-    const v5, 0x7f0a0187
+    const v5, 0x7f0a0192
 
     invoke-virtual {p0, v4, v5}, Lcom/android/gallery3d/data/MediaDetails;->setUnit(II)V
     :try_end_0

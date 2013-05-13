@@ -7,7 +7,7 @@
     <string name="episodesvarietyprev">Предыдущий</string>
     <string name="episodesvarietynext">Следующий</string>
     <string name="episodesvarietyearliest">Раньше</string>
-    <string name="loading">Идет загрузка…</string>
+    <string name="video_loading">Загрузка…</string>
     <string name="search">Поиск</string>
     <string name="download">Загрузка</string>
     <string name="online_favorite">Избранное</string>
@@ -23,6 +23,9 @@
     <string name="nosearchresult">Нет результата</string>
     <string name="servertimeout">Таймаут соединения</string>
     <string name="videolist">Список видео</string>
+    <string name="menu_delete">Удалить</string>
+    <string name="servernoreturncontent">Сервер не отвечает</string>
+    <string name="loading">Идет загрузка…</string>
     <string name="camera_error_title">Ошибка камеры</string>
     <string name="cannot_connect_camera">Не удалось подключиться к камере.</string>
     <string name="camera_disabled">Камера отключена в соответствии с политикой безопасности.</string>
@@ -139,7 +142,7 @@
     <string name="accessibility_switch_to_video">Режим \"Видео\"</string>
     <string name="accessibility_switch_to_panorama">Режим \"Панорама\"</string>
     <string name="smile_mode_tip">Нажмите для захвата улыбок</string>
-    <string name="panorama_mode_tip">Старт съемки для панорамы</string>
+    <string name="panorama_mode_tip">Старт съёмки для панорамы</string>
     <string name="take_photo_fail">Ошибка съемки</string>
     <string name="panoramic_photo_processing">Обработка фото</string>
     <string name="isp_update_title">Обновление камеры, пожалуйста подождите…</string>
@@ -154,6 +157,7 @@
     <string name="hdmi_cannot_used_camera">Пожалуйста, выйдите из режима HDMI</string>
     <string name="can_not_save_record">Слишком мало времени</string>
     <string name="record_spaceIsLow">Недостаточно памяти. Удалите некоторые файлы.</string>
+    <string name="load_picture_processing">Загрузка фото</string>
     <string name="photoeditor_name">Фотостудия</string>
     <string name="loading_failure">Не удалось загрузить фото</string>
     <string name="saving_failure">Не удалось сохранить изменения</string>
@@ -161,7 +165,7 @@
     <string name="discard_unsaved_photo">Отменить несохраненные изменения?</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
-    <string name="save">Готово</string>
+    <string name="save">Сохранить</string>
     <string name="autofix">Авто</string>
     <string name="crop">Обрезать</string>
     <string name="crossprocess">Кроссобработка</string>
@@ -374,6 +378,7 @@
     <string name="bitrate">Битрейд</string>
     <string name="loading_timeout">Таймаут соединения</string>
     <string name="video_low_battery">Низкий заряд батареи, невозможно воспроизвести видео</string>
+    <string name="video_silent_mode_toast">Динамик не работает в беззвучном режиме</string>
     <string name="folder_video">Видео</string>
     <string name="help">Справка</string>
     <string name="save_str">Сохранить</string>
@@ -421,4 +426,17 @@
     <string name="external_storage_unavailable">USB-накопитель недоступен</string>
     <string name="battery_too_low">Низкий заряд батареи, продолжить воспроизведение?</string>
     <string name="set_wallpaper_failed">Ошибка установки</string>
+    <string name="photo_sdcard_str">Карта памяти</string>
+    <string name="share_num_limit">Количество передаваемых файлов ограничено %s</string>
+    <string name="menu_share_title">Передать</string>
+    <string name="menu_share_more_title">Передать и править</string>
+    <string name="menu_email_title">Передать по E-mail</string>
+    <string name="menu_delete_title">Удалить</string>
+    <string name="menu_add_set_titile">Добавить новую директорию</string>
+    <string name="menu_add_slideshow_title">Слайд-шоу</string>
+    <string name="menu_crop_title">Обрезать</string>
+    <string name="deleting">Удаление</string>
+    <string name="copy_done">%1$d файлов было скопировано в %2$s</string>
+    <string name="move_done">%1$d файлов было перемещено в %2$s</string>
+    <string name="default_folder_name">Без имени</string>
 </resources>

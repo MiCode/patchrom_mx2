@@ -28,169 +28,208 @@
 
 
 # instance fields
-.field ipHead:Ljava/lang/String;
+.field private ipHead:Ljava/lang/String;
 
-.field ipTail:I
+.field private ipTail:I
 
-.field port:I
+.field private mCanceled:Z
+
+.field private port:I
 
 .field final synthetic this$0:Lcom/android/server/SambaClientService;
 
 
 # direct methods
 .method public constructor <init>(Lcom/android/server/SambaClientService;Ljava/lang/String;II)V
-    .locals 0
+    .locals 1
     .parameter
     .parameter "ipHead"
     .parameter "ipTail"
     .parameter "port"
 
     .prologue
-    .line 441
+    .line 532
     iput-object p1, p0, Lcom/android/server/SambaClientService$Task;->this$0:Lcom/android/server/SambaClientService;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 442
+    .line 530
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/android/server/SambaClientService$Task;->mCanceled:Z
+
+    .line 533
     iput-object p2, p0, Lcom/android/server/SambaClientService$Task;->ipHead:Ljava/lang/String;
 
-    .line 443
+    .line 534
     iput p3, p0, Lcom/android/server/SambaClientService$Task;->ipTail:I
 
-    .line 444
+    .line 535
     iput p4, p0, Lcom/android/server/SambaClientService$Task;->port:I
 
-    .line 446
+    .line 537
     return-void
 .end method
 
 
 # virtual methods
 .method public call()Ljava/lang/Long;
-    .locals 8
+    .locals 10
 
     .prologue
-    .line 449
+    .line 548
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    move-result-wide v3
+    move-result-wide v5
 
-    .line 450
-    .local v3, start:J
-    iget-object v5, p0, Lcom/android/server/SambaClientService$Task;->this$0:Lcom/android/server/SambaClientService;
+    .line 549
+    .local v5, start:J
+    const/4 v3, 0x0
 
-    new-instance v6, Ljava/lang/StringBuilder;
+    .line 550
+    .local v3, folderList:Ljava/lang/String;
+    const/4 v4, 0x0
 
-    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+    .line 552
+    .local v4, needAuth:Z
+    :try_start_0
+    iget-object v7, p0, Lcom/android/server/SambaClientService$Task;->this$0:Lcom/android/server/SambaClientService;
 
-    iget-object v7, p0, Lcom/android/server/SambaClientService$Task;->ipHead:Ljava/lang/String;
+    new-instance v8, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-result-object v6
+    iget-object v9, p0, Lcom/android/server/SambaClientService$Task;->ipHead:Ljava/lang/String;
 
-    iget v7, p0, Lcom/android/server/SambaClientService$Task;->ipTail:I
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    move-result-object v8
 
-    move-result-object v6
+    iget v9, p0, Lcom/android/server/SambaClientService$Task;->ipTail:I
 
-    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v6
+    move-result-object v8
 
-    invoke-virtual {v5, v6}, Lcom/android/server/SambaClientService;->getSharedFolders(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v8
 
-    .line 451
-    .local v2, folderList:Ljava/lang/String;
-    if-eqz v2, :cond_0
+    invoke-virtual {v7, v8}, Lcom/android/server/SambaClientService;->getSharedFolders(Ljava/lang/String;)Ljava/lang/String;
+    :try_end_0
+    .catch Lmeizu/samba/client/SambaAuthException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 452
-    iget-object v5, p0, Lcom/android/server/SambaClientService$Task;->this$0:Lcom/android/server/SambaClientService;
+    move-result-object v3
 
-    new-instance v6, Ljava/lang/StringBuilder;
+    .line 557
+    :goto_0
+    if-nez v3, :cond_0
 
-    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+    if-eqz v4, :cond_1
 
-    iget-object v7, p0, Lcom/android/server/SambaClientService$Task;->ipHead:Ljava/lang/String;
+    .line 558
+    :cond_0
+    invoke-virtual {p0}, Lcom/android/server/SambaClientService$Task;->isCanceled()Z
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result v7
 
-    move-result-object v6
+    if-nez v7, :cond_1
 
-    iget v7, p0, Lcom/android/server/SambaClientService$Task;->ipTail:I
+    .line 559
+    iget-object v7, p0, Lcom/android/server/SambaClientService$Task;->this$0:Lcom/android/server/SambaClientService;
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    new-instance v8, Ljava/lang/StringBuilder;
 
-    move-result-object v6
+    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    iget-object v9, p0, Lcom/android/server/SambaClientService$Task;->ipHead:Ljava/lang/String;
 
-    move-result-object v6
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v8
+
+    iget v9, p0, Lcom/android/server/SambaClientService$Task;->ipTail:I
+
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v8
+
+    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v8
 
     #calls: Lcom/android/server/SambaClientService;->updateScanResults(Ljava/lang/String;Ljava/lang/String;)V
-    invoke-static {v5, v6, v2}, Lcom/android/server/SambaClientService;->access$100(Lcom/android/server/SambaClientService;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v7, v8, v3}, Lcom/android/server/SambaClientService;->access$300(Lcom/android/server/SambaClientService;Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 453
-    const-string v5, "SambaClientService"
+    .line 560
+    const-string v7, "SambaClientService"
 
-    new-instance v6, Ljava/lang/StringBuilder;
+    new-instance v8, Ljava/lang/StringBuilder;
 
-    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v7, "smb://"
+    const-string v9, "smb://"
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v6
+    move-result-object v8
 
-    iget-object v7, p0, Lcom/android/server/SambaClientService$Task;->ipHead:Ljava/lang/String;
+    iget-object v9, p0, Lcom/android/server/SambaClientService$Task;->ipHead:Ljava/lang/String;
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v6
+    move-result-object v8
 
-    iget v7, p0, Lcom/android/server/SambaClientService$Task;->ipTail:I
+    iget v9, p0, Lcom/android/server/SambaClientService$Task;->ipTail:I
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v6
+    move-result-object v8
 
-    const-string v7, "/"
+    const-string v9, "/"
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v6
+    move-result-object v8
 
-    const-string v7, " exsist"
+    const-string v9, " exsist"
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v6
+    move-result-object v8
 
-    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v6
+    move-result-object v8
 
-    invoke-static {v5, v6}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v7, v8}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 455
-    :cond_0
+    .line 564
+    :cond_1
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    move-result-wide v0
+    move-result-wide v1
 
-    .line 456
-    .local v0, end:J
-    sub-long v5, v0, v3
+    .line 565
+    .local v1, end:J
+    sub-long v7, v1, v5
 
-    invoke-static {v5, v6}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    invoke-static {v7, v8}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    move-result-object v5
+    move-result-object v7
 
-    return-object v5
+    return-object v7
+
+    .line 553
+    .end local v1           #end:J
+    :catch_0
+    move-exception v0
+
+    .line 554
+    .local v0, e:Lmeizu/samba/client/SambaAuthException;
+    const/4 v4, 0x1
+
+    goto :goto_0
 .end method
 
 .method public bridge synthetic call()Ljava/lang/Object;
@@ -202,10 +241,62 @@
     .end annotation
 
     .prologue
-    .line 436
+    .line 525
     invoke-virtual {p0}, Lcom/android/server/SambaClientService$Task;->call()Ljava/lang/Long;
 
     move-result-object v0
 
     return-object v0
+.end method
+
+.method public declared-synchronized cancel()V
+    .locals 1
+
+    .prologue
+    .line 540
+    monitor-enter p0
+
+    const/4 v0, 0x1
+
+    :try_start_0
+    iput-boolean v0, p0, Lcom/android/server/SambaClientService$Task;->mCanceled:Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 541
+    monitor-exit p0
+
+    return-void
+
+    .line 540
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
+
+    throw v0
+.end method
+
+.method public declared-synchronized isCanceled()Z
+    .locals 1
+
+    .prologue
+    .line 544
+    monitor-enter p0
+
+    :try_start_0
+    iget-boolean v0, p0, Lcom/android/server/SambaClientService$Task;->mCanceled:Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit p0
+
+    return v0
+
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
+
+    throw v0
 .end method

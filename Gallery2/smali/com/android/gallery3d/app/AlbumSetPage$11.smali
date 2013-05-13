@@ -3,7 +3,7 @@
 .source "AlbumSetPage.java"
 
 # interfaces
-.implements Landroid/content/DialogInterface$OnClickListener;
+.implements Landroid/text/TextWatcher;
 
 
 # annotations
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1338
+    .line 1370
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumSetPage$11;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -37,180 +37,71 @@
 
 
 # virtual methods
-.method public onClick(Landroid/content/DialogInterface;I)V
-    .locals 7
-    .parameter "dialog"
-    .parameter "which"
+.method public afterTextChanged(Landroid/text/Editable;)V
+    .locals 2
+    .parameter "editable"
 
     .prologue
-    const v6, 0x7f0a01e8
+    .line 1374
+    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$11;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
 
-    const/4 v5, 0x0
+    #getter for: Lcom/android/gallery3d/app/AlbumSetPage;->mButtonNewFolderOk:Landroid/widget/Button;
+    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumSetPage;->access$3200(Lcom/android/gallery3d/app/AlbumSetPage;)Landroid/widget/Button;
 
-    .line 1342
-    iget-object v3, p0, Lcom/android/gallery3d/app/AlbumSetPage$11;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
+    move-result-object v0
 
-    #getter for: Lcom/android/gallery3d/app/AlbumSetPage;->mNameEditor:Landroid/widget/EditText;
-    invoke-static {v3}, Lcom/android/gallery3d/app/AlbumSetPage;->access$3200(Lcom/android/gallery3d/app/AlbumSetPage;)Landroid/widget/EditText;
+    if-eqz v0, :cond_0
 
-    move-result-object v3
+    .line 1375
+    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumSetPage$11;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
 
-    invoke-virtual {v3}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/String;->trim()Ljava/lang/String;
+    #getter for: Lcom/android/gallery3d/app/AlbumSetPage;->mButtonNewFolderOk:Landroid/widget/Button;
+    invoke-static {v0}, Lcom/android/gallery3d/app/AlbumSetPage;->access$3200(Lcom/android/gallery3d/app/AlbumSetPage;)Landroid/widget/Button;
 
     move-result-object v1
 
-    .line 1343
-    .local v1, folderName:Ljava/lang/String;
-    invoke-virtual {v1}, Ljava/lang/String;->length()I
+    invoke-interface {p1}, Landroid/text/Editable;->length()I
 
-    move-result v3
+    move-result v0
 
-    if-gtz v3, :cond_0
+    if-lez v0, :cond_1
 
-    .line 1344
-    iget-object v3, p0, Lcom/android/gallery3d/app/AlbumSetPage$11;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
+    const/4 v0, 0x1
 
-    iget-object v3, v3, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
-
-    invoke-interface {v3}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
-
-    move-result-object v3
-
-    invoke-static {v3, v6, v5}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Landroid/widget/Toast;->show()V
-
-    .line 1369
     :goto_0
+    invoke-virtual {v1, v0}, Landroid/widget/Button;->setEnabled(Z)V
+
+    .line 1377
+    :cond_0
     return-void
 
-    .line 1349
-    :cond_0
-    invoke-static {v1}, Lcom/android/gallery3d/common/Utils;->isFileNameLegal(Ljava/lang/String;)Z
-
-    move-result v3
-
-    if-nez v3, :cond_1
-
-    .line 1350
-    iget-object v3, p0, Lcom/android/gallery3d/app/AlbumSetPage$11;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
-
-    iget-object v3, v3, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
-
-    invoke-interface {v3}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
-
-    move-result-object v3
-
-    const v4, 0x7f0a01dd
-
-    invoke-static {v3, v4, v5}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Landroid/widget/Toast;->show()V
-
-    goto :goto_0
-
-    .line 1355
+    .line 1375
     :cond_1
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    sget-object v4, Lcom/android/gallery3d/util/MediaSetUtils;->PHOTO_DIR:Ljava/lang/String;
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    const-string v4, "/"
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    .line 1357
-    .local v2, folderPath:Ljava/lang/String;
-    new-instance v0, Ljava/io/File;
-
-    invoke-direct {v0, v2}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
-    .line 1358
-    .local v0, file:Ljava/io/File;
-    invoke-virtual {v0}, Ljava/io/File;->exists()Z
-
-    move-result v3
-
-    if-eqz v3, :cond_2
-
-    .line 1359
-    iget-object v3, p0, Lcom/android/gallery3d/app/AlbumSetPage$11;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
-
-    iget-object v3, v3, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
-
-    invoke-interface {v3}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
-
-    move-result-object v3
-
-    const v4, 0x7f0a01e7
-
-    invoke-static {v3, v4, v5}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Landroid/widget/Toast;->show()V
+    const/4 v0, 0x0
 
     goto :goto_0
+.end method
 
-    .line 1363
-    :cond_2
-    invoke-virtual {v0}, Ljava/io/File;->mkdir()Z
+.method public beforeTextChanged(Ljava/lang/CharSequence;III)V
+    .locals 0
+    .parameter "s"
+    .parameter "start"
+    .parameter "count"
+    .parameter "after"
 
-    move-result v3
+    .prologue
+    .line 1381
+    return-void
+.end method
 
-    if-eqz v3, :cond_3
+.method public onTextChanged(Ljava/lang/CharSequence;III)V
+    .locals 0
+    .parameter "s"
+    .parameter "start"
+    .parameter "before"
+    .parameter "count"
 
-    .line 1364
-    iget-object v3, p0, Lcom/android/gallery3d/app/AlbumSetPage$11;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
-
-    #calls: Lcom/android/gallery3d/app/AlbumSetPage;->copyMoveFileToNewFolder(Ljava/lang/String;)V
-    invoke-static {v3, v2}, Lcom/android/gallery3d/app/AlbumSetPage;->access$3300(Lcom/android/gallery3d/app/AlbumSetPage;Ljava/lang/String;)V
-
-    goto :goto_0
-
-    .line 1366
-    :cond_3
-    iget-object v3, p0, Lcom/android/gallery3d/app/AlbumSetPage$11;->this$0:Lcom/android/gallery3d/app/AlbumSetPage;
-
-    iget-object v3, v3, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
-
-    invoke-interface {v3}, Lcom/android/gallery3d/app/GalleryActivity;->getAndroidContext()Landroid/content/Context;
-
-    move-result-object v3
-
-    invoke-static {v3, v6, v5}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Landroid/widget/Toast;->show()V
-
-    goto :goto_0
+    .prologue
+    .line 1385
+    return-void
 .end method

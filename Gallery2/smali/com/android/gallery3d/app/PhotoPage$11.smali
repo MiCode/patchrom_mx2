@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1177
+    .line 1222
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoPage$11;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -44,35 +44,35 @@
     .parameter "fromUser"
 
     .prologue
-    .line 1181
+    .line 1226
     if-nez p3, :cond_0
 
-    .line 1186
+    .line 1231
     :goto_0
     return-void
 
-    .line 1184
+    .line 1229
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$11;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$11;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mMinSysLight:I
-    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$4500(Lcom/android/gallery3d/app/PhotoPage;)I
+    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$4900(Lcom/android/gallery3d/app/PhotoPage;)I
 
     move-result v1
 
     iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$11;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mMaxSysLight:I
-    invoke-static {v2}, Lcom/android/gallery3d/app/PhotoPage;->access$4600(Lcom/android/gallery3d/app/PhotoPage;)I
+    invoke-static {v2}, Lcom/android/gallery3d/app/PhotoPage;->access$5000(Lcom/android/gallery3d/app/PhotoPage;)I
 
     move-result v2
 
     iget-object v3, p0, Lcom/android/gallery3d/app/PhotoPage$11;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mMinSysLight:I
-    invoke-static {v3}, Lcom/android/gallery3d/app/PhotoPage;->access$4500(Lcom/android/gallery3d/app/PhotoPage;)I
+    invoke-static {v3}, Lcom/android/gallery3d/app/PhotoPage;->access$4900(Lcom/android/gallery3d/app/PhotoPage;)I
 
     move-result v3
 
@@ -89,9 +89,9 @@
     add-int/2addr v1, v2
 
     #setter for: Lcom/android/gallery3d/app/PhotoPage;->mAppBrightness:I
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/PhotoPage;->access$4402(Lcom/android/gallery3d/app/PhotoPage;I)I
+    invoke-static {v0, v1}, Lcom/android/gallery3d/app/PhotoPage;->access$4802(Lcom/android/gallery3d/app/PhotoPage;I)I
 
-    .line 1185
+    .line 1230
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$11;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     iget-object v0, v0, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
@@ -105,7 +105,7 @@
     iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$11;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mAppBrightness:I
-    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$4400(Lcom/android/gallery3d/app/PhotoPage;)I
+    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$4800(Lcom/android/gallery3d/app/PhotoPage;)I
 
     move-result v1
 
@@ -119,7 +119,7 @@
     .parameter "seekBar"
 
     .prologue
-    .line 1190
+    .line 1235
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$11;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mHandler:Landroid/os/Handler;
@@ -131,7 +131,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1191
+    .line 1236
     return-void
 .end method
 
@@ -140,17 +140,17 @@
     .parameter "seekBar"
 
     .prologue
-    .line 1195
+    .line 1240
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$11;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mAppBrightness:I
-    invoke-static {v0}, Lcom/android/gallery3d/app/PhotoPage;->access$4400(Lcom/android/gallery3d/app/PhotoPage;)I
+    invoke-static {v0}, Lcom/android/gallery3d/app/PhotoPage;->access$4800(Lcom/android/gallery3d/app/PhotoPage;)I
 
     move-result v0
 
     invoke-static {v0}, Lcom/android/gallery3d/util/GalleryUtils;->setAppBrightnessValue(I)V
 
-    .line 1196
+    .line 1241
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$11;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     invoke-virtual {p1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->getProgress()I
@@ -158,9 +158,9 @@
     move-result v1
 
     #setter for: Lcom/android/gallery3d/app/PhotoPage;->mLightProgress:I
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/PhotoPage;->access$4702(Lcom/android/gallery3d/app/PhotoPage;I)I
+    invoke-static {v0, v1}, Lcom/android/gallery3d/app/PhotoPage;->access$5102(Lcom/android/gallery3d/app/PhotoPage;I)I
 
-    .line 1197
+    .line 1242
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$11;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mHandler:Landroid/os/Handler;
@@ -174,6 +174,6 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 1198
+    .line 1243
     return-void
 .end method

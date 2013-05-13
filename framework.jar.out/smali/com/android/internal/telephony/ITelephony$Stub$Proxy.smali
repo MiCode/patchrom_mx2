@@ -2570,7 +2570,7 @@
     throw v3
 .end method
 
-.method public isRealIncomingCall()Z
+.method public isRealIncomingCallAndFore()Z
     .locals 6
     .annotation system Ldalvik/annotation/Throws;
         value = {

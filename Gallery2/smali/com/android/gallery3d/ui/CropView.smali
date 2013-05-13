@@ -215,7 +215,7 @@
 
     move-result-object v1
 
-    const v2, 0x7f020063
+    const v2, 0x7f020061
 
     invoke-direct {v0, v1, v2}, Lcom/android/gallery3d/ui/NinePatchTexture;-><init>(Landroid/content/Context;I)V
 
@@ -228,7 +228,7 @@
 
     move-result-object v1
 
-    const v2, 0x7f020062
+    const v2, 0x7f020060
 
     invoke-direct {v0, v1, v2}, Lcom/android/gallery3d/ui/ResourceTexture;-><init>(Landroid/content/Context;I)V
 
@@ -961,7 +961,7 @@
     .locals 5
 
     .prologue
-    const/high16 v4, 0x4100
+    const/high16 v4, 0x4180
 
     .line 945
     iget-object v2, p0, Lcom/android/gallery3d/ui/CropView;->mHighlightRectangle:Lcom/android/gallery3d/ui/CropView$HighlightRectangle;
@@ -1017,7 +1017,7 @@
     if-gez v2, :cond_0
 
     .line 948
-    const/16 v1, 0x8
+    const/16 v1, 0x10
 
     .line 949
     :cond_0
@@ -1028,7 +1028,7 @@
     if-gez v2, :cond_1
 
     .line 950
-    const/16 v0, 0x8
+    const/16 v0, 0x10
 
     .line 952
     :cond_1

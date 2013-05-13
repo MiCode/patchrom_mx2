@@ -28,7 +28,7 @@
     .locals 1
 
     .prologue
-    .line 2472
+    .line 2500
     const-string v0, "content://com.android.calendar/colors"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
@@ -44,9 +44,9 @@
     .locals 0
 
     .prologue
-    .line 2477
+    .line 2505
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 2478
+    .line 2506
     return-void
 .end method

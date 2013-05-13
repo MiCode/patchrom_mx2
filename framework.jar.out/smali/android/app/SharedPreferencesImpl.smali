@@ -265,26 +265,26 @@
     .locals 1
 
     .prologue
-    .line 180
+    .line 183
     iget-boolean v0, p0, Landroid/app/SharedPreferencesImpl;->mLoaded:Z
 
     if-nez v0, :cond_0
 
-    .line 184
+    .line 187
     invoke-static {}, Ldalvik/system/BlockGuard;->getThreadPolicy()Ldalvik/system/BlockGuard$Policy;
 
     move-result-object v0
 
     invoke-interface {v0}, Ldalvik/system/BlockGuard$Policy;->onReadFromDisk()V
 
-    .line 186
+    .line 189
     :cond_0
     :goto_0
     iget-boolean v0, p0, Landroid/app/SharedPreferencesImpl;->mLoaded:Z
 
     if-nez v0, :cond_1
 
-    .line 188
+    .line 191
     :try_start_0
     invoke-virtual {p0}, Ljava/lang/Object;->wait()V
     :try_end_0
@@ -292,13 +292,13 @@
 
     goto :goto_0
 
-    .line 189
+    .line 192
     :catch_0
     move-exception v0
 
     goto :goto_0
 
-    .line 192
+    .line 195
     :cond_1
     return-void
 .end method
@@ -310,10 +310,10 @@
     .prologue
     const/4 v7, -0x1
 
-    .line 521
+    .line 524
     const/4 v3, 0x0
 
-    .line 523
+    .line 526
     .local v3, str:Ljava/io/FileOutputStream;
     :try_start_0
     new-instance v4, Ljava/io/FileOutputStream;
@@ -331,21 +331,21 @@
     :goto_0
     move-object v5, v3
 
-    .line 540
+    .line 543
     :goto_1
     return-object v5
 
-    .line 524
+    .line 527
     :catch_0
     move-exception v0
 
-    .line 525
+    .line 528
     .local v0, e:Ljava/io/FileNotFoundException;
     invoke-virtual {p0}, Ljava/io/File;->getParentFile()Ljava/io/File;
 
     move-result-object v2
 
-    .line 526
+    .line 529
     .local v2, parent:Ljava/io/File;
     invoke-virtual {v2}, Ljava/io/File;->mkdir()Z
 
@@ -353,7 +353,7 @@
 
     if-nez v5, :cond_0
 
-    .line 527
+    .line 530
     const-string v5, "SharedPreferencesImpl"
 
     new-instance v6, Ljava/lang/StringBuilder;
@@ -376,12 +376,12 @@
 
     invoke-static {v5, v6}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 528
+    .line 531
     const/4 v5, 0x0
 
     goto :goto_1
 
-    .line 530
+    .line 533
     :cond_0
     invoke-virtual {v2}, Ljava/io/File;->getPath()Ljava/lang/String;
 
@@ -391,7 +391,7 @@
 
     invoke-static {v5, v6, v7, v7}, Landroid/os/FileUtils;->setPermissions(Ljava/lang/String;III)I
 
-    .line 535
+    .line 538
     :try_start_1
     new-instance v4, Ljava/io/FileOutputStream;
 
@@ -403,16 +403,16 @@
     .restart local v4       #str:Ljava/io/FileOutputStream;
     move-object v3, v4
 
-    .line 538
+    .line 541
     .end local v4           #str:Ljava/io/FileOutputStream;
     .restart local v3       #str:Ljava/io/FileOutputStream;
     goto :goto_0
 
-    .line 536
+    .line 539
     :catch_1
     move-exception v1
 
-    .line 537
+    .line 540
     .local v1, e2:Ljava/io/FileNotFoundException;
     const-string v5, "SharedPreferencesImpl"
 
@@ -449,30 +449,30 @@
 
     const/4 v3, 0x1
 
-    .line 488
+    .line 491
     new-instance v2, Landroid/app/SharedPreferencesImpl$2;
 
     invoke-direct {v2, p0, p1, p2}, Landroid/app/SharedPreferencesImpl$2;-><init>(Landroid/app/SharedPreferencesImpl;Landroid/app/SharedPreferencesImpl$MemoryCommitResult;Ljava/lang/Runnable;)V
 
-    .line 502
+    .line 505
     .local v2, writeToDiskRunnable:Ljava/lang/Runnable;
     if-nez p2, :cond_0
 
     move v0, v3
 
-    .line 506
+    .line 509
     .local v0, isFromSyncCommit:Z
     :goto_0
     if-eqz v0, :cond_2
 
-    .line 507
+    .line 510
     const/4 v1, 0x0
 
-    .line 508
+    .line 511
     .local v1, wasEmpty:Z
     monitor-enter p0
 
-    .line 509
+    .line 512
     :try_start_0
     iget v5, p0, Landroid/app/SharedPreferencesImpl;->mDiskWritesInFlight:I
 
@@ -480,19 +480,19 @@
 
     move v1, v3
 
-    .line 510
+    .line 513
     :goto_1
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 511
+    .line 514
     if-eqz v1, :cond_2
 
-    .line 512
+    .line 515
     invoke-interface {v2}, Ljava/lang/Runnable;->run()V
 
-    .line 518
+    .line 521
     .end local v1           #wasEmpty:Z
     :goto_2
     return-void
@@ -501,7 +501,7 @@
     :cond_0
     move v0, v4
 
-    .line 502
+    .line 505
     goto :goto_0
 
     .restart local v0       #isFromSyncCommit:Z
@@ -509,10 +509,10 @@
     :cond_1
     move v1, v4
 
-    .line 509
+    .line 512
     goto :goto_1
 
-    .line 510
+    .line 513
     :catchall_0
     move-exception v3
 
@@ -523,7 +523,7 @@
 
     throw v3
 
-    .line 517
+    .line 520
     .end local v1           #wasEmpty:Z
     :cond_2
     invoke-static {}, Landroid/app/QueuedWork;->singleThreadExecutor()Ljava/util/concurrent/ExecutorService;
@@ -543,34 +543,34 @@
 
     const/4 v1, 0x0
 
-    .line 151
+    .line 154
     monitor-enter p0
 
-    .line 152
+    .line 155
     :try_start_0
     iget v3, p0, Landroid/app/SharedPreferencesImpl;->mDiskWritesInFlight:I
 
     if-lez v3, :cond_0
 
-    .line 155
+    .line 158
     monitor-exit p0
 
-    .line 163
+    .line 166
     :goto_0
     return v1
 
-    .line 157
+    .line 160
     :cond_0
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 158
+    .line 161
     new-instance v0, Landroid/os/FileUtils$FileStatus;
 
     invoke-direct {v0}, Landroid/os/FileUtils$FileStatus;-><init>()V
 
-    .line 159
+    .line 162
     .local v0, stat:Landroid/os/FileUtils$FileStatus;
     iget-object v3, p0, Landroid/app/SharedPreferencesImpl;->mFile:Ljava/io/File;
 
@@ -586,10 +586,10 @@
 
     move v1, v2
 
-    .line 160
+    .line 163
     goto :goto_0
 
-    .line 157
+    .line 160
     .end local v0           #stat:Landroid/os/FileUtils$FileStatus;
     :catchall_0
     move-exception v1
@@ -601,12 +601,12 @@
 
     throw v1
 
-    .line 162
+    .line 165
     .restart local v0       #stat:Landroid/os/FileUtils$FileStatus;
     :cond_1
     monitor-enter p0
 
-    .line 163
+    .line 166
     :try_start_2
     iget-wide v3, p0, Landroid/app/SharedPreferencesImpl;->mStatTimestamp:J
 
@@ -632,7 +632,7 @@
 
     goto :goto_0
 
-    .line 164
+    .line 167
     :catchall_1
     move-exception v1
 
@@ -958,7 +958,7 @@
 
     const/4 v6, 0x0
 
-    .line 546
+    .line 549
     iget-object v3, p0, Landroid/app/SharedPreferencesImpl;->mFile:Ljava/io/File;
 
     invoke-virtual {v3}, Ljava/io/File;->exists()Z
@@ -967,19 +967,19 @@
 
     if-eqz v3, :cond_2
 
-    .line 547
+    .line 550
     iget-boolean v3, p1, Landroid/app/SharedPreferencesImpl$MemoryCommitResult;->changesMade:Z
 
     if-nez v3, :cond_0
 
-    .line 552
+    .line 555
     invoke-virtual {p1, v4}, Landroid/app/SharedPreferencesImpl$MemoryCommitResult;->setDiskWriteResult(Z)V
 
-    .line 603
+    .line 606
     :goto_0
     return-void
 
-    .line 555
+    .line 558
     :cond_0
     iget-object v3, p0, Landroid/app/SharedPreferencesImpl;->mBackupFile:Ljava/io/File;
 
@@ -989,7 +989,7 @@
 
     if-nez v3, :cond_1
 
-    .line 556
+    .line 559
     iget-object v3, p0, Landroid/app/SharedPreferencesImpl;->mFile:Ljava/io/File;
 
     iget-object v4, p0, Landroid/app/SharedPreferencesImpl;->mBackupFile:Ljava/io/File;
@@ -1000,7 +1000,7 @@
 
     if-nez v3, :cond_2
 
-    .line 557
+    .line 560
     const-string v3, "SharedPreferencesImpl"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -1037,18 +1037,18 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 559
+    .line 562
     invoke-virtual {p1, v6}, Landroid/app/SharedPreferencesImpl$MemoryCommitResult;->setDiskWriteResult(Z)V
 
     goto :goto_0
 
-    .line 563
+    .line 566
     :cond_1
     iget-object v3, p0, Landroid/app/SharedPreferencesImpl;->mFile:Ljava/io/File;
 
     invoke-virtual {v3}, Ljava/io/File;->delete()Z
 
-    .line 571
+    .line 574
     :cond_2
     :try_start_0
     iget-object v3, p0, Landroid/app/SharedPreferencesImpl;->mFile:Ljava/io/File;
@@ -1057,11 +1057,11 @@
 
     move-result-object v2
 
-    .line 572
+    .line 575
     .local v2, str:Ljava/io/FileOutputStream;
     if-nez v2, :cond_4
 
-    .line 573
+    .line 576
     const/4 v3, 0x0
 
     invoke-virtual {p1, v3}, Landroid/app/SharedPreferencesImpl$MemoryCommitResult;->setDiskWriteResult(Z)V
@@ -1071,12 +1071,12 @@
 
     goto :goto_0
 
-    .line 591
+    .line 594
     .end local v2           #str:Ljava/io/FileOutputStream;
     :catch_0
     move-exception v0
 
-    .line 592
+    .line 595
     .local v0, e:Lorg/xmlpull/v1/XmlPullParserException;
     const-string v3, "SharedPreferencesImpl"
 
@@ -1084,7 +1084,7 @@
 
     invoke-static {v3, v4, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 597
+    .line 600
     .end local v0           #e:Lorg/xmlpull/v1/XmlPullParserException;
     :goto_1
     iget-object v3, p0, Landroid/app/SharedPreferencesImpl;->mFile:Ljava/io/File;
@@ -1095,7 +1095,7 @@
 
     if-eqz v3, :cond_3
 
-    .line 598
+    .line 601
     iget-object v3, p0, Landroid/app/SharedPreferencesImpl;->mFile:Ljava/io/File;
 
     invoke-virtual {v3}, Ljava/io/File;->delete()Z
@@ -1104,7 +1104,7 @@
 
     if-nez v3, :cond_3
 
-    .line 599
+    .line 602
     const-string v3, "SharedPreferencesImpl"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -1129,13 +1129,13 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 602
+    .line 605
     :cond_3
     invoke-virtual {p1, v6}, Landroid/app/SharedPreferencesImpl$MemoryCommitResult;->setDiskWriteResult(Z)V
 
     goto/16 :goto_0
 
-    .line 576
+    .line 579
     .restart local v2       #str:Ljava/io/FileOutputStream;
     :cond_4
     :try_start_1
@@ -1143,13 +1143,13 @@
 
     invoke-static {v3, v2}, Lcom/android/internal/util/XmlUtils;->writeMapXml(Ljava/util/Map;Ljava/io/OutputStream;)V
 
-    .line 577
+    .line 580
     invoke-static {v2}, Landroid/os/FileUtils;->sync(Ljava/io/FileOutputStream;)Z
 
-    .line 578
+    .line 581
     invoke-virtual {v2}, Ljava/io/FileOutputStream;->close()V
 
-    .line 579
+    .line 582
     iget-object v3, p0, Landroid/app/SharedPreferencesImpl;->mFile:Ljava/io/File;
 
     invoke-virtual {v3}, Ljava/io/File;->getPath()Ljava/lang/String;
@@ -1162,12 +1162,12 @@
 
     invoke-static {v3, v4, v5}, Landroid/app/ContextImpl;->setFilePermissionsFromMode(Ljava/lang/String;II)V
 
-    .line 580
+    .line 583
     new-instance v1, Landroid/os/FileUtils$FileStatus;
 
     invoke-direct {v1}, Landroid/os/FileUtils$FileStatus;-><init>()V
 
-    .line 581
+    .line 584
     .local v1, stat:Landroid/os/FileUtils$FileStatus;
     iget-object v3, p0, Landroid/app/SharedPreferencesImpl;->mFile:Ljava/io/File;
 
@@ -1181,36 +1181,36 @@
 
     if-eqz v3, :cond_5
 
-    .line 582
+    .line 585
     monitor-enter p0
     :try_end_1
     .catch Lorg/xmlpull/v1/XmlPullParserException; {:try_start_1 .. :try_end_1} :catch_0
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
 
-    .line 583
+    .line 586
     :try_start_2
     iget-wide v3, v1, Landroid/os/FileUtils$FileStatus;->mtime:J
 
     iput-wide v3, p0, Landroid/app/SharedPreferencesImpl;->mStatTimestamp:J
 
-    .line 584
+    .line 587
     iget-wide v3, v1, Landroid/os/FileUtils$FileStatus;->size:J
 
     iput-wide v3, p0, Landroid/app/SharedPreferencesImpl;->mStatSize:J
 
-    .line 585
+    .line 588
     monitor-exit p0
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 588
+    .line 591
     :cond_5
     :try_start_3
     iget-object v3, p0, Landroid/app/SharedPreferencesImpl;->mBackupFile:Ljava/io/File;
 
     invoke-virtual {v3}, Ljava/io/File;->delete()Z
 
-    .line 589
+    .line 592
     const/4 v3, 0x1
 
     invoke-virtual {p1, v3}, Landroid/app/SharedPreferencesImpl$MemoryCommitResult;->setDiskWriteResult(Z)V
@@ -1220,13 +1220,13 @@
 
     goto/16 :goto_0
 
-    .line 593
+    .line 596
     .end local v1           #stat:Landroid/os/FileUtils$FileStatus;
     .end local v2           #str:Ljava/io/FileOutputStream;
     :catch_1
     move-exception v0
 
-    .line 594
+    .line 597
     .local v0, e:Ljava/io/IOException;
     const-string v3, "SharedPreferencesImpl"
 
@@ -1236,7 +1236,7 @@
 
     goto :goto_1
 
-    .line 585
+    .line 588
     .end local v0           #e:Ljava/io/IOException;
     .restart local v1       #stat:Landroid/os/FileUtils$FileStatus;
     .restart local v2       #str:Ljava/io/FileOutputStream;
@@ -1262,14 +1262,14 @@
     .parameter "key"
 
     .prologue
-    .line 248
+    .line 251
     monitor-enter p0
 
-    .line 249
+    .line 252
     :try_start_0
     invoke-direct {p0}, Landroid/app/SharedPreferencesImpl;->awaitLoadedLocked()V
 
-    .line 250
+    .line 253
     iget-object v0, p0, Landroid/app/SharedPreferencesImpl;->mMap:Ljava/util/Map;
 
     invoke-interface {v0, p1}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
@@ -1280,7 +1280,7 @@
 
     return v0
 
-    .line 251
+    .line 254
     :catchall_0
     move-exception v0
 
@@ -1295,26 +1295,26 @@
     .locals 1
 
     .prologue
-    .line 262
+    .line 265
     monitor-enter p0
 
-    .line 263
+    .line 266
     :try_start_0
     invoke-direct {p0}, Landroid/app/SharedPreferencesImpl;->awaitLoadedLocked()V
 
-    .line 264
+    .line 267
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 266
+    .line 269
     new-instance v0, Landroid/app/SharedPreferencesImpl$EditorImpl;
 
     invoke-direct {v0, p0}, Landroid/app/SharedPreferencesImpl$EditorImpl;-><init>(Landroid/app/SharedPreferencesImpl;)V
 
     return-object v0
 
-    .line 264
+    .line 267
     :catchall_0
     move-exception v0
 
@@ -1339,14 +1339,14 @@
     .end annotation
 
     .prologue
-    .line 195
+    .line 198
     monitor-enter p0
 
-    .line 196
+    .line 199
     :try_start_0
     invoke-direct {p0}, Landroid/app/SharedPreferencesImpl;->awaitLoadedLocked()V
 
-    .line 198
+    .line 201
     new-instance v0, Ljava/util/HashMap;
 
     iget-object v1, p0, Landroid/app/SharedPreferencesImpl;->mMap:Ljava/util/Map;
@@ -1357,7 +1357,7 @@
 
     return-object v0
 
-    .line 199
+    .line 202
     :catchall_0
     move-exception v0
 
@@ -1374,14 +1374,14 @@
     .parameter "defValue"
 
     .prologue
-    .line 240
+    .line 243
     monitor-enter p0
 
-    .line 241
+    .line 244
     :try_start_0
     invoke-direct {p0}, Landroid/app/SharedPreferencesImpl;->awaitLoadedLocked()V
 
-    .line 242
+    .line 245
     iget-object v1, p0, Landroid/app/SharedPreferencesImpl;->mMap:Ljava/util/Map;
 
     invoke-interface {v1, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1390,7 +1390,7 @@
 
     check-cast v0, Ljava/lang/Boolean;
 
-    .line 243
+    .line 246
     .local v0, v:Ljava/lang/Boolean;
     if-eqz v0, :cond_0
 
@@ -1404,7 +1404,7 @@
 
     return p2
 
-    .line 244
+    .line 247
     .end local v0           #v:Ljava/lang/Boolean;
     :catchall_0
     move-exception v1
@@ -1422,14 +1422,14 @@
     .parameter "defValue"
 
     .prologue
-    .line 233
+    .line 236
     monitor-enter p0
 
-    .line 234
+    .line 237
     :try_start_0
     invoke-direct {p0}, Landroid/app/SharedPreferencesImpl;->awaitLoadedLocked()V
 
-    .line 235
+    .line 238
     iget-object v1, p0, Landroid/app/SharedPreferencesImpl;->mMap:Ljava/util/Map;
 
     invoke-interface {v1, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1438,7 +1438,7 @@
 
     check-cast v0, Ljava/lang/Float;
 
-    .line 236
+    .line 239
     .local v0, v:Ljava/lang/Float;
     if-eqz v0, :cond_0
 
@@ -1452,7 +1452,7 @@
 
     return p2
 
-    .line 237
+    .line 240
     .end local v0           #v:Ljava/lang/Float;
     :catchall_0
     move-exception v1
@@ -1470,14 +1470,14 @@
     .parameter "defValue"
 
     .prologue
-    .line 219
+    .line 222
     monitor-enter p0
 
-    .line 220
+    .line 223
     :try_start_0
     invoke-direct {p0}, Landroid/app/SharedPreferencesImpl;->awaitLoadedLocked()V
 
-    .line 221
+    .line 224
     iget-object v1, p0, Landroid/app/SharedPreferencesImpl;->mMap:Ljava/util/Map;
 
     invoke-interface {v1, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1486,7 +1486,7 @@
 
     check-cast v0, Ljava/lang/Integer;
 
-    .line 222
+    .line 225
     .local v0, v:Ljava/lang/Integer;
     if-eqz v0, :cond_0
 
@@ -1500,7 +1500,7 @@
 
     return p2
 
-    .line 223
+    .line 226
     .end local v0           #v:Ljava/lang/Integer;
     :catchall_0
     move-exception v1
@@ -1518,14 +1518,14 @@
     .parameter "defValue"
 
     .prologue
-    .line 226
+    .line 229
     monitor-enter p0
 
-    .line 227
+    .line 230
     :try_start_0
     invoke-direct {p0}, Landroid/app/SharedPreferencesImpl;->awaitLoadedLocked()V
 
-    .line 228
+    .line 231
     iget-object v1, p0, Landroid/app/SharedPreferencesImpl;->mMap:Ljava/util/Map;
 
     invoke-interface {v1, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1534,7 +1534,7 @@
 
     check-cast v0, Ljava/lang/Long;
 
-    .line 229
+    .line 232
     .local v0, v:Ljava/lang/Long;
     if-eqz v0, :cond_0
 
@@ -1548,7 +1548,7 @@
 
     return-wide p2
 
-    .line 230
+    .line 233
     .end local v0           #v:Ljava/lang/Long;
     :catchall_0
     move-exception v1
@@ -1566,14 +1566,14 @@
     .parameter "defValue"
 
     .prologue
-    .line 203
+    .line 206
     monitor-enter p0
 
-    .line 204
+    .line 207
     :try_start_0
     invoke-direct {p0}, Landroid/app/SharedPreferencesImpl;->awaitLoadedLocked()V
 
-    .line 205
+    .line 208
     iget-object v1, p0, Landroid/app/SharedPreferencesImpl;->mMap:Ljava/util/Map;
 
     invoke-interface {v1, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1582,7 +1582,7 @@
 
     check-cast v0, Ljava/lang/String;
 
-    .line 206
+    .line 209
     .local v0, v:Ljava/lang/String;
     if-eqz v0, :cond_0
 
@@ -1598,7 +1598,7 @@
 
     goto :goto_0
 
-    .line 207
+    .line 210
     .end local v0           #v:Ljava/lang/String;
     :catchall_0
     move-exception v1
@@ -1630,15 +1630,15 @@
     .end annotation
 
     .prologue
-    .line 211
+    .line 214
     .local p2, defValues:Ljava/util/Set;,"Ljava/util/Set<Ljava/lang/String;>;"
     monitor-enter p0
 
-    .line 212
+    .line 215
     :try_start_0
     invoke-direct {p0}, Landroid/app/SharedPreferencesImpl;->awaitLoadedLocked()V
 
-    .line 213
+    .line 216
     iget-object v1, p0, Landroid/app/SharedPreferencesImpl;->mMap:Ljava/util/Map;
 
     invoke-interface {v1, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1647,7 +1647,7 @@
 
     check-cast v0, Ljava/util/Set;
 
-    .line 214
+    .line 217
     .local v0, v:Ljava/util/Set;,"Ljava/util/Set<Ljava/lang/String;>;"
     if-eqz v0, :cond_0
 
@@ -1663,7 +1663,7 @@
 
     goto :goto_0
 
-    .line 215
+    .line 218
     .end local v0           #v:Ljava/util/Set;,"Ljava/util/Set<Ljava/lang/String;>;"
     :catchall_0
     move-exception v1
@@ -1680,10 +1680,10 @@
     .parameter "listener"
 
     .prologue
-    .line 168
+    .line 171
     monitor-enter p0
 
-    .line 169
+    .line 172
     :try_start_0
     iget-object v0, p0, Landroid/app/SharedPreferencesImpl;->mListeners:Ljava/util/WeakHashMap;
 
@@ -1691,13 +1691,13 @@
 
     invoke-virtual {v0, p1, v1}, Ljava/util/WeakHashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 170
+    .line 173
     monitor-exit p0
 
-    .line 171
+    .line 174
     return-void
 
-    .line 170
+    .line 173
     :catchall_0
     move-exception v0
 
@@ -1708,14 +1708,14 @@
     throw v0
 .end method
 
-.method startReloadIfChangedUnexpectedly()V
+.method public startReloadIfChangedUnexpectedly()V
     .locals 1
 
     .prologue
-    .line 139
+    .line 142
     monitor-enter p0
 
-    .line 141
+    .line 144
     :try_start_0
     invoke-direct {p0}, Landroid/app/SharedPreferencesImpl;->hasFileChangedUnexpectedly()Z
 
@@ -1723,18 +1723,18 @@
 
     if-nez v0, :cond_0
 
-    .line 142
+    .line 145
     monitor-exit p0
 
-    .line 146
+    .line 149
     :goto_0
     return-void
 
-    .line 144
+    .line 147
     :cond_0
     invoke-direct {p0}, Landroid/app/SharedPreferencesImpl;->startLoadFromDisk()V
 
-    .line 145
+    .line 148
     monitor-exit p0
 
     goto :goto_0
@@ -1754,22 +1754,22 @@
     .parameter "listener"
 
     .prologue
-    .line 174
+    .line 177
     monitor-enter p0
 
-    .line 175
+    .line 178
     :try_start_0
     iget-object v0, p0, Landroid/app/SharedPreferencesImpl;->mListeners:Ljava/util/WeakHashMap;
 
     invoke-virtual {v0, p1}, Ljava/util/WeakHashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 176
+    .line 179
     monitor-exit p0
 
-    .line 177
+    .line 180
     return-void
 
-    .line 176
+    .line 179
     :catchall_0
     move-exception v0
 

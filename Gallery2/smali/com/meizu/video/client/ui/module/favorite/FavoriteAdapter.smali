@@ -12,11 +12,13 @@
 
 
 # instance fields
-.field private asyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
+.field private mAsyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
 
-.field private chanelName:Ljava/lang/String;
+.field private mChanelName:Ljava/lang/String;
 
-.field private favoritesListEntity:Ljava/util/ArrayList;
+.field private mContext:Landroid/content/Context;
+
+.field private mFavoritesListEntity:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/util/ArrayList",
@@ -27,16 +29,20 @@
     .end annotation
 .end field
 
-.field private gridView:Landroid/widget/GridView;
+.field private mGridView:Landroid/widget/GridView;
 
-.field private listView:Landroid/widget/ListView;
+.field private mImageHeight:I
 
-.field private mContext:Landroid/content/Context;
+.field private mImageWidth:I
+
+.field private mListView:Landroid/widget/ListView;
+
+.field private mRes:Landroid/content/res/Resources;
 
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Ljava/util/ArrayList;Ljava/lang/String;)V
-    .locals 1
+    .locals 2
     .parameter "mContext"
     .parameter
     .parameter "chanelName"
@@ -57,49 +63,78 @@
     .local p2, favoritesListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/FavoriteEntity;>;"
     const/4 v0, 0x0
 
-    .line 39
+    .line 42
     invoke-direct {p0}, Landroid/widget/BaseAdapter;-><init>()V
 
-    .line 30
+    .line 28
     iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mContext:Landroid/content/Context;
 
+    .line 30
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mGridView:Landroid/widget/GridView;
+
+    .line 31
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mListView:Landroid/widget/ListView;
+
     .line 32
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->gridView:Landroid/widget/GridView;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mAsyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
 
     .line 33
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->listView:Landroid/widget/ListView;
-
-    .line 34
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->asyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
-
-    .line 35
     const-string v0, ""
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->chanelName:Ljava/lang/String;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mChanelName:Ljava/lang/String;
 
-    .line 40
+    .line 43
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mContext:Landroid/content/Context;
 
-    .line 41
-    iput-object p2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->favoritesListEntity:Ljava/util/ArrayList;
-
-    .line 42
-    iput-object p3, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->chanelName:Ljava/lang/String;
-
     .line 44
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->asyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
+    iput-object p2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mFavoritesListEntity:Ljava/util/ArrayList;
+
+    .line 45
+    iput-object p3, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mChanelName:Ljava/lang/String;
+
+    .line 47
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mAsyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
 
     if-nez v0, :cond_0
 
-    .line 45
+    .line 48
     new-instance v0, Lcom/meizu/video/client/util/AsyncImageLoader;
 
     invoke-direct {v0}, Lcom/meizu/video/client/util/AsyncImageLoader;-><init>()V
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->asyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mAsyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
 
-    .line 48
+    .line 51
     :cond_0
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mRes:Landroid/content/res/Resources;
+
+    .line 52
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mRes:Landroid/content/res/Resources;
+
+    const v1, 0x7f090109
+
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v0
+
+    iput v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mImageWidth:I
+
+    .line 53
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mRes:Landroid/content/res/Resources;
+
+    const v1, 0x7f09010a
+
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v0
+
+    iput v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mImageHeight:I
+
+    .line 54
     return-void
 .end method
 
@@ -108,8 +143,8 @@
     .parameter "x0"
 
     .prologue
-    .line 29
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->gridView:Landroid/widget/GridView;
+    .line 27
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mGridView:Landroid/widget/GridView;
 
     return-object v0
 .end method
@@ -119,8 +154,8 @@
     .parameter "x0"
 
     .prologue
-    .line 29
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->listView:Landroid/widget/ListView;
+    .line 27
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mListView:Landroid/widget/ListView;
 
     return-object v0
 .end method
@@ -131,23 +166,23 @@
     .locals 2
 
     .prologue
-    .line 76
+    .line 83
     const/4 v0, 0x0
 
-    .line 77
+    .line 84
     .local v0, count:I
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->favoritesListEntity:Ljava/util/ArrayList;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mFavoritesListEntity:Ljava/util/ArrayList;
 
     if-eqz v1, :cond_0
 
-    .line 78
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->favoritesListEntity:Ljava/util/ArrayList;
+    .line 85
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mFavoritesListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
 
     move-result v0
 
-    .line 80
+    .line 87
     :cond_0
     return v0
 .end method
@@ -159,12 +194,12 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 84
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->favoritesListEntity:Ljava/util/ArrayList;
+    .line 91
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mFavoritesListEntity:Ljava/util/ArrayList;
 
     if-eqz v1, :cond_0
 
-    .line 85
+    .line 92
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->getCount()I
 
     move-result v1
@@ -177,8 +212,8 @@
 
     if-ge p1, v1, :cond_0
 
-    .line 86
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->favoritesListEntity:Ljava/util/ArrayList;
+    .line 93
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mFavoritesListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
@@ -186,7 +221,7 @@
 
     check-cast v0, Lcom/meizu/video/client/ui/entity/FavoriteEntity;
 
-    .line 91
+    .line 98
     :cond_0
     return-object v0
 .end method
@@ -196,7 +231,7 @@
     .parameter "x0"
 
     .prologue
-    .line 29
+    .line 27
     invoke-virtual {p0, p1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->getItem(I)Lcom/meizu/video/client/ui/entity/FavoriteEntity;
 
     move-result-object v0
@@ -209,284 +244,222 @@
     .parameter "position"
 
     .prologue
-    .line 96
+    .line 103
     int-to-long v0, p1
 
     return-wide v0
 .end method
 
 .method public getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
-    .locals 12
+    .locals 9
     .parameter "position"
     .parameter "convertView"
     .parameter "parent"
 
     .prologue
-    const-wide/high16 v10, 0x4016
+    const v8, 0x7f02006d
 
-    const/4 v9, 0x0
-
-    const v8, 0x7f020055
-
-    const/16 v7, 0x8
+    const/4 v7, 0x0
 
     const/4 v6, 0x0
 
-    .line 101
+    const v5, 0x7f020051
+
+    const/16 v4, 0x8
+
+    .line 108
     if-eqz p2, :cond_0
 
-    instance-of v4, p2, Lcom/meizu/video/client/common/LoadingMoreFootView;
+    instance-of v2, p2, Lcom/meizu/video/client/common/LoadingMoreFootView;
 
-    if-eqz v4, :cond_2
+    if-eqz v2, :cond_2
 
-    .line 102
+    .line 109
     :cond_0
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mContext:Landroid/content/Context;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mContext:Landroid/content/Context;
 
-    invoke-static {v4}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+    invoke-static {v2}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
-    move-result-object v4
+    move-result-object v2
 
-    const v5, 0x7f040029
+    const v3, 0x7f04002a
 
-    invoke-virtual {v4, v5, v9, v6}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
+    invoke-virtual {v2, v3, v7, v6}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
     move-result-object p2
 
-    .line 103
-    new-instance v3, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;
-
-    invoke-direct {v3, p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;-><init>(Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;)V
-
-    .line 104
-    .local v3, vHolder:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;
-    invoke-virtual {p0, v3, p2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->initViewHolder(Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;Landroid/view/View;)V
-
-    .line 105
-    invoke-virtual {p2, v3}, Landroid/view/View;->setTag(Ljava/lang/Object;)V
-
     .line 110
-    :goto_0
-    iget-object v4, v3, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText1:Landroid/widget/TextView;
+    new-instance v1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;
 
-    invoke-virtual {v4, v7}, Landroid/widget/TextView;->setVisibility(I)V
+    invoke-direct {v1, p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;-><init>(Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;)V
 
     .line 111
-    iget-object v4, v3, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText2LinearLayout:Landroid/widget/LinearLayout;
-
-    invoke-virtual {v4, v7}, Landroid/widget/LinearLayout;->setVisibility(I)V
+    .local v1, vHolder:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;
+    invoke-virtual {p0, v1, p2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->initViewHolder(Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;Landroid/view/View;)V
 
     .line 112
-    iget-object v4, v3, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText3:Landroid/widget/TextView;
-
-    invoke-virtual {v4, v7}, Landroid/widget/TextView;->setVisibility(I)V
-
-    .line 113
-    iget-object v4, v3, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText4:Landroid/widget/TextView;
-
-    invoke-virtual {v4, v7}, Landroid/widget/TextView;->setVisibility(I)V
-
-    .line 114
-    iget-object v4, v3, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText5:Landroid/widget/TextView;
-
-    invoke-virtual {v4, v7}, Landroid/widget/TextView;->setVisibility(I)V
-
-    .line 115
-    iget-object v4, v3, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->favoriteImage:Landroid/widget/ImageView;
-
-    const v5, 0x7f020117
-
-    invoke-virtual {v4, v5}, Landroid/widget/ImageView;->setImageResource(I)V
+    invoke-virtual {p2, v1}, Landroid/view/View;->setTag(Ljava/lang/Object;)V
 
     .line 117
-    iget-object v4, v3, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView1:Landroid/widget/ImageView;
+    :goto_0
+    iget-object v2, v1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText1:Landroid/widget/TextView;
 
-    invoke-virtual {v4, v8}, Landroid/widget/ImageView;->setImageResource(I)V
+    invoke-virtual {v2, v4}, Landroid/widget/TextView;->setVisibility(I)V
 
     .line 118
-    iget-object v4, v3, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView2:Landroid/widget/ImageView;
+    iget-object v2, v1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText2LinearLayout:Landroid/widget/LinearLayout;
 
-    invoke-virtual {v4, v8}, Landroid/widget/ImageView;->setImageResource(I)V
+    invoke-virtual {v2, v4}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
     .line 119
-    iget-object v4, v3, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView3:Landroid/widget/ImageView;
+    iget-object v2, v1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText3:Landroid/widget/TextView;
 
-    invoke-virtual {v4, v8}, Landroid/widget/ImageView;->setImageResource(I)V
+    invoke-virtual {v2, v4}, Landroid/widget/TextView;->setVisibility(I)V
 
     .line 120
-    iget-object v4, v3, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView4:Landroid/widget/ImageView;
+    iget-object v2, v1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText4:Landroid/widget/TextView;
 
-    invoke-virtual {v4, v8}, Landroid/widget/ImageView;->setImageResource(I)V
+    invoke-virtual {v2, v4}, Landroid/widget/TextView;->setVisibility(I)V
 
     .line 121
-    iget-object v4, v3, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView5:Landroid/widget/ImageView;
+    iget-object v2, v1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText5:Landroid/widget/TextView;
 
-    invoke-virtual {v4, v8}, Landroid/widget/ImageView;->setImageResource(I)V
+    invoke-virtual {v2, v4}, Landroid/widget/TextView;->setVisibility(I)V
 
     .line 123
-    invoke-virtual {p0, p1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->getItem(I)Lcom/meizu/video/client/ui/entity/FavoriteEntity;
+    iget-object v2, v1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView1:Landroid/widget/ImageView;
 
-    move-result-object v1
+    invoke-virtual {v2, v5}, Landroid/widget/ImageView;->setImageResource(I)V
 
     .line 124
-    .local v1, entity:Lcom/meizu/video/client/ui/entity/FavoriteEntity;
-    const/4 v2, 0x0
+    iget-object v2, v1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView2:Landroid/widget/ImageView;
+
+    invoke-virtual {v2, v5}, Landroid/widget/ImageView;->setImageResource(I)V
 
     .line 125
-    .local v2, topSpace:I
-    const/4 v0, 0x0
+    iget-object v2, v1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView3:Landroid/widget/ImageView;
+
+    invoke-virtual {v2, v5}, Landroid/widget/ImageView;->setImageResource(I)V
 
     .line 126
-    .local v0, colNum:I
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mContext:Landroid/content/Context;
+    iget-object v2, v1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView4:Landroid/widget/ImageView;
 
-    check-cast v4, Landroid/app/Activity;
-
-    invoke-virtual {v4}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
-
-    move-result-object v4
-
-    iget v4, v4, Landroid/content/res/Configuration;->orientation:I
-
-    const/4 v5, 0x2
-
-    if-ne v4, v5, :cond_4
+    invoke-virtual {v2, v5}, Landroid/widget/ImageView;->setImageResource(I)V
 
     .line 127
-    const/4 v0, 0x2
+    iget-object v2, v1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView5:Landroid/widget/ImageView;
 
-    .line 128
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mContext:Landroid/content/Context;
-
-    invoke-static {v4, v10, v11}, Lcom/meizu/video/client/util/CommonUtil;->dip2px(Landroid/content/Context;D)I
-
-    move-result v4
-
-    add-int/lit8 v2, v4, 0x62
+    invoke-virtual {v2, v5}, Landroid/widget/ImageView;->setImageResource(I)V
 
     .line 129
-    iget-object v4, v3, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->check:Landroid/widget/CheckBox;
+    invoke-virtual {p0, p1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->getItem(I)Lcom/meizu/video/client/ui/entity/FavoriteEntity;
 
-    invoke-virtual {v4, v7}, Landroid/widget/CheckBox;->setVisibility(I)V
+    move-result-object v0
 
     .line 130
-    invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->isSelected()Z
+    .local v0, entity:Lcom/meizu/video/client/ui/entity/FavoriteEntity;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mRes:Landroid/content/res/Resources;
 
-    move-result v4
+    if-nez v2, :cond_1
 
-    if-eqz v4, :cond_3
+    .line 131
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mContext:Landroid/content/Context;
 
-    .line 132
-    const v4, 0x7f020070
+    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    invoke-virtual {p2, v4}, Landroid/view/View;->setBackgroundResource(I)V
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mRes:Landroid/content/res/Resources;
 
     .line 133
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->gridView:Landroid/widget/GridView;
+    :cond_1
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mRes:Landroid/content/res/Resources;
 
-    const/4 v5, 0x1
+    invoke-virtual {v2}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
 
-    invoke-virtual {v4, p1, v5}, Landroid/widget/GridView;->setItemChecked(IZ)V
+    move-result-object v2
+
+    iget v2, v2, Landroid/content/res/Configuration;->orientation:I
+
+    const/4 v3, 0x2
+
+    if-ne v2, v3, :cond_4
+
+    .line 134
+    iget-object v2, v1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mCheck:Landroid/widget/CheckBox;
+
+    invoke-virtual {v2, v4}, Landroid/widget/CheckBox;->setVisibility(I)V
+
+    .line 135
+    invoke-virtual {v0}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->isSelected()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_3
+
+    .line 136
+    invoke-virtual {p2, v8}, Landroid/view/View;->setBackgroundResource(I)V
 
     .line 151
     :goto_1
-    div-int v4, p1, v0
+    invoke-virtual {p0, v1, p1, v0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->updateViewData(Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;ILcom/meizu/video/client/ui/entity/FavoriteEntity;)V
 
-    if-eqz v4, :cond_1
-
-    .line 152
-    const/4 v2, 0x0
-
-    .line 154
-    :cond_1
-    invoke-virtual {p2, v6, v2, v6, v6}, Landroid/view/View;->setPadding(IIII)V
-
-    .line 156
-    invoke-virtual {p0, v3, p1, v1}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->updateViewData(Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;ILcom/meizu/video/client/ui/entity/FavoriteEntity;)V
-
-    .line 158
+    .line 153
     return-object p2
 
-    .line 107
-    .end local v0           #colNum:I
-    .end local v1           #entity:Lcom/meizu/video/client/ui/entity/FavoriteEntity;
-    .end local v2           #topSpace:I
-    .end local v3           #vHolder:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;
+    .line 114
+    .end local v0           #entity:Lcom/meizu/video/client/ui/entity/FavoriteEntity;
+    .end local v1           #vHolder:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;
     :cond_2
     invoke-virtual {p2}, Landroid/view/View;->getTag()Ljava/lang/Object;
 
-    move-result-object v3
+    move-result-object v1
 
-    check-cast v3, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;
+    check-cast v1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;
 
-    .restart local v3       #vHolder:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;
-    goto/16 :goto_0
+    .restart local v1       #vHolder:Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;
+    goto :goto_0
 
-    .line 135
-    .restart local v0       #colNum:I
-    .restart local v1       #entity:Lcom/meizu/video/client/ui/entity/FavoriteEntity;
-    .restart local v2       #topSpace:I
+    .line 138
+    .restart local v0       #entity:Lcom/meizu/video/client/ui/entity/FavoriteEntity;
     :cond_3
-    invoke-virtual {p2, v9}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
-
-    .line 136
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->gridView:Landroid/widget/GridView;
-
-    invoke-virtual {v4, p1, v6}, Landroid/widget/GridView;->setItemChecked(IZ)V
+    invoke-virtual {p2, v7}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
 
     goto :goto_1
 
-    .line 139
-    :cond_4
-    const/4 v0, 0x1
-
-    .line 140
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mContext:Landroid/content/Context;
-
-    invoke-static {v4, v10, v11}, Lcom/meizu/video/client/util/CommonUtil;->dip2px(Landroid/content/Context;D)I
-
-    move-result v4
-
-    add-int/lit8 v2, v4, 0x62
-
     .line 141
-    iget-object v4, v3, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->check:Landroid/widget/CheckBox;
+    :cond_4
+    iget-object v2, v1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mCheck:Landroid/widget/CheckBox;
 
-    invoke-virtual {v4, v6}, Landroid/widget/CheckBox;->setVisibility(I)V
+    invoke-virtual {v2, v6}, Landroid/widget/CheckBox;->setVisibility(I)V
 
     .line 142
-    invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->isSelected()Z
+    invoke-virtual {v0}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->isSelected()Z
 
-    move-result v4
+    move-result v2
 
-    if-eqz v4, :cond_5
+    if-eqz v2, :cond_5
 
     .line 143
-    const v4, 0x7f020070
-
-    invoke-virtual {p2, v4}, Landroid/view/View;->setBackgroundResource(I)V
+    invoke-virtual {p2, v8}, Landroid/view/View;->setBackgroundResource(I)V
 
     .line 144
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->listView:Landroid/widget/ListView;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mListView:Landroid/widget/ListView;
 
-    const/4 v5, 0x1
+    const/4 v3, 0x1
 
-    invoke-virtual {v4, p1, v5}, Landroid/widget/ListView;->setItemChecked(IZ)V
+    invoke-virtual {v2, p1, v3}, Landroid/widget/ListView;->setItemChecked(IZ)V
 
     goto :goto_1
 
     .line 146
     :cond_5
-    invoke-virtual {p2, v9}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
+    invoke-virtual {p2, v7}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
 
     .line 147
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->listView:Landroid/widget/ListView;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mListView:Landroid/widget/ListView;
 
-    invoke-virtual {v4, p1, v6}, Landroid/widget/ListView;->setItemChecked(IZ)V
+    invoke-virtual {v2, p1, v6}, Landroid/widget/ListView;->setItemChecked(IZ)V
 
     goto :goto_1
 .end method
@@ -499,8 +472,8 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 162
-    const v0, 0x7f0d0084
+    .line 157
+    const v0, 0x7f0d0089
 
     invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -508,10 +481,10 @@
 
     check-cast v0, Landroid/widget/ImageView;
 
-    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->favoriteImage:Landroid/widget/ImageView;
+    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mFavoriteImage:Landroid/widget/ImageView;
 
-    .line 163
-    const v0, 0x7f0d001c
+    .line 158
+    const v0, 0x7f0d0020
 
     invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -519,10 +492,10 @@
 
     check-cast v0, Landroid/widget/TextView;
 
-    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText1:Landroid/widget/TextView;
+    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText1:Landroid/widget/TextView;
 
-    .line 165
-    const v0, 0x7f0d001d
+    .line 160
+    const v0, 0x7f0d0021
 
     invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -530,10 +503,10 @@
 
     check-cast v0, Landroid/widget/LinearLayout;
 
-    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText2LinearLayout:Landroid/widget/LinearLayout;
+    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText2LinearLayout:Landroid/widget/LinearLayout;
 
-    .line 166
-    const v0, 0x7f0d001e
+    .line 161
+    const v0, 0x7f0d0022
 
     invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -541,53 +514,9 @@
 
     check-cast v0, Landroid/widget/TextView;
 
-    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText2_1:Landroid/widget/TextView;
+    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText21:Landroid/widget/TextView;
 
-    .line 167
-    const v0, 0x7f0d001f
-
-    invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/ImageView;
-
-    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView1:Landroid/widget/ImageView;
-
-    .line 168
-    const v0, 0x7f0d0020
-
-    invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/ImageView;
-
-    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView2:Landroid/widget/ImageView;
-
-    .line 169
-    const v0, 0x7f0d0021
-
-    invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/ImageView;
-
-    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView3:Landroid/widget/ImageView;
-
-    .line 170
-    const v0, 0x7f0d0022
-
-    invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/ImageView;
-
-    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView4:Landroid/widget/ImageView;
-
-    .line 171
+    .line 162
     const v0, 0x7f0d0023
 
     invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
@@ -596,43 +525,54 @@
 
     check-cast v0, Landroid/widget/ImageView;
 
-    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView5:Landroid/widget/ImageView;
+    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView1:Landroid/widget/ImageView;
 
-    .line 172
+    .line 163
     const v0, 0x7f0d0024
 
     invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
-    check-cast v0, Landroid/widget/TextView;
+    check-cast v0, Landroid/widget/ImageView;
 
-    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText2_2:Landroid/widget/TextView;
+    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView2:Landroid/widget/ImageView;
 
-    .line 174
+    .line 164
     const v0, 0x7f0d0025
 
     invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
-    check-cast v0, Landroid/widget/TextView;
+    check-cast v0, Landroid/widget/ImageView;
 
-    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText3:Landroid/widget/TextView;
+    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView3:Landroid/widget/ImageView;
 
-    .line 175
+    .line 165
     const v0, 0x7f0d0026
 
     invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
-    check-cast v0, Landroid/widget/TextView;
+    check-cast v0, Landroid/widget/ImageView;
 
-    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText4:Landroid/widget/TextView;
+    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView4:Landroid/widget/ImageView;
 
-    .line 176
+    .line 166
     const v0, 0x7f0d0027
+
+    invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/ImageView;
+
+    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView5:Landroid/widget/ImageView;
+
+    .line 167
+    const v0, 0x7f0d0028
 
     invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -640,9 +580,42 @@
 
     check-cast v0, Landroid/widget/TextView;
 
-    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText5:Landroid/widget/TextView;
+    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText22:Landroid/widget/TextView;
 
-    .line 178
+    .line 169
+    const v0, 0x7f0d0029
+
+    invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/TextView;
+
+    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText3:Landroid/widget/TextView;
+
+    .line 170
+    const v0, 0x7f0d002a
+
+    invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/TextView;
+
+    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText4:Landroid/widget/TextView;
+
+    .line 171
+    const v0, 0x7f0d002b
+
+    invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/TextView;
+
+    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText5:Landroid/widget/TextView;
+
+    .line 173
     const v0, 0x1020001
 
     invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
@@ -651,29 +624,29 @@
 
     check-cast v0, Landroid/widget/CheckBox;
 
-    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->check:Landroid/widget/CheckBox;
+    iput-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mCheck:Landroid/widget/CheckBox;
+
+    .line 175
+    iget-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText1:Landroid/widget/TextView;
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setEllipsisSmall(Z)V
+
+    .line 176
+    iget-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText3:Landroid/widget/TextView;
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setEllipsisSmall(Z)V
+
+    .line 177
+    iget-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText4:Landroid/widget/TextView;
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setEllipsisSmall(Z)V
+
+    .line 178
+    iget-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText5:Landroid/widget/TextView;
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setEllipsisSmall(Z)V
 
     .line 180
-    iget-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText1:Landroid/widget/TextView;
-
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setEllipsisSmall(Z)V
-
-    .line 181
-    iget-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText3:Landroid/widget/TextView;
-
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setEllipsisSmall(Z)V
-
-    .line 182
-    iget-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText4:Landroid/widget/TextView;
-
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setEllipsisSmall(Z)V
-
-    .line 183
-    iget-object v0, p1, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText5:Landroid/widget/TextView;
-
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setEllipsisSmall(Z)V
-
-    .line 184
     return-void
 .end method
 
@@ -691,66 +664,26 @@
     .end annotation
 
     .prologue
-    .line 187
+    .line 183
     .local p1, list:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/FavoriteEntity;>;"
     if-eqz p1, :cond_0
 
-    .line 188
-    iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->favoritesListEntity:Ljava/util/ArrayList;
+    .line 184
+    iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mFavoritesListEntity:Ljava/util/ArrayList;
 
-    .line 192
+    .line 188
     :goto_0
     return-void
 
-    .line 190
+    .line 186
     :cond_0
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->favoritesListEntity:Ljava/util/ArrayList;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mFavoritesListEntity:Ljava/util/ArrayList;
 
     goto :goto_0
-.end method
-
-.method public setPositionCheck(IZ)V
-    .locals 1
-    .parameter "position"
-    .parameter "check"
-
-    .prologue
-    .line 335
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->favoritesListEntity:Ljava/util/ArrayList;
-
-    if-eqz v0, :cond_0
-
-    .line 336
-    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->getCount()I
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->getCount()I
-
-    move-result v0
-
-    if-ge p1, v0, :cond_0
-
-    .line 337
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->favoritesListEntity:Ljava/util/ArrayList;
-
-    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Lcom/meizu/video/client/ui/entity/FavoriteEntity;
-
-    invoke-virtual {v0, p2}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->setSelected(Z)V
-
-    .line 340
-    :cond_0
-    return-void
 .end method
 
 .method public setView(Landroid/widget/ListView;Landroid/widget/GridView;)V
@@ -759,13 +692,13 @@
     .parameter "gridView"
 
     .prologue
-    .line 51
-    iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->listView:Landroid/widget/ListView;
+    .line 57
+    iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mListView:Landroid/widget/ListView;
 
-    .line 52
-    iput-object p2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->gridView:Landroid/widget/GridView;
+    .line 58
+    iput-object p2, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mGridView:Landroid/widget/GridView;
 
-    .line 53
+    .line 59
     return-void
 .end method
 
@@ -776,24 +709,24 @@
     .parameter "favoritesEntity"
 
     .prologue
-    .line 204
+    .line 200
     if-eqz p1, :cond_10
 
-    .line 205
+    .line 201
     if-eqz p3, :cond_10
 
-    .line 206
+    .line 202
     invoke-virtual/range {p3 .. p3}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->getVid()Ljava/lang/String;
 
     move-result-object v11
 
-    .line 207
+    .line 203
     .local v11, id_tag:Ljava/lang/String;
     new-instance v13, Ljava/util/ArrayList;
 
     invoke-direct {v13}, Ljava/util/ArrayList;-><init>()V
 
-    .line 208
+    .line 204
     .local v13, lableListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/lang/String;>;"
     invoke-virtual/range {p3 .. p3}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->getLabel1()Ljava/lang/String;
 
@@ -801,31 +734,31 @@
 
     invoke-virtual {v13, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 209
+    .line 205
     invoke-virtual/range {p3 .. p3}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->getLabel2()Ljava/lang/String;
 
     move-result-object v1
 
     invoke-virtual {v13, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 210
+    .line 206
     invoke-virtual/range {p3 .. p3}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->getLabel3()Ljava/lang/String;
 
     move-result-object v1
 
     invoke-virtual {v13, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 211
+    .line 207
     invoke-virtual/range {p3 .. p3}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->getLabel4()Ljava/lang/String;
 
     move-result-object v1
 
     invoke-virtual {v13, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 212
+    .line 208
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText1:Landroid/widget/TextView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText1:Landroid/widget/TextView;
 
     invoke-virtual {v1}, Landroid/widget/TextView;->getVisibility()I
 
@@ -833,10 +766,10 @@
 
     if-eqz v1, :cond_0
 
-    .line 213
+    .line 209
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText1:Landroid/widget/TextView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText1:Landroid/widget/TextView;
 
     invoke-virtual/range {p3 .. p3}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->getChanelProgramName()Ljava/lang/String;
 
@@ -844,16 +777,16 @@
 
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 214
+    .line 210
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText1:Landroid/widget/TextView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText1:Landroid/widget/TextView;
 
     const/4 v2, 0x0
 
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 216
+    .line 212
     :cond_0
     if-eqz v13, :cond_10
 
@@ -863,7 +796,7 @@
 
     if-lez v1, :cond_10
 
-    .line 217
+    .line 213
     const/4 v10, 0x0
 
     .local v10, i:I
@@ -874,18 +807,18 @@
 
     if-ge v10, v1, :cond_f
 
-    .line 218
+    .line 214
     invoke-virtual {v13, v10}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v12
 
     check-cast v12, Ljava/lang/String;
 
-    .line 219
+    .line 215
     .local v12, lableEntity:Ljava/lang/String;
     if-eqz v12, :cond_6
 
-    .line 220
+    .line 216
     const-string v1, "\\"
 
     invoke-virtual {v12, v1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
@@ -894,18 +827,18 @@
 
     if-eqz v1, :cond_c
 
-    .line 221
+    .line 217
     const-string v1, "\\"
 
     invoke-virtual {v12, v1}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
 
     move-result v16
 
-    .line 222
+    .line 218
     .local v16, pos:I
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText2_1:Landroid/widget/TextView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText21:Landroid/widget/TextView;
 
     const/4 v2, 0x0
 
@@ -917,10 +850,10 @@
 
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 223
+    .line 219
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText2_2:Landroid/widget/TextView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText22:Landroid/widget/TextView;
 
     add-int/lit8 v2, v16, 0x1
 
@@ -934,7 +867,7 @@
 
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 225
+    .line 221
     add-int/lit8 v1, v16, 0x1
 
     :try_start_0
@@ -954,7 +887,7 @@
 
     move-result-wide v17
 
-    .line 226
+    .line 222
     .local v17, score:D
     const-wide/high16 v1, 0x4000
 
@@ -962,7 +895,7 @@
 
     double-to-int v14, v1
 
-    .line 227
+    .line 223
     .local v14, num:I
     const-wide/high16 v1, 0x4000
 
@@ -970,139 +903,139 @@
 
     double-to-int v15, v1
 
-    .line 228
-    .local v15, num_item:I
+    .line 224
+    .local v15, numItem:I
     const/4 v1, 0x1
 
     if-ge v14, v1, :cond_1
 
-    .line 229
+    .line 225
     const/4 v1, 0x1
 
     if-ne v15, v1, :cond_7
 
-    .line 230
+    .line 226
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView1:Landroid/widget/ImageView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView1:Landroid/widget/ImageView;
 
-    const v2, 0x7f020053
+    const v2, 0x7f02004f
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    .line 231
+    .line 227
     const/4 v15, 0x0
 
-    .line 236
+    .line 232
     :cond_1
     :goto_1
     const/4 v1, 0x2
 
     if-ge v14, v1, :cond_2
 
-    .line 237
+    .line 233
     const/4 v1, 0x1
 
     if-ne v15, v1, :cond_8
 
-    .line 238
+    .line 234
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView2:Landroid/widget/ImageView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView2:Landroid/widget/ImageView;
 
-    const v2, 0x7f020053
+    const v2, 0x7f02004f
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    .line 239
+    .line 235
     const/4 v15, 0x0
 
-    .line 244
+    .line 240
     :cond_2
     :goto_2
     const/4 v1, 0x3
 
     if-ge v14, v1, :cond_3
 
-    .line 245
+    .line 241
     const/4 v1, 0x1
 
     if-ne v15, v1, :cond_9
 
-    .line 246
+    .line 242
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView3:Landroid/widget/ImageView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView3:Landroid/widget/ImageView;
 
-    const v2, 0x7f020053
+    const v2, 0x7f02004f
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    .line 247
+    .line 243
     const/4 v15, 0x0
 
-    .line 252
+    .line 248
     :cond_3
     :goto_3
     const/4 v1, 0x4
 
     if-ge v14, v1, :cond_4
 
-    .line 253
+    .line 249
     const/4 v1, 0x1
 
     if-ne v15, v1, :cond_a
 
-    .line 254
+    .line 250
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView4:Landroid/widget/ImageView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView4:Landroid/widget/ImageView;
 
-    const v2, 0x7f020053
+    const v2, 0x7f02004f
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    .line 255
+    .line 251
     const/4 v15, 0x0
 
-    .line 260
+    .line 256
     :cond_4
     :goto_4
     const/4 v1, 0x5
 
     if-ge v14, v1, :cond_5
 
-    .line 261
+    .line 257
     const/4 v1, 0x1
 
     if-ne v15, v1, :cond_b
 
-    .line 262
+    .line 258
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView5:Landroid/widget/ImageView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView5:Landroid/widget/ImageView;
 
-    const v2, 0x7f020053
+    const v2, 0x7f02004f
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    .line 263
+    .line 259
     const/4 v15, 0x0
 
-    .line 268
+    .line 264
     :cond_5
     :goto_5
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText2LinearLayout:Landroid/widget/LinearLayout;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText2LinearLayout:Landroid/widget/LinearLayout;
 
     const/4 v2, 0x0
 
     invoke-virtual {v1, v2}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 217
+    .line 213
     .end local v14           #num:I
-    .end local v15           #num_item:I
+    .end local v15           #numItem:I
     .end local v16           #pos:I
     .end local v17           #score:D
     :cond_6
@@ -1111,77 +1044,77 @@
 
     goto/16 :goto_0
 
-    .line 233
+    .line 229
     .restart local v14       #num:I
-    .restart local v15       #num_item:I
+    .restart local v15       #numItem:I
     .restart local v16       #pos:I
     .restart local v17       #score:D
     :cond_7
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView1:Landroid/widget/ImageView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView1:Landroid/widget/ImageView;
 
-    const v2, 0x7f020054
+    const v2, 0x7f020050
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setImageResource(I)V
 
     goto :goto_1
 
-    .line 269
+    .line 265
     .end local v14           #num:I
-    .end local v15           #num_item:I
+    .end local v15           #numItem:I
     .end local v17           #score:D
     :catch_0
     move-exception v1
 
     goto :goto_6
 
-    .line 241
+    .line 237
     .restart local v14       #num:I
-    .restart local v15       #num_item:I
+    .restart local v15       #numItem:I
     .restart local v17       #score:D
     :cond_8
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView2:Landroid/widget/ImageView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView2:Landroid/widget/ImageView;
 
-    const v2, 0x7f020054
+    const v2, 0x7f020050
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setImageResource(I)V
 
     goto :goto_2
 
-    .line 249
+    .line 245
     :cond_9
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView3:Landroid/widget/ImageView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView3:Landroid/widget/ImageView;
 
-    const v2, 0x7f020054
+    const v2, 0x7f020050
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setImageResource(I)V
 
     goto :goto_3
 
-    .line 257
+    .line 253
     :cond_a
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView4:Landroid/widget/ImageView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView4:Landroid/widget/ImageView;
 
-    const v2, 0x7f020054
+    const v2, 0x7f020050
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setImageResource(I)V
 
     goto :goto_4
 
-    .line 265
+    .line 261
     :cond_b
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->imageView5:Landroid/widget/ImageView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mImageView5:Landroid/widget/ImageView;
 
-    const v2, 0x7f020054
+    const v2, 0x7f020050
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setImageResource(I)V
     :try_end_0
@@ -1189,15 +1122,15 @@
 
     goto :goto_5
 
-    .line 272
+    .line 268
     .end local v14           #num:I
-    .end local v15           #num_item:I
+    .end local v15           #numItem:I
     .end local v16           #pos:I
     .end local v17           #score:D
     :cond_c
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText3:Landroid/widget/TextView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText3:Landroid/widget/TextView;
 
     invoke-virtual {v1}, Landroid/widget/TextView;->getVisibility()I
 
@@ -1205,17 +1138,17 @@
 
     if-eqz v1, :cond_d
 
-    .line 273
+    .line 269
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText3:Landroid/widget/TextView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText3:Landroid/widget/TextView;
 
     invoke-virtual {v1, v12}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 274
+    .line 270
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText3:Landroid/widget/TextView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText3:Landroid/widget/TextView;
 
     const/4 v2, 0x0
 
@@ -1223,11 +1156,11 @@
 
     goto :goto_6
 
-    .line 275
+    .line 271
     :cond_d
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText4:Landroid/widget/TextView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText4:Landroid/widget/TextView;
 
     invoke-virtual {v1}, Landroid/widget/TextView;->getVisibility()I
 
@@ -1235,17 +1168,17 @@
 
     if-eqz v1, :cond_e
 
-    .line 276
+    .line 272
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText4:Landroid/widget/TextView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText4:Landroid/widget/TextView;
 
     invoke-virtual {v1, v12}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 277
+    .line 273
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText4:Landroid/widget/TextView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText4:Landroid/widget/TextView;
 
     const/4 v2, 0x0
 
@@ -1253,11 +1186,11 @@
 
     goto :goto_6
 
-    .line 278
+    .line 274
     :cond_e
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText5:Landroid/widget/TextView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText5:Landroid/widget/TextView;
 
     invoke-virtual {v1}, Landroid/widget/TextView;->getVisibility()I
 
@@ -1265,17 +1198,17 @@
 
     if-eqz v1, :cond_6
 
-    .line 279
+    .line 275
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText5:Landroid/widget/TextView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText5:Landroid/widget/TextView;
 
     invoke-virtual {v1, v12}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 280
+    .line 276
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->labelText5:Landroid/widget/TextView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mLabelText5:Landroid/widget/TextView;
 
     const/4 v2, 0x0
 
@@ -1283,47 +1216,23 @@
 
     goto/16 :goto_6
 
-    .line 287
+    .line 283
     .end local v12           #lableEntity:Ljava/lang/String;
     :cond_f
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->favoriteImage:Landroid/widget/ImageView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mFavoriteImage:Landroid/widget/ImageView;
 
     invoke-virtual {v1, v11}, Landroid/widget/ImageView;->setTag(Ljava/lang/Object;)V
 
-    .line 288
-    move-object/from16 v0, p0
-
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mContext:Landroid/content/Context;
-
-    const/16 v2, 0x72
-
-    invoke-static {v1, v2}, Lcom/meizu/video/client/util/CommonUtil;->dip2px(Landroid/content/Context;I)I
-
-    move-result v6
-
-    .line 289
-    .local v6, imageWidth:I
-    move-object/from16 v0, p0
-
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mContext:Landroid/content/Context;
-
-    const/16 v2, 0x98
-
-    invoke-static {v1, v2}, Lcom/meizu/video/client/util/CommonUtil;->dip2px(Landroid/content/Context;I)I
-
-    move-result v7
-
-    .line 290
-    .local v7, imageHeight:I
+    .line 285
     const/4 v9, 0x0
 
-    .line 291
+    .line 286
     .local v9, cachedImage:Landroid/graphics/Bitmap;
     move-object/from16 v0, p0
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->asyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mAsyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
 
     const/4 v3, 0x0
 
@@ -1332,6 +1241,14 @@
     invoke-virtual/range {p3 .. p3}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->getImageUrl()Ljava/lang/String;
 
     move-result-object v5
+
+    move-object/from16 v0, p0
+
+    iget v6, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mImageWidth:I
+
+    move-object/from16 v0, p0
+
+    iget v7, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter;->mImageHeight:I
 
     new-instance v8, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$1;
 
@@ -1345,51 +1262,21 @@
 
     move-result-object v9
 
-    .line 322
-    if-eqz v9, :cond_11
+    .line 311
+    if-eqz v9, :cond_10
 
-    .line 323
+    .line 312
     move-object/from16 v0, p1
 
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->favoriteImage:Landroid/widget/ImageView;
+    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->mFavoriteImage:Landroid/widget/ImageView;
 
     invoke-virtual {v1, v9}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
-    .line 324
-    move-object/from16 v0, p1
-
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->favoriteImage:Landroid/widget/ImageView;
-
-    sget-object v2, Landroid/widget/ImageView$ScaleType;->CENTER_CROP:Landroid/widget/ImageView$ScaleType;
-
-    invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
-
-    .line 332
-    .end local v6           #imageWidth:I
-    .end local v7           #imageHeight:I
+    .line 318
     .end local v9           #cachedImage:Landroid/graphics/Bitmap;
     .end local v10           #i:I
     .end local v11           #id_tag:Ljava/lang/String;
     .end local v13           #lableListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/lang/String;>;"
     :cond_10
-    :goto_7
     return-void
-
-    .line 326
-    .restart local v6       #imageWidth:I
-    .restart local v7       #imageHeight:I
-    .restart local v9       #cachedImage:Landroid/graphics/Bitmap;
-    .restart local v10       #i:I
-    .restart local v11       #id_tag:Ljava/lang/String;
-    .restart local v13       #lableListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/lang/String;>;"
-    :cond_11
-    move-object/from16 v0, p1
-
-    iget-object v1, v0, Lcom/meizu/video/client/ui/module/favorite/FavoriteAdapter$ViewHolder;->favoriteImage:Landroid/widget/ImageView;
-
-    sget-object v2, Landroid/widget/ImageView$ScaleType;->CENTER:Landroid/widget/ImageView$ScaleType;
-
-    invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
-
-    goto :goto_7
 .end method

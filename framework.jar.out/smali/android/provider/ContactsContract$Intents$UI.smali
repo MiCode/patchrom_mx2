@@ -45,6 +45,8 @@
 
 .field public static final REQUESTED_ORIENTATION:Ljava/lang/String; = "com.android.contacts.extra.REQUESTED_ORIENTATION"
 
+.field public static final SHOULD_INCLUDE_CONTACT_KEY:Ljava/lang/String; = "com.android.contacts.extra.SHOULD_INCLUDE_CONTACT"
+
 .field public static final SHOULD_INCLUDE_PROFILE_KEY:Ljava/lang/String; = "com.android.contacts.extra.SHOULD_INCLUDE_PROFILE"
 
 .field public static final SHOW_CREATE_NEW_CONTACT_BUTTON:Ljava/lang/String; = "com.android.contacts.extra.SHOW_CREATE_NEW_CONTACT_BUTTON"

@@ -25,7 +25,7 @@
     .parameter "x0"
 
     .prologue
-    .line 231
+    .line 229
     iput-object p1, p0, Lcom/android/gallery3d/app/Gallery$1;->this$0:Lcom/android/gallery3d/app/Gallery;
 
     invoke-direct {p0, p2}, Landroid/content/AsyncQueryHandler;-><init>(Landroid/content/ContentResolver;)V
@@ -42,7 +42,7 @@
     .parameter "cursor"
 
     .prologue
-    .line 235
+    .line 233
     if-eqz p3, :cond_1
 
     :try_start_0
@@ -52,14 +52,14 @@
 
     if-eqz v1, :cond_1
 
-    .line 236
+    .line 234
     const/4 v1, 0x0
 
     invoke-interface {p3, v1}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 239
+    .line 237
     .local v0, displayName:Ljava/lang/String;
     iget-object v1, p0, Lcom/android/gallery3d/app/Gallery$1;->this$0:Lcom/android/gallery3d/app/Gallery;
 
@@ -73,14 +73,14 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 242
+    .line 240
     :cond_1
     invoke-static {p3}, Lcom/android/gallery3d/common/Utils;->closeSilently(Landroid/database/Cursor;)V
 
-    .line 244
+    .line 242
     return-void
 
-    .line 242
+    .line 240
     :catchall_0
     move-exception v1
 

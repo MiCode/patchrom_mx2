@@ -25,7 +25,7 @@
 
 .field private static final DEFAULT_IDLE_MS:J = 0xdbba0L
 
-.field private static final ICON_NETWORKS_AVAILABLE:I = 0x108071b
+.field private static final ICON_NETWORKS_AVAILABLE:I = 0x10806e5
 
 .field private static final IDLE_REQUEST:I = 0x0
 
@@ -2119,7 +2119,7 @@
     .prologue
     const/4 v8, 0x0
 
-    const v7, 0x108071b
+    const v7, 0x10806e5
 
     .line 1728
     if-nez p1, :cond_1
@@ -2189,7 +2189,7 @@
     .line 1748
     iget-object v3, p0, Lcom/android/server/WifiService;->mNotification:Landroid/app/Notification;
 
-    const v4, 0x10806bb
+    const v4, 0x108076a
 
     iput v4, v3, Landroid/app/Notification;->notificationIcon:I
 

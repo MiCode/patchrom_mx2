@@ -20,7 +20,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/android/gallery3d/app/GalleryApp;Lcom/android/gallery3d/data/Path;IJLjava/lang/String;)V
-    .locals 7
+    .locals 8
     .parameter "application"
     .parameter "path"
     .parameter "type"
@@ -35,6 +35,8 @@
 
     move-result v6
 
+    const/4 v7, 0x1
+
     move-object v0, p0
 
     move-object v1, p1
@@ -45,7 +47,7 @@
 
     move-wide v4, p4
 
-    invoke-direct/range {v0 .. v6}, Lcom/android/gallery3d/data/ImageCacheRequest;-><init>(Lcom/android/gallery3d/app/GalleryApp;Lcom/android/gallery3d/data/Path;IJI)V
+    invoke-direct/range {v0 .. v7}, Lcom/android/gallery3d/data/ImageCacheRequest;-><init>(Lcom/android/gallery3d/app/GalleryApp;Lcom/android/gallery3d/data/Path;IJIZ)V
 
     .line 195
     iput-object p6, p0, Lcom/android/gallery3d/data/LocalVideo$LocalVideoRequest;->mLocalFilePath:Ljava/lang/String;

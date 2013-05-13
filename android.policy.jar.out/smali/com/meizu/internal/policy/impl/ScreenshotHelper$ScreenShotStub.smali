@@ -27,15 +27,15 @@
     .parameter "context"
 
     .prologue
-    .line 138
+    .line 135
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenShotStub;->this$0:Lcom/meizu/internal/policy/impl/ScreenshotHelper;
 
     invoke-direct {p0}, Landroid/app/IUnlockScreenShotReceiver$Stub;-><init>()V
 
-    .line 139
+    .line 136
     iput-object p2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenShotStub;->mContext:Landroid/content/Context;
 
-    .line 140
+    .line 137
     return-void
 .end method
 
@@ -52,7 +52,7 @@
 
     const/4 v4, 0x1
 
-    .line 143
+    .line 140
     invoke-virtual {p1}, Landroid/content/ComponentName;->getClassName()Ljava/lang/String;
 
     move-result-object v1
@@ -65,7 +65,7 @@
 
     if-eqz v1, :cond_1
 
-    .line 144
+    .line 141
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenShotStub;->this$0:Lcom/meizu/internal/policy/impl/ScreenshotHelper;
 
     #getter for: Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHandler:Landroid/os/Handler;
@@ -88,7 +88,7 @@
 
     invoke-virtual {v1, v2}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 156
+    .line 153
     :cond_0
     :goto_0
     const-string v1, "Keyguard"
@@ -127,16 +127,16 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 157
+    .line 154
     return-void
 
-    .line 146
+    .line 143
     :cond_1
     invoke-virtual {p1}, Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 147
+    .line 144
     .local v0, retPackage:Ljava/lang/String;
     if-eqz v0, :cond_2
 
@@ -150,7 +150,7 @@
 
     if-eqz v1, :cond_2
 
-    .line 148
+    .line 145
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenShotStub;->this$0:Lcom/meizu/internal/policy/impl/ScreenshotHelper;
 
     #getter for: Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHandler:Landroid/os/Handler;
@@ -175,7 +175,7 @@
 
     goto :goto_0
 
-    .line 149
+    .line 146
     :cond_2
     invoke-static {}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->access$200()Ljava/lang/String;
 
@@ -187,7 +187,7 @@
 
     if-eqz v1, :cond_3
 
-    .line 150
+    .line 147
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenShotStub;->this$0:Lcom/meizu/internal/policy/impl/ScreenshotHelper;
 
     #getter for: Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHandler:Landroid/os/Handler;
@@ -212,7 +212,7 @@
 
     goto :goto_0
 
-    .line 151
+    .line 148
     :cond_3
     if-eqz v0, :cond_0
 
@@ -236,7 +236,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 153
+    .line 150
     :cond_4
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenShotStub;->this$0:Lcom/meizu/internal/policy/impl/ScreenshotHelper;
 
@@ -268,7 +268,7 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 165
+    .line 162
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenShotStub;->this$0:Lcom/meizu/internal/policy/impl/ScreenshotHelper;
 
     #getter for: Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHandler:Landroid/os/Handler;
@@ -291,24 +291,20 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 166
+    .line 163
     const-string v0, "Keyguard"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Screenshot: notFound and time "
+    const-string v2, "Screenshot: notFound. "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
-
-    move-result-wide v2
-
-    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -318,7 +314,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 167
+    .line 164
     return-void
 .end method
 
@@ -327,7 +323,7 @@
     .parameter "topActivity"
 
     .prologue
-    .line 160
+    .line 157
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenShotStub;->this$0:Lcom/meizu/internal/policy/impl/ScreenshotHelper;
 
     #getter for: Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHandler:Landroid/os/Handler;
@@ -354,7 +350,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 161
+    .line 158
     const-string v0, "Keyguard"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -391,6 +387,6 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 162
+    .line 159
     return-void
 .end method

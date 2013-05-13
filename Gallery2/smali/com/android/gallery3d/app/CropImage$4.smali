@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 302
+    .line 306
     iput-object p1, p0, Lcom/android/gallery3d/app/CropImage$4;->this$0:Lcom/android/gallery3d/app/CropImage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,7 +42,7 @@
     .parameter "v"
 
     .prologue
-    .line 306
+    .line 310
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage$4;->this$0:Lcom/android/gallery3d/app/CropImage;
 
     #getter for: Lcom/android/gallery3d/app/CropImage;->mPopupMenu:Landroid/widget/PopupMenu;
@@ -52,6 +52,6 @@
 
     invoke-virtual {v0}, Landroid/widget/PopupMenu;->show()V
 
-    .line 307
+    .line 311
     return-void
 .end method

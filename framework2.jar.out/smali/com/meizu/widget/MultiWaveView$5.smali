@@ -29,14 +29,14 @@
     .parameter
 
     .prologue
-    .line 539
+    .line 543
     iput-object p1, p0, Lcom/meizu/widget/MultiWaveView$5;->this$0:Lcom/meizu/widget/MultiWaveView;
 
     iput-object p2, p0, Lcom/meizu/widget/MultiWaveView$5;->val$target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     invoke-direct {p0}, Landroid/animation/AnimatorListenerAdapter;-><init>()V
 
-    .line 540
+    .line 544
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/meizu/widget/MultiWaveView$5;->isCanceled:Z
@@ -53,24 +53,24 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 556
+    .line 560
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/meizu/widget/MultiWaveView$5;->isCanceled:Z
 
-    .line 557
+    .line 561
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView$5;->this$0:Lcom/meizu/widget/MultiWaveView;
 
     #calls: Lcom/meizu/widget/MultiWaveView;->handleMove(Landroid/view/MotionEvent;)V
     invoke-static {v0, v1}, Lcom/meizu/widget/MultiWaveView;->access$1400(Lcom/meizu/widget/MultiWaveView;Landroid/view/MotionEvent;)V
 
-    .line 558
+    .line 562
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView$5;->this$0:Lcom/meizu/widget/MultiWaveView;
 
     #calls: Lcom/meizu/widget/MultiWaveView;->handleCancel(Landroid/view/MotionEvent;)V
     invoke-static {v0, v1}, Lcom/meizu/widget/MultiWaveView;->access$1600(Lcom/meizu/widget/MultiWaveView;Landroid/view/MotionEvent;)V
 
-    .line 559
+    .line 563
     return-void
 .end method
 
@@ -81,12 +81,12 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 546
+    .line 550
     iget-boolean v0, p0, Lcom/meizu/widget/MultiWaveView$5;->isCanceled:Z
 
     if-nez v0, :cond_0
 
-    .line 547
+    .line 551
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView$5;->this$0:Lcom/meizu/widget/MultiWaveView;
 
     #getter for: Lcom/meizu/widget/MultiWaveView;->mMovePoint:Lcom/meizu/widget/MultiWaveView$MyPoint;
@@ -110,7 +110,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$MyPoint;->setX(F)V
 
-    .line 548
+    .line 552
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView$5;->this$0:Lcom/meizu/widget/MultiWaveView;
 
     #getter for: Lcom/meizu/widget/MultiWaveView;->mMovePoint:Lcom/meizu/widget/MultiWaveView$MyPoint;
@@ -134,25 +134,25 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$MyPoint;->setY(F)V
 
-    .line 550
+    .line 554
     :cond_0
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView$5;->this$0:Lcom/meizu/widget/MultiWaveView;
 
     #calls: Lcom/meizu/widget/MultiWaveView;->handleMove(Landroid/view/MotionEvent;)V
     invoke-static {v0, v3}, Lcom/meizu/widget/MultiWaveView;->access$1400(Lcom/meizu/widget/MultiWaveView;Landroid/view/MotionEvent;)V
 
-    .line 551
+    .line 555
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView$5;->this$0:Lcom/meizu/widget/MultiWaveView;
 
     #calls: Lcom/meizu/widget/MultiWaveView;->handleUp(Landroid/view/MotionEvent;)V
     invoke-static {v0, v3}, Lcom/meizu/widget/MultiWaveView;->access$1500(Lcom/meizu/widget/MultiWaveView;Landroid/view/MotionEvent;)V
 
-    .line 552
+    .line 556
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/meizu/widget/MultiWaveView$5;->isCanceled:Z
 
-    .line 553
+    .line 557
     return-void
 .end method
 
@@ -161,7 +161,7 @@
     .parameter "animation"
 
     .prologue
-    .line 542
+    .line 546
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView$5;->this$0:Lcom/meizu/widget/MultiWaveView;
 
     const/4 v1, 0x0
@@ -169,6 +169,6 @@
     #calls: Lcom/meizu/widget/MultiWaveView;->handleDown(Landroid/view/MotionEvent;)V
     invoke-static {v0, v1}, Lcom/meizu/widget/MultiWaveView;->access$1200(Lcom/meizu/widget/MultiWaveView;Landroid/view/MotionEvent;)V
 
-    .line 543
+    .line 547
     return-void
 .end method

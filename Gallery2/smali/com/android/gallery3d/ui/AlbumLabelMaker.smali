@@ -49,17 +49,25 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 64
+    .line 65
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 65
+    .line 66
     iput-object p1, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mContext:Landroid/content/Context;
 
-    .line 66
+    .line 67
     iput-object p2, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mSpec:Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;
 
-    .line 67
+    .line 68
     iget v0, p2, Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;->titleFontSize:I
+
+    int-to-float v0, v0
+
+    sget v1, Lcom/android/gallery3d/common/Utils;->sFontScale:F
+
+    mul-float/2addr v0, v1
+
+    float-to-int v0, v0
 
     const v1, -0x1a1a1b
 
@@ -69,7 +77,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mTitlePaint:Landroid/text/TextPaint;
 
-    .line 68
+    .line 69
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mTitlePaint:Landroid/text/TextPaint;
 
     invoke-virtual {v0}, Landroid/text/TextPaint;->getFontMetricsInt()Landroid/graphics/Paint$FontMetricsInt;
@@ -78,8 +86,16 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mTitleMetrics:Landroid/graphics/Paint$FontMetricsInt;
 
-    .line 69
+    .line 70
     iget v0, p2, Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;->infoFontSize:I
+
+    int-to-float v0, v0
+
+    sget v1, Lcom/android/gallery3d/common/Utils;->sFontScale:F
+
+    mul-float/2addr v0, v1
+
+    float-to-int v0, v0
 
     const v1, -0x7f7f80
 
@@ -89,7 +105,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mInfoPaint:Landroid/text/TextPaint;
 
-    .line 70
+    .line 71
     iget v0, p2, Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;->infoFontSize:I
 
     const v1, -0xadadae
@@ -100,7 +116,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mOnlyInfoPaint:Landroid/text/TextPaint;
 
-    .line 71
+    .line 72
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mInfoPaint:Landroid/text/TextPaint;
 
     invoke-virtual {v0}, Landroid/text/TextPaint;->getFontMetricsInt()Landroid/graphics/Paint$FontMetricsInt;
@@ -109,43 +125,43 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mInfoMetrics:Landroid/graphics/Paint$FontMetricsInt;
 
-    .line 73
-    new-instance v0, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
-
-    const v1, 0x7f020073
-
-    invoke-direct {v0, p0, v1}, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;-><init>(Lcom/android/gallery3d/ui/AlbumLabelMaker;I)V
-
-    iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mLocalSetIcon:Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
-
     .line 74
-    new-instance v0, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
-
-    const v1, 0x7f020074
-
-    invoke-direct {v0, p0, v1}, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;-><init>(Lcom/android/gallery3d/ui/AlbumLabelMaker;I)V
-
-    iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mPicasaIcon:Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
-
-    .line 75
     new-instance v0, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
 
     const v1, 0x7f020072
 
     invoke-direct {v0, p0, v1}, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;-><init>(Lcom/android/gallery3d/ui/AlbumLabelMaker;I)V
 
-    iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mCameraIcon:Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
+    iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mLocalSetIcon:Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
+
+    .line 75
+    new-instance v0, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
+
+    const v1, 0x7f020073
+
+    invoke-direct {v0, p0, v1}, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;-><init>(Lcom/android/gallery3d/ui/AlbumLabelMaker;I)V
+
+    iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mPicasaIcon:Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
 
     .line 76
     new-instance v0, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
 
-    const v1, 0x7f020075
+    const v1, 0x7f020071
+
+    invoke-direct {v0, p0, v1}, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;-><init>(Lcom/android/gallery3d/ui/AlbumLabelMaker;I)V
+
+    iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mCameraIcon:Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
+
+    .line 77
+    new-instance v0, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
+
+    const v1, 0x7f020074
 
     invoke-direct {v0, p0, v1}, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;-><init>(Lcom/android/gallery3d/ui/AlbumLabelMaker;I)V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mMtpIcon:Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
 
-    .line 77
+    .line 78
     return-void
 .end method
 
@@ -154,7 +170,7 @@
     .parameter "x0"
 
     .prologue
-    .line 39
+    .line 40
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mContext:Landroid/content/Context;
 
     return-object v0
@@ -165,7 +181,7 @@
     .parameter "x0"
 
     .prologue
-    .line 39
+    .line 40
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mSpec:Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;
 
     return-object v0
@@ -176,7 +192,7 @@
     .parameter "x0"
 
     .prologue
-    .line 39
+    .line 40
     iget v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mLabelWidth:I
 
     return v0
@@ -187,7 +203,7 @@
     .parameter "x0"
 
     .prologue
-    .line 39
+    .line 40
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mBitmapPool:Lcom/android/gallery3d/data/BitmapPool;
 
     return-object v0
@@ -198,7 +214,7 @@
     .parameter "x0"
 
     .prologue
-    .line 39
+    .line 40
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mInfoPaint:Landroid/text/TextPaint;
 
     return-object v0
@@ -209,7 +225,7 @@
     .parameter "x0"
 
     .prologue
-    .line 39
+    .line 40
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mTitlePaint:Landroid/text/TextPaint;
 
     return-object v0
@@ -220,7 +236,7 @@
     .parameter "x0"
 
     .prologue
-    .line 39
+    .line 40
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mTitleMetrics:Landroid/graphics/Paint$FontMetricsInt;
 
     return-object v0
@@ -231,7 +247,7 @@
     .parameter "x0"
 
     .prologue
-    .line 39
+    .line 40
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mOnlyInfoPaint:Landroid/text/TextPaint;
 
     return-object v0
@@ -242,7 +258,7 @@
     .parameter "x0"
 
     .prologue
-    .line 39
+    .line 40
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mInfoMetrics:Landroid/graphics/Paint$FontMetricsInt;
 
     return-object v0
@@ -254,7 +270,7 @@
     .parameter "x1"
 
     .prologue
-    .line 39
+    .line 40
     invoke-direct {p0, p1}, Lcom/android/gallery3d/ui/AlbumLabelMaker;->getOverlayAlbumIcon(I)Landroid/graphics/Bitmap;
 
     move-result-object v0
@@ -275,13 +291,13 @@
     .parameter "truncated"
 
     .prologue
-    .line 149
+    .line 150
     monitor-enter p5
 
-    .line 150
+    .line 151
     if-nez p8, :cond_0
 
-    .line 151
+    .line 152
     int-to-float v0, p4
 
     :try_start_0
@@ -293,7 +309,7 @@
 
     move-result-object p3
 
-    .line 154
+    .line 155
     :cond_0
     int-to-float v0, p1
 
@@ -305,13 +321,13 @@
 
     invoke-virtual {p0, p3, v0, v1, p5}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
 
-    .line 155
+    .line 156
     monitor-exit p5
 
-    .line 156
+    .line 157
     return-void
 
-    .line 155
+    .line 156
     :catchall_0
     move-exception v0
 
@@ -326,7 +342,7 @@
     .locals 1
 
     .prologue
-    .line 80
+    .line 81
     const/4 v0, 0x1
 
     return v0
@@ -337,16 +353,16 @@
     .parameter "sourceType"
 
     .prologue
-    .line 88
+    .line 89
     packed-switch p1, :pswitch_data_0
 
-    .line 98
+    .line 99
     const/4 v0, 0x0
 
     :goto_0
     return-object v0
 
-    .line 90
+    .line 91
     :pswitch_0
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mCameraIcon:Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
 
@@ -356,7 +372,7 @@
 
     goto :goto_0
 
-    .line 92
+    .line 93
     :pswitch_1
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mLocalSetIcon:Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
 
@@ -366,7 +382,7 @@
 
     goto :goto_0
 
-    .line 94
+    .line 95
     :pswitch_2
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mMtpIcon:Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
 
@@ -376,7 +392,7 @@
 
     goto :goto_0
 
-    .line 96
+    .line 97
     :pswitch_3
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mPicasaIcon:Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;
 
@@ -386,7 +402,7 @@
 
     goto :goto_0
 
-    .line 88
+    .line 89
     nop
 
     :pswitch_data_0
@@ -409,41 +425,41 @@
 
     const/4 v3, 0x0
 
-    .line 102
+    .line 103
     new-instance v0, Landroid/text/TextPaint;
 
     invoke-direct {v0}, Landroid/text/TextPaint;-><init>()V
 
-    .line 103
+    .line 104
     .local v0, paint:Landroid/text/TextPaint;
     int-to-float v1, p0
 
     invoke-virtual {v0, v1}, Landroid/text/TextPaint;->setTextSize(F)V
 
-    .line 104
+    .line 105
     invoke-virtual {v0, v4}, Landroid/text/TextPaint;->setAntiAlias(Z)V
 
-    .line 105
+    .line 106
     invoke-virtual {v0, p1}, Landroid/text/TextPaint;->setColor(I)V
 
-    .line 106
+    .line 107
     const/high16 v1, 0x4000
 
     const/high16 v2, -0x100
 
     invoke-virtual {v0, v1, v3, v3, v2}, Landroid/text/TextPaint;->setShadowLayer(FFFI)V
 
-    .line 107
+    .line 108
     if-eqz p2, :cond_0
 
-    .line 108
+    .line 109
     invoke-static {v4}, Landroid/graphics/Typeface;->defaultFromStyle(I)Landroid/graphics/Typeface;
 
     move-result-object v1
 
     invoke-virtual {v0, v1}, Landroid/text/TextPaint;->setTypeface(Landroid/graphics/Typeface;)Landroid/graphics/Typeface;
 
-    .line 110
+    .line 111
     :cond_0
     return-object v0
 .end method
@@ -454,7 +470,7 @@
     .locals 1
 
     .prologue
-    .line 270
+    .line 271
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mBitmapPool:Lcom/android/gallery3d/data/BitmapPool;
 
     if-eqz v0, :cond_0
@@ -463,7 +479,7 @@
 
     invoke-virtual {v0}, Lcom/android/gallery3d/data/BitmapPool;->clear()V
 
-    .line 271
+    .line 272
     :cond_0
     return-void
 .end method
@@ -472,7 +488,7 @@
     .locals 1
 
     .prologue
-    .line 84
+    .line 85
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mSpec:Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;
 
     iget v0, v0, Lcom/android/gallery3d/ui/AlbumSetSlotRenderer$LabelSpec;->labelBackgroundHeight:I
@@ -485,12 +501,12 @@
     .parameter "label"
 
     .prologue
-    .line 266
+    .line 267
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mBitmapPool:Lcom/android/gallery3d/data/BitmapPool;
 
     invoke-virtual {v0, p1}, Lcom/android/gallery3d/data/BitmapPool;->recycle(Landroid/graphics/Bitmap;)V
 
-    .line 267
+    .line 268
     return-void
 .end method
 
@@ -513,7 +529,7 @@
     .end annotation
 
     .prologue
-    .line 142
+    .line 143
     new-instance v0, Lcom/android/gallery3d/ui/AlbumLabelMaker$AlbumLabelJob;
 
     invoke-direct {v0, p0, p1, p2, p3}, Lcom/android/gallery3d/ui/AlbumLabelMaker$AlbumLabelJob;-><init>(Lcom/android/gallery3d/ui/AlbumLabelMaker;Ljava/lang/String;Ljava/lang/String;I)V
@@ -526,7 +542,7 @@
     .parameter "width"
 
     .prologue
-    .line 133
+    .line 134
     monitor-enter p0
 
     :try_start_0
@@ -536,21 +552,21 @@
 
     if-ne v1, p1, :cond_0
 
-    .line 138
+    .line 139
     :goto_0
     monitor-exit p0
 
     return-void
 
-    .line 134
+    .line 135
     :cond_0
     :try_start_1
     iput p1, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker;->mLabelWidth:I
 
-    .line 135
+    .line 136
     const/4 v0, 0x2
 
-    .line 136
+    .line 137
     .local v0, borders:I
     new-instance v1, Lcom/android/gallery3d/data/BitmapPool;
 
@@ -572,7 +588,7 @@
 
     goto :goto_0
 
-    .line 133
+    .line 134
     .end local v0           #borders:I
     :catchall_0
     move-exception v1

@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 584
+    .line 604
     iput-object p1, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -38,7 +38,7 @@
     .parameter "x1"
 
     .prologue
-    .line 584
+    .line 604
     invoke-direct {p0, p1}, Lcom/android/camera/Camera$MainHandler;-><init>(Lcom/android/camera/Camera;)V
 
     return-void
@@ -61,32 +61,32 @@
 
     const/4 v2, 0x1
 
-    .line 587
+    .line 607
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 763
+    .line 791
     :cond_0
     :goto_0
     :pswitch_0
     return-void
 
-    .line 589
+    .line 609
     :pswitch_1
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #setter for: Lcom/android/camera/Camera;->mIsCanClickShutterButton:Z
     invoke-static {v0, v2}, Lcom/android/camera/Camera;->access$1602(Lcom/android/camera/Camera;Z)Z
 
-    .line 590
+    .line 610
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     invoke-virtual {v0}, Lcom/android/camera/Camera;->onShutterButtonClick()V
 
     goto :goto_0
 
-    .line 594
+    .line 614
     :pswitch_2
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -100,7 +100,7 @@
 
     goto :goto_0
 
-    .line 600
+    .line 620
     :pswitch_3
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -109,7 +109,7 @@
 
     goto :goto_0
 
-    .line 605
+    .line 625
     :pswitch_4
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -118,7 +118,7 @@
 
     goto :goto_0
 
-    .line 615
+    .line 635
     :pswitch_5
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -135,13 +135,13 @@
 
     if-eq v0, v1, :cond_1
 
-    .line 616
+    .line 636
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #calls: Lcom/android/camera/Camera;->setDisplayOrientation()V
     invoke-static {v0}, Lcom/android/camera/Camera;->access$2000(Lcom/android/camera/Camera;)V
 
-    .line 618
+    .line 638
     :cond_1
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
@@ -162,7 +162,7 @@
 
     if-gez v0, :cond_0
 
-    .line 619
+    .line 639
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mHandler:Landroid/os/Handler;
@@ -178,7 +178,7 @@
 
     goto :goto_0
 
-    .line 625
+    .line 645
     :pswitch_6
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -187,7 +187,7 @@
 
     goto :goto_0
 
-    .line 630
+    .line 650
     :pswitch_7
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -200,7 +200,7 @@
 
     goto :goto_0
 
-    .line 635
+    .line 655
     :pswitch_8
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -209,7 +209,7 @@
 
     goto :goto_0
 
-    .line 640
+    .line 660
     :pswitch_9
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -219,7 +219,7 @@
 
     goto :goto_0
 
-    .line 645
+    .line 665
     :pswitch_a
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -228,13 +228,13 @@
 
     goto :goto_0
 
-    .line 650
+    .line 670
     :pswitch_b
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     iput-object v1, v0, Lcom/android/camera/Camera;->mCameraStartUpThread:Lcom/android/camera/Camera$CameraStartUpThread;
 
-    .line 651
+    .line 671
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #calls: Lcom/android/camera/Camera;->setCameraState(I)V
@@ -242,47 +242,47 @@
 
     goto/16 :goto_0
 
-    .line 656
+    .line 676
     :pswitch_c
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     iput-object v1, v0, Lcom/android/camera/Camera;->mCameraStartUpThread:Lcom/android/camera/Camera$CameraStartUpThread;
 
-    .line 657
+    .line 677
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     iput-boolean v2, v0, Lcom/android/camera/ActivityBase;->mOpenCameraFail:Z
 
-    .line 658
+    .line 678
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
-    const v1, 0x7f0a0018
+    const v1, 0x7f0a0022
 
     invoke-static {v0, v1}, Lcom/android/camera/Util;->showErrorAndFinish(Landroid/app/Activity;I)V
 
     goto/16 :goto_0
 
-    .line 664
+    .line 684
     :pswitch_d
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     iput-object v1, v0, Lcom/android/camera/Camera;->mCameraStartUpThread:Lcom/android/camera/Camera$CameraStartUpThread;
 
-    .line 665
+    .line 685
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     iput-boolean v2, v0, Lcom/android/camera/ActivityBase;->mCameraDisabled:Z
 
-    .line 666
+    .line 686
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
-    const v1, 0x7f0a0019
+    const v1, 0x7f0a0023
 
     invoke-static {v0, v1}, Lcom/android/camera/Util;->showErrorAndFinish(Landroid/app/Activity;I)V
 
     goto/16 :goto_0
 
-    .line 671
+    .line 691
     :pswitch_e
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -291,7 +291,7 @@
 
     goto/16 :goto_0
 
-    .line 675
+    .line 695
     :pswitch_f
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -300,7 +300,7 @@
 
     goto/16 :goto_0
 
-    .line 679
+    .line 699
     :pswitch_10
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -311,13 +311,13 @@
 
     invoke-virtual {v0}, Lcom/android/camera/RotateDialogController;->dismissDialog()V
 
-    .line 680
+    .line 700
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #setter for: Lcom/android/camera/Camera;->mIsDoingMulti:Z
     invoke-static {v0, v3}, Lcom/android/camera/Camera;->access$2902(Lcom/android/camera/Camera;Z)Z
 
-    .line 681
+    .line 701
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     const/4 v1, 0x2
@@ -325,7 +325,7 @@
     #calls: Lcom/android/camera/Camera;->setLedEnable(IZ)V
     invoke-static {v0, v1, v2}, Lcom/android/camera/Camera;->access$3000(Lcom/android/camera/Camera;IZ)V
 
-    .line 682
+    .line 702
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mCaptureModeTips:Landroid/widget/TextView;
@@ -337,7 +337,7 @@
 
     goto/16 :goto_0
 
-    .line 686
+    .line 706
     :pswitch_11
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -354,7 +354,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 687
+    .line 707
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     iget-object v0, v0, Lcom/android/camera/ActivityBase;->mParameters:Landroid/hardware/Camera$Parameters;
@@ -363,7 +363,7 @@
 
     invoke-virtual {v0, v1}, Landroid/hardware/Camera$Parameters;->setFlashMode(Ljava/lang/String;)V
 
-    .line 688
+    .line 708
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     iget-object v0, v0, Lcom/android/camera/ActivityBase;->mCameraDevice:Lcom/android/camera/CameraManager$CameraProxy;
@@ -374,7 +374,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/camera/CameraManager$CameraProxy;->setParameters(Landroid/hardware/Camera$Parameters;)V
 
-    .line 689
+    .line 709
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #setter for: Lcom/android/camera/Camera;->mIsMultiSetFlashLightOn:Z
@@ -382,7 +382,7 @@
 
     goto/16 :goto_0
 
-    .line 694
+    .line 714
     :pswitch_12
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -390,7 +390,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 695
+    .line 715
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     iget-object v0, v0, Lcom/android/camera/ActivityBase;->mCameraDevice:Lcom/android/camera/CameraManager$CameraProxy;
@@ -401,7 +401,7 @@
 
     if-ne v0, v2, :cond_2
 
-    .line 696
+    .line 716
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mHandler:Landroid/os/Handler;
@@ -411,13 +411,13 @@
 
     invoke-virtual {v0, v5}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 697
+    .line 717
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #calls: Lcom/android/camera/Camera;->cancelGetFacePosTask()V
     invoke-static {v0}, Lcom/android/camera/Camera;->access$3300(Lcom/android/camera/Camera;)V
 
-    .line 698
+    .line 718
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mSmileRect:Lcom/android/camera/ui/SmileRectView;
@@ -427,18 +427,18 @@
 
     invoke-virtual {v0, v4}, Lcom/android/camera/ui/SmileRectView;->setVisibility(I)V
 
-    .line 699
+    .line 719
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     invoke-virtual {v0}, Lcom/android/camera/Camera;->onShutterButtonClick()V
 
-    .line 700
+    .line 720
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #setter for: Lcom/android/camera/Camera;->mIsSendSmileMsg:Z
     invoke-static {v0, v3}, Lcom/android/camera/Camera;->access$3502(Lcom/android/camera/Camera;Z)Z
 
-    .line 701
+    .line 721
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #calls: Lcom/android/camera/Camera;->timeToCloseCamera()V
@@ -446,7 +446,7 @@
 
     goto/16 :goto_0
 
-    .line 703
+    .line 723
     :cond_2
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -461,7 +461,7 @@
 
     goto/16 :goto_0
 
-    .line 709
+    .line 729
     :pswitch_13
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -472,14 +472,20 @@
 
     if-nez v0, :cond_0
 
-    .line 712
+    iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
+
+    iget-boolean v0, v0, Lcom/android/camera/ActivityBase;->mShowCameraAppView:Z
+
+    if-eqz v0, :cond_0
+
+    .line 732
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     invoke-virtual {v0}, Lcom/android/camera/Camera;->finish()V
 
     goto/16 :goto_0
 
-    .line 716
+    .line 736
     :pswitch_14
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -497,7 +503,7 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
-    .line 717
+    .line 737
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mScreenShotImg:Landroid/widget/ImageView;
@@ -509,14 +515,14 @@
 
     goto/16 :goto_0
 
-    .line 721
+    .line 741
     :pswitch_15
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #calls: Lcom/android/camera/Camera;->hideZoomSeekBar()V
     invoke-static {v0}, Lcom/android/camera/Camera;->access$2600(Lcom/android/camera/Camera;)V
 
-    .line 722
+    .line 742
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #calls: Lcom/android/camera/Camera;->isCameraIdle()Z
@@ -532,13 +538,13 @@
 
     if-eqz v0, :cond_0
 
-    .line 723
+    .line 743
     invoke-static {v2}, Lcom/android/camera/Util;->setIsBeforeGotoVideo(Z)V
 
-    .line 724
+    .line 744
     invoke-static {}, Lcom/android/camera/Util;->setCanSwitchOtherMode()V
 
-    .line 725
+    .line 745
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #calls: Lcom/android/camera/Camera;->switchToOtherMode(I)V
@@ -546,7 +552,7 @@
 
     goto/16 :goto_0
 
-    .line 730
+    .line 750
     :pswitch_16
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -567,7 +573,7 @@
 
     goto/16 :goto_0
 
-    .line 734
+    .line 754
     :pswitch_17
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -580,7 +586,7 @@
 
     goto/16 :goto_0
 
-    .line 738
+    .line 758
     :pswitch_18
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -593,7 +599,7 @@
 
     goto/16 :goto_0
 
-    .line 742
+    .line 762
     :pswitch_19
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -606,7 +612,7 @@
 
     goto/16 :goto_0
 
-    .line 746
+    .line 766
     :pswitch_1a
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -619,7 +625,7 @@
 
     goto/16 :goto_0
 
-    .line 750
+    .line 770
     :pswitch_1b
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -628,7 +634,7 @@
 
     goto/16 :goto_0
 
-    .line 754
+    .line 774
     :pswitch_1c
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -637,7 +643,7 @@
 
     goto/16 :goto_0
 
-    .line 758
+    .line 778
     :pswitch_1d
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
@@ -648,7 +654,7 @@
 
     invoke-virtual {v0}, Lcom/android/camera/RotateDialogController;->dismissDialog()V
 
-    .line 759
+    .line 779
     iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
 
     #calls: Lcom/android/camera/Camera;->doAttach()V
@@ -656,7 +662,27 @@
 
     goto/16 :goto_0
 
-    .line 587
+    .line 783
+    :pswitch_1e
+    iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
+
+    iget v1, p1, Landroid/os/Message;->arg1:I
+
+    #calls: Lcom/android/camera/Camera;->setCameraCaptureModeImg(I)V
+    invoke-static {v0, v1}, Lcom/android/camera/Camera;->access$4400(Lcom/android/camera/Camera;I)V
+
+    goto/16 :goto_0
+
+    .line 787
+    :pswitch_1f
+    iget-object v0, p0, Lcom/android/camera/Camera$MainHandler;->this$0:Lcom/android/camera/Camera;
+
+    #calls: Lcom/android/camera/Camera;->hideCameraCaptureModeImg()V
+    invoke-static {v0}, Lcom/android/camera/Camera;->access$4500(Lcom/android/camera/Camera;)V
+
+    goto/16 :goto_0
+
+    .line 607
     nop
 
     :pswitch_data_0
@@ -693,5 +719,7 @@
         :pswitch_1c
         :pswitch_0
         :pswitch_1d
+        :pswitch_1e
+        :pswitch_1f
     .end packed-switch
 .end method

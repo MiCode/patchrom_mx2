@@ -21,6 +21,8 @@
 
 .field public static final config_shortAnimTime:I = 0x10e0000
 
+.field public static final notification_big_text_max_line:I = 0x10e0004
+
 .field public static final status_bar_notification_info_maxnum:I = 0x10e0003
 
 
@@ -29,7 +31,7 @@
     .locals 0
 
     .prologue
-    .line 10381
+    .line 10407
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void

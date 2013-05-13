@@ -25,13 +25,13 @@
     .parameter "fm"
 
     .prologue
-    .line 233
+    .line 228
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$ViewPagerAdapter;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
-    .line 234
+    .line 229
     invoke-direct {p0, p2}, Landroid/support/v13/app/FragmentPagerAdapter;-><init>(Landroid/app/FragmentManager;)V
 
-    .line 235
+    .line 230
     return-void
 .end method
 
@@ -41,10 +41,10 @@
     .locals 1
 
     .prologue
-    .line 244
+    .line 239
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$ViewPagerAdapter;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->listFragments:Ljava/util/ArrayList;
+    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mListFragments:Ljava/util/ArrayList;
     invoke-static {v0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->access$300(Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;)Ljava/util/ArrayList;
 
     move-result-object v0
@@ -61,7 +61,7 @@
     .parameter "position"
 
     .prologue
-    .line 238
+    .line 233
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$ViewPagerAdapter;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
     #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->TAG:Ljava/lang/String;
@@ -73,10 +73,10 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 239
+    .line 234
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$ViewPagerAdapter;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->listFragments:Ljava/util/ArrayList;
+    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mListFragments:Ljava/util/ArrayList;
     invoke-static {v0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->access$300(Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;)Ljava/util/ArrayList;
 
     move-result-object v0
@@ -96,12 +96,12 @@
     .parameter "position"
 
     .prologue
-    .line 249
+    .line 244
     invoke-super {p0, p1, p2}, Landroid/support/v13/app/FragmentPagerAdapter;->instantiateItem(Landroid/view/ViewGroup;I)Ljava/lang/Object;
 
     move-result-object v0
 
-    .line 250
+    .line 245
     .local v0, obj:Ljava/lang/Object;
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$ViewPagerAdapter;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
@@ -127,7 +127,7 @@
 
     if-nez v1, :cond_0
 
-    .line 251
+    .line 246
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$ViewPagerAdapter;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
     invoke-virtual {p1}, Landroid/view/ViewGroup;->getId()I
@@ -142,7 +142,7 @@
     #setter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTagPart:Ljava/lang/String;
     invoke-static {v1, v2}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->access$402(Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 253
+    .line 248
     :cond_0
     return-object v0
 .end method

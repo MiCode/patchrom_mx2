@@ -362,7 +362,7 @@
     return v0
 .end method
 
-.method public isRealIncomingCall()Z
+.method public isRealIncomingCallAndFore()Z
     .locals 1
 
     .prologue

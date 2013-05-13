@@ -51,7 +51,7 @@
     .locals 3
 
     .prologue
-    .line 8799
+    .line 8808
     sget-object v0, Landroid/provider/ContactsContract;->AUTHORITY_URI:Landroid/net/Uri;
 
     const-string/jumbo v1, "spam_address"
@@ -62,7 +62,7 @@
 
     sput-object v0, Landroid/provider/ContactsContract$SpamAddress;->CONTENT_URI:Landroid/net/Uri;
 
-    .line 8800
+    .line 8809
     sget-object v0, Landroid/provider/ContactsContract$SpamAddress;->CONTENT_URI:Landroid/net/Uri;
 
     const-string v1, "customer"
@@ -73,7 +73,7 @@
 
     sput-object v0, Landroid/provider/ContactsContract$SpamAddress;->CONTENT_CUSTOMER_URI:Landroid/net/Uri;
 
-    .line 8801
+    .line 8810
     sget-object v0, Landroid/provider/ContactsContract;->AUTHORITY_URI_NOTIFY:Landroid/net/Uri;
 
     const-string/jumbo v1, "spam_address"
@@ -84,7 +84,7 @@
 
     sput-object v0, Landroid/provider/ContactsContract$SpamAddress;->CONTENT_NOTIFY_URI:Landroid/net/Uri;
 
-    .line 8803
+    .line 8812
     sget-object v0, Landroid/provider/ContactsContract$SpamAddress;->CONTENT_URI:Landroid/net/Uri;
 
     const-string v1, "cloud_version"
@@ -95,7 +95,7 @@
 
     sput-object v0, Landroid/provider/ContactsContract$SpamAddress;->CONTENT_CLOUD_VERSION_URI:Landroid/net/Uri;
 
-    .line 8804
+    .line 8813
     sget-object v0, Landroid/provider/ContactsContract;->AUTHORITY_URI_NOTIFY:Landroid/net/Uri;
 
     const-string v1, "cloud_version"
@@ -106,7 +106,7 @@
 
     sput-object v0, Landroid/provider/ContactsContract$SpamAddress;->NOTIFY_CLOUD_VERSION_URI:Landroid/net/Uri;
 
-    .line 8813
+    .line 8822
     const/4 v0, 0x3
 
     new-array v0, v0, [Ljava/lang/String;
@@ -138,7 +138,7 @@
     .locals 0
 
     .prologue
-    .line 8798
+    .line 8807
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void

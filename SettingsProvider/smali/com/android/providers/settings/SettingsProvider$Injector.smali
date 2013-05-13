@@ -23,7 +23,6 @@
     .locals 0
 
     .prologue
-    .line 52
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -35,12 +34,10 @@
     .parameter "ringtoneType"
 
     .prologue
-    .line 54
     invoke-virtual {p0}, Landroid/net/Uri;->getAuthority()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 55
     .local v0, authority:Ljava/lang/String;
     const-string v2, "drm"
 
@@ -48,7 +45,6 @@
 
     move-result v1
 
-    .line 56
     .local v1, isDrmAuthority:Z
     if-nez v1, :cond_0
 
@@ -66,17 +62,14 @@
 
     if-eqz v2, :cond_1
 
-    .line 57
     :cond_0
     if-eqz v1, :cond_2
 
-    .line 63
     .end local p0
     :cond_1
     :goto_0
     return-object p0
 
-    .line 60
     .restart local p0
     :cond_2
     invoke-static {p0, p1}, Landroid/media/ExtraRingtoneManager;->getUriForExtraCases(Landroid/net/Uri;I)Landroid/net/Uri;
@@ -91,12 +84,10 @@
     .parameter "soundUri"
 
     .prologue
-    .line 67
     invoke-virtual {p0}, Landroid/net/Uri;->getAuthority()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 68
     .local v0, authority:Ljava/lang/String;
     const-string v2, "drm"
 
@@ -104,17 +95,14 @@
 
     move-result v1
 
-    .line 69
     .local v1, isDrmAuthority:Z
     if-eqz v1, :cond_1
 
-    .line 75
     .end local v0           #authority:Ljava/lang/String;
     :cond_0
     :goto_0
     return-object v0
 
-    .line 72
     .restart local v0       #authority:Ljava/lang/String;
     :cond_1
     const-string v2, "media"
@@ -131,7 +119,6 @@
 
     if-eqz v2, :cond_0
 
-    .line 73
     :cond_2
     const-string v0, "media"
 

@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 365
+    .line 366
     iput-object p1, p0, Lcom/android/gallery3d/ui/SlotView$1;->this$0:Lcom/android/gallery3d/ui/SlotView;
 
     iput-object p2, p0, Lcom/android/gallery3d/ui/SlotView$1;->val$listener:Lcom/android/gallery3d/ui/UserInteractionListener;
@@ -46,11 +46,11 @@
     .locals 1
 
     .prologue
-    .line 368
+    .line 369
     iget-object v0, p0, Lcom/android/gallery3d/ui/SlotView$1;->val$listener:Lcom/android/gallery3d/ui/UserInteractionListener;
 
     invoke-interface {v0}, Lcom/android/gallery3d/ui/UserInteractionListener;->onUserInteractionEnd()V
 
-    .line 369
+    .line 370
     return-void
 .end method

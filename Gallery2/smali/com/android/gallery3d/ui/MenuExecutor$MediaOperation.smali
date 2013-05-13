@@ -66,22 +66,22 @@
     .end annotation
 
     .prologue
-    .line 465
+    .line 471
     .local p3, items:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/gallery3d/data/Path;>;"
     iput-object p1, p0, Lcom/android/gallery3d/ui/MenuExecutor$MediaOperation;->this$0:Lcom/android/gallery3d/ui/MenuExecutor;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 466
+    .line 472
     iput p2, p0, Lcom/android/gallery3d/ui/MenuExecutor$MediaOperation;->mOperation:I
 
-    .line 467
+    .line 473
     iput-object p3, p0, Lcom/android/gallery3d/ui/MenuExecutor$MediaOperation;->mItems:Ljava/util/ArrayList;
 
-    .line 468
+    .line 474
     iput-object p4, p0, Lcom/android/gallery3d/ui/MenuExecutor$MediaOperation;->mListener:Lcom/android/gallery3d/ui/MenuExecutor$ProgressListener;
 
-    .line 469
+    .line 475
     return-void
 .end method
 
@@ -92,7 +92,7 @@
     .parameter "x0"
 
     .prologue
-    .line 459
+    .line 465
     invoke-virtual {p0, p1}, Lcom/android/gallery3d/ui/MenuExecutor$MediaOperation;->run(Lcom/android/gallery3d/util/ThreadPool$JobContext;)Ljava/lang/Void;
 
     move-result-object v0
@@ -105,15 +105,15 @@
     .parameter "jc"
 
     .prologue
-    .line 472
+    .line 478
     const/4 v2, 0x0
 
-    .line 473
+    .line 479
     .local v2, index:I
     iget-object v7, p0, Lcom/android/gallery3d/ui/MenuExecutor$MediaOperation;->this$0:Lcom/android/gallery3d/ui/MenuExecutor;
 
     #getter for: Lcom/android/gallery3d/ui/MenuExecutor;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
-    invoke-static {v7}, Lcom/android/gallery3d/ui/MenuExecutor;->access$600(Lcom/android/gallery3d/ui/MenuExecutor;)Lcom/android/gallery3d/app/GalleryActivity;
+    invoke-static {v7}, Lcom/android/gallery3d/ui/MenuExecutor;->access$500(Lcom/android/gallery3d/ui/MenuExecutor;)Lcom/android/gallery3d/app/GalleryActivity;
 
     move-result-object v7
 
@@ -121,11 +121,11 @@
 
     move-result-object v4
 
-    .line 474
+    .line 480
     .local v4, manager:Lcom/android/gallery3d/data/DataManager;
     const/4 v5, 0x1
 
-    .line 476
+    .line 482
     .local v5, result:I
     :try_start_0
     iget-object v7, p0, Lcom/android/gallery3d/ui/MenuExecutor$MediaOperation;->mItems:Ljava/util/ArrayList;
@@ -156,7 +156,7 @@
 
     check-cast v1, Lcom/android/gallery3d/data/Path;
 
-    .line 477
+    .line 483
     .local v1, id:Lcom/android/gallery3d/data/Path;
     invoke-interface {p1}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->isCancelled()Z
     :try_end_1
@@ -167,10 +167,10 @@
 
     if-eqz v7, :cond_1
 
-    .line 478
+    .line 484
     const/4 v5, 0x3
 
-    .line 490
+    .line 496
     .end local v1           #id:Lcom/android/gallery3d/data/Path;
     :cond_0
     iget-object v7, p0, Lcom/android/gallery3d/ui/MenuExecutor$MediaOperation;->this$0:Lcom/android/gallery3d/ui/MenuExecutor;
@@ -178,11 +178,11 @@
     iget-object v8, p0, Lcom/android/gallery3d/ui/MenuExecutor$MediaOperation;->mListener:Lcom/android/gallery3d/ui/MenuExecutor$ProgressListener;
 
     #calls: Lcom/android/gallery3d/ui/MenuExecutor;->onProgressComplete(ILcom/android/gallery3d/ui/MenuExecutor$ProgressListener;)V
-    invoke-static {v7, v5, v8}, Lcom/android/gallery3d/ui/MenuExecutor;->access$1000(Lcom/android/gallery3d/ui/MenuExecutor;ILcom/android/gallery3d/ui/MenuExecutor$ProgressListener;)V
+    invoke-static {v7, v5, v8}, Lcom/android/gallery3d/ui/MenuExecutor;->access$900(Lcom/android/gallery3d/ui/MenuExecutor;ILcom/android/gallery3d/ui/MenuExecutor$ProgressListener;)V
 
     move v2, v3
 
-    .line 492
+    .line 498
     .end local v0           #i$:Ljava/util/Iterator;
     .end local v3           #index:I
     .restart local v2       #index:I
@@ -191,7 +191,7 @@
 
     return-object v7
 
-    .line 481
+    .line 487
     .end local v2           #index:I
     .restart local v0       #i$:Ljava/util/Iterator;
     .restart local v1       #id:Lcom/android/gallery3d/data/Path;
@@ -203,16 +203,16 @@
     iget v8, p0, Lcom/android/gallery3d/ui/MenuExecutor$MediaOperation;->mOperation:I
 
     #calls: Lcom/android/gallery3d/ui/MenuExecutor;->execute(Lcom/android/gallery3d/data/DataManager;Lcom/android/gallery3d/util/ThreadPool$JobContext;ILcom/android/gallery3d/data/Path;)Z
-    invoke-static {v7, v4, p1, v8, v1}, Lcom/android/gallery3d/ui/MenuExecutor;->access$800(Lcom/android/gallery3d/ui/MenuExecutor;Lcom/android/gallery3d/data/DataManager;Lcom/android/gallery3d/util/ThreadPool$JobContext;ILcom/android/gallery3d/data/Path;)Z
+    invoke-static {v7, v4, p1, v8, v1}, Lcom/android/gallery3d/ui/MenuExecutor;->access$700(Lcom/android/gallery3d/ui/MenuExecutor;Lcom/android/gallery3d/data/DataManager;Lcom/android/gallery3d/util/ThreadPool$JobContext;ILcom/android/gallery3d/data/Path;)Z
 
     move-result v7
 
     if-nez v7, :cond_2
 
-    .line 482
+    .line 488
     const/4 v5, 0x2
 
-    .line 484
+    .line 490
     :cond_2
     iget-object v7, p0, Lcom/android/gallery3d/ui/MenuExecutor$MediaOperation;->this$0:Lcom/android/gallery3d/ui/MenuExecutor;
     :try_end_2
@@ -227,7 +227,7 @@
     iget-object v8, p0, Lcom/android/gallery3d/ui/MenuExecutor$MediaOperation;->mListener:Lcom/android/gallery3d/ui/MenuExecutor$ProgressListener;
 
     #calls: Lcom/android/gallery3d/ui/MenuExecutor;->onProgressUpdate(ILcom/android/gallery3d/ui/MenuExecutor$ProgressListener;)V
-    invoke-static {v7, v3, v8}, Lcom/android/gallery3d/ui/MenuExecutor;->access$900(Lcom/android/gallery3d/ui/MenuExecutor;ILcom/android/gallery3d/ui/MenuExecutor$ProgressListener;)V
+    invoke-static {v7, v3, v8}, Lcom/android/gallery3d/ui/MenuExecutor;->access$800(Lcom/android/gallery3d/ui/MenuExecutor;ILcom/android/gallery3d/ui/MenuExecutor$ProgressListener;)V
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
     .catch Ljava/lang/Throwable; {:try_start_3 .. :try_end_3} :catch_0
@@ -238,7 +238,7 @@
     .restart local v3       #index:I
     goto :goto_0
 
-    .line 486
+    .line 492
     .end local v0           #i$:Ljava/util/Iterator;
     .end local v1           #id:Lcom/android/gallery3d/data/Path;
     .end local v3           #index:I
@@ -246,7 +246,7 @@
     :catch_0
     move-exception v6
 
-    .line 487
+    .line 493
     .local v6, th:Ljava/lang/Throwable;
     :goto_2
     :try_start_4
@@ -286,13 +286,13 @@
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_0
 
-    .line 490
+    .line 496
     iget-object v7, p0, Lcom/android/gallery3d/ui/MenuExecutor$MediaOperation;->this$0:Lcom/android/gallery3d/ui/MenuExecutor;
 
     iget-object v8, p0, Lcom/android/gallery3d/ui/MenuExecutor$MediaOperation;->mListener:Lcom/android/gallery3d/ui/MenuExecutor$ProgressListener;
 
     #calls: Lcom/android/gallery3d/ui/MenuExecutor;->onProgressComplete(ILcom/android/gallery3d/ui/MenuExecutor$ProgressListener;)V
-    invoke-static {v7, v5, v8}, Lcom/android/gallery3d/ui/MenuExecutor;->access$1000(Lcom/android/gallery3d/ui/MenuExecutor;ILcom/android/gallery3d/ui/MenuExecutor$ProgressListener;)V
+    invoke-static {v7, v5, v8}, Lcom/android/gallery3d/ui/MenuExecutor;->access$900(Lcom/android/gallery3d/ui/MenuExecutor;ILcom/android/gallery3d/ui/MenuExecutor$ProgressListener;)V
 
     goto :goto_1
 
@@ -306,7 +306,7 @@
     iget-object v9, p0, Lcom/android/gallery3d/ui/MenuExecutor$MediaOperation;->mListener:Lcom/android/gallery3d/ui/MenuExecutor$ProgressListener;
 
     #calls: Lcom/android/gallery3d/ui/MenuExecutor;->onProgressComplete(ILcom/android/gallery3d/ui/MenuExecutor$ProgressListener;)V
-    invoke-static {v8, v5, v9}, Lcom/android/gallery3d/ui/MenuExecutor;->access$1000(Lcom/android/gallery3d/ui/MenuExecutor;ILcom/android/gallery3d/ui/MenuExecutor$ProgressListener;)V
+    invoke-static {v8, v5, v9}, Lcom/android/gallery3d/ui/MenuExecutor;->access$900(Lcom/android/gallery3d/ui/MenuExecutor;ILcom/android/gallery3d/ui/MenuExecutor$ProgressListener;)V
 
     throw v7
 
@@ -322,7 +322,7 @@
     .restart local v2       #index:I
     goto :goto_3
 
-    .line 486
+    .line 492
     .end local v2           #index:I
     .restart local v3       #index:I
     :catch_1

@@ -28,15 +28,15 @@
     .parameter "password"
 
     .prologue
-    .line 686
+    .line 717
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$checkPasswordClass;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
 
-    .line 687
+    .line 718
     iput-object p3, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$checkPasswordClass;->mPasswordStr:Ljava/lang/String;
 
-    .line 688
+    .line 719
     return-void
 .end method
 
@@ -49,7 +49,7 @@
     .locals 3
 
     .prologue
-    .line 694
+    .line 725
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$checkPasswordClass;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     #getter for: Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mLockPatternUtils:Lcom/android/internal/widget/LockPatternUtils;
@@ -63,7 +63,7 @@
 
     move-result v0
 
-    .line 695
+    .line 726
     .local v0, result:Z
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$checkPasswordClass;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
@@ -73,6 +73,6 @@
 
     invoke-virtual {v1, v2}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->post(Ljava/lang/Runnable;)Z
 
-    .line 700
+    .line 731
     return-void
 .end method

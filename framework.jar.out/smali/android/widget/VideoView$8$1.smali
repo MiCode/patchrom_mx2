@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 701
+    .line 726
     iput-object p1, p0, Landroid/widget/VideoView$8$1;->this$1:Landroid/widget/VideoView$8;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,14 +41,14 @@
     .locals 1
 
     .prologue
-    .line 704
+    .line 729
     iget-object v0, p0, Landroid/widget/VideoView$8$1;->this$1:Landroid/widget/VideoView$8;
 
     iget-object v0, v0, Landroid/widget/VideoView$8;->this$0:Landroid/widget/VideoView;
 
     #calls: Landroid/widget/VideoView;->openVideo()V
-    invoke-static {v0}, Landroid/widget/VideoView;->access$2300(Landroid/widget/VideoView;)V
+    invoke-static {v0}, Landroid/widget/VideoView;->access$2500(Landroid/widget/VideoView;)V
 
-    .line 705
+    .line 730
     return-void
 .end method

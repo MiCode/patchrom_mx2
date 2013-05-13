@@ -446,6 +446,9 @@
 .method public abstract onShowMe()V
 .end method
 
+.method public abstract queryExtraState()V
+.end method
+
 .method public abstract reset()V
 .end method
 

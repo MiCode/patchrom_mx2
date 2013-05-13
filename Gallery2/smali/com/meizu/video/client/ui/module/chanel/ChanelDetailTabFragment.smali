@@ -4,13 +4,6 @@
 
 
 # annotations
-.annotation build Landroid/annotation/SuppressLint;
-    value = {
-        "ResourceAsColor",
-        "ResourceAsColor"
-    }
-.end annotation
-
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
         Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$ViewPagerAdapter;
@@ -21,31 +14,35 @@
 # instance fields
 .field private TAG:Ljava/lang/String;
 
-.field private chanelId:Ljava/lang/String;
+.field private mChanelId:Ljava/lang/String;
 
-.field private chanelName:Ljava/lang/String;
+.field private mChanelName:Ljava/lang/String;
 
-.field private channelType:I
+.field private mChannelType:I
 
-.field private channeldetal_orderlist_image1:Landroid/widget/ImageView;
+.field private mChanneldetailTabContent:Landroid/widget/LinearLayout;
 
-.field private channeldetal_orderlist_image2:Landroid/widget/ImageView;
+.field private mChanneldetalOrderlistImage1:Landroid/widget/ImageView;
 
-.field private channeldetal_orderlist_image3:Landroid/widget/ImageView;
+.field private mChanneldetalOrderlistImage2:Landroid/widget/ImageView;
 
-.field private channeldetal_orderlist_item1:Landroid/widget/LinearLayout;
+.field private mChanneldetalOrderlistImage3:Landroid/widget/ImageView;
 
-.field private channeldetal_orderlist_item2:Landroid/widget/LinearLayout;
+.field private mChanneldetalOrderlistItem1:Landroid/widget/LinearLayout;
 
-.field private channeldetal_orderlist_item3:Landroid/widget/LinearLayout;
+.field private mChanneldetalOrderlistItem2:Landroid/widget/LinearLayout;
 
-.field private channeldetal_orderlist_text1:Landroid/widget/TextView;
+.field private mChanneldetalOrderlistItem3:Landroid/widget/LinearLayout;
 
-.field private channeldetal_orderlist_text2:Landroid/widget/TextView;
+.field private mChanneldetalOrderlistText1:Landroid/widget/TextView;
 
-.field private channeldetal_orderlist_text3:Landroid/widget/TextView;
+.field private mChanneldetalOrderlistText2:Landroid/widget/TextView;
 
-.field private listFragments:Ljava/util/ArrayList;
+.field private mChanneldetalOrderlistText3:Landroid/widget/TextView;
+
+.field private mCustomView:Landroid/view/View;
+
+.field private mListFragments:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/util/ArrayList",
@@ -56,17 +53,15 @@
     .end annotation
 .end field
 
-.field private mCustomView:Landroid/view/View;
+.field private mRes:Landroid/content/res/Resources;
 
 .field private mSelectedPos:I
 
+.field private mTabNum:I
+
 .field private mTagPart:Ljava/lang/String;
 
-.field private mViewPager:Landroid/support/v4/view/ViewPager;
-
-.field private tabNum:I
-
-.field private typeTitemListEntity:Ljava/util/ArrayList;
+.field private mTypeTitemListEntity:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/util/ArrayList",
@@ -77,6 +72,10 @@
     .end annotation
 .end field
 
+.field private mUp:Landroid/widget/ImageView;
+
+.field private mViewPager:Landroid/support/v4/view/ViewPager;
+
 
 # direct methods
 .method public constructor <init>()V
@@ -85,46 +84,46 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 48
+    .line 44
     invoke-direct {p0}, Landroid/app/Fragment;-><init>()V
 
-    .line 49
+    .line 45
     const-string v0, "ChanelDetailTabFragment"
 
     iput-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->TAG:Ljava/lang/String;
 
-    .line 51
+    .line 47
     const/4 v0, 0x0
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->typeTitemListEntity:Ljava/util/ArrayList;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTypeTitemListEntity:Ljava/util/ArrayList;
 
-    .line 53
+    .line 49
     const/4 v0, 0x1
 
-    iput v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channelType:I
+    iput v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChannelType:I
 
-    .line 55
+    .line 51
     const-string v0, ""
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->chanelName:Ljava/lang/String;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanelName:Ljava/lang/String;
 
-    .line 56
+    .line 52
     const-string v0, ""
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->chanelId:Ljava/lang/String;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanelId:Ljava/lang/String;
 
-    .line 58
+    .line 54
     iput v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mSelectedPos:I
 
-    .line 80
-    iput v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->tabNum:I
+    .line 75
+    iput v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTabNum:I
 
-    .line 82
+    .line 77
     const-string v0, ""
 
     iput-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTagPart:Ljava/lang/String;
 
-    .line 231
+    .line 226
     return-void
 .end method
 
@@ -133,7 +132,7 @@
     .parameter "x0"
 
     .prologue
-    .line 48
+    .line 44
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->TAG:Ljava/lang/String;
 
     return-object v0
@@ -145,7 +144,7 @@
     .parameter "x1"
 
     .prologue
-    .line 48
+    .line 44
     iput p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mSelectedPos:I
 
     return p1
@@ -156,7 +155,7 @@
     .parameter "x0"
 
     .prologue
-    .line 48
+    .line 44
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
 
     return-object v0
@@ -167,8 +166,8 @@
     .parameter "x0"
 
     .prologue
-    .line 48
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->listFragments:Ljava/util/ArrayList;
+    .line 44
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mListFragments:Ljava/util/ArrayList;
 
     return-object v0
 .end method
@@ -178,7 +177,7 @@
     .parameter "x0"
 
     .prologue
-    .line 48
+    .line 44
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTagPart:Ljava/lang/String;
 
     return-object v0
@@ -190,7 +189,7 @@
     .parameter "x1"
 
     .prologue
-    .line 48
+    .line 44
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTagPart:Ljava/lang/String;
 
     return-object p1
@@ -201,7 +200,7 @@
     .parameter "x0"
 
     .prologue
-    .line 48
+    .line 44
     invoke-static {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->makeFragmentName(I)Ljava/lang/String;
 
     move-result-object v0
@@ -213,16 +212,16 @@
     .locals 2
 
     .prologue
-    .line 316
+    .line 311
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->getArguments()Landroid/os/Bundle;
 
     move-result-object v0
 
-    .line 317
+    .line 312
     .local v0, args:Landroid/os/Bundle;
     if-eqz v0, :cond_1
 
-    .line 318
+    .line 313
     const-string v1, "chanelName"
 
     invoke-virtual {v0, v1}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
@@ -231,16 +230,16 @@
 
     if-eqz v1, :cond_0
 
-    .line 319
+    .line 314
     const-string v1, "chanelName"
 
     invoke-virtual {v0, v1}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->chanelName:Ljava/lang/String;
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanelName:Ljava/lang/String;
 
-    .line 321
+    .line 316
     :cond_0
     const-string v1, "chanelId"
 
@@ -250,16 +249,16 @@
 
     if-eqz v1, :cond_1
 
-    .line 322
+    .line 317
     const-string v1, "chanelId"
 
     invoke-virtual {v0, v1}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->chanelId:Ljava/lang/String;
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanelId:Ljava/lang/String;
 
-    .line 325
+    .line 320
     :cond_1
     return-void
 .end method
@@ -269,7 +268,7 @@
     .parameter "viewId"
 
     .prologue
-    .line 406
+    .line 412
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -308,68 +307,68 @@
 
     const/4 v1, 0x4
 
-    .line 338
+    .line 333
     packed-switch p1, :pswitch_data_0
 
-    .line 357
+    .line 352
     :goto_0
     return-void
 
-    .line 340
+    .line 335
     :pswitch_0
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_image1:Landroid/widget/ImageView;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistImage1:Landroid/widget/ImageView;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageView;->setVisibility(I)V
 
-    .line 341
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_image2:Landroid/widget/ImageView;
+    .line 336
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistImage2:Landroid/widget/ImageView;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
 
+    .line 337
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistImage3:Landroid/widget/ImageView;
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
+
+    goto :goto_0
+
+    .line 340
+    :pswitch_1
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistImage1:Landroid/widget/ImageView;
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
+
+    .line 341
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistImage2:Landroid/widget/ImageView;
+
+    invoke-virtual {v0, v2}, Landroid/widget/ImageView;->setVisibility(I)V
+
     .line 342
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_image3:Landroid/widget/ImageView;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistImage3:Landroid/widget/ImageView;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
 
     goto :goto_0
 
     .line 345
-    :pswitch_1
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_image1:Landroid/widget/ImageView;
+    :pswitch_2
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistImage1:Landroid/widget/ImageView;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
 
     .line 346
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_image2:Landroid/widget/ImageView;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistImage2:Landroid/widget/ImageView;
 
-    invoke-virtual {v0, v2}, Landroid/widget/ImageView;->setVisibility(I)V
+    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
 
     .line 347
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_image3:Landroid/widget/ImageView;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
-
-    goto :goto_0
-
-    .line 350
-    :pswitch_2
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_image1:Landroid/widget/ImageView;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
-
-    .line 351
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_image2:Landroid/widget/ImageView;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
-
-    .line 352
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_image3:Landroid/widget/ImageView;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistImage3:Landroid/widget/ImageView;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageView;->setVisibility(I)V
 
     goto :goto_0
 
-    .line 338
+    .line 333
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -382,14 +381,14 @@
     .locals 3
 
     .prologue
-    .line 383
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->listFragments:Ljava/util/ArrayList;
+    .line 389
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mListFragments:Ljava/util/ArrayList;
 
     if-eqz v1, :cond_0
 
     iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mSelectedPos:I
 
-    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->listFragments:Ljava/util/ArrayList;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mListFragments:Ljava/util/ArrayList;
 
     invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
 
@@ -397,14 +396,14 @@
 
     if-lt v1, v2, :cond_1
 
-    .line 390
+    .line 396
     :cond_0
     :goto_0
     return-void
 
-    .line 386
+    .line 392
     :cond_1
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->listFragments:Ljava/util/ArrayList;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mListFragments:Ljava/util/ArrayList;
 
     iget v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mSelectedPos:I
 
@@ -414,7 +413,7 @@
 
     check-cast v0, Landroid/app/Fragment;
 
-    .line 387
+    .line 393
     .local v0, fm:Landroid/app/Fragment;
     if-eqz v0, :cond_0
 
@@ -422,7 +421,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 388
+    .line 394
     check-cast v0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailFragment;
 
     .end local v0           #fm:Landroid/app/Fragment;
@@ -439,7 +438,7 @@
 
     const/4 v7, 0x0
 
-    .line 140
+    .line 137
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v4
@@ -448,7 +447,7 @@
 
     move-result-object v4
 
-    const v5, 0x7f04007e
+    const v5, 0x7f040083
 
     const/4 v6, 0x0
 
@@ -458,10 +457,10 @@
 
     iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
 
-    .line 141
+    .line 139
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
 
-    const v5, 0x7f0d016f
+    const v5, 0x7f0d018c
 
     invoke-virtual {v4, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -469,12 +468,25 @@
 
     check-cast v4, Landroid/widget/LinearLayout;
 
-    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_item1:Landroid/widget/LinearLayout;
+    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetailTabContent:Landroid/widget/LinearLayout;
+
+    .line 140
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
+
+    const v5, 0x7f0d0185
+
+    invoke-virtual {v4, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v4
+
+    check-cast v4, Landroid/widget/ImageView;
+
+    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mUp:Landroid/widget/ImageView;
 
     .line 142
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
 
-    const v5, 0x7f0d0172
+    const v5, 0x7f0d018d
 
     invoke-virtual {v4, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -482,12 +494,12 @@
 
     check-cast v4, Landroid/widget/LinearLayout;
 
-    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_item2:Landroid/widget/LinearLayout;
+    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistItem1:Landroid/widget/LinearLayout;
 
     .line 143
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
 
-    const v5, 0x7f0d0175
+    const v5, 0x7f0d0190
 
     invoke-virtual {v4, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -495,25 +507,25 @@
 
     check-cast v4, Landroid/widget/LinearLayout;
 
-    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_item3:Landroid/widget/LinearLayout;
+    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistItem2:Landroid/widget/LinearLayout;
 
-    .line 145
+    .line 144
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
 
-    const v5, 0x7f0d0170
+    const v5, 0x7f0d0193
 
     invoke-virtual {v4, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v4
 
-    check-cast v4, Landroid/widget/TextView;
+    check-cast v4, Landroid/widget/LinearLayout;
 
-    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_text1:Landroid/widget/TextView;
+    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistItem3:Landroid/widget/LinearLayout;
 
     .line 146
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
 
-    const v5, 0x7f0d0173
+    const v5, 0x7f0d018e
 
     invoke-virtual {v4, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -521,12 +533,12 @@
 
     check-cast v4, Landroid/widget/TextView;
 
-    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_text2:Landroid/widget/TextView;
+    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistText1:Landroid/widget/TextView;
 
     .line 147
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
 
-    const v5, 0x7f0d0176
+    const v5, 0x7f0d0191
 
     invoke-virtual {v4, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -534,25 +546,25 @@
 
     check-cast v4, Landroid/widget/TextView;
 
-    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_text3:Landroid/widget/TextView;
+    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistText2:Landroid/widget/TextView;
 
-    .line 149
+    .line 148
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
 
-    const v5, 0x7f0d0171
+    const v5, 0x7f0d0194
 
     invoke-virtual {v4, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v4
 
-    check-cast v4, Landroid/widget/ImageView;
+    check-cast v4, Landroid/widget/TextView;
 
-    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_image1:Landroid/widget/ImageView;
+    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistText3:Landroid/widget/TextView;
 
     .line 150
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
 
-    const v5, 0x7f0d0174
+    const v5, 0x7f0d018f
 
     invoke-virtual {v4, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -560,12 +572,12 @@
 
     check-cast v4, Landroid/widget/ImageView;
 
-    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_image2:Landroid/widget/ImageView;
+    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistImage1:Landroid/widget/ImageView;
 
     .line 151
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
 
-    const v5, 0x7f0d0177
+    const v5, 0x7f0d0192
 
     invoke-virtual {v4, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -573,26 +585,39 @@
 
     check-cast v4, Landroid/widget/ImageView;
 
-    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_image3:Landroid/widget/ImageView;
+    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistImage2:Landroid/widget/ImageView;
 
-    .line 153
+    .line 152
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
+
+    const v5, 0x7f0d0195
+
+    invoke-virtual {v4, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v4
+
+    check-cast v4, Landroid/widget/ImageView;
+
+    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistImage3:Landroid/widget/ImageView;
+
+    .line 154
     new-instance v4, Ljava/util/ArrayList;
 
     invoke-direct {v4}, Ljava/util/ArrayList;-><init>()V
 
-    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->listFragments:Ljava/util/ArrayList;
+    iput-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mListFragments:Ljava/util/ArrayList;
 
-    .line 154
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->typeTitemListEntity:Ljava/util/ArrayList;
+    .line 155
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTypeTitemListEntity:Ljava/util/ArrayList;
 
     if-eqz v4, :cond_4
 
-    .line 155
+    .line 156
     const/4 v1, 0x0
 
     .local v1, i:I
     :goto_0
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->typeTitemListEntity:Ljava/util/ArrayList;
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTypeTitemListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v4}, Ljava/util/ArrayList;->size()I
 
@@ -604,8 +629,8 @@
 
     if-gt v1, v4, :cond_4
 
-    .line 156
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->typeTitemListEntity:Ljava/util/ArrayList;
+    .line 157
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTypeTitemListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v4, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
@@ -613,12 +638,12 @@
 
     if-eqz v4, :cond_1
 
-    .line 158
+    .line 159
     move v3, v1
 
-    .line 159
+    .line 160
     .local v3, position:I
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_item1:Landroid/widget/LinearLayout;
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistItem1:Landroid/widget/LinearLayout;
 
     invoke-virtual {v4}, Landroid/widget/LinearLayout;->getVisibility()I
 
@@ -626,17 +651,17 @@
 
     if-ne v4, v8, :cond_2
 
-    .line 160
-    iget v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->tabNum:I
+    .line 161
+    iget v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTabNum:I
 
     add-int/lit8 v4, v4, 0x1
 
-    iput v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->tabNum:I
+    iput v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTabNum:I
 
-    .line 161
-    iget-object v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_text1:Landroid/widget/TextView;
+    .line 162
+    iget-object v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistText1:Landroid/widget/TextView;
 
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->typeTitemListEntity:Ljava/util/ArrayList;
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTypeTitemListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v4, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
@@ -650,13 +675,13 @@
 
     invoke-virtual {v5, v4}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 163
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_item1:Landroid/widget/LinearLayout;
+    .line 164
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistItem1:Landroid/widget/LinearLayout;
 
     invoke-virtual {v4, v7}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 165
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_text1:Landroid/widget/TextView;
+    .line 166
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistText1:Landroid/widget/TextView;
 
     new-instance v5, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$2;
 
@@ -664,32 +689,32 @@
 
     invoke-virtual {v4, v5}, Landroid/widget/TextView;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 218
+    .line 213
     :cond_0
     :goto_1
     new-instance v0, Landroid/os/Bundle;
 
     invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
 
-    .line 219
+    .line 214
     .local v0, bundleArg:Landroid/os/Bundle;
     const-string v4, "chanelName"
 
-    iget-object v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->chanelName:Ljava/lang/String;
+    iget-object v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanelName:Ljava/lang/String;
 
     invoke-virtual {v0, v4, v5}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 220
+    .line 215
     const-string v4, "chanelId"
 
-    iget-object v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->chanelId:Ljava/lang/String;
+    iget-object v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanelId:Ljava/lang/String;
 
     invoke-virtual {v0, v4, v5}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 221
+    .line 216
     const-string v5, "orderby"
 
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->typeTitemListEntity:Ljava/util/ArrayList;
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTypeTitemListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v4, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
@@ -703,28 +728,28 @@
 
     invoke-virtual {v0, v5, v4}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 222
+    .line 217
     const-string v4, "channelType"
 
-    iget v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channelType:I
+    iget v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChannelType:I
 
     invoke-virtual {v0, v4, v5}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V
 
-    .line 223
+    .line 218
     new-instance v2, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailFragment;
 
     invoke-direct {v2}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailFragment;-><init>()V
 
-    .line 224
+    .line 219
     .local v2, itemFragment:Landroid/app/Fragment;
     invoke-virtual {v2, v0}, Landroid/app/Fragment;->setArguments(Landroid/os/Bundle;)V
 
-    .line 225
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->listFragments:Ljava/util/ArrayList;
+    .line 220
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mListFragments:Ljava/util/ArrayList;
 
     invoke-virtual {v4, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 155
+    .line 156
     .end local v0           #bundleArg:Landroid/os/Bundle;
     .end local v2           #itemFragment:Landroid/app/Fragment;
     .end local v3           #position:I
@@ -733,10 +758,10 @@
 
     goto :goto_0
 
-    .line 179
+    .line 177
     .restart local v3       #position:I
     :cond_2
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_item2:Landroid/widget/LinearLayout;
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistItem2:Landroid/widget/LinearLayout;
 
     invoke-virtual {v4}, Landroid/widget/LinearLayout;->getVisibility()I
 
@@ -744,17 +769,17 @@
 
     if-ne v4, v8, :cond_3
 
-    .line 180
-    iget v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->tabNum:I
+    .line 178
+    iget v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTabNum:I
 
     add-int/lit8 v4, v4, 0x1
 
-    iput v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->tabNum:I
+    iput v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTabNum:I
 
-    .line 181
-    iget-object v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_text2:Landroid/widget/TextView;
+    .line 179
+    iget-object v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistText2:Landroid/widget/TextView;
 
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->typeTitemListEntity:Ljava/util/ArrayList;
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTypeTitemListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v4, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
@@ -768,13 +793,13 @@
 
     invoke-virtual {v5, v4}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 183
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_item2:Landroid/widget/LinearLayout;
+    .line 181
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistItem2:Landroid/widget/LinearLayout;
 
     invoke-virtual {v4, v7}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 185
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_text2:Landroid/widget/TextView;
+    .line 183
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistText2:Landroid/widget/TextView;
 
     new-instance v5, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$3;
 
@@ -784,9 +809,9 @@
 
     goto :goto_1
 
-    .line 199
+    .line 194
     :cond_3
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_item3:Landroid/widget/LinearLayout;
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistItem3:Landroid/widget/LinearLayout;
 
     invoke-virtual {v4}, Landroid/widget/LinearLayout;->getVisibility()I
 
@@ -794,17 +819,17 @@
 
     if-ne v4, v8, :cond_0
 
-    .line 200
-    iget v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->tabNum:I
+    .line 195
+    iget v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTabNum:I
 
     add-int/lit8 v4, v4, 0x1
 
-    iput v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->tabNum:I
+    iput v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTabNum:I
 
-    .line 201
-    iget-object v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_text3:Landroid/widget/TextView;
+    .line 196
+    iget-object v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistText3:Landroid/widget/TextView;
 
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->typeTitemListEntity:Ljava/util/ArrayList;
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTypeTitemListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v4, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
@@ -818,13 +843,13 @@
 
     invoke-virtual {v5, v4}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 203
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_item3:Landroid/widget/LinearLayout;
+    .line 198
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistItem3:Landroid/widget/LinearLayout;
 
     invoke-virtual {v4, v7}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 205
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channeldetal_orderlist_text3:Landroid/widget/TextView;
+    .line 200
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetalOrderlistText3:Landroid/widget/TextView;
 
     new-instance v5, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$4;
 
@@ -834,7 +859,7 @@
 
     goto/16 :goto_1
 
-    .line 229
+    .line 224
     .end local v1           #i:I
     .end local v3           #position:I
     :cond_4
@@ -846,17 +871,17 @@
     .parameter "newConfig"
 
     .prologue
-    .line 311
+    .line 306
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->TAG:Ljava/lang/String;
 
     const-string v1, " onConfigurationChanged"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 312
+    .line 307
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->setActionBar()V
 
-    .line 313
+    .line 308
     return-void
 .end method
 
@@ -865,15 +890,10 @@
     .parameter "inflater"
     .parameter "container"
     .parameter "savedInstanceState"
-    .annotation build Landroid/annotation/SuppressLint;
-        value = {
-            "ResourceAsColor"
-        }
-    .end annotation
 
     .prologue
-    .line 87
-    const v1, 0x7f040010
+    .line 83
+    const v1, 0x7f040012
 
     const/4 v2, 0x0
 
@@ -881,14 +901,25 @@
 
     move-result-object v0
 
-    .line 88
+    .line 84
     .local v0, channelDetailView:Landroid/view/View;
+    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->getActivity()Landroid/app/Activity;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mRes:Landroid/content/res/Resources;
+
+    .line 85
     invoke-direct {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->getDataFromBundle()V
 
-    .line 91
+    .line 88
     const-string v1, "86"
 
-    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->chanelId:Ljava/lang/String;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanelId:Ljava/lang/String;
 
     invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -896,16 +927,16 @@
 
     if-eqz v1, :cond_0
 
-    .line 92
+    .line 89
     const/4 v1, 0x2
 
-    iput v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channelType:I
+    iput v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChannelType:I
 
-    .line 94
+    .line 91
     :cond_0
     const-string v1, "4"
 
-    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->chanelId:Ljava/lang/String;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanelId:Ljava/lang/String;
 
     invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -913,27 +944,27 @@
 
     if-eqz v1, :cond_1
 
-    .line 97
+    .line 94
     :cond_1
     invoke-static {}, Lcom/meizu/video/client/common/Constant;->getOrderTypeAreaYearOrderListEntity()Ljava/util/ArrayList;
 
     move-result-object v1
 
-    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->chanelId:Ljava/lang/String;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanelId:Ljava/lang/String;
 
-    iget v3, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->channelType:I
+    iget v3, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChannelType:I
 
     invoke-static {v1, v2, v3}, Lcom/meizu/video/client/util/CommonUtil;->getOrderListByCidAndMediaData(Ljava/util/ArrayList;Ljava/lang/String;I)Ljava/util/ArrayList;
 
     move-result-object v1
 
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->typeTitemListEntity:Ljava/util/ArrayList;
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTypeTitemListEntity:Ljava/util/ArrayList;
 
-    .line 99
+    .line 96
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->initCustomView()V
 
-    .line 101
-    const v1, 0x7f0d002a
+    .line 98
+    const v1, 0x7f0d002e
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -943,10 +974,10 @@
 
     iput-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
 
-    .line 102
+    .line 99
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
 
-    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->chanelId:Ljava/lang/String;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanelId:Ljava/lang/String;
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(Ljava/lang/String;)Ljava/lang/Integer;
 
@@ -958,7 +989,7 @@
 
     invoke-virtual {v1, v2}, Landroid/support/v4/view/ViewPager;->setId(I)V
 
-    .line 103
+    .line 100
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
 
     new-instance v2, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$ViewPagerAdapter;
@@ -971,19 +1002,19 @@
 
     invoke-virtual {v1, v2}, Landroid/support/v4/view/ViewPager;->setAdapter(Landroid/support/v4/view/PagerAdapter;)V
 
-    .line 104
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->typeTitemListEntity:Ljava/util/ArrayList;
+    .line 101
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTypeTitemListEntity:Ljava/util/ArrayList;
 
     if-nez v1, :cond_2
 
-    .line 105
+    .line 102
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
 
     const/4 v2, 0x1
 
     invoke-virtual {v1, v2}, Landroid/support/v4/view/ViewPager;->setOffscreenPageLimit(I)V
 
-    .line 110
+    .line 107
     :goto_0
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
 
@@ -993,40 +1024,46 @@
 
     invoke-virtual {v1, v2}, Landroid/support/v4/view/ViewPager;->setOnPageChangeListener(Landroid/support/v4/view/ViewPager$OnPageChangeListener;)V
 
-    .line 130
+    .line 127
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
 
-    const/16 v2, 0x8
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mRes:Landroid/content/res/Resources;
+
+    const v3, 0x7f090071
+
+    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v2
 
     invoke-virtual {v1, v2}, Landroid/support/v4/view/ViewPager;->setPageMargin(I)V
 
-    .line 131
+    .line 128
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
 
-    const v2, 0x7f0201af
+    const v2, 0x1080680
 
     invoke-virtual {v1, v2}, Landroid/support/v4/view/ViewPager;->setPageMarginDrawable(I)V
 
-    .line 133
+    .line 130
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
 
     iget v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mSelectedPos:I
 
     invoke-virtual {v1, v2}, Landroid/support/v4/view/ViewPager;->setCurrentItem(I)V
 
-    .line 134
+    .line 131
     iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mSelectedPos:I
 
     invoke-virtual {p0, v1}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->changeTabView(I)V
 
-    .line 136
+    .line 133
     return-object v0
 
-    .line 107
+    .line 104
     :cond_2
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
 
-    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->typeTitemListEntity:Ljava/util/ArrayList;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTypeTitemListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
 
@@ -1051,20 +1088,20 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 260
+    .line 255
     invoke-super {p0}, Landroid/app/Fragment;->onDestroy()V
 
-    .line 261
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->listFragments:Ljava/util/ArrayList;
+    .line 256
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mListFragments:Ljava/util/ArrayList;
 
     if-eqz v4, :cond_0
 
-    .line 262
+    .line 257
     const/4 v2, 0x0
 
     .local v2, i:I
     :goto_0
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->listFragments:Ljava/util/ArrayList;
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mListFragments:Ljava/util/ArrayList;
 
     invoke-virtual {v4}, Ljava/util/ArrayList;->size()I
 
@@ -1072,7 +1109,7 @@
 
     if-ge v2, v4, :cond_0
 
-    .line 263
+    .line 258
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v4
@@ -1085,9 +1122,9 @@
 
     move-result-object v1
 
-    .line 264
+    .line 259
     .local v1, ft:Landroid/app/FragmentTransaction;
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->listFragments:Ljava/util/ArrayList;
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mListFragments:Ljava/util/ArrayList;
 
     invoke-virtual {v4, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
@@ -1097,50 +1134,50 @@
 
     invoke-virtual {v1, v4}, Landroid/app/FragmentTransaction;->remove(Landroid/app/Fragment;)Landroid/app/FragmentTransaction;
 
-    .line 265
+    .line 260
     invoke-virtual {v1}, Landroid/app/FragmentTransaction;->commit()I
 
-    .line 262
+    .line 257
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 268
+    .line 263
     .end local v1           #ft:Landroid/app/FragmentTransaction;
     .end local v2           #i:I
     :cond_0
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->listFragments:Ljava/util/ArrayList;
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mListFragments:Ljava/util/ArrayList;
 
     if-eqz v4, :cond_1
 
-    .line 269
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->listFragments:Ljava/util/ArrayList;
+    .line 264
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mListFragments:Ljava/util/ArrayList;
 
     invoke-virtual {v4}, Ljava/util/ArrayList;->clear()V
 
-    .line 270
-    iput-object v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->listFragments:Ljava/util/ArrayList;
+    .line 265
+    iput-object v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mListFragments:Ljava/util/ArrayList;
 
-    .line 272
+    .line 267
     :cond_1
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
 
     if-eqz v4, :cond_2
 
-    .line 273
+    .line 268
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
 
     invoke-virtual {v4}, Landroid/support/v4/view/ViewPager;->removeAllViews()V
 
-    .line 274
+    .line 269
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
 
     invoke-virtual {v4, v5}, Landroid/support/v4/view/ViewPager;->setOnPageChangeListener(Landroid/support/v4/view/ViewPager$OnPageChangeListener;)V
 
-    .line 275
+    .line 270
     iput-object v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
 
-    .line 277
+    .line 272
     :cond_2
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTagPart:Ljava/lang/String;
 
@@ -1156,7 +1193,7 @@
 
     if-nez v4, :cond_3
 
-    .line 278
+    .line 273
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v4
@@ -1169,22 +1206,22 @@
 
     move-result-object v3
 
-    .line 279
+    .line 274
     .local v3, sharedPreferences:Landroid/content/SharedPreferences;
     invoke-interface {v3}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
     move-result-object v0
 
-    .line 280
+    .line 275
     .local v0, editor:Landroid/content/SharedPreferences$Editor;
     const-string v4, "mTagPart"
 
     invoke-interface {v0, v4}, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
-    .line 281
+    .line 276
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 283
+    .line 278
     .end local v0           #editor:Landroid/content/SharedPreferences$Editor;
     .end local v3           #sharedPreferences:Landroid/content/SharedPreferences;
     :cond_3
@@ -1195,10 +1232,10 @@
     .locals 0
 
     .prologue
-    .line 286
+    .line 281
     invoke-super {p0}, Landroid/app/Fragment;->onPause()V
 
-    .line 287
+    .line 282
     return-void
 .end method
 
@@ -1206,10 +1243,10 @@
     .locals 2
 
     .prologue
-    .line 293
+    .line 288
     invoke-super {p0}, Landroid/app/Fragment;->onResume()V
 
-    .line 294
+    .line 289
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v0
@@ -1232,10 +1269,10 @@
 
     if-ne v1, v0, :cond_0
 
-    .line 295
+    .line 290
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->setActionBar()V
 
-    .line 297
+    .line 292
     :cond_0
     return-void
 .end method
@@ -1245,10 +1282,10 @@
     .parameter "outState"
 
     .prologue
-    .line 328
+    .line 323
     invoke-super {p0, p1}, Landroid/app/Fragment;->onSaveInstanceState(Landroid/os/Bundle;)V
 
-    .line 329
+    .line 324
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTagPart:Ljava/lang/String;
 
     if-eqz v2, :cond_0
@@ -1263,7 +1300,7 @@
 
     if-nez v2, :cond_0
 
-    .line 330
+    .line 325
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v2
@@ -1276,13 +1313,13 @@
 
     move-result-object v1
 
-    .line 331
+    .line 326
     .local v1, sharedPreferences:Landroid/content/SharedPreferences;
     invoke-interface {v1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
     move-result-object v0
 
-    .line 332
+    .line 327
     .local v0, editor:Landroid/content/SharedPreferences$Editor;
     const-string v2, "mTagPart"
 
@@ -1290,10 +1327,10 @@
 
     invoke-interface {v0, v2, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
-    .line 333
+    .line 328
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 335
+    .line 330
     .end local v0           #editor:Landroid/content/SharedPreferences$Editor;
     .end local v1           #sharedPreferences:Landroid/content/SharedPreferences;
     :cond_0
@@ -1304,10 +1341,10 @@
     .locals 0
 
     .prologue
-    .line 300
+    .line 295
     invoke-super {p0}, Landroid/app/Fragment;->onStart()V
 
-    .line 301
+    .line 296
     return-void
 .end method
 
@@ -1315,10 +1352,10 @@
     .locals 0
 
     .prologue
-    .line 304
+    .line 299
     invoke-super {p0}, Landroid/app/Fragment;->onStop()V
 
-    .line 305
+    .line 300
     return-void
 .end method
 
@@ -1326,7 +1363,7 @@
     .locals 7
 
     .prologue
-    .line 394
+    .line 400
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v4
@@ -1339,7 +1376,7 @@
 
     move-result-object v2
 
-    .line 395
+    .line 401
     .local v2, sharedPreferences:Landroid/content/SharedPreferences;
     const-string v4, "mTagPart"
 
@@ -1349,7 +1386,7 @@
 
     move-result-object v3
 
-    .line 396
+    .line 402
     .local v3, tag:Ljava/lang/String;
     const/4 v1, 0x0
 
@@ -1359,7 +1396,7 @@
 
     if-ge v1, v4, :cond_1
 
-    .line 397
+    .line 403
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v4
@@ -1388,11 +1425,11 @@
 
     move-result-object v0
 
-    .line 398
+    .line 404
     .local v0, fragment:Landroid/app/Fragment;
     if-eqz v0, :cond_0
 
-    .line 399
+    .line 405
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->getFragmentManager()Landroid/app/FragmentManager;
 
     move-result-object v4
@@ -1407,132 +1444,183 @@
 
     invoke-virtual {v4}, Landroid/app/FragmentTransaction;->commit()I
 
-    .line 400
-    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->listFragments:Ljava/util/ArrayList;
+    .line 406
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mListFragments:Ljava/util/ArrayList;
 
     invoke-virtual {v4, v0}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
 
-    .line 396
+    .line 402
     :cond_0
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 403
+    .line 409
     .end local v0           #fragment:Landroid/app/Fragment;
     :cond_1
     return-void
 .end method
 
 .method public setActionBar()V
-    .locals 6
+    .locals 7
 
     .prologue
-    const/4 v3, 0x0
+    const/4 v6, 0x0
 
     const/4 v5, -0x2
 
-    .line 360
+    .line 355
     invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->getmActionBar()Lcom/android/gallery3d/app/GalleryActionBar;
 
-    move-result-object v1
+    move-result-object v2
 
-    invoke-virtual {v1}, Lcom/android/gallery3d/app/GalleryActionBar;->getActionBar()Landroid/app/ActionBar;
+    invoke-virtual {v2}, Lcom/android/gallery3d/app/GalleryActionBar;->getActionBar()Landroid/app/ActionBar;
 
     move-result-object v0
 
-    .line 362
+    .line 357
     .local v0, bar:Landroid/app/ActionBar;
-    const/16 v1, 0x18
+    const/16 v2, 0x18
 
-    invoke-virtual {v0, v1}, Landroid/app/ActionBar;->setDisplayOptions(I)V
+    invoke-virtual {v0, v2}, Landroid/app/ActionBar;->setDisplayOptions(I)V
+
+    .line 360
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mRes:Landroid/content/res/Resources;
+
+    if-nez v2, :cond_0
+
+    .line 361
+    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->getActivity()Landroid/app/Activity;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mRes:Landroid/content/res/Resources;
+
+    .line 363
+    :cond_0
+    new-instance v1, Landroid/widget/LinearLayout$LayoutParams;
+
+    iget v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mTabNum:I
+
+    iget-object v3, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mRes:Landroid/content/res/Resources;
+
+    const v4, 0x7f090070
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v3
+
+    mul-int/2addr v2, v3
+
+    const/4 v3, -0x1
+
+    invoke-direct {v1, v2, v3}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
     .line 364
+    .local v1, params:Landroid/widget/LinearLayout$LayoutParams;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanneldetailTabContent:Landroid/widget/LinearLayout;
+
+    invoke-virtual {v2, v1}, Landroid/widget/LinearLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 365
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->getActivity()Landroid/app/Activity;
 
-    move-result-object v1
+    move-result-object v2
 
-    invoke-virtual {v1}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {v2}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v1
+    move-result-object v2
 
-    const v2, 0x7f020001
+    invoke-virtual {v2}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
 
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    move-result-object v2
 
-    move-result-object v1
+    iget v2, v2, Landroid/content/res/Configuration;->orientation:I
 
-    invoke-virtual {v0, v1}, Landroid/app/ActionBar;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
+    const/4 v3, 0x2
+
+    if-ne v2, v3, :cond_2
 
     .line 367
-    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->getActivity()Landroid/app/Activity;
+    sget-object v2, Landroid/os/Build;->HAS_PERMANENTKEY:Ljava/lang/Boolean;
 
-    move-result-object v1
+    invoke-virtual {v2}, Ljava/lang/Boolean;->booleanValue()Z
 
-    invoke-virtual {v1}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
+    move-result v2
 
-    move-result-object v1
-
-    invoke-virtual {v1}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
-
-    move-result-object v1
-
-    iget v1, v1, Landroid/content/res/Configuration;->orientation:I
-
-    const/4 v2, 0x2
-
-    if-ne v1, v2, :cond_0
+    if-eqz v2, :cond_1
 
     .line 368
-    invoke-virtual {v0, v3}, Landroid/app/ActionBar;->setTitle(Ljava/lang/CharSequence;)V
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mUp:Landroid/widget/ImageView;
 
-    .line 369
-    invoke-virtual {v0, v3}, Landroid/app/ActionBar;->setSubtitle(Ljava/lang/CharSequence;)V
+    const/4 v3, 0x4
+
+    invoke-virtual {v2, v3}, Landroid/widget/ImageView;->setVisibility(I)V
 
     .line 370
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
+    :cond_1
+    invoke-virtual {v0, v6}, Landroid/app/ActionBar;->setTitle(Ljava/lang/CharSequence;)V
 
-    new-instance v2, Landroid/app/ActionBar$LayoutParams;
+    .line 371
+    invoke-virtual {v0, v6}, Landroid/app/ActionBar;->setSubtitle(Ljava/lang/CharSequence;)V
 
-    iget v3, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->tabNum:I
+    .line 373
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
 
-    mul-int/lit8 v3, v3, 0x64
+    new-instance v3, Landroid/app/ActionBar$LayoutParams;
 
     const/16 v4, 0x13
 
-    invoke-direct {v2, v3, v5, v4}, Landroid/app/ActionBar$LayoutParams;-><init>(III)V
+    invoke-direct {v3, v5, v5, v4}, Landroid/app/ActionBar$LayoutParams;-><init>(III)V
 
-    invoke-virtual {v0, v1, v2}, Landroid/app/ActionBar;->setCustomView(Landroid/view/View;Landroid/app/ActionBar$LayoutParams;)V
+    invoke-virtual {v0, v2, v3}, Landroid/app/ActionBar;->setCustomView(Landroid/view/View;Landroid/app/ActionBar$LayoutParams;)V
 
-    .line 380
+    .line 386
     :goto_0
     return-void
 
-    .line 374
-    :cond_0
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->chanelName:Ljava/lang/String;
+    .line 377
+    :cond_2
+    sget-object v2, Landroid/os/Build;->HAS_PERMANENTKEY:Ljava/lang/Boolean;
 
-    invoke-virtual {v0, v1}, Landroid/app/ActionBar;->setTitle(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2}, Ljava/lang/Boolean;->booleanValue()Z
 
-    .line 375
-    const v1, 0x7f0a0002
+    move-result v2
 
-    invoke-virtual {v0, v1}, Landroid/app/ActionBar;->setSubtitle(I)V
+    if-eqz v2, :cond_3
 
-    .line 376
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
+    .line 378
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mUp:Landroid/widget/ImageView;
 
-    new-instance v2, Landroid/app/ActionBar$LayoutParams;
+    const/16 v3, 0x8
 
-    iget v3, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->tabNum:I
+    invoke-virtual {v2, v3}, Landroid/widget/ImageView;->setVisibility(I)V
 
-    mul-int/lit8 v3, v3, 0x64
+    .line 380
+    :cond_3
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mChanelName:Ljava/lang/String;
+
+    invoke-virtual {v0, v2}, Landroid/app/ActionBar;->setTitle(Ljava/lang/CharSequence;)V
+
+    .line 381
+    const v2, 0x7f0a0002
+
+    invoke-virtual {v0, v2}, Landroid/app/ActionBar;->setSubtitle(I)V
+
+    .line 382
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mCustomView:Landroid/view/View;
+
+    new-instance v3, Landroid/app/ActionBar$LayoutParams;
 
     const/16 v4, 0x15
 
-    invoke-direct {v2, v3, v5, v4}, Landroid/app/ActionBar$LayoutParams;-><init>(III)V
+    invoke-direct {v3, v5, v5, v4}, Landroid/app/ActionBar$LayoutParams;-><init>(III)V
 
-    invoke-virtual {v0, v1, v2}, Landroid/app/ActionBar;->setCustomView(Landroid/view/View;Landroid/app/ActionBar$LayoutParams;)V
+    invoke-virtual {v0, v2, v3}, Landroid/app/ActionBar;->setCustomView(Landroid/view/View;Landroid/app/ActionBar$LayoutParams;)V
 
     goto :goto_0
 .end method

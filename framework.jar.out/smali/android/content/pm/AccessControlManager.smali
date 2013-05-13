@@ -22,6 +22,8 @@
 
 .field public static final TYPE_ACCESS_NON:I = 0x0
 
+.field public static final TYPE_ACCESS_OPEN:I = 0x3
+
 .field public static final TYPE_ACCESS_PASSWORD:I = 0x1
 
 
@@ -38,16 +40,16 @@
     .parameter "service"
 
     .prologue
-    .line 74
+    .line 77
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 75
+    .line 78
     iput-object p1, p0, Landroid/content/pm/AccessControlManager;->mContext:Landroid/content/Context;
 
-    .line 76
+    .line 79
     iput-object p2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
-    .line 77
+    .line 80
     return-void
 .end method
 
@@ -58,23 +60,23 @@
     .parameter "paramString"
 
     .prologue
-    .line 176
+    .line 164
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v1, :cond_0
 
-    .line 177
+    .line 165
     const-string v1, "AccessControlManager"
 
     const-string v2, "AccessControlService not running"
 
     invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 185
+    .line 173
     :goto_0
     return-void
 
-    .line 181
+    .line 169
     :cond_0
     :try_start_0
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -85,11 +87,11 @@
 
     goto :goto_0
 
-    .line 182
+    .line 170
     :catch_0
     move-exception v0
 
-    .line 183
+    .line 171
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -102,23 +104,23 @@
     .parameter "type"
 
     .prologue
-    .line 221
+    .line 209
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v1, :cond_0
 
-    .line 222
+    .line 210
     const-string v1, "AccessControlManager"
 
     const-string v2, "AccessControlService not running"
 
     invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 230
+    .line 218
     :goto_0
     return-void
 
-    .line 226
+    .line 214
     :cond_0
     :try_start_0
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -129,11 +131,11 @@
 
     goto :goto_0
 
-    .line 227
+    .line 215
     :catch_0
     move-exception v0
 
-    .line 228
+    .line 216
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -144,23 +146,23 @@
     .locals 3
 
     .prologue
-    .line 329
+    .line 333
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v1, :cond_0
 
-    .line 330
+    .line 334
     const-string v1, "AccessControlManager"
 
     const-string v2, "AccessControlService not running"
 
     invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 338
+    .line 342
     :goto_0
     return-void
 
-    .line 334
+    .line 338
     :cond_0
     :try_start_0
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -171,11 +173,11 @@
 
     goto :goto_0
 
-    .line 335
+    .line 339
     :catch_0
     move-exception v0
 
-    .line 336
+    .line 340
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -189,23 +191,23 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 344
+    .line 348
     iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v2, :cond_0
 
-    .line 345
+    .line 349
     const-string v2, "AccessControlManager"
 
     const-string v3, "AccessControlService not running"
 
     invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 352
+    .line 356
     :goto_0
     return v1
 
-    .line 349
+    .line 353
     :cond_0
     :try_start_0
     iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -218,11 +220,11 @@
 
     goto :goto_0
 
-    .line 350
+    .line 354
     :catch_0
     move-exception v0
 
-    .line 351
+    .line 355
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -236,23 +238,23 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 160
+    .line 148
     iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v2, :cond_0
 
-    .line 161
+    .line 149
     const-string v2, "AccessControlManager"
 
     const-string v3, "AccessControlService not running"
 
     invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 168
+    .line 156
     :goto_0
     return v1
 
-    .line 165
+    .line 153
     :cond_0
     :try_start_0
     iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -265,11 +267,11 @@
 
     goto :goto_0
 
-    .line 166
+    .line 154
     :catch_0
     move-exception v0
 
-    .line 167
+    .line 155
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -283,23 +285,23 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 251
+    .line 239
     iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v2, :cond_0
 
-    .line 252
+    .line 240
     const-string v2, "AccessControlManager"
 
     const-string v3, "AccessControlService not running"
 
     invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 259
+    .line 247
     :goto_0
     return v1
 
-    .line 256
+    .line 244
     :cond_0
     :try_start_0
     iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -312,11 +314,11 @@
 
     goto :goto_0
 
-    .line 257
+    .line 245
     :catch_0
     move-exception v0
 
-    .line 258
+    .line 246
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -327,23 +329,23 @@
     .locals 3
 
     .prologue
-    .line 206
+    .line 194
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v1, :cond_0
 
-    .line 207
+    .line 195
     const-string v1, "AccessControlManager"
 
     const-string v2, "AccessControlService not running"
 
     invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 215
+    .line 203
     :goto_0
     return-void
 
-    .line 211
+    .line 199
     :cond_0
     :try_start_0
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -354,11 +356,11 @@
 
     goto :goto_0
 
-    .line 212
+    .line 200
     :catch_0
     move-exception v0
 
-    .line 213
+    .line 201
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -380,23 +382,23 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 283
+    .line 271
     iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v2, :cond_0
 
-    .line 284
+    .line 272
     const-string v2, "AccessControlManager"
 
     const-string v3, "AccessControlService not running"
 
     invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 291
+    .line 279
     :goto_0
     return-object v1
 
-    .line 288
+    .line 276
     :cond_0
     :try_start_0
     iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -409,11 +411,66 @@
 
     goto :goto_0
 
-    .line 289
+    .line 277
     :catch_0
     move-exception v0
 
-    .line 290
+    .line 278
+    .local v0, e:Landroid/os/RemoteException;
+    invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
+
+    goto :goto_0
+.end method
+
+.method public getControlOpenPackages()Ljava/util/List;
+    .locals 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    const/4 v1, 0x0
+
+    .line 287
+    iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
+
+    if-nez v2, :cond_0
+
+    .line 288
+    const-string v2, "AccessControlManager"
+
+    const-string v3, "AccessControlService not running"
+
+    invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 295
+    :goto_0
+    return-object v1
+
+    .line 292
+    :cond_0
+    :try_start_0
+    iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
+
+    invoke-interface {v2}, Landroid/content/pm/IAccessControlManager;->getControlOpenPackages()Ljava/util/List;
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result-object v1
+
+    goto :goto_0
+
+    .line 293
+    :catch_0
+    move-exception v0
+
+    .line 294
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -435,23 +492,23 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 267
+    .line 255
     iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v2, :cond_0
 
-    .line 268
+    .line 256
     const-string v2, "AccessControlManager"
 
     const-string v3, "AccessControlService not running"
 
     invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 275
+    .line 263
     :goto_0
     return-object v1
 
-    .line 272
+    .line 260
     :cond_0
     :try_start_0
     iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -464,11 +521,11 @@
 
     goto :goto_0
 
-    .line 273
+    .line 261
     :catch_0
     move-exception v0
 
-    .line 274
+    .line 262
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -481,23 +538,23 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 144
+    .line 132
     iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v2, :cond_0
 
-    .line 145
+    .line 133
     const-string v2, "AccessControlManager"
 
     const-string v3, "AccessControlService not running"
 
     invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 152
+    .line 140
     :goto_0
     return v1
 
-    .line 149
+    .line 137
     :cond_0
     :try_start_0
     iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -510,11 +567,11 @@
 
     goto :goto_0
 
-    .line 150
+    .line 138
     :catch_0
     move-exception v0
 
-    .line 151
+    .line 139
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -527,23 +584,23 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 128
+    .line 116
     iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v2, :cond_0
 
-    .line 129
+    .line 117
     const-string v2, "AccessControlManager"
 
     const-string v3, "AccessControlService not running"
 
     invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 136
+    .line 124
     :goto_0
     return v1
 
-    .line 133
+    .line 121
     :cond_0
     :try_start_0
     iget-object v2, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -556,11 +613,11 @@
 
     goto :goto_0
 
-    .line 134
+    .line 122
     :catch_0
     move-exception v0
 
-    .line 135
+    .line 123
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -572,23 +629,23 @@
     .parameter "paramString"
 
     .prologue
-    .line 191
+    .line 179
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v1, :cond_0
 
-    .line 192
+    .line 180
     const-string v1, "AccessControlManager"
 
     const-string v2, "AccessControlService not running"
 
     invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 200
+    .line 188
     :goto_0
     return-void
 
-    .line 196
+    .line 184
     :cond_0
     :try_start_0
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -599,11 +656,11 @@
 
     goto :goto_0
 
-    .line 197
+    .line 185
     :catch_0
     move-exception v0
 
-    .line 198
+    .line 186
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -616,23 +673,23 @@
     .parameter "type"
 
     .prologue
-    .line 236
+    .line 224
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v1, :cond_0
 
-    .line 237
+    .line 225
     const-string v1, "AccessControlManager"
 
     const-string v2, "AccessControlService not running"
 
     invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 245
+    .line 233
     :goto_0
     return-void
 
-    .line 241
+    .line 229
     :cond_0
     :try_start_0
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -643,11 +700,11 @@
 
     goto :goto_0
 
-    .line 242
+    .line 230
     :catch_0
     move-exception v0
 
-    .line 243
+    .line 231
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -664,23 +721,23 @@
     .end annotation
 
     .prologue
-    .line 314
+    .line 318
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v1, :cond_0
 
-    .line 315
+    .line 319
     const-string v1, "AccessControlManager"
 
     const-string v2, "AccessControlService not running"
 
     invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 323
+    .line 327
     :goto_0
     return-void
 
-    .line 319
+    .line 323
     :cond_0
     :try_start_0
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -691,11 +748,11 @@
 
     goto :goto_0
 
-    .line 320
+    .line 324
     :catch_0
     move-exception v0
 
-    .line 321
+    .line 325
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -711,23 +768,23 @@
     .end annotation
 
     .prologue
-    .line 299
+    .line 303
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v1, :cond_0
 
-    .line 300
+    .line 304
     const-string v1, "AccessControlManager"
 
     const-string v2, "AccessControlService not running"
 
     invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 308
+    .line 312
     :goto_0
     return-void
 
-    .line 304
+    .line 308
     :cond_0
     :try_start_0
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -738,55 +795,11 @@
 
     goto :goto_0
 
-    .line 305
+    .line 309
     :catch_0
     move-exception v0
 
-    .line 306
-    .local v0, e:Landroid/os/RemoteException;
-    invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
-
-    goto :goto_0
-.end method
-
-.method public setAccessControl(Ljava/lang/String;I)V
-    .locals 3
-    .parameter "mPkg"
-    .parameter "type"
-
-    .prologue
-    .line 83
-    iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
-
-    if-nez v1, :cond_0
-
-    .line 84
-    const-string v1, "AccessControlManager"
-
-    const-string v2, "AccessControlService not running"
-
-    invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 92
-    :goto_0
-    return-void
-
-    .line 88
-    :cond_0
-    :try_start_0
-    iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
-
-    invoke-interface {v1, p1, p2}, Landroid/content/pm/IAccessControlManager;->setAccessControl(Ljava/lang/String;I)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-
-    goto :goto_0
-
-    .line 89
-    :catch_0
-    move-exception v0
-
-    .line 90
+    .line 310
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -798,23 +811,23 @@
     .parameter "paramBoolean"
 
     .prologue
-    .line 113
+    .line 101
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v1, :cond_0
 
-    .line 114
+    .line 102
     const-string v1, "AccessControlManager"
 
     const-string v2, "AccessControlService not running"
 
     invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 122
+    .line 110
     :goto_0
     return-void
 
-    .line 118
+    .line 106
     :cond_0
     :try_start_0
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -825,11 +838,11 @@
 
     goto :goto_0
 
-    .line 119
+    .line 107
     :catch_0
     move-exception v0
 
-    .line 120
+    .line 108
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
@@ -841,23 +854,23 @@
     .parameter "paramBoolean"
 
     .prologue
-    .line 98
+    .line 86
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
 
     if-nez v1, :cond_0
 
-    .line 99
+    .line 87
     const-string v1, "AccessControlManager"
 
     const-string v2, "AccessControlService not running"
 
     invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 107
+    .line 95
     :goto_0
     return-void
 
-    .line 103
+    .line 91
     :cond_0
     :try_start_0
     iget-object v1, p0, Landroid/content/pm/AccessControlManager;->mService:Landroid/content/pm/IAccessControlManager;
@@ -868,11 +881,11 @@
 
     goto :goto_0
 
-    .line 104
+    .line 92
     :catch_0
     move-exception v0
 
-    .line 105
+    .line 93
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 

@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 1161
+    .line 1206
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$10;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -39,7 +39,7 @@
     .parameter "msg"
 
     .prologue
-    .line 1165
+    .line 1210
     iget v0, p1, Landroid/os/Message;->what:I
 
     const/16 v1, 0x3e9
@@ -52,7 +52,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 1167
+    .line 1212
     :cond_0
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$10;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
@@ -60,24 +60,24 @@
 
     iput-object v1, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mUnlockTab:Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;
 
-    .line 1168
+    .line 1213
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$10;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragCallback:Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;
 
     if-eqz v0, :cond_1
 
-    .line 1169
+    .line 1214
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$10;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragCallback:Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;
 
     invoke-interface {v0}, Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;->onDragCancel()V
 
-    .line 1172
+    .line 1217
     :cond_1
     invoke-super {p0, p1}, Landroid/os/Handler;->handleMessage(Landroid/os/Message;)V
 
-    .line 1173
+    .line 1218
     return-void
 .end method

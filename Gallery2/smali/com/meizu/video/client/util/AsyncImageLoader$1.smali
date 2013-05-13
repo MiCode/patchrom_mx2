@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 54
+    .line 51
     iput-object p1, p0, Lcom/meizu/video/client/util/AsyncImageLoader$1;->this$0:Lcom/meizu/video/client/util/AsyncImageLoader;
 
     iput-object p2, p0, Lcom/meizu/video/client/util/AsyncImageLoader$1;->val$imageCallback:Lcom/meizu/video/client/util/AsyncImageLoader$ImageCallback;
@@ -49,23 +49,23 @@
     .parameter "message"
 
     .prologue
-    .line 56
+    .line 53
     iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v0, Lcom/meizu/video/client/util/AsyncImageLoader$CallBackEntity;
 
-    .line 57
+    .line 54
     .local v0, entry:Lcom/meizu/video/client/util/AsyncImageLoader$CallBackEntity;
     iget-object v1, p0, Lcom/meizu/video/client/util/AsyncImageLoader$1;->val$imageCallback:Lcom/meizu/video/client/util/AsyncImageLoader$ImageCallback;
 
-    iget-object v2, v0, Lcom/meizu/video/client/util/AsyncImageLoader$CallBackEntity;->bitmap:Landroid/graphics/Bitmap;
+    iget-object v2, v0, Lcom/meizu/video/client/util/AsyncImageLoader$CallBackEntity;->mBitmap:Landroid/graphics/Bitmap;
 
-    iget-object v3, v0, Lcom/meizu/video/client/util/AsyncImageLoader$CallBackEntity;->imageUrl:Ljava/lang/String;
+    iget-object v3, v0, Lcom/meizu/video/client/util/AsyncImageLoader$CallBackEntity;->mImageUrl:Ljava/lang/String;
 
     iget v4, p0, Lcom/meizu/video/client/util/AsyncImageLoader$1;->val$position:I
 
     invoke-interface {v1, v2, v3, v4}, Lcom/meizu/video/client/util/AsyncImageLoader$ImageCallback;->imageLoaded(Landroid/graphics/Bitmap;Ljava/lang/String;I)V
 
-    .line 58
+    .line 55
     return-void
 .end method

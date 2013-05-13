@@ -25,13 +25,13 @@
     .parameter "cr"
 
     .prologue
-    .line 1010
+    .line 1014
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
-    .line 1011
+    .line 1015
     invoke-direct {p0, p2}, Landroid/content/AsyncQueryHandler;-><init>(Landroid/content/ContentResolver;)V
 
-    .line 1012
+    .line 1016
     return-void
 .end method
 
@@ -48,25 +48,25 @@
 
     const/4 v2, 0x0
 
-    .line 1049
+    .line 1053
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 1066
+    .line 1070
     :goto_0
     invoke-super {p0, p1}, Landroid/content/AsyncQueryHandler;->handleMessage(Landroid/os/Message;)V
 
-    .line 1069
+    .line 1073
     :goto_1
     return-void
 
-    .line 1051
+    .line 1055
     :pswitch_0
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->mQueryHandler:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
-    invoke-static {v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$1700(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
+    invoke-static {v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2300(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
 
     move-result-object v0
 
@@ -86,12 +86,12 @@
 
     goto :goto_1
 
-    .line 1056
+    .line 1060
     :pswitch_1
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->mQueryHandler:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
-    invoke-static {v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$1700(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
+    invoke-static {v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2300(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
 
     move-result-object v0
 
@@ -113,11 +113,11 @@
 
     invoke-virtual/range {v0 .. v7}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;->startQuery(ILjava/lang/Object;Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1058
+    .line 1062
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->mQueryHandler:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
-    invoke-static {v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$1700(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
+    invoke-static {v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2300(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
 
     move-result-object v0
 
@@ -141,12 +141,12 @@
 
     goto :goto_1
 
-    .line 1062
+    .line 1066
     :pswitch_2
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->mQueryHandler:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
-    invoke-static {v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$1700(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
+    invoke-static {v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2300(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
 
     move-result-object v0
 
@@ -160,7 +160,7 @@
 
     aput-object v5, v4, v8
 
-    move-object v5, v2
+    const-string v5, "flagDisable is null OR flagDisable = 0"
 
     move-object v6, v2
 
@@ -170,9 +170,7 @@
 
     goto :goto_0
 
-    .line 1049
-    nop
-
+    .line 1053
     :pswitch_data_0
     .packed-switch 0x64
         :pswitch_0
@@ -190,15 +188,15 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 1016
+    .line 1020
     const/16 v1, 0xa
 
     if-ne p1, v1, :cond_1
 
-    .line 1017
+    .line 1021
     if-eqz p3, :cond_0
 
-    .line 1018
+    .line 1022
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     invoke-interface {p3}, Landroid/database/Cursor;->getCount()I
@@ -206,26 +204,26 @@
     move-result v2
 
     #calls: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->updateMissedCall(I)V
-    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$1800(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;I)V
+    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2400(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;I)V
 
-    .line 1019
+    .line 1023
     invoke-interface {p3}, Landroid/database/Cursor;->close()V
 
-    .line 1045
+    .line 1049
     :cond_0
     :goto_0
     return-void
 
-    .line 1021
+    .line 1025
     :cond_1
     const/16 v1, 0xb
 
     if-ne p1, v1, :cond_2
 
-    .line 1022
+    .line 1026
     if-eqz p3, :cond_0
 
-    .line 1023
+    .line 1027
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     invoke-interface {p3}, Landroid/database/Cursor;->getCount()I
@@ -233,66 +231,66 @@
     move-result v2
 
     #setter for: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->mSmsCount:I
-    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$1902(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;I)I
+    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2502(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;I)I
 
-    .line 1024
+    .line 1028
     invoke-interface {p3}, Landroid/database/Cursor;->close()V
 
     goto :goto_0
 
-    .line 1026
+    .line 1030
     :cond_2
     const/16 v1, 0xc
 
     if-ne p1, v1, :cond_4
 
-    .line 1027
+    .line 1031
     if-eqz p3, :cond_3
 
-    .line 1028
+    .line 1032
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     invoke-interface {p3}, Landroid/database/Cursor;->getCount()I
 
     move-result v2
 
-    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$1912(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;I)I
+    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2512(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;I)I
 
-    .line 1029
+    .line 1033
     invoke-interface {p3}, Landroid/database/Cursor;->close()V
 
-    .line 1031
+    .line 1035
     :cond_3
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->mSmsCount:I
-    invoke-static {v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$1900(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)I
+    invoke-static {v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2500(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)I
 
     move-result v2
 
     #calls: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->updateUnreadSms(I)V
-    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2000(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;I)V
+    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2600(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;I)V
 
-    .line 1032
+    .line 1036
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     #setter for: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->mSmsCount:I
-    invoke-static {v1, v3}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$1902(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;I)I
+    invoke-static {v1, v3}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2502(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;I)I
 
     goto :goto_0
 
-    .line 1033
+    .line 1037
     :cond_4
     const/16 v1, 0xd
 
     if-ne p1, v1, :cond_0
 
-    .line 1034
+    .line 1038
     if-eqz p3, :cond_0
 
-    .line 1036
+    .line 1040
     :try_start_0
     invoke-interface {p3}, Landroid/database/Cursor;->moveToFirst()Z
 
@@ -300,23 +298,23 @@
 
     if-eqz v1, :cond_5
 
-    .line 1037
+    .line 1041
     const/4 v1, 0x0
 
     invoke-interface {p3, v1}, Landroid/database/Cursor;->getInt(I)I
 
     move-result v0
 
-    .line 1038
+    .line 1042
     .local v0, count:I
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     #calls: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->updateNewEmail(I)V
-    invoke-static {v1, v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2100(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;I)V
+    invoke-static {v1, v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2700(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;I)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1041
+    .line 1045
     .end local v0           #count:I
     :cond_5
     invoke-interface {p3}, Landroid/database/Cursor;->close()V

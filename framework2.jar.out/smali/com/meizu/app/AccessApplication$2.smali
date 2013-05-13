@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 147
+    .line 152
     iput-object p1, p0, Lcom/meizu/app/AccessApplication$2;->this$0:Lcom/meizu/app/AccessApplication;
 
     iput-object p2, p0, Lcom/meizu/app/AccessApplication$2;->val$password:Ljava/lang/String;
@@ -46,7 +46,7 @@
     .locals 4
 
     .prologue
-    .line 150
+    .line 155
     iget-object v1, p0, Lcom/meizu/app/AccessApplication$2;->this$0:Lcom/meizu/app/AccessApplication;
 
     #getter for: Lcom/meizu/app/AccessApplication;->mLockPasswordUtils:Lcom/android/internal/widget/LockPatternUtils;
@@ -60,9 +60,9 @@
 
     move-result v1
 
-    if-eqz v1, :cond_1
+    if-eqz v1, :cond_2
 
-    .line 152
+    .line 157
     iget-object v1, p0, Lcom/meizu/app/AccessApplication$2;->this$0:Lcom/meizu/app/AccessApplication;
 
     #getter for: Lcom/meizu/app/AccessApplication;->acm:Landroid/content/pm/AccessControlManager;
@@ -79,7 +79,7 @@
 
     invoke-virtual {v1, v2}, Landroid/content/pm/AccessControlManager;->addAccessControlPass(Ljava/lang/String;)V
 
-    .line 153
+    .line 158
     iget-object v1, p0, Lcom/meizu/app/AccessApplication$2;->this$0:Lcom/meizu/app/AccessApplication;
 
     #getter for: Lcom/meizu/app/AccessApplication;->mComponentName:Landroid/content/ComponentName;
@@ -87,9 +87,9 @@
 
     move-result-object v1
 
-    if-eqz v1, :cond_0
+    if-eqz v1, :cond_1
 
-    .line 154
+    .line 159
     new-instance v0, Landroid/content/Intent;
 
     iget-object v1, p0, Lcom/meizu/app/AccessApplication$2;->this$0:Lcom/meizu/app/AccessApplication;
@@ -100,13 +100,13 @@
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Landroid/content/Intent;)V
 
-    .line 155
+    .line 160
     .local v0, intent:Landroid/content/Intent;
     const/high16 v1, 0x300
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 157
+    .line 162
     invoke-virtual {v0}, Landroid/content/Intent;->getFlags()I
 
     move-result v1
@@ -117,7 +117,22 @@
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
 
-    .line 158
+    .line 163
+    iget-object v1, p0, Lcom/meizu/app/AccessApplication$2;->this$0:Lcom/meizu/app/AccessApplication;
+
+    invoke-virtual {v1}, Lcom/meizu/app/AccessApplication;->isTaskRoot()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    .line 164
+    const/high16 v1, 0x1800
+
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+
+    .line 166
+    :cond_0
     iget-object v1, p0, Lcom/meizu/app/AccessApplication$2;->this$0:Lcom/meizu/app/AccessApplication;
 
     #getter for: Lcom/meizu/app/AccessApplication;->mComponentName:Landroid/content/ComponentName;
@@ -127,24 +142,24 @@
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
 
-    .line 159
+    .line 167
     iget-object v1, p0, Lcom/meizu/app/AccessApplication$2;->this$0:Lcom/meizu/app/AccessApplication;
 
     invoke-virtual {v1, v0}, Lcom/meizu/app/AccessApplication;->startActivity(Landroid/content/Intent;)V
 
-    .line 161
+    .line 169
     .end local v0           #intent:Landroid/content/Intent;
-    :cond_0
+    :cond_1
     iget-object v1, p0, Lcom/meizu/app/AccessApplication$2;->this$0:Lcom/meizu/app/AccessApplication;
 
     invoke-virtual {v1}, Lcom/meizu/app/AccessApplication;->finish()V
 
-    .line 167
+    .line 175
     :goto_0
     return-void
 
-    .line 163
-    :cond_1
+    .line 171
+    :cond_2
     iget-object v1, p0, Lcom/meizu/app/AccessApplication$2;->this$0:Lcom/meizu/app/AccessApplication;
 
     #getter for: Lcom/meizu/app/AccessApplication;->mLockDigitPanel:Lcom/meizu/widget/SystemLockView;
@@ -156,7 +171,7 @@
 
     invoke-virtual {v1, v2}, Lcom/meizu/widget/SystemLockView;->clearCell(Z)V
 
-    .line 164
+    .line 172
     iget-object v1, p0, Lcom/meizu/app/AccessApplication$2;->this$0:Lcom/meizu/app/AccessApplication;
 
     #getter for: Lcom/meizu/app/AccessApplication;->mLockDigitPanel:Lcom/meizu/widget/SystemLockView;
@@ -170,7 +185,7 @@
 
     move-result-object v2
 
-    const v3, 0x1040593
+    const v3, 0x104059c
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

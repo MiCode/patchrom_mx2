@@ -94,10 +94,11 @@
     <color name="lock_music_name_shadow_foreground">#ff000000</color>
     <color name="lock_battery_level_foreground">#72ffffff</color>
     <color name="background_light_mz">#fffafafa</color>
+    <color name="background_dark_mz">#ff000000</color>
     <color name="bright_foreground_light_mz">#ff333333</color>
-    <color name="bright_foreground_disabled_light_mz">#ffb2b2b2</color>
+    <color name="bright_foreground_disabled_light_mz">#ff999999</color>
     <color name="dim_foreground_light_mz">#ff999999</color>
-    <color name="dim_foreground_disabled_light_mz">#88999999</color>
+    <color name="dim_foreground_disabled_light_mz">#ff999999</color>
     <color name="foreground_mz_hight_light">#ff4c8599</color>
     <color name="hint_foreground_light_mz">#ffcccccc</color>
     <color name="mz_primary_text_color_light">#ff333333</color>
@@ -106,7 +107,8 @@
     <color name="mz_staic_hint_text_color_light">#ff999999</color>
     <color name="mz_highlighted_text_light">#992eb5e6</color>
     <color name="mz_highlighted_text_dark">#992eb5e6</color>
-    <color name="action_menu_textcolor_mz">#ff808080</color>
+    <color name="action_menu_textcolor_normal_mz">#ff808080</color>
+    <color name="action_menu_textcolor_disabled_mz">#7f999999</color>
     <color name="action_bar_title_color_mz">#ff4c8599</color>
     <color name="action_bar_right_text_color_mz">#ff333333</color>
     <color name="recipient_text_gray">#ff999999</color>
@@ -121,5 +123,10 @@
     <color name="picker_selected_color">#ff2eb5e6</color>
     <color name="picker_text_color">#ff4c8599</color>
     <color name="selection_button_text_color">#ff808080</color>
+    <color name="calendar_dayofweek_color">#ffffffff</color>
+    <color name="calendar_color">#ff333333</color>
+    <color name="calendar_shadowcolor">#36000000</color>
+    <color name="pinned_header_background">#e5fafafa</color>
+    <color name="pinned_header_text_color">#ff999999</color>
     <color name="config_defaultNotificationColor">#ff00ff00</color>
 </resources>

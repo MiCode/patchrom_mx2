@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 522
+    .line 563
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoPage$4;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,7 +42,7 @@
     .parameter "v"
 
     .prologue
-    .line 525
+    .line 566
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$4;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     iget-object v0, v0, Lcom/android/gallery3d/app/ActivityState;->mSelectionManager:Lcom/android/gallery3d/ui/SelectionManager;
@@ -53,18 +53,18 @@
 
     if-eqz v0, :cond_0
 
-    .line 526
+    .line 567
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$4;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     iget-object v0, v0, Lcom/android/gallery3d/app/ActivityState;->mSelectionManager:Lcom/android/gallery3d/ui/SelectionManager;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/SelectionManager;->deSelectAll()V
 
-    .line 530
+    .line 571
     :goto_0
     return-void
 
-    .line 528
+    .line 569
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$4;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 

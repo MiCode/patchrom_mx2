@@ -165,7 +165,7 @@
     const/4 v9, 0x0
 
     :goto_1
-    if-ge v9, v6, :cond_4
+    if-ge v9, v6, :cond_5
 
     .line 618
     :try_start_2
@@ -187,7 +187,7 @@
 
     move-result v29
 
-    if-eqz v29, :cond_3
+    if-eqz v29, :cond_4
 
     .line 622
     move-object/from16 v0, p0
@@ -357,7 +357,7 @@
 
     .local v10, i$:I
     :goto_4
-    if-ge v10, v15, :cond_b
+    if-ge v10, v15, :cond_c
 
     aget-object v28, v5, v10
 
@@ -386,18 +386,145 @@
 
     .line 675
     .local v23, st:I
-    if-nez v23, :cond_6
+    if-nez v23, :cond_7
 
     .line 676
     const-string v24, "externalvolumeremoved"
+
+    .line 687
+    :goto_5
+    if-eqz v24, :cond_3
+
+    if-eqz v14, :cond_3
+
+    .line 688
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/server/MountService$1$1;->this$1:Lcom/android/server/MountService$1;
+
+    move-object/from16 v29, v0
+
+    move-object/from16 v0, v29
+
+    iget-object v0, v0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
+
+    move-object/from16 v29, v0
+
+    #getter for: Lcom/android/server/MountService;->mDiskList:Ljava/util/ArrayList;
+    invoke-static/range {v29 .. v29}, Lcom/android/server/MountService;->access$1500(Lcom/android/server/MountService;)Ljava/util/ArrayList;
+
+    move-result-object v29
+
+    invoke-virtual/range {v29 .. v29}, Ljava/util/ArrayList;->size()I
+
+    move-result v29
+
+    add-int/lit8 v11, v29, 0x1
+
+    .line 689
+    .local v11, index:I
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/server/MountService$1$1;->this$1:Lcom/android/server/MountService$1;
+
+    move-object/from16 v29, v0
+
+    move-object/from16 v0, v29
+
+    iget-object v0, v0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
+
+    move-object/from16 v29, v0
+
+    #getter for: Lcom/android/server/MountService;->mContext:Landroid/content/Context;
+    invoke-static/range {v29 .. v29}, Lcom/android/server/MountService;->access$600(Lcom/android/server/MountService;)Landroid/content/Context;
+
+    move-result-object v29
+
+    const v30, 0x10405a0
+
+    const/16 v31, 0x1
+
+    move/from16 v0, v31
+
+    new-array v0, v0, [Ljava/lang/Object;
+
+    move-object/from16 v31, v0
+
+    const/16 v32, 0x0
+
+    invoke-static {v11}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v33
+
+    aput-object v33, v31, v32
+
+    invoke-virtual/range {v29 .. v31}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v17
+
+    .line 690
+    .local v17, name:Ljava/lang/String;
+    new-instance v12, Landroid/os/storage/DiskInfo;
+
+    move-object/from16 v0, v17
+
+    invoke-direct {v12, v0, v14}, Landroid/os/storage/DiskInfo;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 691
+    .local v12, info:Landroid/os/storage/DiskInfo;
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/server/MountService$1$1;->this$1:Lcom/android/server/MountService$1;
+
+    move-object/from16 v29, v0
+
+    move-object/from16 v0, v29
+
+    iget-object v0, v0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
+
+    move-object/from16 v29, v0
+
+    #getter for: Lcom/android/server/MountService;->mDiskList:Ljava/util/ArrayList;
+    invoke-static/range {v29 .. v29}, Lcom/android/server/MountService;->access$1500(Lcom/android/server/MountService;)Ljava/util/ArrayList;
+
+    move-result-object v29
+
+    move-object/from16 v0, v29
+
+    invoke-virtual {v0, v12}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 692
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/server/MountService$1$1;->this$1:Lcom/android/server/MountService$1;
+
+    move-object/from16 v29, v0
+
+    move-object/from16 v0, v29
+
+    iget-object v0, v0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
+
+    move-object/from16 v29, v0
+
+    move-object/from16 v0, v29
+
+    move-object/from16 v1, v17
+
+    move-object/from16 v2, v24
+
+    #calls: Lcom/android/server/MountService;->updateExternalVolumeState(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1, v2}, Lcom/android/server/MountService;->access$1600(Lcom/android/server/MountService;Ljava/lang/String;Ljava/lang/String;)V
     :try_end_5
     .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_1
 
     .line 670
-    :goto_5
+    .end local v11           #index:I
+    .end local v12           #info:Landroid/os/storage/DiskInfo;
+    .end local v17           #name:Ljava/lang/String;
+    :cond_3
     add-int/lit8 v10, v10, 0x1
 
-    goto :goto_4
+    goto/16 :goto_4
 
     .line 628
     .end local v5           #arr$:[Ljava/lang/String;
@@ -414,7 +541,7 @@
     .restart local v20       #path:Ljava/lang/String;
     .restart local v21       #paths:[Ljava/lang/String;
     .restart local v25       #states:[Ljava/lang/String;
-    :cond_3
+    :cond_4
     :try_start_6
     const-string v29, "shared"
 
@@ -465,7 +592,7 @@
     .line 645
     .end local v20           #path:Ljava/lang/String;
     .end local v24           #state:Ljava/lang/String;
-    :cond_4
+    :cond_5
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/server/MountService$1$1;->this$1:Lcom/android/server/MountService$1;
@@ -483,7 +610,7 @@
 
     move-result v29
 
-    if-eqz v29, :cond_5
+    if-eqz v29, :cond_6
 
     .line 646
     move-object/from16 v0, p0
@@ -516,7 +643,7 @@
     invoke-static/range {v29 .. v33}, Lcom/android/server/MountService;->access$800(Lcom/android/server/MountService;Ljava/lang/String;Ljava/lang/String;II)V
 
     .line 656
-    :cond_5
+    :cond_6
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/server/MountService$1$1;->this$1:Lcom/android/server/MountService$1;
@@ -591,14 +718,14 @@
     .restart local v26       #tok:[Ljava/lang/String;
     .restart local v27       #vols:[Ljava/lang/String;
     .restart local v28       #volstr:Ljava/lang/String;
-    :cond_6
+    :cond_7
     const/16 v29, 0x1
 
     move/from16 v0, v23
 
     move/from16 v1, v29
 
-    if-ne v0, v1, :cond_7
+    if-ne v0, v1, :cond_8
 
     .line 678
     :try_start_7
@@ -607,14 +734,14 @@
     goto/16 :goto_5
 
     .line 679
-    :cond_7
+    :cond_8
     const/16 v29, 0x4
 
     move/from16 v0, v23
 
     move/from16 v1, v29
 
-    if-ne v0, v1, :cond_9
+    if-ne v0, v1, :cond_a
 
     .line 680
     const-string v24, "externalvolumemounted"
@@ -630,7 +757,7 @@
 
     goto/16 :goto_5
 
-    .line 711
+    .line 713
     .end local v5           #arr$:[Ljava/lang/String;
     .end local v10           #i$:I
     .end local v14           #label:Ljava/lang/String;
@@ -643,7 +770,7 @@
     :catch_1
     move-exception v7
 
-    .line 712
+    .line 714
     .local v7, e:Ljava/lang/Exception;
     const-string v29, "MountService"
 
@@ -669,9 +796,9 @@
 
     invoke-static/range {v29 .. v30}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 714
+    .line 716
     .end local v7           #e:Ljava/lang/Exception;
-    :cond_8
+    :cond_9
     return-void
 
     .line 682
@@ -684,14 +811,14 @@
     .restart local v26       #tok:[Ljava/lang/String;
     .restart local v27       #vols:[Ljava/lang/String;
     .restart local v28       #volstr:Ljava/lang/String;
-    :cond_9
+    :cond_a
     const/16 v29, 0x5
 
     move/from16 v0, v23
 
     move/from16 v1, v29
 
-    if-ne v0, v1, :cond_a
+    if-ne v0, v1, :cond_b
 
     .line 683
     :try_start_8
@@ -700,7 +827,7 @@
     goto/16 :goto_5
 
     .line 685
-    :cond_a
+    :cond_b
     new-instance v29, Ljava/lang/Exception;
 
     const-string v30, "Unexpected state %d"
@@ -729,137 +856,10 @@
 
     throw v29
 
-    .line 689
+    .line 697
     .end local v23           #st:I
     .end local v26           #tok:[Ljava/lang/String;
     .end local v28           #volstr:Ljava/lang/String;
-    :cond_b
-    if-eqz v24, :cond_c
-
-    if-eqz v14, :cond_c
-
-    .line 690
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/server/MountService$1$1;->this$1:Lcom/android/server/MountService$1;
-
-    move-object/from16 v29, v0
-
-    move-object/from16 v0, v29
-
-    iget-object v0, v0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
-
-    move-object/from16 v29, v0
-
-    #getter for: Lcom/android/server/MountService;->mDiskList:Ljava/util/ArrayList;
-    invoke-static/range {v29 .. v29}, Lcom/android/server/MountService;->access$1500(Lcom/android/server/MountService;)Ljava/util/ArrayList;
-
-    move-result-object v29
-
-    invoke-virtual/range {v29 .. v29}, Ljava/util/ArrayList;->size()I
-
-    move-result v29
-
-    add-int/lit8 v11, v29, 0x1
-
-    .line 691
-    .local v11, index:I
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/server/MountService$1$1;->this$1:Lcom/android/server/MountService$1;
-
-    move-object/from16 v29, v0
-
-    move-object/from16 v0, v29
-
-    iget-object v0, v0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
-
-    move-object/from16 v29, v0
-
-    #getter for: Lcom/android/server/MountService;->mContext:Landroid/content/Context;
-    invoke-static/range {v29 .. v29}, Lcom/android/server/MountService;->access$600(Lcom/android/server/MountService;)Landroid/content/Context;
-
-    move-result-object v29
-
-    const v30, 0x1040597
-
-    const/16 v31, 0x1
-
-    move/from16 v0, v31
-
-    new-array v0, v0, [Ljava/lang/Object;
-
-    move-object/from16 v31, v0
-
-    const/16 v32, 0x0
-
-    invoke-static {v11}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v33
-
-    aput-object v33, v31, v32
-
-    invoke-virtual/range {v29 .. v31}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v17
-
-    .line 692
-    .local v17, name:Ljava/lang/String;
-    new-instance v12, Landroid/os/storage/DiskInfo;
-
-    move-object/from16 v0, v17
-
-    invoke-direct {v12, v0, v14}, Landroid/os/storage/DiskInfo;-><init>(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 693
-    .local v12, info:Landroid/os/storage/DiskInfo;
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/server/MountService$1$1;->this$1:Lcom/android/server/MountService$1;
-
-    move-object/from16 v29, v0
-
-    move-object/from16 v0, v29
-
-    iget-object v0, v0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
-
-    move-object/from16 v29, v0
-
-    #getter for: Lcom/android/server/MountService;->mDiskList:Ljava/util/ArrayList;
-    invoke-static/range {v29 .. v29}, Lcom/android/server/MountService;->access$1500(Lcom/android/server/MountService;)Ljava/util/ArrayList;
-
-    move-result-object v29
-
-    move-object/from16 v0, v29
-
-    invoke-virtual {v0, v12}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 694
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/server/MountService$1$1;->this$1:Lcom/android/server/MountService$1;
-
-    move-object/from16 v29, v0
-
-    move-object/from16 v0, v29
-
-    iget-object v0, v0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
-
-    move-object/from16 v29, v0
-
-    move-object/from16 v0, v29
-
-    move-object/from16 v1, v17
-
-    move-object/from16 v2, v24
-
-    #calls: Lcom/android/server/MountService;->updateExternalVolumeState(Ljava/lang/String;Ljava/lang/String;)V
-    invoke-static {v0, v1, v2}, Lcom/android/server/MountService;->access$1600(Lcom/android/server/MountService;Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 697
-    .end local v11           #index:I
-    .end local v12           #info:Landroid/os/storage/DiskInfo;
-    .end local v17           #name:Ljava/lang/String;
     :cond_c
     move-object/from16 v0, p0
 
@@ -917,7 +917,7 @@
     const/4 v10, 0x0
 
     :goto_6
-    if-ge v10, v15, :cond_8
+    if-ge v10, v15, :cond_9
 
     aget-object v19, v5, v10
 
@@ -973,6 +973,42 @@
     if-eq v11, v0, :cond_d
 
     .line 708
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/server/MountService$1$1;->this$1:Lcom/android/server/MountService$1;
+
+    move-object/from16 v29, v0
+
+    move-object/from16 v0, v29
+
+    iget-object v0, v0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
+
+    move-object/from16 v29, v0
+
+    #getter for: Lcom/android/server/MountService;->mDiskList:Ljava/util/ArrayList;
+    invoke-static/range {v29 .. v29}, Lcom/android/server/MountService;->access$1500(Lcom/android/server/MountService;)Ljava/util/ArrayList;
+
+    move-result-object v29
+
+    move-object/from16 v0, v29
+
+    invoke-virtual {v0, v11}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v29
+
+    check-cast v29, Landroid/os/storage/DiskInfo;
+
+    move-object/from16 v0, v29
+
+    move-object/from16 v1, v16
+
+    invoke-virtual {v0, v1}, Landroid/os/storage/DiskInfo;->findPartition(Ljava/lang/String;)I
+
+    move-result v29
+
+    if-gez v29, :cond_d
+
+    .line 709
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/server/MountService$1$1;->this$1:Lcom/android/server/MountService$1;

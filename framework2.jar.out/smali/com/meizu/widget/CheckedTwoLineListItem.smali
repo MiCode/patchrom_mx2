@@ -57,7 +57,7 @@
     invoke-direct {p0, p1, p2, p3}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
     .line 52
-    const v0, 0x1090037
+    const v0, 0x1090038
 
     invoke-static {p1, v0, p0}, Lcom/meizu/widget/CheckedTwoLineListItem;->inflate(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
 

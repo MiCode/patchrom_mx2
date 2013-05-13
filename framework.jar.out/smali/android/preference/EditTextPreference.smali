@@ -67,7 +67,9 @@
     .line 66
     new-instance v0, Landroid/widget/EditText;
 
-    invoke-direct {v0, p1, p2}, Landroid/widget/EditText;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    const v1, 0x10103bd
+
+    invoke-direct {v0, p1, p2, v1}, Landroid/widget/EditText;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
     iput-object v0, p0, Landroid/preference/EditTextPreference;->mEditText:Landroid/widget/EditText;
 
@@ -135,7 +137,7 @@
 
     .prologue
     .line 143
-    const v1, 0x1020393
+    const v1, 0x1020394
 
     invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 

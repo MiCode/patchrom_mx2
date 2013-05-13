@@ -31,13 +31,13 @@
     .locals 0
 
     .prologue
-    .line 3526
+    .line 3791
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
 
-    .line 3527
+    .line 3792
     invoke-virtual {p0}, Lcom/android/camera/VideoCamera$VideoNamer;->start()V
 
-    .line 3528
+    .line 3793
     return-void
 .end method
 
@@ -47,16 +47,16 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 3589
+    .line 3854
     iget-object v0, p0, Lcom/android/camera/VideoCamera$VideoNamer;->mUri:Landroid/net/Uri;
 
     if-nez v0, :cond_0
 
-    .line 3592
+    .line 3857
     :goto_0
     return-void
 
-    .line 3590
+    .line 3855
     :cond_0
     iget-object v0, p0, Lcom/android/camera/VideoCamera$VideoNamer;->mResolver:Landroid/content/ContentResolver;
 
@@ -64,7 +64,7 @@
 
     invoke-virtual {v0, v1, v2, v2}, Landroid/content/ContentResolver;->delete(Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I
 
-    .line 3591
+    .line 3856
     iput-object v2, p0, Lcom/android/camera/VideoCamera$VideoNamer;->mUri:Landroid/net/Uri;
 
     goto :goto_0
@@ -74,14 +74,14 @@
     .locals 3
 
     .prologue
-    .line 3583
+    .line 3848
     const-string v1, "content://media/external/video/media"
 
     invoke-static {v1}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
-    .line 3584
+    .line 3849
     .local v0, videoTable:Landroid/net/Uri;
     iget-object v1, p0, Lcom/android/camera/VideoCamera$VideoNamer;->mResolver:Landroid/content/ContentResolver;
 
@@ -93,7 +93,7 @@
 
     iput-object v1, p0, Lcom/android/camera/VideoCamera$VideoNamer;->mUri:Landroid/net/Uri;
 
-    .line 3585
+    .line 3850
     return-void
 .end method
 
@@ -103,7 +103,7 @@
     .locals 1
 
     .prologue
-    .line 3577
+    .line 3842
     monitor-enter p0
 
     const/4 v0, 0x1
@@ -111,17 +111,17 @@
     :try_start_0
     iput-boolean v0, p0, Lcom/android/camera/VideoCamera$VideoNamer;->mStop:Z
 
-    .line 3578
+    .line 3843
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 3579
+    .line 3844
     monitor-exit p0
 
     return-void
 
-    .line 3577
+    .line 3842
     :catchall_0
     move-exception v0
 
@@ -134,7 +134,7 @@
     .locals 2
 
     .prologue
-    .line 3542
+    .line 3807
     monitor-enter p0
 
     :goto_0
@@ -145,7 +145,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 3544
+    .line 3809
     :try_start_1
     invoke-virtual {p0}, Ljava/lang/Object;->wait()V
     :try_end_1
@@ -154,18 +154,18 @@
 
     goto :goto_0
 
-    .line 3545
+    .line 3810
     :catch_0
     move-exception v1
 
     goto :goto_0
 
-    .line 3549
+    .line 3814
     :cond_0
     :try_start_2
     iget-object v0, p0, Lcom/android/camera/VideoCamera$VideoNamer;->mUri:Landroid/net/Uri;
 
-    .line 3550
+    .line 3815
     .local v0, uri:Landroid/net/Uri;
     const/4 v1, 0x0
 
@@ -173,12 +173,12 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 3551
+    .line 3816
     monitor-exit p0
 
     return-object v0
 
-    .line 3542
+    .line 3807
     .end local v0           #uri:Landroid/net/Uri;
     :catchall_0
     move-exception v1
@@ -194,7 +194,7 @@
     .parameter "values"
 
     .prologue
-    .line 3533
+    .line 3798
     monitor-enter p0
 
     const/4 v0, 0x1
@@ -202,27 +202,27 @@
     :try_start_0
     iput-boolean v0, p0, Lcom/android/camera/VideoCamera$VideoNamer;->mRequestPending:Z
 
-    .line 3534
+    .line 3799
     iput-object p1, p0, Lcom/android/camera/VideoCamera$VideoNamer;->mResolver:Landroid/content/ContentResolver;
 
-    .line 3535
+    .line 3800
     new-instance v0, Landroid/content/ContentValues;
 
     invoke-direct {v0, p2}, Landroid/content/ContentValues;-><init>(Landroid/content/ContentValues;)V
 
     iput-object v0, p0, Lcom/android/camera/VideoCamera$VideoNamer;->mValues:Landroid/content/ContentValues;
 
-    .line 3536
+    .line 3801
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 3537
+    .line 3802
     monitor-exit p0
 
     return-void
 
-    .line 3533
+    .line 3798
     :catchall_0
     move-exception v0
 
@@ -235,7 +235,7 @@
     .locals 1
 
     .prologue
-    .line 3558
+    .line 3823
     monitor-enter p0
 
     :goto_0
@@ -244,17 +244,17 @@
 
     if-eqz v0, :cond_0
 
-    .line 3572
+    .line 3837
     invoke-direct {p0}, Lcom/android/camera/VideoCamera$VideoNamer;->cleanOldUri()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 3573
+    .line 3838
     monitor-exit p0
 
     return-void
 
-    .line 3559
+    .line 3824
     :cond_0
     :try_start_1
     iget-boolean v0, p0, Lcom/android/camera/VideoCamera$VideoNamer;->mRequestPending:Z
@@ -263,7 +263,7 @@
 
     if-nez v0, :cond_1
 
-    .line 3561
+    .line 3826
     :try_start_2
     invoke-virtual {p0}, Ljava/lang/Object;->wait()V
     :try_end_2
@@ -272,33 +272,33 @@
 
     goto :goto_0
 
-    .line 3562
+    .line 3827
     :catch_0
     move-exception v0
 
     goto :goto_0
 
-    .line 3567
+    .line 3832
     :cond_1
     :try_start_3
     invoke-direct {p0}, Lcom/android/camera/VideoCamera$VideoNamer;->cleanOldUri()V
 
-    .line 3568
+    .line 3833
     invoke-direct {p0}, Lcom/android/camera/VideoCamera$VideoNamer;->generateUri()V
 
-    .line 3569
+    .line 3834
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/camera/VideoCamera$VideoNamer;->mRequestPending:Z
 
-    .line 3570
+    .line 3835
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     goto :goto_0
 
-    .line 3558
+    .line 3823
     :catchall_0
     move-exception v0
 

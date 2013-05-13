@@ -241,6 +241,8 @@
 
 .field public static final ic_secure:I = 0x1080061
 
+.field public static final ic_tab_share:I = 0x10800bb
+
 .field public static final list_selector_background:I = 0x1080062
 
 .field public static final menu_frame:I = 0x1080063
@@ -398,7 +400,7 @@
     .locals 0
 
     .prologue
-    .line 10068
+    .line 10093
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void

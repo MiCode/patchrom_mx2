@@ -41,7 +41,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f090120
+    const v1, 0x7f090223
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -58,7 +58,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f08004f
+    const v1, 0x7f080055
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getColor(I)I
 
@@ -175,7 +175,7 @@
 .end method
 
 .method public layoutHudViewComponent(ZIIII)V
-    .locals 9
+    .locals 12
     .parameter "changeSize"
     .parameter "left"
     .parameter "top"
@@ -186,160 +186,204 @@
     .line 47
     if-nez p1, :cond_0
 
-    .line 69
+    .line 72
     :goto_0
     return-void
 
     .line 52
     :cond_0
-    sub-int v7, p4, p2
+    iget-object v10, p0, Lcom/android/gallery3d/ui/NoItemView;->mContext:Lcom/android/gallery3d/app/GalleryContext;
 
-    sub-int v8, p5, p3
+    invoke-interface {v10}, Lcom/android/gallery3d/app/GalleryContext;->getAndroidContext()Landroid/content/Context;
 
-    if-le v7, v8, :cond_1
+    move-result-object v10
 
-    const/4 v2, 0x1
+    invoke-virtual {v10}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v10
+
+    const v11, 0x7f090224
+
+    invoke-virtual {v10, v11}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    .line 53
+    .local v1, iconMarginTop:I
+    iget-object v10, p0, Lcom/android/gallery3d/ui/NoItemView;->mContext:Lcom/android/gallery3d/app/GalleryContext;
+
+    invoke-interface {v10}, Lcom/android/gallery3d/app/GalleryContext;->getAndroidContext()Landroid/content/Context;
+
+    move-result-object v10
+
+    invoke-virtual {v10}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v10
+
+    const v11, 0x7f090225
+
+    invoke-virtual {v10, v11}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v2
 
     .line 54
-    .local v2, landscape:Z
-    :goto_1
-    iget-object v7, p0, Lcom/android/gallery3d/ui/NoItemView;->mIcon:Lcom/android/gallery3d/ui/HudView$HudViewComponent;
+    .local v2, iconMarginTopLand:I
+    iget-object v10, p0, Lcom/android/gallery3d/ui/NoItemView;->mContext:Lcom/android/gallery3d/app/GalleryContext;
 
-    invoke-virtual {v7}, Lcom/android/gallery3d/ui/HudView$HudViewComponent;->getTexture()Lcom/android/gallery3d/ui/Texture;
+    invoke-interface {v10}, Lcom/android/gallery3d/app/GalleryContext;->getAndroidContext()Landroid/content/Context;
 
-    move-result-object v7
+    move-result-object v10
 
-    invoke-interface {v7}, Lcom/android/gallery3d/ui/Texture;->getWidth()I
+    invoke-virtual {v10}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    move-result v6
+    move-result-object v10
+
+    const v11, 0x7f090226
+
+    invoke-virtual {v10, v11}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v8
 
     .line 55
-    .local v6, textureWidth:I
-    iget-object v7, p0, Lcom/android/gallery3d/ui/NoItemView;->mIcon:Lcom/android/gallery3d/ui/HudView$HudViewComponent;
+    .local v8, textureMarginTop:I
+    sub-int v10, p4, p2
 
-    invoke-virtual {v7}, Lcom/android/gallery3d/ui/HudView$HudViewComponent;->getTexture()Lcom/android/gallery3d/ui/Texture;
+    sub-int v11, p5, p3
 
-    move-result-object v7
+    if-le v10, v11, :cond_1
 
-    invoke-interface {v7}, Lcom/android/gallery3d/ui/Texture;->getHeight()I
-
-    move-result v5
-
-    .line 56
-    .local v5, textureHeight:I
-    sub-int v7, p4, p2
-
-    sub-int/2addr v7, v6
-
-    div-int/lit8 v1, v7, 0x2
+    const/4 v4, 0x1
 
     .line 57
-    .local v1, l:I
-    add-int v3, v1, v6
+    .local v4, landscape:Z
+    :goto_1
+    iget-object v10, p0, Lcom/android/gallery3d/ui/NoItemView;->mIcon:Lcom/android/gallery3d/ui/HudView$HudViewComponent;
+
+    invoke-virtual {v10}, Lcom/android/gallery3d/ui/HudView$HudViewComponent;->getTexture()Lcom/android/gallery3d/ui/Texture;
+
+    move-result-object v10
+
+    invoke-interface {v10}, Lcom/android/gallery3d/ui/Texture;->getWidth()I
+
+    move-result v9
 
     .line 58
-    .local v3, r:I
-    if-eqz v2, :cond_2
+    .local v9, textureWidth:I
+    iget-object v10, p0, Lcom/android/gallery3d/ui/NoItemView;->mIcon:Lcom/android/gallery3d/ui/HudView$HudViewComponent;
 
-    const/high16 v7, 0x42bd
+    invoke-virtual {v10}, Lcom/android/gallery3d/ui/HudView$HudViewComponent;->getTexture()Lcom/android/gallery3d/ui/Texture;
 
-    :goto_2
-    invoke-static {v7}, Lcom/android/camera/Util;->dpToPixel(F)I
+    move-result-object v10
 
-    move-result v4
-
-    .line 59
-    .local v4, t:I
-    add-int v0, v4, v5
-
-    .line 60
-    .local v0, b:I
-    iget-object v7, p0, Lcom/android/gallery3d/ui/NoItemView;->mIcon:Lcom/android/gallery3d/ui/HudView$HudViewComponent;
-
-    invoke-virtual {v7}, Lcom/android/gallery3d/ui/HudView$HudViewComponent;->getDisplayRect()Landroid/graphics/Rect;
-
-    move-result-object v7
-
-    invoke-virtual {v7, v1, v4, v3, v0}, Landroid/graphics/Rect;->set(IIII)V
-
-    .line 61
-    const/4 v7, 0x7
-
-    invoke-static {v7}, Lcom/android/camera/Util;->dpToPixel(I)I
+    invoke-interface {v10}, Lcom/android/gallery3d/ui/Texture;->getHeight()I
 
     move-result v7
 
-    add-int/2addr v7, v5
+    .line 59
+    .local v7, textureHeight:I
+    sub-int v10, p4, p2
 
-    add-int/2addr v4, v7
+    sub-int/2addr v10, v9
+
+    div-int/lit8 v3, v10, 0x2
+
+    .line 60
+    .local v3, l:I
+    add-int v5, v3, v9
+
+    .line 61
+    .local v5, r:I
+    if-eqz v4, :cond_2
+
+    move v6, v2
+
+    .line 62
+    .local v6, t:I
+    :goto_2
+    add-int v0, v6, v7
 
     .line 63
-    iget-object v7, p0, Lcom/android/gallery3d/ui/NoItemView;->mInfo:Lcom/android/gallery3d/ui/HudView$HudViewComponent;
+    .local v0, b:I
+    iget-object v10, p0, Lcom/android/gallery3d/ui/NoItemView;->mIcon:Lcom/android/gallery3d/ui/HudView$HudViewComponent;
 
-    invoke-virtual {v7}, Lcom/android/gallery3d/ui/HudView$HudViewComponent;->getTexture()Lcom/android/gallery3d/ui/Texture;
+    invoke-virtual {v10}, Lcom/android/gallery3d/ui/HudView$HudViewComponent;->getDisplayRect()Landroid/graphics/Rect;
 
-    move-result-object v7
+    move-result-object v10
 
-    invoke-interface {v7}, Lcom/android/gallery3d/ui/Texture;->getWidth()I
-
-    move-result v6
+    invoke-virtual {v10, v3, v6, v5, v0}, Landroid/graphics/Rect;->set(IIII)V
 
     .line 64
-    iget-object v7, p0, Lcom/android/gallery3d/ui/NoItemView;->mInfo:Lcom/android/gallery3d/ui/HudView$HudViewComponent;
+    add-int v10, v7, v8
 
-    invoke-virtual {v7}, Lcom/android/gallery3d/ui/HudView$HudViewComponent;->getTexture()Lcom/android/gallery3d/ui/Texture;
-
-    move-result-object v7
-
-    invoke-interface {v7}, Lcom/android/gallery3d/ui/Texture;->getHeight()I
-
-    move-result v5
-
-    .line 65
-    sub-int v7, p4, p2
-
-    sub-int/2addr v7, v6
-
-    div-int/lit8 v1, v7, 0x2
+    add-int/2addr v6, v10
 
     .line 66
-    add-int v3, v1, v6
+    iget-object v10, p0, Lcom/android/gallery3d/ui/NoItemView;->mInfo:Lcom/android/gallery3d/ui/HudView$HudViewComponent;
+
+    invoke-virtual {v10}, Lcom/android/gallery3d/ui/HudView$HudViewComponent;->getTexture()Lcom/android/gallery3d/ui/Texture;
+
+    move-result-object v10
+
+    invoke-interface {v10}, Lcom/android/gallery3d/ui/Texture;->getWidth()I
+
+    move-result v9
 
     .line 67
-    add-int v0, v4, v5
+    iget-object v10, p0, Lcom/android/gallery3d/ui/NoItemView;->mInfo:Lcom/android/gallery3d/ui/HudView$HudViewComponent;
+
+    invoke-virtual {v10}, Lcom/android/gallery3d/ui/HudView$HudViewComponent;->getTexture()Lcom/android/gallery3d/ui/Texture;
+
+    move-result-object v10
+
+    invoke-interface {v10}, Lcom/android/gallery3d/ui/Texture;->getHeight()I
+
+    move-result v7
 
     .line 68
-    iget-object v7, p0, Lcom/android/gallery3d/ui/NoItemView;->mInfo:Lcom/android/gallery3d/ui/HudView$HudViewComponent;
+    sub-int v10, p4, p2
 
-    invoke-virtual {v7}, Lcom/android/gallery3d/ui/HudView$HudViewComponent;->getDisplayRect()Landroid/graphics/Rect;
+    sub-int/2addr v10, v9
 
-    move-result-object v7
+    div-int/lit8 v3, v10, 0x2
 
-    invoke-virtual {v7, v1, v4, v3, v0}, Landroid/graphics/Rect;->set(IIII)V
+    .line 69
+    add-int v5, v3, v9
 
-    goto :goto_0
+    .line 70
+    add-int v0, v6, v7
 
-    .line 52
+    .line 71
+    iget-object v10, p0, Lcom/android/gallery3d/ui/NoItemView;->mInfo:Lcom/android/gallery3d/ui/HudView$HudViewComponent;
+
+    invoke-virtual {v10}, Lcom/android/gallery3d/ui/HudView$HudViewComponent;->getDisplayRect()Landroid/graphics/Rect;
+
+    move-result-object v10
+
+    invoke-virtual {v10, v3, v6, v5, v0}, Landroid/graphics/Rect;->set(IIII)V
+
+    goto/16 :goto_0
+
+    .line 55
     .end local v0           #b:I
-    .end local v1           #l:I
-    .end local v2           #landscape:Z
-    .end local v3           #r:I
-    .end local v4           #t:I
-    .end local v5           #textureHeight:I
-    .end local v6           #textureWidth:I
+    .end local v3           #l:I
+    .end local v4           #landscape:Z
+    .end local v5           #r:I
+    .end local v6           #t:I
+    .end local v7           #textureHeight:I
+    .end local v9           #textureWidth:I
     :cond_1
-    const/4 v2, 0x0
+    const/4 v4, 0x0
 
     goto :goto_1
 
-    .line 58
-    .restart local v1       #l:I
-    .restart local v2       #landscape:Z
-    .restart local v3       #r:I
-    .restart local v5       #textureHeight:I
-    .restart local v6       #textureWidth:I
+    .restart local v3       #l:I
+    .restart local v4       #landscape:Z
+    .restart local v5       #r:I
+    .restart local v7       #textureHeight:I
+    .restart local v9       #textureWidth:I
     :cond_2
-    const/high16 v7, 0x432f
+    move v6, v1
 
+    .line 61
     goto :goto_2
 .end method

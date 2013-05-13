@@ -12,7 +12,7 @@
     .locals 1
 
     .prologue
-    .line 37
+    .line 35
     const-string v0, "JsonParse"
 
     sput-object v0, Lcom/meizu/video/client/util/JsonParse;->TAG:Ljava/lang/String;
@@ -24,7 +24,7 @@
     .locals 0
 
     .prologue
-    .line 35
+    .line 33
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -39,10 +39,10 @@
 
     const/4 v6, 0x0
 
-    .line 2500
+    .line 2503
     const-string v9, ""
 
-    .line 2502
+    .line 2505
     const-string v0, "86"
 
     invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -51,10 +51,10 @@
 
     if-eqz v0, :cond_3
 
-    .line 2503
+    .line 2506
     const/4 v8, 0x2
 
-    .line 2505
+    .line 2508
     :goto_0
     const-string v1, "0"
 
@@ -72,12 +72,12 @@
 
     move-result-object v0
 
-    .line 2507
+    .line 2510
     invoke-static {v0}, Lcom/meizu/video/client/util/HttpUtil;->doGet(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 2508
+    .line 2511
     if-eqz v0, :cond_0
 
     const-string v1, ""
@@ -88,13 +88,13 @@
 
     if-nez v1, :cond_0
 
-    .line 2510
+    .line 2513
     :try_start_0
     new-instance v1, Lorg/json/JSONObject;
 
     invoke-direct {v1, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 2511
+    .line 2514
     const-string v0, "body"
 
     invoke-virtual {v1, v0}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -103,17 +103,17 @@
 
     if-eqz v0, :cond_2
 
-    .line 2512
+    .line 2515
     const-string v0, "body"
 
     invoke-virtual {v1, v0}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
 
     move-result-object v0
 
-    .line 2513
+    .line 2516
     if-eqz v0, :cond_2
 
-    .line 2514
+    .line 2517
     const-string v1, "data"
 
     invoke-virtual {v0, v1}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -122,14 +122,14 @@
 
     if-eqz v1, :cond_2
 
-    .line 2515
+    .line 2518
     const-string v1, "data"
 
     invoke-virtual {v0, v1}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v0
 
-    .line 2517
+    .line 2520
     if-eqz v0, :cond_2
 
     invoke-virtual {v0}, Lorg/json/JSONArray;->length()I
@@ -138,7 +138,7 @@
 
     if-lez v1, :cond_2
 
-    .line 2518
+    .line 2521
     :goto_1
     invoke-virtual {v0}, Lorg/json/JSONArray;->length()I
 
@@ -146,15 +146,15 @@
 
     if-ge v6, v1, :cond_2
 
-    .line 2519
+    .line 2522
     invoke-virtual {v0, v6}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v1
 
-    .line 2521
+    .line 2524
     if-eqz v1, :cond_1
 
-    .line 2522
+    .line 2525
     const-string v2, "icon"
 
     invoke-virtual {v1, v2}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -163,7 +163,7 @@
 
     if-eqz v2, :cond_1
 
-    .line 2523
+    .line 2526
     const-string v2, "icon"
 
     invoke-virtual {v1, v2}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -190,7 +190,7 @@
 
     if-nez v2, :cond_1
 
-    .line 2526
+    .line 2529
     const-string v0, "icon"
 
     invoke-virtual {v1, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -202,18 +202,18 @@
     :goto_2
     move-object v9, v0
 
-    .line 2541
+    .line 2543
     :cond_0
     :goto_3
     return-object v9
 
-    .line 2518
+    .line 2521
     :cond_1
     add-int/lit8 v6, v6, 0x1
 
     goto :goto_1
 
-    .line 2536
+    .line 2539
     :catch_0
     move-exception v0
 
@@ -246,12 +246,12 @@
     .end annotation
 
     .prologue
-    .line 668
+    .line 666
     new-instance v6, Ljava/util/ArrayList;
 
     invoke-direct {v6}, Ljava/util/ArrayList;-><init>()V
 
-    .line 670
+    .line 668
     .local v6, channelListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/ChanelEntity;>;"
     :try_start_0
     new-instance v8, Lorg/json/JSONObject;
@@ -260,14 +260,14 @@
 
     invoke-direct {v8, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 671
+    .line 669
     .local v8, channelToalJson:Lorg/json/JSONObject;
     if-eqz v8, :cond_2
 
-    .line 672
+    .line 670
     const-string v9, ""
 
-    .line 673
+    .line 671
     .local v9, code:Ljava/lang/String;
     const-string v19, "code"
 
@@ -279,7 +279,7 @@
 
     if-eqz v19, :cond_0
 
-    .line 674
+    .line 672
     const-string v19, "code"
 
     move-object/from16 v0, v19
@@ -288,15 +288,15 @@
 
     move-result-object v9
 
-    .line 676
+    .line 674
     :cond_0
     const-string v16, ""
 
-    .line 677
+    .line 675
     .local v16, msg:Ljava/lang/String;
     const-string v10, ""
 
-    .line 678
+    .line 676
     .local v10, data:Ljava/lang/String;
     const-string v19, "-1"
 
@@ -308,7 +308,7 @@
 
     if-eqz v19, :cond_3
 
-    .line 679
+    .line 677
     const-string v19, "msg"
 
     move-object/from16 v0, v19
@@ -319,7 +319,7 @@
 
     if-eqz v19, :cond_1
 
-    .line 680
+    .line 678
     const-string v19, "msg"
 
     move-object/from16 v0, v19
@@ -328,7 +328,7 @@
 
     move-result-object v16
 
-    .line 682
+    .line 680
     :cond_1
     const-string v19, "data"
 
@@ -340,7 +340,7 @@
 
     if-eqz v19, :cond_2
 
-    .line 683
+    .line 681
     const-string v19, "data"
 
     move-object/from16 v0, v19
@@ -349,7 +349,7 @@
 
     move-result-object v10
 
-    .line 745
+    .line 743
     .end local v8           #channelToalJson:Lorg/json/JSONObject;
     .end local v9           #code:Ljava/lang/String;
     .end local v10           #data:Ljava/lang/String;
@@ -358,7 +358,7 @@
     :goto_0
     return-object v6
 
-    .line 685
+    .line 683
     .restart local v8       #channelToalJson:Lorg/json/JSONObject;
     .restart local v9       #code:Ljava/lang/String;
     .restart local v10       #data:Ljava/lang/String;
@@ -374,7 +374,7 @@
 
     if-eqz v19, :cond_2
 
-    .line 686
+    .line 684
     const-string v19, "msg"
 
     move-object/from16 v0, v19
@@ -385,7 +385,7 @@
 
     if-eqz v19, :cond_4
 
-    .line 687
+    .line 685
     const-string v19, "msg"
 
     move-object/from16 v0, v19
@@ -394,15 +394,15 @@
 
     move-result-object v7
 
-    .line 688
+    .line 686
     .local v7, channelMsgJson:Lorg/json/JSONObject;
     const-string v18, ""
 
-    .line 689
+    .line 687
     .local v18, total:Ljava/lang/String;
     if-eqz v7, :cond_4
 
-    .line 690
+    .line 688
     const-string v19, "total"
 
     move-object/from16 v0, v19
@@ -413,14 +413,14 @@
 
     if-eqz v19, :cond_4
 
-    .line 691
+    .line 689
     const-string v19, "total"
 
     move-object/from16 v0, v19
 
     invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
-    .line 695
+    .line 693
     .end local v7           #channelMsgJson:Lorg/json/JSONObject;
     .end local v18           #total:Ljava/lang/String;
     :cond_4
@@ -434,7 +434,7 @@
 
     if-eqz v19, :cond_2
 
-    .line 696
+    .line 694
     const-string v19, "data"
 
     move-object/from16 v0, v19
@@ -443,7 +443,7 @@
 
     move-result-object v4
 
-    .line 697
+    .line 695
     .local v4, channelDataJson:Lorg/json/JSONArray;
     if-eqz v4, :cond_2
 
@@ -453,7 +453,7 @@
 
     if-lez v19, :cond_2
 
-    .line 698
+    .line 696
     const/4 v12, 0x0
 
     .local v12, i:I
@@ -466,21 +466,21 @@
 
     if-ge v12, v0, :cond_2
 
-    .line 699
+    .line 697
     invoke-virtual {v4, v12}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v2
 
-    .line 700
+    .line 698
     .local v2, channelDataItemJson:Lorg/json/JSONObject;
     if-eqz v2, :cond_e
 
-    .line 701
+    .line 699
     new-instance v5, Lcom/meizu/video/client/ui/entity/ChanelEntity;
 
     invoke-direct {v5}, Lcom/meizu/video/client/ui/entity/ChanelEntity;-><init>()V
 
-    .line 702
+    .line 700
     .local v5, channelEntity:Lcom/meizu/video/client/ui/entity/ChanelEntity;
     const-string v19, "title"
 
@@ -492,7 +492,7 @@
 
     if-eqz v19, :cond_5
 
-    .line 703
+    .line 701
     const-string v19, "title"
 
     move-object/from16 v0, v19
@@ -505,7 +505,7 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/ChanelEntity;->setTitle(Ljava/lang/String;)V
 
-    .line 705
+    .line 703
     :cond_5
     const-string v19, "type"
 
@@ -517,7 +517,7 @@
 
     if-eqz v19, :cond_6
 
-    .line 706
+    .line 704
     const-string v19, "type"
 
     move-object/from16 v0, v19
@@ -530,7 +530,7 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/ChanelEntity;->setType(Ljava/lang/String;)V
 
-    .line 708
+    .line 706
     :cond_6
     const-string v19, "ID"
 
@@ -542,7 +542,7 @@
 
     if-eqz v19, :cond_7
 
-    .line 709
+    .line 707
     const-string v19, "ID"
 
     move-object/from16 v0, v19
@@ -555,7 +555,7 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/ChanelEntity;->setId(Ljava/lang/String;)V
 
-    .line 711
+    .line 709
     :cond_7
     const-string v19, "label"
 
@@ -567,7 +567,7 @@
 
     if-eqz v19, :cond_d
 
-    .line 712
+    .line 710
     const-string v19, "label"
 
     move-object/from16 v0, v19
@@ -576,7 +576,7 @@
 
     move-result-object v3
 
-    .line 713
+    .line 711
     .local v3, channelDataItemLabelListJson:Lorg/json/JSONArray;
     if-eqz v3, :cond_d
 
@@ -586,12 +586,12 @@
 
     if-lez v19, :cond_d
 
-    .line 714
+    .line 712
     new-instance v15, Ljava/util/ArrayList;
 
     invoke-direct {v15}, Ljava/util/ArrayList;-><init>()V
 
-    .line 715
+    .line 713
     .local v15, lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     const/4 v13, 0x0
 
@@ -605,21 +605,21 @@
 
     if-ge v13, v0, :cond_c
 
-    .line 716
+    .line 714
     invoke-virtual {v3, v13}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v17
 
-    .line 717
+    .line 715
     .local v17, recommendDataItemLabelItemJson:Lorg/json/JSONObject;
     if-eqz v17, :cond_b
 
-    .line 718
+    .line 716
     new-instance v14, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v14}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 719
+    .line 717
     .local v14, lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v19, "size"
 
@@ -633,7 +633,7 @@
 
     if-eqz v19, :cond_8
 
-    .line 720
+    .line 718
     const-string v19, "size"
 
     move-object/from16 v0, v17
@@ -648,7 +648,7 @@
 
     invoke-virtual {v14, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 722
+    .line 720
     :cond_8
     const-string v19, "type"
 
@@ -662,7 +662,7 @@
 
     if-eqz v19, :cond_9
 
-    .line 723
+    .line 721
     const-string v19, "type"
 
     move-object/from16 v0, v17
@@ -677,7 +677,7 @@
 
     invoke-virtual {v14, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 725
+    .line 723
     :cond_9
     const-string v19, "value"
 
@@ -691,7 +691,7 @@
 
     if-eqz v19, :cond_a
 
-    .line 726
+    .line 724
     const-string v19, "value"
 
     move-object/from16 v0, v17
@@ -706,23 +706,23 @@
 
     invoke-virtual {v14, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 728
+    .line 726
     :cond_a
     invoke-virtual {v15, v14}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 715
+    .line 713
     .end local v14           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_b
     add-int/lit8 v13, v13, 0x1
 
     goto :goto_2
 
-    .line 731
+    .line 729
     .end local v17           #recommendDataItemLabelItemJson:Lorg/json/JSONObject;
     :cond_c
     invoke-virtual {v5, v15}, Lcom/meizu/video/client/ui/entity/ChanelEntity;->setLableListEntity(Ljava/util/ArrayList;)V
 
-    .line 734
+    .line 732
     .end local v3           #channelDataItemLabelListJson:Lorg/json/JSONArray;
     .end local v13           #j:I
     .end local v15           #lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
@@ -731,14 +731,14 @@
     :try_end_0
     .catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 698
+    .line 696
     .end local v5           #channelEntity:Lcom/meizu/video/client/ui/entity/ChanelEntity;
     :cond_e
     add-int/lit8 v12, v12, 0x1
 
     goto/16 :goto_1
 
-    .line 741
+    .line 739
     .end local v2           #channelDataItemJson:Lorg/json/JSONObject;
     .end local v4           #channelDataJson:Lorg/json/JSONArray;
     .end local v8           #channelToalJson:Lorg/json/JSONObject;
@@ -749,7 +749,7 @@
     :catch_0
     move-exception v11
 
-    .line 742
+    .line 740
     .local v11, e:Lorg/json/JSONException;
     invoke-virtual {v11}, Lorg/json/JSONException;->printStackTrace()V
 
@@ -772,12 +772,12 @@
     .end annotation
 
     .prologue
-    .line 523
+    .line 521
     new-instance v7, Ljava/util/ArrayList;
 
     invoke-direct {v7}, Ljava/util/ArrayList;-><init>()V
 
-    .line 525
+    .line 523
     .local v7, channelDetailListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;>;"
     :try_start_0
     new-instance v11, Lorg/json/JSONObject;
@@ -786,14 +786,14 @@
 
     invoke-direct {v11, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 526
+    .line 524
     .local v11, channelDetailToalJson:Lorg/json/JSONObject;
     if-eqz v11, :cond_2
 
-    .line 527
+    .line 525
     const-string v14, ""
 
-    .line 528
+    .line 526
     .local v14, code:Ljava/lang/String;
     const-string v27, "code"
 
@@ -805,7 +805,7 @@
 
     if-eqz v27, :cond_0
 
-    .line 529
+    .line 527
     const-string v27, "code"
 
     move-object/from16 v0, v27
@@ -814,15 +814,15 @@
 
     move-result-object v14
 
-    .line 531
+    .line 529
     :cond_0
     const-string v21, ""
 
-    .line 532
+    .line 530
     .local v21, msg:Ljava/lang/String;
     const-string v15, ""
 
-    .line 533
+    .line 531
     .local v15, data:Ljava/lang/String;
     const-string v27, "-1"
 
@@ -834,7 +834,7 @@
 
     if-eqz v27, :cond_3
 
-    .line 534
+    .line 532
     const-string v27, "msg"
 
     move-object/from16 v0, v27
@@ -845,7 +845,7 @@
 
     if-eqz v27, :cond_1
 
-    .line 535
+    .line 533
     const-string v27, "msg"
 
     move-object/from16 v0, v27
@@ -854,7 +854,7 @@
 
     move-result-object v21
 
-    .line 537
+    .line 535
     :cond_1
     const-string v27, "data"
 
@@ -866,7 +866,7 @@
 
     if-eqz v27, :cond_2
 
-    .line 538
+    .line 536
     const-string v27, "data"
 
     move-object/from16 v0, v27
@@ -875,7 +875,7 @@
 
     move-result-object v15
 
-    .line 658
+    .line 656
     .end local v11           #channelDetailToalJson:Lorg/json/JSONObject;
     .end local v14           #code:Ljava/lang/String;
     .end local v15           #data:Ljava/lang/String;
@@ -884,7 +884,7 @@
     :goto_0
     return-object v7
 
-    .line 540
+    .line 538
     .restart local v11       #channelDetailToalJson:Lorg/json/JSONObject;
     .restart local v14       #code:Ljava/lang/String;
     .restart local v15       #data:Ljava/lang/String;
@@ -900,7 +900,7 @@
 
     if-eqz v27, :cond_2
 
-    .line 541
+    .line 539
     const-string v27, "msg"
 
     move-object/from16 v0, v27
@@ -911,7 +911,7 @@
 
     if-eqz v27, :cond_d
 
-    .line 542
+    .line 540
     const-string v27, "msg"
 
     move-object/from16 v0, v27
@@ -920,19 +920,19 @@
 
     move-result-object v8
 
-    .line 543
+    .line 541
     .local v8, channelDetailMsgJson:Lorg/json/JSONObject;
     const-string v25, ""
 
-    .line 544
+    .line 542
     .local v25, total:Ljava/lang/String;
     const-string v26, ""
 
-    .line 545
+    .line 543
     .local v26, type:Ljava/lang/String;
     if-eqz v8, :cond_d
 
-    .line 546
+    .line 544
     const-string v27, "total"
 
     move-object/from16 v0, v27
@@ -943,7 +943,7 @@
 
     if-eqz v27, :cond_4
 
-    .line 547
+    .line 545
     const-string v27, "total"
 
     move-object/from16 v0, v27
@@ -952,7 +952,7 @@
 
     move-result-object v25
 
-    .line 549
+    .line 547
     :cond_4
     const-string v27, "type"
 
@@ -964,7 +964,7 @@
 
     if-eqz v27, :cond_5
 
-    .line 550
+    .line 548
     const-string v27, "type"
 
     move-object/from16 v0, v27
@@ -973,7 +973,7 @@
 
     move-result-object v26
 
-    .line 552
+    .line 550
     :cond_5
     const-string v27, ""
 
@@ -987,7 +987,7 @@
 
     if-nez v27, :cond_d
 
-    .line 553
+    .line 551
     const-string v27, "type"
 
     move-object/from16 v0, v27
@@ -996,7 +996,7 @@
 
     move-result-object v9
 
-    .line 554
+    .line 552
     .local v9, channelDetailMsgTypeJson:Lorg/json/JSONArray;
     if-eqz v9, :cond_d
 
@@ -1006,12 +1006,12 @@
 
     if-lez v27, :cond_d
 
-    .line 555
+    .line 553
     new-instance v23, Ljava/util/ArrayList;
 
     invoke-direct/range {v23 .. v23}, Ljava/util/ArrayList;-><init>()V
 
-    .line 556
+    .line 554
     .local v23, msgExpandListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/MsgExpandEntity;>;"
     const/16 v17, 0x0
 
@@ -1027,23 +1027,23 @@
 
     if-ge v0, v1, :cond_d
 
-    .line 557
+    .line 555
     move/from16 v0, v17
 
     invoke-virtual {v9, v0}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v12
 
-    .line 558
+    .line 556
     .local v12, channelMsgTypeItemJson:Lorg/json/JSONObject;
     if-eqz v12, :cond_c
 
-    .line 559
+    .line 557
     new-instance v22, Lcom/meizu/video/client/ui/entity/MsgExpandEntity;
 
     invoke-direct/range {v22 .. v22}, Lcom/meizu/video/client/ui/entity/MsgExpandEntity;-><init>()V
 
-    .line 560
+    .line 558
     .local v22, msgExpandEntity:Lcom/meizu/video/client/ui/entity/MsgExpandEntity;
     const-string v27, "level"
 
@@ -1055,7 +1055,7 @@
 
     if-eqz v27, :cond_6
 
-    .line 561
+    .line 559
     const-string v27, "level"
 
     move-object/from16 v0, v27
@@ -1070,7 +1070,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgExpandEntity;->setLevel(Ljava/lang/String;)V
 
-    .line 563
+    .line 561
     :cond_6
     const-string v27, "key"
 
@@ -1082,7 +1082,7 @@
 
     if-eqz v27, :cond_7
 
-    .line 564
+    .line 562
     const-string v27, "key"
 
     move-object/from16 v0, v27
@@ -1097,7 +1097,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgExpandEntity;->setKey(Ljava/lang/String;)V
 
-    .line 566
+    .line 564
     :cond_7
     const-string v27, "select"
 
@@ -1109,7 +1109,7 @@
 
     if-eqz v27, :cond_8
 
-    .line 567
+    .line 565
     const-string v27, "select"
 
     move-object/from16 v0, v27
@@ -1124,7 +1124,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgExpandEntity;->setSelect(Ljava/lang/String;)V
 
-    .line 569
+    .line 567
     :cond_8
     const-string v27, "value"
 
@@ -1136,7 +1136,7 @@
 
     if-eqz v27, :cond_b
 
-    .line 570
+    .line 568
     const-string v27, "value"
 
     move-object/from16 v0, v27
@@ -1145,7 +1145,7 @@
 
     move-result-object v10
 
-    .line 571
+    .line 569
     .local v10, channelDetailMsgTypeValueJson:Lorg/json/JSONArray;
     if-eqz v10, :cond_b
 
@@ -1155,12 +1155,12 @@
 
     if-lez v27, :cond_b
 
-    .line 572
+    .line 570
     new-instance v24, Ljava/util/ArrayList;
 
     invoke-direct/range {v24 .. v24}, Ljava/util/ArrayList;-><init>()V
 
-    .line 573
+    .line 571
     .local v24, subValue:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/lang/String;>;"
     const/16 v18, 0x0
 
@@ -1176,18 +1176,18 @@
 
     if-ge v0, v1, :cond_a
 
-    .line 574
+    .line 572
     move/from16 v0, v18
 
     invoke-virtual {v10, v0}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v13
 
-    .line 575
+    .line 573
     .local v13, channelMsgTypeValueItemJson:Lorg/json/JSONObject;
     if-eqz v13, :cond_9
 
-    .line 576
+    .line 574
     const-string v27, "subvalue"
 
     move-object/from16 v0, v27
@@ -1198,7 +1198,7 @@
 
     if-eqz v27, :cond_9
 
-    .line 577
+    .line 575
     const-string v27, "subvalue"
 
     move-object/from16 v0, v27
@@ -1213,13 +1213,13 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 573
+    .line 571
     :cond_9
     add-int/lit8 v18, v18, 0x1
 
     goto :goto_2
 
-    .line 581
+    .line 579
     .end local v13           #channelMsgTypeValueItemJson:Lorg/json/JSONObject;
     :cond_a
     move-object/from16 v0, v22
@@ -1228,7 +1228,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgExpandEntity;->setValueExpand(Ljava/util/ArrayList;)V
 
-    .line 584
+    .line 582
     .end local v10           #channelDetailMsgTypeValueJson:Lorg/json/JSONArray;
     .end local v18           #j:I
     .end local v24           #subValue:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/lang/String;>;"
@@ -1239,14 +1239,14 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 556
+    .line 554
     .end local v22           #msgExpandEntity:Lcom/meizu/video/client/ui/entity/MsgExpandEntity;
     :cond_c
     add-int/lit8 v17, v17, 0x1
 
     goto/16 :goto_1
 
-    .line 591
+    .line 589
     .end local v8           #channelDetailMsgJson:Lorg/json/JSONObject;
     .end local v9           #channelDetailMsgTypeJson:Lorg/json/JSONArray;
     .end local v12           #channelMsgTypeItemJson:Lorg/json/JSONObject;
@@ -1265,7 +1265,7 @@
 
     if-eqz v27, :cond_2
 
-    .line 592
+    .line 590
     const-string v27, "data"
 
     move-object/from16 v0, v27
@@ -1274,7 +1274,7 @@
 
     move-result-object v5
 
-    .line 593
+    .line 591
     .local v5, channelDetailDataJson:Lorg/json/JSONArray;
     if-eqz v5, :cond_2
 
@@ -1284,7 +1284,7 @@
 
     if-lez v27, :cond_2
 
-    .line 594
+    .line 592
     const/16 v17, 0x0
 
     .restart local v17       #i:I
@@ -1299,23 +1299,23 @@
 
     if-ge v0, v1, :cond_2
 
-    .line 596
+    .line 594
     move/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v2
 
-    .line 597
+    .line 595
     .local v2, channelDetailDataItemJson:Lorg/json/JSONObject;
     if-eqz v2, :cond_1c
 
-    .line 598
+    .line 596
     new-instance v6, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;
 
     invoke-direct {v6}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;-><init>()V
 
-    .line 599
+    .line 597
     .local v6, channelDetailEntity:Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;
     const-string v27, "vid"
 
@@ -1327,7 +1327,7 @@
 
     if-eqz v27, :cond_e
 
-    .line 600
+    .line 598
     const-string v27, "vid"
 
     move-object/from16 v0, v27
@@ -1340,7 +1340,7 @@
 
     invoke-virtual {v6, v0}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->setVid(Ljava/lang/String;)V
 
-    .line 602
+    .line 600
     :cond_e
     const-string v27, "cid"
 
@@ -1352,7 +1352,7 @@
 
     if-eqz v27, :cond_f
 
-    .line 603
+    .line 601
     const-string v27, "cid"
 
     move-object/from16 v0, v27
@@ -1365,7 +1365,7 @@
 
     invoke-virtual {v6, v0}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->setCid(Ljava/lang/String;)V
 
-    .line 605
+    .line 603
     :cond_f
     const-string v27, "mmsid"
 
@@ -1377,7 +1377,7 @@
 
     if-eqz v27, :cond_10
 
-    .line 606
+    .line 604
     const-string v27, "mmsid"
 
     move-object/from16 v0, v27
@@ -1390,7 +1390,7 @@
 
     invoke-virtual {v6, v0}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->setMmsid(Ljava/lang/String;)V
 
-    .line 608
+    .line 606
     :cond_10
     const-string v27, "play_address"
 
@@ -1402,7 +1402,7 @@
 
     if-eqz v27, :cond_11
 
-    .line 609
+    .line 607
     const-string v27, "play_address"
 
     move-object/from16 v0, v27
@@ -1415,7 +1415,7 @@
 
     invoke-virtual {v6, v0}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->setPlay_address(Ljava/lang/String;)V
 
-    .line 611
+    .line 609
     :cond_11
     const-string v27, "duration"
 
@@ -1427,7 +1427,7 @@
 
     if-eqz v27, :cond_12
 
-    .line 612
+    .line 610
     const-string v27, "duration"
 
     move-object/from16 v0, v27
@@ -1440,7 +1440,7 @@
 
     invoke-virtual {v6, v0}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->setDuration(Ljava/lang/String;)V
 
-    .line 614
+    .line 612
     :cond_12
     const-string v27, "head_duration"
 
@@ -1452,7 +1452,7 @@
 
     if-eqz v27, :cond_13
 
-    .line 615
+    .line 613
     const-string v27, "head_duration"
 
     move-object/from16 v0, v27
@@ -1465,7 +1465,7 @@
 
     invoke-virtual {v6, v0}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->setHead_duration(Ljava/lang/String;)V
 
-    .line 617
+    .line 615
     :cond_13
     const-string v27, "tail_duration"
 
@@ -1477,7 +1477,7 @@
 
     if-eqz v27, :cond_14
 
-    .line 618
+    .line 616
     const-string v27, "tail_duration"
 
     move-object/from16 v0, v27
@@ -1490,7 +1490,7 @@
 
     invoke-virtual {v6, v0}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->setTail_duration(Ljava/lang/String;)V
 
-    .line 621
+    .line 619
     :cond_14
     const-string v27, "label"
 
@@ -1502,7 +1502,7 @@
 
     if-eqz v27, :cond_1b
 
-    .line 622
+    .line 620
     const-string v27, "label"
 
     move-object/from16 v0, v27
@@ -1511,7 +1511,7 @@
 
     move-result-object v4
 
-    .line 623
+    .line 621
     .local v4, channelDetailDataItemLabelListJson:Lorg/json/JSONArray;
     if-eqz v4, :cond_1b
 
@@ -1521,12 +1521,12 @@
 
     if-lez v27, :cond_1b
 
-    .line 624
+    .line 622
     new-instance v20, Ljava/util/ArrayList;
 
     invoke-direct/range {v20 .. v20}, Ljava/util/ArrayList;-><init>()V
 
-    .line 625
+    .line 623
     .local v20, lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     const/16 v18, 0x0
 
@@ -1542,23 +1542,23 @@
 
     if-ge v0, v1, :cond_1a
 
-    .line 626
+    .line 624
     move/from16 v0, v18
 
     invoke-virtual {v4, v0}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v3
 
-    .line 627
+    .line 625
     .local v3, channelDetailDataItemLabelItemJson:Lorg/json/JSONObject;
     if-eqz v3, :cond_19
 
-    .line 628
+    .line 626
     new-instance v19, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct/range {v19 .. v19}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 629
+    .line 627
     .local v19, lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v27, "size"
 
@@ -1570,7 +1570,7 @@
 
     if-eqz v27, :cond_15
 
-    .line 630
+    .line 628
     const-string v27, "size"
 
     move-object/from16 v0, v27
@@ -1585,7 +1585,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 632
+    .line 630
     :cond_15
     const-string v27, "type"
 
@@ -1597,7 +1597,7 @@
 
     if-eqz v27, :cond_16
 
-    .line 633
+    .line 631
     const-string v27, "type"
 
     move-object/from16 v0, v27
@@ -1612,7 +1612,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 635
+    .line 633
     :cond_16
     const-string v27, "key"
 
@@ -1624,7 +1624,7 @@
 
     if-eqz v27, :cond_17
 
-    .line 636
+    .line 634
     const-string v27, "key"
 
     move-object/from16 v0, v27
@@ -1639,7 +1639,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 638
+    .line 636
     :cond_17
     const-string v27, "value"
 
@@ -1651,7 +1651,7 @@
 
     if-eqz v27, :cond_18
 
-    .line 639
+    .line 637
     const-string v27, "value"
 
     move-object/from16 v0, v27
@@ -1666,7 +1666,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 641
+    .line 639
     :cond_18
     move-object/from16 v0, v20
 
@@ -1674,21 +1674,21 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 625
+    .line 623
     .end local v19           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_19
     add-int/lit8 v18, v18, 0x1
 
     goto/16 :goto_4
 
-    .line 644
+    .line 642
     .end local v3           #channelDetailDataItemLabelItemJson:Lorg/json/JSONObject;
     :cond_1a
     move-object/from16 v0, v20
 
     invoke-virtual {v6, v0}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->setLableListEntity(Ljava/util/ArrayList;)V
 
-    .line 647
+    .line 645
     .end local v4           #channelDetailDataItemLabelListJson:Lorg/json/JSONArray;
     .end local v18           #j:I
     .end local v20           #lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
@@ -1697,14 +1697,14 @@
     :try_end_0
     .catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 594
+    .line 592
     .end local v6           #channelDetailEntity:Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;
     :cond_1c
     add-int/lit8 v17, v17, 0x1
 
     goto/16 :goto_3
 
-    .line 654
+    .line 652
     .end local v2           #channelDetailDataItemJson:Lorg/json/JSONObject;
     .end local v5           #channelDetailDataJson:Lorg/json/JSONArray;
     .end local v11           #channelDetailToalJson:Lorg/json/JSONObject;
@@ -1715,7 +1715,7 @@
     :catch_0
     move-exception v16
 
-    .line 655
+    .line 653
     .local v16, e:Lorg/json/JSONException;
     invoke-virtual/range {v16 .. v16}, Lorg/json/JSONException;->printStackTrace()V
 
@@ -1741,29 +1741,29 @@
     .end annotation
 
     .prologue
-    .line 930
+    .line 928
     .local p1, channelDetailListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;>;"
     if-eqz p1, :cond_0
 
     if-nez p2, :cond_1
 
-    .line 1133
+    .line 1131
     :cond_0
     :goto_0
     return-void
 
-    .line 934
+    .line 932
     :cond_1
     :try_start_0
     new-instance v6, Lorg/json/JSONObject;
 
     invoke-direct {v6, p0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 935
+    .line 933
     .local v6, channelDetailToalJson:Lorg/json/JSONObject;
     if-eqz v6, :cond_0
 
-    .line 936
+    .line 934
     const-string v11, "header"
 
     invoke-virtual {v6, v11}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -1772,18 +1772,18 @@
 
     if-eqz v11, :cond_2
 
-    .line 937
+    .line 935
     const-string v11, "header"
 
     invoke-virtual {v6, v11}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
 
     move-result-object v3
 
-    .line 938
+    .line 936
     .local v3, channelDetailHeaderJson:Lorg/json/JSONObject;
     if-eqz v3, :cond_2
 
-    .line 939
+    .line 937
     const-string v11, "status"
 
     invoke-virtual {v3, v11}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -1792,7 +1792,7 @@
 
     if-eqz v11, :cond_2
 
-    .line 940
+    .line 938
     const-string v11, "status"
 
     invoke-virtual {v3, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -1801,7 +1801,7 @@
 
     invoke-virtual {p2, v11}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 944
+    .line 942
     .end local v3           #channelDetailHeaderJson:Lorg/json/JSONObject;
     :cond_2
     const-string v11, "1"
@@ -1816,7 +1816,7 @@
 
     if-eqz v11, :cond_0
 
-    .line 945
+    .line 943
     const-string v11, "body"
 
     invoke-virtual {v6, v11}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -1825,18 +1825,18 @@
 
     if-eqz v11, :cond_0
 
-    .line 946
+    .line 944
     const-string v11, "body"
 
     invoke-virtual {v6, v11}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
 
     move-result-object v1
 
-    .line 947
+    .line 945
     .local v1, channelDetailBodyJson:Lorg/json/JSONObject;
     if-eqz v1, :cond_0
 
-    .line 948
+    .line 946
     const-string v11, "data"
 
     invoke-virtual {v1, v11}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -1845,14 +1845,14 @@
 
     if-eqz v11, :cond_15
 
-    .line 949
+    .line 947
     const-string v11, "data"
 
     invoke-virtual {v1, v11}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v5
 
-    .line 950
+    .line 948
     .local v5, channelDetailListJson:Lorg/json/JSONArray;
     if-eqz v5, :cond_15
 
@@ -1862,7 +1862,7 @@
 
     if-lez v11, :cond_15
 
-    .line 951
+    .line 949
     const/4 v8, 0x0
 
     .local v8, i:I
@@ -1873,27 +1873,27 @@
 
     if-ge v8, v11, :cond_15
 
-    .line 952
+    .line 950
     invoke-virtual {v5, v8}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v4
 
-    .line 953
+    .line 951
     .local v4, channelDetailItemJson:Lorg/json/JSONObject;
     if-eqz v4, :cond_13
 
-    .line 954
+    .line 952
     new-instance v2, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;
 
     invoke-direct {v2}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;-><init>()V
 
-    .line 955
+    .line 953
     .local v2, channelDetailEntity:Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;
     new-instance v10, Ljava/util/ArrayList;
 
     invoke-direct {v10}, Ljava/util/ArrayList;-><init>()V
 
-    .line 956
+    .line 954
     .local v10, lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     const-string v11, "cid"
 
@@ -1903,7 +1903,7 @@
 
     if-eqz v11, :cond_3
 
-    .line 957
+    .line 955
     const-string v11, "cid"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -1912,7 +1912,7 @@
 
     invoke-virtual {v2, v11}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->setCid(Ljava/lang/String;)V
 
-    .line 959
+    .line 957
     :cond_3
     const-string v11, "id"
 
@@ -1922,7 +1922,7 @@
 
     if-eqz v11, :cond_4
 
-    .line 960
+    .line 958
     const-string v11, "id"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -1931,7 +1931,7 @@
 
     invoke-virtual {v2, v11}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->setVid(Ljava/lang/String;)V
 
-    .line 962
+    .line 960
     :cond_4
     const-string v11, "title"
 
@@ -1941,7 +1941,7 @@
 
     if-eqz v11, :cond_5
 
-    .line 963
+    .line 961
     const-string v11, "title"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -1968,23 +1968,23 @@
 
     if-nez v11, :cond_5
 
-    .line 964
+    .line 962
     new-instance v9, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v9}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 965
+    .line 963
     .local v9, lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v11, "0"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 966
+    .line 964
     const-string v11, "text-title"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 967
+    .line 965
     const-string v11, "title"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -1993,10 +1993,10 @@
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 968
+    .line 966
     invoke-virtual {v10, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 974
+    .line 972
     .end local v9           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_5
     const-string v11, "icon"
@@ -2007,7 +2007,7 @@
 
     if-eqz v11, :cond_6
 
-    .line 975
+    .line 973
     const-string v11, "icon"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2034,23 +2034,23 @@
 
     if-nez v11, :cond_6
 
-    .line 976
+    .line 974
     new-instance v9, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v9}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 977
+    .line 975
     .restart local v9       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v11, "0"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 978
+    .line 976
     const-string v11, "image"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 979
+    .line 977
     const-string v11, "icon"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2059,10 +2059,10 @@
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 980
+    .line 978
     invoke-virtual {v10, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 983
+    .line 981
     .end local v9           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_6
     const-string v11, "score"
@@ -2073,7 +2073,7 @@
 
     if-eqz v11, :cond_7
 
-    .line 984
+    .line 982
     const-string v11, "score"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2100,28 +2100,28 @@
 
     if-nez v11, :cond_7
 
-    .line 985
+    .line 983
     new-instance v9, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v9}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 986
+    .line 984
     .restart local v9       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v11, "-1"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 987
+    .line 985
     const-string v11, "text-image"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 988
+    .line 986
     const-string v11, "0"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 989
+    .line 987
     const-string v11, "score"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2130,10 +2130,10 @@
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 990
+    .line 988
     invoke-virtual {v10, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 994
+    .line 992
     .end local v9           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_7
     const-string v11, "type"
@@ -2144,7 +2144,7 @@
 
     if-eqz v11, :cond_8
 
-    .line 995
+    .line 993
     const-string v11, "type"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2153,7 +2153,7 @@
 
     invoke-virtual {v2, v11}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->setMediaDataType(Ljava/lang/String;)V
 
-    .line 997
+    .line 995
     :cond_8
     const-string v11, "at"
 
@@ -2163,7 +2163,7 @@
 
     if-eqz v11, :cond_9
 
-    .line 998
+    .line 996
     const-string v11, "at"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2172,7 +2172,7 @@
 
     invoke-virtual {v2, v11}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->setMediaOperaton(Ljava/lang/String;)V
 
-    .line 1009
+    .line 1007
     :cond_9
     const-string v11, "director"
 
@@ -2182,7 +2182,7 @@
 
     if-eqz v11, :cond_a
 
-    .line 1010
+    .line 1008
     const-string v11, "director"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2227,28 +2227,28 @@
 
     if-nez v11, :cond_a
 
-    .line 1011
+    .line 1009
     new-instance v9, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v9}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1012
+    .line 1010
     .restart local v9       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v11, "-1"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1013
+    .line 1011
     const-string v11, "text"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1014
+    .line 1012
     const-string v11, "1"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1015
+    .line 1013
     const-string v11, "director"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2257,10 +2257,10 @@
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1016
+    .line 1014
     invoke-virtual {v10, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1019
+    .line 1017
     .end local v9           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_a
     const-string v11, "actor"
@@ -2271,7 +2271,7 @@
 
     if-eqz v11, :cond_b
 
-    .line 1020
+    .line 1018
     const-string v11, "actor"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2298,28 +2298,28 @@
 
     if-nez v11, :cond_b
 
-    .line 1021
+    .line 1019
     new-instance v9, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v9}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1022
+    .line 1020
     .restart local v9       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v11, "-1"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1023
+    .line 1021
     const-string v11, "text"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1024
+    .line 1022
     const-string v11, "2"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1025
+    .line 1023
     const-string v11, "actor"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2328,10 +2328,10 @@
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1026
+    .line 1024
     invoke-virtual {v10, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1029
+    .line 1027
     .end local v9           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_b
     const-string v11, "intro"
@@ -2342,7 +2342,7 @@
 
     if-eqz v11, :cond_c
 
-    .line 1030
+    .line 1028
     const-string v11, "intro"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2355,7 +2355,7 @@
 
     invoke-virtual {v2, v11}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->setIntro(Ljava/lang/String;)V
 
-    .line 1032
+    .line 1030
     :cond_c
     const-string v11, "subcate"
 
@@ -2365,7 +2365,7 @@
 
     if-eqz v11, :cond_d
 
-    .line 1033
+    .line 1031
     const-string v11, "subcate"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2392,28 +2392,28 @@
 
     if-nez v11, :cond_d
 
-    .line 1034
+    .line 1032
     new-instance v9, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v9}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1035
+    .line 1033
     .restart local v9       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v11, "-1"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1036
+    .line 1034
     const-string v11, "text"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1037
+    .line 1035
     const-string v11, "3"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1038
+    .line 1036
     const-string v11, "subcate"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2422,10 +2422,10 @@
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1039
+    .line 1037
     invoke-virtual {v10, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1042
+    .line 1040
     .end local v9           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_d
     const-string v11, "area"
@@ -2436,7 +2436,7 @@
 
     if-eqz v11, :cond_f
 
-    .line 1043
+    .line 1041
     const-string v11, "area"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2463,7 +2463,7 @@
 
     if-nez v11, :cond_f
 
-    .line 1044
+    .line 1042
     const-string v11, "area"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2474,7 +2474,7 @@
 
     move-result-object v0
 
-    .line 1045
+    .line 1043
     .local v0, areaName:Ljava/lang/String;
     const-string v11, "^[0-9]*$"
 
@@ -2484,7 +2484,7 @@
 
     if-eqz v11, :cond_e
 
-    .line 1046
+    .line 1044
     invoke-static {}, Lcom/meizu/video/client/common/Constant;->getAreaTypeAreaYearOrderListEntity()Ljava/util/ArrayList;
 
     move-result-object v11
@@ -2497,7 +2497,7 @@
 
     move-result-object v0
 
-    .line 1048
+    .line 1046
     :cond_e
     if-eqz v0, :cond_f
 
@@ -2513,34 +2513,34 @@
 
     if-nez v11, :cond_f
 
-    .line 1049
+    .line 1047
     new-instance v9, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v9}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1050
+    .line 1048
     .restart local v9       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v11, "-1"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1051
+    .line 1049
     const-string v11, "text"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1052
+    .line 1050
     const-string v11, "4"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1053
+    .line 1051
     invoke-virtual {v9, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1054
+    .line 1052
     invoke-virtual {v10, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1058
+    .line 1056
     .end local v0           #areaName:Ljava/lang/String;
     .end local v9           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_f
@@ -2552,7 +2552,7 @@
 
     if-eqz v11, :cond_10
 
-    .line 1059
+    .line 1057
     const-string v11, "time_length"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2597,7 +2597,7 @@
 
     if-nez v11, :cond_10
 
-    .line 1060
+    .line 1058
     const-string v11, "time_length"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2606,28 +2606,28 @@
 
     invoke-virtual {v2, v11}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->setDuration(Ljava/lang/String;)V
 
-    .line 1061
+    .line 1059
     new-instance v9, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v9}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1062
+    .line 1060
     .restart local v9       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v11, "-1"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1063
+    .line 1061
     const-string v11, "text"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1064
+    .line 1062
     const-string v11, "5"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1065
+    .line 1063
     const-string v11, "time_length"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2640,10 +2640,10 @@
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1066
+    .line 1064
     invoke-virtual {v10, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1075
+    .line 1073
     .end local v9           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_10
     const-string v11, "rcompany"
@@ -2654,7 +2654,7 @@
 
     if-eqz v11, :cond_11
 
-    .line 1076
+    .line 1074
     const-string v11, "rcompany"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2681,23 +2681,23 @@
 
     if-nez v11, :cond_11
 
-    .line 1077
+    .line 1075
     new-instance v9, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v9}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1078
+    .line 1076
     .restart local v9       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v11, "-1"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1079
+    .line 1077
     const-string v11, "text"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1080
+    .line 1078
     invoke-virtual {v2}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->getCid()Ljava/lang/String;
 
     move-result-object v11
@@ -2710,12 +2710,12 @@
 
     if-eqz v11, :cond_14
 
-    .line 1081
+    .line 1079
     const-string v11, "14"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1085
+    .line 1083
     :goto_2
     const-string v11, "rcompany"
 
@@ -2725,10 +2725,10 @@
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1086
+    .line 1084
     invoke-virtual {v10, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1089
+    .line 1087
     .end local v9           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_11
     const-string v11, "ctime"
@@ -2739,7 +2739,7 @@
 
     if-eqz v11, :cond_12
 
-    .line 1090
+    .line 1088
     const-string v11, "ctime"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2766,28 +2766,28 @@
 
     if-nez v11, :cond_12
 
-    .line 1091
+    .line 1089
     new-instance v9, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v9}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1092
+    .line 1090
     .restart local v9       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v11, "-1"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1093
+    .line 1091
     const-string v11, "text"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1094
+    .line 1092
     const-string v11, "6"
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1095
+    .line 1093
     const-string v11, "ctime"
 
     invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2796,18 +2796,18 @@
 
     invoke-virtual {v9, v11}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1096
+    .line 1094
     invoke-virtual {v10, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1117
+    .line 1115
     .end local v9           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_12
     invoke-virtual {v2, v10}, Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;->setLableListEntity(Ljava/util/ArrayList;)V
 
-    .line 1118
+    .line 1116
     invoke-virtual {p1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 951
+    .line 949
     .end local v2           #channelDetailEntity:Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;
     .end local v10           #lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     :cond_13
@@ -2815,7 +2815,7 @@
 
     goto/16 :goto_1
 
-    .line 1083
+    .line 1081
     .restart local v2       #channelDetailEntity:Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;
     .restart local v9       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     .restart local v10       #lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
@@ -2828,7 +2828,7 @@
 
     goto :goto_2
 
-    .line 1130
+    .line 1128
     .end local v1           #channelDetailBodyJson:Lorg/json/JSONObject;
     .end local v2           #channelDetailEntity:Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;
     .end local v4           #channelDetailItemJson:Lorg/json/JSONObject;
@@ -2840,13 +2840,13 @@
     :catch_0
     move-exception v7
 
-    .line 1131
+    .line 1129
     .local v7, e:Lorg/json/JSONException;
     invoke-virtual {v7}, Lorg/json/JSONException;->printStackTrace()V
 
     goto/16 :goto_0
 
-    .line 1123
+    .line 1121
     .end local v7           #e:Lorg/json/JSONException;
     .restart local v1       #channelDetailBodyJson:Lorg/json/JSONObject;
     .restart local v6       #channelDetailToalJson:Lorg/json/JSONObject;
@@ -2860,7 +2860,7 @@
 
     if-eqz v11, :cond_0
 
-    .line 1124
+    .line 1122
     const-string v11, "total"
 
     invoke-virtual {v1, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2893,29 +2893,29 @@
     .end annotation
 
     .prologue
-    .line 860
+    .line 858
     .local p1, channelListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/ChanelEntity;>;"
     if-eqz p1, :cond_0
 
     if-nez p2, :cond_1
 
-    .line 921
+    .line 919
     :cond_0
     :goto_0
     return-void
 
-    .line 864
+    .line 862
     :cond_1
     :try_start_0
     new-instance v8, Lorg/json/JSONObject;
 
     invoke-direct {v8, p0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 865
+    .line 863
     .local v8, channelToalJson:Lorg/json/JSONObject;
     if-eqz v8, :cond_0
 
-    .line 866
+    .line 864
     const-string v13, "header"
 
     invoke-virtual {v8, v13}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -2924,18 +2924,18 @@
 
     if-eqz v13, :cond_2
 
-    .line 867
+    .line 865
     const-string v13, "header"
 
     invoke-virtual {v8, v13}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
 
     move-result-object v5
 
-    .line 868
+    .line 866
     .local v5, channelHeaderJson:Lorg/json/JSONObject;
     if-eqz v5, :cond_2
 
-    .line 869
+    .line 867
     const-string v13, "status"
 
     invoke-virtual {v5, v13}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -2944,7 +2944,7 @@
 
     if-eqz v13, :cond_2
 
-    .line 870
+    .line 868
     const-string v13, "status"
 
     invoke-virtual {v5, v13}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2955,7 +2955,7 @@
 
     invoke-virtual {v0, v13}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 874
+    .line 872
     .end local v5           #channelHeaderJson:Lorg/json/JSONObject;
     :cond_2
     const-string v13, "1"
@@ -2970,7 +2970,7 @@
 
     if-eqz v13, :cond_0
 
-    .line 875
+    .line 873
     const-string v13, "body"
 
     invoke-virtual {v8, v13}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -2979,18 +2979,18 @@
 
     if-eqz v13, :cond_0
 
-    .line 876
+    .line 874
     const-string v13, "body"
 
     invoke-virtual {v8, v13}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
 
     move-result-object v1
 
-    .line 877
+    .line 875
     .local v1, channelBodyJson:Lorg/json/JSONObject;
     if-eqz v1, :cond_0
 
-    .line 878
+    .line 876
     const-string v13, "channel"
 
     invoke-virtual {v1, v13}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -2999,14 +2999,14 @@
 
     if-eqz v13, :cond_0
 
-    .line 879
+    .line 877
     const-string v13, "channel"
 
     invoke-virtual {v1, v13}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v7
 
-    .line 880
+    .line 878
     .local v7, channelListJson:Lorg/json/JSONArray;
     if-eqz v7, :cond_0
 
@@ -3016,14 +3016,14 @@
 
     if-lez v13, :cond_0
 
-    .line 881
+    .line 879
     const-string v3, ""
 
-    .line 882
+    .line 880
     .local v3, channelDetailUrl:Ljava/lang/String;
     const-string v2, ""
 
-    .line 883
+    .line 881
     .local v2, channelDetailJsonData:Ljava/lang/String;
     const/4 v10, 0x0
 
@@ -3035,21 +3035,21 @@
 
     if-ge v10, v13, :cond_0
 
-    .line 884
+    .line 882
     invoke-virtual {v7, v10}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v6
 
-    .line 885
+    .line 883
     .local v6, channelItemJson:Lorg/json/JSONObject;
     if-eqz v6, :cond_6
 
-    .line 886
+    .line 884
     new-instance v4, Lcom/meizu/video/client/ui/entity/ChanelEntity;
 
     invoke-direct {v4}, Lcom/meizu/video/client/ui/entity/ChanelEntity;-><init>()V
 
-    .line 887
+    .line 885
     .local v4, channelEntity:Lcom/meizu/video/client/ui/entity/ChanelEntity;
     const-string v13, "id"
 
@@ -3059,7 +3059,7 @@
 
     if-eqz v13, :cond_3
 
-    .line 888
+    .line 886
     const-string v13, "id"
 
     invoke-virtual {v6, v13}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -3068,7 +3068,7 @@
 
     invoke-virtual {v4, v13}, Lcom/meizu/video/client/ui/entity/ChanelEntity;->setId(Ljava/lang/String;)V
 
-    .line 890
+    .line 888
     :cond_3
     invoke-virtual {v4}, Lcom/meizu/video/client/ui/entity/ChanelEntity;->getId()Ljava/lang/String;
 
@@ -3082,12 +3082,12 @@
 
     if-eqz v13, :cond_7
 
-    .line 891
+    .line 889
     const-string v13, "\u5fae\u7535\u5f71"
 
     invoke-virtual {v4, v13}, Lcom/meizu/video/client/ui/entity/ChanelEntity;->setTitle(Ljava/lang/String;)V
 
-    .line 897
+    .line 895
     :cond_4
     :goto_2
     const-string v13, "icon"
@@ -3098,40 +3098,40 @@
 
     if-eqz v13, :cond_5
 
-    .line 898
+    .line 896
     new-instance v12, Ljava/util/ArrayList;
 
     invoke-direct {v12}, Ljava/util/ArrayList;-><init>()V
 
-    .line 899
+    .line 897
     .local v12, lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     new-instance v11, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v11}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 900
+    .line 898
     .local v11, lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v13, "0"
 
     invoke-virtual {v11, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 901
+    .line 899
     const-string v13, "image"
 
     invoke-virtual {v11, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 904
+    .line 902
     const-string v13, ""
 
     invoke-virtual {v11, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 906
+    .line 904
     invoke-virtual {v12, v11}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 907
+    .line 905
     invoke-virtual {v4, v12}, Lcom/meizu/video/client/ui/entity/ChanelEntity;->setLableListEntity(Ljava/util/ArrayList;)V
 
-    .line 909
+    .line 907
     .end local v11           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     .end local v12           #lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     :cond_5
@@ -3139,14 +3139,14 @@
 
     invoke-virtual {v0, v4}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 883
+    .line 881
     .end local v4           #channelEntity:Lcom/meizu/video/client/ui/entity/ChanelEntity;
     :cond_6
     add-int/lit8 v10, v10, 0x1
 
     goto :goto_1
 
-    .line 893
+    .line 891
     .restart local v4       #channelEntity:Lcom/meizu/video/client/ui/entity/ChanelEntity;
     :cond_7
     const-string v13, "name"
@@ -3157,7 +3157,7 @@
 
     if-eqz v13, :cond_4
 
-    .line 894
+    .line 892
     const-string v13, "name"
 
     invoke-virtual {v6, v13}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -3170,7 +3170,7 @@
 
     goto :goto_2
 
-    .line 918
+    .line 916
     .end local v1           #channelBodyJson:Lorg/json/JSONObject;
     .end local v2           #channelDetailJsonData:Ljava/lang/String;
     .end local v3           #channelDetailUrl:Ljava/lang/String;
@@ -3182,7 +3182,7 @@
     :catch_0
     move-exception v9
 
-    .line 919
+    .line 917
     .local v9, e:Lorg/json/JSONException;
     invoke-virtual {v9}, Lorg/json/JSONException;->printStackTrace()V
 
@@ -3205,12 +3205,12 @@
     .end annotation
 
     .prologue
-    .line 234
+    .line 232
     new-instance v19, Ljava/util/ArrayList;
 
     invoke-direct/range {v19 .. v19}, Ljava/util/ArrayList;-><init>()V
 
-    .line 236
+    .line 234
     .local v19, channelProgramDetailListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;>;"
     :try_start_0
     new-instance v2, Lorg/json/JSONObject;
@@ -3219,14 +3219,14 @@
 
     invoke-direct {v2, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 237
+    .line 235
     .local v2, channelDetailProgramToalJson:Lorg/json/JSONObject;
     if-eqz v2, :cond_2
 
-    .line 238
+    .line 236
     const-string v21, ""
 
-    .line 239
+    .line 237
     .local v21, code:Ljava/lang/String;
     const-string v38, "code"
 
@@ -3238,7 +3238,7 @@
 
     if-eqz v38, :cond_0
 
-    .line 240
+    .line 238
     const-string v38, "code"
 
     move-object/from16 v0, v38
@@ -3247,15 +3247,15 @@
 
     move-result-object v21
 
-    .line 242
+    .line 240
     :cond_0
     const-string v33, ""
 
-    .line 243
+    .line 241
     .local v33, msg:Ljava/lang/String;
     const-string v22, ""
 
-    .line 244
+    .line 242
     .local v22, data:Ljava/lang/String;
     const-string v38, "-1"
 
@@ -3269,7 +3269,7 @@
 
     if-eqz v38, :cond_3
 
-    .line 245
+    .line 243
     const-string v38, "msg"
 
     move-object/from16 v0, v38
@@ -3280,7 +3280,7 @@
 
     if-eqz v38, :cond_1
 
-    .line 246
+    .line 244
     const-string v38, "msg"
 
     move-object/from16 v0, v38
@@ -3289,7 +3289,7 @@
 
     move-result-object v33
 
-    .line 248
+    .line 246
     :cond_1
     const-string v38, "data"
 
@@ -3301,7 +3301,7 @@
 
     if-eqz v38, :cond_2
 
-    .line 249
+    .line 247
     const-string v38, "data"
 
     move-object/from16 v0, v38
@@ -3310,7 +3310,7 @@
 
     move-result-object v22
 
-    .line 514
+    .line 512
     .end local v2           #channelDetailProgramToalJson:Lorg/json/JSONObject;
     .end local v21           #code:Ljava/lang/String;
     .end local v22           #data:Ljava/lang/String;
@@ -3319,7 +3319,7 @@
     :goto_0
     return-object v19
 
-    .line 251
+    .line 249
     .restart local v2       #channelDetailProgramToalJson:Lorg/json/JSONObject;
     .restart local v21       #code:Ljava/lang/String;
     .restart local v22       #data:Ljava/lang/String;
@@ -3337,7 +3337,7 @@
 
     if-eqz v38, :cond_2
 
-    .line 252
+    .line 250
     const-string v38, "msg"
 
     move-object/from16 v0, v38
@@ -3348,7 +3348,7 @@
 
     if-eqz v38, :cond_4
 
-    .line 253
+    .line 251
     const-string v38, "msg"
 
     move-object/from16 v0, v38
@@ -3357,15 +3357,15 @@
 
     move-result-object v20
 
-    .line 254
+    .line 252
     .local v20, channelProgramDetailMsgJson:Lorg/json/JSONObject;
     const-string v37, ""
 
-    .line 255
+    .line 253
     .local v37, total:Ljava/lang/String;
     if-eqz v20, :cond_4
 
-    .line 256
+    .line 254
     const-string v38, "total"
 
     move-object/from16 v0, v20
@@ -3378,7 +3378,7 @@
 
     if-eqz v38, :cond_4
 
-    .line 257
+    .line 255
     const-string v38, "total"
 
     move-object/from16 v0, v20
@@ -3387,7 +3387,7 @@
 
     invoke-virtual {v0, v1}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
-    .line 261
+    .line 259
     .end local v20           #channelProgramDetailMsgJson:Lorg/json/JSONObject;
     .end local v37           #total:Ljava/lang/String;
     :cond_4
@@ -3401,7 +3401,7 @@
 
     if-eqz v38, :cond_2
 
-    .line 262
+    .line 260
     const-string v38, "data"
 
     move-object/from16 v0, v38
@@ -3410,7 +3410,7 @@
 
     move-result-object v17
 
-    .line 263
+    .line 261
     .local v17, channelProgramDetailDataJson:Lorg/json/JSONArray;
     if-eqz v17, :cond_2
 
@@ -3420,7 +3420,7 @@
 
     if-lez v38, :cond_2
 
-    .line 264
+    .line 262
     const/16 v28, 0x0
 
     .local v28, i:I
@@ -3435,7 +3435,7 @@
 
     if-ge v0, v1, :cond_2
 
-    .line 266
+    .line 264
     move-object/from16 v0, v17
 
     move/from16 v1, v28
@@ -3444,16 +3444,16 @@
 
     move-result-object v9
 
-    .line 267
+    .line 265
     .local v9, channelProgramDetailDataItemJson:Lorg/json/JSONObject;
     if-eqz v9, :cond_20
 
-    .line 268
+    .line 266
     new-instance v18, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;
 
     invoke-direct/range {v18 .. v18}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;-><init>()V
 
-    .line 269
+    .line 267
     .local v18, channelProgramDetailEntity:Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;
     const-string v38, "vid"
 
@@ -3465,7 +3465,7 @@
 
     if-eqz v38, :cond_5
 
-    .line 270
+    .line 268
     const-string v38, "vid"
 
     move-object/from16 v0, v38
@@ -3480,7 +3480,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setVid(Ljava/lang/String;)V
 
-    .line 272
+    .line 270
     :cond_5
     const-string v38, "cid"
 
@@ -3492,7 +3492,7 @@
 
     if-eqz v38, :cond_6
 
-    .line 273
+    .line 271
     const-string v38, "cid"
 
     move-object/from16 v0, v38
@@ -3507,7 +3507,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setCid(Ljava/lang/String;)V
 
-    .line 275
+    .line 273
     :cond_6
     const-string v38, "mmsid"
 
@@ -3519,7 +3519,7 @@
 
     if-eqz v38, :cond_7
 
-    .line 276
+    .line 274
     const-string v38, "mmsid"
 
     move-object/from16 v0, v38
@@ -3534,7 +3534,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setMmsid(Ljava/lang/String;)V
 
-    .line 278
+    .line 276
     :cond_7
     const-string v38, "imdb"
 
@@ -3546,7 +3546,7 @@
 
     if-eqz v38, :cond_8
 
-    .line 279
+    .line 277
     const-string v38, "imdb"
 
     move-object/from16 v0, v38
@@ -3561,7 +3561,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setImdb(Ljava/lang/String;)V
 
-    .line 281
+    .line 279
     :cond_8
     const-string v38, "duration"
 
@@ -3573,7 +3573,7 @@
 
     if-eqz v38, :cond_9
 
-    .line 282
+    .line 280
     const-string v38, "duration"
 
     move-object/from16 v0, v38
@@ -3588,7 +3588,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setDuration(Ljava/lang/String;)V
 
-    .line 284
+    .line 282
     :cond_9
     const-string v38, "head_duration"
 
@@ -3600,7 +3600,7 @@
 
     if-eqz v38, :cond_a
 
-    .line 285
+    .line 283
     const-string v38, "head_duration"
 
     move-object/from16 v0, v38
@@ -3615,7 +3615,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setHead_duration(Ljava/lang/String;)V
 
-    .line 287
+    .line 285
     :cond_a
     const-string v38, "tail_duration"
 
@@ -3627,7 +3627,7 @@
 
     if-eqz v38, :cond_b
 
-    .line 288
+    .line 286
     const-string v38, "tail_duration"
 
     move-object/from16 v0, v38
@@ -3642,7 +3642,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setTail_duration(Ljava/lang/String;)V
 
-    .line 290
+    .line 288
     :cond_b
     const-string v38, "play_address"
 
@@ -3654,7 +3654,7 @@
 
     if-eqz v38, :cond_c
 
-    .line 291
+    .line 289
     const-string v38, "play_address"
 
     move-object/from16 v0, v38
@@ -3669,7 +3669,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setPlay_address(Ljava/lang/String;)V
 
-    .line 293
+    .line 291
     :cond_c
     const-string v38, "download_address"
 
@@ -3681,7 +3681,7 @@
 
     if-eqz v38, :cond_d
 
-    .line 294
+    .line 292
     const-string v38, "download_address"
 
     move-object/from16 v0, v38
@@ -3696,7 +3696,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setDownload_address(Ljava/lang/String;)V
 
-    .line 298
+    .line 296
     :cond_d
     const-string v38, "description"
 
@@ -3708,7 +3708,7 @@
 
     if-eqz v38, :cond_10
 
-    .line 299
+    .line 297
     const-string v38, "description"
 
     move-object/from16 v0, v38
@@ -3717,16 +3717,16 @@
 
     move-result-object v3
 
-    .line 300
+    .line 298
     .local v3, channelProgramDetailDataItemDescriptionJson:Lorg/json/JSONObject;
     if-eqz v3, :cond_10
 
-    .line 301
+    .line 299
     new-instance v23, Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     invoke-direct/range {v23 .. v23}, Lcom/meizu/video/client/ui/entity/MsgEntity;-><init>()V
 
-    .line 302
+    .line 300
     .local v23, descriptionMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     const-string v38, "key"
 
@@ -3738,7 +3738,7 @@
 
     if-eqz v38, :cond_e
 
-    .line 303
+    .line 301
     const-string v38, "key"
 
     move-object/from16 v0, v38
@@ -3753,7 +3753,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 305
+    .line 303
     :cond_e
     const-string v38, "value"
 
@@ -3765,7 +3765,7 @@
 
     if-eqz v38, :cond_f
 
-    .line 306
+    .line 304
     const-string v38, "value"
 
     move-object/from16 v0, v38
@@ -3780,7 +3780,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setValue(Ljava/lang/String;)V
 
-    .line 308
+    .line 306
     :cond_f
     move-object/from16 v0, v18
 
@@ -3788,7 +3788,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setDescriptionMsgEntity(Lcom/meizu/video/client/ui/entity/MsgEntity;)V
 
-    .line 313
+    .line 311
     .end local v3           #channelProgramDetailDataItemDescriptionJson:Lorg/json/JSONObject;
     .end local v23           #descriptionMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     :cond_10
@@ -3802,7 +3802,7 @@
 
     if-eqz v38, :cond_17
 
-    .line 314
+    .line 312
     const-string v38, "label"
 
     move-object/from16 v0, v38
@@ -3811,7 +3811,7 @@
 
     move-result-object v11
 
-    .line 315
+    .line 313
     .local v11, channelProgramDetailDataItemLabelListJson:Lorg/json/JSONArray;
     if-eqz v11, :cond_17
 
@@ -3821,12 +3821,12 @@
 
     if-lez v38, :cond_17
 
-    .line 316
+    .line 314
     new-instance v31, Ljava/util/ArrayList;
 
     invoke-direct/range {v31 .. v31}, Ljava/util/ArrayList;-><init>()V
 
-    .line 317
+    .line 315
     .local v31, lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     const/16 v29, 0x0
 
@@ -3842,23 +3842,23 @@
 
     if-ge v0, v1, :cond_16
 
-    .line 318
+    .line 316
     move/from16 v0, v29
 
     invoke-virtual {v11, v0}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v10
 
-    .line 319
+    .line 317
     .local v10, channelProgramDetailDataItemLabelItemJson:Lorg/json/JSONObject;
     if-eqz v10, :cond_15
 
-    .line 320
+    .line 318
     new-instance v30, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct/range {v30 .. v30}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 321
+    .line 319
     .local v30, lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v38, "size"
 
@@ -3870,7 +3870,7 @@
 
     if-eqz v38, :cond_11
 
-    .line 322
+    .line 320
     const-string v38, "size"
 
     move-object/from16 v0, v38
@@ -3885,7 +3885,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 324
+    .line 322
     :cond_11
     const-string v38, "type"
 
@@ -3897,7 +3897,7 @@
 
     if-eqz v38, :cond_12
 
-    .line 325
+    .line 323
     const-string v38, "type"
 
     move-object/from16 v0, v38
@@ -3912,7 +3912,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 327
+    .line 325
     :cond_12
     const-string v38, "key"
 
@@ -3924,7 +3924,7 @@
 
     if-eqz v38, :cond_13
 
-    .line 328
+    .line 326
     const-string v38, "key"
 
     move-object/from16 v0, v38
@@ -3939,7 +3939,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 330
+    .line 328
     :cond_13
     const-string v38, "value"
 
@@ -3951,7 +3951,7 @@
 
     if-eqz v38, :cond_14
 
-    .line 331
+    .line 329
     const-string v38, "value"
 
     move-object/from16 v0, v38
@@ -3966,7 +3966,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 333
+    .line 331
     :cond_14
     move-object/from16 v0, v31
 
@@ -3974,14 +3974,14 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 317
+    .line 315
     .end local v30           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_15
     add-int/lit8 v29, v29, 0x1
 
     goto/16 :goto_2
 
-    .line 336
+    .line 334
     .end local v10           #channelProgramDetailDataItemLabelItemJson:Lorg/json/JSONObject;
     :cond_16
     move-object/from16 v0, v18
@@ -3990,7 +3990,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setLableListEntity(Ljava/util/ArrayList;)V
 
-    .line 341
+    .line 339
     .end local v11           #channelProgramDetailDataItemLabelListJson:Lorg/json/JSONArray;
     .end local v29           #j:I
     .end local v31           #lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
@@ -4005,7 +4005,7 @@
 
     if-eqz v38, :cond_1b
 
-    .line 342
+    .line 340
     const-string v38, "similar_video"
 
     move-object/from16 v0, v38
@@ -4014,11 +4014,11 @@
 
     move-result-object v14
 
-    .line 343
+    .line 341
     .local v14, channelProgramDetailDataItemSimilarVideoJson:Lorg/json/JSONObject;
     if-eqz v14, :cond_1b
 
-    .line 344
+    .line 342
     const-string v38, "code"
 
     move-object/from16 v0, v38
@@ -4029,7 +4029,7 @@
 
     if-eqz v38, :cond_18
 
-    .line 345
+    .line 343
     const-string v38, "code"
 
     move-object/from16 v0, v38
@@ -4044,13 +4044,13 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setSimilarVideoCode(Ljava/lang/String;)V
 
-    .line 347
+    .line 345
     :cond_18
     new-instance v36, Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     invoke-direct/range {v36 .. v36}, Lcom/meizu/video/client/ui/entity/MsgEntity;-><init>()V
 
-    .line 348
+    .line 346
     .local v36, similarVideoMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     const-string v38, "-1"
 
@@ -4064,7 +4064,7 @@
 
     if-eqz v38, :cond_21
 
-    .line 349
+    .line 347
     const-string v38, "msg"
 
     move-object/from16 v0, v38
@@ -4075,7 +4075,7 @@
 
     if-eqz v38, :cond_19
 
-    .line 350
+    .line 348
     const-string v38, "msg"
 
     move-object/from16 v0, v38
@@ -4090,7 +4090,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 352
+    .line 350
     :cond_19
     const-string v38, "data"
 
@@ -4102,7 +4102,7 @@
 
     if-eqz v38, :cond_1a
 
-    .line 353
+    .line 351
     const-string v38, "data"
 
     move-object/from16 v0, v38
@@ -4117,7 +4117,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setValue(Ljava/lang/String;)V
 
-    .line 355
+    .line 353
     :cond_1a
     move-object/from16 v0, v18
 
@@ -4125,7 +4125,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setSimilarVideoMsgEntity(Lcom/meizu/video/client/ui/entity/MsgEntity;)V
 
-    .line 421
+    .line 419
     .end local v14           #channelProgramDetailDataItemSimilarVideoJson:Lorg/json/JSONObject;
     .end local v36           #similarVideoMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     :cond_1b
@@ -4140,7 +4140,7 @@
 
     if-eqz v38, :cond_1f
 
-    .line 422
+    .line 420
     const-string v38, "episodes"
 
     move-object/from16 v0, v38
@@ -4149,11 +4149,11 @@
 
     move-result-object v6
 
-    .line 423
+    .line 421
     .local v6, channelProgramDetailDataItemEpisodesJson:Lorg/json/JSONObject;
     if-eqz v6, :cond_1f
 
-    .line 424
+    .line 422
     const-string v38, "code"
 
     move-object/from16 v0, v38
@@ -4164,7 +4164,7 @@
 
     if-eqz v38, :cond_1c
 
-    .line 425
+    .line 423
     const-string v38, "code"
 
     move-object/from16 v0, v38
@@ -4179,13 +4179,13 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setEpisodesCode(Ljava/lang/String;)V
 
-    .line 427
+    .line 425
     :cond_1c
     new-instance v27, Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     invoke-direct/range {v27 .. v27}, Lcom/meizu/video/client/ui/entity/MsgEntity;-><init>()V
 
-    .line 428
+    .line 426
     .local v27, episodesMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     const-string v38, "-1"
 
@@ -4199,7 +4199,7 @@
 
     if-eqz v38, :cond_2f
 
-    .line 429
+    .line 427
     const-string v38, "msg"
 
     move-object/from16 v0, v38
@@ -4210,7 +4210,7 @@
 
     if-eqz v38, :cond_1d
 
-    .line 430
+    .line 428
     const-string v38, "msg"
 
     move-object/from16 v0, v38
@@ -4225,7 +4225,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 432
+    .line 430
     :cond_1d
     const-string v38, "data"
 
@@ -4237,7 +4237,7 @@
 
     if-eqz v38, :cond_1e
 
-    .line 433
+    .line 431
     const-string v38, "data"
 
     move-object/from16 v0, v38
@@ -4252,7 +4252,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setValue(Ljava/lang/String;)V
 
-    .line 435
+    .line 433
     :cond_1e
     move-object/from16 v0, v18
 
@@ -4260,7 +4260,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setEpisodesMsgEntity(Lcom/meizu/video/client/ui/entity/MsgEntity;)V
 
-    .line 503
+    .line 501
     .end local v6           #channelProgramDetailDataItemEpisodesJson:Lorg/json/JSONObject;
     .end local v27           #episodesMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     :cond_1f
@@ -4271,14 +4271,14 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 264
+    .line 262
     .end local v18           #channelProgramDetailEntity:Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;
     :cond_20
     add-int/lit8 v28, v28, 0x1
 
     goto/16 :goto_1
 
-    .line 356
+    .line 354
     .restart local v14       #channelProgramDetailDataItemSimilarVideoJson:Lorg/json/JSONObject;
     .restart local v18       #channelProgramDetailEntity:Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;
     .restart local v36       #similarVideoMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
@@ -4295,7 +4295,7 @@
 
     if-eqz v38, :cond_1b
 
-    .line 357
+    .line 355
     const-string v38, "msg"
 
     move-object/from16 v0, v38
@@ -4306,7 +4306,7 @@
 
     if-eqz v38, :cond_23
 
-    .line 358
+    .line 356
     const-string v38, "msg"
 
     move-object/from16 v0, v38
@@ -4315,11 +4315,11 @@
 
     move-result-object v15
 
-    .line 359
+    .line 357
     .local v15, channelProgramDetailDataItemSimilarVideoMsgJson:Lorg/json/JSONObject;
     if-eqz v15, :cond_23
 
-    .line 360
+    .line 358
     const-string v38, "total"
 
     move-object/from16 v0, v38
@@ -4330,7 +4330,7 @@
 
     if-eqz v38, :cond_23
 
-    .line 361
+    .line 359
     const-string v38, "total"
 
     move-object/from16 v0, v38
@@ -4339,11 +4339,11 @@
 
     move-result-object v16
 
-    .line 362
+    .line 360
     .local v16, channelProgramDetailDataItemSimilarVideolToalMsgJson:Lorg/json/JSONObject;
     if-eqz v16, :cond_23
 
-    .line 363
+    .line 361
     const-string v38, "key"
 
     move-object/from16 v0, v16
@@ -4356,7 +4356,7 @@
 
     if-eqz v38, :cond_22
 
-    .line 364
+    .line 362
     const-string v38, "key"
 
     move-object/from16 v0, v16
@@ -4373,7 +4373,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 366
+    .line 364
     :cond_22
     const-string v38, "value"
 
@@ -4387,7 +4387,7 @@
 
     if-eqz v38, :cond_23
 
-    .line 367
+    .line 365
     const-string v38, "value"
 
     move-object/from16 v0, v16
@@ -4404,7 +4404,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setValue(Ljava/lang/String;)V
 
-    .line 373
+    .line 371
     .end local v15           #channelProgramDetailDataItemSimilarVideoMsgJson:Lorg/json/JSONObject;
     .end local v16           #channelProgramDetailDataItemSimilarVideolToalMsgJson:Lorg/json/JSONObject;
     :cond_23
@@ -4414,7 +4414,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setSimilarVideoMsgEntity(Lcom/meizu/video/client/ui/entity/MsgEntity;)V
 
-    .line 374
+    .line 372
     const-string v38, "data"
 
     move-object/from16 v0, v38
@@ -4425,7 +4425,7 @@
 
     if-eqz v38, :cond_1b
 
-    .line 375
+    .line 373
     const-string v38, "data"
 
     move-object/from16 v0, v38
@@ -4434,7 +4434,7 @@
 
     move-result-object v13
 
-    .line 376
+    .line 374
     .local v13, channelProgramDetailDataItemSimilarVideoDataJson:Lorg/json/JSONArray;
     if-eqz v13, :cond_1b
 
@@ -4444,12 +4444,12 @@
 
     if-lez v38, :cond_1b
 
-    .line 377
+    .line 375
     new-instance v35, Ljava/util/ArrayList;
 
     invoke-direct/range {v35 .. v35}, Ljava/util/ArrayList;-><init>()V
 
-    .line 378
+    .line 376
     .local v35, similarVideoListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;>;"
     const/16 v32, 0x0
 
@@ -4465,23 +4465,23 @@
 
     if-ge v0, v1, :cond_2e
 
-    .line 379
+    .line 377
     move/from16 v0, v32
 
     invoke-virtual {v13, v0}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v12
 
-    .line 380
+    .line 378
     .local v12, channelProgramDetailDataItemSimilarVideoDataItemJson:Lorg/json/JSONObject;
     if-eqz v12, :cond_2d
 
-    .line 381
+    .line 379
     new-instance v34, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
 
     invoke-direct/range {v34 .. v34}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;-><init>()V
 
-    .line 382
+    .line 380
     .local v34, similarVideoEntity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
     const-string v38, "vid"
 
@@ -4493,7 +4493,7 @@
 
     if-eqz v38, :cond_24
 
-    .line 383
+    .line 381
     const-string v38, "vid"
 
     move-object/from16 v0, v38
@@ -4508,7 +4508,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setVid(Ljava/lang/String;)V
 
-    .line 385
+    .line 383
     :cond_24
     const-string v38, "cid"
 
@@ -4520,7 +4520,7 @@
 
     if-eqz v38, :cond_25
 
-    .line 386
+    .line 384
     const-string v38, "cid"
 
     move-object/from16 v0, v38
@@ -4535,7 +4535,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setCid(Ljava/lang/String;)V
 
-    .line 388
+    .line 386
     :cond_25
     const-string v38, "mmsid"
 
@@ -4547,7 +4547,7 @@
 
     if-eqz v38, :cond_26
 
-    .line 389
+    .line 387
     const-string v38, "mmsid"
 
     move-object/from16 v0, v38
@@ -4562,7 +4562,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setMmsid(Ljava/lang/String;)V
 
-    .line 391
+    .line 389
     :cond_26
     const-string v38, "title"
 
@@ -4574,7 +4574,7 @@
 
     if-eqz v38, :cond_27
 
-    .line 392
+    .line 390
     const-string v38, "title"
 
     move-object/from16 v0, v38
@@ -4589,7 +4589,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setTitle(Ljava/lang/String;)V
 
-    .line 394
+    .line 392
     :cond_27
     const-string v38, "image"
 
@@ -4601,7 +4601,7 @@
 
     if-eqz v38, :cond_28
 
-    .line 395
+    .line 393
     const-string v38, "image"
 
     move-object/from16 v0, v38
@@ -4616,7 +4616,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setImage(Ljava/lang/String;)V
 
-    .line 397
+    .line 395
     :cond_28
     const-string v38, "duration"
 
@@ -4628,7 +4628,7 @@
 
     if-eqz v38, :cond_29
 
-    .line 398
+    .line 396
     const-string v38, "duration"
 
     move-object/from16 v0, v38
@@ -4643,7 +4643,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setDuration(Ljava/lang/String;)V
 
-    .line 400
+    .line 398
     :cond_29
     const-string v38, "head_duration"
 
@@ -4655,7 +4655,7 @@
 
     if-eqz v38, :cond_2a
 
-    .line 401
+    .line 399
     const-string v38, "head_duration"
 
     move-object/from16 v0, v38
@@ -4670,7 +4670,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setHead_duration(Ljava/lang/String;)V
 
-    .line 403
+    .line 401
     :cond_2a
     const-string v38, "tail_duration"
 
@@ -4682,7 +4682,7 @@
 
     if-eqz v38, :cond_2b
 
-    .line 404
+    .line 402
     const-string v38, "tail_duration"
 
     move-object/from16 v0, v38
@@ -4697,7 +4697,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setTail_duration(Ljava/lang/String;)V
 
-    .line 406
+    .line 404
     :cond_2b
     const-string v38, "play_address"
 
@@ -4709,7 +4709,7 @@
 
     if-eqz v38, :cond_2c
 
-    .line 407
+    .line 405
     const-string v38, "play_address"
 
     move-object/from16 v0, v38
@@ -4724,7 +4724,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setPlay_address(Ljava/lang/String;)V
 
-    .line 409
+    .line 407
     :cond_2c
     move-object/from16 v0, v35
 
@@ -4732,14 +4732,14 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 378
+    .line 376
     .end local v34           #similarVideoEntity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
     :cond_2d
     add-int/lit8 v32, v32, 0x1
 
     goto/16 :goto_5
 
-    .line 412
+    .line 410
     .end local v12           #channelProgramDetailDataItemSimilarVideoDataItemJson:Lorg/json/JSONObject;
     :cond_2e
     move-object/from16 v0, v18
@@ -4752,7 +4752,7 @@
 
     goto/16 :goto_3
 
-    .line 510
+    .line 508
     .end local v2           #channelDetailProgramToalJson:Lorg/json/JSONObject;
     .end local v9           #channelProgramDetailDataItemJson:Lorg/json/JSONObject;
     .end local v13           #channelProgramDetailDataItemSimilarVideoDataJson:Lorg/json/JSONArray;
@@ -4769,13 +4769,13 @@
     :catch_0
     move-exception v24
 
-    .line 511
+    .line 509
     .local v24, e:Lorg/json/JSONException;
     invoke-virtual/range {v24 .. v24}, Lorg/json/JSONException;->printStackTrace()V
 
     goto/16 :goto_0
 
-    .line 436
+    .line 434
     .end local v24           #e:Lorg/json/JSONException;
     .restart local v2       #channelDetailProgramToalJson:Lorg/json/JSONObject;
     .restart local v6       #channelProgramDetailDataItemEpisodesJson:Lorg/json/JSONObject;
@@ -4801,7 +4801,7 @@
 
     if-eqz v38, :cond_1f
 
-    .line 437
+    .line 435
     const-string v38, "msg"
 
     move-object/from16 v0, v38
@@ -4812,7 +4812,7 @@
 
     if-eqz v38, :cond_31
 
-    .line 438
+    .line 436
     const-string v38, "msg"
 
     move-object/from16 v0, v38
@@ -4821,11 +4821,11 @@
 
     move-result-object v7
 
-    .line 439
+    .line 437
     .local v7, channelProgramDetailDataItemEpisodesMsgJson:Lorg/json/JSONObject;
     if-eqz v7, :cond_31
 
-    .line 440
+    .line 438
     const-string v38, "total"
 
     move-object/from16 v0, v38
@@ -4836,7 +4836,7 @@
 
     if-eqz v38, :cond_31
 
-    .line 441
+    .line 439
     const-string v38, "total"
 
     move-object/from16 v0, v38
@@ -4845,11 +4845,11 @@
 
     move-result-object v8
 
-    .line 442
+    .line 440
     .local v8, channelProgramDetailDataItemEpisodesToalMsgJson:Lorg/json/JSONObject;
     if-eqz v8, :cond_31
 
-    .line 443
+    .line 441
     const-string v38, "key"
 
     move-object/from16 v0, v38
@@ -4860,7 +4860,7 @@
 
     if-eqz v38, :cond_30
 
-    .line 444
+    .line 442
     const-string v38, "key"
 
     move-object/from16 v0, v38
@@ -4875,7 +4875,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 446
+    .line 444
     :cond_30
     const-string v38, "value"
 
@@ -4887,7 +4887,7 @@
 
     if-eqz v38, :cond_31
 
-    .line 447
+    .line 445
     const-string v38, "value"
 
     move-object/from16 v0, v38
@@ -4902,7 +4902,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setValue(Ljava/lang/String;)V
 
-    .line 453
+    .line 451
     .end local v7           #channelProgramDetailDataItemEpisodesMsgJson:Lorg/json/JSONObject;
     .end local v8           #channelProgramDetailDataItemEpisodesToalMsgJson:Lorg/json/JSONObject;
     :cond_31
@@ -4912,7 +4912,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setEpisodesMsgEntity(Lcom/meizu/video/client/ui/entity/MsgEntity;)V
 
-    .line 454
+    .line 452
     const-string v38, "data"
 
     move-object/from16 v0, v38
@@ -4923,7 +4923,7 @@
 
     if-eqz v38, :cond_1f
 
-    .line 455
+    .line 453
     const-string v38, "data"
 
     move-object/from16 v0, v38
@@ -4932,7 +4932,7 @@
 
     move-result-object v5
 
-    .line 456
+    .line 454
     .local v5, channelProgramDetailDataItemEpisodesDataJson:Lorg/json/JSONArray;
     if-eqz v5, :cond_1f
 
@@ -4942,12 +4942,12 @@
 
     if-lez v38, :cond_1f
 
-    .line 457
+    .line 455
     new-instance v26, Ljava/util/ArrayList;
 
     invoke-direct/range {v26 .. v26}, Ljava/util/ArrayList;-><init>()V
 
-    .line 458
+    .line 456
     .local v26, episodesListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/EpisodesEntity;>;"
     const/16 v32, 0x0
 
@@ -4963,23 +4963,23 @@
 
     if-ge v0, v1, :cond_3d
 
-    .line 459
+    .line 457
     move/from16 v0, v32
 
     invoke-virtual {v5, v0}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v4
 
-    .line 460
+    .line 458
     .local v4, channelProgramDetailDataItemEpisodesDataItemJson:Lorg/json/JSONObject;
     if-eqz v4, :cond_3c
 
-    .line 461
+    .line 459
     new-instance v25, Lcom/meizu/video/client/ui/entity/EpisodesEntity;
 
     invoke-direct/range {v25 .. v25}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;-><init>()V
 
-    .line 462
+    .line 460
     .local v25, episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
     const-string v38, "vid"
 
@@ -4991,7 +4991,7 @@
 
     if-eqz v38, :cond_32
 
-    .line 463
+    .line 461
     const-string v38, "vid"
 
     move-object/from16 v0, v38
@@ -5006,7 +5006,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setVid(Ljava/lang/String;)V
 
-    .line 465
+    .line 463
     :cond_32
     const-string v38, "cid"
 
@@ -5018,7 +5018,7 @@
 
     if-eqz v38, :cond_33
 
-    .line 466
+    .line 464
     const-string v38, "cid"
 
     move-object/from16 v0, v38
@@ -5033,7 +5033,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setCid(Ljava/lang/String;)V
 
-    .line 468
+    .line 466
     :cond_33
     const-string v38, "mmsid"
 
@@ -5045,7 +5045,7 @@
 
     if-eqz v38, :cond_34
 
-    .line 469
+    .line 467
     const-string v38, "mmsid"
 
     move-object/from16 v0, v38
@@ -5060,7 +5060,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setMmsid(Ljava/lang/String;)V
 
-    .line 471
+    .line 469
     :cond_34
     const-string v38, "title"
 
@@ -5072,7 +5072,7 @@
 
     if-eqz v38, :cond_35
 
-    .line 472
+    .line 470
     const-string v38, "title"
 
     move-object/from16 v0, v38
@@ -5087,7 +5087,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setTitle(Ljava/lang/String;)V
 
-    .line 474
+    .line 472
     :cond_35
     const-string v38, "description"
 
@@ -5099,7 +5099,7 @@
 
     if-eqz v38, :cond_36
 
-    .line 475
+    .line 473
     const-string v38, "description"
 
     move-object/from16 v0, v38
@@ -5114,7 +5114,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setDescription(Ljava/lang/String;)V
 
-    .line 477
+    .line 475
     :cond_36
     const-string v38, "duration"
 
@@ -5126,7 +5126,7 @@
 
     if-eqz v38, :cond_37
 
-    .line 478
+    .line 476
     const-string v38, "duration"
 
     move-object/from16 v0, v38
@@ -5141,7 +5141,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setDuration(Ljava/lang/String;)V
 
-    .line 480
+    .line 478
     :cond_37
     const-string v38, "head_duration"
 
@@ -5153,7 +5153,7 @@
 
     if-eqz v38, :cond_38
 
-    .line 481
+    .line 479
     const-string v38, "head_duration"
 
     move-object/from16 v0, v38
@@ -5168,7 +5168,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setHead_duration(Ljava/lang/String;)V
 
-    .line 483
+    .line 481
     :cond_38
     const-string v38, "tail_duration"
 
@@ -5180,7 +5180,7 @@
 
     if-eqz v38, :cond_39
 
-    .line 484
+    .line 482
     const-string v38, "tail_duration"
 
     move-object/from16 v0, v38
@@ -5195,7 +5195,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setTail_duration(Ljava/lang/String;)V
 
-    .line 486
+    .line 484
     :cond_39
     const-string v38, "play_address"
 
@@ -5207,7 +5207,7 @@
 
     if-eqz v38, :cond_3a
 
-    .line 487
+    .line 485
     const-string v38, "play_address"
 
     move-object/from16 v0, v38
@@ -5222,7 +5222,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setPlay_address(Ljava/lang/String;)V
 
-    .line 489
+    .line 487
     :cond_3a
     const-string v38, "download_address"
 
@@ -5234,7 +5234,7 @@
 
     if-eqz v38, :cond_3b
 
-    .line 490
+    .line 488
     const-string v38, "download_address"
 
     move-object/from16 v0, v38
@@ -5249,7 +5249,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setDownload_address(Ljava/lang/String;)V
 
-    .line 492
+    .line 490
     :cond_3b
     move-object/from16 v0, v26
 
@@ -5257,14 +5257,14 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 458
+    .line 456
     .end local v25           #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
     :cond_3c
     add-int/lit8 v32, v32, 0x1
 
     goto/16 :goto_6
 
-    .line 495
+    .line 493
     .end local v4           #channelProgramDetailDataItemEpisodesDataItemJson:Lorg/json/JSONObject;
     :cond_3d
     move-object/from16 v0, v18
@@ -5285,17 +5285,17 @@
     .parameter "msgEntity"
 
     .prologue
-    .line 1142
+    .line 1140
     if-eqz p1, :cond_0
 
     if-nez p2, :cond_1
 
-    .line 1531
+    .line 1529
     :cond_0
     :goto_0
     return-void
 
-    .line 1146
+    .line 1144
     :cond_1
     :try_start_0
     new-instance v12, Lorg/json/JSONObject;
@@ -5304,11 +5304,11 @@
 
     invoke-direct {v12, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 1147
+    .line 1145
     .local v12, channelProgramDetailToalJson:Lorg/json/JSONObject;
     if-eqz v12, :cond_0
 
-    .line 1148
+    .line 1146
     const-string v28, "header"
 
     move-object/from16 v0, v28
@@ -5319,7 +5319,7 @@
 
     if-eqz v28, :cond_2
 
-    .line 1149
+    .line 1147
     const-string v28, "header"
 
     move-object/from16 v0, v28
@@ -5328,11 +5328,11 @@
 
     move-result-object v5
 
-    .line 1150
+    .line 1148
     .local v5, channelProgramDetailHeaderJson:Lorg/json/JSONObject;
     if-eqz v5, :cond_2
 
-    .line 1151
+    .line 1149
     const-string v28, "status"
 
     move-object/from16 v0, v28
@@ -5343,7 +5343,7 @@
 
     if-eqz v28, :cond_2
 
-    .line 1152
+    .line 1150
     const-string v28, "status"
 
     move-object/from16 v0, v28
@@ -5358,7 +5358,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1156
+    .line 1154
     .end local v5           #channelProgramDetailHeaderJson:Lorg/json/JSONObject;
     :cond_2
     const-string v28, "1"
@@ -5373,7 +5373,7 @@
 
     if-eqz v28, :cond_0
 
-    .line 1157
+    .line 1155
     const-string v28, "body"
 
     move-object/from16 v0, v28
@@ -5384,7 +5384,7 @@
 
     if-eqz v28, :cond_0
 
-    .line 1158
+    .line 1156
     const-string v28, "body"
 
     move-object/from16 v0, v28
@@ -5393,16 +5393,16 @@
 
     move-result-object v2
 
-    .line 1159
+    .line 1157
     .local v2, channelProgramDetailBodyJson:Lorg/json/JSONObject;
     if-eqz v2, :cond_0
 
-    .line 1160
+    .line 1158
     new-instance v22, Ljava/util/ArrayList;
 
     invoke-direct/range {v22 .. v22}, Ljava/util/ArrayList;-><init>()V
 
-    .line 1161
+    .line 1159
     .local v22, lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     const-string v28, "id"
 
@@ -5414,7 +5414,7 @@
 
     if-eqz v28, :cond_3
 
-    .line 1162
+    .line 1160
     const-string v28, "id"
 
     move-object/from16 v0, v28
@@ -5429,7 +5429,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setVid(Ljava/lang/String;)V
 
-    .line 1164
+    .line 1162
     :cond_3
     const-string v28, "title"
 
@@ -5441,7 +5441,7 @@
 
     if-eqz v28, :cond_4
 
-    .line 1165
+    .line 1163
     const-string v28, "title"
 
     move-object/from16 v0, v28
@@ -5472,12 +5472,12 @@
 
     if-nez v28, :cond_4
 
-    .line 1166
+    .line 1164
     new-instance v21, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct/range {v21 .. v21}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1167
+    .line 1165
     .local v21, lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v28, "0"
 
@@ -5487,7 +5487,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1168
+    .line 1166
     const-string v28, "text-title"
 
     move-object/from16 v0, v21
@@ -5496,7 +5496,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1169
+    .line 1167
     const-string v28, "title"
 
     move-object/from16 v0, v28
@@ -5511,14 +5511,14 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1170
+    .line 1168
     move-object/from16 v0, v22
 
     move-object/from16 v1, v21
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1176
+    .line 1174
     .end local v21           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_4
     const-string v28, "icon"
@@ -5531,7 +5531,7 @@
 
     if-eqz v28, :cond_5
 
-    .line 1177
+    .line 1175
     const-string v28, "icon"
 
     move-object/from16 v0, v28
@@ -5562,12 +5562,12 @@
 
     if-nez v28, :cond_5
 
-    .line 1178
+    .line 1176
     new-instance v21, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct/range {v21 .. v21}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1179
+    .line 1177
     .restart local v21       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v28, "0"
 
@@ -5577,7 +5577,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1180
+    .line 1178
     const-string v28, "image"
 
     move-object/from16 v0, v21
@@ -5586,7 +5586,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1181
+    .line 1179
     const-string v28, "icon"
 
     move-object/from16 v0, v28
@@ -5601,14 +5601,14 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1182
+    .line 1180
     move-object/from16 v0, v22
 
     move-object/from16 v1, v21
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1185
+    .line 1183
     .end local v21           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_5
     const-string v28, "score"
@@ -5621,7 +5621,7 @@
 
     if-eqz v28, :cond_6
 
-    .line 1186
+    .line 1184
     const-string v28, "score"
 
     move-object/from16 v0, v28
@@ -5652,12 +5652,12 @@
 
     if-nez v28, :cond_6
 
-    .line 1187
+    .line 1185
     new-instance v21, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct/range {v21 .. v21}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1188
+    .line 1186
     .restart local v21       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v28, "-1"
 
@@ -5667,7 +5667,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1189
+    .line 1187
     const-string v28, "text-image"
 
     move-object/from16 v0, v21
@@ -5676,7 +5676,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1190
+    .line 1188
     const-string v28, "0"
 
     move-object/from16 v0, v21
@@ -5685,7 +5685,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1191
+    .line 1189
     const-string v28, "score"
 
     move-object/from16 v0, v28
@@ -5700,14 +5700,14 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1192
+    .line 1190
     move-object/from16 v0, v22
 
     move-object/from16 v1, v21
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1195
+    .line 1193
     .end local v21           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_6
     const-string v28, "cid"
@@ -5720,7 +5720,7 @@
 
     if-eqz v28, :cond_7
 
-    .line 1196
+    .line 1194
     const-string v28, "cid"
 
     move-object/from16 v0, v28
@@ -5735,7 +5735,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setCid(Ljava/lang/String;)V
 
-    .line 1213
+    .line 1211
     :cond_7
     const-string v28, "director"
 
@@ -5747,7 +5747,7 @@
 
     if-eqz v28, :cond_8
 
-    .line 1214
+    .line 1212
     const-string v28, "director"
 
     move-object/from16 v0, v28
@@ -5778,12 +5778,12 @@
 
     if-nez v28, :cond_8
 
-    .line 1215
+    .line 1213
     new-instance v21, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct/range {v21 .. v21}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1216
+    .line 1214
     .restart local v21       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v28, "-1"
 
@@ -5793,7 +5793,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1217
+    .line 1215
     const-string v28, "text"
 
     move-object/from16 v0, v21
@@ -5802,7 +5802,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1218
+    .line 1216
     const-string v28, "1"
 
     move-object/from16 v0, v21
@@ -5811,7 +5811,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1219
+    .line 1217
     const-string v28, "director"
 
     move-object/from16 v0, v28
@@ -5826,14 +5826,14 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1220
+    .line 1218
     move-object/from16 v0, v22
 
     move-object/from16 v1, v21
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1223
+    .line 1221
     .end local v21           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_8
     const-string v28, "actor"
@@ -5846,7 +5846,7 @@
 
     if-eqz v28, :cond_9
 
-    .line 1224
+    .line 1222
     const-string v28, "actor"
 
     move-object/from16 v0, v28
@@ -5877,12 +5877,12 @@
 
     if-nez v28, :cond_9
 
-    .line 1225
+    .line 1223
     new-instance v21, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct/range {v21 .. v21}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1226
+    .line 1224
     .restart local v21       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v28, "-1"
 
@@ -5892,7 +5892,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1227
+    .line 1225
     const-string v28, "text"
 
     move-object/from16 v0, v21
@@ -5901,7 +5901,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1228
+    .line 1226
     const-string v28, "2"
 
     move-object/from16 v0, v21
@@ -5910,7 +5910,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1229
+    .line 1227
     const-string v28, "actor"
 
     move-object/from16 v0, v28
@@ -5925,14 +5925,14 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1230
+    .line 1228
     move-object/from16 v0, v22
 
     move-object/from16 v1, v21
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1233
+    .line 1231
     .end local v21           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_9
     const-string v28, "intro"
@@ -5945,7 +5945,7 @@
 
     if-eqz v28, :cond_a
 
-    .line 1234
+    .line 1232
     const-string v28, "intro"
 
     move-object/from16 v0, v28
@@ -5976,12 +5976,12 @@
 
     if-nez v28, :cond_a
 
-    .line 1235
+    .line 1233
     new-instance v13, Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     invoke-direct {v13}, Lcom/meizu/video/client/ui/entity/MsgEntity;-><init>()V
 
-    .line 1236
+    .line 1234
     .local v13, descriptionMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     const-string v28, "\u5267\u60c5\u7b80\u4ecb"
 
@@ -5989,7 +5989,7 @@
 
     invoke-virtual {v13, v0}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1237
+    .line 1235
     const-string v28, "intro"
 
     move-object/from16 v0, v28
@@ -6002,12 +6002,12 @@
 
     invoke-virtual {v13, v0}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1238
+    .line 1236
     move-object/from16 v0, p1
 
     invoke-virtual {v0, v13}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setDescriptionMsgEntity(Lcom/meizu/video/client/ui/entity/MsgEntity;)V
 
-    .line 1241
+    .line 1239
     .end local v13           #descriptionMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     :cond_a
     const-string v28, "subcate"
@@ -6020,7 +6020,7 @@
 
     if-eqz v28, :cond_b
 
-    .line 1242
+    .line 1240
     const-string v28, "subcate"
 
     move-object/from16 v0, v28
@@ -6051,12 +6051,12 @@
 
     if-nez v28, :cond_b
 
-    .line 1243
+    .line 1241
     new-instance v21, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct/range {v21 .. v21}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1244
+    .line 1242
     .restart local v21       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v28, "-1"
 
@@ -6066,7 +6066,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1245
+    .line 1243
     const-string v28, "text"
 
     move-object/from16 v0, v21
@@ -6075,7 +6075,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1246
+    .line 1244
     const-string v28, "3"
 
     move-object/from16 v0, v21
@@ -6084,7 +6084,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1247
+    .line 1245
     const-string v28, "subcate"
 
     move-object/from16 v0, v28
@@ -6099,14 +6099,14 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1248
+    .line 1246
     move-object/from16 v0, v22
 
     move-object/from16 v1, v21
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1251
+    .line 1249
     .end local v21           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_b
     const-string v28, "area"
@@ -6119,7 +6119,7 @@
 
     if-eqz v28, :cond_c
 
-    .line 1252
+    .line 1250
     const-string v28, "area"
 
     move-object/from16 v0, v28
@@ -6150,12 +6150,12 @@
 
     if-nez v28, :cond_c
 
-    .line 1253
+    .line 1251
     new-instance v21, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct/range {v21 .. v21}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1254
+    .line 1252
     .restart local v21       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v28, "-1"
 
@@ -6165,7 +6165,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1255
+    .line 1253
     const-string v28, "text"
 
     move-object/from16 v0, v21
@@ -6174,7 +6174,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1256
+    .line 1254
     const-string v28, "4"
 
     move-object/from16 v0, v21
@@ -6183,7 +6183,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1257
+    .line 1255
     const-string v28, "area"
 
     move-object/from16 v0, v28
@@ -6198,14 +6198,14 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1258
+    .line 1256
     move-object/from16 v0, v22
 
     move-object/from16 v1, v21
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1261
+    .line 1259
     .end local v21           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_c
     const-string v28, "time_length"
@@ -6218,7 +6218,7 @@
 
     if-eqz v28, :cond_d
 
-    .line 1262
+    .line 1260
     const-string v28, "time_length"
 
     move-object/from16 v0, v28
@@ -6269,7 +6269,7 @@
 
     if-nez v28, :cond_d
 
-    .line 1263
+    .line 1261
     const-string v28, "time_length"
 
     move-object/from16 v0, v28
@@ -6284,12 +6284,12 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setDuration(Ljava/lang/String;)V
 
-    .line 1264
+    .line 1262
     new-instance v21, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct/range {v21 .. v21}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1265
+    .line 1263
     .restart local v21       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v28, "-1"
 
@@ -6299,7 +6299,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1266
+    .line 1264
     const-string v28, "text"
 
     move-object/from16 v0, v21
@@ -6308,7 +6308,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1267
+    .line 1265
     const-string v28, "5"
 
     move-object/from16 v0, v21
@@ -6317,7 +6317,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1268
+    .line 1266
     const-string v28, "time_length"
 
     move-object/from16 v0, v28
@@ -6336,14 +6336,14 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1269
+    .line 1267
     move-object/from16 v0, v22
 
     move-object/from16 v1, v21
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1272
+    .line 1270
     .end local v21           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_d
     const-string v28, "style"
@@ -6356,7 +6356,7 @@
 
     if-eqz v28, :cond_e
 
-    .line 1273
+    .line 1271
     const-string v28, "style"
 
     move-object/from16 v0, v28
@@ -6371,7 +6371,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setStype(Ljava/lang/String;)V
 
-    .line 1278
+    .line 1276
     :cond_e
     const-string v28, "rcompany"
 
@@ -6383,7 +6383,7 @@
 
     if-eqz v28, :cond_f
 
-    .line 1279
+    .line 1277
     const-string v28, "rcompany"
 
     move-object/from16 v0, v28
@@ -6414,12 +6414,12 @@
 
     if-nez v28, :cond_f
 
-    .line 1280
+    .line 1278
     new-instance v21, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct/range {v21 .. v21}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1281
+    .line 1279
     .restart local v21       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v28, "-1"
 
@@ -6429,7 +6429,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1282
+    .line 1280
     const-string v28, "text"
 
     move-object/from16 v0, v21
@@ -6438,7 +6438,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1283
+    .line 1281
     const-string v28, "7"
 
     move-object/from16 v0, v21
@@ -6447,7 +6447,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1284
+    .line 1282
     const-string v28, "rcompany"
 
     move-object/from16 v0, v28
@@ -6462,14 +6462,14 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1285
+    .line 1283
     move-object/from16 v0, v22
 
     move-object/from16 v1, v21
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1288
+    .line 1286
     .end local v21           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_f
     const-string v28, "ctime"
@@ -6482,7 +6482,7 @@
 
     if-eqz v28, :cond_10
 
-    .line 1289
+    .line 1287
     const-string v28, "ctime"
 
     move-object/from16 v0, v28
@@ -6513,12 +6513,12 @@
 
     if-nez v28, :cond_10
 
-    .line 1290
+    .line 1288
     new-instance v21, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct/range {v21 .. v21}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1291
+    .line 1289
     .restart local v21       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v28, "-1"
 
@@ -6528,7 +6528,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1292
+    .line 1290
     const-string v28, "text"
 
     move-object/from16 v0, v21
@@ -6537,7 +6537,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1293
+    .line 1291
     const-string v28, "6"
 
     move-object/from16 v0, v21
@@ -6546,7 +6546,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1294
+    .line 1292
     const-string v28, "ctime"
 
     move-object/from16 v0, v28
@@ -6561,14 +6561,14 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1295
+    .line 1293
     move-object/from16 v0, v22
 
     move-object/from16 v1, v21
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1298
+    .line 1296
     .end local v21           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_10
     const-string v28, "vl"
@@ -6581,7 +6581,7 @@
 
     if-eqz v28, :cond_21
 
-    .line 1299
+    .line 1297
     const-string v28, "vl"
 
     move-object/from16 v0, v28
@@ -6590,7 +6590,7 @@
 
     move-result-object v4
 
-    .line 1300
+    .line 1298
     .local v4, channelProgramDetailEpisodesListJson:Lorg/json/JSONArray;
     if-eqz v4, :cond_21
 
@@ -6600,12 +6600,12 @@
 
     if-lez v28, :cond_21
 
-    .line 1301
+    .line 1299
     new-instance v16, Ljava/util/ArrayList;
 
     invoke-direct/range {v16 .. v16}, Ljava/util/ArrayList;-><init>()V
 
-    .line 1302
+    .line 1300
     .local v16, episodesListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/EpisodesEntity;>;"
     const/16 v20, 0x0
 
@@ -6621,23 +6621,23 @@
 
     if-ge v0, v1, :cond_1f
 
-    .line 1303
+    .line 1301
     move/from16 v0, v20
 
     invoke-virtual {v4, v0}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v3
 
-    .line 1304
+    .line 1302
     .local v3, channelProgramDetailEpisodesItemJson:Lorg/json/JSONObject;
     if-eqz v3, :cond_1e
 
-    .line 1305
+    .line 1303
     new-instance v15, Lcom/meizu/video/client/ui/entity/EpisodesEntity;
 
     invoke-direct {v15}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;-><init>()V
 
-    .line 1307
+    .line 1305
     .local v15, episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
     new-instance v28, Ljava/lang/StringBuilder;
 
@@ -6663,7 +6663,7 @@
 
     invoke-virtual {v15, v0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setProgression(Ljava/lang/String;)V
 
-    .line 1309
+    .line 1307
     const-string v28, "title"
 
     move-object/from16 v0, v28
@@ -6674,7 +6674,7 @@
 
     if-eqz v28, :cond_11
 
-    .line 1310
+    .line 1308
     const-string v28, "title"
 
     move-object/from16 v0, v28
@@ -6687,7 +6687,7 @@
 
     invoke-virtual {v15, v0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setTitle(Ljava/lang/String;)V
 
-    .line 1315
+    .line 1313
     :cond_11
     const-string v28, "vid"
 
@@ -6699,7 +6699,7 @@
 
     if-eqz v28, :cond_12
 
-    .line 1316
+    .line 1314
     const-string v28, "vid"
 
     move-object/from16 v0, v28
@@ -6712,7 +6712,7 @@
 
     invoke-virtual {v15, v0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setVid(Ljava/lang/String;)V
 
-    .line 1318
+    .line 1316
     :cond_12
     const-string v28, "lmid"
 
@@ -6724,7 +6724,7 @@
 
     if-eqz v28, :cond_13
 
-    .line 1319
+    .line 1317
     const-string v28, "lmid"
 
     move-object/from16 v0, v28
@@ -6737,7 +6737,7 @@
 
     invoke-virtual {v15, v0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setLmid(Ljava/lang/String;)V
 
-    .line 1321
+    .line 1319
     :cond_13
     const-string v28, "hmid"
 
@@ -6749,7 +6749,7 @@
 
     if-eqz v28, :cond_14
 
-    .line 1322
+    .line 1320
     const-string v28, "hmid"
 
     move-object/from16 v0, v28
@@ -6762,7 +6762,7 @@
 
     invoke-virtual {v15, v0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setHmid(Ljava/lang/String;)V
 
-    .line 1324
+    .line 1322
     :cond_14
     const-string v28, "lsize"
 
@@ -6776,7 +6776,7 @@
 
     if-eqz v28, :cond_15
 
-    .line 1326
+    .line 1324
     :try_start_1
     const-string v28, "lsize"
 
@@ -6792,7 +6792,7 @@
     :try_end_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_2
 
-    .line 1331
+    .line 1329
     :cond_15
     :goto_2
     :try_start_2
@@ -6808,7 +6808,7 @@
 
     if-eqz v28, :cond_16
 
-    .line 1333
+    .line 1331
     :try_start_3
     const-string v28, "hsize"
 
@@ -6824,7 +6824,7 @@
     :try_end_3
     .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_1
 
-    .line 1337
+    .line 1335
     :cond_16
     :goto_3
     :try_start_4
@@ -6838,7 +6838,7 @@
 
     if-eqz v28, :cond_17
 
-    .line 1338
+    .line 1336
     const-string v28, "free"
 
     move-object/from16 v0, v28
@@ -6851,7 +6851,7 @@
 
     invoke-virtual {v15, v0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setPlay_address(Ljava/lang/String;)V
 
-    .line 1340
+    .line 1338
     :cond_17
     const-string v28, "v800"
 
@@ -6863,7 +6863,7 @@
 
     if-eqz v28, :cond_18
 
-    .line 1341
+    .line 1339
     const-string v28, "v800"
 
     move-object/from16 v0, v28
@@ -6876,7 +6876,7 @@
 
     invoke-virtual {v15, v0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setPlay_address_other(Ljava/lang/String;)V
 
-    .line 1343
+    .line 1341
     :cond_18
     const-string v28, "down"
 
@@ -6888,7 +6888,7 @@
 
     if-eqz v28, :cond_19
 
-    .line 1344
+    .line 1342
     const-string v28, "down"
 
     move-object/from16 v0, v28
@@ -6901,7 +6901,7 @@
 
     invoke-virtual {v15, v0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setDownload_address(Ljava/lang/String;)V
 
-    .line 1346
+    .line 1344
     :cond_19
     const-string v28, "d800"
 
@@ -6913,7 +6913,7 @@
 
     if-eqz v28, :cond_1a
 
-    .line 1347
+    .line 1345
     const-string v28, "d800"
 
     move-object/from16 v0, v28
@@ -6926,7 +6926,7 @@
 
     invoke-virtual {v15, v0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setDownload_address_other(Ljava/lang/String;)V
 
-    .line 1349
+    .line 1347
     :cond_1a
     const-string v28, "btime"
 
@@ -6938,7 +6938,7 @@
 
     if-eqz v28, :cond_1b
 
-    .line 1350
+    .line 1348
     const-string v28, "btime"
 
     move-object/from16 v0, v28
@@ -6951,7 +6951,7 @@
 
     invoke-virtual {v15, v0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setHead_duration(Ljava/lang/String;)V
 
-    .line 1352
+    .line 1350
     :cond_1b
     const-string v28, "etime"
 
@@ -6963,7 +6963,7 @@
 
     if-eqz v28, :cond_1c
 
-    .line 1353
+    .line 1351
     const-string v28, "etime"
 
     move-object/from16 v0, v28
@@ -6976,7 +6976,7 @@
 
     invoke-virtual {v15, v0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setTail_duration(Ljava/lang/String;)V
 
-    .line 1355
+    .line 1353
     :cond_1c
     const-string v28, "duration"
 
@@ -6988,7 +6988,7 @@
 
     if-eqz v28, :cond_1d
 
-    .line 1356
+    .line 1354
     const-string v28, "duration"
 
     move-object/from16 v0, v28
@@ -7001,20 +7001,20 @@
 
     invoke-virtual {v15, v0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->setDuration(Ljava/lang/String;)V
 
-    .line 1358
+    .line 1356
     :cond_1d
     move-object/from16 v0, v16
 
     invoke-virtual {v0, v15}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1302
+    .line 1300
     .end local v15           #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
     :cond_1e
     add-int/lit8 v20, v20, 0x1
 
     goto/16 :goto_1
 
-    .line 1361
+    .line 1359
     .end local v3           #channelProgramDetailEpisodesItemJson:Lorg/json/JSONObject;
     :cond_1f
     const-string v28, "0"
@@ -7025,19 +7025,19 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setEpisodesCode(Ljava/lang/String;)V
 
-    .line 1362
+    .line 1360
     move-object/from16 v0, p1
 
     move-object/from16 v1, v16
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setEpisodesListEntity(Ljava/util/ArrayList;)V
 
-    .line 1364
+    .line 1362
     new-instance v17, Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     invoke-direct/range {v17 .. v17}, Lcom/meizu/video/client/ui/entity/MsgEntity;-><init>()V
 
-    .line 1365
+    .line 1363
     .local v17, episodesMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     invoke-virtual/range {v16 .. v16}, Ljava/util/ArrayList;->size()I
 
@@ -7045,7 +7045,7 @@
 
     if-lez v28, :cond_20
 
-    .line 1366
+    .line 1364
     const-string v28, "\u89c6\u9891\u5217\u8868"
 
     move-object/from16 v0, v17
@@ -7054,7 +7054,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1367
+    .line 1365
     new-instance v28, Ljava/lang/StringBuilder;
 
     invoke-direct/range {v28 .. v28}, Ljava/lang/StringBuilder;-><init>()V
@@ -7083,7 +7083,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1369
+    .line 1367
     :cond_20
     move-object/from16 v0, p1
 
@@ -7091,7 +7091,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setEpisodesMsgEntity(Lcom/meizu/video/client/ui/entity/MsgEntity;)V
 
-    .line 1373
+    .line 1371
     .end local v4           #channelProgramDetailEpisodesListJson:Lorg/json/JSONArray;
     .end local v16           #episodesListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/EpisodesEntity;>;"
     .end local v17           #episodesMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
@@ -7101,7 +7101,7 @@
 
     invoke-direct/range {v26 .. v26}, Ljava/util/ArrayList;-><init>()V
 
-    .line 1374
+    .line 1372
     .local v26, similarVideoListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;>;"
     const-string v28, "l_list"
 
@@ -7113,7 +7113,7 @@
 
     if-eqz v28, :cond_2c
 
-    .line 1375
+    .line 1373
     const-string v28, "l_list"
 
     move-object/from16 v0, v28
@@ -7122,7 +7122,7 @@
 
     move-result-object v11
 
-    .line 1376
+    .line 1374
     .local v11, channelProgramDetailSimilarLListJson:Lorg/json/JSONArray;
     if-eqz v11, :cond_2c
 
@@ -7132,7 +7132,7 @@
 
     if-lez v28, :cond_2c
 
-    .line 1377
+    .line 1375
     const/16 v24, 0x0
 
     .local v24, n:I
@@ -7159,23 +7159,23 @@
 
     if-ge v0, v1, :cond_2c
 
-    .line 1378
+    .line 1376
     move/from16 v0, v24
 
     invoke-virtual {v11, v0}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v10
 
-    .line 1379
+    .line 1377
     .local v10, channelProgramDetailSimilarLItemJson:Lorg/json/JSONObject;
     if-eqz v10, :cond_25
 
-    .line 1380
+    .line 1378
     new-instance v25, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
 
     invoke-direct/range {v25 .. v25}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;-><init>()V
 
-    .line 1382
+    .line 1380
     .local v25, similarVideoAEntity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
     const-string v28, "id"
 
@@ -7187,7 +7187,7 @@
 
     if-eqz v28, :cond_22
 
-    .line 1383
+    .line 1381
     const-string v28, "id"
 
     move-object/from16 v0, v28
@@ -7202,11 +7202,11 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setVid(Ljava/lang/String;)V
 
-    .line 1387
+    .line 1385
     :cond_22
     const/16 v18, 0x0
 
-    .line 1388
+    .line 1386
     .local v18, hasSame:Z
     invoke-virtual/range {v26 .. v26}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
 
@@ -7226,7 +7226,7 @@
 
     check-cast v14, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
 
-    .line 1389
+    .line 1387
     .local v14, entity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
     invoke-virtual {v14}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->getVid()Ljava/lang/String;
 
@@ -7242,15 +7242,15 @@
 
     if-eqz v28, :cond_23
 
-    .line 1390
+    .line 1388
     const/16 v18, 0x1
 
-    .line 1394
+    .line 1392
     .end local v14           #entity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
     :cond_24
     if-eqz v18, :cond_26
 
-    .line 1377
+    .line 1375
     .end local v18           #hasSame:Z
     .end local v19           #i$:Ljava/util/Iterator;
     .end local v25           #similarVideoAEntity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
@@ -7260,7 +7260,7 @@
 
     goto :goto_4
 
-    .line 1398
+    .line 1396
     .restart local v18       #hasSame:Z
     .restart local v19       #i$:Ljava/util/Iterator;
     .restart local v25       #similarVideoAEntity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
@@ -7275,7 +7275,7 @@
 
     if-eqz v28, :cond_27
 
-    .line 1399
+    .line 1397
     const-string v28, "title"
 
     move-object/from16 v0, v28
@@ -7290,7 +7290,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setTitle(Ljava/lang/String;)V
 
-    .line 1401
+    .line 1399
     :cond_27
     const-string v28, "icon"
 
@@ -7302,7 +7302,7 @@
 
     if-eqz v28, :cond_28
 
-    .line 1402
+    .line 1400
     const-string v28, "icon"
 
     move-object/from16 v0, v28
@@ -7317,7 +7317,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setImage(Ljava/lang/String;)V
 
-    .line 1404
+    .line 1402
     :cond_28
     const-string v28, "cid"
 
@@ -7329,7 +7329,7 @@
 
     if-eqz v28, :cond_29
 
-    .line 1405
+    .line 1403
     const-string v28, "cid"
 
     move-object/from16 v0, v28
@@ -7344,7 +7344,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setCid(Ljava/lang/String;)V
 
-    .line 1407
+    .line 1405
     :cond_29
     const-string v28, "type"
 
@@ -7356,7 +7356,7 @@
 
     if-eqz v28, :cond_2a
 
-    .line 1408
+    .line 1406
     const-string v28, "type"
 
     move-object/from16 v0, v28
@@ -7371,7 +7371,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setMediaDataType(Ljava/lang/String;)V
 
-    .line 1410
+    .line 1408
     :cond_2a
     const-string v28, "at"
 
@@ -7383,7 +7383,7 @@
 
     if-eqz v28, :cond_2b
 
-    .line 1411
+    .line 1409
     const-string v28, "at"
 
     move-object/from16 v0, v28
@@ -7398,7 +7398,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setMediaOperaton(Ljava/lang/String;)V
 
-    .line 1413
+    .line 1411
     :cond_2b
     move-object/from16 v0, v26
 
@@ -7408,7 +7408,7 @@
 
     goto/16 :goto_5
 
-    .line 1529
+    .line 1527
     .end local v2           #channelProgramDetailBodyJson:Lorg/json/JSONObject;
     .end local v10           #channelProgramDetailSimilarLItemJson:Lorg/json/JSONObject;
     .end local v11           #channelProgramDetailSimilarLListJson:Lorg/json/JSONArray;
@@ -7424,7 +7424,7 @@
 
     goto/16 :goto_0
 
-    .line 1419
+    .line 1417
     .restart local v2       #channelProgramDetailBodyJson:Lorg/json/JSONObject;
     .restart local v12       #channelProgramDetailToalJson:Lorg/json/JSONObject;
     .restart local v22       #lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
@@ -7440,7 +7440,7 @@
 
     if-eqz v28, :cond_37
 
-    .line 1420
+    .line 1418
     const-string v28, "a_list"
 
     move-object/from16 v0, v28
@@ -7449,7 +7449,7 @@
 
     move-result-object v7
 
-    .line 1421
+    .line 1419
     .local v7, channelProgramDetailSimilarAListJson:Lorg/json/JSONArray;
     if-eqz v7, :cond_37
 
@@ -7459,7 +7459,7 @@
 
     if-lez v28, :cond_37
 
-    .line 1422
+    .line 1420
     const/16 v24, 0x0
 
     .restart local v24       #n:I
@@ -7486,23 +7486,23 @@
 
     if-ge v0, v1, :cond_37
 
-    .line 1423
+    .line 1421
     move/from16 v0, v24
 
     invoke-virtual {v7, v0}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v6
 
-    .line 1424
+    .line 1422
     .local v6, channelProgramDetailSimilarAItemJson:Lorg/json/JSONObject;
     if-eqz v6, :cond_30
 
-    .line 1425
+    .line 1423
     new-instance v25, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
 
     invoke-direct/range {v25 .. v25}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;-><init>()V
 
-    .line 1427
+    .line 1425
     .restart local v25       #similarVideoAEntity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
     const-string v28, "id"
 
@@ -7514,7 +7514,7 @@
 
     if-eqz v28, :cond_2d
 
-    .line 1428
+    .line 1426
     const-string v28, "id"
 
     move-object/from16 v0, v28
@@ -7529,11 +7529,11 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setVid(Ljava/lang/String;)V
 
-    .line 1432
+    .line 1430
     :cond_2d
     const/16 v18, 0x0
 
-    .line 1433
+    .line 1431
     .restart local v18       #hasSame:Z
     invoke-virtual/range {v26 .. v26}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
 
@@ -7553,7 +7553,7 @@
 
     check-cast v14, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
 
-    .line 1434
+    .line 1432
     .restart local v14       #entity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
     invoke-virtual {v14}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->getVid()Ljava/lang/String;
 
@@ -7569,15 +7569,15 @@
 
     if-eqz v28, :cond_2e
 
-    .line 1435
+    .line 1433
     const/16 v18, 0x1
 
-    .line 1439
+    .line 1437
     .end local v14           #entity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
     :cond_2f
     if-eqz v18, :cond_31
 
-    .line 1422
+    .line 1420
     .end local v18           #hasSame:Z
     .end local v19           #i$:Ljava/util/Iterator;
     .end local v25           #similarVideoAEntity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
@@ -7587,7 +7587,7 @@
 
     goto :goto_6
 
-    .line 1443
+    .line 1441
     .restart local v18       #hasSame:Z
     .restart local v19       #i$:Ljava/util/Iterator;
     .restart local v25       #similarVideoAEntity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
@@ -7602,7 +7602,7 @@
 
     if-eqz v28, :cond_32
 
-    .line 1444
+    .line 1442
     const-string v28, "title"
 
     move-object/from16 v0, v28
@@ -7617,7 +7617,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setTitle(Ljava/lang/String;)V
 
-    .line 1446
+    .line 1444
     :cond_32
     const-string v28, "icon"
 
@@ -7629,7 +7629,7 @@
 
     if-eqz v28, :cond_33
 
-    .line 1447
+    .line 1445
     const-string v28, "icon"
 
     move-object/from16 v0, v28
@@ -7644,7 +7644,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setImage(Ljava/lang/String;)V
 
-    .line 1449
+    .line 1447
     :cond_33
     const-string v28, "cid"
 
@@ -7656,7 +7656,7 @@
 
     if-eqz v28, :cond_34
 
-    .line 1450
+    .line 1448
     const-string v28, "cid"
 
     move-object/from16 v0, v28
@@ -7671,7 +7671,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setCid(Ljava/lang/String;)V
 
-    .line 1452
+    .line 1450
     :cond_34
     const-string v28, "type"
 
@@ -7683,7 +7683,7 @@
 
     if-eqz v28, :cond_35
 
-    .line 1453
+    .line 1451
     const-string v28, "type"
 
     move-object/from16 v0, v28
@@ -7698,7 +7698,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setMediaDataType(Ljava/lang/String;)V
 
-    .line 1455
+    .line 1453
     :cond_35
     const-string v28, "at"
 
@@ -7710,7 +7710,7 @@
 
     if-eqz v28, :cond_36
 
-    .line 1456
+    .line 1454
     const-string v28, "at"
 
     move-object/from16 v0, v28
@@ -7725,7 +7725,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setMediaOperaton(Ljava/lang/String;)V
 
-    .line 1458
+    .line 1456
     :cond_36
     move-object/from16 v0, v26
 
@@ -7735,7 +7735,7 @@
 
     goto/16 :goto_7
 
-    .line 1464
+    .line 1462
     .end local v6           #channelProgramDetailSimilarAItemJson:Lorg/json/JSONObject;
     .end local v7           #channelProgramDetailSimilarAListJson:Lorg/json/JSONArray;
     .end local v18           #hasSame:Z
@@ -7753,7 +7753,7 @@
 
     if-eqz v28, :cond_42
 
-    .line 1465
+    .line 1463
     const-string v28, "d_list"
 
     move-object/from16 v0, v28
@@ -7762,7 +7762,7 @@
 
     move-result-object v9
 
-    .line 1466
+    .line 1464
     .local v9, channelProgramDetailSimilarDListJson:Lorg/json/JSONArray;
     if-eqz v9, :cond_42
 
@@ -7772,7 +7772,7 @@
 
     if-lez v28, :cond_42
 
-    .line 1467
+    .line 1465
     const/16 v23, 0x0
 
     .local v23, m:I
@@ -7799,23 +7799,23 @@
 
     if-ge v0, v1, :cond_42
 
-    .line 1468
+    .line 1466
     move/from16 v0, v23
 
     invoke-virtual {v9, v0}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v8
 
-    .line 1469
+    .line 1467
     .local v8, channelProgramDetailSimilarDItemJson:Lorg/json/JSONObject;
     if-eqz v8, :cond_3b
 
-    .line 1470
+    .line 1468
     new-instance v25, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
 
     invoke-direct/range {v25 .. v25}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;-><init>()V
 
-    .line 1472
+    .line 1470
     .restart local v25       #similarVideoAEntity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
     const-string v28, "id"
 
@@ -7827,7 +7827,7 @@
 
     if-eqz v28, :cond_38
 
-    .line 1473
+    .line 1471
     const-string v28, "id"
 
     move-object/from16 v0, v28
@@ -7842,11 +7842,11 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setVid(Ljava/lang/String;)V
 
-    .line 1477
+    .line 1475
     :cond_38
     const/16 v18, 0x0
 
-    .line 1478
+    .line 1476
     .restart local v18       #hasSame:Z
     invoke-virtual/range {v26 .. v26}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
 
@@ -7866,7 +7866,7 @@
 
     check-cast v14, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
 
-    .line 1479
+    .line 1477
     .restart local v14       #entity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
     invoke-virtual {v14}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->getVid()Ljava/lang/String;
 
@@ -7882,15 +7882,15 @@
 
     if-eqz v28, :cond_39
 
-    .line 1480
+    .line 1478
     const/16 v18, 0x1
 
-    .line 1484
+    .line 1482
     .end local v14           #entity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
     :cond_3a
     if-eqz v18, :cond_3c
 
-    .line 1467
+    .line 1465
     .end local v18           #hasSame:Z
     .end local v19           #i$:Ljava/util/Iterator;
     .end local v25           #similarVideoAEntity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
@@ -7900,7 +7900,7 @@
 
     goto :goto_8
 
-    .line 1488
+    .line 1486
     .restart local v18       #hasSame:Z
     .restart local v19       #i$:Ljava/util/Iterator;
     .restart local v25       #similarVideoAEntity:Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;
@@ -7915,7 +7915,7 @@
 
     if-eqz v28, :cond_3d
 
-    .line 1489
+    .line 1487
     const-string v28, "title"
 
     move-object/from16 v0, v28
@@ -7930,7 +7930,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setTitle(Ljava/lang/String;)V
 
-    .line 1491
+    .line 1489
     :cond_3d
     const-string v28, "icon"
 
@@ -7942,7 +7942,7 @@
 
     if-eqz v28, :cond_3e
 
-    .line 1492
+    .line 1490
     const-string v28, "icon"
 
     move-object/from16 v0, v28
@@ -7957,7 +7957,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setImage(Ljava/lang/String;)V
 
-    .line 1494
+    .line 1492
     :cond_3e
     const-string v28, "cid"
 
@@ -7969,7 +7969,7 @@
 
     if-eqz v28, :cond_3f
 
-    .line 1495
+    .line 1493
     const-string v28, "cid"
 
     move-object/from16 v0, v28
@@ -7984,7 +7984,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setCid(Ljava/lang/String;)V
 
-    .line 1497
+    .line 1495
     :cond_3f
     const-string v28, "type"
 
@@ -7996,7 +7996,7 @@
 
     if-eqz v28, :cond_40
 
-    .line 1498
+    .line 1496
     const-string v28, "type"
 
     move-object/from16 v0, v28
@@ -8011,7 +8011,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setMediaDataType(Ljava/lang/String;)V
 
-    .line 1500
+    .line 1498
     :cond_40
     const-string v28, "at"
 
@@ -8023,7 +8023,7 @@
 
     if-eqz v28, :cond_41
 
-    .line 1501
+    .line 1499
     const-string v28, "at"
 
     move-object/from16 v0, v28
@@ -8038,7 +8038,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;->setMediaOperaton(Ljava/lang/String;)V
 
-    .line 1503
+    .line 1501
     :cond_41
     move-object/from16 v0, v26
 
@@ -8048,7 +8048,7 @@
 
     goto/16 :goto_9
 
-    .line 1509
+    .line 1507
     .end local v8           #channelProgramDetailSimilarDItemJson:Lorg/json/JSONObject;
     .end local v9           #channelProgramDetailSimilarDListJson:Lorg/json/JSONArray;
     .end local v18           #hasSame:Z
@@ -8062,12 +8062,12 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setSimilarVideoListEntity(Ljava/util/ArrayList;)V
 
-    .line 1510
+    .line 1508
     new-instance v27, Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     invoke-direct/range {v27 .. v27}, Lcom/meizu/video/client/ui/entity/MsgEntity;-><init>()V
 
-    .line 1511
+    .line 1509
     .local v27, similarVideoMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     invoke-virtual/range {v26 .. v26}, Ljava/util/ArrayList;->size()I
 
@@ -8075,12 +8075,12 @@
 
     if-lez v28, :cond_43
 
-    .line 1512
+    .line 1510
     const-string v28, "\u76f8\u5173\u89c6\u9891"
 
     invoke-virtual/range {v27 .. v28}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1513
+    .line 1511
     new-instance v28, Ljava/lang/StringBuilder;
 
     invoke-direct/range {v28 .. v28}, Ljava/lang/StringBuilder;-><init>()V
@@ -8105,7 +8105,7 @@
 
     invoke-virtual/range {v27 .. v28}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1515
+    .line 1513
     :cond_43
     move-object/from16 v0, p1
 
@@ -8113,7 +8113,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;->setSimilarVideoMsgEntity(Lcom/meizu/video/client/ui/entity/MsgEntity;)V
 
-    .line 1523
+    .line 1521
     move-object/from16 v0, p1
 
     move-object/from16 v1, v22
@@ -8124,7 +8124,7 @@
 
     goto/16 :goto_0
 
-    .line 1334
+    .line 1332
     .end local v26           #similarVideoListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/SimilarVideoEntity;>;"
     .end local v27           #similarVideoMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     .restart local v3       #channelProgramDetailEpisodesItemJson:Lorg/json/JSONObject;
@@ -8137,7 +8137,7 @@
 
     goto/16 :goto_3
 
-    .line 1327
+    .line 1325
     :catch_2
     move-exception v28
 
@@ -8160,26 +8160,26 @@
     .end annotation
 
     .prologue
-    .line 164
+    .line 162
     new-instance v4, Ljava/util/ArrayList;
 
     invoke-direct {v4}, Ljava/util/ArrayList;-><init>()V
 
-    .line 166
+    .line 164
     .local v4, commentListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/CommentEntity;>;"
     :try_start_0
     new-instance v6, Lorg/json/JSONObject;
 
     invoke-direct {v6, p0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 167
+    .line 165
     .local v6, commentToalJson:Lorg/json/JSONObject;
     if-eqz v6, :cond_2
 
-    .line 168
+    .line 166
     const-string v1, ""
 
-    .line 169
+    .line 167
     .local v1, code:Ljava/lang/String;
     const-string v12, "code"
 
@@ -8189,22 +8189,22 @@
 
     if-eqz v12, :cond_0
 
-    .line 170
+    .line 168
     const-string v12, "code"
 
     invoke-virtual {v6, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 172
+    .line 170
     :cond_0
     const-string v10, ""
 
-    .line 173
+    .line 171
     .local v10, msg:Ljava/lang/String;
     const-string v7, ""
 
-    .line 174
+    .line 172
     .local v7, data:Ljava/lang/String;
     const-string v12, "-1"
 
@@ -8214,7 +8214,7 @@
 
     if-eqz v12, :cond_3
 
-    .line 175
+    .line 173
     const-string v12, "msg"
 
     invoke-virtual {v6, v12}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -8223,14 +8223,14 @@
 
     if-eqz v12, :cond_1
 
-    .line 176
+    .line 174
     const-string v12, "msg"
 
     invoke-virtual {v6, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v10
 
-    .line 178
+    .line 176
     :cond_1
     const-string v12, "data"
 
@@ -8240,14 +8240,14 @@
 
     if-eqz v12, :cond_2
 
-    .line 179
+    .line 177
     const-string v12, "data"
 
     invoke-virtual {v6, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v7
 
-    .line 224
+    .line 222
     .end local v1           #code:Ljava/lang/String;
     .end local v6           #commentToalJson:Lorg/json/JSONObject;
     .end local v7           #data:Ljava/lang/String;
@@ -8256,7 +8256,7 @@
     :goto_0
     return-object v4
 
-    .line 181
+    .line 179
     .restart local v1       #code:Ljava/lang/String;
     .restart local v6       #commentToalJson:Lorg/json/JSONObject;
     .restart local v7       #data:Ljava/lang/String;
@@ -8270,7 +8270,7 @@
 
     if-eqz v12, :cond_2
 
-    .line 182
+    .line 180
     const-string v12, "msg"
 
     invoke-virtual {v6, v12}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -8279,22 +8279,22 @@
 
     if-eqz v12, :cond_4
 
-    .line 183
+    .line 181
     const-string v12, "msg"
 
     invoke-virtual {v6, v12}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
 
     move-result-object v5
 
-    .line 184
+    .line 182
     .local v5, commentMsgJson:Lorg/json/JSONObject;
     const-string v11, ""
 
-    .line 185
+    .line 183
     .local v11, total:Ljava/lang/String;
     if-eqz v5, :cond_4
 
-    .line 186
+    .line 184
     const-string v12, "total"
 
     invoke-virtual {v5, v12}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -8303,12 +8303,12 @@
 
     if-eqz v12, :cond_4
 
-    .line 187
+    .line 185
     const-string v12, "total"
 
     invoke-virtual {v5, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
-    .line 191
+    .line 189
     .end local v5           #commentMsgJson:Lorg/json/JSONObject;
     .end local v11           #total:Ljava/lang/String;
     :cond_4
@@ -8320,14 +8320,14 @@
 
     if-eqz v12, :cond_2
 
-    .line 192
+    .line 190
     const-string v12, "data"
 
     invoke-virtual {v6, v12}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v2
 
-    .line 193
+    .line 191
     .local v2, commentDataJson:Lorg/json/JSONArray;
     if-eqz v2, :cond_2
 
@@ -8337,7 +8337,7 @@
 
     if-lez v12, :cond_2
 
-    .line 194
+    .line 192
     const/4 v9, 0x0
 
     .local v9, i:I
@@ -8348,21 +8348,21 @@
 
     if-ge v9, v12, :cond_2
 
-    .line 195
+    .line 193
     invoke-virtual {v2, v9}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v0
 
-    .line 196
+    .line 194
     .local v0, channelDataItemJson:Lorg/json/JSONObject;
     if-eqz v0, :cond_a
 
-    .line 197
+    .line 195
     new-instance v3, Lcom/meizu/video/client/ui/entity/CommentEntity;
 
     invoke-direct {v3}, Lcom/meizu/video/client/ui/entity/CommentEntity;-><init>()V
 
-    .line 198
+    .line 196
     .local v3, commentEntity:Lcom/meizu/video/client/ui/entity/CommentEntity;
     const-string v12, "id"
 
@@ -8372,7 +8372,7 @@
 
     if-eqz v12, :cond_5
 
-    .line 199
+    .line 197
     const-string v12, "id"
 
     invoke-virtual {v0, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -8381,7 +8381,7 @@
 
     invoke-virtual {v3, v12}, Lcom/meizu/video/client/ui/entity/CommentEntity;->setId(Ljava/lang/String;)V
 
-    .line 201
+    .line 199
     :cond_5
     const-string v12, "title"
 
@@ -8391,7 +8391,7 @@
 
     if-eqz v12, :cond_6
 
-    .line 202
+    .line 200
     const-string v12, "title"
 
     invoke-virtual {v0, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -8400,7 +8400,7 @@
 
     invoke-virtual {v3, v12}, Lcom/meizu/video/client/ui/entity/CommentEntity;->setTitle(Ljava/lang/String;)V
 
-    .line 204
+    .line 202
     :cond_6
     const-string v12, "author"
 
@@ -8410,7 +8410,7 @@
 
     if-eqz v12, :cond_7
 
-    .line 205
+    .line 203
     const-string v12, "author"
 
     invoke-virtual {v0, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -8419,7 +8419,7 @@
 
     invoke-virtual {v3, v12}, Lcom/meizu/video/client/ui/entity/CommentEntity;->setAuthor(Ljava/lang/String;)V
 
-    .line 207
+    .line 205
     :cond_7
     const-string v12, "score"
 
@@ -8429,7 +8429,7 @@
 
     if-eqz v12, :cond_8
 
-    .line 208
+    .line 206
     const-string v12, "score"
 
     invoke-virtual {v0, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -8438,7 +8438,7 @@
 
     invoke-virtual {v3, v12}, Lcom/meizu/video/client/ui/entity/CommentEntity;->setScore(Ljava/lang/String;)V
 
-    .line 210
+    .line 208
     :cond_8
     const-string v12, "content"
 
@@ -8448,7 +8448,7 @@
 
     if-eqz v12, :cond_9
 
-    .line 211
+    .line 209
     const-string v12, "content"
 
     invoke-virtual {v0, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -8457,20 +8457,20 @@
 
     invoke-virtual {v3, v12}, Lcom/meizu/video/client/ui/entity/CommentEntity;->setContent(Ljava/lang/String;)V
 
-    .line 213
+    .line 211
     :cond_9
     invoke-virtual {v4, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
     :try_end_0
     .catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 194
+    .line 192
     .end local v3           #commentEntity:Lcom/meizu/video/client/ui/entity/CommentEntity;
     :cond_a
     add-int/lit8 v9, v9, 0x1
 
     goto :goto_1
 
-    .line 220
+    .line 218
     .end local v0           #channelDataItemJson:Lorg/json/JSONObject;
     .end local v1           #code:Ljava/lang/String;
     .end local v2           #commentDataJson:Lorg/json/JSONArray;
@@ -8481,7 +8481,7 @@
     :catch_0
     move-exception v8
 
-    .line 221
+    .line 219
     .local v8, e:Lorg/json/JSONException;
     invoke-virtual {v8}, Lorg/json/JSONException;->printStackTrace()V
 
@@ -8504,12 +8504,12 @@
     .end annotation
 
     .prologue
-    .line 755
+    .line 753
     new-instance v15, Ljava/util/ArrayList;
 
     invoke-direct {v15}, Ljava/util/ArrayList;-><init>()V
 
-    .line 757
+    .line 755
     .local v15, recommendListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
     :try_start_0
     new-instance v17, Lorg/json/JSONObject;
@@ -8520,14 +8520,14 @@
 
     invoke-direct {v0, v1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 758
+    .line 756
     .local v17, recommendToalJson:Lorg/json/JSONObject;
     if-eqz v17, :cond_2
 
-    .line 759
+    .line 757
     const-string v2, ""
 
-    .line 760
+    .line 758
     .local v2, code:Ljava/lang/String;
     const-string v19, "code"
 
@@ -8541,7 +8541,7 @@
 
     if-eqz v19, :cond_0
 
-    .line 761
+    .line 759
     const-string v19, "code"
 
     move-object/from16 v0, v17
@@ -8552,15 +8552,15 @@
 
     move-result-object v2
 
-    .line 763
+    .line 761
     :cond_0
     const-string v9, ""
 
-    .line 764
+    .line 762
     .local v9, msg:Ljava/lang/String;
     const-string v3, ""
 
-    .line 765
+    .line 763
     .local v3, data:Ljava/lang/String;
     const-string v19, "-1"
 
@@ -8572,7 +8572,7 @@
 
     if-eqz v19, :cond_3
 
-    .line 766
+    .line 764
     const-string v19, "msg"
 
     move-object/from16 v0, v17
@@ -8585,7 +8585,7 @@
 
     if-eqz v19, :cond_1
 
-    .line 767
+    .line 765
     const-string v19, "msg"
 
     move-object/from16 v0, v17
@@ -8596,7 +8596,7 @@
 
     move-result-object v9
 
-    .line 769
+    .line 767
     :cond_1
     const-string v19, "data"
 
@@ -8610,7 +8610,7 @@
 
     if-eqz v19, :cond_2
 
-    .line 770
+    .line 768
     const-string v19, "data"
 
     move-object/from16 v0, v17
@@ -8621,7 +8621,7 @@
 
     move-result-object v3
 
-    .line 844
+    .line 842
     .end local v2           #code:Ljava/lang/String;
     .end local v3           #data:Ljava/lang/String;
     .end local v9           #msg:Ljava/lang/String;
@@ -8630,7 +8630,7 @@
     :goto_0
     return-object v15
 
-    .line 772
+    .line 770
     .restart local v2       #code:Ljava/lang/String;
     .restart local v3       #data:Ljava/lang/String;
     .restart local v9       #msg:Ljava/lang/String;
@@ -8646,7 +8646,7 @@
 
     if-eqz v19, :cond_2
 
-    .line 773
+    .line 771
     const-string v19, "msg"
 
     move-object/from16 v0, v17
@@ -8659,7 +8659,7 @@
 
     if-eqz v19, :cond_4
 
-    .line 774
+    .line 772
     const-string v19, "msg"
 
     move-object/from16 v0, v17
@@ -8670,15 +8670,15 @@
 
     move-result-object v16
 
-    .line 775
+    .line 773
     .local v16, recommendMsgJson:Lorg/json/JSONObject;
     const-string v18, ""
 
-    .line 776
+    .line 774
     .local v18, total:Ljava/lang/String;
     if-eqz v16, :cond_4
 
-    .line 777
+    .line 775
     const-string v19, "total"
 
     move-object/from16 v0, v16
@@ -8691,7 +8691,7 @@
 
     if-eqz v19, :cond_4
 
-    .line 778
+    .line 776
     const-string v19, "total"
 
     move-object/from16 v0, v16
@@ -8700,7 +8700,7 @@
 
     invoke-virtual {v0, v1}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
-    .line 782
+    .line 780
     .end local v16           #recommendMsgJson:Lorg/json/JSONObject;
     .end local v18           #total:Ljava/lang/String;
     :cond_4
@@ -8716,7 +8716,7 @@
 
     if-eqz v19, :cond_2
 
-    .line 783
+    .line 781
     const-string v19, "data"
 
     move-object/from16 v0, v17
@@ -8727,7 +8727,7 @@
 
     move-result-object v14
 
-    .line 784
+    .line 782
     .local v14, recommendDataJson:Lorg/json/JSONArray;
     if-eqz v14, :cond_2
 
@@ -8737,7 +8737,7 @@
 
     if-lez v19, :cond_2
 
-    .line 785
+    .line 783
     const/4 v5, 0x0
 
     .local v5, i:I
@@ -8750,21 +8750,21 @@
 
     if-ge v5, v0, :cond_2
 
-    .line 786
+    .line 784
     invoke-virtual {v14, v5}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v11
 
-    .line 787
+    .line 785
     .local v11, recommendDataItemJson:Lorg/json/JSONObject;
     if-eqz v11, :cond_12
 
-    .line 788
+    .line 786
     new-instance v10, Lcom/meizu/video/client/ui/entity/RecommendEntity;
 
     invoke-direct {v10}, Lcom/meizu/video/client/ui/entity/RecommendEntity;-><init>()V
 
-    .line 789
+    .line 787
     .local v10, reEntity:Lcom/meizu/video/client/ui/entity/RecommendEntity;
     const-string v19, "vid"
 
@@ -8776,7 +8776,7 @@
 
     if-eqz v19, :cond_5
 
-    .line 790
+    .line 788
     const-string v19, "vid"
 
     move-object/from16 v0, v19
@@ -8789,7 +8789,7 @@
 
     invoke-virtual {v10, v0}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setVid(Ljava/lang/String;)V
 
-    .line 792
+    .line 790
     :cond_5
     const-string v19, "cid"
 
@@ -8801,7 +8801,7 @@
 
     if-eqz v19, :cond_6
 
-    .line 793
+    .line 791
     const-string v19, "cid"
 
     move-object/from16 v0, v19
@@ -8814,7 +8814,7 @@
 
     invoke-virtual {v10, v0}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setCid(Ljava/lang/String;)V
 
-    .line 795
+    .line 793
     :cond_6
     const-string v19, "mmsid"
 
@@ -8826,7 +8826,7 @@
 
     if-eqz v19, :cond_7
 
-    .line 796
+    .line 794
     const-string v19, "mmsid"
 
     move-object/from16 v0, v19
@@ -8839,7 +8839,7 @@
 
     invoke-virtual {v10, v0}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setMmsid(Ljava/lang/String;)V
 
-    .line 798
+    .line 796
     :cond_7
     const-string v19, "duration"
 
@@ -8851,7 +8851,7 @@
 
     if-eqz v19, :cond_8
 
-    .line 799
+    .line 797
     const-string v19, "duration"
 
     move-object/from16 v0, v19
@@ -8864,7 +8864,7 @@
 
     invoke-virtual {v10, v0}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setDuration(Ljava/lang/String;)V
 
-    .line 801
+    .line 799
     :cond_8
     const-string v19, "play_address"
 
@@ -8876,7 +8876,7 @@
 
     if-eqz v19, :cond_9
 
-    .line 802
+    .line 800
     const-string v19, "play_address"
 
     move-object/from16 v0, v19
@@ -8889,7 +8889,7 @@
 
     invoke-virtual {v10, v0}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setPlay_address(Ljava/lang/String;)V
 
-    .line 804
+    .line 802
     :cond_9
     const-string v19, "head_duration"
 
@@ -8901,7 +8901,7 @@
 
     if-eqz v19, :cond_a
 
-    .line 805
+    .line 803
     const-string v19, "head_duration"
 
     move-object/from16 v0, v19
@@ -8914,7 +8914,7 @@
 
     invoke-virtual {v10, v0}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setHead_duration(Ljava/lang/String;)V
 
-    .line 807
+    .line 805
     :cond_a
     const-string v19, "tail_duration"
 
@@ -8926,7 +8926,7 @@
 
     if-eqz v19, :cond_b
 
-    .line 808
+    .line 806
     const-string v19, "tail_duration"
 
     move-object/from16 v0, v19
@@ -8939,7 +8939,7 @@
 
     invoke-virtual {v10, v0}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setTail_duration(Ljava/lang/String;)V
 
-    .line 810
+    .line 808
     :cond_b
     const-string v19, "label"
 
@@ -8951,7 +8951,7 @@
 
     if-eqz v19, :cond_11
 
-    .line 811
+    .line 809
     const-string v19, "label"
 
     move-object/from16 v0, v19
@@ -8960,7 +8960,7 @@
 
     move-result-object v13
 
-    .line 812
+    .line 810
     .local v13, recommendDataItemLabelListJson:Lorg/json/JSONArray;
     if-eqz v13, :cond_11
 
@@ -8970,12 +8970,12 @@
 
     if-lez v19, :cond_11
 
-    .line 813
+    .line 811
     new-instance v8, Ljava/util/ArrayList;
 
     invoke-direct {v8}, Ljava/util/ArrayList;-><init>()V
 
-    .line 814
+    .line 812
     .local v8, lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     const/4 v6, 0x0
 
@@ -8989,21 +8989,21 @@
 
     if-ge v6, v0, :cond_10
 
-    .line 815
+    .line 813
     invoke-virtual {v13, v6}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v12
 
-    .line 816
+    .line 814
     .local v12, recommendDataItemLabelItemJson:Lorg/json/JSONObject;
     if-eqz v12, :cond_f
 
-    .line 817
+    .line 815
     new-instance v7, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v7}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 818
+    .line 816
     .local v7, lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v19, "size"
 
@@ -9015,7 +9015,7 @@
 
     if-eqz v19, :cond_c
 
-    .line 819
+    .line 817
     const-string v19, "size"
 
     move-object/from16 v0, v19
@@ -9028,7 +9028,7 @@
 
     invoke-virtual {v7, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 821
+    .line 819
     :cond_c
     const-string v19, "type"
 
@@ -9040,7 +9040,7 @@
 
     if-eqz v19, :cond_d
 
-    .line 822
+    .line 820
     const-string v19, "type"
 
     move-object/from16 v0, v19
@@ -9053,7 +9053,7 @@
 
     invoke-virtual {v7, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 824
+    .line 822
     :cond_d
     const-string v19, "value"
 
@@ -9065,7 +9065,7 @@
 
     if-eqz v19, :cond_e
 
-    .line 825
+    .line 823
     const-string v19, "value"
 
     move-object/from16 v0, v19
@@ -9078,23 +9078,23 @@
 
     invoke-virtual {v7, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 827
+    .line 825
     :cond_e
     invoke-virtual {v8, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 814
+    .line 812
     .end local v7           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_f
     add-int/lit8 v6, v6, 0x1
 
     goto :goto_2
 
-    .line 830
+    .line 828
     .end local v12           #recommendDataItemLabelItemJson:Lorg/json/JSONObject;
     :cond_10
     invoke-virtual {v10, v8}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setLableListEntity(Ljava/util/ArrayList;)V
 
-    .line 833
+    .line 831
     .end local v6           #j:I
     .end local v8           #lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     .end local v13           #recommendDataItemLabelListJson:Lorg/json/JSONArray;
@@ -9103,14 +9103,14 @@
     :try_end_0
     .catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 785
+    .line 783
     .end local v10           #reEntity:Lcom/meizu/video/client/ui/entity/RecommendEntity;
     :cond_12
     add-int/lit8 v5, v5, 0x1
 
     goto/16 :goto_1
 
-    .line 840
+    .line 838
     .end local v2           #code:Ljava/lang/String;
     .end local v3           #data:Ljava/lang/String;
     .end local v5           #i:I
@@ -9121,7 +9121,7 @@
     :catch_0
     move-exception v4
 
-    .line 841
+    .line 839
     .local v4, e:Lorg/json/JSONException;
     invoke-virtual {v4}, Lorg/json/JSONException;->printStackTrace()V
 
@@ -9162,7 +9162,7 @@
     .end annotation
 
     .prologue
-    .line 1793
+    .line 1791
     if-eqz p2, :cond_0
 
     if-eqz p3, :cond_0
@@ -9173,22 +9173,22 @@
 
     if-nez p1, :cond_1
 
-    .line 2275
+    .line 2273
     :cond_0
     :goto_0
     return-void
 
-    .line 1797
+    .line 1795
     :cond_1
     :try_start_0
     new-instance v1, Lorg/json/JSONObject;
 
     invoke-direct {v1, p0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 1798
+    .line 1796
     if-eqz v1, :cond_0
 
-    .line 1799
+    .line 1797
     const-string v2, "header"
 
     invoke-virtual {v1, v2}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -9197,17 +9197,17 @@
 
     if-eqz v2, :cond_2
 
-    .line 1800
+    .line 1798
     const-string v2, "header"
 
     invoke-virtual {v1, v2}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
 
     move-result-object v2
 
-    .line 1801
+    .line 1799
     if-eqz v2, :cond_2
 
-    .line 1802
+    .line 1800
     const-string v3, "status"
 
     invoke-virtual {v2, v3}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -9216,7 +9216,7 @@
 
     if-eqz v3, :cond_2
 
-    .line 1803
+    .line 1801
     const-string v3, "status"
 
     invoke-virtual {v2, v3}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9227,7 +9227,7 @@
 
     invoke-virtual {v0, v2}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1807
+    .line 1805
     :cond_2
     const-string v2, "1"
 
@@ -9241,7 +9241,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 1808
+    .line 1806
     const-string v2, "body"
 
     invoke-virtual {v1, v2}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -9250,17 +9250,17 @@
 
     if-eqz v2, :cond_0
 
-    .line 1809
+    .line 1807
     const-string v2, "body"
 
     invoke-virtual {v1, v2}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
 
     move-result-object v2
 
-    .line 1810
+    .line 1808
     if-eqz v2, :cond_0
 
-    .line 1811
+    .line 1809
     const-string v1, "focus_pic"
 
     invoke-virtual {v2, v1}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -9269,14 +9269,14 @@
 
     if-eqz v1, :cond_14
 
-    .line 1812
+    .line 1810
     const-string v1, "focus_pic"
 
     invoke-virtual {v2, v1}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v3
 
-    .line 1813
+    .line 1811
     if-eqz v3, :cond_14
 
     invoke-virtual {v3}, Lorg/json/JSONArray;->length()I
@@ -9285,7 +9285,7 @@
 
     if-lez v1, :cond_14
 
-    .line 1814
+    .line 1812
     const/4 v1, 0x0
 
     :goto_1
@@ -9299,25 +9299,25 @@
 
     if-ge v1, v4, :cond_14
 
-    .line 1815
+    .line 1813
     invoke-virtual {v3, v1}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v4
 
-    .line 1816
+    .line 1814
     if-eqz v4, :cond_12
 
-    .line 1817
+    .line 1815
     new-instance v5, Lcom/meizu/video/client/ui/entity/RecommendEntity;
 
     invoke-direct {v5}, Lcom/meizu/video/client/ui/entity/RecommendEntity;-><init>()V
 
-    .line 1818
+    .line 1816
     new-instance v6, Ljava/util/ArrayList;
 
     invoke-direct {v6}, Ljava/util/ArrayList;-><init>()V
 
-    .line 1819
+    .line 1817
     const-string v7, "id"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -9326,7 +9326,7 @@
 
     if-eqz v7, :cond_3
 
-    .line 1820
+    .line 1818
     const-string v7, "id"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9335,7 +9335,7 @@
 
     invoke-virtual {v5, v7}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setVid(Ljava/lang/String;)V
 
-    .line 1822
+    .line 1820
     :cond_3
     const-string v7, "title"
 
@@ -9345,7 +9345,7 @@
 
     if-eqz v7, :cond_4
 
-    .line 1823
+    .line 1821
     const-string v7, "title"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9372,22 +9372,22 @@
 
     if-nez v7, :cond_4
 
-    .line 1824
+    .line 1822
     new-instance v7, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v7}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1825
+    .line 1823
     const-string v8, "-1"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1826
+    .line 1824
     const-string v8, "text-title"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1827
+    .line 1825
     const-string v8, "title"
 
     invoke-virtual {v4, v8}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9396,10 +9396,10 @@
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1828
+    .line 1826
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1834
+    .line 1832
     :cond_4
     const-string v7, "icon_2"
 
@@ -9409,7 +9409,7 @@
 
     if-eqz v7, :cond_5
 
-    .line 1835
+    .line 1833
     const-string v7, "icon_2"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9436,22 +9436,22 @@
 
     if-nez v7, :cond_13
 
-    .line 1836
+    .line 1834
     new-instance v7, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v7}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1837
+    .line 1835
     const-string v8, "1"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1838
+    .line 1836
     const-string v8, "image"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1839
+    .line 1837
     const-string v8, "icon_2"
 
     invoke-virtual {v4, v8}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9460,10 +9460,10 @@
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1840
+    .line 1838
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1854
+    .line 1852
     :cond_5
     :goto_2
     const-string v7, "score"
@@ -9474,7 +9474,7 @@
 
     if-eqz v7, :cond_6
 
-    .line 1855
+    .line 1853
     const-string v7, "score"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9501,27 +9501,27 @@
 
     if-nez v7, :cond_6
 
-    .line 1856
+    .line 1854
     new-instance v7, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v7}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1857
+    .line 1855
     const-string v8, "-1"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1858
+    .line 1856
     const-string v8, "text-image"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1859
+    .line 1857
     const-string v8, "0"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1860
+    .line 1858
     const-string v8, "score"
 
     invoke-virtual {v4, v8}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9530,10 +9530,10 @@
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1861
+    .line 1859
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1865
+    .line 1863
     :cond_6
     const-string v7, "cid"
 
@@ -9543,7 +9543,7 @@
 
     if-eqz v7, :cond_7
 
-    .line 1866
+    .line 1864
     const-string v7, "cid"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9552,7 +9552,7 @@
 
     invoke-virtual {v5, v7}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setCid(Ljava/lang/String;)V
 
-    .line 1868
+    .line 1866
     :cond_7
     const-string v7, "type"
 
@@ -9562,7 +9562,7 @@
 
     if-eqz v7, :cond_8
 
-    .line 1869
+    .line 1867
     const-string v7, "type"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9571,7 +9571,7 @@
 
     invoke-virtual {v5, v7}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setMediaDataType(Ljava/lang/String;)V
 
-    .line 1871
+    .line 1869
     :cond_8
     const-string v7, "at"
 
@@ -9581,7 +9581,7 @@
 
     if-eqz v7, :cond_9
 
-    .line 1872
+    .line 1870
     const-string v7, "at"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9590,7 +9590,7 @@
 
     invoke-virtual {v5, v7}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setMediaOperaton(Ljava/lang/String;)V
 
-    .line 1883
+    .line 1881
     :cond_9
     const-string v7, "director"
 
@@ -9600,7 +9600,7 @@
 
     if-eqz v7, :cond_a
 
-    .line 1884
+    .line 1882
     const-string v7, "director"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9627,27 +9627,27 @@
 
     if-nez v7, :cond_a
 
-    .line 1885
+    .line 1883
     new-instance v7, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v7}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1886
+    .line 1884
     const-string v8, "-1"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1887
+    .line 1885
     const-string v8, "text"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1888
+    .line 1886
     const-string v8, "1"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1889
+    .line 1887
     const-string v8, "director"
 
     invoke-virtual {v4, v8}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9656,10 +9656,10 @@
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1890
+    .line 1888
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1893
+    .line 1891
     :cond_a
     const-string v7, "actor"
 
@@ -9669,7 +9669,7 @@
 
     if-eqz v7, :cond_b
 
-    .line 1894
+    .line 1892
     const-string v7, "actor"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9696,27 +9696,27 @@
 
     if-nez v7, :cond_b
 
-    .line 1895
+    .line 1893
     new-instance v7, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v7}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1896
+    .line 1894
     const-string v8, "-1"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1897
+    .line 1895
     const-string v8, "text"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1898
+    .line 1896
     const-string v8, "2"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1899
+    .line 1897
     const-string v8, "actor"
 
     invoke-virtual {v4, v8}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9725,10 +9725,10 @@
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1900
+    .line 1898
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1903
+    .line 1901
     :cond_b
     const-string v7, "intro"
 
@@ -9738,7 +9738,7 @@
 
     if-eqz v7, :cond_c
 
-    .line 1904
+    .line 1902
     const-string v7, "intro"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9751,7 +9751,7 @@
 
     invoke-virtual {v5, v7}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setIntro(Ljava/lang/String;)V
 
-    .line 1906
+    .line 1904
     :cond_c
     const-string v7, "subcate"
 
@@ -9761,7 +9761,7 @@
 
     if-eqz v7, :cond_d
 
-    .line 1907
+    .line 1905
     const-string v7, "subcate"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9788,27 +9788,27 @@
 
     if-nez v7, :cond_d
 
-    .line 1908
+    .line 1906
     new-instance v7, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v7}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1909
+    .line 1907
     const-string v8, "-1"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1910
+    .line 1908
     const-string v8, "text"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1911
+    .line 1909
     const-string v8, "3"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1912
+    .line 1910
     const-string v8, "subcate"
 
     invoke-virtual {v4, v8}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9817,10 +9817,10 @@
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1913
+    .line 1911
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1916
+    .line 1914
     :cond_d
     const-string v7, "area"
 
@@ -9830,7 +9830,7 @@
 
     if-eqz v7, :cond_e
 
-    .line 1917
+    .line 1915
     const-string v7, "area"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9857,27 +9857,27 @@
 
     if-nez v7, :cond_e
 
-    .line 1918
+    .line 1916
     new-instance v7, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v7}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1919
+    .line 1917
     const-string v8, "-1"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1920
+    .line 1918
     const-string v8, "text"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1921
+    .line 1919
     const-string v8, "4"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1922
+    .line 1920
     const-string v8, "area"
 
     invoke-virtual {v4, v8}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9886,10 +9886,10 @@
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1923
+    .line 1921
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1926
+    .line 1924
     :cond_e
     const-string v7, "time_length"
 
@@ -9899,7 +9899,7 @@
 
     if-eqz v7, :cond_f
 
-    .line 1927
+    .line 1925
     const-string v7, "time_length"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9944,7 +9944,7 @@
 
     if-nez v7, :cond_f
 
-    .line 1928
+    .line 1926
     const-string v7, "time_length"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9953,27 +9953,27 @@
 
     invoke-virtual {v5, v7}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setDuration(Ljava/lang/String;)V
 
-    .line 1929
+    .line 1927
     new-instance v7, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v7}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1930
+    .line 1928
     const-string v8, "-1"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1931
+    .line 1929
     const-string v8, "text"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1932
+    .line 1930
     const-string v8, "5"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1933
+    .line 1931
     const-string v8, "time_length"
 
     invoke-virtual {v4, v8}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -9986,10 +9986,10 @@
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1934
+    .line 1932
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1943
+    .line 1941
     :cond_f
     const-string v7, "rcompany"
 
@@ -9999,7 +9999,7 @@
 
     if-eqz v7, :cond_10
 
-    .line 1944
+    .line 1942
     const-string v7, "rcompany"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10026,27 +10026,27 @@
 
     if-nez v7, :cond_10
 
-    .line 1945
+    .line 1943
     new-instance v7, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v7}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1946
+    .line 1944
     const-string v8, "-1"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1947
+    .line 1945
     const-string v8, "text"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1948
+    .line 1946
     const-string v8, "7"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1949
+    .line 1947
     const-string v8, "rcompany"
 
     invoke-virtual {v4, v8}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10055,10 +10055,10 @@
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1950
+    .line 1948
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1953
+    .line 1951
     :cond_10
     const-string v7, "ctime"
 
@@ -10068,7 +10068,7 @@
 
     if-eqz v7, :cond_11
 
-    .line 1954
+    .line 1952
     const-string v7, "ctime"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10095,27 +10095,27 @@
 
     if-nez v7, :cond_11
 
-    .line 1955
+    .line 1953
     new-instance v7, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v7}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1956
+    .line 1954
     const-string v8, "-1"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1957
+    .line 1955
     const-string v8, "text"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1958
+    .line 1956
     const-string v8, "6"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1959
+    .line 1957
     const-string v8, "ctime"
 
     invoke-virtual {v4, v8}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10124,23 +10124,23 @@
 
     invoke-virtual {v7, v4}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1960
+    .line 1958
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2002
+    .line 2000
     :cond_11
     invoke-virtual {v5, v6}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setLableListEntity(Ljava/util/ArrayList;)V
 
-    .line 2003
+    .line 2001
     invoke-virtual {p1, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1814
+    .line 1812
     :cond_12
     add-int/lit8 v1, v1, 0x1
 
     goto/16 :goto_1
 
-    .line 1842
+    .line 1840
     :cond_13
     const-string v7, "icon"
 
@@ -10150,7 +10150,7 @@
 
     if-eqz v7, :cond_5
 
-    .line 1843
+    .line 1841
     const-string v7, "icon"
 
     invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10177,22 +10177,22 @@
 
     if-nez v7, :cond_5
 
-    .line 1844
+    .line 1842
     new-instance v7, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v7}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1845
+    .line 1843
     const-string v8, "1"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1846
+    .line 1844
     const-string v8, "image"
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1847
+    .line 1845
     const-string v8, "icon"
 
     invoke-virtual {v4, v8}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10201,23 +10201,23 @@
 
     invoke-virtual {v7, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1848
+    .line 1846
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
     :try_end_0
     .catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0
 
     goto/16 :goto_2
 
-    .line 2272
+    .line 2270
     :catch_0
     move-exception v1
 
-    .line 2273
+    .line 2271
     invoke-virtual {v1}, Lorg/json/JSONException;->printStackTrace()V
 
     goto/16 :goto_0
 
-    .line 2009
+    .line 2007
     :cond_14
     :try_start_1
     const-string v1, "block"
@@ -10228,14 +10228,14 @@
 
     if-eqz v1, :cond_0
 
-    .line 2010
+    .line 2008
     const-string v1, "block"
 
     invoke-virtual {v2, v1}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v7
 
-    .line 2011
+    .line 2009
     if-eqz v7, :cond_0
 
     invoke-virtual {v7}, Lorg/json/JSONArray;->length()I
@@ -10244,13 +10244,13 @@
 
     if-lez v1, :cond_0
 
-    .line 2012
+    .line 2010
     const/4 v3, 0x0
 
-    .line 2013
+    .line 2011
     const/4 v2, 0x0
 
-    .line 2014
+    .line 2012
     const/4 v1, 0x0
 
     move v6, v1
@@ -10266,18 +10266,18 @@
 
     if-ge v6, v3, :cond_0
 
-    .line 2015
+    .line 2013
     invoke-virtual {v7, v6}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v8
 
-    .line 2016
+    .line 2014
     if-eqz v8, :cond_2b
 
-    .line 2017
+    .line 2015
     const-string v3, ""
 
-    .line 2018
+    .line 2016
     const-string v4, "cname"
 
     invoke-virtual {v8, v4}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -10286,7 +10286,7 @@
 
     if-eqz v4, :cond_37
 
-    .line 2019
+    .line 2017
     const-string v3, "cname"
 
     invoke-virtual {v8, v3}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10295,11 +10295,11 @@
 
     move-object v5, v3
 
-    .line 2024
+    .line 2022
     :goto_4
     const-string v3, ""
 
-    .line 2025
+    .line 2023
     const-string v4, "cate"
 
     invoke-virtual {v8, v4}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -10308,14 +10308,14 @@
 
     if-eqz v4, :cond_2d
 
-    .line 2026
+    .line 2024
     const-string v3, "cate"
 
     invoke-virtual {v8, v3}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 2027
+    .line 2025
     const-string v4, "\u8ddf\u64ad\u5267\u573a"
 
     invoke-virtual {v5, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -10356,7 +10356,7 @@
 
     if-eqz v4, :cond_2b
 
-    .line 2028
+    .line 2026
     :cond_15
     const-string v4, "\u8ddf\u64ad\u5267\u573a"
 
@@ -10384,7 +10384,7 @@
 
     move-object v4, v3
 
-    .line 2049
+    .line 2047
     :goto_5
     const-string v3, "video"
 
@@ -10394,14 +10394,14 @@
 
     if-eqz v3, :cond_2b
 
-    .line 2050
+    .line 2048
     const-string v3, "video"
 
     invoke-virtual {v8, v3}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v8
 
-    .line 2051
+    .line 2049
     if-eqz v8, :cond_2b
 
     invoke-virtual {v8}, Lorg/json/JSONArray;->length()I
@@ -10410,7 +10410,7 @@
 
     if-lez v3, :cond_2b
 
-    .line 2052
+    .line 2050
     const-string v3, "\u8ddf\u64ad\u5267\u573a"
 
     invoke-virtual {v5, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -10419,13 +10419,13 @@
 
     if-eqz v3, :cond_2e
 
-    .line 2053
+    .line 2051
     add-int/lit8 v2, v2, 0x1
 
-    .line 2054
+    .line 2052
     invoke-virtual/range {p2 .. p2}, Ljava/util/ArrayList;->clear()V
 
-    .line 2066
+    .line 2064
     :cond_16
     :goto_6
     const/4 v3, 0x0
@@ -10441,25 +10441,25 @@
 
     if-ge v3, v9, :cond_2b
 
-    .line 2067
+    .line 2065
     invoke-virtual {v8, v3}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v9
 
-    .line 2068
+    .line 2066
     if-eqz v9, :cond_29
 
-    .line 2069
+    .line 2067
     new-instance v10, Lcom/meizu/video/client/ui/entity/RecommendEntity;
 
     invoke-direct {v10}, Lcom/meizu/video/client/ui/entity/RecommendEntity;-><init>()V
 
-    .line 2070
+    .line 2068
     new-instance v11, Ljava/util/ArrayList;
 
     invoke-direct {v11}, Ljava/util/ArrayList;-><init>()V
 
-    .line 2071
+    .line 2069
     const-string v12, "cid"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -10468,7 +10468,7 @@
 
     if-eqz v12, :cond_18
 
-    .line 2072
+    .line 2070
     const-string v12, "cid"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10497,7 +10497,7 @@
 
     if-eqz v12, :cond_29
 
-    .line 2073
+    .line 2071
     :cond_17
     const-string v12, "cid"
 
@@ -10507,7 +10507,7 @@
 
     invoke-virtual {v10, v12}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setCid(Ljava/lang/String;)V
 
-    .line 2078
+    .line 2076
     :cond_18
     const-string v12, "id"
 
@@ -10517,7 +10517,7 @@
 
     if-eqz v12, :cond_19
 
-    .line 2079
+    .line 2077
     const-string v12, "id"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10526,7 +10526,7 @@
 
     invoke-virtual {v10, v12}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setVid(Ljava/lang/String;)V
 
-    .line 2081
+    .line 2079
     :cond_19
     const-string v12, "title"
 
@@ -10536,7 +10536,7 @@
 
     if-eqz v12, :cond_1a
 
-    .line 2082
+    .line 2080
     const-string v12, "title"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10563,22 +10563,22 @@
 
     if-nez v12, :cond_1a
 
-    .line 2083
+    .line 2081
     new-instance v12, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v12}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2084
+    .line 2082
     const-string v13, "-1"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 2085
+    .line 2083
     const-string v13, "text-title"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2086
+    .line 2084
     const-string v13, "title"
 
     invoke-virtual {v9, v13}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10587,10 +10587,10 @@
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 2087
+    .line 2085
     invoke-virtual {v11, v12}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2093
+    .line 2091
     :cond_1a
     const-string v12, "icon"
 
@@ -10600,7 +10600,7 @@
 
     if-eqz v12, :cond_1b
 
-    .line 2094
+    .line 2092
     const-string v12, "icon"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10627,22 +10627,22 @@
 
     if-nez v12, :cond_1b
 
-    .line 2095
+    .line 2093
     new-instance v12, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v12}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2096
+    .line 2094
     const-string v13, "0"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 2097
+    .line 2095
     const-string v13, "image"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2098
+    .line 2096
     const-string v13, "icon"
 
     invoke-virtual {v9, v13}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10651,10 +10651,10 @@
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 2099
+    .line 2097
     invoke-virtual {v11, v12}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2102
+    .line 2100
     :cond_1b
     const-string v12, "score"
 
@@ -10664,7 +10664,7 @@
 
     if-eqz v12, :cond_1c
 
-    .line 2103
+    .line 2101
     const-string v12, "score"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10691,27 +10691,27 @@
 
     if-nez v12, :cond_1c
 
-    .line 2104
+    .line 2102
     new-instance v12, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v12}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2105
+    .line 2103
     const-string v13, "-1"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 2106
+    .line 2104
     const-string v13, "text-image"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2107
+    .line 2105
     const-string v13, "0"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 2108
+    .line 2106
     const-string v13, "score"
 
     invoke-virtual {v9, v13}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10720,10 +10720,10 @@
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 2109
+    .line 2107
     invoke-virtual {v11, v12}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2113
+    .line 2111
     :cond_1c
     const-string v12, "type"
 
@@ -10733,7 +10733,7 @@
 
     if-eqz v12, :cond_1d
 
-    .line 2114
+    .line 2112
     const-string v12, "type"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10742,7 +10742,7 @@
 
     invoke-virtual {v10, v12}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setMediaDataType(Ljava/lang/String;)V
 
-    .line 2116
+    .line 2114
     :cond_1d
     const-string v12, "at"
 
@@ -10752,7 +10752,7 @@
 
     if-eqz v12, :cond_1e
 
-    .line 2117
+    .line 2115
     const-string v12, "at"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10761,7 +10761,7 @@
 
     invoke-virtual {v10, v12}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setMediaOperaton(Ljava/lang/String;)V
 
-    .line 2128
+    .line 2126
     :cond_1e
     const-string v12, "director"
 
@@ -10771,7 +10771,7 @@
 
     if-eqz v12, :cond_1f
 
-    .line 2129
+    .line 2127
     const-string v12, "director"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10798,27 +10798,27 @@
 
     if-nez v12, :cond_1f
 
-    .line 2130
+    .line 2128
     new-instance v12, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v12}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2131
+    .line 2129
     const-string v13, "-1"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 2132
+    .line 2130
     const-string v13, "text"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2133
+    .line 2131
     const-string v13, "1"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 2134
+    .line 2132
     const-string v13, "director"
 
     invoke-virtual {v9, v13}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10827,10 +10827,10 @@
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 2135
+    .line 2133
     invoke-virtual {v11, v12}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2138
+    .line 2136
     :cond_1f
     const-string v12, "actor"
 
@@ -10840,7 +10840,7 @@
 
     if-eqz v12, :cond_20
 
-    .line 2139
+    .line 2137
     const-string v12, "actor"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10867,27 +10867,27 @@
 
     if-nez v12, :cond_20
 
-    .line 2140
+    .line 2138
     new-instance v12, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v12}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2141
+    .line 2139
     const-string v13, "-1"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 2142
+    .line 2140
     const-string v13, "text"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2143
+    .line 2141
     const-string v13, "2"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 2144
+    .line 2142
     const-string v13, "actor"
 
     invoke-virtual {v9, v13}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10896,10 +10896,10 @@
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 2145
+    .line 2143
     invoke-virtual {v11, v12}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2148
+    .line 2146
     :cond_20
     const-string v12, "intro"
 
@@ -10909,7 +10909,7 @@
 
     if-eqz v12, :cond_21
 
-    .line 2149
+    .line 2147
     const-string v12, "intro"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10922,7 +10922,7 @@
 
     invoke-virtual {v10, v12}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setIntro(Ljava/lang/String;)V
 
-    .line 2151
+    .line 2149
     :cond_21
     const-string v12, "subcate"
 
@@ -10932,7 +10932,7 @@
 
     if-eqz v12, :cond_22
 
-    .line 2152
+    .line 2150
     const-string v12, "subcate"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10959,27 +10959,27 @@
 
     if-nez v12, :cond_22
 
-    .line 2153
+    .line 2151
     new-instance v12, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v12}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2154
+    .line 2152
     const-string v13, "-1"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 2155
+    .line 2153
     const-string v13, "text"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2156
+    .line 2154
     const-string v13, "3"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 2157
+    .line 2155
     const-string v13, "subcate"
 
     invoke-virtual {v9, v13}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -10988,10 +10988,10 @@
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 2158
+    .line 2156
     invoke-virtual {v11, v12}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2161
+    .line 2159
     :cond_22
     const-string v12, "area"
 
@@ -11001,7 +11001,7 @@
 
     if-eqz v12, :cond_23
 
-    .line 2162
+    .line 2160
     const-string v12, "area"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -11028,27 +11028,27 @@
 
     if-nez v12, :cond_23
 
-    .line 2163
+    .line 2161
     new-instance v12, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v12}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2164
+    .line 2162
     const-string v13, "-1"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 2165
+    .line 2163
     const-string v13, "text"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2166
+    .line 2164
     const-string v13, "4"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 2167
+    .line 2165
     const-string v13, "area"
 
     invoke-virtual {v9, v13}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -11057,10 +11057,10 @@
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 2168
+    .line 2166
     invoke-virtual {v11, v12}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2171
+    .line 2169
     :cond_23
     const-string v12, "time_length"
 
@@ -11070,7 +11070,7 @@
 
     if-eqz v12, :cond_24
 
-    .line 2172
+    .line 2170
     const-string v12, "time_length"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -11115,7 +11115,7 @@
 
     if-nez v12, :cond_24
 
-    .line 2173
+    .line 2171
     const-string v12, "time_length"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -11124,27 +11124,27 @@
 
     invoke-virtual {v10, v12}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setDuration(Ljava/lang/String;)V
 
-    .line 2174
+    .line 2172
     new-instance v12, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v12}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2175
+    .line 2173
     const-string v13, "-1"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 2176
+    .line 2174
     const-string v13, "text"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2177
+    .line 2175
     const-string v13, "5"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 2178
+    .line 2176
     const-string v13, "time_length"
 
     invoke-virtual {v9, v13}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -11157,10 +11157,10 @@
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 2179
+    .line 2177
     invoke-virtual {v11, v12}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2188
+    .line 2186
     :cond_24
     const-string v12, "rcompany"
 
@@ -11170,7 +11170,7 @@
 
     if-eqz v12, :cond_25
 
-    .line 2189
+    .line 2187
     const-string v12, "rcompany"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -11197,27 +11197,27 @@
 
     if-nez v12, :cond_25
 
-    .line 2190
+    .line 2188
     new-instance v12, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v12}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2191
+    .line 2189
     const-string v13, "-1"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 2192
+    .line 2190
     const-string v13, "text"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2193
+    .line 2191
     const-string v13, "7"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 2194
+    .line 2192
     const-string v13, "rcompany"
 
     invoke-virtual {v9, v13}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -11226,10 +11226,10 @@
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 2195
+    .line 2193
     invoke-virtual {v11, v12}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2198
+    .line 2196
     :cond_25
     const-string v12, "ctime"
 
@@ -11239,7 +11239,7 @@
 
     if-eqz v12, :cond_26
 
-    .line 2199
+    .line 2197
     const-string v12, "ctime"
 
     invoke-virtual {v9, v12}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -11266,27 +11266,27 @@
 
     if-nez v12, :cond_26
 
-    .line 2200
+    .line 2198
     new-instance v12, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v12}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2201
+    .line 2199
     const-string v13, "-1"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 2202
+    .line 2200
     const-string v13, "text"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2203
+    .line 2201
     const-string v13, "6"
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 2204
+    .line 2202
     const-string v13, "ctime"
 
     invoke-virtual {v9, v13}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -11295,10 +11295,10 @@
 
     invoke-virtual {v12, v13}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 2205
+    .line 2203
     invoke-virtual {v11, v12}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2220
+    .line 2218
     :cond_26
     const-string v12, "stamp"
 
@@ -11308,7 +11308,7 @@
 
     if-eqz v12, :cond_27
 
-    .line 2223
+    .line 2221
     :cond_27
     const-string v12, "tags"
 
@@ -11318,11 +11318,11 @@
 
     if-eqz v9, :cond_28
 
-    .line 2235
+    .line 2233
     :cond_28
     invoke-virtual {v10, v11}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->setLableListEntity(Ljava/util/ArrayList;)V
 
-    .line 2237
+    .line 2235
     const-string v9, "\u8ddf\u64ad\u5267\u573a"
 
     invoke-virtual {v5, v9}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -11331,19 +11331,19 @@
 
     if-eqz v9, :cond_32
 
-    .line 2238
+    .line 2236
     move-object/from16 v0, p2
 
     invoke-virtual {v0, v10}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2066
+    .line 2064
     :cond_29
     :goto_8
     add-int/lit8 v3, v3, 0x1
 
     goto/16 :goto_7
 
-    .line 2030
+    .line 2028
     :cond_2a
     const-string v4, "5"
 
@@ -11353,12 +11353,12 @@
 
     if-eqz v4, :cond_2c
 
-    .line 2031
+    .line 2029
     const/4 v4, 0x2
 
     if-ne v1, v4, :cond_2d
 
-    .line 2014
+    .line 2012
     :cond_2b
     add-int/lit8 v3, v6, 0x1
 
@@ -11366,7 +11366,7 @@
 
     goto/16 :goto_3
 
-    .line 2034
+    .line 2032
     :cond_2c
     const-string v4, "4"
 
@@ -11376,7 +11376,7 @@
 
     if-eqz v4, :cond_2d
 
-    .line 2035
+    .line 2033
     const/4 v4, 0x1
 
     if-eq v1, v4, :cond_2b
@@ -11386,7 +11386,7 @@
 
     goto/16 :goto_5
 
-    .line 2055
+    .line 2053
     :cond_2e
     const-string v3, "\u70ed\u64ad\u5267\u573a"
 
@@ -11396,15 +11396,15 @@
 
     if-eqz v3, :cond_2f
 
-    .line 2056
+    .line 2054
     add-int/lit8 v2, v2, 0x1
 
-    .line 2057
+    .line 2055
     invoke-virtual/range {p3 .. p3}, Ljava/util/ArrayList;->clear()V
 
     goto/16 :goto_6
 
-    .line 2058
+    .line 2056
     :cond_2f
     const-string v3, "\u70ed\u95e8\u7535\u5f71"
 
@@ -11414,15 +11414,15 @@
 
     if-eqz v3, :cond_30
 
-    .line 2059
+    .line 2057
     add-int/lit8 v1, v1, 0x1
 
-    .line 2060
+    .line 2058
     invoke-virtual/range {p4 .. p4}, Ljava/util/ArrayList;->clear()V
 
     goto/16 :goto_6
 
-    .line 2061
+    .line 2059
     :cond_30
     const-string v3, "5"
 
@@ -11432,12 +11432,12 @@
 
     if-eqz v3, :cond_31
 
-    .line 2062
+    .line 2060
     add-int/lit8 v2, v2, 0x1
 
     goto/16 :goto_6
 
-    .line 2063
+    .line 2061
     :cond_31
     const-string v3, "4"
 
@@ -11447,12 +11447,12 @@
 
     if-eqz v3, :cond_16
 
-    .line 2064
+    .line 2062
     add-int/lit8 v1, v1, 0x1
 
     goto/16 :goto_6
 
-    .line 2239
+    .line 2237
     :cond_32
     const-string v9, "\u70ed\u64ad\u5267\u573a"
 
@@ -11462,14 +11462,14 @@
 
     if-eqz v9, :cond_33
 
-    .line 2240
+    .line 2238
     move-object/from16 v0, p3
 
     invoke-virtual {v0, v10}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     goto :goto_8
 
-    .line 2241
+    .line 2239
     :cond_33
     const-string v9, "\u70ed\u95e8\u7535\u5f71"
 
@@ -11479,14 +11479,14 @@
 
     if-eqz v9, :cond_34
 
-    .line 2242
+    .line 2240
     move-object/from16 v0, p4
 
     invoke-virtual {v0, v10}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     goto :goto_8
 
-    .line 2243
+    .line 2241
     :cond_34
     const-string v9, "5"
 
@@ -11496,32 +11496,32 @@
 
     if-eqz v9, :cond_36
 
-    .line 2244
+    .line 2242
     const/4 v9, 0x1
 
     if-ne v2, v9, :cond_35
 
-    .line 2245
+    .line 2243
     move-object/from16 v0, p2
 
     invoke-virtual {v0, v10}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     goto/16 :goto_8
 
-    .line 2246
+    .line 2244
     :cond_35
     const/4 v9, 0x2
 
     if-ne v2, v9, :cond_29
 
-    .line 2247
+    .line 2245
     move-object/from16 v0, p3
 
     invoke-virtual {v0, v10}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     goto/16 :goto_8
 
-    .line 2249
+    .line 2247
     :cond_36
     const-string v9, "4"
 
@@ -11531,12 +11531,12 @@
 
     if-eqz v9, :cond_29
 
-    .line 2250
+    .line 2248
     const/4 v9, 0x1
 
     if-ne v1, v9, :cond_29
 
-    .line 2251
+    .line 2249
     move-object/from16 v0, p4
 
     invoke-virtual {v0, v10}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
@@ -11571,13 +11571,13 @@
     .end annotation
 
     .prologue
-    .line 45
+    .line 43
     .local p1, msgListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/MsgEntity;>;"
     new-instance v17, Ljava/util/ArrayList;
 
     invoke-direct/range {v17 .. v17}, Ljava/util/ArrayList;-><init>()V
 
-    .line 47
+    .line 45
     .local v17, searchListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/SearchEntity;>;"
     :try_start_0
     new-instance v21, Lorg/json/JSONObject;
@@ -11588,14 +11588,14 @@
 
     invoke-direct {v0, v1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 48
+    .line 46
     .local v21, searchToalJson:Lorg/json/JSONObject;
     if-eqz v21, :cond_2
 
-    .line 49
+    .line 47
     const-string v2, ""
 
-    .line 50
+    .line 48
     .local v2, code:Ljava/lang/String;
     const-string v22, "code"
 
@@ -11605,22 +11605,22 @@
 
     if-eqz v22, :cond_0
 
-    .line 51
+    .line 49
     const-string v22, "code"
 
     invoke-virtual/range {v21 .. v22}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
-    .line 53
+    .line 51
     :cond_0
     const-string v9, ""
 
-    .line 54
+    .line 52
     .local v9, msg:Ljava/lang/String;
     const-string v3, ""
 
-    .line 55
+    .line 53
     .local v3, data:Ljava/lang/String;
     const-string v22, "-1"
 
@@ -11632,7 +11632,7 @@
 
     if-eqz v22, :cond_3
 
-    .line 56
+    .line 54
     const-string v22, "msg"
 
     invoke-virtual/range {v21 .. v22}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -11641,14 +11641,14 @@
 
     if-eqz v22, :cond_1
 
-    .line 57
+    .line 55
     const-string v22, "msg"
 
     invoke-virtual/range {v21 .. v22}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v9
 
-    .line 59
+    .line 57
     :cond_1
     const-string v22, "data"
 
@@ -11658,14 +11658,14 @@
 
     if-eqz v22, :cond_2
 
-    .line 60
+    .line 58
     const-string v22, "data"
 
     invoke-virtual/range {v21 .. v22}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 155
+    .line 153
     .end local v2           #code:Ljava/lang/String;
     .end local v3           #data:Ljava/lang/String;
     .end local v9           #msg:Ljava/lang/String;
@@ -11674,7 +11674,7 @@
     :goto_0
     return-object v17
 
-    .line 62
+    .line 60
     .restart local v2       #code:Ljava/lang/String;
     .restart local v3       #data:Ljava/lang/String;
     .restart local v9       #msg:Ljava/lang/String;
@@ -11690,7 +11690,7 @@
 
     if-eqz v22, :cond_2
 
-    .line 63
+    .line 61
     const-string v22, "msg"
 
     invoke-virtual/range {v21 .. v22}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -11699,18 +11699,18 @@
 
     if-eqz v22, :cond_8
 
-    .line 64
+    .line 62
     const-string v22, "msg"
 
     invoke-virtual/range {v21 .. v22}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
 
     move-result-object v18
 
-    .line 65
+    .line 63
     .local v18, searchMsgJson:Lorg/json/JSONObject;
     if-eqz v18, :cond_8
 
-    .line 66
+    .line 64
     const-string v22, "total"
 
     move-object/from16 v0, v18
@@ -11723,7 +11723,7 @@
 
     if-eqz v22, :cond_8
 
-    .line 67
+    .line 65
     const-string v22, "total"
 
     move-object/from16 v0, v18
@@ -11734,7 +11734,7 @@
 
     move-result-object v20
 
-    .line 68
+    .line 66
     .local v20, searchMsgTotalJson:Lorg/json/JSONArray;
     if-eqz v20, :cond_8
 
@@ -11744,10 +11744,10 @@
 
     if-lez v22, :cond_8
 
-    .line 69
+    .line 67
     if-nez p1, :cond_4
 
-    .line 70
+    .line 68
     new-instance v11, Ljava/util/ArrayList;
 
     invoke-direct {v11}, Ljava/util/ArrayList;-><init>()V
@@ -11756,7 +11756,7 @@
     .local v11, msgListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/MsgEntity;>;"
     move-object/from16 p1, v11
 
-    .line 72
+    .line 70
     .end local v11           #msgListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/MsgEntity;>;"
     .restart local p1       #msgListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/MsgEntity;>;"
     :cond_4
@@ -11772,23 +11772,23 @@
 
     if-ge v5, v0, :cond_8
 
-    .line 73
+    .line 71
     move-object/from16 v0, v20
 
     invoke-virtual {v0, v5}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v19
 
-    .line 74
+    .line 72
     .local v19, searchMsgTotalItemJson:Lorg/json/JSONObject;
     if-eqz v19, :cond_7
 
-    .line 75
+    .line 73
     new-instance v10, Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     invoke-direct {v10}, Lcom/meizu/video/client/ui/entity/MsgEntity;-><init>()V
 
-    .line 76
+    .line 74
     .local v10, msgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     const-string v22, "key"
 
@@ -11802,7 +11802,7 @@
 
     if-eqz v22, :cond_5
 
-    .line 77
+    .line 75
     const-string v22, "key"
 
     move-object/from16 v0, v19
@@ -11817,7 +11817,7 @@
 
     invoke-virtual {v10, v0}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 79
+    .line 77
     :cond_5
     const-string v22, "value"
 
@@ -11831,7 +11831,7 @@
 
     if-eqz v22, :cond_6
 
-    .line 80
+    .line 78
     const-string v22, "value"
 
     move-object/from16 v0, v19
@@ -11846,20 +11846,20 @@
 
     invoke-virtual {v10, v0}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setValue(Ljava/lang/String;)V
 
-    .line 82
+    .line 80
     :cond_6
     move-object/from16 v0, p1
 
     invoke-virtual {v0, v10}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 72
+    .line 70
     .end local v10           #msgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     :cond_7
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_1
 
-    .line 89
+    .line 87
     .end local v5           #i:I
     .end local v18           #searchMsgJson:Lorg/json/JSONObject;
     .end local v19           #searchMsgTotalItemJson:Lorg/json/JSONObject;
@@ -11873,14 +11873,14 @@
 
     if-eqz v22, :cond_2
 
-    .line 90
+    .line 88
     const-string v22, "data"
 
     invoke-virtual/range {v21 .. v22}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v15
 
-    .line 91
+    .line 89
     .local v15, searchDataJson:Lorg/json/JSONArray;
     if-eqz v15, :cond_2
 
@@ -11890,7 +11890,7 @@
 
     if-lez v22, :cond_2
 
-    .line 92
+    .line 90
     const/4 v5, 0x0
 
     .restart local v5       #i:I
@@ -11903,21 +11903,21 @@
 
     if-ge v5, v0, :cond_2
 
-    .line 93
+    .line 91
     invoke-virtual {v15, v5}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v12
 
-    .line 94
+    .line 92
     .local v12, searchDataItemJson:Lorg/json/JSONObject;
     if-eqz v12, :cond_17
 
-    .line 95
+    .line 93
     new-instance v16, Lcom/meizu/video/client/ui/entity/SearchEntity;
 
     invoke-direct/range {v16 .. v16}, Lcom/meizu/video/client/ui/entity/SearchEntity;-><init>()V
 
-    .line 96
+    .line 94
     .local v16, searchEntity:Lcom/meizu/video/client/ui/entity/SearchEntity;
     const-string v22, "vid"
 
@@ -11929,7 +11929,7 @@
 
     if-eqz v22, :cond_9
 
-    .line 97
+    .line 95
     const-string v22, "vid"
 
     move-object/from16 v0, v22
@@ -11944,7 +11944,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SearchEntity;->setVid(Ljava/lang/String;)V
 
-    .line 99
+    .line 97
     :cond_9
     const-string v22, "cid"
 
@@ -11956,7 +11956,7 @@
 
     if-eqz v22, :cond_a
 
-    .line 100
+    .line 98
     const-string v22, "cid"
 
     move-object/from16 v0, v22
@@ -11971,7 +11971,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SearchEntity;->setCid(Ljava/lang/String;)V
 
-    .line 102
+    .line 100
     :cond_a
     const-string v22, "mmsid"
 
@@ -11983,7 +11983,7 @@
 
     if-eqz v22, :cond_b
 
-    .line 103
+    .line 101
     const-string v22, "mmsid"
 
     move-object/from16 v0, v22
@@ -11998,7 +11998,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SearchEntity;->setMmsid(Ljava/lang/String;)V
 
-    .line 105
+    .line 103
     :cond_b
     const-string v22, "duration"
 
@@ -12010,7 +12010,7 @@
 
     if-eqz v22, :cond_c
 
-    .line 106
+    .line 104
     const-string v22, "duration"
 
     move-object/from16 v0, v22
@@ -12025,7 +12025,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SearchEntity;->setDuration(Ljava/lang/String;)V
 
-    .line 108
+    .line 106
     :cond_c
     const-string v22, "head_duration"
 
@@ -12037,7 +12037,7 @@
 
     if-eqz v22, :cond_d
 
-    .line 109
+    .line 107
     const-string v22, "head_duration"
 
     move-object/from16 v0, v22
@@ -12052,7 +12052,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SearchEntity;->setHead_duration(Ljava/lang/String;)V
 
-    .line 111
+    .line 109
     :cond_d
     const-string v22, "tail_duration"
 
@@ -12064,7 +12064,7 @@
 
     if-eqz v22, :cond_e
 
-    .line 112
+    .line 110
     const-string v22, "tail_duration"
 
     move-object/from16 v0, v22
@@ -12079,7 +12079,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SearchEntity;->setTail_duration(Ljava/lang/String;)V
 
-    .line 114
+    .line 112
     :cond_e
     const-string v22, "play_address"
 
@@ -12091,7 +12091,7 @@
 
     if-eqz v22, :cond_f
 
-    .line 115
+    .line 113
     const-string v22, "play_address"
 
     move-object/from16 v0, v22
@@ -12106,7 +12106,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/SearchEntity;->setPlay_address(Ljava/lang/String;)V
 
-    .line 118
+    .line 116
     :cond_f
     const-string v22, "label"
 
@@ -12118,7 +12118,7 @@
 
     if-eqz v22, :cond_16
 
-    .line 119
+    .line 117
     const-string v22, "label"
 
     move-object/from16 v0, v22
@@ -12127,7 +12127,7 @@
 
     move-result-object v14
 
-    .line 120
+    .line 118
     .local v14, searchDataItemLabelListJson:Lorg/json/JSONArray;
     if-eqz v14, :cond_16
 
@@ -12137,12 +12137,12 @@
 
     if-lez v22, :cond_16
 
-    .line 121
+    .line 119
     new-instance v8, Ljava/util/ArrayList;
 
     invoke-direct {v8}, Ljava/util/ArrayList;-><init>()V
 
-    .line 122
+    .line 120
     .local v8, lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     const/4 v6, 0x0
 
@@ -12156,21 +12156,21 @@
 
     if-ge v6, v0, :cond_15
 
-    .line 123
+    .line 121
     invoke-virtual {v14, v6}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v13
 
-    .line 124
+    .line 122
     .local v13, searchDataItemLabelItemJson:Lorg/json/JSONObject;
     if-eqz v13, :cond_14
 
-    .line 125
+    .line 123
     new-instance v7, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v7}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 126
+    .line 124
     .local v7, lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v22, "size"
 
@@ -12182,7 +12182,7 @@
 
     if-eqz v22, :cond_10
 
-    .line 127
+    .line 125
     const-string v22, "size"
 
     move-object/from16 v0, v22
@@ -12195,7 +12195,7 @@
 
     invoke-virtual {v7, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 129
+    .line 127
     :cond_10
     const-string v22, "type"
 
@@ -12207,7 +12207,7 @@
 
     if-eqz v22, :cond_11
 
-    .line 130
+    .line 128
     const-string v22, "type"
 
     move-object/from16 v0, v22
@@ -12220,7 +12220,7 @@
 
     invoke-virtual {v7, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 132
+    .line 130
     :cond_11
     const-string v22, "key"
 
@@ -12232,7 +12232,7 @@
 
     if-eqz v22, :cond_12
 
-    .line 133
+    .line 131
     const-string v22, "key"
 
     move-object/from16 v0, v22
@@ -12245,7 +12245,7 @@
 
     invoke-virtual {v7, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 135
+    .line 133
     :cond_12
     const-string v22, "value"
 
@@ -12257,7 +12257,7 @@
 
     if-eqz v22, :cond_13
 
-    .line 136
+    .line 134
     const-string v22, "value"
 
     move-object/from16 v0, v22
@@ -12270,25 +12270,25 @@
 
     invoke-virtual {v7, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 138
+    .line 136
     :cond_13
     invoke-virtual {v8, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 122
+    .line 120
     .end local v7           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_14
     add-int/lit8 v6, v6, 0x1
 
     goto :goto_3
 
-    .line 141
+    .line 139
     .end local v13           #searchDataItemLabelItemJson:Lorg/json/JSONObject;
     :cond_15
     move-object/from16 v0, v16
 
     invoke-virtual {v0, v8}, Lcom/meizu/video/client/ui/entity/SearchEntity;->setLableListEntity(Ljava/util/ArrayList;)V
 
-    .line 144
+    .line 142
     .end local v6           #j:I
     .end local v8           #lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     .end local v14           #searchDataItemLabelListJson:Lorg/json/JSONArray;
@@ -12301,14 +12301,14 @@
     :try_end_0
     .catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 92
+    .line 90
     .end local v16           #searchEntity:Lcom/meizu/video/client/ui/entity/SearchEntity;
     :cond_17
     add-int/lit8 v5, v5, 0x1
 
     goto/16 :goto_2
 
-    .line 151
+    .line 149
     .end local v2           #code:Ljava/lang/String;
     .end local v3           #data:Ljava/lang/String;
     .end local v5           #i:I
@@ -12319,7 +12319,7 @@
     :catch_0
     move-exception v4
 
-    .line 152
+    .line 150
     .local v4, e:Lorg/json/JSONException;
     invoke-virtual {v4}, Lorg/json/JSONException;->printStackTrace()V
 
@@ -12349,7 +12349,7 @@
     .end annotation
 
     .prologue
-    .line 1541
+    .line 1539
     .local p1, searchListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/SearchEntity;>;"
     .local p3, typeNumListMsgEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/MsgEntity;>;"
     if-eqz p1, :cond_0
@@ -12358,12 +12358,12 @@
 
     if-nez p3, :cond_1
 
-    .line 1781
+    .line 1779
     :cond_0
     :goto_0
     return-void
 
-    .line 1545
+    .line 1543
     :cond_1
     :try_start_0
     new-instance v12, Lorg/json/JSONObject;
@@ -12372,11 +12372,11 @@
 
     invoke-direct {v12, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 1546
+    .line 1544
     .local v12, searchToalJson:Lorg/json/JSONObject;
     if-eqz v12, :cond_0
 
-    .line 1547
+    .line 1545
     const-string v17, "header"
 
     move-object/from16 v0, v17
@@ -12387,7 +12387,7 @@
 
     if-eqz v17, :cond_2
 
-    .line 1548
+    .line 1546
     const-string v17, "header"
 
     move-object/from16 v0, v17
@@ -12396,11 +12396,11 @@
 
     move-result-object v9
 
-    .line 1549
+    .line 1547
     .local v9, searchHeaderJson:Lorg/json/JSONObject;
     if-eqz v9, :cond_2
 
-    .line 1550
+    .line 1548
     const-string v17, "status"
 
     move-object/from16 v0, v17
@@ -12411,7 +12411,7 @@
 
     if-eqz v17, :cond_2
 
-    .line 1551
+    .line 1549
     const-string v17, "status"
 
     move-object/from16 v0, v17
@@ -12426,7 +12426,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1555
+    .line 1553
     .end local v9           #searchHeaderJson:Lorg/json/JSONObject;
     :cond_2
     const-string v17, "1"
@@ -12441,7 +12441,7 @@
 
     if-eqz v17, :cond_0
 
-    .line 1556
+    .line 1554
     const-string v17, "body"
 
     move-object/from16 v0, v17
@@ -12452,7 +12452,7 @@
 
     if-eqz v17, :cond_0
 
-    .line 1557
+    .line 1555
     const-string v17, "body"
 
     move-object/from16 v0, v17
@@ -12461,14 +12461,14 @@
 
     move-result-object v7
 
-    .line 1558
+    .line 1556
     .local v7, searchBodyJson:Lorg/json/JSONObject;
     if-eqz v7, :cond_0
 
-    .line 1560
+    .line 1558
     const/4 v13, 0x0
 
-    .line 1561
+    .line 1559
     .local v13, searchTotal:I
     const-string v17, "total"
 
@@ -12482,7 +12482,7 @@
 
     if-eqz v17, :cond_3
 
-    .line 1563
+    .line 1561
     :try_start_1
     const-string v17, "total"
 
@@ -12500,7 +12500,7 @@
 
     move-result v13
 
-    .line 1564
+    .line 1562
     const-string v17, "total"
 
     move-object/from16 v0, v17
@@ -12518,12 +12518,12 @@
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
     .catch Lorg/json/JSONException; {:try_start_1 .. :try_end_1} :catch_0
 
-    .line 1569
+    .line 1567
     :cond_3
     :goto_1
     if-lez v13, :cond_0
 
-    .line 1570
+    .line 1568
     :try_start_2
     const-string v17, "data"
 
@@ -12535,7 +12535,7 @@
 
     if-eqz v17, :cond_14
 
-    .line 1571
+    .line 1569
     const-string v17, "data"
 
     move-object/from16 v0, v17
@@ -12544,7 +12544,7 @@
 
     move-result-object v11
 
-    .line 1572
+    .line 1570
     .local v11, searchListJson:Lorg/json/JSONArray;
     if-eqz v11, :cond_14
 
@@ -12554,7 +12554,7 @@
 
     if-lez v17, :cond_14
 
-    .line 1573
+    .line 1571
     const/4 v3, 0x0
 
     .local v3, i:I
@@ -12567,27 +12567,27 @@
 
     if-ge v3, v0, :cond_14
 
-    .line 1574
+    .line 1572
     invoke-virtual {v11, v3}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v10
 
-    .line 1575
+    .line 1573
     .local v10, searchItemJson:Lorg/json/JSONObject;
     if-eqz v10, :cond_13
 
-    .line 1576
+    .line 1574
     new-instance v8, Lcom/meizu/video/client/ui/entity/SearchEntity;
 
     invoke-direct {v8}, Lcom/meizu/video/client/ui/entity/SearchEntity;-><init>()V
 
-    .line 1577
+    .line 1575
     .local v8, searchEntity:Lcom/meizu/video/client/ui/entity/SearchEntity;
     new-instance v6, Ljava/util/ArrayList;
 
     invoke-direct {v6}, Ljava/util/ArrayList;-><init>()V
 
-    .line 1578
+    .line 1576
     .local v6, lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     const-string v17, "cid"
 
@@ -12599,7 +12599,7 @@
 
     if-eqz v17, :cond_4
 
-    .line 1583
+    .line 1581
     const-string v17, "cid"
 
     move-object/from16 v0, v17
@@ -12612,7 +12612,7 @@
 
     invoke-virtual {v8, v0}, Lcom/meizu/video/client/ui/entity/SearchEntity;->setCid(Ljava/lang/String;)V
 
-    .line 1586
+    .line 1584
     :cond_4
     const-string v17, "id"
 
@@ -12624,7 +12624,7 @@
 
     if-eqz v17, :cond_5
 
-    .line 1587
+    .line 1585
     const-string v17, "id"
 
     move-object/from16 v0, v17
@@ -12637,7 +12637,7 @@
 
     invoke-virtual {v8, v0}, Lcom/meizu/video/client/ui/entity/SearchEntity;->setVid(Ljava/lang/String;)V
 
-    .line 1589
+    .line 1587
     :cond_5
     const-string v17, "title"
 
@@ -12649,7 +12649,7 @@
 
     if-eqz v17, :cond_6
 
-    .line 1590
+    .line 1588
     const-string v17, "title"
 
     move-object/from16 v0, v17
@@ -12680,12 +12680,12 @@
 
     if-nez v17, :cond_6
 
-    .line 1591
+    .line 1589
     new-instance v5, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v5}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1592
+    .line 1590
     .local v5, lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v17, "0"
 
@@ -12693,14 +12693,14 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1593
+    .line 1591
     const-string v17, "text-title"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1594
+    .line 1592
     const-string v17, "title"
 
     move-object/from16 v0, v17
@@ -12713,10 +12713,10 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1595
+    .line 1593
     invoke-virtual {v6, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1601
+    .line 1599
     .end local v5           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_6
     const-string v17, "icon"
@@ -12729,7 +12729,7 @@
 
     if-eqz v17, :cond_7
 
-    .line 1602
+    .line 1600
     const-string v17, "icon"
 
     move-object/from16 v0, v17
@@ -12760,12 +12760,12 @@
 
     if-nez v17, :cond_7
 
-    .line 1603
+    .line 1601
     new-instance v5, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v5}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1604
+    .line 1602
     .restart local v5       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v17, "0"
 
@@ -12773,14 +12773,14 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1605
+    .line 1603
     const-string v17, "image"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1606
+    .line 1604
     const-string v17, "icon"
 
     move-object/from16 v0, v17
@@ -12793,10 +12793,10 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1607
+    .line 1605
     invoke-virtual {v6, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1610
+    .line 1608
     .end local v5           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_7
     const-string v17, "score"
@@ -12809,7 +12809,7 @@
 
     if-eqz v17, :cond_8
 
-    .line 1611
+    .line 1609
     const-string v17, "score"
 
     move-object/from16 v0, v17
@@ -12840,12 +12840,12 @@
 
     if-nez v17, :cond_8
 
-    .line 1612
+    .line 1610
     new-instance v5, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v5}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1613
+    .line 1611
     .restart local v5       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v17, "-1"
 
@@ -12853,21 +12853,21 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1614
+    .line 1612
     const-string v17, "text-image"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1615
+    .line 1613
     const-string v17, "0"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1616
+    .line 1614
     const-string v17, "score"
 
     move-object/from16 v0, v17
@@ -12880,10 +12880,10 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1617
+    .line 1615
     invoke-virtual {v6, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1621
+    .line 1619
     .end local v5           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_8
     const-string v17, "type"
@@ -12896,7 +12896,7 @@
 
     if-eqz v17, :cond_9
 
-    .line 1622
+    .line 1620
     const-string v17, "type"
 
     move-object/from16 v0, v17
@@ -12909,7 +12909,7 @@
 
     invoke-virtual {v8, v0}, Lcom/meizu/video/client/ui/entity/SearchEntity;->setMediaDataType(Ljava/lang/String;)V
 
-    .line 1624
+    .line 1622
     :cond_9
     const-string v17, "at"
 
@@ -12921,7 +12921,7 @@
 
     if-eqz v17, :cond_a
 
-    .line 1625
+    .line 1623
     const-string v17, "at"
 
     move-object/from16 v0, v17
@@ -12934,7 +12934,7 @@
 
     invoke-virtual {v8, v0}, Lcom/meizu/video/client/ui/entity/SearchEntity;->setMediaOperaton(Ljava/lang/String;)V
 
-    .line 1636
+    .line 1634
     :cond_a
     const-string v17, "director"
 
@@ -12946,7 +12946,7 @@
 
     if-eqz v17, :cond_b
 
-    .line 1637
+    .line 1635
     const-string v17, "director"
 
     move-object/from16 v0, v17
@@ -12977,12 +12977,12 @@
 
     if-nez v17, :cond_b
 
-    .line 1638
+    .line 1636
     new-instance v5, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v5}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1639
+    .line 1637
     .restart local v5       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v17, "-1"
 
@@ -12990,21 +12990,21 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1640
+    .line 1638
     const-string v17, "text"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1641
+    .line 1639
     const-string v17, "1"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1642
+    .line 1640
     const-string v17, "director"
 
     move-object/from16 v0, v17
@@ -13017,10 +13017,10 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1643
+    .line 1641
     invoke-virtual {v6, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1646
+    .line 1644
     .end local v5           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_b
     const-string v17, "actor"
@@ -13033,7 +13033,7 @@
 
     if-eqz v17, :cond_c
 
-    .line 1647
+    .line 1645
     const-string v17, "actor"
 
     move-object/from16 v0, v17
@@ -13064,12 +13064,12 @@
 
     if-nez v17, :cond_c
 
-    .line 1648
+    .line 1646
     new-instance v5, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v5}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1649
+    .line 1647
     .restart local v5       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v17, "-1"
 
@@ -13077,21 +13077,21 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1650
+    .line 1648
     const-string v17, "text"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1651
+    .line 1649
     const-string v17, "2"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1652
+    .line 1650
     const-string v17, "actor"
 
     move-object/from16 v0, v17
@@ -13104,10 +13104,10 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1653
+    .line 1651
     invoke-virtual {v6, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1656
+    .line 1654
     .end local v5           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_c
     const-string v17, "intro"
@@ -13120,7 +13120,7 @@
 
     if-eqz v17, :cond_d
 
-    .line 1657
+    .line 1655
     const-string v17, "intro"
 
     move-object/from16 v0, v17
@@ -13137,7 +13137,7 @@
 
     invoke-virtual {v8, v0}, Lcom/meizu/video/client/ui/entity/SearchEntity;->setIntro(Ljava/lang/String;)V
 
-    .line 1659
+    .line 1657
     :cond_d
     const-string v17, "subcate"
 
@@ -13149,7 +13149,7 @@
 
     if-eqz v17, :cond_e
 
-    .line 1660
+    .line 1658
     const-string v17, "subcate"
 
     move-object/from16 v0, v17
@@ -13180,12 +13180,12 @@
 
     if-nez v17, :cond_e
 
-    .line 1661
+    .line 1659
     new-instance v5, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v5}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1662
+    .line 1660
     .restart local v5       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v17, "-1"
 
@@ -13193,21 +13193,21 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1663
+    .line 1661
     const-string v17, "text"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1664
+    .line 1662
     const-string v17, "3"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1665
+    .line 1663
     const-string v17, "subcate"
 
     move-object/from16 v0, v17
@@ -13220,10 +13220,10 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1666
+    .line 1664
     invoke-virtual {v6, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1669
+    .line 1667
     .end local v5           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_e
     const-string v17, "area"
@@ -13236,7 +13236,7 @@
 
     if-eqz v17, :cond_f
 
-    .line 1670
+    .line 1668
     const-string v17, "area"
 
     move-object/from16 v0, v17
@@ -13267,12 +13267,12 @@
 
     if-nez v17, :cond_f
 
-    .line 1671
+    .line 1669
     new-instance v5, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v5}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1672
+    .line 1670
     .restart local v5       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v17, "-1"
 
@@ -13280,21 +13280,21 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1673
+    .line 1671
     const-string v17, "text"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1674
+    .line 1672
     const-string v17, "4"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1675
+    .line 1673
     const-string v17, "area"
 
     move-object/from16 v0, v17
@@ -13307,10 +13307,10 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1676
+    .line 1674
     invoke-virtual {v6, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1679
+    .line 1677
     .end local v5           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_f
     const-string v17, "time_length"
@@ -13323,7 +13323,7 @@
 
     if-eqz v17, :cond_10
 
-    .line 1680
+    .line 1678
     const-string v17, "time_length"
 
     move-object/from16 v0, v17
@@ -13374,7 +13374,7 @@
 
     if-nez v17, :cond_10
 
-    .line 1681
+    .line 1679
     const-string v17, "time_length"
 
     move-object/from16 v0, v17
@@ -13387,12 +13387,12 @@
 
     invoke-virtual {v8, v0}, Lcom/meizu/video/client/ui/entity/SearchEntity;->setDuration(Ljava/lang/String;)V
 
-    .line 1682
+    .line 1680
     new-instance v5, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v5}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1683
+    .line 1681
     .restart local v5       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v17, "-1"
 
@@ -13400,21 +13400,21 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1684
+    .line 1682
     const-string v17, "text"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1685
+    .line 1683
     const-string v17, "5"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1686
+    .line 1684
     const-string v17, "time_length"
 
     move-object/from16 v0, v17
@@ -13431,10 +13431,10 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1687
+    .line 1685
     invoke-virtual {v6, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1696
+    .line 1694
     .end local v5           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_10
     const-string v17, "rcompany"
@@ -13447,7 +13447,7 @@
 
     if-eqz v17, :cond_11
 
-    .line 1697
+    .line 1695
     const-string v17, "rcompany"
 
     move-object/from16 v0, v17
@@ -13478,12 +13478,12 @@
 
     if-nez v17, :cond_11
 
-    .line 1698
+    .line 1696
     new-instance v5, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v5}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1699
+    .line 1697
     .restart local v5       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v17, "-1"
 
@@ -13491,21 +13491,21 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1700
+    .line 1698
     const-string v17, "text"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1701
+    .line 1699
     const-string v17, "7"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1702
+    .line 1700
     const-string v17, "rcompany"
 
     move-object/from16 v0, v17
@@ -13518,10 +13518,10 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1703
+    .line 1701
     invoke-virtual {v6, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1706
+    .line 1704
     .end local v5           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_11
     const-string v17, "ctime"
@@ -13534,7 +13534,7 @@
 
     if-eqz v17, :cond_12
 
-    .line 1707
+    .line 1705
     const-string v17, "ctime"
 
     move-object/from16 v0, v17
@@ -13565,12 +13565,12 @@
 
     if-nez v17, :cond_12
 
-    .line 1708
+    .line 1706
     new-instance v5, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v5}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 1709
+    .line 1707
     .restart local v5       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const-string v17, "-1"
 
@@ -13578,21 +13578,21 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setSize(Ljava/lang/String;)V
 
-    .line 1710
+    .line 1708
     const-string v17, "text"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 1711
+    .line 1709
     const-string v17, "6"
 
     move-object/from16 v0, v17
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1712
+    .line 1710
     const-string v17, "ctime"
 
     move-object/from16 v0, v17
@@ -13605,20 +13605,20 @@
 
     invoke-virtual {v5, v0}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1713
+    .line 1711
     invoke-virtual {v6, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1734
+    .line 1732
     .end local v5           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_12
     invoke-virtual {v8, v6}, Lcom/meizu/video/client/ui/entity/SearchEntity;->setLableListEntity(Ljava/util/ArrayList;)V
 
-    .line 1735
+    .line 1733
     move-object/from16 v0, p1
 
     invoke-virtual {v0, v8}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1573
+    .line 1571
     .end local v6           #lableList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     .end local v8           #searchEntity:Lcom/meizu/video/client/ui/entity/SearchEntity;
     :cond_13
@@ -13626,7 +13626,7 @@
 
     goto/16 :goto_2
 
-    .line 1741
+    .line 1739
     .end local v3           #i:I
     .end local v10           #searchItemJson:Lorg/json/JSONObject;
     .end local v11           #searchListJson:Lorg/json/JSONArray;
@@ -13641,7 +13641,7 @@
 
     if-eqz v17, :cond_0
 
-    .line 1742
+    .line 1740
     const-string v17, "subNav"
 
     move-object/from16 v0, v17
@@ -13650,7 +13650,7 @@
 
     move-result-object v15
 
-    .line 1743
+    .line 1741
     .local v15, searchTypeNumTotalJson:Lorg/json/JSONArray;
     if-eqz v15, :cond_0
 
@@ -13660,7 +13660,7 @@
 
     if-lez v17, :cond_0
 
-    .line 1744
+    .line 1742
     const/4 v4, 0x0
 
     .local v4, j:I
@@ -13673,21 +13673,21 @@
 
     if-ge v4, v0, :cond_0
 
-    .line 1745
+    .line 1743
     invoke-virtual {v15, v4}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v14
 
-    .line 1746
+    .line 1744
     .local v14, searchTypeNumItemJson:Lorg/json/JSONObject;
     if-eqz v14, :cond_17
 
-    .line 1747
+    .line 1745
     new-instance v16, Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     invoke-direct/range {v16 .. v16}, Lcom/meizu/video/client/ui/entity/MsgEntity;-><init>()V
 
-    .line 1748
+    .line 1746
     .local v16, typeNumItemMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     const-string v17, "cname"
 
@@ -13699,7 +13699,7 @@
 
     if-eqz v17, :cond_15
 
-    .line 1749
+    .line 1747
     const-string v17, "cname"
 
     move-object/from16 v0, v17
@@ -13710,7 +13710,7 @@
 
     invoke-virtual/range {v16 .. v17}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 1751
+    .line 1749
     :cond_15
     const-string v17, "num"
 
@@ -13722,7 +13722,7 @@
 
     if-eqz v17, :cond_16
 
-    .line 1752
+    .line 1750
     const-string v17, "num"
 
     move-object/from16 v0, v17
@@ -13733,7 +13733,7 @@
 
     invoke-virtual/range {v16 .. v17}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setValue(Ljava/lang/String;)V
 
-    .line 1760
+    .line 1758
     :cond_16
     move-object/from16 v0, p3
 
@@ -13743,14 +13743,14 @@
     :try_end_2
     .catch Lorg/json/JSONException; {:try_start_2 .. :try_end_2} :catch_0
 
-    .line 1744
+    .line 1742
     .end local v16           #typeNumItemMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     :cond_17
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_3
 
-    .line 1778
+    .line 1776
     .end local v4           #j:I
     .end local v7           #searchBodyJson:Lorg/json/JSONObject;
     .end local v12           #searchToalJson:Lorg/json/JSONObject;
@@ -13760,13 +13760,13 @@
     :catch_0
     move-exception v2
 
-    .line 1779
+    .line 1777
     .local v2, e:Lorg/json/JSONException;
     invoke-virtual {v2}, Lorg/json/JSONException;->printStackTrace()V
 
     goto/16 :goto_0
 
-    .line 1565
+    .line 1563
     .end local v2           #e:Lorg/json/JSONException;
     .restart local v7       #searchBodyJson:Lorg/json/JSONObject;
     .restart local v12       #searchToalJson:Lorg/json/JSONObject;
@@ -13815,7 +13815,7 @@
     .end annotation
 
     .prologue
-    .line 2290
+    .line 2288
     if-eqz p1, :cond_0
 
     if-eqz p2, :cond_0
@@ -13836,22 +13836,22 @@
 
     if-gtz v1, :cond_1
 
-    .line 2496
+    .line 2494
     :cond_0
     :goto_0
     return-void
 
-    .line 2294
+    .line 2292
     :cond_1
     :try_start_0
     new-instance v1, Lorg/json/JSONObject;
 
     invoke-direct {v1, p0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 2295
+    .line 2293
     if-eqz v1, :cond_0
 
-    .line 2296
+    .line 2294
     const-string v2, "header"
 
     invoke-virtual {v1, v2}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -13860,17 +13860,17 @@
 
     if-eqz v2, :cond_2
 
-    .line 2297
+    .line 2295
     const-string v2, "header"
 
     invoke-virtual {v1, v2}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
 
     move-result-object v2
 
-    .line 2298
+    .line 2296
     if-eqz v2, :cond_2
 
-    .line 2299
+    .line 2297
     const-string v3, "status"
 
     invoke-virtual {v2, v3}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -13879,7 +13879,7 @@
 
     if-eqz v3, :cond_2
 
-    .line 2300
+    .line 2298
     const-string v3, "status"
 
     invoke-virtual {v2, v3}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -13890,7 +13890,7 @@
 
     invoke-virtual {v0, v2}, Lcom/meizu/video/client/ui/entity/MsgEntity;->setKey(Ljava/lang/String;)V
 
-    .line 2304
+    .line 2302
     :cond_2
     const-string v2, "1"
 
@@ -13904,7 +13904,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 2305
+    .line 2303
     const-string v2, "body"
 
     invoke-virtual {v1, v2}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -13913,17 +13913,17 @@
 
     if-eqz v2, :cond_0
 
-    .line 2306
+    .line 2304
     const-string v2, "body"
 
     invoke-virtual {v1, v2}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
 
     move-result-object v3
 
-    .line 2307
+    .line 2305
     if-eqz v3, :cond_0
 
-    .line 2308
+    .line 2306
     const-string v1, "cate"
 
     invoke-virtual {v3, v1}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -13932,17 +13932,17 @@
 
     if-eqz v1, :cond_9
 
-    .line 2309
+    .line 2307
     const-string v1, "cate"
 
     invoke-virtual {v3, v1}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
 
     move-result-object v4
 
-    .line 2310
+    .line 2308
     if-eqz v4, :cond_9
 
-    .line 2311
+    .line 2309
     const/4 v1, 0x0
 
     move v2, v1
@@ -13954,7 +13954,7 @@
 
     if-ge v2, v1, :cond_9
 
-    .line 2312
+    .line 2310
     move-object/from16 v0, p6
 
     invoke-virtual {v0, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -13973,7 +13973,7 @@
 
     if-eqz v1, :cond_8
 
-    .line 2313
+    .line 2311
     move-object/from16 v0, p6
 
     invoke-virtual {v0, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -13990,15 +13990,15 @@
 
     move-result-object v5
 
-    .line 2314
+    .line 2312
     if-eqz v5, :cond_8
 
-    .line 2315
+    .line 2313
     new-instance v6, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;
 
     invoke-direct {v6}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;-><init>()V
 
-    .line 2316
+    .line 2314
     move-object/from16 v0, p6
 
     invoke-virtual {v0, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -14013,7 +14013,7 @@
 
     invoke-virtual {v6, v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->setCid(Ljava/lang/String;)V
 
-    .line 2317
+    .line 2315
     const-string v1, "name"
 
     invoke-virtual {v5, v1}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -14022,7 +14022,7 @@
 
     if-eqz v1, :cond_3
 
-    .line 2318
+    .line 2316
     const-string v1, "name"
 
     invoke-virtual {v5, v1}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14031,7 +14031,7 @@
 
     invoke-virtual {v6, v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->setName(Ljava/lang/String;)V
 
-    .line 2320
+    .line 2318
     :cond_3
     const-string v1, "sub"
 
@@ -14041,14 +14041,14 @@
 
     if-eqz v1, :cond_7
 
-    .line 2321
+    .line 2319
     const-string v1, "sub"
 
     invoke-virtual {v5, v1}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v5
 
-    .line 2322
+    .line 2320
     if-eqz v5, :cond_7
 
     invoke-virtual {v5}, Lorg/json/JSONArray;->length()I
@@ -14057,12 +14057,12 @@
 
     if-lez v1, :cond_7
 
-    .line 2323
+    .line 2321
     new-instance v7, Ljava/util/ArrayList;
 
     invoke-direct {v7}, Ljava/util/ArrayList;-><init>()V
 
-    .line 2324
+    .line 2322
     const/4 v1, 0x0
 
     :goto_2
@@ -14072,20 +14072,20 @@
 
     if-ge v1, v8, :cond_6
 
-    .line 2325
+    .line 2323
     invoke-virtual {v5, v1}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v8
 
-    .line 2326
+    .line 2324
     new-instance v9, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v9}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2327
+    .line 2325
     if-eqz v8, :cond_5
 
-    .line 2328
+    .line 2326
     const-string v10, "id"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -14094,7 +14094,7 @@
 
     if-eqz v10, :cond_4
 
-    .line 2329
+    .line 2327
     const-string v10, "id"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14103,7 +14103,7 @@
 
     invoke-virtual {v9, v10}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2331
+    .line 2329
     :cond_4
     const-string v10, "name"
 
@@ -14113,7 +14113,7 @@
 
     if-eqz v10, :cond_5
 
-    .line 2332
+    .line 2330
     const-string v10, "name"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14122,24 +14122,24 @@
 
     invoke-virtual {v9, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 2335
+    .line 2333
     :cond_5
     invoke-virtual {v7, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2324
+    .line 2322
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_2
 
-    .line 2337
+    .line 2335
     :cond_6
     invoke-virtual {v6, v7}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->setTypeTitem1ListEntity(Ljava/util/ArrayList;)V
 
-    .line 2340
+    .line 2338
     :cond_7
     invoke-virtual {p1, v6}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2311
+    .line 2309
     :cond_8
     add-int/lit8 v1, v2, 0x1
 
@@ -14147,7 +14147,7 @@
 
     goto/16 :goto_1
 
-    .line 2346
+    .line 2344
     :cond_9
     const-string v1, "area"
 
@@ -14157,17 +14157,17 @@
 
     if-eqz v1, :cond_f
 
-    .line 2347
+    .line 2345
     const-string v1, "area"
 
     invoke-virtual {v3, v1}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
 
     move-result-object v4
 
-    .line 2348
+    .line 2346
     if-eqz v4, :cond_f
 
-    .line 2349
+    .line 2347
     const/4 v1, 0x0
 
     move v2, v1
@@ -14179,7 +14179,7 @@
 
     if-ge v2, v1, :cond_f
 
-    .line 2350
+    .line 2348
     move-object/from16 v0, p6
 
     invoke-virtual {v0, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -14198,7 +14198,7 @@
 
     if-eqz v1, :cond_e
 
-    .line 2351
+    .line 2349
     move-object/from16 v0, p6
 
     invoke-virtual {v0, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -14215,7 +14215,7 @@
 
     move-result-object v5
 
-    .line 2352
+    .line 2350
     if-eqz v5, :cond_e
 
     invoke-virtual {v5}, Lorg/json/JSONArray;->length()I
@@ -14224,12 +14224,12 @@
 
     if-lez v1, :cond_e
 
-    .line 2353
+    .line 2351
     new-instance v6, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;
 
     invoke-direct {v6}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;-><init>()V
 
-    .line 2354
+    .line 2352
     move-object/from16 v0, p6
 
     invoke-virtual {v0, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -14244,12 +14244,12 @@
 
     invoke-virtual {v6, v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->setCid(Ljava/lang/String;)V
 
-    .line 2355
+    .line 2353
     new-instance v7, Ljava/util/ArrayList;
 
     invoke-direct {v7}, Ljava/util/ArrayList;-><init>()V
 
-    .line 2356
+    .line 2354
     const/4 v1, 0x0
 
     :goto_4
@@ -14259,20 +14259,20 @@
 
     if-ge v1, v8, :cond_d
 
-    .line 2357
+    .line 2355
     invoke-virtual {v5, v1}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v8
 
-    .line 2358
+    .line 2356
     if-eqz v8, :cond_c
 
-    .line 2359
+    .line 2357
     new-instance v9, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v9}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2360
+    .line 2358
     const-string v10, "id"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -14281,7 +14281,7 @@
 
     if-eqz v10, :cond_a
 
-    .line 2361
+    .line 2359
     const-string v10, "id"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14290,7 +14290,7 @@
 
     invoke-virtual {v9, v10}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2363
+    .line 2361
     :cond_a
     const-string v10, "name"
 
@@ -14300,7 +14300,7 @@
 
     if-eqz v10, :cond_b
 
-    .line 2364
+    .line 2362
     const-string v10, "name"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14309,24 +14309,24 @@
 
     invoke-virtual {v9, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 2366
+    .line 2364
     :cond_b
     invoke-virtual {v7, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2356
+    .line 2354
     :cond_c
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_4
 
-    .line 2369
+    .line 2367
     :cond_d
     invoke-virtual {v6, v7}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->setTypeTitem1ListEntity(Ljava/util/ArrayList;)V
 
-    .line 2370
+    .line 2368
     invoke-virtual {p2, v6}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2349
+    .line 2347
     :cond_e
     add-int/lit8 v1, v2, 0x1
 
@@ -14334,7 +14334,7 @@
 
     goto/16 :goto_3
 
-    .line 2376
+    .line 2374
     :cond_f
     const-string v1, "year"
 
@@ -14344,17 +14344,17 @@
 
     if-eqz v1, :cond_15
 
-    .line 2377
+    .line 2375
     const-string v1, "year"
 
     invoke-virtual {v3, v1}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
 
     move-result-object v4
 
-    .line 2378
+    .line 2376
     if-eqz v4, :cond_15
 
-    .line 2379
+    .line 2377
     const/4 v1, 0x0
 
     move v2, v1
@@ -14366,7 +14366,7 @@
 
     if-ge v2, v1, :cond_15
 
-    .line 2380
+    .line 2378
     move-object/from16 v0, p6
 
     invoke-virtual {v0, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -14385,7 +14385,7 @@
 
     if-eqz v1, :cond_14
 
-    .line 2381
+    .line 2379
     move-object/from16 v0, p6
 
     invoke-virtual {v0, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -14402,7 +14402,7 @@
 
     move-result-object v5
 
-    .line 2382
+    .line 2380
     if-eqz v5, :cond_14
 
     invoke-virtual {v5}, Lorg/json/JSONArray;->length()I
@@ -14411,12 +14411,12 @@
 
     if-lez v1, :cond_14
 
-    .line 2383
+    .line 2381
     new-instance v6, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;
 
     invoke-direct {v6}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;-><init>()V
 
-    .line 2384
+    .line 2382
     move-object/from16 v0, p6
 
     invoke-virtual {v0, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -14431,12 +14431,12 @@
 
     invoke-virtual {v6, v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->setCid(Ljava/lang/String;)V
 
-    .line 2385
+    .line 2383
     new-instance v7, Ljava/util/ArrayList;
 
     invoke-direct {v7}, Ljava/util/ArrayList;-><init>()V
 
-    .line 2386
+    .line 2384
     const/4 v1, 0x0
 
     :goto_6
@@ -14446,20 +14446,20 @@
 
     if-ge v1, v8, :cond_13
 
-    .line 2387
+    .line 2385
     invoke-virtual {v5, v1}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v8
 
-    .line 2388
+    .line 2386
     if-eqz v8, :cond_12
 
-    .line 2389
+    .line 2387
     new-instance v9, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v9}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2390
+    .line 2388
     const-string v10, "id"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -14468,7 +14468,7 @@
 
     if-eqz v10, :cond_10
 
-    .line 2391
+    .line 2389
     const-string v10, "id"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14477,7 +14477,7 @@
 
     invoke-virtual {v9, v10}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2393
+    .line 2391
     :cond_10
     const-string v10, "name"
 
@@ -14487,7 +14487,7 @@
 
     if-eqz v10, :cond_11
 
-    .line 2394
+    .line 2392
     const-string v10, "name"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14496,24 +14496,24 @@
 
     invoke-virtual {v9, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 2396
+    .line 2394
     :cond_11
     invoke-virtual {v7, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2386
+    .line 2384
     :cond_12
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_6
 
-    .line 2399
+    .line 2397
     :cond_13
     invoke-virtual {v6, v7}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->setTypeTitem1ListEntity(Ljava/util/ArrayList;)V
 
-    .line 2400
+    .line 2398
     invoke-virtual {p3, v6}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2379
+    .line 2377
     :cond_14
     add-int/lit8 v1, v2, 0x1
 
@@ -14521,7 +14521,7 @@
 
     goto/16 :goto_5
 
-    .line 2406
+    .line 2404
     :cond_15
     const-string v1, "order"
 
@@ -14531,17 +14531,17 @@
 
     if-eqz v1, :cond_0
 
-    .line 2407
+    .line 2405
     const-string v1, "order"
 
     invoke-virtual {v3, v1}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
 
     move-result-object v3
 
-    .line 2408
+    .line 2406
     if-eqz v3, :cond_0
 
-    .line 2409
+    .line 2407
     const/4 v1, 0x0
 
     move v2, v1
@@ -14553,7 +14553,7 @@
 
     if-ge v2, v1, :cond_0
 
-    .line 2410
+    .line 2408
     move-object/from16 v0, p6
 
     invoke-virtual {v0, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -14572,7 +14572,7 @@
 
     if-eqz v1, :cond_25
 
-    .line 2411
+    .line 2409
     move-object/from16 v0, p6
 
     invoke-virtual {v0, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -14589,15 +14589,15 @@
 
     move-result-object v4
 
-    .line 2412
+    .line 2410
     if-eqz v4, :cond_25
 
-    .line 2413
+    .line 2411
     new-instance v5, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;
 
     invoke-direct {v5}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;-><init>()V
 
-    .line 2414
+    .line 2412
     move-object/from16 v0, p6
 
     invoke-virtual {v0, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -14612,7 +14612,7 @@
 
     invoke-virtual {v5, v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->setCid(Ljava/lang/String;)V
 
-    .line 2415
+    .line 2413
     const-string v1, "album"
 
     invoke-virtual {v4, v1}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -14621,14 +14621,14 @@
 
     if-eqz v1, :cond_1a
 
-    .line 2416
+    .line 2414
     const-string v1, "album"
 
     invoke-virtual {v4, v1}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v6
 
-    .line 2417
+    .line 2415
     if-eqz v6, :cond_1a
 
     invoke-virtual {v6}, Lorg/json/JSONArray;->length()I
@@ -14637,12 +14637,12 @@
 
     if-lez v1, :cond_1a
 
-    .line 2418
+    .line 2416
     new-instance v7, Ljava/util/ArrayList;
 
     invoke-direct {v7}, Ljava/util/ArrayList;-><init>()V
 
-    .line 2419
+    .line 2417
     const/4 v1, 0x0
 
     :goto_8
@@ -14652,20 +14652,20 @@
 
     if-ge v1, v8, :cond_19
 
-    .line 2420
+    .line 2418
     invoke-virtual {v6, v1}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v8
 
-    .line 2421
+    .line 2419
     new-instance v9, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v9}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2422
+    .line 2420
     if-eqz v8, :cond_18
 
-    .line 2423
+    .line 2421
     const-string v10, "id"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -14674,7 +14674,7 @@
 
     if-eqz v10, :cond_16
 
-    .line 2424
+    .line 2422
     const-string v10, "id"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14683,7 +14683,7 @@
 
     invoke-virtual {v9, v10}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2426
+    .line 2424
     :cond_16
     const-string v10, "shortname"
 
@@ -14693,7 +14693,7 @@
 
     if-eqz v10, :cond_17
 
-    .line 2427
+    .line 2425
     const-string v10, "shortname"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14702,7 +14702,7 @@
 
     invoke-virtual {v9, v10}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 2429
+    .line 2427
     :cond_17
     const-string v10, "name"
 
@@ -14712,7 +14712,7 @@
 
     if-eqz v10, :cond_18
 
-    .line 2430
+    .line 2428
     const-string v10, "name"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14721,20 +14721,20 @@
 
     invoke-virtual {v9, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 2433
+    .line 2431
     :cond_18
     invoke-virtual {v7, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2419
+    .line 2417
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_8
 
-    .line 2435
+    .line 2433
     :cond_19
     invoke-virtual {v5, v7}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->setTypeTitem1ListEntity(Ljava/util/ArrayList;)V
 
-    .line 2438
+    .line 2436
     :cond_1a
     const-string v1, "vrsvideo"
 
@@ -14744,14 +14744,14 @@
 
     if-eqz v1, :cond_1f
 
-    .line 2439
+    .line 2437
     const-string v1, "vrsvideo"
 
     invoke-virtual {v4, v1}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v6
 
-    .line 2440
+    .line 2438
     if-eqz v6, :cond_1f
 
     invoke-virtual {v6}, Lorg/json/JSONArray;->length()I
@@ -14760,12 +14760,12 @@
 
     if-lez v1, :cond_1f
 
-    .line 2441
+    .line 2439
     new-instance v7, Ljava/util/ArrayList;
 
     invoke-direct {v7}, Ljava/util/ArrayList;-><init>()V
 
-    .line 2442
+    .line 2440
     const/4 v1, 0x0
 
     :goto_9
@@ -14775,20 +14775,20 @@
 
     if-ge v1, v8, :cond_1e
 
-    .line 2443
+    .line 2441
     invoke-virtual {v6, v1}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v8
 
-    .line 2444
+    .line 2442
     new-instance v9, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v9}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2445
+    .line 2443
     if-eqz v8, :cond_1d
 
-    .line 2446
+    .line 2444
     const-string v10, "id"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -14797,7 +14797,7 @@
 
     if-eqz v10, :cond_1b
 
-    .line 2447
+    .line 2445
     const-string v10, "id"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14806,7 +14806,7 @@
 
     invoke-virtual {v9, v10}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2449
+    .line 2447
     :cond_1b
     const-string v10, "shortname"
 
@@ -14816,7 +14816,7 @@
 
     if-eqz v10, :cond_1c
 
-    .line 2450
+    .line 2448
     const-string v10, "shortname"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14825,7 +14825,7 @@
 
     invoke-virtual {v9, v10}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 2452
+    .line 2450
     :cond_1c
     const-string v10, "name"
 
@@ -14835,7 +14835,7 @@
 
     if-eqz v10, :cond_1d
 
-    .line 2453
+    .line 2451
     const-string v10, "name"
 
     invoke-virtual {v8, v10}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14844,20 +14844,20 @@
 
     invoke-virtual {v9, v8}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 2456
+    .line 2454
     :cond_1d
     invoke-virtual {v7, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2442
+    .line 2440
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_9
 
-    .line 2458
+    .line 2456
     :cond_1e
     invoke-virtual {v5, v7}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->setTypeTitem2ListEntity(Ljava/util/ArrayList;)V
 
-    .line 2461
+    .line 2459
     :cond_1f
     const-string v1, "ptvvideo"
 
@@ -14867,14 +14867,14 @@
 
     if-eqz v1, :cond_24
 
-    .line 2462
+    .line 2460
     const-string v1, "ptvvideo"
 
     invoke-virtual {v4, v1}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v4
 
-    .line 2463
+    .line 2461
     if-eqz v4, :cond_24
 
     invoke-virtual {v4}, Lorg/json/JSONArray;->length()I
@@ -14883,12 +14883,12 @@
 
     if-lez v1, :cond_24
 
-    .line 2464
+    .line 2462
     new-instance v6, Ljava/util/ArrayList;
 
     invoke-direct {v6}, Ljava/util/ArrayList;-><init>()V
 
-    .line 2465
+    .line 2463
     const/4 v1, 0x0
 
     :goto_a
@@ -14898,20 +14898,20 @@
 
     if-ge v1, v7, :cond_23
 
-    .line 2466
+    .line 2464
     invoke-virtual {v4, v1}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v7
 
-    .line 2467
+    .line 2465
     new-instance v8, Lcom/meizu/video/client/ui/entity/LableEntity;
 
     invoke-direct {v8}, Lcom/meizu/video/client/ui/entity/LableEntity;-><init>()V
 
-    .line 2468
+    .line 2466
     if-eqz v7, :cond_22
 
-    .line 2469
+    .line 2467
     const-string v9, "id"
 
     invoke-virtual {v7, v9}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
@@ -14920,7 +14920,7 @@
 
     if-eqz v9, :cond_20
 
-    .line 2470
+    .line 2468
     const-string v9, "id"
 
     invoke-virtual {v7, v9}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14929,7 +14929,7 @@
 
     invoke-virtual {v8, v9}, Lcom/meizu/video/client/ui/entity/LableEntity;->setType(Ljava/lang/String;)V
 
-    .line 2472
+    .line 2470
     :cond_20
     const-string v9, "shortname"
 
@@ -14939,7 +14939,7 @@
 
     if-eqz v9, :cond_21
 
-    .line 2473
+    .line 2471
     const-string v9, "shortname"
 
     invoke-virtual {v7, v9}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14948,7 +14948,7 @@
 
     invoke-virtual {v8, v9}, Lcom/meizu/video/client/ui/entity/LableEntity;->setKey(Ljava/lang/String;)V
 
-    .line 2475
+    .line 2473
     :cond_21
     const-string v9, "name"
 
@@ -14958,7 +14958,7 @@
 
     if-eqz v9, :cond_22
 
-    .line 2476
+    .line 2474
     const-string v9, "name"
 
     invoke-virtual {v7, v9}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -14967,26 +14967,26 @@
 
     invoke-virtual {v8, v7}, Lcom/meizu/video/client/ui/entity/LableEntity;->setValue(Ljava/lang/String;)V
 
-    .line 2479
+    .line 2477
     :cond_22
     invoke-virtual {v6, v8}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2465
+    .line 2463
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_a
 
-    .line 2481
+    .line 2479
     :cond_23
     invoke-virtual {v5, v6}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->setTypeTitem3ListEntity(Ljava/util/ArrayList;)V
 
-    .line 2484
+    .line 2482
     :cond_24
     invoke-virtual {p4, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 2409
+    .line 2407
     :cond_25
     add-int/lit8 v1, v2, 0x1
 
@@ -14994,7 +14994,7 @@
 
     goto/16 :goto_7
 
-    .line 2494
+    .line 2492
     :catch_0
     move-exception v1
 

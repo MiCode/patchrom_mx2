@@ -37,7 +37,7 @@
     .parameter
 
     .prologue
-    .line 170
+    .line 171
     iput-object p1, p0, Lcom/android/gallery3d/data/UriImage$RegionDecoderJob;->this$0:Lcom/android/gallery3d/data/UriImage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -51,7 +51,7 @@
     .parameter "x1"
 
     .prologue
-    .line 170
+    .line 171
     invoke-direct {p0, p1}, Lcom/android/gallery3d/data/UriImage$RegionDecoderJob;-><init>(Lcom/android/gallery3d/data/UriImage;)V
 
     return-void
@@ -64,7 +64,7 @@
     .parameter "jc"
 
     .prologue
-    .line 172
+    .line 173
     iget-object v1, p0, Lcom/android/gallery3d/data/UriImage$RegionDecoderJob;->this$0:Lcom/android/gallery3d/data/UriImage;
 
     #calls: Lcom/android/gallery3d/data/UriImage;->prepareInputFile(Lcom/android/gallery3d/util/ThreadPool$JobContext;)Z
@@ -76,11 +76,11 @@
 
     const/4 v0, 0x0
 
-    .line 177
+    .line 178
     :goto_0
     return-object v0
 
-    .line 173
+    .line 174
     :cond_0
     iget-object v1, p0, Lcom/android/gallery3d/data/UriImage$RegionDecoderJob;->this$0:Lcom/android/gallery3d/data/UriImage;
 
@@ -99,7 +99,7 @@
 
     move-result-object v0
 
-    .line 175
+    .line 176
     .local v0, decoder:Landroid/graphics/BitmapRegionDecoder;
     iget-object v1, p0, Lcom/android/gallery3d/data/UriImage$RegionDecoderJob;->this$0:Lcom/android/gallery3d/data/UriImage;
 
@@ -110,7 +110,7 @@
     #setter for: Lcom/android/gallery3d/data/UriImage;->mWidth:I
     invoke-static {v1, v2}, Lcom/android/gallery3d/data/UriImage;->access$302(Lcom/android/gallery3d/data/UriImage;I)I
 
-    .line 176
+    .line 177
     iget-object v1, p0, Lcom/android/gallery3d/data/UriImage$RegionDecoderJob;->this$0:Lcom/android/gallery3d/data/UriImage;
 
     invoke-virtual {v0}, Landroid/graphics/BitmapRegionDecoder;->getHeight()I
@@ -128,7 +128,7 @@
     .parameter "x0"
 
     .prologue
-    .line 170
+    .line 171
     invoke-virtual {p0, p1}, Lcom/android/gallery3d/data/UriImage$RegionDecoderJob;->run(Lcom/android/gallery3d/util/ThreadPool$JobContext;)Landroid/graphics/BitmapRegionDecoder;
 
     move-result-object v0

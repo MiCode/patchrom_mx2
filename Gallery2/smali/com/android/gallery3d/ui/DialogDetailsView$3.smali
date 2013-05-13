@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 198
+    .line 204
     iput-object p1, p0, Lcom/android/gallery3d/ui/DialogDetailsView$3;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,7 +42,7 @@
     .parameter "dialog"
 
     .prologue
-    .line 200
+    .line 206
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView$3;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     #getter for: Lcom/android/gallery3d/ui/DialogDetailsView;->mListener:Lcom/android/gallery3d/ui/DetailsHelper$CloseListener;
@@ -52,7 +52,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 201
+    .line 207
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView$3;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     #getter for: Lcom/android/gallery3d/ui/DialogDetailsView;->mListener:Lcom/android/gallery3d/ui/DetailsHelper$CloseListener;
@@ -62,7 +62,7 @@
 
     invoke-interface {v0}, Lcom/android/gallery3d/ui/DetailsHelper$CloseListener;->onClose()V
 
-    .line 203
+    .line 209
     :cond_0
     return-void
 .end method

@@ -17,6 +17,10 @@
     .end annotation
 .end field
 
+.field private mIconHeight:I
+
+.field private mIconWidth:I
+
 .field private mName:Ljava/lang/String;
 
 
@@ -27,17 +31,55 @@
     .parameter "application"
 
     .prologue
-    .line 14
+    .line 16
     invoke-static {}, Lcom/android/gallery3d/data/FolderIconAlbum;->nextVersionNumber()J
 
     move-result-wide v0
 
     invoke-direct {p0, p1, v0, v1}, Lcom/android/gallery3d/data/MediaSet;-><init>(Lcom/android/gallery3d/data/Path;J)V
 
-    .line 15
+    .line 17
     iput-object p2, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mApplication:Lcom/android/gallery3d/app/GalleryApp;
 
-    .line 16
+    .line 18
+    iget-object v0, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mApplication:Lcom/android/gallery3d/app/GalleryApp;
+
+    invoke-interface {v0}, Lcom/android/gallery3d/app/GalleryApp;->getAndroidContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    const v1, 0x7f090282
+
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mIconWidth:I
+
+    .line 19
+    iget-object v0, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mApplication:Lcom/android/gallery3d/app/GalleryApp;
+
+    invoke-interface {v0}, Lcom/android/gallery3d/app/GalleryApp;->getAndroidContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    const v1, 0x7f090283
+
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mIconHeight:I
+
+    .line 20
     return-void
 .end method
 
@@ -57,7 +99,7 @@
     .end annotation
 
     .prologue
-    .line 43
+    .line 47
     iget-object v0, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mCovers:Ljava/util/ArrayList;
 
     return-object v0
@@ -78,7 +120,7 @@
     .end annotation
 
     .prologue
-    .line 53
+    .line 57
     iget-object v0, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mCovers:Ljava/util/ArrayList;
 
     return-object v0
@@ -88,7 +130,7 @@
     .locals 1
 
     .prologue
-    .line 48
+    .line 52
     const/4 v0, -0x1
 
     return v0
@@ -98,19 +140,19 @@
     .locals 2
 
     .prologue
-    .line 20
+    .line 24
     iget-object v0, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mName:Ljava/lang/String;
 
     if-nez v0, :cond_0
 
-    .line 21
+    .line 25
     iget-object v0, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mApplication:Lcom/android/gallery3d/app/GalleryApp;
 
     invoke-interface {v0}, Lcom/android/gallery3d/app/GalleryApp;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
 
-    const v1, 0x7f0a01e6
+    const v1, 0x7f0a01f5
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -118,7 +160,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mName:Ljava/lang/String;
 
-    .line 23
+    .line 27
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mName:Ljava/lang/String;
 
@@ -129,12 +171,12 @@
     .locals 5
 
     .prologue
-    .line 28
+    .line 32
     iget-object v3, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mCovers:Ljava/util/ArrayList;
 
     if-nez v3, :cond_0
 
-    .line 29
+    .line 33
     new-instance v3, Ljava/util/ArrayList;
 
     const/4 v4, 0x1
@@ -143,18 +185,18 @@
 
     iput-object v3, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mCovers:Ljava/util/ArrayList;
 
-    .line 30
+    .line 34
     iget-object v3, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mApplication:Lcom/android/gallery3d/app/GalleryApp;
 
     invoke-interface {v3}, Lcom/android/gallery3d/app/GalleryApp;->getDataManager()Lcom/android/gallery3d/data/DataManager;
 
     move-result-object v1
 
-    .line 31
+    .line 35
     .local v1, dm:Lcom/android/gallery3d/data/DataManager;
-    const v0, 0x7f020125
+    const v0, 0x7f02011d
 
-    .line 32
+    .line 36
     .local v0, coverResId:I
     new-instance v3, Ljava/lang/StringBuilder;
 
@@ -180,30 +222,30 @@
 
     check-cast v2, Lcom/android/gallery3d/data/ResImage;
 
-    .line 33
+    .line 37
     .local v2, ri:Lcom/android/gallery3d/data/ResImage;
-    const/16 v3, 0x10e
+    iget v3, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mIconWidth:I
 
     invoke-virtual {v2, v3}, Lcom/android/gallery3d/data/ResImage;->setWidth(I)V
 
-    .line 34
-    const/16 v3, 0xf0
+    .line 38
+    iget v3, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mIconHeight:I
 
     invoke-virtual {v2, v3}, Lcom/android/gallery3d/data/ResImage;->setHeight(I)V
 
-    .line 35
+    .line 39
     iget-object v3, p0, Lcom/android/gallery3d/data/FolderIconAlbum;->mCovers:Ljava/util/ArrayList;
 
     invoke-virtual {v3, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 36
+    .line 40
     invoke-static {}, Lcom/android/gallery3d/data/FolderIconAlbum;->nextVersionNumber()J
 
     move-result-wide v3
 
     iput-wide v3, p0, Lcom/android/gallery3d/data/MediaObject;->mDataVersion:J
 
-    .line 38
+    .line 42
     .end local v0           #coverResId:I
     .end local v1           #dm:Lcom/android/gallery3d/data/DataManager;
     .end local v2           #ri:Lcom/android/gallery3d/data/ResImage;

@@ -127,6 +127,8 @@
 
 .field private static final FIRST_DRM_FILE_TYPE:I = 0x33
 
+.field private static final FIRST_FFMPEG_AUDIO_FILE_TYPE:I = 0x3e9
+
 .field private static final FIRST_IMAGE_FILE_TYPE:I = 0x1f
 
 .field private static final FIRST_MEIZU_ADDED_AUDIO_FILE_TYPE:I = 0x34
@@ -142,6 +144,8 @@
 .field private static final LAST_AUDIO_FILE_TYPE:I = 0xa
 
 .field private static final LAST_DRM_FILE_TYPE:I = 0x33
+
+.field private static final LAST_FFMPEG_AUDIO_FILE_TYPE:I = 0x3e9
 
 .field private static final LAST_IMAGE_FILE_TYPE:I = 0x26
 
@@ -343,7 +347,7 @@
 
     const/4 v1, 0x4
 
-    const-string v2, "audio/amr"
+    const-string v2, "audio/3gpp"
 
     invoke-static {v0, v1, v2}, Landroid/media/MediaFile;->addFileType(Ljava/lang/String;ILjava/lang/String;)V
 

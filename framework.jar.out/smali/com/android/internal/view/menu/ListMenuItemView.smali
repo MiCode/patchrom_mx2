@@ -149,7 +149,7 @@
 
     .line 261
     .local v0, inflater:Landroid/view/LayoutInflater;
-    const v1, 0x1090079
+    const v1, 0x109007d
 
     const/4 v2, 0x0
 
@@ -192,7 +192,7 @@
 
     .line 242
     .local v0, inflater:Landroid/view/LayoutInflater;
-    const v1, 0x109007b
+    const v1, 0x109007f
 
     invoke-virtual {v0, v1, p0, v2}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
@@ -222,7 +222,7 @@
 
     .line 249
     .local v0, inflater:Landroid/view/LayoutInflater;
-    const v1, 0x109007d
+    const v1, 0x1090081
 
     const/4 v2, 0x0
 
@@ -243,14 +243,12 @@
 
     if-eqz v1, :cond_0
 
-    .line 254
     iget-object v1, p0, Lcom/android/internal/view/menu/ListMenuItemView;->mRadioButton:Landroid/widget/RadioButton;
 
-    const v2, 0x1080140
+    const v2, 0x108013f
 
     invoke-virtual {v1, v2}, Landroid/widget/RadioButton;->setButtonDrawable(I)V
 
-    .line 256
     :cond_0
     iget-object v1, p0, Lcom/android/internal/view/menu/ListMenuItemView;->mRadioButton:Landroid/widget/RadioButton;
 
@@ -267,7 +265,6 @@
 
     invoke-virtual {p0, v1}, Lcom/android/internal/view/menu/ListMenuItemView;->addView(Landroid/view/View;)V
 
-    .line 257
     return-void
 .end method
 
@@ -403,7 +400,7 @@
     iput-object v0, p0, Lcom/android/internal/view/menu/ListMenuItemView;->mTitleView:Landroid/widget/TextView;
 
     .line 91
-    const v0, 0x102034e
+    const v0, 0x102034a
 
     invoke-virtual {p0, v0}, Lcom/android/internal/view/menu/ListMenuItemView;->findViewById(I)Landroid/view/View;
 
@@ -553,7 +550,7 @@
 
     move-result v1
 
-    invoke-static {v4, v1}, Lcom/android/internal/view/menu/ListMenuItemView$Injector;->checkTextColor(Landroid/widget/TextView;Z)V
+    invoke-static {p0, v4, v1}, Lcom/android/internal/view/menu/ListMenuItemView$Injector;->checkTextColor(Lcom/android/internal/view/menu/ListMenuItemView;Landroid/widget/TextView;Z)V
 
     .line 156
     if-eqz p1, :cond_6
@@ -668,7 +665,7 @@
 
     iget-object v1, p0, Lcom/android/internal/view/menu/ListMenuItemView;->mTitleView:Landroid/widget/TextView;
 
-    invoke-static {v1, p1}, Lcom/android/internal/view/menu/ListMenuItemView$Injector;->checkTextColor(Landroid/widget/TextView;Z)V
+    invoke-static {p0, v1, p1}, Lcom/android/internal/view/menu/ListMenuItemView$Injector;->checkTextColor(Lcom/android/internal/view/menu/ListMenuItemView;Landroid/widget/TextView;Z)V
 
     return-void
 

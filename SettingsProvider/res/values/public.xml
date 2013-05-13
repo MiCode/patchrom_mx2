@@ -67,6 +67,8 @@
     <public type="integer" name="def_pointer_speed" id="0x7f05001b" />
     <public type="integer" name="def_max_dhcp_retries" id="0x7f05001c" />
     <public type="integer" name="def_meizu_app_font_size" id="0x7f05001d" />
+    <public type="integer" name="def_fit_brightness_value" id="0x7f05001e" />
+    <public type="integer" name="def_fit_sensor_value" id="0x7f05001f" />
     <public type="string" name="def_airplane_mode_radios" id="0x7f060000" />
     <public type="string" name="airplane_mode_toggleable_radios" id="0x7f060001" />
     <public type="string" name="def_date_format" id="0x7f060002" />

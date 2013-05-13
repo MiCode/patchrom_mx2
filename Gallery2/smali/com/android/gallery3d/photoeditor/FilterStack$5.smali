@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 222
+    .line 223
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/FilterStack$5;->this$0:Lcom/android/gallery3d/photoeditor/FilterStack;
 
     iput-object p2, p0, Lcom/android/gallery3d/photoeditor/FilterStack$5;->val$filter:Lcom/android/gallery3d/photoeditor/filters/Filter;
@@ -46,7 +46,7 @@
     .locals 2
 
     .prologue
-    .line 226
+    .line 227
     :goto_0
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack$5;->this$0:Lcom/android/gallery3d/photoeditor/FilterStack;
 
@@ -61,7 +61,7 @@
 
     if-nez v0, :cond_0
 
-    .line 227
+    .line 228
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack$5;->this$0:Lcom/android/gallery3d/photoeditor/FilterStack;
 
     #getter for: Lcom/android/gallery3d/photoeditor/FilterStack;->redoStack:Ljava/util/Stack;
@@ -79,7 +79,7 @@
 
     goto :goto_0
 
-    .line 229
+    .line 230
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/FilterStack$5;->this$0:Lcom/android/gallery3d/photoeditor/FilterStack;
 
@@ -88,6 +88,6 @@
     #calls: Lcom/android/gallery3d/photoeditor/FilterStack;->pushFilterInternal(Lcom/android/gallery3d/photoeditor/filters/Filter;)V
     invoke-static {v0, v1}, Lcom/android/gallery3d/photoeditor/FilterStack;->access$1000(Lcom/android/gallery3d/photoeditor/FilterStack;Lcom/android/gallery3d/photoeditor/filters/Filter;)V
 
-    .line 230
+    .line 231
     return-void
 .end method

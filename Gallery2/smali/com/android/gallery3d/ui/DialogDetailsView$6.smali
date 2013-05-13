@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 455
+    .line 464
     iput-object p1, p0, Lcom/android/gallery3d/ui/DialogDetailsView$6;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,7 +43,7 @@
     .parameter "which"
 
     .prologue
-    .line 458
+    .line 467
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView$6;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     #calls: Lcom/android/gallery3d/ui/DialogDetailsView;->checkNeedUpdate()Z
@@ -53,7 +53,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 459
+    .line 468
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView$6;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     const/4 v1, 0x1
@@ -61,11 +61,11 @@
     #calls: Lcom/android/gallery3d/ui/DialogDetailsView;->beginSaveFile(Z)V
     invoke-static {v0, v1}, Lcom/android/gallery3d/ui/DialogDetailsView;->access$700(Lcom/android/gallery3d/ui/DialogDetailsView;Z)V
 
-    .line 463
+    .line 472
     :goto_0
     return-void
 
-    .line 461
+    .line 470
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/ui/DialogDetailsView$6;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 

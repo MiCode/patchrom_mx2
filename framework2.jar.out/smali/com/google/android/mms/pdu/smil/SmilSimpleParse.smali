@@ -167,7 +167,7 @@
     .line 42
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 833
+    .line 841
     return-void
 .end method
 
@@ -253,170 +253,181 @@
     .parameter "context"
 
     .prologue
-    const/4 v6, 0x1
+    const/4 v7, 0x1
 
-    .line 202
+    const/4 v6, 0x0
+
+    .line 205
     invoke-static {p0}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->findSmilPart(Lcom/google/android/mms/pdu/PduBody;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v2
 
-    .line 203
+    .line 206
     .local v2, partSmil:Lcom/google/android/mms/pdu/PduPart;
     const/4 v5, 0x0
 
-    .line 204
-    .local v5, smilBody:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;
-    if-eqz v2, :cond_0
-
-    invoke-virtual {v2}, Lcom/google/android/mms/pdu/PduPart;->getData()[B
-
-    move-result-object v7
-
-    if-eqz v7, :cond_0
-
-    invoke-virtual {v2}, Lcom/google/android/mms/pdu/PduPart;->getData()[B
-
-    move-result-object v7
-
-    array-length v7, v7
-
-    if-nez v7, :cond_2
-
     .line 207
-    :cond_0
+    .local v5, smilBody:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;
+    if-nez v2, :cond_1
+
+    .line 209
     const-string v7, "SmilSimpleParse"
 
-    const-string v8, "correctPduSmil(): make new smil file..."
+    const-string v8, "correctPduSmil(): the smil part is null..."
 
     invoke-static {v7, v8}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 208
-    invoke-static {p0}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->createByPduBody(Lcom/google/android/mms/pdu/PduBody;)Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;
-
-    move-result-object v5
-
-    .line 209
-    new-instance v4, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$Smil;
-
-    const/4 v7, 0x0
-
-    invoke-direct {v4, v7, v5}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$Smil;-><init>(Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilHead;Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;)V
-
-    .line 210
-    .local v4, smilBean:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$Smil;
-    invoke-virtual {v4}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$Smil;->makeSmilXml()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v7}, Ljava/lang/String;->getBytes()[B
-
-    move-result-object v7
-
-    invoke-static {v2, v7, p1}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->updateParts(Lcom/google/android/mms/pdu/PduPart;[BLandroid/content/Context;)Z
-
-    .line 231
-    .end local v4           #smilBean:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$Smil;
-    :cond_1
+    .line 237
+    :cond_0
     :goto_0
     return v6
 
-    .line 214
-    :cond_2
+    .line 211
+    :cond_1
     invoke-virtual {v2}, Lcom/google/android/mms/pdu/PduPart;->getData()[B
 
-    move-result-object v7
+    move-result-object v8
 
-    invoke-static {v7}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->parserBySax([B)Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;
-
-    move-result-object v5
-
-    .line 215
-    invoke-static {p0, v5}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->isNeedRebuildSmil(Lcom/google/android/mms/pdu/PduBody;Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;)Z
-
-    move-result v7
-
-    if-eqz v7, :cond_3
-
-    .line 217
-    const-string v7, "SmilSimpleParse"
-
-    const-string v8, "correctPduSmil(): the old smil is wrong, so we\'ll make new smil file..."
-
-    invoke-static {v7, v8}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 219
-    new-instance v3, Ljava/lang/StringBuffer;
-
-    new-instance v7, Lcom/google/android/mms/pdu/EncodedStringValue;
+    if-eqz v8, :cond_2
 
     invoke-virtual {v2}, Lcom/google/android/mms/pdu/PduPart;->getData()[B
 
     move-result-object v8
 
-    invoke-direct {v7, v8}, Lcom/google/android/mms/pdu/EncodedStringValue;-><init>([B)V
+    array-length v8, v8
 
-    invoke-virtual {v7}, Lcom/google/android/mms/pdu/EncodedStringValue;->getString()Ljava/lang/String;
+    if-nez v8, :cond_3
 
-    move-result-object v7
+    .line 213
+    :cond_2
+    const-string v6, "SmilSimpleParse"
 
-    invoke-direct {v3, v7}, Ljava/lang/StringBuffer;-><init>(Ljava/lang/String;)V
+    const-string v8, "correctPduSmil(): the smil part data is null, make new smil file..."
+
+    invoke-static {v6, v8}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 214
+    invoke-static {p0}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->createByPduBody(Lcom/google/android/mms/pdu/PduBody;)Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;
+
+    move-result-object v5
+
+    .line 215
+    new-instance v4, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$Smil;
+
+    const/4 v6, 0x0
+
+    invoke-direct {v4, v6, v5}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$Smil;-><init>(Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilHead;Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;)V
+
+    .line 216
+    .local v4, smilBean:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$Smil;
+    invoke-virtual {v4}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$Smil;->makeSmilXml()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v6}, Ljava/lang/String;->getBytes()[B
+
+    move-result-object v6
+
+    invoke-static {v2, v6, p1}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->updateParts(Lcom/google/android/mms/pdu/PduPart;[BLandroid/content/Context;)Z
+
+    move v6, v7
+
+    .line 217
+    goto :goto_0
+
+    .line 220
+    .end local v4           #smilBean:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$Smil;
+    :cond_3
+    invoke-virtual {v2}, Lcom/google/android/mms/pdu/PduPart;->getData()[B
+
+    move-result-object v8
+
+    invoke-static {v8}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->parserBySax([B)Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;
+
+    move-result-object v5
 
     .line 221
+    invoke-static {p0, v5}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->isNeedRebuildSmil(Lcom/google/android/mms/pdu/PduBody;Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;)Z
+
+    move-result v8
+
+    if-eqz v8, :cond_0
+
+    .line 223
+    const-string v6, "SmilSimpleParse"
+
+    const-string v8, "correctPduSmil(): the old smil is wrong, so we\'ll make new smil file..."
+
+    invoke-static {v6, v8}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 225
+    new-instance v3, Ljava/lang/StringBuffer;
+
+    new-instance v6, Lcom/google/android/mms/pdu/EncodedStringValue;
+
+    invoke-virtual {v2}, Lcom/google/android/mms/pdu/PduPart;->getData()[B
+
+    move-result-object v8
+
+    invoke-direct {v6, v8}, Lcom/google/android/mms/pdu/EncodedStringValue;-><init>([B)V
+
+    invoke-virtual {v6}, Lcom/google/android/mms/pdu/EncodedStringValue;->getString()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-direct {v3, v6}, Ljava/lang/StringBuffer;-><init>(Ljava/lang/String;)V
+
+    .line 227
     .local v3, smil:Ljava/lang/StringBuffer;
     invoke-static {p0}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->createByPduBody(Lcom/google/android/mms/pdu/PduBody;)Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;
 
     move-result-object v5
 
-    .line 222
-    const-string v7, "<body>"
+    .line 228
+    const-string v6, "<body>"
 
-    invoke-virtual {v3, v7}, Ljava/lang/StringBuffer;->indexOf(Ljava/lang/String;)I
+    invoke-virtual {v3, v6}, Ljava/lang/StringBuffer;->indexOf(Ljava/lang/String;)I
 
     move-result v0
 
-    .line 223
+    .line 229
     .local v0, beginBodyIndex:I
-    const-string v7, "</body>"
+    const-string v6, "</body>"
 
-    invoke-virtual {v3, v7}, Ljava/lang/StringBuffer;->lastIndexOf(Ljava/lang/String;)I
+    invoke-virtual {v3, v6}, Ljava/lang/StringBuffer;->lastIndexOf(Ljava/lang/String;)I
 
     move-result v1
 
-    .line 224
+    .line 230
     .local v1, endBodyIndex:I
-    if-le v1, v0, :cond_1
+    if-le v1, v0, :cond_4
 
-    if-lez v0, :cond_1
+    if-lez v0, :cond_4
 
-    .line 225
-    add-int/lit8 v7, v1, 0x7
+    .line 231
+    add-int/lit8 v6, v1, 0x7
 
     invoke-virtual {v5}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;->makeSmilXml()Ljava/lang/String;
 
     move-result-object v8
 
-    invoke-virtual {v3, v0, v7, v8}, Ljava/lang/StringBuffer;->replace(IILjava/lang/String;)Ljava/lang/StringBuffer;
+    invoke-virtual {v3, v0, v6, v8}, Ljava/lang/StringBuffer;->replace(IILjava/lang/String;)Ljava/lang/StringBuffer;
 
-    .line 226
+    .line 232
     invoke-virtual {v3}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
 
-    move-result-object v7
+    move-result-object v6
 
-    invoke-virtual {v7}, Ljava/lang/String;->getBytes()[B
+    invoke-virtual {v6}, Ljava/lang/String;->getBytes()[B
 
-    move-result-object v7
+    move-result-object v6
 
-    invoke-static {v2, v7, p1}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->updateParts(Lcom/google/android/mms/pdu/PduPart;[BLandroid/content/Context;)Z
+    invoke-static {v2, v6, p1}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->updateParts(Lcom/google/android/mms/pdu/PduPart;[BLandroid/content/Context;)Z
 
-    goto :goto_0
+    :cond_4
+    move v6, v7
 
-    .line 231
-    .end local v0           #beginBodyIndex:I
-    .end local v1           #endBodyIndex:I
-    .end local v3           #smil:Ljava/lang/StringBuffer;
-    :cond_3
-    const/4 v6, 0x0
-
+    .line 234
     goto :goto_0
 .end method
 
@@ -425,16 +436,16 @@
     .parameter "pb"
 
     .prologue
-    .line 159
+    .line 161
     invoke-virtual {p0}, Lcom/google/android/mms/pdu/PduBody;->getPartsNum()I
 
     move-result v5
 
-    .line 160
+    .line 162
     .local v5, partsNum:I
     if-nez v5, :cond_1
 
-    .line 162
+    .line 164
     const-string v7, "SmilSimpleParse"
 
     new-instance v8, Ljava/lang/StringBuilder;
@@ -457,52 +468,52 @@
 
     invoke-static {v7, v8}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 163
+    .line 165
     const/4 v6, 0x0
 
-    .line 192
+    .line 194
     :cond_0
     return-object v6
 
-    .line 166
+    .line 168
     :cond_1
     new-instance v6, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;
 
     invoke-direct {v6}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;-><init>()V
 
-    .line 167
+    .line 169
     .local v6, smilBody:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;
     const/4 v1, 0x0
 
-    .line 168
+    .line 170
     .local v1, flags:I
     new-instance v3, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilPar;
 
     invoke-direct {v3}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilPar;-><init>()V
 
-    .line 169
+    .line 171
     .local v3, par:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilPar;
     invoke-virtual {v6, v3}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;->add(Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilPar;)V
 
-    .line 170
+    .line 172
     const/4 v2, 0x0
 
     .local v2, i:I
     :goto_0
     if-ge v2, v5, :cond_0
 
-    .line 171
+    .line 173
     invoke-virtual {p0, v2}, Lcom/google/android/mms/pdu/PduBody;->getPart(I)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v4
 
-    .line 172
+    .line 174
     .local v4, part:Lcom/google/android/mms/pdu/PduPart;
     invoke-static {v4}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->getContentType(Lcom/google/android/mms/pdu/PduPart;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 173
+    .line 175
     .local v0, contentType:Ljava/lang/String;
     const-string v7, "text/plain"
 
@@ -528,7 +539,7 @@
 
     if-eqz v7, :cond_3
 
-    .line 176
+    .line 178
     :cond_2
     const/4 v7, 0x1
 
@@ -538,13 +549,13 @@
 
     move-result v1
 
-    .line 170
+    .line 172
     :goto_1
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 177
+    .line 179
     :cond_3
     invoke-static {v0}, Lcom/google/android/mms/ContentType;->isImageType(Ljava/lang/String;)Z
 
@@ -552,7 +563,7 @@
 
     if-eqz v7, :cond_4
 
-    .line 178
+    .line 180
     const/16 v7, 0x10
 
     const-string v8, "img"
@@ -563,7 +574,7 @@
 
     goto :goto_1
 
-    .line 179
+    .line 181
     :cond_4
     invoke-static {v0}, Lcom/google/android/mms/ContentType;->isVideoType(Ljava/lang/String;)Z
 
@@ -571,7 +582,7 @@
 
     if-eqz v7, :cond_5
 
-    .line 180
+    .line 182
     const/16 v7, 0x100
 
     const-string v8, "video"
@@ -582,7 +593,7 @@
 
     goto :goto_1
 
-    .line 181
+    .line 183
     :cond_5
     invoke-static {v0}, Lcom/google/android/mms/ContentType;->isAudioType(Ljava/lang/String;)Z
 
@@ -590,7 +601,7 @@
 
     if-eqz v7, :cond_6
 
-    .line 182
+    .line 184
     const/16 v7, 0x1000
 
     const-string v8, "audio"
@@ -601,7 +612,7 @@
 
     goto :goto_1
 
-    .line 183
+    .line 185
     :cond_6
     invoke-static {v0}, Lcom/google/android/mms/ContentType;->isVcardType(Ljava/lang/String;)Z
 
@@ -609,7 +620,7 @@
 
     if-eqz v7, :cond_7
 
-    .line 184
+    .line 186
     const/high16 v7, 0x1
 
     const-string v8, "ref"
@@ -620,7 +631,7 @@
 
     goto :goto_1
 
-    .line 185
+    .line 187
     :cond_7
     invoke-static {v0}, Lcom/google/android/mms/ContentType;->isTalkType(Ljava/lang/String;)Z
 
@@ -628,7 +639,7 @@
 
     if-eqz v7, :cond_8
 
-    .line 186
+    .line 188
     const/high16 v7, 0x10
 
     const-string v8, "talk"
@@ -639,7 +650,7 @@
 
     goto :goto_1
 
-    .line 189
+    .line 191
     :cond_8
     const-string v7, "SmilSimpleParse"
 
@@ -705,19 +716,19 @@
     .parameter "src"
 
     .prologue
-    .line 455
+    .line 463
     const/4 v1, 0x0
 
-    .line 457
+    .line 465
     .local v1, part:Lcom/google/android/mms/pdu/PduPart;
     if-eqz p1, :cond_1
 
-    .line 458
+    .line 466
     invoke-static {p1}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->unescapeXML(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object p1
 
-    .line 459
+    .line 467
     const-string v3, "cid:"
 
     invoke-virtual {p1, v3}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
@@ -726,7 +737,7 @@
 
     if-eqz v3, :cond_2
 
-    .line 460
+    .line 468
     const-string v3, "cid:"
 
     invoke-virtual {v3}, Ljava/lang/String;->length()I
@@ -737,7 +748,7 @@
 
     move-result-object v0
 
-    .line 461
+    .line 469
     .local v0, cid:Ljava/lang/String;
     invoke-virtual {v0}, Ljava/lang/String;->length()I
 
@@ -755,7 +766,7 @@
 
     if-eq v3, v4, :cond_0
 
-    .line 462
+    .line 470
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -780,13 +791,13 @@
 
     move-result-object v0
 
-    .line 464
+    .line 472
     :cond_0
     invoke-virtual {p0, v0}, Lcom/google/android/mms/pdu/PduBody;->getPartByContentId(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v1
 
-    .line 479
+    .line 487
     .end local v0           #cid:Ljava/lang/String;
     :cond_1
     :goto_0
@@ -794,13 +805,13 @@
 
     move-object v2, v1
 
-    .line 484
+    .line 492
     .end local v1           #part:Lcom/google/android/mms/pdu/PduPart;
     .local v2, part:Lcom/google/android/mms/pdu/PduPart;
     :goto_1
     return-object v2
 
-    .line 466
+    .line 474
     .end local v2           #part:Lcom/google/android/mms/pdu/PduPart;
     .restart local v1       #part:Lcom/google/android/mms/pdu/PduPart;
     :cond_2
@@ -808,33 +819,33 @@
 
     move-result-object v1
 
-    .line 467
+    .line 475
     if-nez v1, :cond_1
 
-    .line 468
+    .line 476
     invoke-virtual {p0, p1}, Lcom/google/android/mms/pdu/PduBody;->getPartByFileName(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v1
 
-    .line 469
+    .line 477
     if-nez v1, :cond_1
 
-    .line 470
+    .line 478
     invoke-virtual {p0, p1}, Lcom/google/android/mms/pdu/PduBody;->getPartByContentLocation(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v1
 
-    .line 471
+    .line 479
     if-nez v1, :cond_1
 
-    .line 472
+    .line 480
     invoke-static {p0, p1}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->findPartExtend(Lcom/google/android/mms/pdu/PduBody;Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v1
 
     goto :goto_0
 
-    .line 482
+    .line 490
     :cond_3
     invoke-static {p0, p1}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->findPartSuper(Lcom/google/android/mms/pdu/PduBody;Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
@@ -842,7 +853,7 @@
 
     move-object v2, v1
 
-    .line 484
+    .line 492
     .end local v1           #part:Lcom/google/android/mms/pdu/PduPart;
     .restart local v2       #part:Lcom/google/android/mms/pdu/PduPart;
     goto :goto_1
@@ -855,21 +866,21 @@
     .parameter "src"
 
     .prologue
-    .line 442
+    .line 450
     invoke-virtual {p0}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilParItem;->getPduPart()Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v0
 
-    .line 443
+    .line 451
     .local v0, part:Lcom/google/android/mms/pdu/PduPart;
     if-nez v0, :cond_0
 
-    .line 444
+    .line 452
     invoke-static {p1, p2}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->findPart(Lcom/google/android/mms/pdu/PduBody;Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v0
 
-    .line 445
+    .line 453
     :cond_0
     return-object v0
 .end method
@@ -880,28 +891,28 @@
     .parameter "src"
 
     .prologue
-    .line 543
+    .line 551
     const-string v2, "."
 
     invoke-virtual {p1, v2}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
 
     move-result v1
 
-    .line 544
+    .line 552
     .local v1, potIndex:I
     const/4 v2, 0x1
 
     if-ge v1, v2, :cond_1
 
-    .line 545
+    .line 553
     const/4 v0, 0x0
 
-    .line 554
+    .line 562
     :cond_0
     :goto_0
     return-object v0
 
-    .line 546
+    .line 554
     :cond_1
     const/4 v2, 0x0
 
@@ -909,24 +920,24 @@
 
     move-result-object p1
 
-    .line 547
+    .line 555
     invoke-virtual {p0, p1}, Lcom/google/android/mms/pdu/PduBody;->getPartByName(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v0
 
-    .line 548
+    .line 556
     .local v0, part:Lcom/google/android/mms/pdu/PduPart;
     if-nez v0, :cond_0
 
-    .line 549
+    .line 557
     invoke-virtual {p0, p1}, Lcom/google/android/mms/pdu/PduBody;->getPartByFileName(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v0
 
-    .line 550
+    .line 558
     if-nez v0, :cond_0
 
-    .line 551
+    .line 559
     invoke-virtual {p0, p1}, Lcom/google/android/mms/pdu/PduBody;->getPartByContentLocation(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v0
@@ -944,19 +955,19 @@
 
     const/4 v5, 0x0
 
-    .line 488
+    .line 496
     const/4 v1, 0x0
 
-    .line 490
+    .line 498
     .local v1, part:Lcom/google/android/mms/pdu/PduPart;
     if-eqz p1, :cond_3
 
-    .line 491
+    .line 499
     invoke-static {p1}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->unescapeXML(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object p1
 
-    .line 492
+    .line 500
     const-string v3, "cid:"
 
     invoke-virtual {p1, v3}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
@@ -965,7 +976,7 @@
 
     if-eqz v3, :cond_4
 
-    .line 493
+    .line 501
     const-string v3, "cid:"
 
     invoke-virtual {v3}, Ljava/lang/String;->length()I
@@ -976,7 +987,7 @@
 
     move-result-object v0
 
-    .line 494
+    .line 502
     .local v0, cid:Ljava/lang/String;
     invoke-virtual {v0}, Ljava/lang/String;->length()I
 
@@ -990,7 +1001,7 @@
 
     if-eq v3, v4, :cond_0
 
-    .line 495
+    .line 503
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -1015,13 +1026,13 @@
 
     move-result-object v0
 
-    .line 497
+    .line 505
     :cond_0
     invoke-virtual {p0, v0}, Lcom/google/android/mms/pdu/PduBody;->getPartByContentId(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v1
 
-    .line 498
+    .line 506
     if-nez v1, :cond_3
 
     const-string v3, "."
@@ -1032,7 +1043,7 @@
 
     if-lez v3, :cond_3
 
-    .line 499
+    .line 507
     const-string v3, "<"
 
     invoke-virtual {v3}, Ljava/lang/String;->length()I
@@ -1049,24 +1060,24 @@
 
     move-result-object v0
 
-    .line 500
+    .line 508
     invoke-virtual {p0, v0}, Lcom/google/android/mms/pdu/PduBody;->getPartByContentId(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v1
 
-    .line 501
+    .line 509
     if-eqz v1, :cond_1
 
     move-object v2, v1
 
-    .line 534
+    .line 542
     .end local v0           #cid:Ljava/lang/String;
     .end local v1           #part:Lcom/google/android/mms/pdu/PduPart;
     .local v2, part:Lcom/google/android/mms/pdu/PduPart;
     :goto_0
     return-object v2
 
-    .line 503
+    .line 511
     .end local v2           #part:Lcom/google/android/mms/pdu/PduPart;
     .restart local v0       #cid:Ljava/lang/String;
     .restart local v1       #part:Lcom/google/android/mms/pdu/PduPart;
@@ -1081,22 +1092,22 @@
 
     move-result-object v0
 
-    .line 504
+    .line 512
     invoke-virtual {p0, v0}, Lcom/google/android/mms/pdu/PduBody;->getPartByContentId(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v1
 
-    .line 505
+    .line 513
     if-eqz v1, :cond_2
 
     move-object v2, v1
 
-    .line 506
+    .line 514
     .end local v1           #part:Lcom/google/android/mms/pdu/PduPart;
     .restart local v2       #part:Lcom/google/android/mms/pdu/PduPart;
     goto :goto_0
 
-    .line 507
+    .line 515
     .end local v2           #part:Lcom/google/android/mms/pdu/PduPart;
     .restart local v1       #part:Lcom/google/android/mms/pdu/PduPart;
     :cond_2
@@ -1124,7 +1135,7 @@
 
     move-result-object v0
 
-    .line 508
+    .line 516
     invoke-virtual {p0, v0}, Lcom/google/android/mms/pdu/PduBody;->getPartByContentId(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v1
@@ -1134,12 +1145,12 @@
     :goto_1
     move-object v2, v1
 
-    .line 534
+    .line 542
     .end local v1           #part:Lcom/google/android/mms/pdu/PduPart;
     .restart local v2       #part:Lcom/google/android/mms/pdu/PduPart;
     goto :goto_0
 
-    .line 511
+    .line 519
     .end local v2           #part:Lcom/google/android/mms/pdu/PduPart;
     .restart local v1       #part:Lcom/google/android/mms/pdu/PduPart;
     :cond_4
@@ -1155,7 +1166,7 @@
 
     if-ne v3, v4, :cond_5
 
-    .line 512
+    .line 520
     const-string v3, "<"
 
     invoke-virtual {v3}, Ljava/lang/String;->length()I
@@ -1172,29 +1183,29 @@
 
     move-result-object p1
 
-    .line 514
+    .line 522
     :cond_5
     invoke-virtual {p0, p1}, Lcom/google/android/mms/pdu/PduBody;->getPartByName(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v1
 
-    .line 515
+    .line 523
     if-nez v1, :cond_6
 
-    .line 516
+    .line 524
     invoke-virtual {p0, p1}, Lcom/google/android/mms/pdu/PduBody;->getPartByFileName(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v1
 
-    .line 517
+    .line 525
     if-nez v1, :cond_6
 
-    .line 518
+    .line 526
     invoke-virtual {p0, p1}, Lcom/google/android/mms/pdu/PduBody;->getPartByContentLocation(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v1
 
-    .line 521
+    .line 529
     :cond_6
     if-nez v1, :cond_3
 
@@ -1206,7 +1217,7 @@
 
     if-lez v3, :cond_3
 
-    .line 522
+    .line 530
     const-string v3, "."
 
     invoke-virtual {p1, v3}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
@@ -1215,23 +1226,23 @@
 
     invoke-virtual {p1, v5, v3}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
-    .line 523
+    .line 531
     invoke-virtual {p0, p1}, Lcom/google/android/mms/pdu/PduBody;->getPartByName(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v1
 
-    .line 524
+    .line 532
     if-nez v1, :cond_3
 
-    .line 525
+    .line 533
     invoke-virtual {p0, p1}, Lcom/google/android/mms/pdu/PduBody;->getPartByFileName(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v1
 
-    .line 526
+    .line 534
     if-nez v1, :cond_3
 
-    .line 527
+    .line 535
     invoke-virtual {p0, p1}, Lcom/google/android/mms/pdu/PduBody;->getPartByContentLocation(Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v1
@@ -1305,22 +1316,22 @@
     .parameter "part"
 
     .prologue
-    .line 412
+    .line 420
     invoke-virtual {p0}, Lcom/google/android/mms/pdu/PduPart;->getContentType()[B
 
     move-result-object v3
 
     if-nez v3, :cond_1
 
-    .line 413
+    .line 421
     const-string v0, ""
 
-    .line 432
+    .line 440
     :cond_0
     :goto_0
     return-object v0
 
-    .line 414
+    .line 422
     :cond_1
     invoke-virtual {p0}, Lcom/google/android/mms/pdu/PduPart;->getContentType()[B
 
@@ -1330,7 +1341,7 @@
 
     move-result-object v0
 
-    .line 416
+    .line 424
     .local v0, contentType:Ljava/lang/String;
     const-string v3, "image/jpg"
 
@@ -1340,12 +1351,12 @@
 
     if-eqz v3, :cond_2
 
-    .line 419
+    .line 427
     const-string v0, "image/jpeg"
 
     goto :goto_0
 
-    .line 420
+    .line 428
     :cond_2
     const-string v3, "application/oct-stream"
 
@@ -1361,7 +1372,7 @@
 
     if-eqz v3, :cond_3
 
-    .line 422
+    .line 430
     new-instance v1, Ljava/lang/String;
 
     invoke-virtual {p0}, Lcom/google/android/mms/pdu/PduPart;->getName()[B
@@ -1370,7 +1381,7 @@
 
     invoke-direct {v1, v3}, Ljava/lang/String;-><init>([B)V
 
-    .line 423
+    .line 431
     .local v1, name:Ljava/lang/String;
     const-string v3, "vcf"
 
@@ -1380,12 +1391,12 @@
 
     if-eqz v3, :cond_0
 
-    .line 424
+    .line 432
     const-string v0, "text/x-vcard"
 
     goto :goto_0
 
-    .line 425
+    .line 433
     .end local v1           #name:Ljava/lang/String;
     :cond_3
     const-string v3, "image/tiff"
@@ -1402,7 +1413,7 @@
 
     if-eqz v3, :cond_0
 
-    .line 427
+    .line 435
     new-instance v1, Ljava/lang/String;
 
     invoke-virtual {p0}, Lcom/google/android/mms/pdu/PduPart;->getContentLocation()[B
@@ -1411,13 +1422,13 @@
 
     invoke-direct {v1, v3}, Ljava/lang/String;-><init>([B)V
 
-    .line 428
+    .line 436
     .restart local v1       #name:Ljava/lang/String;
     invoke-virtual {v1}, Ljava/lang/String;->length()I
 
     move-result v2
 
-    .line 429
+    .line 437
     .local v2, namelen:I
     const/4 v3, 0x4
 
@@ -1437,7 +1448,7 @@
 
     if-eqz v3, :cond_0
 
-    .line 430
+    .line 438
     const-string v0, "text/x-vcard"
 
     goto :goto_0
@@ -1448,7 +1459,7 @@
     .parameter "pduBody"
 
     .prologue
-    .line 284
+    .line 292
     const/4 v15, 0x3
 
     new-array v1, v15, [Ljava/lang/String;
@@ -1471,17 +1482,17 @@
 
     aput-object v16, v1, v15
 
-    .line 285
+    .line 293
     .local v1, column:[Ljava/lang/String;
     invoke-static/range {p0 .. p0}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->findSmilPart(Lcom/google/android/mms/pdu/PduBody;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v9
 
-    .line 286
+    .line 294
     .local v9, partSmil:Lcom/google/android/mms/pdu/PduPart;
     const/4 v12, 0x0
 
-    .line 288
+    .line 296
     .local v12, smilBody:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;
     if-eqz v9, :cond_0
 
@@ -1499,7 +1510,7 @@
 
     if-nez v15, :cond_2
 
-    .line 290
+    .line 298
     :cond_0
     const-string v15, "SmilSimpleParse"
 
@@ -1507,21 +1518,21 @@
 
     invoke-static/range {v15 .. v16}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 291
+    .line 299
     invoke-static/range {p0 .. p0}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->createByPduBody(Lcom/google/android/mms/pdu/PduBody;)Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;
 
     move-result-object v12
 
-    .line 296
+    .line 304
     :goto_0
     if-nez v12, :cond_3
 
-    .line 403
+    .line 411
     :cond_1
     :goto_1
     return-object v1
 
-    .line 293
+    .line 301
     :cond_2
     invoke-virtual {v9}, Lcom/google/android/mms/pdu/PduPart;->getData()[B
 
@@ -1533,13 +1544,13 @@
 
     goto :goto_0
 
-    .line 300
+    .line 308
     :cond_3
     invoke-virtual {v12}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;->size()I
 
     move-result v10
 
-    .line 302
+    .line 310
     .local v10, slidesNum:I
     const/4 v15, 0x3
 
@@ -1581,7 +1592,7 @@
 
     aput-object v16, v2, v15
 
-    .line 304
+    .line 312
     .local v2, description:[Ljava/lang/String;
     const/4 v15, 0x2
 
@@ -1595,47 +1606,47 @@
 
     aput-object v16, v1, v15
 
-    .line 305
+    .line 313
     if-eqz v10, :cond_1
 
-    .line 309
+    .line 317
     const/4 v15, 0x0
 
     invoke-virtual {v12, v15}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;->item(I)Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilPar;
 
     move-result-object v7
 
-    .line 311
+    .line 319
     .local v7, par:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilPar;
     invoke-virtual {v7}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilPar;->size()I
 
     move-result v6
 
-    .line 313
+    .line 321
     .local v6, mediaNum:I
     const/4 v11, 0x0
 
-    .line 314
+    .line 322
     .local v11, sme:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilParItem;
     const/4 v8, 0x0
 
-    .line 315
+    .line 323
     .local v8, part:Lcom/google/android/mms/pdu/PduPart;
     const-string v14, ""
 
-    .line 316
+    .line 324
     .local v14, tag:Ljava/lang/String;
     const-string v13, ""
 
-    .line 317
+    .line 325
     .local v13, src:Ljava/lang/String;
     const v3, 0x7fffffff
 
-    .line 319
+    .line 327
     .local v3, find:I
     const/4 v4, 0x0
 
-    .line 321
+    .line 329
     .local v4, hasText:Z
     const/4 v5, 0x0
 
@@ -1643,22 +1654,22 @@
     :goto_2
     if-ge v5, v6, :cond_5
 
-    .line 322
+    .line 330
     invoke-virtual {v7, v5}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilPar;->item(I)Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilParItem;
 
     move-result-object v11
 
-    .line 323
+    .line 331
     invoke-virtual {v11}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilParItem;->getTag()Ljava/lang/String;
 
     move-result-object v14
 
-    .line 324
+    .line 332
     invoke-virtual {v11}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilParItem;->getSrc()Ljava/lang/String;
 
     move-result-object v13
 
-    .line 326
+    .line 334
     const-string v15, "text"
 
     invoke-virtual {v14, v15}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -1667,17 +1678,17 @@
 
     if-eqz v15, :cond_6
 
-    .line 328
+    .line 336
     if-nez v4, :cond_4
 
-    .line 329
+    .line 337
     move-object/from16 v0, p0
 
     invoke-static {v11, v0, v13}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->findPart(Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilParItem;Lcom/google/android/mms/pdu/PduBody;Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v8
 
-    .line 330
+    .line 338
     const/4 v15, 0x1
 
     new-instance v16, Ljava/lang/StringBuilder;
@@ -1704,7 +1715,7 @@
 
     aput-object v16, v2, v15
 
-    .line 331
+    .line 339
     const/4 v15, 0x0
 
     invoke-virtual {v8}, Lcom/google/android/mms/pdu/PduPart;->getDataUri()Landroid/net/Uri;
@@ -1717,7 +1728,7 @@
 
     aput-object v16, v1, v15
 
-    .line 399
+    .line 407
     :cond_4
     :goto_3
     if-eqz v4, :cond_7
@@ -1726,7 +1737,7 @@
 
     if-ne v3, v15, :cond_7
 
-    .line 402
+    .line 410
     :cond_5
     const/4 v15, 0x2
 
@@ -1742,13 +1753,13 @@
 
     goto/16 :goto_1
 
-    .line 333
+    .line 341
     :cond_6
     const/4 v15, 0x1
 
     if-le v3, v15, :cond_4
 
-    .line 335
+    .line 343
     const-string v15, "img"
 
     invoke-virtual {v14, v15}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -1757,23 +1768,23 @@
 
     if-eqz v15, :cond_9
 
-    .line 336
+    .line 344
     move-object/from16 v0, p0
 
     invoke-static {v11, v0, v13}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->findPart(Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilParItem;Lcom/google/android/mms/pdu/PduBody;Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
     move-result-object v8
 
-    .line 337
+    .line 345
     if-nez v8, :cond_8
 
-    .line 321
+    .line 329
     :cond_7
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_2
 
-    .line 338
+    .line 346
     :cond_8
     const/4 v15, 0x2
 
@@ -1801,7 +1812,7 @@
 
     aput-object v16, v2, v15
 
-    .line 339
+    .line 347
     const/4 v15, 0x1
 
     new-instance v16, Ljava/lang/StringBuilder;
@@ -1838,12 +1849,12 @@
 
     aput-object v16, v1, v15
 
-    .line 340
+    .line 348
     const/4 v3, 0x1
 
     goto :goto_3
 
-    .line 341
+    .line 349
     :cond_9
     const-string v15, "video"
 
@@ -1853,102 +1864,8 @@
 
     if-eqz v15, :cond_a
 
-    .line 342
-    const/4 v15, 0x2
-
-    if-le v3, v15, :cond_4
-
-    .line 343
-    move-object/from16 v0, p0
-
-    invoke-static {v11, v0, v13}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->findPart(Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilParItem;Lcom/google/android/mms/pdu/PduBody;Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
-
-    move-result-object v8
-
-    .line 344
-    if-eqz v8, :cond_7
-
-    .line 345
-    const/4 v15, 0x2
-
-    new-instance v16, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v16 .. v16}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v17, "video#"
-
-    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v16
-
-    invoke-static {v8}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->getContentType(Lcom/google/android/mms/pdu/PduPart;)Ljava/lang/String;
-
-    move-result-object v17
-
-    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v16
-
-    invoke-virtual/range {v16 .. v16}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v16
-
-    aput-object v16, v2, v15
-
-    .line 346
-    const/4 v15, 0x1
-
-    new-instance v16, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v16 .. v16}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {v8}, Lcom/google/android/mms/pdu/PduPart;->getDataUri()Landroid/net/Uri;
-
-    move-result-object v17
-
-    invoke-virtual/range {v17 .. v17}, Landroid/net/Uri;->getLastPathSegment()Ljava/lang/String;
-
-    move-result-object v17
-
-    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v16
-
-    const-string v17, ";"
-
-    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v16
-
-    move-object/from16 v0, v16
-
-    invoke-virtual {v0, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v16
-
-    invoke-virtual/range {v16 .. v16}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v16
-
-    aput-object v16, v1, v15
-
-    .line 347
-    const/4 v3, 0x2
-
-    goto/16 :goto_3
-
-    .line 349
-    :cond_a
-    const-string v15, "audio"
-
-    invoke-virtual {v14, v15}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v15
-
-    if-eqz v15, :cond_b
-
     .line 350
-    const/4 v15, 0x3
+    const/4 v15, 0x2
 
     if-le v3, v15, :cond_4
 
@@ -1969,7 +1886,7 @@
 
     invoke-direct/range {v16 .. v16}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v17, "audio#"
+    const-string v17, "video#"
 
     invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -2027,22 +1944,22 @@
     aput-object v16, v1, v15
 
     .line 355
-    const/4 v3, 0x3
+    const/4 v3, 0x2
 
     goto/16 :goto_3
 
     .line 357
-    :cond_b
-    const-string v15, "ref"
+    :cond_a
+    const-string v15, "audio"
 
     invoke-virtual {v14, v15}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v15
 
-    if-eqz v15, :cond_c
+    if-eqz v15, :cond_b
 
     .line 358
-    const/4 v15, 0x4
+    const/4 v15, 0x3
 
     if-le v3, v15, :cond_4
 
@@ -2063,7 +1980,7 @@
 
     invoke-direct/range {v16 .. v16}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v17, "ref#"
+    const-string v17, "audio#"
 
     invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -2121,22 +2038,22 @@
     aput-object v16, v1, v15
 
     .line 363
-    const/4 v3, 0x4
+    const/4 v3, 0x3
 
     goto/16 :goto_3
 
     .line 365
-    :cond_c
+    :cond_b
     const-string v15, "ref"
 
     invoke-virtual {v14, v15}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v15
 
-    if-eqz v15, :cond_d
+    if-eqz v15, :cond_c
 
     .line 366
-    const/4 v15, 0x5
+    const/4 v15, 0x4
 
     if-le v3, v15, :cond_4
 
@@ -2215,22 +2132,22 @@
     aput-object v16, v1, v15
 
     .line 371
-    const/4 v3, 0x5
+    const/4 v3, 0x4
 
     goto/16 :goto_3
 
     .line 373
-    :cond_d
-    const-string v15, "talk"
+    :cond_c
+    const-string v15, "ref"
 
     invoke-virtual {v14, v15}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v15
 
-    if-eqz v15, :cond_e
+    if-eqz v15, :cond_d
 
     .line 374
-    const/4 v15, 0x6
+    const/4 v15, 0x5
 
     if-le v3, v15, :cond_4
 
@@ -2251,7 +2168,7 @@
 
     invoke-direct/range {v16 .. v16}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v17, "talk#"
+    const-string v17, "ref#"
 
     invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -2309,22 +2226,22 @@
     aput-object v16, v1, v15
 
     .line 379
-    const/4 v3, 0x6
+    const/4 v3, 0x5
 
     goto/16 :goto_3
 
     .line 381
-    :cond_e
-    const-string v15, "file"
+    :cond_d
+    const-string v15, "talk"
 
     invoke-virtual {v14, v15}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v15
 
-    if-eqz v15, :cond_f
+    if-eqz v15, :cond_e
 
     .line 382
-    const/4 v15, 0x7
+    const/4 v15, 0x6
 
     if-le v3, v15, :cond_4
 
@@ -2345,7 +2262,7 @@
 
     invoke-direct/range {v16 .. v16}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v17, "file#"
+    const-string v17, "talk#"
 
     invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -2403,13 +2320,22 @@
     aput-object v16, v1, v15
 
     .line 387
-    const/4 v3, 0x7
+    const/4 v3, 0x6
 
     goto/16 :goto_3
 
+    .line 389
+    :cond_e
+    const-string v15, "file"
+
+    invoke-virtual {v14, v15}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v15
+
+    if-eqz v15, :cond_f
+
     .line 390
-    :cond_f
-    const/16 v15, 0x8
+    const/4 v15, 0x7
 
     if-le v3, v15, :cond_4
 
@@ -2430,13 +2356,7 @@
 
     invoke-direct/range {v16 .. v16}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-object/from16 v0, v16
-
-    invoke-virtual {v0, v14}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v16
-
-    const-string v17, "#"
+    const-string v17, "file#"
 
     invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -2494,6 +2414,97 @@
     aput-object v16, v1, v15
 
     .line 395
+    const/4 v3, 0x7
+
+    goto/16 :goto_3
+
+    .line 398
+    :cond_f
+    const/16 v15, 0x8
+
+    if-le v3, v15, :cond_4
+
+    .line 399
+    move-object/from16 v0, p0
+
+    invoke-static {v11, v0, v13}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->findPart(Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilParItem;Lcom/google/android/mms/pdu/PduBody;Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
+
+    move-result-object v8
+
+    .line 400
+    if-eqz v8, :cond_7
+
+    .line 401
+    const/4 v15, 0x2
+
+    new-instance v16, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v16 .. v16}, Ljava/lang/StringBuilder;-><init>()V
+
+    move-object/from16 v0, v16
+
+    invoke-virtual {v0, v14}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v16
+
+    const-string v17, "#"
+
+    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v16
+
+    invoke-static {v8}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->getContentType(Lcom/google/android/mms/pdu/PduPart;)Ljava/lang/String;
+
+    move-result-object v17
+
+    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v16
+
+    invoke-virtual/range {v16 .. v16}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v16
+
+    aput-object v16, v2, v15
+
+    .line 402
+    const/4 v15, 0x1
+
+    new-instance v16, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v16 .. v16}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v8}, Lcom/google/android/mms/pdu/PduPart;->getDataUri()Landroid/net/Uri;
+
+    move-result-object v17
+
+    invoke-virtual/range {v17 .. v17}, Landroid/net/Uri;->getLastPathSegment()Ljava/lang/String;
+
+    move-result-object v17
+
+    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v16
+
+    const-string v17, ";"
+
+    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v16
+
+    move-object/from16 v0, v16
+
+    invoke-virtual {v0, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v16
+
+    invoke-virtual/range {v16 .. v16}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v16
+
+    aput-object v16, v1, v15
+
+    .line 403
     const/16 v3, 0x8
 
     goto/16 :goto_3
@@ -2507,7 +2518,7 @@
     .prologue
     const/4 v5, 0x1
 
-    .line 260
+    .line 268
     const/4 v0, 0x0
 
     .local v0, i:I
@@ -2518,12 +2529,12 @@
 
     if-ge v0, v6, :cond_3
 
-    .line 261
+    .line 269
     invoke-virtual {p1, v0}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;->item(I)Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilPar;
 
     move-result-object v3
 
-    .line 262
+    .line 270
     .local v3, par:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilPar;
     invoke-virtual {v3}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilPar;->isEmpty()Z
 
@@ -2531,13 +2542,13 @@
 
     if-eqz v6, :cond_1
 
-    .line 271
+    .line 279
     .end local v3           #par:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilPar;
     :cond_0
     :goto_1
     return v5
 
-    .line 264
+    .line 272
     .restart local v3       #par:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilPar;
     :cond_1
     const/4 v2, 0x0
@@ -2550,18 +2561,18 @@
 
     if-ge v2, v6, :cond_2
 
-    .line 265
+    .line 273
     invoke-virtual {v3, v2}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilPar;->item(I)Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilParItem;
 
     move-result-object v1
 
-    .line 266
+    .line 274
     .local v1, item:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilParItem;
     invoke-virtual {v1}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilParItem;->getSrc()Ljava/lang/String;
 
     move-result-object v4
 
-    .line 267
+    .line 275
     .local v4, src:Ljava/lang/String;
     invoke-static {p0, v4}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse;->findPart(Lcom/google/android/mms/pdu/PduBody;Ljava/lang/String;)Lcom/google/android/mms/pdu/PduPart;
 
@@ -2569,12 +2580,12 @@
 
     if-eqz v6, :cond_0
 
-    .line 264
+    .line 272
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_2
 
-    .line 260
+    .line 268
     .end local v1           #item:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilParItem;
     .end local v4           #src:Ljava/lang/String;
     :cond_2
@@ -2582,7 +2593,7 @@
 
     goto :goto_0
 
-    .line 271
+    .line 279
     .end local v2           #j:I
     .end local v3           #par:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilPar;
     :cond_3
@@ -2598,7 +2609,7 @@
     .prologue
     const/4 v8, 0x0
 
-    .line 571
+    .line 579
     if-eqz p0, :cond_0
 
     array-length v9, p0
@@ -2608,55 +2619,55 @@
     :cond_0
     move-object v5, v8
 
-    .line 601
+    .line 609
     :cond_1
     :goto_0
     return-object v5
 
-    .line 574
+    .line 582
     :cond_2
     const/4 v1, 0x0
 
-    .line 575
+    .line 583
     .local v1, factory:Ljavax/xml/parsers/SAXParserFactory;
     const/4 v4, 0x0
 
-    .line 576
+    .line 584
     .local v4, parser:Ljavax/xml/parsers/SAXParser;
     const/4 v2, 0x0
 
-    .line 577
+    .line 585
     .local v2, inputStream:Ljava/io/InputStream;
     const/4 v5, 0x0
 
-    .line 579
+    .line 587
     .local v5, smilBody:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;
     :try_start_0
     invoke-static {}, Ljavax/xml/parsers/SAXParserFactory;->newInstance()Ljavax/xml/parsers/SAXParserFactory;
 
     move-result-object v1
 
-    .line 580
+    .line 588
     invoke-virtual {v1}, Ljavax/xml/parsers/SAXParserFactory;->newSAXParser()Ljavax/xml/parsers/SAXParser;
 
     move-result-object v4
 
-    .line 581
+    .line 589
     invoke-virtual {v4}, Ljavax/xml/parsers/SAXParser;->getXMLReader()Lorg/xml/sax/XMLReader;
 
     move-result-object v7
 
-    .line 582
+    .line 590
     .local v7, xmlReader:Lorg/xml/sax/XMLReader;
     new-instance v6, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilSaxHandler;
 
     invoke-direct {v6}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilSaxHandler;-><init>()V
 
-    .line 583
+    .line 591
     .local v6, smilSaxHandler:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilSaxHandler;
     invoke-interface {v7, v6}, Lorg/xml/sax/XMLReader;->setContentHandler(Lorg/xml/sax/ContentHandler;)V
 
-    .line 585
+    .line 593
     new-instance v3, Ljava/io/ByteArrayInputStream;
 
     invoke-direct {v3, p0}, Ljava/io/ByteArrayInputStream;-><init>([B)V
@@ -2664,7 +2675,7 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
 
-    .line 587
+    .line 595
     .end local v2           #inputStream:Ljava/io/InputStream;
     .local v3, inputStream:Ljava/io/InputStream;
     :try_start_1
@@ -2674,7 +2685,7 @@
 
     invoke-interface {v7, v9}, Lorg/xml/sax/XMLReader;->parse(Lorg/xml/sax/InputSource;)V
 
-    .line 589
+    .line 597
     invoke-virtual {v6}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilSaxHandler;->getSmilBody()Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilBody;
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
@@ -2682,10 +2693,10 @@
 
     move-result-object v5
 
-    .line 595
+    .line 603
     if-eqz v3, :cond_1
 
-    .line 596
+    .line 604
     :try_start_2
     invoke-virtual {v3}, Ljava/io/ByteArrayInputStream;->close()V
     :try_end_2
@@ -2693,17 +2704,17 @@
 
     goto :goto_0
 
-    .line 597
+    .line 605
     :catch_0
     move-exception v0
 
-    .line 598
+    .line 606
     .local v0, e:Ljava/io/IOException;
     invoke-virtual {v0}, Ljava/io/IOException;->printStackTrace()V
 
     goto :goto_0
 
-    .line 590
+    .line 598
     .end local v0           #e:Ljava/io/IOException;
     .end local v3           #inputStream:Ljava/io/InputStream;
     .end local v6           #smilSaxHandler:Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilSaxHandler;
@@ -2712,7 +2723,7 @@
     :catch_1
     move-exception v0
 
-    .line 591
+    .line 599
     .local v0, e:Ljava/lang/Exception;
     :goto_1
     :try_start_3
@@ -2744,10 +2755,10 @@
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    .line 595
+    .line 603
     if-eqz v2, :cond_3
 
-    .line 596
+    .line 604
     :try_start_4
     invoke-virtual {v2}, Ljava/io/ByteArrayInputStream;->close()V
     :try_end_4
@@ -2758,50 +2769,50 @@
     :goto_2
     move-object v5, v8
 
-    .line 592
+    .line 600
     goto :goto_0
 
-    .line 594
+    .line 602
     :catchall_0
     move-exception v8
 
-    .line 595
+    .line 603
     :goto_3
     if-eqz v2, :cond_4
 
-    .line 596
+    .line 604
     :try_start_5
     invoke-virtual {v2}, Ljava/io/ByteArrayInputStream;->close()V
     :try_end_5
     .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_2
 
-    .line 594
+    .line 602
     :cond_4
     :goto_4
     throw v8
 
-    .line 597
+    .line 605
     :catch_2
     move-exception v0
 
-    .line 598
+    .line 606
     .local v0, e:Ljava/io/IOException;
     invoke-virtual {v0}, Ljava/io/IOException;->printStackTrace()V
 
     goto :goto_4
 
-    .line 597
+    .line 605
     .local v0, e:Ljava/lang/Exception;
     :catch_3
     move-exception v0
 
-    .line 598
+    .line 606
     .local v0, e:Ljava/io/IOException;
     invoke-virtual {v0}, Ljava/io/IOException;->printStackTrace()V
 
     goto :goto_2
 
-    .line 594
+    .line 602
     .end local v0           #e:Ljava/io/IOException;
     .end local v2           #inputStream:Ljava/io/InputStream;
     .restart local v3       #inputStream:Ljava/io/InputStream;
@@ -2816,7 +2827,7 @@
     .restart local v2       #inputStream:Ljava/io/InputStream;
     goto :goto_3
 
-    .line 590
+    .line 598
     .end local v2           #inputStream:Ljava/io/InputStream;
     .restart local v3       #inputStream:Ljava/io/InputStream;
     :catch_4
@@ -2834,7 +2845,7 @@
     .parameter "str"
 
     .prologue
-    .line 558
+    .line 566
     const-string v0, "&lt;"
 
     const-string v1, "<"
@@ -2887,22 +2898,22 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 242
+    .line 249
     new-instance v3, Landroid/content/ContentValues;
 
     invoke-direct {v3}, Landroid/content/ContentValues;-><init>()V
 
-    .line 243
+    .line 250
     .local v3, values:Landroid/content/ContentValues;
     new-instance v7, Lcom/google/android/mms/pdu/EncodedStringValue;
 
     invoke-direct {v7, p1}, Lcom/google/android/mms/pdu/EncodedStringValue;-><init>([B)V
 
-    .line 244
+    .line 251
     .local v7, ev:Lcom/google/android/mms/pdu/EncodedStringValue;
     if-eqz p1, :cond_0
 
-    .line 245
+    .line 252
     const-string v0, "text"
 
     invoke-virtual {v7}, Lcom/google/android/mms/pdu/EncodedStringValue;->getString()Ljava/lang/String;
@@ -2911,7 +2922,7 @@
 
     invoke-virtual {v3, v0, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 247
+    .line 254
     :cond_0
     invoke-virtual {p2}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -2929,18 +2940,18 @@
 
     move-result v6
 
-    .line 248
+    .line 255
     .local v6, count:I
     if-lez v6, :cond_1
 
-    .line 249
+    .line 256
     invoke-virtual {v7}, Lcom/google/android/mms/pdu/EncodedStringValue;->getTextString()[B
 
     move-result-object v0
 
     invoke-virtual {p0, v0}, Lcom/google/android/mms/pdu/PduPart;->setData([B)V
 
-    .line 250
+    .line 257
     :cond_1
     if-lez v6, :cond_2
 

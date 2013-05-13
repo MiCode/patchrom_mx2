@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1303
+    .line 1433
     iput-object p1, p0, Lcom/android/camera/Camera$RawPictureCallback;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .parameter "x1"
 
     .prologue
-    .line 1303
+    .line 1433
     invoke-direct {p0, p1}, Lcom/android/camera/Camera$RawPictureCallback;-><init>(Lcom/android/camera/Camera;)V
 
     return-void
@@ -55,7 +55,7 @@
     .parameter "camera"
 
     .prologue
-    .line 1307
+    .line 1437
     iget-object v0, p0, Lcom/android/camera/Camera$RawPictureCallback;->this$0:Lcom/android/camera/Camera;
 
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
@@ -63,9 +63,9 @@
     move-result-wide v1
 
     #setter for: Lcom/android/camera/Camera;->mRawPictureCallbackTime:J
-    invoke-static {v0, v1, v2}, Lcom/android/camera/Camera;->access$7302(Lcom/android/camera/Camera;J)J
+    invoke-static {v0, v1, v2}, Lcom/android/camera/Camera;->access$7602(Lcom/android/camera/Camera;J)J
 
-    .line 1308
+    .line 1438
     const-string v0, "camera"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -81,14 +81,14 @@
     iget-object v2, p0, Lcom/android/camera/Camera$RawPictureCallback;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mRawPictureCallbackTime:J
-    invoke-static {v2}, Lcom/android/camera/Camera;->access$7300(Lcom/android/camera/Camera;)J
+    invoke-static {v2}, Lcom/android/camera/Camera;->access$7600(Lcom/android/camera/Camera;)J
 
     move-result-wide v2
 
     iget-object v4, p0, Lcom/android/camera/Camera$RawPictureCallback;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mShutterCallbackTime:J
-    invoke-static {v4}, Lcom/android/camera/Camera;->access$7100(Lcom/android/camera/Camera;)J
+    invoke-static {v4}, Lcom/android/camera/Camera;->access$7400(Lcom/android/camera/Camera;)J
 
     move-result-wide v4
 
@@ -110,6 +110,6 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1310
+    .line 1440
     return-void
 .end method

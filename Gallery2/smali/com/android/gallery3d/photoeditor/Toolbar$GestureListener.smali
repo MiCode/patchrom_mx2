@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 77
+    .line 81
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/Toolbar$GestureListener;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar;
 
     invoke-direct {p0}, Landroid/view/GestureDetector$SimpleOnGestureListener;-><init>()V
@@ -38,7 +38,7 @@
     .parameter "x1"
 
     .prologue
-    .line 77
+    .line 81
     invoke-direct {p0, p1}, Lcom/android/gallery3d/photoeditor/Toolbar$GestureListener;-><init>(Lcom/android/gallery3d/photoeditor/Toolbar;)V
 
     return-void
@@ -51,35 +51,35 @@
     .parameter "e"
 
     .prologue
-    .line 90
+    .line 96
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/Toolbar$GestureListener;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/Toolbar;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
-    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/Toolbar;->access$300(Lcom/android/gallery3d/photoeditor/Toolbar;)Lcom/android/gallery3d/photoeditor/PhotoView;
+    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/Toolbar;->access$400(Lcom/android/gallery3d/photoeditor/Toolbar;)Lcom/android/gallery3d/photoeditor/PhotoView;
 
     move-result-object v0
 
     if-eqz v0, :cond_0
 
-    .line 91
+    .line 97
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/Toolbar$GestureListener;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar;
 
     const/4 v1, 0x1
 
     #setter for: Lcom/android/gallery3d/photoeditor/Toolbar;->isLongClick:Z
-    invoke-static {v0, v1}, Lcom/android/gallery3d/photoeditor/Toolbar;->access$402(Lcom/android/gallery3d/photoeditor/Toolbar;Z)Z
+    invoke-static {v0, v1}, Lcom/android/gallery3d/photoeditor/Toolbar;->access$502(Lcom/android/gallery3d/photoeditor/Toolbar;Z)Z
 
-    .line 92
+    .line 98
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/Toolbar$GestureListener;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/Toolbar;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
-    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/Toolbar;->access$300(Lcom/android/gallery3d/photoeditor/Toolbar;)Lcom/android/gallery3d/photoeditor/PhotoView;
+    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/Toolbar;->access$400(Lcom/android/gallery3d/photoeditor/Toolbar;)Lcom/android/gallery3d/photoeditor/PhotoView;
 
     move-result-object v0
 
     invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/PhotoView;->showSourcePhoto()V
 
-    .line 94
+    .line 100
     :cond_0
     return-void
 .end method
@@ -89,11 +89,25 @@
     .parameter "e"
 
     .prologue
-    .line 80
+    .line 84
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/Toolbar$GestureListener;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar;
+
+    #getter for: Lcom/android/gallery3d/photoeditor/Toolbar;->mEffectBar:Lcom/android/gallery3d/photoeditor/EffectsBar;
+    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/Toolbar;->access$200(Lcom/android/gallery3d/photoeditor/Toolbar;)Lcom/android/gallery3d/photoeditor/EffectsBar;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->isGalleryLoadSuccess()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 85
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/Toolbar$GestureListener;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/Toolbar;->idleHandler:Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;
-    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/Toolbar;->access$200(Lcom/android/gallery3d/photoeditor/Toolbar;)Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;
+    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/Toolbar;->access$300(Lcom/android/gallery3d/photoeditor/Toolbar;)Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;
 
     move-result-object v0
 
@@ -101,19 +115,20 @@
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
-    .line 81
+    .line 86
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/Toolbar$GestureListener;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/Toolbar;->idleHandler:Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;
-    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/Toolbar;->access$200(Lcom/android/gallery3d/photoeditor/Toolbar;)Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;
+    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/Toolbar;->access$300(Lcom/android/gallery3d/photoeditor/Toolbar;)Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;
 
     move-result-object v0
 
     invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;->killIdle()V
 
-    .line 85
+    .line 91
+    :cond_0
     :goto_0
     invoke-super {p0, p1}, Landroid/view/GestureDetector$SimpleOnGestureListener;->onSingleTapConfirmed(Landroid/view/MotionEvent;)Z
 
@@ -121,12 +136,12 @@
 
     return v0
 
-    .line 83
-    :cond_0
+    .line 88
+    :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/Toolbar$GestureListener;->this$0:Lcom/android/gallery3d/photoeditor/Toolbar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/Toolbar;->idleHandler:Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;
-    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/Toolbar;->access$200(Lcom/android/gallery3d/photoeditor/Toolbar;)Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;
+    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/Toolbar;->access$300(Lcom/android/gallery3d/photoeditor/Toolbar;)Lcom/android/gallery3d/photoeditor/Toolbar$ToolbarIdleHandler;
 
     move-result-object v0
 
@@ -140,7 +155,7 @@
     .parameter "e"
 
     .prologue
-    .line 98
+    .line 104
     const/4 v0, 0x0
 
     return v0

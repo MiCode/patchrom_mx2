@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 66
+    .line 71
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$1;->this$0:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,11 +38,11 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .locals 4
+    .locals 5
     .parameter "v"
 
     .prologue
-    .line 69
+    .line 74
     const/4 v0, 0x0
 
     .local v0, i:I
@@ -51,7 +51,7 @@
 
     if-gt v0, v1, :cond_0
 
-    .line 70
+    .line 75
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$1;->this$0:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
 
     #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mText:[Landroid/widget/TextView;
@@ -63,17 +63,17 @@
 
     if-ne p1, v1, :cond_1
 
-    .line 71
+    .line 76
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$1;->this$0:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
 
-    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mSelectedSize:I
+    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mSelectedId:I
     invoke-static {v1}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->access$100(Lcom/android/gallery3d/photoeditor/DoodleTextDialog;)I
 
     move-result v1
 
     if-eq v1, v0, :cond_0
 
-    .line 72
+    .line 77
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$1;->this$0:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
 
     #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mText:[Landroid/widget/TextView;
@@ -83,7 +83,7 @@
 
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$1;->this$0:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
 
-    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mSelectedSize:I
+    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mSelectedId:I
     invoke-static {v2}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->access$100(Lcom/android/gallery3d/photoeditor/DoodleTextDialog;)I
 
     move-result v2
@@ -99,13 +99,13 @@
 
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 73
+    .line 78
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$1;->this$0:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
 
-    #setter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mSelectedSize:I
+    #setter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mSelectedId:I
     invoke-static {v1, v0}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->access$102(Lcom/android/gallery3d/photoeditor/DoodleTextDialog;I)I
 
-    .line 74
+    .line 79
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$1;->this$0:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
 
     #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mText:[Landroid/widget/TextView;
@@ -115,7 +115,7 @@
 
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$1;->this$0:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
 
-    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mSelectedSize:I
+    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mSelectedId:I
     invoke-static {v2}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->access$100(Lcom/android/gallery3d/photoeditor/DoodleTextDialog;)I
 
     move-result v2
@@ -131,58 +131,65 @@
 
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 75
+    .line 80
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$1;->this$0:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
 
-    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mListener:Lcom/android/gallery3d/photoeditor/DoodleTextDialog$OnTextSettingChangeListener;
-    invoke-static {v1}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->access$400(Lcom/android/gallery3d/photoeditor/DoodleTextDialog;)Lcom/android/gallery3d/photoeditor/DoodleTextDialog$OnTextSettingChangeListener;
+    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mListener:Lcom/android/gallery3d/photoeditor/DoodleTextDialog$DoodleTextChangeListener;
+    invoke-static {v1}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->access$400(Lcom/android/gallery3d/photoeditor/DoodleTextDialog;)Lcom/android/gallery3d/photoeditor/DoodleTextDialog$DoodleTextChangeListener;
 
     move-result-object v1
 
     if-eqz v1, :cond_0
 
-    .line 76
+    .line 81
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$1;->this$0:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
 
-    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mListener:Lcom/android/gallery3d/photoeditor/DoodleTextDialog$OnTextSettingChangeListener;
-    invoke-static {v1}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->access$400(Lcom/android/gallery3d/photoeditor/DoodleTextDialog;)Lcom/android/gallery3d/photoeditor/DoodleTextDialog$OnTextSettingChangeListener;
+    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mListener:Lcom/android/gallery3d/photoeditor/DoodleTextDialog$DoodleTextChangeListener;
+    invoke-static {v1}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->access$400(Lcom/android/gallery3d/photoeditor/DoodleTextDialog;)Lcom/android/gallery3d/photoeditor/DoodleTextDialog$DoodleTextChangeListener;
 
     move-result-object v1
 
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$1;->this$0:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
 
-    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mText:[Landroid/widget/TextView;
-    invoke-static {v2}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->access$000(Lcom/android/gallery3d/photoeditor/DoodleTextDialog;)[Landroid/widget/TextView;
-
-    move-result-object v2
-
-    iget-object v3, p0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$1;->this$0:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
-
-    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mSelectedSize:I
-    invoke-static {v3}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->access$100(Lcom/android/gallery3d/photoeditor/DoodleTextDialog;)I
-
-    move-result v3
-
-    aget-object v2, v2, v3
-
-    invoke-virtual {v2}, Landroid/widget/TextView;->getTextSize()F
+    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mSelectedId:I
+    invoke-static {v2}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->access$100(Lcom/android/gallery3d/photoeditor/DoodleTextDialog;)I
 
     move-result v2
 
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$1;->this$0:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
 
-    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mSelectedColor:I
-    invoke-static {v3}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->access$300(Lcom/android/gallery3d/photoeditor/DoodleTextDialog;)I
+    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mText:[Landroid/widget/TextView;
+    invoke-static {v3}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->access$000(Lcom/android/gallery3d/photoeditor/DoodleTextDialog;)[Landroid/widget/TextView;
+
+    move-result-object v3
+
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$1;->this$0:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
+
+    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mSelectedId:I
+    invoke-static {v4}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->access$100(Lcom/android/gallery3d/photoeditor/DoodleTextDialog;)I
+
+    move-result v4
+
+    aget-object v3, v3, v4
+
+    invoke-virtual {v3}, Landroid/widget/TextView;->getTextSize()F
 
     move-result v3
 
-    invoke-interface {v1, v2, v3}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$OnTextSettingChangeListener;->onTextSettingChangeListener(FI)V
+    iget-object v4, p0, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$1;->this$0:Lcom/android/gallery3d/photoeditor/DoodleTextDialog;
 
-    .line 82
+    #getter for: Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->mSelectedColor:I
+    invoke-static {v4}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog;->access$300(Lcom/android/gallery3d/photoeditor/DoodleTextDialog;)I
+
+    move-result v4
+
+    invoke-interface {v1, v2, v3, v4}, Lcom/android/gallery3d/photoeditor/DoodleTextDialog$DoodleTextChangeListener;->onTextSettingChanged(IFI)V
+
+    .line 87
     :cond_0
     return-void
 
-    .line 69
+    .line 74
     :cond_1
     add-int/lit8 v0, v0, 0x1
 

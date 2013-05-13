@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 287
+    .line 294
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoPage$1;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     invoke-direct {p0}, Lcom/android/gallery3d/ui/GLView;-><init>()V
@@ -45,7 +45,7 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 297
+    .line 308
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$1;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mPhotoView:Lcom/android/gallery3d/ui/PhotoView;
@@ -59,7 +59,7 @@
 
     invoke-virtual {v0, v3, v3, v1, v2}, Lcom/android/gallery3d/ui/PhotoView;->layout(IIII)V
 
-    .line 298
+    .line 309
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$1;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mShowDetails:Z
@@ -69,7 +69,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 299
+    .line 310
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$1;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mDetailsHelper:Lcom/android/gallery3d/ui/DetailsHelper;
@@ -81,7 +81,7 @@
 
     invoke-virtual {v0, p2, v1, p4, p5}, Lcom/android/gallery3d/ui/DetailsHelper;->layout(IIII)V
 
-    .line 304
+    .line 314
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$1;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
@@ -90,24 +90,50 @@
 
     move-result-object v0
 
-    const/16 v1, 0x8
+    new-instance v1, Lcom/android/gallery3d/app/PhotoPage$1$1;
 
-    const-wide/16 v2, 0xa
+    invoke-direct {v1, p0}, Lcom/android/gallery3d/app/PhotoPage$1$1;-><init>(Lcom/android/gallery3d/app/PhotoPage$1;)V
 
-    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 305
+    .line 321
     return-void
 .end method
 
 .method protected renderBackground(Lcom/android/gallery3d/ui/GLCanvas;)V
-    .locals 0
+    .locals 3
     .parameter "view"
 
     .prologue
-    .line 291
+    const/4 v2, 0x0
+
+    .line 298
+    iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$1;->this$0:Lcom/android/gallery3d/app/PhotoPage;
+
+    iget-boolean v0, v0, Lcom/android/gallery3d/app/ActivityState;->mNeedSetClearColor:Z
+
+    if-eqz v0, :cond_0
+
+    .line 299
+    invoke-interface {p1}, Lcom/android/gallery3d/ui/GLCanvas;->getGLInstance()Ljavax/microedition/khronos/opengles/GL11;
+
+    move-result-object v0
+
+    const/high16 v1, 0x3f80
+
+    invoke-interface {v0, v2, v2, v2, v1}, Ljavax/microedition/khronos/opengles/GL11;->glClearColor(FFFF)V
+
+    .line 300
+    iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$1;->this$0:Lcom/android/gallery3d/app/PhotoPage;
+
+    const/4 v1, 0x0
+
+    iput-boolean v1, v0, Lcom/android/gallery3d/app/ActivityState;->mNeedSetClearColor:Z
+
+    .line 302
+    :cond_0
     invoke-interface {p1}, Lcom/android/gallery3d/ui/GLCanvas;->clearBuffer()V
 
-    .line 292
+    .line 303
     return-void
 .end method

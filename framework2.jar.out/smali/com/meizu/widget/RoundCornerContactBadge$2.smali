@@ -1,9 +1,6 @@
-.class Lcom/meizu/widget/RoundCornerContactBadge$2;
+.class synthetic Lcom/meizu/widget/RoundCornerContactBadge$2;
 .super Ljava/lang/Object;
 .source "RoundCornerContactBadge.java"
-
-# interfaces
-.implements Landroid/view/animation/Animation$AnimationListener;
 
 
 # annotations
@@ -12,157 +9,359 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x1008
     name = null
 .end annotation
 
 
-# instance fields
-.field final synthetic this$0:Lcom/meizu/widget/RoundCornerContactBadge;
+# static fields
+.field static final synthetic $SwitchMap$com$meizu$widget$RoundCornerContactBadge$BorderType:[I
+
+.field static final synthetic $SwitchMap$com$meizu$widget$RoundCornerContactBadge$IconType:[I
 
 
 # direct methods
-.method constructor <init>(Lcom/meizu/widget/RoundCornerContactBadge;)V
-    .locals 0
-    .parameter
+.method static constructor <clinit>()V
+    .locals 3
 
     .prologue
-    .line 1309
-    iput-object p1, p0, Lcom/meizu/widget/RoundCornerContactBadge$2;->this$0:Lcom/meizu/widget/RoundCornerContactBadge;
-
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
-
-    return-void
-.end method
-
-
-# virtual methods
-.method public onAnimationEnd(Landroid/view/animation/Animation;)V
-    .locals 4
-    .parameter "animation"
-
-    .prologue
-    const/4 v2, 0x0
-
-    .line 1325
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge$2;->this$0:Lcom/meizu/widget/RoundCornerContactBadge;
-
-    #getter for: Lcom/meizu/widget/RoundCornerContactBadge;->mMakeCallAnim:Landroid/view/animation/Animation;
-    invoke-static {v0}, Lcom/meizu/widget/RoundCornerContactBadge;->access$900(Lcom/meizu/widget/RoundCornerContactBadge;)Landroid/view/animation/Animation;
+    .line 516
+    invoke-static {}, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->values()[Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     move-result-object v0
 
-    if-ne p1, v0, :cond_1
+    array-length v0, v0
 
-    .line 1326
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge$2;->this$0:Lcom/meizu/widget/RoundCornerContactBadge;
+    new-array v0, v0, [I
 
-    #setter for: Lcom/meizu/widget/RoundCornerContactBadge;->mMakeCallAnim:Landroid/view/animation/Animation;
-    invoke-static {v0, v2}, Lcom/meizu/widget/RoundCornerContactBadge;->access$902(Lcom/meizu/widget/RoundCornerContactBadge;Landroid/view/animation/Animation;)Landroid/view/animation/Animation;
+    sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$IconType:[I
 
-    .line 1327
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge$2;->this$0:Lcom/meizu/widget/RoundCornerContactBadge;
+    :try_start_0
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$IconType:[I
 
-    #getter for: Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
-    invoke-static {v0}, Lcom/meizu/widget/RoundCornerContactBadge;->access$1100(Lcom/meizu/widget/RoundCornerContactBadge;)Landroid/content/Context;
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_CALLOUT:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
-    move-result-object v0
+    invoke-virtual {v1}, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->ordinal()I
 
-    iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge$2;->this$0:Lcom/meizu/widget/RoundCornerContactBadge;
+    move-result v1
 
-    #getter for: Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
-    invoke-static {v1}, Lcom/meizu/widget/RoundCornerContactBadge;->access$1000(Lcom/meizu/widget/RoundCornerContactBadge;)Landroid/content/Intent;
+    const/4 v2, 0x1
 
-    move-result-object v1
+    aput v2, v0, v1
+    :try_end_0
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_e
 
-    invoke-virtual {v0, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
-
-    .line 1328
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge$2;->this$0:Lcom/meizu/widget/RoundCornerContactBadge;
-
-    #setter for: Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
-    invoke-static {v0, v2}, Lcom/meizu/widget/RoundCornerContactBadge;->access$1002(Lcom/meizu/widget/RoundCornerContactBadge;Landroid/content/Intent;)Landroid/content/Intent;
-
-    .line 1330
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge$2;->this$0:Lcom/meizu/widget/RoundCornerContactBadge;
-
-    new-instance v1, Lcom/meizu/widget/RoundCornerContactBadge$2$1;
-
-    invoke-direct {v1, p0}, Lcom/meizu/widget/RoundCornerContactBadge$2$1;-><init>(Lcom/meizu/widget/RoundCornerContactBadge$2;)V
-
-    const-wide/16 v2, 0x1f4
-
-    invoke-virtual {v0, v1, v2, v3}, Lcom/meizu/widget/RoundCornerContactBadge;->postDelayed(Ljava/lang/Runnable;J)Z
-
-    .line 1347
-    :cond_0
     :goto_0
+    :try_start_1
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$IconType:[I
+
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_CALLIN:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
+
+    invoke-virtual {v1}, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x2
+
+    aput v2, v0, v1
+    :try_end_1
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_d
+
+    :goto_1
+    :try_start_2
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$IconType:[I
+
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_MISSED:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
+
+    invoke-virtual {v1}, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x3
+
+    aput v2, v0, v1
+    :try_end_2
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_c
+
+    :goto_2
+    :try_start_3
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$IconType:[I
+
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_REFUSED:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
+
+    invoke-virtual {v1}, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x4
+
+    aput v2, v0, v1
+    :try_end_3
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_3 .. :try_end_3} :catch_b
+
+    :goto_3
+    :try_start_4
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$IconType:[I
+
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_RINGONCE:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
+
+    invoke-virtual {v1}, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x5
+
+    aput v2, v0, v1
+    :try_end_4
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_4 .. :try_end_4} :catch_a
+
+    :goto_4
+    :try_start_5
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$IconType:[I
+
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_RECORD:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
+
+    invoke-virtual {v1}, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x6
+
+    aput v2, v0, v1
+    :try_end_5
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_5 .. :try_end_5} :catch_9
+
+    :goto_5
+    :try_start_6
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$IconType:[I
+
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_RECORD_FAIL:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
+
+    invoke-virtual {v1}, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x7
+
+    aput v2, v0, v1
+    :try_end_6
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_6 .. :try_end_6} :catch_8
+
+    :goto_6
+    :try_start_7
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$IconType:[I
+
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_CALL_LOG_VOICEMAIL:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
+
+    invoke-virtual {v1}, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->ordinal()I
+
+    move-result v1
+
+    const/16 v2, 0x8
+
+    aput v2, v0, v1
+    :try_end_7
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_7 .. :try_end_7} :catch_7
+
+    :goto_7
+    :try_start_8
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$IconType:[I
+
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_SMS_HAS_UNREAD:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
+
+    invoke-virtual {v1}, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->ordinal()I
+
+    move-result v1
+
+    const/16 v2, 0x9
+
+    aput v2, v0, v1
+    :try_end_8
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_8 .. :try_end_8} :catch_6
+
+    :goto_8
+    :try_start_9
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$IconType:[I
+
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->IC_SMS_HAS_NOTDELIVERED:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
+
+    invoke-virtual {v1}, Lcom/meizu/widget/RoundCornerContactBadge$IconType;->ordinal()I
+
+    move-result v1
+
+    const/16 v2, 0xa
+
+    aput v2, v0, v1
+    :try_end_9
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_9 .. :try_end_9} :catch_5
+
+    .line 327
+    :goto_9
+    invoke-static {}, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->values()[Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
+
+    move-result-object v0
+
+    array-length v0, v0
+
+    new-array v0, v0, [I
+
+    sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$BorderType:[I
+
+    :try_start_a
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$BorderType:[I
+
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->BORDER_SMALL_CONTACT:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
+
+    invoke-virtual {v1}, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x1
+
+    aput v2, v0, v1
+    :try_end_a
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_a .. :try_end_a} :catch_4
+
+    :goto_a
+    :try_start_b
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$BorderType:[I
+
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->BORDER_SMS_CONTACT:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
+
+    invoke-virtual {v1}, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x2
+
+    aput v2, v0, v1
+    :try_end_b
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_b .. :try_end_b} :catch_3
+
+    :goto_b
+    :try_start_c
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$BorderType:[I
+
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->BORDER_LIST_CONTACT:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
+
+    invoke-virtual {v1}, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x3
+
+    aput v2, v0, v1
+    :try_end_c
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_c .. :try_end_c} :catch_2
+
+    :goto_c
+    :try_start_d
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$BorderType:[I
+
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->BORDER_EDIT_CONTACT:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
+
+    invoke-virtual {v1}, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x4
+
+    aput v2, v0, v1
+    :try_end_d
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_d .. :try_end_d} :catch_1
+
+    :goto_d
+    :try_start_e
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$BorderType:[I
+
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->BORDER_VIEW_CONTACT:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
+
+    invoke-virtual {v1}, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x5
+
+    aput v2, v0, v1
+    :try_end_e
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_e .. :try_end_e} :catch_0
+
+    :goto_e
     return-void
 
-    .line 1340
-    :cond_1
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge$2;->this$0:Lcom/meizu/widget/RoundCornerContactBadge;
+    :catch_0
+    move-exception v0
 
-    #getter for: Lcom/meizu/widget/RoundCornerContactBadge;->mHangupCallAnim:Landroid/view/animation/Animation;
-    invoke-static {v0}, Lcom/meizu/widget/RoundCornerContactBadge;->access$1300(Lcom/meizu/widget/RoundCornerContactBadge;)Landroid/view/animation/Animation;
+    goto :goto_e
 
-    move-result-object v0
+    :catch_1
+    move-exception v0
 
-    if-ne p1, v0, :cond_0
+    goto :goto_d
 
-    .line 1341
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge$2;->this$0:Lcom/meizu/widget/RoundCornerContactBadge;
+    :catch_2
+    move-exception v0
 
-    #setter for: Lcom/meizu/widget/RoundCornerContactBadge;->mHangupCallAnim:Landroid/view/animation/Animation;
-    invoke-static {v0, v2}, Lcom/meizu/widget/RoundCornerContactBadge;->access$1302(Lcom/meizu/widget/RoundCornerContactBadge;Landroid/view/animation/Animation;)Landroid/view/animation/Animation;
+    goto :goto_c
 
-    .line 1342
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge$2;->this$0:Lcom/meizu/widget/RoundCornerContactBadge;
+    :catch_3
+    move-exception v0
 
-    #getter for: Lcom/meizu/widget/RoundCornerContactBadge;->mAnimDrawable:Landroid/graphics/drawable/BitmapDrawable;
-    invoke-static {v0}, Lcom/meizu/widget/RoundCornerContactBadge;->access$1200(Lcom/meizu/widget/RoundCornerContactBadge;)Landroid/graphics/drawable/BitmapDrawable;
+    goto :goto_b
 
-    move-result-object v0
+    :catch_4
+    move-exception v0
 
-    if-eqz v0, :cond_0
+    goto :goto_a
 
-    .line 1343
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge$2;->this$0:Lcom/meizu/widget/RoundCornerContactBadge;
+    .line 516
+    :catch_5
+    move-exception v0
 
-    #getter for: Lcom/meizu/widget/RoundCornerContactBadge;->mAnimDrawable:Landroid/graphics/drawable/BitmapDrawable;
-    invoke-static {v0}, Lcom/meizu/widget/RoundCornerContactBadge;->access$1200(Lcom/meizu/widget/RoundCornerContactBadge;)Landroid/graphics/drawable/BitmapDrawable;
+    goto :goto_9
 
-    move-result-object v0
+    :catch_6
+    move-exception v0
 
-    invoke-virtual {v0}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
+    goto :goto_8
 
-    move-result-object v0
+    :catch_7
+    move-exception v0
 
-    invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
+    goto :goto_7
 
-    .line 1344
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge$2;->this$0:Lcom/meizu/widget/RoundCornerContactBadge;
+    :catch_8
+    move-exception v0
 
-    #setter for: Lcom/meizu/widget/RoundCornerContactBadge;->mAnimDrawable:Landroid/graphics/drawable/BitmapDrawable;
-    invoke-static {v0, v2}, Lcom/meizu/widget/RoundCornerContactBadge;->access$1202(Lcom/meizu/widget/RoundCornerContactBadge;Landroid/graphics/drawable/BitmapDrawable;)Landroid/graphics/drawable/BitmapDrawable;
+    goto :goto_6
 
-    goto :goto_0
-.end method
+    :catch_9
+    move-exception v0
 
-.method public onAnimationRepeat(Landroid/view/animation/Animation;)V
-    .locals 0
-    .parameter "animation"
+    goto/16 :goto_5
 
-    .prologue
-    .line 1321
-    return-void
-.end method
+    :catch_a
+    move-exception v0
 
-.method public onAnimationStart(Landroid/view/animation/Animation;)V
-    .locals 0
-    .parameter "animation"
+    goto/16 :goto_4
 
-    .prologue
-    .line 1315
-    return-void
+    :catch_b
+    move-exception v0
+
+    goto/16 :goto_3
+
+    :catch_c
+    move-exception v0
+
+    goto/16 :goto_2
+
+    :catch_d
+    move-exception v0
+
+    goto/16 :goto_1
+
+    :catch_e
+    move-exception v0
+
+    goto/16 :goto_0
 .end method

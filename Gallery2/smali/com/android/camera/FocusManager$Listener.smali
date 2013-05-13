@@ -42,7 +42,7 @@
 .method public abstract getIsForbitAutoFocus()Z
 .end method
 
-.method public abstract getIsShowCaptureAlert()Z
+.method public abstract getIsShowCameraAppView()Z
 .end method
 
 .method public abstract getIsShutterBtnLongPressed()Z

@@ -28,17 +28,17 @@
     .parameter "format"
 
     .prologue
-    .line 824
+    .line 835
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 825
+    .line 836
     new-instance v0, Ljava/text/SimpleDateFormat;
 
     invoke-direct {v0, p1}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;)V
 
     iput-object v0, p0, Lcom/android/camera/Util$ImageFileNamer;->mFormat:Ljava/text/SimpleDateFormat;
 
-    .line 826
+    .line 837
     return-void
 .end method
 
@@ -53,12 +53,12 @@
 
     const/4 v9, 0x0
 
-    .line 829
+    .line 840
     new-instance v0, Ljava/util/Date;
 
     invoke-direct {v0, p1, p2}, Ljava/util/Date;-><init>(J)V
 
-    .line 830
+    .line 841
     .local v0, date:Ljava/util/Date;
     iget-object v5, p0, Lcom/android/camera/Util$ImageFileNamer;->mFormat:Ljava/text/SimpleDateFormat;
 
@@ -66,7 +66,7 @@
 
     move-result-object v3
 
-    .line 834
+    .line 845
     .local v3, result:Ljava/lang/String;
     div-long v5, p1, v10
 
@@ -78,14 +78,14 @@
 
     if-nez v5, :cond_2
 
-    .line 835
+    .line 846
     iget v5, p0, Lcom/android/camera/Util$ImageFileNamer;->mSameSecondCount:I
 
     add-int/lit8 v5, v5, 0x1
 
     iput v5, p0, Lcom/android/camera/Util$ImageFileNamer;->mSameSecondCount:I
 
-    .line 836
+    .line 847
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
@@ -110,7 +110,7 @@
 
     move-result-object v3
 
-    .line 842
+    .line 853
     :goto_0
     invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -118,38 +118,38 @@
 
     if-nez v5, :cond_1
 
-    .line 843
+    .line 854
     const-string v5, "P"
 
     invoke-virtual {v3, v5}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
 
     move-result v2
 
-    .line 844
+    .line 855
     .local v2, index:I
     const/4 v5, -0x1
 
     if-ne v2, v5, :cond_0
 
-    .line 845
+    .line 856
     const-string v5, "V"
 
     invoke-virtual {v3, v5}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
 
     move-result v2
 
-    .line 847
+    .line 858
     :cond_0
     if-ltz v2, :cond_1
 
-    .line 848
+    .line 859
     const/4 v5, 0x1
 
     invoke-virtual {v3, v9, v5}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 849
+    .line 860
     .local v1, firLetter:Ljava/lang/String;
     const/4 v5, 0x4
 
@@ -161,7 +161,7 @@
 
     move-result-object v4
 
-    .line 850
+    .line 861
     .local v4, tempResult:Ljava/lang/String;
     new-instance v5, Ljava/lang/StringBuilder;
 
@@ -179,18 +179,18 @@
 
     move-result-object v3
 
-    .line 853
+    .line 864
     .end local v1           #firLetter:Ljava/lang/String;
     .end local v2           #index:I
     .end local v4           #tempResult:Ljava/lang/String;
     :cond_1
     return-object v3
 
-    .line 838
+    .line 849
     :cond_2
     iput-wide p1, p0, Lcom/android/camera/Util$ImageFileNamer;->mLastDate:J
 
-    .line 839
+    .line 850
     iput v9, p0, Lcom/android/camera/Util$ImageFileNamer;->mSameSecondCount:I
 
     goto :goto_0

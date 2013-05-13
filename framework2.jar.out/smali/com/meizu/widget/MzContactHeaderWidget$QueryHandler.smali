@@ -25,13 +25,13 @@
     .parameter "cr"
 
     .prologue
-    .line 302
+    .line 304
     iput-object p1, p0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
 
-    .line 303
+    .line 305
     invoke-direct {p0, p2}, Landroid/content/AsyncQueryHandler;-><init>(Landroid/content/ContentResolver;)V
 
-    .line 304
+    .line 306
     return-void
 .end method
 
@@ -44,7 +44,7 @@
     .parameter "cursor"
 
     .prologue
-    .line 309
+    .line 311
     :try_start_0
     move-object/from16 v0, p0
 
@@ -59,7 +59,7 @@
 
     if-eq v0, v4, :cond_1
 
-    .line 310
+    .line 312
     const-string v4, "MzContactHeaderWidget"
 
     const-string v6, "onQueryComplete: discard result, the query handler is reset!"
@@ -68,34 +68,34 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 448
+    .line 450
     if-eqz p3, :cond_0
 
-    .line 449
+    .line 451
     invoke-interface/range {p3 .. p3}, Landroid/database/Cursor;->close()V
 
-    .line 452
+    .line 454
     .end local p2
     :cond_0
     :goto_0
     return-void
 
-    .line 314
+    .line 316
     .restart local p2
     :cond_1
     packed-switch p1, :pswitch_data_0
 
-    .line 448
+    .line 450
     .end local p2
     :goto_1
     if-eqz p3, :cond_0
 
-    .line 449
+    .line 451
     invoke-interface/range {p3 .. p3}, Landroid/database/Cursor;->close()V
 
     goto :goto_0
 
-    .line 316
+    .line 318
     .restart local p2
     :pswitch_0
     :try_start_1
@@ -105,15 +105,15 @@
 
     move-object/from16 v16, v0
 
-    .line 317
+    .line 319
     .local v16, number:Ljava/lang/String;
     const-wide/16 v7, -0x1
 
-    .line 318
+    .line 320
     .local v7, contactId:J
     const/4 v9, 0x0
 
-    .line 319
+    .line 321
     .local v9, displayName:Ljava/lang/String;
     if-eqz p3, :cond_3
 
@@ -123,7 +123,7 @@
 
     if-eqz v4, :cond_3
 
-    .line 320
+    .line 322
     const/4 v4, 0x0
 
     move-object/from16 v0, p3
@@ -132,7 +132,7 @@
 
     move-result-wide v7
 
-    .line 321
+    .line 323
     const/4 v4, 0x1
 
     move-object/from16 v0, p3
@@ -141,7 +141,7 @@
 
     move-result-object v9
 
-    .line 322
+    .line 324
     const/4 v4, 0x2
 
     move-object/from16 v0, p3
@@ -166,7 +166,7 @@
 
     if-le v4, v6, :cond_3
 
-    .line 323
+    .line 325
     :cond_2
     invoke-interface/range {p3 .. p3}, Landroid/database/Cursor;->moveToNext()Z
 
@@ -174,7 +174,7 @@
 
     if-eqz v4, :cond_3
 
-    .line 324
+    .line 326
     const/4 v4, 0x2
 
     move-object/from16 v0, p3
@@ -191,7 +191,7 @@
 
     if-eqz v4, :cond_2
 
-    .line 325
+    .line 327
     const/4 v4, 0x0
 
     move-object/from16 v0, p3
@@ -200,7 +200,7 @@
 
     move-result-wide v7
 
-    .line 326
+    .line 328
     const/4 v4, 0x1
 
     move-object/from16 v0, p3
@@ -209,7 +209,7 @@
 
     move-result-object v9
 
-    .line 333
+    .line 335
     :cond_3
     move-object/from16 v0, p0
 
@@ -228,7 +228,7 @@
 
     if-eqz v4, :cond_5
 
-    .line 334
+    .line 336
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -238,7 +238,7 @@
     #setter for: Lcom/meizu/widget/MzContactHeaderWidget;->mEmailQuery:Z
     invoke-static {v4, v6}, Lcom/meizu/widget/MzContactHeaderWidget;->access$502(Lcom/meizu/widget/MzContactHeaderWidget;Z)Z
 
-    .line 335
+    .line 337
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -305,7 +305,7 @@
 
     goto/16 :goto_1
 
-    .line 448
+    .line 450
     .end local v9           #displayName:Ljava/lang/String;
     .end local v16           #number:Ljava/lang/String;
     .end local p2
@@ -314,13 +314,13 @@
 
     if-eqz p3, :cond_4
 
-    .line 449
+    .line 451
     invoke-interface/range {p3 .. p3}, Landroid/database/Cursor;->close()V
 
     :cond_4
     throw v4
 
-    .line 340
+    .line 342
     .restart local v7       #contactId:J
     .restart local v9       #displayName:Ljava/lang/String;
     .restart local v16       #number:Ljava/lang/String;
@@ -333,10 +333,10 @@
 
     if-eqz v4, :cond_6
 
-    .line 341
+    .line 343
     move-object/from16 v9, v16
 
-    .line 344
+    .line 346
     :cond_6
     move-object/from16 v0, p0
 
@@ -352,7 +352,7 @@
 
     invoke-virtual {v4, v6}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 346
+    .line 348
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -372,7 +372,7 @@
 
     if-nez v4, :cond_7
 
-    .line 347
+    .line 349
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -390,7 +390,7 @@
 
     move-result-object v15
 
-    .line 348
+    .line 350
     .local v15, names:Ljava/lang/String;
     new-instance v4, Ljava/lang/StringBuilder;
 
@@ -414,7 +414,7 @@
 
     move-result-object v15
 
-    .line 349
+    .line 351
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -426,7 +426,7 @@
 
     invoke-virtual {v4, v15}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 354
+    .line 356
     .end local v15           #names:Ljava/lang/String;
     :goto_2
     move-object/from16 v0, p0
@@ -456,7 +456,7 @@
 
     goto/16 :goto_1
 
-    .line 351
+    .line 353
     :cond_7
     move-object/from16 v0, p0
 
@@ -471,7 +471,7 @@
 
     goto :goto_2
 
-    .line 359
+    .line 361
     .end local v7           #contactId:J
     .end local v9           #displayName:Ljava/lang/String;
     .end local v16           #number:Ljava/lang/String;
@@ -484,7 +484,7 @@
 
     if-eqz v4, :cond_8
 
-    .line 360
+    .line 362
     const/4 v4, 0x0
 
     move-object/from16 v0, p3
@@ -493,7 +493,7 @@
 
     move-result-wide v7
 
-    .line 361
+    .line 363
     .restart local v7       #contactId:J
     const/4 v4, 0x2
 
@@ -503,7 +503,7 @@
 
     move-result-object v9
 
-    .line 362
+    .line 364
     .restart local v9       #displayName:Ljava/lang/String;
     const/4 v4, 0x4
 
@@ -513,7 +513,7 @@
 
     move-result-object v10
 
-    .line 363
+    .line 365
     .local v10, orgTag:Ljava/lang/String;
     const/4 v4, 0x5
 
@@ -523,7 +523,7 @@
 
     move-result-object v11
 
-    .line 364
+    .line 366
     .local v11, photoUri:Ljava/lang/String;
     move-object/from16 v0, p0
 
@@ -539,7 +539,7 @@
 
     iput-object v6, v4, Lcom/meizu/widget/MzContactHeaderWidget;->mPhoneNumber:Ljava/lang/String;
 
-    .line 365
+    .line 367
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -552,7 +552,7 @@
 
     invoke-virtual {v4, v9, v6}, Lcom/meizu/widget/MzContactHeaderWidget;->bindContactInfo(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 367
+    .line 369
     const/4 v4, 0x1
 
     move-object/from16 v0, p3
@@ -565,7 +565,7 @@
 
     move-result-object v5
 
-    .line 369
+    .line 371
     .local v5, lookupUri:Landroid/net/Uri;
     move-object/from16 v0, p0
 
@@ -575,7 +575,7 @@
 
     invoke-virtual/range {v4 .. v11}, Lcom/meizu/widget/MzContactHeaderWidget;->bindPhotoInfo(Landroid/net/Uri;ZJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 370
+    .line 372
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -625,7 +625,7 @@
 
     goto/16 :goto_1
 
-    .line 374
+    .line 376
     .end local v5           #lookupUri:Landroid/net/Uri;
     .end local v7           #contactId:J
     .end local v9           #displayName:Ljava/lang/String;
@@ -640,7 +640,7 @@
 
     invoke-virtual {v4, v6}, Lcom/meizu/widget/MzContactHeaderWidget;->setDisplayName(Ljava/lang/CharSequence;)V
 
-    .line 375
+    .line 377
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -651,7 +651,7 @@
 
     goto/16 :goto_1
 
-    .line 381
+    .line 383
     :pswitch_2
     if-eqz p3, :cond_b
 
@@ -661,7 +661,7 @@
 
     if-eqz v4, :cond_b
 
-    .line 382
+    .line 384
     const/4 v4, 0x0
 
     move-object/from16 v0, p3
@@ -670,7 +670,7 @@
 
     move-result-wide v7
 
-    .line 383
+    .line 385
     .restart local v7       #contactId:J
     const/4 v4, 0x1
 
@@ -680,7 +680,7 @@
 
     move-result-object v14
 
-    .line 384
+    .line 386
     .local v14, lookupKey:Ljava/lang/String;
     const/4 v4, 0x2
 
@@ -690,7 +690,7 @@
 
     move-result-object v9
 
-    .line 385
+    .line 387
     .restart local v9       #displayName:Ljava/lang/String;
     const/4 v4, 0x4
 
@@ -700,7 +700,7 @@
 
     move-result-object v10
 
-    .line 386
+    .line 388
     .restart local v10       #orgTag:Ljava/lang/String;
     const/4 v4, 0x5
 
@@ -710,7 +710,7 @@
 
     move-result-object v11
 
-    .line 387
+    .line 389
     .restart local v11       #photoUri:Ljava/lang/String;
     move-object/from16 v0, p0
 
@@ -723,7 +723,7 @@
 
     iput-object v0, v4, Lcom/meizu/widget/MzContactHeaderWidget;->mPhoneNumber:Ljava/lang/String;
 
-    .line 388
+    .line 390
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -752,7 +752,7 @@
 
     if-le v4, v6, :cond_a
 
-    .line 390
+    .line 392
     :cond_9
     invoke-interface/range {p3 .. p3}, Landroid/database/Cursor;->moveToNext()Z
 
@@ -760,7 +760,7 @@
 
     if-eqz v4, :cond_a
 
-    .line 391
+    .line 393
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -781,7 +781,7 @@
 
     if-eqz v4, :cond_9
 
-    .line 393
+    .line 395
     const/4 v4, 0x0
 
     move-object/from16 v0, p3
@@ -790,7 +790,7 @@
 
     move-result-wide v7
 
-    .line 394
+    .line 396
     const/4 v4, 0x1
 
     move-object/from16 v0, p3
@@ -799,7 +799,7 @@
 
     move-result-object v14
 
-    .line 395
+    .line 397
     const/4 v4, 0x2
 
     move-object/from16 v0, p3
@@ -808,7 +808,7 @@
 
     move-result-object v9
 
-    .line 396
+    .line 398
     const/4 v4, 0x4
 
     move-object/from16 v0, p3
@@ -817,7 +817,7 @@
 
     move-result-object v10
 
-    .line 397
+    .line 399
     const/4 v4, 0x5
 
     move-object/from16 v0, p3
@@ -826,7 +826,7 @@
 
     move-result-object v11
 
-    .line 403
+    .line 405
     :cond_a
     move-object/from16 v0, p0
 
@@ -840,12 +840,12 @@
 
     invoke-virtual {v4, v9, v6}, Lcom/meizu/widget/MzContactHeaderWidget;->bindContactInfo(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 404
+    .line 406
     invoke-static {v7, v8, v14}, Landroid/provider/ContactsContract$Contacts;->getLookupUri(JLjava/lang/String;)Landroid/net/Uri;
 
     move-result-object v5
 
-    .line 405
+    .line 407
     .restart local v5       #lookupUri:Landroid/net/Uri;
     move-object/from16 v0, p0
 
@@ -855,7 +855,7 @@
 
     invoke-virtual/range {v4 .. v11}, Lcom/meizu/widget/MzContactHeaderWidget;->bindPhotoInfo(Landroid/net/Uri;ZJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 406
+    .line 408
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -905,7 +905,7 @@
 
     goto/16 :goto_1
 
-    .line 409
+    .line 411
     .end local v5           #lookupUri:Landroid/net/Uri;
     .end local v7           #contactId:J
     .end local v9           #displayName:Ljava/lang/String;
@@ -925,7 +925,7 @@
 
     iput-object v0, v4, Lcom/meizu/widget/MzContactHeaderWidget;->mPhoneNumber:Ljava/lang/String;
 
-    .line 410
+    .line 412
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -938,7 +938,7 @@
 
     invoke-virtual {v4, v6}, Lcom/meizu/widget/MzContactHeaderWidget;->setDisplayName(Ljava/lang/CharSequence;)V
 
-    .line 411
+    .line 413
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -947,7 +947,7 @@
 
     invoke-virtual {v4, v6}, Lcom/meizu/widget/MzContactHeaderWidget;->setPhoto(Landroid/graphics/Bitmap;)V
 
-    .line 412
+    .line 414
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -973,7 +973,7 @@
 
     invoke-virtual {v4, v6, v0, v1, v2}, Lcom/meizu/widget/RoundCornerContactBadge;->assignContactFromPhone(Ljava/lang/String;ZJ)V
 
-    .line 413
+    .line 415
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -985,7 +985,7 @@
 
     if-eqz v4, :cond_c
 
-    .line 414
+    .line 416
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -999,7 +999,7 @@
 
     invoke-virtual {v4, v6}, Lcom/meizu/widget/RoundCornerContactBadge;->setClickToCall(Z)V
 
-    .line 418
+    .line 420
     :goto_3
     move-object/from16 v0, p0
 
@@ -1047,7 +1047,7 @@
 
     goto/16 :goto_1
 
-    .line 416
+    .line 418
     :cond_c
     move-object/from16 v0, p0
 
@@ -1064,7 +1064,7 @@
 
     goto :goto_3
 
-    .line 424
+    .line 426
     .restart local p2
     :pswitch_3
     if-eqz p3, :cond_d
@@ -1075,7 +1075,7 @@
 
     if-eqz v4, :cond_d
 
-    .line 425
+    .line 427
     const/4 v4, 0x0
 
     move-object/from16 v0, p3
@@ -1084,7 +1084,7 @@
 
     move-result-wide v7
 
-    .line 426
+    .line 428
     .restart local v7       #contactId:J
     const/4 v4, 0x1
 
@@ -1094,7 +1094,7 @@
 
     move-result-object v14
 
-    .line 427
+    .line 429
     .restart local v14       #lookupKey:Ljava/lang/String;
     const/4 v4, 0x2
 
@@ -1104,7 +1104,7 @@
 
     move-result-object v9
 
-    .line 428
+    .line 430
     .restart local v9       #displayName:Ljava/lang/String;
     const/4 v4, 0x4
 
@@ -1114,7 +1114,7 @@
 
     move-result-object v10
 
-    .line 429
+    .line 431
     .restart local v10       #orgTag:Ljava/lang/String;
     const/4 v4, 0x5
 
@@ -1124,7 +1124,7 @@
 
     move-result-object v11
 
-    .line 430
+    .line 432
     .restart local v11       #photoUri:Ljava/lang/String;
     move-object/from16 v0, p2
 
@@ -1132,7 +1132,7 @@
 
     move-object v12, v0
 
-    .line 431
+    .line 433
     .local v12, email:Ljava/lang/String;
     move-object/from16 v0, p0
 
@@ -1140,12 +1140,12 @@
 
     invoke-virtual {v4, v9, v12}, Lcom/meizu/widget/MzContactHeaderWidget;->bindContactInfo(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 432
+    .line 434
     invoke-static {v7, v8, v14}, Landroid/provider/ContactsContract$Contacts;->getLookupUri(JLjava/lang/String;)Landroid/net/Uri;
 
     move-result-object v5
 
-    .line 433
+    .line 435
     .restart local v5       #lookupUri:Landroid/net/Uri;
     move-object/from16 v0, p0
 
@@ -1155,7 +1155,7 @@
 
     invoke-virtual/range {v4 .. v11}, Lcom/meizu/widget/MzContactHeaderWidget;->bindPhotoInfo(Landroid/net/Uri;ZJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 434
+    .line 436
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -1191,7 +1191,7 @@
 
     goto/16 :goto_1
 
-    .line 437
+    .line 439
     .end local v5           #lookupUri:Landroid/net/Uri;
     .end local v7           #contactId:J
     .end local v9           #displayName:Ljava/lang/String;
@@ -1206,7 +1206,7 @@
 
     move-object v13, v0
 
-    .line 438
+    .line 440
     .local v13, emailAddress:Ljava/lang/String;
     move-object/from16 v0, p0
 
@@ -1214,7 +1214,7 @@
 
     invoke-virtual {v4, v13}, Lcom/meizu/widget/MzContactHeaderWidget;->setDisplayName(Ljava/lang/CharSequence;)V
 
-    .line 439
+    .line 441
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -1223,7 +1223,7 @@
 
     invoke-virtual {v4, v6}, Lcom/meizu/widget/MzContactHeaderWidget;->setPhoto(Landroid/graphics/Bitmap;)V
 
-    .line 440
+    .line 442
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -1237,7 +1237,7 @@
 
     invoke-virtual {v4, v13, v6}, Lcom/meizu/widget/RoundCornerContactBadge;->assignContactFromEmail(Ljava/lang/String;Z)V
 
-    .line 441
+    .line 443
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -1251,7 +1251,7 @@
 
     invoke-virtual {v4, v6}, Lcom/meizu/widget/RoundCornerContactBadge;->setClickToCall(Z)V
 
-    .line 442
+    .line 444
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/MzContactHeaderWidget$QueryHandler;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -1272,7 +1272,7 @@
 
     goto/16 :goto_1
 
-    .line 314
+    .line 316
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_1

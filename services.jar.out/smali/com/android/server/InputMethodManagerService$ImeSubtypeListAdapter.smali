@@ -26,6 +26,10 @@
 # instance fields
 .field private final mCheckedItem:I
 
+.field private final mColorChecked:I
+
+.field private final mColorNormal:I
+
 .field private final mInflater:Landroid/view/LayoutInflater;
 
 .field private final mItemsList:Ljava/util/List;
@@ -44,7 +48,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;ILjava/util/List;I)V
-    .locals 1
+    .locals 2
     .parameter "context"
     .parameter "textViewResourceId"
     .parameter
@@ -62,20 +66,20 @@
     .end annotation
 
     .prologue
-    .line 2538
+    .line 2547
     .local p3, itemsList:Ljava/util/List;,"Ljava/util/List<Lcom/android/server/InputMethodManagerService$ImeSubtypeListItem;>;"
     invoke-direct {p0, p1, p2, p3}, Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;ILjava/util/List;)V
 
-    .line 2539
+    .line 2548
     iput p2, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mTextViewResourceId:I
 
-    .line 2540
+    .line 2549
     iput-object p3, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mItemsList:Ljava/util/List;
 
-    .line 2541
+    .line 2550
     iput p4, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mCheckedItem:I
 
-    .line 2542
+    .line 2551
     const-string v0, "layout_inflater"
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -86,147 +90,209 @@
 
     iput-object v0, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mInflater:Landroid/view/LayoutInflater;
 
-    .line 2543
+    .line 2552
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    const v1, 0x106006b
+
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getColor(I)I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mColorNormal:I
+
+    .line 2553
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    const v1, 0x106006f
+
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getColor(I)I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mColorChecked:I
+
+    .line 2554
     return-void
 .end method
 
 
 # virtual methods
 .method public getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
-    .locals 11
+    .locals 12
     .parameter "position"
     .parameter "convertView"
     .parameter "parent"
 
     .prologue
-    const/4 v7, 0x0
+    const/4 v8, 0x0
 
-    .line 2547
+    .line 2558
     if-eqz p2, :cond_1
 
-    move-object v6, p2
+    move-object v7, p2
 
-    .line 2549
-    .local v6, view:Landroid/view/View;
     :goto_0
+    check-cast v7, Lcom/meizu/widget/CheckedTwoLineListItem;
+
+    .line 2560
+    .local v7, view:Lcom/meizu/widget/CheckedTwoLineListItem;
     if-ltz p1, :cond_0
 
-    iget-object v8, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mItemsList:Ljava/util/List;
+    iget-object v9, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mItemsList:Ljava/util/List;
 
-    invoke-interface {v8}, Ljava/util/List;->size()I
+    invoke-interface {v9}, Ljava/util/List;->size()I
 
-    move-result v8
+    move-result v9
 
-    if-lt p1, v8, :cond_2
+    if-lt p1, v9, :cond_2
 
-    .line 2566
+    .line 2579
     :cond_0
     :goto_1
-    return-object v6
+    return-object v7
 
-    .line 2547
-    .end local v6           #view:Landroid/view/View;
+    .line 2558
+    .end local v7           #view:Lcom/meizu/widget/CheckedTwoLineListItem;
     :cond_1
-    iget-object v8, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mInflater:Landroid/view/LayoutInflater;
+    iget-object v9, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mInflater:Landroid/view/LayoutInflater;
 
-    iget v9, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mTextViewResourceId:I
+    iget v10, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mTextViewResourceId:I
 
-    const/4 v10, 0x0
+    const/4 v11, 0x0
 
-    invoke-virtual {v8, v9, v10}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
+    invoke-virtual {v9, v10, v11}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
-    move-result-object v6
+    move-result-object v7
 
     goto :goto_0
 
-    .line 2550
-    .restart local v6       #view:Landroid/view/View;
+    .line 2561
+    .restart local v7       #view:Lcom/meizu/widget/CheckedTwoLineListItem;
     :cond_2
-    iget-object v8, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mItemsList:Ljava/util/List;
+    iget v9, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mCheckedItem:I
 
-    invoke-interface {v8, p1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    if-ne p1, v9, :cond_3
 
-    move-result-object v2
+    const/4 v1, 0x1
 
-    check-cast v2, Lcom/android/server/InputMethodManagerService$ImeSubtypeListItem;
+    .line 2562
+    .local v1, checked:Z
+    :goto_2
+    iget-object v9, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mItemsList:Ljava/util/List;
 
-    .line 2551
-    .local v2, item:Lcom/android/server/InputMethodManagerService$ImeSubtypeListItem;
-    iget-object v1, v2, Lcom/android/server/InputMethodManagerService$ImeSubtypeListItem;->mImeName:Ljava/lang/CharSequence;
-
-    .line 2552
-    .local v1, imeName:Ljava/lang/CharSequence;
-    iget-object v5, v2, Lcom/android/server/InputMethodManagerService$ImeSubtypeListItem;->mSubtypeName:Ljava/lang/CharSequence;
-
-    .line 2553
-    .local v5, subtypeName:Ljava/lang/CharSequence;
-    const v8, 0x1020014
-
-    invoke-virtual {v6, v8}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/TextView;
-
-    .line 2554
-    .local v0, firstTextView:Landroid/widget/TextView;
-    const v8, 0x1020015
-
-    invoke-virtual {v6, v8}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    invoke-interface {v9, p1}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v4
 
-    check-cast v4, Landroid/widget/TextView;
-
-    .line 2555
-    .local v4, secondTextView:Landroid/widget/TextView;
-    invoke-static {v5}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v8
-
-    if-eqz v8, :cond_4
-
-    .line 2556
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 2557
-    const/16 v8, 0x8
-
-    invoke-virtual {v4, v8}, Landroid/widget/TextView;->setVisibility(I)V
+    check-cast v4, Lcom/android/server/InputMethodManagerService$ImeSubtypeListItem;
 
     .line 2563
-    :goto_2
-    const v8, 0x102034f
+    .local v4, item:Lcom/android/server/InputMethodManagerService$ImeSubtypeListItem;
+    iget-object v3, v4, Lcom/android/server/InputMethodManagerService$ImeSubtypeListItem;->mImeName:Ljava/lang/CharSequence;
 
-    invoke-virtual {v6, v8}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v3
-
-    check-cast v3, Landroid/widget/RadioButton;
+    .line 2564
+    .local v3, imeName:Ljava/lang/CharSequence;
+    iget-object v6, v4, Lcom/android/server/InputMethodManagerService$ImeSubtypeListItem;->mSubtypeName:Ljava/lang/CharSequence;
 
     .line 2565
-    .local v3, radioButton:Landroid/widget/RadioButton;
-    iget v8, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mCheckedItem:I
+    .local v6, subtypeName:Ljava/lang/CharSequence;
+    const v9, 0x1020014
 
-    if-ne p1, v8, :cond_3
+    invoke-virtual {v7, v9}, Lcom/meizu/widget/CheckedTwoLineListItem;->findViewById(I)Landroid/view/View;
 
-    const/4 v7, 0x1
+    move-result-object v2
 
-    :cond_3
-    invoke-virtual {v3, v7}, Landroid/widget/RadioButton;->setChecked(Z)V
+    check-cast v2, Landroid/widget/TextView;
+
+    .line 2566
+    .local v2, firstTextView:Landroid/widget/TextView;
+    const v9, 0x1020015
+
+    invoke-virtual {v7, v9}, Lcom/meizu/widget/CheckedTwoLineListItem;->findViewById(I)Landroid/view/View;
+
+    move-result-object v5
+
+    check-cast v5, Landroid/widget/TextView;
+
+    .line 2567
+    .local v5, secondTextView:Landroid/widget/TextView;
+    if-eqz v1, :cond_4
+
+    iget v9, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mColorChecked:I
+
+    :goto_3
+    invoke-virtual {v2, v9}, Landroid/widget/TextView;->setTextColor(I)V
+
+    .line 2568
+    invoke-static {v6}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v9
+
+    if-eqz v9, :cond_5
+
+    .line 2569
+    invoke-virtual {v2, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 2570
+    const/16 v8, 0x8
+
+    invoke-virtual {v5, v8}, Landroid/widget/TextView;->setVisibility(I)V
+
+    .line 2576
+    :goto_4
+    const v8, 0x1020001
+
+    invoke-virtual {v7, v8}, Lcom/meizu/widget/CheckedTwoLineListItem;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/CheckBox;
+
+    .line 2578
+    .local v0, checkButton:Landroid/widget/CheckBox;
+    invoke-virtual {v0, v1}, Landroid/widget/CheckBox;->setChecked(Z)V
 
     goto :goto_1
 
-    .line 2559
-    .end local v3           #radioButton:Landroid/widget/RadioButton;
-    :cond_4
-    invoke-virtual {v0, v5}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 2560
-    invoke-virtual {v4, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    .end local v0           #checkButton:Landroid/widget/CheckBox;
+    .end local v1           #checked:Z
+    .end local v2           #firstTextView:Landroid/widget/TextView;
+    .end local v3           #imeName:Ljava/lang/CharSequence;
+    .end local v4           #item:Lcom/android/server/InputMethodManagerService$ImeSubtypeListItem;
+    .end local v5           #secondTextView:Landroid/widget/TextView;
+    .end local v6           #subtypeName:Ljava/lang/CharSequence;
+    :cond_3
+    move v1, v8
 
     .line 2561
-    invoke-virtual {v4, v7}, Landroid/widget/TextView;->setVisibility(I)V
-
     goto :goto_2
+
+    .line 2567
+    .restart local v1       #checked:Z
+    .restart local v2       #firstTextView:Landroid/widget/TextView;
+    .restart local v3       #imeName:Ljava/lang/CharSequence;
+    .restart local v4       #item:Lcom/android/server/InputMethodManagerService$ImeSubtypeListItem;
+    .restart local v5       #secondTextView:Landroid/widget/TextView;
+    .restart local v6       #subtypeName:Ljava/lang/CharSequence;
+    :cond_4
+    iget v9, p0, Lcom/android/server/InputMethodManagerService$ImeSubtypeListAdapter;->mColorNormal:I
+
+    goto :goto_3
+
+    .line 2572
+    :cond_5
+    invoke-virtual {v2, v6}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 2573
+    invoke-virtual {v5, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 2574
+    invoke-virtual {v5, v8}, Landroid/widget/TextView;->setVisibility(I)V
+
+    goto :goto_4
 .end method

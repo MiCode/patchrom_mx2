@@ -8510,7 +8510,7 @@
 
     move-result-object v23
 
-    const v24, 0x104015e
+    const v24, 0x104015f
 
     invoke-virtual/range {v23 .. v24}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 

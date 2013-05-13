@@ -3,12 +3,12 @@
 .source "MoviePlayer.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/content/DialogInterface$OnClickListener;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Lcom/android/gallery3d/app/MoviePlayer;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/android/gallery3d/app/MoviePlayer;->showTimeoutAlertDialog()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 276
+    .line 243
     iput-object p1, p0, Lcom/android/gallery3d/app/MoviePlayer$5;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -37,42 +37,33 @@
 
 
 # virtual methods
-.method public run()V
-    .locals 5
+.method public onClick(Landroid/content/DialogInterface;I)V
+    .locals 1
+    .parameter "dialog"
+    .parameter "which"
 
     .prologue
-    .line 279
-    iget-object v1, p0, Lcom/android/gallery3d/app/MoviePlayer$5;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+    .line 246
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$5;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    #calls: Lcom/android/gallery3d/app/MoviePlayer;->setProgress()I
-    invoke-static {v1}, Lcom/android/gallery3d/app/MoviePlayer;->access$2000(Lcom/android/gallery3d/app/MoviePlayer;)I
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$000(Lcom/android/gallery3d/app/MoviePlayer;)Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
-    move-result v0
+    move-result-object v0
 
-    .line 280
-    .local v0, pos:I
-    iget-object v1, p0, Lcom/android/gallery3d/app/MoviePlayer$5;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+    if-eqz v0, :cond_0
 
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mHandler:Landroid/os/Handler;
-    invoke-static {v1}, Lcom/android/gallery3d/app/MoviePlayer;->access$800(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/os/Handler;
+    .line 247
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$5;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    move-result-object v1
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$000(Lcom/android/gallery3d/app/MoviePlayer;)Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$5;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+    move-result-object v0
 
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mProgressChecker:Ljava/lang/Runnable;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$2100(Lcom/android/gallery3d/app/MoviePlayer;)Ljava/lang/Runnable;
+    invoke-interface {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->finishVideo()V
 
-    move-result-object v2
-
-    rem-int/lit16 v3, v0, 0x3e8
-
-    rsub-int v3, v3, 0x3e8
-
-    int-to-long v3, v3
-
-    invoke-virtual {v1, v2, v3, v4}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
-
-    .line 281
+    .line 249
+    :cond_0
     return-void
 .end method

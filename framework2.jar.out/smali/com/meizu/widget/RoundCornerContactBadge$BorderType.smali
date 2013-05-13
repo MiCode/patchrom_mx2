@@ -58,7 +58,7 @@
 
     const/4 v4, 0x0
 
-    .line 146
+    .line 140
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
     const-string v1, "BORDER_NULL"
@@ -67,7 +67,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->BORDER_NULL:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
-    .line 147
+    .line 141
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
     const-string v1, "BORDER_LIST_CONTACT"
@@ -76,7 +76,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->BORDER_LIST_CONTACT:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
-    .line 148
+    .line 142
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
     const-string v1, "BORDER_EDIT_CONTACT"
@@ -85,7 +85,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->BORDER_EDIT_CONTACT:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
-    .line 149
+    .line 143
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
     const-string v1, "BORDER_VIEW_CONTACT"
@@ -94,7 +94,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->BORDER_VIEW_CONTACT:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
-    .line 150
+    .line 144
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
     const-string v1, "BORDER_SMS_CONTACT"
@@ -103,7 +103,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->BORDER_SMS_CONTACT:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
-    .line 151
+    .line 145
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
     const-string v1, "BORDER_SMALL_CONTACT"
@@ -116,7 +116,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->BORDER_SMALL_CONTACT:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
-    .line 145
+    .line 139
     const/4 v0, 0x6
 
     new-array v0, v0, [Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
@@ -164,13 +164,13 @@
     .end annotation
 
     .prologue
-    .line 153
+    .line 147
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
-    .line 154
+    .line 148
     iput p3, p0, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->borderTypeInt:I
 
-    .line 155
+    .line 149
     return-void
 .end method
 
@@ -179,7 +179,7 @@
     .parameter "name"
 
     .prologue
-    .line 145
+    .line 139
     const-class v0, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -195,7 +195,7 @@
     .locals 1
 
     .prologue
-    .line 145
+    .line 139
     sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->$VALUES:[Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
     invoke-virtual {v0}, [Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->clone()Ljava/lang/Object;

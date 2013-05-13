@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 358
+    .line 361
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -43,7 +43,7 @@
     .parameter "x0"
 
     .prologue
-    .line 358
+    .line 361
     invoke-direct {p0}, Lcom/android/gallery3d/data/LocalAlbumSet$BucketComparator;-><init>()V
 
     return-void
@@ -57,7 +57,7 @@
     .parameter "entry2"
 
     .prologue
-    .line 360
+    .line 363
     iget-object v1, p1, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->mBucketName:Ljava/lang/String;
 
     iget-object v2, p2, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->mBucketName:Ljava/lang/String;
@@ -67,11 +67,11 @@
 
     move-result v0
 
-    .line 361
+    .line 364
     .local v0, result:I
     if-eqz v0, :cond_0
 
-    .line 362
+    .line 365
     .end local v0           #result:I
     :goto_0
     return v0
@@ -96,7 +96,7 @@
     .parameter "x1"
 
     .prologue
-    .line 358
+    .line 361
     check-cast p1, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;
 
     .end local p1

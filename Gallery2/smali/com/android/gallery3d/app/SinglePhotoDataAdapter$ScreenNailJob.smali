@@ -40,15 +40,15 @@
     .parameter "item"
 
     .prologue
-    .line 147
+    .line 148
     iput-object p1, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter$ScreenNailJob;->this$0:Lcom/android/gallery3d/app/SinglePhotoDataAdapter;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 148
+    .line 149
     iput-object p2, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter$ScreenNailJob;->mItem:Lcom/android/gallery3d/data/MediaItem;
 
-    .line 149
+    .line 150
     return-void
 .end method
 
@@ -63,25 +63,25 @@
 
     const/4 v5, 0x1
 
-    .line 155
+    .line 156
     iget-object v3, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter$ScreenNailJob;->mItem:Lcom/android/gallery3d/data/MediaItem;
 
     invoke-virtual {v3}, Lcom/android/gallery3d/data/MediaItem;->getScreenNail()Lcom/android/gallery3d/ui/ScreenNail;
 
     move-result-object v1
 
-    .line 156
+    .line 157
     .local v1, s:Lcom/android/gallery3d/ui/ScreenNail;
     if-eqz v1, :cond_1
 
     move-object v2, v1
 
-    .line 164
+    .line 165
     :cond_0
     :goto_0
     return-object v2
 
-    .line 158
+    .line 159
     :cond_1
     iget-object v3, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter$ScreenNailJob;->mItem:Lcom/android/gallery3d/data/MediaItem;
 
@@ -95,7 +95,7 @@
 
     check-cast v0, Landroid/graphics/Bitmap;
 
-    .line 159
+    .line 160
     .local v0, bitmap:Landroid/graphics/Bitmap;
     invoke-interface {p1}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->isCancelled()Z
 
@@ -103,10 +103,10 @@
 
     if-nez v3, :cond_0
 
-    .line 160
+    .line 161
     if-eqz v0, :cond_2
 
-    .line 161
+    .line 162
     iget-object v3, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter$ScreenNailJob;->mItem:Lcom/android/gallery3d/data/MediaItem;
 
     invoke-virtual {v3}, Lcom/android/gallery3d/data/MediaItem;->getRotation()I
@@ -125,7 +125,7 @@
 
     move-result-object v0
 
-    .line 164
+    .line 165
     :cond_2
     if-eqz v0, :cond_0
 
@@ -141,7 +141,7 @@
     .parameter "x0"
 
     .prologue
-    .line 144
+    .line 145
     invoke-virtual {p0, p1}, Lcom/android/gallery3d/app/SinglePhotoDataAdapter$ScreenNailJob;->run(Lcom/android/gallery3d/util/ThreadPool$JobContext;)Lcom/android/gallery3d/ui/ScreenNail;
 
     move-result-object v0

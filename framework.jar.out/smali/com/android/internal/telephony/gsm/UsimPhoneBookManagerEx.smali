@@ -388,19 +388,19 @@
     .parameter "ext1RecordId"
 
     .prologue
-    .line 339
+    .line 347
     if-ltz p1, :cond_0
 
     const/16 v1, 0xff
 
     if-lt p1, v1, :cond_1
 
-    .line 348
+    .line 356
     :cond_0
     :goto_0
     return-void
 
-    .line 342
+    .line 350
     :cond_1
     iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->ext1RecordId_referenceCnt:Ljava/util/Map;
 
@@ -414,18 +414,18 @@
 
     check-cast v0, Ljava/lang/Integer;
 
-    .line 343
+    .line 351
     .local v0, value:Ljava/lang/Integer;
     if-eqz v0, :cond_0
 
-    .line 344
+    .line 352
     invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
 
     move-result v1
 
     if-lez v1, :cond_0
 
-    .line 345
+    .line 353
     iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->ext1RecordId_referenceCnt:Ljava/util/Map;
 
     invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -462,7 +462,7 @@
     .end annotation
 
     .prologue
-    .line 457
+    .line 465
     .local p1, changeTable:Ljava/util/Map;,"Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
     invoke-interface {p1}, Ljava/util/Map;->entrySet()Ljava/util/Set;
 
@@ -472,7 +472,7 @@
 
     move-result-object v1
 
-    .line 458
+    .line 466
     .local v1, iter:Ljava/util/Iterator;
     :cond_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
@@ -481,14 +481,14 @@
 
     if-eqz v4, :cond_1
 
-    .line 459
+    .line 467
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Ljava/util/Map$Entry;
 
-    .line 460
+    .line 468
     .local v0, entry:Ljava/util/Map$Entry;
     invoke-interface {v0}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
@@ -500,7 +500,7 @@
 
     move-result v2
 
-    .line 461
+    .line 469
     .local v2, key:I
     invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
@@ -512,20 +512,20 @@
 
     move-result v3
 
-    .line 463
+    .line 471
     .local v3, val:I
     :goto_0
     if-lez v3, :cond_0
 
-    .line 464
+    .line 472
     invoke-virtual {p0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->decExt1RecordRef(I)V
 
-    .line 465
+    .line 473
     add-int/lit8 v3, v3, -0x1
 
     goto :goto_0
 
-    .line 468
+    .line 476
     .end local v0           #entry:Ljava/util/Map$Entry;
     .end local v2           #key:I
     .end local v3           #val:I
@@ -672,7 +672,7 @@
     .locals 1
 
     .prologue
-    .line 284
+    .line 292
     iget v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->efExe1Id:I
 
     return v0
@@ -786,10 +786,10 @@
     .locals 5
 
     .prologue
-    .line 288
+    .line 296
     const/4 v0, 0x0
 
-    .line 290
+    .line 298
     .local v0, cnt:I
     const/4 v1, 0x1
 
@@ -806,7 +806,7 @@
     :goto_0
     if-ge v1, v2, :cond_2
 
-    .line 291
+    .line 299
     iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->ext1RecordId_referenceCnt:Ljava/util/Map;
 
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -837,17 +837,17 @@
 
     if-nez v3, :cond_1
 
-    .line 292
+    .line 300
     :cond_0
     add-int/lit8 v0, v0, 0x1
 
-    .line 290
+    .line 298
     :cond_1
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 296
+    .line 304
     :cond_2
     return v0
 .end method
@@ -980,28 +980,43 @@
 .end method
 
 .method public getExt1RecordIdLinkedByAnrRecord(I)I
-    .locals 2
+    .locals 3
     .parameter "anrRecordId"
 
     .prologue
     .line 275
-    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->anrRecordId_ext1RecordId:Ljava/util/Map;
+    const/16 v0, 0xff
+
+    .line 278
+    .local v0, ext1RecordId:I
+    :try_start_0
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->anrRecordId_ext1RecordId:Ljava/util/Map;
 
     invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
+    move-result-object v2
+
+    invoke-interface {v1, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
     move-result-object v1
 
-    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    check-cast v1, Ljava/lang/Integer;
 
-    move-result-object v0
-
-    check-cast v0, Ljava/lang/Integer;
-
-    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
+    invoke-virtual {v1}, Ljava/lang/Integer;->intValue()I
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     move-result v0
 
+    .line 283
+    :goto_0
     return v0
+
+    .line 279
+    :catch_0
+    move-exception v1
+
+    goto :goto_0
 .end method
 
 .method public getExt1RecordIdLinkedByExt1Record(I)I
@@ -1009,7 +1024,7 @@
     .parameter "ext1RecordId"
 
     .prologue
-    .line 314
+    .line 322
     iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->ext1RecordId_ext1RecordId:Ljava/util/Map;
 
     invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -1048,13 +1063,13 @@
     .end annotation
 
     .prologue
-    .line 440
+    .line 448
     .local p1, changeTable:Ljava/util/Map;,"Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
     new-instance v3, Ljava/util/Vector;
 
     invoke-direct {v3}, Ljava/util/Vector;-><init>()V
 
-    .line 442
+    .line 450
     .local v3, toFree:Ljava/util/Vector;,"Ljava/util/Vector<Ljava/lang/Integer;>;"
     invoke-interface {p1}, Ljava/util/Map;->entrySet()Ljava/util/Set;
 
@@ -1064,7 +1079,7 @@
 
     move-result-object v1
 
-    .line 443
+    .line 451
     .local v1, iter:Ljava/util/Iterator;
     :cond_0
     :goto_0
@@ -1074,14 +1089,14 @@
 
     if-eqz v5, :cond_1
 
-    .line 444
+    .line 452
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Ljava/util/Map$Entry;
 
-    .line 445
+    .line 453
     .local v0, entry:Ljava/util/Map$Entry;
     invoke-interface {v0}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
@@ -1089,7 +1104,7 @@
 
     check-cast v2, Ljava/lang/Integer;
 
-    .line 446
+    .line 454
     .local v2, key:Ljava/lang/Integer;
     invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
@@ -1097,7 +1112,7 @@
 
     check-cast v4, Ljava/lang/Integer;
 
-    .line 448
+    .line 456
     .local v4, val:Ljava/lang/Integer;
     invoke-virtual {v4}, Ljava/lang/Integer;->intValue()I
 
@@ -1113,7 +1128,7 @@
 
     if-ne v5, v6, :cond_0
 
-    .line 449
+    .line 457
     invoke-virtual {v2}, Ljava/lang/Integer;->intValue()I
 
     move-result v5
@@ -1126,7 +1141,7 @@
 
     goto :goto_0
 
-    .line 453
+    .line 461
     .end local v0           #entry:Ljava/util/Map$Entry;
     .end local v2           #key:Ljava/lang/Integer;
     .end local v4           #val:Ljava/lang/Integer;
@@ -1148,7 +1163,7 @@
     .end annotation
 
     .prologue
-    .line 323
+    .line 331
     iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->ext1RecordId_ext1RecordId:Ljava/util/Map;
 
     return-object v0
@@ -1168,7 +1183,7 @@
     .end annotation
 
     .prologue
-    .line 365
+    .line 373
     iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->ext1RecordId_referenceCnt:Ljava/util/Map;
 
     return-object v0
@@ -1238,7 +1253,7 @@
     .locals 4
 
     .prologue
-    .line 300
+    .line 308
     const/4 v0, 0x1
 
     .local v0, i:I
@@ -1254,7 +1269,7 @@
     :goto_0
     if-ge v0, v1, :cond_2
 
-    .line 301
+    .line 309
     iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->ext1RecordId_referenceCnt:Ljava/util/Map;
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -1285,20 +1300,20 @@
 
     if-nez v2, :cond_1
 
-    .line 306
+    .line 314
     .end local v0           #i:I
     :cond_0
     :goto_1
     return v0
 
-    .line 300
+    .line 308
     .restart local v0       #i:I
     :cond_1
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 306
+    .line 314
     :cond_2
     const/4 v0, -0x1
 
@@ -1389,28 +1404,28 @@
     .end annotation
 
     .prologue
-    .line 374
+    .line 382
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
-    .line 377
+    .line 385
     .local v0, changeTable:Ljava/util/Map;,"Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->getExt1RecordIdChainLinkedByAdnRecord(I)Ljava/util/Vector;
 
     move-result-object v2
 
-    .line 378
+    .line 386
     .local v2, ext1RecordIdChainLinkedByAdnRecord:Ljava/util/Vector;,"Ljava/util/Vector<Ljava/lang/Integer;>;"
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->getExt1RecordIdChainLinkedByAnrRecord(I)Ljava/util/Vector;
 
     move-result-object v3
 
-    .line 381
+    .line 389
     .local v3, ext1RecordIdChainLinkedByAnrRecord:Ljava/util/Vector;,"Ljava/util/Vector<Ljava/lang/Integer;>;"
     const/4 v4, -0x1
 
-    .line 382
+    .line 390
     .local v4, firstSharedExt1RecordId:I
     invoke-virtual {v2}, Ljava/util/Vector;->size()I
 
@@ -1425,7 +1440,7 @@
 
     add-int/lit8 v6, v11, -0x1
 
-    .line 383
+    .line 391
     .local v6, j:I
     :goto_0
     const/4 v11, -0x1
@@ -1436,7 +1451,7 @@
 
     if-le v6, v11, :cond_0
 
-    .line 384
+    .line 392
     invoke-virtual {v2, v5}, Ljava/util/Vector;->get(I)Ljava/lang/Object;
 
     move-result-object v11
@@ -1447,11 +1462,11 @@
 
     if-eq v11, v12, :cond_3
 
-    .line 394
+    .line 402
     :cond_0
     const/4 v8, 0x1
 
-    .line 395
+    .line 403
     .local v8, lastRefCnt:I
     const/4 v5, 0x0
 
@@ -1463,7 +1478,7 @@
     :goto_1
     if-ge v5, v10, :cond_1
 
-    .line 396
+    .line 404
     invoke-virtual {v2, v5}, Ljava/util/Vector;->get(I)Ljava/lang/Object;
 
     move-result-object v11
@@ -1474,29 +1489,29 @@
 
     move-result v1
 
-    .line 397
+    .line 405
     .local v1, ext1RecordId:I
     invoke-virtual {p0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->getRefCntOfExt1Record(I)I
 
     move-result v9
 
-    .line 399
+    .line 407
     .local v9, nowRefCnt:I
     const/4 v11, 0x1
 
     if-eq v8, v11, :cond_4
 
-    .line 406
+    .line 414
     .end local v1           #ext1RecordId:I
     .end local v9           #nowRefCnt:I
     :cond_1
     const/4 v7, -0x1
 
-    .line 407
+    .line 415
     .local v7, lastExt1RecordId:I
     const/4 v8, 0x1
 
-    .line 408
+    .line 416
     const/4 v5, 0x0
 
     invoke-virtual {v3}, Ljava/util/Vector;->size()I
@@ -1506,7 +1521,7 @@
     :goto_2
     if-ge v5, v10, :cond_2
 
-    .line 409
+    .line 417
     invoke-virtual {v3, v5}, Ljava/util/Vector;->get(I)Ljava/lang/Object;
 
     move-result-object v11
@@ -1517,25 +1532,25 @@
 
     move-result v1
 
-    .line 410
+    .line 418
     .restart local v1       #ext1RecordId:I
     invoke-virtual {p0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->getRefCntOfExt1Record(I)I
 
     move-result v9
 
-    .line 412
+    .line 420
     .restart local v9       #nowRefCnt:I
     const/4 v11, 0x2
 
     if-le v8, v11, :cond_5
 
-    .line 436
+    .line 444
     .end local v1           #ext1RecordId:I
     .end local v9           #nowRefCnt:I
     :cond_2
     return-object v0
 
-    .line 387
+    .line 395
     .end local v7           #lastExt1RecordId:I
     .end local v8           #lastRefCnt:I
     .end local v10           #s:I
@@ -1550,14 +1565,14 @@
 
     move-result v4
 
-    .line 383
+    .line 391
     add-int/lit8 v5, v5, -0x1
 
     add-int/lit8 v6, v6, -0x1
 
     goto :goto_0
 
-    .line 401
+    .line 409
     .restart local v1       #ext1RecordId:I
     .restart local v8       #lastRefCnt:I
     .restart local v9       #nowRefCnt:I
@@ -1575,25 +1590,25 @@
 
     invoke-interface {v0, v11, v12}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 402
+    .line 410
     move v8, v9
 
-    .line 395
+    .line 403
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_1
 
-    .line 414
+    .line 422
     .restart local v7       #lastExt1RecordId:I
     :cond_5
     const/4 v11, 0x2
 
     if-ne v8, v11, :cond_6
 
-    .line 415
+    .line 423
     if-ne v7, v4, :cond_2
 
-    .line 416
+    .line 424
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v11
@@ -1606,23 +1621,23 @@
 
     invoke-interface {v0, v11, v12}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 432
+    .line 440
     :goto_3
     move v8, v9
 
-    .line 433
+    .line 441
     move v7, v1
 
-    .line 408
+    .line 416
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_2
 
-    .line 421
+    .line 429
     :cond_6
     if-eq v1, v4, :cond_7
 
-    .line 422
+    .line 430
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v11
@@ -1637,7 +1652,7 @@
 
     goto :goto_3
 
-    .line 424
+    .line 432
     :cond_7
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -1649,7 +1664,7 @@
 
     if-nez v11, :cond_8
 
-    .line 425
+    .line 433
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v11
@@ -1664,7 +1679,7 @@
 
     goto :goto_3
 
-    .line 427
+    .line 435
     :cond_8
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -1686,7 +1701,7 @@
     .parameter "ext1RecordId"
 
     .prologue
-    .line 351
+    .line 359
     iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->ext1RecordId_referenceCnt:Ljava/util/Map;
 
     invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -1699,16 +1714,16 @@
 
     check-cast v0, Ljava/lang/Integer;
 
-    .line 352
+    .line 360
     .local v0, value:Ljava/lang/Integer;
     if-eqz v0, :cond_0
 
-    .line 353
+    .line 361
     invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
 
     move-result v1
 
-    .line 356
+    .line 364
     :goto_0
     return v1
 
@@ -1723,19 +1738,19 @@
     .parameter "ext1RecordId"
 
     .prologue
-    .line 327
+    .line 335
     if-ltz p1, :cond_0
 
     const/16 v1, 0xff
 
     if-lt p1, v1, :cond_1
 
-    .line 336
+    .line 344
     :cond_0
     :goto_0
     return-void
 
-    .line 330
+    .line 338
     :cond_1
     iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->ext1RecordId_referenceCnt:Ljava/util/Map;
 
@@ -1749,11 +1764,11 @@
 
     check-cast v0, Ljava/lang/Integer;
 
-    .line 331
+    .line 339
     .local v0, value:Ljava/lang/Integer;
     if-nez v0, :cond_2
 
-    .line 332
+    .line 340
     iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->ext1RecordId_referenceCnt:Ljava/util/Map;
 
     invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -1770,7 +1785,7 @@
 
     goto :goto_0
 
-    .line 334
+    .line 342
     :cond_2
     iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->ext1RecordId_referenceCnt:Ljava/util/Map;
 
@@ -1930,10 +1945,10 @@
     .parameter "efExt1Id"
 
     .prologue
-    .line 280
+    .line 288
     iput p1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->efExe1Id:I
 
-    .line 281
+    .line 289
     return-void
 .end method
 
@@ -2036,7 +2051,7 @@
     .parameter "ext1RecordIdLinked"
 
     .prologue
-    .line 310
+    .line 318
     iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->ext1RecordId_ext1RecordId:Ljava/util/Map;
 
     invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -2049,7 +2064,7 @@
 
     invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 311
+    .line 319
     return-void
 .end method
 
@@ -2068,14 +2083,14 @@
     .end annotation
 
     .prologue
-    .line 318
+    .line 326
     .local p1, ext1RecordLinker:Ljava/util/Map;,"Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
     if-eqz p1, :cond_0
 
-    .line 319
+    .line 327
     iput-object p1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->ext1RecordId_ext1RecordId:Ljava/util/Map;
 
-    .line 320
+    .line 328
     :cond_0
     return-void
 .end method
@@ -2095,14 +2110,14 @@
     .end annotation
 
     .prologue
-    .line 360
+    .line 368
     .local p1, ext1ReferenceTable:Ljava/util/Map;,"Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
     if-eqz p1, :cond_0
 
-    .line 361
+    .line 369
     iput-object p1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManagerEx;->ext1RecordId_referenceCnt:Ljava/util/Map;
 
-    .line 362
+    .line 370
     :cond_0
     return-void
 .end method

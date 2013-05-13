@@ -224,7 +224,7 @@
     <string name="ThreeWCMmi">三方通話</string>
     <string name="RuacMmi">拒接不想接聽的騷擾電話</string>
     <string name="CndMmi">顯示發話號碼</string>
-    <string name="DndMmi">勿幹擾</string>
+    <string name="DndMmi">請勿干擾</string>
     <string name="CLIRDefaultOnNextCallOn">預設不顯示本機號碼，下一通電話也不顯示。</string>
     <string name="CLIRDefaultOnNextCallOff">預設不顯示本機號碼，但下一通電話顯示。</string>
     <string name="CLIRDefaultOffNextCallOn">預設顯示本機號碼，但下一通電話不顯示。</string>
@@ -854,11 +854,11 @@
     <string name="autofill_zip_code">郵遞區號</string>
     <string name="autofill_county">縣/市</string>
     <string name="autofill_island">島</string>
-    <string name="autofill_district">行政區</string>
+    <string name="autofill_district">地區</string>
     <string name="autofill_department">省</string>
     <string name="autofill_prefecture">縣</string>
-    <string name="autofill_parish">教區</string>
-    <string name="autofill_area">區</string>
+    <string name="autofill_parish">區域</string>
+    <string name="autofill_area">區域</string>
     <string name="autofill_emirate">大公國</string>
     <string name="permlab_readHistoryBookmarks">讀取您的網絡書籤和紀錄</string>
     <string name="permdesc_readHistoryBookmarks">允許應用程式讀取瀏覽器造訪過的所有網址紀錄，以及瀏覽器的所有書籤。注意：這項權限不適用於協力廠商瀏覽器或其他具備網頁瀏覽功能的應用程式。</string>
@@ -917,6 +917,7 @@
     <string name="weeks">週</string>
     <string name="year">年</string>
     <string name="years">年</string>
+    <string name="VideoView_connect_fail">網絡連接失敗</string>
     <string name="relative_time">%1$s，%2$s</string>
     <string name="noon">中午</string>
     <string name="Noon">中午</string>
@@ -938,7 +939,7 @@
     <string name="capital_off">關閉</string>
     <string name="whichApplication">選擇要使用的應用程式</string>
     <string name="alwaysUse">設為預設應用程式</string>
-    <string name="clearDefaultHintMsg">前往 [系統設定] > [應用程式] > [下載] 清除預設值。</string>
+    <string name="clearDefaultHintMsg">到 [系統設定] > [應用程式] > [下載] 清除預設值。</string>
     <string name="chooseActivity">選擇一種動作</string>
     <string name="chooseUsbActivity">選取要以 USB 裝置存取的應用程式</string>
     <string name="noApplications">沒有應用程式可執行這項操作。</string>
@@ -1002,6 +1003,8 @@
     <string name="ringtone_silent">靜音</string>
     <string name="ringtone_picker_title">鈴聲</string>
     <string name="ringtone_unknown">未知的鈴聲</string>
+    <string name="wifi_share_stop">關閉 Wi-Fi 文件共享</string>
+    <string name="wifi_share_start">已啟用 Wi-Fi 文件共享</string>
     <string name="wifi_available_sign_in">登入 WiFi 網絡</string>
     <string name="wifi_watchdog_network_disabled">無法連線至 Wi-Fi</string>
     <string name="wifi_watchdog_network_disabled_detailed">" 的網際網絡連線狀況不佳。"</string>
@@ -1142,8 +1145,8 @@
     <string name="no_matches">沒有相符項目</string>
     <string name="find_on_page">在頁面中尋找</string>
     <string name="action_mode_done">完成</string>
-    <string name="progress_unmounting">正在卸載 USB 儲存裝置...</string>
-    <string name="progress_erasing">正在清除 USB 儲存裝置...</string>
+    <string name="progress_unmounting">正在卸載 USB 儲存裝置..</string>
+    <string name="progress_erasing">正在清除 USB 儲存裝置..</string>
     <string name="format_error">無法清除 USB 儲存裝置。</string>
     <string name="media_bad_removal">SD 卡尚未卸載就已移除。</string>
     <string name="media_checking">USB 儲存裝置目前正在接受檢查。</string>
@@ -1197,7 +1200,7 @@
     <string name="description_direction_down">向下滑動即可%s。</string>
     <string name="description_direction_left">向左滑動即可%s。</string>
     <string name="description_direction_right">向右滑動即可%s。</string>
-    <string name="description_target_unlock">解除鎖定</string>
+    <string name="description_target_unlock">解鎖</string>
     <string name="description_target_camera">相機</string>
     <string name="description_target_silent">靜音</string>
     <string name="description_target_soundon">開啟音效</string>
@@ -1256,6 +1259,7 @@
     <string name="default_audio_route_name_hdmi">HDMI 音訊</string>
     <string name="default_audio_route_category_name">系統</string>
     <string name="bluetooth_a2dp_audio_route_name">藍牙音訊</string>
+    <string name="askOpenBluetoothVisibility">打开藍牙可被发现</string>
     <string name="media_route_chooser_grouping_done">完成</string>
     <string name="lock_tips_dialing">撥號中</string>
     <string name="calling">正在通話</string>
@@ -1282,11 +1286,15 @@
     <string name="activity_not_found">無有關應用程式</string>
     <string name="emergency_call">緊急電話</string>
     <string name="dial_emergency_error">未送出通話要求，%s 不是緊急電話號碼！</string>
+    <string name="loading_music_info">加載音樂信息…</string>
     <string name="global_action_power_restart">重新啓動</string>
     <string name="recipient_hint_str">收件人:</string>
     <string name="recipient_total_str">共%d人</string>
     <string name="recipient_edit_imeActionLabel">確定</string>
     <string name="recipient_global_searching">正在查找全球聯絡人...</string>
+    <string name="title_message">短訊</string>
+    <string name="title_email">郵件</string>
+    <string name="title_recipient">收件人</string>
     <string name="select">選擇</string>
     <string name="copyAll">全部複製</string>
     <string name="enable">啟用</string>
@@ -1318,4 +1326,7 @@
     <string name="launcher_choose_hint">\"設置/個性化\"裡可更改默認桌面</string>
     <string name="chooseDefLauncher">﻿選擇默認桌面</string>
     <string name="external_storage_device_name">我的設備%s</string>
+    <string name="permdesc_backupAccounts">允許應用程式備份或還原帳戶</string>
+    <string name="permlab_backupAccounts">備份或還原裝置上的系統帳戶</string>
+    <string name="update_battery_low">電量低于20%,无法更新</string>
 </resources>

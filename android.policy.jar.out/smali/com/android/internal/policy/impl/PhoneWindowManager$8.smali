@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 3439
+    .line 3555
     iput-object p1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$8;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     iput-boolean p2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$8;->val$visible:Z
@@ -46,7 +46,7 @@
     .locals 4
 
     .prologue
-    .line 3442
+    .line 3558
     :try_start_0
     iget-object v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$8;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
@@ -54,28 +54,28 @@
 
     move-result-object v1
 
-    .line 3443
+    .line 3559
     .local v1, statusbar:Lcom/android/internal/statusbar/IStatusBarService;
     if-eqz v1, :cond_0
 
-    .line 3444
+    .line 3560
     iget-boolean v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$8;->val$visible:Z
 
     invoke-interface {v1, v2}, Lcom/android/internal/statusbar/IStatusBarService;->setNavButtonVisible(Z)V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 3451
+    .line 3567
     .end local v1           #statusbar:Lcom/android/internal/statusbar/IStatusBarService;
     :cond_0
     :goto_0
     return-void
 
-    .line 3446
+    .line 3562
     :catch_0
     move-exception v0
 
-    .line 3449
+    .line 3565
     .local v0, ex:Landroid/os/RemoteException;
     iget-object v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$8;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 

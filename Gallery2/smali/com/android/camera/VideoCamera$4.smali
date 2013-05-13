@@ -1,5 +1,5 @@
 .class Lcom/android/camera/VideoCamera$4;
-.super Landroid/content/BroadcastReceiver;
+.super Landroid/telephony/PhoneStateListener;
 .source "VideoCamera.java"
 
 
@@ -24,110 +24,40 @@
     .parameter
 
     .prologue
-    .line 491
+    .line 463
     iput-object p1, p0, Lcom/android/camera/VideoCamera$4;->this$0:Lcom/android/camera/VideoCamera;
 
-    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
+    invoke-direct {p0}, Landroid/telephony/PhoneStateListener;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 3
-    .parameter "context"
-    .parameter "intent"
+.method public onCallStateChanged(ILjava/lang/String;)V
+    .locals 1
+    .parameter "state"
+    .parameter "incomingNumber"
 
     .prologue
-    .line 494
-    invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
+    .line 466
+    packed-switch p1, :pswitch_data_0
 
-    move-result-object v0
-
-    .line 495
-    .local v0, action:Ljava/lang/String;
-    const-string v2, "android.intent.action.SCREEN_OFF"
-
-    invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_3
-
-    .line 496
-    iget-object v2, p0, Lcom/android/camera/VideoCamera$4;->this$0:Lcom/android/camera/VideoCamera;
-
-    #calls: Lcom/android/camera/VideoCamera;->isMeizuSystemCaptureIntent()Z
-    invoke-static {v2}, Lcom/android/camera/VideoCamera;->access$2600(Lcom/android/camera/VideoCamera;)Z
-
-    move-result v2
-
-    if-nez v2, :cond_0
-
-    iget-object v2, p0, Lcom/android/camera/VideoCamera$4;->this$0:Lcom/android/camera/VideoCamera;
-
-    #getter for: Lcom/android/camera/VideoCamera;->mIsLockViewIntent:Z
-    invoke-static {v2}, Lcom/android/camera/VideoCamera;->access$2700(Lcom/android/camera/VideoCamera;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_1
-
-    .line 498
-    :cond_0
-    iget-object v2, p0, Lcom/android/camera/VideoCamera$4;->this$0:Lcom/android/camera/VideoCamera;
-
-    invoke-virtual {v2}, Lcom/android/camera/VideoCamera;->getWindow()Landroid/view/Window;
-
-    move-result-object v1
-
-    .line 499
-    .local v1, win:Landroid/view/Window;
-    const/high16 v2, 0x8
-
-    invoke-virtual {v1, v2}, Landroid/view/Window;->clearFlags(I)V
-
-    .line 503
-    .end local v1           #win:Landroid/view/Window;
-    :cond_1
-    iget-object v2, p0, Lcom/android/camera/VideoCamera$4;->this$0:Lcom/android/camera/VideoCamera;
-
-    #getter for: Lcom/android/camera/VideoCamera;->mIsLockView:Z
-    invoke-static {v2}, Lcom/android/camera/VideoCamera;->access$2800(Lcom/android/camera/VideoCamera;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_2
-
-    .line 504
-    iget-object v2, p0, Lcom/android/camera/VideoCamera$4;->this$0:Lcom/android/camera/VideoCamera;
-
-    invoke-virtual {v2}, Lcom/android/camera/VideoCamera;->finish()V
-
-    .line 506
-    :cond_2
-    iget-object v2, p0, Lcom/android/camera/VideoCamera$4;->this$0:Lcom/android/camera/VideoCamera;
-
-    #getter for: Lcom/android/camera/VideoCamera;->mIsGotoGallery:Z
-    invoke-static {v2}, Lcom/android/camera/VideoCamera;->access$1700(Lcom/android/camera/VideoCamera;)Z
-
-    move-result v2
-
-    if-nez v2, :cond_3
-
-    iget-object v2, p0, Lcom/android/camera/VideoCamera$4;->this$0:Lcom/android/camera/VideoCamera;
-
-    iget-boolean v2, v2, Lcom/android/camera/ActivityBase;->mShowCameraAppView:Z
-
-    if-eqz v2, :cond_3
-
-    .line 507
-    iget-object v2, p0, Lcom/android/camera/VideoCamera$4;->this$0:Lcom/android/camera/VideoCamera;
-
-    invoke-virtual {v2}, Lcom/android/camera/VideoCamera;->finish()V
-
-    .line 510
-    :cond_3
+    .line 472
+    :goto_0
     return-void
+
+    .line 468
+    :pswitch_0
+    iget-object v0, p0, Lcom/android/camera/VideoCamera$4;->this$0:Lcom/android/camera/VideoCamera;
+
+    invoke-virtual {v0}, Lcom/android/camera/VideoCamera;->finish()V
+
+    goto :goto_0
+
+    .line 466
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_0
+    .end packed-switch
 .end method

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="action_assist_targets_0">
+        <item>@null</item>
+        <item>@drawable/action_assist_menu</item>
+        <item>@drawable/action_assist_recent</item>
+        <item>@drawable/action_assist_back</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+    </array>
+    <array name="action_assist_targets_90">
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@drawable/action_assist_menu</item>
+        <item>@drawable/action_assist_recent</item>
+        <item>@drawable/action_assist_back</item>
+        <item>@null</item>
+        <item>@null</item>
+    </array>
+    <array name="action_assist_targets_180">
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@drawable/action_assist_menu</item>
+        <item>@drawable/action_assist_recent</item>
+        <item>@drawable/action_assist_back</item>
+    </array>
+    <array name="action_assist_targets_270">
+        <item>@drawable/action_assist_recent</item>
+        <item>@drawable/action_assist_back</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@drawable/action_assist_menu</item>
+    </array>
+    <array name="action_assist_target_descriptions">
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+    </array>
+    <array name="action_assist_direction_descriptions">
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+        <item>@null</item>
+    </array>
+
+</resources>

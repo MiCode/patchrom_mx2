@@ -30,24 +30,24 @@
     .parameter
 
     .prologue
-    .line 204
+    .line 205
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 205
+    .line 206
     new-instance v0, Landroid/graphics/Point;
 
     invoke-direct {v0}, Landroid/graphics/Point;-><init>()V
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;->mPosition:Landroid/graphics/Point;
 
-    .line 206
+    .line 207
     const/high16 v0, 0x3f80
 
     iput v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;->mScaleX:F
 
-    .line 207
+    .line 208
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$IlluminantInfo;->mAlpha:I

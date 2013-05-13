@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 836
+    .line 855
     iput-object p1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -46,7 +46,7 @@
 
     const/4 v4, 0x1
 
-    .line 873
+    .line 898
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #calls: Lcom/meizu/widget/RecipientEdit;->isDefaultInputMethod()Z
@@ -56,7 +56,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 874
+    .line 899
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mEditView:Lcom/meizu/widget/RecipientEdit$RecipientAutoCompleteTextView;
@@ -70,7 +70,7 @@
 
     and-int/lit16 v0, v1, -0x100
 
-    .line 875
+    .line 900
     .local v0, imeOptions:I
     invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -93,7 +93,7 @@
 
     if-ne v1, v4, :cond_3
 
-    .line 877
+    .line 902
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     const/16 v2, 0x82
@@ -104,7 +104,7 @@
 
     if-eqz v1, :cond_2
 
-    .line 878
+    .line 903
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mEditView:Lcom/meizu/widget/RecipientEdit$RecipientAutoCompleteTextView;
@@ -116,7 +116,7 @@
 
     invoke-virtual {v1, v2}, Lcom/meizu/widget/RecipientEdit$RecipientAutoCompleteTextView;->setImeOptions(I)V
 
-    .line 879
+    .line 904
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mEditView:Lcom/meizu/widget/RecipientEdit$RecipientAutoCompleteTextView;
@@ -128,7 +128,7 @@
 
     invoke-virtual {v1, v3, v2}, Lcom/meizu/widget/RecipientEdit$RecipientAutoCompleteTextView;->setImeActionLabel(Ljava/lang/CharSequence;I)V
 
-    .line 884
+    .line 909
     :goto_0
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
@@ -141,7 +141,7 @@
 
     invoke-virtual {v1, v2}, Lcom/meizu/widget/RecipientEdit;->setInputType(I)V
 
-    .line 895
+    .line 920
     .end local v0           #imeOptions:I
     :cond_0
     :goto_1
@@ -154,7 +154,7 @@
 
     if-eqz v1, :cond_1
 
-    .line 896
+    .line 921
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mOnRecipientChangedListener:Lcom/meizu/widget/RecipientEdit$OnRecipientChangedListener;
@@ -164,11 +164,11 @@
 
     invoke-interface {v1}, Lcom/meizu/widget/RecipientEdit$OnRecipientChangedListener;->OnRecipientChanged()V
 
-    .line 898
+    .line 923
     :cond_1
     return-void
 
-    .line 881
+    .line 906
     .restart local v0       #imeOptions:I
     :cond_2
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
@@ -182,7 +182,7 @@
 
     invoke-virtual {v1, v2}, Lcom/meizu/widget/RecipientEdit$RecipientAutoCompleteTextView;->setImeOptions(I)V
 
-    .line 882
+    .line 907
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mEditView:Lcom/meizu/widget/RecipientEdit$RecipientAutoCompleteTextView;
@@ -196,7 +196,7 @@
 
     goto :goto_0
 
-    .line 885
+    .line 910
     :cond_3
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
@@ -219,7 +219,7 @@
 
     if-nez v1, :cond_0
 
-    .line 887
+    .line 912
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mEditView:Lcom/meizu/widget/RecipientEdit$RecipientAutoCompleteTextView;
@@ -231,7 +231,7 @@
 
     invoke-virtual {v1, v2}, Lcom/meizu/widget/RecipientEdit$RecipientAutoCompleteTextView;->setImeOptions(I)V
 
-    .line 888
+    .line 913
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mEditView:Lcom/meizu/widget/RecipientEdit$RecipientAutoCompleteTextView;
@@ -245,7 +245,7 @@
 
     move-result-object v2
 
-    const v3, 0x1040577
+    const v3, 0x104057d
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -253,7 +253,7 @@
 
     invoke-virtual {v1, v2, v4}, Lcom/meizu/widget/RecipientEdit$RecipientAutoCompleteTextView;->setImeActionLabel(Ljava/lang/CharSequence;I)V
 
-    .line 891
+    .line 916
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     iget-object v2, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
@@ -278,23 +278,23 @@
     .prologue
     const/4 v3, 0x1
 
-    .line 848
+    .line 873
     invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 849
+    .line 874
     .local v0, str:Ljava/lang/String;
     invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v1
 
-    if-nez v1, :cond_2
+    if-nez v1, :cond_1
 
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mRecipientDataList:Ljava/util/ArrayList;
-    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$400(Lcom/meizu/widget/RecipientEdit;)Ljava/util/ArrayList;
+    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$600(Lcom/meizu/widget/RecipientEdit;)Ljava/util/ArrayList;
 
     move-result-object v1
 
@@ -302,111 +302,88 @@
 
     move-result v1
 
-    if-nez v1, :cond_2
+    if-nez v1, :cond_1
 
-    .line 850
+    .line 875
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mRecipientHandler:Lcom/meizu/widget/RecipientEdit$RecipientHandler;
-    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$500(Lcom/meizu/widget/RecipientEdit;)Lcom/meizu/widget/RecipientEdit$RecipientHandler;
+    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$700(Lcom/meizu/widget/RecipientEdit;)Lcom/meizu/widget/RecipientEdit$RecipientHandler;
 
     move-result-object v1
 
     if-eqz v1, :cond_0
 
-    .line 851
+    .line 876
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mRecipientHandler:Lcom/meizu/widget/RecipientEdit$RecipientHandler;
-    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$500(Lcom/meizu/widget/RecipientEdit;)Lcom/meizu/widget/RecipientEdit$RecipientHandler;
+    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$700(Lcom/meizu/widget/RecipientEdit;)Lcom/meizu/widget/RecipientEdit$RecipientHandler;
 
     move-result-object v1
 
     invoke-virtual {v1, v3, v0}, Lcom/meizu/widget/RecipientEdit$RecipientHandler;->removeMessages(ILjava/lang/Object;)V
 
-    .line 853
+    .line 878
     :cond_0
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mRecipientState:Ljava/util/HashMap;
-    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$600(Lcom/meizu/widget/RecipientEdit;)Ljava/util/HashMap;
+    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$800(Lcom/meizu/widget/RecipientEdit;)Ljava/util/HashMap;
 
     move-result-object v1
 
     invoke-virtual {v1, v0}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 854
+    .line 879
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mSipVersion:Ljava/util/HashMap;
-    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$700(Lcom/meizu/widget/RecipientEdit;)Ljava/util/HashMap;
+    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$900(Lcom/meizu/widget/RecipientEdit;)Ljava/util/HashMap;
 
     move-result-object v1
 
     invoke-virtual {v1, v0}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 855
+    .line 880
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mCheckingRecipient:Ljava/util/ArrayList;
-    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$800(Lcom/meizu/widget/RecipientEdit;)Ljava/util/ArrayList;
+    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$400(Lcom/meizu/widget/RecipientEdit;)Ljava/util/ArrayList;
 
     move-result-object v1
 
     invoke-virtual {v1, v0}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
 
-    .line 856
+    .line 881
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mRecipientNotSip:Ljava/util/ArrayList;
-    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$900(Lcom/meizu/widget/RecipientEdit;)Ljava/util/ArrayList;
+    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$1000(Lcom/meizu/widget/RecipientEdit;)Ljava/util/ArrayList;
 
     move-result-object v1
 
     invoke-virtual {v1, v0}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
 
-    move-result v1
+    .line 883
+    if-nez p2, :cond_1
 
-    if-eqz v1, :cond_1
+    if-nez p4, :cond_1
 
-    .line 857
-    iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
-
-    #getter for: Lcom/meizu/widget/RecipientEdit;->mCheckSipDestAddr:Z
-    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$1000(Lcom/meizu/widget/RecipientEdit;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_1
-
-    iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
-
-    #getter for: Lcom/meizu/widget/RecipientEdit;->mRecipientNotSip:Ljava/util/ArrayList;
-    invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$900(Lcom/meizu/widget/RecipientEdit;)Ljava/util/ArrayList;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/util/ArrayList;->isEmpty()Z
-
-    move-result v1
-
-    if-eqz v1, :cond_1
-
-    .line 858
+    .line 885
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #calls: Lcom/meizu/widget/RecipientEdit;->refreshSipDestState()V
     invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$1100(Lcom/meizu/widget/RecipientEdit;)V
 
-    .line 862
-    :cond_1
+    .line 886
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #calls: Lcom/meizu/widget/RecipientEdit;->endCheck()V
     invoke-static {v1}, Lcom/meizu/widget/RecipientEdit;->access$1200(Lcom/meizu/widget/RecipientEdit;)V
 
-    .line 865
-    :cond_2
+    .line 890
+    :cond_1
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mViewSelected:Landroid/view/View;
@@ -414,9 +391,9 @@
 
     move-result-object v1
 
-    if-eqz v1, :cond_3
+    if-eqz v1, :cond_2
 
-    .line 866
+    .line 891
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mViewSelected:Landroid/view/View;
@@ -428,7 +405,7 @@
 
     invoke-virtual {v1, v2}, Landroid/view/View;->setSelected(Z)V
 
-    .line 867
+    .line 892
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     const/4 v2, 0x0
@@ -436,7 +413,7 @@
     #setter for: Lcom/meizu/widget/RecipientEdit;->mViewSelected:Landroid/view/View;
     invoke-static {v1, v2}, Lcom/meizu/widget/RecipientEdit;->access$1302(Lcom/meizu/widget/RecipientEdit;Landroid/view/View;)Landroid/view/View;
 
-    .line 868
+    .line 893
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mEditView:Lcom/meizu/widget/RecipientEdit$RecipientAutoCompleteTextView;
@@ -446,8 +423,8 @@
 
     invoke-virtual {v1, v3}, Lcom/meizu/widget/RecipientEdit$RecipientAutoCompleteTextView;->setCursorVisible(Z)V
 
-    .line 870
-    :cond_3
+    .line 895
+    :cond_2
     return-void
 .end method
 
@@ -459,7 +436,7 @@
     .parameter "count"
 
     .prologue
-    .line 839
+    .line 858
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mOnTextChangedListener:Lcom/meizu/widget/RecipientEdit$OnTextChangedListener;
@@ -469,7 +446,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 840
+    .line 859
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mOnTextChangedListener:Lcom/meizu/widget/RecipientEdit$OnTextChangedListener;
@@ -479,7 +456,7 @@
 
     invoke-interface {v0, p1, p2, p3, p4}, Lcom/meizu/widget/RecipientEdit$OnTextChangedListener;->onTextChanged(Ljava/lang/CharSequence;III)V
 
-    .line 843
+    .line 862
     :cond_0
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
@@ -492,7 +469,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/RecipientEdit;->removeCallbacks(Ljava/lang/Runnable;)Z
 
-    .line 844
+    .line 863
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
@@ -506,6 +483,54 @@
 
     invoke-virtual {v0, v1, v2, v3}, Lcom/meizu/widget/RecipientEdit;->postDelayed(Ljava/lang/Runnable;J)Z
 
-    .line 845
+    .line 866
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
+
+    #getter for: Lcom/meizu/widget/RecipientEdit;->mCheckingRecipient:Ljava/util/ArrayList;
+    invoke-static {v0}, Lcom/meizu/widget/RecipientEdit;->access$400(Lcom/meizu/widget/RecipientEdit;)Ljava/util/ArrayList;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
+
+    #getter for: Lcom/meizu/widget/RecipientEdit;->mOnSipStateChangedListener:Lcom/meizu/widget/RecipientStateInfo$OnSipStateChangedListener;
+    invoke-static {v0}, Lcom/meizu/widget/RecipientEdit;->access$500(Lcom/meizu/widget/RecipientEdit;)Lcom/meizu/widget/RecipientStateInfo$OnSipStateChangedListener;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_1
+
+    .line 868
+    iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
+
+    #getter for: Lcom/meizu/widget/RecipientEdit;->mOnSipStateChangedListener:Lcom/meizu/widget/RecipientStateInfo$OnSipStateChangedListener;
+    invoke-static {v0}, Lcom/meizu/widget/RecipientEdit;->access$500(Lcom/meizu/widget/RecipientEdit;)Lcom/meizu/widget/RecipientStateInfo$OnSipStateChangedListener;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
+
+    iget-object v2, p0, Lcom/meizu/widget/RecipientEdit$2;->this$0:Lcom/meizu/widget/RecipientEdit;
+
+    invoke-virtual {v2}, Lcom/meizu/widget/RecipientEdit;->getSipState()Lcom/meizu/widget/RecipientStateInfo$SipState;
+
+    move-result-object v2
+
+    invoke-interface {v0, v1, v2}, Lcom/meizu/widget/RecipientStateInfo$OnSipStateChangedListener;->onSipStateChanged(Landroid/view/View;Lcom/meizu/widget/RecipientStateInfo$SipState;)V
+
+    .line 870
+    :cond_1
     return-void
 .end method

@@ -99,9 +99,9 @@
 
     .prologue
     .line 130
-    const v6, 0x1090061
+    const v6, 0x1090065
 
-    const v7, 0x1090061
+    const v7, 0x1090065
 
     move-object v0, p0
 
@@ -248,7 +248,7 @@
     invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/LockMusicView;->setLockMusicWidgetCallback(Lcom/meizu/internal/policy/impl/LockMusicView$ILockMusicWidget;)V
 
     .line 143
-    const v0, 0x10202ff
+    const v0, 0x10202fb
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/FindPhoneUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -257,7 +257,7 @@
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/FindPhoneUnlockScreen;->mRootView:Landroid/view/View;
 
     .line 144
-    const v0, 0x10202cc
+    const v0, 0x10202c9
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/FindPhoneUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -266,7 +266,7 @@
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/FindPhoneUnlockScreen;->mInputBox:Landroid/view/View;
 
     .line 145
-    const v0, 0x10202ca
+    const v0, 0x10202c7
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/FindPhoneUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -277,7 +277,7 @@
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/FindPhoneUnlockScreen;->mInputTips:Landroid/widget/TextView;
 
     .line 146
-    const v0, 0x1020306
+    const v0, 0x1020302
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/FindPhoneUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -383,7 +383,7 @@
     invoke-virtual {v0, v1}, Landroid/widget/EditText;->setOnKeyPreImeListener(Landroid/widget/EditText$OnKeyPreImeListener;)V
 
     .line 190
-    const v0, 0x1020302
+    const v0, 0x10202fe
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/FindPhoneUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -690,7 +690,7 @@
     .line 423
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v2, 0x104056a
+    const v2, 0x104056f
 
     invoke-virtual {v1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -1002,7 +1002,7 @@
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v2, 0x1030317
+    const v2, 0x1030323
 
     invoke-direct {v0, v1, v2}, Landroid/app/ProgressDialog;-><init>(Landroid/content/Context;I)V
 
@@ -1749,7 +1749,7 @@
     .line 337
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v3, 0x1040569
+    const v3, 0x104056e
 
     invoke-virtual {v2, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -1798,7 +1798,7 @@
     .line 339
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v3, 0x104056e
+    const v3, 0x1040573
 
     invoke-virtual {v2, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -1817,7 +1817,7 @@
     .line 341
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v3, 0x104056d
+    const v3, 0x1040572
 
     invoke-virtual {v2, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -1834,7 +1834,7 @@
     .line 343
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v3, 0x104056c
+    const v3, 0x1040571
 
     invoke-virtual {v2, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -1853,7 +1853,7 @@
     .line 345
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v3, 0x104056f
+    const v3, 0x1040574
 
     invoke-virtual {v2, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -1872,7 +1872,7 @@
     .line 347
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v3, 0x1040570
+    const v3, 0x1040575
 
     invoke-virtual {v2, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -1912,7 +1912,7 @@
     :cond_0
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v5, 0x1040567
+    const v5, 0x104056c
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -1983,7 +1983,7 @@
 
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v6, 0x1040568
+    const v6, 0x104056d
 
     new-array v7, v7, [Ljava/lang/Object;
 
@@ -2026,7 +2026,7 @@
 
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v6, 0x1040569
+    const v6, 0x104056e
 
     new-array v7, v7, [Ljava/lang/Object;
 
@@ -2053,7 +2053,7 @@
 
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v6, 0x104056e
+    const v6, 0x1040573
 
     invoke-virtual {v5, v6}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -2076,7 +2076,7 @@
 
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v6, 0x104056d
+    const v6, 0x1040572
 
     invoke-virtual {v5, v6}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -2097,7 +2097,7 @@
 
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v6, 0x104056c
+    const v6, 0x1040571
 
     invoke-virtual {v5, v6}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -2120,7 +2120,7 @@
 
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v6, 0x104056f
+    const v6, 0x1040574
 
     invoke-virtual {v5, v6}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -2143,7 +2143,7 @@
 
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v6, 0x1040570
+    const v6, 0x1040575
 
     invoke-virtual {v5, v6}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 

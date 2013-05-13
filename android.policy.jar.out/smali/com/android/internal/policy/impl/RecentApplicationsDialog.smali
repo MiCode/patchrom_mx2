@@ -45,7 +45,7 @@
 
     .prologue
     .line 75
-    const v0, 0x1030308
+    const v0, 0x1030314
 
     invoke-direct {p0, p1, v0}, Landroid/app/Dialog;-><init>(Landroid/content/Context;I)V
 
@@ -782,7 +782,7 @@
     invoke-virtual {v6, v7}, Landroid/view/Window;->setTitle(Ljava/lang/CharSequence;)V
 
     .line 102
-    const v7, 0x10900bc
+    const v7, 0x10900c5
 
     invoke-virtual {p0, v7}, Lcom/android/internal/policy/impl/RecentApplicationsDialog;->setContentView(I)V
 

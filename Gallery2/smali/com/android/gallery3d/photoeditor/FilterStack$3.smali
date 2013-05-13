@@ -108,7 +108,7 @@
 
     invoke-virtual {v3, v4}, Lcom/android/gallery3d/photoeditor/PhotoView;->post(Ljava/lang/Runnable;)Z
 
-    .line 197
+    .line 198
     return-void
 
     .line 187

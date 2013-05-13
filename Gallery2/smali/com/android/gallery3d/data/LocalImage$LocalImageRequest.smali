@@ -22,7 +22,7 @@
 
 # direct methods
 .method constructor <init>(Lcom/android/gallery3d/app/GalleryApp;Lcom/android/gallery3d/data/Path;IJLjava/lang/String;Z)V
-    .locals 7
+    .locals 8
     .parameter "application"
     .parameter "path"
     .parameter "type"
@@ -36,6 +36,8 @@
 
     move-result v6
 
+    const/4 v7, 0x0
+
     move-object v0, p0
 
     move-object v1, p1
@@ -46,15 +48,15 @@
 
     move-wide v4, p4
 
-    invoke-direct/range {v0 .. v6}, Lcom/android/gallery3d/data/ImageCacheRequest;-><init>(Lcom/android/gallery3d/app/GalleryApp;Lcom/android/gallery3d/data/Path;IJI)V
-
-    .line 173
-    iput-object p6, p0, Lcom/android/gallery3d/data/LocalImage$LocalImageRequest;->mLocalFilePath:Ljava/lang/String;
+    invoke-direct/range {v0 .. v7}, Lcom/android/gallery3d/data/ImageCacheRequest;-><init>(Lcom/android/gallery3d/app/GalleryApp;Lcom/android/gallery3d/data/Path;IJIZ)V
 
     .line 174
-    iput-boolean p7, p0, Lcom/android/gallery3d/data/LocalImage$LocalImageRequest;->mSupportFullImage:Z
+    iput-object p6, p0, Lcom/android/gallery3d/data/LocalImage$LocalImageRequest;->mLocalFilePath:Ljava/lang/String;
 
     .line 175
+    iput-boolean p7, p0, Lcom/android/gallery3d/data/LocalImage$LocalImageRequest;->mSupportFullImage:Z
+
+    .line 176
     return-void
 .end method
 
@@ -66,38 +68,38 @@
     .parameter "type"
 
     .prologue
-    .line 179
+    .line 180
     new-instance v3, Landroid/graphics/BitmapFactory$Options;
 
     invoke-direct {v3}, Landroid/graphics/BitmapFactory$Options;-><init>()V
 
-    .line 180
+    .line 181
     .local v3, options:Landroid/graphics/BitmapFactory$Options;
     sget-object v7, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
     iput-object v7, v3, Landroid/graphics/BitmapFactory$Options;->inPreferredConfig:Landroid/graphics/Bitmap$Config;
 
-    .line 181
+    .line 182
     iget-boolean v7, p0, Lcom/android/gallery3d/data/LocalImage$LocalImageRequest;->mSupportFullImage:Z
 
     invoke-static {p2, v7}, Lcom/android/gallery3d/data/MediaItem;->getTargetSize(IZ)I
 
     move-result v5
 
-    .line 184
+    .line 185
     .local v5, targetSize:I
     const/4 v7, 0x2
 
     if-ne p2, v7, :cond_1
 
-    .line 185
+    .line 186
     const/4 v1, 0x0
 
-    .line 186
+    .line 187
     .local v1, exif:Landroid/media/ExifInterface;
     const/4 v6, 0x0
 
-    .line 188
+    .line 189
     .local v6, thumbData:[B
     :try_start_0
     new-instance v2, Landroid/media/ExifInterface;
@@ -108,12 +110,12 @@
     :try_end_0
     .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 189
+    .line 190
     .end local v1           #exif:Landroid/media/ExifInterface;
     .local v2, exif:Landroid/media/ExifInterface;
     if-eqz v2, :cond_0
 
-    .line 190
+    .line 191
     :try_start_1
     invoke-virtual {v2}, Landroid/media/ExifInterface;->getThumbnail()[B
     :try_end_1
@@ -124,35 +126,35 @@
     :cond_0
     move-object v1, v2
 
-    .line 195
+    .line 196
     .end local v2           #exif:Landroid/media/ExifInterface;
     .restart local v1       #exif:Landroid/media/ExifInterface;
     :goto_0
     if-eqz v6, :cond_1
 
-    .line 196
+    .line 197
     invoke-static {p1, v6, v3, v5}, Lcom/android/gallery3d/data/DecodeUtils;->decodeIfBigEnough(Lcom/android/gallery3d/util/ThreadPool$JobContext;[BLandroid/graphics/BitmapFactory$Options;I)Landroid/graphics/Bitmap;
 
     move-result-object v0
 
-    .line 198
+    .line 199
     .local v0, bitmap:Landroid/graphics/Bitmap;
     if-eqz v0, :cond_1
 
-    .line 202
+    .line 203
     .end local v0           #bitmap:Landroid/graphics/Bitmap;
     .end local v1           #exif:Landroid/media/ExifInterface;
     .end local v6           #thumbData:[B
     :goto_1
     return-object v0
 
-    .line 192
+    .line 193
     .restart local v1       #exif:Landroid/media/ExifInterface;
     .restart local v6       #thumbData:[B
     :catch_0
     move-exception v4
 
-    .line 193
+    .line 194
     .local v4, t:Ljava/lang/Throwable;
     :goto_2
     const-string v7, "LocalImage"
@@ -163,7 +165,7 @@
 
     goto :goto_0
 
-    .line 202
+    .line 203
     .end local v1           #exif:Landroid/media/ExifInterface;
     .end local v4           #t:Ljava/lang/Throwable;
     .end local v6           #thumbData:[B
@@ -176,7 +178,7 @@
 
     goto :goto_1
 
-    .line 192
+    .line 193
     .restart local v2       #exif:Landroid/media/ExifInterface;
     .restart local v6       #thumbData:[B
     :catch_1

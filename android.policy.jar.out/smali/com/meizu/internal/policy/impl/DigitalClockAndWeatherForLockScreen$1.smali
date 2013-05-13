@@ -77,7 +77,7 @@
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen$1;->this$0:Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;
 
     #getter for: Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->access$300(Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;)Landroid/os/Handler;
+    invoke-static {v0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->access$200(Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;)Landroid/os/Handler;
 
     move-result-object v0
 

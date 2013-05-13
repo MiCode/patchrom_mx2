@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest android:versionCode="1" android:versionName="1.1.0" package="com.android.gallery3d"
+<manifest android:versionCode="1" android:versionName="1.1.1" package="com.android.gallery3d"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <original-package android:name="com.android.gallery3d" />
     <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="16" />
@@ -27,9 +27,11 @@
     <uses-permission android:name="android.permission.BACKUP" />
     <uses-permission android:name="android.permission.DEVICE_POWER" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS" />
     <uses-permission android:name="com.android.browser.permission.WRITE_HISTORY_BOOKMARKS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_ALL_DOWNLOADS" />
     <supports-screens android:anyDensity="true" android:smallScreens="false" android:normalScreens="true" android:largeScreens="true" />
     <application android:theme="@style/Theme.Gallery" android:label="@string/app_name" android:icon="@mipmap/ic_launcher_gallery" android:name="com.android.gallery3d.app.GalleryAppImpl" android:backupAgent="com.android.gallery3d.data.BackupHelpler" android:logo="@mipmap/ic_launcher_gallery" android:hardwareAccelerated="true" android:largeHeap="@bool/config_largeheap" android:uiOptions="splitActionBarWhenNarrow">
         <uses-library android:name="com.google.android.media.effects" android:required="false" />
@@ -45,6 +47,36 @@
                 <action android:name="android.intent.action.BATTERY_OKAY" />
             </intent-filter>
         </receiver>
+        <activity android:theme="@style/Theme.Movie" android:label="@string/video" android:icon="@mipmap/ic_launcher_video" android:name="com.android.gallery3d.app.MovieActivity" android:taskAffinity="com.gallery3d.movie" android:configChanges="keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="rtsp" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="video/*" />
+                <data android:mimeType="application/sdp" />
+            </intent-filter>
+            <intent-filter> !-- HTTP live support -->
+<action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:mimeType="audio/x-mpegurl" />
+                <data android:mimeType="audio/mpegurl" />
+                <data android:mimeType="application/vnd.apple.mpegurl" />
+                <data android:mimeType="application/x-mpegurl" />
+            </intent-filter>
+        </activity>
         <activity android:theme="@style/ThemeCamera" android:label="@string/camera_label" android:icon="@mipmap/ic_launcher_camera" android:name="com.android.camera.Camera" android:taskAffinity="com.android.camera" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.media.action.IMAGE_CAPTURE" />
@@ -62,6 +94,37 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
+        <activity android:label="@string/app_name" android:name="com.android.gallery3d.app.Gallery" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="adjustResize">
+        </activity>
+        <activity-alias android:label="@string/app_name" android:name="com.cooliris.media.Gallery" android:configChanges="keyboardHidden|orientation|screenSize" android:targetActivity="com.android.gallery3d.app.Gallery">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity-alias>
+        <activity android:label="@string/app_name" android:name="com.android.gallery3d.app.UsbDeviceActivity" android:taskAffinity="" android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+            <meta-data android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" android:resource="@xml/device_filter" />
+        </activity>
+        <activity android:label="@string/crop_label" android:name="com.android.gallery3d.app.CropImage" android:process=":crop" android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+        <activity android:theme="@style/Theme.PhotoEditor" android:label="@string/app_name" android:name="com.android.gallery3d.photoeditor.PhotoEditor" android:process=":edit" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="adjustResize" android:hardwareAccelerated="true">
+        </activity>
+        <uses-library android:name="com.google.android.media.effects" android:required="false" />
+        <activity android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:label="@string/slideshow_dream_name" android:name="com.android.gallery3d.app.SlideshowDream" android:hardwareAccelerated="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.DREAM" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@android:style/Theme.Holo" android:name="com.android.gallery3d.settings.GallerySettings" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <provider android:name="com.android.gallery3d.provider.GalleryProvider" android:authorities="com.android.gallery3d.provider" android:syncable="false" android:grantUriPermissions="true" />
+        <activity android:name="com.android.gallery3d.gadget.WidgetClickHandler" />
+        <activity android:theme="@style/DialogPickerTheme" android:name="com.android.gallery3d.app.DialogPicker" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:theme="@style/DialogPickerTheme" android:name="com.android.gallery3d.app.AlbumPicker" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:theme="@android:style/Theme.Holo.Dialog" android:name="com.android.gallery3d.gadget.WidgetTypeChooser" android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:theme="@style/ThemeCamera" android:label="@string/video_camera_label" android:icon="@mipmap/ic_launcher_camera" android:name="com.android.camera.VideoCamera" android:taskAffinity="com.android.camera" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.media.action.VIDEO_CAMERA" />
@@ -73,6 +136,26 @@
             </intent-filter>
         </activity>
         <activity android:theme="@style/ThemeCamera" android:label="@string/pano_dialog_title" android:name="com.android.camera.PanoramaActivity" android:taskAffinity="com.android.camera" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity android:theme="@style/ThemeCaptureFinish" android:name="com.android.camera.CaptureDoneActivity" android:taskAffinity="com.android.camera" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
+            <intent-filter>
+                <action android:name="android.media.action.CAPTURE_DONE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <receiver android:label="@string/appwidget_title" android:name="com.android.gallery3d.gadget.PhotoAppWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info" />
+        </receiver>
+        <receiver android:name="com.android.gallery3d.app.PackagesMonitor">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_CHANGED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
         <receiver android:name="com.android.camera.CameraButtonIntentReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.CAMERA_BUTTON" />
@@ -83,5 +166,21 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+        <service android:name="com.android.gallery3d.gadget.WidgetService" android:permission="android.permission.BIND_REMOTEVIEWS" />
+        <activity android:theme="@android:style/Theme.Translucent.NoTitleBar" android:name="com.android.gallery3d.gadget.WidgetConfigure" android:configChanges="keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/video" android:icon="@mipmap/ic_launcher_video" android:name="com.android.gallery3d.app.VideoGallery" android:taskAffinity="android.task.VideoGallery" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="adjustNothing">
+        </activity>
+        <activity android:theme="@style/VideoTheme" android:name="com.meizu.video.client.ui.module.chanel.ChanelProgramDetailActivity" android:configChanges="keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.chanel.ChanelProgramDetailActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/VideoTheme" android:name="com.meizu.video.client.ui.module.download.SelectDownloadActivity" android:launchMode="singleTop" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <provider android:name="com.meizu.video.client.db.VideoOnlineContentProvider" android:authorities="com.meizu.onlinevideo" android:syncable="false" android:grantUriPermissions="true" />
     </application>
 </manifest>

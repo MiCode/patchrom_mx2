@@ -50,8 +50,6 @@
 
 .field public static final TYPE_TEXT_FLAG_MZ_CANDIDATE_ALWAYS_VISIBLE:I = 0x100000
 
-.field public static final TYPE_TEXT_FLAG_MZ_SMILE:I = 0x200000
-
 .field public static final TYPE_TEXT_FLAG_NO_SUGGESTIONS:I = 0x80000
 
 .field public static final TYPE_TEXT_VARIATION_EMAIL_ADDRESS:I = 0x20

@@ -122,7 +122,7 @@
 
     .line 120
     .local v2, res:Landroid/content/res/Resources;
-    const v7, 0x7f0900b3
+    const v7, 0x7f0901b0
 
     invoke-virtual {v2, v7}, Landroid/content/res/Resources;->getDimension(I)F
 
@@ -130,7 +130,7 @@
 
     .line 121
     .local v6, width:F
-    const v7, 0x7f0900b4
+    const v7, 0x7f0901b1
 
     invoke-virtual {v2, v7}, Landroid/content/res/Resources;->getDimension(I)F
 
@@ -299,7 +299,7 @@
     .parameter
 
     .prologue
-    const v2, 0x7f0d0057
+    const v2, 0x7f0d005c
 
     .line 156
     const-string v0, "widget-type"
@@ -313,7 +313,7 @@
     .line 157
     iget v0, p0, Lcom/android/gallery3d/gadget/WidgetConfigure;->mWidgetType:I
 
-    const v1, 0x7f0d0055
+    const v1, 0x7f0d005a
 
     if-ne v0, v1, :cond_0
 

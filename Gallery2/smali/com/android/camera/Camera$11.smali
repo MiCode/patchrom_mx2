@@ -1,9 +1,6 @@
 .class Lcom/android/camera/Camera$11;
-.super Ljava/lang/Object;
+.super Landroid/content/BroadcastReceiver;
 .source "Camera.java"
-
-# interfaces
-.implements Ljava/lang/Runnable;
 
 
 # annotations
@@ -27,28 +24,100 @@
     .parameter
 
     .prologue
-    .line 1428
+    .line 1394
     iput-object p1, p0, Lcom/android/camera/Camera$11;->this$0:Lcom/android/camera/Camera;
 
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public run()V
-    .locals 2
+.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+    .locals 5
+    .parameter "context"
+    .parameter "intent"
 
     .prologue
-    .line 1430
-    iget-object v0, p0, Lcom/android/camera/Camera$11;->this$0:Lcom/android/camera/Camera;
+    .line 1397
+    invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
-    const/4 v1, 0x1
+    move-result-object v0
 
-    #setter for: Lcom/android/camera/Camera;->mIsCanNextFocus:Z
-    invoke-static {v0, v1}, Lcom/android/camera/Camera;->access$9102(Lcom/android/camera/Camera;Z)Z
+    .line 1398
+    .local v0, action:Ljava/lang/String;
+    const-string v2, "android.intent.action.BATTERY_CHANGED"
 
-    .line 1431
+    invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1
+
+    .line 1399
+    iget-object v2, p0, Lcom/android/camera/Camera$11;->this$0:Lcom/android/camera/Camera;
+
+    invoke-static {v2}, Lcom/android/camera/Util;->checkIsLowBattery(Landroid/content/Context;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    .line 1400
+    iget-object v2, p0, Lcom/android/camera/Camera$11;->this$0:Lcom/android/camera/Camera;
+
+    invoke-virtual {v2}, Lcom/android/camera/Camera;->finish()V
+
+    .line 1409
+    :cond_0
+    :goto_0
     return-void
+
+    .line 1402
+    :cond_1
+    const-string v2, "android.intent.action.MEIZU_HDMI_STATUS_CHANGED"
+
+    invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    .line 1403
+    const-string v2, "multimedia.hdmi.status"
+
+    invoke-static {v2}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    .line 1404
+    .local v1, s:Ljava/lang/String;
+    const-string v2, "available"
+
+    invoke-virtual {v2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    .line 1405
+    iget-object v2, p0, Lcom/android/camera/Camera$11;->this$0:Lcom/android/camera/Camera;
+
+    const v3, 0x7f0a00c5
+
+    const/4 v4, 0x1
+
+    invoke-static {v2, v3, v4}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/widget/Toast;->show()V
+
+    .line 1406
+    iget-object v2, p0, Lcom/android/camera/Camera$11;->this$0:Lcom/android/camera/Camera;
+
+    invoke-virtual {v2}, Lcom/android/camera/Camera;->finish()V
+
+    goto :goto_0
 .end method

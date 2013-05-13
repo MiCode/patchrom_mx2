@@ -1735,6 +1735,9 @@
     .locals 14
     .parameter "a"
     .parameter "b"
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_CODE:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
 
     .prologue
     const/16 v13, 0x4e
@@ -1889,7 +1892,6 @@
 
     sub-int v2, v12, v7
 
-    .line 513
     .local v2, effectiveALen:I
     invoke-static {p1}, Landroid/telephony/PhoneNumberUtils$Injector;->getEffectiveLength(Ljava/lang/String;)I
 
@@ -3553,9 +3555,6 @@
     .parameter "phoneNumber"
     .parameter "phoneNumberE164"
     .parameter "defaultCountryIso"
-    .annotation build Landroid/annotation/MiuiHook;
-        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_CODE:Landroid/annotation/MiuiHook$MiuiHookType;
-    .end annotation
 
     .prologue
     invoke-static {p0}, Lmiui/telephony/PhoneNumberUtils;->removeDashesAndBlanks(Ljava/lang/String;)Ljava/lang/String;
@@ -4669,9 +4668,6 @@
     .parameter "number"
     .parameter "defaultCountryIso"
     .parameter "useExactMatch"
-    .annotation build Landroid/annotation/MiuiHook;
-        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_CODE:Landroid/annotation/MiuiHook$MiuiHookType;
-    .end annotation
 
     .prologue
     const/4 v7, 0x1
@@ -6274,7 +6270,7 @@
 
     .line 1517
     .local v0, c:C
-    invoke-static {v4, v0}, Landroid/telephony/PhoneNumberUtils$Injector;->appendNonSeparator(Ljava/lang/StringBuilder;C)V
+    invoke-static {v4, v0, v2}, Landroid/telephony/PhoneNumberUtils$Injector;->appendNonSeparator(Ljava/lang/StringBuilder;CI)V
 
     const/16 v5, 0xa
 

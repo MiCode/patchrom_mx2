@@ -35,7 +35,7 @@
     .parameter
 
     .prologue
-    .line 2346
+    .line 2473
     iput-object p1, p0, Lcom/android/camera/VideoCamera$GetThumbnailTask;->this$0:Lcom/android/camera/VideoCamera;
 
     invoke-direct {p0}, Landroid/os/AsyncTask;-><init>()V
@@ -49,7 +49,7 @@
     .parameter "x1"
 
     .prologue
-    .line 2346
+    .line 2473
     invoke-direct {p0, p1}, Lcom/android/camera/VideoCamera$GetThumbnailTask;-><init>(Lcom/android/camera/VideoCamera;)V
 
     return-void
@@ -62,7 +62,7 @@
     .parameter "x0"
 
     .prologue
-    .line 2346
+    .line 2473
     check-cast p1, [Ljava/lang/String;
 
     .end local p1
@@ -82,7 +82,7 @@
 
     const/4 v9, 0x0
 
-    .line 2349
+    .line 2476
     const/16 v1, 0x280
 
     const/16 v2, 0x3c0
@@ -91,22 +91,22 @@
 
     move-result-object v0
 
-    .line 2350
+    .line 2477
     .local v0, b:Landroid/graphics/Bitmap;
     if-nez v0, :cond_0
 
-    .line 2364
+    .line 2491
     :goto_0
     return-object v9
 
-    .line 2352
+    .line 2479
     :cond_0
     :try_start_0
     new-instance v5, Landroid/graphics/Matrix;
 
     invoke-direct {v5}, Landroid/graphics/Matrix;-><init>()V
 
-    .line 2353
+    .line 2480
     .local v5, m:Landroid/graphics/Matrix;
     iget-object v1, p0, Lcom/android/camera/VideoCamera$GetThumbnailTask;->this$0:Lcom/android/camera/VideoCamera;
 
@@ -119,7 +119,7 @@
 
     invoke-virtual {v5, v1}, Landroid/graphics/Matrix;->setRotate(F)V
 
-    .line 2354
+    .line 2481
     iget-object v8, p0, Lcom/android/camera/VideoCamera$GetThumbnailTask;->this$0:Lcom/android/camera/VideoCamera;
 
     const/16 v1, 0x5b
@@ -137,25 +137,25 @@
     move-result-object v1
 
     #setter for: Lcom/android/camera/VideoCamera;->mScreenShot:Landroid/graphics/Bitmap;
-    invoke-static {v8, v1}, Lcom/android/camera/VideoCamera;->access$5102(Lcom/android/camera/VideoCamera;Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+    invoke-static {v8, v1}, Lcom/android/camera/VideoCamera;->access$5002(Lcom/android/camera/VideoCamera;Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
 
-    .line 2355
+    .line 2482
     iget-object v1, p0, Lcom/android/camera/VideoCamera$GetThumbnailTask;->this$0:Lcom/android/camera/VideoCamera;
 
     #getter for: Lcom/android/camera/VideoCamera;->mScreenShot:Landroid/graphics/Bitmap;
-    invoke-static {v1}, Lcom/android/camera/VideoCamera;->access$5100(Lcom/android/camera/VideoCamera;)Landroid/graphics/Bitmap;
+    invoke-static {v1}, Lcom/android/camera/VideoCamera;->access$5000(Lcom/android/camera/VideoCamera;)Landroid/graphics/Bitmap;
 
     move-result-object v1
 
     if-eq v0, v1, :cond_1
 
-    .line 2356
+    .line 2483
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 2357
+    .line 2484
     const/4 v0, 0x0
 
-    .line 2359
+    .line 2486
     :cond_1
     iget-object v1, p0, Lcom/android/camera/VideoCamera$GetThumbnailTask;->this$0:Lcom/android/camera/VideoCamera;
 
@@ -172,12 +172,12 @@
 
     goto :goto_0
 
-    .line 2360
+    .line 2487
     .end local v5           #m:Landroid/graphics/Matrix;
     :catch_0
     move-exception v7
 
-    .line 2361
+    .line 2488
     .local v7, e:Ljava/lang/OutOfMemoryError;
     iget-object v1, p0, Lcom/android/camera/VideoCamera$GetThumbnailTask;->this$0:Lcom/android/camera/VideoCamera;
 

@@ -3,12 +3,12 @@
 .source "ActivityState.java"
 
 # interfaces
-.implements Landroid/content/DialogInterface$OnClickListener;
+.implements Landroid/widget/PopupMenu$OnMenuItemClickListener;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/gallery3d/app/ActivityState;->deleteSelectedObject(ILjava/lang/Object;)V
+    value = Lcom/android/gallery3d/app/ActivityState;->onHudViewShare(I)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,20 +20,35 @@
 # instance fields
 .field final synthetic this$0:Lcom/android/gallery3d/app/ActivityState;
 
+.field final synthetic val$action:Ljava/lang/String;
+
 .field final synthetic val$context:Landroid/content/Context;
+
+.field final synthetic val$intent:Landroid/content/Intent;
+
+.field final synthetic val$otherPackage:Ljava/util/ArrayList;
 
 
 # direct methods
-.method constructor <init>(Lcom/android/gallery3d/app/ActivityState;Landroid/content/Context;)V
+.method constructor <init>(Lcom/android/gallery3d/app/ActivityState;Ljava/lang/String;Landroid/content/Intent;Landroid/content/Context;Ljava/util/ArrayList;)V
     .locals 0
+    .parameter
+    .parameter
+    .parameter
     .parameter
     .parameter
 
     .prologue
-    .line 421
+    .line 337
     iput-object p1, p0, Lcom/android/gallery3d/app/ActivityState$3;->this$0:Lcom/android/gallery3d/app/ActivityState;
 
-    iput-object p2, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$context:Landroid/content/Context;
+    iput-object p2, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$action:Ljava/lang/String;
+
+    iput-object p3, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$intent:Landroid/content/Intent;
+
+    iput-object p4, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$context:Landroid/content/Context;
+
+    iput-object p5, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$otherPackage:Ljava/util/ArrayList;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
@@ -42,35 +57,124 @@
 
 
 # virtual methods
-.method public onClick(Landroid/content/DialogInterface;I)V
+.method public onMenuItemClick(Landroid/view/MenuItem;)Z
     .locals 4
-    .parameter "dialog"
-    .parameter "which"
+    .parameter "item"
 
     .prologue
-    .line 425
-    new-instance v0, Lcom/android/gallery3d/ui/MenuExecutor;
+    .line 341
+    invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
 
+    move-result v0
+
+    .line 342
+    .local v0, which:I
+    packed-switch v0, :pswitch_data_0
+
+    .line 365
+    :goto_0
+    const/4 v1, 0x1
+
+    return v1
+
+    .line 346
+    :pswitch_0
+    iget-object v1, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$action:Ljava/lang/String;
+
+    const-string v2, "android.intent.action.SEND"
+
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    .line 347
+    iget-object v1, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$intent:Landroid/content/Intent;
+
+    const-string v2, "android.intent.action.SEND_BY_BT"
+
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 351
+    :goto_1
+    iget-object v1, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$intent:Landroid/content/Intent;
+
+    const/high16 v2, 0x8
+
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
+
+    .line 352
     iget-object v1, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$context:Landroid/content/Context;
 
-    check-cast v1, Lcom/android/gallery3d/app/GalleryActivity;
+    iget-object v2, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$intent:Landroid/content/Intent;
 
-    iget-object v2, p0, Lcom/android/gallery3d/app/ActivityState$3;->this$0:Lcom/android/gallery3d/app/ActivityState;
+    invoke-virtual {v1, v2}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
 
-    iget-object v2, v2, Lcom/android/gallery3d/app/ActivityState;->mSelectionManager:Lcom/android/gallery3d/ui/SelectionManager;
+    goto :goto_0
 
-    invoke-direct {v0, v1, v2}, Lcom/android/gallery3d/ui/MenuExecutor;-><init>(Lcom/android/gallery3d/app/GalleryActivity;Lcom/android/gallery3d/ui/SelectionManager;)V
+    .line 349
+    :cond_0
+    iget-object v1, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$intent:Landroid/content/Intent;
 
-    .line 426
-    .local v0, menuExecutor:Lcom/android/gallery3d/ui/MenuExecutor;
-    const v1, 0x7f0d0192
+    const-string v2, "android.intent.action.SEND_MULTIPLE_BY_BT"
 
-    const v2, 0x7f0a0147
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
 
-    const/4 v3, 0x0
+    goto :goto_1
 
-    invoke-virtual {v0, v1, v2, v3}, Lcom/android/gallery3d/ui/MenuExecutor;->startAction(IILcom/android/gallery3d/ui/MenuExecutor$ProgressListener;)V
+    .line 355
+    :pswitch_1
+    iget-object v1, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$intent:Landroid/content/Intent;
 
-    .line 427
-    return-void
+    const-string v2, "com.android.mms"
+
+    const-string v3, "com.android.mms.ui.ComposeMessageActivity"
+
+    invoke-virtual {v1, v2, v3}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 356
+    iget-object v1, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$context:Landroid/content/Context;
+
+    iget-object v2, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$intent:Landroid/content/Intent;
+
+    invoke-virtual {v1, v2}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+
+    goto :goto_0
+
+    .line 359
+    :pswitch_2
+    iget-object v1, p0, Lcom/android/gallery3d/app/ActivityState$3;->this$0:Lcom/android/gallery3d/app/ActivityState;
+
+    iget-object v2, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$context:Landroid/content/Context;
+
+    invoke-virtual {v1, v2}, Lcom/android/gallery3d/app/ActivityState;->sharedByEmail(Landroid/content/Context;)Z
+
+    goto :goto_0
+
+    .line 362
+    :pswitch_3
+    iget-object v1, p0, Lcom/android/gallery3d/app/ActivityState$3;->this$0:Lcom/android/gallery3d/app/ActivityState;
+
+    iget-object v2, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$otherPackage:Ljava/util/ArrayList;
+
+    iget-object v3, p0, Lcom/android/gallery3d/app/ActivityState$3;->val$intent:Landroid/content/Intent;
+
+    #calls: Lcom/android/gallery3d/app/ActivityState;->createShareMoreDialog(Ljava/util/ArrayList;Landroid/content/Intent;)Landroid/app/Dialog;
+    invoke-static {v1, v2, v3}, Lcom/android/gallery3d/app/ActivityState;->access$100(Lcom/android/gallery3d/app/ActivityState;Ljava/util/ArrayList;Landroid/content/Intent;)Landroid/app/Dialog;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/app/Dialog;->show()V
+
+    goto :goto_0
+
+    .line 342
+    :pswitch_data_0
+    .packed-switch 0x205
+        :pswitch_0
+        :pswitch_1
+        :pswitch_3
+        :pswitch_2
+    .end packed-switch
 .end method

@@ -118,12 +118,12 @@
 
     move-result-object v0
 
-    const v1, 0x109004e
+    const v1, 0x1090051
 
     invoke-virtual {v0, v1, p0, v3}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
     .line 76
-    const v0, 0x10202ce
+    const v0, 0x10202cb
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/LockEmergencyCallView;->findViewById(I)Landroid/view/View;
 
@@ -134,7 +134,7 @@
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/LockEmergencyCallView;->mTvCallNum:Landroid/widget/TextView;
 
     .line 77
-    const v0, 0x10202ca
+    const v0, 0x10202c7
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/LockEmergencyCallView;->findViewById(I)Landroid/view/View;
 
@@ -422,7 +422,7 @@
     .line 114
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockEmergencyCallView;->mTvTips:Landroid/widget/TextView;
 
-    const v1, 0x104055c
+    const v1, 0x1040561
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(I)V
 
@@ -434,7 +434,7 @@
     :cond_0
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockEmergencyCallView;->mTvTips:Landroid/widget/TextView;
 
-    const v1, 0x1040350
+    const v1, 0x1040351
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(I)V
 

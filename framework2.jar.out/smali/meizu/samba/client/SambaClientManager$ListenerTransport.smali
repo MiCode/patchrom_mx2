@@ -42,29 +42,29 @@
     .parameter "looper"
 
     .prologue
-    .line 73
+    .line 74
     iput-object p1, p0, Lmeizu/samba/client/SambaClientManager$ListenerTransport;->this$0:Lmeizu/samba/client/SambaClientManager;
 
     invoke-direct {p0}, Lmeizu/samba/client/ISambaStatusListener$Stub;-><init>()V
 
-    .line 74
+    .line 75
     iput-object p2, p0, Lmeizu/samba/client/SambaClientManager$ListenerTransport;->mListener:Lmeizu/samba/client/SambaStatusListener;
 
-    .line 76
+    .line 77
     if-nez p3, :cond_0
 
-    .line 77
+    .line 78
     new-instance v0, Lmeizu/samba/client/SambaClientManager$ListenerTransport$1;
 
     invoke-direct {v0, p0, p1}, Lmeizu/samba/client/SambaClientManager$ListenerTransport$1;-><init>(Lmeizu/samba/client/SambaClientManager$ListenerTransport;Lmeizu/samba/client/SambaClientManager;)V
 
     iput-object v0, p0, Lmeizu/samba/client/SambaClientManager$ListenerTransport;->mListenerHandler:Landroid/os/Handler;
 
-    .line 91
+    .line 92
     :goto_0
     return-void
 
-    .line 84
+    .line 85
     :cond_0
     new-instance v0, Lmeizu/samba/client/SambaClientManager$ListenerTransport$2;
 
@@ -80,7 +80,7 @@
     .parameter "msg"
 
     .prologue
-    .line 116
+    .line 117
     const-string v4, "SambaClientManager"
 
     new-instance v5, Ljava/lang/StringBuilder;
@@ -103,22 +103,22 @@
 
     invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 117
+    .line 118
     iget v4, p1, Landroid/os/Message;->what:I
 
     packed-switch v4, :pswitch_data_0
 
-    .line 131
+    .line 132
     :goto_0
     return-void
 
-    .line 119
+    .line 120
     :pswitch_0
     iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v0, Landroid/os/Bundle;
 
-    .line 120
+    .line 121
     .local v0, b:Landroid/os/Bundle;
     const-string v4, "point"
 
@@ -126,7 +126,7 @@
 
     move-result-object v1
 
-    .line 121
+    .line 122
     .local v1, point:Ljava/lang/String;
     const-string v4, "status"
 
@@ -134,7 +134,7 @@
 
     move-result-object v3
 
-    .line 122
+    .line 123
     .local v3, status:Ljava/lang/String;
     iget-object v4, p0, Lmeizu/samba/client/SambaClientManager$ListenerTransport;->mListener:Lmeizu/samba/client/SambaStatusListener;
 
@@ -142,7 +142,7 @@
 
     goto :goto_0
 
-    .line 125
+    .line 126
     .end local v0           #b:Landroid/os/Bundle;
     .end local v1           #point:Ljava/lang/String;
     .end local v3           #status:Ljava/lang/String;
@@ -151,7 +151,7 @@
 
     check-cast v2, Lmeizu/samba/client/SambaClientManager$ListenerTransport$ScanResults;
 
-    .line 126
+    .line 127
     .local v2, results:Lmeizu/samba/client/SambaClientManager$ListenerTransport$ScanResults;
     iget-object v4, p0, Lmeizu/samba/client/SambaClientManager$ListenerTransport;->mListener:Lmeizu/samba/client/SambaStatusListener;
 
@@ -163,7 +163,7 @@
 
     goto :goto_0
 
-    .line 117
+    .line 118
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0
@@ -177,7 +177,7 @@
     .parameter "x1"
 
     .prologue
-    .line 58
+    .line 59
     invoke-direct {p0, p1}, Lmeizu/samba/client/SambaClientManager$ListenerTransport;->_handleMessage(Landroid/os/Message;)V
 
     return-void
@@ -191,7 +191,7 @@
     .parameter "status"
 
     .prologue
-    .line 94
+    .line 95
     const-string v2, "SambaClientManager"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -214,42 +214,42 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 95
+    .line 96
     invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;
 
     move-result-object v1
 
-    .line 96
+    .line 97
     .local v1, msg:Landroid/os/Message;
     const/4 v2, 0x1
 
     iput v2, v1, Landroid/os/Message;->what:I
 
-    .line 97
+    .line 98
     new-instance v0, Landroid/os/Bundle;
 
     invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
 
-    .line 98
+    .line 99
     .local v0, b:Landroid/os/Bundle;
     const-string v2, "point"
 
     invoke-virtual {v0, v2, p1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 99
+    .line 100
     const-string v2, "status"
 
     invoke-virtual {v0, v2, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 100
+    .line 101
     iput-object v0, v1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    .line 101
+    .line 102
     iget-object v2, p0, Lmeizu/samba/client/SambaClientManager$ListenerTransport;->mListenerHandler:Landroid/os/Handler;
 
     invoke-virtual {v2, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 102
+    .line 103
     return-void
 .end method
 
@@ -259,7 +259,7 @@
     .parameter "folderList"
 
     .prologue
-    .line 105
+    .line 106
     const-string v2, "SambaClientManager"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -282,37 +282,37 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 106
+    .line 107
     invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;
 
     move-result-object v0
 
-    .line 107
+    .line 108
     .local v0, msg:Landroid/os/Message;
     const/4 v2, 0x2
 
     iput v2, v0, Landroid/os/Message;->what:I
 
-    .line 108
+    .line 109
     new-instance v1, Lmeizu/samba/client/SambaClientManager$ListenerTransport$ScanResults;
 
     invoke-direct {v1, p0}, Lmeizu/samba/client/SambaClientManager$ListenerTransport$ScanResults;-><init>(Lmeizu/samba/client/SambaClientManager$ListenerTransport;)V
 
-    .line 109
+    .line 110
     .local v1, results:Lmeizu/samba/client/SambaClientManager$ListenerTransport$ScanResults;
     iput-object p1, v1, Lmeizu/samba/client/SambaClientManager$ListenerTransport$ScanResults;->addr:Ljava/lang/String;
 
-    .line 110
+    .line 111
     iput-object p2, v1, Lmeizu/samba/client/SambaClientManager$ListenerTransport$ScanResults;->folderList:Ljava/lang/String;
 
-    .line 111
+    .line 112
     iput-object v1, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    .line 112
+    .line 113
     iget-object v2, p0, Lmeizu/samba/client/SambaClientManager$ListenerTransport;->mListenerHandler:Landroid/os/Handler;
 
     invoke-virtual {v2, v0}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 113
+    .line 114
     return-void
 .end method

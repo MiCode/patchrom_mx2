@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 3763
+    .line 3962
     iput-object p1, p0, Lcom/android/camera/Camera$17;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,20 +41,14 @@
     .locals 2
 
     .prologue
-    .line 3765
+    .line 3966
     iget-object v0, p0, Lcom/android/camera/Camera$17;->this$0:Lcom/android/camera/Camera;
 
-    const/4 v1, 0x1
+    const/4 v1, 0x0
 
-    #calls: Lcom/android/camera/Camera;->firstPrepareCaptureModeUI(Z)V
-    invoke-static {v0, v1}, Lcom/android/camera/Camera;->access$12400(Lcom/android/camera/Camera;Z)V
+    #setter for: Lcom/android/camera/Camera;->mIsDropFirstProximityCapture:Z
+    invoke-static {v0, v1}, Lcom/android/camera/Camera;->access$5602(Lcom/android/camera/Camera;Z)Z
 
-    .line 3766
-    iget-object v0, p0, Lcom/android/camera/Camera$17;->this$0:Lcom/android/camera/Camera;
-
-    #calls: Lcom/android/camera/Camera;->updateFlashLightUI()V
-    invoke-static {v0}, Lcom/android/camera/Camera;->access$12500(Lcom/android/camera/Camera;)V
-
-    .line 3767
+    .line 3967
     return-void
 .end method

@@ -7,8 +7,8 @@
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/camera/Camera;->capture()Z
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/android/camera/Camera;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1944
+    .line 1559
     iput-object p1, p0, Lcom/android/camera/Camera$12;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,20 +41,14 @@
     .locals 2
 
     .prologue
-    .line 1947
+    .line 1561
     iget-object v0, p0, Lcom/android/camera/Camera$12;->this$0:Lcom/android/camera/Camera;
 
-    iget-object v0, v0, Lcom/android/camera/ActivityBase;->mCameraScreenNail:Lcom/android/camera/CameraScreenNail;
+    const/4 v1, 0x1
 
-    iget-object v1, p0, Lcom/android/camera/Camera$12;->this$0:Lcom/android/camera/Camera;
+    #setter for: Lcom/android/camera/Camera;->mIsCanNextFocus:Z
+    invoke-static {v0, v1}, Lcom/android/camera/Camera;->access$9402(Lcom/android/camera/Camera;Z)Z
 
-    #calls: Lcom/android/camera/Camera;->getCameraRotation()I
-    invoke-static {v1}, Lcom/android/camera/Camera;->access$11200(Lcom/android/camera/Camera;)I
-
-    move-result v1
-
-    invoke-virtual {v0, v1}, Lcom/android/camera/CameraScreenNail;->animateCapture(I)V
-
-    .line 1948
+    .line 1562
     return-void
 .end method

@@ -24,15 +24,11 @@
 
 .field private static final DEBUG:Z = true
 
-.field private static final DEBUG_CONFIGURATION:Z = false
+.field private static final DEBUG_CONFIGURATION:Z = true
 
 .field private static final KEY_LEFT:Ljava/lang/String; = "left"
 
 .field private static final KEY_RIGHT:Ljava/lang/String; = "right"
-
-.field private static final MARGIN_RIGHT_DELETE_FOR_PASSWORD:F = 114.5f
-
-.field private static final MARGIN_RIGHT_DELETE_FOR_SIM:F = 96.5f
 
 .field private static final MSG_START_CAMER_FINISHED:I = 0x3ea
 
@@ -113,10 +109,10 @@
     .parameter "dragCallback"
 
     .prologue
-    .line 141
-    const v6, 0x1090068
+    .line 135
+    const v6, 0x109006c
 
-    const v7, 0x1090068
+    const v7, 0x109006c
 
     move-object v0, p0
 
@@ -134,61 +130,61 @@
 
     invoke-direct/range {v0 .. v8}, Lcom/meizu/internal/policy/impl/LockViewBaseSe;-><init>(Landroid/content/Context;Landroid/content/res/Configuration;Lcom/android/internal/policy/impl/KeyguardUpdateMonitor;Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;Lcom/meizu/internal/policy/impl/LockControllerMonitor;IILcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;)V
 
-    .line 102
+    .line 96
     const/4 v0, -0x1
 
     iput v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mLeftTimes:I
 
-    .line 106
+    .line 100
     const-string v0, ""
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputNum:Ljava/lang/String;
 
-    .line 108
+    .line 102
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mPasswordError:Z
 
-    .line 109
+    .line 103
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mConfirmPinError:Z
 
-    .line 110
+    .line 104
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimUnlockProgressDialog:Landroid/app/ProgressDialog;
 
-    .line 111
+    .line 105
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mAcm:Landroid/content/pm/AccessControlManager;
 
-    .line 113
+    .line 107
     new-instance v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$1;
 
     invoke-direct {v0, p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$1;-><init>(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)V
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mLockMusicWidgetCallback:Lcom/meizu/internal/policy/impl/LockMusicView$ILockMusicWidget;
 
-    .line 983
+    .line 1014
     new-instance v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$9;
 
     invoke-direct {v0, p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$9;-><init>(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)V
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mRestKeypadAsPoint:Ljava/lang/Runnable;
 
-    .line 1161
+    .line 1206
     new-instance v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$10;
 
     invoke-direct {v0, p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$10;-><init>(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)V
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mHandler:Landroid/os/Handler;
 
-    .line 143
+    .line 137
     iput-object p3, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mLockPatternUtils:Lcom/android/internal/widget/LockPatternUtils;
 
-    .line 144
+    .line 138
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
     const-string v1, "access_control"
@@ -201,8 +197,8 @@
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mAcm:Landroid/content/pm/AccessControlManager;
 
-    .line 146
-    const v0, 0x10202ff
+    .line 140
+    const v0, 0x10202fb
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -210,8 +206,8 @@
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mRootView:Landroid/view/View;
 
-    .line 147
-    const v0, 0x10202cc
+    .line 141
+    const v0, 0x10202c9
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -219,8 +215,8 @@
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputBox:Landroid/view/View;
 
-    .line 149
-    const v0, 0x102032d
+    .line 143
+    const v0, 0x1020329
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -230,7 +226,7 @@
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
-    .line 150
+    .line 144
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
     new-instance v1, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$UnlockPatternListener;
@@ -241,14 +237,14 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/LockDigitView;->setOnPatternListener(Lcom/meizu/widget/LockDigitView$OnPatternListener;)V
 
-    .line 151
+    .line 145
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/LockDigitView;->setKeyAsPoint(Z)V
 
-    .line 152
+    .line 146
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
     const/4 v1, 0x3
@@ -263,7 +259,7 @@
 
     move-result-object v4
 
-    const v5, 0x108052a
+    const v5, 0x1080546
 
     invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -273,7 +269,7 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/meizu/widget/LockDigitView;->setCellInfo(IILjava/lang/String;Landroid/graphics/drawable/Drawable;Z)V
 
-    .line 154
+    .line 148
     const v0, 0x1020221
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->findViewById(I)Landroid/view/View;
@@ -284,7 +280,7 @@
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputDelete:Landroid/widget/ImageView;
 
-    .line 155
+    .line 149
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputDelete:Landroid/widget/ImageView;
 
     new-instance v1, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$2;
@@ -293,8 +289,8 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 174
-    const v0, 0x10202ca
+    .line 168
+    const v0, 0x10202c7
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -304,7 +300,7 @@
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputTips:Landroid/widget/TextView;
 
-    .line 175
+    .line 169
     const v0, 0x102021f
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->findViewById(I)Landroid/view/View;
@@ -315,8 +311,8 @@
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputText:Lcom/meizu/widget/LockPasswordView;
 
-    .line 176
-    const v0, 0x1020302
+    .line 170
+    const v0, 0x10202fe
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->findViewById(I)Landroid/view/View;
 
@@ -326,14 +322,14 @@
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyButton:Landroid/widget/TextView;
 
-    .line 177
+    .line 171
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyButton:Landroid/widget/TextView;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setClickable(Z)V
 
-    .line 178
+    .line 172
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyButton:Landroid/widget/TextView;
 
     new-instance v1, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$3;
@@ -342,35 +338,35 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 192
+    .line 188
     invoke-virtual {p5}, Lcom/android/internal/policy/impl/KeyguardUpdateMonitor;->getSimState()Lcom/android/internal/telephony/IccCard$State;
 
     move-result-object v9
 
-    .line 193
+    .line 189
     .local v9, simState:Lcom/android/internal/telephony/IccCard$State;
     sget-object v0, Lcom/android/internal/telephony/IccCard$State;->PIN_REQUIRED:Lcom/android/internal/telephony/IccCard$State;
 
     if-ne v9, v0, :cond_1
 
-    .line 194
+    .line 190
     sget-object v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;->checkPin:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
-    .line 199
+    .line 195
     :cond_0
     :goto_0
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->updateViewForMode()V
 
-    .line 200
+    .line 196
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mLockMusicWidgetCallback:Lcom/meizu/internal/policy/impl/LockMusicView$ILockMusicWidget;
 
     invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/LockMusicView;->setLockMusicWidgetCallback(Lcom/meizu/internal/policy/impl/LockMusicView$ILockMusicWidget;)V
 
-    .line 201
+    .line 197
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mTimeView:Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;
 
     new-instance v1, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$4;
@@ -379,19 +375,19 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->setDateBoxOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 211
+    .line 207
     new-instance v0, Lcom/meizu/internal/policy/impl/UnlockAnimateHelper;
 
     invoke-direct {v0}, Lcom/meizu/internal/policy/impl/UnlockAnimateHelper;-><init>()V
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mAnimateHelper:Lcom/meizu/internal/policy/impl/UnlockAnimateHelper;
 
-    .line 212
+    .line 208
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mAnimateHelper:Lcom/meizu/internal/policy/impl/UnlockAnimateHelper;
 
     invoke-virtual {v0, p0}, Lcom/meizu/internal/policy/impl/UnlockAnimateHelper;->setCallback(Lcom/meizu/internal/policy/impl/UnlockAnimateHelper$Callback;)V
 
-    .line 214
+    .line 210
     const-string v0, "PasswordAndSimUnlockScreen"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -428,16 +424,23 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 215
+    .line 212
+    const-string v0, "PasswordAndSimUnlockScreen"
+
+    const-string v1, "***** PasswordAndSimUnlockScreen construct *****"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 214
     return-void
 
-    .line 195
+    .line 191
     :cond_1
     sget-object v0, Lcom/android/internal/telephony/IccCard$State;->PUK_REQUIRED:Lcom/android/internal/telephony/IccCard$State;
 
     if-ne v9, v0, :cond_0
 
-    .line 196
+    .line 192
     sget-object v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;->checkPuk:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
@@ -450,7 +453,7 @@
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->setKeypadAsPoint()V
 
     return-void
@@ -461,7 +464,7 @@
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->clearInput()V
 
     return-void
@@ -472,7 +475,7 @@
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputNum:Ljava/lang/String;
 
     return-object v0
@@ -484,7 +487,7 @@
     .parameter "x1"
 
     .prologue
-    .line 43
+    .line 40
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputNum:Ljava/lang/String;
 
     return-object p1
@@ -496,7 +499,7 @@
     .parameter "x1"
 
     .prologue
-    .line 43
+    .line 40
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -525,7 +528,7 @@
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputText:Lcom/meizu/widget/LockPasswordView;
 
     return-object v0
@@ -536,18 +539,40 @@
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
 
     return-object v0
 .end method
 
-.method static synthetic access$1300(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)I
+.method static synthetic access$1300(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)Landroid/content/Context;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
+
+    return-object v0
+.end method
+
+.method static synthetic access$1400(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)Landroid/widget/ImageView;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 40
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputDelete:Landroid/widget/ImageView;
+
+    return-object v0
+.end method
+
+.method static synthetic access$1500(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)I
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 40
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->getPasswordLimit()I
 
     move-result v0
@@ -555,85 +580,62 @@
     return v0
 .end method
 
-.method static synthetic access$1400(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Ljava/lang/String;)V
+.method static synthetic access$1600(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Ljava/lang/String;)V
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 43
+    .line 40
     invoke-direct {p0, p1}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->checkPassword(Ljava/lang/String;)V
 
     return-void
 .end method
 
-.method static synthetic access$1500(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)Landroid/widget/ImageView;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 43
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputDelete:Landroid/widget/ImageView;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1600(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)V
+.method static synthetic access$1700(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)V
     .locals 0
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->setKeypadAsNum()V
 
     return-void
 .end method
 
-.method static synthetic access$1700(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
+.method static synthetic access$1800(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
     return-object v0
 .end method
 
-.method static synthetic access$1702(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;)Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
+.method static synthetic access$1802(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;)Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 43
+    .line 40
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
     return-object p1
 .end method
 
-.method static synthetic access$1800(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Ljava/lang/String;)V
+.method static synthetic access$1900(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Ljava/lang/String;)V
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 43
+    .line 40
     invoke-direct {p0, p1}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->checkPin(Ljava/lang/String;)V
 
     return-void
-.end method
-
-.method static synthetic access$1902(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Ljava/lang/String;)Ljava/lang/String;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 43
-    iput-object p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mCheckPuk:Ljava/lang/String;
-
-    return-object p1
 .end method
 
 .method static synthetic access$200(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)Lcom/meizu/widget/LockDigitView;
@@ -641,19 +643,8 @@
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
-
-    return-object v0
-.end method
-
-.method static synthetic access$2000(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)Ljava/lang/String;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 43
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mNewPin:Ljava/lang/String;
 
     return-object v0
 .end method
@@ -664,65 +655,88 @@
     .parameter "x1"
 
     .prologue
-    .line 43
+    .line 40
+    iput-object p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mCheckPuk:Ljava/lang/String;
+
+    return-object p1
+.end method
+
+.method static synthetic access$2100(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)Ljava/lang/String;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 40
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mNewPin:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method static synthetic access$2102(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Ljava/lang/String;)Ljava/lang/String;
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 40
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mNewPin:Ljava/lang/String;
 
     return-object p1
 .end method
 
-.method static synthetic access$2102(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Z)Z
+.method static synthetic access$2202(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Z)Z
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 43
+    .line 40
     iput-boolean p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mConfirmPinError:Z
 
     return p1
 .end method
 
-.method static synthetic access$2200(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)V
+.method static synthetic access$2300(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)V
     .locals 0
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->checkPuk()V
 
     return-void
 .end method
 
-.method static synthetic access$2302(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Z)Z
+.method static synthetic access$2402(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Z)Z
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 43
+    .line 40
     iput-boolean p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mPasswordError:Z
 
     return p1
 .end method
 
-.method static synthetic access$2400(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)Landroid/app/ProgressDialog;
+.method static synthetic access$2500(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)Landroid/app/ProgressDialog;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimUnlockProgressDialog:Landroid/app/ProgressDialog;
 
     return-object v0
 .end method
 
-.method static synthetic access$2502(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;I)I
+.method static synthetic access$2602(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;I)I
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 43
+    .line 40
     iput p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mLeftTimes:I
 
     return p1
@@ -733,7 +747,7 @@
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mLockPatternUtils:Lcom/android/internal/widget/LockPatternUtils;
 
     return-object v0
@@ -744,7 +758,7 @@
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->showEmergencyCallView()V
 
     return-void
@@ -755,7 +769,7 @@
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
     return-object v0
@@ -766,7 +780,7 @@
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->showKeypadView()V
 
     return-void
@@ -778,7 +792,7 @@
     .parameter "x1"
 
     .prologue
-    .line 43
+    .line 40
     invoke-direct {p0, p1}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->converNum(Lcom/meizu/widget/LockDigitView$Cell;)Ljava/lang/String;
 
     move-result-object v0
@@ -791,7 +805,7 @@
     .parameter "x0"
 
     .prologue
-    .line 43
+    .line 40
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mAcm:Landroid/content/pm/AccessControlManager;
 
     return-object v0
@@ -801,7 +815,7 @@
     .locals 6
 
     .prologue
-    .line 432
+    .line 446
     const-string v3, "phone"
 
     invoke-static {v3}, Landroid/os/ServiceManager;->checkService(Ljava/lang/String;)Landroid/os/IBinder;
@@ -812,25 +826,25 @@
 
     move-result-object v1
 
-    .line 434
+    .line 448
     .local v1, iPhoneEx:Lcom/android/internal/telephony/ITelephony;
     if-nez v1, :cond_1
 
-    .line 435
+    .line 449
     const-string v3, "\u83b7\u53d6\u7535\u8bdd\u670d\u52a1\u5931\u8d25\uff01"
 
     iput-object v3, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mTipsStringOfSim:Ljava/lang/String;
 
-    .line 455
+    .line 469
     :cond_0
     :goto_0
     return-void
 
-    .line 438
+    .line 452
     :cond_1
     const/4 v2, 0x0
 
-    .line 440
+    .line 454
     .local v2, leftTimes:[I
     :try_start_0
     invoke-interface {v1}, Lcom/android/internal/telephony/ITelephony;->queryLockCount()[I
@@ -839,25 +853,25 @@
 
     move-result-object v2
 
-    .line 445
+    .line 459
     :goto_1
     if-eqz v2, :cond_0
 
-    .line 447
+    .line 461
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
     sget-object v4, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;->checkPin:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
     if-ne v3, v4, :cond_2
 
-    .line 448
+    .line 462
     const/4 v3, 0x1
 
     aget v3, v2, v3
 
     iput v3, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mLeftTimes:I
 
-    .line 453
+    .line 467
     :goto_2
     const-string v3, "PasswordAndSimUnlockScreen"
 
@@ -885,17 +899,17 @@
 
     goto :goto_0
 
-    .line 441
+    .line 455
     :catch_0
     move-exception v0
 
-    .line 442
+    .line 456
     .local v0, e:Landroid/os/RemoteException;
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
     goto :goto_1
 
-    .line 450
+    .line 464
     .end local v0           #e:Landroid/os/RemoteException;
     :cond_2
     const/4 v3, 0x3
@@ -912,7 +926,7 @@
     .parameter "password"
 
     .prologue
-    .line 653
+    .line 682
     if-eqz p1, :cond_0
 
     invoke-virtual {p1}, Ljava/lang/String;->isEmpty()Z
@@ -921,12 +935,17 @@
 
     if-eqz v0, :cond_1
 
-    .line 681
+    .line 683
     :cond_0
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mIsChecking:Z
+
+    .line 712
     :goto_0
     return-void
 
-    .line 656
+    .line 687
     :cond_1
     new-instance v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;
 
@@ -944,7 +963,7 @@
     .parameter "password"
 
     .prologue
-    .line 705
+    .line 736
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
     move-result v1
@@ -953,29 +972,29 @@
 
     if-ge v1, v2, :cond_0
 
-    .line 706
+    .line 737
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v1}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->pokeWakelock()V
 
-    .line 707
+    .line 738
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->clearInput()V
 
-    .line 737
+    .line 768
     :goto_0
     return-void
 
-    .line 710
+    .line 741
     :cond_0
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v2, 0x104036a
+    const v2, 0x104036b
 
     invoke-virtual {v1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 711
+    .line 742
     .local v0, msg:Ljava/lang/String;
     invoke-direct {p0, v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->getSimUnlockProgressDialog(Ljava/lang/String;)Landroid/app/Dialog;
 
@@ -983,7 +1002,7 @@
 
     invoke-virtual {v1}, Landroid/app/Dialog;->show()V
 
-    .line 712
+    .line 743
     new-instance v1, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$7;
 
     invoke-direct {v1, p0, p1}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$7;-><init>(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Ljava/lang/String;)V
@@ -997,7 +1016,7 @@
     .locals 4
 
     .prologue
-    .line 742
+    .line 773
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mNewPin:Ljava/lang/String;
 
     invoke-virtual {v1}, Ljava/lang/String;->length()I
@@ -1008,29 +1027,29 @@
 
     if-ge v1, v2, :cond_0
 
-    .line 743
+    .line 774
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v1}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->pokeWakelock()V
 
-    .line 744
+    .line 775
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->clearInput()V
 
-    .line 777
+    .line 808
     :goto_0
     return-void
 
-    .line 748
+    .line 779
     :cond_0
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v2, 0x104036a
+    const v2, 0x104036b
 
     invoke-virtual {v1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 749
+    .line 780
     .local v0, msg:Ljava/lang/String;
     invoke-direct {p0, v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->getSimUnlockProgressDialog(Ljava/lang/String;)Landroid/app/Dialog;
 
@@ -1038,7 +1057,7 @@
 
     invoke-virtual {v1}, Landroid/app/Dialog;->show()V
 
-    .line 751
+    .line 782
     new-instance v1, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$8;
 
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mCheckPuk:Ljava/lang/String;
@@ -1053,34 +1072,65 @@
 .end method
 
 .method private clearInput()V
-    .locals 2
+    .locals 7
 
     .prologue
-    .line 646
+    const/4 v5, 0x0
+
+    .line 672
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
     invoke-virtual {v0}, Lcom/meizu/widget/LockDigitView;->resetPattern()V
 
-    .line 647
+    .line 673
     const-string v0, ""
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputNum:Ljava/lang/String;
 
-    .line 648
+    .line 674
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputText:Lcom/meizu/widget/LockPasswordView;
 
-    const/4 v1, 0x0
+    invoke-virtual {v0, v5}, Lcom/meizu/widget/LockPasswordView;->setCurNum(I)Z
 
-    invoke-virtual {v0, v1}, Lcom/meizu/widget/LockPasswordView;->setCurNum(I)Z
-
-    .line 649
+    .line 675
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputDelete:Landroid/widget/ImageView;
 
     const/16 v1, 0x8
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
 
-    .line 650
+    .line 676
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
+
+    sget-object v1, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;->sim:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
+
+    if-ne v0, v1, :cond_0
+
+    .line 677
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
+
+    const/4 v1, 0x3
+
+    const/4 v2, 0x2
+
+    const/4 v3, 0x0
+
+    iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v4}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v4
+
+    const v6, 0x1080546
+
+    invoke-virtual {v4, v6}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v4
+
+    invoke-virtual/range {v0 .. v5}, Lcom/meizu/widget/LockDigitView;->setCellInfo(IILjava/lang/String;Landroid/graphics/drawable/Drawable;Z)V
+
+    .line 679
+    :cond_0
     return-void
 .end method
 
@@ -1089,18 +1139,18 @@
     .parameter "cell"
 
     .prologue
-    .line 625
+    .line 651
     invoke-virtual {p1}, Lcom/meizu/widget/LockDigitView$Cell;->getRow()I
 
     move-result v2
 
-    .line 626
+    .line 652
     .local v2, r:I
     invoke-virtual {p1}, Lcom/meizu/widget/LockDigitView$Cell;->getColumn()I
 
     move-result v0
 
-    .line 627
+    .line 653
     .local v0, c:I
     mul-int/lit8 v4, v2, 0x3
 
@@ -1108,47 +1158,47 @@
 
     add-int/lit8 v1, v4, 0x1
 
-    .line 628
+    .line 654
     .local v1, num:I
     const/16 v4, 0xa
 
     if-ne v1, v4, :cond_0
 
-    .line 629
+    .line 655
     const-string v3, "left"
 
-    .line 637
+    .line 663
     .local v3, ret:Ljava/lang/String;
     :goto_0
     return-object v3
 
-    .line 630
+    .line 656
     .end local v3           #ret:Ljava/lang/String;
     :cond_0
     const/16 v4, 0xb
 
     if-ne v1, v4, :cond_1
 
-    .line 631
+    .line 657
     const-string v3, "0"
 
     .restart local v3       #ret:Ljava/lang/String;
     goto :goto_0
 
-    .line 632
+    .line 658
     .end local v3           #ret:Ljava/lang/String;
     :cond_1
     const/16 v4, 0xc
 
     if-ne v1, v4, :cond_2
 
-    .line 633
+    .line 659
     const-string v3, "right"
 
     .restart local v3       #ret:Ljava/lang/String;
     goto :goto_0
 
-    .line 635
+    .line 661
     .end local v3           #ret:Ljava/lang/String;
     :cond_2
     invoke-static {v1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
@@ -1163,7 +1213,7 @@
     .locals 3
 
     .prologue
-    .line 641
+    .line 667
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
     invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
@@ -1186,37 +1236,37 @@
     .parameter "msg"
 
     .prologue
-    .line 851
+    .line 882
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimUnlockProgressDialog:Landroid/app/ProgressDialog;
 
     if-nez v0, :cond_0
 
-    .line 852
+    .line 883
     new-instance v0, Landroid/app/ProgressDialog;
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v2, 0x1030317
+    const v2, 0x1030323
 
     invoke-direct {v0, v1, v2}, Landroid/app/ProgressDialog;-><init>(Landroid/content/Context;I)V
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimUnlockProgressDialog:Landroid/app/ProgressDialog;
 
-    .line 853
+    .line 884
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimUnlockProgressDialog:Landroid/app/ProgressDialog;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/app/ProgressDialog;->setIndeterminate(Z)V
 
-    .line 854
+    .line 885
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimUnlockProgressDialog:Landroid/app/ProgressDialog;
 
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/app/ProgressDialog;->setCancelable(Z)V
 
-    .line 855
+    .line 886
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimUnlockProgressDialog:Landroid/app/ProgressDialog;
 
     invoke-virtual {v0}, Landroid/app/ProgressDialog;->getWindow()Landroid/view/Window;
@@ -1227,13 +1277,13 @@
 
     invoke-virtual {v0, v1}, Landroid/view/Window;->setType(I)V
 
-    .line 858
+    .line 889
     :cond_0
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimUnlockProgressDialog:Landroid/app/ProgressDialog;
 
     invoke-virtual {v0, p1}, Landroid/app/ProgressDialog;->setMessage(Ljava/lang/CharSequence;)V
 
-    .line 859
+    .line 890
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimUnlockProgressDialog:Landroid/app/ProgressDialog;
 
     return-object v0
@@ -1245,16 +1295,16 @@
     .prologue
     const/4 v3, -0x1
 
-    .line 406
+    .line 420
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
     if-eqz v1, :cond_0
 
-    .line 426
+    .line 440
     :goto_0
     return-void
 
-    .line 409
+    .line 423
     :cond_0
     new-instance v1, Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
@@ -1264,12 +1314,12 @@
 
     iput-object v1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
-    .line 410
+    .line 424
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
     invoke-virtual {p0, v1}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->addView(Landroid/view/View;)V
 
-    .line 411
+    .line 425
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
     invoke-virtual {v1}, Lcom/meizu/internal/policy/impl/LockEmergencyCallView;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
@@ -1278,19 +1328,19 @@
 
     check-cast v0, Landroid/widget/FrameLayout$LayoutParams;
 
-    .line 412
+    .line 426
     .local v0, lp:Landroid/widget/FrameLayout$LayoutParams;
     iput v3, v0, Landroid/view/ViewGroup$LayoutParams;->width:I
 
-    .line 413
+    .line 427
     iput v3, v0, Landroid/widget/FrameLayout$LayoutParams;->height:I
 
-    .line 414
+    .line 428
     const/16 v1, 0x33
 
     iput v1, v0, Landroid/widget/FrameLayout$LayoutParams;->gravity:I
 
-    .line 415
+    .line 429
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
     new-instance v2, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$5;
@@ -1299,7 +1349,7 @@
 
     invoke-virtual {v1, v2}, Lcom/meizu/internal/policy/impl/LockEmergencyCallView;->setOnReturnButtonClickListener(Lcom/meizu/internal/policy/impl/LockEmergencyCallView$OnReturnButtonClickListener;)V
 
-    .line 425
+    .line 439
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mKeyguardWidgetListener:Lcom/meizu/internal/policy/impl/ILockWidget;
@@ -1313,48 +1363,59 @@
     .locals 7
 
     .prologue
+    const/4 v6, 0x1
+
     const/4 v1, 0x3
 
     const/4 v2, 0x2
 
-    const/4 v5, 0x1
-
     const/4 v3, 0x0
 
-    const/4 v6, 0x0
+    const/4 v5, 0x0
 
-    .line 1015
+    .line 1054
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mTimeView:Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;
 
-    invoke-virtual {v0, v6}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->setDateBoxVisible(Z)V
+    invoke-virtual {v0, v5}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->setDateBoxVisible(Z)V
 
-    .line 1016
+    .line 1055
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputBox:Landroid/view/View;
 
-    invoke-virtual {v0, v6}, Landroid/view/View;->setVisibility(I)V
+    invoke-virtual {v0, v5}, Landroid/view/View;->setVisibility(I)V
 
-    .line 1017
+    .line 1056
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
 
     const/16 v4, 0x8
 
     invoke-virtual {v0, v4}, Lcom/meizu/internal/policy/impl/LockMusicView;->setVisibility(I)V
 
-    .line 1018
+    .line 1057
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
-    invoke-virtual {v0, v6}, Lcom/meizu/widget/LockDigitView;->setKeyAsPoint(Z)V
+    invoke-virtual {v0, v5}, Lcom/meizu/widget/LockDigitView;->setKeyAsPoint(Z)V
 
-    .line 1020
+    .line 1059
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v0}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->isSimPin()Z
 
     move-result v0
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_2
 
-    .line 1021
+    .line 1060
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputNum:Ljava/lang/String;
+
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
+    move-result v0
+
+    const/4 v4, 0x4
+
+    if-ge v0, v4, :cond_1
+
+    .line 1061
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
@@ -1363,7 +1424,7 @@
 
     move-result-object v4
 
-    const v6, 0x108052a
+    const v6, 0x1080546
 
     invoke-virtual {v4, v6}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -1371,13 +1432,35 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/meizu/widget/LockDigitView;->setCellInfo(IILjava/lang/String;Landroid/graphics/drawable/Drawable;Z)V
 
-    .line 1025
+    .line 1068
     :cond_0
     :goto_0
     return-void
 
-    .line 1022
+    .line 1063
     :cond_1
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
+
+    iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v4}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v4
+
+    const v5, 0x10801d6
+
+    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v4
+
+    move v5, v6
+
+    invoke-virtual/range {v0 .. v5}, Lcom/meizu/widget/LockDigitView;->setCellInfo(IILjava/lang/String;Landroid/graphics/drawable/Drawable;Z)V
+
+    goto :goto_0
+
+    .line 1065
+    :cond_2
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v0}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->isPassword()Z
@@ -1386,10 +1469,12 @@
 
     if-eqz v0, :cond_0
 
-    .line 1023
+    .line 1066
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
     move-object v4, v3
+
+    move v5, v6
 
     invoke-virtual/range {v0 .. v5}, Lcom/meizu/widget/LockDigitView;->setCellInfo(IILjava/lang/String;Landroid/graphics/drawable/Drawable;Z)V
 
@@ -1404,57 +1489,64 @@
 
     const/4 v2, 0x2
 
-    const/4 v4, 0x1
-
-    const/4 v3, 0x0
+    const/4 v6, 0x1
 
     const/4 v5, 0x0
 
-    .line 995
+    const/4 v3, 0x0
+
+    .line 1026
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
-    invoke-virtual {v0, v4}, Lcom/meizu/widget/LockDigitView;->setKeyAsPoint(Z)V
+    invoke-virtual {v0, v6}, Lcom/meizu/widget/LockDigitView;->setKeyAsPoint(Z)V
 
-    .line 996
+    .line 1027
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
     invoke-virtual {v0}, Lcom/meizu/widget/LockDigitView;->invalidate()V
 
-    .line 997
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
-
-    invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->isShowMusicName()Z
-
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    .line 998
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mTimeView:Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;
-
-    invoke-virtual {v0, v4}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->setDateBoxVisible(Z)V
-
-    .line 1001
-    :cond_0
+    .line 1029
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->isMusicPlaying()Z
 
     move-result v0
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_0
 
-    .line 1002
+    .line 1030
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
 
     invoke-virtual {v0, v5}, Lcom/meizu/internal/policy/impl/LockMusicView;->setVisibility(I)V
 
-    .line 1003
+    .line 1031
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
 
     invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->updateMusicInfo()V
 
-    .line 1005
+    .line 1032
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
+
+    invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->setPauseButtonImage()V
+
+    .line 1035
+    :cond_0
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
+
+    invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->getVisibility()I
+
+    move-result v0
+
+    const/16 v4, 0x8
+
+    if-ne v0, v4, :cond_1
+
+    .line 1036
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mTimeView:Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;
+
+    invoke-virtual {v0, v6}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->setDateBoxVisible(Z)V
+
+    .line 1039
     :cond_1
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputBox:Landroid/view/View;
 
@@ -1462,16 +1554,27 @@
 
     invoke-virtual {v0, v4}, Landroid/view/View;->setVisibility(I)V
 
-    .line 1007
+    .line 1041
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v0}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->isSimPin()Z
 
     move-result v0
 
-    if-eqz v0, :cond_3
+    if-eqz v0, :cond_4
 
-    .line 1008
+    .line 1042
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputNum:Ljava/lang/String;
+
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
+    move-result v0
+
+    const/4 v4, 0x4
+
+    if-ge v0, v4, :cond_3
+
+    .line 1043
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
@@ -1480,7 +1583,7 @@
 
     move-result-object v4
 
-    const v6, 0x108052a
+    const v6, 0x1080546
 
     invoke-virtual {v4, v6}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -1488,13 +1591,35 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/meizu/widget/LockDigitView;->setCellInfo(IILjava/lang/String;Landroid/graphics/drawable/Drawable;Z)V
 
-    .line 1012
+    .line 1051
     :cond_2
     :goto_0
     return-void
 
-    .line 1009
+    .line 1045
     :cond_3
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
+
+    iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v4}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v4
+
+    const v5, 0x10801d6
+
+    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v4
+
+    move v5, v6
+
+    invoke-virtual/range {v0 .. v5}, Lcom/meizu/widget/LockDigitView;->setCellInfo(IILjava/lang/String;Landroid/graphics/drawable/Drawable;Z)V
+
+    goto :goto_0
+
+    .line 1048
+    :cond_4
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v0}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->isPassword()Z
@@ -1503,7 +1628,7 @@
 
     if-eqz v0, :cond_2
 
-    .line 1010
+    .line 1049
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
     move-object v4, v3
@@ -1517,57 +1642,52 @@
     .locals 3
 
     .prologue
-    const/16 v2, 0x8
+    const/4 v2, 0x0
 
-    const/4 v1, 0x0
+    const/16 v1, 0x8
 
-    .line 392
+    .line 403
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->loadEmergencyCallView()V
 
-    .line 393
+    .line 404
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
-    invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/LockEmergencyCallView;->setVisibility(I)V
+    invoke-virtual {v0, v2}, Lcom/meizu/internal/policy/impl/LockEmergencyCallView;->setVisibility(I)V
 
-    .line 394
+    .line 405
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
-    invoke-virtual {v0, v2}, Lcom/meizu/widget/LockDigitView;->setVisibility(I)V
+    invoke-virtual {v0, v1}, Lcom/meizu/widget/LockDigitView;->setVisibility(I)V
 
-    .line 395
+    .line 406
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputBox:Landroid/view/View;
 
-    invoke-virtual {v0, v2}, Landroid/view/View;->setVisibility(I)V
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
 
-    .line 396
+    .line 408
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
 
-    invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/LockMusicView;->showMusicName(Z)V
+    invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/LockMusicView;->setVisibility(I)V
 
-    .line 397
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
-
-    invoke-virtual {v0, v2}, Lcom/meizu/internal/policy/impl/LockMusicView;->setVisibility(I)V
-
-    .line 398
+    .line 409
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mTimeView:Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;
 
-    invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->setDateBoxVisible(Z)V
+    invoke-virtual {v0, v2}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->setDateBoxVisible(Z)V
 
-    .line 399
+    .line 410
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mRestKeypadAsPoint:Ljava/lang/Runnable;
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->removeCallbacks(Ljava/lang/Runnable;)Z
 
-    .line 400
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mResetDateShow:Ljava/lang/Runnable;
+    .line 411
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mResetMusicInfoShow:Ljava/lang/Runnable;
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->removeCallbacks(Ljava/lang/Runnable;)Z
 
-    .line 402
+    .line 416
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->clearInput()V
 
-    .line 403
+    .line 417
     return-void
 .end method
 
@@ -1575,21 +1695,21 @@
     .locals 2
 
     .prologue
-    .line 379
+    .line 384
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
     const/16 v1, 0x8
 
     invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/LockEmergencyCallView;->setVisibility(I)V
 
-    .line 380
+    .line 385
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/LockDigitView;->setVisibility(I)V
 
-    .line 381
+    .line 387
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v0}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->isSimPin()Z
@@ -1598,15 +1718,34 @@
 
     if-eqz v0, :cond_0
 
-    .line 382
+    .line 388
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->setKeypadAsNum()V
 
-    .line 389
+    .line 400
     :goto_0
     return-void
 
-    .line 384
+    .line 389
     :cond_0
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
+    invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->isMusicPlaying()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 390
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
+
+    const/4 v1, 0x1
+
+    invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/LockMusicView;->showMusicName(Z)V
+
+    goto :goto_0
+
+    .line 392
+    :cond_1
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->setKeypadAsPoint()V
 
     goto :goto_0
@@ -1654,16 +1793,16 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 1066
+    .line 1109
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     if-nez v0, :cond_0
 
-    .line 1088
+    .line 1132
     :goto_0
     return-void
 
-    .line 1069
+    .line 1112
     :cond_0
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mAnimMode:Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
@@ -1671,43 +1810,43 @@
 
     if-ne v0, v1, :cond_3
 
-    .line 1070
+    .line 1113
     iput v4, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragPosX:I
 
-    .line 1071
+    .line 1114
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragCallback:Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;
 
     if-eqz v0, :cond_1
 
-    .line 1072
+    .line 1115
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragCallback:Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;
 
     invoke-interface {v0}, Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;->onDragCancel()V
 
-    .line 1074
+    .line 1117
     :cond_1
     sget-object v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;->normal:Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mUnlockTab:Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;
 
-    .line 1085
+    .line 1129
     :cond_2
     :goto_1
     iput v4, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragMode:I
 
-    .line 1086
+    .line 1130
     sget-object v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;->NONE:Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mAnimMode:Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
-    .line 1087
+    .line 1131
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v0, v4}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->enableUserActivity(Z)V
 
     goto :goto_0
 
-    .line 1075
+    .line 1118
     :cond_3
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mAnimMode:Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
@@ -1715,20 +1854,25 @@
 
     if-ne v0, v1, :cond_2
 
-    .line 1076
+    .line 1119
     iput v4, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragPosX:I
 
-    .line 1077
+    .line 1120
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragCallback:Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;
 
     if-eqz v0, :cond_4
 
-    .line 1078
+    .line 1121
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragCallback:Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;
 
     invoke-interface {v0}, Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;->onDragUnlock()V
 
-    .line 1080
+    .line 1122
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragCallback:Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;
+
+    invoke-interface {v0, v4}, Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;->enableKeyguardDownWithAnim(Z)V
+
+    .line 1124
     :cond_4
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
@@ -1738,7 +1882,7 @@
 
     invoke-interface {v0, v1, v2}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->keyguardDone(ZLcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;)V
 
-    .line 1082
+    .line 1126
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0x3e9
@@ -1751,11 +1895,61 @@
 .end method
 
 .method protected onAttachedToWindow()V
-    .locals 2
+    .locals 3
 
     .prologue
     .line 265
     invoke-super {p0}, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->onAttachedToWindow()V
+
+    .line 267
+    const-string v0, "PasswordAndSimUnlockScreen"
+
+    const-string v1, "***** PATTERN ATTACHED TO WINDOW"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 268
+    const-string v0, "PasswordAndSimUnlockScreen"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "Cur orient="
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget v2, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCreationOrientation:I
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, ", new config="
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 271
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->getResources()Landroid/content/res/Resources;
@@ -1790,13 +1984,141 @@
     return-void
 .end method
 
+.method public onClickHome()V
+    .locals 3
+
+    .prologue
+    .line 1224
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
+    invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->isMusicPlaying()Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    .line 1225
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
+
+    invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->getVisibility()I
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 1226
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mResetMusicInfoShow:Ljava/lang/Runnable;
+
+    invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->removeCallbacks(Ljava/lang/Runnable;)Z
+
+    .line 1227
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
+
+    const/16 v1, 0x8
+
+    invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/LockMusicView;->setVisibility(I)V
+
+    .line 1228
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mTimeView:Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;
+
+    const/4 v1, 0x1
+
+    invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->setDateBoxVisible(Z)V
+
+    .line 1238
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 1231
+    :cond_1
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
+
+    invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/LockMusicView;->getVisibility()I
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 1232
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/LockMusicView;->showMusicName(Z)V
+
+    .line 1233
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mResetMusicInfoShow:Ljava/lang/Runnable;
+
+    invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->removeCallbacks(Ljava/lang/Runnable;)Z
+
+    .line 1234
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mResetMusicInfoShow:Ljava/lang/Runnable;
+
+    const-wide/16 v1, 0xbb8
+
+    invoke-virtual {p0, v0, v1, v2}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    goto :goto_0
+.end method
+
 .method protected onConfigurationChanged(Landroid/content/res/Configuration;)V
-    .locals 2
+    .locals 3
     .parameter "newConfig"
 
     .prologue
     .line 279
     invoke-super {p0, p1}, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->onConfigurationChanged(Landroid/content/res/Configuration;)V
+
+    .line 281
+    const-string v0, "PasswordAndSimUnlockScreen"
+
+    const-string v1, "***** PATTERN CONFIGURATION CHANGED"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 282
+    const-string v0, "PasswordAndSimUnlockScreen"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "Cur orient="
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget v2, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCreationOrientation:I
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, ", new config="
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 285
     iget v0, p1, Landroid/content/res/Configuration;->orientation:I
@@ -1819,7 +2141,7 @@
     .locals 1
 
     .prologue
-    .line 1133
+    .line 1178
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
     if-eqz v0, :cond_1
@@ -1832,12 +2154,12 @@
 
     if-nez v0, :cond_1
 
-    .line 1139
+    .line 1184
     :cond_0
     :goto_0
     return-void
 
-    .line 1135
+    .line 1180
     :cond_1
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
@@ -1847,10 +2169,10 @@
 
     if-nez v0, :cond_0
 
-    .line 1137
+    .line 1182
     invoke-super {p0}, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->onDoubleClickHome()V
 
-    .line 1138
+    .line 1183
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->setKeypadAsPoint()V
 
     goto :goto_0
@@ -1861,24 +2183,24 @@
     .parameter "isKeyguarDown"
 
     .prologue
-    .line 1117
+    .line 1161
     invoke-super {p0, p1}, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->onHideMe(Z)V
 
-    .line 1118
+    .line 1162
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mUnlockTab:Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;
 
     sget-object v1, Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;->camera:Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;
 
     if-ne v0, v1, :cond_0
 
-    .line 1121
+    .line 1165
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0x3e9
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1122
+    .line 1166
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0x3ea
@@ -1887,7 +2209,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 1124
+    .line 1168
     :cond_0
     return-void
 .end method
@@ -1901,7 +2223,7 @@
 
     const/4 v3, 0x0
 
-    .line 868
+    .line 899
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
     if-eqz v5, :cond_1
@@ -1914,17 +2236,17 @@
 
     if-nez v5, :cond_1
 
-    .line 869
+    .line 900
     invoke-super {p0, p1}, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->onInterceptHoverEvent(Landroid/view/MotionEvent;)Z
 
     move-result v3
 
-    .line 889
+    .line 920
     :cond_0
     :goto_0
     return v3
 
-    .line 871
+    .line 902
     :cond_1
     iget-boolean v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mIsActive:Z
 
@@ -1946,7 +2268,7 @@
 
     if-ne v5, v6, :cond_3
 
-    .line 872
+    .line 903
     :cond_2
     invoke-super {p0, p1}, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->onInterceptHoverEvent(Landroid/view/MotionEvent;)Z
 
@@ -1954,7 +2276,7 @@
 
     goto :goto_0
 
-    .line 874
+    .line 905
     :cond_3
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
@@ -1962,7 +2284,7 @@
 
     float-to-int v2, v5
 
-    .line 875
+    .line 906
     .local v2, y:I
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
@@ -1970,78 +2292,80 @@
 
     float-to-int v1, v5
 
-    .line 876
+    .line 907
     .local v1, x:I
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mVelocityTracker:Landroid/view/VelocityTracker;
 
     invoke-virtual {v5}, Landroid/view/VelocityTracker;->clear()V
 
-    .line 877
+    .line 908
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mUnlockView:Landroid/view/View;
 
     invoke-virtual {v5}, Landroid/view/View;->getBottom()I
 
     move-result v0
 
-    .line 878
+    .line 909
     .local v0, bottom:I
     const/4 v5, -0x1
 
     iput v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mPointerId:I
 
-    .line 879
-    const/16 v5, 0x23
+    .line 910
+    iget v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->VALID_TOUCH_RANGE_CAMERA:I
 
     if-lt v1, v5, :cond_4
 
     iget v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mScreenWidth:I
 
-    add-int/lit8 v5, v5, -0x23
+    iget v6, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->VALID_TOUCH_RANGE_CAMERA:I
+
+    sub-int/2addr v5, v6
 
     if-le v1, v5, :cond_5
 
-    .line 880
+    .line 911
     :cond_4
     const/4 v5, 0x2
 
     iput v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragMode:I
 
-    .line 881
+    .line 912
     sget-object v5, Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;->camera:Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;
 
     iput-object v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mUnlockTab:Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;
 
-    .line 882
+    .line 913
     neg-int v5, v1
 
     iput v5, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mTouchDeltaX:I
 
-    .line 883
+    .line 914
     iput v3, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragPosX:I
 
-    .line 884
+    .line 915
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v5, v4}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->enableUserActivity(Z)V
 
-    .line 885
+    .line 916
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mActivityScreenshot:Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;
 
     invoke-virtual {v5, v3}, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->setVisibility(I)V
 
-    .line 886
+    .line 917
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragCallback:Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;
 
     invoke-interface {v5, v4}, Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;->setKeyguardScreenshotVisible(Z)V
 
-    .line 887
+    .line 918
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     const/4 v6, 0x4
 
     invoke-interface {v5, v6}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->requestUpdateScreenshot(I)Landroid/graphics/Bitmap;
 
-    .line 889
+    .line 920
     :cond_5
     iget v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragMode:I
 
@@ -2063,7 +2387,7 @@
     .locals 1
 
     .prologue
-    .line 1029
+    .line 1072
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
     if-eqz v0, :cond_0
@@ -2076,11 +2400,11 @@
 
     if-nez v0, :cond_0
 
-    .line 1032
+    .line 1075
     :goto_0
     return-void
 
-    .line 1031
+    .line 1074
     :cond_0
     invoke-super {p0}, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->onMetaChanged()V
 
@@ -2091,7 +2415,7 @@
     .locals 1
 
     .prologue
-    .line 1059
+    .line 1102
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
     if-eqz v0, :cond_0
@@ -2104,11 +2428,11 @@
 
     if-nez v0, :cond_0
 
-    .line 1062
+    .line 1105
     :goto_0
     return-void
 
-    .line 1061
+    .line 1104
     :cond_0
     invoke-super {p0}, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->onMusicClientClear()V
 
@@ -2119,7 +2443,7 @@
     .locals 1
 
     .prologue
-    .line 1052
+    .line 1095
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
     if-eqz v0, :cond_0
@@ -2132,11 +2456,11 @@
 
     if-nez v0, :cond_0
 
-    .line 1055
+    .line 1098
     :goto_0
     return-void
 
-    .line 1054
+    .line 1097
     :cond_0
     invoke-super {p0}, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->onNameStateChanged()V
 
@@ -2149,19 +2473,19 @@
     .parameter "distance"
 
     .prologue
-    .line 1105
+    .line 1149
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mUnlockTab:Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;
 
     sget-object v1, Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;->camera:Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;
 
     if-eq v0, v1, :cond_1
 
-    .line 1113
+    .line 1157
     :cond_0
     :goto_0
     return-void
 
-    .line 1107
+    .line 1151
     :cond_1
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mAnimMode:Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
@@ -2175,18 +2499,18 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 1108
+    .line 1152
     :cond_2
     add-int v0, p1, p2
 
     iput v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragPosX:I
 
-    .line 1109
+    .line 1153
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragCallback:Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;
 
     if-eqz v0, :cond_0
 
-    .line 1110
+    .line 1154
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragCallback:Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;
 
     iget v1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragPosX:I
@@ -2247,25 +2571,25 @@
     .parameter "phoneState"
 
     .prologue
-    .line 1143
+    .line 1188
     if-eqz p1, :cond_0
 
-    .line 1144
+    .line 1189
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyButton:Landroid/widget/TextView;
 
-    const v1, 0x1040351
+    const v1, 0x1040352
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(I)V
 
-    .line 1148
+    .line 1193
     :goto_0
     return-void
 
-    .line 1146
+    .line 1191
     :cond_0
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyButton:Landroid/widget/TextView;
 
-    const v1, 0x1040572
+    const v1, 0x1040577
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(I)V
 
@@ -2276,7 +2600,7 @@
     .locals 1
 
     .prologue
-    .line 1036
+    .line 1079
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
     if-eqz v0, :cond_0
@@ -2289,11 +2613,11 @@
 
     if-nez v0, :cond_0
 
-    .line 1039
+    .line 1082
     :goto_0
     return-void
 
-    .line 1038
+    .line 1081
     :cond_0
     invoke-super {p0}, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->onPlaybackComplete()V
 
@@ -2304,7 +2628,7 @@
     .locals 1
 
     .prologue
-    .line 1043
+    .line 1086
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
     if-eqz v0, :cond_1
@@ -2317,12 +2641,12 @@
 
     if-nez v0, :cond_1
 
-    .line 1048
+    .line 1091
     :cond_0
     :goto_0
     return-void
 
-    .line 1045
+    .line 1088
     :cond_1
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
@@ -2332,7 +2656,7 @@
 
     if-nez v0, :cond_0
 
-    .line 1047
+    .line 1090
     invoke-super {p0}, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->onPlaystateChanged()V
 
     goto :goto_0
@@ -2342,7 +2666,7 @@
     .locals 2
 
     .prologue
-    .line 219
+    .line 218
     iget-boolean v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mIsActive:Z
 
     if-eqz v0, :cond_0
@@ -2351,7 +2675,7 @@
     :goto_0
     return-void
 
-    .line 223
+    .line 222
     :cond_0
     const-string v0, "PasswordAndSimUnlockScreen"
 
@@ -2359,8 +2683,13 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 225
+    .line 224
     invoke-super {p0}, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->onResume()V
+
+    .line 226
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mPasswordError:Z
 
     .line 227
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
@@ -2405,7 +2734,7 @@
     .prologue
     const/16 v1, 0x3e9
 
-    .line 1151
+    .line 1196
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->hasMessages(I)Z
@@ -2414,39 +2743,46 @@
 
     if-eqz v0, :cond_0
 
-    .line 1152
+    .line 1197
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1154
+    .line 1199
     sget-object v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;->normal:Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mUnlockTab:Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;
 
-    .line 1155
+    .line 1200
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragCallback:Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;
 
     if-eqz v0, :cond_0
 
-    .line 1156
+    .line 1201
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragCallback:Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;
 
     invoke-interface {v0}, Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;->onDragCancel()V
 
-    .line 1159
+    .line 1204
     :cond_0
     return-void
 .end method
 
 .method public onShowMe()V
-    .locals 0
+    .locals 2
 
     .prologue
-    .line 1128
+    .line 1172
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragCallback:Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;
+
+    const/4 v1, 0x1
+
+    invoke-interface {v0, v1}, Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;->enableKeyguardDownWithAnim(Z)V
+
+    .line 1173
     invoke-super {p0}, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->onShowMe()V
 
-    .line 1129
+    .line 1174
     return-void
 .end method
 
@@ -2455,7 +2791,7 @@
     .parameter "event"
 
     .prologue
-    .line 897
+    .line 928
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
@@ -2472,20 +2808,20 @@
 
     if-nez v2, :cond_0
 
-    .line 898
+    .line 929
     const/4 v2, 0x0
 
-    .line 980
+    .line 1011
     :goto_0
     return v2
 
-    .line 900
+    .line 931
     :cond_0
     invoke-virtual/range {p1 .. p1}, Landroid/view/MotionEvent;->getActionMasked()I
 
     move-result v8
 
-    .line 901
+    .line 932
     .local v8, action:I
     move-object/from16 v0, p0
 
@@ -2497,7 +2833,7 @@
 
     move-result v14
 
-    .line 902
+    .line 933
     .local v14, index:I
     move-object/from16 v0, p0
 
@@ -2507,14 +2843,22 @@
 
     invoke-virtual {v2, v0}, Landroid/view/VelocityTracker;->addMovement(Landroid/view/MotionEvent;)V
 
-    .line 903
+    .line 934
     move-object/from16 v0, p0
 
     iget v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragMode:I
 
     if-nez v2, :cond_4
 
-    .line 904
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mUnlockTab:Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;
+
+    sget-object v3, Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;->camera:Lcom/meizu/internal/policy/impl/LockViewBaseSe$UnlockTab;
+
+    if-eq v2, v3, :cond_4
+
+    .line 935
     invoke-virtual/range {p1 .. p1}, Landroid/view/MotionEvent;->getY()F
 
     move-result v2
@@ -2523,7 +2867,7 @@
 
     move/from16 v18, v0
 
-    .line 905
+    .line 936
     .local v18, y:I
     invoke-virtual/range {p1 .. p1}, Landroid/view/MotionEvent;->getX()F
 
@@ -2533,32 +2877,32 @@
 
     move/from16 v17, v0
 
-    .line 906
+    .line 937
     .local v17, x:I
     if-nez v8, :cond_2
 
-    .line 907
+    .line 938
     move/from16 v0, v17
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mDownX:I
 
-    .line 908
+    .line 939
     move/from16 v0, v18
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mDownY:I
 
-    .line 918
+    .line 949
     :cond_1
     :goto_1
     const/4 v2, 0x1
 
     goto :goto_0
 
-    .line 909
+    .line 940
     :cond_2
     const/4 v2, 0x1
 
@@ -2568,7 +2912,7 @@
 
     if-ne v8, v2, :cond_1
 
-    .line 911
+    .line 942
     :cond_3
     move-object/from16 v0, p0
 
@@ -2598,10 +2942,10 @@
 
     if-ge v2, v3, :cond_1
 
-    .line 913
+    .line 944
     invoke-direct/range {p0 .. p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->setKeypadAsNum()V
 
-    .line 914
+    .line 945
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mRestKeypadAsPoint:Ljava/lang/Runnable;
@@ -2610,7 +2954,7 @@
 
     invoke-virtual {v0, v2}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->removeCallbacks(Ljava/lang/Runnable;)Z
 
-    .line 915
+    .line 946
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mRestKeypadAsPoint:Ljava/lang/Runnable;
@@ -2623,7 +2967,7 @@
 
     goto :goto_1
 
-    .line 919
+    .line 950
     .end local v17           #x:I
     .end local v18           #y:I
     :cond_4
@@ -2643,14 +2987,14 @@
 
     if-ne v2, v3, :cond_18
 
-    .line 920
+    .line 951
     if-eqz v8, :cond_5
 
     const/4 v2, 0x5
 
     if-ne v8, v2, :cond_9
 
-    .line 922
+    .line 953
     :cond_5
     move-object/from16 v0, p0
 
@@ -2660,7 +3004,7 @@
 
     if-eq v2, v3, :cond_7
 
-    .line 923
+    .line 954
     invoke-virtual/range {p1 .. p1}, Landroid/view/MotionEvent;->getPointerCount()I
 
     move-result v2
@@ -2669,20 +3013,20 @@
 
     if-le v2, v3, :cond_6
 
-    .line 924
+    .line 955
     const/4 v2, -0x1
 
     move-object/from16 v0, p0
 
     iput v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mPointerId:I
 
-    .line 928
+    .line 959
     :cond_6
     const/4 v2, 0x1
 
     goto/16 :goto_0
 
-    .line 930
+    .line 961
     :cond_7
     invoke-virtual/range {p1 .. p1}, Landroid/view/MotionEvent;->getActionIndex()I
 
@@ -2698,7 +3042,7 @@
 
     iput v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mPointerId:I
 
-    .line 931
+    .line 962
     invoke-virtual/range {p1 .. p1}, Landroid/view/MotionEvent;->getActionIndex()I
 
     move-result v2
@@ -2717,30 +3061,30 @@
 
     iput v2, v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mTouchDeltaX:I
 
-    .line 978
+    .line 1009
     :cond_8
     :goto_2
     const/4 v2, 0x1
 
     goto/16 :goto_0
 
-    .line 932
+    .line 963
     :cond_9
     const/4 v2, 0x2
 
     if-ne v8, v2, :cond_b
 
-    .line 933
+    .line 964
     const/4 v2, -0x1
 
     if-ne v14, v2, :cond_a
 
-    .line 934
+    .line 965
     const/4 v2, 0x0
 
     goto/16 :goto_0
 
-    .line 936
+    .line 967
     :cond_a
     move-object/from16 v0, p1
 
@@ -2752,7 +3096,7 @@
 
     move/from16 v18, v0
 
-    .line 937
+    .line 968
     .restart local v18       #y:I
     move-object/from16 v0, p1
 
@@ -2764,7 +3108,7 @@
 
     move/from16 v17, v0
 
-    .line 938
+    .line 969
     .restart local v17       #x:I
     move-object/from16 v0, p0
 
@@ -2776,14 +3120,14 @@
 
     iput v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragPosX:I
 
-    .line 939
+    .line 970
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragCallback:Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;
 
     if-eqz v2, :cond_8
 
-    .line 940
+    .line 971
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragCallback:Lcom/meizu/internal/policy/impl/LockViewBaseSe$DragCallback;
@@ -2796,7 +3140,7 @@
 
     goto :goto_2
 
-    .line 942
+    .line 973
     .end local v17           #x:I
     .end local v18           #y:I
     :cond_b
@@ -2812,7 +3156,7 @@
 
     if-ne v8, v2, :cond_8
 
-    .line 945
+    .line 976
     :cond_c
     const/4 v2, -0x1
 
@@ -2824,13 +3168,13 @@
 
     if-eq v14, v2, :cond_e
 
-    .line 946
+    .line 977
     :cond_d
     const/4 v2, 0x0
 
     goto/16 :goto_0
 
-    .line 948
+    .line 979
     :cond_e
     move-object/from16 v0, p1
 
@@ -2838,7 +3182,7 @@
 
     move-result v18
 
-    .line 949
+    .line 980
     .local v18, y:F
     move-object/from16 v0, p1
 
@@ -2846,7 +3190,7 @@
 
     move-result v17
 
-    .line 950
+    .line 981
     .local v17, x:F
     const/4 v2, -0x1
 
@@ -2854,7 +3198,7 @@
 
     iput v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mPointerId:I
 
-    .line 951
+    .line 982
     move-object/from16 v0, p0
 
     iget v2, v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mTouchDeltaX:I
@@ -2869,7 +3213,7 @@
 
     iput v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragPosX:I
 
-    .line 952
+    .line 983
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mVelocityTracker:Landroid/view/VelocityTracker;
@@ -2878,7 +3222,7 @@
 
     invoke-virtual {v2, v3}, Landroid/view/VelocityTracker;->computeCurrentVelocity(I)V
 
-    .line 953
+    .line 984
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mVelocityTracker:Landroid/view/VelocityTracker;
@@ -2887,7 +3231,7 @@
 
     move-result v16
 
-    .line 954
+    .line 985
     .local v16, velocityY:F
     move-object/from16 v0, p0
 
@@ -2897,31 +3241,19 @@
 
     move-result v15
 
-    .line 955
+    .line 986
     .local v15, velocityX:F
     move-object/from16 v0, p0
 
-    iget v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->DRAG_ESCAPE_VELOCITY:F
+    iget v12, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->DRAG_ESCAPE_VELOCITY:F
 
-    move-object/from16 v0, p0
-
-    iget v3, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDensityScale:F
-
-    mul-float v12, v2, v3
-
-    .line 956
+    .line 987
     .local v12, escapeVelocity:F
     move-object/from16 v0, p0
 
-    iget v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->DRAG_ESCAPE_VELOCITY_UNLOCK:F
+    iget v13, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->DRAG_ESCAPE_VELOCITY_UNLOCK:F
 
-    move-object/from16 v0, p0
-
-    iget v3, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDensityScale:F
-
-    mul-float v13, v2, v3
-
-    .line 957
+    .line 988
     .local v13, escapeVelocityUnlock:F
     move-object/from16 v0, p0
 
@@ -2931,23 +3263,15 @@
 
     move-result v2
 
-    int-to-float v2, v2
-
-    const/high16 v3, 0x4348
-
     move-object/from16 v0, p0
 
-    iget v5, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDensityScale:F
+    iget v3, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->DRAG_X_FAR_ENOUGH:I
 
-    mul-float/2addr v3, v5
-
-    cmpl-float v2, v2, v3
-
-    if-lez v2, :cond_14
+    if-le v2, v3, :cond_14
 
     const/4 v9, 0x1
 
-    .line 958
+    .line 989
     .local v9, dragFarEnough:Z
     :goto_3
     const/4 v2, 0x0
@@ -2978,7 +3302,7 @@
 
     const/4 v11, 0x1
 
-    .line 960
+    .line 991
     .local v11, dragFastEnoughUp:Z
     :goto_4
     const/4 v2, 0x0
@@ -3009,7 +3333,7 @@
 
     const/4 v10, 0x1
 
-    .line 962
+    .line 993
     .local v10, dragFastEnoughDown:Z
     :goto_5
     move-object/from16 v0, p0
@@ -3051,7 +3375,7 @@
 
     if-eqz v9, :cond_17
 
-    .line 966
+    .line 997
     :cond_12
     sget-object v2, Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;->UNLOCK_H:Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
@@ -3059,7 +3383,7 @@
 
     iput-object v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mAnimMode:Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
-    .line 967
+    .line 998
     move-object/from16 v0, p0
 
     iget v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mScreenWidth:I
@@ -3074,7 +3398,7 @@
 
     sub-int v4, v2, v3
 
-    .line 968
+    .line 999
     .local v4, animSpace:I
     move-object/from16 v0, p0
 
@@ -3082,10 +3406,10 @@
 
     if-gez v2, :cond_13
 
-    .line 969
+    .line 1000
     neg-int v4, v4
 
-    .line 971
+    .line 1002
     :cond_13
     move-object/from16 v0, p0
 
@@ -3105,7 +3429,7 @@
 
     goto/16 :goto_2
 
-    .line 957
+    .line 988
     .end local v4           #animSpace:I
     .end local v9           #dragFarEnough:Z
     .end local v10           #dragFastEnoughDown:Z
@@ -3115,21 +3439,21 @@
 
     goto/16 :goto_3
 
-    .line 958
+    .line 989
     .restart local v9       #dragFarEnough:Z
     :cond_15
     const/4 v11, 0x0
 
     goto :goto_4
 
-    .line 960
+    .line 991
     .restart local v11       #dragFastEnoughUp:Z
     :cond_16
     const/4 v10, 0x0
 
     goto :goto_5
 
-    .line 973
+    .line 1004
     .restart local v10       #dragFastEnoughDown:Z
     :cond_17
     sget-object v2, Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;->LOCK_H:Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
@@ -3138,14 +3462,14 @@
 
     iput-object v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mAnimMode:Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
-    .line 974
+    .line 1005
     move-object/from16 v0, p0
 
     iget v2, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDragPosX:I
 
     neg-int v4, v2
 
-    .line 975
+    .line 1006
     .restart local v4       #animSpace:I
     move-object/from16 v0, p0
 
@@ -3165,7 +3489,7 @@
 
     goto/16 :goto_2
 
-    .line 980
+    .line 1011
     .end local v4           #animSpace:I
     .end local v9           #dragFarEnough:Z
     .end local v10           #dragFastEnoughDown:Z
@@ -3192,31 +3516,31 @@
 
     const/4 v3, 0x0
 
-    .line 342
+    .line 347
     const-string v0, "PasswordAndSimUnlockScreen"
 
     const-string v1, "updateInputTips"
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 344
+    .line 349
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
 
     sget-object v1, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;->password:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
 
     if-ne v0, v1, :cond_2
 
-    .line 345
+    .line 350
     iget-boolean v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mPasswordError:Z
 
     if-eqz v0, :cond_1
 
-    .line 346
+    .line 351
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputTips:Landroid/widget/TextView;
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v2, 0x1040564
+    const v2, 0x1040569
 
     invoke-virtual {v1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -3224,21 +3548,21 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 374
+    .line 379
     :cond_0
     :goto_0
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->clearInput()V
 
-    .line 376
+    .line 381
     return-void
 
-    .line 348
+    .line 353
     :cond_1
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputTips:Landroid/widget/TextView;
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v2, 0x1040563
+    const v2, 0x1040568
 
     invoke-virtual {v1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -3248,7 +3572,7 @@
 
     goto :goto_0
 
-    .line 350
+    .line 355
     :cond_2
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
 
@@ -3256,14 +3580,14 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 351
+    .line 356
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
     sget-object v1, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;->checkPin:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
     if-ne v0, v1, :cond_5
 
-    .line 352
+    .line 357
     iget v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mLeftTimes:I
 
     if-lez v0, :cond_4
@@ -3274,10 +3598,10 @@
 
     if-ge v0, v1, :cond_4
 
-    .line 353
+    .line 358
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v1, 0x104055f
+    const v1, 0x1040564
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -3299,7 +3623,7 @@
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mTipsStringOfSim:Ljava/lang/String;
 
-    .line 372
+    .line 377
     :cond_3
     :goto_1
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputTips:Landroid/widget/TextView;
@@ -3310,11 +3634,11 @@
 
     goto :goto_0
 
-    .line 356
+    .line 361
     :cond_4
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v1, 0x104055d
+    const v1, 0x1040562
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -3324,7 +3648,7 @@
 
     goto :goto_1
 
-    .line 357
+    .line 362
     :cond_5
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
@@ -3332,7 +3656,7 @@
 
     if-ne v0, v1, :cond_7
 
-    .line 358
+    .line 363
     iget v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mLeftTimes:I
 
     if-lez v0, :cond_6
@@ -3343,10 +3667,10 @@
 
     if-ge v0, v1, :cond_6
 
-    .line 359
+    .line 364
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v1, 0x1040560
+    const v1, 0x1040565
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -3370,11 +3694,11 @@
 
     goto :goto_1
 
-    .line 362
+    .line 367
     :cond_6
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v1, 0x104055e
+    const v1, 0x1040563
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -3384,7 +3708,7 @@
 
     goto :goto_1
 
-    .line 363
+    .line 368
     :cond_7
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
@@ -3392,12 +3716,26 @@
 
     if-ne v0, v1, :cond_9
 
-    .line 364
+    .line 369
     iget-boolean v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mConfirmPinError:Z
 
     if-eqz v0, :cond_8
 
-    .line 365
+    .line 370
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
+
+    const v1, 0x104056b
+
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mTipsStringOfSim:Ljava/lang/String;
+
+    goto :goto_1
+
+    .line 372
+    :cond_8
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
     const v1, 0x1040566
@@ -3410,21 +3748,7 @@
 
     goto :goto_1
 
-    .line 367
-    :cond_8
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
-
-    const v1, 0x1040561
-
-    invoke-virtual {v0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
-    move-result-object v0
-
-    iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mTipsStringOfSim:Ljava/lang/String;
-
-    goto :goto_1
-
-    .line 369
+    .line 374
     :cond_9
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
@@ -3432,10 +3756,10 @@
 
     if-ne v0, v1, :cond_3
 
-    .line 370
+    .line 375
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    const v1, 0x1040562
+    const v1, 0x1040567
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -3447,7 +3771,7 @@
 .end method
 
 .method public updateViewForMode()V
-    .locals 12
+    .locals 14
 
     .prologue
     const/4 v2, 0x2
@@ -3456,65 +3780,82 @@
 
     const/4 v1, 0x3
 
-    const/4 v8, 0x1
+    const/4 v0, 0x1
 
-    const/4 v6, 0x0
+    const/4 v5, 0x0
 
     .line 291
-    iget-boolean v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mIsChecking:Z
+    iget-boolean v4, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mIsChecking:Z
 
-    if-eqz v0, :cond_0
+    if-eqz v4, :cond_0
 
-    .line 337
+    .line 342
     :goto_0
     return-void
 
-    .line 293
-    :cond_0
-    const-string v0, "PasswordAndSimUnlockScreen"
-
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v5, "PasswordAndSim mIsChecking: "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    iget-boolean v5, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mIsChecking:Z
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v0, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
     .line 294
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputDelete:Landroid/widget/ImageView;
+    :cond_0
+    iget-object v4, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
-    invoke-virtual {v0}, Landroid/widget/ImageView;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+    if-eqz v4, :cond_1
 
-    move-result-object v10
+    iget-object v4, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mEmergencyCallView:Lcom/meizu/internal/policy/impl/LockEmergencyCallView;
 
-    check-cast v10, Landroid/widget/FrameLayout$LayoutParams;
+    invoke-virtual {v4}, Lcom/meizu/internal/policy/impl/LockEmergencyCallView;->getVisibility()I
 
-    .line 296
-    .local v10, lp:Landroid/widget/FrameLayout$LayoutParams;
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
+    move-result v4
 
-    invoke-interface {v0}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->isSimPin()Z
+    if-nez v4, :cond_1
 
-    move-result v0
+    .line 295
+    invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->showKeypadView()V
 
-    if-eqz v0, :cond_7
+    .line 298
+    :cond_1
+    const-string v4, "PasswordAndSimUnlockScreen"
 
-    .line 297
+    new-instance v6, Ljava/lang/StringBuilder;
+
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v7, "PasswordAndSim mIsChecking: "
+
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v6
+
+    iget-boolean v7, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mIsChecking:Z
+
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v6
+
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-static {v4, v6}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 299
+    iget-object v4, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputDelete:Landroid/widget/ImageView;
+
+    invoke-virtual {v4}, Landroid/widget/ImageView;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+
+    move-result-object v12
+
+    check-cast v12, Landroid/widget/FrameLayout$LayoutParams;
+
+    .line 301
+    .local v12, lp:Landroid/widget/FrameLayout$LayoutParams;
+    iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
+
+    invoke-interface {v4}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->isSimPin()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_7
+
+    .line 302
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
@@ -3523,152 +3864,139 @@
 
     move-result-object v4
 
-    const v5, 0x108052a
+    const v6, 0x1080546
 
-    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v4, v6}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v4
 
-    iget-object v5, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
-
-    invoke-virtual {v5}, Lcom/meizu/widget/LockDigitView;->isKeyAsPoint()Z
-
-    move-result v5
-
-    if-nez v5, :cond_4
-
-    move v5, v8
-
-    :goto_1
     invoke-virtual/range {v0 .. v5}, Lcom/meizu/widget/LockDigitView;->setCellInfo(IILjava/lang/String;Landroid/graphics/drawable/Drawable;Z)V
 
-    .line 298
+    .line 303
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputText:Lcom/meizu/widget/LockPasswordView;
 
-    invoke-virtual {v0, v6}, Lcom/meizu/widget/LockPasswordView;->setHollowVisible(Z)V
+    invoke-virtual {v0, v5}, Lcom/meizu/widget/LockPasswordView;->setHollowVisible(Z)V
 
-    .line 299
+    .line 304
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputText:Lcom/meizu/widget/LockPasswordView;
 
     const/16 v2, 0x8
 
     invoke-virtual {v0, v2}, Lcom/meizu/widget/LockPasswordView;->setMaxNum(I)V
 
-    .line 300
+    .line 305
     sget-object v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;->sim:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
 
-    .line 301
+    .line 306
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->setKeypadAsNum()V
 
-    .line 302
+    .line 307
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mUpdateMonitor:Lcom/android/internal/policy/impl/KeyguardUpdateMonitor;
 
     invoke-virtual {v0}, Lcom/android/internal/policy/impl/KeyguardUpdateMonitor;->getSimState()Lcom/android/internal/telephony/IccCard$State;
 
-    move-result-object v11
+    move-result-object v13
 
-    .line 303
-    .local v11, simState:Lcom/android/internal/telephony/IccCard$State;
+    .line 308
+    .local v13, simState:Lcom/android/internal/telephony/IccCard$State;
     sget-object v0, Lcom/android/internal/telephony/IccCard$State;->PIN_REQUIRED:Lcom/android/internal/telephony/IccCard$State;
 
-    if-ne v11, v0, :cond_5
+    if-ne v13, v0, :cond_5
 
-    .line 304
+    .line 309
     sget-object v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;->checkPin:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
-    .line 308
-    :cond_1
-    :goto_2
+    .line 313
+    :cond_2
+    :goto_1
     sget-object v0, Lcom/android/internal/telephony/IccCard$State;->READY:Lcom/android/internal/telephony/IccCard$State;
 
-    if-eq v11, v0, :cond_6
-
-    .line 309
-    invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->checkLeftTimes()V
+    if-eq v13, v0, :cond_6
 
     .line 314
+    invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->checkLeftTimes()V
+
+    .line 319
+    :goto_2
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    const v1, 0x105015f
+
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v0
+
+    iput v0, v12, Landroid/widget/FrameLayout$LayoutParams;->rightMargin:I
+
+    .line 335
+    .end local v13           #simState:Lcom/android/internal/telephony/IccCard$State;
+    :cond_3
     :goto_3
-    const/high16 v0, 0x42c1
-
-    iget v1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDensityScale:F
-
-    mul-float/2addr v0, v1
-
-    float-to-int v0, v0
-
-    iput v0, v10, Landroid/widget/FrameLayout$LayoutParams;->rightMargin:I
-
-    .line 330
-    .end local v11           #simState:Lcom/android/internal/telephony/IccCard$State;
-    :cond_2
-    :goto_4
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputText:Lcom/meizu/widget/LockPasswordView;
 
     invoke-virtual {v0}, Lcom/meizu/widget/LockPasswordView;->getCurNum()I
 
     move-result v0
 
-    if-lez v0, :cond_3
-
-    .line 331
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputDelete:Landroid/widget/ImageView;
-
-    invoke-virtual {v0, v6}, Landroid/widget/ImageView;->setVisibility(I)V
-
-    .line 333
-    :cond_3
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputDelete:Landroid/widget/ImageView;
-
-    invoke-virtual {v0, v10}, Landroid/widget/ImageView;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+    if-lez v0, :cond_4
 
     .line 336
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputDelete:Landroid/widget/ImageView;
+
+    invoke-virtual {v0, v5}, Landroid/widget/ImageView;->setVisibility(I)V
+
+    .line 338
+    :cond_4
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputDelete:Landroid/widget/ImageView;
+
+    invoke-virtual {v0, v12}, Landroid/widget/ImageView;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 341
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->updateInputTips()V
 
     goto/16 :goto_0
 
-    :cond_4
-    move v5, v6
-
-    .line 297
-    goto :goto_1
-
-    .line 305
-    .restart local v11       #simState:Lcom/android/internal/telephony/IccCard$State;
+    .line 310
+    .restart local v13       #simState:Lcom/android/internal/telephony/IccCard$State;
     :cond_5
     sget-object v0, Lcom/android/internal/telephony/IccCard$State;->PUK_REQUIRED:Lcom/android/internal/telephony/IccCard$State;
 
-    if-ne v11, v0, :cond_1
+    if-ne v13, v0, :cond_2
 
-    .line 306
+    .line 311
     sget-object v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;->checkPuk:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mSimState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
-    goto :goto_2
+    goto :goto_1
 
-    .line 311
+    .line 316
     :cond_6
     iput v1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mLeftTimes:I
 
-    goto :goto_3
+    goto :goto_2
 
-    .line 316
-    .end local v11           #simState:Lcom/android/internal/telephony/IccCard$State;
+    .line 321
+    .end local v13           #simState:Lcom/android/internal/telephony/IccCard$State;
     :cond_7
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
+    iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
-    invoke-interface {v0}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->isPassword()Z
+    invoke-interface {v4}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->isPassword()Z
 
-    move-result v0
+    move-result v4
 
-    if-eqz v0, :cond_2
+    if-eqz v4, :cond_3
 
-    .line 317
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
+    .line 322
+    iget-object v6, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
 
@@ -3678,95 +4006,107 @@
 
     if-nez v4, :cond_9
 
-    move v5, v8
+    move v11, v0
 
-    :goto_5
-    move-object v4, v3
+    :goto_4
+    move v7, v1
 
-    invoke-virtual/range {v0 .. v5}, Lcom/meizu/widget/LockDigitView;->setCellInfo(IILjava/lang/String;Landroid/graphics/drawable/Drawable;Z)V
+    move v8, v2
 
-    .line 318
-    sget-object v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;->password:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
+    move-object v9, v3
 
-    iput-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
+    move-object v10, v3
 
-    .line 319
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputText:Lcom/meizu/widget/LockPasswordView;
+    invoke-virtual/range {v6 .. v11}, Lcom/meizu/widget/LockDigitView;->setCellInfo(IILjava/lang/String;Landroid/graphics/drawable/Drawable;Z)V
 
-    invoke-virtual {v0, v8}, Lcom/meizu/widget/LockPasswordView;->setHollowVisible(Z)V
+    .line 323
+    sget-object v2, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;->password:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
 
-    .line 320
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputText:Lcom/meizu/widget/LockPasswordView;
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadState:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
+
+    .line 324
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputText:Lcom/meizu/widget/LockPasswordView;
+
+    invoke-virtual {v2, v0}, Lcom/meizu/widget/LockPasswordView;->setHollowVisible(Z)V
+
+    .line 325
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mInputText:Lcom/meizu/widget/LockPasswordView;
 
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->getPasswordLimit()I
 
-    move-result v2
+    move-result v4
 
-    invoke-virtual {v0, v2}, Lcom/meizu/widget/LockPasswordView;->setMaxNum(I)V
+    invoke-virtual {v2, v4}, Lcom/meizu/widget/LockPasswordView;->setMaxNum(I)V
 
-    .line 321
+    .line 326
     invoke-direct {p0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->setKeypadAsPoint()V
 
-    .line 322
+    .line 327
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v2}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v2
+
+    const-string v4, "guard_mode"
+
+    invoke-static {v2, v4, v0}, Landroid/provider/Settings$Secure;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+
+    move-result v2
+
+    if-ne v2, v0, :cond_8
+
+    .line 329
+    iget-object v6, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
+
+    const-string v9, "\u8bbf"
+
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
+
+    invoke-virtual {v2}, Lcom/meizu/widget/LockDigitView;->isKeyAsPoint()Z
+
+    move-result v2
+
+    if-nez v2, :cond_a
+
+    move v11, v0
+
+    :goto_5
+    move v7, v1
+
+    move v8, v5
+
+    move-object v10, v3
+
+    invoke-virtual/range {v6 .. v11}, Lcom/meizu/widget/LockDigitView;->setCellInfo(IILjava/lang/String;Landroid/graphics/drawable/Drawable;Z)V
+
+    .line 333
+    :cond_8
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+    invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
 
-    const-string v2, "guard_mode"
+    const v1, 0x105015e
 
-    invoke-static {v0, v2, v8}, Landroid/provider/Settings$Secure;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
-
-    move-result v0
-
-    if-ne v0, v8, :cond_8
-
-    .line 324
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
-
-    const-string v7, "\u8bbf"
-
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mKeypadView:Lcom/meizu/widget/LockDigitView;
-
-    invoke-virtual {v0}, Lcom/meizu/widget/LockDigitView;->isKeyAsPoint()Z
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
     move-result v0
 
-    if-nez v0, :cond_a
+    iput v0, v12, Landroid/widget/FrameLayout$LayoutParams;->rightMargin:I
 
-    move v9, v8
-
-    :goto_6
-    move v5, v1
-
-    move-object v8, v3
-
-    invoke-virtual/range {v4 .. v9}, Lcom/meizu/widget/LockDigitView;->setCellInfo(IILjava/lang/String;Landroid/graphics/drawable/Drawable;Z)V
-
-    .line 328
-    :cond_8
-    const/high16 v0, 0x42e5
-
-    iget v1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mDensityScale:F
-
-    mul-float/2addr v0, v1
-
-    float-to-int v0, v0
-
-    iput v0, v10, Landroid/widget/FrameLayout$LayoutParams;->rightMargin:I
-
-    goto :goto_4
+    goto/16 :goto_3
 
     :cond_9
-    move v5, v6
+    move v11, v5
 
-    .line 317
-    goto :goto_5
+    .line 322
+    goto :goto_4
 
     :cond_a
-    move v9, v6
+    move v11, v5
 
-    .line 324
-    goto :goto_6
+    .line 329
+    goto :goto_5
 .end method

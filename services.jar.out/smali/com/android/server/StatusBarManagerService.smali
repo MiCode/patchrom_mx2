@@ -2538,6 +2538,34 @@
     throw v0
 .end method
 
+.method public updateKeyguardStatusBar(Z)V
+    .locals 2
+    .parameter "isKeyguardShow"
+
+    .prologue
+    .line 695
+    :try_start_0
+    iget-object v1, p0, Lcom/android/server/StatusBarManagerService;->mBar:Lcom/android/internal/statusbar/IStatusBar;
+
+    invoke-interface {v1, p1}, Lcom/android/internal/statusbar/IStatusBar;->updateKeyguardStatusBar(Z)V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 699
+    :goto_0
+    return-void
+
+    .line 696
+    :catch_0
+    move-exception v0
+
+    .line 697
+    .local v0, e:Ljava/lang/Exception;
+    invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
+
+    goto :goto_0
+.end method
+
 .method public updateNotification(Landroid/os/IBinder;Lcom/android/internal/statusbar/StatusBarNotification;)V
     .locals 4
     .parameter "key"

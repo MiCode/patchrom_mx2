@@ -15,6 +15,12 @@
 
 
 # static fields
+.field static final OLD_SRC:Ljava/lang/String; = "old_src"
+
+.field static final OLD_TITLE:Ljava/lang/String; = "old_title"
+
+.field static final OLD_URL:Ljava/lang/String; = "old_url"
+
 .field static final SRC:Ljava/lang/String; = "src"
 
 .field static final TITLE:Ljava/lang/String; = "title"
@@ -27,7 +33,7 @@
     .locals 0
 
     .prologue
-    .line 2250
+    .line 1647
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void

@@ -26,6 +26,8 @@
 
 .field private mActiveStart:I
 
+.field private mActivity:Lcom/android/gallery3d/app/GalleryActivity;
+
 .field private mContentEnd:I
 
 .field private mContentStart:I
@@ -107,73 +109,73 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 117
+    .line 120
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 98
+    .line 100
     iput v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentStart:I
 
-    .line 99
+    .line 101
     iput v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentEnd:I
 
-    .line 101
+    .line 103
     iput v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveStart:I
 
-    .line 102
+    .line 104
     iput v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveEnd:I
 
-    .line 106
+    .line 108
     iput v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveRequestCount:I
 
-    .line 107
+    .line 109
     iput-boolean v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mIsActive:Z
 
-    .line 109
+    .line 111
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mEntryPool:Ljava/util/HashMap;
 
-    .line 110
+    .line 112
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mFreedEntry:Ljava/util/ArrayList;
 
-    .line 112
+    .line 114
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mHeaderTextures:Ljava/util/HashMap;
 
-    .line 118
+    .line 121
     invoke-interface {p2, p0}, Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;->setDataListener(Lcom/android/gallery3d/app/AlbumDataLoader$DataListener;)V
 
-    .line 119
+    .line 122
     iput-object p2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSource:Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;
 
-    .line 120
+    .line 123
     iput-object p3, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
-    .line 121
+    .line 124
     new-array v0, p5, [Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
-    .line 122
+    .line 125
     invoke-interface {p2}, Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;->size()I
 
     move-result v0
 
     iput v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSize:I
 
-    .line 123
+    .line 126
     iput-boolean p6, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mIsVideo:Z
 
-    .line 125
+    .line 128
     new-instance v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$1;
 
     invoke-interface {p1}, Lcom/android/gallery3d/app/GalleryActivity;->getGLRoot()Lcom/android/gallery3d/ui/GLRoot;
@@ -184,7 +186,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mHandler:Lcom/android/gallery3d/ui/SynchronizedHandler;
 
-    .line 133
+    .line 136
     new-instance v0, Lcom/android/gallery3d/util/JobLimiter;
 
     invoke-interface {p1}, Lcom/android/gallery3d/app/GalleryActivity;->getThreadPool()Lcom/android/gallery3d/util/ThreadPool;
@@ -197,14 +199,14 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mThreadPool:Lcom/android/gallery3d/util/JobLimiter;
 
-    .line 134
+    .line 137
     new-instance v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;
 
     invoke-direct {v0, p4}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;-><init>(Lcom/android/gallery3d/ui/AlbumSlotRenderer$LabelSpec;)V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mLabelMaker:Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;
 
-    .line 135
+    .line 138
     new-instance v0, Lcom/android/gallery3d/ui/TextureUploader;
 
     invoke-interface {p1}, Lcom/android/gallery3d/app/GalleryActivity;->getGLRoot()Lcom/android/gallery3d/ui/GLRoot;
@@ -215,17 +217,20 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mTextureUploader:Lcom/android/gallery3d/ui/TextureUploader;
 
-    .line 136
+    .line 139
+    iput-object p1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
+
+    .line 140
     return-void
 .end method
 
-.method static synthetic access$1000(Lcom/android/gallery3d/ui/AlbumSlidingWindow;)Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;
+.method static synthetic access$1000(Lcom/android/gallery3d/ui/AlbumSlidingWindow;)[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     .locals 1
     .parameter "x0"
 
     .prologue
     .line 48
-    iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mLabelMaker:Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;
+    iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
     return-object v0
 .end method
@@ -252,18 +257,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$500(Lcom/android/gallery3d/ui/AlbumSlidingWindow;)[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 48
-    iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
-
-    return-object v0
-.end method
-
-.method static synthetic access$600(Lcom/android/gallery3d/ui/AlbumSlidingWindow;)Lcom/android/gallery3d/ui/TextureUploader;
+.method static synthetic access$500(Lcom/android/gallery3d/ui/AlbumSlidingWindow;)Lcom/android/gallery3d/ui/TextureUploader;
     .locals 1
     .parameter "x0"
 
@@ -274,7 +268,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$700(Lcom/android/gallery3d/ui/AlbumSlidingWindow;)I
+.method static synthetic access$600(Lcom/android/gallery3d/ui/AlbumSlidingWindow;)I
     .locals 1
     .parameter "x0"
 
@@ -285,7 +279,7 @@
     return v0
 .end method
 
-.method static synthetic access$706(Lcom/android/gallery3d/ui/AlbumSlidingWindow;)I
+.method static synthetic access$606(Lcom/android/gallery3d/ui/AlbumSlidingWindow;)I
     .locals 1
     .parameter "x0"
 
@@ -300,7 +294,7 @@
     return v0
 .end method
 
-.method static synthetic access$800(Lcom/android/gallery3d/ui/AlbumSlidingWindow;)V
+.method static synthetic access$700(Lcom/android/gallery3d/ui/AlbumSlidingWindow;)V
     .locals 0
     .parameter "x0"
 
@@ -311,7 +305,7 @@
     return-void
 .end method
 
-.method static synthetic access$900(Lcom/android/gallery3d/ui/AlbumSlidingWindow;)Lcom/android/gallery3d/ui/AlbumSlidingWindow$Listener;
+.method static synthetic access$800(Lcom/android/gallery3d/ui/AlbumSlidingWindow;)Lcom/android/gallery3d/ui/AlbumSlidingWindow$Listener;
     .locals 1
     .parameter "x0"
 
@@ -322,11 +316,22 @@
     return-object v0
 .end method
 
+.method static synthetic access$900(Lcom/android/gallery3d/ui/AlbumSlidingWindow;)Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 48
+    iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mLabelMaker:Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;
+
+    return-object v0
+.end method
+
 .method private cancelNonactiveImages()V
     .locals 5
 
     .prologue
-    .line 313
+    .line 326
     iget v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentEnd:I
 
     iget v3, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveEnd:I
@@ -343,7 +348,7 @@
 
     move-result v1
 
-    .line 315
+    .line 328
     .local v1, range:I
     const/4 v0, 0x0
 
@@ -351,14 +356,14 @@
     :goto_0
     if-ge v0, v1, :cond_0
 
-    .line 316
+    .line 329
     iget v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveEnd:I
 
     add-int/2addr v2, v0
 
     invoke-direct {p0, v2}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->cancelSlotImage(I)V
 
-    .line 317
+    .line 330
     iget v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveStart:I
 
     add-int/lit8 v2, v2, -0x1
@@ -367,12 +372,12 @@
 
     invoke-direct {p0, v2}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->cancelSlotImage(I)V
 
-    .line 315
+    .line 328
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 319
+    .line 332
     :cond_0
     return-void
 .end method
@@ -382,7 +387,7 @@
     .parameter "slotIndex"
 
     .prologue
-    .line 322
+    .line 335
     iget v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentStart:I
 
     if-lt p1, v1, :cond_0
@@ -391,12 +396,12 @@
 
     if-lt p1, v1, :cond_1
 
-    .line 327
+    .line 340
     :cond_0
     :goto_0
     return-void
 
-    .line 323
+    .line 336
     :cond_1
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
@@ -408,11 +413,11 @@
 
     aget-object v0, v1, v2
 
-    .line 324
+    .line 337
     .local v0, entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     if-eqz v0, :cond_0
 
-    .line 325
+    .line 338
     #getter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->contentLoader:Lcom/android/gallery3d/ui/BitmapLoader;
     invoke-static {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$100(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)Lcom/android/gallery3d/ui/BitmapLoader;
 
@@ -427,7 +432,7 @@
 
     invoke-virtual {v1}, Lcom/android/gallery3d/ui/BitmapLoader;->cancelLoad()V
 
-    .line 326
+    .line 339
     :cond_2
     #getter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelLoader:Lcom/android/gallery3d/ui/BitmapLoader;
     invoke-static {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$200(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)Lcom/android/gallery3d/ui/BitmapLoader;
@@ -447,10 +452,20 @@
 .end method
 
 .method private clearEntryPool()V
-    .locals 3
+    .locals 4
 
     .prologue
-    .line 529
+    .line 556
+    iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
+
+    invoke-interface {v2}, Lcom/android/gallery3d/app/GalleryActivity;->getGLRoot()Lcom/android/gallery3d/ui/GLRoot;
+
+    move-result-object v2
+
+    invoke-interface {v2}, Lcom/android/gallery3d/ui/GLRoot;->lockRenderThread()V
+
+    .line 558
+    :try_start_0
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mEntryPool:Ljava/util/HashMap;
 
     invoke-virtual {v2}, Ljava/util/HashMap;->values()Ljava/util/Collection;
@@ -476,7 +491,7 @@
 
     check-cast v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
-    .line 530
+    .line 559
     .local v0, entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     #getter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->contentLoader:Lcom/android/gallery3d/ui/BitmapLoader;
     invoke-static {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$100(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)Lcom/android/gallery3d/ui/BitmapLoader;
@@ -492,7 +507,7 @@
 
     invoke-virtual {v2}, Lcom/android/gallery3d/ui/BitmapLoader;->recycle()V
 
-    .line 531
+    .line 560
     :cond_1
     iget-object v2, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->bitmapTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
@@ -501,17 +516,47 @@
     iget-object v2, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->bitmapTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
     invoke-virtual {v2}, Lcom/android/gallery3d/ui/BitmapTexture;->recycle()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     goto :goto_0
 
-    .line 533
+    .line 564
     .end local v0           #entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
+    .end local v1           #i$:Ljava/util/Iterator;
+    :catchall_0
+    move-exception v2
+
+    iget-object v3, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
+
+    invoke-interface {v3}, Lcom/android/gallery3d/app/GalleryActivity;->getGLRoot()Lcom/android/gallery3d/ui/GLRoot;
+
+    move-result-object v3
+
+    invoke-interface {v3}, Lcom/android/gallery3d/ui/GLRoot;->unlockRenderThread()V
+
+    throw v2
+
+    .line 562
+    .restart local v1       #i$:Ljava/util/Iterator;
     :cond_2
+    :try_start_1
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mEntryPool:Ljava/util/HashMap;
 
     invoke-virtual {v2}, Ljava/util/HashMap;->clear()V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 534
+    .line 564
+    iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
+
+    invoke-interface {v2}, Lcom/android/gallery3d/app/GalleryActivity;->getGLRoot()Lcom/android/gallery3d/ui/GLRoot;
+
+    move-result-object v2
+
+    invoke-interface {v2}, Lcom/android/gallery3d/ui/GLRoot;->unlockRenderThread()V
+
+    .line 566
     return-void
 .end method
 
@@ -519,7 +564,17 @@
     .locals 5
 
     .prologue
-    .line 213
+    .line 221
+    iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
+
+    invoke-interface {v2}, Lcom/android/gallery3d/app/GalleryActivity;->getGLRoot()Lcom/android/gallery3d/ui/GLRoot;
+
+    move-result-object v2
+
+    invoke-interface {v2}, Lcom/android/gallery3d/ui/GLRoot;->lockRenderThread()V
+
+    .line 223
+    :try_start_0
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mEntryPool:Ljava/util/HashMap;
 
     invoke-virtual {v2}, Ljava/util/HashMap;->values()Ljava/util/Collection;
@@ -545,7 +600,7 @@
 
     check-cast v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
-    .line 214
+    .line 224
     .local v0, entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     #getter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->refCount:I
     invoke-static {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$000(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)I
@@ -554,7 +609,7 @@
 
     if-nez v2, :cond_0
 
-    .line 215
+    .line 225
     #getter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->contentLoader:Lcom/android/gallery3d/ui/BitmapLoader;
     invoke-static {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$100(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)Lcom/android/gallery3d/ui/BitmapLoader;
 
@@ -569,7 +624,7 @@
 
     invoke-virtual {v2}, Lcom/android/gallery3d/ui/BitmapLoader;->recycle()V
 
-    .line 216
+    .line 226
     :cond_1
     iget-object v2, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->bitmapTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
@@ -579,7 +634,7 @@
 
     invoke-virtual {v2}, Lcom/android/gallery3d/ui/BitmapTexture;->recycle()V
 
-    .line 217
+    .line 227
     :cond_2
     #getter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelLoader:Lcom/android/gallery3d/ui/BitmapLoader;
     invoke-static {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$200(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)Lcom/android/gallery3d/ui/BitmapLoader;
@@ -595,7 +650,7 @@
 
     invoke-virtual {v2}, Lcom/android/gallery3d/ui/BitmapLoader;->recycle()V
 
-    .line 218
+    .line 228
     :cond_3
     iget-object v2, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
@@ -605,17 +660,36 @@
 
     invoke-virtual {v2}, Lcom/android/gallery3d/ui/BitmapTexture;->recycle()V
 
-    .line 219
+    .line 229
     :cond_4
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mFreedEntry:Ljava/util/ArrayList;
 
     invoke-virtual {v2, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     goto :goto_0
 
-    .line 222
+    .line 237
     .end local v0           #entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
+    .end local v1           #i$:Ljava/util/Iterator;
+    :catchall_0
+    move-exception v2
+
+    iget-object v3, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
+
+    invoke-interface {v3}, Lcom/android/gallery3d/app/GalleryActivity;->getGLRoot()Lcom/android/gallery3d/ui/GLRoot;
+
+    move-result-object v3
+
+    invoke-interface {v3}, Lcom/android/gallery3d/ui/GLRoot;->unlockRenderThread()V
+
+    throw v2
+
+    .line 232
+    .restart local v1       #i$:Ljava/util/Iterator;
     :cond_5
+    :try_start_1
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mFreedEntry:Ljava/util/ArrayList;
 
     invoke-virtual {v2}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
@@ -635,7 +709,7 @@
 
     check-cast v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
-    .line 223
+    .line 233
     .restart local v0       #entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mEntryPool:Ljava/util/HashMap;
 
@@ -649,14 +723,25 @@
 
     goto :goto_1
 
-    .line 225
+    .line 235
     .end local v0           #entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     :cond_6
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mFreedEntry:Ljava/util/ArrayList;
 
     invoke-virtual {v2}, Ljava/util/ArrayList;->clear()V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 226
+    .line 237
+    iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
+
+    invoke-interface {v2}, Lcom/android/gallery3d/app/GalleryActivity;->getGLRoot()Lcom/android/gallery3d/ui/GLRoot;
+
+    move-result-object v2
+
+    invoke-interface {v2}, Lcom/android/gallery3d/ui/GLRoot;->unlockRenderThread()V
+
+    .line 239
     return-void
 .end method
 
@@ -665,32 +750,32 @@
     .parameter "slotIndex"
 
     .prologue
-    .line 330
+    .line 343
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
-    .line 331
+    .line 344
     .local v0, data:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     array-length v3, v0
 
     rem-int v2, p1, v3
 
-    .line 332
+    .line 345
     .local v2, index:I
     aget-object v1, v0, v2
 
-    .line 333
+    .line 346
     .local v1, entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     if-eqz v1, :cond_0
 
-    .line 334
+    .line 347
     invoke-static {v1}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$006(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)I
 
-    .line 335
+    .line 348
     const/4 v3, 0x0
 
     aput-object v3, v0, v2
 
-    .line 337
+    .line 350
     :cond_0
     return-void
 .end method
@@ -701,17 +786,17 @@
     .parameter "item"
 
     .prologue
-    .line 340
+    .line 353
     instance-of v3, p2, Lcom/android/gallery3d/data/LocalVideo;
 
     if-eqz v3, :cond_1
 
     move-object v2, p2
 
-    .line 341
+    .line 354
     check-cast v2, Lcom/android/gallery3d/data/LocalVideo;
 
-    .line 342
+    .line 355
     .local v2, video:Lcom/android/gallery3d/data/LocalVideo;
     iget-object v3, v2, Lcom/android/gallery3d/data/LocalMediaItem;->filePath:Ljava/lang/String;
 
@@ -719,16 +804,16 @@
 
     move-result-object v0
 
-    .line 343
+    .line 356
     .local v0, format:Ljava/lang/String;
     if-eqz v0, :cond_0
 
-    .line 344
+    .line 357
     invoke-virtual {v0}, Ljava/lang/String;->toUpperCase()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 348
+    .line 361
     :goto_0
     const-string v3, "%s %s %dx%d"
 
@@ -780,7 +865,7 @@
 
     move-result-object v1
 
-    .line 351
+    .line 364
     .local v1, info:Ljava/lang/String;
     new-instance v3, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelLoader;
 
@@ -790,14 +875,14 @@
 
     invoke-direct {v3, p0, p1, v4, v1}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelLoader;-><init>(Lcom/android/gallery3d/ui/AlbumSlidingWindow;ILjava/lang/String;Ljava/lang/String;)V
 
-    .line 353
+    .line 366
     .end local v0           #format:Ljava/lang/String;
     .end local v1           #info:Ljava/lang/String;
     .end local v2           #video:Lcom/android/gallery3d/data/LocalVideo;
     :goto_1
     return-object v3
 
-    .line 346
+    .line 359
     .restart local v0       #format:Ljava/lang/String;
     .restart local v2       #video:Lcom/android/gallery3d/data/LocalVideo;
     :cond_0
@@ -805,7 +890,7 @@
 
     goto :goto_0
 
-    .line 353
+    .line 366
     .end local v0           #format:Ljava/lang/String;
     .end local v2           #video:Lcom/android/gallery3d/data/LocalVideo;
     :cond_1
@@ -819,7 +904,7 @@
     .parameter "header"
 
     .prologue
-    .line 151
+    .line 155
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mHeaderTextures:Ljava/util/HashMap;
 
     invoke-virtual {v1, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -828,11 +913,11 @@
 
     check-cast v0, Lcom/android/gallery3d/ui/StringTexture;
 
-    .line 152
+    .line 156
     .local v0, texture:Lcom/android/gallery3d/ui/StringTexture;
     if-nez v0, :cond_0
 
-    .line 153
+    .line 157
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
     iget v1, v1, Lcom/android/gallery3d/ui/SlotView$Spec;->headerTextFontSize:I
@@ -851,44 +936,71 @@
 
     move-result-object v0
 
-    .line 154
+    .line 158
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mHeaderTextures:Ljava/util/HashMap;
 
     invoke-virtual {v1, p1, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 156
+    .line 160
     :cond_0
     return-object v0
 .end method
 
+.method private isLabelChanged(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)Z
+    .locals 2
+    .parameter "entry"
+
+    .prologue
+    .line 414
+    iget v0, p1, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->fontScale:F
+
+    sget v1, Lcom/android/gallery3d/common/Utils;->sFontScale:F
+
+    cmpl-float v0, v0, v1
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
 .method private prepareSlotContent(I)V
-    .locals 7
+    .locals 8
     .parameter "slotIndex"
 
     .prologue
     const/4 v6, 0x1
 
-    .line 357
+    const/4 v7, 0x0
+
+    .line 370
     iget-object v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSource:Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;
 
     invoke-interface {v4, p1}, Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;->get(I)Lcom/android/gallery3d/data/MediaItem;
 
     move-result-object v1
 
-    .line 358
+    .line 371
     .local v1, item:Lcom/android/gallery3d/data/MediaItem;
     const-wide/16 v2, -0x1
 
-    .line 359
+    .line 372
     .local v2, version:J
-    if-eqz v1, :cond_0
+    if-eqz v1, :cond_2
 
-    .line 360
+    .line 373
     invoke-virtual {v1}, Lcom/android/gallery3d/data/MediaItem;->getDataVersion()J
 
     move-result-wide v2
 
-    .line 361
+    .line 374
     iget-object v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mEntryPool:Ljava/util/HashMap;
 
     invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
@@ -901,14 +1013,66 @@
 
     check-cast v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
-    .line 362
+    .line 375
     .local v0, entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_2
 
-    .line 363
+    .line 376
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->isLabelChanged(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_1
+
+    .line 377
+    sget v4, Lcom/android/gallery3d/common/Utils;->sFontScale:F
+
+    iput v4, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->fontScale:F
+
+    .line 378
+    #getter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelLoader:Lcom/android/gallery3d/ui/BitmapLoader;
+    invoke-static {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$200(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)Lcom/android/gallery3d/ui/BitmapLoader;
+
+    move-result-object v4
+
+    if-eqz v4, :cond_0
+
+    .line 379
+    #getter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelLoader:Lcom/android/gallery3d/ui/BitmapLoader;
+    invoke-static {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$200(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)Lcom/android/gallery3d/ui/BitmapLoader;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Lcom/android/gallery3d/ui/BitmapLoader;->recycle()V
+
+    .line 380
+    #setter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelLoader:Lcom/android/gallery3d/ui/BitmapLoader;
+    invoke-static {v0, v7}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$202(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;Lcom/android/gallery3d/ui/BitmapLoader;)Lcom/android/gallery3d/ui/BitmapLoader;
+
+    .line 381
+    iput-object v7, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelTexture:Lcom/android/gallery3d/ui/BitmapTexture;
+
+    .line 384
+    :cond_0
+    iget-boolean v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mIsVideo:Z
+
+    if-eqz v4, :cond_1
+
+    .line 385
+    iget-object v4, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->item:Lcom/android/gallery3d/data/MediaItem;
+
+    invoke-direct {p0, p1, v4}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->getEntryLabelLoader(ILcom/android/gallery3d/data/MediaItem;)Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelLoader;
+
+    move-result-object v4
+
+    #setter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelLoader:Lcom/android/gallery3d/ui/BitmapLoader;
+    invoke-static {v0, v4}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$202(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;Lcom/android/gallery3d/ui/BitmapLoader;)Lcom/android/gallery3d/ui/BitmapLoader;
+
+    .line 388
+    :cond_1
     invoke-static {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$004(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)I
 
-    .line 364
+    .line 389
     iget-object v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
     iget-object v5, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
@@ -919,30 +1083,33 @@
 
     aput-object v0, v4, v5
 
-    .line 385
+    .line 411
     :goto_0
     return-void
 
-    .line 368
+    .line 393
     .end local v0           #entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
-    :cond_0
+    :cond_2
     new-instance v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
     invoke-direct {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;-><init>()V
 
-    .line 369
+    .line 394
     .restart local v0       #entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
+    iput p1, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->slotIndex:I
+
+    .line 395
     iput-object v1, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->item:Lcom/android/gallery3d/data/MediaItem;
 
-    .line 370
-    if-nez v1, :cond_2
+    .line 396
+    if-nez v1, :cond_4
 
     const-wide/16 v4, -0x1
 
     :goto_1
     iput-wide v4, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->version:J
 
-    .line 371
+    .line 397
     iget-object v4, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->item:Lcom/android/gallery3d/data/MediaItem;
 
     invoke-static {v4}, Lcom/android/gallery3d/util/GalleryUtils;->isPanorama(Lcom/android/gallery3d/data/MediaItem;)Z
@@ -951,48 +1118,46 @@
 
     iput-boolean v4, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->isPanorama:Z
 
-    .line 372
-    if-nez v1, :cond_3
+    .line 398
+    if-nez v1, :cond_5
 
     move v4, v6
 
     :goto_2
     iput v4, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->mediaType:I
 
-    .line 375
-    if-nez v1, :cond_4
+    .line 401
+    if-nez v1, :cond_6
 
-    const/4 v4, 0x0
+    move-object v4, v7
 
     :goto_3
     iput-object v4, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->path:Lcom/android/gallery3d/data/Path;
 
-    .line 376
-    if-nez v1, :cond_5
+    .line 402
+    if-nez v1, :cond_7
 
     const/4 v4, 0x0
 
     :goto_4
     iput v4, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->rotation:I
 
-    .line 377
+    .line 403
     new-instance v4, Lcom/android/gallery3d/ui/AlbumSlidingWindow$ThumbnailLoader;
 
-    iget-object v5, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->item:Lcom/android/gallery3d/data/MediaItem;
-
-    invoke-direct {v4, p0, p1, v5}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$ThumbnailLoader;-><init>(Lcom/android/gallery3d/ui/AlbumSlidingWindow;ILcom/android/gallery3d/data/MediaItem;)V
+    invoke-direct {v4, p0, v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$ThumbnailLoader;-><init>(Lcom/android/gallery3d/ui/AlbumSlidingWindow;Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)V
 
     #setter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->contentLoader:Lcom/android/gallery3d/ui/BitmapLoader;
     invoke-static {v0, v4}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$102(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;Lcom/android/gallery3d/ui/BitmapLoader;)Lcom/android/gallery3d/ui/BitmapLoader;
 
-    .line 378
+    .line 404
     iget-boolean v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mIsVideo:Z
 
-    if-eqz v4, :cond_1
+    if-eqz v4, :cond_3
 
-    if-eqz v1, :cond_1
+    if-eqz v1, :cond_3
 
-    .line 379
+    .line 405
     iget-object v4, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->item:Lcom/android/gallery3d/data/MediaItem;
 
     invoke-direct {p0, p1, v4}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->getEntryLabelLoader(ILcom/android/gallery3d/data/MediaItem;)Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelLoader;
@@ -1002,19 +1167,19 @@
     #setter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelLoader:Lcom/android/gallery3d/ui/BitmapLoader;
     invoke-static {v0, v4}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$202(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;Lcom/android/gallery3d/ui/BitmapLoader;)Lcom/android/gallery3d/ui/BitmapLoader;
 
-    .line 380
+    .line 406
     iget v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSlotWidth:I
 
     iget v5, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mThumbWidth:I
 
     invoke-virtual {v0, v4, v5}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->layout(II)V
 
-    .line 382
-    :cond_1
+    .line 408
+    :cond_3
     #setter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->refCount:I
     invoke-static {v0, v6}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$002(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;I)I
 
-    .line 383
+    .line 409
     iget-object v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mEntryPool:Ljava/util/HashMap;
 
     iget-wide v5, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->version:J
@@ -1025,7 +1190,7 @@
 
     invoke-virtual {v4, v5, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 384
+    .line 410
     iget-object v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
     iget-object v5, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
@@ -1038,16 +1203,16 @@
 
     goto :goto_0
 
-    .line 370
-    :cond_2
+    .line 396
+    :cond_4
     invoke-virtual {v1}, Lcom/android/gallery3d/data/MediaItem;->getDataVersion()J
 
     move-result-wide v4
 
     goto :goto_1
 
-    .line 372
-    :cond_3
+    .line 398
+    :cond_5
     iget-object v4, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->item:Lcom/android/gallery3d/data/MediaItem;
 
     invoke-virtual {v4}, Lcom/android/gallery3d/data/MediaItem;->getMediaType()I
@@ -1056,16 +1221,16 @@
 
     goto :goto_2
 
-    .line 375
-    :cond_4
+    .line 401
+    :cond_6
     invoke-virtual {v1}, Lcom/android/gallery3d/data/MediaItem;->getPath()Lcom/android/gallery3d/data/Path;
 
     move-result-object v4
 
     goto :goto_3
 
-    .line 376
-    :cond_5
+    .line 402
+    :cond_7
     invoke-virtual {v1}, Lcom/android/gallery3d/data/MediaItem;->getRotation()I
 
     move-result v4
@@ -1077,7 +1242,7 @@
     .locals 5
 
     .prologue
-    .line 291
+    .line 304
     iget v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentEnd:I
 
     iget v3, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveEnd:I
@@ -1094,7 +1259,7 @@
 
     move-result v1
 
-    .line 293
+    .line 306
     .local v1, range:I
     const/4 v0, 0x0
 
@@ -1102,14 +1267,14 @@
     :goto_0
     if-ge v0, v1, :cond_0
 
-    .line 294
+    .line 307
     iget v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveEnd:I
 
     add-int/2addr v2, v0
 
     invoke-direct {p0, v2}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->requestSlotImage(I)V
 
-    .line 295
+    .line 308
     iget v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveStart:I
 
     add-int/lit8 v2, v2, -0x1
@@ -1118,12 +1283,12 @@
 
     invoke-direct {p0, v2}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->requestSlotImage(I)V
 
-    .line 293
+    .line 306
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 297
+    .line 310
     :cond_0
     return-void
 .end method
@@ -1133,7 +1298,7 @@
     .parameter "slotIndex"
 
     .prologue
-    .line 301
+    .line 314
     iget v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentStart:I
 
     if-lt p1, v1, :cond_0
@@ -1142,12 +1307,12 @@
 
     if-lt p1, v1, :cond_1
 
-    .line 310
+    .line 323
     :cond_0
     :goto_0
     return-void
 
-    .line 302
+    .line 315
     :cond_1
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
@@ -1159,7 +1324,7 @@
 
     aget-object v0, v1, v2
 
-    .line 303
+    .line 316
     .local v0, entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     if-eqz v0, :cond_0
 
@@ -1167,12 +1332,12 @@
 
     if-eqz v1, :cond_0
 
-    .line 304
+    .line 317
     iget-object v1, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->content:Lcom/android/gallery3d/ui/Texture;
 
     if-nez v1, :cond_2
 
-    .line 305
+    .line 318
     #getter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->contentLoader:Lcom/android/gallery3d/ui/BitmapLoader;
     invoke-static {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$100(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)Lcom/android/gallery3d/ui/BitmapLoader;
 
@@ -1187,7 +1352,7 @@
 
     invoke-virtual {v1}, Lcom/android/gallery3d/ui/BitmapLoader;->startLoad()V
 
-    .line 307
+    .line 320
     :cond_2
     iget-boolean v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mIsVideo:Z
 
@@ -1197,7 +1362,7 @@
 
     if-nez v1, :cond_0
 
-    .line 308
+    .line 321
     #getter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelLoader:Lcom/android/gallery3d/ui/BitmapLoader;
     invoke-static {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$200(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)Lcom/android/gallery3d/ui/BitmapLoader;
 
@@ -1221,7 +1386,7 @@
     .parameter "contentEnd"
 
     .prologue
-    .line 173
+    .line 181
     iget v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentStart:I
 
     if-ne p1, v2, :cond_0
@@ -1230,30 +1395,30 @@
 
     if-ne p2, v2, :cond_0
 
-    .line 210
+    .line 218
     :goto_0
     return-void
 
-    .line 177
+    .line 185
     :cond_0
     iget-boolean v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mIsActive:Z
 
     if-nez v2, :cond_1
 
-    .line 178
+    .line 186
     iput p1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentStart:I
 
-    .line 179
+    .line 187
     iput p2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentEnd:I
 
-    .line 180
+    .line 188
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSource:Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;
 
     invoke-interface {v2, p1, p2}, Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;->setActiveWindow(II)V
 
     goto :goto_0
 
-    .line 184
+    .line 192
     :cond_1
     iget v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentEnd:I
 
@@ -1263,7 +1428,7 @@
 
     if-lt v2, p2, :cond_4
 
-    .line 185
+    .line 193
     :cond_2
     iget v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentStart:I
 
@@ -1274,35 +1439,35 @@
     :goto_1
     if-ge v0, v1, :cond_3
 
-    .line 186
+    .line 194
     invoke-direct {p0, v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->freeSlotContent(I)V
 
-    .line 185
+    .line 193
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_1
 
-    .line 188
+    .line 196
     :cond_3
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSource:Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;
 
     invoke-interface {v2, p1, p2}, Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;->setActiveWindow(II)V
 
-    .line 189
+    .line 197
     move v0, p1
 
     :goto_2
     if-ge v0, p2, :cond_8
 
-    .line 190
+    .line 198
     invoke-direct {p0, v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->prepareSlotContent(I)V
 
-    .line 189
+    .line 197
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_2
 
-    .line 193
+    .line 201
     .end local v0           #i:I
     .end local v1           #n:I
     :cond_4
@@ -1312,15 +1477,15 @@
     :goto_3
     if-ge v0, p1, :cond_5
 
-    .line 194
+    .line 202
     invoke-direct {p0, v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->freeSlotContent(I)V
 
-    .line 193
+    .line 201
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_3
 
-    .line 196
+    .line 204
     :cond_5
     move v0, p2
 
@@ -1330,21 +1495,21 @@
     :goto_4
     if-ge v0, v1, :cond_6
 
-    .line 197
+    .line 205
     invoke-direct {p0, v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->freeSlotContent(I)V
 
-    .line 196
+    .line 204
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_4
 
-    .line 199
+    .line 207
     :cond_6
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSource:Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;
 
     invoke-interface {v2, p1, p2}, Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;->setActiveWindow(II)V
 
-    .line 200
+    .line 208
     move v0, p1
 
     iget v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentStart:I
@@ -1352,34 +1517,34 @@
     :goto_5
     if-ge v0, v1, :cond_7
 
-    .line 201
+    .line 209
     invoke-direct {p0, v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->prepareSlotContent(I)V
 
-    .line 200
+    .line 208
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_5
 
-    .line 203
+    .line 211
     :cond_7
     iget v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentEnd:I
 
     :goto_6
     if-ge v0, p2, :cond_8
 
-    .line 204
+    .line 212
     invoke-direct {p0, v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->prepareSlotContent(I)V
 
-    .line 203
+    .line 211
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_6
 
-    .line 208
+    .line 216
     :cond_8
     iput p1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentStart:I
 
-    .line 209
+    .line 217
     iput p2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentEnd:I
 
     goto :goto_0
@@ -1390,20 +1555,20 @@
     .parameter "loader"
 
     .prologue
-    .line 388
+    .line 418
     if-nez p0, :cond_0
 
     const/4 v0, 0x0
 
-    .line 390
+    .line 420
     :goto_0
     return v0
 
-    .line 389
+    .line 419
     :cond_0
     invoke-virtual {p0}, Lcom/android/gallery3d/ui/BitmapLoader;->startLoad()V
 
-    .line 390
+    .line 420
     invoke-virtual {p0}, Lcom/android/gallery3d/ui/BitmapLoader;->isRequestInProgress()Z
 
     move-result v0
@@ -1415,12 +1580,12 @@
     .locals 5
 
     .prologue
-    .line 394
+    .line 424
     const/4 v3, 0x0
 
     iput v3, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveRequestCount:I
 
-    .line 395
+    .line 425
     iget v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveStart:I
 
     .local v1, i:I
@@ -1430,7 +1595,7 @@
     :goto_0
     if-ge v1, v2, :cond_2
 
-    .line 396
+    .line 426
     iget-object v3, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
     iget-object v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
@@ -1441,7 +1606,7 @@
 
     aget-object v0, v3, v4
 
-    .line 397
+    .line 427
     .local v0, entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     if-eqz v0, :cond_1
 
@@ -1449,12 +1614,12 @@
 
     if-eqz v3, :cond_1
 
-    .line 398
+    .line 428
     iget-object v3, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->content:Lcom/android/gallery3d/ui/Texture;
 
     if-nez v3, :cond_0
 
-    .line 399
+    .line 429
     #getter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->contentLoader:Lcom/android/gallery3d/ui/BitmapLoader;
     invoke-static {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$100(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)Lcom/android/gallery3d/ui/BitmapLoader;
 
@@ -1472,7 +1637,7 @@
 
     iput v3, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveRequestCount:I
 
-    .line 401
+    .line 431
     :cond_0
     iget-boolean v3, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mIsVideo:Z
 
@@ -1482,7 +1647,7 @@
 
     if-nez v3, :cond_1
 
-    .line 402
+    .line 432
     #getter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelLoader:Lcom/android/gallery3d/ui/BitmapLoader;
     invoke-static {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$200(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)Lcom/android/gallery3d/ui/BitmapLoader;
 
@@ -1500,27 +1665,27 @@
 
     iput v3, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveRequestCount:I
 
-    .line 395
+    .line 425
     :cond_1
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 406
+    .line 436
     .end local v0           #entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     :cond_2
     iget v3, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveRequestCount:I
 
     if-nez v3, :cond_3
 
-    .line 407
+    .line 437
     invoke-direct {p0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->requestNonactiveImages()V
 
-    .line 411
+    .line 441
     :goto_1
     return-void
 
-    .line 409
+    .line 439
     :cond_3
     invoke-direct {p0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->cancelNonactiveImages()V
 
@@ -1531,22 +1696,22 @@
     .locals 7
 
     .prologue
-    .line 260
+    .line 273
     iget-boolean v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mIsActive:Z
 
     if-nez v4, :cond_1
 
-    .line 283
+    .line 296
     :cond_0
     return-void
 
-    .line 261
+    .line 274
     :cond_1
     iget-object v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mTextureUploader:Lcom/android/gallery3d/ui/TextureUploader;
 
     invoke-virtual {v4}, Lcom/android/gallery3d/ui/TextureUploader;->clear()V
 
-    .line 264
+    .line 277
     iget v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveStart:I
 
     .local v1, i:I
@@ -1556,7 +1721,7 @@
     :goto_0
     if-ge v1, v2, :cond_4
 
-    .line 265
+    .line 278
     iget-object v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
     iget-object v5, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
@@ -1567,42 +1732,42 @@
 
     aget-object v0, v4, v5
 
-    .line 266
+    .line 279
     .local v0, entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     if-eqz v0, :cond_3
 
-    .line 267
+    .line 280
     iget-object v4, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->bitmapTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
     if-eqz v4, :cond_2
 
-    .line 268
+    .line 281
     iget-object v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mTextureUploader:Lcom/android/gallery3d/ui/TextureUploader;
 
     iget-object v5, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->bitmapTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
     invoke-virtual {v4, v5}, Lcom/android/gallery3d/ui/TextureUploader;->addFgTexture(Lcom/android/gallery3d/ui/UploadedTexture;)V
 
-    .line 270
+    .line 283
     :cond_2
     iget-object v4, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
     if-eqz v4, :cond_3
 
-    .line 271
+    .line 284
     iget-object v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mTextureUploader:Lcom/android/gallery3d/ui/TextureUploader;
 
     iget-object v5, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
     invoke-virtual {v4, v5}, Lcom/android/gallery3d/ui/TextureUploader;->addFgTexture(Lcom/android/gallery3d/ui/UploadedTexture;)V
 
-    .line 264
+    .line 277
     :cond_3
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 277
+    .line 290
     .end local v0           #entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     :cond_4
     iget v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentEnd:I
@@ -1621,21 +1786,21 @@
 
     move-result v3
 
-    .line 279
+    .line 292
     .local v3, range:I
     const/4 v1, 0x0
 
     :goto_1
     if-ge v1, v3, :cond_0
 
-    .line 280
+    .line 293
     iget v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveEnd:I
 
     add-int/2addr v4, v1
 
     invoke-direct {p0, v4}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->uploadBgTextureInSlot(I)V
 
-    .line 281
+    .line 294
     iget v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveStart:I
 
     sub-int/2addr v4, v1
@@ -1644,7 +1809,7 @@
 
     invoke-direct {p0, v4}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->uploadBgTextureInSlot(I)V
 
-    .line 279
+    .line 292
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_1
@@ -1655,7 +1820,7 @@
     .parameter "index"
 
     .prologue
-    .line 246
+    .line 259
     iget v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentEnd:I
 
     if-ge p1, v1, :cond_1
@@ -1664,7 +1829,7 @@
 
     if-lt p1, v1, :cond_1
 
-    .line 247
+    .line 260
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
@@ -1675,36 +1840,36 @@
 
     aget-object v0, v1, v2
 
-    .line 248
+    .line 261
     .local v0, entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     if-eqz v0, :cond_1
 
-    .line 249
+    .line 262
     iget-object v1, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->bitmapTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
     if-eqz v1, :cond_0
 
-    .line 250
+    .line 263
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mTextureUploader:Lcom/android/gallery3d/ui/TextureUploader;
 
     iget-object v2, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->bitmapTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
     invoke-virtual {v1, v2}, Lcom/android/gallery3d/ui/TextureUploader;->addBgTexture(Lcom/android/gallery3d/ui/UploadedTexture;)V
 
-    .line 252
+    .line 265
     :cond_0
     iget-object v1, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
     if-eqz v1, :cond_1
 
-    .line 253
+    .line 266
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mTextureUploader:Lcom/android/gallery3d/ui/TextureUploader;
 
     iget-object v2, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
     invoke-virtual {v1, v2}, Lcom/android/gallery3d/ui/TextureUploader;->addBgTexture(Lcom/android/gallery3d/ui/UploadedTexture;)V
 
-    .line 257
+    .line 270
     .end local v0           #entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     :cond_1
     return-void
@@ -1716,12 +1881,12 @@
     .locals 3
 
     .prologue
-    .line 574
+    .line 606
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mTextureUploader:Lcom/android/gallery3d/ui/TextureUploader;
 
     invoke-virtual {v2}, Lcom/android/gallery3d/ui/TextureUploader;->clear()V
 
-    .line 575
+    .line 607
     iget v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentStart:I
 
     .local v0, i:I
@@ -1731,24 +1896,24 @@
     :goto_0
     if-ge v0, v1, :cond_0
 
-    .line 576
+    .line 608
     invoke-direct {p0, v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->freeSlotContent(I)V
 
-    .line 575
+    .line 607
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 578
+    .line 610
     :cond_0
     invoke-direct {p0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->clearEntryPool()V
 
-    .line 579
+    .line 611
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mLabelMaker:Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;
 
     invoke-virtual {v2}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->clearRecycledLabels()V
 
-    .line 580
+    .line 612
     return-void
 .end method
 
@@ -1757,14 +1922,14 @@
     .parameter "slotIndex"
 
     .prologue
-    .line 143
+    .line 147
     invoke-virtual {p0, p1}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->isActiveSlot(I)Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 144
+    .line 148
     const-string v0, "invalid slot: %s outsides (%s, %s)"
 
     const/4 v1, 0x3
@@ -1801,7 +1966,7 @@
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/common/Utils;->fail(Ljava/lang/String;[Ljava/lang/Object;)V
 
-    .line 147
+    .line 151
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
@@ -1821,23 +1986,23 @@
     .parameter "slotIndex"
 
     .prologue
-    .line 160
+    .line 164
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSource:Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;
 
     invoke-interface {v1, p1}, Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;->getHeader(I)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 161
+    .line 165
     .local v0, header:Ljava/lang/String;
     if-eqz v0, :cond_0
 
-    .line 162
+    .line 166
     invoke-direct {p0, v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->getHeaderTexture(Ljava/lang/String;)Lcom/android/gallery3d/ui/StringTexture;
 
     move-result-object v1
 
-    .line 164
+    .line 168
     :goto_0
     return-object v1
 
@@ -1847,12 +2012,27 @@
     goto :goto_0
 .end method
 
+.method public getRowHeight(I)I
+    .locals 1
+    .parameter "slotIndex"
+
+    .prologue
+    .line 173
+    iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSource:Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;
+
+    invoke-interface {v0, p1}, Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;->getRowHeight(I)I
+
+    move-result v0
+
+    return v0
+.end method
+
 .method public isActiveSlot(I)Z
     .locals 1
     .parameter "slotIndex"
 
     .prologue
-    .line 169
+    .line 177
     iget v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveStart:I
 
     if-lt p1, v0, :cond_0
@@ -1876,10 +2056,10 @@
     .locals 0
 
     .prologue
-    .line 550
+    .line 582
     invoke-direct {p0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->clearFreedPool()V
 
-    .line 551
+    .line 583
     return-void
 .end method
 
@@ -1888,7 +2068,7 @@
     .parameter "index"
 
     .prologue
-    .line 538
+    .line 570
     iget v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentStart:I
 
     if-lt p1, v0, :cond_0
@@ -1901,16 +2081,16 @@
 
     if-eqz v0, :cond_0
 
-    .line 539
+    .line 571
     invoke-direct {p0, p1}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->freeSlotContent(I)V
 
-    .line 540
+    .line 572
     invoke-direct {p0, p1}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->prepareSlotContent(I)V
 
-    .line 541
+    .line 573
     invoke-direct {p0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->updateAllImageRequests()V
 
-    .line 542
+    .line 574
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mListener:Lcom/android/gallery3d/ui/AlbumSlidingWindow$Listener;
 
     if-eqz v0, :cond_0
@@ -1921,12 +2101,12 @@
 
     if-eqz v0, :cond_0
 
-    .line 543
+    .line 575
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mListener:Lcom/android/gallery3d/ui/AlbumSlidingWindow$Listener;
 
     invoke-interface {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$Listener;->onContentChanged()V
 
-    .line 546
+    .line 578
     :cond_0
     return-void
 .end method
@@ -1936,15 +2116,15 @@
     .parameter "size"
 
     .prologue
-    .line 515
+    .line 542
     iget v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSize:I
 
     if-eq v1, p1, :cond_3
 
-    .line 516
+    .line 543
     iput p1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSize:I
 
-    .line 517
+    .line 544
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mListener:Lcom/android/gallery3d/ui/AlbumSlidingWindow$Listener;
 
     if-eqz v1, :cond_0
@@ -1955,7 +2135,7 @@
 
     invoke-interface {v1, v2}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$Listener;->onSizeChanged(I)V
 
-    .line 518
+    .line 545
     :cond_0
     iget v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentEnd:I
 
@@ -1963,7 +2143,7 @@
 
     if-le v1, v2, :cond_2
 
-    .line 519
+    .line 546
     iget v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSize:I
 
     .local v0, i:I
@@ -1972,21 +2152,21 @@
 
     if-ge v0, v1, :cond_1
 
-    .line 520
+    .line 547
     invoke-direct {p0, v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->freeSlotContent(I)V
 
-    .line 519
+    .line 546
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 522
+    .line 549
     :cond_1
     iget v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSize:I
 
     iput v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentEnd:I
 
-    .line 524
+    .line 551
     .end local v0           #i:I
     :cond_2
     iget v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveEnd:I
@@ -1999,7 +2179,7 @@
 
     iput v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveEnd:I
 
-    .line 526
+    .line 553
     :cond_3
     return-void
 .end method
@@ -2012,7 +2192,7 @@
     .prologue
     const/4 v6, 0x0
 
-    .line 592
+    .line 624
     iget v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSlotWidth:I
 
     if-eq v4, p1, :cond_0
@@ -2021,41 +2201,41 @@
 
     if-nez v4, :cond_1
 
-    .line 616
+    .line 648
     :cond_0
     :goto_0
     return-void
 
-    .line 594
+    .line 626
     :cond_1
     iput p1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSlotWidth:I
 
-    .line 595
+    .line 627
     iget-object v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mLabelMaker:Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;
 
     invoke-virtual {v4}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->getLabelHeight()I
 
     move-result v2
 
-    .line 596
+    .line 628
     .local v2, labelHeight:I
     sub-int v4, p2, v2
 
     iput v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mThumbWidth:I
 
-    .line 597
+    .line 629
     iget-object v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mLabelMaker:Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;
 
     iget v5, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSlotWidth:I
 
     invoke-virtual {v4, v5}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->setLabelWidth(I)V
 
-    .line 599
+    .line 631
     iget-boolean v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mIsActive:Z
 
     if-eqz v4, :cond_0
 
-    .line 601
+    .line 633
     iget v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentStart:I
 
     .local v1, i:I
@@ -2065,7 +2245,7 @@
     :goto_1
     if-ge v1, v3, :cond_5
 
-    .line 602
+    .line 634
     iget-object v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
     iget-object v5, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
@@ -2076,17 +2256,17 @@
 
     aget-object v0, v4, v5
 
-    .line 603
+    .line 635
     .local v0, entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     if-nez v0, :cond_2
 
-    .line 601
+    .line 633
     :goto_2
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_1
 
-    .line 604
+    .line 636
     :cond_2
     #getter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelLoader:Lcom/android/gallery3d/ui/BitmapLoader;
     invoke-static {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$200(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)Lcom/android/gallery3d/ui/BitmapLoader;
@@ -2095,7 +2275,7 @@
 
     if-eqz v4, :cond_3
 
-    .line 605
+    .line 637
     #getter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelLoader:Lcom/android/gallery3d/ui/BitmapLoader;
     invoke-static {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$200(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;)Lcom/android/gallery3d/ui/BitmapLoader;
 
@@ -2103,20 +2283,20 @@
 
     invoke-virtual {v4}, Lcom/android/gallery3d/ui/BitmapLoader;->recycle()V
 
-    .line 606
+    .line 638
     #setter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelLoader:Lcom/android/gallery3d/ui/BitmapLoader;
     invoke-static {v0, v6}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$202(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;Lcom/android/gallery3d/ui/BitmapLoader;)Lcom/android/gallery3d/ui/BitmapLoader;
 
-    .line 607
+    .line 639
     iput-object v6, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
-    .line 609
+    .line 641
     :cond_3
     iget-object v4, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->item:Lcom/android/gallery3d/data/MediaItem;
 
     if-eqz v4, :cond_4
 
-    .line 610
+    .line 642
     iget-object v4, v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->item:Lcom/android/gallery3d/data/MediaItem;
 
     invoke-direct {p0, v1, v4}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->getEntryLabelLoader(ILcom/android/gallery3d/data/MediaItem;)Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelLoader;
@@ -2126,7 +2306,7 @@
     #setter for: Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelLoader:Lcom/android/gallery3d/ui/BitmapLoader;
     invoke-static {v0, v4}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->access$202(Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;Lcom/android/gallery3d/ui/BitmapLoader;)Lcom/android/gallery3d/ui/BitmapLoader;
 
-    .line 612
+    .line 644
     :cond_4
     iget v4, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSlotWidth:I
 
@@ -2136,12 +2316,12 @@
 
     goto :goto_2
 
-    .line 614
+    .line 646
     .end local v0           #entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     :cond_5
     invoke-direct {p0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->updateAllImageRequests()V
 
-    .line 615
+    .line 647
     invoke-direct {p0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->updateTextureUploadQueue()V
 
     goto :goto_0
@@ -2153,12 +2333,12 @@
     .parameter "height"
 
     .prologue
-    .line 587
+    .line 619
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mHeaderTextures:Ljava/util/HashMap;
 
     invoke-virtual {v0}, Ljava/util/HashMap;->clear()V
 
-    .line 588
+    .line 620
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
     iget v0, v0, Lcom/android/gallery3d/ui/SlotView$Spec;->headerTextMarginLeft:I
@@ -2169,7 +2349,7 @@
 
     iput v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mHeaderWidth:I
 
-    .line 589
+    .line 621
     return-void
 .end method
 
@@ -2177,17 +2357,17 @@
     .locals 3
 
     .prologue
-    .line 562
+    .line 594
     const/4 v2, 0x0
 
     iput-boolean v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mIsActive:Z
 
-    .line 563
+    .line 595
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mTextureUploader:Lcom/android/gallery3d/ui/TextureUploader;
 
     invoke-virtual {v2}, Lcom/android/gallery3d/ui/TextureUploader;->clear()V
 
-    .line 564
+    .line 596
     iget v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentStart:I
 
     .local v0, i:I
@@ -2197,7 +2377,7 @@
     :goto_0
     if-ge v0, v1, :cond_2
 
-    .line 565
+    .line 597
     iget v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveStart:I
 
     if-lt v0, v2, :cond_0
@@ -2206,26 +2386,26 @@
 
     if-lt v0, v2, :cond_1
 
-    .line 566
+    .line 598
     :cond_0
     invoke-direct {p0, v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->freeSlotContent(I)V
 
-    .line 564
+    .line 596
     :cond_1
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 569
+    .line 601
     :cond_2
     invoke-direct {p0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->clearFreedPool()V
 
-    .line 570
+    .line 602
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mLabelMaker:Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;
 
     invoke-virtual {v2}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->clearRecycledLabels()V
 
-    .line 571
+    .line 603
     return-void
 .end method
 
@@ -2233,12 +2413,12 @@
     .locals 3
 
     .prologue
-    .line 554
+    .line 586
     const/4 v2, 0x1
 
     iput-boolean v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mIsActive:Z
 
-    .line 555
+    .line 587
     iget v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mContentStart:I
 
     .local v0, i:I
@@ -2248,19 +2428,19 @@
     :goto_0
     if-ge v0, v1, :cond_0
 
-    .line 556
+    .line 588
     invoke-direct {p0, v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->prepareSlotContent(I)V
 
-    .line 555
+    .line 587
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 558
+    .line 590
     :cond_0
     invoke-direct {p0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->updateAllImageRequests()V
 
-    .line 559
+    .line 591
     return-void
 .end method
 
@@ -2272,17 +2452,17 @@
     .prologue
     const/4 v6, 0x0
 
-    .line 232
+    .line 245
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mData:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
 
-    .line 234
+    .line 247
     .local v2, data:[Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     iput p1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveStart:I
 
-    .line 235
+    .line 248
     iput p2, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mActiveEnd:I
 
-    .line 237
+    .line 250
     add-int v3, p1, p2
 
     div-int/lit8 v3, v3, 0x2
@@ -2307,7 +2487,7 @@
 
     move-result v1
 
-    .line 239
+    .line 252
     .local v1, contentStart:I
     array-length v3, v2
 
@@ -2319,21 +2499,21 @@
 
     move-result v0
 
-    .line 240
+    .line 253
     .local v0, contentEnd:I
     invoke-direct {p0, v1, v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->setContentWindow(II)V
 
-    .line 241
+    .line 254
     invoke-direct {p0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->updateTextureUploadQueue()V
 
-    .line 242
+    .line 255
     iget-boolean v3, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mIsActive:Z
 
     if-eqz v3, :cond_0
 
     invoke-direct {p0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->updateAllImageRequests()V
 
-    .line 243
+    .line 256
     :cond_0
     return-void
 .end method
@@ -2343,9 +2523,9 @@
     .parameter "listener"
 
     .prologue
-    .line 139
+    .line 143
     iput-object p1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->mListener:Lcom/android/gallery3d/ui/AlbumSlidingWindow$Listener;
 
-    .line 140
+    .line 144
     return-void
 .end method

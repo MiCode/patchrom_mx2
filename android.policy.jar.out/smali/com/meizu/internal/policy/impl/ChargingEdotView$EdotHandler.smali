@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 211
+    .line 212
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -38,7 +38,7 @@
     .parameter "x1"
 
     .prologue
-    .line 211
+    .line 212
     invoke-direct {p0, p1}, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;-><init>(Lcom/meizu/internal/policy/impl/ChargingEdotView;)V
 
     return-void
@@ -53,17 +53,17 @@
     .prologue
     const/16 v4, 0x3ea
 
-    .line 213
+    .line 214
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 250
+    .line 251
     :cond_0
     :goto_0
     return-void
 
-    .line 215
+    .line 216
     :pswitch_0
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
@@ -72,7 +72,7 @@
 
     goto :goto_0
 
-    .line 218
+    .line 219
     :pswitch_1
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
@@ -81,7 +81,7 @@
 
     goto :goto_0
 
-    .line 221
+    .line 222
     :pswitch_2
     const-string v0, "KeyguardCharging"
 
@@ -109,7 +109,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 222
+    .line 223
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
     #getter for: Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -119,7 +119,7 @@
 
     invoke-virtual {v0, v4}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 223
+    .line 224
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
     #getter for: Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -131,7 +131,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 224
+    .line 225
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
     #getter for: Lcom/meizu/internal/policy/impl/ChargingEdotView;->mStopTime:J
@@ -145,7 +145,7 @@
 
     if-nez v0, :cond_0
 
-    .line 225
+    .line 226
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
@@ -157,7 +157,7 @@
 
     goto :goto_0
 
-    .line 228
+    .line 229
     :pswitch_3
     const-string v0, "KeyguardCharging"
 
@@ -185,7 +185,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 229
+    .line 230
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
     #getter for: Lcom/meizu/internal/policy/impl/ChargingEdotView;->mHandler:Landroid/os/Handler;
@@ -197,7 +197,7 @@
 
     goto :goto_0
 
-    .line 232
+    .line 233
     :pswitch_4
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
@@ -206,7 +206,7 @@
 
     goto :goto_0
 
-    .line 235
+    .line 236
     :pswitch_5
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
@@ -215,7 +215,7 @@
 
     goto/16 :goto_0
 
-    .line 238
+    .line 239
     :pswitch_6
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
@@ -224,7 +224,7 @@
 
     goto/16 :goto_0
 
-    .line 241
+    .line 242
     :pswitch_7
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
@@ -233,7 +233,7 @@
 
     goto/16 :goto_0
 
-    .line 244
+    .line 245
     :pswitch_8
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
@@ -242,7 +242,7 @@
 
     goto/16 :goto_0
 
-    .line 247
+    .line 248
     :pswitch_9
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotHandler;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
@@ -251,7 +251,7 @@
 
     goto/16 :goto_0
 
-    .line 213
+    .line 214
     nop
 
     :pswitch_data_0

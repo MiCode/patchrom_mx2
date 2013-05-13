@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="action_assist_outerring_radius">170dp</dimen>
+	<dimen name="action_assist_snap_margin">40dip</dimen>
+	<dimen name="action_assist_outerring_diameter">340dp</dimen>
+	<dimen name="action_assist_height">170dip</dimen>
+</resources>

@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/camera/VideoCamera;->onResume()V
+    value = Lcom/android/camera/VideoCamera;->onSwitchCameraClicked(Landroid/view/View;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1570
+    .line 1295
     iput-object p1, p0, Lcom/android/camera/VideoCamera$10;->this$0:Lcom/android/camera/VideoCamera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,18 +41,18 @@
     .locals 3
 
     .prologue
-    .line 1573
+    .line 1298
     iget-object v0, p0, Lcom/android/camera/VideoCamera$10;->this$0:Lcom/android/camera/VideoCamera;
 
-    iget-object v1, p0, Lcom/android/camera/VideoCamera$10;->this$0:Lcom/android/camera/VideoCamera;
+    #getter for: Lcom/android/camera/VideoCamera;->mFlashLightBtn:Lcom/android/camera/ui/RotateImageView;
+    invoke-static {v0}, Lcom/android/camera/VideoCamera;->access$4200(Lcom/android/camera/VideoCamera;)Lcom/android/camera/ui/RotateImageView;
 
-    #getter for: Lcom/android/camera/VideoCamera;->mStorageSpace:J
-    invoke-static {v1}, Lcom/android/camera/VideoCamera;->access$4900(Lcom/android/camera/VideoCamera;)J
+    move-result-object v0
 
-    move-result-wide v1
+    const-wide/16 v1, 0x0
 
-    invoke-virtual {v0, v1, v2}, Lcom/android/camera/VideoCamera;->updateStorageHint(J)V
+    invoke-static {v0, v1, v2}, Lcom/android/camera/Util;->fadeOut(Landroid/view/View;J)V
 
-    .line 1574
+    .line 1299
     return-void
 .end method

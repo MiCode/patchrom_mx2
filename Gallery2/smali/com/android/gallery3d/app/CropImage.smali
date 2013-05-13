@@ -32,8 +32,6 @@
 
 .field private mBitmapTileProvider:Lcom/android/gallery3d/ui/BitmapTileProvider;
 
-.field private mBrightnessObserver:Landroid/database/ContentObserver;
-
 .field private mCompressFormat:Ljava/lang/String;
 
 .field private mConfirmDlg:Landroid/app/AlertDialog$Builder;
@@ -80,6 +78,8 @@
 
 .field private mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
+.field private mMzRecentReceiver:Landroid/content/BroadcastReceiver;
+
 .field private mOverwrite:Z
 
 .field private mPopupMenu:Landroid/widget/PopupMenu;
@@ -115,7 +115,7 @@
     .locals 3
 
     .prologue
-    .line 145
+    .line 148
     new-instance v0, Ljava/io/File;
 
     invoke-static {}, Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
@@ -128,7 +128,7 @@
 
     sput-object v0, Lcom/android/gallery3d/app/CropImage;->DOWNLOAD_BUCKET:Ljava/io/File;
 
-    .line 1273
+    .line 1285
     const/16 v0, 0xf
 
     new-array v0, v0, [Ljava/lang/String;
@@ -225,73 +225,69 @@
 
     sput-object v0, Lcom/android/gallery3d/app/CropImage;->EXIF_TAGS:[Ljava/lang/String;
 
-    .line 1429
+    .line 1441
     const-string v0, "jni_gallery_utils"
 
     invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
-    .line 1430
+    .line 1442
     return-void
 .end method
 
 .method public constructor <init>()V
-    .locals 2
+    .locals 1
 
     .prologue
     const/4 v0, 0x0
 
-    .line 92
+    .line 95
     invoke-direct {p0}, Lcom/android/gallery3d/app/AbstractGalleryActivity;-><init>()V
 
-    .line 150
+    .line 153
     iput v0, p0, Lcom/android/gallery3d/app/CropImage;->mState:I
 
-    .line 154
+    .line 157
     iput-boolean v0, p0, Lcom/android/gallery3d/app/CropImage;->mDoFaceDetection:Z
 
-    .line 166
+    .line 169
     iput-boolean v0, p0, Lcom/android/gallery3d/app/CropImage;->mUseRegionDecoder:Z
 
-    .line 181
+    .line 184
     iput-boolean v0, p0, Lcom/android/gallery3d/app/CropImage;->mConfirmOverwrite:Z
 
-    .line 185
+    .line 188
     iput v0, p0, Lcom/android/gallery3d/app/CropImage;->mCroppedWidth:I
 
-    .line 186
+    .line 189
     iput v0, p0, Lcom/android/gallery3d/app/CropImage;->mCroppedHeight:I
 
-    .line 187
+    .line 190
     new-instance v0, Landroid/graphics/Rect;
 
     invoke-direct {v0}, Landroid/graphics/Rect;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mSrcRect:Landroid/graphics/Rect;
 
-    .line 188
+    .line 191
     new-instance v0, Landroid/graphics/Rect;
 
     invoke-direct {v0}, Landroid/graphics/Rect;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mDestRect:Landroid/graphics/Rect;
 
-    .line 190
+    .line 193
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCompressFormat:Ljava/lang/String;
 
-    .line 1163
+    .line 1166
     new-instance v0, Lcom/android/gallery3d/app/CropImage$12;
 
-    new-instance v1, Landroid/os/Handler;
+    invoke-direct {v0, p0}, Lcom/android/gallery3d/app/CropImage$12;-><init>(Lcom/android/gallery3d/app/CropImage;)V
 
-    invoke-direct {v1}, Landroid/os/Handler;-><init>()V
+    iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mMzRecentReceiver:Landroid/content/BroadcastReceiver;
 
-    invoke-direct {v0, p0, v1}, Lcom/android/gallery3d/app/CropImage$12;-><init>(Lcom/android/gallery3d/app/CropImage;Landroid/os/Handler;)V
-
-    iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mBrightnessObserver:Landroid/database/ContentObserver;
-
-    .line 1260
+    .line 1272
     return-void
 .end method
 
@@ -300,7 +296,7 @@
     .parameter "x0"
 
     .prologue
-    .line 92
+    .line 95
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mProgressDialog:Landroid/app/ProgressDialog;
 
     return-object v0
@@ -312,7 +308,7 @@
     .parameter "x1"
 
     .prologue
-    .line 92
+    .line 95
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/CropImage;->onBitmapRegionDecoderAvailable(Landroid/graphics/BitmapRegionDecoder;)V
 
     return-void
@@ -323,7 +319,7 @@
     .parameter "x0"
 
     .prologue
-    .line 92
+    .line 95
     iget v0, p0, Lcom/android/gallery3d/app/CropImage;->mCroppedWidth:I
 
     return v0
@@ -334,7 +330,7 @@
     .parameter "x0"
 
     .prologue
-    .line 92
+    .line 95
     iget v0, p0, Lcom/android/gallery3d/app/CropImage;->mCroppedHeight:I
 
     return v0
@@ -348,7 +344,7 @@
     .parameter "x3"
 
     .prologue
-    .line 92
+    .line 95
     invoke-direct {p0, p1, p2, p3}, Lcom/android/gallery3d/app/CropImage;->saveOutputByFilePath(Lcom/android/gallery3d/util/ThreadPool$JobContext;Landroid/graphics/Bitmap;Landroid/content/Intent;)Z
 
     move-result v0
@@ -363,7 +359,7 @@
     .parameter "x2"
 
     .prologue
-    .line 92
+    .line 95
     invoke-direct {p0, p1, p2}, Lcom/android/gallery3d/app/CropImage;->setAsWallpaper(Lcom/android/gallery3d/util/ThreadPool$JobContext;Landroid/graphics/Bitmap;)Z
 
     move-result v0
@@ -378,7 +374,7 @@
     .parameter "x2"
 
     .prologue
-    .line 92
+    .line 95
     invoke-direct {p0, p1, p2}, Lcom/android/gallery3d/app/CropImage;->saveToMediaProvider(Lcom/android/gallery3d/util/ThreadPool$JobContext;Landroid/graphics/Bitmap;)Landroid/net/Uri;
 
     move-result-object v0
@@ -392,7 +388,7 @@
     .parameter "x1"
 
     .prologue
-    .line 92
+    .line 95
     iput-object p1, p0, Lcom/android/gallery3d/app/CropImage;->mSaveTask:Lcom/android/gallery3d/util/Future;
 
     return-object p1
@@ -403,7 +399,7 @@
     .parameter "x0"
 
     .prologue
-    .line 92
+    .line 95
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mMainHandler:Landroid/os/Handler;
 
     return-object v0
@@ -415,7 +411,7 @@
     .parameter "x1"
 
     .prologue
-    .line 92
+    .line 95
     iput-object p1, p0, Lcom/android/gallery3d/app/CropImage;->mLoadTask:Lcom/android/gallery3d/util/Future;
 
     return-object p1
@@ -427,7 +423,7 @@
     .parameter "x1"
 
     .prologue
-    .line 92
+    .line 95
     iput-object p1, p0, Lcom/android/gallery3d/app/CropImage;->mLoadBitmapTask:Lcom/android/gallery3d/util/Future;
 
     return-object p1
@@ -439,7 +435,7 @@
     .parameter "x1"
 
     .prologue
-    .line 92
+    .line 95
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/CropImage;->onBitmapAvailable(Landroid/graphics/Bitmap;)V
 
     return-void
@@ -450,7 +446,7 @@
     .parameter "x0"
 
     .prologue
-    .line 92
+    .line 95
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mPopupMenu:Landroid/widget/PopupMenu;
 
     return-object v0
@@ -461,7 +457,7 @@
     .parameter "x0"
 
     .prologue
-    .line 92
+    .line 95
     iget v0, p0, Lcom/android/gallery3d/app/CropImage;->mCurrentAspect:I
 
     return v0
@@ -473,7 +469,7 @@
     .parameter "x1"
 
     .prologue
-    .line 92
+    .line 95
     iput p1, p0, Lcom/android/gallery3d/app/CropImage;->mCurrentAspect:I
 
     return p1
@@ -484,7 +480,7 @@
     .parameter "x0"
 
     .prologue
-    .line 92
+    .line 95
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mAspectStrArray:[Ljava/lang/String;
 
     return-object v0
@@ -495,7 +491,7 @@
     .parameter "x0"
 
     .prologue
-    .line 92
+    .line 95
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mAspect:Landroid/widget/TextView;
 
     return-object v0
@@ -506,7 +502,7 @@
     .parameter "x0"
 
     .prologue
-    .line 92
+    .line 95
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
     return-object v0
@@ -519,7 +515,7 @@
     .parameter "x2"
 
     .prologue
-    .line 92
+    .line 95
     invoke-direct {p0, p1, p2}, Lcom/android/gallery3d/app/CropImage;->getCroppedImage(Landroid/graphics/Rect;Z)Landroid/graphics/Bitmap;
 
     move-result-object v0
@@ -535,7 +531,7 @@
     .parameter "x3"
 
     .prologue
-    .line 92
+    .line 95
     invoke-direct {p0, p1, p2, p3}, Lcom/android/gallery3d/app/CropImage;->saveBitmapToUri(Lcom/android/gallery3d/util/ThreadPool$JobContext;Landroid/graphics/Bitmap;Landroid/net/Uri;)Z
 
     move-result v0
@@ -548,7 +544,7 @@
     .parameter "extension"
 
     .prologue
-    .line 784
+    .line 788
     const-string v0, "png"
 
     invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -576,16 +572,16 @@
     .parameter
 
     .prologue
-    .line 1292
+    .line 1304
     :try_start_0
     new-instance v0, Landroid/media/ExifInterface;
 
     invoke-direct {v0, p1}, Landroid/media/ExifInterface;-><init>(Ljava/lang/String;)V
 
-    .line 1293
+    .line 1305
     invoke-static {p0, v0}, Lcom/android/gallery3d/picasasource/PicasaSource;->extractExifValues(Lcom/android/gallery3d/data/MediaObject;Landroid/media/ExifInterface;)V
 
-    .line 1294
+    .line 1306
     const-string v1, "ImageWidth"
 
     invoke-static {p2}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
@@ -594,7 +590,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/media/ExifInterface;->setAttribute(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1295
+    .line 1307
     const-string v1, "ImageLength"
 
     invoke-static {p3}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
@@ -603,7 +599,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/media/ExifInterface;->setAttribute(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1296
+    .line 1308
     const-string v1, "Orientation"
 
     const/4 v2, 0x0
@@ -614,20 +610,20 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/media/ExifInterface;->setAttribute(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1297
+    .line 1309
     invoke-virtual {v0}, Landroid/media/ExifInterface;->saveAttributes()V
     :try_end_0
     .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1301
+    .line 1313
     :goto_0
     return-void
 
-    .line 1298
+    .line 1310
     :catch_0
     move-exception v0
 
-    .line 1299
+    .line 1311
     const-string v1, "CropImage"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -664,18 +660,18 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 1305
+    .line 1317
     :try_start_0
     new-instance v1, Landroid/media/ExifInterface;
 
     invoke-direct {v1, p0}, Landroid/media/ExifInterface;-><init>(Ljava/lang/String;)V
 
-    .line 1306
+    .line 1318
     new-instance v2, Landroid/media/ExifInterface;
 
     invoke-direct {v2, p1}, Landroid/media/ExifInterface;-><init>(Ljava/lang/String;)V
 
-    .line 1308
+    .line 1320
     const-string v3, "ImageWidth"
 
     invoke-static {p2}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
@@ -684,7 +680,7 @@
 
     invoke-virtual {v2, v3, v4}, Landroid/media/ExifInterface;->setAttribute(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1309
+    .line 1321
     const-string v3, "ImageLength"
 
     invoke-static {p3}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
@@ -693,7 +689,7 @@
 
     invoke-virtual {v2, v3, v4}, Landroid/media/ExifInterface;->setAttribute(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1310
+    .line 1322
     const-string v3, "Orientation"
 
     const/4 v4, 0x0
@@ -704,7 +700,7 @@
 
     invoke-virtual {v2, v3, v4}, Landroid/media/ExifInterface;->setAttribute(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1312
+    .line 1324
     sget-object v3, Lcom/android/gallery3d/app/CropImage;->EXIF_TAGS:[Ljava/lang/String;
 
     array-length v4, v3
@@ -714,40 +710,40 @@
 
     aget-object v5, v3, v0
 
-    .line 1313
+    .line 1325
     invoke-virtual {v1, v5}, Landroid/media/ExifInterface;->getAttribute(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v6
 
-    .line 1314
+    .line 1326
     if-eqz v6, :cond_0
 
-    .line 1315
+    .line 1327
     invoke-virtual {v2, v5, v6}, Landroid/media/ExifInterface;->setAttribute(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1312
+    .line 1324
     :cond_0
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 1319
+    .line 1331
     :cond_1
     if-nez p4, :cond_2
 
-    .line 1320
+    .line 1332
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v3
 
-    .line 1321
+    .line 1333
     new-instance v0, Ljava/text/SimpleDateFormat;
 
     const-string v5, "yyyy:MM:dd kk:mm:ss"
 
     invoke-direct {v0, v5}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;)V
 
-    .line 1322
+    .line 1334
     const-string v5, "DateTime"
 
     invoke-static {v3, v4}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
@@ -760,7 +756,7 @@
 
     invoke-virtual {v2, v5, v0}, Landroid/media/ExifInterface;->setAttribute(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1326
+    .line 1338
     :cond_2
     const-string v0, "FNumber"
 
@@ -770,16 +766,16 @@
 
     move-result-object v0
 
-    .line 1327
+    .line 1339
     if-eqz v0, :cond_3
 
-    .line 1329
+    .line 1341
     :try_start_1
     invoke-static {v0}, Ljava/lang/Float;->parseFloat(Ljava/lang/String;)F
 
     move-result v1
 
-    .line 1330
+    .line 1342
     const-string v3, "FNumber"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -819,21 +815,21 @@
     .catch Ljava/lang/NumberFormatException; {:try_start_1 .. :try_end_1} :catch_0
     .catch Ljava/lang/Throwable; {:try_start_1 .. :try_end_1} :catch_1
 
-    .line 1359
+    .line 1371
     :cond_3
     :goto_1
     :try_start_2
     invoke-virtual {v2}, Landroid/media/ExifInterface;->saveAttributes()V
 
-    .line 1363
+    .line 1375
     :goto_2
     return-void
 
-    .line 1332
+    .line 1344
     :catch_0
     move-exception v1
 
-    .line 1333
+    .line 1345
     const-string v1, "CropImage"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -860,11 +856,11 @@
 
     goto :goto_1
 
-    .line 1360
+    .line 1372
     :catch_1
     move-exception v0
 
-    .line 1361
+    .line 1373
     const-string v1, "CropImage"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -895,16 +891,16 @@
     .parameter "obj"
 
     .prologue
-    .line 548
+    .line 552
     const-string v0, "JPEG"
 
-    .line 549
+    .line 553
     .local v0, compressFormat:Ljava/lang/String;
     instance-of v2, p0, Lcom/android/gallery3d/data/MediaItem;
 
     if-eqz v2, :cond_1
 
-    .line 550
+    .line 554
     check-cast p0, Lcom/android/gallery3d/data/MediaItem;
 
     .end local p0
@@ -912,7 +908,7 @@
 
     move-result-object v1
 
-    .line 551
+    .line 555
     .local v1, mime:Ljava/lang/String;
     const-string v2, "png"
 
@@ -930,11 +926,11 @@
 
     if-eqz v2, :cond_1
 
-    .line 554
+    .line 558
     :cond_0
     const-string v0, "PNG"
 
-    .line 557
+    .line 561
     .end local v1           #mime:Ljava/lang/String;
     :cond_1
     return-object v0
@@ -949,35 +945,35 @@
     .parameter "sample"
 
     .prologue
-    .line 1003
+    .line 1007
     move/from16 v0, p5
 
     mul-int/lit16 v5, v0, 0x200
 
-    .line 1004
+    .line 1008
     .local v5, tileSize:I
     new-instance v4, Landroid/graphics/Rect;
 
     invoke-direct {v4}, Landroid/graphics/Rect;-><init>()V
 
-    .line 1005
+    .line 1009
     .local v4, tileRect:Landroid/graphics/Rect;
     new-instance v2, Landroid/graphics/BitmapFactory$Options;
 
     invoke-direct {v2}, Landroid/graphics/BitmapFactory$Options;-><init>()V
 
-    .line 1006
+    .line 1010
     .local v2, options:Landroid/graphics/BitmapFactory$Options;
     sget-object v10, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
     iput-object v10, v2, Landroid/graphics/BitmapFactory$Options;->inPreferredConfig:Landroid/graphics/Bitmap$Config;
 
-    .line 1007
+    .line 1011
     move/from16 v0, p5
 
     iput v0, v2, Landroid/graphics/BitmapFactory$Options;->inSampleSize:I
 
-    .line 1008
+    .line 1012
     move-object/from16 v0, p4
 
     iget v10, v0, Landroid/graphics/Rect;->left:I
@@ -992,7 +988,7 @@
 
     invoke-virtual {p1, v10, v11}, Landroid/graphics/Canvas;->translate(FF)V
 
-    .line 1009
+    .line 1013
     move/from16 v0, p5
 
     int-to-float v10, v0
@@ -1035,14 +1031,14 @@
 
     invoke-virtual {p1, v10, v11}, Landroid/graphics/Canvas;->scale(FF)V
 
-    .line 1011
+    .line 1015
     new-instance v3, Landroid/graphics/Paint;
 
     const/4 v10, 0x2
 
     invoke-direct {v3, v10}, Landroid/graphics/Paint;-><init>(I)V
 
-    .line 1012
+    .line 1016
     .local v3, paint:Landroid/graphics/Paint;
     move-object/from16 v0, p3
 
@@ -1051,7 +1047,7 @@
     .local v6, tx:I
     const/4 v8, 0x0
 
-    .line 1013
+    .line 1017
     .local v8, x:I
     :goto_0
     move-object/from16 v0, p3
@@ -1060,7 +1056,7 @@
 
     if-ge v6, v10, :cond_2
 
-    .line 1014
+    .line 1018
     move-object/from16 v0, p3
 
     iget v7, v0, Landroid/graphics/Rect;->top:I
@@ -1068,7 +1064,7 @@
     .local v7, ty:I
     const/4 v9, 0x0
 
-    .line 1015
+    .line 1019
     .local v9, y:I
     :goto_1
     move-object/from16 v0, p3
@@ -1077,14 +1073,14 @@
 
     if-ge v7, v10, :cond_1
 
-    .line 1016
+    .line 1020
     add-int v10, v6, v5
 
     add-int v11, v7, v5
 
     invoke-virtual {v4, v6, v7, v10, v11}, Landroid/graphics/Rect;->set(IIII)V
 
-    .line 1017
+    .line 1021
     move-object/from16 v0, p3
 
     invoke-virtual {v4, v0}, Landroid/graphics/Rect;->intersect(Landroid/graphics/Rect;)Z
@@ -1093,32 +1089,32 @@
 
     if-eqz v10, :cond_0
 
-    .line 1021
+    .line 1025
     monitor-enter p2
 
-    .line 1022
+    .line 1026
     :try_start_0
     invoke-virtual {p2, v4, v2}, Landroid/graphics/BitmapRegionDecoder;->decodeRegion(Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
 
     move-result-object v1
 
-    .line 1023
+    .line 1027
     .local v1, bitmap:Landroid/graphics/Bitmap;
     monitor-exit p2
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1024
+    .line 1028
     int-to-float v10, v8
 
     int-to-float v11, v9
 
     invoke-virtual {p1, v1, v10, v11, v3}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
 
-    .line 1025
+    .line 1029
     invoke-virtual {v1}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 1015
+    .line 1019
     .end local v1           #bitmap:Landroid/graphics/Bitmap;
     :cond_0
     add-int/2addr v7, v5
@@ -1127,7 +1123,7 @@
 
     goto :goto_1
 
-    .line 1023
+    .line 1027
     :catchall_0
     move-exception v10
 
@@ -1138,7 +1134,7 @@
 
     throw v10
 
-    .line 1013
+    .line 1017
     :cond_1
     add-int/2addr v6, v5
 
@@ -1146,7 +1142,7 @@
 
     goto :goto_0
 
-    .line 1029
+    .line 1033
     .end local v7           #ty:I
     .end local v9           #y:I
     :cond_2
@@ -1157,28 +1153,28 @@
     .locals 2
 
     .prologue
-    .line 1438
+    .line 1450
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/CropView;->getAspectRatio()F
 
     move-result v0
 
-    .line 1439
+    .line 1451
     const/high16 v1, 0x3f80
 
     cmpl-float v1, v0, v1
 
     if-nez v1, :cond_0
 
-    .line 1440
+    .line 1452
     const/4 v0, 0x1
 
-    .line 1450
+    .line 1462
     :goto_0
     return v0
 
-    .line 1441
+    .line 1453
     :cond_0
     const/high16 v1, 0x3fc0
 
@@ -1192,13 +1188,13 @@
 
     if-nez v1, :cond_2
 
-    .line 1442
+    .line 1454
     :cond_1
     const/4 v0, 0x2
 
     goto :goto_0
 
-    .line 1443
+    .line 1455
     :cond_2
     const v1, 0x3faaaaab
 
@@ -1212,13 +1208,13 @@
 
     if-nez v1, :cond_4
 
-    .line 1444
+    .line 1456
     :cond_3
     const/4 v0, 0x3
 
     goto :goto_0
 
-    .line 1445
+    .line 1457
     :cond_4
     const v1, 0x3fcccccd
 
@@ -1232,13 +1228,13 @@
 
     if-nez v0, :cond_6
 
-    .line 1446
+    .line 1458
     :cond_5
     const/4 v0, 0x4
 
     goto :goto_0
 
-    .line 1448
+    .line 1460
     :cond_6
     const/4 v0, 0x0
 
@@ -1261,7 +1257,7 @@
 
     const/high16 v5, 0x3f80
 
-    .line 843
+    .line 847
     invoke-virtual {p1}, Landroid/graphics/Rect;->width()I
 
     move-result v0
@@ -1279,7 +1275,7 @@
     :goto_0
     invoke-static {v0}, Lcom/android/gallery3d/common/Utils;->assertTrue(Z)V
 
-    .line 845
+    .line 849
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getIntent()Landroid/content/Intent;
 
     move-result-object v0
@@ -1288,34 +1284,34 @@
 
     move-result-object v8
 
-    .line 847
+    .line 851
     invoke-virtual {p1}, Landroid/graphics/Rect;->width()I
 
     move-result v3
 
-    .line 848
+    .line 852
     invoke-virtual {p1}, Landroid/graphics/Rect;->height()I
 
     move-result v0
 
-    .line 849
+    .line 853
     if-eqz v8, :cond_0
 
-    .line 850
+    .line 854
     const-string v4, "outputX"
 
     invoke-virtual {v8, v4, v3}, Landroid/os/Bundle;->getInt(Ljava/lang/String;I)I
 
     move-result v3
 
-    .line 851
+    .line 855
     const-string v4, "outputY"
 
     invoke-virtual {v8, v4, v0}, Landroid/os/Bundle;->getInt(Ljava/lang/String;I)I
 
     move-result v0
 
-    .line 854
+    .line 858
     :cond_0
     if-eqz p2, :cond_2
 
@@ -1335,7 +1331,7 @@
 
     if-nez v4, :cond_2
 
-    .line 855
+    .line 859
     :cond_1
     const v4, 0x46f42400
 
@@ -1351,7 +1347,7 @@
 
     move-result v4
 
-    .line 856
+    .line 860
     const-string v6, "CropImage"
 
     new-instance v9, Ljava/lang/StringBuilder;
@@ -1374,7 +1370,7 @@
 
     invoke-static {v6, v9}, Lcom/android/gallery3d/app/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 857
+    .line 861
     int-to-float v3, v3
 
     mul-float/2addr v3, v4
@@ -1383,7 +1379,7 @@
 
     move-result v3
 
-    .line 858
+    .line 862
     int-to-float v0, v0
 
     mul-float/2addr v0, v4
@@ -1392,13 +1388,13 @@
 
     move-result v0
 
-    .line 865
+    .line 869
     :cond_2
     new-instance v4, Landroid/graphics/Rect;
 
     invoke-direct {v4, v2, v2, v3, v0}, Landroid/graphics/Rect;-><init>(IIII)V
 
-    .line 866
+    .line 870
     if-eqz v8, :cond_3
 
     const-string v6, "scale"
@@ -1409,7 +1405,7 @@
 
     if-eqz v1, :cond_f
 
-    .line 867
+    .line 871
     :cond_3
     int-to-float v1, v3
 
@@ -1421,7 +1417,7 @@
 
     div-float v6, v1, v6
 
-    .line 868
+    .line 872
     int-to-float v1, v0
 
     invoke-virtual {p1}, Landroid/graphics/Rect;->height()I
@@ -1432,7 +1428,7 @@
 
     div-float/2addr v1, v9
 
-    .line 869
+    .line 873
     if-eqz v8, :cond_4
 
     const-string v9, "scaleUpIfNeeded"
@@ -1443,7 +1439,7 @@
 
     if-nez v2, :cond_e
 
-    .line 871
+    .line 875
     :cond_4
     cmpl-float v2, v6, v5
 
@@ -1451,7 +1447,7 @@
 
     move v2, v5
 
-    .line 872
+    .line 876
     :goto_1
     cmpl-float v6, v1, v5
 
@@ -1461,7 +1457,7 @@
 
     move v5, v2
 
-    .line 877
+    .line 881
     :goto_2
     invoke-virtual {p1}, Landroid/graphics/Rect;->width()I
 
@@ -1475,7 +1471,7 @@
 
     move-result v2
 
-    .line 878
+    .line 882
     invoke-virtual {p1}, Landroid/graphics/Rect;->height()I
 
     move-result v6
@@ -1488,7 +1484,7 @@
 
     move-result v6
 
-    .line 879
+    .line 883
     sub-int v8, v3, v2
 
     int-to-float v8, v8
@@ -1531,72 +1527,72 @@
 
     invoke-virtual {v4, v8, v9, v2, v6}, Landroid/graphics/Rect;->set(IIII)V
 
-    .line 884
+    .line 888
     iput v3, p0, Lcom/android/gallery3d/app/CropImage;->mCroppedWidth:I
 
-    .line 885
+    .line 889
     iput v0, p0, Lcom/android/gallery3d/app/CropImage;->mCroppedHeight:I
 
-    .line 886
+    .line 890
     iget-object v2, p0, Lcom/android/gallery3d/app/CropImage;->mSrcRect:Landroid/graphics/Rect;
 
     invoke-virtual {v2, p1}, Landroid/graphics/Rect;->set(Landroid/graphics/Rect;)V
 
-    .line 887
+    .line 891
     iget-object v2, p0, Lcom/android/gallery3d/app/CropImage;->mDestRect:Landroid/graphics/Rect;
 
     invoke-virtual {v2, v4}, Landroid/graphics/Rect;->set(Landroid/graphics/Rect;)V
 
-    .line 890
+    .line 894
     :try_start_0
     iget-object v2, p0, Lcom/android/gallery3d/app/CropImage;->mBitmapInIntent:Landroid/graphics/Bitmap;
 
     if-eqz v2, :cond_6
 
-    .line 891
+    .line 895
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage;->mBitmapInIntent:Landroid/graphics/Bitmap;
 
-    .line 892
+    .line 896
     sget-object v2, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
     invoke-static {v3, v0, v2}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
 
     move-result-object v0
 
-    .line 894
+    .line 898
     new-instance v2, Landroid/graphics/Canvas;
 
     invoke-direct {v2, v0}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
 
-    .line 895
+    .line 899
     const/4 v3, 0x0
 
     invoke-virtual {v2, v1, p1, v4, v3}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
 
-    .line 954
+    .line 958
     :goto_3
     return-object v0
 
     :cond_5
     move v0, v2
 
-    .line 843
+    .line 847
     goto/16 :goto_0
 
-    .line 899
+    .line 903
     :cond_6
     iget-boolean v2, p0, Lcom/android/gallery3d/app/CropImage;->mUseRegionDecoder:Z
 
     if-eqz v2, :cond_a
 
-    .line 900
+    .line 904
     iget-object v2, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
     invoke-virtual {v2}, Lcom/android/gallery3d/data/MediaItem;->getFullImageRotation()I
 
     move-result v8
 
-    .line 901
+    .line 905
     iget-object v2, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
     invoke-virtual {v2}, Lcom/android/gallery3d/ui/CropView;->getImageWidth()I
@@ -1613,17 +1609,17 @@
 
     invoke-static {p1, v2, v6, v9}, Lcom/android/gallery3d/app/CropImage;->rotateRectangle(Landroid/graphics/Rect;III)V
 
-    .line 903
+    .line 907
     rsub-int v2, v8, 0x168
 
     invoke-static {v4, v3, v0, v2}, Lcom/android/gallery3d/app/CropImage;->rotateRectangle(Landroid/graphics/Rect;III)V
 
-    .line 905
+    .line 909
     new-instance v2, Landroid/graphics/BitmapFactory$Options;
 
     invoke-direct {v2}, Landroid/graphics/BitmapFactory$Options;-><init>()V
 
-    .line 906
+    .line 910
     invoke-static {v5, v1}, Ljava/lang/Math;->max(FF)F
 
     move-result v1
@@ -1632,10 +1628,10 @@
 
     move-result v5
 
-    .line 908
+    .line 912
     iput v5, v2, Landroid/graphics/BitmapFactory$Options;->inSampleSize:I
 
-    .line 914
+    .line 918
     invoke-virtual {p1}, Landroid/graphics/Rect;->width()I
 
     move-result v1
@@ -1674,14 +1670,14 @@
 
     if-nez v8, :cond_7
 
-    .line 919
+    .line 923
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage;->mRegionDecoder:Landroid/graphics/BitmapRegionDecoder;
 
     monitor-enter v1
     :try_end_0
     .catch Ljava/lang/OutOfMemoryError; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 920
+    .line 924
     :try_start_1
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mRegionDecoder:Landroid/graphics/BitmapRegionDecoder;
 
@@ -1693,7 +1689,7 @@
 
     goto :goto_3
 
-    .line 921
+    .line 925
     :catchall_0
     move-exception v0
 
@@ -1704,16 +1700,16 @@
     :try_start_2
     throw v0
 
-    .line 953
+    .line 957
     :catch_0
     move-exception v0
 
     move-object v0, v7
 
-    .line 954
+    .line 958
     goto :goto_3
 
-    .line 925
+    .line 929
     :cond_7
     const/16 v1, 0x5a
 
@@ -1723,7 +1719,7 @@
 
     if-ne v8, v1, :cond_9
 
-    .line 926
+    .line 930
     :cond_8
     sget-object v1, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
@@ -1731,13 +1727,13 @@
 
     move-result-object v6
 
-    .line 933
+    .line 937
     :goto_4
     new-instance v1, Landroid/graphics/Canvas;
 
     invoke-direct {v1, v6}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
 
-    .line 936
+    .line 940
     iget-object v2, p0, Lcom/android/gallery3d/app/CropImage;->mRegionDecoder:Landroid/graphics/BitmapRegionDecoder;
 
     move-object v0, p0
@@ -1746,14 +1742,14 @@
 
     invoke-direct/range {v0 .. v5}, Lcom/android/gallery3d/app/CropImage;->drawInTiles(Landroid/graphics/Canvas;Landroid/graphics/BitmapRegionDecoder;Landroid/graphics/Rect;Landroid/graphics/Rect;I)V
 
-    .line 937
+    .line 941
     if-eqz v8, :cond_b
 
     const/16 v0, 0x168
 
     if-eq v8, v0, :cond_b
 
-    .line 938
+    .line 942
     const/4 v0, 0x1
 
     invoke-static {v6, v8, v0}, Lcom/android/gallery3d/common/BitmapUtils;->rotateBitmap(Landroid/graphics/Bitmap;IZ)Landroid/graphics/Bitmap;
@@ -1762,7 +1758,7 @@
 
     goto/16 :goto_3
 
-    .line 929
+    .line 933
     :cond_9
     sget-object v1, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
@@ -1772,7 +1768,7 @@
 
     goto :goto_4
 
-    .line 942
+    .line 946
     :cond_a
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
@@ -1780,7 +1776,7 @@
 
     move-result v2
 
-    .line 943
+    .line 947
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
     invoke-virtual {v1}, Lcom/android/gallery3d/ui/CropView;->getImageWidth()I
@@ -1797,27 +1793,27 @@
 
     invoke-static {p1, v1, v5, v6}, Lcom/android/gallery3d/app/CropImage;->rotateRectangle(Landroid/graphics/Rect;III)V
 
-    .line 945
+    .line 949
     rsub-int v1, v2, 0x168
 
     invoke-static {v4, v3, v0, v1}, Lcom/android/gallery3d/app/CropImage;->rotateRectangle(Landroid/graphics/Rect;III)V
 
-    .line 946
+    .line 950
     sget-object v1, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
     invoke-static {v3, v0, v1}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
 
     move-result-object v1
 
-    .line 947
+    .line 951
     new-instance v5, Landroid/graphics/Canvas;
 
     invoke-direct {v5, v1}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
 
-    .line 948
+    .line 952
     invoke-static {v5, v3, v0, v2}, Lcom/android/gallery3d/app/CropImage;->rotateCanvas(Landroid/graphics/Canvas;III)V
 
-    .line 949
+    .line 953
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mBitmap:Landroid/graphics/Bitmap;
 
     new-instance v2, Landroid/graphics/Paint;
@@ -1832,7 +1828,7 @@
 
     move-object v0, v1
 
-    .line 951
+    .line 955
     goto/16 :goto_3
 
     :cond_b
@@ -1865,7 +1861,7 @@
     .locals 2
 
     .prologue
-    .line 794
+    .line 798
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getIntent()Landroid/content/Intent;
 
     move-result-object v0
@@ -1876,7 +1872,7 @@
 
     move-result-object v0
 
-    .line 795
+    .line 799
     if-nez v0, :cond_0
 
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
@@ -1885,13 +1881,13 @@
 
     move-result-object v0
 
-    .line 799
+    .line 803
     :cond_0
     invoke-virtual {v0}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 800
+    .line 804
     const-string v1, "png"
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -1924,7 +1920,7 @@
     .locals 4
 
     .prologue
-    .line 1228
+    .line 1240
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getIntent()Landroid/content/Intent;
 
     move-result-object v0
@@ -1933,12 +1929,12 @@
 
     move-result-object v0
 
-    .line 1229
+    .line 1241
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getDataManager()Lcom/android/gallery3d/data/DataManager;
 
     move-result-object v1
 
-    .line 1230
+    .line 1242
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getIntent()Landroid/content/Intent;
 
     move-result-object v2
@@ -1951,10 +1947,10 @@
 
     move-result-object v2
 
-    .line 1231
+    .line 1243
     if-nez v2, :cond_1
 
-    .line 1232
+    .line 1244
     const-string v1, "CropImage"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -1983,15 +1979,15 @@
 
     invoke-static {v1, v0}, Lcom/android/gallery3d/app/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1233
+    .line 1245
     const/4 v0, 0x0
 
-    .line 1245
+    .line 1257
     :cond_0
     :goto_0
     return-object v0
 
-    .line 1237
+    .line 1249
     :cond_1
     invoke-virtual {v1, v2}, Lcom/android/gallery3d/data/DataManager;->peekMediaObject(Lcom/android/gallery3d/data/Path;)Lcom/android/gallery3d/data/MediaObject;
 
@@ -1999,24 +1995,24 @@
 
     check-cast v0, Lcom/android/gallery3d/data/MediaItem;
 
-    .line 1238
+    .line 1250
     if-eqz v0, :cond_2
 
-    .line 1239
+    .line 1251
     instance-of v1, v0, Lcom/android/gallery3d/data/LocalMediaItem;
 
     if-eqz v1, :cond_0
 
     move-object v1, v0
 
-    .line 1240
+    .line 1252
     check-cast v1, Lcom/android/gallery3d/data/LocalMediaItem;
 
     invoke-virtual {v1}, Lcom/android/gallery3d/data/LocalMediaItem;->updateContent()V
 
     goto :goto_0
 
-    .line 1243
+    .line 1255
     :cond_2
     invoke-virtual {v1, v2}, Lcom/android/gallery3d/data/DataManager;->getMediaObject(Lcom/android/gallery3d/data/Path;)Lcom/android/gallery3d/data/MediaObject;
 
@@ -2031,7 +2027,7 @@
     .locals 2
 
     .prologue
-    .line 790
+    .line 794
     invoke-direct {p0}, Lcom/android/gallery3d/app/CropImage;->getFileExtension()Ljava/lang/String;
 
     move-result-object v0
@@ -2063,7 +2059,7 @@
 
     const/4 v2, 0x0
 
-    .line 1100
+    .line 1104
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getIntent()Landroid/content/Intent;
 
     move-result-object v0
@@ -2072,10 +2068,10 @@
 
     move-result-object v3
 
-    .line 1102
+    .line 1106
     if-eqz v3, :cond_4
 
-    .line 1103
+    .line 1107
     const-string v0, "noFaceDetection"
 
     invoke-virtual {v3, v0}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
@@ -2084,7 +2080,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 1104
+    .line 1108
     const-string v0, "noFaceDetection"
 
     invoke-virtual {v3, v0}, Landroid/os/Bundle;->getBoolean(Ljava/lang/String;)Z
@@ -2098,7 +2094,7 @@
     :goto_0
     iput-boolean v0, p0, Lcom/android/gallery3d/app/CropImage;->mDoFaceDetection:Z
 
-    .line 1107
+    .line 1111
     :cond_0
     const-string v0, "data"
 
@@ -2110,12 +2106,12 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mBitmapInIntent:Landroid/graphics/Bitmap;
 
-    .line 1109
+    .line 1113
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mBitmapInIntent:Landroid/graphics/Bitmap;
 
     if-eqz v0, :cond_4
 
-    .line 1110
+    .line 1114
     new-instance v0, Lcom/android/gallery3d/ui/BitmapTileProvider;
 
     iget-object v3, p0, Lcom/android/gallery3d/app/CropImage;->mBitmapInIntent:Landroid/graphics/Bitmap;
@@ -2126,30 +2122,30 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mBitmapTileProvider:Lcom/android/gallery3d/ui/BitmapTileProvider;
 
-    .line 1112
+    .line 1116
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
     iget-object v3, p0, Lcom/android/gallery3d/app/CropImage;->mBitmapTileProvider:Lcom/android/gallery3d/ui/BitmapTileProvider;
 
     invoke-virtual {v0, v3, v2}, Lcom/android/gallery3d/ui/CropView;->setDataModel(Lcom/android/gallery3d/ui/TileImageView$Model;I)V
 
-    .line 1113
+    .line 1117
     iget-boolean v0, p0, Lcom/android/gallery3d/app/CropImage;->mDoFaceDetection:Z
 
     if-eqz v0, :cond_3
 
-    .line 1114
+    .line 1118
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
     iget-object v2, p0, Lcom/android/gallery3d/app/CropImage;->mBitmapInIntent:Landroid/graphics/Bitmap;
 
     invoke-virtual {v0, v2}, Lcom/android/gallery3d/ui/CropView;->detectFaces(Landroid/graphics/Bitmap;)V
 
-    .line 1118
+    .line 1122
     :goto_1
     iput v1, p0, Lcom/android/gallery3d/app/CropImage;->mState:I
 
-    .line 1160
+    .line 1164
     :cond_1
     :goto_2
     return-void
@@ -2157,10 +2153,10 @@
     :cond_2
     move v0, v2
 
-    .line 1104
+    .line 1108
     goto :goto_0
 
-    .line 1116
+    .line 1120
     :cond_3
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
@@ -2168,11 +2164,11 @@
 
     goto :goto_1
 
-    .line 1123
+    .line 1127
     :cond_4
     const/4 v0, 0x0
 
-    const v3, 0x7f0a0130
+    const v3, 0x7f0a013b
 
     invoke-virtual {p0, v3}, Lcom/android/gallery3d/app/CropImage;->getString(I)Ljava/lang/String;
 
@@ -2184,19 +2180,19 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mProgressDialog:Landroid/app/ProgressDialog;
 
-    .line 1126
+    .line 1130
     invoke-direct {p0}, Lcom/android/gallery3d/app/CropImage;->getMediaItemFromIntentData()Lcom/android/gallery3d/data/MediaItem;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
-    .line 1127
+    .line 1131
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
     if-eqz v0, :cond_1
 
-    .line 1129
+    .line 1133
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/data/MediaItem;->getSupportedOperations()I
@@ -2207,11 +2203,11 @@
 
     if-eqz v0, :cond_5
 
-    .line 1131
+    .line 1135
     :goto_3
     if-eqz v1, :cond_6
 
-    .line 1132
+    .line 1136
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getThreadPool()Lcom/android/gallery3d/util/ThreadPool;
 
     move-result-object v0
@@ -2237,10 +2233,10 @@
     :cond_5
     move v1, v2
 
-    .line 1129
+    .line 1133
     goto :goto_3
 
-    .line 1146
+    .line 1150
     :cond_6
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getThreadPool()Lcom/android/gallery3d/util/ThreadPool;
 
@@ -2275,11 +2271,11 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 1060
+    .line 1064
     if-nez p1, :cond_0
 
-    .line 1061
-    const v0, 0x7f0a0136
+    .line 1065
+    const v0, 0x7f0a0141
 
     invoke-static {p0, v0, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
 
@@ -2287,31 +2283,31 @@
 
     invoke-virtual {v0}, Landroid/widget/Toast;->show()V
 
-    .line 1062
+    .line 1066
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->finish()V
 
-    .line 1077
+    .line 1081
     :goto_0
     return-void
 
-    .line 1065
+    .line 1069
     :cond_0
     iput-boolean v1, p0, Lcom/android/gallery3d/app/CropImage;->mUseRegionDecoder:Z
 
-    .line 1066
+    .line 1070
     const/4 v0, 0x1
 
     iput v0, p0, Lcom/android/gallery3d/app/CropImage;->mState:I
 
-    .line 1068
+    .line 1072
     iput-object p1, p0, Lcom/android/gallery3d/app/CropImage;->mBitmap:Landroid/graphics/Bitmap;
 
-    .line 1069
+    .line 1073
     new-instance v0, Landroid/graphics/BitmapFactory$Options;
 
     invoke-direct {v0}, Landroid/graphics/BitmapFactory$Options;-><init>()V
 
-    .line 1070
+    .line 1074
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
     new-instance v1, Lcom/android/gallery3d/ui/BitmapTileProvider;
@@ -2328,19 +2324,19 @@
 
     invoke-virtual {v0, v1, v2}, Lcom/android/gallery3d/ui/CropView;->setDataModel(Lcom/android/gallery3d/ui/TileImageView$Model;I)V
 
-    .line 1072
+    .line 1076
     iget-boolean v0, p0, Lcom/android/gallery3d/app/CropImage;->mDoFaceDetection:Z
 
     if-eqz v0, :cond_1
 
-    .line 1073
+    .line 1077
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
     invoke-virtual {v0, p1}, Lcom/android/gallery3d/ui/CropView;->detectFaces(Landroid/graphics/Bitmap;)V
 
     goto :goto_0
 
-    .line 1075
+    .line 1079
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
@@ -2358,11 +2354,11 @@
 
     const/4 v5, 0x0
 
-    .line 1034
+    .line 1038
     if-nez p1, :cond_0
 
-    .line 1035
-    const v0, 0x7f0a0136
+    .line 1039
+    const v0, 0x7f0a0141
 
     invoke-static {p0, v0, v5}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
 
@@ -2370,39 +2366,39 @@
 
     invoke-virtual {v0}, Landroid/widget/Toast;->show()V
 
-    .line 1036
+    .line 1040
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->finish()V
 
-    .line 1057
+    .line 1061
     :goto_0
     return-void
 
-    .line 1039
+    .line 1043
     :cond_0
     iput-object p1, p0, Lcom/android/gallery3d/app/CropImage;->mRegionDecoder:Landroid/graphics/BitmapRegionDecoder;
 
-    .line 1040
+    .line 1044
     iput-boolean v0, p0, Lcom/android/gallery3d/app/CropImage;->mUseRegionDecoder:Z
 
-    .line 1041
+    .line 1045
     iput v0, p0, Lcom/android/gallery3d/app/CropImage;->mState:I
 
-    .line 1043
+    .line 1047
     new-instance v0, Landroid/graphics/BitmapFactory$Options;
 
     invoke-direct {v0}, Landroid/graphics/BitmapFactory$Options;-><init>()V
 
-    .line 1044
+    .line 1048
     invoke-virtual {p1}, Landroid/graphics/BitmapRegionDecoder;->getWidth()I
 
     move-result v1
 
-    .line 1045
+    .line 1049
     invoke-virtual {p1}, Landroid/graphics/BitmapRegionDecoder;->getHeight()I
 
     move-result v2
 
-    .line 1046
+    .line 1050
     const/4 v3, -0x1
 
     const v4, 0x75300
@@ -2413,7 +2409,7 @@
 
     iput v3, v0, Landroid/graphics/BitmapFactory$Options;->inSampleSize:I
 
-    .line 1048
+    .line 1052
     new-instance v3, Landroid/graphics/Rect;
 
     invoke-direct {v3, v5, v5, v1, v2}, Landroid/graphics/Rect;-><init>(IIII)V
@@ -2424,7 +2420,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mBitmap:Landroid/graphics/Bitmap;
 
-    .line 1050
+    .line 1054
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
     new-instance v1, Lcom/android/gallery3d/ui/TileImageViewAdapter;
@@ -2441,12 +2437,12 @@
 
     invoke-virtual {v0, v1, v2}, Lcom/android/gallery3d/ui/CropView;->setDataModel(Lcom/android/gallery3d/ui/TileImageView$Model;I)V
 
-    .line 1052
+    .line 1056
     iget-boolean v0, p0, Lcom/android/gallery3d/app/CropImage;->mDoFaceDetection:Z
 
     if-eqz v0, :cond_1
 
-    .line 1053
+    .line 1057
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage;->mBitmap:Landroid/graphics/Bitmap;
@@ -2455,7 +2451,7 @@
 
     goto :goto_0
 
-    .line 1055
+    .line 1059
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
@@ -2472,7 +2468,7 @@
     .parameter "rotation"
 
     .prologue
-    .line 960
+    .line 964
     div-int/lit8 v0, p1, 0x2
 
     int-to-float v0, v0
@@ -2483,19 +2479,19 @@
 
     invoke-virtual {p0, v0, v1}, Landroid/graphics/Canvas;->translate(FF)V
 
-    .line 961
+    .line 965
     int-to-float v0, p3
 
     invoke-virtual {p0, v0}, Landroid/graphics/Canvas;->rotate(F)V
 
-    .line 962
+    .line 966
     div-int/lit8 v0, p3, 0x5a
 
     and-int/lit8 v0, v0, 0x1
 
     if-nez v0, :cond_0
 
-    .line 963
+    .line 967
     neg-int v0, p1
 
     div-int/lit8 v0, v0, 0x2
@@ -2510,11 +2506,11 @@
 
     invoke-virtual {p0, v0, v1}, Landroid/graphics/Canvas;->translate(FF)V
 
-    .line 967
+    .line 971
     :goto_0
     return-void
 
-    .line 965
+    .line 969
     :cond_0
     neg-int v0, p2
 
@@ -2541,62 +2537,62 @@
     .parameter "rotation"
 
     .prologue
-    .line 971
+    .line 975
     if-eqz p3, :cond_0
 
     const/16 v2, 0x168
 
     if-ne p3, v2, :cond_1
 
-    .line 995
+    .line 999
     :cond_0
     :goto_0
     return-void
 
-    .line 973
+    .line 977
     :cond_1
     invoke-virtual {p0}, Landroid/graphics/Rect;->width()I
 
     move-result v1
 
-    .line 974
+    .line 978
     .local v1, w:I
     invoke-virtual {p0}, Landroid/graphics/Rect;->height()I
 
     move-result v0
 
-    .line 975
+    .line 979
     .local v0, h:I
     sparse-switch p3, :sswitch_data_0
 
-    .line 997
+    .line 1001
     new-instance v2, Ljava/lang/AssertionError;
 
     invoke-direct {v2}, Ljava/lang/AssertionError;-><init>()V
 
     throw v2
 
-    .line 977
+    .line 981
     :sswitch_0
     iget v2, p0, Landroid/graphics/Rect;->left:I
 
     iput v2, p0, Landroid/graphics/Rect;->top:I
 
-    .line 978
+    .line 982
     iget v2, p0, Landroid/graphics/Rect;->bottom:I
 
     sub-int v2, p2, v2
 
     iput v2, p0, Landroid/graphics/Rect;->left:I
 
-    .line 979
+    .line 983
     iget v2, p0, Landroid/graphics/Rect;->left:I
 
     add-int/2addr v2, v0
 
     iput v2, p0, Landroid/graphics/Rect;->right:I
 
-    .line 980
+    .line 984
     iget v2, p0, Landroid/graphics/Rect;->top:I
 
     add-int/2addr v2, v1
@@ -2605,7 +2601,7 @@
 
     goto :goto_0
 
-    .line 984
+    .line 988
     :sswitch_1
     iget v2, p0, Landroid/graphics/Rect;->right:I
 
@@ -2613,21 +2609,21 @@
 
     iput v2, p0, Landroid/graphics/Rect;->left:I
 
-    .line 985
+    .line 989
     iget v2, p0, Landroid/graphics/Rect;->bottom:I
 
     sub-int v2, p2, v2
 
     iput v2, p0, Landroid/graphics/Rect;->top:I
 
-    .line 986
+    .line 990
     iget v2, p0, Landroid/graphics/Rect;->left:I
 
     add-int/2addr v2, v1
 
     iput v2, p0, Landroid/graphics/Rect;->right:I
 
-    .line 987
+    .line 991
     iget v2, p0, Landroid/graphics/Rect;->top:I
 
     add-int/2addr v2, v0
@@ -2636,27 +2632,27 @@
 
     goto :goto_0
 
-    .line 991
+    .line 995
     :sswitch_2
     iget v2, p0, Landroid/graphics/Rect;->top:I
 
     iput v2, p0, Landroid/graphics/Rect;->left:I
 
-    .line 992
+    .line 996
     iget v2, p0, Landroid/graphics/Rect;->right:I
 
     sub-int v2, p1, v2
 
     iput v2, p0, Landroid/graphics/Rect;->top:I
 
-    .line 993
+    .line 997
     iget v2, p0, Landroid/graphics/Rect;->left:I
 
     add-int/2addr v2, v0
 
     iput v2, p0, Landroid/graphics/Rect;->right:I
 
-    .line 994
+    .line 998
     iget v2, p0, Landroid/graphics/Rect;->top:I
 
     add-int/2addr v2, v1
@@ -2665,7 +2661,7 @@
 
     goto :goto_0
 
-    .line 975
+    .line 979
     nop
 
     :sswitch_data_0
@@ -2688,12 +2684,12 @@
 
     const/4 v3, 0x0
 
-    .line 749
+    .line 753
     new-instance v0, Lcom/android/gallery3d/util/InterruptableOutputStream;
 
     invoke-direct {v0, p4}, Lcom/android/gallery3d/util/InterruptableOutputStream;-><init>(Ljava/io/OutputStream;)V
 
-    .line 750
+    .line 754
     .local v0, ios:Lcom/android/gallery3d/util/InterruptableOutputStream;
     new-instance v2, Lcom/android/gallery3d/app/CropImage$8;
 
@@ -2701,10 +2697,10 @@
 
     invoke-interface {p1, v2}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->setCancelListener(Lcom/android/gallery3d/util/ThreadPool$CancelListener;)V
 
-    .line 756
+    .line 760
     if-eqz p2, :cond_0
 
-    .line 757
+    .line 761
     const/16 v2, 0x5a
 
     :try_start_0
@@ -2716,16 +2712,16 @@
 
     if-nez v2, :cond_1
 
-    .line 767
+    .line 771
     invoke-interface {p1, v3}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->setCancelListener(Lcom/android/gallery3d/util/ThreadPool$CancelListener;)V
 
-    .line 768
+    .line 772
     invoke-static {p4}, Lcom/android/gallery3d/common/Utils;->closeSilently(Ljava/io/Closeable;)V
 
     :goto_0
     return v1
 
-    .line 761
+    .line 765
     :cond_0
     const/16 v2, 0x5a
 
@@ -2738,15 +2734,15 @@
 
     if-nez v2, :cond_1
 
-    .line 767
+    .line 771
     invoke-interface {p1, v3}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->setCancelListener(Lcom/android/gallery3d/util/ThreadPool$CancelListener;)V
 
-    .line 768
+    .line 772
     invoke-static {p4}, Lcom/android/gallery3d/common/Utils;->closeSilently(Ljava/io/Closeable;)V
 
     goto :goto_0
 
-    .line 765
+    .line 769
     :cond_1
     :try_start_2
     invoke-interface {p1}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->isCancelled()Z
@@ -2759,22 +2755,22 @@
 
     const/4 v1, 0x1
 
-    .line 767
+    .line 771
     :cond_2
     invoke-interface {p1, v3}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->setCancelListener(Lcom/android/gallery3d/util/ThreadPool$CancelListener;)V
 
-    .line 768
+    .line 772
     invoke-static {p4}, Lcom/android/gallery3d/common/Utils;->closeSilently(Ljava/io/Closeable;)V
 
     goto :goto_0
 
-    .line 767
+    .line 771
     :catchall_0
     move-exception v1
 
     invoke-interface {p1, v3}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->setCancelListener(Lcom/android/gallery3d/util/ThreadPool$CancelListener;)V
 
-    .line 768
+    .line 772
     invoke-static {p4}, Lcom/android/gallery3d/common/Utils;->closeSilently(Ljava/io/Closeable;)V
 
     throw v1
@@ -2787,7 +2783,7 @@
     .parameter "uri"
 
     .prologue
-    .line 774
+    .line 778
     :try_start_0
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage;->mCompressFormat:Ljava/lang/String;
 
@@ -2820,11 +2816,11 @@
 
     move-result v1
 
-    .line 780
+    .line 784
     :goto_1
     return v1
 
-    .line 774
+    .line 778
     :cond_0
     invoke-direct {p0}, Lcom/android/gallery3d/app/CropImage;->getFileExtension()Ljava/lang/String;
     :try_end_0
@@ -2834,11 +2830,11 @@
 
     goto :goto_0
 
-    .line 777
+    .line 781
     :catch_0
     move-exception v0
 
-    .line 778
+    .line 782
     .local v0, e:Ljava/io/FileNotFoundException;
     const-string v1, "CropImage"
 
@@ -2846,7 +2842,7 @@
 
     invoke-static {v1, v2, v0}, Lcom/android/gallery3d/app/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 780
+    .line 784
     const/4 v1, 0x1
 
     goto :goto_1
@@ -2862,7 +2858,7 @@
 
     const/4 v8, 0x0
 
-    .line 718
+    .line 722
     sget-object v5, Lcom/android/gallery3d/app/CropImage;->DOWNLOAD_BUCKET:Ljava/io/File;
 
     invoke-virtual {v5}, Ljava/io/File;->isDirectory()Z
@@ -2879,7 +2875,7 @@
 
     if-nez v5, :cond_0
 
-    .line 719
+    .line 723
     new-instance v5, Ljava/lang/RuntimeException;
 
     const-string v6, "cannot create download folder"
@@ -2888,13 +2884,13 @@
 
     throw v5
 
-    .line 722
+    .line 726
     :cond_0
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v1
 
-    .line 723
+    .line 727
     .local v1, now:J
     new-instance v5, Ljava/text/SimpleDateFormat;
 
@@ -2910,40 +2906,40 @@
 
     move-result-object v0
 
-    .line 725
+    .line 729
     .local v0, filename:Ljava/lang/String;
     iput-boolean v8, p0, Lcom/android/gallery3d/app/CropImage;->mOverwrite:Z
 
-    .line 726
+    .line 730
     sget-object v5, Lcom/android/gallery3d/app/CropImage;->DOWNLOAD_BUCKET:Ljava/io/File;
 
     invoke-direct {p0, p1, p2, v5, v0}, Lcom/android/gallery3d/app/CropImage;->saveMedia(Lcom/android/gallery3d/util/ThreadPool$JobContext;Landroid/graphics/Bitmap;Ljava/io/File;Ljava/lang/String;)Ljava/io/File;
 
     move-result-object v3
 
-    .line 727
+    .line 731
     .local v3, output:Ljava/io/File;
     if-nez v3, :cond_1
 
     const/4 v5, 0x0
 
-    .line 742
+    .line 746
     :goto_0
     return-object v5
 
-    .line 729
+    .line 733
     :cond_1
     new-instance v4, Landroid/content/ContentValues;
 
     invoke-direct {v4}, Landroid/content/ContentValues;-><init>()V
 
-    .line 730
+    .line 734
     .local v4, values:Landroid/content/ContentValues;
     const-string v5, "title"
 
     invoke-virtual {v4, v5, v0}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 731
+    .line 735
     const-string v5, "_display_name"
 
     invoke-virtual {v3}, Ljava/io/File;->getName()Ljava/lang/String;
@@ -2952,7 +2948,7 @@
 
     invoke-virtual {v4, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 732
+    .line 736
     const-string v5, "datetaken"
 
     invoke-static {v1, v2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
@@ -2961,7 +2957,7 @@
 
     invoke-virtual {v4, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 733
+    .line 737
     const-string v5, "date_modified"
 
     div-long v6, v1, v9
@@ -2972,7 +2968,7 @@
 
     invoke-virtual {v4, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 734
+    .line 738
     const-string v5, "date_added"
 
     div-long v6, v1, v9
@@ -2983,7 +2979,7 @@
 
     invoke-virtual {v4, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 735
+    .line 739
     const-string v5, "mime_type"
 
     invoke-direct {p0}, Lcom/android/gallery3d/app/CropImage;->getOutputMimeType()Ljava/lang/String;
@@ -2992,7 +2988,7 @@
 
     invoke-virtual {v4, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 736
+    .line 740
     const-string v5, "orientation"
 
     invoke-static {v8}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -3001,7 +2997,7 @@
 
     invoke-virtual {v4, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 737
+    .line 741
     const-string v5, "_data"
 
     invoke-virtual {v3}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
@@ -3010,7 +3006,7 @@
 
     invoke-virtual {v4, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 738
+    .line 742
     const-string v5, "_size"
 
     invoke-virtual {v3}, Ljava/io/File;->length()J
@@ -3023,7 +3019,7 @@
 
     invoke-virtual {v4, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 739
+    .line 743
     const-string v5, "width"
 
     iget v6, p0, Lcom/android/gallery3d/app/CropImage;->mCroppedWidth:I
@@ -3034,7 +3030,7 @@
 
     invoke-virtual {v4, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 740
+    .line 744
     const-string v5, "height"
 
     iget v6, p0, Lcom/android/gallery3d/app/CropImage;->mCroppedHeight:I
@@ -3045,7 +3041,7 @@
 
     invoke-virtual {v4, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 742
+    .line 746
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v5
@@ -3065,14 +3061,14 @@
     .parameter "cropped"
 
     .prologue
-    .line 674
+    .line 678
     move-object/from16 v0, p0
 
     iget-object v8, v0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
     check-cast v8, Lcom/android/gallery3d/data/LocalImage;
 
-    .line 676
+    .line 680
     .local v8, localImage:Lcom/android/gallery3d/data/LocalImage;
     new-instance v9, Ljava/io/File;
 
@@ -3080,7 +3076,7 @@
 
     invoke-direct {v9, v13}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 677
+    .line 681
     .local v9, oldPath:Ljava/io/File;
     new-instance v6, Ljava/io/File;
 
@@ -3090,13 +3086,13 @@
 
     invoke-direct {v6, v13}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 679
+    .line 683
     .local v6, directory:Ljava/io/File;
     invoke-virtual {v9}, Ljava/io/File;->getName()Ljava/lang/String;
 
     move-result-object v7
 
-    .line 680
+    .line 684
     .local v7, filename:Ljava/lang/String;
     const/16 v13, 0x2e
 
@@ -3104,7 +3100,7 @@
 
     move-result v11
 
-    .line 681
+    .line 685
     .local v11, pos:I
     if-ltz v11, :cond_0
 
@@ -3114,7 +3110,7 @@
 
     move-result-object v7
 
-    .line 682
+    .line 686
     :cond_0
     move-object/from16 v0, p0
 
@@ -3122,10 +3118,10 @@
 
     if-eqz v13, :cond_1
 
-    .line 683
+    .line 687
     invoke-virtual {v8}, Lcom/android/gallery3d/data/LocalImage;->delete()V
 
-    .line 685
+    .line 689
     :cond_1
     move-object/from16 v0, p0
 
@@ -3137,17 +3133,17 @@
 
     move-result-object v10
 
-    .line 686
+    .line 690
     .local v10, output:Ljava/io/File;
     if-nez v10, :cond_2
 
     const/4 v13, 0x0
 
-    .line 713
+    .line 717
     :goto_0
     return-object v13
 
-    .line 688
+    .line 692
     :cond_2
     invoke-virtual {v9}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
 
@@ -3175,12 +3171,12 @@
 
     invoke-static/range {v13 .. v17}, Lcom/android/gallery3d/app/CropImage;->copyExif(Ljava/lang/String;Ljava/lang/String;IIZ)V
 
-    .line 691
+    .line 695
     invoke-virtual {v10}, Ljava/io/File;->getName()Ljava/lang/String;
 
     move-result-object v3
 
-    .line 692
+    .line 696
     .local v3, caption:Ljava/lang/String;
     const/16 v13, 0x2e
 
@@ -3188,35 +3184,35 @@
 
     move-result v11
 
-    .line 693
+    .line 697
     if-ltz v11, :cond_3
 
-    .line 694
+    .line 698
     const/4 v13, 0x0
 
     invoke-virtual {v3, v13, v11}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 695
+    .line 699
     :cond_3
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v4
 
-    .line 696
+    .line 700
     .local v4, dateTaken:J
     new-instance v12, Landroid/content/ContentValues;
 
     invoke-direct {v12}, Landroid/content/ContentValues;-><init>()V
 
-    .line 697
+    .line 701
     .local v12, values:Landroid/content/ContentValues;
     const-string v13, "title"
 
     invoke-virtual {v12, v13, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 698
+    .line 702
     const-string v13, "_display_name"
 
     invoke-virtual {v10}, Ljava/io/File;->getName()Ljava/lang/String;
@@ -3225,7 +3221,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 699
+    .line 703
     const-string v13, "datetaken"
 
     invoke-static {v4, v5}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
@@ -3234,7 +3230,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 700
+    .line 704
     const-string v13, "date_modified"
 
     const-wide/16 v14, 0x3e8
@@ -3247,7 +3243,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 701
+    .line 705
     const-string v13, "date_added"
 
     const-wide/16 v14, 0x3e8
@@ -3260,7 +3256,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 702
+    .line 706
     const-string v13, "mime_type"
 
     invoke-direct/range {p0 .. p0}, Lcom/android/gallery3d/app/CropImage;->getOutputMimeType()Ljava/lang/String;
@@ -3269,7 +3265,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 703
+    .line 707
     const-string v13, "orientation"
 
     const/4 v14, 0x0
@@ -3280,7 +3276,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 704
+    .line 708
     const-string v13, "_data"
 
     invoke-virtual {v10}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
@@ -3289,7 +3285,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 705
+    .line 709
     const-string v13, "_size"
 
     invoke-virtual {v10}, Ljava/io/File;->length()J
@@ -3302,7 +3298,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 706
+    .line 710
     const-string v13, "width"
 
     move-object/from16 v0, p0
@@ -3315,7 +3311,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 707
+    .line 711
     const-string v13, "height"
 
     move-object/from16 v0, p0
@@ -3328,7 +3324,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 709
+    .line 713
     iget-wide v13, v8, Lcom/android/gallery3d/data/LocalMediaItem;->latitude:D
 
     iget-wide v15, v8, Lcom/android/gallery3d/data/LocalMediaItem;->longitude:D
@@ -3339,7 +3335,7 @@
 
     if-eqz v13, :cond_4
 
-    .line 710
+    .line 714
     const-string v13, "latitude"
 
     iget-wide v14, v8, Lcom/android/gallery3d/data/LocalMediaItem;->latitude:D
@@ -3350,7 +3346,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Double;)V
 
-    .line 711
+    .line 715
     const-string v13, "longitude"
 
     iget-wide v14, v8, Lcom/android/gallery3d/data/LocalMediaItem;->longitude:D
@@ -3361,7 +3357,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Double;)V
 
-    .line 713
+    .line 717
     :cond_4
     invoke-virtual/range {p0 .. p0}, Lcom/android/gallery3d/app/CropImage;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -3384,16 +3380,16 @@
     .parameter "filename"
 
     .prologue
-    .line 573
+    .line 577
     const/4 v0, 0x0
 
-    .line 574
+    .line 578
     .local v0, candidate:Ljava/io/File;
     invoke-direct {p0}, Lcom/android/gallery3d/app/CropImage;->getFileExtension()Ljava/lang/String;
 
     move-result-object v3
 
-    .line 576
+    .line 580
     .local v3, fileExtension:Ljava/lang/String;
     :try_start_0
     iget-boolean v7, p0, Lcom/android/gallery3d/app/CropImage;->mOverwrite:Z
@@ -3402,7 +3398,7 @@
 
     if-nez v7, :cond_2
 
-    .line 577
+    .line 581
     const/4 v5, 0x1
 
     .local v5, i:I
@@ -3415,7 +3411,7 @@
 
     if-ge v5, v7, :cond_3
 
-    .line 578
+    .line 582
     :try_start_1
     const-string v7, "-%03d."
 
@@ -3435,7 +3431,7 @@
 
     move-result-object v6
 
-    .line 579
+    .line 583
     .local v6, num:Ljava/lang/String;
     new-instance v0, Ljava/io/File;
 
@@ -3463,7 +3459,7 @@
     :try_end_1
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_2
 
-    .line 580
+    .line 584
     .end local v1           #candidate:Ljava/io/File;
     .restart local v0       #candidate:Ljava/io/File;
     :try_start_2
@@ -3475,7 +3471,7 @@
 
     if-eqz v7, :cond_1
 
-    .line 592
+    .line 596
     .end local v5           #i:I
     .end local v6           #num:Ljava/lang/String;
     :goto_1
@@ -3491,7 +3487,7 @@
 
     if-nez v7, :cond_4
 
-    .line 593
+    .line 597
     :cond_0
     new-instance v7, Ljava/lang/RuntimeException;
 
@@ -3517,7 +3513,7 @@
 
     throw v7
 
-    .line 577
+    .line 581
     .restart local v5       #i:I
     .restart local v6       #num:Ljava/lang/String;
     :cond_1
@@ -3529,7 +3525,7 @@
     .restart local v1       #candidate:Ljava/io/File;
     goto :goto_0
 
-    .line 584
+    .line 588
     .end local v1           #candidate:Ljava/io/File;
     .end local v5           #i:I
     .end local v6           #num:Ljava/lang/String;
@@ -3564,7 +3560,7 @@
     :try_end_3
     .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_0
 
-    .line 585
+    .line 589
     .end local v0           #candidate:Ljava/io/File;
     .restart local v1       #candidate:Ljava/io/File;
     :try_start_4
@@ -3574,7 +3570,7 @@
 
     if-nez v7, :cond_3
 
-    .line 586
+    .line 590
     invoke-virtual {v1}, Ljava/io/File;->createNewFile()Z
     :try_end_4
     .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_2
@@ -3586,11 +3582,11 @@
     .restart local v0       #candidate:Ljava/io/File;
     goto :goto_1
 
-    .line 588
+    .line 592
     :catch_0
     move-exception v2
 
-    .line 589
+    .line 593
     .local v2, e:Ljava/io/IOException;
     :goto_2
     const-string v7, "CropImage"
@@ -3619,16 +3615,16 @@
 
     invoke-static {v7, v8, v2}, Lcom/android/gallery3d/app/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 590
+    .line 594
     const/4 v7, 0x0
 
-    .line 622
+    .line 626
     .end local v2           #e:Ljava/io/IOException;
     .end local v3           #fileExtension:Ljava/lang/String;
     :goto_3
     return-object v7
 
-    .line 596
+    .line 600
     .restart local v3       #fileExtension:Ljava/lang/String;
     :cond_4
     const/4 v7, 0x1
@@ -3637,14 +3633,14 @@
 
     invoke-virtual {v0, v7, v8}, Ljava/io/File;->setReadable(ZZ)Z
 
-    .line 597
+    .line 601
     const/4 v7, 0x1
 
     const/4 v8, 0x0
 
     invoke-virtual {v0, v7, v8}, Ljava/io/File;->setWritable(ZZ)Z
 
-    .line 600
+    .line 604
     :try_start_5
     new-instance v4, Ljava/io/FileOutputStream;
 
@@ -3652,7 +3648,7 @@
     :try_end_5
     .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_1
 
-    .line 602
+    .line 606
     .local v4, fos:Ljava/io/FileOutputStream;
     :try_start_6
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mCompressFormat:Ljava/lang/String;
@@ -3681,15 +3677,15 @@
 
     if-nez v7, :cond_6
 
-    .line 604
+    .line 608
     invoke-virtual {v0}, Ljava/io/File;->delete()Z
     :try_end_6
     .catchall {:try_start_6 .. :try_end_6} :catchall_0
 
-    .line 605
+    .line 609
     const/4 v7, 0x0
 
-    .line 608
+    .line 612
     :try_start_7
     invoke-virtual {v4}, Ljava/io/FileOutputStream;->close()V
     :try_end_7
@@ -3697,12 +3693,12 @@
 
     goto :goto_3
 
-    .line 610
+    .line 614
     .end local v4           #fos:Ljava/io/FileOutputStream;
     :catch_1
     move-exception v2
 
-    .line 611
+    .line 615
     .restart local v2       #e:Ljava/io/IOException;
     const-string v7, "CropImage"
 
@@ -3730,15 +3726,15 @@
 
     invoke-static {v7, v8, v2}, Lcom/android/gallery3d/app/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 613
+    .line 617
     invoke-virtual {v0}, Ljava/io/File;->delete()Z
 
-    .line 614
+    .line 618
     const/4 v7, 0x0
 
     goto :goto_3
 
-    .line 608
+    .line 612
     .end local v2           #e:Ljava/io/IOException;
     .restart local v4       #fos:Ljava/io/FileOutputStream;
     :cond_6
@@ -3747,22 +3743,22 @@
     :try_end_8
     .catch Ljava/io/IOException; {:try_start_8 .. :try_end_8} :catch_1
 
-    .line 617
+    .line 621
     invoke-interface {p1}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->isCancelled()Z
 
     move-result v7
 
     if-eqz v7, :cond_7
 
-    .line 618
+    .line 622
     invoke-virtual {v0}, Ljava/io/File;->delete()Z
 
-    .line 619
+    .line 623
     const/4 v7, 0x0
 
     goto :goto_3
 
-    .line 608
+    .line 612
     :catchall_0
     move-exception v7
 
@@ -3776,10 +3772,10 @@
     :cond_7
     move-object v7, v0
 
-    .line 622
+    .line 626
     goto :goto_3
 
-    .line 588
+    .line 592
     .end local v0           #candidate:Ljava/io/File;
     .end local v4           #fos:Ljava/io/FileOutputStream;
     .restart local v1       #candidate:Ljava/io/File;
@@ -3803,7 +3799,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 1403
+    .line 1415
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
     if-eqz v0, :cond_3
@@ -3814,19 +3810,19 @@
 
     if-eqz v0, :cond_3
 
-    .line 1404
+    .line 1416
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
     check-cast v0, Lcom/android/gallery3d/data/LocalImage;
 
-    .line 1406
+    .line 1418
     new-instance v1, Ljava/io/File;
 
     iget-object v3, v0, Lcom/android/gallery3d/data/LocalMediaItem;->filePath:Ljava/lang/String;
 
     invoke-direct {v1, v3}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 1407
+    .line 1419
     new-instance v3, Ljava/io/File;
 
     invoke-virtual {v1}, Ljava/io/File;->getParent()Ljava/lang/String;
@@ -3835,50 +3831,50 @@
 
     invoke-direct {v3, v4}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 1409
+    .line 1421
     invoke-virtual {v1}, Ljava/io/File;->getName()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 1410
+    .line 1422
     const/16 v4, 0x2e
 
     invoke-virtual {v1, v4}, Ljava/lang/String;->lastIndexOf(I)I
 
     move-result v4
 
-    .line 1411
+    .line 1423
     if-ltz v4, :cond_0
 
     invoke-virtual {v1, v2, v4}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 1412
+    .line 1424
     :cond_0
     iget-boolean v4, p0, Lcom/android/gallery3d/app/CropImage;->mOverwrite:Z
 
     if-eqz v4, :cond_1
 
-    .line 1413
+    .line 1425
     invoke-virtual {v0}, Lcom/android/gallery3d/data/LocalImage;->delete()V
 
-    .line 1415
+    .line 1427
     :cond_1
     invoke-direct {p0, p1, p2, v3, v1}, Lcom/android/gallery3d/app/CropImage;->saveMedia(Lcom/android/gallery3d/util/ThreadPool$JobContext;Landroid/graphics/Bitmap;Ljava/io/File;Ljava/lang/String;)Ljava/io/File;
 
     move-result-object v0
 
-    .line 1416
+    .line 1428
     if-nez v0, :cond_2
 
     move v0, v2
 
-    .line 1421
+    .line 1433
     :goto_0
     return v0
 
-    .line 1418
+    .line 1430
     :cond_2
     const-string v1, "filePath"
 
@@ -3888,7 +3884,7 @@
 
     invoke-virtual {p3, v1, v0}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 1419
+    .line 1431
     const/4 v0, 0x1
 
     goto :goto_0
@@ -3896,7 +3892,7 @@
     :cond_3
     move v0, v2
 
-    .line 1421
+    .line 1433
     goto :goto_0
 .end method
 
@@ -3906,7 +3902,7 @@
     .parameter "cropped"
 
     .prologue
-    .line 636
+    .line 640
     sget-object v13, Lcom/android/gallery3d/app/CropImage;->DOWNLOAD_BUCKET:Ljava/io/File;
 
     invoke-virtual {v13}, Ljava/io/File;->isDirectory()Z
@@ -3923,7 +3919,7 @@
 
     if-nez v13, :cond_0
 
-    .line 637
+    .line 641
     new-instance v13, Ljava/lang/RuntimeException;
 
     const-string v14, "cannot create download folder"
@@ -3932,7 +3928,7 @@
 
     throw v13
 
-    .line 640
+    .line 644
     :cond_0
     move-object/from16 v0, p0
 
@@ -3942,7 +3938,7 @@
 
     move-result-object v3
 
-    .line 641
+    .line 645
     .local v3, filename:Ljava/lang/String;
     const/16 v13, 0x2e
 
@@ -3950,7 +3946,7 @@
 
     move-result v11
 
-    .line 642
+    .line 646
     .local v11, pos:I
     if-ltz v11, :cond_1
 
@@ -3960,7 +3956,7 @@
 
     move-result-object v3
 
-    .line 643
+    .line 647
     :cond_1
     const/4 v13, 0x0
 
@@ -3968,7 +3964,7 @@
 
     iput-boolean v13, v0, Lcom/android/gallery3d/app/CropImage;->mOverwrite:Z
 
-    .line 644
+    .line 648
     sget-object v13, Lcom/android/gallery3d/app/CropImage;->DOWNLOAD_BUCKET:Ljava/io/File;
 
     move-object/from16 v0, p0
@@ -3981,17 +3977,17 @@
 
     move-result-object v10
 
-    .line 645
+    .line 649
     .local v10, output:Ljava/io/File;
     if-nez v10, :cond_2
 
     const/4 v13, 0x0
 
-    .line 669
+    .line 673
     :goto_0
     return-object v13
 
-    .line 647
+    .line 651
     :cond_2
     move-object/from16 v0, p0
 
@@ -4013,7 +4009,7 @@
 
     invoke-static/range {v13 .. v16}, Lcom/android/gallery3d/app/CropImage;->copyExif(Lcom/android/gallery3d/data/MediaItem;Ljava/lang/String;II)V
 
-    .line 649
+    .line 653
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v13
@@ -4022,13 +4018,13 @@
 
     div-long v8, v13, v15
 
-    .line 650
+    .line 654
     .local v8, now:J
     new-instance v12, Landroid/content/ContentValues;
 
     invoke-direct {v12}, Landroid/content/ContentValues;-><init>()V
 
-    .line 651
+    .line 655
     .local v12, values:Landroid/content/ContentValues;
     const-string v13, "title"
 
@@ -4042,7 +4038,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 652
+    .line 656
     const-string v13, "_display_name"
 
     invoke-virtual {v10}, Ljava/io/File;->getName()Ljava/lang/String;
@@ -4051,7 +4047,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 653
+    .line 657
     const-string v13, "datetaken"
 
     move-object/from16 v0, p0
@@ -4068,7 +4064,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 654
+    .line 658
     const-string v13, "date_modified"
 
     invoke-static {v8, v9}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
@@ -4077,7 +4073,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 655
+    .line 659
     const-string v13, "date_added"
 
     invoke-static {v8, v9}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
@@ -4086,7 +4082,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 656
+    .line 660
     const-string v13, "mime_type"
 
     invoke-direct/range {p0 .. p0}, Lcom/android/gallery3d/app/CropImage;->getOutputMimeType()Ljava/lang/String;
@@ -4095,7 +4091,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 657
+    .line 661
     const-string v13, "orientation"
 
     const/4 v14, 0x0
@@ -4106,7 +4102,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 658
+    .line 662
     const-string v13, "_data"
 
     invoke-virtual {v10}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
@@ -4115,7 +4111,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 659
+    .line 663
     const-string v13, "_size"
 
     invoke-virtual {v10}, Ljava/io/File;->length()J
@@ -4128,7 +4124,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 660
+    .line 664
     const-string v13, "width"
 
     move-object/from16 v0, p0
@@ -4141,7 +4137,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 661
+    .line 665
     const-string v13, "height"
 
     move-object/from16 v0, p0
@@ -4154,7 +4150,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 663
+    .line 667
     move-object/from16 v0, p0
 
     iget-object v13, v0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
@@ -4163,7 +4159,7 @@
 
     move-result-wide v4
 
-    .line 664
+    .line 668
     .local v4, latitude:D
     move-object/from16 v0, p0
 
@@ -4173,7 +4169,7 @@
 
     move-result-wide v6
 
-    .line 665
+    .line 669
     .local v6, longitude:D
     invoke-static {v4, v5, v6, v7}, Lcom/android/gallery3d/util/GalleryUtils;->isValidLocation(DD)Z
 
@@ -4181,7 +4177,7 @@
 
     if-eqz v13, :cond_3
 
-    .line 666
+    .line 670
     const-string v13, "latitude"
 
     invoke-static {v4, v5}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
@@ -4190,7 +4186,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Double;)V
 
-    .line 667
+    .line 671
     const-string v13, "longitude"
 
     invoke-static {v6, v7}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
@@ -4199,7 +4195,7 @@
 
     invoke-virtual {v12, v13, v14}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Double;)V
 
-    .line 669
+    .line 673
     :cond_3
     invoke-virtual/range {p0 .. p0}, Lcom/android/gallery3d/app/CropImage;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -4220,7 +4216,7 @@
     .parameter "cropped"
 
     .prologue
-    .line 626
+    .line 630
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
     invoke-static {v0}, Lcom/android/gallery3d/picasasource/PicasaSource;->isPicasaImage(Lcom/android/gallery3d/data/MediaObject;)Z
@@ -4229,16 +4225,16 @@
 
     if-eqz v0, :cond_0
 
-    .line 627
+    .line 631
     invoke-direct {p0, p1, p2}, Lcom/android/gallery3d/app/CropImage;->savePicasaImage(Lcom/android/gallery3d/util/ThreadPool$JobContext;Landroid/graphics/Bitmap;)Landroid/net/Uri;
 
     move-result-object v0
 
-    .line 631
+    .line 635
     :goto_0
     return-object v0
 
-    .line 628
+    .line 632
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
@@ -4246,14 +4242,14 @@
 
     if-eqz v0, :cond_1
 
-    .line 629
+    .line 633
     invoke-direct {p0, p1, p2}, Lcom/android/gallery3d/app/CropImage;->saveLocalImage(Lcom/android/gallery3d/util/ThreadPool$JobContext;Landroid/graphics/Bitmap;)Landroid/net/Uri;
 
     move-result-object v0
 
     goto :goto_0
 
-    .line 631
+    .line 635
     :cond_1
     invoke-direct {p0, p1, p2}, Lcom/android/gallery3d/app/CropImage;->saveGenericImage(Lcom/android/gallery3d/util/ThreadPool$JobContext;Landroid/graphics/Bitmap;)Landroid/net/Uri;
 
@@ -4268,7 +4264,7 @@
     .parameter "wallpaper"
 
     .prologue
-    .line 562
+    .line 566
     :try_start_0
     invoke-static {p0}, Landroid/app/WallpaperManager;->getInstance(Landroid/content/Context;)Landroid/app/WallpaperManager;
 
@@ -4278,17 +4274,17 @@
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 566
+    .line 570
     :goto_0
     const/4 v1, 0x1
 
     return v1
 
-    .line 563
+    .line 567
     :catch_0
     move-exception v0
 
-    .line 564
+    .line 568
     .local v0, e:Ljava/io/IOException;
     const-string v1, "CropImage"
 
@@ -4307,7 +4303,7 @@
 
     const/4 v4, 0x0
 
-    .line 1080
+    .line 1084
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getIntent()Landroid/content/Intent;
 
     move-result-object v0
@@ -4316,14 +4312,14 @@
 
     move-result-object v0
 
-    .line 1081
+    .line 1085
     if-nez v0, :cond_0
 
-    .line 1097
+    .line 1101
     :goto_0
     return-void
 
-    .line 1083
+    .line 1087
     :cond_0
     const-string v1, "aspectX"
 
@@ -4331,19 +4327,19 @@
 
     move-result v1
 
-    .line 1084
+    .line 1088
     const-string v2, "aspectY"
 
     invoke-virtual {v0, v2, v5}, Landroid/os/Bundle;->getInt(Ljava/lang/String;I)I
 
     move-result v2
 
-    .line 1085
+    .line 1089
     if-eqz v1, :cond_1
 
     if-eqz v2, :cond_1
 
-    .line 1086
+    .line 1090
     iget-object v3, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
     int-to-float v1, v1
@@ -4354,12 +4350,12 @@
 
     invoke-virtual {v3, v1}, Lcom/android/gallery3d/ui/CropView;->setAspectRatio(F)V
 
-    .line 1087
+    .line 1091
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
     invoke-virtual {v1, v5}, Lcom/android/gallery3d/ui/CropView;->setFlippable(Z)V
 
-    .line 1090
+    .line 1094
     :cond_1
     const-string v1, "spotlightX"
 
@@ -4367,14 +4363,14 @@
 
     move-result v1
 
-    .line 1091
+    .line 1095
     const-string v2, "spotlightY"
 
     invoke-virtual {v0, v2, v4}, Landroid/os/Bundle;->getFloat(Ljava/lang/String;F)F
 
     move-result v2
 
-    .line 1092
+    .line 1096
     cmpl-float v3, v1, v4
 
     if-eqz v3, :cond_2
@@ -4383,12 +4379,12 @@
 
     if-eqz v3, :cond_2
 
-    .line 1093
+    .line 1097
     iget-object v3, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
     invoke-virtual {v3, v1, v2}, Lcom/android/gallery3d/ui/CropView;->setSpotlightRatio(FF)V
 
-    .line 1096
+    .line 1100
     :cond_2
     const-string v1, "confirm-overwrite"
 
@@ -4405,16 +4401,16 @@
     .locals 3
 
     .prologue
-    .line 1454
+    .line 1466
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mAspect:Landroid/widget/TextView;
 
     if-nez v0, :cond_0
 
-    .line 1460
+    .line 1472
     :goto_0
     return-void
 
-    .line 1457
+    .line 1469
     :cond_0
     invoke-direct {p0}, Lcom/android/gallery3d/app/CropImage;->getAspect()I
 
@@ -4422,7 +4418,7 @@
 
     iput v0, p0, Lcom/android/gallery3d/app/CropImage;->mCurrentAspect:I
 
-    .line 1458
+    .line 1470
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mAspect:Landroid/widget/TextView;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage;->mAspectStrArray:[Ljava/lang/String;
@@ -4433,7 +4429,7 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 1459
+    .line 1471
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mAspectLayout:Lcom/meizu/widget/GlowLinearLayout;
 
     const/4 v1, 0x0
@@ -4452,7 +4448,7 @@
     .prologue
     const/4 v6, 0x0
 
-    .line 832
+    .line 836
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
     if-eqz v1, :cond_1
@@ -4463,16 +4459,16 @@
 
     if-eqz v1, :cond_1
 
-    .line 833
+    .line 837
     iget-object v10, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
     check-cast v10, Lcom/android/gallery3d/data/LocalImage;
 
-    .line 834
+    .line 838
     .local v10, item:Lcom/android/gallery3d/data/LocalImage;
     iget-object v0, v10, Lcom/android/gallery3d/data/LocalMediaItem;->filePath:Ljava/lang/String;
 
-    .line 835
+    .line 839
     .local v0, filePath:Ljava/lang/String;
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage;->mSrcRect:Landroid/graphics/Rect;
 
@@ -4509,7 +4505,7 @@
 
     move-result v6
 
-    .line 839
+    .line 843
     .end local v0           #filePath:Ljava/lang/String;
     .end local v10           #item:Lcom/android/gallery3d/data/LocalImage;
     :cond_1
@@ -4526,29 +4522,29 @@
 
     const/4 v8, 0x0
 
-    .line 1374
+    .line 1386
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
     instance-of v0, v0, Lcom/android/gallery3d/data/LocalImage;
 
     if-eqz v0, :cond_3
 
-    .line 1375
+    .line 1387
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
     check-cast v0, Lcom/android/gallery3d/data/LocalImage;
 
-    .line 1376
+    .line 1388
     if-nez v0, :cond_0
 
-    .line 1377
+    .line 1389
     const-string v0, ""
 
-    .line 1399
+    .line 1411
     :goto_0
     return-object v0
 
-    .line 1378
+    .line 1390
     :cond_0
     new-instance v1, Ljava/io/File;
 
@@ -4556,7 +4552,7 @@
 
     invoke-direct {v1, v0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 1379
+    .line 1391
     new-instance v3, Ljava/io/File;
 
     invoke-virtual {v1}, Ljava/io/File;->getParent()Ljava/lang/String;
@@ -4565,27 +4561,27 @@
 
     invoke-direct {v3, v0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 1381
+    .line 1393
     invoke-virtual {v1}, Ljava/io/File;->getName()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 1382
+    .line 1394
     const/16 v1, 0x2e
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->lastIndexOf(I)I
 
     move-result v1
 
-    .line 1383
+    .line 1395
     if-ltz v1, :cond_1
 
-    .line 1384
+    .line 1396
     invoke-virtual {v0, v8, v1}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 1387
+    .line 1399
     :cond_1
     invoke-direct {p0}, Lcom/android/gallery3d/app/CropImage;->getFileExtension()Ljava/lang/String;
 
@@ -4593,13 +4589,13 @@
 
     move v1, v2
 
-    .line 1388
+    .line 1400
     :goto_1
     const/16 v5, 0x3e8
 
     if-ge v1, v5, :cond_4
 
-    .line 1389
+    .line 1401
     const-string v5, "-%03d."
 
     new-array v6, v2, [Ljava/lang/Object;
@@ -4614,7 +4610,7 @@
 
     move-result-object v5
 
-    .line 1390
+    .line 1402
     new-instance v6, Ljava/io/File;
 
     new-instance v7, Ljava/lang/StringBuilder;
@@ -4639,27 +4635,27 @@
 
     invoke-direct {v6, v3, v5}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
 
-    .line 1391
+    .line 1403
     invoke-virtual {v6}, Ljava/io/File;->exists()Z
 
     move-result v5
 
     if-nez v5, :cond_2
 
-    .line 1392
+    .line 1404
     invoke-virtual {v6}, Ljava/io/File;->getName()Ljava/lang/String;
 
     move-result-object v0
 
     goto :goto_0
 
-    .line 1388
+    .line 1400
     :cond_2
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_1
 
-    .line 1394
+    .line 1406
     :cond_3
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
@@ -4667,24 +4663,24 @@
 
     if-eqz v0, :cond_4
 
-    .line 1395
+    .line 1407
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
 
     check-cast v0, Lcom/android/gallery3d/data/UriImage;
 
-    .line 1396
+    .line 1408
     invoke-virtual {v0}, Lcom/android/gallery3d/data/UriImage;->getContentUri()Landroid/net/Uri;
 
     move-result-object v0
 
-    .line 1397
+    .line 1409
     invoke-virtual {v0}, Landroid/net/Uri;->getLastPathSegment()Ljava/lang/String;
 
     move-result-object v0
 
     goto :goto_0
 
-    .line 1399
+    .line 1411
     :cond_4
     const-string v0, ""
 
@@ -4695,7 +4691,7 @@
     .locals 1
 
     .prologue
-    .line 1425
+    .line 1437
     iget-boolean v0, p0, Lcom/android/gallery3d/app/CropImage;->mConfirmOverwrite:Z
 
     return v0
@@ -4705,10 +4701,10 @@
     .locals 0
 
     .prologue
-    .line 489
+    .line 493
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->finish()V
 
-    .line 490
+    .line 494
     return-void
 .end method
 
@@ -4721,26 +4717,26 @@
 
     const/4 v9, 0x0
 
-    .line 375
+    .line 379
     invoke-super {p0, p1}, Lcom/android/gallery3d/app/AbstractGalleryActivity;->onConfigurationChanged(Landroid/content/res/Configuration;)V
 
-    .line 376
+    .line 380
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mPopupMenu:Landroid/widget/PopupMenu;
 
     if-eqz v7, :cond_0
 
-    .line 377
+    .line 381
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mPopupMenu:Landroid/widget/PopupMenu;
 
     invoke-virtual {v7}, Landroid/widget/PopupMenu;->dismiss()V
 
-    .line 380
+    .line 384
     :cond_0
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getLayoutInflater()Landroid/view/LayoutInflater;
 
     move-result-object v7
 
-    const v10, 0x7f04001f
+    const v10, 0x7f040021
 
     const/4 v11, 0x0
 
@@ -4750,24 +4746,24 @@
 
     iput-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mCustomView:Landroid/view/View;
 
-    .line 382
+    .line 386
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getActionBar()Landroid/app/ActionBar;
 
     move-result-object v2
 
-    .line 383
+    .line 387
     .local v2, bar:Landroid/app/ActionBar;
     const/16 v7, 0x10
 
     invoke-virtual {v2, v7}, Landroid/app/ActionBar;->setDisplayOptions(I)V
 
-    .line 384
+    .line 388
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mCustomView:Landroid/view/View;
 
     invoke-virtual {v2, v7}, Landroid/app/ActionBar;->setCustomView(Landroid/view/View;)V
 
-    .line 387
-    const v7, 0x7f0d005f
+    .line 391
+    const v7, 0x7f0d0064
 
     invoke-virtual {p0, v7}, Lcom/android/gallery3d/app/CropImage;->findViewById(I)Landroid/view/View;
 
@@ -4777,8 +4773,8 @@
 
     iput-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mTitle:Landroid/widget/TextView;
 
-    .line 388
-    const v7, 0x7f0d0060
+    .line 392
+    const v7, 0x7f0d0065
 
     invoke-virtual {p0, v7}, Lcom/android/gallery3d/app/CropImage;->findViewById(I)Landroid/view/View;
 
@@ -4788,7 +4784,7 @@
 
     iput-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mRes:Landroid/widget/TextView;
 
-    .line 389
+    .line 393
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mRes:Landroid/widget/TextView;
 
     iget-object v10, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
@@ -4799,8 +4795,8 @@
 
     invoke-virtual {v7, v10}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 390
-    const v7, 0x7f0d0063
+    .line 394
+    const v7, 0x7f0d0068
 
     invoke-virtual {p0, v7}, Lcom/android/gallery3d/app/CropImage;->findViewById(I)Landroid/view/View;
 
@@ -4810,8 +4806,8 @@
 
     iput-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mAspect:Landroid/widget/TextView;
 
-    .line 391
-    const v7, 0x7f0d0062
+    .line 395
+    const v7, 0x7f0d0067
 
     invoke-virtual {p0, v7}, Lcom/android/gallery3d/app/CropImage;->findViewById(I)Landroid/view/View;
 
@@ -4821,7 +4817,7 @@
 
     iput-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mAspectLayout:Lcom/meizu/widget/GlowLinearLayout;
 
-    .line 392
+    .line 396
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mAspectLayout:Lcom/meizu/widget/GlowLinearLayout;
 
     new-instance v10, Lcom/android/gallery3d/app/CropImage$6;
@@ -4830,7 +4826,7 @@
 
     invoke-virtual {v7, v10}, Lcom/meizu/widget/GlowLinearLayout;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 399
+    .line 403
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mTitle:Landroid/widget/TextView;
 
     if-eqz v7, :cond_2
@@ -4848,14 +4844,14 @@
     :goto_0
     invoke-static {v7}, Lcom/android/gallery3d/common/Utils;->assertTrue(Z)V
 
-    .line 400
+    .line 404
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mTitle:Landroid/widget/TextView;
 
-    const v10, 0x7f0a00c8
+    const v10, 0x7f0a00d3
 
     invoke-virtual {v7, v10}, Landroid/widget/TextView;->setText(I)V
 
-    .line 401
+    .line 405
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mAspect:Landroid/widget/TextView;
 
     iget-object v10, p0, Lcom/android/gallery3d/app/CropImage;->mAspectStrArray:[Ljava/lang/String;
@@ -4866,7 +4862,7 @@
 
     invoke-virtual {v7, v10}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 402
+    .line 406
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getIntent()Landroid/content/Intent;
 
     move-result-object v7
@@ -4875,18 +4871,18 @@
 
     move-result-object v3
 
-    .line 403
+    .line 407
     .local v3, extras:Landroid/os/Bundle;
     if-eqz v3, :cond_1
 
-    .line 404
+    .line 408
     const-string v7, "aspectX"
 
     invoke-virtual {v3, v7, v9}, Landroid/os/Bundle;->getInt(Ljava/lang/String;I)I
 
     move-result v0
 
-    .line 405
+    .line 409
     .local v0, aspectX:I
     const-string v7, "aspectY"
 
@@ -4894,16 +4890,16 @@
 
     move-result v1
 
-    .line 406
+    .line 410
     .local v1, aspectY:I
     if-eqz v0, :cond_1
 
     if-eqz v1, :cond_1
 
-    .line 407
+    .line 411
     invoke-direct {p0}, Lcom/android/gallery3d/app/CropImage;->setFixedAspect()V
 
-    .line 411
+    .line 415
     .end local v0           #aspectX:I
     .end local v1           #aspectY:I
     :cond_1
@@ -4915,20 +4911,20 @@
 
     iput-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mPopupMenu:Landroid/widget/PopupMenu;
 
-    .line 412
+    .line 416
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mPopupMenu:Landroid/widget/PopupMenu;
 
     invoke-virtual {v7}, Landroid/widget/PopupMenu;->getMenu()Landroid/view/Menu;
 
     move-result-object v6
 
-    .line 413
+    .line 417
     .local v6, popMenu:Landroid/view/Menu;
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mAspectStrArray:[Ljava/lang/String;
 
     array-length v5, v7
 
-    .line 414
+    .line 418
     .local v5, num:I
     const/4 v4, 0x0
 
@@ -4936,7 +4932,7 @@
     :goto_1
     if-ge v4, v5, :cond_3
 
-    .line 415
+    .line 419
     add-int/lit8 v7, v4, 0x0
 
     iget-object v10, p0, Lcom/android/gallery3d/app/CropImage;->mAspectStrArray:[Ljava/lang/String;
@@ -4945,7 +4941,7 @@
 
     invoke-interface {v6, v9, v7, v9, v10}, Landroid/view/Menu;->add(IIILjava/lang/CharSequence;)Landroid/view/MenuItem;
 
-    .line 414
+    .line 418
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_1
@@ -4957,10 +4953,10 @@
     :cond_2
     move v7, v9
 
-    .line 399
+    .line 403
     goto :goto_0
 
-    .line 417
+    .line 421
     .restart local v3       #extras:Landroid/os/Bundle;
     .restart local v4       #i:I
     .restart local v5       #num:I
@@ -4968,7 +4964,7 @@
     :cond_3
     invoke-interface {v6, v9, v8, v8}, Landroid/view/Menu;->setGroupCheckable(IZZ)V
 
-    .line 418
+    .line 422
     iget v7, p0, Lcom/android/gallery3d/app/CropImage;->mCurrentAspect:I
 
     invoke-interface {v6, v7}, Landroid/view/Menu;->getItem(I)Landroid/view/MenuItem;
@@ -4977,7 +4973,7 @@
 
     invoke-interface {v7, v8}, Landroid/view/MenuItem;->setChecked(Z)Landroid/view/MenuItem;
 
-    .line 420
+    .line 424
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mPopupMenu:Landroid/widget/PopupMenu;
 
     new-instance v8, Lcom/android/gallery3d/app/CropImage$7;
@@ -4986,7 +4982,7 @@
 
     invoke-virtual {v7, v8}, Landroid/widget/PopupMenu;->setOnMenuItemClickListener(Landroid/widget/PopupMenu$OnMenuItemClickListener;)V
 
-    .line 459
+    .line 463
     return-void
 .end method
 
@@ -4997,27 +4993,30 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 194
+    .line 197
+    invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->disableToggleStatusBar()V
+
+    .line 198
     invoke-super {p0, p1}, Lcom/android/gallery3d/app/AbstractGalleryActivity;->onCreate(Landroid/os/Bundle;)V
 
-    .line 195
+    .line 199
     const/16 v0, 0x8
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/app/CropImage;->requestWindowFeature(I)Z
 
-    .line 199
-    const v0, 0x7f04001e
+    .line 203
+    const v0, 0x7f040020
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/app/CropImage;->setContentView(I)V
 
-    .line 200
+    .line 204
     new-instance v0, Lcom/android/gallery3d/ui/CropView;
 
     invoke-direct {v0, p0}, Lcom/android/gallery3d/ui/CropView;-><init>(Lcom/android/gallery3d/app/GalleryActivity;)V
 
     iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
-    .line 201
+    .line 205
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getGLRoot()Lcom/android/gallery3d/ui/GLRoot;
 
     move-result-object v0
@@ -5026,7 +5025,7 @@
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/ui/GLRoot;->setContentPane(Lcom/android/gallery3d/ui/GLView;)V
 
-    .line 211
+    .line 215
     new-instance v0, Lcom/android/gallery3d/app/CropImage$1;
 
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getGLRoot()Lcom/android/gallery3d/ui/GLRoot;
@@ -5037,12 +5036,12 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mMainHandler:Landroid/os/Handler;
 
-    .line 246
+    .line 250
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getLayoutInflater()Landroid/view/LayoutInflater;
 
     move-result-object v0
 
-    const v1, 0x7f04001f
+    const v1, 0x7f040021
 
     invoke-virtual {v0, v1, v2}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
@@ -5050,7 +5049,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCustomView:Landroid/view/View;
 
-    .line 247
+    .line 251
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -5063,27 +5062,27 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mAspectStrArray:[Ljava/lang/String;
 
-    .line 250
+    .line 254
     invoke-direct {p0}, Lcom/android/gallery3d/app/CropImage;->setCropParameters()V
 
-    .line 251
+    .line 255
     invoke-direct {p0}, Lcom/android/gallery3d/app/CropImage;->getAspect()I
 
     move-result v0
 
     iput v0, p0, Lcom/android/gallery3d/app/CropImage;->mCurrentAspect:I
 
-    .line 253
+    .line 257
     new-instance v0, Landroid/app/AlertDialog$Builder;
 
     invoke-direct {v0, p0}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
     iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mConfirmDlg:Landroid/app/AlertDialog$Builder;
 
-    .line 254
+    .line 258
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mConfirmDlg:Landroid/app/AlertDialog$Builder;
 
-    const v1, 0x7f0a01c4
+    const v1, 0x7f0a01d3
 
     invoke-virtual {p0, v1}, Lcom/android/gallery3d/app/CropImage;->getString(I)Ljava/lang/String;
 
@@ -5091,10 +5090,10 @@
 
     invoke-virtual {v0, v1}, Landroid/app/AlertDialog$Builder;->setTitle(Ljava/lang/CharSequence;)Landroid/app/AlertDialog$Builder;
 
-    .line 255
+    .line 259
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mConfirmDlg:Landroid/app/AlertDialog$Builder;
 
-    const v1, 0x7f0a0148
+    const v1, 0x7f0a0153
 
     invoke-virtual {p0, v1}, Lcom/android/gallery3d/app/CropImage;->getString(I)Ljava/lang/String;
 
@@ -5102,10 +5101,10 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/app/AlertDialog$Builder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
 
-    .line 256
+    .line 260
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mConfirmDlg:Landroid/app/AlertDialog$Builder;
 
-    const v1, 0x7f0a01c5
+    const v1, 0x7f0a01d4
 
     invoke-virtual {p0, v1}, Lcom/android/gallery3d/app/CropImage;->getString(I)Ljava/lang/String;
 
@@ -5117,10 +5116,10 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/app/AlertDialog$Builder;->setNeutralButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
 
-    .line 265
+    .line 269
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mConfirmDlg:Landroid/app/AlertDialog$Builder;
 
-    const v1, 0x7f0a01c3
+    const v1, 0x7f0a01d2
 
     invoke-virtual {p0, v1}, Lcom/android/gallery3d/app/CropImage;->getString(I)Ljava/lang/String;
 
@@ -5132,21 +5131,21 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/app/AlertDialog$Builder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
 
-    .line 274
+    .line 278
     iget-object v0, p0, Lcom/android/gallery3d/app/AbstractGalleryActivity;->mIntentType:Lcom/android/gallery3d/app/GalleryActivity$IntentType;
 
     const/4 v1, 0x2
 
     iput v1, v0, Lcom/android/gallery3d/app/GalleryActivity$IntentType;->mType:I
 
-    .line 275
+    .line 279
     iget-object v0, p0, Lcom/android/gallery3d/app/AbstractGalleryActivity;->mIntentType:Lcom/android/gallery3d/app/GalleryActivity$IntentType;
 
     const/4 v1, 0x1
 
     iput v1, v0, Lcom/android/gallery3d/app/GalleryActivity$IntentType;->mMimeType:I
 
-    .line 277
+    .line 281
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getIntent()Landroid/content/Intent;
 
     move-result-object v0
@@ -5159,17 +5158,17 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCompressFormat:Ljava/lang/String;
 
-    .line 278
+    .line 282
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCompressFormat:Ljava/lang/String;
 
     if-eqz v0, :cond_0
 
-    .line 279
+    .line 283
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCompressFormat:Ljava/lang/String;
 
     invoke-virtual {v0}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
 
-    .line 281
+    .line 285
     :cond_0
     return-void
 .end method
@@ -5183,10 +5182,10 @@
 
     const/4 v9, 0x0
 
-    .line 290
+    .line 294
     invoke-super {p0, p1}, Lcom/android/gallery3d/app/AbstractGalleryActivity;->onCreateOptionsMenu(Landroid/view/Menu;)Z
 
-    .line 291
+    .line 295
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getMenuInflater()Landroid/view/MenuInflater;
 
     move-result-object v7
@@ -5195,29 +5194,29 @@
 
     invoke-virtual {v7, v10, p1}, Landroid/view/MenuInflater;->inflate(ILandroid/view/Menu;)V
 
-    .line 292
+    .line 296
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getActionBar()Landroid/app/ActionBar;
 
     move-result-object v2
 
-    .line 293
+    .line 297
     .local v2, bar:Landroid/app/ActionBar;
     const/16 v7, 0x10
 
     invoke-virtual {v2, v7}, Landroid/app/ActionBar;->setDisplayOptions(I)V
 
-    .line 294
+    .line 298
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mCustomView:Landroid/view/View;
 
     invoke-virtual {v2, v7}, Landroid/app/ActionBar;->setCustomView(Landroid/view/View;)V
 
-    .line 296
+    .line 300
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mTitle:Landroid/widget/TextView;
 
     if-nez v7, :cond_3
 
-    .line 297
-    const v7, 0x7f0d005f
+    .line 301
+    const v7, 0x7f0d0064
 
     invoke-virtual {p0, v7}, Lcom/android/gallery3d/app/CropImage;->findViewById(I)Landroid/view/View;
 
@@ -5227,8 +5226,8 @@
 
     iput-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mTitle:Landroid/widget/TextView;
 
-    .line 298
-    const v7, 0x7f0d0060
+    .line 302
+    const v7, 0x7f0d0065
 
     invoke-virtual {p0, v7}, Lcom/android/gallery3d/app/CropImage;->findViewById(I)Landroid/view/View;
 
@@ -5238,7 +5237,7 @@
 
     iput-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mRes:Landroid/widget/TextView;
 
-    .line 299
+    .line 303
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mRes:Landroid/widget/TextView;
 
     iget-object v10, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
@@ -5249,8 +5248,8 @@
 
     invoke-virtual {v7, v10}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 300
-    const v7, 0x7f0d0063
+    .line 304
+    const v7, 0x7f0d0068
 
     invoke-virtual {p0, v7}, Lcom/android/gallery3d/app/CropImage;->findViewById(I)Landroid/view/View;
 
@@ -5260,8 +5259,8 @@
 
     iput-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mAspect:Landroid/widget/TextView;
 
-    .line 301
-    const v7, 0x7f0d0062
+    .line 305
+    const v7, 0x7f0d0067
 
     invoke-virtual {p0, v7}, Lcom/android/gallery3d/app/CropImage;->findViewById(I)Landroid/view/View;
 
@@ -5271,7 +5270,7 @@
 
     iput-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mAspectLayout:Lcom/meizu/widget/GlowLinearLayout;
 
-    .line 302
+    .line 306
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mAspectLayout:Lcom/meizu/widget/GlowLinearLayout;
 
     new-instance v10, Lcom/android/gallery3d/app/CropImage$4;
@@ -5280,7 +5279,7 @@
 
     invoke-virtual {v7, v10}, Lcom/meizu/widget/GlowLinearLayout;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 309
+    .line 313
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mTitle:Landroid/widget/TextView;
 
     if-eqz v7, :cond_1
@@ -5298,14 +5297,14 @@
     :goto_0
     invoke-static {v7}, Lcom/android/gallery3d/common/Utils;->assertTrue(Z)V
 
-    .line 310
+    .line 314
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mTitle:Landroid/widget/TextView;
 
-    const v10, 0x7f0a00c8
+    const v10, 0x7f0a00d3
 
     invoke-virtual {v7, v10}, Landroid/widget/TextView;->setText(I)V
 
-    .line 311
+    .line 315
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mAspect:Landroid/widget/TextView;
 
     iget-object v10, p0, Lcom/android/gallery3d/app/CropImage;->mAspectStrArray:[Ljava/lang/String;
@@ -5316,7 +5315,7 @@
 
     invoke-virtual {v7, v10}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 312
+    .line 316
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getIntent()Landroid/content/Intent;
 
     move-result-object v7
@@ -5325,18 +5324,18 @@
 
     move-result-object v3
 
-    .line 313
+    .line 317
     .local v3, extras:Landroid/os/Bundle;
     if-eqz v3, :cond_0
 
-    .line 314
+    .line 318
     const-string v7, "aspectX"
 
     invoke-virtual {v3, v7, v9}, Landroid/os/Bundle;->getInt(Ljava/lang/String;I)I
 
     move-result v0
 
-    .line 315
+    .line 319
     .local v0, aspectX:I
     const-string v7, "aspectY"
 
@@ -5344,16 +5343,16 @@
 
     move-result v1
 
-    .line 316
+    .line 320
     .local v1, aspectY:I
     if-eqz v0, :cond_0
 
     if-eqz v1, :cond_0
 
-    .line 317
+    .line 321
     invoke-direct {p0}, Lcom/android/gallery3d/app/CropImage;->setFixedAspect()V
 
-    .line 321
+    .line 325
     .end local v0           #aspectX:I
     .end local v1           #aspectY:I
     :cond_0
@@ -5365,20 +5364,20 @@
 
     iput-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mPopupMenu:Landroid/widget/PopupMenu;
 
-    .line 322
+    .line 326
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mPopupMenu:Landroid/widget/PopupMenu;
 
     invoke-virtual {v7}, Landroid/widget/PopupMenu;->getMenu()Landroid/view/Menu;
 
     move-result-object v6
 
-    .line 323
+    .line 327
     .local v6, popMenu:Landroid/view/Menu;
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mAspectStrArray:[Ljava/lang/String;
 
     array-length v5, v7
 
-    .line 324
+    .line 328
     .local v5, num:I
     const/4 v4, 0x0
 
@@ -5386,7 +5385,7 @@
     :goto_1
     if-ge v4, v5, :cond_2
 
-    .line 325
+    .line 329
     add-int/lit8 v7, v4, 0x0
 
     iget-object v10, p0, Lcom/android/gallery3d/app/CropImage;->mAspectStrArray:[Ljava/lang/String;
@@ -5395,7 +5394,7 @@
 
     invoke-interface {v6, v9, v7, v9, v10}, Landroid/view/Menu;->add(IIILjava/lang/CharSequence;)Landroid/view/MenuItem;
 
-    .line 324
+    .line 328
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_1
@@ -5407,10 +5406,10 @@
     :cond_1
     move v7, v9
 
-    .line 309
+    .line 313
     goto :goto_0
 
-    .line 327
+    .line 331
     .restart local v3       #extras:Landroid/os/Bundle;
     .restart local v4       #i:I
     .restart local v5       #num:I
@@ -5418,7 +5417,7 @@
     :cond_2
     invoke-interface {v6, v9, v8, v8}, Landroid/view/Menu;->setGroupCheckable(IZZ)V
 
-    .line 328
+    .line 332
     iget v7, p0, Lcom/android/gallery3d/app/CropImage;->mCurrentAspect:I
 
     invoke-interface {v6, v7}, Landroid/view/Menu;->getItem(I)Landroid/view/MenuItem;
@@ -5427,7 +5426,7 @@
 
     invoke-interface {v7, v8}, Landroid/view/MenuItem;->setChecked(Z)Landroid/view/MenuItem;
 
-    .line 329
+    .line 333
     iget-object v7, p0, Lcom/android/gallery3d/app/CropImage;->mPopupMenu:Landroid/widget/PopupMenu;
 
     new-instance v9, Lcom/android/gallery3d/app/CropImage$5;
@@ -5436,7 +5435,7 @@
 
     invoke-virtual {v7, v9}, Landroid/widget/PopupMenu;->setOnMenuItemClickListener(Landroid/widget/PopupMenu$OnMenuItemClickListener;)V
 
-    .line 369
+    .line 373
     .end local v3           #extras:Landroid/os/Bundle;
     .end local v4           #i:I
     .end local v5           #num:I
@@ -5450,37 +5449,37 @@
     .parameter "item"
 
     .prologue
-    .line 463
+    .line 467
     invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
 
     move-result v1
 
     sparse-switch v1, :sswitch_data_0
 
-    .line 484
+    .line 488
     :goto_0
     const/4 v1, 0x1
 
     return v1
 
-    .line 465
+    .line 469
     :sswitch_0
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->finish()V
 
     goto :goto_0
 
-    .line 469
+    .line 473
     :sswitch_1
     const/4 v1, 0x0
 
     invoke-virtual {p0, v1}, Lcom/android/gallery3d/app/CropImage;->setResult(I)V
 
-    .line 470
+    .line 474
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->finish()V
 
     goto :goto_0
 
-    .line 474
+    .line 478
     :sswitch_2
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->needConfirmOverwrite()Z
 
@@ -5488,18 +5487,18 @@
 
     if-nez v1, :cond_0
 
-    .line 475
+    .line 479
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->onSaveClicked()V
 
     goto :goto_0
 
-    .line 477
+    .line 481
     :cond_0
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const v2, 0x7f0a01c3
+    const v2, 0x7f0a01d2
 
     invoke-virtual {p0, v2}, Lcom/android/gallery3d/app/CropImage;->getString(I)Ljava/lang/String;
 
@@ -5521,48 +5520,39 @@
 
     move-result-object v0
 
-    .line 478
+    .line 482
     .local v0, message:Ljava/lang/String;
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage;->mConfirmDlg:Landroid/app/AlertDialog$Builder;
 
     invoke-virtual {v1, v0}, Landroid/app/AlertDialog$Builder;->setMessage(Ljava/lang/CharSequence;)Landroid/app/AlertDialog$Builder;
 
-    .line 479
+    .line 483
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage;->mConfirmDlg:Landroid/app/AlertDialog$Builder;
 
     invoke-virtual {v1}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
 
     goto :goto_0
 
-    .line 463
+    .line 467
     :sswitch_data_0
     .sparse-switch
         0x102002c -> :sswitch_0
-        0x7f0d0058 -> :sswitch_1
-        0x7f0d0198 -> :sswitch_2
+        0x7f0d005d -> :sswitch_1
+        0x7f0d01b7 -> :sswitch_2
     .end sparse-switch
 .end method
 
 .method protected onPause()V
-    .locals 6
+    .locals 5
 
     .prologue
-    .line 1191
+    .line 1203
     invoke-super {p0}, Lcom/android/gallery3d/app/AbstractGalleryActivity;->onPause()V
 
-    .line 1193
-    invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v4
-
-    iget-object v5, p0, Lcom/android/gallery3d/app/CropImage;->mBrightnessObserver:Landroid/database/ContentObserver;
-
-    invoke-virtual {v4, v5}, Landroid/content/ContentResolver;->unregisterContentObserver(Landroid/database/ContentObserver;)V
-
-    .line 1195
+    .line 1205
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage;->mLoadTask:Lcom/android/gallery3d/util/Future;
 
-    .line 1196
+    .line 1206
     .local v1, loadTask:Lcom/android/gallery3d/util/Future;,"Lcom/android/gallery3d/util/Future<Landroid/graphics/BitmapRegionDecoder;>;"
     if-eqz v1, :cond_0
 
@@ -5572,22 +5562,22 @@
 
     if-nez v4, :cond_0
 
-    .line 1198
+    .line 1208
     invoke-interface {v1}, Lcom/android/gallery3d/util/Future;->cancel()V
 
-    .line 1199
+    .line 1209
     invoke-interface {v1}, Lcom/android/gallery3d/util/Future;->waitDone()V
 
-    .line 1200
+    .line 1210
     iget-object v4, p0, Lcom/android/gallery3d/app/CropImage;->mProgressDialog:Landroid/app/ProgressDialog;
 
     invoke-virtual {v4}, Landroid/app/ProgressDialog;->dismiss()V
 
-    .line 1203
+    .line 1213
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mLoadBitmapTask:Lcom/android/gallery3d/util/Future;
 
-    .line 1204
+    .line 1214
     .local v0, loadBitmapTask:Lcom/android/gallery3d/util/Future;,"Lcom/android/gallery3d/util/Future<Landroid/graphics/Bitmap;>;"
     if-eqz v0, :cond_1
 
@@ -5597,22 +5587,22 @@
 
     if-nez v4, :cond_1
 
-    .line 1206
+    .line 1216
     invoke-interface {v0}, Lcom/android/gallery3d/util/Future;->cancel()V
 
-    .line 1207
+    .line 1217
     invoke-interface {v0}, Lcom/android/gallery3d/util/Future;->waitDone()V
 
-    .line 1208
+    .line 1218
     iget-object v4, p0, Lcom/android/gallery3d/app/CropImage;->mProgressDialog:Landroid/app/ProgressDialog;
 
     invoke-virtual {v4}, Landroid/app/ProgressDialog;->dismiss()V
 
-    .line 1211
+    .line 1221
     :cond_1
     iget-object v3, p0, Lcom/android/gallery3d/app/CropImage;->mSaveTask:Lcom/android/gallery3d/util/Future;
 
-    .line 1212
+    .line 1222
     .local v3, saveTask:Lcom/android/gallery3d/util/Future;,"Lcom/android/gallery3d/util/Future<Landroid/content/Intent;>;"
     if-eqz v3, :cond_2
 
@@ -5622,28 +5612,28 @@
 
     if-nez v4, :cond_2
 
-    .line 1214
+    .line 1224
     invoke-interface {v3}, Lcom/android/gallery3d/util/Future;->cancel()V
 
-    .line 1215
+    .line 1225
     invoke-interface {v3}, Lcom/android/gallery3d/util/Future;->waitDone()V
 
-    .line 1216
+    .line 1226
     iget-object v4, p0, Lcom/android/gallery3d/app/CropImage;->mProgressDialog:Landroid/app/ProgressDialog;
 
     invoke-virtual {v4}, Landroid/app/ProgressDialog;->dismiss()V
 
-    .line 1218
+    .line 1228
     :cond_2
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getGLRoot()Lcom/android/gallery3d/ui/GLRoot;
 
     move-result-object v2
 
-    .line 1219
+    .line 1229
     .local v2, root:Lcom/android/gallery3d/ui/GLRoot;
     invoke-interface {v2}, Lcom/android/gallery3d/ui/GLRoot;->lockRenderThread()V
 
-    .line 1221
+    .line 1231
     :try_start_0
     iget-object v4, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
@@ -5651,13 +5641,18 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1223
+    .line 1233
     invoke-interface {v2}, Lcom/android/gallery3d/ui/GLRoot;->unlockRenderThread()V
 
-    .line 1225
+    .line 1236
+    iget-object v4, p0, Lcom/android/gallery3d/app/CropImage;->mMzRecentReceiver:Landroid/content/BroadcastReceiver;
+
+    invoke-virtual {p0, v4}, Lcom/android/gallery3d/app/CropImage;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
+
+    .line 1237
     return-void
 
-    .line 1223
+    .line 1233
     :catchall_0
     move-exception v4
 
@@ -5667,20 +5662,20 @@
 .end method
 
 .method protected onResume()V
-    .locals 4
+    .locals 2
 
     .prologue
-    .line 1172
+    .line 1181
     invoke-super {p0}, Lcom/android/gallery3d/app/AbstractGalleryActivity;->onResume()V
 
-    .line 1173
+    .line 1182
     iget v0, p0, Lcom/android/gallery3d/app/CropImage;->mState:I
 
     if-nez v0, :cond_0
 
     invoke-direct {p0}, Lcom/android/gallery3d/app/CropImage;->initializeData()V
 
-    .line 1174
+    .line 1183
     :cond_0
     iget v0, p0, Lcom/android/gallery3d/app/CropImage;->mState:I
 
@@ -5690,36 +5685,19 @@
 
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->onSaveClicked()V
 
-    .line 1176
+    .line 1185
     :cond_1
     invoke-static {p0}, Lcom/android/gallery3d/util/GalleryUtils;->initGalleryBrightness(Landroid/content/Context;)V
 
-    .line 1177
-    invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v0
-
-    const-string v1, "screen_brightness"
-
-    invoke-static {v1}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
-
-    move-result-object v1
-
-    const/4 v2, 0x1
-
-    iget-object v3, p0, Lcom/android/gallery3d/app/CropImage;->mBrightnessObserver:Landroid/database/ContentObserver;
-
-    invoke-virtual {v0, v1, v2, v3}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
-
-    .line 1180
+    .line 1187
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getGLRoot()Lcom/android/gallery3d/ui/GLRoot;
 
     move-result-object v1
 
-    .line 1181
+    .line 1188
     invoke-interface {v1}, Lcom/android/gallery3d/ui/GLRoot;->lockRenderThread()V
 
-    .line 1183
+    .line 1190
     :try_start_0
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
@@ -5727,13 +5705,33 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1185
+    .line 1192
     invoke-interface {v1}, Lcom/android/gallery3d/ui/GLRoot;->unlockRenderThread()V
 
-    .line 1187
+    .line 1195
+    new-instance v0, Landroid/content/IntentFilter;
+
+    invoke-direct {v0}, Landroid/content/IntentFilter;-><init>()V
+
+    .line 1196
+    const-string v1, "com.meizu.recent.show"
+
+    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+
+    .line 1197
+    const-string v1, "com.meizu.recent.dimiss"
+
+    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+
+    .line 1198
+    iget-object v1, p0, Lcom/android/gallery3d/app/CropImage;->mMzRecentReceiver:Landroid/content/BroadcastReceiver;
+
+    invoke-virtual {p0, v1, v0}, Lcom/android/gallery3d/app/CropImage;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+
+    .line 1199
     return-void
 
-    .line 1185
+    .line 1192
     :catchall_0
     move-exception v0
 
@@ -5746,7 +5744,7 @@
     .locals 5
 
     .prologue
-    .line 806
+    .line 810
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getIntent()Landroid/content/Intent;
 
     move-result-object v0
@@ -5755,27 +5753,27 @@
 
     move-result-object v0
 
-    .line 807
+    .line 811
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage;->mCropView:Lcom/android/gallery3d/ui/CropView;
 
     invoke-virtual {v1}, Lcom/android/gallery3d/ui/CropView;->getCropRectangle()Landroid/graphics/RectF;
 
     move-result-object v1
 
-    .line 808
+    .line 812
     if-nez v1, :cond_0
 
-    .line 829
+    .line 833
     :goto_0
     return-void
 
-    .line 809
+    .line 813
     :cond_0
     const/4 v2, 0x2
 
     iput v2, p0, Lcom/android/gallery3d/app/CropImage;->mState:I
 
-    .line 810
+    .line 814
     if-eqz v0, :cond_1
 
     const-string v2, "set-as-wallpaper"
@@ -5786,9 +5784,9 @@
 
     if-eqz v0, :cond_1
 
-    const v0, 0x7f0a0145
+    const v0, 0x7f0a0150
 
-    .line 813
+    .line 817
     :goto_1
     const/4 v2, 0x0
 
@@ -5806,7 +5804,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mProgressDialog:Landroid/app/ProgressDialog;
 
-    .line 815
+    .line 819
     invoke-virtual {p0}, Lcom/android/gallery3d/app/CropImage;->getThreadPool()Lcom/android/gallery3d/util/ThreadPool;
 
     move-result-object v0
@@ -5827,9 +5825,9 @@
 
     goto :goto_0
 
-    .line 810
+    .line 814
     :cond_1
-    const v0, 0x7f0a013c
+    const v0, 0x7f0a0147
 
     goto :goto_1
 .end method
@@ -5839,14 +5837,14 @@
     .parameter "saveState"
 
     .prologue
-    .line 285
+    .line 289
     const-string v0, "state"
 
     iget v1, p0, Lcom/android/gallery3d/app/CropImage;->mState:I
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V
 
-    .line 286
+    .line 290
     return-void
 .end method
 
@@ -5855,10 +5853,10 @@
     .parameter "overwrite"
 
     .prologue
-    .line 1370
+    .line 1382
     iput-boolean p1, p0, Lcom/android/gallery3d/app/CropImage;->mOverwrite:Z
 
-    .line 1371
+    .line 1383
     return-void
 .end method
 
@@ -5867,17 +5865,17 @@
     .parameter "str"
 
     .prologue
-    .line 1463
+    .line 1475
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mRes:Landroid/widget/TextView;
 
     if-eqz v0, :cond_0
 
-    .line 1464
+    .line 1476
     iget-object v0, p0, Lcom/android/gallery3d/app/CropImage;->mRes:Landroid/widget/TextView;
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 1465
+    .line 1477
     :cond_0
     return-void
 .end method

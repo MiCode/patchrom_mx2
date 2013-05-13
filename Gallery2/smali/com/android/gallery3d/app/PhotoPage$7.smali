@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 860
+    .line 907
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -35,111 +35,113 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 6
+    .locals 5
     .parameter "context"
     .parameter "intent"
 
     .prologue
     const/4 v3, 0x0
 
-    .line 863
+    .line 910
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 864
+    .line 911
     .local v0, action:Ljava/lang/String;
-    const-string v2, "media.dlnaservice.action.devicesChanged"
+    const-string v1, "media.dlnaservice.action.devicesChanged"
 
-    invoke-virtual {v2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v2
+    move-result v1
 
-    if-eqz v2, :cond_0
+    if-eqz v1, :cond_0
 
-    .line 865
+    .line 912
+    iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
+
     const-string v2, "renderer_count"
 
     invoke-virtual {p2, v2, v3}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
 
-    move-result v1
+    move-result v2
 
-    .line 866
-    .local v1, num:I
-    iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
+    #setter for: Lcom/android/gallery3d/app/PhotoPage;->mDlnaNum:I
+    invoke-static {v1, v2}, Lcom/android/gallery3d/app/PhotoPage;->access$3402(Lcom/android/gallery3d/app/PhotoPage;I)I
+
+    .line 913
+    iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mShowBars:Z
-    invoke-static {v2}, Lcom/android/gallery3d/app/PhotoPage;->access$3100(Lcom/android/gallery3d/app/PhotoPage;)Z
+    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$3500(Lcom/android/gallery3d/app/PhotoPage;)Z
 
-    move-result v2
+    move-result v1
 
-    if-eqz v2, :cond_0
+    if-eqz v1, :cond_0
 
-    .line 867
-    iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
+    .line 914
+    iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #calls: Lcom/android/gallery3d/app/PhotoPage;->updateDLNADevicesList()Z
-    invoke-static {v2}, Lcom/android/gallery3d/app/PhotoPage;->access$3200(Lcom/android/gallery3d/app/PhotoPage;)Z
+    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$3600(Lcom/android/gallery3d/app/PhotoPage;)Z
 
-    move-result v2
+    move-result v1
 
-    if-nez v2, :cond_1
+    if-nez v1, :cond_1
 
-    .line 868
-    iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
+    .line 915
+    iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #calls: Lcom/android/gallery3d/app/PhotoPage;->showDlnaButton(Z)V
-    invoke-static {v2, v3}, Lcom/android/gallery3d/app/PhotoPage;->access$3300(Lcom/android/gallery3d/app/PhotoPage;Z)V
+    invoke-static {v1, v3}, Lcom/android/gallery3d/app/PhotoPage;->access$3700(Lcom/android/gallery3d/app/PhotoPage;Z)V
 
-    .line 869
-    iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
+    .line 916
+    iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mHandler:Landroid/os/Handler;
-    invoke-static {v2}, Lcom/android/gallery3d/app/PhotoPage;->access$500(Lcom/android/gallery3d/app/PhotoPage;)Landroid/os/Handler;
+    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$500(Lcom/android/gallery3d/app/PhotoPage;)Landroid/os/Handler;
 
-    move-result-object v2
+    move-result-object v1
 
-    const/16 v3, 0x8
+    const/16 v2, 0x8
 
-    const-wide/16 v4, 0xa
+    const-wide/16 v3, 0xa
 
-    invoke-virtual {v2, v3, v4, v5}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
+    invoke-virtual {v1, v2, v3, v4}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 870
-    iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
-
-    #getter for: Lcom/android/gallery3d/app/PhotoPage;->mDLNADeviceDialog:Landroid/app/AlertDialog;
-    invoke-static {v2}, Lcom/android/gallery3d/app/PhotoPage;->access$3400(Lcom/android/gallery3d/app/PhotoPage;)Landroid/app/AlertDialog;
-
-    move-result-object v2
-
-    if-eqz v2, :cond_0
-
-    .line 871
-    iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
+    .line 917
+    iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mDLNADeviceDialog:Landroid/app/AlertDialog;
-    invoke-static {v2}, Lcom/android/gallery3d/app/PhotoPage;->access$3400(Lcom/android/gallery3d/app/PhotoPage;)Landroid/app/AlertDialog;
+    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$3800(Lcom/android/gallery3d/app/PhotoPage;)Landroid/app/AlertDialog;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-virtual {v2}, Landroid/app/AlertDialog;->dismiss()V
+    if-eqz v1, :cond_0
 
-    .line 877
-    .end local v1           #num:I
+    .line 918
+    iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
+
+    #getter for: Lcom/android/gallery3d/app/PhotoPage;->mDLNADeviceDialog:Landroid/app/AlertDialog;
+    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$3800(Lcom/android/gallery3d/app/PhotoPage;)Landroid/app/AlertDialog;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/app/AlertDialog;->dismiss()V
+
+    .line 924
     :cond_0
     :goto_0
     return-void
 
-    .line 873
-    .restart local v1       #num:I
+    .line 920
     :cond_1
-    iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
+    iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$7;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
-    const/4 v3, 0x1
+    const/4 v2, 0x1
 
     #calls: Lcom/android/gallery3d/app/PhotoPage;->showDlnaButton(Z)V
-    invoke-static {v2, v3}, Lcom/android/gallery3d/app/PhotoPage;->access$3300(Lcom/android/gallery3d/app/PhotoPage;Z)V
+    invoke-static {v1, v2}, Lcom/android/gallery3d/app/PhotoPage;->access$3700(Lcom/android/gallery3d/app/PhotoPage;Z)V
 
     goto :goto_0
 .end method

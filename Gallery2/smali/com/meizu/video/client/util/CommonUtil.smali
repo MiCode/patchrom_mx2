@@ -12,7 +12,7 @@
     .locals 1
 
     .prologue
-    .line 50
+    .line 48
     const-string v0, "CommonUtil"
 
     sput-object v0, Lcom/meizu/video/client/util/CommonUtil;->TAG:Ljava/lang/String;
@@ -24,7 +24,7 @@
     .locals 0
 
     .prologue
-    .line 48
+    .line 46
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -35,21 +35,21 @@
     .parameter "s"
 
     .prologue
-    .line 58
+    .line 56
     const/16 v11, 0x10
 
     new-array v3, v11, [C
 
     fill-array-data v3, :array_0
 
-    .line 62
+    .line 60
     .local v3, hexDigits:[C
     :try_start_0
     invoke-virtual {p0}, Ljava/lang/String;->getBytes()[B
 
     move-result-object v0
 
-    .line 64
+    .line 62
     .local v0, btInput:[B
     const-string v11, "MD5"
 
@@ -57,30 +57,30 @@
 
     move-result-object v9
 
-    .line 66
+    .line 64
     .local v9, mdInst:Ljava/security/MessageDigest;
     invoke-virtual {v9, v0}, Ljava/security/MessageDigest;->update([B)V
 
-    .line 68
+    .line 66
     invoke-virtual {v9}, Ljava/security/MessageDigest;->digest()[B
 
     move-result-object v8
 
-    .line 70
+    .line 68
     .local v8, md:[B
     array-length v5, v8
 
-    .line 71
+    .line 69
     .local v5, j:I
     mul-int/lit8 v11, v5, 0x2
 
     new-array v10, v11, [C
 
-    .line 72
+    .line 70
     .local v10, str:[C
     const/4 v6, 0x0
 
-    .line 73
+    .line 71
     .local v6, k:I
     const/4 v4, 0x0
 
@@ -92,10 +92,10 @@
     :goto_0
     if-ge v4, v5, :cond_0
 
-    .line 74
+    .line 72
     aget-byte v1, v8, v4
 
-    .line 75
+    .line 73
     .local v1, byte0:B
     add-int/lit8 v6, v7, 0x1
 
@@ -109,7 +109,7 @@
 
     aput-char v11, v10, v7
 
-    .line 76
+    .line 74
     add-int/lit8 v7, v6, 0x1
 
     .end local v6           #k:I
@@ -120,12 +120,12 @@
 
     aput-char v11, v10, v6
 
-    .line 73
+    .line 71
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_0
 
-    .line 78
+    .line 76
     .end local v1           #byte0:B
     :cond_0
     new-instance v11, Ljava/lang/String;
@@ -134,7 +134,7 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 82
+    .line 80
     .end local v0           #btInput:[B
     .end local v4           #i:I
     .end local v5           #j:I
@@ -145,20 +145,20 @@
     :goto_1
     return-object v11
 
-    .line 80
+    .line 78
     :catch_0
     move-exception v2
 
-    .line 81
+    .line 79
     .local v2, e:Ljava/lang/Exception;
     invoke-virtual {v2}, Ljava/lang/Exception;->printStackTrace()V
 
-    .line 82
+    .line 80
     const/4 v11, 0x0
 
     goto :goto_1
 
-    .line 58
+    .line 56
     nop
 
     :array_0
@@ -211,7 +211,7 @@
     .end annotation
 
     .prologue
-    .line 478
+    .line 479
     .local p0, followingTVRecommendBlockListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
     .local p1, hitTVRecommendBlockListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
     .local p2, hitFilmRecommendBlockListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
@@ -226,7 +226,7 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 479
+    .line 480
     .local v6, recommendBlockListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
     if-eqz p0, :cond_0
 
@@ -234,25 +234,25 @@
 
     if-nez p2, :cond_2
 
-    .line 480
+    .line 481
     :cond_0
     const/4 v6, 0x0
 
-    .line 515
+    .line 516
     .end local v6           #recommendBlockListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
     :cond_1
     monitor-exit v8
 
     return-object v6
 
-    .line 482
+    .line 483
     .restart local v6       #recommendBlockListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
     :cond_2
     const/4 v7, 0x2
 
     if-ne p3, v7, :cond_5
 
-    .line 483
+    .line 484
     :try_start_1
     invoke-virtual {p0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
 
@@ -272,7 +272,7 @@
 
     check-cast v0, Lcom/meizu/video/client/ui/entity/RecommendEntity;
 
-    .line 484
+    .line 485
     .local v0, followingTVRecommendBlockEntity:Lcom/meizu/video/client/ui/entity/RecommendEntity;
     invoke-virtual {v6, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
     :try_end_1
@@ -280,7 +280,7 @@
 
     goto :goto_0
 
-    .line 478
+    .line 479
     .end local v0           #followingTVRecommendBlockEntity:Lcom/meizu/video/client/ui/entity/RecommendEntity;
     .end local v4           #i$:Ljava/util/Iterator;
     .end local v6           #recommendBlockListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
@@ -291,7 +291,7 @@
 
     throw v7
 
-    .line 486
+    .line 487
     .restart local v4       #i$:Ljava/util/Iterator;
     .restart local v6       #recommendBlockListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
     :cond_3
@@ -313,13 +313,13 @@
 
     check-cast v1, Lcom/meizu/video/client/ui/entity/RecommendEntity;
 
-    .line 487
+    .line 488
     .local v1, hitFilmRecommendBlockEntity:Lcom/meizu/video/client/ui/entity/RecommendEntity;
     invoke-virtual {v6, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     goto :goto_1
 
-    .line 489
+    .line 490
     .end local v1           #hitFilmRecommendBlockEntity:Lcom/meizu/video/client/ui/entity/RecommendEntity;
     :cond_4
     invoke-virtual {p1}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
@@ -339,19 +339,19 @@
 
     check-cast v2, Lcom/meizu/video/client/ui/entity/RecommendEntity;
 
-    .line 490
+    .line 491
     .local v2, hitTVRecommendBlockEntity:Lcom/meizu/video/client/ui/entity/RecommendEntity;
     invoke-virtual {v6, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     goto :goto_2
 
-    .line 493
+    .line 494
     .end local v2           #hitTVRecommendBlockEntity:Lcom/meizu/video/client/ui/entity/RecommendEntity;
     .end local v4           #i$:Ljava/util/Iterator;
     :cond_5
     const/4 v5, 0x0
 
-    .line 494
+    .line 495
     .local v5, minSize:I
     invoke-virtual {p0}, Ljava/util/ArrayList;->size()I
 
@@ -363,12 +363,12 @@
 
     if-lt v7, v9, :cond_6
 
-    .line 495
+    .line 496
     invoke-virtual {p1}, Ljava/util/ArrayList;->size()I
 
     move-result v5
 
-    .line 497
+    .line 498
     :cond_6
     invoke-virtual {p2}, Ljava/util/ArrayList;->size()I
 
@@ -376,12 +376,12 @@
 
     if-lt v5, v7, :cond_7
 
-    .line 498
+    .line 499
     invoke-virtual {p2}, Ljava/util/ArrayList;->size()I
 
     move-result v5
 
-    .line 500
+    .line 501
     :cond_7
     const/4 v3, 0x0
 
@@ -389,33 +389,33 @@
     :goto_3
     if-ge v3, v5, :cond_8
 
-    .line 501
+    .line 502
     invoke-virtual {p0, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v7
 
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 502
+    .line 503
     invoke-virtual {p2, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v7
 
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 503
+    .line 504
     invoke-virtual {p1, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v7
 
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 500
+    .line 501
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_3
 
-    .line 505
+    .line 506
     :cond_8
     move v3, v5
 
@@ -426,19 +426,19 @@
 
     if-ge v5, v7, :cond_9
 
-    .line 506
+    .line 507
     invoke-virtual {p0, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v7
 
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 505
+    .line 506
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_4
 
-    .line 508
+    .line 509
     :cond_9
     move v3, v5
 
@@ -449,19 +449,19 @@
 
     if-ge v5, v7, :cond_a
 
-    .line 509
+    .line 510
     invoke-virtual {p2, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v7
 
     invoke-virtual {v6, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 508
+    .line 509
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_5
 
-    .line 511
+    .line 512
     :cond_a
     move v3, v5
 
@@ -472,7 +472,7 @@
 
     if-ge v5, v7, :cond_1
 
-    .line 512
+    .line 513
     invoke-virtual {p1, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v7
@@ -481,7 +481,7 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 511
+    .line 512
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_6
@@ -509,41 +509,41 @@
     .end annotation
 
     .prologue
-    .line 94
+    .line 92
     .local p0, recommendList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
     new-instance v8, Ljava/util/ArrayList;
 
     invoke-direct {v8}, Ljava/util/ArrayList;-><init>()V
 
-    .line 95
+    .line 93
     .local v8, recommendListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;>;"
     if-nez p0, :cond_1
 
-    .line 154
+    .line 152
     :cond_0
     return-object v8
 
-    .line 98
+    .line 96
     :cond_1
     const/4 v9, 0x0
 
-    .line 99
+    .line 97
     .local v9, recommendListItemEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
     const/4 v1, 0x0
 
-    .line 100
+    .line 98
     .local v1, createFlag:Z
     const/4 v6, -0x1
 
-    .line 101
+    .line 99
     .local v6, lastImageSize:I
     const/4 v0, 0x0
 
-    .line 102
+    .line 100
     .local v0, bigNum:I
     const/4 v10, 0x0
 
-    .line 104
+    .line 102
     .local v10, smallNum:I
     const/4 v2, 0x0
 
@@ -555,27 +555,27 @@
 
     if-ge v2, v11, :cond_0
 
-    .line 105
+    .line 103
     invoke-virtual {p0, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v7
 
     check-cast v7, Lcom/meizu/video/client/ui/entity/RecommendEntity;
 
-    .line 106
+    .line 104
     .local v7, recommendEntity:Lcom/meizu/video/client/ui/entity/RecommendEntity;
     if-eqz v7, :cond_5
 
-    .line 107
+    .line 105
     invoke-virtual {v7}, Lcom/meizu/video/client/ui/entity/RecommendEntity;->getLableListEntity()Ljava/util/ArrayList;
 
     move-result-object v5
 
-    .line 108
+    .line 106
     .local v5, lableListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     if-eqz v5, :cond_3
 
-    .line 109
+    .line 107
     const/4 v3, 0x0
 
     .local v3, j:I
@@ -586,18 +586,18 @@
 
     if-ge v3, v11, :cond_3
 
-    .line 110
+    .line 108
     invoke-virtual {v5, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v4
 
     check-cast v4, Lcom/meizu/video/client/ui/entity/LableEntity;
 
-    .line 111
+    .line 109
     .local v4, lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     if-eqz v4, :cond_c
 
-    .line 112
+    .line 110
     const-string v11, "image"
 
     invoke-virtual {v4}, Lcom/meizu/video/client/ui/entity/LableEntity;->getType()Ljava/lang/String;
@@ -622,57 +622,57 @@
 
     if-eqz v11, :cond_8
 
-    .line 113
+    .line 111
     const/4 v11, -0x1
 
     if-ne v6, v11, :cond_6
 
-    .line 114
+    .line 112
     const/4 v1, 0x1
 
-    .line 121
+    .line 119
     :cond_2
     :goto_2
     add-int/lit8 v0, v0, 0x1
 
-    .line 122
+    .line 120
     const/4 v6, 0x1
 
-    .line 143
+    .line 141
     .end local v3           #j:I
     .end local v4           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     :cond_3
     :goto_3
     if-eqz v1, :cond_4
 
-    .line 144
+    .line 142
     new-instance v9, Ljava/util/ArrayList;
 
     .end local v9           #recommendListItemEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
     invoke-direct {v9}, Ljava/util/ArrayList;-><init>()V
 
-    .line 145
+    .line 143
     .restart local v9       #recommendListItemEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
     const/4 v1, 0x0
 
-    .line 146
+    .line 144
     invoke-virtual {v8, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 149
+    .line 147
     :cond_4
     if-eqz v9, :cond_5
 
-    .line 150
+    .line 148
     invoke-virtual {v9, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 104
+    .line 102
     .end local v5           #lableListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     :cond_5
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 116
+    .line 114
     .restart local v3       #j:I
     .restart local v4       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     .restart local v5       #lableListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
@@ -683,16 +683,16 @@
 
     if-eq v6, v11, :cond_2
 
-    .line 117
+    .line 115
     :cond_7
     const/4 v1, 0x1
 
-    .line 118
+    .line 116
     const/4 v0, 0x0
 
     goto :goto_2
 
-    .line 124
+    .line 122
     :cond_8
     const-string v11, "image"
 
@@ -718,109 +718,109 @@
 
     if-eqz v11, :cond_c
 
-    .line 125
+    .line 123
     const/4 v11, -0x1
 
     if-ne v6, v11, :cond_a
 
-    .line 126
+    .line 124
     const/4 v1, 0x1
 
-    .line 133
+    .line 131
     :cond_9
     :goto_4
     add-int/lit8 v10, v10, 0x1
 
-    .line 134
+    .line 132
     const/4 v6, 0x0
 
-    .line 135
+    .line 133
     goto :goto_3
 
-    .line 128
+    .line 126
     :cond_a
     if-eq v10, p2, :cond_b
 
     if-eqz v6, :cond_9
 
-    .line 129
+    .line 127
     :cond_b
     const/4 v1, 0x1
 
-    .line 130
+    .line 128
     const/4 v10, 0x0
 
     goto :goto_4
 
-    .line 109
+    .line 107
     :cond_c
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_1
 .end method
 
-.method public static dip2px(Landroid/content/Context;D)I
-    .locals 5
+.method public static checkAlertDialogType(Landroid/content/Context;)I
+    .locals 4
     .parameter "context"
-    .parameter "dipValue"
 
     .prologue
-    .line 417
-    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    .line 743
+    const/4 v0, 0x0
 
-    move-result-object v1
+    .line 744
+    .local v0, aleartDialogType:I
+    invoke-static {p0}, Lcom/meizu/video/client/util/CommonUtil;->getNetworkType(Landroid/content/Context;)I
 
-    invoke-virtual {v1}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+    move-result v1
 
-    move-result-object v1
+    .line 745
+    .local v1, networkType:I
+    if-eqz v1, :cond_2
 
-    iget v0, v1, Landroid/util/DisplayMetrics;->density:F
+    .line 746
+    and-int/lit8 v2, v1, 0x1
 
-    .line 418
-    .local v0, scale:F
-    float-to-double v1, v0
+    const/4 v3, 0x1
 
-    mul-double/2addr v1, p1
+    if-eq v2, v3, :cond_1
 
-    const-wide/high16 v3, 0x3fe0
+    and-int/lit8 v2, v1, 0x4
 
-    add-double/2addr v1, v3
+    const/4 v3, 0x4
 
-    double-to-int v1, v1
+    if-eq v2, v3, :cond_1
 
-    return v1
-.end method
+    .line 748
+    invoke-static {p0}, Lcom/meizu/video/client/util/CommonUtil;->getWifiSetting(Landroid/content/Context;)Z
 
-.method public static dip2px(Landroid/content/Context;I)I
-    .locals 3
-    .parameter "context"
-    .parameter "dipValue"
+    move-result v2
 
-    .prologue
-    .line 412
-    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    if-eqz v2, :cond_0
 
-    move-result-object v1
+    .line 749
+    const/4 v0, 0x2
 
-    invoke-virtual {v1}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+    .line 759
+    :goto_0
+    return v0
 
-    move-result-object v1
+    .line 751
+    :cond_0
+    const/4 v0, 0x3
 
-    iget v0, v1, Landroid/util/DisplayMetrics;->density:F
+    goto :goto_0
 
-    .line 413
-    .local v0, scale:F
-    int-to-float v1, p1
+    .line 754
+    :cond_1
+    const/4 v0, 0x0
 
-    mul-float/2addr v1, v0
+    goto :goto_0
 
-    const/high16 v2, 0x3f00
+    .line 757
+    :cond_2
+    const/4 v0, 0x1
 
-    add-float/2addr v1, v2
-
-    float-to-int v1, v1
-
-    return v1
+    goto :goto_0
 .end method
 
 .method public static getAreaNameByCidAndAreaid(Ljava/util/ArrayList;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
@@ -843,11 +843,11 @@
     .end annotation
 
     .prologue
-    .line 324
+    .line 325
     .local p0, areaTypeAreaYearOrderListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;>;"
     const-string v0, ""
 
-    .line 325
+    .line 326
     .local v0, areaName:Ljava/lang/String;
     if-eqz p0, :cond_0
 
@@ -885,10 +885,10 @@
 
     if-nez v6, :cond_0
 
-    .line 326
+    .line 327
     const/4 v4, 0x0
 
-    .line 327
+    .line 328
     .local v4, typeAreaYearOrderEntity:Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;
     const/4 v1, 0x0
 
@@ -900,7 +900,7 @@
 
     if-ge v1, v6, :cond_0
 
-    .line 328
+    .line 329
     invoke-virtual {p0, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v4
@@ -908,11 +908,11 @@
     .end local v4           #typeAreaYearOrderEntity:Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;
     check-cast v4, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;
 
-    .line 329
+    .line 330
     .restart local v4       #typeAreaYearOrderEntity:Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;
     if-eqz v4, :cond_2
 
-    .line 330
+    .line 331
     invoke-virtual {v4}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->getCid()Ljava/lang/String;
 
     move-result-object v6
@@ -923,12 +923,12 @@
 
     if-eqz v6, :cond_2
 
-    .line 331
+    .line 332
     invoke-virtual {v4}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->getTypeTitem1ListEntity()Ljava/util/ArrayList;
 
     move-result-object v5
 
-    .line 332
+    .line 333
     .local v5, typeTitem1ListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     if-eqz v5, :cond_0
 
@@ -938,10 +938,10 @@
 
     if-lez v6, :cond_0
 
-    .line 333
+    .line 334
     const/4 v3, 0x0
 
-    .line 334
+    .line 335
     .local v3, lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     const/4 v2, 0x0
 
@@ -953,7 +953,7 @@
 
     if-ge v2, v6, :cond_0
 
-    .line 335
+    .line 336
     invoke-virtual {v5, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v3
@@ -961,11 +961,11 @@
     .end local v3           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     check-cast v3, Lcom/meizu/video/client/ui/entity/LableEntity;
 
-    .line 336
+    .line 337
     .restart local v3       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     if-eqz v3, :cond_1
 
-    .line 337
+    .line 338
     invoke-virtual {v3}, Lcom/meizu/video/client/ui/entity/LableEntity;->getType()Ljava/lang/String;
 
     move-result-object v6
@@ -976,12 +976,12 @@
 
     if-eqz v6, :cond_1
 
-    .line 338
+    .line 339
     invoke-virtual {v3}, Lcom/meizu/video/client/ui/entity/LableEntity;->getKey()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 349
+    .line 350
     .end local v1           #i:I
     .end local v2           #j:I
     .end local v3           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
@@ -990,7 +990,7 @@
     :cond_0
     return-object v0
 
-    .line 334
+    .line 335
     .restart local v1       #i:I
     .restart local v2       #j:I
     .restart local v3       #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
@@ -1001,7 +1001,7 @@
 
     goto :goto_1
 
-    .line 327
+    .line 328
     .end local v2           #j:I
     .end local v3           #lableEntity:Lcom/meizu/video/client/ui/entity/LableEntity;
     .end local v5           #typeTitem1ListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
@@ -1043,13 +1043,13 @@
     .end annotation
 
     .prologue
-    .line 205
+    .line 203
     .local p0, channelDetailListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/ChanelDetailEntity;>;"
     invoke-static/range {p2 .. p10}, Lcom/meizu/video/client/common/UrlSettings;->getLSChannelProgramUrl(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 206
+    .line 204
     .local v1, channelDetailUrl:Ljava/lang/String;
     sget-object v2, Lcom/meizu/video/client/util/CommonUtil;->TAG:Ljava/lang/String;
 
@@ -1073,12 +1073,12 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 207
+    .line 205
     invoke-static {v1}, Lcom/meizu/video/client/util/HttpUtil;->doGet(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 208
+    .line 206
     .local v0, channelDetailJsonData:Ljava/lang/String;
     if-eqz v0, :cond_0
 
@@ -1090,10 +1090,10 @@
 
     if-nez v2, :cond_0
 
-    .line 209
+    .line 207
     invoke-static {v0, p0, p1}, Lcom/meizu/video/client/util/JsonParse;->parseChannelDetailFromLS(Ljava/lang/String;Ljava/util/ArrayList;Lcom/meizu/video/client/ui/entity/MsgEntity;)V
 
-    .line 211
+    .line 209
     :cond_0
     return-void
 .end method
@@ -1115,13 +1115,13 @@
     .end annotation
 
     .prologue
-    .line 181
+    .line 179
     .local p0, channelListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/ChanelEntity;>;"
     invoke-static {}, Lcom/meizu/video/client/common/UrlSettings;->getLSChannelUrl()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 182
+    .line 180
     .local v1, channelUrl:Ljava/lang/String;
     sget-object v2, Lcom/meizu/video/client/util/CommonUtil;->TAG:Ljava/lang/String;
 
@@ -1145,12 +1145,12 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 183
+    .line 181
     invoke-static {v1}, Lcom/meizu/video/client/util/HttpUtil;->doGet(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 184
+    .line 182
     .local v0, channelJsonData:Ljava/lang/String;
     if-eqz v0, :cond_0
 
@@ -1162,13 +1162,13 @@
 
     if-nez v2, :cond_0
 
-    .line 185
+    .line 183
     invoke-static {v0, p0, p1}, Lcom/meizu/video/client/util/JsonParse;->parseChannelFromLS(Ljava/lang/String;Ljava/util/ArrayList;Lcom/meizu/video/client/ui/entity/MsgEntity;)V
 
-    .line 186
+    .line 184
     invoke-static {p0}, Lcom/meizu/video/client/util/CommonUtil;->sortChannel(Ljava/util/ArrayList;)V
 
-    .line 188
+    .line 186
     :cond_0
     return-void
 .end method
@@ -1191,11 +1191,11 @@
     .end annotation
 
     .prologue
-    .line 297
+    .line 295
     .local p0, chanelListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/ChanelEntity;>;"
     const-string v1, ""
 
-    .line 298
+    .line 296
     .local v1, channelName:Ljava/lang/String;
     const-string v4, "164"
 
@@ -1203,41 +1203,32 @@
 
     move-result v4
 
-    if-nez v4, :cond_0
+    if-eqz v4, :cond_0
 
-    const-string v4, "86"
-
-    invoke-virtual {v4, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_1
-
-    :cond_0
     move-object v2, v1
 
-    .line 313
+    .line 314
     .end local v1           #channelName:Ljava/lang/String;
     .local v2, channelName:Ljava/lang/String;
     :goto_0
     return-object v2
 
-    .line 301
+    .line 302
     .end local v2           #channelName:Ljava/lang/String;
     .restart local v1       #channelName:Ljava/lang/String;
-    :cond_1
-    if-eqz p0, :cond_2
+    :cond_0
+    if-eqz p0, :cond_1
 
     invoke-virtual {p0}, Ljava/util/ArrayList;->size()I
 
     move-result v4
 
-    if-lez v4, :cond_2
-
-    .line 302
-    const/4 v0, 0x0
+    if-lez v4, :cond_1
 
     .line 303
+    const/4 v0, 0x0
+
+    .line 304
     .local v0, chanelEntity:Lcom/meizu/video/client/ui/entity/ChanelEntity;
     const/4 v3, 0x0
 
@@ -1247,9 +1238,9 @@
 
     move-result v4
 
-    if-ge v3, v4, :cond_2
+    if-ge v3, v4, :cond_1
 
-    .line 304
+    .line 305
     invoke-virtual {p0, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v0
@@ -1257,11 +1248,11 @@
     .end local v0           #chanelEntity:Lcom/meizu/video/client/ui/entity/ChanelEntity;
     check-cast v0, Lcom/meizu/video/client/ui/entity/ChanelEntity;
 
-    .line 305
-    .restart local v0       #chanelEntity:Lcom/meizu/video/client/ui/entity/ChanelEntity;
-    if-eqz v0, :cond_3
-
     .line 306
+    .restart local v0       #chanelEntity:Lcom/meizu/video/client/ui/entity/ChanelEntity;
+    if-eqz v0, :cond_2
+
+    .line 307
     invoke-virtual {v0}, Lcom/meizu/video/client/ui/entity/ChanelEntity;->getId()Ljava/lang/String;
 
     move-result-object v4
@@ -1270,29 +1261,29 @@
 
     move-result v4
 
-    if-eqz v4, :cond_3
+    if-eqz v4, :cond_2
 
-    .line 307
+    .line 308
     invoke-virtual {v0}, Lcom/meizu/video/client/ui/entity/ChanelEntity;->getTitle()Ljava/lang/String;
 
     move-result-object v1
 
     .end local v0           #chanelEntity:Lcom/meizu/video/client/ui/entity/ChanelEntity;
     .end local v3           #i:I
-    :cond_2
+    :cond_1
     move-object v2, v1
 
-    .line 313
+    .line 314
     .end local v1           #channelName:Ljava/lang/String;
     .restart local v2       #channelName:Ljava/lang/String;
     goto :goto_0
 
-    .line 303
+    .line 304
     .end local v2           #channelName:Ljava/lang/String;
     .restart local v0       #chanelEntity:Lcom/meizu/video/client/ui/entity/ChanelEntity;
     .restart local v1       #channelName:Ljava/lang/String;
     .restart local v3       #i:I
-    :cond_3
+    :cond_2
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_1
@@ -1307,12 +1298,12 @@
     .parameter "ChannelProgramType"
 
     .prologue
-    .line 222
+    .line 220
     invoke-static {p2, p3, p4}, Lcom/meizu/video/client/common/UrlSettings;->getLSChannelProgramDetailUrl(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 223
+    .line 221
     .local v1, channelProgramDetailUrl:Ljava/lang/String;
     sget-object v2, Lcom/meizu/video/client/util/CommonUtil;->TAG:Ljava/lang/String;
 
@@ -1336,12 +1327,12 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 224
+    .line 222
     invoke-static {v1}, Lcom/meizu/video/client/util/HttpUtil;->doGet(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 225
+    .line 223
     .local v0, channelProgramDetailJsonData:Ljava/lang/String;
     if-eqz v0, :cond_0
 
@@ -1353,10 +1344,10 @@
 
     if-nez v2, :cond_0
 
-    .line 226
+    .line 224
     invoke-static {v0, p0, p1}, Lcom/meizu/video/client/util/JsonParse;->parseChannelProgramDetailFromLS(Ljava/lang/String;Lcom/meizu/video/client/ui/entity/ChanelProgramDetailEntity;Lcom/meizu/video/client/ui/entity/MsgEntity;)V
 
-    .line 228
+    .line 226
     :cond_0
     return-void
 .end method
@@ -1366,7 +1357,7 @@
     .parameter "context"
 
     .prologue
-    .line 624
+    .line 625
     const-string v5, ""
 
     sget-object v6, Lcom/meizu/video/client/common/Constant;->did:Ljava/lang/String;
@@ -1377,7 +1368,7 @@
 
     if-eqz v5, :cond_7
 
-    .line 626
+    .line 627
     :try_start_0
     const-string v5, "wifi"
 
@@ -1387,19 +1378,19 @@
 
     check-cast v4, Landroid/net/wifi/WifiManager;
 
-    .line 627
+    .line 628
     .local v4, wifiManager:Landroid/net/wifi/WifiManager;
     invoke-virtual {v4}, Landroid/net/wifi/WifiManager;->getConnectionInfo()Landroid/net/wifi/WifiInfo;
 
     move-result-object v3
 
-    .line 628
+    .line 629
     .local v3, wifiInfo:Landroid/net/wifi/WifiInfo;
     if-nez v3, :cond_8
 
     const-string v2, "-"
 
-    .line 629
+    .line 630
     .local v2, macAddress:Ljava/lang/String;
     :goto_0
     invoke-static {}, Landroid/telephony/TelephonyManager;->getDefault()Landroid/telephony/TelephonyManager;
@@ -1410,7 +1401,7 @@
 
     move-result-object v0
 
-    .line 630
+    .line 631
     .local v0, imei:Ljava/lang/String;
     invoke-static {}, Landroid/telephony/TelephonyManager;->getDefault()Landroid/telephony/TelephonyManager;
 
@@ -1420,7 +1411,7 @@
 
     move-result-object v1
 
-    .line 631
+    .line 632
     .local v1, imsi:Ljava/lang/String;
     if-eqz v0, :cond_0
 
@@ -1432,11 +1423,11 @@
 
     if-eqz v5, :cond_1
 
-    .line 632
+    .line 633
     :cond_0
     const-string v0, "-"
 
-    .line 634
+    .line 635
     :cond_1
     if-eqz v1, :cond_2
 
@@ -1448,11 +1439,11 @@
 
     if-eqz v5, :cond_3
 
-    .line 635
+    .line 636
     :cond_2
     const-string v1, "-"
 
-    .line 637
+    .line 638
     :cond_3
     if-eqz v2, :cond_4
 
@@ -1464,11 +1455,11 @@
 
     if-eqz v5, :cond_5
 
-    .line 638
+    .line 639
     :cond_4
     const-string v2, "-"
 
-    .line 640
+    .line 641
     :cond_5
     const-string v5, "-"
 
@@ -1486,7 +1477,7 @@
 
     if-eqz v5, :cond_9
 
-    .line 641
+    .line 642
     :cond_6
     const-string v5, ""
 
@@ -1494,7 +1485,7 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 648
+    .line 649
     .end local v0           #imei:Ljava/lang/String;
     .end local v1           #imsi:Ljava/lang/String;
     .end local v2           #macAddress:Ljava/lang/String;
@@ -1506,7 +1497,7 @@
 
     return-object v5
 
-    .line 628
+    .line 629
     .restart local v3       #wifiInfo:Landroid/net/wifi/WifiInfo;
     .restart local v4       #wifiManager:Landroid/net/wifi/WifiManager;
     :cond_8
@@ -1517,7 +1508,7 @@
 
     goto :goto_0
 
-    .line 643
+    .line 644
     .restart local v0       #imei:Ljava/lang/String;
     .restart local v1       #imsi:Ljava/lang/String;
     .restart local v2       #macAddress:Ljava/lang/String;
@@ -1564,7 +1555,7 @@
 
     goto :goto_1
 
-    .line 645
+    .line 646
     .end local v0           #imei:Ljava/lang/String;
     .end local v1           #imsi:Ljava/lang/String;
     .end local v2           #macAddress:Ljava/lang/String;
@@ -1582,25 +1573,25 @@
     .parameter "videoQualityType"
 
     .prologue
-    .line 460
+    .line 461
     const-string v0, ""
 
-    .line 461
+    .line 462
     .local v0, downloadUrl:Ljava/lang/String;
     const/4 v1, 0x1
 
     if-ne p1, v1, :cond_0
 
-    .line 462
+    .line 463
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getDownload_address()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 466
+    .line 467
     :goto_0
     return-object v0
 
-    .line 464
+    .line 465
     :cond_0
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getDownload_address_other()Ljava/lang/String;
 
@@ -1617,14 +1608,14 @@
     .prologue
     const/4 v7, -0x1
 
-    .line 445
+    .line 446
     const-string v6, "."
 
     invoke-virtual {p1, v6}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
 
     move-result v4
 
-    .line 446
+    .line 447
     .local v4, start:I
     const-string v6, "?"
 
@@ -1632,7 +1623,7 @@
 
     move-result v2
 
-    .line 448
+    .line 449
     .local v2, end:I
     if-eq v4, v7, :cond_0
 
@@ -1640,12 +1631,12 @@
 
     if-ge v4, v2, :cond_0
 
-    .line 449
+    .line 450
     invoke-virtual {p1, v4, v2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v5
 
-    .line 453
+    .line 454
     .local v5, suffixName:Ljava/lang/String;
     :goto_0
     new-instance v6, Ljava/lang/StringBuilder;
@@ -1674,19 +1665,19 @@
 
     move-result-object v3
 
-    .line 454
+    .line 455
     .local v3, path:Ljava/lang/String;
     new-instance v1, Ljava/io/File;
 
     invoke-direct {v1, v3}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 455
+    .line 456
     .local v1, dirs:Ljava/io/File;
     invoke-virtual {v1}, Ljava/io/File;->mkdirs()Z
 
     move-result v0
 
-    .line 456
+    .line 457
     .local v0, createDirs:Z
     new-instance v6, Ljava/lang/StringBuilder;
 
@@ -1716,7 +1707,7 @@
 
     return-object v6
 
-    .line 451
+    .line 452
     .end local v0           #createDirs:Z
     .end local v1           #dirs:Ljava/io/File;
     .end local v3           #path:Ljava/lang/String;
@@ -1733,16 +1724,16 @@
     .parameter "context"
 
     .prologue
-    .line 652
+    .line 653
     const-string v1, ""
 
-    .line 653
+    .line 654
     .local v1, str:Ljava/lang/String;
     invoke-static {p0}, Lcom/meizu/video/client/util/CommonUtil;->getDid(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 654
+    .line 655
     .local v0, did:Ljava/lang/String;
     const-string v3, ""
 
@@ -1752,7 +1743,7 @@
 
     if-nez v3, :cond_0
 
-    .line 655
+    .line 656
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -1779,7 +1770,7 @@
 
     move-result-object v2
 
-    .line 656
+    .line 657
     .local v2, uuid:Ljava/lang/String;
     new-instance v3, Ljava/lang/StringBuilder;
 
@@ -1815,7 +1806,7 @@
 
     move-result-object v1
 
-    .line 658
+    .line 659
     .end local v2           #uuid:Ljava/lang/String;
     :cond_0
     return-object v1
@@ -1827,10 +1818,10 @@
     .parameter "position"
 
     .prologue
-    .line 164
+    .line 162
     const-string v1, ""
 
-    .line 166
+    .line 164
     .local v1, str:Ljava/lang/String;
     :try_start_0
     invoke-static {p1}, Ljava/lang/Integer;->valueOf(Ljava/lang/String;)Ljava/lang/Integer;
@@ -1841,7 +1832,7 @@
 
     move-result v0
 
-    .line 167
+    .line 165
     .local v0, i:I
     invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
@@ -1857,16 +1848,193 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 172
+    .line 170
     .end local v0           #i:I
     :goto_0
     return-object v1
 
-    .line 168
+    .line 166
     :catch_0
     move-exception v2
 
     goto :goto_0
+.end method
+
+.method public static getNetworkType(Landroid/content/Context;)I
+    .locals 6
+    .parameter "context"
+
+    .prologue
+    .line 683
+    const/4 v3, 0x0
+
+    .line 684
+    .local v3, netWorkType:I
+    const-string v4, "connectivity"
+
+    invoke-virtual {p0, v4}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/net/ConnectivityManager;
+
+    .line 685
+    .local v0, connectivity:Landroid/net/ConnectivityManager;
+    if-eqz v0, :cond_7
+
+    .line 686
+    invoke-virtual {v0}, Landroid/net/ConnectivityManager;->getAllNetworkInfo()[Landroid/net/NetworkInfo;
+
+    move-result-object v2
+
+    .line 687
+    .local v2, info:[Landroid/net/NetworkInfo;
+    if-eqz v2, :cond_7
+
+    .line 688
+    const/4 v1, 0x0
+
+    .local v1, i:I
+    :goto_0
+    array-length v4, v2
+
+    if-ge v1, v4, :cond_3
+
+    .line 689
+    aget-object v4, v2, v1
+
+    invoke-virtual {v4}, Landroid/net/NetworkInfo;->getState()Landroid/net/NetworkInfo$State;
+
+    move-result-object v4
+
+    sget-object v5, Landroid/net/NetworkInfo$State;->CONNECTED:Landroid/net/NetworkInfo$State;
+
+    if-ne v4, v5, :cond_0
+
+    .line 690
+    aget-object v4, v2, v1
+
+    invoke-virtual {v4}, Landroid/net/NetworkInfo;->getType()I
+
+    move-result v4
+
+    invoke-static {v4}, Lcom/meizu/video/client/util/CommonUtil;->isNetworkTypeWifi(I)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_1
+
+    .line 691
+    or-int/lit8 v3, v3, 0x1
+
+    .line 688
+    :cond_0
+    :goto_1
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    .line 692
+    :cond_1
+    aget-object v4, v2, v1
+
+    invoke-virtual {v4}, Landroid/net/NetworkInfo;->getType()I
+
+    move-result v4
+
+    invoke-static {v4}, Lcom/meizu/video/client/util/CommonUtil;->isNetworkTypeMobile(I)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_2
+
+    .line 693
+    or-int/lit8 v3, v3, 0x2
+
+    goto :goto_1
+
+    .line 695
+    :cond_2
+    or-int/lit8 v3, v3, 0x4
+
+    goto :goto_1
+
+    .line 699
+    :cond_3
+    if-nez v3, :cond_7
+
+    .line 700
+    const/4 v1, 0x0
+
+    :goto_2
+    array-length v4, v2
+
+    if-ge v1, v4, :cond_7
+
+    .line 701
+    aget-object v4, v2, v1
+
+    invoke-virtual {v4}, Landroid/net/NetworkInfo;->getState()Landroid/net/NetworkInfo$State;
+
+    move-result-object v4
+
+    sget-object v5, Landroid/net/NetworkInfo$State;->CONNECTING:Landroid/net/NetworkInfo$State;
+
+    if-ne v4, v5, :cond_4
+
+    .line 702
+    aget-object v4, v2, v1
+
+    invoke-virtual {v4}, Landroid/net/NetworkInfo;->getType()I
+
+    move-result v4
+
+    invoke-static {v4}, Lcom/meizu/video/client/util/CommonUtil;->isNetworkTypeWifi(I)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_5
+
+    .line 703
+    or-int/lit8 v3, v3, 0x1
+
+    .line 700
+    :cond_4
+    :goto_3
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_2
+
+    .line 704
+    :cond_5
+    aget-object v4, v2, v1
+
+    invoke-virtual {v4}, Landroid/net/NetworkInfo;->getType()I
+
+    move-result v4
+
+    invoke-static {v4}, Lcom/meizu/video/client/util/CommonUtil;->isNetworkTypeMobile(I)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_6
+
+    .line 705
+    or-int/lit8 v3, v3, 0x2
+
+    goto :goto_3
+
+    .line 707
+    :cond_6
+    or-int/lit8 v3, v3, 0x4
+
+    goto :goto_3
+
+    .line 714
+    .end local v1           #i:I
+    .end local v2           #info:[Landroid/net/NetworkInfo;
+    :cond_7
+    return v3
 .end method
 
 .method public static getOrderListByCidAndMediaData(Ljava/util/ArrayList;Ljava/lang/String;I)Ljava/util/ArrayList;
@@ -1891,11 +2059,11 @@
     .end annotation
 
     .prologue
-    .line 359
+    .line 360
     .local p0, orderTypeAreaYearOrderListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;>;"
     const/4 v2, 0x0
 
-    .line 360
+    .line 361
     .local v2, typeTitemListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     if-eqz p0, :cond_0
 
@@ -1919,10 +2087,10 @@
 
     if-nez v3, :cond_0
 
-    .line 361
+    .line 362
     const/4 v1, 0x0
 
-    .line 362
+    .line 363
     .local v1, typeAreaYearOrderEntity:Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;
     const/4 v0, 0x0
 
@@ -1934,7 +2102,7 @@
 
     if-ge v0, v3, :cond_0
 
-    .line 363
+    .line 364
     invoke-virtual {p0, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v1
@@ -1942,11 +2110,11 @@
     .end local v1           #typeAreaYearOrderEntity:Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;
     check-cast v1, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;
 
-    .line 364
+    .line 365
     .restart local v1       #typeAreaYearOrderEntity:Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;
     if-eqz v1, :cond_5
 
-    .line 365
+    .line 366
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->getCid()Ljava/lang/String;
 
     move-result-object v3
@@ -1957,17 +2125,17 @@
 
     if-eqz v3, :cond_5
 
-    .line 366
+    .line 367
     packed-switch p2, :pswitch_data_0
 
-    .line 397
+    .line 398
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->getTypeTitem1ListEntity()Ljava/util/ArrayList;
 
     move-result-object v3
 
     if-eqz v3, :cond_0
 
-    .line 398
+    .line 399
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->getTypeTitem1ListEntity()Ljava/util/ArrayList;
 
     move-result-object v3
@@ -1979,7 +2147,7 @@
     .end local v2           #typeTitemListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     check-cast v2, Ljava/util/ArrayList;
 
-    .line 408
+    .line 409
     .end local v0           #i:I
     .end local v1           #typeAreaYearOrderEntity:Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;
     .restart local v2       #typeTitemListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
@@ -1987,7 +2155,7 @@
     :goto_1
     return-object v2
 
-    .line 368
+    .line 369
     .restart local v0       #i:I
     .restart local v1       #typeAreaYearOrderEntity:Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;
     :pswitch_0
@@ -1997,7 +2165,7 @@
 
     if-eqz v3, :cond_0
 
-    .line 369
+    .line 370
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->getTypeTitem1ListEntity()Ljava/util/ArrayList;
 
     move-result-object v3
@@ -2012,7 +2180,7 @@
     .restart local v2       #typeTitemListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     goto :goto_1
 
-    .line 373
+    .line 374
     :pswitch_1
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->getTypeTitem2ListEntity()Ljava/util/ArrayList;
 
@@ -2020,7 +2188,7 @@
 
     if-eqz v3, :cond_1
 
-    .line 374
+    .line 375
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->getTypeTitem2ListEntity()Ljava/util/ArrayList;
 
     move-result-object v3
@@ -2032,7 +2200,7 @@
     .end local v2           #typeTitemListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     check-cast v2, Ljava/util/ArrayList;
 
-    .line 376
+    .line 377
     .restart local v2       #typeTitemListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     :cond_1
     if-eqz v2, :cond_2
@@ -2043,7 +2211,7 @@
 
     if-gtz v3, :cond_0
 
-    .line 379
+    .line 380
     :cond_2
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->getTypeTitem1ListEntity()Ljava/util/ArrayList;
 
@@ -2051,7 +2219,7 @@
 
     if-eqz v3, :cond_0
 
-    .line 380
+    .line 381
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->getTypeTitem1ListEntity()Ljava/util/ArrayList;
 
     move-result-object v3
@@ -2066,7 +2234,7 @@
     .restart local v2       #typeTitemListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     goto :goto_1
 
-    .line 385
+    .line 386
     :pswitch_2
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->getTypeTitem3ListEntity()Ljava/util/ArrayList;
 
@@ -2074,7 +2242,7 @@
 
     if-eqz v3, :cond_3
 
-    .line 386
+    .line 387
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->getTypeTitem3ListEntity()Ljava/util/ArrayList;
 
     move-result-object v3
@@ -2086,7 +2254,7 @@
     .end local v2           #typeTitemListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     check-cast v2, Ljava/util/ArrayList;
 
-    .line 388
+    .line 389
     .restart local v2       #typeTitemListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     :cond_3
     if-eqz v2, :cond_4
@@ -2097,7 +2265,7 @@
 
     if-gtz v3, :cond_0
 
-    .line 391
+    .line 392
     :cond_4
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->getTypeTitem1ListEntity()Ljava/util/ArrayList;
 
@@ -2105,7 +2273,7 @@
 
     if-eqz v3, :cond_0
 
-    .line 392
+    .line 393
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/TypeAreaYearOrderEntity;->getTypeTitem1ListEntity()Ljava/util/ArrayList;
 
     move-result-object v3
@@ -2120,13 +2288,13 @@
     .restart local v2       #typeTitemListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/LableEntity;>;"
     goto :goto_1
 
-    .line 362
+    .line 363
     :cond_5
     add-int/lit8 v0, v0, 0x1
 
     goto/16 :goto_0
 
-    .line 366
+    .line 367
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0
@@ -2167,7 +2335,7 @@
     .end annotation
 
     .prologue
-    .line 258
+    .line 256
     .local p0, recommendFocusListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
     .local p1, followingTVRecommendBlockListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
     .local p2, hitTVRecommendBlockListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/RecommendEntity;>;"
@@ -2176,7 +2344,7 @@
 
     move-result-object v6
 
-    .line 259
+    .line 257
     .local v6, recommendUrl:Ljava/lang/String;
     sget-object v1, Lcom/meizu/video/client/util/CommonUtil;->TAG:Ljava/lang/String;
 
@@ -2200,12 +2368,12 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 260
+    .line 258
     invoke-static {v6}, Lcom/meizu/video/client/util/HttpUtil;->doGet(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 261
+    .line 259
     .local v0, recommendJsonData:Ljava/lang/String;
     if-eqz v0, :cond_0
 
@@ -2227,10 +2395,10 @@
 
     move-object v5, p4
 
-    .line 262
+    .line 260
     invoke-static/range {v0 .. v5}, Lcom/meizu/video/client/util/JsonParse;->parseRecommendFromLS(Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;Lcom/meizu/video/client/ui/entity/MsgEntity;)V
 
-    .line 264
+    .line 262
     :cond_0
     return-void
 .end method
@@ -2265,14 +2433,14 @@
     .end annotation
 
     .prologue
-    .line 242
+    .line 240
     .local p0, searchListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/SearchEntity;>;"
     .local p2, typeNumListMsgEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/MsgEntity;>;"
     invoke-static {p3, p4, p5, p6, p7}, Lcom/meizu/video/client/common/UrlSettings;->getLSSearchUrl(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 243
+    .line 241
     .local v1, searchUrl:Ljava/lang/String;
     sget-object v2, Lcom/meizu/video/client/util/CommonUtil;->TAG:Ljava/lang/String;
 
@@ -2296,12 +2464,12 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 244
+    .line 242
     invoke-static {v1}, Lcom/meizu/video/client/util/HttpUtil;->doGet(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 245
+    .line 243
     .local v0, searchJsonData:Ljava/lang/String;
     if-eqz v0, :cond_0
 
@@ -2313,10 +2481,10 @@
 
     if-nez v2, :cond_0
 
-    .line 246
+    .line 244
     invoke-static {v0, p0, p1, p2}, Lcom/meizu/video/client/util/JsonParse;->parseSearchFromLS(Ljava/lang/String;Ljava/util/ArrayList;Lcom/meizu/video/client/ui/entity/MsgEntity;Ljava/util/ArrayList;)V
 
-    .line 248
+    .line 246
     :cond_0
     return-void
 .end method
@@ -2326,10 +2494,10 @@
     .parameter "seconds"
 
     .prologue
-    .line 552
+    .line 553
     const-wide/16 v0, 0x0
 
-    .line 555
+    .line 556
     .local v0, duration:J
     :try_start_0
     invoke-static {p0}, Ljava/lang/Long;->valueOf(Ljava/lang/String;)Ljava/lang/Long;
@@ -2342,37 +2510,37 @@
 
     move-result-wide v0
 
-    .line 560
+    .line 561
     :goto_0
     const-string v2, ""
 
-    .line 563
+    .line 564
     .local v2, durationString:Ljava/lang/String;
     const-wide/16 v9, 0xe10
 
     div-long v3, v0, v9
 
-    .line 564
+    .line 565
     .local v3, hour:J
     const-wide/16 v9, 0xe10
 
     rem-long/2addr v0, v9
 
-    .line 565
+    .line 566
     const-wide/16 v9, 0x3c
 
     div-long v5, v0, v9
 
-    .line 566
+    .line 567
     .local v5, minute:J
     const-wide/16 v9, 0x3c
 
     rem-long/2addr v0, v9
 
-    .line 567
+    .line 568
     move-wide v7, v0
 
-    .line 569
+    .line 570
     .local v7, second:J
     const-wide/16 v9, 0x0
 
@@ -2380,7 +2548,7 @@
 
     if-eqz v9, :cond_0
 
-    .line 570
+    .line 571
     const-string v9, "%d:%02d:%02d"
 
     const/4 v10, 0x3
@@ -2415,11 +2583,11 @@
 
     move-result-object v2
 
-    .line 575
+    .line 576
     :goto_1
     return-object v2
 
-    .line 572
+    .line 573
     :cond_0
     const-string v9, "%02d:%02d"
 
@@ -2449,7 +2617,7 @@
 
     goto :goto_1
 
-    .line 556
+    .line 557
     .end local v2           #durationString:Ljava/lang/String;
     .end local v3           #hour:J
     .end local v5           #minute:J
@@ -2466,7 +2634,7 @@
     .parameter "typeMsgEntity"
 
     .prologue
-    .line 273
+    .line 271
     invoke-static {}, Lcom/meizu/video/client/common/Constant;->getChannelListEntity()Ljava/util/ArrayList;
 
     move-result-object v1
@@ -2483,7 +2651,7 @@
 
     if-nez v1, :cond_1
 
-    .line 274
+    .line 272
     :cond_0
     invoke-static {}, Lcom/meizu/video/client/common/Constant;->getChannelListEntity()Ljava/util/ArrayList;
 
@@ -2491,13 +2659,13 @@
 
     invoke-static {v1, p0}, Lcom/meizu/video/client/util/CommonUtil;->getChannelFromLS(Ljava/util/ArrayList;Lcom/meizu/video/client/ui/entity/MsgEntity;)V
 
-    .line 277
+    .line 275
     :cond_1
     invoke-static {}, Lcom/meizu/video/client/common/UrlSettings;->getLSTypesUrl()Ljava/lang/String;
 
     move-result-object v7
 
-    .line 278
+    .line 276
     .local v7, typeAreaYearUrl:Ljava/lang/String;
     invoke-static {}, Lcom/meizu/video/client/common/Constant;->getChannelListEntity()Ljava/util/ArrayList;
 
@@ -2515,7 +2683,7 @@
 
     if-lez v1, :cond_2
 
-    .line 279
+    .line 277
     sget-object v1, Lcom/meizu/video/client/util/CommonUtil;->TAG:Ljava/lang/String;
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -2538,12 +2706,12 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 280
+    .line 278
     invoke-static {v7}, Lcom/meizu/video/client/util/HttpUtil;->doGet(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 281
+    .line 279
     .local v0, typeAreaYearJsonData:Ljava/lang/String;
     if-eqz v0, :cond_2
 
@@ -2555,7 +2723,7 @@
 
     if-nez v1, :cond_2
 
-    .line 282
+    .line 280
     invoke-static {}, Lcom/meizu/video/client/common/Constant;->getCateTypeAreaYearOrderListEntity()Ljava/util/ArrayList;
 
     move-result-object v1
@@ -2580,10 +2748,39 @@
 
     invoke-static/range {v0 .. v6}, Lcom/meizu/video/client/util/JsonParse;->parseTypeAreaYearFromLs(Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;Lcom/meizu/video/client/ui/entity/MsgEntity;Ljava/util/ArrayList;)V
 
-    .line 288
+    .line 286
     .end local v0           #typeAreaYearJsonData:Ljava/lang/String;
     :cond_2
     return-void
+.end method
+
+.method public static getWifiSetting(Landroid/content/Context;)Z
+    .locals 4
+    .parameter "context"
+
+    .prologue
+    .line 763
+    const-string v2, "onlinesetting"
+
+    const/4 v3, 0x0
+
+    invoke-virtual {p0, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object v1
+
+    .line 764
+    .local v1, sp:Landroid/content/SharedPreferences;
+    const-string v2, "onlyusewifi"
+
+    const/4 v3, 0x1
+
+    invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+
+    move-result v0
+
+    .line 765
+    .local v0, isWifiOnly:Z
+    return v0
 .end method
 
 .method public static ifNeedForceUpdate(Landroid/content/Context;)Z
@@ -2593,17 +2790,17 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 602
+    .line 603
     sget-object v0, Lcom/meizu/video/client/util/CommonUtil;->TAG:Ljava/lang/String;
 
     const-string v1, "ifNeedForceUpdate"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 603
+    .line 604
     const-string v6, "com.meizu.mstore.update"
 
-    .line 604
+    .line 605
     .local v6, AUTHORITY:Ljava/lang/String;
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -2629,7 +2826,7 @@
 
     move-result-object v7
 
-    .line 605
+    .line 606
     .local v7, URI_STRING:Ljava/lang/String;
     invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -2669,11 +2866,11 @@
 
     move-result-object v8
 
-    .line 606
+    .line 607
     .local v8, cursor:Landroid/database/Cursor;
     if-eqz v8, :cond_1
 
-    .line 608
+    .line 609
     :try_start_0
     invoke-interface {v8}, Landroid/database/Cursor;->moveToFirst()Z
 
@@ -2681,7 +2878,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 609
+    .line 610
     const-string v0, "needUpdate"
 
     invoke-interface {v8, v0}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
@@ -2695,46 +2892,46 @@
 
     move-result v10
 
-    .line 610
+    .line 611
     .local v10, need:I
     const/4 v0, 0x2
 
     if-ne v10, v0, :cond_0
 
-    .line 611
+    .line 612
     const/4 v0, 0x1
 
-    .line 617
+    .line 618
     invoke-interface {v8}, Landroid/database/Cursor;->close()V
 
-    .line 620
+    .line 621
     .end local v10           #need:I
     :goto_0
     return v0
 
-    .line 614
+    .line 615
     :catch_0
     move-exception v9
 
-    .line 615
+    .line 616
     .local v9, e:Ljava/lang/Exception;
     :try_start_1
     invoke-virtual {v9}, Ljava/lang/Exception;->printStackTrace()V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 617
+    .line 618
     .end local v9           #e:Ljava/lang/Exception;
     :cond_0
     invoke-interface {v8}, Landroid/database/Cursor;->close()V
 
-    .line 620
+    .line 621
     :cond_1
     const/4 v0, 0x0
 
     goto :goto_0
 
-    .line 617
+    .line 618
     :catchall_0
     move-exception v0
 
@@ -2750,7 +2947,7 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 427
+    .line 428
     const-string v4, "connectivity"
 
     invoke-virtual {p0, v4}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -2759,26 +2956,26 @@
 
     check-cast v0, Landroid/net/ConnectivityManager;
 
-    .line 429
+    .line 430
     .local v0, connectivity:Landroid/net/ConnectivityManager;
     if-nez v0, :cond_1
 
-    .line 441
+    .line 442
     :cond_0
     :goto_0
     return v3
 
-    .line 432
+    .line 433
     :cond_1
     invoke-virtual {v0}, Landroid/net/ConnectivityManager;->getAllNetworkInfo()[Landroid/net/NetworkInfo;
 
     move-result-object v2
 
-    .line 433
+    .line 434
     .local v2, info:[Landroid/net/NetworkInfo;
     if-eqz v2, :cond_0
 
-    .line 434
+    .line 435
     const/4 v1, 0x0
 
     .local v1, i:I
@@ -2787,7 +2984,7 @@
 
     if-ge v1, v4, :cond_0
 
-    .line 435
+    .line 436
     aget-object v4, v2, v1
 
     invoke-virtual {v4}, Landroid/net/NetworkInfo;->getState()Landroid/net/NetworkInfo$State;
@@ -2798,16 +2995,87 @@
 
     if-ne v4, v5, :cond_2
 
-    .line 436
+    .line 437
     const/4 v3, 0x1
 
     goto :goto_0
 
-    .line 434
+    .line 435
     :cond_2
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_1
+.end method
+
+.method public static isNetworkTypeMobile(I)Z
+    .locals 1
+    .parameter "networkType"
+
+    .prologue
+    .line 718
+    packed-switch p0, :pswitch_data_0
+
+    .line 729
+    :pswitch_0
+    const/4 v0, 0x0
+
+    :goto_0
+    return v0
+
+    .line 727
+    :pswitch_1
+    const/4 v0, 0x1
+
+    goto :goto_0
+
+    .line 718
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_1
+        :pswitch_0
+        :pswitch_1
+        :pswitch_1
+        :pswitch_1
+        :pswitch_1
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_1
+        :pswitch_1
+        :pswitch_1
+    .end packed-switch
+.end method
+
+.method public static isNetworkTypeWifi(I)Z
+    .locals 1
+    .parameter "networkType"
+
+    .prologue
+    .line 734
+    packed-switch p0, :pswitch_data_0
+
+    .line 738
+    const/4 v0, 0x0
+
+    :goto_0
+    return v0
+
+    .line 736
+    :pswitch_0
+    const/4 v0, 0x1
+
+    goto :goto_0
+
+    .line 734
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_0
+    .end packed-switch
 .end method
 
 .method public static reportLoginForLS(Landroid/content/Context;)V
@@ -2815,12 +3083,12 @@
     .parameter "context"
 
     .prologue
-    .line 662
+    .line 663
     invoke-static {p0}, Lcom/meizu/video/client/util/CommonUtil;->getLSLoginUrl(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 663
+    .line 664
     .local v0, loginUrl:Ljava/lang/String;
     sget-object v1, Lcom/meizu/video/client/util/CommonUtil;->TAG:Ljava/lang/String;
 
@@ -2844,7 +3112,7 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 664
+    .line 665
     const-string v1, ""
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -2853,7 +3121,7 @@
 
     if-nez v1, :cond_0
 
-    .line 666
+    .line 667
     :try_start_0
     new-instance v1, Lcom/meizu/video/client/util/CommonUtil$1;
 
@@ -2863,132 +3131,16 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 674
+    .line 675
     :cond_0
     :goto_0
     return-void
 
-    .line 671
+    .line 672
     :catch_0
     move-exception v1
 
     goto :goto_0
-.end method
-
-.method public static setActionbarStyle(Landroid/app/Activity;Landroid/app/ActionBar;I)V
-    .locals 6
-    .parameter "activity"
-    .parameter "bar"
-    .parameter "type"
-
-    .prologue
-    const v5, 0x7f0c0006
-
-    const/high16 v4, 0x7f02
-
-    .line 524
-    const/4 v2, 0x2
-
-    if-ne p2, v2, :cond_1
-
-    .line 525
-    invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v2
-
-    const v3, 0x7f020001
-
-    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v2
-
-    invoke-virtual {p1, v2}, Landroid/app/ActionBar;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
-
-    .line 529
-    :goto_0
-    invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v4}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v2
-
-    invoke-virtual {p1, v2}, Landroid/app/ActionBar;->setSplitBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
-
-    .line 530
-    const v2, 0x102026f
-
-    invoke-virtual {p0, v2}, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
-
-    move-result-object v1
-
-    check-cast v1, Landroid/widget/TextView;
-
-    .line 531
-    .local v1, title:Landroid/widget/TextView;
-    const v2, 0x1020270
-
-    invoke-virtual {p0, v2}, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/TextView;
-
-    .line 532
-    .local v0, subtitle:Landroid/widget/TextView;
-    if-eqz v1, :cond_3
-
-    .line 533
-    if-eqz v0, :cond_2
-
-    .line 534
-    const v2, 0x7f0c0005
-
-    invoke-virtual {v1, p0, v2}, Landroid/widget/TextView;->setTextAppearance(Landroid/content/Context;I)V
-
-    .line 535
-    invoke-virtual {v0, p0, v5}, Landroid/widget/TextView;->setTextAppearance(Landroid/content/Context;I)V
-
-    .line 544
-    :cond_0
-    :goto_1
-    return-void
-
-    .line 527
-    .end local v0           #subtitle:Landroid/widget/TextView;
-    .end local v1           #title:Landroid/widget/TextView;
-    :cond_1
-    invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v4}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v2
-
-    invoke-virtual {p1, v2}, Landroid/app/ActionBar;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
-
-    goto :goto_0
-
-    .line 537
-    .restart local v0       #subtitle:Landroid/widget/TextView;
-    .restart local v1       #title:Landroid/widget/TextView;
-    :cond_2
-    const v2, 0x7f0c0004
-
-    invoke-virtual {v1, p0, v2}, Landroid/widget/TextView;->setTextAppearance(Landroid/content/Context;I)V
-
-    goto :goto_1
-
-    .line 540
-    :cond_3
-    if-eqz v0, :cond_0
-
-    .line 541
-    invoke-virtual {v0, p0, v5}, Landroid/widget/TextView;->setTextAppearance(Landroid/content/Context;I)V
-
-    goto :goto_1
 .end method
 
 .method private static sortChannel(Ljava/util/ArrayList;)V
@@ -3005,7 +3157,7 @@
     .end annotation
 
     .prologue
-    .line 579
+    .line 580
     .local p0, chanelListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/ChanelEntity;>;"
     if-eqz p0, :cond_4
 
@@ -3015,12 +3167,12 @@
 
     if-lez v8, :cond_4
 
-    .line 580
+    .line 581
     new-instance v2, Ljava/util/ArrayList;
 
     invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V
 
-    .line 581
+    .line 582
     .local v2, chanelNewListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/ChanelEntity;>;"
     const/4 v8, 0x7
 
@@ -3068,7 +3220,7 @@
 
     aput-object v9, v7, v8
 
-    .line 582
+    .line 583
     .local v7, sortOrder:[Ljava/lang/String;
     move-object v0, v7
 
@@ -3088,7 +3240,7 @@
 
     aget-object v6, v0, v4
 
-    .line 583
+    .line 584
     .local v6, sortItem:Ljava/lang/String;
     invoke-virtual {p0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
 
@@ -3109,7 +3261,7 @@
 
     check-cast v1, Lcom/meizu/video/client/ui/entity/ChanelEntity;
 
-    .line 584
+    .line 585
     .local v1, chanelEntity:Lcom/meizu/video/client/ui/entity/ChanelEntity;
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/ChanelEntity;->getId()Ljava/lang/String;
 
@@ -3121,13 +3273,13 @@
 
     if-eqz v8, :cond_0
 
-    .line 585
+    .line 586
     invoke-virtual {v2, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 586
+    .line 587
     invoke-virtual {p0, v1}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
 
-    .line 582
+    .line 583
     .end local v1           #chanelEntity:Lcom/meizu/video/client/ui/entity/ChanelEntity;
     :cond_1
     add-int/lit8 v3, v4, 0x1
@@ -3139,7 +3291,7 @@
     .restart local v4       #i$:I
     goto :goto_0
 
-    .line 591
+    .line 592
     .end local v6           #sortItem:Ljava/lang/String;
     :cond_2
     invoke-virtual {p0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
@@ -3161,24 +3313,24 @@
 
     check-cast v1, Lcom/meizu/video/client/ui/entity/ChanelEntity;
 
-    .line 592
+    .line 593
     .restart local v1       #chanelEntity:Lcom/meizu/video/client/ui/entity/ChanelEntity;
     invoke-virtual {v2, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     goto :goto_1
 
-    .line 594
+    .line 595
     .end local v1           #chanelEntity:Lcom/meizu/video/client/ui/entity/ChanelEntity;
     :cond_3
     invoke-virtual {p0}, Ljava/util/ArrayList;->clear()V
 
-    .line 595
+    .line 596
     invoke-virtual {p0, v2}, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
 
-    .line 596
+    .line 597
     invoke-virtual {v2}, Ljava/util/ArrayList;->clear()V
 
-    .line 598
+    .line 599
     .end local v0           #arr$:[Ljava/lang/String;
     .end local v2           #chanelNewListEntity:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/ChanelEntity;>;"
     .end local v3           #i$:Ljava/util/Iterator;

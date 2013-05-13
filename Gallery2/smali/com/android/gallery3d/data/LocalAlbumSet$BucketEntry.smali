@@ -50,29 +50,29 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 773
+    .line 784
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 767
+    .line 778
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->mChild:Ljava/util/ArrayList;
 
-    .line 774
+    .line 785
     iput-wide p1, p0, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->mId:J
 
-    .line 775
+    .line 786
     iput v1, p0, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->mItemCount:I
 
-    .line 776
+    .line 787
     iput-object p3, p0, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->mDirectory:Ljava/lang/String;
 
-    .line 777
+    .line 788
     iput-boolean v1, p0, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->mIsCustomFolder:Z
 
-    .line 778
+    .line 789
     return-void
 .end method
 
@@ -83,12 +83,12 @@
     .parameter "entry"
 
     .prologue
-    .line 790
+    .line 801
     iget-object v0, p0, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->mChild:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 791
+    .line 802
     return-void
 .end method
 
@@ -99,12 +99,12 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 813
+    .line 824
     instance-of v2, p1, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;
 
     if-nez v2, :cond_1
 
-    .line 815
+    .line 826
     :cond_0
     :goto_0
     return v1
@@ -112,10 +112,10 @@
     :cond_1
     move-object v0, p1
 
-    .line 814
+    .line 825
     check-cast v0, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;
 
-    .line 815
+    .line 826
     .local v0, entry:Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;
     iget v2, p0, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->mBucketId:I
 
@@ -133,19 +133,19 @@
     .parameter "id"
 
     .prologue
-    .line 794
+    .line 805
     iget-wide v3, p0, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->mId:J
 
     cmp-long v3, v3, p1
 
     if-nez v3, :cond_0
 
-    .line 803
+    .line 814
     .end local p0
     :goto_0
     return-object p0
 
-    .line 797
+    .line 808
     .restart local p0
     :cond_0
     iget-object v3, p0, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->mChild:Ljava/util/ArrayList;
@@ -168,22 +168,22 @@
 
     check-cast v1, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;
 
-    .line 798
+    .line 809
     .local v1, entry:Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;
     invoke-virtual {v1, p1, p2}, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->findEntryById(J)Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;
 
     move-result-object v0
 
-    .line 799
+    .line 810
     .local v0, child:Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;
     if-eqz v0, :cond_1
 
     move-object p0, v0
 
-    .line 800
+    .line 811
     goto :goto_0
 
-    .line 803
+    .line 814
     .end local v0           #child:Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;
     .end local v1           #entry:Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;
     :cond_2
@@ -196,16 +196,16 @@
     .locals 4
 
     .prologue
-    .line 781
+    .line 792
     const/4 v2, 0x0
 
-    .line 782
+    .line 793
     .local v2, total:I
     iget v3, p0, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->mItemCount:I
 
     add-int/2addr v2, v3
 
-    .line 783
+    .line 794
     iget-object v3, p0, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->mChild:Ljava/util/ArrayList;
 
     invoke-virtual {v3}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
@@ -226,7 +226,7 @@
 
     check-cast v0, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;
 
-    .line 784
+    .line 795
     .local v0, entry:Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;
     invoke-virtual {v0}, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->getTotalItemCount()I
 
@@ -236,7 +236,7 @@
 
     goto :goto_0
 
-    .line 786
+    .line 797
     .end local v0           #entry:Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;
     :cond_0
     return v2
@@ -246,7 +246,7 @@
     .locals 1
 
     .prologue
-    .line 808
+    .line 819
     iget v0, p0, Lcom/android/gallery3d/data/LocalAlbumSet$BucketEntry;->mBucketId:I
 
     return v0

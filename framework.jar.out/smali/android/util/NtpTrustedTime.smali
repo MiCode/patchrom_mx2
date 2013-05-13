@@ -84,7 +84,7 @@
 
     .line 59
     .local v0, defaultServer:Ljava/lang/String;
-    const v9, 0x10e0030
+    const v9, 0x10e0031
 
     invoke-virtual {v3, v9}, Landroid/content/res/Resources;->getInteger(I)I
 

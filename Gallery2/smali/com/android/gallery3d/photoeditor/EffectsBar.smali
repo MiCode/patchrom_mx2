@@ -62,6 +62,8 @@
     .end annotation
 .end field
 
+.field private mIsLoadEffectActionButton:Z
+
 .field private mSourceBmp:Landroid/graphics/Bitmap;
 
 .field private volatile paused:Z
@@ -76,7 +78,7 @@
     .locals 3
 
     .prologue
-    .line 77
+    .line 78
     const/16 v0, 0x12
 
     new-array v0, v0, [Ljava/lang/String;
@@ -200,11 +202,11 @@
     .parameter "attrs"
 
     .prologue
-    const/4 v2, 0x0
+    const/4 v2, 0x1
 
-    const/4 v1, 0x1
+    const/4 v1, 0x0
 
-    .line 101
+    .line 102
     invoke-direct {p0, p1, p2}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 60
@@ -225,28 +227,31 @@
     iput v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->currentEffectId:I
 
     .line 65
-    iput-boolean v2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isSetupEffectClick:Z
+    iput-boolean v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isSetupEffectClick:Z
 
     .line 70
-    iput-boolean v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->artisticButtonValid:Z
+    iput-boolean v2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->artisticButtonValid:Z
 
     .line 71
-    iput-boolean v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->exposureButtonValid:Z
+    iput-boolean v2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->exposureButtonValid:Z
 
     .line 72
-    iput-boolean v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isOpenGallery:Z
+    iput-boolean v2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isOpenGallery:Z
 
     .line 73
-    iput-boolean v2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isInMarkedMode:Z
+    iput-boolean v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isInMarkedMode:Z
 
-    .line 75
+    .line 74
+    iput-boolean v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->mIsLoadEffectActionButton:Z
+
+    .line 76
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->mEffectState:Ljava/util/Map;
 
-    .line 102
+    .line 103
     const-string v0, "layout_inflater"
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -257,7 +262,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->inflater:Landroid/view/LayoutInflater;
 
-    .line 103
+    .line 104
     return-void
 .end method
 
@@ -523,41 +528,41 @@
     .parameter "effectsId"
 
     .prologue
-    .line 260
+    .line 267
     const/4 v6, 0x1
 
-    .line 261
+    .line 268
     .local v6, replaceable:Z
     const/4 v0, 0x0
 
-    .line 262
+    .line 269
     .local v0, begin:I
     const-string v9, ""
 
-    .line 263
+    .line 270
     .local v9, text:Ljava/lang/String;
-    const v10, 0x7f040053
+    const v10, 0x7f040058
 
     if-ne p1, v10, :cond_3
 
-    .line 264
+    .line 271
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->getResources()Landroid/content/res/Resources;
 
     move-result-object v10
 
-    const v11, 0x7f0a010c
+    const v11, 0x7f0a0117
 
     invoke-virtual {v10, v11}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
     move-result-object v9
 
-    .line 265
+    .line 272
     const/4 v6, 0x0
 
-    .line 266
+    .line 273
     const/4 v0, 0x0
 
-    .line 273
+    .line 280
     :cond_0
     :goto_0
     iget-object v10, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
@@ -566,10 +571,10 @@
 
     invoke-virtual {v10, v11}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->setVisibility(I)V
 
-    .line 274
+    .line 281
     iget-object v10, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
-    const v11, 0x7f0d00ff
+    const v11, 0x7f0d0103
 
     invoke-virtual {v10, v11}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->findViewById(I)Landroid/view/View;
 
@@ -579,10 +584,10 @@
 
     invoke-virtual {v10, v9}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 276
+    .line 283
     iget-object v10, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->inflater:Landroid/view/LayoutInflater;
 
-    const v11, 0x7f040058
+    const v11, 0x7f04005d
 
     const/4 v12, 0x0
 
@@ -592,15 +597,15 @@
 
     iput-object v10, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsGallery:Landroid/view/View;
 
-    .line 277
+    .line 284
     iget-object v10, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsGallery:Landroid/view/View;
 
     invoke-virtual {v10, p1}, Landroid/view/View;->setId(I)V
 
-    .line 278
+    .line 285
     iget-object v10, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsGallery:Landroid/view/View;
 
-    const v11, 0x7f0d0115
+    const v11, 0x7f0d012a
 
     invoke-virtual {v10, v11}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -608,7 +613,7 @@
 
     check-cast v7, Landroid/view/ViewGroup;
 
-    .line 279
+    .line 286
     .local v7, scrollView:Landroid/view/ViewGroup;
     iget-object v10, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->inflater:Landroid/view/LayoutInflater;
 
@@ -620,14 +625,14 @@
 
     check-cast v3, Landroid/view/ViewGroup;
 
-    .line 280
+    .line 287
     .local v3, effects:Landroid/view/ViewGroup;
     iput-object v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->activeEffects:Landroid/view/ViewGroup;
 
-    .line 281
+    .line 288
     const/4 v5, 0x0
 
-    .line 282
+    .line 289
     .local v5, offsetX:I
     const/4 v4, 0x0
 
@@ -639,14 +644,14 @@
 
     if-ge v4, v10, :cond_5
 
-    .line 283
+    .line 290
     invoke-virtual {v3, v4}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
 
     move-result-object v2
 
     check-cast v2, Lcom/android/gallery3d/photoeditor/actions/EffectAction;
 
-    .line 284
+    .line 291
     .local v2, effect:Lcom/android/gallery3d/photoeditor/actions/EffectAction;
     invoke-virtual {v2}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->getEffectName()Ljava/lang/String;
 
@@ -656,32 +661,32 @@
 
     move-result v8
 
-    .line 285
+    .line 292
     .local v8, selectId:I
     const/4 v10, -0x1
 
     if-eq v8, v10, :cond_1
 
-    .line 286
+    .line 293
     invoke-virtual {v2}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->drawImageButtonBounds()V
 
-    .line 287
+    .line 294
     mul-int/lit16 v5, v8, 0xb0
 
-    .line 289
+    .line 296
     :cond_1
     invoke-virtual {v2, v6}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->setReplaceable(Z)V
 
-    .line 290
+    .line 297
     invoke-direct {p0, v2}, Lcom/android/gallery3d/photoeditor/EffectsBar;->setupEffect(Lcom/android/gallery3d/photoeditor/actions/EffectAction;)V
 
-    .line 291
-    const v10, 0x7f040057
+    .line 298
+    const v10, 0x7f04005c
 
     if-eq p1, v10, :cond_2
 
-    .line 292
-    const v10, 0x7f0d0114
+    .line 299
+    const v10, 0x7f0d0129
 
     invoke-virtual {v2, v10}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->findViewById(I)Landroid/view/View;
 
@@ -697,13 +702,13 @@
 
     invoke-virtual {v10, v11}, Landroid/widget/ImageButton;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
-    .line 282
+    .line 289
     :cond_2
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_1
 
-    .line 267
+    .line 274
     .end local v2           #effect:Lcom/android/gallery3d/photoeditor/actions/EffectAction;
     .end local v3           #effects:Landroid/view/ViewGroup;
     .end local v4           #i:I
@@ -711,38 +716,38 @@
     .end local v7           #scrollView:Landroid/view/ViewGroup;
     .end local v8           #selectId:I
     :cond_3
-    const v10, 0x7f040056
+    const v10, 0x7f04005b
 
     if-ne p1, v10, :cond_4
 
-    .line 268
+    .line 275
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->getResources()Landroid/content/res/Resources;
 
     move-result-object v10
 
-    const v11, 0x7f0a010d
+    const v11, 0x7f0a0118
 
     invoke-virtual {v10, v11}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
     move-result-object v9
 
-    .line 269
+    .line 276
     const/16 v0, 0xa
 
     goto/16 :goto_0
 
-    .line 270
+    .line 277
     :cond_4
-    const v10, 0x7f040057
+    const v10, 0x7f04005c
 
     if-ne p1, v10, :cond_0
 
-    .line 271
+    .line 278
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->getResources()Landroid/content/res/Resources;
 
     move-result-object v10
 
-    const v11, 0x7f0a010e
+    const v11, 0x7f0a0119
 
     invoke-virtual {v10, v11}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -750,20 +755,20 @@
 
     goto/16 :goto_0
 
-    .line 295
+    .line 302
     .restart local v3       #effects:Landroid/view/ViewGroup;
     .restart local v4       #i:I
     .restart local v5       #offsetX:I
     .restart local v7       #scrollView:Landroid/view/ViewGroup;
     :cond_5
-    const v10, 0x7f040053
+    const v10, 0x7f040058
 
     if-ne p1, v10, :cond_6
 
-    .line 296
+    .line 303
     iget-object v10, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->inflater:Landroid/view/LayoutInflater;
 
-    const v11, 0x7f04005c
+    const v11, 0x7f040061
 
     const/4 v12, 0x0
 
@@ -771,9 +776,9 @@
 
     move-result-object v1
 
-    .line 297
+    .line 304
     .local v1, child:Landroid/view/View;
-    const v10, 0x7f0d0114
+    const v10, 0x7f0d0129
 
     invoke-virtual {v1, v10}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -785,8 +790,8 @@
 
     invoke-virtual {v10, v11}, Landroid/widget/ImageButton;->setBackground(Landroid/graphics/drawable/Drawable;)V
 
-    .line 298
-    const v10, 0x7f0d0114
+    .line 305
+    const v10, 0x7f0d0129
 
     invoke-virtual {v1, v10}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -800,8 +805,8 @@
 
     invoke-virtual {v10, v11}, Landroid/widget/ImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 318
-    const v10, 0x7f0d0114
+    .line 325
+    const v10, 0x7f0d0129
 
     invoke-virtual {v1, v10}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -813,32 +818,37 @@
 
     invoke-virtual {v10, v11}, Landroid/widget/ImageButton;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
-    .line 319
+    .line 326
     const/4 v10, 0x0
 
     invoke-virtual {v3, v1, v10}, Landroid/view/ViewGroup;->addView(Landroid/view/View;I)V
 
-    .line 321
+    .line 328
     .end local v1           #child:Landroid/view/View;
     :cond_6
     const/4 v10, 0x2
 
     invoke-virtual {v7, v10}, Landroid/view/ViewGroup;->setOverScrollMode(I)V
 
-    .line 322
+    .line 329
     invoke-virtual {v7, v3}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
 
-    .line 323
+    .line 330
     invoke-direct {p0, v7, v5}, Lcom/android/gallery3d/photoeditor/EffectsBar;->scrollToSelectChild(Landroid/view/ViewGroup;I)V
 
-    .line 324
+    .line 331
     iget-object v10, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsGallery:Landroid/view/View;
 
     const/4 v11, 0x0
 
     invoke-virtual {p0, v10, v11}, Lcom/android/gallery3d/photoeditor/EffectsBar;->addView(Landroid/view/View;I)V
 
-    .line 325
+    .line 332
+    const/4 v10, 0x1
+
+    iput-boolean v10, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->mIsLoadEffectActionButton:Z
+
+    .line 333
     return-void
 .end method
 
@@ -847,12 +857,12 @@
     .parameter "runnableOnDone"
 
     .prologue
-    .line 424
+    .line 432
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->activeEffect:Lcom/android/gallery3d/photoeditor/actions/EffectAction;
 
     if-eqz v0, :cond_0
 
-    .line 425
+    .line 433
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->activeEffect:Lcom/android/gallery3d/photoeditor/actions/EffectAction;
 
     new-instance v1, Lcom/android/gallery3d/photoeditor/EffectsBar$6;
@@ -861,10 +871,10 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->end(Ljava/lang/Runnable;)V
 
-    .line 441
+    .line 449
     const/4 v0, 0x1
 
-    .line 443
+    .line 451
     :goto_0
     return v0
 
@@ -880,20 +890,20 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 410
+    .line 418
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsGallery:Landroid/view/View;
 
     if-eqz v2, :cond_1
 
-    .line 411
+    .line 419
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->activeEffect:Lcom/android/gallery3d/photoeditor/actions/EffectAction;
 
     if-eqz v2, :cond_0
 
-    .line 413
+    .line 421
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsGallery:Landroid/view/View;
 
-    const v3, 0x7f0d0115
+    const v3, 0x7f0d012a
 
     invoke-virtual {v2, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -901,7 +911,7 @@
 
     check-cast v0, Landroid/view/ViewGroup;
 
-    .line 414
+    .line 422
     .local v0, scrollView:Landroid/view/ViewGroup;
     invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
 
@@ -913,22 +923,22 @@
 
     invoke-virtual {v1, v2}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
 
-    .line 416
+    .line 424
     .end local v0           #scrollView:Landroid/view/ViewGroup;
     :cond_0
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsGallery:Landroid/view/View;
 
     invoke-virtual {p0, v1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->removeView(Landroid/view/View;)V
 
-    .line 417
+    .line 425
     const/4 v1, 0x0
 
     iput-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsGallery:Landroid/view/View;
 
-    .line 418
+    .line 426
     const/4 v1, 0x1
 
-    .line 420
+    .line 428
     :cond_1
     return v1
 .end method
@@ -938,10 +948,10 @@
     .parameter "name"
 
     .prologue
-    .line 212
+    .line 219
     const/4 v2, 0x0
 
-    .line 214
+    .line 221
     .local v2, filter:Lcom/android/gallery3d/photoeditor/filters/Filter;
     :try_start_0
     new-instance v3, Ljava/lang/StringBuilder;
@@ -980,15 +990,15 @@
     .catch Ljava/lang/IllegalAccessException; {:try_start_0 .. :try_end_0} :catch_1
     .catch Ljava/lang/ClassNotFoundException; {:try_start_0 .. :try_end_0} :catch_2
 
-    .line 222
+    .line 229
     :goto_0
     return-object v2
 
-    .line 215
+    .line 222
     :catch_0
     move-exception v1
 
-    .line 216
+    .line 223
     .local v1, e:Ljava/lang/InstantiationException;
     const-string v3, "TAG"
 
@@ -998,12 +1008,12 @@
 
     goto :goto_0
 
-    .line 217
+    .line 224
     .end local v1           #e:Ljava/lang/InstantiationException;
     :catch_1
     move-exception v1
 
-    .line 218
+    .line 225
     .local v1, e:Ljava/lang/IllegalAccessException;
     const-string v3, "TAG"
 
@@ -1013,12 +1023,12 @@
 
     goto :goto_0
 
-    .line 219
+    .line 226
     .end local v1           #e:Ljava/lang/IllegalAccessException;
     :catch_2
     move-exception v1
 
-    .line 220
+    .line 227
     .local v1, e:Ljava/lang/ClassNotFoundException;
     const-string v3, "TAG"
 
@@ -1057,7 +1067,7 @@
 
     const/high16 v8, 0x3f00
 
-    .line 226
+    .line 233
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->inflater:Landroid/view/LayoutInflater;
 
     const/4 v1, 0x0
@@ -1070,7 +1080,7 @@
 
     move v2, v3
 
-    .line 227
+    .line 234
     :goto_0
     invoke-virtual {v0}, Landroid/view/ViewGroup;->getChildCount()I
 
@@ -1078,7 +1088,7 @@
 
     if-ge v2, v1, :cond_6
 
-    .line 228
+    .line 235
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->source:Lcom/android/gallery3d/photoeditor/Photo;
 
     invoke-virtual {v1}, Lcom/android/gallery3d/photoeditor/Photo;->width()I
@@ -1095,22 +1105,22 @@
 
     move-result-object v4
 
-    .line 229
+    .line 236
     invoke-virtual {v0, v2}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
 
     move-result-object v1
 
     check-cast v1, Lcom/android/gallery3d/photoeditor/actions/EffectAction;
 
-    .line 230
+    .line 237
     invoke-virtual {v1}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->getEffectName()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 231
+    .line 238
     if-nez p2, :cond_2
 
-    .line 232
+    .line 239
     iget-object v5, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->mEffectState:Ljava/util/Map;
 
     new-instance v6, Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;
@@ -1121,16 +1131,16 @@
 
     invoke-interface {v5, v1, v6}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 235
+    .line 242
     :goto_1
     invoke-direct {p0, v1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->getInstanceFromName(Ljava/lang/String;)Lcom/android/gallery3d/photoeditor/filters/Filter;
 
     move-result-object v5
 
-    .line 236
+    .line 243
     if-eqz v5, :cond_1
 
-    .line 237
+    .line 244
     iget-object v6, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->source:Lcom/android/gallery3d/photoeditor/Photo;
 
     invoke-virtual {v4, v6}, Lcom/android/gallery3d/photoeditor/Photo;->matchDimension(Lcom/android/gallery3d/photoeditor/Photo;)Z
@@ -1139,7 +1149,7 @@
 
     if-eqz v6, :cond_1
 
-    .line 238
+    .line 245
     const-class v6, Lcom/android/gallery3d/photoeditor/filters/AbstractScaleFilter;
 
     invoke-virtual {v5}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
@@ -1152,7 +1162,7 @@
 
     if-eqz v6, :cond_0
 
-    .line 239
+    .line 246
     const-string v6, "CommonEffectBrightnessFilter"
 
     invoke-virtual {v1, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -1161,7 +1171,7 @@
 
     if-eqz v6, :cond_3
 
-    .line 240
+    .line 247
     invoke-static {}, Lcom/android/gallery3d/photoeditor/actions/FilterCommonParameter;->getInstance()Lcom/android/gallery3d/photoeditor/actions/FilterCommonParameter;
 
     move-result-object v1
@@ -1170,7 +1180,7 @@
 
     invoke-virtual {v1, v6, v8, v8, v8}, Lcom/android/gallery3d/photoeditor/actions/FilterCommonParameter;->setAllParameterValue(FFFF)V
 
-    .line 249
+    .line 256
     :cond_0
     :goto_2
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->getContext()Landroid/content/Context;
@@ -1179,12 +1189,12 @@
 
     invoke-virtual {v5, v1}, Lcom/android/gallery3d/photoeditor/filters/Filter;->setContext(Landroid/content/Context;)V
 
-    .line 250
+    .line 257
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->source:Lcom/android/gallery3d/photoeditor/Photo;
 
     invoke-virtual {v5, v1, v4}, Lcom/android/gallery3d/photoeditor/filters/Filter;->process(Lcom/android/gallery3d/photoeditor/Photo;Lcom/android/gallery3d/photoeditor/Photo;)V
 
-    .line 251
+    .line 258
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->dst:[Landroid/graphics/Bitmap;
 
     add-int v5, v2, p2
@@ -1195,10 +1205,10 @@
 
     aput-object v6, v1, v5
 
-    .line 252
+    .line 259
     invoke-virtual {v4}, Lcom/android/gallery3d/photoeditor/Photo;->clear()V
 
-    .line 227
+    .line 234
     :cond_1
     add-int/lit8 v1, v2, 0x1
 
@@ -1206,7 +1216,7 @@
 
     goto :goto_0
 
-    .line 234
+    .line 241
     :cond_2
     iget-object v5, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->mEffectState:Ljava/util/Map;
 
@@ -1218,7 +1228,7 @@
 
     goto :goto_1
 
-    .line 241
+    .line 248
     :cond_3
     const-string v6, "CommonEffectContrastFilter"
 
@@ -1228,7 +1238,7 @@
 
     if-eqz v6, :cond_4
 
-    .line 242
+    .line 249
     invoke-static {}, Lcom/android/gallery3d/photoeditor/actions/FilterCommonParameter;->getInstance()Lcom/android/gallery3d/photoeditor/actions/FilterCommonParameter;
 
     move-result-object v1
@@ -1237,7 +1247,7 @@
 
     goto :goto_2
 
-    .line 243
+    .line 250
     :cond_4
     const-string v6, "CommonEffectColorTemperatureFilter"
 
@@ -1247,7 +1257,7 @@
 
     if-eqz v6, :cond_5
 
-    .line 244
+    .line 251
     invoke-static {}, Lcom/android/gallery3d/photoeditor/actions/FilterCommonParameter;->getInstance()Lcom/android/gallery3d/photoeditor/actions/FilterCommonParameter;
 
     move-result-object v1
@@ -1256,7 +1266,7 @@
 
     goto :goto_2
 
-    .line 245
+    .line 252
     :cond_5
     const-string v6, "CommonEffectSaturationFilter"
 
@@ -1266,7 +1276,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 246
+    .line 253
     invoke-static {}, Lcom/android/gallery3d/photoeditor/actions/FilterCommonParameter;->getInstance()Lcom/android/gallery3d/photoeditor/actions/FilterCommonParameter;
 
     move-result-object v1
@@ -1277,7 +1287,7 @@
 
     goto :goto_2
 
-    .line 256
+    .line 263
     :cond_6
     invoke-static {}, Lcom/android/gallery3d/photoeditor/actions/FilterCommonParameter;->getInstance()Lcom/android/gallery3d/photoeditor/actions/FilterCommonParameter;
 
@@ -1285,7 +1295,7 @@
 
     invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/FilterCommonParameter;->setDefaultValue()V
 
-    .line 257
+    .line 264
     return-void
 .end method
 
@@ -1295,7 +1305,7 @@
     .parameter "offset"
 
     .prologue
-    .line 332
+    .line 340
     new-instance v0, Landroid/os/Handler;
 
     invoke-direct {v0}, Landroid/os/Handler;-><init>()V
@@ -1308,7 +1318,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
-    .line 337
+    .line 345
     return-void
 .end method
 
@@ -1317,8 +1327,8 @@
     .parameter "effect"
 
     .prologue
-    .line 340
-    const v0, 0x7f0d0114
+    .line 348
+    const v0, 0x7f0d0129
 
     invoke-virtual {p1, v0}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->findViewById(I)Landroid/view/View;
 
@@ -1330,7 +1340,7 @@
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 384
+    .line 392
     return-void
 .end method
 
@@ -1342,29 +1352,29 @@
     .parameter "effectsId"
 
     .prologue
-    const v5, 0x7f0d0106
+    const v5, 0x7f0d010a
 
-    const v4, 0x7f040056
+    const v4, 0x7f04005b
 
-    const v3, 0x7f040053
+    const v3, 0x7f040058
 
     const/4 v2, 0x1
 
     const/4 v0, 0x0
 
-    .line 675
+    .line 667
     iget-boolean v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isOpenGallery:Z
 
     if-nez v1, :cond_0
 
     move p1, v0
 
-    .line 728
+    .line 720
     .end local p1
     :goto_0
     return p1
 
-    .line 678
+    .line 670
     .restart local p1
     :cond_0
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->filterStack:Lcom/android/gallery3d/photoeditor/FilterStack;
@@ -1377,57 +1387,57 @@
 
     move p1, v0
 
-    .line 679
+    .line 671
     goto :goto_0
 
-    .line 681
+    .line 673
     :cond_1
     iget v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->currentEffectId:I
 
     if-ne v1, v3, :cond_3
 
-    .line 682
+    .line 674
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->filterStack:Lcom/android/gallery3d/photoeditor/FilterStack;
 
     invoke-virtual {v1, v2}, Lcom/android/gallery3d/photoeditor/FilterStack;->setIsMakeAnimationEable(Z)V
 
-    .line 686
+    .line 678
     :cond_2
     :goto_1
     const/4 v1, -0x1
 
     if-ne p2, v1, :cond_4
 
-    .line 687
+    .line 679
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
     invoke-virtual {v1}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->clickBack()V
 
-    .line 688
+    .line 680
     iput-boolean v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->artisticButtonValid:Z
 
-    .line 689
+    .line 681
     iput-boolean v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->exposureButtonValid:Z
 
     move p1, v0
 
-    .line 690
+    .line 682
     goto :goto_0
 
-    .line 683
+    .line 675
     :cond_3
     iget v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->currentEffectId:I
 
     if-ne v1, v4, :cond_2
 
-    .line 684
+    .line 676
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->filterStack:Lcom/android/gallery3d/photoeditor/FilterStack;
 
     invoke-virtual {v1, v0}, Lcom/android/gallery3d/photoeditor/FilterStack;->setIsMakeAnimationEable(Z)V
 
     goto :goto_1
 
-    .line 692
+    .line 684
     :cond_4
     iget v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->currentEffectId:I
 
@@ -1435,21 +1445,21 @@
 
     if-ne p2, v4, :cond_7
 
-    .line 693
+    .line 685
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->setTopFilterApplied()V
 
-    .line 694
+    .line 686
     iput-boolean v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isClear:Z
 
-    .line 704
+    .line 696
     :cond_5
     :goto_2
     if-ne p2, v4, :cond_9
 
-    .line 705
+    .line 697
     iput-boolean v2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->exposureButtonValid:Z
 
-    .line 706
+    .line 698
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
     invoke-virtual {v1, v5}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->findViewById(I)Landroid/view/View;
@@ -1458,14 +1468,14 @@
 
     check-cast v1, Landroid/widget/ImageButton;
 
-    const v3, 0x7f02012f
+    const v3, 0x7f020127
 
     invoke-virtual {v1, v3}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 707
+    .line 699
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
-    const v3, 0x7f0d0107
+    const v3, 0x7f0d010b
 
     invoke-virtual {v1, v3}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->findViewById(I)Landroid/view/View;
 
@@ -1473,16 +1483,16 @@
 
     check-cast v1, Landroid/widget/ImageButton;
 
-    const v3, 0x7f020154
+    const v3, 0x7f02014e
 
     invoke-virtual {v1, v3}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 713
+    .line 705
     :cond_6
     :goto_3
     iput p2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->currentEffectId:I
 
-    .line 714
+    .line 706
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsGallery:Landroid/view/View;
 
     if-eqz v1, :cond_a
@@ -1491,7 +1501,7 @@
 
     if-nez v1, :cond_a
 
-    .line 715
+    .line 707
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsGallery:Landroid/view/View;
 
     invoke-virtual {v1}, Landroid/view/View;->getId()I
@@ -1500,12 +1510,12 @@
 
     if-ne p2, v1, :cond_a
 
-    .line 716
+    .line 708
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->doEffectMenuSelected()V
 
     goto :goto_0
 
-    .line 695
+    .line 687
     :cond_7
     iget v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->currentEffectId:I
 
@@ -1513,38 +1523,38 @@
 
     if-ne p2, v3, :cond_5
 
-    .line 696
+    .line 688
     invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->exitEffectsGallery()Z
 
-    .line 697
+    .line 689
     iget-boolean v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isClear:Z
 
     if-eqz v1, :cond_8
 
-    .line 698
+    .line 690
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->preEffectAction:Lcom/android/gallery3d/photoeditor/actions/EffectAction;
 
     if-eqz v1, :cond_8
 
-    .line 699
+    .line 691
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->preEffectAction:Lcom/android/gallery3d/photoeditor/actions/EffectAction;
 
     invoke-virtual {p0, v1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->setEffectSelected(Lcom/android/gallery3d/photoeditor/actions/EffectAction;)V
 
-    .line 702
+    .line 694
     :cond_8
     iput-boolean v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isClear:Z
 
     goto :goto_2
 
-    .line 708
+    .line 700
     :cond_9
     if-ne p2, v3, :cond_6
 
-    .line 709
+    .line 701
     iput-boolean v2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->artisticButtonValid:Z
 
-    .line 710
+    .line 702
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
     invoke-virtual {v1, v5}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->findViewById(I)Landroid/view/View;
@@ -1553,14 +1563,14 @@
 
     check-cast v1, Landroid/widget/ImageButton;
 
-    const v3, 0x7f020130
+    const v3, 0x7f020128
 
     invoke-virtual {v1, v3}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 711
+    .line 703
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
-    const v3, 0x7f0d0107
+    const v3, 0x7f0d010b
 
     invoke-virtual {v1, v3}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->findViewById(I)Landroid/view/View;
 
@@ -1568,13 +1578,13 @@
 
     check-cast v1, Landroid/widget/ImageButton;
 
-    const v3, 0x7f020153
+    const v3, 0x7f02014d
 
     invoke-virtual {v1, v3}, Landroid/widget/ImageButton;->setImageResource(I)V
 
     goto :goto_3
 
-    .line 720
+    .line 712
     :cond_a
     if-eqz p1, :cond_b
 
@@ -1585,7 +1595,7 @@
     :cond_b
     move v0, v2
 
-    .line 721
+    .line 713
     .local v0, select:Z
     :cond_c
     if-eqz v0, :cond_d
@@ -1599,10 +1609,10 @@
 
     move p1, v0
 
-    .line 728
+    .line 720
     goto/16 :goto_0
 
-    .line 721
+    .line 713
     :cond_d
     const/4 v1, 0x0
 
@@ -1614,13 +1624,13 @@
     .parameter "effect"
 
     .prologue
-    .line 521
+    .line 509
     if-eqz p1, :cond_0
 
-    .line 522
+    .line 510
     invoke-virtual {p1}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->clearImageButtonBounds()V
 
-    .line 523
+    .line 511
     invoke-virtual {p1}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->getEffectName()Ljava/lang/String;
 
     move-result-object v0
@@ -1629,7 +1639,7 @@
 
     invoke-virtual {p0, v0, v1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->setStateByEffectName(Ljava/lang/String;Z)V
 
-    .line 525
+    .line 513
     :cond_0
     return-void
 .end method
@@ -1638,7 +1648,7 @@
     .locals 6
 
     .prologue
-    .line 528
+    .line 516
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->mEffectState:Ljava/util/Map;
 
     invoke-interface {v4}, Ljava/util/Map;->entrySet()Ljava/util/Set;
@@ -1664,7 +1674,7 @@
 
     check-cast v0, Ljava/util/Map$Entry;
 
-    .line 529
+    .line 517
     .local v0, ent:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Ljava/lang/String;Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;>;"
     invoke-interface {v0}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
@@ -1676,14 +1686,14 @@
 
     invoke-virtual {p0, v4, v5}, Lcom/android/gallery3d/photoeditor/EffectsBar;->setStateByEffectName(Ljava/lang/String;Z)V
 
-    .line 530
+    .line 518
     invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
     move-result-object v2
 
     check-cast v2, Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;
 
-    .line 531
+    .line 519
     .local v2, state:Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->activeEffects:Landroid/view/ViewGroup;
 
@@ -1696,7 +1706,7 @@
 
     move-result-object v3
 
-    .line 532
+    .line 520
     .local v3, v:Landroid/view/View;
     if-eqz v3, :cond_0
 
@@ -1706,7 +1716,7 @@
 
     if-eqz v4, :cond_0
 
-    .line 533
+    .line 521
     check-cast v3, Lcom/android/gallery3d/photoeditor/actions/EffectAction;
 
     .end local v3           #v:Landroid/view/View;
@@ -1714,7 +1724,7 @@
 
     goto :goto_0
 
-    .line 536
+    .line 524
     .end local v0           #ent:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Ljava/lang/String;Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;>;"
     .end local v2           #state:Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;
     :cond_1
@@ -1722,12 +1732,12 @@
 
     if-eqz v4, :cond_2
 
-    .line 537
+    .line 525
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsGallery:Landroid/view/View;
 
     invoke-virtual {v4}, Landroid/view/View;->invalidate()V
 
-    .line 539
+    .line 527
     :cond_2
     return-void
 .end method
@@ -1736,8 +1746,8 @@
     .locals 1
 
     .prologue
-    .line 498
-    const v0, 0x7f0d011e
+    .line 486
+    const v0, 0x7f0d0133
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->findViewById(I)Landroid/view/View;
 
@@ -1745,7 +1755,7 @@
 
     invoke-virtual {v0}, Landroid/view/View;->performClick()Z
 
-    .line 499
+    .line 487
     return-void
 .end method
 
@@ -1754,10 +1764,10 @@
     .parameter "action"
 
     .prologue
-    .line 660
+    .line 652
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
-    const v1, 0x7f0d00ff
+    const v1, 0x7f0d0103
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->findViewById(I)Landroid/view/View;
 
@@ -1771,7 +1781,7 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 661
+    .line 653
     return-void
 .end method
 
@@ -1779,36 +1789,36 @@
     .locals 4
 
     .prologue
-    .line 647
+    .line 639
     iget v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->currentEffectId:I
 
-    .line 648
+    .line 640
     .local v0, selectedId:I
     const-string v1, ""
 
-    .line 649
+    .line 641
     .local v1, text:Ljava/lang/String;
-    const v2, 0x7f040053
+    const v2, 0x7f040058
 
     if-ne v0, v2, :cond_1
 
-    .line 650
+    .line 642
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->getResources()Landroid/content/res/Resources;
 
     move-result-object v2
 
-    const v3, 0x7f0a010c
+    const v3, 0x7f0a0117
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 656
+    .line 648
     :cond_0
     :goto_0
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
-    const v3, 0x7f0d00ff
+    const v3, 0x7f0d0103
 
     invoke-virtual {v2, v3}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->findViewById(I)Landroid/view/View;
 
@@ -1818,21 +1828,21 @@
 
     invoke-virtual {v2, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 657
+    .line 649
     return-void
 
-    .line 651
+    .line 643
     :cond_1
-    const v2, 0x7f040056
+    const v2, 0x7f04005b
 
     if-ne v0, v2, :cond_2
 
-    .line 652
+    .line 644
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->getResources()Landroid/content/res/Resources;
 
     move-result-object v2
 
-    const v3, 0x7f0a010d
+    const v3, 0x7f0a0118
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -1840,18 +1850,18 @@
 
     goto :goto_0
 
-    .line 653
+    .line 645
     :cond_2
-    const v2, 0x7f040057
+    const v2, 0x7f04005c
 
     if-ne v0, v2, :cond_0
 
-    .line 654
+    .line 646
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->getResources()Landroid/content/res/Resources;
 
     move-result-object v2
 
-    const v3, 0x7f0a010e
+    const v3, 0x7f0a0119
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -1866,20 +1876,20 @@
     .prologue
     const/4 v7, 0x0
 
-    .line 387
+    .line 395
     iget-boolean v4, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isInMarkedMode:Z
 
     if-nez v4, :cond_1
 
-    .line 388
+    .line 396
     const/4 v4, 0x1
 
     iput-boolean v4, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isInMarkedMode:Z
 
-    .line 389
+    .line 397
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->inflater:Landroid/view/LayoutInflater;
 
-    const v5, 0x7f040055
+    const v5, 0x7f04005a
 
     const/4 v6, 0x0
 
@@ -1889,17 +1899,17 @@
 
     check-cast v2, Landroid/view/ViewGroup;
 
-    .line 390
+    .line 398
     .local v2, effects:Landroid/view/ViewGroup;
     const/4 v1, 0x0
 
-    .line 391
+    .line 399
     .local v1, doodleAction:Lcom/android/gallery3d/photoeditor/actions/EffectAction;
     invoke-virtual {v2, v7}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
 
     move-result-object v0
 
-    .line 392
+    .line 400
     .local v0, child:Landroid/view/View;
     const-string v4, "DoodleFilter"
 
@@ -1915,19 +1925,19 @@
 
     move-object v1, v0
 
-    .line 393
+    .line 401
     check-cast v1, Lcom/android/gallery3d/photoeditor/actions/EffectAction;
 
-    .line 395
+    .line 403
     :cond_0
     iput-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->activeEffect:Lcom/android/gallery3d/photoeditor/actions/EffectAction;
 
-    .line 396
+    .line 404
     new-instance v3, Lcom/android/gallery3d/photoeditor/EffectsBar$5;
 
     invoke-direct {v3, p0}, Lcom/android/gallery3d/photoeditor/EffectsBar$5;-><init>(Lcom/android/gallery3d/photoeditor/EffectsBar;)V
 
-    .line 404
+    .line 412
     .local v3, listener:Lcom/android/gallery3d/photoeditor/actions/EffectAction$ActionListener;
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->activeEffect:Lcom/android/gallery3d/photoeditor/actions/EffectAction;
 
@@ -1939,7 +1949,7 @@
 
     invoke-virtual {v4, v5, v6, v3, v7}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->begin(Landroid/view/View;Lcom/android/gallery3d/photoeditor/FilterStack;Lcom/android/gallery3d/photoeditor/actions/EffectAction$ActionListener;Z)V
 
-    .line 407
+    .line 415
     .end local v0           #child:Landroid/view/View;
     .end local v1           #doodleAction:Lcom/android/gallery3d/photoeditor/actions/EffectAction;
     .end local v2           #effects:Landroid/view/ViewGroup;
@@ -1955,51 +1965,51 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 453
+    .line 461
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
 
     invoke-virtual {v1}, Lcom/android/gallery3d/photoeditor/EffectsMenu;->clearSelected()V
 
-    .line 455
+    .line 463
     invoke-direct {p0, p1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->exitActiveEffect(Ljava/lang/Runnable;)Z
 
     move-result v1
 
     if-eqz v1, :cond_1
 
-    .line 456
+    .line 464
     iput-boolean v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isSetupEffectClick:Z
 
-    .line 457
+    .line 465
     const/4 v0, 0x1
 
-    .line 467
+    .line 475
     :cond_0
     :goto_0
     return v0
 
-    .line 459
+    .line 467
     :cond_1
     iget-boolean v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isSetupEffectClick:Z
 
     if-eqz v1, :cond_2
 
-    .line 460
+    .line 468
     iput-boolean v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isSetupEffectClick:Z
 
     goto :goto_0
 
-    .line 463
+    .line 471
     :cond_2
     invoke-direct {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->exitEffectsGallery()Z
 
     move-result v0
 
-    .line 464
+    .line 472
     .local v0, exited:Z
     if-eqz p1, :cond_0
 
-    .line 465
+    .line 473
     invoke-interface {p1}, Ljava/lang/Runnable;->run()V
 
     goto :goto_0
@@ -2009,7 +2019,7 @@
     .locals 1
 
     .prologue
-    .line 643
+    .line 635
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->lastEffectAction:Lcom/android/gallery3d/photoeditor/actions/EffectAction;
 
     return-object v0
@@ -2019,7 +2029,7 @@
     .locals 1
 
     .prologue
-    .line 732
+    .line 724
     iget v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->currentEffectId:I
 
     return v0
@@ -2030,7 +2040,7 @@
     .parameter "name"
 
     .prologue
-    .line 602
+    .line 594
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->mEffectState:Ljava/util/Map;
 
     invoke-interface {v1, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -2039,24 +2049,24 @@
 
     check-cast v0, Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;
 
-    .line 603
+    .line 595
     .local v0, state:Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;
     if-eqz v0, :cond_0
 
-    .line 604
+    .line 596
     invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;->getEffectState()Z
 
     move-result v1
 
     if-eqz v1, :cond_0
 
-    .line 605
+    .line 597
     #getter for: Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;->mEffectId:I
     invoke-static {v0}, Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;->access$1700(Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;)I
 
     move-result v1
 
-    .line 607
+    .line 599
     :goto_0
     return v1
 
@@ -2073,23 +2083,23 @@
     .parameter "isMarkedMode"
 
     .prologue
-    const v2, 0x7f020130
+    const v2, 0x7f020128
 
-    .line 110
+    .line 116
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->filterStack:Lcom/android/gallery3d/photoeditor/FilterStack;
 
-    .line 111
+    .line 117
     iput-object p2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
-    .line 112
+    .line 118
     invoke-static {}, Lcom/android/gallery3d/photoeditor/actions/FilterCommonParameter;->getInstance()Lcom/android/gallery3d/photoeditor/actions/FilterCommonParameter;
 
     move-result-object v0
 
     invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/actions/FilterCommonParameter;->setDefaultValue()V
 
-    .line 113
-    const v0, 0x7f0d0122
+    .line 119
+    const v0, 0x7f0d0139
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->findViewById(I)Landroid/view/View;
 
@@ -2099,18 +2109,18 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
 
-    .line 114
+    .line 120
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
 
     invoke-virtual {v0, p3}, Lcom/android/gallery3d/photoeditor/EffectsMenu;->setIsMarkedMode(Z)V
 
-    .line 116
+    .line 122
     if-nez p3, :cond_0
 
-    .line 117
+    .line 123
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
 
-    const v1, 0x7f0d0119
+    const v1, 0x7f0d012e
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/EffectsMenu;->findViewById(I)Landroid/view/View;
 
@@ -2120,10 +2130,10 @@
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 119
+    .line 125
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
-    const v1, 0x7f0d0106
+    const v1, 0x7f0d010a
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->findViewById(I)Landroid/view/View;
 
@@ -2133,7 +2143,10 @@
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 122
+    .line 128
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->setEffectsMenuLongClickListener()V
+
+    .line 129
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
 
     new-instance v1, Lcom/android/gallery3d/photoeditor/EffectsBar$1;
@@ -2142,21 +2155,31 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/EffectsMenu;->setOnToggleListener(Lcom/android/gallery3d/photoeditor/EffectsMenu$OnToggleListener;)V
 
-    .line 195
+    .line 202
     :cond_0
     return-void
+.end method
+
+.method public isGalleryLoadSuccess()Z
+    .locals 1
+
+    .prologue
+    .line 111
+    iget-boolean v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->mIsLoadEffectActionButton:Z
+
+    return v0
 .end method
 
 .method public onResume()V
     .locals 1
 
     .prologue
-    .line 668
+    .line 660
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->paused:Z
 
-    .line 669
+    .line 661
     return-void
 .end method
 
@@ -2165,10 +2188,10 @@
     .parameter "value"
 
     .prologue
-    .line 736
+    .line 728
     iput-boolean p1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->artisticButtonValid:Z
 
-    .line 737
+    .line 729
     return-void
 .end method
 
@@ -2178,12 +2201,12 @@
     .parameter "r"
 
     .prologue
-    .line 510
+    .line 498
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
 
     invoke-virtual {v0, p1, p2}, Lcom/android/gallery3d/photoeditor/EffectsMenu;->setClickRunnable(ILjava/lang/Runnable;)V
 
-    .line 511
+    .line 499
     return-void
 .end method
 
@@ -2192,13 +2215,13 @@
     .parameter "effect"
 
     .prologue
-    .line 514
+    .line 502
     if-eqz p1, :cond_0
 
-    .line 515
+    .line 503
     invoke-virtual {p1}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->drawImageButtonBounds()V
 
-    .line 516
+    .line 504
     invoke-virtual {p1}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->getEffectName()Ljava/lang/String;
 
     move-result-object v0
@@ -2207,8 +2230,21 @@
 
     invoke-virtual {p0, v0, v1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->setStateByEffectName(Ljava/lang/String;Z)V
 
-    .line 518
+    .line 506
     :cond_0
+    return-void
+.end method
+
+.method public setEffectsMenuLongClickListener()V
+    .locals 1
+
+    .prologue
+    .line 530
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/EffectsMenu;->setLongClickListener()V
+
+    .line 531
     return-void
 .end method
 
@@ -2217,10 +2253,10 @@
     .parameter "value"
 
     .prologue
-    .line 740
+    .line 732
     iput-boolean p1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->exposureButtonValid:Z
 
-    .line 741
+    .line 733
     return-void
 .end method
 
@@ -2229,10 +2265,10 @@
     .parameter "isOpenGallery"
 
     .prologue
-    .line 744
+    .line 736
     iput-boolean p1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isOpenGallery:Z
 
-    .line 745
+    .line 737
     return-void
 .end method
 
@@ -2241,7 +2277,7 @@
     .parameter "bitmap"
 
     .prologue
-    .line 198
+    .line 205
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->source:Lcom/android/gallery3d/photoeditor/Photo;
 
     if-nez v0, :cond_0
@@ -2250,48 +2286,48 @@
 
     if-nez v0, :cond_0
 
-    .line 199
+    .line 206
     invoke-static {p1}, Lcom/android/gallery3d/photoeditor/Photo;->create(Landroid/graphics/Bitmap;)Lcom/android/gallery3d/photoeditor/Photo;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->source:Lcom/android/gallery3d/photoeditor/Photo;
 
-    .line 200
+    .line 207
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->mSourceBmp:Landroid/graphics/Bitmap;
 
-    .line 201
+    .line 208
     invoke-static {}, Lcom/android/gallery3d/photoeditor/filters/Filter;->releaseContext()V
 
-    .line 202
-    const v0, 0x7f040053
+    .line 209
+    const v0, 0x7f040058
 
     const/4 v1, 0x0
 
     invoke-direct {p0, v0, v1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->preProcessFilter(II)V
 
-    .line 203
-    const v0, 0x7f040056
+    .line 210
+    const v0, 0x7f04005b
 
     const/16 v1, 0xa
 
     invoke-direct {p0, v0, v1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->preProcessFilter(II)V
 
-    .line 205
+    .line 212
     invoke-static {}, Lcom/android/gallery3d/photoeditor/filters/Filter;->releaseContext()V
 
-    .line 206
+    .line 213
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->source:Lcom/android/gallery3d/photoeditor/Photo;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/Photo;->clear()V
 
-    .line 208
+    .line 215
     :cond_0
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->isOpenGallery:Z
 
-    .line 209
+    .line 216
     return-void
 .end method
 
@@ -2301,7 +2337,7 @@
     .parameter "isSelect"
 
     .prologue
-    .line 611
+    .line 603
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->mEffectState:Ljava/util/Map;
 
     invoke-interface {v1, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -2310,19 +2346,19 @@
 
     check-cast v0, Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;
 
-    .line 612
+    .line 604
     .local v0, state:Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;
     if-eqz v0, :cond_0
 
-    .line 613
+    .line 605
     invoke-virtual {v0, p2}, Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;->setEffectState(Z)V
 
-    .line 614
+    .line 606
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->mEffectState:Ljava/util/Map;
 
     invoke-interface {v1, p1, v0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 616
+    .line 608
     :cond_0
     return-void
 .end method
@@ -2331,12 +2367,12 @@
     .locals 1
 
     .prologue
-    .line 106
+    .line 107
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->filterStack:Lcom/android/gallery3d/photoeditor/FilterStack;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/FilterStack;->setTopFilterApplied()V
 
-    .line 107
+    .line 108
     return-void
 .end method
 
@@ -2346,21 +2382,12 @@
     .parameter "enabled"
 
     .prologue
-    .line 506
+    .line 494
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
 
     invoke-virtual {v0, p1, p2}, Lcom/android/gallery3d/photoeditor/EffectsMenu;->setViewEnabled(IZ)V
 
-    .line 507
-    return-void
-.end method
-
-.method public showSaveOrApply(Z)V
-    .locals 0
-    .parameter "showSave"
-
-    .prologue
-    .line 480
+    .line 495
     return-void
 .end method
 
@@ -2369,32 +2396,32 @@
     .parameter "isLandscapeMode"
 
     .prologue
-    const v9, 0x7f040056
+    const v9, 0x7f04005b
 
-    const v8, 0x7f020154
+    const v8, 0x7f02014e
 
-    const v7, 0x7f020153
+    const v7, 0x7f02014d
 
-    const v6, 0x7f020130
+    const v6, 0x7f020128
 
-    const v5, 0x7f02012f
+    const v5, 0x7f020127
 
-    .line 543
+    .line 535
     iget v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->currentEffectId:I
 
-    const v4, 0x7f040053
+    const v4, 0x7f040058
 
     if-ne v3, v4, :cond_2
 
-    .line 544
+    .line 536
     iget-boolean v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->artisticButtonValid:Z
 
     if-eqz v3, :cond_0
 
-    .line 545
+    .line 537
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
 
-    const v4, 0x7f0d0119
+    const v4, 0x7f0d012e
 
     invoke-virtual {v3, v4}, Lcom/android/gallery3d/photoeditor/EffectsMenu;->findViewById(I)Landroid/view/View;
 
@@ -2404,10 +2431,10 @@
 
     invoke-virtual {v3, v6}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 546
+    .line 538
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
 
-    const v4, 0x7f0d011a
+    const v4, 0x7f0d012f
 
     invoke-virtual {v3, v4}, Lcom/android/gallery3d/photoeditor/EffectsMenu;->findViewById(I)Landroid/view/View;
 
@@ -2417,10 +2444,10 @@
 
     invoke-virtual {v3, v7}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 548
+    .line 540
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
-    const v4, 0x7f0d0106
+    const v4, 0x7f0d010a
 
     invoke-virtual {v3, v4}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->findViewById(I)Landroid/view/View;
 
@@ -2430,10 +2457,10 @@
 
     invoke-virtual {v3, v6}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 549
+    .line 541
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
-    const v4, 0x7f0d0107
+    const v4, 0x7f0d010b
 
     invoke-virtual {v3, v4}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->findViewById(I)Landroid/view/View;
 
@@ -2443,22 +2470,22 @@
 
     invoke-virtual {v3, v7}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 560
+    .line 552
     :cond_0
     :goto_0
     iget v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->currentEffectId:I
 
     if-ne v3, v9, :cond_5
 
-    .line 561
+    .line 553
     if-eqz p1, :cond_3
 
-    .line 562
+    .line 554
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->activeEffects:Landroid/view/ViewGroup;
 
     if-eqz v3, :cond_5
 
-    .line 563
+    .line 555
     const/4 v0, 0x0
 
     .local v0, i:I
@@ -2471,18 +2498,18 @@
 
     if-ge v0, v3, :cond_5
 
-    .line 564
+    .line 556
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->activeEffects:Landroid/view/ViewGroup;
 
     invoke-virtual {v3, v0}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
 
     move-result-object v2
 
-    .line 565
+    .line 557
     .local v2, v:Landroid/view/View;
     if-eqz v2, :cond_1
 
-    .line 566
+    .line 558
     new-instance v1, Landroid/widget/LinearLayout$LayoutParams;
 
     invoke-virtual {v2}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
@@ -2491,13 +2518,13 @@
 
     invoke-direct {v1, v3}, Landroid/widget/LinearLayout$LayoutParams;-><init>(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 567
+    .line 559
     .local v1, params:Landroid/widget/LinearLayout$LayoutParams;
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->getResources()Landroid/content/res/Resources;
 
     move-result-object v3
 
-    const v4, 0x7f09014b
+    const v4, 0x7f0902b3
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -2505,12 +2532,12 @@
 
     iput v3, v1, Landroid/widget/LinearLayout$LayoutParams;->leftMargin:I
 
-    .line 568
+    .line 560
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->getResources()Landroid/content/res/Resources;
 
     move-result-object v3
 
-    const v4, 0x7f09014b
+    const v4, 0x7f0902b3
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -2518,12 +2545,12 @@
 
     iput v3, v1, Landroid/widget/LinearLayout$LayoutParams;->rightMargin:I
 
-    .line 569
+    .line 561
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->getResources()Landroid/content/res/Resources;
 
     move-result-object v3
 
-    const v4, 0x7f09013c
+    const v4, 0x7f0902a4
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -2531,17 +2558,17 @@
 
     iput v3, v1, Landroid/widget/LinearLayout$LayoutParams;->topMargin:I
 
-    .line 570
+    .line 562
     invoke-virtual {v2, v1}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 563
+    .line 555
     .end local v1           #params:Landroid/widget/LinearLayout$LayoutParams;
     :cond_1
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_1
 
-    .line 551
+    .line 543
     .end local v0           #i:I
     .end local v2           #v:Landroid/view/View;
     :cond_2
@@ -2549,15 +2576,15 @@
 
     if-ne v3, v9, :cond_0
 
-    .line 552
+    .line 544
     iget-boolean v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->exposureButtonValid:Z
 
     if-eqz v3, :cond_0
 
-    .line 553
+    .line 545
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
 
-    const v4, 0x7f0d0119
+    const v4, 0x7f0d012e
 
     invoke-virtual {v3, v4}, Lcom/android/gallery3d/photoeditor/EffectsMenu;->findViewById(I)Landroid/view/View;
 
@@ -2567,10 +2594,10 @@
 
     invoke-virtual {v3, v5}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 554
+    .line 546
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
 
-    const v4, 0x7f0d011a
+    const v4, 0x7f0d012f
 
     invoke-virtual {v3, v4}, Lcom/android/gallery3d/photoeditor/EffectsMenu;->findViewById(I)Landroid/view/View;
 
@@ -2580,10 +2607,10 @@
 
     invoke-virtual {v3, v8}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 556
+    .line 548
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
-    const v4, 0x7f0d0106
+    const v4, 0x7f0d010a
 
     invoke-virtual {v3, v4}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->findViewById(I)Landroid/view/View;
 
@@ -2593,10 +2620,10 @@
 
     invoke-virtual {v3, v5}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 557
+    .line 549
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
-    const v4, 0x7f0d0107
+    const v4, 0x7f0d010b
 
     invoke-virtual {v3, v4}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->findViewById(I)Landroid/view/View;
 
@@ -2608,13 +2635,13 @@
 
     goto/16 :goto_0
 
-    .line 575
+    .line 567
     :cond_3
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->activeEffects:Landroid/view/ViewGroup;
 
     if-eqz v3, :cond_5
 
-    .line 576
+    .line 568
     const/4 v0, 0x0
 
     .restart local v0       #i:I
@@ -2627,18 +2654,18 @@
 
     if-ge v0, v3, :cond_5
 
-    .line 577
+    .line 569
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->activeEffects:Landroid/view/ViewGroup;
 
     invoke-virtual {v3, v0}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
 
     move-result-object v2
 
-    .line 578
+    .line 570
     .restart local v2       #v:Landroid/view/View;
     if-eqz v2, :cond_4
 
-    .line 579
+    .line 571
     new-instance v1, Landroid/widget/LinearLayout$LayoutParams;
 
     invoke-virtual {v2}, Landroid/view/View;->getWidth()I
@@ -2651,13 +2678,13 @@
 
     invoke-direct {v1, v3, v4}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
-    .line 580
+    .line 572
     .restart local v1       #params:Landroid/widget/LinearLayout$LayoutParams;
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->getResources()Landroid/content/res/Resources;
 
     move-result-object v3
 
-    const v4, 0x7f09014a
+    const v4, 0x7f0902b2
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -2665,12 +2692,12 @@
 
     iput v3, v1, Landroid/widget/LinearLayout$LayoutParams;->leftMargin:I
 
-    .line 581
+    .line 573
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->getResources()Landroid/content/res/Resources;
 
     move-result-object v3
 
-    const v4, 0x7f09014a
+    const v4, 0x7f0902b2
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -2678,12 +2705,12 @@
 
     iput v3, v1, Landroid/widget/LinearLayout$LayoutParams;->rightMargin:I
 
-    .line 582
+    .line 574
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->getResources()Landroid/content/res/Resources;
 
     move-result-object v3
 
-    const v4, 0x7f09013c
+    const v4, 0x7f0902a4
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -2691,17 +2718,17 @@
 
     iput v3, v1, Landroid/widget/LinearLayout$LayoutParams;->topMargin:I
 
-    .line 583
+    .line 575
     invoke-virtual {v2, v1}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 576
+    .line 568
     .end local v1           #params:Landroid/widget/LinearLayout$LayoutParams;
     :cond_4
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_2
 
-    .line 590
+    .line 582
     .end local v0           #i:I
     .end local v2           #v:Landroid/view/View;
     :cond_5
@@ -2709,64 +2736,42 @@
 .end method
 
 .method public updateSave(Z)V
-    .locals 4
+    .locals 2
     .parameter "canSave"
 
     .prologue
-    const/4 v3, 0x1
+    .line 479
+    const v0, 0x7f0d0134
 
-    .line 483
-    const v1, 0x7f0d011e
+    invoke-virtual {p0, v0, p1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->setViewEnabled(IZ)V
 
-    invoke-virtual {p0, v1, p1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->setViewEnabled(IZ)V
+    .line 480
+    const v0, 0x7f0d0133
 
-    .line 484
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
+    invoke-virtual {p0, v0, p1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->setViewEnabled(IZ)V
 
-    const v2, 0x7f0d0109
+    .line 481
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
-    invoke-virtual {v1, v2}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->findViewById(I)Landroid/view/View;
+    const v1, 0x7f0d010e
 
-    move-result-object v1
-
-    invoke-virtual {v1, p1}, Landroid/view/View;->setEnabled(Z)V
-
-    .line 485
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->filterStack:Lcom/android/gallery3d/photoeditor/FilterStack;
-
-    invoke-virtual {v1}, Lcom/android/gallery3d/photoeditor/FilterStack;->getTopFilter()Lcom/android/gallery3d/photoeditor/filters/Filter;
+    invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
-    .line 486
-    .local v0, filter:Lcom/android/gallery3d/photoeditor/filters/Filter;
-    if-nez v0, :cond_0
+    invoke-virtual {v0, p1}, Landroid/view/View;->setEnabled(Z)V
 
-    .line 487
-    invoke-virtual {p0, v3}, Lcom/android/gallery3d/photoeditor/EffectsBar;->showSaveOrApply(Z)V
+    .line 482
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
 
-    .line 495
-    :goto_0
+    const v1, 0x7f0d010d
+
+    invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Landroid/view/View;->setEnabled(Z)V
+
+    .line 483
     return-void
-
-    .line 489
-    :cond_0
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/filters/Filter;->isApplied()Z
-
-    move-result v1
-
-    if-eqz v1, :cond_1
-
-    .line 490
-    invoke-virtual {p0, v3}, Lcom/android/gallery3d/photoeditor/EffectsBar;->showSaveOrApply(Z)V
-
-    goto :goto_0
-
-    .line 492
-    :cond_1
-    const/4 v1, 0x0
-
-    invoke-virtual {p0, v1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->showSaveOrApply(Z)V
-
-    goto :goto_0
 .end method

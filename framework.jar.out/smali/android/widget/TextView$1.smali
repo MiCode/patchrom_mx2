@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 3203
+    .line 3216
     iput-object p1, p0, Landroid/widget/TextView$1;->this$0:Landroid/widget/TextView;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,23 +42,23 @@
     .parameter "shown"
 
     .prologue
-    .line 3206
+    .line 3219
     iget-object v1, p0, Landroid/widget/TextView$1;->this$0:Landroid/widget/TextView;
 
     invoke-virtual {v1}, Landroid/widget/TextView;->getHandler()Landroid/os/Handler;
 
     move-result-object v0
 
-    .line 3207
+    .line 3220
     .local v0, vh:Landroid/os/Handler;
     if-nez v0, :cond_1
 
-    .line 3222
+    .line 3235
     :cond_0
     :goto_0
     return-void
 
-    .line 3210
+    .line 3223
     :cond_1
     invoke-virtual {v0}, Landroid/os/Handler;->getLooper()Landroid/os/Looper;
 
@@ -70,7 +70,7 @@
 
     if-ne v1, v2, :cond_2
 
-    .line 3211
+    .line 3224
     iget-object v1, p0, Landroid/widget/TextView$1;->this$0:Landroid/widget/TextView;
 
     #calls: Landroid/widget/TextView;->updateCurrentCursorVisbility(Z)Z
@@ -80,14 +80,14 @@
 
     if-eqz v1, :cond_0
 
-    .line 3212
+    .line 3225
     iget-object v1, p0, Landroid/widget/TextView$1;->this$0:Landroid/widget/TextView;
 
     invoke-virtual {v1}, Landroid/widget/TextView;->invalidate()V
 
     goto :goto_0
 
-    .line 3215
+    .line 3228
     :cond_2
     new-instance v1, Landroid/widget/TextView$1$1;
 

@@ -67,70 +67,70 @@
 
     const/4 v0, -0x1
 
-    .line 455
+    .line 456
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 456
+    .line 457
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->slotWidth:I
 
-    .line 457
+    .line 458
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->slotHeight:I
 
-    .line 458
+    .line 459
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->videoSlotWidth:I
 
-    .line 459
+    .line 460
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->videoSlotHeight:I
 
-    .line 460
+    .line 461
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->slotGapV:I
 
-    .line 461
+    .line 462
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->slotGapH:I
 
-    .line 462
+    .line 463
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->videoSlotGapV:I
 
-    .line 463
+    .line 464
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->minSlotGap:I
 
-    .line 464
+    .line 465
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->maxTotalSlotGap:I
 
-    .line 466
+    .line 467
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->rowsLand:I
 
-    .line 467
+    .line 468
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->rowsPort:I
 
-    .line 468
+    .line 469
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->slotGap:I
 
-    .line 470
+    .line 471
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->padding:I
 
-    .line 471
+    .line 472
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->paddingHori:I
 
-    .line 473
+    .line 474
     iput v1, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->headerHeight:I
 
-    .line 475
+    .line 476
     iput v1, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->headerTextHeight:I
 
-    .line 476
+    .line 477
     iput v1, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->headerTextMarginLeft:I
 
-    .line 477
+    .line 478
     iput v1, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->headerTextMarginTop:I
 
-    .line 478
+    .line 479
     iput v1, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->headerTextFontSize:I
 
-    .line 480
+    .line 481
     iput v1, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->headerSeperatorHeight:I
 
-    .line 481
+    .line 482
     iput v1, p0, Lcom/android/gallery3d/ui/SlotView$Spec;->headerSeperatorMargin:I
 
     return-void

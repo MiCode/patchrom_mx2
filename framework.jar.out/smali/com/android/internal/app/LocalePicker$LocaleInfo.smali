@@ -42,7 +42,7 @@
     .locals 1
 
     .prologue
-    .line 54
+    .line 60
     invoke-static {}, Ljava/text/Collator;->getInstance()Ljava/text/Collator;
 
     move-result-object v0
@@ -58,16 +58,16 @@
     .parameter "locale"
 
     .prologue
-    .line 59
+    .line 65
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 60
+    .line 66
     iput-object p1, p0, Lcom/android/internal/app/LocalePicker$LocaleInfo;->label:Ljava/lang/String;
 
-    .line 61
+    .line 67
     iput-object p2, p0, Lcom/android/internal/app/LocalePicker$LocaleInfo;->locale:Ljava/util/Locale;
 
-    .line 62
+    .line 68
     return-void
 .end method
 
@@ -82,10 +82,10 @@
 
     const/4 v1, -0x1
 
-    .line 79
+    .line 85
     iget-object v0, p1, Lcom/android/internal/app/LocalePicker$LocaleInfo;->locale:Ljava/util/Locale;
 
-    .line 81
+    .line 87
     .local v0, locale:Ljava/util/Locale;
     iget-object v3, p0, Lcom/android/internal/app/LocalePicker$LocaleInfo;->locale:Ljava/util/Locale;
 
@@ -113,7 +113,7 @@
 
     if-eqz v3, :cond_4
 
-    .line 83
+    .line 89
     :cond_0
     iget-object v3, p0, Lcom/android/internal/app/LocalePicker$LocaleInfo;->locale:Ljava/util/Locale;
 
@@ -125,12 +125,12 @@
 
     if-eqz v3, :cond_2
 
-    .line 96
+    .line 102
     :cond_1
     :goto_0
     return v1
 
-    .line 86
+    .line 92
     :cond_2
     iget-object v3, p0, Lcom/android/internal/app/LocalePicker$LocaleInfo;->locale:Ljava/util/Locale;
 
@@ -152,10 +152,10 @@
 
     move v1, v2
 
-    .line 88
+    .line 94
     goto :goto_0
 
-    .line 89
+    .line 95
     :cond_3
     iget-object v3, p0, Lcom/android/internal/app/LocalePicker$LocaleInfo;->locale:Ljava/util/Locale;
 
@@ -169,10 +169,10 @@
 
     move v1, v2
 
-    .line 92
+    .line 98
     goto :goto_0
 
-    .line 96
+    .line 102
     :cond_4
     sget-object v1, Lcom/android/internal/app/LocalePicker$LocaleInfo;->sCollator:Ljava/text/Collator;
 
@@ -192,7 +192,7 @@
     .parameter "x0"
 
     .prologue
-    .line 53
+    .line 59
     check-cast p1, Lcom/android/internal/app/LocalePicker$LocaleInfo;
 
     .end local p1
@@ -207,7 +207,7 @@
     .locals 1
 
     .prologue
-    .line 65
+    .line 71
     iget-object v0, p0, Lcom/android/internal/app/LocalePicker$LocaleInfo;->label:Ljava/lang/String;
 
     return-object v0
@@ -217,7 +217,7 @@
     .locals 1
 
     .prologue
-    .line 69
+    .line 75
     iget-object v0, p0, Lcom/android/internal/app/LocalePicker$LocaleInfo;->locale:Ljava/util/Locale;
 
     return-object v0
@@ -227,7 +227,7 @@
     .locals 1
 
     .prologue
-    .line 74
+    .line 80
     iget-object v0, p0, Lcom/android/internal/app/LocalePicker$LocaleInfo;->label:Ljava/lang/String;
 
     return-object v0

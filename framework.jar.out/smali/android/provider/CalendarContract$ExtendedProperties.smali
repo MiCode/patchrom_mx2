@@ -28,7 +28,7 @@
     .locals 1
 
     .prologue
-    .line 2515
+    .line 2543
     const-string v0, "content://com.android.calendar/extendedproperties"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
@@ -44,7 +44,7 @@
     .locals 0
 
     .prologue
-    .line 2521
+    .line 2549
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void

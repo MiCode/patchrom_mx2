@@ -46,27 +46,27 @@
     .parameter "index"
 
     .prologue
-    .line 773
+    .line 776
     iput-object p1, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 770
+    .line 773
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mLoadingState:I
 
-    .line 771
+    .line 774
     new-instance v0, Lcom/android/gallery3d/ui/PhotoView$Size;
 
     invoke-direct {v0}, Lcom/android/gallery3d/ui/PhotoView$Size;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mSize:Lcom/android/gallery3d/ui/PhotoView$Size;
 
-    .line 774
+    .line 777
     iput p2, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mIndex:I
 
-    .line 775
+    .line 778
     return-void
 .end method
 
@@ -74,7 +74,7 @@
     .locals 1
 
     .prologue
-    .line 853
+    .line 856
     iget-object v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mScreenNail:Lcom/android/gallery3d/ui/ScreenNail;
 
     if-eqz v0, :cond_0
@@ -98,12 +98,12 @@
     .locals 5
 
     .prologue
-    .line 868
+    .line 871
     iget-boolean v2, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mIsPanorama:Z
 
     if-eqz v2, :cond_0
 
-    .line 869
+    .line 872
     iget-object v2, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
     #calls: Lcom/android/gallery3d/ui/PhotoView;->getPanoramaRotation()I
@@ -113,13 +113,13 @@
 
     iput v2, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mRotation:I
 
-    .line 876
+    .line 879
     :goto_0
     iget-object v2, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mScreenNail:Lcom/android/gallery3d/ui/ScreenNail;
 
     if-eqz v2, :cond_2
 
-    .line 877
+    .line 880
     iget-object v2, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mSize:Lcom/android/gallery3d/ui/PhotoView$Size;
 
     iget-object v3, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mScreenNail:Lcom/android/gallery3d/ui/ScreenNail;
@@ -130,7 +130,7 @@
 
     iput v3, v2, Lcom/android/gallery3d/ui/PhotoView$Size;->width:I
 
-    .line 878
+    .line 881
     iget-object v2, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mSize:Lcom/android/gallery3d/ui/PhotoView$Size;
 
     iget-object v3, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mScreenNail:Lcom/android/gallery3d/ui/ScreenNail;
@@ -141,19 +141,19 @@
 
     iput v3, v2, Lcom/android/gallery3d/ui/PhotoView$Size;->height:I
 
-    .line 885
+    .line 888
     :goto_1
     iget-object v2, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mSize:Lcom/android/gallery3d/ui/PhotoView$Size;
 
     iget v1, v2, Lcom/android/gallery3d/ui/PhotoView$Size;->width:I
 
-    .line 886
+    .line 889
     .local v1, w:I
     iget-object v2, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mSize:Lcom/android/gallery3d/ui/PhotoView$Size;
 
     iget v0, v2, Lcom/android/gallery3d/ui/PhotoView$Size;->height:I
 
-    .line 887
+    .line 890
     .local v0, h:I
     iget-object v2, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mSize:Lcom/android/gallery3d/ui/PhotoView$Size;
 
@@ -166,7 +166,7 @@
 
     iput v3, v2, Lcom/android/gallery3d/ui/PhotoView$Size;->width:I
 
-    .line 888
+    .line 891
     iget-object v2, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mSize:Lcom/android/gallery3d/ui/PhotoView$Size;
 
     iget v3, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mRotation:I
@@ -178,10 +178,10 @@
 
     iput v3, v2, Lcom/android/gallery3d/ui/PhotoView$Size;->height:I
 
-    .line 889
+    .line 892
     return-void
 
-    .line 870
+    .line 873
     .end local v0           #h:I
     .end local v1           #w:I
     :cond_0
@@ -189,7 +189,7 @@
 
     if-eqz v2, :cond_1
 
-    .line 871
+    .line 874
     iget-object v2, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
     #calls: Lcom/android/gallery3d/ui/PhotoView;->getCameraRotation()I
@@ -201,7 +201,7 @@
 
     goto :goto_0
 
-    .line 873
+    .line 876
     :cond_1
     iget-object v2, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
@@ -220,7 +220,7 @@
 
     goto :goto_0
 
-    .line 882
+    .line 885
     :cond_2
     iget-object v2, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
@@ -246,14 +246,14 @@
     .parameter "r"
 
     .prologue
-    .line 795
+    .line 798
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mScreenNail:Lcom/android/gallery3d/ui/ScreenNail;
 
     if-nez v3, :cond_1
 
-    .line 798
+    .line 801
     move-object/from16 v0, p0
 
     iget v3, v0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mIndex:I
@@ -284,7 +284,7 @@
 
     if-gt v3, v4, :cond_0
 
-    .line 799
+    .line 802
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
@@ -296,12 +296,12 @@
     #calls: Lcom/android/gallery3d/ui/PhotoView;->drawPlaceHolder(Lcom/android/gallery3d/ui/GLCanvas;Landroid/graphics/Rect;)V
     invoke-static {v3, v0, v1}, Lcom/android/gallery3d/ui/PhotoView;->access$2900(Lcom/android/gallery3d/ui/PhotoView;Lcom/android/gallery3d/ui/GLCanvas;Landroid/graphics/Rect;)V
 
-    .line 850
+    .line 853
     :cond_0
     :goto_0
     return-void
 
-    .line 803
+    .line 806
     :cond_1
     move-object/from16 v0, p0
 
@@ -311,7 +311,7 @@
 
     move-result v18
 
-    .line 804
+    .line 807
     .local v18, w:I
     move-object/from16 v0, p0
 
@@ -321,7 +321,7 @@
 
     move-result v13
 
-    .line 805
+    .line 808
     .local v13, h:I
     move-object/from16 v0, p2
 
@@ -349,7 +349,7 @@
 
     if-gtz v3, :cond_3
 
-    .line 806
+    .line 809
     :cond_2
     move-object/from16 v0, p0
 
@@ -359,7 +359,7 @@
 
     goto :goto_0
 
-    .line 810
+    .line 813
     :cond_3
     move-object/from16 v0, p0
 
@@ -374,11 +374,11 @@
 
     move-result v12
 
-    .line 811
+    .line 814
     .local v12, filmRatio:F
     const/16 v19, 0x0
 
-    .line 813
+    .line 816
     .local v19, wantsCardEffect:Z
     move-object/from16 v0, p0
 
@@ -402,7 +402,7 @@
 
     const/16 v20, 0x1
 
-    .line 815
+    .line 818
     .local v20, wantsOffsetEffect:Z
     :goto_1
     if-eqz v19, :cond_a
@@ -428,14 +428,14 @@
 
     float-to-int v10, v3
 
-    .line 818
+    .line 821
     .local v10, cx:I
     :goto_2
     invoke-virtual/range {p2 .. p2}, Landroid/graphics/Rect;->centerY()I
 
     move-result v11
 
-    .line 819
+    .line 822
     .local v11, cy:I
     const/4 v3, 0x3
 
@@ -443,7 +443,7 @@
 
     invoke-interface {v0, v3}, Lcom/android/gallery3d/ui/GLCanvas;->save(I)V
 
-    .line 820
+    .line 823
     int-to-float v3, v10
 
     int-to-float v4, v11
@@ -452,10 +452,10 @@
 
     invoke-interface {v0, v3, v4}, Lcom/android/gallery3d/ui/GLCanvas;->translate(FF)V
 
-    .line 821
+    .line 824
     if-eqz v19, :cond_b
 
-    .line 822
+    .line 825
     div-int/lit8 v3, v18, 0x2
 
     invoke-virtual/range {p2 .. p2}, Landroid/graphics/Rect;->centerX()I
@@ -472,7 +472,7 @@
 
     div-float v15, v3, v4
 
-    .line 823
+    .line 826
     .local v15, progress:F
     const/high16 v3, -0x4080
 
@@ -482,7 +482,7 @@
 
     move-result v15
 
-    .line 824
+    .line 827
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
@@ -492,7 +492,7 @@
 
     move-result v9
 
-    .line 825
+    .line 828
     .local v9, alpha:F
     move-object/from16 v0, p0
 
@@ -503,7 +503,7 @@
 
     move-result v17
 
-    .line 826
+    .line 829
     .local v17, scale:F
     const/high16 v3, 0x3f80
 
@@ -512,7 +512,7 @@
 
     move-result v9
 
-    .line 827
+    .line 830
     const/high16 v3, 0x3f80
 
     move/from16 v0, v17
@@ -522,12 +522,12 @@
 
     move-result v17
 
-    .line 828
+    .line 831
     move-object/from16 v0, p1
 
     invoke-interface {v0, v9}, Lcom/android/gallery3d/ui/GLCanvas;->multiplyAlpha(F)V
 
-    .line 829
+    .line 832
     const/high16 v3, 0x3f80
 
     move-object/from16 v0, p1
@@ -538,7 +538,7 @@
 
     invoke-interface {v0, v1, v2, v3}, Lcom/android/gallery3d/ui/GLCanvas;->scale(FFF)V
 
-    .line 835
+    .line 838
     .end local v9           #alpha:F
     .end local v15           #progress:F
     .end local v17           #scale:F
@@ -550,7 +550,7 @@
 
     if-eqz v3, :cond_5
 
-    .line 836
+    .line 839
     move-object/from16 v0, p0
 
     iget v3, v0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mRotation:I
@@ -567,7 +567,7 @@
 
     invoke-interface {v0, v3, v4, v5, v6}, Lcom/android/gallery3d/ui/GLCanvas;->rotate(FFFF)V
 
-    .line 838
+    .line 841
     :cond_5
     move-object/from16 v0, p0
 
@@ -586,7 +586,7 @@
 
     move-result v7
 
-    .line 839
+    .line 842
     .local v7, drawW:I
     move-object/from16 v0, p0
 
@@ -605,7 +605,7 @@
 
     move-result v8
 
-    .line 840
+    .line 843
     .local v8, drawH:I
     move-object/from16 v0, p0
 
@@ -623,27 +623,27 @@
 
     invoke-interface/range {v3 .. v8}, Lcom/android/gallery3d/ui/ScreenNail;->draw(Lcom/android/gallery3d/ui/GLCanvas;IIII)V
 
-    .line 841
+    .line 844
     invoke-direct/range {p0 .. p0}, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->isScreenNailAnimating()Z
 
     move-result v3
 
     if-eqz v3, :cond_6
 
-    .line 842
+    .line 845
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
     invoke-virtual {v3}, Lcom/android/gallery3d/ui/PhotoView;->invalidate()V
 
-    .line 844
+    .line 847
     :cond_6
     invoke-static {v7, v8}, Ljava/lang/Math;->min(II)I
 
     move-result v16
 
-    .line 845
+    .line 848
     .local v16, s:I
     move-object/from16 v0, p0
 
@@ -662,7 +662,7 @@
     #calls: Lcom/android/gallery3d/ui/PhotoView;->drawVideoPlayIcon(Lcom/android/gallery3d/ui/GLCanvas;I)V
     invoke-static {v3, v0, v1}, Lcom/android/gallery3d/ui/PhotoView;->access$2700(Lcom/android/gallery3d/ui/PhotoView;Lcom/android/gallery3d/ui/GLCanvas;I)V
 
-    .line 846
+    .line 849
     :cond_7
     move-object/from16 v0, p0
 
@@ -672,7 +672,7 @@
 
     if-ne v3, v4, :cond_8
 
-    .line 847
+    .line 850
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
@@ -682,13 +682,13 @@
     #calls: Lcom/android/gallery3d/ui/PhotoView;->drawLoadingFailMessage(Lcom/android/gallery3d/ui/GLCanvas;)V
     invoke-static {v3, v0}, Lcom/android/gallery3d/ui/PhotoView;->access$2800(Lcom/android/gallery3d/ui/PhotoView;Lcom/android/gallery3d/ui/GLCanvas;)V
 
-    .line 849
+    .line 852
     :cond_8
     invoke-interface/range {p1 .. p1}, Lcom/android/gallery3d/ui/GLCanvas;->restore()V
 
     goto/16 :goto_0
 
-    .line 813
+    .line 816
     .end local v7           #drawW:I
     .end local v8           #drawH:I
     .end local v10           #cx:I
@@ -700,7 +700,7 @@
 
     goto/16 :goto_1
 
-    .line 815
+    .line 818
     .restart local v20       #wantsOffsetEffect:Z
     :cond_a
     invoke-virtual/range {p2 .. p2}, Landroid/graphics/Rect;->centerX()I
@@ -709,13 +709,13 @@
 
     goto/16 :goto_2
 
-    .line 830
+    .line 833
     .restart local v10       #cx:I
     .restart local v11       #cy:I
     :cond_b
     if-eqz v20, :cond_4
 
-    .line 831
+    .line 834
     invoke-virtual/range {p2 .. p2}, Landroid/graphics/Rect;->centerY()I
 
     move-result v3
@@ -730,7 +730,7 @@
 
     div-float v14, v3, v4
 
-    .line 832
+    .line 835
     .local v14, offset:F
     move-object/from16 v0, p0
 
@@ -741,7 +741,7 @@
 
     move-result v9
 
-    .line 833
+    .line 836
     .restart local v9       #alpha:F
     move-object/from16 v0, p1
 
@@ -754,10 +754,10 @@
     .locals 3
 
     .prologue
-    .line 863
+    .line 866
     invoke-direct {p0}, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->updateSize()V
 
-    .line 864
+    .line 867
     iget-object v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
     #getter for: Lcom/android/gallery3d/ui/PhotoView;->mPositionController:Lcom/android/gallery3d/ui/PositionController;
@@ -771,7 +771,7 @@
 
     invoke-virtual {v0, v1, v2}, Lcom/android/gallery3d/ui/PositionController;->forceImageSize(ILcom/android/gallery3d/ui/PhotoView$Size;)V
 
-    .line 865
+    .line 868
     return-void
 .end method
 
@@ -779,7 +779,7 @@
     .locals 1
 
     .prologue
-    .line 790
+    .line 793
     iget-object v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mSize:Lcom/android/gallery3d/ui/PhotoView$Size;
 
     return-object v0
@@ -789,7 +789,7 @@
     .locals 1
 
     .prologue
-    .line 893
+    .line 896
     iget-boolean v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mIsCamera:Z
 
     return v0
@@ -799,7 +799,7 @@
     .locals 1
 
     .prologue
-    .line 898
+    .line 901
     iget-boolean v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mIsDeletable:Z
 
     return v0
@@ -809,7 +809,7 @@
     .locals 2
 
     .prologue
-    .line 779
+    .line 782
     iget-object v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
     #getter for: Lcom/android/gallery3d/ui/PhotoView;->mModel:Lcom/android/gallery3d/ui/PhotoView$Model;
@@ -825,7 +825,7 @@
 
     iput-boolean v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mIsCamera:Z
 
-    .line 780
+    .line 783
     iget-object v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
     #getter for: Lcom/android/gallery3d/ui/PhotoView;->mModel:Lcom/android/gallery3d/ui/PhotoView$Model;
@@ -841,7 +841,7 @@
 
     iput-boolean v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mIsPanorama:Z
 
-    .line 781
+    .line 784
     iget-object v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
     #getter for: Lcom/android/gallery3d/ui/PhotoView;->mModel:Lcom/android/gallery3d/ui/PhotoView$Model;
@@ -857,7 +857,7 @@
 
     iput-boolean v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mIsVideo:Z
 
-    .line 782
+    .line 785
     iget-object v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
     #getter for: Lcom/android/gallery3d/ui/PhotoView;->mModel:Lcom/android/gallery3d/ui/PhotoView$Model;
@@ -873,7 +873,7 @@
 
     iput-boolean v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mIsDeletable:Z
 
-    .line 783
+    .line 786
     iget-object v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
     #getter for: Lcom/android/gallery3d/ui/PhotoView;->mModel:Lcom/android/gallery3d/ui/PhotoView$Model;
@@ -889,7 +889,7 @@
 
     iput v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mLoadingState:I
 
-    .line 784
+    .line 787
     iget-object v0, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
     #getter for: Lcom/android/gallery3d/ui/PhotoView;->mModel:Lcom/android/gallery3d/ui/PhotoView$Model;
@@ -905,10 +905,10 @@
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->setScreenNail(Lcom/android/gallery3d/ui/ScreenNail;)V
 
-    .line 785
+    .line 788
     invoke-direct {p0}, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->updateSize()V
 
-    .line 786
+    .line 789
     return-void
 .end method
 
@@ -917,9 +917,9 @@
     .parameter "s"
 
     .prologue
-    .line 858
+    .line 861
     iput-object p1, p0, Lcom/android/gallery3d/ui/PhotoView$ScreenNailPicture;->mScreenNail:Lcom/android/gallery3d/ui/ScreenNail;
 
-    .line 859
+    .line 862
     return-void
 .end method

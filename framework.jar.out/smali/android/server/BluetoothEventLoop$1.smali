@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 76
+    .line 74
     iput-object p1, p0, Landroid/server/BluetoothEventLoop$1;->this$0:Landroid/server/BluetoothEventLoop;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -41,32 +41,32 @@
     .prologue
     const/4 v4, 0x1
 
-    .line 79
+    .line 77
     const/4 v0, 0x0
 
-    .line 80
+    .line 78
     .local v0, address:Ljava/lang/String;
     iget v2, p1, Landroid/os/Message;->what:I
 
     packed-switch v2, :pswitch_data_0
 
-    .line 103
+    .line 101
     :cond_0
     :goto_0
     return-void
 
-    .line 82
+    .line 80
     :pswitch_0
     iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     .end local v0           #address:Ljava/lang/String;
     check-cast v0, Ljava/lang/String;
 
-    .line 83
+    .line 81
     .restart local v0       #address:Ljava/lang/String;
     if-eqz v0, :cond_0
 
-    .line 84
+    .line 82
     iget-object v2, p0, Landroid/server/BluetoothEventLoop$1;->this$0:Landroid/server/BluetoothEventLoop;
 
     #getter for: Landroid/server/BluetoothEventLoop;->mBluetoothService:Landroid/server/BluetoothService;
@@ -78,7 +78,7 @@
 
     goto :goto_0
 
-    .line 90
+    .line 88
     :pswitch_1
     iget-object v2, p0, Landroid/server/BluetoothEventLoop$1;->this$0:Landroid/server/BluetoothEventLoop;
 
@@ -93,18 +93,18 @@
 
     move-result-object v1
 
-    .line 91
+    .line 89
     .local v1, devices:[Ljava/lang/String;
     array-length v2, v1
 
     if-eqz v2, :cond_0
 
-    .line 93
+    .line 91
     array-length v2, v1
 
     if-le v2, v4, :cond_1
 
-    .line 94
+    .line 92
     const-string v2, "BluetoothEventLoop"
 
     const-string v3, " There is more than one device in the Bonding State"
@@ -113,13 +113,13 @@
 
     goto :goto_0
 
-    .line 97
+    .line 95
     :cond_1
     const/4 v2, 0x0
 
     aget-object v0, v1, v2
 
-    .line 98
+    .line 96
     iget-object v2, p0, Landroid/server/BluetoothEventLoop$1;->this$0:Landroid/server/BluetoothEventLoop;
 
     #getter for: Landroid/server/BluetoothEventLoop;->mBluetoothService:Landroid/server/BluetoothService;
@@ -135,7 +135,7 @@
 
     goto :goto_0
 
-    .line 80
+    .line 78
     nop
 
     :pswitch_data_0

@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 793
+    .line 812
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$4;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -44,36 +44,27 @@
     .parameter "position"
 
     .prologue
-    .line 795
+    .line 814
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$4;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
-    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->viewHolder:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$ImageIntroductionViewHolder;
+    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->mViewHolder:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$ImageIntroductionViewHolder;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->access$2300(Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;)Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$ImageIntroductionViewHolder;
 
     move-result-object v1
 
-    iget-object v0, v1, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$ImageIntroductionViewHolder;->chanelProgramDetailImage:Landroid/widget/ImageView;
+    iget-object v0, v1, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$ImageIntroductionViewHolder;->mChanelProgramDetailImage:Landroid/widget/ImageView;
 
-    .line 796
+    .line 815
     .local v0, imageViewByTag:Landroid/widget/ImageView;
     if-eqz v0, :cond_0
 
-    .line 797
+    .line 816
     if-eqz p1, :cond_0
 
-    .line 798
-    new-instance v1, Landroid/graphics/drawable/BitmapDrawable;
+    .line 817
+    invoke-virtual {v0, p1}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
-    invoke-direct {v1, p1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/graphics/Bitmap;)V
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
-
-    .line 799
-    const v1, 0x7f02008c
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setImageResource(I)V
-
-    .line 802
+    .line 820
     :cond_0
     return-void
 .end method

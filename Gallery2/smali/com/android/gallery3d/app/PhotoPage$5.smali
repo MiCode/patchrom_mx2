@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 540
+    .line 581
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoPage$5;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -46,7 +46,7 @@
 
     const/4 v3, 0x0
 
-    .line 543
+    .line 584
     iget-object v4, p0, Lcom/android/gallery3d/app/PhotoPage$5;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mModel:Lcom/android/gallery3d/app/PhotoPage$Model;
@@ -62,11 +62,11 @@
 
     move-result-object v0
 
-    .line 544
+    .line 585
     .local v0, path:Lcom/android/gallery3d/data/Path;
     const/4 v1, 0x0
 
-    .line 545
+    .line 586
     .local v1, rotation:I
     invoke-virtual {p1}, Landroid/view/View;->getId()I
 
@@ -74,11 +74,11 @@
 
     packed-switch v4, :pswitch_data_0
 
-    .line 568
+    .line 609
     :goto_0
     if-eqz v1, :cond_0
 
-    .line 569
+    .line 610
     iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$5;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     iget-object v2, v2, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
@@ -89,48 +89,48 @@
 
     invoke-virtual {v2, v0, v1}, Lcom/android/gallery3d/data/DataManager;->rotate(Lcom/android/gallery3d/data/Path;I)V
 
-    .line 571
+    .line 612
     :cond_0
     return-void
 
-    .line 549
+    .line 590
     :pswitch_0
     iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$5;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #calls: Lcom/android/gallery3d/app/PhotoPage;->enterState(I)V
-    invoke-static {v2, v3}, Lcom/android/gallery3d/app/PhotoPage;->access$1900(Lcom/android/gallery3d/app/PhotoPage;I)V
+    invoke-static {v2, v3}, Lcom/android/gallery3d/app/PhotoPage;->access$2200(Lcom/android/gallery3d/app/PhotoPage;I)V
 
     goto :goto_0
 
-    .line 552
+    .line 593
     :pswitch_1
     const/16 v1, 0x5a
 
-    .line 553
+    .line 594
     goto :goto_0
 
-    .line 555
+    .line 596
     :pswitch_2
     const/16 v1, -0x5a
 
-    .line 556
+    .line 597
     goto :goto_0
 
-    .line 558
+    .line 599
     :pswitch_3
     iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$5;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #calls: Lcom/android/gallery3d/app/PhotoPage;->startSlideShow()V
-    invoke-static {v2}, Lcom/android/gallery3d/app/PhotoPage;->access$2000(Lcom/android/gallery3d/app/PhotoPage;)V
+    invoke-static {v2}, Lcom/android/gallery3d/app/PhotoPage;->access$2300(Lcom/android/gallery3d/app/PhotoPage;)V
 
     goto :goto_0
 
-    .line 561
+    .line 602
     :pswitch_4
     iget-object v4, p0, Lcom/android/gallery3d/app/PhotoPage$5;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mSlideshowShuffle:Landroid/widget/ImageButton;
-    invoke-static {v4}, Lcom/android/gallery3d/app/PhotoPage;->access$2200(Lcom/android/gallery3d/app/PhotoPage;)Landroid/widget/ImageButton;
+    invoke-static {v4}, Lcom/android/gallery3d/app/PhotoPage;->access$2500(Lcom/android/gallery3d/app/PhotoPage;)Landroid/widget/ImageButton;
 
     move-result-object v4
 
@@ -139,7 +139,7 @@
     iget-object v6, p0, Lcom/android/gallery3d/app/PhotoPage$5;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mShuffle:Z
-    invoke-static {v6}, Lcom/android/gallery3d/app/PhotoPage;->access$2100(Lcom/android/gallery3d/app/PhotoPage;)Z
+    invoke-static {v6}, Lcom/android/gallery3d/app/PhotoPage;->access$2400(Lcom/android/gallery3d/app/PhotoPage;)Z
 
     move-result v6
 
@@ -147,7 +147,7 @@
 
     :goto_1
     #setter for: Lcom/android/gallery3d/app/PhotoPage;->mShuffle:Z
-    invoke-static {v5, v2}, Lcom/android/gallery3d/app/PhotoPage;->access$2102(Lcom/android/gallery3d/app/PhotoPage;Z)Z
+    invoke-static {v5, v2}, Lcom/android/gallery3d/app/PhotoPage;->access$2402(Lcom/android/gallery3d/app/PhotoPage;Z)Z
 
     move-result v2
 
@@ -160,12 +160,12 @@
 
     goto :goto_1
 
-    .line 564
+    .line 605
     :pswitch_5
     iget-object v4, p0, Lcom/android/gallery3d/app/PhotoPage$5;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mSlideshowRepeat:Landroid/widget/ImageButton;
-    invoke-static {v4}, Lcom/android/gallery3d/app/PhotoPage;->access$2400(Lcom/android/gallery3d/app/PhotoPage;)Landroid/widget/ImageButton;
+    invoke-static {v4}, Lcom/android/gallery3d/app/PhotoPage;->access$2700(Lcom/android/gallery3d/app/PhotoPage;)Landroid/widget/ImageButton;
 
     move-result-object v4
 
@@ -174,7 +174,7 @@
     iget-object v6, p0, Lcom/android/gallery3d/app/PhotoPage$5;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mRepeat:Z
-    invoke-static {v6}, Lcom/android/gallery3d/app/PhotoPage;->access$2300(Lcom/android/gallery3d/app/PhotoPage;)Z
+    invoke-static {v6}, Lcom/android/gallery3d/app/PhotoPage;->access$2600(Lcom/android/gallery3d/app/PhotoPage;)Z
 
     move-result v6
 
@@ -182,7 +182,7 @@
 
     :goto_2
     #setter for: Lcom/android/gallery3d/app/PhotoPage;->mRepeat:Z
-    invoke-static {v5, v2}, Lcom/android/gallery3d/app/PhotoPage;->access$2302(Lcom/android/gallery3d/app/PhotoPage;Z)Z
+    invoke-static {v5, v2}, Lcom/android/gallery3d/app/PhotoPage;->access$2602(Lcom/android/gallery3d/app/PhotoPage;Z)Z
 
     move-result v2
 
@@ -195,7 +195,7 @@
 
     goto :goto_2
 
-    .line 545
+    .line 586
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_2

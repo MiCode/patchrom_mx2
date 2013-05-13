@@ -32,7 +32,7 @@
     .parameter
 
     .prologue
-    .line 866
+    .line 890
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$Metadata;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -46,7 +46,7 @@
     .parameter "x1"
 
     .prologue
-    .line 866
+    .line 890
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$Metadata;->artist:Ljava/lang/String;
 
     return-object p1
@@ -57,7 +57,7 @@
     .parameter "x0"
 
     .prologue
-    .line 866
+    .line 890
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$Metadata;->trackTitle:Ljava/lang/String;
 
     return-object v0
@@ -69,7 +69,7 @@
     .parameter "x1"
 
     .prologue
-    .line 866
+    .line 890
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$Metadata;->trackTitle:Ljava/lang/String;
 
     return-object p1
@@ -81,7 +81,7 @@
     .parameter "x1"
 
     .prologue
-    .line 866
+    .line 890
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$Metadata;->albumTitle:Ljava/lang/String;
 
     return-object p1
@@ -93,7 +93,7 @@
     .locals 2
 
     .prologue
-    .line 873
+    .line 897
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V

@@ -80,7 +80,7 @@
 
     .line 729
     .local v2, inflater:Landroid/view/LayoutInflater;
-    const v5, 0x10900eb
+    const v5, 0x10900f4
 
     iget-object v6, p0, Lcom/meizu/widget/TabHostPlus$LabelIndicatorStrategy;->this$0:Lcom/meizu/widget/TabHostPlus;
 
@@ -138,7 +138,7 @@
     if-gt v5, v6, :cond_0
 
     .line 740
-    const v5, 0x10807b1
+    const v5, 0x10807de
 
     invoke-virtual {v3, v5}, Landroid/view/View;->setBackgroundResource(I)V
 
@@ -147,7 +147,7 @@
 
     move-result-object v5
 
-    const v6, 0x106009b
+    const v6, 0x10600a3
 
     invoke-virtual {v5, v6}, Landroid/content/res/Resources;->getColorStateList(I)Landroid/content/res/ColorStateList;
 

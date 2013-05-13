@@ -15,9 +15,9 @@
 
 
 # instance fields
-.field channel_image:Landroid/widget/ImageView;
+.field mChannelImage:Landroid/widget/ImageView;
 
-.field channel_title:Landroid/widget/TextView;
+.field mChannelTitle:Landroid/widget/TextView;
 
 .field final synthetic this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelAdapter;
 
@@ -28,7 +28,7 @@
     .parameter
 
     .prologue
-    .line 46
+    .line 54
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelAdapter$ViewHolder;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelAdapter;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V

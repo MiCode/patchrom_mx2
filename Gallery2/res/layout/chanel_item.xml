@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:id="@id/chanel_image" android:background="@drawable/default_bg" android:layout_width="96.0dip" android:layout_height="128.0dip" android:src="@drawable/letv3" android:scaleType="center" />
-        <TextView android:textSize="@dimen/channel_title_size" android:textColor="@color/channel_title_color" android:gravity="center_horizontal" android:id="@id/chanel_title" android:paddingTop="10.0dip" android:layout_width="96.0dip" android:layout_height="48.0dip" android:singleLine="true" android:layout_below="@id/chanel_image" />
-        <ImageView android:id="@id/image_cover" android:background="@drawable/picture_mask" android:layout_width="96.0dip" android:layout_height="128.0dip" />
-    </RelativeLayout>
-</LinearLayout>
+    <LinearLayout android:id="@id/chanel_image_whole" android:background="@drawable/frame_channel_thumb" android:paddingLeft="@dimen/channel_image_cover_left" android:paddingTop="@dimen/channel_image_cover_top" android:paddingRight="@dimen/channel_image_cover_right" android:paddingBottom="@dimen/channel_image_cover_bottom" android:layout_width="@dimen/channel_smallImage_withcover_Width" android:layout_height="@dimen/channel_smallImage_withcover_Height">
+        <com.meizu.video.client.common.MaskedImageView android:id="@id/chanel_image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/channel_title_size" android:textColor="@color/channel_title_color" android:gravity="center_horizontal" android:id="@id/chanel_title" android:paddingTop="@dimen/channel_smallImageTitleContentPaddingTopNum" android:layout_width="@dimen/channel_smallImage_withcover_Width" android:layout_height="@dimen/channel_smallImageTitleHeight" android:singleLine="true" android:layout_below="@id/chanel_image_whole" />
+</RelativeLayout>

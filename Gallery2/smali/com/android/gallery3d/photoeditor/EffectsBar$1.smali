@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 122
+    .line 129
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     iput-object p2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->val$filterStack:Lcom/android/gallery3d/photoeditor/FilterStack;
@@ -48,17 +48,17 @@
     .parameter "effectsId"
 
     .prologue
-    const v6, 0x7f0d0119
+    const v6, 0x7f0d012e
 
-    const v5, 0x7f040056
+    const v5, 0x7f04005b
 
-    const v4, 0x7f040053
+    const v4, 0x7f040058
 
     const/4 v2, 0x1
 
     const/4 v0, 0x0
 
-    .line 131
+    .line 138
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->isOpenGallery:Z
@@ -68,12 +68,12 @@
 
     if-nez v1, :cond_1
 
-    .line 191
+    .line 198
     :cond_0
     :goto_0
     return v0
 
-    .line 134
+    .line 141
     :cond_1
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->val$filterStack:Lcom/android/gallery3d/photoeditor/FilterStack;
 
@@ -83,7 +83,7 @@
 
     if-nez v1, :cond_0
 
-    .line 137
+    .line 144
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->currentEffectId:I
@@ -93,19 +93,19 @@
 
     if-ne v1, v4, :cond_3
 
-    .line 138
+    .line 145
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->val$filterStack:Lcom/android/gallery3d/photoeditor/FilterStack;
 
     invoke-virtual {v1, v2}, Lcom/android/gallery3d/photoeditor/FilterStack;->setIsMakeAnimationEable(Z)V
 
-    .line 142
+    .line 149
     :cond_2
     :goto_1
     const/4 v1, -0x1
 
     if-ne p2, v1, :cond_4
 
-    .line 143
+    .line 150
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->actionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
@@ -115,13 +115,13 @@
 
     invoke-virtual {v1}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->clickBack()V
 
-    .line 144
+    .line 151
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #setter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->artisticButtonValid:Z
     invoke-static {v1, v0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->access$302(Lcom/android/gallery3d/photoeditor/EffectsBar;Z)Z
 
-    .line 145
+    .line 152
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #setter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->exposureButtonValid:Z
@@ -129,7 +129,7 @@
 
     goto :goto_0
 
-    .line 139
+    .line 146
     :cond_3
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
@@ -140,14 +140,14 @@
 
     if-ne v1, v5, :cond_2
 
-    .line 140
+    .line 147
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->val$filterStack:Lcom/android/gallery3d/photoeditor/FilterStack;
 
     invoke-virtual {v1, v0}, Lcom/android/gallery3d/photoeditor/FilterStack;->setIsMakeAnimationEable(Z)V
 
     goto :goto_1
 
-    .line 148
+    .line 155
     :cond_4
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
@@ -160,29 +160,29 @@
 
     if-ne p2, v5, :cond_7
 
-    .line 150
+    .line 157
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     invoke-virtual {v1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->setTopFilterApplied()V
 
-    .line 151
+    .line 158
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #setter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->isClear:Z
     invoke-static {v1, v0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->access$502(Lcom/android/gallery3d/photoeditor/EffectsBar;Z)Z
 
-    .line 162
+    .line 169
     :cond_5
     :goto_2
     if-ne p2, v5, :cond_9
 
-    .line 163
+    .line 170
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #setter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->exposureButtonValid:Z
     invoke-static {v1, v2}, Lcom/android/gallery3d/photoeditor/EffectsBar;->access$402(Lcom/android/gallery3d/photoeditor/EffectsBar;Z)Z
 
-    .line 164
+    .line 171
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
@@ -196,11 +196,11 @@
 
     check-cast v1, Landroid/widget/ImageButton;
 
-    const v3, 0x7f02012f
+    const v3, 0x7f020127
 
     invoke-virtual {v1, v3}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 166
+    .line 173
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
@@ -208,7 +208,7 @@
 
     move-result-object v1
 
-    const v3, 0x7f0d011a
+    const v3, 0x7f0d012f
 
     invoke-virtual {v1, v3}, Lcom/android/gallery3d/photoeditor/EffectsMenu;->findViewById(I)Landroid/view/View;
 
@@ -216,11 +216,11 @@
 
     check-cast v1, Landroid/widget/ImageButton;
 
-    const v3, 0x7f020154
+    const v3, 0x7f02014e
 
     invoke-virtual {v1, v3}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 175
+    .line 182
     :cond_6
     :goto_3
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
@@ -228,7 +228,7 @@
     #setter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->currentEffectId:I
     invoke-static {v1, p2}, Lcom/android/gallery3d/photoeditor/EffectsBar;->access$102(Lcom/android/gallery3d/photoeditor/EffectsBar;I)I
 
-    .line 177
+    .line 184
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsGallery:Landroid/view/View;
@@ -247,7 +247,7 @@
 
     if-nez v1, :cond_a
 
-    .line 178
+    .line 185
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsGallery:Landroid/view/View;
@@ -261,17 +261,17 @@
 
     if-ne p2, v1, :cond_a
 
-    .line 179
+    .line 186
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     invoke-virtual {v1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->doEffectMenuSelected()V
 
     move v0, p1
 
-    .line 180
+    .line 187
     goto/16 :goto_0
 
-    .line 152
+    .line 159
     :cond_7
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
@@ -284,13 +284,13 @@
 
     if-ne p2, v4, :cond_5
 
-    .line 154
+    .line 161
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #calls: Lcom/android/gallery3d/photoeditor/EffectsBar;->exitEffectsGallery()Z
     invoke-static {v1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->access$600(Lcom/android/gallery3d/photoeditor/EffectsBar;)Z
 
-    .line 155
+    .line 162
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->isClear:Z
@@ -300,7 +300,7 @@
 
     if-eqz v1, :cond_8
 
-    .line 156
+    .line 163
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->preEffectAction:Lcom/android/gallery3d/photoeditor/actions/EffectAction;
@@ -310,7 +310,7 @@
 
     if-eqz v1, :cond_8
 
-    .line 157
+    .line 164
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
@@ -322,7 +322,7 @@
 
     invoke-virtual {v1, v3}, Lcom/android/gallery3d/photoeditor/EffectsBar;->setEffectSelected(Lcom/android/gallery3d/photoeditor/actions/EffectAction;)V
 
-    .line 160
+    .line 167
     :cond_8
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
@@ -331,17 +331,17 @@
 
     goto/16 :goto_2
 
-    .line 168
+    .line 175
     :cond_9
     if-ne p2, v4, :cond_6
 
-    .line 169
+    .line 176
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #setter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->artisticButtonValid:Z
     invoke-static {v1, v2}, Lcom/android/gallery3d/photoeditor/EffectsBar;->access$302(Lcom/android/gallery3d/photoeditor/EffectsBar;Z)Z
 
-    .line 170
+    .line 177
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
@@ -355,11 +355,11 @@
 
     check-cast v1, Landroid/widget/ImageButton;
 
-    const v3, 0x7f020130
+    const v3, 0x7f020128
 
     invoke-virtual {v1, v3}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 172
+    .line 179
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     #getter for: Lcom/android/gallery3d/photoeditor/EffectsBar;->effectsMenu:Lcom/android/gallery3d/photoeditor/EffectsMenu;
@@ -367,7 +367,7 @@
 
     move-result-object v1
 
-    const v3, 0x7f0d011a
+    const v3, 0x7f0d012f
 
     invoke-virtual {v1, v3}, Lcom/android/gallery3d/photoeditor/EffectsMenu;->findViewById(I)Landroid/view/View;
 
@@ -375,13 +375,13 @@
 
     check-cast v1, Landroid/widget/ImageButton;
 
-    const v3, 0x7f020153
+    const v3, 0x7f02014d
 
     invoke-virtual {v1, v3}, Landroid/widget/ImageButton;->setImageResource(I)V
 
     goto/16 :goto_3
 
-    .line 183
+    .line 190
     :cond_a
     if-eqz p1, :cond_b
 
@@ -397,7 +397,7 @@
     :cond_b
     move v0, v2
 
-    .line 184
+    .line 191
     .local v0, select:Z
     :cond_c
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$1;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;

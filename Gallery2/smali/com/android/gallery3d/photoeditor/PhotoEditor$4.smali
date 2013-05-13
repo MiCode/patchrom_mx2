@@ -20,20 +20,15 @@
 # instance fields
 .field final synthetic this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
-.field final synthetic val$customView:Landroid/view/View;
-
 
 # direct methods
-.method constructor <init>(Lcom/android/gallery3d/photoeditor/PhotoEditor;Landroid/view/View;)V
+.method constructor <init>(Lcom/android/gallery3d/photoeditor/PhotoEditor;)V
     .locals 0
-    .parameter
     .parameter
 
     .prologue
-    .line 229
+    .line 353
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$4;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
-
-    iput-object p2, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$4;->val$customView:Landroid/view/View;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
@@ -43,18 +38,16 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .locals 2
+    .locals 1
     .parameter "v"
 
     .prologue
-    .line 232
+    .line 356
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$4;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
-    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$4;->val$customView:Landroid/view/View;
+    #calls: Lcom/android/gallery3d/photoeditor/PhotoEditor;->enterDoodleEditMode()V
+    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->access$400(Lcom/android/gallery3d/photoeditor/PhotoEditor;)V
 
-    #calls: Lcom/android/gallery3d/photoeditor/PhotoEditor;->enterDoodleShapeMode(Landroid/view/View;)V
-    invoke-static {v0, v1}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->access$400(Lcom/android/gallery3d/photoeditor/PhotoEditor;Landroid/view/View;)V
-
-    .line 233
+    .line 357
     return-void
 .end method

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="135.0dip" style="@style/EffectsContainerExtra"
+<LinearLayout android:layout_height="@dimen/effects_effects_exposure_layout_height" android:layout_marginLeft="@dimen/effects_container_extra_margin_left" style="@style/EffectsContainerExtra"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.android.gallery3d.photoeditor.actions.BrightnessAction android:contentDescription="@string/BrightnessFilter" style="@style/EffectExposure">
         <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />
-        <TextView android:id="@id/effect_label" android:layout_marginLeft="-1.5dip" android:text="@string/brightnessfilter" style="@style/EffectLabelExtra" />
+        <TextView android:id="@id/effect_label" android:text="@string/brightnessfilter" style="@style/EffectLabelExtra" />
     </com.android.gallery3d.photoeditor.actions.BrightnessAction>
     <com.android.gallery3d.photoeditor.actions.ContrastAction android:contentDescription="@string/ContrastFilter" style="@style/EffectExposure">
         <ImageButton android:id="@id/effect_button" style="@style/EffectIcon" />

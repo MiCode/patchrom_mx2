@@ -34,7 +34,7 @@
     invoke-direct {p0, p1, p2, p3}, Landroid/preference/Preference;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
     .line 21
-    const v0, 0x10900b2
+    const v0, 0x10900bb
 
     invoke-virtual {p0, v0}, Lcom/meizu/preference/SeekBarPreference;->setLayoutResource(I)V
 

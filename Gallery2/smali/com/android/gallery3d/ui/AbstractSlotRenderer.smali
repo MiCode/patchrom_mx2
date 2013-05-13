@@ -11,9 +11,11 @@
 
 .field private final mAddNewFolderIconPressed:Lcom/android/gallery3d/ui/ResourceTexture;
 
-.field private final mFramePressed:Lcom/android/gallery3d/ui/NinePatchTexture;
+.field private final mFrameNormal:Lcom/android/gallery3d/ui/NinePatchTexture;
 
-.field private mFramePressedUp:Lcom/android/gallery3d/ui/FadeOutTexture;
+.field protected final mFramePressed:Lcom/android/gallery3d/ui/NinePatchTexture;
+
+.field protected mFramePressedUp:Lcom/android/gallery3d/ui/FadeOutTexture;
 
 .field private final mFrameSelected:Lcom/android/gallery3d/ui/NinePatchTexture;
 
@@ -32,46 +34,46 @@
     .parameter "context"
 
     .prologue
-    .line 38
+    .line 39
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 39
+    .line 40
     new-instance v0, Lcom/android/gallery3d/ui/ResourceTexture;
 
-    const v1, 0x7f020100
+    const v1, 0x7f0200f9
 
     invoke-direct {v0, p1, v1}, Lcom/android/gallery3d/ui/ResourceTexture;-><init>(Landroid/content/Context;I)V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mVideoOverlay:Lcom/android/gallery3d/ui/ResourceTexture;
 
-    .line 40
+    .line 41
     new-instance v0, Lcom/android/gallery3d/ui/ResourceTexture;
 
-    const v1, 0x7f0200a2
+    const v1, 0x7f0200a1
 
     invoke-direct {v0, p1, v1}, Lcom/android/gallery3d/ui/ResourceTexture;-><init>(Landroid/content/Context;I)V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mVideoPlayIcon:Lcom/android/gallery3d/ui/ResourceTexture;
 
-    .line 41
+    .line 42
     new-instance v0, Lcom/android/gallery3d/ui/ResourceTexture;
 
-    const v1, 0x7f0200d7
+    const v1, 0x7f0200d4
 
     invoke-direct {v0, p1, v1}, Lcom/android/gallery3d/ui/ResourceTexture;-><init>(Landroid/content/Context;I)V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mLockIcon:Lcom/android/gallery3d/ui/ResourceTexture;
 
-    .line 42
+    .line 43
     new-instance v0, Lcom/android/gallery3d/ui/NinePatchTexture;
 
-    const v1, 0x7f0200cf
+    const v1, 0x7f0200cc
 
     invoke-direct {v0, p1, v1}, Lcom/android/gallery3d/ui/NinePatchTexture;-><init>(Landroid/content/Context;I)V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mPanoramaBorder:Lcom/android/gallery3d/ui/NinePatchTexture;
 
-    .line 43
+    .line 44
     new-instance v0, Lcom/android/gallery3d/ui/NinePatchTexture;
 
     const v1, 0x7f020076
@@ -80,7 +82,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFramePressed:Lcom/android/gallery3d/ui/NinePatchTexture;
 
-    .line 44
+    .line 45
     new-instance v0, Lcom/android/gallery3d/ui/NinePatchTexture;
 
     const v1, 0x7f020077
@@ -89,25 +91,34 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFrameSelected:Lcom/android/gallery3d/ui/NinePatchTexture;
 
-    .line 45
+    .line 46
+    new-instance v0, Lcom/android/gallery3d/ui/NinePatchTexture;
+
+    const v1, 0x7f020075
+
+    invoke-direct {v0, p1, v1}, Lcom/android/gallery3d/ui/NinePatchTexture;-><init>(Landroid/content/Context;I)V
+
+    iput-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFrameNormal:Lcom/android/gallery3d/ui/NinePatchTexture;
+
+    .line 47
     new-instance v0, Lcom/android/gallery3d/ui/ResourceTexture;
 
-    const v1, 0x7f02001d
+    const v1, 0x7f020015
 
     invoke-direct {v0, p1, v1}, Lcom/android/gallery3d/ui/ResourceTexture;-><init>(Landroid/content/Context;I)V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mAddNewFolderIcon:Lcom/android/gallery3d/ui/ResourceTexture;
 
-    .line 46
+    .line 48
     new-instance v0, Lcom/android/gallery3d/ui/ResourceTexture;
 
-    const v1, 0x7f02001e
+    const v1, 0x7f020016
 
     invoke-direct {v0, p1, v1}, Lcom/android/gallery3d/ui/ResourceTexture;-><init>(Landroid/content/Context;I)V
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mAddNewFolderIconPressed:Lcom/android/gallery3d/ui/ResourceTexture;
 
-    .line 47
+    .line 49
     return-void
 .end method
 
@@ -116,7 +127,7 @@
     .parameter "texture"
 
     .prologue
-    .line 150
+    .line 161
     instance-of v0, p0, Lcom/android/gallery3d/ui/UploadedTexture;
 
     if-eqz v0, :cond_0
@@ -149,7 +160,7 @@
     .parameter "height"
 
     .prologue
-    .line 145
+    .line 156
     iget v0, p1, Landroid/graphics/Rect;->left:I
 
     sub-int v2, p3, v0
@@ -180,7 +191,7 @@
 
     invoke-interface/range {v0 .. v5}, Lcom/android/gallery3d/ui/Texture;->draw(Lcom/android/gallery3d/ui/GLCanvas;IIII)V
 
-    .line 147
+    .line 158
     return-void
 .end method
 
@@ -195,35 +206,35 @@
     .prologue
     const/4 v9, 0x0
 
-    .line 168
+    .line 179
     invoke-virtual {p1}, Landroid/graphics/Bitmap;->getWidth()I
 
     move-result v1
 
-    .line 169
+    .line 180
     .local v1, bmWidth:I
     invoke-virtual {p1}, Landroid/graphics/Bitmap;->getHeight()I
 
     move-result v0
 
-    .line 171
+    .line 182
     .local v0, bmHeight:I
     const/4 v6, 0x1
 
     invoke-virtual {p0, v6}, Landroid/graphics/Canvas;->save(I)I
 
-    .line 173
+    .line 184
     invoke-virtual {p4}, Landroid/graphics/Rect;->width()I
 
     move-result v5
 
-    .line 174
+    .line 185
     .local v5, w:I
     invoke-virtual {p4}, Landroid/graphics/Rect;->height()I
 
     move-result v2
 
-    .line 176
+    .line 187
     .local v2, h:I
     iget v6, p4, Landroid/graphics/Rect;->left:I
 
@@ -243,19 +254,19 @@
 
     invoke-virtual {p0, v6, v7}, Landroid/graphics/Canvas;->translate(FF)V
 
-    .line 177
+    .line 188
     int-to-float v6, p3
 
     invoke-virtual {p0, v6}, Landroid/graphics/Canvas;->rotate(F)V
 
-    .line 178
+    .line 189
     div-int/lit8 v6, p3, 0x5a
 
     and-int/lit8 v6, v6, 0x1
 
     if-eqz v6, :cond_0
 
-    .line 179
+    .line 190
     move v4, v5
 
     .local v4, t:I
@@ -263,7 +274,7 @@
 
     move v2, v4
 
-    .line 181
+    .line 192
     .end local v4           #t:I
     :cond_0
     neg-int v6, v5
@@ -280,7 +291,7 @@
 
     invoke-virtual {p0, v6, v7}, Landroid/graphics/Canvas;->translate(FF)V
 
-    .line 183
+    .line 194
     int-to-float v6, v5
 
     int-to-float v7, v1
@@ -297,17 +308,17 @@
 
     move-result v3
 
-    .line 184
+    .line 195
     .local v3, scale:F
     invoke-virtual {p0, v3, v3}, Landroid/graphics/Canvas;->scale(FF)V
 
-    .line 186
+    .line 197
     invoke-virtual {p0, p1, v9, v9, p2}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
 
-    .line 188
+    .line 199
     invoke-virtual {p0}, Landroid/graphics/Canvas;->restore()V
 
-    .line 189
+    .line 200
     return-void
 .end method
 
@@ -328,15 +339,15 @@
 
     const/4 v4, 0x0
 
-    .line 60
+    .line 62
     const/4 v2, 0x2
 
     invoke-interface {p1, v2}, Lcom/android/gallery3d/ui/GLCanvas;->save(I)V
 
-    .line 62
+    .line 64
     if-eqz p5, :cond_1
 
-    .line 63
+    .line 65
     div-int/lit8 v2, p3, 0x2
 
     int-to-float v2, v2
@@ -347,29 +358,29 @@
 
     invoke-interface {p1, v2, v3}, Lcom/android/gallery3d/ui/GLCanvas;->translate(FF)V
 
-    .line 64
+    .line 66
     int-to-float v2, p5
 
     invoke-interface {p1, v2, v4, v4, v5}, Lcom/android/gallery3d/ui/GLCanvas;->rotate(FFFF)V
 
-    .line 65
+    .line 67
     div-int/lit8 v2, p5, 0x5a
 
     and-int/lit8 v2, v2, 0x1
 
     if-eqz v2, :cond_0
 
-    .line 66
+    .line 68
     move v1, p4
 
-    .line 67
+    .line 69
     .local v1, temp:I
     move p4, p3
 
-    .line 68
+    .line 70
     move p3, v1
 
-    .line 70
+    .line 72
     .end local v1           #temp:I
     :cond_0
     neg-int v2, p3
@@ -386,7 +397,7 @@
 
     invoke-interface {p1, v2, v3}, Lcom/android/gallery3d/ui/GLCanvas;->translate(FF)V
 
-    .line 74
+    .line 76
     :cond_1
     int-to-float v2, p3
 
@@ -412,17 +423,17 @@
 
     move-result v0
 
-    .line 77
+    .line 79
     .local v0, scale:F
     invoke-interface {p1, v0, v0, v5}, Lcom/android/gallery3d/ui/GLCanvas;->scale(FFF)V
 
-    .line 78
+    .line 80
     invoke-interface {p2, p1, v6, v6}, Lcom/android/gallery3d/ui/Texture;->draw(Lcom/android/gallery3d/ui/GLCanvas;II)V
 
-    .line 80
+    .line 82
     invoke-interface {p1}, Lcom/android/gallery3d/ui/GLCanvas;->restore()V
 
-    .line 81
+    .line 83
     return-void
 .end method
 
@@ -436,12 +447,12 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 51
+    .line 53
     const/4 v0, 0x2
 
     invoke-interface {p1, v0}, Lcom/android/gallery3d/ui/GLCanvas;->save(I)V
 
-    .line 52
+    .line 54
     int-to-float v0, p3
 
     invoke-interface {p2}, Lcom/android/gallery3d/ui/Texture;->getWidth()I
@@ -466,13 +477,13 @@
 
     invoke-interface {p1, v0, v1, v2}, Lcom/android/gallery3d/ui/GLCanvas;->scale(FFF)V
 
-    .line 54
+    .line 56
     invoke-interface {p2, p1, v3, v3}, Lcom/android/gallery3d/ui/Texture;->draw(Lcom/android/gallery3d/ui/GLCanvas;II)V
 
-    .line 55
+    .line 57
     invoke-interface {p1}, Lcom/android/gallery3d/ui/GLCanvas;->restore()V
 
-    .line 56
+    .line 58
     return-void
 .end method
 
@@ -483,14 +494,14 @@
     .parameter "height"
 
     .prologue
-    .line 102
+    .line 104
     iget-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mLockIcon:Lcom/android/gallery3d/ui/ResourceTexture;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/ResourceTexture;->getWidth()I
 
     move-result v4
 
-    .line 103
+    .line 105
     .local v4, w:I
     iget-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mLockIcon:Lcom/android/gallery3d/ui/ResourceTexture;
 
@@ -498,7 +509,7 @@
 
     move-result v5
 
-    .line 104
+    .line 106
     .local v5, h:I
     iget-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mLockIcon:Lcom/android/gallery3d/ui/ResourceTexture;
 
@@ -514,7 +525,7 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/android/gallery3d/ui/ResourceTexture;->draw(Lcom/android/gallery3d/ui/GLCanvas;IIII)V
 
-    .line 105
+    .line 107
     return-void
 .end method
 
@@ -526,12 +537,12 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 97
+    .line 99
     if-eqz p2, :cond_0
 
     iget-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mAddNewFolderIconPressed:Lcom/android/gallery3d/ui/ResourceTexture;
 
-    .line 98
+    .line 100
     .local v0, v:Lcom/android/gallery3d/ui/ResourceTexture;
     :goto_0
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/ResourceTexture;->getWidth()I
@@ -548,15 +559,47 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/android/gallery3d/ui/ResourceTexture;->draw(Lcom/android/gallery3d/ui/GLCanvas;IIII)V
 
-    .line 99
+    .line 101
     return-void
 
-    .line 97
+    .line 99
     .end local v0           #v:Lcom/android/gallery3d/ui/ResourceTexture;
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mAddNewFolderIcon:Lcom/android/gallery3d/ui/ResourceTexture;
 
     goto :goto_0
+.end method
+
+.method protected drawNormalFrame(Lcom/android/gallery3d/ui/GLCanvas;II)V
+    .locals 7
+    .parameter "canvas"
+    .parameter "width"
+    .parameter "height"
+
+    .prologue
+    const/4 v3, 0x0
+
+    .line 151
+    iget-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFrameNormal:Lcom/android/gallery3d/ui/NinePatchTexture;
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/ui/NinePatchTexture;->getPaddings()Landroid/graphics/Rect;
+
+    move-result-object v1
+
+    iget-object v2, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFrameNormal:Lcom/android/gallery3d/ui/NinePatchTexture;
+
+    move-object v0, p1
+
+    move v4, v3
+
+    move v5, p2
+
+    move v6, p3
+
+    invoke-static/range {v0 .. v6}, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->drawFrame(Lcom/android/gallery3d/ui/GLCanvas;Landroid/graphics/Rect;Lcom/android/gallery3d/ui/Texture;IIII)V
+
+    .line 152
+    return-void
 .end method
 
 .method protected drawPressedFrame(Lcom/android/gallery3d/ui/GLCanvas;II)V
@@ -568,7 +611,7 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 136
+    .line 143
     iget-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFramePressed:Lcom/android/gallery3d/ui/NinePatchTexture;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/NinePatchTexture;->getPaddings()Landroid/graphics/Rect;
@@ -587,7 +630,7 @@
 
     invoke-static/range {v0 .. v6}, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->drawFrame(Lcom/android/gallery3d/ui/GLCanvas;Landroid/graphics/Rect;Lcom/android/gallery3d/ui/Texture;IIII)V
 
-    .line 137
+    .line 144
     return-void
 .end method
 
@@ -600,22 +643,12 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 129
+    .line 138
     iget-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFramePressedUp:Lcom/android/gallery3d/ui/FadeOutTexture;
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_0
 
-    .line 130
-    new-instance v0, Lcom/android/gallery3d/ui/FadeOutTexture;
-
-    iget-object v1, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFramePressed:Lcom/android/gallery3d/ui/NinePatchTexture;
-
-    invoke-direct {v0, v1}, Lcom/android/gallery3d/ui/FadeOutTexture;-><init>(Lcom/android/gallery3d/ui/BasicTexture;)V
-
-    iput-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFramePressedUp:Lcom/android/gallery3d/ui/FadeOutTexture;
-
-    .line 132
-    :cond_0
+    .line 139
     iget-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFramePressed:Lcom/android/gallery3d/ui/NinePatchTexture;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/NinePatchTexture;->getPaddings()Landroid/graphics/Rect;
@@ -634,7 +667,8 @@
 
     invoke-static/range {v0 .. v6}, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->drawFrame(Lcom/android/gallery3d/ui/GLCanvas;Landroid/graphics/Rect;Lcom/android/gallery3d/ui/Texture;IIII)V
 
-    .line 133
+    .line 140
+    :cond_0
     return-void
 .end method
 
@@ -647,7 +681,7 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 140
+    .line 147
     iget-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFrameSelected:Lcom/android/gallery3d/ui/NinePatchTexture;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/NinePatchTexture;->getPaddings()Landroid/graphics/Rect;
@@ -666,7 +700,7 @@
 
     invoke-static/range {v0 .. v6}, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->drawFrame(Lcom/android/gallery3d/ui/GLCanvas;Landroid/graphics/Rect;Lcom/android/gallery3d/ui/Texture;IIII)V
 
-    .line 141
+    .line 148
     return-void
 .end method
 
@@ -674,36 +708,27 @@
     .locals 1
 
     .prologue
-    .line 118
+    .line 130
     iget-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFramePressedUp:Lcom/android/gallery3d/ui/FadeOutTexture;
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_0
 
-    .line 119
     iget-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFramePressedUp:Lcom/android/gallery3d/ui/FadeOutTexture;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/FadeOutTexture;->isAnimating()Z
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    if-nez v0, :cond_1
 
-    .line 120
-    const/4 v0, 0x0
+    :cond_0
+    const/4 v0, 0x1
 
-    .line 125
     :goto_0
     return v0
 
-    .line 122
-    :cond_0
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFramePressedUp:Lcom/android/gallery3d/ui/FadeOutTexture;
-
-    .line 125
     :cond_1
-    const/4 v0, 0x1
+    const/4 v0, 0x0
 
     goto :goto_0
 .end method
@@ -717,25 +742,25 @@
     .parameter "height"
 
     .prologue
-    .line 158
+    .line 169
     invoke-static {p2}, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->checkTexture(Lcom/android/gallery3d/ui/Texture;)Lcom/android/gallery3d/ui/Texture;
 
     move-result-object v0
 
-    .line 159
+    .line 170
     .local v0, content:Lcom/android/gallery3d/ui/Texture;
     if-eqz v0, :cond_0
 
-    .line 160
+    .line 171
     move v6, p3
 
-    .line 161
+    .line 172
     .local v6, b:I
     invoke-interface {v0}, Lcom/android/gallery3d/ui/Texture;->getHeight()I
 
     move-result v5
 
-    .line 162
+    .line 173
     .local v5, h:I
     neg-int v2, v6
 
@@ -751,7 +776,7 @@
 
     invoke-interface/range {v0 .. v5}, Lcom/android/gallery3d/ui/Texture;->draw(Lcom/android/gallery3d/ui/GLCanvas;IIII)V
 
-    .line 164
+    .line 175
     .end local v5           #h:I
     .end local v6           #b:I
     :cond_0

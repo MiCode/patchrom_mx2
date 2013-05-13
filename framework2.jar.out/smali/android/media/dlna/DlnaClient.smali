@@ -10,9 +10,7 @@
         Landroid/media/dlna/DlnaClient$GetProtocolListener;,
         Landroid/media/dlna/DlnaClient$PlaybackInfoListener;,
         Landroid/media/dlna/DlnaClient$RemoteCallListener;,
-        Landroid/media/dlna/DlnaClient$SeekListener3;,
-        Landroid/media/dlna/DlnaClient$SeekListener2;,
-        Landroid/media/dlna/DlnaClient$SeekListener1;
+        Landroid/media/dlna/DlnaClient$SeekListener;
     }
 .end annotation
 
@@ -20,9 +18,23 @@
 # static fields
 .field private static final ACTION_RESULT:I = 0xc8
 
+.field public static final ALBUM_KEY:Ljava/lang/String; = "album"
+
+.field public static final ARTIST_KEY:Ljava/lang/String; = "artist"
+
+.field public static final DIDL_KEY:Ljava/lang/String; = "didl"
+
+.field public static final DURATION_KEY:Ljava/lang/String; = "duration"
+
 .field private static final PLAYBACKINFO_QUERY:I = 0x65
 
+.field private static final PLAYBACK_INFO_COOKIE:I = 0x3e7
+
 .field private static final TAG:Ljava/lang/String; = "DlnaClient"
+
+.field public static final TITLE_KEY:Ljava/lang/String; = "title"
+
+.field public static final URL_KEY:Ljava/lang/String; = "url"
 
 .field private static mCallbackPool:Ljava/util/Map;
     .annotation system Ldalvik/annotation/Signature;
@@ -58,8 +70,6 @@
 
 .field private mPositionToSeek:J
 
-.field private mSeekFormat:I
-
 .field private mSeeking:Z
 
 .field private mTryingToPause:Z
@@ -78,40 +88,40 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 48
+    .line 51
     const-string v0, "media_jni"
 
     invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
-    .line 49
+    .line 52
     invoke-static {}, Landroid/media/dlna/DlnaClient;->native_init()V
 
-    .line 165
+    .line 179
     const/16 v0, 0x3e8
 
     sput v0, Landroid/media/dlna/DlnaClient;->mCookieIndex:I
 
-    .line 166
+    .line 180
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
     sput-object v0, Landroid/media/dlna/DlnaClient;->mCallbackPool:Ljava/util/Map;
 
-    .line 644
+    .line 679
     sput v2, Landroid/media/dlna/DlnaClient;->mVolume:I
 
-    .line 645
+    .line 680
     const/4 v0, -0x1
 
     sput v0, Landroid/media/dlna/DlnaClient;->mVolumeToSet:I
 
-    .line 646
+    .line 681
     const-wide/16 v0, 0x0
 
     sput-wide v0, Landroid/media/dlna/DlnaClient;->mPosition:J
 
-    .line 647
+    .line 682
     sput v2, Landroid/media/dlna/DlnaClient;->mPlaybackState:I
 
     return-void
@@ -126,56 +136,53 @@
 
     const/4 v3, 0x0
 
-    .line 92
+    .line 102
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 88
-    iput-object v4, p0, Landroid/media/dlna/DlnaClient;->mContext:Landroid/content/Context;
+    .line 98
+    iput-object v3, p0, Landroid/media/dlna/DlnaClient;->mContext:Landroid/content/Context;
 
-    .line 89
-    iput-object v4, p0, Landroid/media/dlna/DlnaClient;->mLastUri:Ljava/lang/String;
+    .line 99
+    iput-object v3, p0, Landroid/media/dlna/DlnaClient;->mLastUri:Ljava/lang/String;
 
-    .line 90
-    iput-object v4, p0, Landroid/media/dlna/DlnaClient;->mUriSent:Ljava/lang/String;
+    .line 100
+    iput-object v3, p0, Landroid/media/dlna/DlnaClient;->mUriSent:Ljava/lang/String;
 
-    .line 231
-    iput-boolean v3, p0, Landroid/media/dlna/DlnaClient;->mTryingToPlay:Z
+    .line 313
+    iput-boolean v4, p0, Landroid/media/dlna/DlnaClient;->mTryingToPlay:Z
 
-    .line 255
-    iput-boolean v3, p0, Landroid/media/dlna/DlnaClient;->mTryingToPause:Z
+    .line 343
+    iput-boolean v4, p0, Landroid/media/dlna/DlnaClient;->mTryingToPause:Z
 
-    .line 274
+    .line 362
     const-wide/16 v1, -0x1
 
     iput-wide v1, p0, Landroid/media/dlna/DlnaClient;->mPositionToSeek:J
 
-    .line 283
-    iput-boolean v3, p0, Landroid/media/dlna/DlnaClient;->mSeeking:Z
+    .line 363
+    iput-boolean v4, p0, Landroid/media/dlna/DlnaClient;->mSeeking:Z
 
-    .line 284
-    iput v3, p0, Landroid/media/dlna/DlnaClient;->mSeekFormat:I
-
-    .line 473
+    .line 469
     new-instance v1, Landroid/media/dlna/DlnaClient$3;
 
     invoke-direct {v1, p0}, Landroid/media/dlna/DlnaClient$3;-><init>(Landroid/media/dlna/DlnaClient;)V
 
     iput-object v1, p0, Landroid/media/dlna/DlnaClient;->mDlnaHandler:Landroid/os/Handler;
 
-    .line 649
-    iput-object v4, p0, Landroid/media/dlna/DlnaClient;->mPlaybackInfoListener:Landroid/media/dlna/DlnaClient$PlaybackInfoListener;
+    .line 684
+    iput-object v3, p0, Landroid/media/dlna/DlnaClient;->mPlaybackInfoListener:Landroid/media/dlna/DlnaClient$PlaybackInfoListener;
 
-    .line 723
-    iput-object v4, p0, Landroid/media/dlna/DlnaClient;->mWakeLock:Landroid/os/PowerManager$WakeLock;
+    .line 771
+    iput-object v3, p0, Landroid/media/dlna/DlnaClient;->mWakeLock:Landroid/os/PowerManager$WakeLock;
 
-    .line 93
+    .line 103
     const-string v1, "DlnaClient"
 
     const-string v2, "dlna client init"
 
     invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 95
+    .line 105
     const-string v1, "power"
 
     invoke-virtual {p1, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -184,7 +191,7 @@
 
     check-cast v0, Landroid/os/PowerManager;
 
-    .line 96
+    .line 106
     .local v0, pm:Landroid/os/PowerManager;
     const v1, 0x20000001
 
@@ -200,22 +207,22 @@
 
     iput-object v1, p0, Landroid/media/dlna/DlnaClient;->mWakeLock:Landroid/os/PowerManager$WakeLock;
 
-    .line 98
+    .line 108
     iget-object v1, p0, Landroid/media/dlna/DlnaClient;->mWakeLock:Landroid/os/PowerManager$WakeLock;
 
-    invoke-virtual {v1, v3}, Landroid/os/PowerManager$WakeLock;->setReferenceCounted(Z)V
+    invoke-virtual {v1, v4}, Landroid/os/PowerManager$WakeLock;->setReferenceCounted(Z)V
 
-    .line 100
+    .line 110
     iput-object p1, p0, Landroid/media/dlna/DlnaClient;->mContext:Landroid/content/Context;
 
-    .line 101
+    .line 111
     new-instance v1, Ljava/lang/ref/WeakReference;
 
     invoke-direct {v1, p0}, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V
 
     invoke-direct {p0, v1}, Landroid/media/dlna/DlnaClient;->upnpInit(Ljava/lang/Object;)V
 
-    .line 102
+    .line 112
     return-void
 .end method
 
@@ -225,110 +232,75 @@
     .parameter "x1"
 
     .prologue
-    .line 45
+    .line 48
     iput-boolean p1, p0, Landroid/media/dlna/DlnaClient;->mTryingToPlay:Z
 
     return p1
 .end method
 
-.method static synthetic access$1000()J
-    .locals 2
-
-    .prologue
-    .line 45
-    sget-wide v0, Landroid/media/dlna/DlnaClient;->mPosition:J
-
-    return-wide v0
-.end method
-
-.method static synthetic access$1002(J)J
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 45
-    sput-wide p0, Landroid/media/dlna/DlnaClient;->mPosition:J
-
-    return-wide p0
-.end method
-
-.method static synthetic access$102(Landroid/media/dlna/DlnaClient;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 45
-    iput-boolean p1, p0, Landroid/media/dlna/DlnaClient;->mTryingToPause:Z
-
-    return p1
-.end method
-
-.method static synthetic access$1100(Landroid/media/dlna/DlnaClient;)J
-    .locals 2
-    .parameter "x0"
-
-    .prologue
-    .line 45
-    iget-wide v0, p0, Landroid/media/dlna/DlnaClient;->mPositionToSeek:J
-
-    return-wide v0
-.end method
-
-.method static synthetic access$1102(Landroid/media/dlna/DlnaClient;J)J
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 45
-    iput-wide p1, p0, Landroid/media/dlna/DlnaClient;->mPositionToSeek:J
-
-    return-wide p1
-.end method
-
-.method static synthetic access$1200(Landroid/media/dlna/DlnaClient;Ljava/lang/String;)I
+.method static synthetic access$100()I
     .locals 1
-    .parameter "x0"
-    .parameter "x1"
 
     .prologue
-    .line 45
-    invoke-direct {p0, p1}, Landroid/media/dlna/DlnaClient;->stateToInt(Ljava/lang/String;)I
-
-    move-result v0
+    .line 48
+    sget v0, Landroid/media/dlna/DlnaClient;->mVolume:I
 
     return v0
 .end method
 
-.method static synthetic access$1300()I
+.method static synthetic access$1000()I
     .locals 1
 
     .prologue
-    .line 45
+    .line 48
     sget v0, Landroid/media/dlna/DlnaClient;->mPlaybackState:I
 
     return v0
 .end method
 
-.method static synthetic access$1302(I)I
+.method static synthetic access$1002(I)I
     .locals 0
     .parameter "x0"
 
     .prologue
-    .line 45
+    .line 48
     sput p0, Landroid/media/dlna/DlnaClient;->mPlaybackState:I
 
     return p0
 .end method
 
-.method static synthetic access$1400(Landroid/media/dlna/DlnaClient;J)Z
+.method static synthetic access$102(I)I
+    .locals 0
+    .parameter "x0"
+
+    .prologue
+    .line 48
+    sput p0, Landroid/media/dlna/DlnaClient;->mVolume:I
+
+    return p0
+.end method
+
+.method static synthetic access$1100(Landroid/media/dlna/DlnaClient;I)Ljava/lang/String;
     .locals 1
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 45
+    .line 48
+    invoke-direct {p0, p1}, Landroid/media/dlna/DlnaClient;->stateToString(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static synthetic access$1200(Landroid/media/dlna/DlnaClient;J)Z
+    .locals 1
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 48
     invoke-direct {p0, p1, p2}, Landroid/media/dlna/DlnaClient;->seekLong(J)Z
 
     move-result v0
@@ -336,50 +308,73 @@
     return v0
 .end method
 
-.method static synthetic access$1500(Landroid/media/dlna/DlnaClient;)Ljava/lang/String;
+.method static synthetic access$1300(Landroid/media/dlna/DlnaClient;)Ljava/lang/String;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 45
+    .line 48
     iget-object v0, p0, Landroid/media/dlna/DlnaClient;->mUriSent:Ljava/lang/String;
 
     return-object v0
 .end method
 
-.method static synthetic access$1502(Landroid/media/dlna/DlnaClient;Ljava/lang/String;)Ljava/lang/String;
+.method static synthetic access$1302(Landroid/media/dlna/DlnaClient;Ljava/lang/String;)Ljava/lang/String;
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 45
+    .line 48
     iput-object p1, p0, Landroid/media/dlna/DlnaClient;->mUriSent:Ljava/lang/String;
 
     return-object p1
 .end method
 
-.method static synthetic access$1600(Landroid/media/dlna/DlnaClient;)Ljava/lang/String;
+.method static synthetic access$1400(Landroid/media/dlna/DlnaClient;)Ljava/lang/String;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 45
+    .line 48
     iget-object v0, p0, Landroid/media/dlna/DlnaClient;->mLastUri:Ljava/lang/String;
 
     return-object v0
 .end method
 
-.method static synthetic access$1602(Landroid/media/dlna/DlnaClient;Ljava/lang/String;)Ljava/lang/String;
+.method static synthetic access$1402(Landroid/media/dlna/DlnaClient;Ljava/lang/String;)Ljava/lang/String;
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 45
+    .line 48
     iput-object p1, p0, Landroid/media/dlna/DlnaClient;->mLastUri:Ljava/lang/String;
 
     return-object p1
+.end method
+
+.method static synthetic access$1500()Ljava/util/Map;
+    .locals 1
+
+    .prologue
+    .line 48
+    sget-object v0, Landroid/media/dlna/DlnaClient;->mCallbackPool:Ljava/util/Map;
+
+    return-object v0
+.end method
+
+.method static synthetic access$1600(Landroid/media/dlna/DlnaClient;)Z
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 48
+    invoke-direct {p0}, Landroid/media/dlna/DlnaClient;->requestState()Z
+
+    move-result v0
+
+    return v0
 .end method
 
 .method static synthetic access$1700(Landroid/media/dlna/DlnaClient;)Z
@@ -387,8 +382,8 @@
     .parameter "x0"
 
     .prologue
-    .line 45
-    invoke-direct {p0}, Landroid/media/dlna/DlnaClient;->requestState()Z
+    .line 48
+    invoke-direct {p0}, Landroid/media/dlna/DlnaClient;->requestPosition()Z
 
     move-result v0
 
@@ -400,7 +395,7 @@
     .parameter "x0"
 
     .prologue
-    .line 45
+    .line 48
     invoke-direct {p0}, Landroid/media/dlna/DlnaClient;->requestVolume()Z
 
     move-result v0
@@ -408,38 +403,14 @@
     return v0
 .end method
 
-.method static synthetic access$1900(Landroid/media/dlna/DlnaClient;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 45
-    invoke-direct {p0}, Landroid/media/dlna/DlnaClient;->requestPosition()Z
-
-    move-result v0
-
-    return v0
-.end method
-
-.method static synthetic access$200(Landroid/media/dlna/DlnaClient;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 45
-    iget v0, p0, Landroid/media/dlna/DlnaClient;->mSeekFormat:I
-
-    return v0
-.end method
-
-.method static synthetic access$202(Landroid/media/dlna/DlnaClient;I)I
+.method static synthetic access$202(Landroid/media/dlna/DlnaClient;Z)Z
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 45
-    iput p1, p0, Landroid/media/dlna/DlnaClient;->mSeekFormat:I
+    .line 48
+    iput-boolean p1, p0, Landroid/media/dlna/DlnaClient;->mTryingToPause:Z
 
     return p1
 .end method
@@ -449,7 +420,7 @@
     .parameter "x0"
 
     .prologue
-    .line 45
+    .line 48
     iget-boolean v0, p0, Landroid/media/dlna/DlnaClient;->mSeeking:Z
 
     return v0
@@ -461,89 +432,110 @@
     .parameter "x1"
 
     .prologue
-    .line 45
+    .line 48
     iput-boolean p1, p0, Landroid/media/dlna/DlnaClient;->mSeeking:Z
 
     return p1
 .end method
 
-.method static synthetic access$400(Landroid/media/dlna/DlnaClient;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/Object;)Z
+.method static synthetic access$400(Landroid/media/dlna/DlnaClient;)Landroid/media/dlna/DlnaClient$PlaybackInfoListener;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 48
+    iget-object v0, p0, Landroid/media/dlna/DlnaClient;->mPlaybackInfoListener:Landroid/media/dlna/DlnaClient$PlaybackInfoListener;
+
+    return-object v0
+.end method
+
+.method static synthetic access$500()I
+    .locals 1
+
+    .prologue
+    .line 48
+    sget v0, Landroid/media/dlna/DlnaClient;->mVolumeToSet:I
+
+    return v0
+.end method
+
+.method static synthetic access$502(I)I
+    .locals 0
+    .parameter "x0"
+
+    .prologue
+    .line 48
+    sput p0, Landroid/media/dlna/DlnaClient;->mVolumeToSet:I
+
+    return p0
+.end method
+
+.method static synthetic access$600(Landroid/media/dlna/DlnaClient;I)Z
     .locals 1
     .parameter "x0"
     .parameter "x1"
-    .parameter "x2"
-    .parameter "x3"
-    .parameter "x4"
 
     .prologue
-    .line 45
-    invoke-direct {p0, p1, p2, p3, p4}, Landroid/media/dlna/DlnaClient;->callAction(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/Object;)Z
+    .line 48
+    invoke-direct {p0, p1}, Landroid/media/dlna/DlnaClient;->setVolumeInt(I)Z
 
     move-result v0
 
     return v0
 .end method
 
-.method static synthetic access$600()Ljava/util/Map;
-    .locals 1
+.method static synthetic access$700()J
+    .locals 2
 
     .prologue
-    .line 45
-    sget-object v0, Landroid/media/dlna/DlnaClient;->mCallbackPool:Ljava/util/Map;
+    .line 48
+    sget-wide v0, Landroid/media/dlna/DlnaClient;->mPosition:J
 
-    return-object v0
+    return-wide v0
 .end method
 
-.method static synthetic access$700()I
-    .locals 1
-
-    .prologue
-    .line 45
-    sget v0, Landroid/media/dlna/DlnaClient;->mVolumeToSet:I
-
-    return v0
-.end method
-
-.method static synthetic access$702(I)I
+.method static synthetic access$702(J)J
     .locals 0
     .parameter "x0"
 
     .prologue
-    .line 45
-    sput p0, Landroid/media/dlna/DlnaClient;->mVolumeToSet:I
+    .line 48
+    sput-wide p0, Landroid/media/dlna/DlnaClient;->mPosition:J
 
-    return p0
+    return-wide p0
 .end method
 
-.method static synthetic access$800()I
-    .locals 1
-
-    .prologue
-    .line 45
-    sget v0, Landroid/media/dlna/DlnaClient;->mVolume:I
-
-    return v0
-.end method
-
-.method static synthetic access$802(I)I
-    .locals 0
+.method static synthetic access$800(Landroid/media/dlna/DlnaClient;)J
+    .locals 2
     .parameter "x0"
 
     .prologue
-    .line 45
-    sput p0, Landroid/media/dlna/DlnaClient;->mVolume:I
+    .line 48
+    iget-wide v0, p0, Landroid/media/dlna/DlnaClient;->mPositionToSeek:J
 
-    return p0
+    return-wide v0
 .end method
 
-.method static synthetic access$900(Landroid/media/dlna/DlnaClient;I)Z
+.method static synthetic access$802(Landroid/media/dlna/DlnaClient;J)J
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 48
+    iput-wide p1, p0, Landroid/media/dlna/DlnaClient;->mPositionToSeek:J
+
+    return-wide p1
+.end method
+
+.method static synthetic access$900(Landroid/media/dlna/DlnaClient;Ljava/lang/String;)I
     .locals 1
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 45
-    invoke-direct {p0, p1}, Landroid/media/dlna/DlnaClient;->setVolumeInt(I)Z
+    .line 48
+    invoke-direct {p0, p1}, Landroid/media/dlna/DlnaClient;->stateToInt(Ljava/lang/String;)I
 
     move-result v0
 
@@ -562,17 +554,17 @@
 
     const/4 v3, 0x0
 
-    .line 173
+    .line 187
     if-nez p4, :cond_2
 
-    .line 174
+    .line 188
     invoke-direct {p0, p1, p2, p3, v3}, Landroid/media/dlna/DlnaClient;->upnpCallAction(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;I)I
 
     move-result v4
 
     if-nez v4, :cond_1
 
-    .line 189
+    .line 203
     :cond_0
     :goto_0
     return v2
@@ -580,10 +572,10 @@
     :cond_1
     move v2, v3
 
-    .line 174
+    .line 188
     goto :goto_0
 
-    .line 176
+    .line 190
     :cond_2
     sget v3, Landroid/media/dlna/DlnaClient;->mCookieIndex:I
 
@@ -591,18 +583,18 @@
 
     sput v3, Landroid/media/dlna/DlnaClient;->mCookieIndex:I
 
-    .line 179
+    .line 193
     sget v3, Landroid/media/dlna/DlnaClient;->mCookieIndex:I
 
     invoke-direct {p0, p1, p2, p3, v3}, Landroid/media/dlna/DlnaClient;->upnpCallAction(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;I)I
 
     move-result v1
 
-    .line 181
+    .line 195
     .local v1, ret:I
     if-nez v1, :cond_3
 
-    .line 182
+    .line 196
     sget-object v3, Landroid/media/dlna/DlnaClient;->mCallbackPool:Ljava/util/Map;
 
     sget v4, Landroid/media/dlna/DlnaClient;->mCookieIndex:I
@@ -615,7 +607,7 @@
 
     goto :goto_0
 
-    .line 184
+    .line 198
     :cond_3
     instance-of v3, p4, Landroid/media/dlna/DlnaClient$RemoteCallListener;
 
@@ -623,14 +615,84 @@
 
     move-object v0, p4
 
-    .line 185
+    .line 199
     check-cast v0, Landroid/media/dlna/DlnaClient$RemoteCallListener;
 
-    .line 186
+    .line 200
     .local v0, remote:Landroid/media/dlna/DlnaClient$RemoteCallListener;
     const-string v3, "local error"
 
     invoke-interface {v0, v1, v3}, Landroid/media/dlna/DlnaClient$RemoteCallListener;->onActionEnd(ILjava/lang/String;)V
+
+    goto :goto_0
+.end method
+
+.method private convertMediaInfo(Ljava/lang/String;)Ljava/lang/String;
+    .locals 2
+    .parameter "value"
+
+    .prologue
+    .line 211
+    if-eqz p1, :cond_0
+
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
+
+    move-result v0
+
+    if-lez v0, :cond_0
+
+    const-string v0, "<unknown>"
+
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 212
+    const-string v0, "\\&"
+
+    const-string v1, "&amp;"
+
+    invoke-virtual {p1, v0, v1}, Ljava/lang/String;->replaceAll(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p1
+
+    .line 213
+    const-string v0, "<"
+
+    const-string v1, "&lt;"
+
+    invoke-virtual {p1, v0, v1}, Ljava/lang/String;->replaceAll(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p1
+
+    .line 214
+    const-string v0, ">"
+
+    const-string v1, "&gt;"
+
+    invoke-virtual {p1, v0, v1}, Ljava/lang/String;->replaceAll(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p1
+
+    .line 215
+    const-string v0, "\""
+
+    const-string v1, "&quot;"
+
+    invoke-virtual {p1, v0, v1}, Ljava/lang/String;->replaceAll(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p1
+
+    move-object v0, p1
+
+    .line 218
+    :goto_0
+    return-object v0
+
+    :cond_0
+    const/4 v0, 0x0
 
     goto :goto_0
 .end method
@@ -650,88 +712,100 @@
     .end annotation
 
     .prologue
-    .line 767
+    .line 815
     new-instance v9, Ljava/util/HashMap;
 
     invoke-direct {v9}, Ljava/util/HashMap;-><init>()V
 
-    .line 770
+    .line 816
     .local v9, retMap:Ljava/util/Map;,"Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    if-nez p0, :cond_1
+
+    .line 847
+    :cond_0
+    :goto_0
+    return-object v9
+
+    .line 821
+    :cond_1
     :try_start_0
     new-instance v6, Ljava/io/ByteArrayInputStream;
 
     invoke-direct {v6, p0}, Ljava/io/ByteArrayInputStream;-><init>([B)V
 
-    .line 772
+    .line 823
     .local v6, is:Ljava/io/ByteArrayInputStream;
     invoke-static {}, Ljavax/xml/parsers/DocumentBuilderFactory;->newInstance()Ljavax/xml/parsers/DocumentBuilderFactory;
 
     move-result-object v4
 
-    .line 773
+    .line 824
     .local v4, factory:Ljavax/xml/parsers/DocumentBuilderFactory;
     invoke-virtual {v4}, Ljavax/xml/parsers/DocumentBuilderFactory;->newDocumentBuilder()Ljavax/xml/parsers/DocumentBuilder;
 
     move-result-object v1
 
-    .line 775
+    .line 826
     .local v1, db:Ljavax/xml/parsers/DocumentBuilder;
     invoke-virtual {v1, v6}, Ljavax/xml/parsers/DocumentBuilder;->parse(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
 
     move-result-object v2
 
-    .line 776
+    .line 827
     .local v2, document:Lorg/w3c/dom/Document;
     invoke-interface {v2}, Lorg/w3c/dom/Document;->getDocumentElement()Lorg/w3c/dom/Element;
 
     move-result-object v10
 
-    .line 777
+    .line 828
     .local v10, rootElement:Lorg/w3c/dom/Element;
     invoke-interface {v10}, Lorg/w3c/dom/Element;->getChildNodes()Lorg/w3c/dom/NodeList;
 
     move-result-object v0
 
-    .line 779
+    .line 830
     .local v0, childList:Lorg/w3c/dom/NodeList;
     const/4 v5, 0x0
 
     .local v5, i:I
-    :goto_0
+    :goto_1
     invoke-interface {v0}, Lorg/w3c/dom/NodeList;->getLength()I
 
     move-result v12
 
-    if-ge v5, v12, :cond_1
+    if-ge v5, v12, :cond_0
 
-    .line 780
+    .line 831
     invoke-interface {v0, v5}, Lorg/w3c/dom/NodeList;->item(I)Lorg/w3c/dom/Node;
 
     move-result-object v8
 
-    .line 781
+    .line 832
     .local v8, node:Lorg/w3c/dom/Node;
     const/4 v12, 0x1
 
     invoke-interface {v8}, Lorg/w3c/dom/Node;->getNodeType()S
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
 
     move-result v13
 
-    if-eq v12, v13, :cond_0
+    if-eq v12, v13, :cond_2
 
-    .line 779
-    :goto_1
+    .line 830
+    :goto_2
     add-int/lit8 v5, v5, 0x1
 
-    goto :goto_0
+    goto :goto_1
 
-    .line 784
-    :cond_0
+    .line 836
+    :cond_2
+    :try_start_1
     invoke-interface {v8}, Lorg/w3c/dom/Node;->getNodeName()Ljava/lang/String;
 
     move-result-object v7
 
-    .line 785
+    .line 837
     .local v7, key:Ljava/lang/String;
     invoke-interface {v8}, Lorg/w3c/dom/Node;->getFirstChild()Lorg/w3c/dom/Node;
 
@@ -741,29 +815,35 @@
 
     move-result-object v11
 
-    .line 786
+    .line 838
     .local v11, value:Ljava/lang/String;
     invoke-interface {v9, v7, v11}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    :try_end_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
 
-    goto :goto_1
+    goto :goto_2
 
-    .line 789
+    .line 840
+    .end local v7           #key:Ljava/lang/String;
+    .end local v11           #value:Ljava/lang/String;
+    :catch_0
+    move-exception v12
+
+    goto :goto_2
+
+    .line 844
     .end local v0           #childList:Lorg/w3c/dom/NodeList;
     .end local v1           #db:Ljavax/xml/parsers/DocumentBuilder;
     .end local v2           #document:Lorg/w3c/dom/Document;
     .end local v4           #factory:Ljavax/xml/parsers/DocumentBuilderFactory;
     .end local v5           #i:I
     .end local v6           #is:Ljava/io/ByteArrayInputStream;
-    .end local v7           #key:Ljava/lang/String;
     .end local v8           #node:Lorg/w3c/dom/Node;
     .end local v10           #rootElement:Lorg/w3c/dom/Element;
-    .end local v11           #value:Ljava/lang/String;
-    :catch_0
+    :catch_1
     move-exception v3
 
-    .line 790
+    .line 845
     .local v3, e:Ljava/lang/Exception;
     const-string v12, "DlnaClient"
 
@@ -787,41 +867,38 @@
 
     invoke-static {v12, v13}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 792
-    .end local v3           #e:Ljava/lang/Exception;
-    :cond_1
-    return-object v9
+    goto :goto_0
 .end method
 
 .method private getService()Landroid/media/dlna/IDLNAService;
     .locals 4
 
     .prologue
-    .line 111
+    .line 121
     const-string v2, "media.dlna"
 
     invoke-static {v2}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
 
     move-result-object v0
 
-    .line 112
+    .line 122
     .local v0, b:Landroid/os/IBinder;
     invoke-static {v0}, Landroid/media/dlna/IDLNAService$Stub;->asInterface(Landroid/os/IBinder;)Landroid/media/dlna/IDLNAService;
 
     move-result-object v1
 
-    .line 113
+    .line 123
     .local v1, service:Landroid/media/dlna/IDLNAService;
     if-nez v1, :cond_0
 
-    .line 114
+    .line 124
     const-string v2, "DlnaClient"
 
     const-string v3, "get dlna service NULL !!!!!"
 
     invoke-static {v2, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 115
+    .line 125
     :cond_0
     return-object v1
 .end method
@@ -838,7 +915,7 @@
     .parameter "obj"
 
     .prologue
-    .line 76
+    .line 86
     check-cast p0, Ljava/lang/ref/WeakReference;
 
     .end local p0
@@ -848,31 +925,31 @@
 
     check-cast v0, Landroid/media/dlna/DlnaClient;
 
-    .line 77
+    .line 87
     .local v0, dc:Landroid/media/dlna/DlnaClient;
     if-nez v0, :cond_1
 
-    .line 86
+    .line 96
     :cond_0
     :goto_0
     return-void
 
-    .line 81
+    .line 91
     :cond_1
     invoke-virtual {v0}, Landroid/media/dlna/DlnaClient;->getHandler()Landroid/os/Handler;
 
     move-result-object v1
 
-    .line 82
+    .line 92
     .local v1, handler:Landroid/os/Handler;
     if-eqz v1, :cond_0
 
-    .line 83
+    .line 93
     invoke-virtual {v1, p1, p2, p3, p4}, Landroid/os/Handler;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
 
     move-result-object v2
 
-    .line 84
+    .line 94
     .local v2, m:Landroid/os/Message;
     invoke-virtual {v1, v2}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
@@ -880,145 +957,167 @@
 .end method
 
 .method private requestPosition()Z
-    .locals 4
+    .locals 6
 
     .prologue
-    .line 430
-    const/4 v1, 0x2
-
-    new-array v0, v1, [Ljava/lang/String;
-
-    const/4 v1, 0x0
-
-    const-string v2, "InstanceID"
-
-    aput-object v2, v0, v1
-
     const/4 v1, 0x1
 
-    const-string v2, "0"
+    const/4 v2, 0x0
 
-    aput-object v2, v0, v1
+    .line 426
+    const/4 v3, 0x2
 
-    .line 433
+    new-array v0, v3, [Ljava/lang/String;
+
+    const-string v3, "InstanceID"
+
+    aput-object v3, v0, v2
+
+    const-string v3, "0"
+
+    aput-object v3, v0, v1
+
+    .line 429
     .local v0, params:[Ljava/lang/String;
-    const-string v1, "AVTransport"
+    const-string v3, "AVTransport"
 
-    const-string v2, "GetPositionInfo"
+    const-string v4, "GetPositionInfo"
 
-    iget-object v3, p0, Landroid/media/dlna/DlnaClient;->mPlaybackInfoListener:Landroid/media/dlna/DlnaClient$PlaybackInfoListener;
+    const/16 v5, 0x3e7
 
-    invoke-direct {p0, v1, v2, v0, v3}, Landroid/media/dlna/DlnaClient;->callAction(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/Object;)Z
+    invoke-direct {p0, v3, v4, v0, v5}, Landroid/media/dlna/DlnaClient;->upnpCallAction(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;I)I
 
-    move-result v1
+    move-result v3
 
+    if-nez v3, :cond_0
+
+    :goto_0
     return v1
+
+    :cond_0
+    move v1, v2
+
+    goto :goto_0
 .end method
 
 .method private requestState()Z
-    .locals 4
+    .locals 6
 
     .prologue
-    .line 437
-    const/4 v1, 0x2
-
-    new-array v0, v1, [Ljava/lang/String;
-
-    const/4 v1, 0x0
-
-    const-string v2, "InstanceID"
-
-    aput-object v2, v0, v1
-
     const/4 v1, 0x1
 
-    const-string v2, "0"
+    const/4 v2, 0x0
 
-    aput-object v2, v0, v1
+    .line 433
+    const/4 v3, 0x2
 
-    .line 440
+    new-array v0, v3, [Ljava/lang/String;
+
+    const-string v3, "InstanceID"
+
+    aput-object v3, v0, v2
+
+    const-string v3, "0"
+
+    aput-object v3, v0, v1
+
+    .line 436
     .local v0, params:[Ljava/lang/String;
-    const-string v1, "AVTransport"
+    const-string v3, "AVTransport"
 
-    const-string v2, "GetTransportInfo"
+    const-string v4, "GetTransportInfo"
 
-    iget-object v3, p0, Landroid/media/dlna/DlnaClient;->mPlaybackInfoListener:Landroid/media/dlna/DlnaClient$PlaybackInfoListener;
+    const/16 v5, 0x3e7
 
-    invoke-direct {p0, v1, v2, v0, v3}, Landroid/media/dlna/DlnaClient;->callAction(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/Object;)Z
+    invoke-direct {p0, v3, v4, v0, v5}, Landroid/media/dlna/DlnaClient;->upnpCallAction(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;I)I
 
-    move-result v1
+    move-result v3
 
+    if-nez v3, :cond_0
+
+    :goto_0
     return v1
+
+    :cond_0
+    move v1, v2
+
+    goto :goto_0
 .end method
 
 .method private requestVolume()Z
-    .locals 4
+    .locals 6
 
     .prologue
-    .line 421
-    const/4 v1, 0x4
-
-    new-array v0, v1, [Ljava/lang/String;
-
-    const/4 v1, 0x0
-
-    const-string v2, "InstanceID"
-
-    aput-object v2, v0, v1
-
     const/4 v1, 0x1
 
-    const-string v2, "0"
+    const/4 v2, 0x0
 
-    aput-object v2, v0, v1
+    .line 417
+    const/4 v3, 0x4
 
-    const/4 v1, 0x2
+    new-array v0, v3, [Ljava/lang/String;
 
-    const-string v2, "Channel"
+    const-string v3, "InstanceID"
 
-    aput-object v2, v0, v1
+    aput-object v3, v0, v2
 
-    const/4 v1, 0x3
+    const-string v3, "0"
 
-    const-string v2, "Master"
+    aput-object v3, v0, v1
 
-    aput-object v2, v0, v1
+    const/4 v3, 0x2
 
-    .line 426
+    const-string v4, "Channel"
+
+    aput-object v4, v0, v3
+
+    const/4 v3, 0x3
+
+    const-string v4, "Master"
+
+    aput-object v4, v0, v3
+
+    .line 422
     .local v0, params:[Ljava/lang/String;
-    const-string v1, "RenderingControl"
+    const-string v3, "RenderingControl"
 
-    const-string v2, "GetVolume"
+    const-string v4, "GetVolume"
 
-    iget-object v3, p0, Landroid/media/dlna/DlnaClient;->mPlaybackInfoListener:Landroid/media/dlna/DlnaClient$PlaybackInfoListener;
+    const/16 v5, 0x3e7
 
-    invoke-direct {p0, v1, v2, v0, v3}, Landroid/media/dlna/DlnaClient;->callAction(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/Object;)Z
+    invoke-direct {p0, v3, v4, v0, v5}, Landroid/media/dlna/DlnaClient;->upnpCallAction(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;I)I
 
-    move-result v1
+    move-result v3
 
+    if-nez v3, :cond_0
+
+    :goto_0
     return v1
+
+    :cond_0
+    move v1, v2
+
+    goto :goto_0
 .end method
 
 .method private seekLong(J)Z
-    .locals 5
+    .locals 4
     .parameter "position"
 
     .prologue
-    const/4 v4, 0x1
-
-    .line 388
+    .line 393
     const-wide/16 v1, 0x3e8
 
     div-long/2addr p1, v1
 
-    .line 390
+    .line 394
     const-string v1, "DlnaClient"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "seek position = "
+    const-string v3, "SEEK position = "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1034,93 +1133,25 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 391
-    iput-boolean v4, p0, Landroid/media/dlna/DlnaClient;->mSeeking:Z
-
-    .line 392
-    iget v1, p0, Landroid/media/dlna/DlnaClient;->mSeekFormat:I
-
-    if-eqz v1, :cond_0
-
-    iget v1, p0, Landroid/media/dlna/DlnaClient;->mSeekFormat:I
-
-    if-ne v1, v4, :cond_2
-
-    .line 393
-    :cond_0
-    new-instance v0, Landroid/media/dlna/DlnaClient$SeekListener1;
-
-    invoke-direct {v0, p0, p1, p2}, Landroid/media/dlna/DlnaClient$SeekListener1;-><init>(Landroid/media/dlna/DlnaClient;J)V
-
-    .line 394
-    .local v0, l:Landroid/media/dlna/DlnaClient$SeekListener1;
-    const-string v1, "AVTransport"
-
-    const-string v2, "Seek"
-
-    iget-object v3, v0, Landroid/media/dlna/DlnaClient$SeekListener1;->mParams:[Ljava/lang/String;
-
-    invoke-direct {p0, v1, v2, v3, v0}, Landroid/media/dlna/DlnaClient;->callAction(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/Object;)Z
-
-    .line 402
-    .end local v0           #l:Landroid/media/dlna/DlnaClient$SeekListener1;
-    :cond_1
-    :goto_0
-    return v4
-
-    .line 395
-    :cond_2
-    iget v1, p0, Landroid/media/dlna/DlnaClient;->mSeekFormat:I
-
-    const/4 v2, 0x2
-
-    if-ne v1, v2, :cond_3
-
     .line 396
-    new-instance v0, Landroid/media/dlna/DlnaClient$SeekListener2;
+    new-instance v0, Landroid/media/dlna/DlnaClient$SeekListener;
 
-    invoke-direct {v0, p0, p1, p2}, Landroid/media/dlna/DlnaClient$SeekListener2;-><init>(Landroid/media/dlna/DlnaClient;J)V
+    invoke-direct {v0, p0, p1, p2}, Landroid/media/dlna/DlnaClient$SeekListener;-><init>(Landroid/media/dlna/DlnaClient;J)V
 
     .line 397
-    .local v0, l:Landroid/media/dlna/DlnaClient$SeekListener2;
+    .local v0, l:Landroid/media/dlna/DlnaClient$SeekListener;
     const-string v1, "AVTransport"
 
     const-string v2, "Seek"
 
-    iget-object v3, v0, Landroid/media/dlna/DlnaClient$SeekListener2;->mParams:[Ljava/lang/String;
+    iget-object v3, v0, Landroid/media/dlna/DlnaClient$SeekListener;->mParams:[Ljava/lang/String;
 
     invoke-direct {p0, v1, v2, v3, v0}, Landroid/media/dlna/DlnaClient;->callAction(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/Object;)Z
-
-    goto :goto_0
 
     .line 398
-    .end local v0           #l:Landroid/media/dlna/DlnaClient$SeekListener2;
-    :cond_3
-    iget v1, p0, Landroid/media/dlna/DlnaClient;->mSeekFormat:I
+    const/4 v1, 0x1
 
-    const/4 v2, 0x3
-
-    if-ne v1, v2, :cond_1
-
-    .line 399
-    new-instance v0, Landroid/media/dlna/DlnaClient$SeekListener3;
-
-    invoke-direct {v0, p0, p1, p2}, Landroid/media/dlna/DlnaClient$SeekListener3;-><init>(Landroid/media/dlna/DlnaClient;J)V
-
-    .line 400
-    .local v0, l:Landroid/media/dlna/DlnaClient$SeekListener3;
-    const-string v1, "AVTransport"
-
-    const-string v2, "Seek"
-
-    #getter for: Landroid/media/dlna/DlnaClient$SeekListener3;->mParams:[Ljava/lang/String;
-    invoke-static {v0}, Landroid/media/dlna/DlnaClient$SeekListener3;->access$500(Landroid/media/dlna/DlnaClient$SeekListener3;)[Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-direct {p0, v1, v2, v3, v0}, Landroid/media/dlna/DlnaClient;->callAction(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/Object;)Z
-
-    goto :goto_0
+    return v1
 .end method
 
 .method private setVolumeInt(I)Z
@@ -1128,7 +1159,7 @@
     .parameter "volume"
 
     .prologue
-    .line 411
+    .line 407
     const/4 v1, 0x6
 
     new-array v0, v1, [Ljava/lang/String;
@@ -1171,7 +1202,7 @@
 
     aput-object v2, v0, v1
 
-    .line 417
+    .line 413
     .local v0, params:[Ljava/lang/String;
     const-string v1, "RenderingControl"
 
@@ -1187,140 +1218,182 @@
 .end method
 
 .method private stateToInt(Ljava/lang/String;)I
-    .locals 1
+    .locals 4
     .parameter "stateStr"
 
     .prologue
-    .line 694
-    const-string v0, "NO_MEDIA_PRESENT"
+    const/4 v0, 0x0
 
-    invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    .line 741
+    const-string v1, "NO_MEDIA_PRESENT"
 
-    move-result v0
+    invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    if-eqz v0, :cond_0
+    move-result v1
 
-    .line 695
+    if-eqz v1, :cond_0
+
+    .line 742
     const/4 v0, 0x1
 
-    .line 704
+    .line 752
     :goto_0
     return v0
 
-    .line 696
+    .line 743
     :cond_0
-    const-string v0, "STOPPED"
+    const-string v1, "STOPPED"
 
-    invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v0
+    move-result v1
 
-    if-eqz v0, :cond_1
+    if-eqz v1, :cond_1
 
-    .line 697
+    .line 744
     const/4 v0, 0x2
 
     goto :goto_0
 
-    .line 698
+    .line 745
     :cond_1
-    const-string v0, "TRANSITIONING"
+    const-string v1, "TRANSITIONING"
 
-    invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v0
+    move-result v1
 
-    if-eqz v0, :cond_2
+    if-eqz v1, :cond_2
 
-    .line 699
+    .line 746
     const/4 v0, 0x4
 
     goto :goto_0
 
-    .line 700
+    .line 747
     :cond_2
-    const-string v0, "PLAYING"
+    const-string v1, "PLAYING"
 
-    invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v0
+    move-result v1
 
-    if-eqz v0, :cond_3
+    if-eqz v1, :cond_3
 
-    .line 701
+    .line 748
     const/16 v0, 0x8
 
     goto :goto_0
 
-    .line 702
+    .line 749
     :cond_3
-    const-string v0, "PAUSED"
+    const/4 v1, 0x6
 
-    invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v0, v1}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
-    move-result v0
+    move-result-object v1
 
-    if-eqz v0, :cond_4
+    const-string v2, "PAUSED"
 
-    .line 703
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_4
+
+    .line 750
     const/16 v0, 0x10
 
     goto :goto_0
 
-    .line 704
+    .line 751
     :cond_4
-    const/4 v0, 0x0
+    const-string v1, "DlnaClient"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX unknow state string : "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_0
 .end method
 
 .method private stateToString(I)Ljava/lang/String;
-    .locals 1
+    .locals 2
     .parameter "state"
 
     .prologue
-    .line 708
+    .line 756
     sparse-switch p1, :sswitch_data_0
 
-    .line 720
-    const-string v0, "unknown"
+    .line 768
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "unknown state "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
 
     :goto_0
     return-object v0
 
-    .line 710
+    .line 758
     :sswitch_0
     const-string v0, "No Media"
 
     goto :goto_0
 
-    .line 712
+    .line 760
     :sswitch_1
     const-string v0, "Paused"
 
     goto :goto_0
 
-    .line 714
+    .line 762
     :sswitch_2
     const-string v0, "Playing"
 
     goto :goto_0
 
-    .line 716
+    .line 764
     :sswitch_3
     const-string v0, "Stopped"
 
     goto :goto_0
 
-    .line 718
+    .line 766
     :sswitch_4
     const-string v0, "Transitioning"
 
     goto :goto_0
 
-    .line 708
-    nop
-
+    .line 756
     :sswitch_data_0
     .sparse-switch
         0x1 -> :sswitch_0
@@ -1336,7 +1409,7 @@
     .parameter "awake"
 
     .prologue
-    .line 744
+    .line 792
     const-string v0, "DlnaClient"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1359,12 +1432,12 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 745
+    .line 793
     iget-object v0, p0, Landroid/media/dlna/DlnaClient;->mWakeLock:Landroid/os/PowerManager$WakeLock;
 
     if-eqz v0, :cond_0
 
-    .line 746
+    .line 794
     if-eqz p1, :cond_1
 
     iget-object v0, p0, Landroid/media/dlna/DlnaClient;->mWakeLock:Landroid/os/PowerManager$WakeLock;
@@ -1375,17 +1448,17 @@
 
     if-nez v0, :cond_1
 
-    .line 747
+    .line 795
     iget-object v0, p0, Landroid/media/dlna/DlnaClient;->mWakeLock:Landroid/os/PowerManager$WakeLock;
 
     invoke-virtual {v0}, Landroid/os/PowerManager$WakeLock;->acquire()V
 
-    .line 752
+    .line 800
     :cond_0
     :goto_0
     return-void
 
-    .line 748
+    .line 796
     :cond_1
     if-nez p1, :cond_0
 
@@ -1397,7 +1470,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 749
+    .line 797
     iget-object v0, p0, Landroid/media/dlna/DlnaClient;->mWakeLock:Landroid/os/PowerManager$WakeLock;
 
     invoke-virtual {v0}, Landroid/os/PowerManager$WakeLock;->release()V
@@ -1428,20 +1501,20 @@
     .end annotation
 
     .prologue
-    .line 105
+    .line 115
     const-string v0, "DlnaClient"
 
     const-string v1, "dlna client uninit"
 
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 106
+    .line 116
     invoke-direct {p0}, Landroid/media/dlna/DlnaClient;->upnpUninit()V
 
-    .line 107
+    .line 117
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 108
+    .line 118
     return-void
 .end method
 
@@ -1460,25 +1533,25 @@
     .end annotation
 
     .prologue
-    .line 796
+    .line 851
     if-nez p1, :cond_0
 
-    .line 797
+    .line 852
     new-instance v5, Ljava/util/HashMap;
 
     invoke-direct {v5}, Ljava/util/HashMap;-><init>()V
 
-    .line 811
+    .line 866
     :goto_0
     return-object v5
 
-    .line 799
+    .line 854
     :cond_0
     invoke-static {}, Ljavax/xml/parsers/SAXParserFactory;->newInstance()Ljavax/xml/parsers/SAXParserFactory;
 
     move-result-object v1
 
-    .line 800
+    .line 855
     .local v1, factory:Ljavax/xml/parsers/SAXParserFactory;
     new-instance v2, Landroid/media/dlna/DlnaClient$ActionResultXmlHandler;
 
@@ -1486,29 +1559,29 @@
 
     invoke-direct {v2, p0, v5}, Landroid/media/dlna/DlnaClient$ActionResultXmlHandler;-><init>(Landroid/media/dlna/DlnaClient;Landroid/media/dlna/DlnaClient$1;)V
 
-    .line 803
+    .line 858
     .local v2, handler:Landroid/media/dlna/DlnaClient$ActionResultXmlHandler;
     :try_start_0
     new-instance v3, Ljava/io/ByteArrayInputStream;
 
     invoke-direct {v3, p1}, Ljava/io/ByteArrayInputStream;-><init>([B)V
 
-    .line 804
+    .line 859
     .local v3, inStream:Ljava/io/ByteArrayInputStream;
     invoke-virtual {v1}, Ljavax/xml/parsers/SAXParserFactory;->newSAXParser()Ljavax/xml/parsers/SAXParser;
 
     move-result-object v4
 
-    .line 805
+    .line 860
     .local v4, parser:Ljavax/xml/parsers/SAXParser;
     invoke-virtual {v4, v3, v2}, Ljavax/xml/parsers/SAXParser;->parse(Ljava/io/InputStream;Lorg/xml/sax/helpers/DefaultHandler;)V
 
-    .line 806
+    .line 861
     invoke-virtual {v3}, Ljava/io/ByteArrayInputStream;->close()V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 811
+    .line 866
     .end local v3           #inStream:Ljava/io/ByteArrayInputStream;
     .end local v4           #parser:Ljavax/xml/parsers/SAXParser;
     :goto_1
@@ -1518,11 +1591,11 @@
 
     goto :goto_0
 
-    .line 808
+    .line 863
     :catch_0
     move-exception v0
 
-    .line 809
+    .line 864
     .local v0, e:Ljava/lang/Exception;
     const-string v5, "DlnaClient"
 
@@ -1553,7 +1626,7 @@
     .locals 1
 
     .prologue
-    .line 463
+    .line 459
     iget-object v0, p0, Landroid/media/dlna/DlnaClient;->mDlnaHandler:Landroid/os/Handler;
 
     return-object v0
@@ -1563,7 +1636,7 @@
     .locals 4
 
     .prologue
-    .line 452
+    .line 448
     iget-wide v0, p0, Landroid/media/dlna/DlnaClient;->mPositionToSeek:J
 
     const-wide/16 v2, 0x0
@@ -1572,14 +1645,14 @@
 
     if-ltz v0, :cond_0
 
-    .line 453
+    .line 449
     iget-wide v0, p0, Landroid/media/dlna/DlnaClient;->mPositionToSeek:J
 
     const-wide/16 v2, 0x3e8
 
     div-long/2addr v0, v2
 
-    .line 455
+    .line 451
     :goto_0
     return-wide v0
 
@@ -1590,18 +1663,30 @@
 .end method
 
 .method public getProtocolInfo(Landroid/media/dlna/DlnaClient$GetProtocolListener;)V
-    .locals 2
+    .locals 4
     .parameter "listener"
 
     .prologue
-    .line 685
-    const-string v0, "DlnaClient"
+    .line 720
+    const/4 v2, 0x0
 
-    const-string v1, "GetProtocolInfo not impl yet"
+    new-array v1, v2, [Ljava/lang/String;
 
-    invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    .line 722
+    .local v1, params:[Ljava/lang/String;
+    new-instance v0, Landroid/media/dlna/DlnaClient$4;
 
-    .line 686
+    invoke-direct {v0, p0}, Landroid/media/dlna/DlnaClient$4;-><init>(Landroid/media/dlna/DlnaClient;)V
+
+    .line 732
+    .local v0, l:Landroid/media/dlna/DlnaClient$RemoteCallListener;
+    const-string v2, "ConnectionManager"
+
+    const-string v3, "GetProtocolInfo"
+
+    invoke-direct {p0, v2, v3, v1, v0}, Landroid/media/dlna/DlnaClient;->callAction(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/Object;)Z
+
+    .line 733
     return-void
 .end method
 
@@ -1609,7 +1694,7 @@
     .locals 2
 
     .prologue
-    .line 459
+    .line 455
     sget v0, Landroid/media/dlna/DlnaClient;->mVolume:I
 
     int-to-float v0, v0
@@ -1627,12 +1712,12 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 444
+    .line 440
     iget-boolean v1, p0, Landroid/media/dlna/DlnaClient;->mTryingToPause:Z
 
     if-eqz v1, :cond_1
 
-    .line 447
+    .line 443
     :cond_0
     :goto_0
     return v0
@@ -1674,7 +1759,7 @@
     .parameter "mimeType"
 
     .prologue
-    .line 690
+    .line 737
     const/4 v0, 0x1
 
     return v0
@@ -1693,12 +1778,12 @@
     .end annotation
 
     .prologue
-    .line 143
+    .line 157
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    .line 146
+    .line 160
     .local v0, devices:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Landroid/media/dlna/DlnaDevice;>;"
     :try_start_0
     invoke-direct {p0}, Landroid/media/dlna/DlnaClient;->getService()Landroid/media/dlna/IDLNAService;
@@ -1717,7 +1802,7 @@
 
     move-result-object v3
 
-    .line 147
+    .line 161
     .local v3, iter:Ljava/util/Iterator;
     :goto_0
     invoke-interface {v3}, Ljava/util/Iterator;->hasNext()Z
@@ -1726,14 +1811,14 @@
 
     if-eqz v4, :cond_0
 
-    .line 148
+    .line 162
     invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v2
 
     check-cast v2, Ljava/util/Map$Entry;
 
-    .line 149
+    .line 163
     .local v2, entry:Ljava/util/Map$Entry;
     new-instance v6, Landroid/media/dlna/DlnaDevice;
 
@@ -1759,13 +1844,13 @@
 
     goto :goto_0
 
-    .line 158
+    .line 172
     .end local v2           #entry:Ljava/util/Map$Entry;
     .end local v3           #iter:Ljava/util/Iterator;
     :catch_0
     move-exception v1
 
-    .line 159
+    .line 173
     .local v1, e:Ljava/lang/Exception;
     const-string v4, "DlnaClient"
 
@@ -1793,7 +1878,7 @@
 
     invoke-static {v4, v5}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 162
+    .line 176
     .end local v1           #e:Ljava/lang/Exception;
     :cond_0
     return-object v0
@@ -1806,7 +1891,7 @@
     .prologue
     const/4 v4, 0x1
 
-    .line 258
+    .line 346
     const/4 v2, 0x2
 
     new-array v1, v2, [Ljava/lang/String;
@@ -1821,16 +1906,16 @@
 
     aput-object v2, v1, v4
 
-    .line 260
+    .line 348
     .local v1, params:[Ljava/lang/String;
     iput-boolean v4, p0, Landroid/media/dlna/DlnaClient;->mTryingToPause:Z
 
-    .line 261
+    .line 349
     new-instance v0, Landroid/media/dlna/DlnaClient$2;
 
     invoke-direct {v0, p0, p1}, Landroid/media/dlna/DlnaClient$2;-><init>(Landroid/media/dlna/DlnaClient;Landroid/media/dlna/DlnaClient$RemoteCallListener;)V
 
-    .line 271
+    .line 359
     .local v0, l:Landroid/media/dlna/DlnaClient$RemoteCallListener;
     const-string v2, "AVTransport"
 
@@ -1850,7 +1935,7 @@
     .prologue
     const/4 v4, 0x1
 
-    .line 234
+    .line 316
     const/4 v2, 0x4
 
     new-array v1, v2, [Ljava/lang/String;
@@ -1877,16 +1962,16 @@
 
     aput-object v3, v1, v2
 
-    .line 235
+    .line 317
     .local v1, params:[Ljava/lang/String;
     iput-boolean v4, p0, Landroid/media/dlna/DlnaClient;->mTryingToPlay:Z
 
-    .line 237
+    .line 319
     new-instance v0, Landroid/media/dlna/DlnaClient$1;
 
     invoke-direct {v0, p0, p1}, Landroid/media/dlna/DlnaClient$1;-><init>(Landroid/media/dlna/DlnaClient;Landroid/media/dlna/DlnaClient$RemoteCallListener;)V
 
-    .line 247
+    .line 335
     .local v0, l:Landroid/media/dlna/DlnaClient$RemoteCallListener;
     const-string v2, "AVTransport"
 
@@ -1900,33 +1985,51 @@
 .end method
 
 .method public seek(J)Z
-    .locals 2
+    .locals 4
     .parameter "position"
 
     .prologue
-    .line 276
+    const/4 v3, 0x1
+
+    .line 366
+    const-wide/16 v0, 0x3e8
+
+    cmp-long v0, p1, v0
+
+    if-gez v0, :cond_0
+
+    .line 367
+    const-string v0, "dlna. FIXME XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "position ERROR "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1, p2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 368
+    :cond_0
+    iput-boolean v3, p0, Landroid/media/dlna/DlnaClient;->mSeeking:Z
+
+    .line 369
     iput-wide p1, p0, Landroid/media/dlna/DlnaClient;->mPositionToSeek:J
 
-    .line 277
-    sget v0, Landroid/media/dlna/DlnaClient;->mPlaybackState:I
-
-    const/16 v1, 0x8
-
-    if-ne v0, v1, :cond_0
-
-    .line 278
-    invoke-direct {p0, p1, p2}, Landroid/media/dlna/DlnaClient;->seekLong(J)Z
-
-    move-result v0
-
-    .line 280
-    :goto_0
-    return v0
-
-    :cond_0
-    const/4 v0, 0x1
-
-    goto :goto_0
+    .line 370
+    return v3
 .end method
 
 .method public selectPlayer(Ljava/lang/String;)Z
@@ -1934,7 +2037,7 @@
     .parameter "deviceId"
 
     .prologue
-    .line 120
+    .line 130
     :try_start_0
     invoke-direct {p0}, Landroid/media/dlna/DlnaClient;->getService()Landroid/media/dlna/IDLNAService;
 
@@ -1952,20 +2055,15 @@
 
     move-result-object v2
 
-    .line 123
+    .line 134
     .local v2, iter:Ljava/util/Iterator;
-    sget-object v3, Landroid/media/dlna/DlnaClient;->mCallbackPool:Ljava/util/Map;
-
-    invoke-interface {v3}, Ljava/util/Map;->clear()V
-
-    .line 124
     const/4 v3, 0x0
 
     const/4 v4, 0x0
 
     invoke-direct {p0, v3, v4}, Landroid/media/dlna/DlnaClient;->upnpSetService(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 126
+    .line 136
     :goto_0
     invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
@@ -1973,14 +2071,14 @@
 
     if-eqz v3, :cond_0
 
-    .line 127
+    .line 137
     invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v1
 
     check-cast v1, Ljava/util/Map$Entry;
 
-    .line 129
+    .line 139
     .local v1, entry:Ljava/util/Map$Entry;
     invoke-interface {v1}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
@@ -2000,13 +2098,13 @@
 
     goto :goto_0
 
-    .line 133
+    .line 148
     .end local v1           #entry:Ljava/util/Map$Entry;
     .end local v2           #iter:Ljava/util/Iterator;
     :catch_0
     move-exception v0
 
-    .line 134
+    .line 149
     .local v0, e:Ljava/lang/Exception;
     const-string v3, "DlnaClient"
 
@@ -2034,302 +2132,1119 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 135
+    .line 150
     const/4 v3, 0x0
 
-    .line 138
+    .line 153
     .end local v0           #e:Ljava/lang/Exception;
     :goto_1
     return v3
 
+    .line 143
     .restart local v2       #iter:Ljava/util/Iterator;
     :cond_0
+    const/4 v3, 0x0
+
+    :try_start_1
+    invoke-virtual {p0, v3}, Landroid/media/dlna/DlnaClient;->getProtocolInfo(Landroid/media/dlna/DlnaClient$GetProtocolListener;)V
+
+    .line 144
+    invoke-direct {p0}, Landroid/media/dlna/DlnaClient;->requestState()Z
+
+    .line 145
+    invoke-direct {p0}, Landroid/media/dlna/DlnaClient;->requestPosition()Z
+    :try_end_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
+
+    .line 153
     const/4 v3, 0x1
 
     goto :goto_1
 .end method
 
 .method public setDataSource(Ljava/lang/String;Landroid/media/dlna/DlnaClient$RemoteCallListener;)Z
-    .locals 13
+    .locals 1
     .parameter "location"
     .parameter "listener"
 
     .prologue
-    .line 193
-    move-object v9, p1
+    .line 207
+    const/4 v0, 0x0
 
-    .line 194
-    .local v9, url:Ljava/lang/String;
-    const-string v6, "video/mp4"
+    invoke-virtual {p0, p1, p2, v0}, Landroid/media/dlna/DlnaClient;->setDataSource(Ljava/lang/String;Landroid/media/dlna/DlnaClient$RemoteCallListener;Ljava/util/HashMap;)Z
 
-    .line 195
-    .local v6, mimeType:Ljava/lang/String;
-    const-string v5, "object.item.videoItem"
+    move-result v0
 
-    .line 196
-    .local v5, mimeClass:Ljava/lang/String;
-    const-string v8, "Remote media"
+    return v0
+.end method
 
-    .line 198
-    .local v8, title:Ljava/lang/String;
-    const/4 v10, 0x0
+.method public setDataSource(Ljava/lang/String;Landroid/media/dlna/DlnaClient$RemoteCallListener;Ljava/util/HashMap;)Z
+    .locals 33
+    .parameter "location"
+    .parameter "listener"
+    .parameter
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            "Landroid/media/dlna/DlnaClient$RemoteCallListener;",
+            "Ljava/util/HashMap",
+            "<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;)Z"
+        }
+    .end annotation
 
-    const/4 v11, 0x4
+    .prologue
+    .line 222
+    .local p3, mediaInfo:Ljava/util/HashMap;,"Ljava/util/HashMap<Ljava/lang/String;Ljava/lang/String;>;"
+    move-object/from16 v23, p1
 
-    invoke-virtual {p1, v10, v11}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+    .line 223
+    .local v23, url:Ljava/lang/String;
+    const-string v19, "video/mp4"
 
-    move-result-object v10
+    .line 224
+    .local v19, mimeType:Ljava/lang/String;
+    const-string v18, "object.item.videoItem"
 
-    const-string v11, "http"
+    .line 226
+    .local v18, mimeClass:Ljava/lang/String;
+    const/16 v25, 0x0
 
-    invoke-virtual {v10, v11}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    const/16 v26, 0x4
 
-    move-result v10
+    move-object/from16 v0, p1
 
-    if-nez v10, :cond_0
+    move/from16 v1, v25
 
-    .line 200
+    move/from16 v2, v26
+
+    invoke-virtual {v0, v1, v2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+
+    move-result-object v25
+
+    const-string v26, "http"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v25
+
+    if-nez v25, :cond_0
+
+    .line 228
     :try_start_0
-    invoke-direct {p0}, Landroid/media/dlna/DlnaClient;->getService()Landroid/media/dlna/IDLNAService;
+    invoke-direct/range {p0 .. p0}, Landroid/media/dlna/DlnaClient;->getService()Landroid/media/dlna/IDLNAService;
 
-    move-result-object v10
+    move-result-object v25
 
-    invoke-interface {v10, p1}, Landroid/media/dlna/IDLNAService;->getFileMeta(Ljava/lang/String;)Ljava/util/Map;
+    move-object/from16 v0, v25
 
-    move-result-object v4
+    move-object/from16 v1, p1
 
-    .line 201
-    .local v4, meta:Ljava/util/Map;,"Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
-    const-string v10, "url"
+    invoke-interface {v0, v1}, Landroid/media/dlna/IDLNAService;->getFileMeta(Ljava/lang/String;)Ljava/util/Map;
 
-    invoke-interface {v4, v10}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    move-result-object v17
 
-    move-result-object v10
+    .line 229
+    .local v17, meta:Ljava/util/Map;,"Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    const-string v25, "url"
 
-    move-object v0, v10
+    move-object/from16 v0, v17
 
-    check-cast v0, Ljava/lang/String;
+    move-object/from16 v1, v25
 
-    move-object v9, v0
+    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 202
-    const-string v10, "mimeType"
+    move-result-object v25
 
-    invoke-interface {v4, v10}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v10
-
-    move-object v0, v10
+    move-object/from16 v0, v25
 
     check-cast v0, Ljava/lang/String;
 
-    move-object v6, v0
+    move-object/from16 v23, v0
 
-    .line 203
-    const-string v10, "mimeClass"
+    .line 230
+    const-string v25, "mimeType"
 
-    invoke-interface {v4, v10}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    move-object/from16 v0, v17
 
-    move-result-object v10
+    move-object/from16 v1, v25
 
-    move-object v0, v10
+    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v25
+
+    move-object/from16 v0, v25
 
     check-cast v0, Ljava/lang/String;
 
-    move-object v5, v0
+    move-object/from16 v19, v0
 
-    .line 205
-    const-string v10, "DlnaClient"
+    .line 231
+    const-string v25, "mimeClass"
 
-    new-instance v11, Ljava/lang/StringBuilder;
+    move-object/from16 v0, v17
 
-    invoke-direct {v11}, Ljava/lang/StringBuilder;-><init>()V
+    move-object/from16 v1, v25
 
-    invoke-virtual {v11, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v11
+    move-result-object v25
 
-    const-string v12, " -> "
+    move-object/from16 v0, v25
 
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    check-cast v0, Ljava/lang/String;
 
-    move-result-object v11
+    move-object/from16 v18, v0
 
-    invoke-virtual {v11, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 233
+    const-string v25, "DlnaClient"
 
-    move-result-object v11
+    new-instance v26, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v11}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-direct/range {v26 .. v26}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-result-object v11
+    move-object/from16 v0, v26
 
-    invoke-static {v10, v11}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    move-object/from16 v1, p1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v26
+
+    const-string v27, " -> "
+
+    invoke-virtual/range {v26 .. v27}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v26
+
+    move-object/from16 v0, v26
+
+    move-object/from16 v1, v23
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v26
+
+    invoke-virtual/range {v26 .. v26}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v26
+
+    invoke-static/range {v25 .. v26}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 213
-    .end local v4           #meta:Ljava/util/Map;,"Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    .line 242
+    .end local v17           #meta:Ljava/util/Map;,"Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     :cond_0
-    const-string v2, "<DIDL-Lite xmlns=\"urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/\" xmlns:upnp=\"urn:schemas-upnp-org:metadata-1-0/upnp/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\">"
+    const-string v5, "<DIDL-Lite xmlns=\"urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/\" xmlns:upnp=\"urn:schemas-upnp-org:metadata-1-0/upnp/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"><item>"
 
-    .line 214
-    .local v2, didl_head:Ljava/lang/String;
-    new-instance v10, Ljava/lang/StringBuilder;
+    .line 244
+    .local v5, didl:Ljava/lang/String;
+    if-nez p3, :cond_1
 
-    invoke-direct {v10}, Ljava/lang/StringBuilder;-><init>()V
+    .line 245
+    new-instance p3, Ljava/util/HashMap;
 
-    invoke-virtual {v10, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .end local p3           #mediaInfo:Ljava/util/HashMap;,"Ljava/util/HashMap<Ljava/lang/String;Ljava/lang/String;>;"
+    invoke-direct/range {p3 .. p3}, Ljava/util/HashMap;-><init>()V
 
-    move-result-object v10
+    .line 247
+    .restart local p3       #mediaInfo:Ljava/util/HashMap;,"Ljava/util/HashMap<Ljava/lang/String;Ljava/lang/String;>;"
+    :cond_1
+    const-string v25, "title"
 
-    const-string v11, "<item><dc:title>"
+    move-object/from16 v0, p3
 
-    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-object/from16 v1, v25
 
-    move-result-object v10
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
 
-    invoke-virtual {v10, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result v25
 
-    move-result-object v10
+    if-nez v25, :cond_2
 
-    const-string v11, "</dc:title><upnp:class>"
+    .line 248
+    const-string v25, "/"
 
-    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-object/from16 v0, p1
 
-    move-result-object v10
+    move-object/from16 v1, v25
 
-    invoke-virtual {v10, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
 
-    move-result-object v10
+    move-result v21
 
-    const-string v11, "</upnp:class><res protocolInfo=\"http-get:*:"
+    .line 249
+    .local v21, separator:I
+    const-string v25, "."
 
-    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-object/from16 v0, p1
 
-    move-result-object v10
+    move-object/from16 v1, v25
 
-    invoke-virtual {v10, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
 
-    move-result-object v10
+    move-result v6
 
-    const-string v11, ":*\">"
+    .line 250
+    .local v6, dot:I
+    if-ltz v21, :cond_4
 
-    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    add-int/lit8 v22, v21, 0x1
 
-    move-result-object v10
-
-    invoke-virtual {v10, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v10
-
-    const-string v11, "</res></item></DIDL-Lite>"
-
-    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v10
-
-    invoke-virtual {v10}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    .line 219
-    .local v1, didl:Ljava/lang/String;
-    const/4 v10, 0x6
-
-    new-array v7, v10, [Ljava/lang/String;
-
-    const/4 v10, 0x0
-
-    const-string v11, "InstanceID"
-
-    aput-object v11, v7, v10
-
-    const/4 v10, 0x1
-
-    const-string v11, "0"
-
-    aput-object v11, v7, v10
-
-    const/4 v10, 0x2
-
-    const-string v11, "CurrentURI"
-
-    aput-object v11, v7, v10
-
-    const/4 v10, 0x3
-
-    aput-object v9, v7, v10
-
-    const/4 v10, 0x4
-
-    const-string v11, "CurrentURIMetaData"
-
-    aput-object v11, v7, v10
-
-    const/4 v10, 0x5
-
-    aput-object v1, v7, v10
-
-    .line 225
-    .local v7, params:[Ljava/lang/String;
-    iget-object v10, p0, Landroid/media/dlna/DlnaClient;->mUriSent:Ljava/lang/String;
-
-    iput-object v10, p0, Landroid/media/dlna/DlnaClient;->mLastUri:Ljava/lang/String;
-
-    .line 226
-    iput-object v9, p0, Landroid/media/dlna/DlnaClient;->mUriSent:Ljava/lang/String;
-
-    .line 228
-    const-string v10, "AVTransport"
-
-    const-string v11, "SetAVTransportURI"
-
-    invoke-direct {p0, v10, v11, v7, p2}, Landroid/media/dlna/DlnaClient;->callAction(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/Object;)Z
-
-    move-result v10
-
-    .end local v1           #didl:Ljava/lang/String;
-    .end local v2           #didl_head:Ljava/lang/String;
-    .end local v7           #params:[Ljava/lang/String;
+    .line 251
+    .local v22, start:I
     :goto_0
-    return v10
+    if-ltz v6, :cond_5
 
-    .line 207
+    move/from16 v0, v22
+
+    if-le v6, v0, :cond_5
+
+    move v12, v6
+
+    .line 252
+    .local v12, end:I
+    :goto_1
+    const-string v25, "title"
+
+    move-object/from16 v0, p1
+
+    move/from16 v1, v22
+
+    invoke-virtual {v0, v1, v12}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+
+    move-result-object v26
+
+    move-object/from16 v0, p3
+
+    move-object/from16 v1, v25
+
+    move-object/from16 v2, v26
+
+    invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 254
+    .end local v6           #dot:I
+    .end local v12           #end:I
+    .end local v21           #separator:I
+    .end local v22           #start:I
+    :cond_2
+    invoke-virtual/range {p3 .. p3}, Ljava/util/HashMap;->keySet()Ljava/util/Set;
+
+    move-result-object v25
+
+    invoke-interface/range {v25 .. v25}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    move-result-object v15
+
+    .local v15, i$:Ljava/util/Iterator;
+    :cond_3
+    :goto_2
+    invoke-interface {v15}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v25
+
+    if-eqz v25, :cond_8
+
+    invoke-interface {v15}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v16
+
+    check-cast v16, Ljava/lang/String;
+
+    .line 255
+    .local v16, key:Ljava/lang/String;
+    const-string v25, "title"
+
+    move-object/from16 v0, v16
+
+    move-object/from16 v1, v25
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v25
+
+    if-eqz v25, :cond_6
+
+    .line 256
+    const-string v25, "title"
+
+    move-object/from16 v0, p3
+
+    move-object/from16 v1, v25
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v25
+
+    check-cast v25, Ljava/lang/String;
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, v25
+
+    invoke-direct {v0, v1}, Landroid/media/dlna/DlnaClient;->convertMediaInfo(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v24
+
+    .line 257
+    .local v24, value:Ljava/lang/String;
+    if-eqz v24, :cond_3
+
+    .line 258
+    new-instance v25, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v25 .. v25}, Ljava/lang/StringBuilder;-><init>()V
+
+    move-object/from16 v0, v25
+
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, "<dc:title>"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    move-object/from16 v0, v25
+
+    move-object/from16 v1, v24
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, "</dc:"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, "title"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, ">"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    invoke-virtual/range {v25 .. v25}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    goto :goto_2
+
+    .line 235
+    .end local v5           #didl:Ljava/lang/String;
+    .end local v15           #i$:Ljava/util/Iterator;
+    .end local v16           #key:Ljava/lang/String;
+    .end local v24           #value:Ljava/lang/String;
     :catch_0
-    move-exception v3
+    move-exception v11
 
-    .line 208
-    .local v3, e:Ljava/lang/Exception;
-    const-string v10, "DlnaClient"
+    .line 236
+    .local v11, e:Ljava/lang/Exception;
+    const-string v25, "DlnaClient"
 
-    new-instance v11, Ljava/lang/StringBuilder;
+    new-instance v26, Ljava/lang/StringBuilder;
 
-    invoke-direct {v11}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct/range {v26 .. v26}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v12, "dlna service call error [setDataSource] : "
+    const-string v27, "dlna service call error [setDataSource] : "
 
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual/range {v26 .. v27}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v11
+    move-result-object v26
 
-    invoke-virtual {v3}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+    invoke-virtual {v11}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
 
-    move-result-object v12
+    move-result-object v27
 
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual/range {v26 .. v27}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v11
+    move-result-object v26
 
-    invoke-virtual {v11}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual/range {v26 .. v26}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v11
+    move-result-object v26
 
-    invoke-static {v10, v11}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static/range {v25 .. v26}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 209
-    const/4 v10, 0x0
+    .line 237
+    const/16 v25, 0x0
 
-    goto :goto_0
+    .line 310
+    .end local v11           #e:Ljava/lang/Exception;
+    :goto_3
+    return v25
+
+    .line 250
+    .restart local v5       #didl:Ljava/lang/String;
+    .restart local v6       #dot:I
+    .restart local v21       #separator:I
+    :cond_4
+    const/16 v22, 0x0
+
+    goto/16 :goto_0
+
+    .line 251
+    .restart local v22       #start:I
+    :cond_5
+    invoke-virtual/range {p1 .. p1}, Ljava/lang/String;->length()I
+
+    move-result v12
+
+    goto/16 :goto_1
+
+    .line 260
+    .end local v6           #dot:I
+    .end local v21           #separator:I
+    .end local v22           #start:I
+    .restart local v15       #i$:Ljava/util/Iterator;
+    .restart local v16       #key:Ljava/lang/String;
+    :cond_6
+    const-string v25, "artist"
+
+    move-object/from16 v0, v16
+
+    move-object/from16 v1, v25
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v25
+
+    if-eqz v25, :cond_7
+
+    .line 261
+    const-string v25, "artist"
+
+    move-object/from16 v0, p3
+
+    move-object/from16 v1, v25
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v25
+
+    check-cast v25, Ljava/lang/String;
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, v25
+
+    invoke-direct {v0, v1}, Landroid/media/dlna/DlnaClient;->convertMediaInfo(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v24
+
+    .line 262
+    .restart local v24       #value:Ljava/lang/String;
+    if-eqz v24, :cond_3
+
+    .line 263
+    new-instance v25, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v25 .. v25}, Ljava/lang/StringBuilder;-><init>()V
+
+    move-object/from16 v0, v25
+
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, "<dc:creator>"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    move-object/from16 v0, v25
+
+    move-object/from16 v1, v24
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, "</dc:creator>"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    invoke-virtual/range {v25 .. v25}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    goto/16 :goto_2
+
+    .line 266
+    .end local v24           #value:Ljava/lang/String;
+    :cond_7
+    const-string v25, "duration"
+
+    move-object/from16 v0, v16
+
+    move-object/from16 v1, v25
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v25
+
+    if-nez v25, :cond_3
+
+    const-string v25, "url"
+
+    move-object/from16 v0, v16
+
+    move-object/from16 v1, v25
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v25
+
+    if-nez v25, :cond_3
+
+    const-string v25, "didl"
+
+    move-object/from16 v0, v16
+
+    move-object/from16 v1, v25
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v25
+
+    if-nez v25, :cond_3
+
+    .line 267
+    move-object/from16 v0, p3
+
+    move-object/from16 v1, v16
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v25
+
+    check-cast v25, Ljava/lang/String;
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, v25
+
+    invoke-direct {v0, v1}, Landroid/media/dlna/DlnaClient;->convertMediaInfo(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v24
+
+    .line 268
+    .restart local v24       #value:Ljava/lang/String;
+    if-eqz v24, :cond_3
+
+    .line 269
+    new-instance v25, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v25 .. v25}, Ljava/lang/StringBuilder;-><init>()V
+
+    move-object/from16 v0, v25
+
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, "<upnp:"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    move-object/from16 v0, v25
+
+    move-object/from16 v1, v16
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, ">"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    move-object/from16 v0, v25
+
+    move-object/from16 v1, v24
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, "</upnp:"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    move-object/from16 v0, v25
+
+    move-object/from16 v1, v16
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, ">"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    invoke-virtual/range {v25 .. v25}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    goto/16 :goto_2
+
+    .line 274
+    .end local v16           #key:Ljava/lang/String;
+    .end local v24           #value:Ljava/lang/String;
+    :cond_8
+    new-instance v25, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v25 .. v25}, Ljava/lang/StringBuilder;-><init>()V
+
+    move-object/from16 v0, v25
+
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, "<upnp:class>"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    move-object/from16 v0, v25
+
+    move-object/from16 v1, v18
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, "</upnp:class>"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, "<res protocolInfo=\"http-get:*:"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    move-object/from16 v0, v25
+
+    move-object/from16 v1, v19
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, ":DLNA.ORG_OP=01\""
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    invoke-virtual/range {v25 .. v25}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    .line 277
+    new-instance v25, Ljava/io/File;
+
+    move-object/from16 v0, v25
+
+    move-object/from16 v1, p1
+
+    invoke-direct {v0, v1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual/range {v25 .. v25}, Ljava/io/File;->length()J
+
+    move-result-wide v13
+
+    .line 278
+    .local v13, fileSize:J
+    const-wide/16 v25, 0x0
+
+    cmp-long v25, v13, v25
+
+    if-lez v25, :cond_9
+
+    .line 279
+    new-instance v25, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v25 .. v25}, Ljava/lang/StringBuilder;-><init>()V
+
+    move-object/from16 v0, v25
+
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, " size=\""
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    invoke-static {v13, v14}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+
+    move-result-object v26
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, "\""
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    invoke-virtual/range {v25 .. v25}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    .line 282
+    :cond_9
+    const-string v25, "duration"
+
+    move-object/from16 v0, p3
+
+    move-object/from16 v1, v25
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+
+    move-result v25
+
+    if-eqz v25, :cond_a
+
+    .line 283
+    const-string v25, "duration"
+
+    move-object/from16 v0, p3
+
+    move-object/from16 v1, v25
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v25
+
+    check-cast v25, Ljava/lang/String;
+
+    invoke-static/range {v25 .. v25}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
+
+    move-result-wide v9
+
+    .line 284
+    .local v9, durationMillisec:J
+    const-wide/16 v25, 0x3e8
+
+    div-long v7, v9, v25
+
+    .line 285
+    .local v7, duration:J
+    new-instance v25, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v25 .. v25}, Ljava/lang/StringBuilder;-><init>()V
+
+    move-object/from16 v0, v25
+
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, " %s=\"%02d:%02d:%02d.%03d\""
+
+    const/16 v27, 0x5
+
+    move/from16 v0, v27
+
+    new-array v0, v0, [Ljava/lang/Object;
+
+    move-object/from16 v27, v0
+
+    const/16 v28, 0x0
+
+    const-string v29, "duration"
+
+    aput-object v29, v27, v28
+
+    const/16 v28, 0x1
+
+    const-wide/16 v29, 0xe10
+
+    div-long v29, v7, v29
+
+    const-wide/16 v31, 0xa
+
+    rem-long v29, v29, v31
+
+    invoke-static/range {v29 .. v30}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v29
+
+    aput-object v29, v27, v28
+
+    const/16 v28, 0x2
+
+    const-wide/16 v29, 0x3c
+
+    div-long v29, v7, v29
+
+    const-wide/16 v31, 0x3c
+
+    rem-long v29, v29, v31
+
+    invoke-static/range {v29 .. v30}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v29
+
+    aput-object v29, v27, v28
+
+    const/16 v28, 0x3
+
+    const-wide/16 v29, 0x3c
+
+    rem-long v29, v7, v29
+
+    invoke-static/range {v29 .. v30}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v29
+
+    aput-object v29, v27, v28
+
+    const/16 v28, 0x4
+
+    const-wide/16 v29, 0x3e8
+
+    rem-long v29, v9, v29
+
+    invoke-static/range {v29 .. v30}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v29
+
+    aput-object v29, v27, v28
+
+    invoke-static/range {v26 .. v27}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v26
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    invoke-virtual/range {v25 .. v25}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    .line 290
+    .end local v7           #duration:J
+    .end local v9           #durationMillisec:J
+    :cond_a
+    const-string v25, "url"
+
+    move-object/from16 v0, p3
+
+    move-object/from16 v1, v25
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+
+    move-result v25
+
+    if-eqz v25, :cond_b
+
+    .line 291
+    const-string v25, "url"
+
+    move-object/from16 v0, p3
+
+    move-object/from16 v1, v25
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v23
+
+    .end local v23           #url:Ljava/lang/String;
+    check-cast v23, Ljava/lang/String;
+
+    .line 294
+    .restart local v23       #url:Ljava/lang/String;
+    :cond_b
+    new-instance v25, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v25 .. v25}, Ljava/lang/StringBuilder;-><init>()V
+
+    move-object/from16 v0, v25
+
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, ">"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    move-object/from16 v0, v25
+
+    move-object/from16 v1, v23
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, "</res>"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    const-string v26, "</item></DIDL-Lite>"
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    invoke-virtual/range {v25 .. v25}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    .line 297
+    const-string v25, "didl"
+
+    move-object/from16 v0, p3
+
+    move-object/from16 v1, v25
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+
+    move-result v25
+
+    if-eqz v25, :cond_c
+
+    .line 298
+    const-string v25, "didl"
+
+    move-object/from16 v0, p3
+
+    move-object/from16 v1, v25
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v5
+
+    .end local v5           #didl:Ljava/lang/String;
+    check-cast v5, Ljava/lang/String;
+
+    .line 301
+    .restart local v5       #didl:Ljava/lang/String;
+    :cond_c
+    const/16 v25, 0x6
+
+    move/from16 v0, v25
+
+    new-array v0, v0, [Ljava/lang/String;
+
+    move-object/from16 v20, v0
+
+    const/16 v25, 0x0
+
+    const-string v26, "InstanceID"
+
+    aput-object v26, v20, v25
+
+    const/16 v25, 0x1
+
+    const-string v26, "0"
+
+    aput-object v26, v20, v25
+
+    const/16 v25, 0x2
+
+    const-string v26, "CurrentURI"
+
+    aput-object v26, v20, v25
+
+    const/16 v25, 0x3
+
+    aput-object v23, v20, v25
+
+    const/16 v25, 0x4
+
+    const-string v26, "CurrentURIMetaData"
+
+    aput-object v26, v20, v25
+
+    const/16 v25, 0x5
+
+    aput-object v5, v20, v25
+
+    .line 307
+    .local v20, params:[Ljava/lang/String;
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/media/dlna/DlnaClient;->mUriSent:Ljava/lang/String;
+
+    move-object/from16 v25, v0
+
+    move-object/from16 v0, v25
+
+    move-object/from16 v1, p0
+
+    iput-object v0, v1, Landroid/media/dlna/DlnaClient;->mLastUri:Ljava/lang/String;
+
+    .line 308
+    move-object/from16 v0, v23
+
+    move-object/from16 v1, p0
+
+    iput-object v0, v1, Landroid/media/dlna/DlnaClient;->mUriSent:Ljava/lang/String;
+
+    .line 310
+    const-string v25, "AVTransport"
+
+    const-string v26, "SetAVTransportURI"
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, v25
+
+    move-object/from16 v2, v26
+
+    move-object/from16 v3, v20
+
+    move-object/from16 v4, p2
+
+    invoke-direct {v0, v1, v2, v3, v4}, Landroid/media/dlna/DlnaClient;->callAction(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/Object;)Z
+
+    move-result v25
+
+    goto/16 :goto_3
 .end method
 
 .method public setPlaybackInfoListener(Landroid/media/dlna/DlnaClient$PlaybackInfoListener;)V
@@ -2341,35 +3256,35 @@
 
     const/4 v3, 0x0
 
-    .line 651
+    .line 686
     iput-object p1, p0, Landroid/media/dlna/DlnaClient;->mPlaybackInfoListener:Landroid/media/dlna/DlnaClient$PlaybackInfoListener;
 
-    .line 653
+    .line 688
     invoke-virtual {p0}, Landroid/media/dlna/DlnaClient;->getHandler()Landroid/os/Handler;
 
     move-result-object v0
 
-    .line 654
+    .line 689
     .local v0, handler:Landroid/os/Handler;
     invoke-virtual {v0, v4}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 656
+    .line 691
     iget-object v2, p0, Landroid/media/dlna/DlnaClient;->mPlaybackInfoListener:Landroid/media/dlna/DlnaClient$PlaybackInfoListener;
 
     if-eqz v2, :cond_0
 
-    .line 658
+    .line 693
     const/4 v2, 0x0
 
     invoke-virtual {v0, v4, v3, v3, v2}, Landroid/os/Handler;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
 
     move-result-object v1
 
-    .line 659
+    .line 694
     .local v1, m:Landroid/os/Message;
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 661
+    .line 696
     .end local v1           #m:Landroid/os/Message;
     :cond_0
     return-void
@@ -2380,7 +3295,7 @@
     .parameter "volume"
 
     .prologue
-    .line 406
+    .line 402
     const/high16 v0, 0x42c8
 
     mul-float/2addr v0, p1
@@ -2391,7 +3306,7 @@
 
     sput v0, Landroid/media/dlna/DlnaClient;->mVolumeToSet:I
 
-    .line 407
+    .line 403
     const/4 v0, 0x1
 
     return v0
@@ -2402,7 +3317,7 @@
     .parameter "listener"
 
     .prologue
-    .line 251
+    .line 339
     const/4 v1, 0x2
 
     new-array v0, v1, [Ljava/lang/String;
@@ -2419,7 +3334,7 @@
 
     aput-object v2, v0, v1
 
-    .line 252
+    .line 340
     .local v0, params:[Ljava/lang/String;
     const-string v1, "AVTransport"
 

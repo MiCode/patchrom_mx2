@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="recipient_max_height">76.0dip</dimen>
+    <dimen name="recipient_padding_left">45.0dip</dimen>
+    <dimen name="recipient_padding_right">35.0dip</dimen>
+    <dimen name="recipient_list_item_padding_left">25.0dip</dimen>
+    <dimen name="recipient_list_item_padding_right">25.0dip</dimen>
+    <dimen name="alert_dialog_max_height_mz">277.0dip</dimen>
+    <dimen name="emo_padding_left_mz">47.5dip</dimen>
+    <dimen name="emo_padding_right_mz">47.5dip</dimen>
+    <dimen name="emo_padding_top_mz">7.0dip</dimen>
+    <dimen name="emo_padding_bottom_mz">7.0dip</dimen>
+    <dimen name="emo_panel_height_mz">188.0dip</dimen>
+    <dimen name="emo_panel_width_mz">640.0dip</dimen>
+</resources>

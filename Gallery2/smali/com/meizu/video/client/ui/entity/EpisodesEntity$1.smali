@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 178
+    .line 186
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -45,12 +45,12 @@
     .parameter "source"
 
     .prologue
-    .line 181
+    .line 189
     new-instance v0, Lcom/meizu/video/client/ui/entity/EpisodesEntity;
 
     invoke-direct {v0}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;-><init>()V
 
-    .line 182
+    .line 190
     .local v0, episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
@@ -59,7 +59,7 @@
     #setter for: Lcom/meizu/video/client/ui/entity/EpisodesEntity;->download_address:Ljava/lang/String;
     invoke-static {v0, v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->access$002(Lcom/meizu/video/client/ui/entity/EpisodesEntity;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 183
+    .line 191
     invoke-virtual {p1}, Landroid/os/Parcel;->readDouble()D
 
     move-result-wide v1
@@ -67,7 +67,7 @@
     #setter for: Lcom/meizu/video/client/ui/entity/EpisodesEntity;->lsize:D
     invoke-static {v0, v1, v2}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->access$102(Lcom/meizu/video/client/ui/entity/EpisodesEntity;D)D
 
-    .line 184
+    .line 192
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
@@ -75,7 +75,7 @@
     #setter for: Lcom/meizu/video/client/ui/entity/EpisodesEntity;->download_address_other:Ljava/lang/String;
     invoke-static {v0, v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->access$202(Lcom/meizu/video/client/ui/entity/EpisodesEntity;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 185
+    .line 193
     invoke-virtual {p1}, Landroid/os/Parcel;->readDouble()D
 
     move-result-wide v1
@@ -83,7 +83,7 @@
     #setter for: Lcom/meizu/video/client/ui/entity/EpisodesEntity;->hsize:D
     invoke-static {v0, v1, v2}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->access$302(Lcom/meizu/video/client/ui/entity/EpisodesEntity;D)D
 
-    .line 186
+    .line 194
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
@@ -91,7 +91,7 @@
     #setter for: Lcom/meizu/video/client/ui/entity/EpisodesEntity;->title:Ljava/lang/String;
     invoke-static {v0, v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->access$402(Lcom/meizu/video/client/ui/entity/EpisodesEntity;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 187
+    .line 195
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
@@ -99,7 +99,7 @@
     #setter for: Lcom/meizu/video/client/ui/entity/EpisodesEntity;->progression:Ljava/lang/String;
     invoke-static {v0, v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->access$502(Lcom/meizu/video/client/ui/entity/EpisodesEntity;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 188
+    .line 196
     return-object v0
 .end method
 
@@ -108,7 +108,7 @@
     .parameter "x0"
 
     .prologue
-    .line 178
+    .line 186
     invoke-virtual {p0, p1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity$1;->createFromParcel(Landroid/os/Parcel;)Lcom/meizu/video/client/ui/entity/EpisodesEntity;
 
     move-result-object v0
@@ -121,7 +121,7 @@
     .parameter "size"
 
     .prologue
-    .line 192
+    .line 200
     new-array v0, p1, [Lcom/meizu/video/client/ui/entity/EpisodesEntity;
 
     return-object v0
@@ -132,7 +132,7 @@
     .parameter "x0"
 
     .prologue
-    .line 178
+    .line 186
     invoke-virtual {p0, p1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity$1;->newArray(I)[Lcom/meizu/video/client/ui/entity/EpisodesEntity;
 
     move-result-object v0

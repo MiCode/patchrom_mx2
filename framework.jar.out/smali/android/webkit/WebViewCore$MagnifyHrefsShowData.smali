@@ -36,24 +36,24 @@
     .parameter "scale"
 
     .prologue
-    .line 1087
+    .line 1083
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1088
+    .line 1084
     iput p1, p0, Landroid/webkit/WebViewCore$MagnifyHrefsShowData;->mViewLastTouchX:I
 
-    .line 1089
+    .line 1085
     iput p2, p0, Landroid/webkit/WebViewCore$MagnifyHrefsShowData;->mViewLastTouchY:I
 
-    .line 1090
+    .line 1086
     iput-object p3, p0, Landroid/webkit/WebViewCore$MagnifyHrefsShowData;->mMagnifyHrefsRect:Landroid/graphics/Rect;
 
-    .line 1091
+    .line 1087
     iput-object p4, p0, Landroid/webkit/WebViewCore$MagnifyHrefsShowData;->mPicture:Landroid/graphics/Picture;
 
-    .line 1092
+    .line 1088
     iput p5, p0, Landroid/webkit/WebViewCore$MagnifyHrefsShowData;->mPicScale:F
 
-    .line 1093
+    .line 1089
     return-void
 .end method

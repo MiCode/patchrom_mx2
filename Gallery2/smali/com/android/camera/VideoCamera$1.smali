@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 346
+    .line 348
     iput-object p1, p0, Lcom/android/camera/VideoCamera$1;->this$0:Lcom/android/camera/VideoCamera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 2
 
     .prologue
-    .line 348
+    .line 350
     iget-object v0, p0, Lcom/android/camera/VideoCamera$1;->this$0:Lcom/android/camera/VideoCamera;
 
     const/4 v1, 0x1
@@ -49,6 +49,6 @@
     #setter for: Lcom/android/camera/VideoCamera;->mIsCanNextFocus:Z
     invoke-static {v0, v1}, Lcom/android/camera/VideoCamera;->access$302(Lcom/android/camera/VideoCamera;Z)Z
 
-    .line 349
+    .line 351
     return-void
 .end method

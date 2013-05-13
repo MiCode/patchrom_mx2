@@ -15,7 +15,7 @@
 
 
 # static fields
-.field public static final ActiveWallpaperSettings:I = 0x10302fb
+.field public static final ActiveWallpaperSettings:I = 0x1030307
 
 .field public static final Animation:I = 0x1030000
 
@@ -67,7 +67,7 @@
 
 .field public static final DeviceDefault_SegmentedButton:I = 0x10301d1
 
-.field public static final EditPhoneNumberPreference:I = 0x10302f0
+.field public static final EditPhoneNumberPreference:I = 0x10302f6
 
 .field public static final Holo_ButtonBar:I = 0x10300e5
 
@@ -95,7 +95,7 @@
 
 .field public static final MediaButton_Rew:I = 0x103003c
 
-.field public static final PreviewWallpaperSettings:I = 0x10302fc
+.field public static final PreviewWallpaperSettings:I = 0x1030308
 
 .field public static final TextAppearance:I = 0x103003e
 
@@ -109,9 +109,17 @@
 
 .field public static final TextAppearance_DeviceDefault_Large_Inverse:I = 0x10301b0
 
-.field public static final TextAppearance_DeviceDefault_Light_Medium_Enlarge:I = 0x10302f7
+.field public static final TextAppearance_DeviceDefault_Light_Medium_Enlarge:I = 0x10302fd
 
-.field public static final TextAppearance_DeviceDefault_Light_Small_Enlarge:I = 0x10302f9
+.field public static final TextAppearance_DeviceDefault_Light_Medium_Huge:I = 0x1030301
+
+.field public static final TextAppearance_DeviceDefault_Light_Medium_SuperLarge:I = 0x1030303
+
+.field public static final TextAppearance_DeviceDefault_Light_Small_Enlarge:I = 0x10302ff
+
+.field public static final TextAppearance_DeviceDefault_Light_Small_Huge:I = 0x1030302
+
+.field public static final TextAppearance_DeviceDefault_Light_Small_SuperLarge:I = 0x1030304
 
 .field public static final TextAppearance_DeviceDefault_Medium:I = 0x10301b1
 
@@ -321,7 +329,7 @@
 
 .field public static final Theme_DeviceDefault_DialogWhenLarge_NoActionBar:I = 0x1030137
 
-.field public static final Theme_DeviceDefault_Dialog_Alert:I = 0x1030316
+.field public static final Theme_DeviceDefault_Dialog_Alert:I = 0x1030322
 
 .field public static final Theme_DeviceDefault_Dialog_MinWidth:I = 0x103012f
 
@@ -329,13 +337,13 @@
 
 .field public static final Theme_DeviceDefault_Dialog_NoActionBar_MinWidth:I = 0x1030131
 
-.field public static final Theme_DeviceDefault_Dialog_NoFrame:I = 0x103031a
+.field public static final Theme_DeviceDefault_Dialog_NoFrame:I = 0x1030326
 
 .field public static final Theme_DeviceDefault_InputMethod:I = 0x103013e
 
 .field public static final Theme_DeviceDefault_Light:I = 0x103012b
 
-.field public static final Theme_DeviceDefault_Light_AccessControl:I = 0x103031c
+.field public static final Theme_DeviceDefault_Light_AccessControl:I = 0x1030328
 
 .field public static final Theme_DeviceDefault_Light_DarkActionBar:I = 0x103013f
 
@@ -345,7 +353,7 @@
 
 .field public static final Theme_DeviceDefault_Light_DialogWhenLarge_NoActionBar:I = 0x1030139
 
-.field public static final Theme_DeviceDefault_Light_Dialog_Alert:I = 0x1030317
+.field public static final Theme_DeviceDefault_Light_Dialog_Alert:I = 0x1030323
 
 .field public static final Theme_DeviceDefault_Light_Dialog_MinWidth:I = 0x1030133
 
@@ -371,13 +379,13 @@
 
 .field public static final Theme_Dialog:I = 0x103000b
 
-.field public static final Theme_Dialog_Alert:I = 0x10302fe
+.field public static final Theme_Dialog_Alert:I = 0x103030a
 
-.field public static final Theme_Dialog_AppError:I = 0x1030307
+.field public static final Theme_Dialog_AppError:I = 0x1030313
 
-.field public static final Theme_Dialog_RecentApplications:I = 0x1030308
+.field public static final Theme_Dialog_RecentApplications:I = 0x1030314
 
-.field public static final Theme_ExpandedMenu:I = 0x1030304
+.field public static final Theme_ExpandedMenu:I = 0x1030310
 
 .field public static final Theme_Holo:I = 0x103006b
 
@@ -387,7 +395,7 @@
 
 .field public static final Theme_Holo_DialogWhenLarge_NoActionBar:I = 0x1030078
 
-.field public static final Theme_Holo_Dialog_Alert:I = 0x103030e
+.field public static final Theme_Holo_Dialog_Alert:I = 0x103031a
 
 .field public static final Theme_Holo_Dialog_MinWidth:I = 0x1030070
 
@@ -407,7 +415,7 @@
 
 .field public static final Theme_Holo_Light_DialogWhenLarge_NoActionBar:I = 0x103007a
 
-.field public static final Theme_Holo_Light_Dialog_Alert:I = 0x1030311
+.field public static final Theme_Holo_Light_Dialog_Alert:I = 0x103031d
 
 .field public static final Theme_Holo_Light_Dialog_MinWidth:I = 0x1030074
 
@@ -431,7 +439,7 @@
 
 .field public static final Theme_Holo_Wallpaper_NoTitleBar:I = 0x103007e
 
-.field public static final Theme_IconMenu:I = 0x1030303
+.field public static final Theme_IconMenu:I = 0x103030f
 
 .field public static final Theme_InputMethod:I = 0x1030054
 
@@ -455,9 +463,9 @@
 
 .field public static final Theme_Panel:I = 0x1030059
 
-.field public static final Theme_Panel_Volume:I = 0x103030a
+.field public static final Theme_Panel_Volume:I = 0x1030316
 
-.field public static final Theme_Toast:I = 0x1030309
+.field public static final Theme_Toast:I = 0x1030315
 
 .field public static final Theme_Translucent:I = 0x103000f
 
@@ -555,7 +563,7 @@
 
 .field public static final Widget_DeviceDefault_CompoundButton_CheckBox:I = 0x1030148
 
-.field public static final Widget_DeviceDefault_CompoundButton_CheckButtonlessMultiple:I = 0x10302f1
+.field public static final Widget_DeviceDefault_CompoundButton_CheckButtonlessMultiple:I = 0x10302f7
 
 .field public static final Widget_DeviceDefault_CompoundButton_RadioButton:I = 0x1030159
 
@@ -615,7 +623,7 @@
 
 .field public static final Widget_DeviceDefault_Light_Button_Inset:I = 0x1030177
 
-.field public static final Widget_DeviceDefault_Light_Button_Meizu:I = 0x10302bb
+.field public static final Widget_DeviceDefault_Light_Button_Meizu:I = 0x10302c0
 
 .field public static final Widget_DeviceDefault_Light_Button_Small:I = 0x1030176
 
@@ -649,7 +657,7 @@
 
 .field public static final Widget_DeviceDefault_Light_ListView_DropDown:I = 0x103017d
 
-.field public static final Widget_DeviceDefault_Light_ListView_Meizu:I = 0x10302f2
+.field public static final Widget_DeviceDefault_Light_ListView_Meizu:I = 0x10302f8
 
 .field public static final Widget_DeviceDefault_Light_MediaRouteButton:I = 0x10301d8
 
@@ -1039,7 +1047,7 @@
     .locals 0
 
     .prologue
-    .line 15371
+    .line 15836
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void

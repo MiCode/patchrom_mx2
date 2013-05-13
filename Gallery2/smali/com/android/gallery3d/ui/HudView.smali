@@ -70,7 +70,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f0900ff
+    const v1, 0x7f0901fd
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -83,7 +83,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f090100
+    const v1, 0x7f0901fe
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -107,7 +107,7 @@
 
     move-result-object v1
 
-    const v2, 0x7f02011d
+    const v2, 0x7f020116
 
     invoke-direct {v0, v1, v2}, Lcom/android/gallery3d/ui/NinePatchTexture;-><init>(Landroid/content/Context;I)V
 

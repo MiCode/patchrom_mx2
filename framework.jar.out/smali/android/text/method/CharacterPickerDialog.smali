@@ -216,7 +216,7 @@
     iput v2, v1, Landroid/view/WindowManager$LayoutParams;->flags:I
 
     .line 75
-    const v2, 0x1090034
+    const v2, 0x1090035
 
     invoke-virtual {p0, v2}, Landroid/text/method/CharacterPickerDialog;->setContentView(I)V
 

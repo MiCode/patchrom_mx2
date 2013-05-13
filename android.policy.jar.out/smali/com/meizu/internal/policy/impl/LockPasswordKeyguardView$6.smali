@@ -7,8 +7,8 @@
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->startActivityIfNeed()V
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,20 +20,15 @@
 # instance fields
 .field final synthetic this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
-.field final synthetic val$intent:Landroid/content/Intent;
-
 
 # direct methods
-.method constructor <init>(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;Landroid/content/Intent;)V
+.method constructor <init>(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)V
     .locals 0
-    .parameter
     .parameter
 
     .prologue
-    .line 1140
+    .line 1263
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$6;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
-
-    iput-object p2, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$6;->val$intent:Landroid/content/Intent;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
@@ -43,21 +38,43 @@
 
 # virtual methods
 .method public run()V
-    .locals 2
+    .locals 3
 
     .prologue
-    .line 1143
+    .line 1265
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$6;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
+
+    monitor-enter v1
+
+    .line 1266
+    :try_start_0
+    const-string v0, "LockPasswordKeyguardView"
+
+    const-string v2, "--------------mTimeOutRunnable---------------"
+
+    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 1267
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$6;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
-    #getter for: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->mContext:Landroid/content/Context;
-    invoke-static {v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2300(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Landroid/content/Context;
+    const/4 v2, 0x1
 
-    move-result-object v0
+    #calls: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->onActivityStarted(Z)V
+    invoke-static {v0, v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$1700(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;Z)V
 
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$6;->val$intent:Landroid/content/Intent;
+    .line 1268
+    monitor-exit v1
 
-    invoke-virtual {v0, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
-
-    .line 1144
+    .line 1269
     return-void
+
+    .line 1268
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v0
 .end method

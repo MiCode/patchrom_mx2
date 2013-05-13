@@ -26,7 +26,7 @@
     .locals 1
 
     .prologue
-    .line 1707
+    .line 1081
     const/4 v0, 0x0
 
     sput-object v0, Landroid/webkit/WebViewClassic$OnTrimMemoryListener;->sInstance:Landroid/webkit/WebViewClassic$OnTrimMemoryListener;
@@ -39,13 +39,13 @@
     .parameter "c"
 
     .prologue
-    .line 1715
+    .line 1089
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1716
+    .line 1090
     invoke-virtual {p1, p0}, Landroid/content/Context;->registerComponentCallbacks(Landroid/content/ComponentCallbacks;)V
 
-    .line 1717
+    .line 1091
     return-void
 .end method
 
@@ -54,12 +54,12 @@
     .parameter "c"
 
     .prologue
-    .line 1710
+    .line 1084
     sget-object v0, Landroid/webkit/WebViewClassic$OnTrimMemoryListener;->sInstance:Landroid/webkit/WebViewClassic$OnTrimMemoryListener;
 
     if-nez v0, :cond_0
 
-    .line 1711
+    .line 1085
     new-instance v0, Landroid/webkit/WebViewClassic$OnTrimMemoryListener;
 
     invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
@@ -70,7 +70,7 @@
 
     sput-object v0, Landroid/webkit/WebViewClassic$OnTrimMemoryListener;->sInstance:Landroid/webkit/WebViewClassic$OnTrimMemoryListener;
 
-    .line 1713
+    .line 1087
     :cond_0
     return-void
 .end method
@@ -82,7 +82,7 @@
     .parameter "newConfig"
 
     .prologue
-    .line 1722
+    .line 1096
     return-void
 .end method
 
@@ -90,7 +90,7 @@
     .locals 0
 
     .prologue
-    .line 1727
+    .line 1101
     return-void
 .end method
 
@@ -99,19 +99,19 @@
     .parameter "level"
 
     .prologue
-    .line 1738
+    .line 1112
     const/16 v0, 0x14
 
     if-lt p1, v0, :cond_0
 
-    .line 1739
+    .line 1113
     invoke-static {}, Landroid/webkit/HTML5VideoInline;->cleanupSurfaceTexture()V
 
-    .line 1741
+    .line 1115
     :cond_0
     #calls: Landroid/webkit/WebViewClassic;->nativeOnTrimMemory(I)V
-    invoke-static {p1}, Landroid/webkit/WebViewClassic;->access$1800(I)V
+    invoke-static {p1}, Landroid/webkit/WebViewClassic;->access$2400(I)V
 
-    .line 1742
+    .line 1116
     return-void
 .end method

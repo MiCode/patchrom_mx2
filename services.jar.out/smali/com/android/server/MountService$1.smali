@@ -295,7 +295,7 @@
     #calls: Lcom/android/server/MountService;->notifyVolumeStateChange(Ljava/lang/String;Ljava/lang/String;II)V
     invoke-static {v7, v8, v10, v9, v11}, Lcom/android/server/MountService;->access$800(Lcom/android/server/MountService;Ljava/lang/String;Ljava/lang/String;II)V
 
-    .line 751
+    .line 756
     .end local v3           #in:Landroid/content/Intent;
     .end local v4           #isChecked:Z
     .end local v5           #s:Ljava/lang/String;
@@ -411,7 +411,7 @@
 
     goto :goto_4
 
-    .line 716
+    .line 718
     .end local v3           #in:Landroid/content/Intent;
     .end local v4           #isChecked:Z
     .end local v5           #s:Ljava/lang/String;
@@ -424,7 +424,7 @@
 
     if-eqz v7, :cond_b
 
-    .line 717
+    .line 719
     const-string v7, "connected"
 
     invoke-virtual {p2, v7, v9}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
@@ -443,7 +443,7 @@
 
     move v1, v8
 
-    .line 719
+    .line 721
     .local v1, available:Z
     :goto_6
     iget-object v7, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
@@ -457,10 +457,10 @@
     :cond_a
     move v1, v9
 
-    .line 717
+    .line 719
     goto :goto_6
 
-    .line 720
+    .line 722
     :cond_b
     const-string v7, "meizu.intent.action.SECURITY_STATE_CHANGED"
 
@@ -470,7 +470,7 @@
 
     if-eqz v7, :cond_d
 
-    .line 721
+    .line 723
     const-string v7, "securityLock"
 
     invoke-virtual {p2, v7, v9}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
@@ -479,7 +479,7 @@
 
     if-eqz v7, :cond_c
 
-    .line 722
+    .line 724
     iget-object v7, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 
     invoke-virtual {v7}, Lcom/android/server/MountService;->isUsbMassStorageConnected()Z
@@ -488,20 +488,29 @@
 
     if-eqz v7, :cond_2
 
-    .line 723
+    .line 725
+    iget-object v7, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
+
+    invoke-virtual {v7}, Lcom/android/server/MountService;->isUsbMassStorageEnabled()Z
+
+    move-result v7
+
+    if-eqz v7, :cond_2
+
+    .line 726
     iget-object v7, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 
     #setter for: Lcom/android/server/MountService;->mDisableUmsByLock:Z
     invoke-static {v7, v8}, Lcom/android/server/MountService;->access$1902(Lcom/android/server/MountService;Z)Z
 
-    .line 724
+    .line 727
     iget-object v7, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 
     invoke-virtual {v7, v9}, Lcom/android/server/MountService;->setUsbMassStorageEnabled(Z)V
 
     goto/16 :goto_4
 
-    .line 727
+    .line 732
     :cond_c
     iget-object v7, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 
@@ -512,7 +521,7 @@
 
     if-eqz v7, :cond_2
 
-    .line 728
+    .line 733
     iget-object v7, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 
     invoke-virtual {v7}, Lcom/android/server/MountService;->isUsbMassStorageConnected()Z
@@ -521,20 +530,20 @@
 
     if-eqz v7, :cond_2
 
-    .line 729
+    .line 734
     iget-object v7, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 
     #setter for: Lcom/android/server/MountService;->mDisableUmsByLock:Z
     invoke-static {v7, v9}, Lcom/android/server/MountService;->access$1902(Lcom/android/server/MountService;Z)Z
 
-    .line 730
+    .line 735
     iget-object v7, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 
     invoke-virtual {v7, v8}, Lcom/android/server/MountService;->setUsbMassStorageEnabled(Z)V
 
     goto/16 :goto_4
 
-    .line 734
+    .line 739
     :cond_d
     const-string v7, "meizu.intent.action.AUTO_INSTALL_SUCCESSFUL"
 
@@ -544,21 +553,21 @@
 
     if-eqz v7, :cond_e
 
-    .line 735
+    .line 740
     const-string v7, "MountService"
 
     const-string v8, "AUTO_INSTALL_SUCCESSFUL !!"
 
     invoke-static {v7, v8}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 736
+    .line 741
     new-instance v6, Ljava/io/File;
 
     const-string v7, "/data/app/autoVerify/"
 
     invoke-direct {v6, v7}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 737
+    .line 742
     .local v6, verifyDir:Ljava/io/File;
     invoke-virtual {v6}, Ljava/io/File;->exists()Z
 
@@ -566,12 +575,12 @@
 
     if-nez v7, :cond_2
 
-    .line 738
+    .line 743
     invoke-virtual {v6}, Ljava/io/File;->mkdir()Z
 
     goto/16 :goto_4
 
-    .line 740
+    .line 745
     .end local v6           #verifyDir:Ljava/io/File;
     :cond_e
     const-string v7, "meizu.intent.action.HOME_LAUNCHED"
@@ -582,14 +591,14 @@
 
     if-eqz v7, :cond_2
 
-    .line 741
+    .line 746
     new-instance v6, Ljava/io/File;
 
     const-string v7, "/data/app/autoVerify/"
 
     invoke-direct {v6, v7}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 742
+    .line 747
     .restart local v6       #verifyDir:Ljava/io/File;
     invoke-virtual {v6}, Ljava/io/File;->exists()Z
 
@@ -597,7 +606,7 @@
 
     if-nez v7, :cond_2
 
-    .line 743
+    .line 748
     iget-object v7, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 
     invoke-static {}, Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
@@ -620,7 +629,7 @@
 
     if-nez v7, :cond_f
 
-    .line 745
+    .line 750
     iget-object v7, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 
     #setter for: Lcom/android/server/MountService;->mPendingAutoInstall:Z
@@ -628,7 +637,7 @@
 
     goto/16 :goto_4
 
-    .line 747
+    .line 752
     :cond_f
     iget-object v7, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 

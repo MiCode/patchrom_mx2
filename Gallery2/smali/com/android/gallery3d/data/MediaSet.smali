@@ -52,7 +52,7 @@
 
     sput v0, Lcom/android/gallery3d/data/MediaSet;->MAX_COVER_COUNT:I
 
-    .line 261
+    .line 267
     new-instance v0, Lcom/android/gallery3d/data/MediaSet$1;
 
     invoke-direct {v0}, Lcom/android/gallery3d/data/MediaSet$1;-><init>()V
@@ -85,7 +85,7 @@
 
 # virtual methods
 .method public addContentListener(Lcom/android/gallery3d/data/ContentListener;)V
-    .locals 2
+    .locals 3
     .parameter "listener"
 
     .prologue
@@ -107,14 +107,33 @@
 
     .line 164
     :cond_0
-    iget-object v0, p0, Lcom/android/gallery3d/data/MediaSet;->mListeners:Ljava/util/WeakHashMap;
+    iget-object v1, p0, Lcom/android/gallery3d/data/MediaSet;->mListeners:Ljava/util/WeakHashMap;
 
-    const/4 v1, 0x0
-
-    invoke-virtual {v0, p1, v1}, Ljava/util/WeakHashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    monitor-enter v1
 
     .line 165
+    :try_start_0
+    iget-object v0, p0, Lcom/android/gallery3d/data/MediaSet;->mListeners:Ljava/util/WeakHashMap;
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, p1, v2}, Ljava/util/WeakHashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 166
+    monitor-exit v1
+
+    .line 167
     return-void
+
+    .line 166
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v0
 .end method
 
 .method protected enumerateMediaItems(Lcom/android/gallery3d/data/MediaSet$ItemConsumer;I)I
@@ -123,21 +142,21 @@
     .parameter "startIndex"
 
     .prologue
-    .line 212
+    .line 218
     invoke-virtual {p0}, Lcom/android/gallery3d/data/MediaSet;->getMediaItemCount()I
 
     move-result v6
 
-    .line 213
+    .line 219
     .local v6, total:I
     const/4 v5, 0x0
 
-    .line 214
+    .line 220
     .local v5, start:I
     :goto_0
     if-ge v5, v6, :cond_1
 
-    .line 215
+    .line 221
     const/16 v7, 0x1f4
 
     sub-int v8, v6, v5
@@ -146,13 +165,13 @@
 
     move-result v0
 
-    .line 216
+    .line 222
     .local v0, count:I
     invoke-virtual {p0, v5, v0}, Lcom/android/gallery3d/data/MediaSet;->getMediaItem(II)Ljava/util/ArrayList;
 
     move-result-object v3
 
-    .line 217
+    .line 223
     .local v3, items:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/gallery3d/data/MediaItem;>;"
     const/4 v1, 0x0
 
@@ -165,14 +184,14 @@
     :goto_1
     if-ge v1, v4, :cond_0
 
-    .line 218
+    .line 224
     invoke-virtual {v3, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v2
 
     check-cast v2, Lcom/android/gallery3d/data/MediaItem;
 
-    .line 219
+    .line 225
     .local v2, item:Lcom/android/gallery3d/data/MediaItem;
     add-int v7, p2, v5
 
@@ -180,20 +199,20 @@
 
     invoke-virtual {p1, v7, v2}, Lcom/android/gallery3d/data/MediaSet$ItemConsumer;->consume(ILcom/android/gallery3d/data/MediaItem;)V
 
-    .line 217
+    .line 223
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_1
 
-    .line 221
+    .line 227
     .end local v2           #item:Lcom/android/gallery3d/data/MediaItem;
     :cond_0
     add-int/2addr v5, v0
 
-    .line 222
+    .line 228
     goto :goto_0
 
-    .line 223
+    .line 229
     .end local v0           #count:I
     .end local v1           #i:I
     .end local v3           #items:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/gallery3d/data/MediaItem;>;"
@@ -207,12 +226,12 @@
     .parameter "consumer"
 
     .prologue
-    .line 196
+    .line 202
     const/4 v0, 0x0
 
     invoke-virtual {p0, p1, v0}, Lcom/android/gallery3d/data/MediaSet;->enumerateMediaItems(Lcom/android/gallery3d/data/MediaSet$ItemConsumer;I)I
 
-    .line 197
+    .line 203
     return-void
 .end method
 
@@ -222,10 +241,10 @@
     .parameter "startIndex"
 
     .prologue
-    .line 230
+    .line 236
     const/4 v2, 0x0
 
-    .line 231
+    .line 237
     .local v2, start:I
     invoke-virtual {p1}, Lcom/android/gallery3d/data/MediaSet$ItemConsumer;->isCancelled()Z
 
@@ -233,19 +252,19 @@
 
     if-nez v3, :cond_0
 
-    .line 232
+    .line 238
     invoke-virtual {p0, p1, p2}, Lcom/android/gallery3d/data/MediaSet;->enumerateMediaItems(Lcom/android/gallery3d/data/MediaSet$ItemConsumer;I)I
 
     move-result v3
 
     add-int/2addr v2, v3
 
-    .line 233
+    .line 239
     invoke-virtual {p0}, Lcom/android/gallery3d/data/MediaSet;->getSubMediaSetCount()I
 
     move-result v1
 
-    .line 234
+    .line 240
     .local v1, m:I
     const/4 v0, 0x0
 
@@ -253,20 +272,20 @@
     :goto_0
     if-ge v0, v1, :cond_0
 
-    .line 235
+    .line 241
     invoke-virtual {p1}, Lcom/android/gallery3d/data/MediaSet$ItemConsumer;->isCancelled()Z
 
     move-result v3
 
     if-eqz v3, :cond_1
 
-    .line 243
+    .line 249
     .end local v0           #i:I
     .end local v1           #m:I
     :cond_0
     return v2
 
-    .line 238
+    .line 244
     .restart local v0       #i:I
     .restart local v1       #m:I
     :cond_1
@@ -282,7 +301,7 @@
 
     add-int/2addr v2, v3
 
-    .line 234
+    .line 240
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
@@ -293,12 +312,12 @@
     .parameter "consumer"
 
     .prologue
-    .line 200
+    .line 206
     const/4 v0, 0x0
 
     invoke-virtual {p0, p1, v0}, Lcom/android/gallery3d/data/MediaSet;->enumerateTotalMediaItems(Lcom/android/gallery3d/data/MediaSet$ItemConsumer;I)I
 
-    .line 201
+    .line 207
     return-void
 .end method
 
@@ -394,12 +413,12 @@
     .locals 3
 
     .prologue
-    .line 187
+    .line 193
     invoke-super {p0}, Lcom/android/gallery3d/data/MediaObject;->getDetails()Lcom/android/gallery3d/data/MediaDetails;
 
     move-result-object v0
 
-    .line 188
+    .line 194
     .local v0, details:Lcom/android/gallery3d/data/MediaDetails;
     const/4 v1, 0x1
 
@@ -409,7 +428,7 @@
 
     invoke-virtual {v0, v1, v2}, Lcom/android/gallery3d/data/MediaDetails;->addDetail(ILjava/lang/Object;)V
 
-    .line 189
+    .line 195
     return-object v0
 .end method
 
@@ -417,7 +436,7 @@
     .locals 1
 
     .prologue
-    .line 364
+    .line 370
     const-string v0, ""
 
     return-object v0
@@ -701,10 +720,16 @@
 .end method
 
 .method public notifyContentChanged()V
-    .locals 3
+    .locals 4
 
     .prologue
-    .line 176
+    .line 180
+    iget-object v3, p0, Lcom/android/gallery3d/data/MediaSet;->mListeners:Ljava/util/WeakHashMap;
+
+    monitor-enter v3
+
+    .line 181
+    :try_start_0
     iget-object v2, p0, Lcom/android/gallery3d/data/MediaSet;->mListeners:Ljava/util/WeakHashMap;
 
     invoke-virtual {v2}, Ljava/util/WeakHashMap;->keySet()Ljava/util/Set;
@@ -729,15 +754,32 @@
 
     check-cast v1, Lcom/android/gallery3d/data/ContentListener;
 
-    .line 177
+    .line 182
     .local v1, listener:Lcom/android/gallery3d/data/ContentListener;
     invoke-interface {v1}, Lcom/android/gallery3d/data/ContentListener;->onContentDirty()V
 
     goto :goto_0
 
-    .line 179
+    .line 184
+    .end local v0           #i$:Ljava/util/Iterator;
     .end local v1           #listener:Lcom/android/gallery3d/data/ContentListener;
+    :catchall_0
+    move-exception v2
+
+    monitor-exit v3
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v2
+
+    .restart local v0       #i$:Ljava/util/Iterator;
     :cond_0
+    :try_start_1
+    monitor-exit v3
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 185
     return-void
 .end method
 
@@ -745,11 +787,11 @@
 .end method
 
 .method public removeContentListener(Lcom/android/gallery3d/data/ContentListener;)V
-    .locals 1
+    .locals 2
     .parameter "listener"
 
     .prologue
-    .line 168
+    .line 170
     iget-object v0, p0, Lcom/android/gallery3d/data/MediaSet;->mListeners:Ljava/util/WeakHashMap;
 
     invoke-virtual {v0, p1}, Ljava/util/WeakHashMap;->containsKey(Ljava/lang/Object;)Z
@@ -758,21 +800,40 @@
 
     if-nez v0, :cond_0
 
-    .line 169
+    .line 171
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     invoke-direct {v0}, Ljava/lang/IllegalArgumentException;-><init>()V
 
     throw v0
 
-    .line 171
+    .line 173
     :cond_0
+    iget-object v1, p0, Lcom/android/gallery3d/data/MediaSet;->mListeners:Ljava/util/WeakHashMap;
+
+    monitor-enter v1
+
+    .line 174
+    :try_start_0
     iget-object v0, p0, Lcom/android/gallery3d/data/MediaSet;->mListeners:Ljava/util/WeakHashMap;
 
     invoke-virtual {v0, p1}, Ljava/util/WeakHashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 172
+    .line 175
+    monitor-exit v1
+
+    .line 176
     return-void
+
+    .line 175
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v0
 .end method
 
 .method public requestSync(Lcom/android/gallery3d/data/MediaSet$SyncListener;)Lcom/android/gallery3d/util/Future;
@@ -791,12 +852,12 @@
     .end annotation
 
     .prologue
-    .line 257
+    .line 263
     const/4 v0, 0x0
 
     invoke-interface {p1, p0, v0}, Lcom/android/gallery3d/data/MediaSet$SyncListener;->onSyncDone(Lcom/android/gallery3d/data/MediaSet;I)V
 
-    .line 258
+    .line 264
     sget-object v0, Lcom/android/gallery3d/data/MediaSet;->FUTURE_STUB:Lcom/android/gallery3d/util/Future;
 
     return-object v0
@@ -820,7 +881,7 @@
     .end annotation
 
     .prologue
-    .line 285
+    .line 291
     new-instance v0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;
 
     invoke-direct {v0, p0, p1, p2}, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;-><init>(Lcom/android/gallery3d/data/MediaSet;[Lcom/android/gallery3d/data/MediaSet;Lcom/android/gallery3d/data/MediaSet$SyncListener;)V
@@ -832,6 +893,6 @@
     .locals 0
 
     .prologue
-    .line 369
+    .line 375
     return-void
 .end method

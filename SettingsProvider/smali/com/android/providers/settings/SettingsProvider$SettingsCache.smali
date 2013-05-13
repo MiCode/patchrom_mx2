@@ -36,20 +36,20 @@
     .parameter "name"
 
     .prologue
-    .line 858
+    .line 920
     const/16 v0, 0xc8
 
     invoke-direct {p0, v0}, Landroid/util/LruCache;-><init>(I)V
 
-    .line 855
+    .line 917
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/providers/settings/SettingsProvider$SettingsCache;->mCacheFullyMatchesDisk:Z
 
-    .line 859
+    .line 921
     iput-object p1, p0, Lcom/android/providers/settings/SettingsProvider$SettingsCache;->mCacheName:Ljava/lang/String;
 
-    .line 860
+    .line 922
     return-void
 .end method
 
@@ -58,7 +58,7 @@
     .parameter "tableName"
 
     .prologue
-    .line 904
+    .line 966
     const-string v0, "system"
 
     invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -67,16 +67,16 @@
 
     if-eqz v0, :cond_0
 
-    .line 905
+    .line 967
     invoke-static {}, Lcom/android/providers/settings/SettingsProvider;->access$400()Lcom/android/providers/settings/SettingsProvider$SettingsCache;
 
     move-result-object v0
 
-    .line 910
+    .line 972
     :goto_0
     return-object v0
 
-    .line 907
+    .line 969
     :cond_0
     const-string v0, "secure"
 
@@ -86,14 +86,14 @@
 
     if-eqz v0, :cond_1
 
-    .line 908
+    .line 970
     invoke-static {}, Lcom/android/providers/settings/SettingsProvider;->access$500()Lcom/android/providers/settings/SettingsProvider$SettingsCache;
 
     move-result-object v0
 
     goto :goto_0
 
-    .line 910
+    .line 972
     :cond_1
     const/4 v0, 0x0
 
@@ -105,33 +105,33 @@
     .parameter "tableName"
 
     .prologue
-    .line 944
+    .line 1006
     invoke-static {p0}, Lcom/android/providers/settings/SettingsProvider$SettingsCache;->forTable(Ljava/lang/String;)Lcom/android/providers/settings/SettingsProvider$SettingsCache;
 
     move-result-object v0
 
-    .line 945
+    .line 1007
     .local v0, cache:Lcom/android/providers/settings/SettingsProvider$SettingsCache;
     if-nez v0, :cond_0
 
-    .line 952
+    .line 1014
     :goto_0
     return-void
 
-    .line 948
+    .line 1010
     :cond_0
     monitor-enter v0
 
-    .line 949
+    .line 1011
     :try_start_0
     invoke-virtual {v0}, Lcom/android/providers/settings/SettingsProvider$SettingsCache;->evictAll()V
 
-    .line 950
+    .line 1012
     const/4 v1, 0x0
 
     iput-boolean v1, v0, Lcom/android/providers/settings/SettingsProvider$SettingsCache;->mCacheFullyMatchesDisk:Z
 
-    .line 951
+    .line 1013
     monitor-exit v0
 
     goto :goto_0
@@ -157,18 +157,18 @@
 
     const/4 v2, 0x0
 
-    .line 960
+    .line 1022
     if-nez p0, :cond_0
 
-    .line 967
+    .line 1029
     :goto_0
     return v2
 
-    .line 961
+    .line 1023
     :cond_0
     monitor-enter p0
 
-    .line 962
+    .line 1024
     :try_start_0
     invoke-virtual {p0, p1}, Lcom/android/providers/settings/SettingsProvider$SettingsCache;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -176,7 +176,7 @@
 
     check-cast v0, Landroid/os/Bundle;
 
-    .line 963
+    .line 1025
     .local v0, bundle:Landroid/os/Bundle;
     if-nez v0, :cond_1
 
@@ -184,7 +184,7 @@
 
     goto :goto_0
 
-    .line 968
+    .line 1030
     .end local v0           #bundle:Landroid/os/Bundle;
     :catchall_0
     move-exception v2
@@ -195,7 +195,7 @@
 
     throw v2
 
-    .line 964
+    .line 1026
     .restart local v0       #bundle:Landroid/os/Bundle;
     :cond_1
     :try_start_1
@@ -203,7 +203,7 @@
 
     move-result-object v1
 
-    .line 965
+    .line 1027
     .local v1, oldValue:Ljava/lang/String;
     if-nez v1, :cond_2
 
@@ -215,7 +215,7 @@
 
     goto :goto_0
 
-    .line 966
+    .line 1028
     :cond_2
     if-nez v1, :cond_3
 
@@ -241,7 +241,7 @@
 
     goto :goto_2
 
-    .line 967
+    .line 1029
     :cond_5
     invoke-virtual {v1, p2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -260,14 +260,14 @@
     .parameter "contentValues"
 
     .prologue
-    .line 917
+    .line 979
     if-nez p0, :cond_0
 
-    .line 927
+    .line 989
     :goto_0
     return-void
 
-    .line 920
+    .line 982
     :cond_0
     const-string v2, "name"
 
@@ -275,11 +275,11 @@
 
     move-result-object v0
 
-    .line 921
+    .line 983
     .local v0, name:Ljava/lang/String;
     if-nez v0, :cond_1
 
-    .line 922
+    .line 984
     const-string v2, "SettingsProvider"
 
     const-string v3, "null name populating settings cache."
@@ -288,7 +288,7 @@
 
     goto :goto_0
 
-    .line 925
+    .line 987
     :cond_1
     const-string v2, "value"
 
@@ -296,7 +296,7 @@
 
     move-result-object v1
 
-    .line 926
+    .line 988
     .local v1, value:Ljava/lang/String;
     invoke-virtual {p0, v0, v1}, Lcom/android/providers/settings/SettingsProvider$SettingsCache;->populate(Ljava/lang/String;Ljava/lang/String;)V
 
@@ -313,7 +313,7 @@
     .parameter "x3"
 
     .prologue
-    .line 852
+    .line 914
     check-cast p2, Ljava/lang/String;
 
     .end local p2
@@ -336,15 +336,15 @@
     .parameter "newValue"
 
     .prologue
-    .line 879
+    .line 941
     if-eqz p1, :cond_0
 
-    .line 880
+    .line 942
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/providers/settings/SettingsProvider$SettingsCache;->mCacheFullyMatchesDisk:Z
 
-    .line 882
+    .line 944
     :cond_0
     return-void
 .end method
@@ -353,10 +353,10 @@
     .locals 1
 
     .prologue
-    .line 866
+    .line 928
     monitor-enter p0
 
-    .line 867
+    .line 929
     :try_start_0
     iget-boolean v0, p0, Lcom/android/providers/settings/SettingsProvider$SettingsCache;->mCacheFullyMatchesDisk:Z
 
@@ -364,7 +364,7 @@
 
     return v0
 
-    .line 868
+    .line 930
     :catchall_0
     move-exception v0
 
@@ -381,10 +381,10 @@
     .parameter "value"
 
     .prologue
-    .line 930
+    .line 992
     monitor-enter p0
 
-    .line 931
+    .line 993
     if-eqz p2, :cond_0
 
     :try_start_0
@@ -396,7 +396,7 @@
 
     if-gt v0, v1, :cond_1
 
-    .line 932
+    .line 994
     :cond_0
     const-string v0, "value"
 
@@ -406,14 +406,14 @@
 
     invoke-virtual {p0, p1, v0}, Lcom/android/providers/settings/SettingsProvider$SettingsCache;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 936
+    .line 998
     :goto_0
     monitor-exit p0
 
-    .line 937
+    .line 999
     return-void
 
-    .line 934
+    .line 996
     :cond_1
     invoke-static {}, Lcom/android/providers/settings/SettingsProvider;->access$600()Landroid/os/Bundle;
 
@@ -423,7 +423,7 @@
 
     goto :goto_0
 
-    .line 936
+    .line 998
     :catchall_0
     move-exception v0
 
@@ -440,14 +440,14 @@
     .parameter "value"
 
     .prologue
-    .line 892
+    .line 954
     if-nez p2, :cond_3
 
     invoke-static {}, Lcom/android/providers/settings/SettingsProvider;->access$300()Landroid/os/Bundle;
 
     move-result-object v0
 
-    .line 893
+    .line 955
     .local v0, bundle:Landroid/os/Bundle;
     :goto_0
     if-eqz p2, :cond_0
@@ -460,11 +460,11 @@
 
     if-gt v1, v2, :cond_2
 
-    .line 894
+    .line 956
     :cond_0
     monitor-enter p0
 
-    .line 895
+    .line 957
     :try_start_0
     invoke-virtual {p0, p1}, Lcom/android/providers/settings/SettingsProvider$SettingsCache;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -472,20 +472,20 @@
 
     if-nez v1, :cond_1
 
-    .line 896
+    .line 958
     invoke-virtual {p0, p1, v0}, Lcom/android/providers/settings/SettingsProvider$SettingsCache;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 898
+    .line 960
     :cond_1
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 900
+    .line 962
     :cond_2
     return-object v0
 
-    .line 892
+    .line 954
     .end local v0           #bundle:Landroid/os/Bundle;
     :cond_3
     const-string v1, "value"
@@ -496,7 +496,7 @@
 
     goto :goto_0
 
-    .line 898
+    .line 960
     .restart local v0       #bundle:Landroid/os/Bundle;
     :catchall_0
     move-exception v1
@@ -514,20 +514,20 @@
     .parameter "value"
 
     .prologue
-    .line 872
+    .line 934
     monitor-enter p0
 
-    .line 873
+    .line 935
     :try_start_0
     iput-boolean p1, p0, Lcom/android/providers/settings/SettingsProvider$SettingsCache;->mCacheFullyMatchesDisk:Z
 
-    .line 874
+    .line 936
     monitor-exit p0
 
-    .line 875
+    .line 937
     return-void
 
-    .line 874
+    .line 936
     :catchall_0
     move-exception v0
 

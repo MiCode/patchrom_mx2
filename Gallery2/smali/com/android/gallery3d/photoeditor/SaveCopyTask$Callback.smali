@@ -15,5 +15,5 @@
 
 
 # virtual methods
-.method public abstract onComplete(Landroid/net/Uri;)V
+.method public abstract onComplete(Landroid/net/Uri;Ljava/lang/String;)V
 .end method

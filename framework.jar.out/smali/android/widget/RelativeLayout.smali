@@ -3153,6 +3153,12 @@
 
     iget-object v4, v0, Landroid/view/View;->mLayoutParams:Landroid/view/ViewGroup$LayoutParams;
 
+    if-eqz v4, :cond_1a
+
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Landroid/view/View;->mLayoutParams:Landroid/view/ViewGroup$LayoutParams;
+
     iget v4, v4, Landroid/view/ViewGroup$LayoutParams;->width:I
 
     if-ltz v4, :cond_1a
@@ -3328,6 +3334,12 @@
     add-int v16, v16, v4
 
     .line 495
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Landroid/view/View;->mLayoutParams:Landroid/view/ViewGroup$LayoutParams;
+
+    if-eqz v4, :cond_1f
+
     move-object/from16 v0, p0
 
     iget-object v4, v0, Landroid/view/View;->mLayoutParams:Landroid/view/ViewGroup$LayoutParams;

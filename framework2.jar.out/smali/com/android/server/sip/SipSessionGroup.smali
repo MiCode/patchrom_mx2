@@ -583,7 +583,7 @@
     .end annotation
 
     .prologue
-    .line 2244
+    .line 2248
     :try_start_0
     const-string v7, "From"
 
@@ -593,13 +593,13 @@
 
     check-cast v3, Ljavax/sip/header/FromHeader;
 
-    .line 2246
+    .line 2250
     .local v3, fromHeader:Ljavax/sip/header/FromHeader;
     invoke-interface {v3}, Ljavax/sip/header/FromHeader;->getAddress()Ljavax/sip/address/Address;
 
     move-result-object v0
 
-    .line 2247
+    .line 2251
     .local v0, address:Ljavax/sip/address/Address;
     invoke-interface {v0}, Ljavax/sip/address/Address;->getURI()Ljavax/sip/address/URI;
 
@@ -607,25 +607,25 @@
 
     check-cast v5, Ljavax/sip/address/SipURI;
 
-    .line 2248
+    .line 2252
     .local v5, uri:Ljavax/sip/address/SipURI;
     invoke-interface {v5}, Ljavax/sip/address/SipURI;->getUser()Ljava/lang/String;
 
     move-result-object v6
 
-    .line 2249
+    .line 2253
     .local v6, username:Ljava/lang/String;
     if-nez v6, :cond_0
 
     const-string v6, "anonymous"
 
-    .line 2250
+    .line 2254
     :cond_0
     invoke-interface {v5}, Ljavax/sip/address/SipURI;->getPort()I
 
     move-result v4
 
-    .line 2251
+    .line 2255
     .local v4, port:I
     new-instance v7, Landroid/net/sip/SipProfile$Builder;
 
@@ -643,13 +643,13 @@
 
     move-result-object v1
 
-    .line 2254
+    .line 2258
     .local v1, builder:Landroid/net/sip/SipProfile$Builder;
     if-lez v4, :cond_1
 
     invoke-virtual {v1, v4}, Landroid/net/sip/SipProfile$Builder;->setPort(I)Landroid/net/sip/SipProfile$Builder;
 
-    .line 2255
+    .line 2259
     :cond_1
     invoke-virtual {v1}, Landroid/net/sip/SipProfile$Builder;->build()Landroid/net/sip/SipProfile;
     :try_end_0
@@ -660,7 +660,7 @@
 
     return-object v7
 
-    .line 2256
+    .line 2260
     .end local v0           #address:Ljavax/sip/address/Address;
     .end local v1           #builder:Landroid/net/sip/SipProfile$Builder;
     .end local v3           #fromHeader:Ljavax/sip/header/FromHeader;
@@ -670,7 +670,7 @@
     :catch_0
     move-exception v2
 
-    .line 2257
+    .line 2261
     .local v2, e:Ljava/lang/IllegalArgumentException;
     new-instance v7, Ljavax/sip/SipException;
 
@@ -680,12 +680,12 @@
 
     throw v7
 
-    .line 2258
+    .line 2262
     .end local v2           #e:Ljava/lang/IllegalArgumentException;
     :catch_1
     move-exception v2
 
-    .line 2259
+    .line 2263
     .local v2, e:Ljava/text/ParseException;
     new-instance v7, Ljavax/sip/SipException;
 
@@ -703,23 +703,23 @@
     .parameter "evt"
 
     .prologue
-    .line 2231
+    .line 2235
     instance-of v2, p2, Ljavax/sip/ResponseEvent;
 
     if-eqz v2, :cond_0
 
     move-object v0, p2
 
-    .line 2232
+    .line 2236
     check-cast v0, Ljavax/sip/ResponseEvent;
 
-    .line 2233
+    .line 2237
     .local v0, event:Ljavax/sip/ResponseEvent;
     invoke-virtual {v0}, Ljavax/sip/ResponseEvent;->getResponse()Ljavax/sip/message/Response;
 
     move-result-object v1
 
-    .line 2234
+    .line 2238
     .local v1, response:Ljavax/sip/message/Response;
     invoke-interface {v1}, Ljavax/sip/message/Response;->getStatusCode()I
 
@@ -727,7 +727,7 @@
 
     if-ne v2, p0, :cond_0
 
-    .line 2235
+    .line 2239
     invoke-static {v1}, Lcom/android/server/sip/SipSessionGroup;->getCseqMethod(Ljavax/sip/message/Message;)Ljava/lang/String;
 
     move-result-object v2
@@ -736,7 +736,7 @@
 
     move-result v2
 
-    .line 2238
+    .line 2242
     .end local v0           #event:Ljavax/sip/ResponseEvent;
     .end local v1           #response:Ljavax/sip/message/Response;
     :goto_0
@@ -754,23 +754,23 @@
     .parameter "evt"
 
     .prologue
-    .line 2217
+    .line 2221
     instance-of v2, p1, Ljavax/sip/ResponseEvent;
 
     if-eqz v2, :cond_0
 
     move-object v0, p1
 
-    .line 2218
+    .line 2222
     check-cast v0, Ljavax/sip/ResponseEvent;
 
-    .line 2219
+    .line 2223
     .local v0, event:Ljavax/sip/ResponseEvent;
     invoke-virtual {v0}, Ljavax/sip/ResponseEvent;->getResponse()Ljavax/sip/message/Response;
 
     move-result-object v1
 
-    .line 2220
+    .line 2224
     .local v1, response:Ljavax/sip/message/Response;
     invoke-static {v1}, Lcom/android/server/sip/SipSessionGroup;->getCseqMethod(Ljavax/sip/message/Message;)Ljava/lang/String;
 
@@ -780,7 +780,7 @@
 
     move-result v2
 
-    .line 2222
+    .line 2226
     .end local v0           #event:Ljavax/sip/ResponseEvent;
     .end local v1           #response:Ljavax/sip/message/Response;
     :goto_0
@@ -854,7 +854,7 @@
     .parameter "message"
 
     .prologue
-    .line 2208
+    .line 2212
     const-string v0, "CSeq"
 
     invoke-interface {p0, v0}, Ljavax/sip/message/Message;->getHeader(Ljava/lang/String;)Ljavax/sip/header/Header;
@@ -1092,15 +1092,15 @@
     .parameter "s"
 
     .prologue
-    .line 2264
+    .line 2268
     if-eqz p0, :cond_0
 
-    .line 2265
+    .line 2269
     iget v0, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;->mState:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 2270
+    .line 2274
     :cond_0
     invoke-static {}, Lcom/android/server/sip/SipSessionGroup;->isSipLogEnable()Z
 
@@ -1109,13 +1109,13 @@
     :goto_0
     return v0
 
-    .line 2267
+    .line 2271
     :pswitch_0
     const/4 v0, 0x0
 
     goto :goto_0
 
-    .line 2265
+    .line 2269
     :pswitch_data_0
     .packed-switch 0x9
         :pswitch_0
@@ -1130,35 +1130,35 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 2278
+    .line 2282
     invoke-static {p0}, Lcom/android/server/sip/SipSessionGroup;->isLoggable(Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;)Z
 
     move-result v2
 
     if-nez v2, :cond_1
 
-    .line 2292
+    .line 2296
     .end local p1
     :cond_0
     :goto_0
     return v1
 
-    .line 2279
+    .line 2283
     .restart local p1
     :cond_1
     if-eqz p1, :cond_0
 
-    .line 2281
+    .line 2285
     instance-of v2, p1, Lcom/android/server/sip/SipSessionGroup$OptionsCommand;
 
     if-nez v2, :cond_0
 
-    .line 2283
+    .line 2287
     instance-of v2, p1, Ljavax/sip/ResponseEvent;
 
     if-eqz v2, :cond_2
 
-    .line 2284
+    .line 2288
     check-cast p1, Ljavax/sip/ResponseEvent;
 
     .end local p1
@@ -1166,7 +1166,7 @@
 
     move-result-object v0
 
-    .line 2285
+    .line 2289
     .local v0, response:Ljavax/sip/message/Response;
     const-string v2, "OPTIONS"
 
@@ -1182,14 +1182,14 @@
 
     if-nez v2, :cond_0
 
-    .line 2288
+    .line 2292
     invoke-static {}, Lcom/android/server/sip/SipSessionGroup;->isSipLogEnable()Z
 
     move-result v1
 
     goto :goto_0
 
-    .line 2289
+    .line 2293
     .end local v0           #response:Ljavax/sip/message/Response;
     .restart local p1
     :cond_2
@@ -1197,7 +1197,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 2290
+    .line 2294
     invoke-static {}, Lcom/android/server/sip/SipSessionGroup;->isSipLogEnable()Z
 
     move-result v1
@@ -1210,7 +1210,7 @@
     .parameter "evt"
 
     .prologue
-    .line 2274
+    .line 2278
     const/4 v0, 0x0
 
     invoke-static {v0, p0}, Lcom/android/server/sip/SipSessionGroup;->isLoggable(Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;Ljava/util/EventObject;)Z
@@ -1226,20 +1226,20 @@
     .parameter "event"
 
     .prologue
-    .line 2198
+    .line 2202
     :try_start_0
     instance-of v2, p1, Ljavax/sip/RequestEvent;
 
     if-eqz v2, :cond_0
 
-    .line 2199
+    .line 2203
     move-object v0, p1
 
     check-cast v0, Ljavax/sip/RequestEvent;
 
     move-object v1, v0
 
-    .line 2200
+    .line 2204
     .local v1, requestEvent:Ljavax/sip/RequestEvent;
     invoke-virtual {v1}, Ljavax/sip/RequestEvent;->getRequest()Ljavax/sip/message/Request;
 
@@ -1255,16 +1255,16 @@
 
     move-result v2
 
-    .line 2204
+    .line 2208
     .end local v1           #requestEvent:Ljavax/sip/RequestEvent;
     :goto_0
     return v2
 
-    .line 2202
+    .line 2206
     :catch_0
     move-exception v2
 
-    .line 2204
+    .line 2208
     :cond_0
     const/4 v2, 0x0
 
@@ -1312,12 +1312,12 @@
     .parameter "evt"
 
     .prologue
-    .line 2296
+    .line 2300
     instance-of v0, p0, Ljavax/sip/RequestEvent;
 
     if-eqz v0, :cond_0
 
-    .line 2297
+    .line 2301
     check-cast p0, Ljavax/sip/RequestEvent;
 
     .end local p0
@@ -1329,18 +1329,18 @@
 
     move-result-object v0
 
-    .line 2301
+    .line 2305
     .restart local p0
     :goto_0
     return-object v0
 
-    .line 2298
+    .line 2302
     :cond_0
     instance-of v0, p0, Ljavax/sip/ResponseEvent;
 
     if-eqz v0, :cond_1
 
-    .line 2299
+    .line 2303
     check-cast p0, Ljavax/sip/ResponseEvent;
 
     .end local p0
@@ -1354,7 +1354,7 @@
 
     goto :goto_0
 
-    .line 2301
+    .line 2305
     .restart local p0
     :cond_1
     invoke-virtual {p0}, Ljava/util/EventObject;->toString()Ljava/lang/String;

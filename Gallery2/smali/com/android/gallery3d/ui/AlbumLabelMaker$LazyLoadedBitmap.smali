@@ -29,15 +29,15 @@
     .parameter "resId"
 
     .prologue
-    .line 117
+    .line 118
     iput-object p1, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;->this$0:Lcom/android/gallery3d/ui/AlbumLabelMaker;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 118
+    .line 119
     iput p2, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;->mResId:I
 
-    .line 119
+    .line 120
     return-void
 .end method
 
@@ -47,7 +47,7 @@
     .locals 3
 
     .prologue
-    .line 122
+    .line 123
     monitor-enter p0
 
     :try_start_0
@@ -55,18 +55,18 @@
 
     if-nez v1, :cond_0
 
-    .line 123
+    .line 124
     new-instance v0, Landroid/graphics/BitmapFactory$Options;
 
     invoke-direct {v0}, Landroid/graphics/BitmapFactory$Options;-><init>()V
 
-    .line 124
+    .line 125
     .local v0, options:Landroid/graphics/BitmapFactory$Options;
     sget-object v1, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
     iput-object v1, v0, Landroid/graphics/BitmapFactory$Options;->inPreferredConfig:Landroid/graphics/Bitmap$Config;
 
-    .line 125
+    .line 126
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;->this$0:Lcom/android/gallery3d/ui/AlbumLabelMaker;
 
     #getter for: Lcom/android/gallery3d/ui/AlbumLabelMaker;->mContext:Landroid/content/Context;
@@ -86,7 +86,7 @@
 
     iput-object v1, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;->mBitmap:Landroid/graphics/Bitmap;
 
-    .line 128
+    .line 129
     .end local v0           #options:Landroid/graphics/BitmapFactory$Options;
     :cond_0
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumLabelMaker$LazyLoadedBitmap;->mBitmap:Landroid/graphics/Bitmap;
@@ -97,7 +97,7 @@
 
     return-object v1
 
-    .line 122
+    .line 123
     :catchall_0
     move-exception v1
 

@@ -37,7 +37,7 @@
     .parameter
 
     .prologue
-    .line 816
+    .line 820
     iput-object p1, p0, Lcom/android/gallery3d/app/CropImage$9;->this$0:Lcom/android/gallery3d/app/CropImage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -61,7 +61,7 @@
     .end annotation
 
     .prologue
-    .line 818
+    .line 822
     .local p1, future:Lcom/android/gallery3d/util/Future;,"Lcom/android/gallery3d/util/Future<Landroid/content/Intent;>;"
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage$9;->this$0:Lcom/android/gallery3d/app/CropImage;
 
@@ -70,18 +70,18 @@
     #setter for: Lcom/android/gallery3d/app/CropImage;->mSaveTask:Lcom/android/gallery3d/util/Future;
     invoke-static {v1, v2}, Lcom/android/gallery3d/app/CropImage;->access$1502(Lcom/android/gallery3d/app/CropImage;Lcom/android/gallery3d/util/Future;)Lcom/android/gallery3d/util/Future;
 
-    .line 819
+    .line 823
     invoke-interface {p1}, Lcom/android/gallery3d/util/Future;->isCancelled()Z
 
     move-result v1
 
     if-eqz v1, :cond_0
 
-    .line 827
+    .line 831
     :goto_0
     return-void
 
-    .line 820
+    .line 824
     :cond_0
     invoke-interface {p1}, Lcom/android/gallery3d/util/Future;->get()Ljava/lang/Object;
 
@@ -89,11 +89,11 @@
 
     check-cast v0, Landroid/content/Intent;
 
-    .line 821
+    .line 825
     .local v0, intent:Landroid/content/Intent;
     if-eqz v0, :cond_1
 
-    .line 822
+    .line 826
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage$9;->this$0:Lcom/android/gallery3d/app/CropImage;
 
     #getter for: Lcom/android/gallery3d/app/CropImage;->mMainHandler:Landroid/os/Handler;
@@ -118,7 +118,7 @@
 
     goto :goto_0
 
-    .line 825
+    .line 829
     :cond_1
     iget-object v1, p0, Lcom/android/gallery3d/app/CropImage$9;->this$0:Lcom/android/gallery3d/app/CropImage;
 

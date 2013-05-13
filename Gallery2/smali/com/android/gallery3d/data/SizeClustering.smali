@@ -329,7 +329,7 @@
     .line 95
     iget-object v7, p0, Lcom/android/gallery3d/data/SizeClustering;->mNames:[Ljava/lang/String;
 
-    const v8, 0x7f0a0192
+    const v8, 0x7f0a019d
 
     invoke-virtual {v6, v8}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -377,7 +377,7 @@
     .line 98
     iget-object v7, p0, Lcom/android/gallery3d/data/SizeClustering;->mNames:[Ljava/lang/String;
 
-    const v8, 0x7f0a0193
+    const v8, 0x7f0a019e
 
     invoke-virtual {v6, v8}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -417,7 +417,7 @@
     .local v4, maxSize:Ljava/lang/String;
     iget-object v7, p0, Lcom/android/gallery3d/data/SizeClustering;->mNames:[Ljava/lang/String;
 
-    const v8, 0x7f0a0194
+    const v8, 0x7f0a019f
 
     invoke-virtual {v6, v8}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

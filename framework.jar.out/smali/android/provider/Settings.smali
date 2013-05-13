@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/provider/Settings$ShareList;,
         Landroid/provider/Settings$Bookmarks;,
         Landroid/provider/Settings$Secure;,
         Landroid/provider/Settings$System;,
@@ -132,7 +133,7 @@
     .line 61
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 4887
+    .line 5123
     return-void
 .end method
 
@@ -187,7 +188,7 @@
     .parameter "androidId"
 
     .prologue
-    .line 5092
+    .line 5232
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -218,7 +219,7 @@
     .parameter "context"
 
     .prologue
-    .line 5101
+    .line 5241
     const-string v1, "RestoreSharedPreferences"
 
     const/4 v2, 0x0
@@ -227,7 +228,7 @@
 
     move-result-object v0
 
-    .line 5102
+    .line 5242
     .local v0, prefs:Landroid/content/SharedPreferences;
     const-string v1, "RestoreSharedPreferences"
 

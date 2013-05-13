@@ -20,6 +20,10 @@
 
 .field public static final ICON_PATH_NAME:Ljava/lang/String; = "icons"
 
+.field public static final MX2_RES:Ljava/lang/String; = "res/drawable-sw400dp-xhdpi/"
+
+.field public static final MX_RES:Ljava/lang/String; = "res/drawable-xhdpi/"
+
 .field private static final PIXELS:[Ljava/lang/String; = null
 
 .field public static final PNG:Ljava/lang/String; = ".png"

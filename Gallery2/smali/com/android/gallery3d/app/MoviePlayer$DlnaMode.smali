@@ -44,7 +44,7 @@
 
     const/4 v2, 0x0
 
-    .line 168
+    .line 185
     new-instance v0, Lcom/android/gallery3d/app/MoviePlayer$DlnaMode;
 
     const-string v1, "NATIVE_PLAY"
@@ -53,7 +53,7 @@
 
     sput-object v0, Lcom/android/gallery3d/app/MoviePlayer$DlnaMode;->NATIVE_PLAY:Lcom/android/gallery3d/app/MoviePlayer$DlnaMode;
 
-    .line 169
+    .line 186
     new-instance v0, Lcom/android/gallery3d/app/MoviePlayer$DlnaMode;
 
     const-string v1, "DLNA_PLAYOUT"
@@ -62,7 +62,7 @@
 
     sput-object v0, Lcom/android/gallery3d/app/MoviePlayer$DlnaMode;->DLNA_PLAYOUT:Lcom/android/gallery3d/app/MoviePlayer$DlnaMode;
 
-    .line 170
+    .line 187
     new-instance v0, Lcom/android/gallery3d/app/MoviePlayer$DlnaMode;
 
     const-string v1, "DLNA_PLAYIN"
@@ -71,7 +71,7 @@
 
     sput-object v0, Lcom/android/gallery3d/app/MoviePlayer$DlnaMode;->DLNA_PLAYIN:Lcom/android/gallery3d/app/MoviePlayer$DlnaMode;
 
-    .line 167
+    .line 184
     const/4 v0, 0x3
 
     new-array v0, v0, [Lcom/android/gallery3d/app/MoviePlayer$DlnaMode;
@@ -104,7 +104,7 @@
     .end annotation
 
     .prologue
-    .line 167
+    .line 184
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -115,7 +115,7 @@
     .parameter
 
     .prologue
-    .line 167
+    .line 184
     const-class v0, Lcom/android/gallery3d/app/MoviePlayer$DlnaMode;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -131,7 +131,7 @@
     .locals 1
 
     .prologue
-    .line 167
+    .line 184
     sget-object v0, Lcom/android/gallery3d/app/MoviePlayer$DlnaMode;->$VALUES:[Lcom/android/gallery3d/app/MoviePlayer$DlnaMode;
 
     invoke-virtual {v0}, [Lcom/android/gallery3d/app/MoviePlayer$DlnaMode;->clone()Ljava/lang/Object;

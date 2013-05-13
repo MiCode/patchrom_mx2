@@ -14,10 +14,16 @@
 # static fields
 .field private static final COLORS:[[I
 
-.field private static WHITE_SPACE_H:I
-
 
 # instance fields
+.field private final BLOCK_HEIGHT:I
+
+.field private final BLOCK_WIDTH:I
+
+.field private final WHITE_SPACE_H:I
+
+.field private final WHITE_SPACE_V:I
+
 .field private mColor:I
 
 .field private mColorChangedListener:Lcom/android/gallery3d/photoeditor/ColorPickerView$OnColorChangedListener;
@@ -32,12 +38,7 @@
     .prologue
     const/4 v3, 0x5
 
-    .line 16
-    const/16 v0, 0x14
-
-    sput v0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->WHITE_SPACE_H:I
-
-    .line 19
+    .line 21
     const/4 v0, 0x2
 
     new-array v0, v0, [[I
@@ -88,12 +89,12 @@
     .parameter "context"
 
     .prologue
-    .line 39
+    .line 45
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Lcom/android/gallery3d/photoeditor/ColorPickerView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 40
+    .line 46
     return-void
 .end method
 
@@ -103,50 +104,98 @@
     .parameter "attrs"
 
     .prologue
-    .line 35
+    .line 41
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, p2, v0}, Lcom/android/gallery3d/photoeditor/ColorPickerView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 36
+    .line 42
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
-    .locals 2
+    .locals 4
     .parameter "context"
     .parameter "attrs"
     .parameter "defStyle"
 
     .prologue
+    const v3, 0x7f090302
+
+    const v2, 0x7f090301
+
     const/4 v1, 0x1
 
-    .line 28
+    .line 30
     invoke-direct {p0, p1, p2, p3}, Landroid/view/View;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 25
+    .line 27
     const v0, -0xffff01
 
     iput v0, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->mColor:I
 
-    .line 29
+    .line 31
     new-instance v0, Landroid/graphics/Paint;
 
     invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->mColorPaint:Landroid/graphics/Paint;
 
-    .line 30
+    .line 32
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->mColorPaint:Landroid/graphics/Paint;
 
     invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setAntiAlias(Z)V
 
-    .line 31
+    .line 33
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->mColorPaint:Landroid/graphics/Paint;
 
     invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setDither(Z)V
 
-    .line 32
+    .line 34
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->BLOCK_WIDTH:I
+
+    .line 35
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->BLOCK_HEIGHT:I
+
+    .line 36
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->WHITE_SPACE_H:I
+
+    .line 37
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->WHITE_SPACE_V:I
+
+    .line 38
     return-void
 .end method
 
@@ -156,24 +205,32 @@
     .parameter "y"
 
     .prologue
-    .line 53
+    .line 59
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/ColorPickerView;->getPaddingTop()I
 
     move-result v7
 
-    add-int/lit8 v5, v7, -0xa
+    iget v8, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->WHITE_SPACE_V:I
 
-    .line 54
+    div-int/lit8 v8, v8, 0x2
+
+    sub-int v5, v7, v8
+
+    .line 60
     .local v5, top:I
-    const/16 v2, 0x5f
+    iget v7, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->BLOCK_HEIGHT:I
 
-    .line 55
+    iget v8, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->WHITE_SPACE_V:I
+
+    add-int v2, v7, v8
+
+    .line 61
     .local v2, height:I
     sub-int v7, p2, v5
 
-    div-int/lit8 v4, v7, 0x5f
+    div-int v4, v7, v2
 
-    .line 56
+    .line 62
     .local v4, row:I
     if-ltz v4, :cond_0
 
@@ -183,30 +240,32 @@
 
     if-ge v4, v7, :cond_0
 
-    .line 57
+    .line 63
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/ColorPickerView;->getPaddingLeft()I
 
     move-result v7
 
-    sget v8, Lcom/android/gallery3d/photoeditor/ColorPickerView;->WHITE_SPACE_H:I
+    iget v8, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->WHITE_SPACE_H:I
 
     div-int/lit8 v8, v8, 0x2
 
     sub-int v3, v7, v8
 
-    .line 58
+    .line 64
     .local v3, left:I
-    sget v7, Lcom/android/gallery3d/photoeditor/ColorPickerView;->WHITE_SPACE_H:I
+    iget v7, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->BLOCK_WIDTH:I
 
-    add-int/lit8 v6, v7, 0x4b
+    iget v8, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->WHITE_SPACE_H:I
 
-    .line 59
+    add-int v6, v7, v8
+
+    .line 65
     .local v6, width:I
     sub-int v7, p1, v3
 
     div-int v0, v7, v6
 
-    .line 60
+    .line 66
     .local v0, col:I
     if-ltz v0, :cond_0
 
@@ -218,21 +277,21 @@
 
     if-ge v0, v7, :cond_0
 
-    .line 61
+    .line 67
     sget-object v7, Lcom/android/gallery3d/photoeditor/ColorPickerView;->COLORS:[[I
 
     aget-object v7, v7, v4
 
     aget v1, v7, v0
 
-    .line 62
+    .line 68
     .local v1, color:I
     iput v1, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->mColor:I
 
-    .line 63
+    .line 69
     const/4 v7, 0x1
 
-    .line 67
+    .line 73
     .end local v0           #col:I
     .end local v1           #color:I
     .end local v3           #left:I
@@ -253,13 +312,13 @@
     .parameter "canvas"
 
     .prologue
-    .line 133
+    .line 139
     invoke-super/range {p0 .. p1}, Landroid/view/View;->onDraw(Landroid/graphics/Canvas;)V
 
-    .line 135
+    .line 141
     const/4 v3, 0x0
 
-    .line 136
+    .line 142
     .local v3, colCount:I
     sget-object v1, Lcom/android/gallery3d/photoeditor/ColorPickerView;->COLORS:[[I
 
@@ -275,7 +334,7 @@
 
     aget-object v10, v1, v5
 
-    .line 137
+    .line 143
     .local v10, row:[I
     array-length v12, v10
 
@@ -283,19 +342,19 @@
 
     move-result v3
 
-    .line 136
+    .line 142
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_0
 
-    .line 140
+    .line 146
     .end local v10           #row:[I
     :cond_0
     invoke-virtual/range {p0 .. p0}, Lcom/android/gallery3d/photoeditor/ColorPickerView;->getPaddingTop()I
 
     move-result v11
 
-    .line 141
+    .line 147
     .local v11, top:I
     sget-object v1, Lcom/android/gallery3d/photoeditor/ColorPickerView;->COLORS:[[I
 
@@ -314,13 +373,13 @@
 
     aget-object v10, v1, v6
 
-    .line 142
+    .line 148
     .restart local v10       #row:[I
     invoke-virtual/range {p0 .. p0}, Lcom/android/gallery3d/photoeditor/ColorPickerView;->getPaddingLeft()I
 
     move-result v7
 
-    .line 143
+    .line 149
     .local v7, left:I
     move-object v2, v10
 
@@ -337,7 +396,7 @@
 
     aget v4, v2, v5
 
-    .line 144
+    .line 150
     .local v4, color:I
     move-object/from16 v0, p0
 
@@ -345,18 +404,28 @@
 
     invoke-virtual {v12, v4}, Landroid/graphics/Paint;->setColor(I)V
 
-    .line 145
+    .line 151
     new-instance v12, Landroid/graphics/RectF;
 
     int-to-float v13, v7
 
     int-to-float v14, v11
 
-    add-int/lit8 v15, v7, 0x4b
+    move-object/from16 v0, p0
+
+    iget v15, v0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->BLOCK_WIDTH:I
+
+    add-int/2addr v15, v7
 
     int-to-float v15, v15
 
-    add-int/lit8 v16, v11, 0x4b
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->BLOCK_HEIGHT:I
+
+    move/from16 v16, v0
+
+    add-int v16, v16, v11
 
     move/from16 v0, v16
 
@@ -378,24 +447,40 @@
 
     invoke-virtual {v0, v12, v13, v14, v15}, Landroid/graphics/Canvas;->drawRoundRect(Landroid/graphics/RectF;FFLandroid/graphics/Paint;)V
 
-    .line 147
-    sget v12, Lcom/android/gallery3d/photoeditor/ColorPickerView;->WHITE_SPACE_H:I
+    .line 153
+    move-object/from16 v0, p0
 
-    add-int/lit8 v12, v12, 0x4b
+    iget v12, v0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->BLOCK_WIDTH:I
+
+    move-object/from16 v0, p0
+
+    iget v13, v0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->WHITE_SPACE_H:I
+
+    add-int/2addr v12, v13
 
     add-int/2addr v7, v12
 
-    .line 143
+    .line 149
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_2
 
-    .line 149
+    .line 155
     .end local v4           #color:I
     :cond_1
-    add-int/lit8 v11, v11, 0x5f
+    move-object/from16 v0, p0
 
-    .line 141
+    iget v12, v0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->BLOCK_HEIGHT:I
+
+    move-object/from16 v0, p0
+
+    iget v13, v0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->WHITE_SPACE_V:I
+
+    add-int/2addr v12, v13
+
+    add-int/2addr v11, v12
+
+    .line 147
     add-int/lit8 v5, v6, 0x1
 
     move v6, v5
@@ -404,7 +489,7 @@
     .restart local v6       #i$:I
     goto :goto_1
 
-    .line 151
+    .line 157
     .end local v2           #arr$:[I
     .end local v7           #left:I
     .end local v9           #len$:I
@@ -414,24 +499,24 @@
 .end method
 
 .method protected onMeasure(II)V
-    .locals 9
+    .locals 10
     .parameter "widthMeasureSpec"
     .parameter "heightMeasureSpec"
 
     .prologue
-    .line 72
+    .line 78
     invoke-super {p0, p1, p2}, Landroid/view/View;->onMeasure(II)V
 
-    .line 74
+    .line 80
     sget-object v6, Lcom/android/gallery3d/photoeditor/ColorPickerView;->COLORS:[[I
 
     array-length v5, v6
 
-    .line 75
+    .line 81
     .local v5, rowCount:I
     const/4 v1, 0x0
 
-    .line 76
+    .line 82
     .local v1, colCount:I
     sget-object v0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->COLORS:[[I
 
@@ -447,7 +532,7 @@
 
     aget-object v4, v0, v2
 
-    .line 77
+    .line 83
     .local v4, row:[I
     array-length v6, v4
 
@@ -455,19 +540,21 @@
 
     move-result v1
 
-    .line 76
+    .line 82
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 79
+    .line 85
     .end local v4           #row:[I
     :cond_0
-    mul-int/lit8 v6, v1, 0x4b
+    iget v6, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->BLOCK_WIDTH:I
+
+    mul-int/2addr v6, v1
 
     add-int/lit8 v7, v1, -0x1
 
-    sget v8, Lcom/android/gallery3d/photoeditor/ColorPickerView;->WHITE_SPACE_H:I
+    iget v8, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->WHITE_SPACE_H:I
 
     mul-int/2addr v7, v8
 
@@ -485,11 +572,15 @@
 
     add-int/2addr v6, v7
 
-    mul-int/lit8 v7, v5, 0x4b
+    iget v7, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->BLOCK_HEIGHT:I
+
+    mul-int/2addr v7, v5
 
     add-int/lit8 v8, v5, -0x1
 
-    mul-int/lit8 v8, v8, 0x14
+    iget v9, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->WHITE_SPACE_V:I
+
+    mul-int/2addr v8, v9
 
     add-int/2addr v7, v8
 
@@ -507,7 +598,7 @@
 
     invoke-virtual {p0, v6, v7}, Lcom/android/gallery3d/photoeditor/ColorPickerView;->setMeasuredDimension(II)V
 
-    .line 81
+    .line 87
     return-void
 .end method
 
@@ -518,7 +609,7 @@
     .prologue
     const/4 v2, 0x1
 
-    .line 44
+    .line 50
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getActionMasked()I
 
     move-result v0
@@ -543,19 +634,19 @@
 
     if-eqz v0, :cond_0
 
-    .line 46
+    .line 52
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->mColorChangedListener:Lcom/android/gallery3d/photoeditor/ColorPickerView$OnColorChangedListener;
 
     if-eqz v0, :cond_0
 
-    .line 47
+    .line 53
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->mColorChangedListener:Lcom/android/gallery3d/photoeditor/ColorPickerView$OnColorChangedListener;
 
     iget v1, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->mColor:I
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/photoeditor/ColorPickerView$OnColorChangedListener;->colorChanged(I)V
 
-    .line 49
+    .line 55
     :cond_0
     return v2
 .end method
@@ -565,9 +656,9 @@
     .parameter "listener"
 
     .prologue
-    .line 164
+    .line 170
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/ColorPickerView;->mColorChangedListener:Lcom/android/gallery3d/photoeditor/ColorPickerView$OnColorChangedListener;
 
-    .line 165
+    .line 171
     return-void
 .end method

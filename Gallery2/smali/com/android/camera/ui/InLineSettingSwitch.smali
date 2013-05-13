@@ -54,7 +54,7 @@
     invoke-super {p0}, Lcom/android/camera/ui/InLineSettingItem;->onFinishInflate()V
 
     .line 47
-    const v0, 0x7f0d0093
+    const v0, 0x7f0d0098
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ui/InLineSettingSwitch;->findViewById(I)Landroid/view/View;
 

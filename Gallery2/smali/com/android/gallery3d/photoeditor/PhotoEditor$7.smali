@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 250
+    .line 373
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$7;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,12 +42,12 @@
     .parameter "v"
 
     .prologue
-    .line 253
+    .line 376
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$7;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
-    #calls: Lcom/android/gallery3d/photoeditor/PhotoEditor;->enterDoodleRedoMode()V
+    #calls: Lcom/android/gallery3d/photoeditor/PhotoEditor;->enterDoodleTextMode()V
     invoke-static {v0}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->access$700(Lcom/android/gallery3d/photoeditor/PhotoEditor;)V
 
-    .line 254
+    .line 377
     return-void
 .end method

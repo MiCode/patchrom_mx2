@@ -26,7 +26,7 @@
     .parameter "x1"
 
     .prologue
-    .line 656
+    .line 687
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     invoke-direct {p0, p1, p2, p3}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$checkPasswordClass;-><init>(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Landroid/content/Context;Ljava/lang/String;)V
@@ -45,7 +45,7 @@
 
     const/4 v3, 0x0
 
-    .line 660
+    .line 691
     const-string v0, "PasswordAndSimUnlockScreen"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -68,30 +68,35 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 662
+    .line 693
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
+
+    iput-boolean v3, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mIsChecking:Z
+
+    .line 694
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v0}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->pokeWakelock()V
 
-    .line 663
+    .line 695
     if-eqz p1, :cond_1
 
-    .line 664
+    .line 696
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     #setter for: Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mPasswordError:Z
-    invoke-static {v0, v3}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->access$2302(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Z)Z
+    invoke-static {v0, v3}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->access$2402(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Z)Z
 
-    .line 665
+    .line 697
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mCallback:Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;
 
     invoke-interface {v0, v4}, Lcom/meizu/internal/policy/impl/KeyguardScreenCallback;->keyguardDone(Z)V
 
-    .line 667
+    .line 699
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     #getter for: Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mAcm:Landroid/content/pm/AccessControlManager;
@@ -101,7 +106,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 668
+    .line 700
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     #getter for: Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mAcm:Landroid/content/pm/AccessControlManager;
@@ -111,35 +116,30 @@
 
     invoke-virtual {v0}, Landroid/content/pm/AccessControlManager;->addTopAppAccessControlPass()V
 
-    .line 679
+    .line 710
     :cond_0
     :goto_0
     return-void
 
-    .line 671
+    .line 703
     :cond_1
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
-    iput-boolean v3, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mIsChecking:Z
-
-    .line 672
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
-
     #setter for: Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->mPasswordError:Z
-    invoke-static {v0, v4}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->access$2302(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Z)Z
+    invoke-static {v0, v4}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->access$2402(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Z)Z
 
-    .line 673
+    .line 704
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->updateInputTips()V
 
-    .line 674
+    .line 705
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     #calls: Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->setKeypadAsNum()V
-    invoke-static {v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->access$1600(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)V
+    invoke-static {v0}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->access$1700(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;)V
 
-    .line 675
+    .line 706
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
@@ -148,7 +148,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->removeCallbacks(Ljava/lang/Runnable;)Z
 
-    .line 676
+    .line 707
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$6;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;

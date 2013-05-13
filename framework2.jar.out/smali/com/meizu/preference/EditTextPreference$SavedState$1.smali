@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 295
+    .line 297
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -45,7 +45,7 @@
     .parameter "in"
 
     .prologue
-    .line 297
+    .line 299
     new-instance v0, Lcom/meizu/preference/EditTextPreference$SavedState;
 
     invoke-direct {v0, p1}, Lcom/meizu/preference/EditTextPreference$SavedState;-><init>(Landroid/os/Parcel;)V
@@ -58,7 +58,7 @@
     .parameter "x0"
 
     .prologue
-    .line 295
+    .line 297
     invoke-virtual {p0, p1}, Lcom/meizu/preference/EditTextPreference$SavedState$1;->createFromParcel(Landroid/os/Parcel;)Lcom/meizu/preference/EditTextPreference$SavedState;
 
     move-result-object v0
@@ -71,7 +71,7 @@
     .parameter "size"
 
     .prologue
-    .line 301
+    .line 303
     new-array v0, p1, [Lcom/meizu/preference/EditTextPreference$SavedState;
 
     return-object v0
@@ -82,7 +82,7 @@
     .parameter "x0"
 
     .prologue
-    .line 295
+    .line 297
     invoke-virtual {p0, p1}, Lcom/meizu/preference/EditTextPreference$SavedState$1;->newArray(I)[Lcom/meizu/preference/EditTextPreference$SavedState;
 
     move-result-object v0

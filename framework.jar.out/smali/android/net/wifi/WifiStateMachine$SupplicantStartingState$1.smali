@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 2373
+    .line 2410
     iput-object p1, p0, Landroid/net/wifi/WifiStateMachine$SupplicantStartingState$1;->this$1:Landroid/net/wifi/WifiStateMachine$SupplicantStartingState;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 2
 
     .prologue
-    .line 2377
+    .line 2414
     const-wide/16 v0, 0x1f40
 
     :try_start_0
@@ -49,7 +49,7 @@
     :try_end_0
     .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 2381
+    .line 2418
     :goto_0
     iget-object v0, p0, Landroid/net/wifi/WifiStateMachine$SupplicantStartingState$1;->this$1:Landroid/net/wifi/WifiStateMachine$SupplicantStartingState;
 
@@ -59,10 +59,10 @@
 
     invoke-virtual {v0, v1}, Landroid/net/wifi/WifiStateMachine;->startScan(Z)V
 
-    .line 2382
+    .line 2419
     return-void
 
-    .line 2378
+    .line 2415
     :catch_0
     move-exception v0
 

@@ -36,23 +36,23 @@
     .parameter "name"
 
     .prologue
-    .line 505
+    .line 530
     iput-object p1, p0, Lcom/android/gallery3d/app/ActivityState$ShareItem;->this$0:Lcom/android/gallery3d/app/ActivityState;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 506
+    .line 531
     iput-object p2, p0, Lcom/android/gallery3d/app/ActivityState$ShareItem;->mIcon:Landroid/graphics/drawable/Drawable;
 
-    .line 507
+    .line 532
     iput-object p3, p0, Lcom/android/gallery3d/app/ActivityState$ShareItem;->mText:Ljava/lang/String;
 
-    .line 508
+    .line 533
     iput-wide p4, p0, Lcom/android/gallery3d/app/ActivityState$ShareItem;->mId:J
 
-    .line 509
+    .line 534
     iput-object p6, p0, Lcom/android/gallery3d/app/ActivityState$ShareItem;->mComponentName:Landroid/content/ComponentName;
 
-    .line 510
+    .line 535
     return-void
 .end method

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="channeldetail_tab_viewpage_diver_drawable">@color/channeldetail_tab_viewpage_diver_color</drawable>
+    <drawable name="channeldetailprogram_diver_drawable">@color/channeldetailprogram_diver_color</drawable>
+</resources>

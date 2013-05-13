@@ -45,33 +45,33 @@
     .parameter "repeat"
 
     .prologue
-    .line 480
+    .line 484
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 474
+    .line 478
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mData:Ljava/util/ArrayList;
 
-    .line 475
+    .line 479
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mDataStart:I
 
-    .line 476
+    .line 480
     const-wide/16 v0, -0x1
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mDataVersion:J
 
-    .line 481
+    .line 485
     iput-object p1, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
 
-    .line 482
+    .line 486
     iput-boolean p2, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mRepeat:Z
 
-    .line 483
+    .line 487
     return-void
 .end method
 
@@ -82,12 +82,12 @@
     .parameter "listener"
 
     .prologue
-    .line 516
+    .line 520
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
 
     invoke-virtual {v0, p1}, Lcom/android/gallery3d/data/MediaSet;->addContentListener(Lcom/android/gallery3d/data/ContentListener;)V
 
-    .line 517
+    .line 521
     return-void
 .end method
 
@@ -97,7 +97,7 @@
     .parameter "hint"
 
     .prologue
-    .line 486
+    .line 490
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
 
     invoke-virtual {v0, p1, p2}, Lcom/android/gallery3d/data/MediaSet;->getIndexOfItem(Lcom/android/gallery3d/data/Path;I)I
@@ -114,7 +114,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 490
+    .line 494
     iget v3, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mDataStart:I
 
     iget-object v4, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mData:Ljava/util/ArrayList;
@@ -125,35 +125,35 @@
 
     add-int v1, v3, v4
 
-    .line 492
+    .line 496
     .local v1, dataEnd:I
     iget-boolean v3, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mRepeat:Z
 
     if-eqz v3, :cond_2
 
-    .line 493
+    .line 497
     iget-object v3, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
 
     invoke-virtual {v3}, Lcom/android/gallery3d/data/MediaSet;->getMediaItemCount()I
 
     move-result v0
 
-    .line 494
+    .line 498
     .local v0, count:I
     if-nez v0, :cond_1
 
-    .line 503
+    .line 507
     .end local v0           #count:I
     :cond_0
     :goto_0
     return-object v2
 
-    .line 495
+    .line 499
     .restart local v0       #count:I
     :cond_1
     rem-int/2addr p1, v0
 
-    .line 497
+    .line 501
     .end local v0           #count:I
     :cond_2
     iget v3, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mDataStart:I
@@ -162,7 +162,7 @@
 
     if-lt p1, v1, :cond_4
 
-    .line 498
+    .line 502
     :cond_3
     iget-object v3, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
 
@@ -174,10 +174,10 @@
 
     iput-object v3, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mData:Ljava/util/ArrayList;
 
-    .line 499
+    .line 503
     iput p1, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mDataStart:I
 
-    .line 500
+    .line 504
     iget-object v3, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mData:Ljava/util/ArrayList;
 
     invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
@@ -186,7 +186,7 @@
 
     add-int v1, p1, v3
 
-    .line 503
+    .line 507
     :cond_4
     iget v3, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mDataStart:I
 
@@ -213,14 +213,14 @@
     .locals 4
 
     .prologue
-    .line 507
+    .line 511
     iget-object v2, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
 
     invoke-virtual {v2}, Lcom/android/gallery3d/data/MediaSet;->reload()J
 
     move-result-wide v0
 
-    .line 508
+    .line 512
     .local v0, version:J
     iget-wide v2, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mDataVersion:J
 
@@ -228,15 +228,15 @@
 
     if-eqz v2, :cond_0
 
-    .line 509
+    .line 513
     iput-wide v0, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mDataVersion:J
 
-    .line 510
+    .line 514
     iget-object v2, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mData:Ljava/util/ArrayList;
 
     invoke-virtual {v2}, Ljava/util/ArrayList;->clear()V
 
-    .line 512
+    .line 516
     :cond_0
     iget-wide v2, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mDataVersion:J
 
@@ -248,11 +248,11 @@
     .parameter "listener"
 
     .prologue
-    .line 520
+    .line 524
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage$SequentialSource;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
 
     invoke-virtual {v0, p1}, Lcom/android/gallery3d/data/MediaSet;->removeContentListener(Lcom/android/gallery3d/data/ContentListener;)V
 
-    .line 521
+    .line 525
     return-void
 .end method

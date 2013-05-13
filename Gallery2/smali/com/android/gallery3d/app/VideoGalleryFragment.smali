@@ -309,7 +309,7 @@
     .line 125
     const-string v2, "set-title"
 
-    const v3, 0x7f0a01d3
+    const v3, 0x7f0a01e2
 
     invoke-virtual {p0, v3}, Lcom/android/gallery3d/app/VideoGalleryFragment;->getString(I)Ljava/lang/String;
 
@@ -372,7 +372,7 @@
     .line 145
     const-string v3, "set-title"
 
-    const v4, 0x7f0a01d3
+    const v4, 0x7f0a01e2
 
     invoke-virtual {p0, v4}, Lcom/android/gallery3d/app/VideoGalleryFragment;->getString(I)Ljava/lang/String;
 
@@ -517,7 +517,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f0a0156
+    const v1, 0x7f0a0161
 
     invoke-static {v0, v1, v6}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
 
@@ -879,7 +879,7 @@
 
     .prologue
     .line 69
-    const v1, 0x7f040085
+    const v1, 0x7f04008a
 
     const/4 v2, 0x0
 
@@ -929,7 +929,7 @@
     .line 109
     const-string v1, "set-title"
 
-    const v2, 0x7f0a01d3
+    const v2, 0x7f0a01e2
 
     invoke-virtual {p0, v2}, Lcom/android/gallery3d/app/VideoGalleryFragment;->getString(I)Ljava/lang/String;
 

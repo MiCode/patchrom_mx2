@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 1885
+    .line 1922
     iput-object p1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
     invoke-direct {p0}, Lcom/android/internal/util/State;-><init>()V
@@ -47,16 +47,16 @@
 
     const/4 v2, 0x1
 
-    .line 1888
+    .line 1925
     const/4 v0, 0x0
 
-    .line 1890
+    .line 1927
     .local v0, ok:Z
     iget v4, p1, Landroid/os/Message;->what:I
 
     sparse-switch v4, :sswitch_data_0
 
-    .line 2018
+    .line 2055
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -80,18 +80,18 @@
     #calls: Landroid/net/wifi/WifiStateMachine;->loge(Ljava/lang/String;)V
     invoke-static {v1, v3}, Landroid/net/wifi/WifiStateMachine;->access$400(Landroid/net/wifi/WifiStateMachine;Ljava/lang/String;)V
 
-    .line 2021
+    .line 2058
     :goto_0
     :sswitch_0
     return v2
 
-    .line 1892
+    .line 1929
     :sswitch_1
     iget v1, p1, Landroid/os/Message;->arg1:I
 
     if-nez v1, :cond_0
 
-    .line 1893
+    .line 1930
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
     #getter for: Landroid/net/wifi/WifiStateMachine;->mWifiP2pChannel:Lcom/android/internal/util/AsyncChannel;
@@ -105,7 +105,7 @@
 
     goto :goto_0
 
-    .line 1895
+    .line 1932
     :cond_0
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -134,7 +134,7 @@
 
     goto :goto_0
 
-    .line 1899
+    .line 1936
     :sswitch_2
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -163,7 +163,7 @@
 
     goto :goto_0
 
-    .line 1904
+    .line 1941
     :sswitch_3
     iget-object v3, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -179,7 +179,7 @@
 
     goto :goto_0
 
-    .line 1913
+    .line 1950
     :sswitch_4
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -190,7 +190,7 @@
 
     goto :goto_0
 
-    .line 1916
+    .line 1953
     :sswitch_5
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -203,7 +203,7 @@
 
     move-result v0
 
-    .line 1917
+    .line 1954
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
     #getter for: Landroid/net/wifi/WifiStateMachine;->mReplyChannel:Lcom/android/internal/util/AsyncChannel;
@@ -227,7 +227,7 @@
 
     goto :goto_1
 
-    .line 1920
+    .line 1957
     :sswitch_6
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -240,7 +240,7 @@
 
     move-result v0
 
-    .line 1921
+    .line 1958
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
     #getter for: Landroid/net/wifi/WifiStateMachine;->mReplyChannel:Lcom/android/internal/util/AsyncChannel;
@@ -259,7 +259,7 @@
 
     goto/16 :goto_0
 
-    .line 1924
+    .line 1961
     :sswitch_7
     iget-object v3, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -274,7 +274,7 @@
 
     goto/16 :goto_0
 
-    .line 1927
+    .line 1964
     :sswitch_8
     iget-object v3, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -290,7 +290,7 @@
 
     goto/16 :goto_0
 
-    .line 1930
+    .line 1967
     :sswitch_9
     iget-object v3, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -306,7 +306,7 @@
 
     goto/16 :goto_0
 
-    .line 1933
+    .line 1970
     :sswitch_a
     iget-object v3, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -322,7 +322,7 @@
 
     goto/16 :goto_0
 
-    .line 1984
+    .line 2021
     :sswitch_b
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -335,20 +335,20 @@
 
     goto/16 :goto_0
 
-    .line 1987
+    .line 2024
     :sswitch_c
     iget-object v3, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
     invoke-virtual {v3, v1}, Landroid/net/wifi/WifiStateMachine;->setWifiEnabled(Z)V
 
-    .line 1988
+    .line 2025
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
     invoke-virtual {v1, v2}, Landroid/net/wifi/WifiStateMachine;->setWifiEnabled(Z)V
 
     goto/16 :goto_0
 
-    .line 1991
+    .line 2028
     :sswitch_d
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -359,7 +359,7 @@
 
     goto/16 :goto_0
 
-    .line 1995
+    .line 2032
     :sswitch_e
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -370,7 +370,7 @@
 
     goto/16 :goto_0
 
-    .line 1999
+    .line 2036
     :sswitch_f
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -381,7 +381,7 @@
 
     goto/16 :goto_0
 
-    .line 2003
+    .line 2040
     :sswitch_10
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -392,7 +392,7 @@
 
     goto/16 :goto_0
 
-    .line 2007
+    .line 2044
     :sswitch_11
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -403,7 +403,7 @@
 
     goto/16 :goto_0
 
-    .line 2011
+    .line 2048
     :sswitch_12
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -414,7 +414,7 @@
 
     goto/16 :goto_0
 
-    .line 2015
+    .line 2052
     :sswitch_13
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$DefaultState;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -425,7 +425,7 @@
 
     goto/16 :goto_0
 
-    .line 1890
+    .line 1927
     nop
 
     :sswitch_data_0

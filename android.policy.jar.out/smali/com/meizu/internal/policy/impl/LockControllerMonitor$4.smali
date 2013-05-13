@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 359
+    .line 376
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -50,12 +50,12 @@
 
     const/4 v3, 0x0
 
-    .line 362
+    .line 379
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 366
+    .line 383
     .local v0, action:Ljava/lang/String;
     const-string v1, "com.android.music.metachanged"
 
@@ -65,7 +65,7 @@
 
     if-eqz v1, :cond_1
 
-    .line 369
+    .line 386
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "artist"
@@ -77,7 +77,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mArtistName:Ljava/lang/String;
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$302(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 370
+    .line 387
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "track"
@@ -89,7 +89,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mMusicName:Ljava/lang/String;
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$202(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 371
+    .line 388
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "playing"
@@ -101,7 +101,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsPlaying:Z
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$3302(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Z)Z
 
-    .line 372
+    .line 389
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -122,12 +122,12 @@
 
     invoke-virtual {v1, v2}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 487
+    .line 505
     :cond_0
     :goto_0
     return-void
 
-    .line 373
+    .line 390
     :cond_1
     const-string v1, "com.android.music.playbackcomplete"
 
@@ -137,7 +137,7 @@
 
     if-eqz v1, :cond_2
 
-    .line 376
+    .line 393
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "artist"
@@ -149,7 +149,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mArtistName:Ljava/lang/String;
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$302(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 377
+    .line 394
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "track"
@@ -161,7 +161,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mMusicName:Ljava/lang/String;
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$202(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 378
+    .line 395
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "playing"
@@ -173,7 +173,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsPlaying:Z
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$3302(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Z)Z
 
-    .line 379
+    .line 396
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -196,7 +196,7 @@
 
     goto :goto_0
 
-    .line 380
+    .line 397
     :cond_2
     const-string v1, "com.android.music.playstatechanged"
 
@@ -206,7 +206,7 @@
 
     if-eqz v1, :cond_4
 
-    .line 382
+    .line 399
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "artist"
@@ -218,7 +218,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mArtistName:Ljava/lang/String;
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$302(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 383
+    .line 400
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "track"
@@ -230,7 +230,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mMusicName:Ljava/lang/String;
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$202(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 384
+    .line 401
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "playing"
@@ -242,7 +242,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsPlaying:Z
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$3302(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Z)Z
 
-    .line 385
+    .line 402
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsPlaying:Z
@@ -252,7 +252,7 @@
 
     if-eqz v1, :cond_3
 
-    .line 386
+    .line 403
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     sget-object v2, Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;->MUSIC_APP:Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
@@ -260,7 +260,7 @@
     #calls: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->listenMusicAppChanged(Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;)V
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$3400(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;)V
 
-    .line 388
+    .line 405
     :cond_3
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
@@ -284,7 +284,7 @@
 
     goto/16 :goto_0
 
-    .line 389
+    .line 406
     :cond_4
     const-string v1, "com.android.music.name_state"
 
@@ -294,7 +294,7 @@
 
     if-eqz v1, :cond_5
 
-    .line 392
+    .line 409
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "artist"
@@ -306,7 +306,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mArtistName:Ljava/lang/String;
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$302(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 393
+    .line 410
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "track"
@@ -318,7 +318,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mMusicName:Ljava/lang/String;
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$202(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 394
+    .line 411
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "playing"
@@ -330,7 +330,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsPlaying:Z
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$3302(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Z)Z
 
-    .line 395
+    .line 412
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -353,7 +353,7 @@
 
     goto/16 :goto_0
 
-    .line 396
+    .line 413
     :cond_5
     const-string v1, "com.android.musiconline.metachanged"
 
@@ -363,7 +363,7 @@
 
     if-eqz v1, :cond_6
 
-    .line 398
+    .line 415
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "artist"
@@ -375,7 +375,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mOnlineArtistName:Ljava/lang/String;
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$502(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 399
+    .line 416
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "track"
@@ -387,7 +387,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mOnlineMusicName:Ljava/lang/String;
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$402(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 400
+    .line 417
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "playing"
@@ -399,7 +399,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsOnlineMusicPlaying:Z
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$3502(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Z)Z
 
-    .line 401
+    .line 418
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -422,7 +422,7 @@
 
     goto/16 :goto_0
 
-    .line 402
+    .line 419
     :cond_6
     const-string v1, "com.android.musiconline.playstatechanged"
 
@@ -431,163 +431,6 @@
     move-result v1
 
     if-eqz v1, :cond_8
-
-    .line 403
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
-
-    const-string v2, "artist"
-
-    invoke-virtual {p2, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v2
-
-    #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mOnlineArtistName:Ljava/lang/String;
-    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$502(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 404
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
-
-    const-string v2, "track"
-
-    invoke-virtual {p2, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v2
-
-    #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mOnlineMusicName:Ljava/lang/String;
-    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$402(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 405
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
-
-    const-string v2, "playing"
-
-    invoke-virtual {p2, v2, v3}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
-
-    move-result v2
-
-    #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsOnlineMusicPlaying:Z
-    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$3502(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Z)Z
-
-    .line 406
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
-
-    #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsOnlineMusicPlaying:Z
-    invoke-static {v1}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$3500(Lcom/meizu/internal/policy/impl/LockControllerMonitor;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_7
-
-    .line 407
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
-
-    sget-object v2, Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;->MUSICONLINE_APP:Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
-
-    #calls: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->listenMusicAppChanged(Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;)V
-    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$3400(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;)V
-
-    .line 409
-    :cond_7
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
-
-    #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
-    invoke-static {v1}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$100(Lcom/meizu/internal/policy/impl/LockControllerMonitor;)Landroid/os/Handler;
-
-    move-result-object v1
-
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
-
-    #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
-    invoke-static {v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$100(Lcom/meizu/internal/policy/impl/LockControllerMonitor;)Landroid/os/Handler;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v6}, Landroid/os/Handler;->obtainMessage(I)Landroid/os/Message;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
-
-    goto/16 :goto_0
-
-    .line 411
-    :cond_8
-    const-string v1, "com.android.musiconline.playbackcomplete"
-
-    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_9
-
-    .line 413
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
-
-    const-string v2, "artist"
-
-    invoke-virtual {p2, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v2
-
-    #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mOnlineArtistName:Ljava/lang/String;
-    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$502(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 414
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
-
-    const-string v2, "track"
-
-    invoke-virtual {p2, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v2
-
-    #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mOnlineMusicName:Ljava/lang/String;
-    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$402(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 415
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
-
-    const-string v2, "playing"
-
-    invoke-virtual {p2, v2, v3}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
-
-    move-result v2
-
-    #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsOnlineMusicPlaying:Z
-    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$3502(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Z)Z
-
-    .line 416
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
-
-    #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
-    invoke-static {v1}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$100(Lcom/meizu/internal/policy/impl/LockControllerMonitor;)Landroid/os/Handler;
-
-    move-result-object v1
-
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
-
-    #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
-    invoke-static {v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$100(Lcom/meizu/internal/policy/impl/LockControllerMonitor;)Landroid/os/Handler;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v5}, Landroid/os/Handler;->obtainMessage(I)Landroid/os/Message;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
-
-    goto/16 :goto_0
-
-    .line 418
-    :cond_9
-    const-string v1, "com.android.musiconline.name_state"
-
-    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_a
 
     .line 420
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
@@ -628,6 +471,163 @@
     .line 423
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
+    #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsOnlineMusicPlaying:Z
+    invoke-static {v1}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$3500(Lcom/meizu/internal/policy/impl/LockControllerMonitor;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_7
+
+    .line 424
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
+    sget-object v2, Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;->MUSICONLINE_APP:Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
+
+    #calls: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->listenMusicAppChanged(Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;)V
+    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$3400(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;)V
+
+    .line 426
+    :cond_7
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
+    #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
+    invoke-static {v1}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$100(Lcom/meizu/internal/policy/impl/LockControllerMonitor;)Landroid/os/Handler;
+
+    move-result-object v1
+
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
+    #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
+    invoke-static {v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$100(Lcom/meizu/internal/policy/impl/LockControllerMonitor;)Landroid/os/Handler;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v6}, Landroid/os/Handler;->obtainMessage(I)Landroid/os/Message;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
+
+    goto/16 :goto_0
+
+    .line 428
+    :cond_8
+    const-string v1, "com.android.musiconline.playbackcomplete"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_9
+
+    .line 430
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
+    const-string v2, "artist"
+
+    invoke-virtual {p2, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mOnlineArtistName:Ljava/lang/String;
+    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$502(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 431
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
+    const-string v2, "track"
+
+    invoke-virtual {p2, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mOnlineMusicName:Ljava/lang/String;
+    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$402(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 432
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
+    const-string v2, "playing"
+
+    invoke-virtual {p2, v2, v3}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
+
+    move-result v2
+
+    #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsOnlineMusicPlaying:Z
+    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$3502(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Z)Z
+
+    .line 433
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
+    #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
+    invoke-static {v1}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$100(Lcom/meizu/internal/policy/impl/LockControllerMonitor;)Landroid/os/Handler;
+
+    move-result-object v1
+
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
+    #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
+    invoke-static {v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$100(Lcom/meizu/internal/policy/impl/LockControllerMonitor;)Landroid/os/Handler;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v5}, Landroid/os/Handler;->obtainMessage(I)Landroid/os/Message;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
+
+    goto/16 :goto_0
+
+    .line 435
+    :cond_9
+    const-string v1, "com.android.musiconline.name_state"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_a
+
+    .line 437
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
+    const-string v2, "artist"
+
+    invoke-virtual {p2, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mOnlineArtistName:Ljava/lang/String;
+    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$502(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 438
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
+    const-string v2, "track"
+
+    invoke-virtual {p2, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mOnlineMusicName:Ljava/lang/String;
+    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$402(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 439
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
+    const-string v2, "playing"
+
+    invoke-virtual {p2, v2, v3}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
+
+    move-result v2
+
+    #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsOnlineMusicPlaying:Z
+    invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$3502(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Z)Z
+
+    .line 440
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
+
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
     invoke-static {v1}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$100(Lcom/meizu/internal/policy/impl/LockControllerMonitor;)Landroid/os/Handler;
 
@@ -648,7 +648,7 @@
 
     goto/16 :goto_0
 
-    .line 425
+    .line 442
     :cond_a
     const-string v1, "meizu.intent.action.phone_recorder_mode_changed"
 
@@ -658,7 +658,7 @@
 
     if-eqz v1, :cond_b
 
-    .line 426
+    .line 443
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     const-string v2, "meizu.intent.extra.phone_recorder_mode_changed"
@@ -670,7 +670,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsPhoneRecordMode:Z
     invoke-static {v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$3602(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Z)Z
 
-    .line 427
+    .line 444
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -682,7 +682,7 @@
 
     invoke-virtual {v1, v2}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 428
+    .line 445
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -705,7 +705,7 @@
 
     invoke-virtual {v1, v2}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 429
+    .line 446
     const-string v1, "LockControllerMonitor"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -754,7 +754,7 @@
 
     goto/16 :goto_0
 
-    .line 462
+    .line 479
     :cond_b
     const-string v1, "android.intent.action.BOOT_COMPLETED"
 
@@ -764,7 +764,7 @@
 
     if-nez v1, :cond_0
 
-    .line 478
+    .line 495
     const-string v1, "meizu.intent.double_home_key"
 
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -773,7 +773,14 @@
 
     if-eqz v1, :cond_0
 
-    .line 479
+    .line 496
+    const-string v1, "LockControllerMonitor"
+
+    const-string v2, "receive DOUBLE_CLICK_HOME_ACTION "
+
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 497
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mMusicInfoCallbacks:Ljava/util/ArrayList;
@@ -783,7 +790,7 @@
 
     monitor-enter v2
 
-    .line 480
+    .line 498
     :try_start_0
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
@@ -798,7 +805,7 @@
 
     if-lez v1, :cond_c
 
-    .line 481
+    .line 499
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -810,7 +817,7 @@
 
     invoke-virtual {v1, v3}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 482
+    .line 500
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -833,10 +840,10 @@
 
     invoke-virtual {v1, v3}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 483
+    .line 501
     invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/LockControllerMonitor$4;->abortBroadcast()V
 
-    .line 485
+    .line 503
     :cond_c
     monitor-exit v2
 

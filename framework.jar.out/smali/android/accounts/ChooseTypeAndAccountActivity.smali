@@ -1523,7 +1523,7 @@
     .line 243
     .end local v4           #account:Landroid/accounts/Account;
     :cond_11
-    const v31, 0x109003b
+    const v31, 0x109003c
 
     move-object/from16 v0, p0
 
@@ -1665,7 +1665,7 @@
 
     move-result-object v32
 
-    const v33, 0x10404fd
+    const v33, 0x1040501
 
     invoke-virtual/range {v32 .. v33}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

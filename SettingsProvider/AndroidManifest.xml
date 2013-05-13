@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest android:sharedUserId="android.uid.system" android:versionCode="16" android:versionName="4.1.1-M040.Flyme_2.0.2.1355480136" package="com.android.providers.settings" coreApp="true"
+<manifest android:sharedUserId="android.uid.system" android:versionCode="16" android:versionName="4.1.1-M040.Flyme_2.2.1363336295" package="com.android.providers.settings" coreApp="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="16" />
     <application android:label="@string/app_label" android:icon="@drawable/ic_launcher_settings" android:allowClearUserData="false" android:process="system" android:backupAgent="SettingsBackupAgent" android:killAfterRestore="false">
         <provider android:name="SettingsProvider" android:writePermission="android.permission.WRITE_SETTINGS" android:multiprocess="false" android:authorities="settings" android:initOrder="100" />
+        <provider android:name="ShareListProvider" android:authorities="meizu_share" />
     </application>
 </manifest>

@@ -25,7 +25,7 @@
     .parameter "x0"
 
     .prologue
-    .line 298
+    .line 303
     iput-object p1, p0, Lcom/android/providers/settings/SettingsProvider$2;->this$0:Lcom/android/providers/settings/SettingsProvider;
 
     invoke-direct {p0, p2}, Ljava/lang/Thread;-><init>(Ljava/lang/String;)V
@@ -39,12 +39,12 @@
     .locals 1
 
     .prologue
-    .line 300
+    .line 305
     iget-object v0, p0, Lcom/android/providers/settings/SettingsProvider$2;->this$0:Lcom/android/providers/settings/SettingsProvider;
 
     #calls: Lcom/android/providers/settings/SettingsProvider;->fullyPopulateCaches()V
     invoke-static {v0}, Lcom/android/providers/settings/SettingsProvider;->access$200(Lcom/android/providers/settings/SettingsProvider;)V
 
-    .line 301
+    .line 306
     return-void
 .end method

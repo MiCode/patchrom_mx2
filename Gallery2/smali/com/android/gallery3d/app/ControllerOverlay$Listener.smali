@@ -39,6 +39,9 @@
 .method public abstract getDlnaClientPos()I
 .end method
 
+.method public abstract getDlnaDeviceCount()I
+.end method
+
 .method public abstract getIsPrepareFinish()Z
 .end method
 
@@ -67,6 +70,12 @@
             ">;"
         }
     .end annotation
+.end method
+
+.method public abstract isPlaying()Z
+.end method
+
+.method public abstract isSeeking()Z
 .end method
 
 .method public abstract onHidden()V

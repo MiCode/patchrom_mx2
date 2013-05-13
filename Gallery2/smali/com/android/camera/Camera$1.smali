@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 231
+    .line 238
     iput-object p1, p0, Lcom/android/camera/Camera$1;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,11 +41,11 @@
     .locals 1
 
     .prologue
-    .line 234
+    .line 241
     iget-object v0, p0, Lcom/android/camera/Camera$1;->this$0:Lcom/android/camera/Camera;
 
     invoke-virtual {v0}, Lcom/android/camera/Camera;->onShutterButtonClick()V
 
-    .line 235
+    .line 242
     return-void
 .end method

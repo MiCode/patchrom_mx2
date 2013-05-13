@@ -108,7 +108,7 @@
     iput-object v1, p0, Lcom/meizu/preference/EditPhoneNumberPreference;->mEncodedText:Ljava/lang/String;
 
     .line 126
-    const v1, 0x10900a1
+    const v1, 0x10900a8
 
     invoke-virtual {p0, v1}, Lcom/meizu/preference/EditPhoneNumberPreference;->setDialogLayoutResource(I)V
 
@@ -131,7 +131,7 @@
     .line 135
     sget-object v1, Lcom/android/internal/R$styleable;->EditPhoneNumberPreference:[I
 
-    const v2, 0x10302f0
+    const v2, 0x10302f6
 
     invoke-virtual {p1, p2, v1, v3, v2}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
 

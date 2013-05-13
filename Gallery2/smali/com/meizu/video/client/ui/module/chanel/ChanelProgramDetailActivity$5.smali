@@ -33,7 +33,7 @@
     .parameter
 
     .prologue
-    .line 908
+    .line 927
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$5;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
     iput-object p2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$5;->val$title:Ljava/lang/String;
@@ -52,7 +52,7 @@
     .parameter "v"
 
     .prologue
-    .line 912
+    .line 930
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$5;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$5;->val$title:Ljava/lang/String;
@@ -61,6 +61,6 @@
 
     invoke-virtual {v0, v1, v2}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->playVideo(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 913
+    .line 931
     return-void
 .end method

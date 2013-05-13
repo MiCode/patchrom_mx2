@@ -579,7 +579,7 @@
 
     move-result-object v6
 
-    const v7, 0x10802ae
+    const v7, 0x10802b2
 
     invoke-virtual {v6, v7}, Landroid/content/res/Resources;->openRawResource(I)Ljava/io/InputStream;
 
@@ -688,7 +688,7 @@
 
     move-result-object v6
 
-    const v8, 0x10802af
+    const v8, 0x10802b3
 
     invoke-virtual {v6, v8}, Landroid/content/res/Resources;->openRawResource(I)Ljava/io/InputStream;
 

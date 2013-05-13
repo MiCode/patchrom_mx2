@@ -15,24 +15,6 @@
 
 
 # virtual methods
-.method public abstract addActionItemView(Ljava/util/List;ZZ)V
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Ljava/util/List",
-            "<",
-            "Lcom/android/internal/app/DockActionItem;",
-            ">;ZZ)V"
-        }
-    .end annotation
-
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
 .method public abstract addNotification(Landroid/os/IBinder;Lcom/android/internal/statusbar/StatusBarNotification;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -74,14 +56,6 @@
 .end method
 
 .method public abstract preloadRecentApps()V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract removeAll()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -178,6 +152,14 @@
 .end method
 
 .method public abstract topAppWindowChanged(Z)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract updateKeyguardStatusBar(Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

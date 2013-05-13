@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 329
+    .line 331
     iput-object p1, p0, Lcom/android/camera/VideoCamera$AutoFocusCallback;->this$0:Lcom/android/camera/VideoCamera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .parameter "x1"
 
     .prologue
-    .line 329
+    .line 331
     invoke-direct {p0, p1}, Lcom/android/camera/VideoCamera$AutoFocusCallback;-><init>(Lcom/android/camera/VideoCamera;)V
 
     return-void
@@ -55,18 +55,18 @@
     .parameter "camera"
 
     .prologue
-    .line 332
+    .line 334
     iget-object v0, p0, Lcom/android/camera/VideoCamera$AutoFocusCallback;->this$0:Lcom/android/camera/VideoCamera;
 
     iget-boolean v0, v0, Lcom/android/camera/ActivityBase;->mPaused:Z
 
     if-eqz v0, :cond_0
 
-    .line 343
+    .line 345
     :goto_0
     return-void
 
-    .line 342
+    .line 344
     :cond_0
     iget-object v0, p0, Lcom/android/camera/VideoCamera$AutoFocusCallback;->this$0:Lcom/android/camera/VideoCamera;
 

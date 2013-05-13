@@ -27,16 +27,16 @@
     .parameter "uuid"
 
     .prologue
-    .line 183
+    .line 197
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 184
+    .line 198
     iput-object p1, p0, Landroid/server/BluetoothService$RemoteService;->address:Ljava/lang/String;
 
-    .line 185
+    .line 199
     iput-object p2, p0, Landroid/server/BluetoothService$RemoteService;->uuid:Landroid/os/ParcelUuid;
 
-    .line 186
+    .line 200
     return-void
 .end method
 
@@ -49,17 +49,17 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 189
+    .line 203
     instance-of v2, p1, Landroid/server/BluetoothService$RemoteService;
 
     if-eqz v2, :cond_0
 
     move-object v0, p1
 
-    .line 190
+    .line 204
     check-cast v0, Landroid/server/BluetoothService$RemoteService;
 
-    .line 191
+    .line 205
     .local v0, service:Landroid/server/BluetoothService$RemoteService;
     iget-object v2, p0, Landroid/server/BluetoothService$RemoteService;->address:Ljava/lang/String;
 
@@ -83,7 +83,7 @@
 
     const/4 v1, 0x1
 
-    .line 193
+    .line 207
     .end local v0           #service:Landroid/server/BluetoothService$RemoteService;
     :cond_0
     return v1
@@ -95,10 +95,10 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 198
+    .line 212
     const/4 v0, 0x1
 
-    .line 199
+    .line 213
     .local v0, hash:I
     iget-object v1, p0, Landroid/server/BluetoothService$RemoteService;->address:Ljava/lang/String;
 
@@ -109,7 +109,7 @@
     :goto_0
     add-int/lit8 v0, v1, 0x1f
 
-    .line 200
+    .line 214
     mul-int/lit8 v1, v0, 0x1f
 
     iget-object v3, p0, Landroid/server/BluetoothService$RemoteService;->uuid:Landroid/os/ParcelUuid;
@@ -119,10 +119,10 @@
     :goto_1
     add-int v0, v1, v2
 
-    .line 201
+    .line 215
     return v0
 
-    .line 199
+    .line 213
     :cond_0
     iget-object v1, p0, Landroid/server/BluetoothService$RemoteService;->address:Ljava/lang/String;
 
@@ -132,7 +132,7 @@
 
     goto :goto_0
 
-    .line 200
+    .line 214
     :cond_1
     iget-object v2, p0, Landroid/server/BluetoothService$RemoteService;->uuid:Landroid/os/ParcelUuid;
 

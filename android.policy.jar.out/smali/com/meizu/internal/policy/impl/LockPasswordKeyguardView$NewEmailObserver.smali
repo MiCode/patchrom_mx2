@@ -25,13 +25,13 @@
     .parameter "handler"
 
     .prologue
-    .line 993
+    .line 997
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$NewEmailObserver;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
-    .line 994
+    .line 998
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
 
-    .line 995
+    .line 999
     return-void
 .end method
 
@@ -41,7 +41,7 @@
     .locals 1
 
     .prologue
-    .line 1005
+    .line 1009
     invoke-super {p0}, Landroid/database/ContentObserver;->deliverSelfNotifications()Z
 
     move-result v0
@@ -56,31 +56,31 @@
     .prologue
     const/16 v2, 0x66
 
-    .line 998
+    .line 1002
     invoke-super {p0, p1}, Landroid/database/ContentObserver;->onChange(Z)V
 
-    .line 999
+    .line 1003
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$NewEmailObserver;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->mQueryHandler:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
-    invoke-static {v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$1700(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
+    invoke-static {v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2300(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
 
     move-result-object v0
 
     invoke-virtual {v0, v2}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;->removeMessages(I)V
 
-    .line 1000
+    .line 1004
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$NewEmailObserver;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->mQueryHandler:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
-    invoke-static {v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$1700(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
+    invoke-static {v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2300(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
 
     move-result-object v0
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$NewEmailObserver;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->mQueryHandler:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
-    invoke-static {v1}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$1700(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
+    invoke-static {v1}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2300(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;
 
     move-result-object v1
 
@@ -92,6 +92,6 @@
 
     invoke-virtual {v0, v1, v2, v3}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$QueryHandler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
-    .line 1001
+    .line 1005
     return-void
 .end method

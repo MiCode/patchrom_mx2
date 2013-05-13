@@ -847,37 +847,65 @@
 
     .line 219
     :cond_2
+    sget-object v0, Lcom/google/android/mms/ContentType;->sSupportedContentTypes:Ljava/util/ArrayList;
+
+    const-string v1, "audio/x-ms-wma"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 220
     sget-object v0, Lcom/google/android/mms/ContentType;->sSupportedAudioTypes:Ljava/util/ArrayList;
 
     const-string v1, "audio/x-ms-wma"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 222
+    .line 223
+    sget-object v0, Lcom/google/android/mms/ContentType;->sSupportedContentTypes:Ljava/util/ArrayList;
+
+    const-string v1, "video/x-ms-asf"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 224
+    sget-object v0, Lcom/google/android/mms/ContentType;->sSupportedContentTypes:Ljava/util/ArrayList;
+
+    const-string v1, "video/x-ms-wmv"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 225
+    sget-object v0, Lcom/google/android/mms/ContentType;->sSupportedContentTypes:Ljava/util/ArrayList;
+
+    const-string v1, "video/vnd.rn-realmedia"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 227
     sget-object v0, Lcom/google/android/mms/ContentType;->sSupportedVideoTypes:Ljava/util/ArrayList;
 
     const-string v1, "video/x-ms-asf"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 223
+    .line 228
     sget-object v0, Lcom/google/android/mms/ContentType;->sSupportedVideoTypes:Ljava/util/ArrayList;
 
     const-string v1, "video/x-ms-wmv"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 224
+    .line 229
     sget-object v0, Lcom/google/android/mms/ContentType;->sSupportedVideoTypes:Ljava/util/ArrayList;
 
     const-string v1, "video/vnd.rn-realmedia"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 225
+    .line 230
     sput-boolean v2, Lcom/google/android/mms/ContentType;->mIsAdd:Z
 
-    .line 227
+    .line 232
     :cond_3
     return-void
 .end method
@@ -886,10 +914,10 @@
     .locals 0
 
     .prologue
-    .line 250
+    .line 255
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 251
+    .line 256
     return-void
 .end method
 
@@ -906,7 +934,7 @@
     .end annotation
 
     .prologue
-    .line 340
+    .line 350
     sget-object v0, Lcom/google/android/mms/ContentType;->sSupportedAudioTypes:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clone()Ljava/lang/Object;
@@ -931,7 +959,7 @@
     .end annotation
 
     .prologue
-    .line 335
+    .line 345
     sget-object v0, Lcom/google/android/mms/ContentType;->sSupportedImageTypes:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clone()Ljava/lang/Object;
@@ -956,7 +984,7 @@
     .end annotation
 
     .prologue
-    .line 355
+    .line 365
     sget-object v0, Lcom/google/android/mms/ContentType;->sSupportedContentTypes:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clone()Ljava/lang/Object;
@@ -981,7 +1009,7 @@
     .end annotation
 
     .prologue
-    .line 344
+    .line 354
     sget-object v0, Lcom/google/android/mms/ContentType;->sSupportedVcardTypes:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clone()Ljava/lang/Object;
@@ -1006,7 +1034,7 @@
     .end annotation
 
     .prologue
-    .line 350
+    .line 360
     sget-object v0, Lcom/google/android/mms/ContentType;->sSupportedVideoTypes:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clone()Ljava/lang/Object;
@@ -1023,7 +1051,7 @@
     .parameter "contentType"
 
     .prologue
-    .line 303
+    .line 313
     if-eqz p0, :cond_0
 
     const-string v0, "audio/"
@@ -1050,7 +1078,7 @@
     .parameter "contentType"
 
     .prologue
-    .line 324
+    .line 334
     if-eqz p0, :cond_1
 
     const-string v0, "application/vnd.oma.drm.content"
@@ -1086,7 +1114,7 @@
     .parameter "contentType"
 
     .prologue
-    .line 320
+    .line 330
     if-eqz p0, :cond_0
 
     const/4 v0, 0x1
@@ -1104,10 +1132,10 @@
     .locals 5
 
     .prologue
-    .line 234
+    .line 239
     const/4 v2, 0x0
 
-    .line 236
+    .line 241
     .local v2, isFormatEnabled:Z
     :try_start_0
     new-instance v1, Ljava/io/File;
@@ -1116,7 +1144,7 @@
 
     invoke-direct {v1, v3}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 237
+    .line 242
     .local v1, f:Ljava/io/File;
     invoke-virtual {v1}, Ljava/io/File;->exists()Z
     :try_end_0
@@ -1126,27 +1154,27 @@
 
     if-nez v3, :cond_0
 
-    .line 238
+    .line 243
     const/4 v2, 0x0
 
-    .line 246
+    .line 251
     .end local v1           #f:Ljava/io/File;
     :goto_0
     return v2
 
-    .line 240
+    .line 245
     .restart local v1       #f:Ljava/io/File;
     :cond_0
     const/4 v2, 0x1
 
     goto :goto_0
 
-    .line 243
+    .line 248
     .end local v1           #f:Ljava/io/File;
     :catch_0
     move-exception v0
 
-    .line 244
+    .line 249
     .local v0, e:Ljava/lang/Exception;
     const-string v3, "mime-type-map"
 
@@ -1164,7 +1192,7 @@
     .parameter "contentType"
 
     .prologue
-    .line 299
+    .line 309
     if-eqz p0, :cond_0
 
     const-string v0, "image/"
@@ -1193,7 +1221,7 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 254
+    .line 259
     sget-boolean v1, Lcom/google/android/mms/ContentType;->mIsAddTif:Z
 
     if-nez v1, :cond_0
@@ -1206,24 +1234,24 @@
 
     if-nez v1, :cond_0
 
-    .line 255
+    .line 260
     sget-object v1, Lcom/google/android/mms/ContentType;->sSupportedImageTypes:Ljava/util/ArrayList;
 
     const-string v2, "image/tif"
 
     invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 256
+    .line 261
     sget-object v1, Lcom/google/android/mms/ContentType;->sSupportedImageTypes:Ljava/util/ArrayList;
 
     const-string v2, "image/tiff"
 
     invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 257
+    .line 262
     sput-boolean v0, Lcom/google/android/mms/ContentType;->mIsAddTif:Z
 
-    .line 260
+    .line 265
     :cond_0
     sget-boolean v1, Lcom/google/android/mms/ContentType;->mIsAdd:Z
 
@@ -1243,38 +1271,66 @@
 
     if-nez v1, :cond_1
 
-    .line 262
+    .line 267
+    sget-object v1, Lcom/google/android/mms/ContentType;->sSupportedContentTypes:Ljava/util/ArrayList;
+
+    const-string v2, "audio/x-ms-wma"
+
+    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 268
     sget-object v1, Lcom/google/android/mms/ContentType;->sSupportedAudioTypes:Ljava/util/ArrayList;
 
     const-string v2, "audio/x-ms-wma"
 
     invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 264
+    .line 270
+    sget-object v1, Lcom/google/android/mms/ContentType;->sSupportedContentTypes:Ljava/util/ArrayList;
+
+    const-string v2, "video/x-ms-asf"
+
+    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 271
+    sget-object v1, Lcom/google/android/mms/ContentType;->sSupportedContentTypes:Ljava/util/ArrayList;
+
+    const-string v2, "video/x-ms-wmv"
+
+    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 272
+    sget-object v1, Lcom/google/android/mms/ContentType;->sSupportedContentTypes:Ljava/util/ArrayList;
+
+    const-string v2, "video/vnd.rn-realmedia"
+
+    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 274
     sget-object v1, Lcom/google/android/mms/ContentType;->sSupportedVideoTypes:Ljava/util/ArrayList;
 
     const-string v2, "video/x-ms-asf"
 
     invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 265
+    .line 275
     sget-object v1, Lcom/google/android/mms/ContentType;->sSupportedVideoTypes:Ljava/util/ArrayList;
 
     const-string v2, "video/x-ms-wmv"
 
     invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 266
+    .line 276
     sget-object v1, Lcom/google/android/mms/ContentType;->sSupportedVideoTypes:Ljava/util/ArrayList;
 
     const-string v2, "video/vnd.rn-realmedia"
 
     invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 267
+    .line 277
     sput-boolean v0, Lcom/google/android/mms/ContentType;->mIsAdd:Z
 
-    .line 270
+    .line 280
     :cond_1
     invoke-static {p0}, Lcom/google/android/mms/ContentType;->isSupportedAudioType(Ljava/lang/String;)Z
 
@@ -1315,7 +1371,7 @@
     .parameter "contentType"
 
     .prologue
-    .line 283
+    .line 293
     invoke-static {p0}, Lcom/google/android/mms/ContentType;->isAudioType(Ljava/lang/String;)Z
 
     move-result v0
@@ -1344,7 +1400,7 @@
     .parameter "contentType"
 
     .prologue
-    .line 279
+    .line 289
     invoke-static {p0}, Lcom/google/android/mms/ContentType;->isImageType(Ljava/lang/String;)Z
 
     move-result v0
@@ -1373,7 +1429,7 @@
     .parameter "contentType"
 
     .prologue
-    .line 275
+    .line 285
     if-eqz p0, :cond_0
 
     sget-object v0, Lcom/google/android/mms/ContentType;->sSupportedContentTypes:Ljava/util/ArrayList;
@@ -1400,7 +1456,7 @@
     .parameter "contentType"
 
     .prologue
-    .line 287
+    .line 297
     invoke-static {p0}, Lcom/google/android/mms/ContentType;->isVcardType(Ljava/lang/String;)Z
 
     move-result v0
@@ -1429,7 +1485,7 @@
     .parameter "contentType"
 
     .prologue
-    .line 291
+    .line 301
     invoke-static {p0}, Lcom/google/android/mms/ContentType;->isVideoType(Ljava/lang/String;)Z
 
     move-result v0
@@ -1458,7 +1514,7 @@
     .parameter "contentType"
 
     .prologue
-    .line 315
+    .line 325
     if-eqz p0, :cond_0
 
     const-string v0, "audio/amr-meizu"
@@ -1485,7 +1541,7 @@
     .parameter "contentType"
 
     .prologue
-    .line 295
+    .line 305
     if-eqz p0, :cond_0
 
     const-string v0, "text/"
@@ -1512,7 +1568,7 @@
     .parameter "contentType"
 
     .prologue
-    .line 330
+    .line 340
     if-eqz p0, :cond_0
 
     const-string v0, "*"
@@ -1539,7 +1595,7 @@
     .parameter "contentType"
 
     .prologue
-    .line 307
+    .line 317
     if-eqz p0, :cond_1
 
     const-string v0, "text/x-vcard"
@@ -1575,7 +1631,7 @@
     .parameter "contentType"
 
     .prologue
-    .line 311
+    .line 321
     if-eqz p0, :cond_0
 
     const-string v0, "video/"

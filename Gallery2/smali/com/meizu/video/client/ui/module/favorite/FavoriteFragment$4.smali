@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 587
+    .line 580
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$4;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -45,13 +45,13 @@
     .parameter "totalItemCount"
 
     .prologue
-    .line 595
+    .line 588
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$4;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
-    #setter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->currentStartListPosition:I
+    #setter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mCurrentStartListPosition:I
     invoke-static {v0, p2}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->access$1302(Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;I)I
 
-    .line 596
+    .line 589
     return-void
 .end method
 
@@ -61,6 +61,6 @@
     .parameter "scrollState"
 
     .prologue
-    .line 591
+    .line 584
     return-void
 .end method

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?listPreferredItemHeight"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/icon" android:layout_width="@dimen/preference_icon_width" android:layout_height="@dimen/list_item_height" android:scaleType="centerInside" />
+    <ImageView android:id="@id/icon" android:layout_width="@dimen/preference_icon_width" android:layout_height="?listPreferredItemHeight" android:scaleType="centerInside" />
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/edittext_container" android:layout_width="fill_parent" android:layout_height="@dimen/list_item_height" android:layout_weight="1.0">
-        <TextView android:textAppearance="?textAppearanceMedium" android:textColor="?textColorSecondary" android:ellipsize="marquee" android:id="@id/title" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:includeFontPadding="false" />
-        <TextView android:textSize="18.0sp" android:textColor="@color/primary_text_light_mz" android:id="@id/summary" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="6.0dip" android:maxLines="2" />
+        <TextView android:textAppearance="?textAppearanceMedium" android:textColor="?textColorSecondary" android:ellipsize="marquee" android:id="@id/title" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/preference_item_padding_side" android:singleLine="true" android:includeFontPadding="false" />
+        <TextView android:textAppearance="?textAppearanceMedium" android:textColor="?textColorPrimary" android:id="@id/summary" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="6.0dip" android:maxLines="2" />
     </LinearLayout>
     <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/widget_frame" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="@dimen/preference_widget_width" />
 </LinearLayout>

@@ -18,7 +18,7 @@
 .method public abstract onPreviewTextureCopied()V
 .end method
 
-.method public abstract onSwichAnimationEnd()V
+.method public abstract onSwitchAnimationEnd()V
 .end method
 
 .method public abstract requestRender()V

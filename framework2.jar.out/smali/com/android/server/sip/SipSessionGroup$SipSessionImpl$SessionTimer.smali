@@ -26,12 +26,12 @@
     .parameter
 
     .prologue
-    .line 732
+    .line 736
     iput-object p1, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl$SessionTimer;->this$1:Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 733
+    .line 737
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl$SessionTimer;->mRunning:Z
@@ -45,7 +45,7 @@
     .parameter "x1"
 
     .prologue
-    .line 732
+    .line 736
     invoke-direct {p0, p1}, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl$SessionTimer;->sleep(I)V
 
     return-void
@@ -56,7 +56,7 @@
     .parameter "x0"
 
     .prologue
-    .line 732
+    .line 736
     iget-boolean v0, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl$SessionTimer;->mRunning:Z
 
     return v0
@@ -67,7 +67,7 @@
     .parameter "x0"
 
     .prologue
-    .line 732
+    .line 736
     invoke-direct {p0}, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl$SessionTimer;->timeout()V
 
     return-void
@@ -78,7 +78,7 @@
     .parameter "timeout"
 
     .prologue
-    .line 762
+    .line 766
     monitor-enter p0
 
     mul-int/lit16 v1, p1, 0x3e8
@@ -91,18 +91,18 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 766
+    .line 770
     :cond_0
     :goto_0
     monitor-exit p0
 
     return-void
 
-    .line 763
+    .line 767
     :catch_0
     move-exception v0
 
-    .line 764
+    .line 768
     .local v0, e:Ljava/lang/InterruptedException;
     :try_start_1
     #calls: Lcom/android/server/sip/SipSessionGroup;->isSipLogEnable()Z
@@ -122,7 +122,7 @@
 
     goto :goto_0
 
-    .line 762
+    .line 766
     .end local v0           #e:Ljava/lang/InterruptedException;
     :catchall_0
     move-exception v1
@@ -136,14 +136,14 @@
     .locals 4
 
     .prologue
-    .line 754
+    .line 758
     iget-object v0, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl$SessionTimer;->this$1:Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;
 
     iget-object v1, v0, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;->this$0:Lcom/android/server/sip/SipSessionGroup;
 
     monitor-enter v1
 
-    .line 755
+    .line 759
     :try_start_0
     const-string v0, "Interval"
 
@@ -151,7 +151,7 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 756
+    .line 760
     iget-object v0, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl$SessionTimer;->this$1:Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;
 
     const/4 v2, -0x5
@@ -161,13 +161,13 @@
     #calls: Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;->onError(ILjava/lang/String;)V
     invoke-static {v0, v2, v3}, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;->access$000(Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;ILjava/lang/String;)V
 
-    .line 757
+    .line 761
     monitor-exit v1
 
-    .line 758
+    .line 762
     return-void
 
-    .line 757
+    .line 761
     :catchall_0
     move-exception v0
 
@@ -184,7 +184,7 @@
     .locals 1
 
     .prologue
-    .line 749
+    .line 753
     monitor-enter p0
 
     const/4 v0, 0x0
@@ -192,17 +192,17 @@
     :try_start_0
     iput-boolean v0, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl$SessionTimer;->mRunning:Z
 
-    .line 750
+    .line 754
     invoke-virtual {p0}, Ljava/lang/Object;->notify()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 751
+    .line 755
     monitor-exit p0
 
     return-void
 
-    .line 749
+    .line 753
     :catchall_0
     move-exception v0
 
@@ -216,7 +216,7 @@
     .parameter "timeout"
 
     .prologue
-    .line 736
+    .line 740
     new-instance v0, Ljava/lang/Thread;
 
     new-instance v1, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl$SessionTimer$1;
@@ -229,6 +229,6 @@
 
     invoke-virtual {v0}, Ljava/lang/Thread;->start()V
 
-    .line 746
+    .line 750
     return-void
 .end method

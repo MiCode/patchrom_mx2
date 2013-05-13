@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$GalleryOnTouchEvent;,
         Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;
     }
 .end annotation
@@ -20,68 +21,17 @@
 
 .field private TAG:Ljava/lang/String;
 
-.field private bar:Landroid/app/ActionBar;
+.field private mActionbarTopBottomBg:Landroid/widget/FrameLayout;
 
-.field private focusImageAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
-
-.field private focusImageGallery:Landroid/widget/Gallery;
-
-.field private focusImageInitPosition:I
-
-.field private followingTVRecommendBlockListEntity:Ljava/util/ArrayList;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/ArrayList",
-            "<",
-            "Lcom/meizu/video/client/ui/entity/RecommendEntity;",
-            ">;"
-        }
-    .end annotation
-.end field
-
-.field handler:Landroid/os/Handler;
-
-.field private hitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/ArrayList",
-            "<",
-            "Lcom/meizu/video/client/ui/entity/RecommendEntity;",
-            ">;"
-        }
-    .end annotation
-.end field
-
-.field private hitTVRecommendBlockListEntity:Ljava/util/ArrayList;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/ArrayList",
-            "<",
-            "Lcom/meizu/video/client/ui/entity/RecommendEntity;",
-            ">;"
-        }
-    .end annotation
-.end field
-
-.field private isCurrentPage:Z
-
-.field private isLoading:Z
-
-.field private loader:Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;
+.field private mBar:Landroid/app/ActionBar;
 
 .field private mCustomView:Landroid/view/View;
 
-.field private msgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
+.field private mFocusImageAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
 
-.field private no_available_network:Landroid/widget/LinearLayout;
+.field private mFocusImageGallery:Lcom/meizu/video/client/common/RecommendGallery;
 
-.field private no_network_image:Landroid/widget/ImageView;
-
-.field private no_network_title:Landroid/widget/TextView;
-
-.field private recommendAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
-
-.field private recommendBlockListEntity:Ljava/util/ArrayList;
+.field private mFollowingTVRecommendBlockListEntity:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/util/ArrayList",
@@ -92,7 +42,9 @@
     .end annotation
 .end field
 
-.field private recommendFocusListEntity:Ljava/util/ArrayList;
+.field mHandler:Landroid/os/Handler;
+
+.field private mHitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/util/ArrayList",
@@ -103,7 +55,54 @@
     .end annotation
 .end field
 
-.field private recommendListEntity:Ljava/util/ArrayList;
+.field private mHitTVRecommendBlockListEntity:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/meizu/video/client/ui/entity/RecommendEntity;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field private mIsLoading:Z
+
+.field private mLoader:Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;
+
+.field private mMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
+
+.field private mNoAvailableNetwork:Landroid/widget/LinearLayout;
+
+.field private mNoNetworkImage:Landroid/widget/ImageView;
+
+.field private mNoNetworkTitle:Landroid/widget/TextView;
+
+.field private mRecommendAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
+
+.field private mRecommendBlockListEntity:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/meizu/video/client/ui/entity/RecommendEntity;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field private mRecommendFocusListEntity:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/meizu/video/client/ui/entity/RecommendEntity;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field private mRecommendListEntity:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/util/ArrayList",
@@ -116,131 +115,104 @@
     .end annotation
 .end field
 
-.field private recommendListview:Landroid/widget/ListView;
+.field private mRecommendListview:Landroid/widget/ListView;
 
-.field private recommend_whole:Landroid/widget/RelativeLayout;
+.field private mRecommendWhole:Landroid/widget/FrameLayout;
 
-.field private reommend_progressbar_layout:Landroid/widget/LinearLayout;
+.field private mReommendProgressbarLayout:Landroid/widget/LinearLayout;
 
-.field private task:Ljava/util/TimerTask;
+.field private mRes:Landroid/content/res/Resources;
 
-.field private final timer:Ljava/util/Timer;
-
-.field private wholeFocusImageNum:I
-
-.field private wholeFocusImageShowTime:I
+.field private mWholeFocusImageShowTime:I
 
 
 # direct methods
 .method public constructor <init>()V
-    .locals 4
+    .locals 2
 
     .prologue
-    const/4 v3, 0x1
-
-    const/4 v2, 0x0
-
     const/4 v1, 0x0
 
-    .line 101
+    .line 106
     invoke-direct {p0}, Landroid/app/Fragment;-><init>()V
 
-    .line 47
+    .line 54
     const-string v0, "RecommendFragment"
 
     iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->TAG:Ljava/lang/String;
 
-    .line 56
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListEntity:Ljava/util/ArrayList;
-
-    .line 57
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendFocusListEntity:Ljava/util/ArrayList;
-
-    .line 58
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendBlockListEntity:Ljava/util/ArrayList;
-
-    .line 60
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->followingTVRecommendBlockListEntity:Ljava/util/ArrayList;
-
-    .line 61
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitTVRecommendBlockListEntity:Ljava/util/ArrayList;
-
-    .line 62
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
+    .line 63
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListEntity:Ljava/util/ArrayList;
 
     .line 64
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->msgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendFocusListEntity:Ljava/util/ArrayList;
 
-    .line 66
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
+    .line 65
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendBlockListEntity:Ljava/util/ArrayList;
+
+    .line 67
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFollowingTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
     .line 68
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->focusImageAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
-    .line 74
-    iput v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->focusImageInitPosition:I
+    .line 69
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
+
+    .line 71
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
+
+    .line 73
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
 
     .line 75
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFocusImageAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
+
+    .line 81
     const/16 v0, 0x1388
 
-    iput v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->wholeFocusImageShowTime:I
+    iput v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mWholeFocusImageShowTime:I
 
-    .line 76
-    iput v3, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->wholeFocusImageNum:I
+    .line 83
+    const/4 v0, 0x1
 
-    .line 78
-    iput v3, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->FRESH_CURRENT_PAGE:I
+    iput v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->FRESH_CURRENT_PAGE:I
 
-    .line 80
+    .line 85
     const/4 v0, 0x2
 
     iput v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->FRESH_CURRENT_PAGE_FOCUSIMAGE:I
 
-    .line 82
+    .line 87
     const/4 v0, 0x3
 
     iput v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->FRESH_CURRENT_PAGE_BY_ROTATION_SCREEN:I
 
-    .line 86
-    iput-boolean v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->isCurrentPage:Z
+    .line 97
+    const/4 v0, 0x0
 
-    .line 88
-    new-instance v0, Ljava/util/Timer;
+    iput-boolean v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mIsLoading:Z
 
-    invoke-direct {v0}, Ljava/util/Timer;-><init>()V
-
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->timer:Ljava/util/Timer;
-
-    .line 96
-    iput-boolean v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->isLoading:Z
-
-    .line 104
-    new-instance v0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$1;
-
-    invoke-direct {v0, p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$1;-><init>(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;)V
-
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->task:Ljava/util/TimerTask;
-
-    .line 263
+    .line 287
     new-instance v0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$2;
 
     invoke-direct {v0, p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$2;-><init>(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;)V
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->handler:Landroid/os/Handler;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHandler:Landroid/os/Handler;
 
-    .line 102
+    .line 107
     return-void
 .end method
 
-.method static synthetic access$000(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;)Z
+.method static synthetic access$100(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;)Ljava/util/ArrayList;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 45
-    iget-boolean v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->isCurrentPage:Z
+    .line 52
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendFocusListEntity:Ljava/util/ArrayList;
 
-    return v0
+    return-object v0
 .end method
 
 .method static synthetic access$1000(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;)Landroid/widget/LinearLayout;
@@ -248,10 +220,22 @@
     .parameter "x0"
 
     .prologue
-    .line 45
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->reommend_progressbar_layout:Landroid/widget/LinearLayout;
+    .line 52
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mReommendProgressbarLayout:Landroid/widget/LinearLayout;
 
     return-object v0
+.end method
+
+.method static synthetic access$102(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;Ljava/util/ArrayList;)Ljava/util/ArrayList;
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 52
+    iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendFocusListEntity:Ljava/util/ArrayList;
+
+    return-object p1
 .end method
 
 .method static synthetic access$1100(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;)Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
@@ -259,8 +243,8 @@
     .parameter "x0"
 
     .prologue
-    .line 45
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
+    .line 52
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
 
     return-object v0
 .end method
@@ -270,8 +254,8 @@
     .parameter "x0"
 
     .prologue
-    .line 45
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->focusImageAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
+    .line 52
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFocusImageAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
 
     return-object v0
 .end method
@@ -281,8 +265,8 @@
     .parameter "x0"
 
     .prologue
-    .line 45
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->no_network_title:Landroid/widget/TextView;
+    .line 52
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mNoNetworkTitle:Landroid/widget/TextView;
 
     return-object v0
 .end method
@@ -292,88 +276,54 @@
     .parameter "x0"
 
     .prologue
-    .line 45
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->no_available_network:Landroid/widget/LinearLayout;
+    .line 52
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mNoAvailableNetwork:Landroid/widget/LinearLayout;
 
     return-object v0
 .end method
 
-.method static synthetic access$1500(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 45
-    iget v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->focusImageInitPosition:I
-
-    return v0
-.end method
-
-.method static synthetic access$1502(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;I)I
+.method static synthetic access$1500(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;Z)V
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 45
-    iput p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->focusImageInitPosition:I
+    .line 52
+    invoke-direct {p0, p1}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->startMove(Z)V
 
-    return p1
+    return-void
 .end method
 
-.method static synthetic access$1600(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;)Landroid/widget/Gallery;
+.method static synthetic access$1600(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;)V
+    .locals 0
+    .parameter "x0"
+
+    .prologue
+    .line 52
+    invoke-direct {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->endMove()V
+
+    return-void
+.end method
+
+.method static synthetic access$300(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;)Lcom/meizu/video/client/ui/entity/MsgEntity;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 45
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->focusImageGallery:Landroid/widget/Gallery;
+    .line 52
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     return-object v0
 .end method
 
-.method static synthetic access$200(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;)Lcom/meizu/video/client/ui/entity/MsgEntity;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 45
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->msgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
-
-    return-object v0
-.end method
-
-.method static synthetic access$202(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;Lcom/meizu/video/client/ui/entity/MsgEntity;)Lcom/meizu/video/client/ui/entity/MsgEntity;
+.method static synthetic access$302(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;Lcom/meizu/video/client/ui/entity/MsgEntity;)Lcom/meizu/video/client/ui/entity/MsgEntity;
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 45
-    iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->msgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
-
-    return-object p1
-.end method
-
-.method static synthetic access$300(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;)Ljava/util/ArrayList;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 45
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendFocusListEntity:Ljava/util/ArrayList;
-
-    return-object v0
-.end method
-
-.method static synthetic access$302(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;Ljava/util/ArrayList;)Ljava/util/ArrayList;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 45
-    iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendFocusListEntity:Ljava/util/ArrayList;
+    .line 52
+    iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     return-object p1
 .end method
@@ -383,8 +333,8 @@
     .parameter "x0"
 
     .prologue
-    .line 45
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListEntity:Ljava/util/ArrayList;
+    .line 52
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListEntity:Ljava/util/ArrayList;
 
     return-object v0
 .end method
@@ -395,8 +345,8 @@
     .parameter "x1"
 
     .prologue
-    .line 45
-    iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListEntity:Ljava/util/ArrayList;
+    .line 52
+    iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListEntity:Ljava/util/ArrayList;
 
     return-object p1
 .end method
@@ -406,8 +356,8 @@
     .parameter "x0"
 
     .prologue
-    .line 45
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->followingTVRecommendBlockListEntity:Ljava/util/ArrayList;
+    .line 52
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFollowingTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
     return-object v0
 .end method
@@ -418,8 +368,8 @@
     .parameter "x1"
 
     .prologue
-    .line 45
-    iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->followingTVRecommendBlockListEntity:Ljava/util/ArrayList;
+    .line 52
+    iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFollowingTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
     return-object p1
 .end method
@@ -429,8 +379,8 @@
     .parameter "x0"
 
     .prologue
-    .line 45
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitTVRecommendBlockListEntity:Ljava/util/ArrayList;
+    .line 52
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
     return-object v0
 .end method
@@ -441,8 +391,8 @@
     .parameter "x1"
 
     .prologue
-    .line 45
-    iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitTVRecommendBlockListEntity:Ljava/util/ArrayList;
+    .line 52
+    iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
     return-object p1
 .end method
@@ -452,8 +402,8 @@
     .parameter "x0"
 
     .prologue
-    .line 45
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
+    .line 52
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
 
     return-object v0
 .end method
@@ -464,33 +414,21 @@
     .parameter "x1"
 
     .prologue
-    .line 45
-    iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
+    .line 52
+    iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
 
     return-object p1
 .end method
 
-.method static synthetic access$800(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;)I
+.method static synthetic access$800(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;)Lcom/meizu/video/client/common/RecommendGallery;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 45
-    iget v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->wholeFocusImageNum:I
+    .line 52
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFocusImageGallery:Lcom/meizu/video/client/common/RecommendGallery;
 
-    return v0
-.end method
-
-.method static synthetic access$802(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 45
-    iput p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->wholeFocusImageNum:I
-
-    return p1
+    return-object v0
 .end method
 
 .method static synthetic access$902(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;Z)Z
@@ -499,10 +437,25 @@
     .parameter "x1"
 
     .prologue
-    .line 45
-    iput-boolean p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->isLoading:Z
+    .line 52
+    iput-boolean p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mIsLoading:Z
 
     return p1
+.end method
+
+.method private endMove()V
+    .locals 2
+
+    .prologue
+    .line 490
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHandler:Landroid/os/Handler;
+
+    const/4 v1, 0x2
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 491
+    return-void
 .end method
 
 .method private initData()V
@@ -511,25 +464,25 @@
     .prologue
     const/4 v2, 0x1
 
-    .line 210
-    iget-boolean v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->isLoading:Z
+    .line 237
+    iget-boolean v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mIsLoading:Z
 
     if-nez v0, :cond_0
 
-    .line 211
-    iput-boolean v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->isLoading:Z
+    .line 238
+    iput-boolean v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mIsLoading:Z
 
-    .line 212
+    .line 239
     new-instance v0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;
 
     const/4 v1, 0x0
 
     invoke-direct {v0, p0, v1}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;-><init>(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$1;)V
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->loader:Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mLoader:Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;
 
-    .line 213
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->loader:Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;
+    .line 240
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mLoader:Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;
 
     new-array v1, v2, [Ljava/lang/Object;
 
@@ -543,7 +496,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
 
-    .line 215
+    .line 242
     :cond_0
     return-void
 .end method
@@ -555,19 +508,30 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 189
-    const v1, 0x7f0d0154
+    .line 184
+    const v1, 0x7f0d016e
 
     invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v1
 
-    check-cast v1, Landroid/widget/RelativeLayout;
+    check-cast v1, Landroid/widget/FrameLayout;
 
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommend_whole:Landroid/widget/RelativeLayout;
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendWhole:Landroid/widget/FrameLayout;
 
-    .line 190
-    const v1, 0x7f0d0155
+    .line 185
+    const v1, 0x7f0d001d
+
+    invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v1
+
+    check-cast v1, Landroid/widget/FrameLayout;
+
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mActionbarTopBottomBg:Landroid/widget/FrameLayout;
+
+    .line 187
+    const v1, 0x7f0d016f
 
     invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -575,32 +539,32 @@
 
     check-cast v1, Landroid/widget/ListView;
 
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListview:Landroid/widget/ListView;
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListview:Landroid/widget/ListView;
+
+    .line 188
+    const v1, 0x7f0d00a0
+
+    invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v1
+
+    check-cast v1, Landroid/widget/LinearLayout;
+
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mReommendProgressbarLayout:Landroid/widget/LinearLayout;
+
+    .line 190
+    const v1, 0x7f0d00ed
+
+    invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v1
+
+    check-cast v1, Landroid/widget/LinearLayout;
+
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mNoAvailableNetwork:Landroid/widget/LinearLayout;
 
     .line 191
-    const v1, 0x7f0d009b
-
-    invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v1
-
-    check-cast v1, Landroid/widget/LinearLayout;
-
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->reommend_progressbar_layout:Landroid/widget/LinearLayout;
-
-    .line 193
-    const v1, 0x7f0d00eb
-
-    invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v1
-
-    check-cast v1, Landroid/widget/LinearLayout;
-
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->no_available_network:Landroid/widget/LinearLayout;
-
-    .line 194
-    const v1, 0x7f0d00ec
+    const v1, 0x7f0d00ee
 
     invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -608,17 +572,10 @@
 
     check-cast v1, Landroid/widget/ImageView;
 
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->no_network_image:Landroid/widget/ImageView;
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mNoNetworkImage:Landroid/widget/ImageView;
 
-    .line 195
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->no_network_image:Landroid/widget/ImageView;
-
-    const v2, 0x7f0200c3
-
-    invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setImageResource(I)V
-
-    .line 196
-    const v1, 0x7f0d00ed
+    .line 193
+    const v1, 0x7f0d00ef
 
     invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -626,9 +583,9 @@
 
     check-cast v1, Landroid/widget/TextView;
 
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->no_network_title:Landroid/widget/TextView;
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mNoNetworkTitle:Landroid/widget/TextView;
 
-    .line 198
+    .line 195
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v1
@@ -637,7 +594,7 @@
 
     move-result-object v1
 
-    const v2, 0x7f04006a
+    const v2, 0x7f04006f
 
     const/4 v3, 0x0
 
@@ -645,24 +602,42 @@
 
     move-result-object v0
 
-    .line 199
+    .line 196
     .local v0, headerView:Landroid/view/View;
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListview:Landroid/widget/ListView;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListview:Landroid/widget/ListView;
 
     invoke-virtual {v1, v0}, Landroid/widget/ListView;->addHeaderView(Landroid/view/View;)V
 
-    .line 200
-    const v1, 0x7f0d0153
+    .line 197
+    const v1, 0x7f0d016d
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v1
 
-    check-cast v1, Landroid/widget/Gallery;
+    check-cast v1, Lcom/meizu/video/client/common/RecommendGallery;
 
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->focusImageGallery:Landroid/widget/Gallery;
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFocusImageGallery:Lcom/meizu/video/client/common/RecommendGallery;
 
-    .line 202
+    .line 198
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFocusImageGallery:Lcom/meizu/video/client/common/RecommendGallery;
+
+    new-instance v2, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$GalleryOnTouchEvent;
+
+    invoke-direct {v2, p0, v4}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$GalleryOnTouchEvent;-><init>(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$1;)V
+
+    invoke-virtual {v1, v2}, Lcom/meizu/video/client/common/RecommendGallery;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V
+
+    .line 201
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFocusImageGallery:Lcom/meizu/video/client/common/RecommendGallery;
+
+    new-instance v2, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$1;
+
+    invoke-direct {v2, p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$1;-><init>(Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;)V
+
+    invoke-virtual {v1, v2}, Lcom/meizu/video/client/common/RecommendGallery;->setOnItemClickListener(Landroid/widget/AdapterView$OnItemClickListener;)V
+
+    .line 227
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v1
@@ -671,7 +646,7 @@
 
     move-result-object v1
 
-    const v2, 0x7f04006b
+    const v2, 0x7f040070
 
     invoke-virtual {v1, v2, v4}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
@@ -679,7 +654,54 @@
 
     iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mCustomView:Landroid/view/View;
 
-    .line 204
+    .line 229
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListview:Landroid/widget/ListView;
+
+    const/high16 v2, 0x200
+
+    invoke-virtual {v1, v2}, Landroid/widget/ListView;->setScrollBarStyle(I)V
+
+    .line 231
+    return-void
+.end method
+
+.method private startMove(Z)V
+    .locals 4
+    .parameter "paramBoolean"
+
+    .prologue
+    .line 483
+    invoke-direct {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->endMove()V
+
+    .line 484
+    if-nez p1, :cond_0
+
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendFocusListEntity:Ljava/util/ArrayList;
+
+    if-eqz v0, :cond_1
+
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendFocusListEntity:Ljava/util/ArrayList;
+
+    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
+
+    move-result v0
+
+    if-lez v0, :cond_1
+
+    .line 485
+    :cond_0
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHandler:Landroid/os/Handler;
+
+    const/4 v1, 0x2
+
+    iget v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mWholeFocusImageShowTime:I
+
+    int-to-long v2, v2
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
+
+    .line 487
+    :cond_1
     return-void
 .end method
 
@@ -689,62 +711,62 @@
     .locals 4
 
     .prologue
-    .line 307
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
+    .line 341
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
 
     if-nez v0, :cond_0
 
-    .line 308
+    .line 342
     new-instance v0, Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
 
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v1
 
-    iget-object v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListEntity:Ljava/util/ArrayList;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListEntity:Ljava/util/ArrayList;
 
-    iget-object v3, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListview:Landroid/widget/ListView;
+    iget-object v3, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListview:Landroid/widget/ListView;
 
     invoke-direct {v0, v1, v2, v3}, Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;-><init>(Landroid/content/Context;Ljava/util/ArrayList;Landroid/widget/ListView;)V
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
 
-    .line 309
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListview:Landroid/widget/ListView;
+    .line 343
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListview:Landroid/widget/ListView;
 
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
 
     invoke-virtual {v0, v1}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V
 
-    .line 311
+    .line 345
     :cond_0
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->focusImageAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFocusImageAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
 
     if-nez v0, :cond_1
 
-    .line 312
+    .line 346
     new-instance v0, Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
 
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v1
 
-    iget-object v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendFocusListEntity:Ljava/util/ArrayList;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendFocusListEntity:Ljava/util/ArrayList;
 
-    iget-object v3, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->focusImageGallery:Landroid/widget/Gallery;
+    iget-object v3, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFocusImageGallery:Lcom/meizu/video/client/common/RecommendGallery;
 
     invoke-direct {v0, v1, v2, v3}, Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;-><init>(Landroid/content/Context;Ljava/util/ArrayList;Landroid/widget/Gallery;)V
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->focusImageAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFocusImageAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
 
-    .line 313
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->focusImageGallery:Landroid/widget/Gallery;
+    .line 347
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFocusImageGallery:Lcom/meizu/video/client/common/RecommendGallery;
 
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->focusImageAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFocusImageAdapter:Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
 
-    invoke-virtual {v0, v1}, Landroid/widget/Gallery;->setAdapter(Landroid/widget/SpinnerAdapter;)V
+    invoke-virtual {v0, v1}, Lcom/meizu/video/client/common/RecommendGallery;->setAdapter(Landroid/widget/SpinnerAdapter;)V
 
-    .line 315
+    .line 349
     :cond_1
     return-void
 .end method
@@ -757,7 +779,7 @@
 
     const/4 v3, 0x2
 
-    .line 373
+    .line 416
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v0
@@ -774,21 +796,21 @@
 
     if-ne v0, v3, :cond_0
 
-    .line 374
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->followingTVRecommendBlockListEntity:Ljava/util/ArrayList;
+    .line 417
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFollowingTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitTVRecommendBlockListEntity:Ljava/util/ArrayList;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
-    iget-object v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
 
     invoke-static {v0, v1, v2, v3}, Lcom/meizu/video/client/util/CommonUtil;->RecombinationBlockData(Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;I)Ljava/util/ArrayList;
 
     move-result-object v0
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendBlockListEntity:Ljava/util/ArrayList;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendBlockListEntity:Ljava/util/ArrayList;
 
-    .line 375
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendBlockListEntity:Ljava/util/ArrayList;
+    .line 418
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendBlockListEntity:Ljava/util/ArrayList;
 
     const/4 v1, 0x4
 
@@ -796,26 +818,19 @@
 
     move-result-object v0
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListEntity:Ljava/util/ArrayList;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListEntity:Ljava/util/ArrayList;
 
-    .line 376
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListview:Landroid/widget/ListView;
-
-    const/4 v1, 0x0
-
-    invoke-virtual {v0, v1}, Landroid/widget/ListView;->setDockingBottom(I)V
-
-    .line 382
+    .line 423
     :goto_0
     return-void
 
-    .line 378
+    .line 420
     :cond_0
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->followingTVRecommendBlockListEntity:Ljava/util/ArrayList;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFollowingTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitTVRecommendBlockListEntity:Ljava/util/ArrayList;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
-    iget-object v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
 
     const/4 v3, 0x1
 
@@ -823,10 +838,10 @@
 
     move-result-object v0
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendBlockListEntity:Ljava/util/ArrayList;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendBlockListEntity:Ljava/util/ArrayList;
 
-    .line 379
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendBlockListEntity:Ljava/util/ArrayList;
+    .line 421
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendBlockListEntity:Ljava/util/ArrayList;
 
     const/4 v1, 0x3
 
@@ -834,14 +849,7 @@
 
     move-result-object v0
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListEntity:Ljava/util/ArrayList;
-
-    .line 380
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListview:Landroid/widget/ListView;
-
-    const/16 v1, 0x62
-
-    invoke-virtual {v0, v1}, Landroid/widget/ListView;->setDockingBottom(I)V
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListEntity:Ljava/util/ArrayList;
 
     goto :goto_0
 .end method
@@ -854,12 +862,12 @@
 
     const/4 v2, 0x0
 
-    .line 349
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListEntity:Ljava/util/ArrayList;
+    .line 391
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListEntity:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_0
 
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListEntity:Ljava/util/ArrayList;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
 
@@ -867,7 +875,7 @@
 
     if-nez v0, :cond_1
 
-    .line 350
+    .line 392
     :cond_0
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->getActivity()Landroid/app/Activity;
 
@@ -879,39 +887,42 @@
 
     if-eqz v0, :cond_2
 
-    .line 351
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->reommend_progressbar_layout:Landroid/widget/LinearLayout;
+    .line 393
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mReommendProgressbarLayout:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 352
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->no_available_network:Landroid/widget/LinearLayout;
+    .line 394
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mNoAvailableNetwork:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 353
+    .line 395
     invoke-direct {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->initData()V
 
-    .line 360
+    .line 403
     :cond_1
     :goto_0
     return-void
 
-    .line 355
+    .line 397
     :cond_2
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->reommend_progressbar_layout:Landroid/widget/LinearLayout;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mReommendProgressbarLayout:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 356
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->no_network_title:Landroid/widget/TextView;
+    .line 398
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mNoNetworkTitle:Landroid/widget/TextView;
 
     const v1, 0x7f0a000e
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(I)V
 
-    .line 357
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->no_available_network:Landroid/widget/LinearLayout;
+    .line 399
+    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->setNoNetWorkStyle()V
+
+    .line 400
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mNoAvailableNetwork:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
@@ -919,72 +930,115 @@
 .end method
 
 .method public onConfigurationChanged(Landroid/content/res/Configuration;)V
-    .locals 2
+    .locals 3
     .parameter "newConfig"
 
     .prologue
-    const/4 v1, 0x3
+    const/4 v2, 0x3
 
-    .line 323
+    .line 357
     invoke-super {p0, p1}, Landroid/app/Fragment;->onConfigurationChanged(Landroid/content/res/Configuration;)V
 
-    .line 325
+    .line 359
+    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->getActivity()Landroid/app/Activity;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/gallery3d/app/VideoGallery;
+
+    invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->getmSelectedPage()I
+
+    move-result v1
+
+    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->getActivity()Landroid/app/Activity;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/gallery3d/app/VideoGallery;
+
+    invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->getTabRank()I
+
+    move-result v0
+
+    if-ne v1, v0, :cond_0
+
+    .line 360
+    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->setActionBar()V
+
+    .line 363
+    :cond_0
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->changeDataSort()V
 
-    .line 327
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->handler:Landroid/os/Handler;
+    .line 364
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mNoAvailableNetwork:Landroid/widget/LinearLayout;
 
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+    if-eqz v0, :cond_1
 
-    .line 328
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->handler:Landroid/os/Handler;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mNoAvailableNetwork:Landroid/widget/LinearLayout;
 
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+    invoke-virtual {v0}, Landroid/widget/LinearLayout;->getVisibility()I
 
-    .line 329
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    .line 365
+    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->setNoNetWorkStyle()V
+
+    .line 371
+    :goto_0
     return-void
+
+    .line 367
+    :cond_1
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v2}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 368
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v2}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    goto :goto_0
 .end method
 
 .method public onCreateView(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;
-    .locals 7
+    .locals 3
     .parameter "inflater"
     .parameter "container"
     .parameter "savedInstanceState"
 
     .prologue
-    .line 178
-    const v0, 0x7f04006c
+    .line 173
+    const v1, 0x7f040071
 
-    const/4 v1, 0x0
+    const/4 v2, 0x0
 
-    invoke-virtual {p1, v0, p2, v1}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
+    invoke-virtual {p1, v1, p2, v2}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
-    move-result-object v6
+    move-result-object v0
 
-    .line 179
-    .local v6, recomendView:Landroid/view/View;
-    invoke-direct {p0, v6}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->initView(Landroid/view/View;)V
+    .line 174
+    .local v0, recomendView:Landroid/view/View;
+    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->getActivity()Landroid/app/Activity;
 
-    .line 180
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->timer:Ljava/util/Timer;
+    move-result-object v1
 
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->task:Ljava/util/TimerTask;
+    invoke-virtual {v1}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
-    iget v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->wholeFocusImageShowTime:I
+    move-result-object v1
 
-    int-to-long v2, v2
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRes:Landroid/content/res/Resources;
 
-    iget v4, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->wholeFocusImageShowTime:I
+    .line 175
+    invoke-direct {p0, v0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->initView(Landroid/view/View;)V
 
-    int-to-long v4, v4
-
-    invoke-virtual/range {v0 .. v5}, Ljava/util/Timer;->schedule(Ljava/util/TimerTask;JJ)V
-
-    .line 181
+    .line 176
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->setActionBar()V
 
-    .line 182
-    return-object v6
+    .line 177
+    return-object v0
 .end method
 
 .method public onDestroy()V
@@ -993,101 +1047,96 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 115
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListEntity:Ljava/util/ArrayList;
+    .line 111
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListEntity:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_0
 
+    .line 112
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListEntity:Ljava/util/ArrayList;
+
+    invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
+
+    .line 113
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListEntity:Ljava/util/ArrayList;
+
+    .line 115
+    :cond_0
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendBlockListEntity:Ljava/util/ArrayList;
+
+    if-eqz v0, :cond_1
+
     .line 116
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListEntity:Ljava/util/ArrayList;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendBlockListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
     .line 117
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendListEntity:Ljava/util/ArrayList;
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendBlockListEntity:Ljava/util/ArrayList;
 
     .line 119
-    :cond_0
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendBlockListEntity:Ljava/util/ArrayList;
+    :cond_1
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFollowingTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_2
 
     .line 120
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendBlockListEntity:Ljava/util/ArrayList;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFollowingTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
     .line 121
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendBlockListEntity:Ljava/util/ArrayList;
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mFollowingTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
     .line 123
-    :cond_1
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->followingTVRecommendBlockListEntity:Ljava/util/ArrayList;
+    :cond_2
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
-    if-eqz v0, :cond_2
+    if-eqz v0, :cond_3
 
     .line 124
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->followingTVRecommendBlockListEntity:Ljava/util/ArrayList;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
     .line 125
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->followingTVRecommendBlockListEntity:Ljava/util/ArrayList;
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitTVRecommendBlockListEntity:Ljava/util/ArrayList;
 
     .line 127
-    :cond_2
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitTVRecommendBlockListEntity:Ljava/util/ArrayList;
+    :cond_3
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
 
-    if-eqz v0, :cond_3
+    if-eqz v0, :cond_4
 
     .line 128
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitTVRecommendBlockListEntity:Ljava/util/ArrayList;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
     .line 129
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitTVRecommendBlockListEntity:Ljava/util/ArrayList;
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mHitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
 
     .line 131
-    :cond_3
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
+    :cond_4
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendFocusListEntity:Ljava/util/ArrayList;
 
-    if-eqz v0, :cond_4
+    if-eqz v0, :cond_5
 
     .line 132
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendFocusListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
     .line 133
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->hitFilmRecommendBlockListEntity:Ljava/util/ArrayList;
-
-    .line 135
-    :cond_4
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendFocusListEntity:Ljava/util/ArrayList;
-
-    if-eqz v0, :cond_5
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendFocusListEntity:Ljava/util/ArrayList;
 
     .line 136
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendFocusListEntity:Ljava/util/ArrayList;
-
-    invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
-
-    .line 137
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->recommendFocusListEntity:Ljava/util/ArrayList;
-
-    .line 139
     :cond_5
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->timer:Ljava/util/Timer;
-
-    invoke-virtual {v0}, Ljava/util/Timer;->cancel()V
-
-    .line 141
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->loader:Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mLoader:Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;
 
     if-eqz v0, :cond_6
 
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->loader:Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mLoader:Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;
 
     invoke-virtual {v0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;->getStatus()Landroid/os/AsyncTask$Status;
 
@@ -1097,34 +1146,32 @@
 
     if-ne v0, v1, :cond_6
 
-    .line 142
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->loader:Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;
+    .line 137
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mLoader:Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment$LoadRecommendListTask;->cancel(Z)Z
 
-    .line 145
+    .line 140
     :cond_6
     invoke-super {p0}, Landroid/app/Fragment;->onDestroy()V
 
-    .line 146
+    .line 141
     return-void
 .end method
 
 .method public onPause()V
-    .locals 1
+    .locals 0
 
     .prologue
-    .line 150
+    .line 145
     invoke-super {p0}, Landroid/app/Fragment;->onPause()V
 
-    .line 151
-    const/4 v0, 0x0
+    .line 146
+    invoke-direct {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->endMove()V
 
-    iput-boolean v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->isCurrentPage:Z
-
-    .line 152
+    .line 147
     return-void
 .end method
 
@@ -1132,18 +1179,18 @@
     .locals 1
 
     .prologue
-    .line 156
+    .line 151
     invoke-super {p0}, Landroid/app/Fragment;->onResume()V
 
-    .line 157
+    .line 152
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->checkDataAndUpdateView()V
 
-    .line 158
-    const/4 v0, 0x1
+    .line 153
+    const/4 v0, 0x0
 
-    iput-boolean v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->isCurrentPage:Z
+    invoke-direct {p0, v0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->startMove(Z)V
 
-    .line 159
+    .line 154
     return-void
 .end method
 
@@ -1152,10 +1199,10 @@
     .parameter "outState"
 
     .prologue
-    .line 163
+    .line 158
     invoke-super {p0, p1}, Landroid/app/Fragment;->onSaveInstanceState(Landroid/os/Bundle;)V
 
-    .line 164
+    .line 159
     return-void
 .end method
 
@@ -1163,10 +1210,10 @@
     .locals 0
 
     .prologue
-    .line 168
+    .line 163
     invoke-super {p0}, Landroid/app/Fragment;->onStart()V
 
-    .line 169
+    .line 164
     return-void
 .end method
 
@@ -1174,10 +1221,10 @@
     .locals 0
 
     .prologue
-    .line 173
+    .line 168
     invoke-super {p0}, Landroid/app/Fragment;->onStop()V
 
-    .line 174
+    .line 169
     return-void
 .end method
 
@@ -1189,7 +1236,7 @@
 
     const/4 v4, -0x2
 
-    .line 332
+    .line 374
     invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->getmActionBar()Lcom/android/gallery3d/app/GalleryActionBar;
 
     move-result-object v0
@@ -1198,35 +1245,35 @@
 
     move-result-object v0
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->bar:Landroid/app/ActionBar;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mBar:Landroid/app/ActionBar;
 
-    .line 334
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->bar:Landroid/app/ActionBar;
+    .line 376
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mBar:Landroid/app/ActionBar;
 
     const/16 v1, 0x18
 
     invoke-virtual {v0, v1}, Landroid/app/ActionBar;->setDisplayOptions(I)V
 
-    .line 335
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->bar:Landroid/app/ActionBar;
+    .line 377
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mBar:Landroid/app/ActionBar;
 
     const v1, 0x7f0a0001
 
     invoke-virtual {v0, v1}, Landroid/app/ActionBar;->setTitle(I)V
 
-    .line 336
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->bar:Landroid/app/ActionBar;
+    .line 378
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mBar:Landroid/app/ActionBar;
 
     invoke-virtual {v0, v2}, Landroid/app/ActionBar;->setSubtitle(Ljava/lang/CharSequence;)V
 
-    .line 338
+    .line 380
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v0
 
     if-eqz v0, :cond_0
 
-    .line 339
+    .line 381
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->getActivity()Landroid/app/Activity;
 
     move-result-object v0
@@ -1245,19 +1292,19 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 340
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->bar:Landroid/app/ActionBar;
+    .line 382
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mBar:Landroid/app/ActionBar;
 
     invoke-virtual {v0, v2}, Landroid/app/ActionBar;->setCustomView(Landroid/view/View;)V
 
-    .line 346
+    .line 388
     :cond_0
     :goto_0
     return-void
 
-    .line 342
+    .line 384
     :cond_1
-    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->bar:Landroid/app/ActionBar;
+    iget-object v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mBar:Landroid/app/ActionBar;
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mCustomView:Landroid/view/View;
 
@@ -1268,6 +1315,237 @@
     invoke-direct {v2, v4, v4, v3}, Landroid/app/ActionBar$LayoutParams;-><init>(III)V
 
     invoke-virtual {v0, v1, v2}, Landroid/app/ActionBar;->setCustomView(Landroid/view/View;Landroid/app/ActionBar$LayoutParams;)V
+
+    goto :goto_0
+.end method
+
+.method public setNoNetWorkStyle()V
+    .locals 4
+
+    .prologue
+    const/4 v2, -0x2
+
+    const/4 v3, 0x0
+
+    .line 426
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRes:Landroid/content/res/Resources;
+
+    if-nez v1, :cond_0
+
+    .line 427
+    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->getActivity()Landroid/app/Activity;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRes:Landroid/content/res/Resources;
+
+    .line 429
+    :cond_0
+    new-instance v0, Landroid/widget/LinearLayout$LayoutParams;
+
+    invoke-direct {v0, v2, v2}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
+
+    .line 430
+    .local v0, lp:Landroid/widget/LinearLayout$LayoutParams;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRes:Landroid/content/res/Resources;
+
+    invoke-virtual {v1}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+
+    move-result-object v1
+
+    iget v1, v1, Landroid/content/res/Configuration;->orientation:I
+
+    const/4 v2, 0x2
+
+    if-ne v1, v2, :cond_1
+
+    .line 431
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRes:Landroid/content/res/Resources;
+
+    const v2, 0x7f090112
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    invoke-virtual {v0, v3, v1, v3, v3}, Landroid/widget/LinearLayout$LayoutParams;->setMargins(IIII)V
+
+    .line 435
+    :goto_0
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mNoNetworkImage:Landroid/widget/ImageView;
+
+    invoke-virtual {v1, v0}, Landroid/widget/ImageView;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 436
+    return-void
+
+    .line 433
+    :cond_1
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRes:Landroid/content/res/Resources;
+
+    const v2, 0x7f090111
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    invoke-virtual {v0, v3, v1, v3, v3}, Landroid/widget/LinearLayout$LayoutParams;->setMargins(IIII)V
+
+    goto :goto_0
+.end method
+
+.method public setRecommendListViewSpacing()V
+    .locals 7
+
+    .prologue
+    const/4 v6, 0x0
+
+    .line 439
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRes:Landroid/content/res/Resources;
+
+    if-nez v1, :cond_0
+
+    .line 440
+    invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->getActivity()Landroid/app/Activity;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRes:Landroid/content/res/Resources;
+
+    .line 442
+    :cond_0
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mActionbarTopBottomBg:Landroid/widget/FrameLayout;
+
+    invoke-virtual {v1}, Landroid/widget/FrameLayout;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/FrameLayout$LayoutParams;
+
+    .line 443
+    .local v0, params:Landroid/widget/FrameLayout$LayoutParams;
+    const/4 v1, -0x1
+
+    iput v1, v0, Landroid/view/ViewGroup$LayoutParams;->width:I
+
+    .line 444
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRes:Landroid/content/res/Resources;
+
+    invoke-virtual {v1}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+
+    move-result-object v1
+
+    iget v1, v1, Landroid/content/res/Configuration;->orientation:I
+
+    const/4 v2, 0x2
+
+    if-ne v1, v2, :cond_1
+
+    .line 445
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListview:Landroid/widget/ListView;
+
+    invoke-virtual {v1, v6}, Landroid/widget/ListView;->setDockingBottom(I)V
+
+    .line 447
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListview:Landroid/widget/ListView;
+
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRes:Landroid/content/res/Resources;
+
+    const v3, 0x7f090033
+
+    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v2
+
+    iget-object v3, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRes:Landroid/content/res/Resources;
+
+    const v4, 0x7f090036
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v3
+
+    sget v4, Lcom/meizu/video/client/common/Constant;->actionBarBigHeight:I
+
+    add-int/2addr v3, v4
+
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRes:Landroid/content/res/Resources;
+
+    const v5, 0x7f090034
+
+    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v4
+
+    invoke-virtual {v1, v2, v3, v4, v6}, Landroid/widget/ListView;->setPadding(IIII)V
+
+    .line 449
+    sget v1, Lcom/meizu/video/client/common/Constant;->actionBarSmallHeight:I
+
+    iput v1, v0, Landroid/view/ViewGroup$LayoutParams;->height:I
+
+    .line 457
+    :goto_0
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mActionbarTopBottomBg:Landroid/widget/FrameLayout;
+
+    invoke-virtual {v1, v0}, Landroid/widget/FrameLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 458
+    return-void
+
+    .line 451
+    :cond_1
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListview:Landroid/widget/ListView;
+
+    sget v2, Lcom/meizu/video/client/common/Constant;->actionBarBigHeight:I
+
+    invoke-virtual {v1, v2}, Landroid/widget/ListView;->setDockingBottom(I)V
+
+    .line 453
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRecommendListview:Landroid/widget/ListView;
+
+    iget-object v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRes:Landroid/content/res/Resources;
+
+    const v3, 0x7f090031
+
+    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v2
+
+    iget-object v3, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRes:Landroid/content/res/Resources;
+
+    const v4, 0x7f090035
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v3
+
+    sget v4, Lcom/meizu/video/client/common/Constant;->actionBarBigHeight:I
+
+    add-int/2addr v3, v4
+
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;->mRes:Landroid/content/res/Resources;
+
+    const v5, 0x7f090032
+
+    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v4
+
+    invoke-virtual {v1, v2, v3, v4, v6}, Landroid/widget/ListView;->setPadding(IIII)V
+
+    .line 455
+    sget v1, Lcom/meizu/video/client/common/Constant;->actionBarBigHeight:I
+
+    iput v1, v0, Landroid/view/ViewGroup$LayoutParams;->height:I
 
     goto :goto_0
 .end method

@@ -23,7 +23,7 @@
     .locals 0
 
     .prologue
-    .line 2301
+    .line 1708
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -37,7 +37,7 @@
     .parameter "privateAccess"
 
     .prologue
-    .line 2320
+    .line 1727
     new-instance v0, Landroid/webkit/WebViewClassic;
 
     invoke-direct {v0, p1, p2}, Landroid/webkit/WebViewClassic;-><init>(Landroid/webkit/WebView;Landroid/webkit/WebView$PrivateAccess;)V
@@ -50,7 +50,7 @@
     .parameter "addr"
 
     .prologue
-    .line 2304
+    .line 1711
     invoke-static {p1}, Landroid/webkit/WebViewClassic;->findAddress(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
@@ -62,7 +62,7 @@
     .locals 1
 
     .prologue
-    .line 2330
+    .line 1737
     invoke-static {}, Landroid/webkit/CookieManagerClassic;->getInstance()Landroid/webkit/CookieManagerClassic;
 
     move-result-object v0
@@ -74,7 +74,7 @@
     .locals 1
 
     .prologue
-    .line 2325
+    .line 1732
     invoke-static {}, Landroid/webkit/GeolocationPermissionsClassic;->getInstance()Landroid/webkit/GeolocationPermissionsClassic;
 
     move-result-object v0
@@ -86,7 +86,7 @@
     .locals 0
 
     .prologue
-    .line 2316
+    .line 1723
     return-object p0
 .end method
 
@@ -94,7 +94,7 @@
     .locals 1
 
     .prologue
-    .line 2335
+    .line 1742
     invoke-static {}, Landroid/webkit/WebIconDatabaseClassic;->getInstance()Landroid/webkit/WebIconDatabaseClassic;
 
     move-result-object v0
@@ -106,7 +106,7 @@
     .locals 1
 
     .prologue
-    .line 2340
+    .line 1747
     invoke-static {}, Landroid/webkit/WebStorageClassic;->getInstance()Landroid/webkit/WebStorageClassic;
 
     move-result-object v0
@@ -119,7 +119,7 @@
     .parameter "context"
 
     .prologue
-    .line 2345
+    .line 1752
     invoke-static {p1}, Landroid/webkit/WebViewDatabaseClassic;->getInstance(Landroid/content/Context;)Landroid/webkit/WebViewDatabaseClassic;
 
     move-result-object v0
@@ -132,17 +132,17 @@
     .parameter "enable"
 
     .prologue
-    .line 2308
+    .line 1715
     if-eqz p1, :cond_0
 
-    .line 2309
+    .line 1716
     invoke-static {}, Landroid/webkit/WebViewClassic;->enablePlatformNotifications()V
 
-    .line 2313
+    .line 1720
     :goto_0
     return-void
 
-    .line 2311
+    .line 1718
     :cond_0
     invoke-static {}, Landroid/webkit/WebViewClassic;->disablePlatformNotifications()V
 

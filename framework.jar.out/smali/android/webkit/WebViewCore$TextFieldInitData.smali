@@ -15,9 +15,9 @@
 
 
 # instance fields
-.field public mContentBounds:Landroid/graphics/Rect;
+.field public mClientRect:Landroid/graphics/Rect;
 
-.field public mContentRect:Landroid/graphics/Rect;
+.field public mContentBounds:Landroid/graphics/Rect;
 
 .field public mFieldPointer:I
 
@@ -37,23 +37,7 @@
 
 .field public mNodeLayerId:I
 
-.field public mRtl:Z
-
-.field public mSelectionEnd:I
-
-.field public mSelectionStart:I
-
 .field public mText:Ljava/lang/String;
-
-.field public mTextPaddingBottom:I
-
-.field public mTextPaddingLeft:I
-
-.field public mTextPaddingRight:I
-
-.field public mTextPaddingTop:I
-
-.field public mTextSize:I
 
 .field public mType:I
 
@@ -63,7 +47,7 @@
     .locals 0
 
     .prologue
-    .line 956
+    .line 960
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void

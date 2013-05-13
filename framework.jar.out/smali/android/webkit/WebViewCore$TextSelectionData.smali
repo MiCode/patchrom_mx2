@@ -25,11 +25,15 @@
 # instance fields
 .field mEnd:I
 
+.field mEndFontSize:I
+
 .field mSelectTextPtr:I
 
 .field mSelectionReason:I
 
 .field mStart:I
+
+.field mStartFontSize:I
 
 
 # direct methods
@@ -40,23 +44,23 @@
     .parameter "selectTextPtr"
 
     .prologue
-    .line 884
+    .line 886
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 892
+    .line 896
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/webkit/WebViewCore$TextSelectionData;->mSelectionReason:I
 
-    .line 885
+    .line 887
     iput p1, p0, Landroid/webkit/WebViewCore$TextSelectionData;->mStart:I
 
-    .line 886
+    .line 888
     iput p2, p0, Landroid/webkit/WebViewCore$TextSelectionData;->mEnd:I
 
-    .line 887
+    .line 889
     iput p3, p0, Landroid/webkit/WebViewCore$TextSelectionData;->mSelectTextPtr:I
 
-    .line 888
+    .line 890
     return-void
 .end method

@@ -265,7 +265,7 @@
 
     .line 43
     .local v0, r:Landroid/content/res/Resources;
-    const v1, 0x7f0900b5
+    const v1, 0x7f0901b2
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -274,7 +274,7 @@
     sput v1, Lcom/android/gallery3d/gadget/WidgetUtils;->sStackPhotoWidth:I
 
     .line 44
-    const v1, 0x7f0900b6
+    const v1, 0x7f0901b3
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 

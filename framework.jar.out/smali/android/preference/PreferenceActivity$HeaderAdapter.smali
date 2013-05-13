@@ -82,10 +82,8 @@
     .prologue
     const/4 v6, 0x0
 
-    .line 260
     if-nez p2, :cond_0
-
-    .line 261
+    
     invoke-virtual {p0}, Landroid/preference/PreferenceActivity$HeaderAdapter;->getContext()Landroid/content/Context;
 
     move-result-object v4

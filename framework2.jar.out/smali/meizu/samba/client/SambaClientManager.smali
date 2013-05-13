@@ -42,23 +42,23 @@
     .parameter "service"
 
     .prologue
-    .line 134
+    .line 135
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 55
+    .line 56
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
     iput-object v0, p0, Lmeizu/samba/client/SambaClientManager;->mListeners:Ljava/util/HashMap;
 
-    .line 135
+    .line 136
     iput-object p2, p0, Lmeizu/samba/client/SambaClientManager;->mService:Lmeizu/samba/client/ISambaClientManager;
 
-    .line 136
+    .line 137
     iput-object p1, p0, Lmeizu/samba/client/SambaClientManager;->mContext:Landroid/content/Context;
 
-    .line 138
+    .line 139
     return-void
 .end method
 
@@ -69,14 +69,14 @@
     .parameter "listener"
 
     .prologue
-    .line 222
+    .line 223
     const/4 v1, 0x1
 
-    .line 223
+    .line 224
     .local v1, result:Z
     if-nez p1, :cond_0
 
-    .line 224
+    .line 225
     new-instance v3, Ljava/lang/IllegalArgumentException;
 
     const-string v4, "listener==null"
@@ -85,7 +85,7 @@
 
     throw v3
 
-    .line 226
+    .line 227
     :cond_0
     iget-object v3, p0, Lmeizu/samba/client/SambaClientManager;->mListeners:Ljava/util/HashMap;
 
@@ -95,21 +95,21 @@
 
     if-eqz v3, :cond_1
 
-    .line 227
+    .line 228
     const-string v3, "SambaClientManager"
 
     const-string v4, "addSambaStatusListener: already added!"
 
     invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 228
+    .line 229
     const/4 v3, 0x1
 
-    .line 246
+    .line 247
     :goto_0
     return v3
 
-    .line 232
+    .line 233
     :cond_1
     :try_start_0
     iget-object v4, p0, Lmeizu/samba/client/SambaClientManager;->mListeners:Ljava/util/HashMap;
@@ -118,7 +118,7 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 233
+    .line 234
     :try_start_1
     iget-object v3, p0, Lmeizu/samba/client/SambaClientManager;->mListeners:Ljava/util/HashMap;
 
@@ -128,11 +128,11 @@
 
     check-cast v2, Lmeizu/samba/client/SambaClientManager$ListenerTransport;
 
-    .line 234
+    .line 235
     .local v2, transport:Lmeizu/samba/client/SambaClientManager$ListenerTransport;
     if-nez v2, :cond_2
 
-    .line 235
+    .line 236
     new-instance v2, Lmeizu/samba/client/SambaClientManager$ListenerTransport;
 
     .end local v2           #transport:Lmeizu/samba/client/SambaClientManager$ListenerTransport;
@@ -140,14 +140,14 @@
 
     invoke-direct {v2, p0, p1, v3}, Lmeizu/samba/client/SambaClientManager$ListenerTransport;-><init>(Lmeizu/samba/client/SambaClientManager;Lmeizu/samba/client/SambaStatusListener;Landroid/os/Looper;)V
 
-    .line 237
+    .line 238
     .restart local v2       #transport:Lmeizu/samba/client/SambaClientManager$ListenerTransport;
     :cond_2
     iget-object v3, p0, Lmeizu/samba/client/SambaClientManager;->mListeners:Ljava/util/HashMap;
 
     invoke-virtual {v3, p1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 238
+    .line 239
     iget-object v3, p0, Lmeizu/samba/client/SambaClientManager;->mService:Lmeizu/samba/client/ISambaClientManager;
 
     iget-object v5, p0, Lmeizu/samba/client/SambaClientManager;->mContext:Landroid/content/Context;
@@ -158,17 +158,17 @@
 
     invoke-interface {v3, v2, v5}, Lmeizu/samba/client/ISambaClientManager;->addSambaStatusListener(Lmeizu/samba/client/ISambaStatusListener;Ljava/lang/String;)Z
 
-    .line 239
+    .line 240
     monitor-exit v4
 
     .end local v2           #transport:Lmeizu/samba/client/SambaClientManager$ListenerTransport;
     :goto_1
     move v3, v1
 
-    .line 246
+    .line 247
     goto :goto_0
 
-    .line 239
+    .line 240
     :catchall_0
     move-exception v3
 
@@ -181,11 +181,11 @@
     :try_end_2
     .catch Landroid/os/RemoteException; {:try_start_2 .. :try_end_2} :catch_0
 
-    .line 240
+    .line 241
     :catch_0
     move-exception v0
 
-    .line 241
+    .line 242
     .local v0, ex:Landroid/os/RemoteException;
     const-string v3, "SambaClientManager"
 
@@ -193,18 +193,18 @@
 
     invoke-static {v3, v4, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 242
+    .line 243
     const/4 v1, 0x0
 
     goto :goto_1
 .end method
 
-.method public getSharedFolders(Ljava/lang/String;)Ljava/lang/String;
+.method public getNetbiosName(Ljava/lang/String;)Ljava/lang/String;
     .locals 3
     .parameter "ip"
 
     .prologue
-    .line 292
+    .line 335
     if-nez p1, :cond_0
 
     new-instance v1, Ljava/lang/IllegalArgumentException;
@@ -215,7 +215,49 @@
 
     throw v1
 
-    .line 295
+    .line 337
+    :cond_0
+    :try_start_0
+    iget-object v1, p0, Lmeizu/samba/client/SambaClientManager;->mService:Lmeizu/samba/client/ISambaClientManager;
+
+    invoke-interface {v1, p1}, Lmeizu/samba/client/ISambaClientManager;->getNetbiosName(Ljava/lang/String;)Ljava/lang/String;
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result-object v1
+
+    .line 339
+    :goto_0
+    return-object v1
+
+    .line 338
+    :catch_0
+    move-exception v0
+
+    .line 339
+    .local v0, e:Landroid/os/RemoteException;
+    const/4 v1, 0x0
+
+    goto :goto_0
+.end method
+
+.method public getSharedFolders(Ljava/lang/String;)Ljava/lang/String;
+    .locals 3
+    .parameter "ip"
+
+    .prologue
+    .line 293
+    if-nez p1, :cond_0
+
+    new-instance v1, Ljava/lang/IllegalArgumentException;
+
+    const-string v2, "ip cannot be null"
+
+    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 296
     :cond_0
     :try_start_0
     iget-object v1, p0, Lmeizu/samba/client/SambaClientManager;->mService:Lmeizu/samba/client/ISambaClientManager;
@@ -223,22 +265,201 @@
     invoke-interface {v1, p1}, Lmeizu/samba/client/ISambaClientManager;->getSharedFolders(Ljava/lang/String;)Ljava/lang/String;
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Lmeizu/samba/client/SambaAuthException; {:try_start_0 .. :try_end_0} :catch_1
 
     move-result-object v1
 
-    .line 297
+    .line 298
     :goto_0
     return-object v1
 
-    .line 296
+    .line 297
     :catch_0
     move-exception v0
 
-    .line 297
+    .line 298
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, 0x0
 
     goto :goto_0
+
+    .line 299
+    .end local v0           #e:Landroid/os/RemoteException;
+    :catch_1
+    move-exception v0
+
+    .line 300
+    .local v0, e:Lmeizu/samba/client/SambaAuthException;
+    throw v0
+.end method
+
+.method public getSharedFoldersWithAuth(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    .locals 3
+    .parameter "ip"
+    .parameter "username"
+    .parameter "password"
+
+    .prologue
+    .line 321
+    if-nez p1, :cond_0
+
+    new-instance v1, Ljava/lang/IllegalArgumentException;
+
+    const-string v2, "ip cannot be null"
+
+    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 322
+    :cond_0
+    if-nez p2, :cond_1
+
+    new-instance v1, Ljava/lang/IllegalArgumentException;
+
+    const-string v2, "username cannot be null"
+
+    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 323
+    :cond_1
+    if-nez p3, :cond_2
+
+    new-instance v1, Ljava/lang/IllegalArgumentException;
+
+    const-string v2, "password cannot be null"
+
+    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 326
+    :cond_2
+    :try_start_0
+    iget-object v1, p0, Lmeizu/samba/client/SambaClientManager;->mService:Lmeizu/samba/client/ISambaClientManager;
+
+    invoke-interface {v1, p1, p2, p3}, Lmeizu/samba/client/ISambaClientManager;->getSharedFoldersWithAuth(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Lmeizu/samba/client/SambaAuthException; {:try_start_0 .. :try_end_0} :catch_1
+
+    move-result-object v1
+
+    .line 328
+    :goto_0
+    return-object v1
+
+    .line 327
+    :catch_0
+    move-exception v0
+
+    .line 328
+    .local v0, e:Landroid/os/RemoteException;
+    const/4 v1, 0x0
+
+    goto :goto_0
+
+    .line 329
+    .end local v0           #e:Landroid/os/RemoteException;
+    :catch_1
+    move-exception v0
+
+    .line 330
+    .local v0, e:Lmeizu/samba/client/SambaAuthException;
+    throw v0
+.end method
+
+.method public getSharedFoldersWithAuthAndDomain(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    .locals 3
+    .parameter "ip"
+    .parameter "domain"
+    .parameter "username"
+    .parameter "password"
+
+    .prologue
+    .line 306
+    if-nez p1, :cond_0
+
+    new-instance v1, Ljava/lang/IllegalArgumentException;
+
+    const-string v2, "ip cannot be null"
+
+    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 307
+    :cond_0
+    if-nez p2, :cond_1
+
+    new-instance v1, Ljava/lang/IllegalArgumentException;
+
+    const-string v2, "domain cannot be null"
+
+    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 308
+    :cond_1
+    if-nez p3, :cond_2
+
+    new-instance v1, Ljava/lang/IllegalArgumentException;
+
+    const-string v2, "username cannot be null"
+
+    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 309
+    :cond_2
+    if-nez p4, :cond_3
+
+    new-instance v1, Ljava/lang/IllegalArgumentException;
+
+    const-string v2, "password cannot be null"
+
+    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 312
+    :cond_3
+    :try_start_0
+    iget-object v1, p0, Lmeizu/samba/client/SambaClientManager;->mService:Lmeizu/samba/client/ISambaClientManager;
+
+    invoke-interface {v1, p1, p2, p3, p4}, Lmeizu/samba/client/ISambaClientManager;->getSharedFoldersWithAuthAndDomain(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Lmeizu/samba/client/SambaAuthException; {:try_start_0 .. :try_end_0} :catch_1
+
+    move-result-object v1
+
+    .line 314
+    :goto_0
+    return-object v1
+
+    .line 313
+    :catch_0
+    move-exception v0
+
+    .line 314
+    .local v0, e:Landroid/os/RemoteException;
+    const/4 v1, 0x0
+
+    goto :goto_0
+
+    .line 315
+    .end local v0           #e:Landroid/os/RemoteException;
+    :catch_1
+    move-exception v0
+
+    .line 316
+    .local v0, e:Lmeizu/samba/client/SambaAuthException;
+    throw v0
 .end method
 
 .method public isMounted(Lmeizu/samba/client/RemoteSharedFolder;)Z
@@ -246,7 +467,7 @@
     .parameter "folder"
 
     .prologue
-    .line 207
+    .line 208
     if-nez p1, :cond_0
 
     new-instance v1, Ljava/lang/IllegalArgumentException;
@@ -257,7 +478,7 @@
 
     throw v1
 
-    .line 210
+    .line 211
     :cond_0
     :try_start_0
     iget-object v1, p0, Lmeizu/samba/client/SambaClientManager;->mService:Lmeizu/samba/client/ISambaClientManager;
@@ -268,15 +489,15 @@
 
     move-result v1
 
-    .line 212
+    .line 213
     :goto_0
     return v1
 
-    .line 211
+    .line 212
     :catch_0
     move-exception v0
 
-    .line 212
+    .line 213
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, 0x0
 
@@ -288,7 +509,7 @@
     .parameter "folder"
 
     .prologue
-    .line 174
+    .line 175
     if-nez p1, :cond_0
 
     new-instance v1, Ljava/lang/IllegalArgumentException;
@@ -299,7 +520,7 @@
 
     throw v1
 
-    .line 177
+    .line 178
     :cond_0
     :try_start_0
     iget-object v1, p0, Lmeizu/samba/client/SambaClientManager;->mService:Lmeizu/samba/client/ISambaClientManager;
@@ -310,15 +531,15 @@
 
     move-result v1
 
-    .line 179
+    .line 180
     :goto_0
     return v1
 
-    .line 178
+    .line 179
     :catch_0
     move-exception v0
 
-    .line 179
+    .line 180
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, 0x0
 
@@ -331,7 +552,7 @@
     .parameter "folder"
 
     .prologue
-    .line 274
+    .line 275
     if-nez p1, :cond_0
 
     new-instance v1, Ljava/lang/IllegalArgumentException;
@@ -342,7 +563,7 @@
 
     throw v1
 
-    .line 275
+    .line 276
     :cond_0
     if-nez p2, :cond_1
 
@@ -354,7 +575,7 @@
 
     throw v1
 
-    .line 278
+    .line 279
     :cond_1
     :try_start_0
     iget-object v1, p0, Lmeizu/samba/client/SambaClientManager;->mService:Lmeizu/samba/client/ISambaClientManager;
@@ -365,15 +586,15 @@
 
     move-result v1
 
-    .line 280
+    .line 281
     :goto_0
     return v1
 
-    .line 279
+    .line 280
     :catch_0
     move-exception v0
 
-    .line 280
+    .line 281
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, 0x0
 
@@ -385,10 +606,10 @@
     .parameter "listener"
 
     .prologue
-    .line 254
+    .line 255
     if-nez p1, :cond_0
 
-    .line 255
+    .line 256
     new-instance v2, Ljava/lang/IllegalArgumentException;
 
     const-string v3, "listener==null"
@@ -397,7 +618,7 @@
 
     throw v2
 
-    .line 258
+    .line 259
     :cond_0
     :try_start_0
     iget-object v2, p0, Lmeizu/samba/client/SambaClientManager;->mListeners:Ljava/util/HashMap;
@@ -408,11 +629,11 @@
 
     check-cast v1, Lmeizu/samba/client/SambaClientManager$ListenerTransport;
 
-    .line 259
+    .line 260
     .local v1, transport:Lmeizu/samba/client/SambaClientManager$ListenerTransport;
     if-eqz v1, :cond_1
 
-    .line 260
+    .line 261
     iget-object v2, p0, Lmeizu/samba/client/SambaClientManager;->mService:Lmeizu/samba/client/ISambaClientManager;
 
     iget-object v3, p0, Lmeizu/samba/client/SambaClientManager;->mContext:Landroid/content/Context;
@@ -425,17 +646,17 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 265
+    .line 266
     .end local v1           #transport:Lmeizu/samba/client/SambaClientManager$ListenerTransport;
     :cond_1
     :goto_0
     return-void
 
-    .line 262
+    .line 263
     :catch_0
     move-exception v0
 
-    .line 263
+    .line 264
     .local v0, e:Landroid/os/RemoteException;
     const-string v2, "SambaClientManager"
 
@@ -451,7 +672,7 @@
     .parameter "ip"
 
     .prologue
-    .line 146
+    .line 147
     if-nez p1, :cond_0
 
     new-instance v1, Ljava/lang/IllegalArgumentException;
@@ -462,7 +683,7 @@
 
     throw v1
 
-    .line 149
+    .line 150
     :cond_0
     :try_start_0
     iget-object v1, p0, Lmeizu/samba/client/SambaClientManager;->mService:Lmeizu/samba/client/ISambaClientManager;
@@ -473,15 +694,15 @@
 
     move-result v1
 
-    .line 151
+    .line 152
     :goto_0
     return v1
 
-    .line 150
+    .line 151
     :catch_0
     move-exception v0
 
-    .line 151
+    .line 152
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, 0x0
 
@@ -492,7 +713,7 @@
     .locals 2
 
     .prologue
-    .line 161
+    .line 162
     :try_start_0
     iget-object v1, p0, Lmeizu/samba/client/SambaClientManager;->mService:Lmeizu/samba/client/ISambaClientManager;
 
@@ -502,15 +723,15 @@
 
     move-result v1
 
-    .line 163
+    .line 164
     :goto_0
     return v1
 
-    .line 162
+    .line 163
     :catch_0
     move-exception v0
 
-    .line 163
+    .line 164
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, 0x0
 
@@ -522,7 +743,7 @@
     .parameter "folder"
 
     .prologue
-    .line 191
+    .line 192
     if-nez p1, :cond_0
 
     new-instance v1, Ljava/lang/IllegalArgumentException;
@@ -533,7 +754,7 @@
 
     throw v1
 
-    .line 194
+    .line 195
     :cond_0
     :try_start_0
     iget-object v1, p0, Lmeizu/samba/client/SambaClientManager;->mService:Lmeizu/samba/client/ISambaClientManager;
@@ -544,15 +765,15 @@
 
     move-result v1
 
-    .line 196
+    .line 197
     :goto_0
     return v1
 
-    .line 195
+    .line 196
     :catch_0
     move-exception v0
 
-    .line 196
+    .line 197
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, 0x0
 

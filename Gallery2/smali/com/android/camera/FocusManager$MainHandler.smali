@@ -25,13 +25,13 @@
     .parameter "looper"
 
     .prologue
-    .line 159
+    .line 160
     iput-object p1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
-    .line 160
+    .line 161
     invoke-direct {p0, p2}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
 
-    .line 161
+    .line 162
     return-void
 .end method
 
@@ -50,17 +50,17 @@
 
     const/4 v4, 0x5
 
-    .line 165
+    .line 166
     iget v1, p1, Landroid/os/Message;->what:I
 
     sparse-switch v1, :sswitch_data_0
 
-    .line 219
+    .line 220
     :cond_0
     :goto_0
     return-void
 
-    .line 167
+    .line 168
     :sswitch_0
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
@@ -69,7 +69,7 @@
 
     goto :goto_0
 
-    .line 171
+    .line 172
     :sswitch_1
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
@@ -77,7 +77,7 @@
 
     goto :goto_0
 
-    .line 175
+    .line 176
     :sswitch_2
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
@@ -88,7 +88,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 179
+    .line 180
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     #calls: Lcom/android/camera/FocusManager;->forbitAutoFocus()Z
@@ -98,7 +98,7 @@
 
     if-nez v1, :cond_1
 
-    .line 180
+    .line 181
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     #getter for: Lcom/android/camera/FocusManager;->mHandler:Landroid/os/Handler;
@@ -110,7 +110,7 @@
 
     goto :goto_0
 
-    .line 184
+    .line 185
     :cond_1
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
@@ -119,11 +119,11 @@
 
     move-result v0
 
-    .line 185
+    .line 186
     .local v0, ev:I
     if-gtz v0, :cond_2
 
-    .line 186
+    .line 187
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     #getter for: Lcom/android/camera/FocusManager;->mHandler:Landroid/os/Handler;
@@ -135,7 +135,7 @@
 
     goto :goto_0
 
-    .line 190
+    .line 191
     :cond_2
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
@@ -146,19 +146,19 @@
 
     if-eqz v1, :cond_3
 
-    .line 191
+    .line 192
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     #setter for: Lcom/android/camera/FocusManager;->mIsWaitAF:Z
     invoke-static {v1, v3}, Lcom/android/camera/FocusManager;->access$502(Lcom/android/camera/FocusManager;Z)Z
 
-    .line 192
+    .line 193
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     #setter for: Lcom/android/camera/FocusManager;->mLastEV:I
     invoke-static {v1, v0}, Lcom/android/camera/FocusManager;->access$602(Lcom/android/camera/FocusManager;I)I
 
-    .line 193
+    .line 194
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     #getter for: Lcom/android/camera/FocusManager;->mHandler:Landroid/os/Handler;
@@ -170,7 +170,7 @@
 
     goto :goto_0
 
-    .line 197
+    .line 198
     :cond_3
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
@@ -181,7 +181,7 @@
 
     if-nez v1, :cond_5
 
-    .line 198
+    .line 199
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     #getter for: Lcom/android/camera/FocusManager;->mLastEV:I
@@ -199,19 +199,19 @@
 
     if-le v1, v2, :cond_4
 
-    .line 199
+    .line 200
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     #setter for: Lcom/android/camera/FocusManager;->mLastEV:I
     invoke-static {v1, v0}, Lcom/android/camera/FocusManager;->access$602(Lcom/android/camera/FocusManager;I)I
 
-    .line 200
+    .line 201
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     #setter for: Lcom/android/camera/FocusManager;->mIsDetectionEV:Z
     invoke-static {v1, v7}, Lcom/android/camera/FocusManager;->access$702(Lcom/android/camera/FocusManager;Z)Z
 
-    .line 215
+    .line 216
     :cond_4
     :goto_1
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
@@ -225,13 +225,13 @@
 
     goto :goto_0
 
-    .line 203
+    .line 204
     :cond_5
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     invoke-static {v1}, Lcom/android/camera/FocusManager;->access$808(Lcom/android/camera/FocusManager;)I
 
-    .line 204
+    .line 205
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     #getter for: Lcom/android/camera/FocusManager;->mGetEVCount:I
@@ -243,30 +243,30 @@
 
     if-le v1, v2, :cond_6
 
-    .line 205
+    .line 206
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     #setter for: Lcom/android/camera/FocusManager;->mGetEVCount:I
     invoke-static {v1, v3}, Lcom/android/camera/FocusManager;->access$802(Lcom/android/camera/FocusManager;I)I
 
-    .line 206
+    .line 207
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     #setter for: Lcom/android/camera/FocusManager;->mIsDetectionEV:Z
     invoke-static {v1, v3}, Lcom/android/camera/FocusManager;->access$702(Lcom/android/camera/FocusManager;Z)Z
 
-    .line 207
+    .line 208
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     #setter for: Lcom/android/camera/FocusManager;->mIsWaitAF:Z
     invoke-static {v1, v7}, Lcom/android/camera/FocusManager;->access$502(Lcom/android/camera/FocusManager;Z)Z
 
-    .line 208
+    .line 209
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     invoke-virtual {v1}, Lcom/android/camera/FocusManager;->autoFocus()V
 
-    .line 209
+    .line 210
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
     #getter for: Lcom/android/camera/FocusManager;->mHandler:Landroid/os/Handler;
@@ -280,7 +280,7 @@
 
     goto/16 :goto_0
 
-    .line 212
+    .line 213
     :cond_6
     iget-object v1, p0, Lcom/android/camera/FocusManager$MainHandler;->this$0:Lcom/android/camera/FocusManager;
 
@@ -289,7 +289,7 @@
 
     goto :goto_1
 
-    .line 165
+    .line 166
     :sswitch_data_0
     .sparse-switch
         0x0 -> :sswitch_0

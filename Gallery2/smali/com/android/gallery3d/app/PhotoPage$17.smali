@@ -3,12 +3,12 @@
 .source "PhotoPage.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Lcom/android/gallery3d/ui/DetailsHelper$CloseListener;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/gallery3d/app/PhotoPage;->onStateResult(IILandroid/content/Intent;)V
+    value = Lcom/android/gallery3d/app/PhotoPage;->showDetails(I)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 2102
+    .line 1831
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoPage$17;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -37,18 +37,22 @@
 
 
 # virtual methods
-.method public run()V
-    .locals 2
+.method public onClose()V
+    .locals 1
 
     .prologue
-    .line 2106
+    .line 1834
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$17;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
-    const/4 v1, 0x0
+    #calls: Lcom/android/gallery3d/app/PhotoPage;->hideDetails()V
+    invoke-static {v0}, Lcom/android/gallery3d/app/PhotoPage;->access$5600(Lcom/android/gallery3d/app/PhotoPage;)V
 
-    #calls: Lcom/android/gallery3d/app/PhotoPage;->showBars(Z)V
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/PhotoPage;->access$5400(Lcom/android/gallery3d/app/PhotoPage;Z)V
+    .line 1835
+    iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$17;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
-    .line 2107
+    #calls: Lcom/android/gallery3d/app/PhotoPage;->updateInfo()V
+    invoke-static {v0}, Lcom/android/gallery3d/app/PhotoPage;->access$5700(Lcom/android/gallery3d/app/PhotoPage;)V
+
+    .line 1836
     return-void
 .end method

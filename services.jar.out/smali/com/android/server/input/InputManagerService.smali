@@ -1592,7 +1592,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e0024
+    const v1, 0x10e0025
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -1758,7 +1758,7 @@
     .line 710
     iget-object v0, p0, Lcom/android/server/input/InputManagerService;->mNotificationManager:Landroid/app/NotificationManager;
 
-    const v1, 0x10404a0
+    const v1, 0x10404a4
 
     invoke-virtual {v0, v1}, Landroid/app/NotificationManager;->cancel(I)V
 
@@ -2173,7 +2173,7 @@
     .locals 6
 
     .prologue
-    const v5, 0x10404a0
+    const v5, 0x10404a4
 
     const/4 v4, 0x0
 
@@ -2234,7 +2234,7 @@
 
     move-result-object v3
 
-    const v4, 0x10404a1
+    const v4, 0x10404a5
 
     invoke-virtual {v2, v4}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -2250,7 +2250,7 @@
 
     move-result-object v3
 
-    const v4, 0x108044d
+    const v4, 0x1080705
 
     invoke-virtual {v3, v4}, Landroid/app/Notification$Builder;->setSmallIcon(I)Landroid/app/Notification$Builder;
 

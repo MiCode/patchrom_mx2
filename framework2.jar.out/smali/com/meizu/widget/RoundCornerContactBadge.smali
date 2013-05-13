@@ -10,7 +10,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lcom/meizu/widget/RoundCornerContactBadge$3;,
+        Lcom/meizu/widget/RoundCornerContactBadge$2;,
         Lcom/meizu/widget/RoundCornerContactBadge$QueryHandler;,
         Lcom/meizu/widget/RoundCornerContactBadge$IconType;,
         Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
@@ -55,17 +55,11 @@
 
 
 # instance fields
-.field private mAnimDrawable:Landroid/graphics/drawable/BitmapDrawable;
-
-.field private mAnimationListener:Landroid/view/animation/Animation$AnimationListener;
-
 .field private mBorder:Landroid/graphics/drawable/Drawable;
 
 .field private mBorderType:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
 .field private mCallIcon:Landroid/graphics/drawable/Drawable;
-
-.field private mCallIntent:Landroid/content/Intent;
 
 .field private mContactEmail:Ljava/lang/String;
 
@@ -85,8 +79,6 @@
 
 .field private mExtras:Landroid/os/Bundle;
 
-.field private mHangupCallAnim:Landroid/view/animation/Animation;
-
 .field private mIconText:Ljava/lang/CharSequence;
 
 .field private mIconType:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
@@ -98,8 +90,6 @@
 .field private mListCallIcon:Landroid/graphics/drawable/Drawable;
 
 .field private mLongClick:Z
-
-.field private mMakeCallAnim:Landroid/view/animation/Animation;
 
 .field private mOffsetBottom:I
 
@@ -113,8 +103,6 @@
 
 .field private mPaint:Landroid/graphics/Paint;
 
-.field private mPath:Landroid/graphics/Path;
-
 .field private mPictureHeight:I
 
 .field private mPictureWidth:I
@@ -127,7 +115,11 @@
 
 .field private mSmallIcon:Landroid/graphics/drawable/Drawable;
 
-.field private mTransformation:Landroid/view/animation/Transformation;
+.field private mSubtitle:Ljava/lang/CharSequence;
+
+.field private mTitle:Ljava/lang/CharSequence;
+
+.field private mUseCallIcon:Z
 
 .field private mViewHeight:I
 
@@ -149,17 +141,17 @@
 
     const/4 v3, 0x0
 
-    .line 112
+    .line 106
     sput-boolean v3, Lcom/meizu/widget/RoundCornerContactBadge;->sStartActivity:Z
 
-    .line 114
+    .line 108
     new-instance v0, Ljava/lang/Object;
 
     invoke-direct/range {v0 .. v0}, Ljava/lang/Object;-><init>()V
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge;->sSyncKeyLock:Ljava/lang/Object;
 
-    .line 122
+    .line 116
     new-array v0, v5, [Ljava/lang/String;
 
     const-string v1, "contact_id"
@@ -172,7 +164,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge;->EMAIL_LOOKUP_PROJECTION:[Ljava/lang/String;
 
-    .line 127
+    .line 121
     new-array v0, v6, [Ljava/lang/String;
 
     const-string v1, "_id"
@@ -189,7 +181,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge;->PHONE_LOOKUP_PROJECTION:[Ljava/lang/String;
 
-    .line 133
+    .line 127
     new-array v0, v6, [Ljava/lang/String;
 
     const-string v1, "_id"
@@ -206,7 +198,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge;->CONTACT_LOOKUP_PROJECTION:[Ljava/lang/String;
 
-    .line 181
+    .line 175
     const/4 v0, 0x6
 
     new-array v0, v0, [Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
@@ -239,7 +231,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge;->sBorderTypeArray:[Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
-    .line 190
+    .line 184
     const/16 v0, 0xb
 
     new-array v0, v0, [Lcom/meizu/widget/RoundCornerContactBadge$IconType;
@@ -302,7 +294,7 @@
 
     sput-object v0, Lcom/meizu/widget/RoundCornerContactBadge;->sIconTypeArray:[Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
-    .line 1298
+    .line 1258
     new-instance v0, Lcom/meizu/widget/RoundCornerContactBadge$1;
 
     invoke-direct {v0}, Lcom/meizu/widget/RoundCornerContactBadge$1;-><init>()V
@@ -317,12 +309,12 @@
     .parameter "context"
 
     .prologue
-    .line 205
+    .line 199
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Lcom/meizu/widget/RoundCornerContactBadge;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 206
+    .line 200
     return-void
 .end method
 
@@ -332,12 +324,12 @@
     .parameter "attrs"
 
     .prologue
-    .line 209
+    .line 203
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, p2, v0}, Lcom/meizu/widget/RoundCornerContactBadge;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 210
+    .line 204
     return-void
 .end method
 
@@ -352,60 +344,56 @@
 
     const/4 v5, 0x0
 
-    .line 213
+    .line 207
     invoke-direct {p0, p1, p2, p3}, Landroid/widget/ImageView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 69
+    .line 65
     iput-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorderType:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
-    .line 70
+    .line 66
     iput-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIconType:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
-    .line 72
+    .line 68
     iput-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 73
+    .line 69
     iput-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mSmallIcon:Landroid/graphics/drawable/Drawable;
 
-    .line 74
+    .line 70
     iput-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorder:Landroid/graphics/drawable/Drawable;
 
-    .line 75
+    .line 71
     iput v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewWidth:I
 
-    .line 76
+    .line 72
     iput v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewHeight:I
 
-    .line 77
+    .line 73
     iput v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureWidth:I
 
-    .line 78
+    .line 74
     iput v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureHeight:I
 
-    .line 79
+    .line 75
     iput-boolean v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIsUseStyle:Z
 
-    .line 84
+    .line 80
     iput-boolean v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIsClickToCall:Z
 
-    .line 85
+    .line 81
+    iput-boolean v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mUseCallIcon:Z
+
+    .line 82
     iput-boolean v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mLongClick:Z
 
-    .line 1309
-    new-instance v3, Lcom/meizu/widget/RoundCornerContactBadge$2;
-
-    invoke-direct {v3, p0}, Lcom/meizu/widget/RoundCornerContactBadge$2;-><init>(Lcom/meizu/widget/RoundCornerContactBadge;)V
-
-    iput-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mAnimationListener:Landroid/view/animation/Animation$AnimationListener;
-
-    .line 215
+    .line 209
     sget-object v3, Lcom/android/internal/R$styleable;->RoundCornerContactBadge:[I
 
     invoke-virtual {p1, p2, v3, p3, v5}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    .line 218
+    .line 212
     .local v0, a:Landroid/content/res/TypedArray;
     const/4 v3, 0x1
 
@@ -417,7 +405,7 @@
 
     move-result v1
 
-    .line 222
+    .line 216
     .local v1, borderTypeIndex:I
     const/4 v3, 0x2
 
@@ -429,7 +417,7 @@
 
     move-result v2
 
-    .line 226
+    .line 220
     .local v2, iconTypeIndex:I
     const/4 v3, 0x0
 
@@ -439,27 +427,27 @@
 
     iput v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCornerRadius:F
 
-    .line 229
+    .line 223
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 231
+    .line 225
     sget-object v3, Lcom/meizu/widget/RoundCornerContactBadge;->sBorderTypeArray:[Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
     aget-object v3, v3, v1
 
     invoke-virtual {p0, v3}, Lcom/meizu/widget/RoundCornerContactBadge;->setBorderType(Lcom/meizu/widget/RoundCornerContactBadge$BorderType;)V
 
-    .line 232
+    .line 226
     sget-object v3, Lcom/meizu/widget/RoundCornerContactBadge;->sIconTypeArray:[Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     aget-object v3, v3, v2
 
     invoke-virtual {p0, v3}, Lcom/meizu/widget/RoundCornerContactBadge;->setIconType(Lcom/meizu/widget/RoundCornerContactBadge$IconType;)V
 
-    .line 234
+    .line 228
     invoke-direct {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->init()V
 
-    .line 235
+    .line 229
     return-void
 .end method
 
@@ -468,7 +456,7 @@
     .parameter "x0"
 
     .prologue
-    .line 66
+    .line 62
     iget-wide v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactId:J
 
     return-wide v0
@@ -480,7 +468,7 @@
     .parameter "x1"
 
     .prologue
-    .line 66
+    .line 62
     iput-wide p1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactId:J
 
     return-wide p1
@@ -491,90 +479,10 @@
     .parameter "x0"
 
     .prologue
-    .line 66
+    .line 62
     iget-boolean v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIsClickToCall:Z
 
     return v0
-.end method
-
-.method static synthetic access$1000(Lcom/meizu/widget/RoundCornerContactBadge;)Landroid/content/Intent;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 66
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1002(Lcom/meizu/widget/RoundCornerContactBadge;Landroid/content/Intent;)Landroid/content/Intent;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 66
-    iput-object p1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
-
-    return-object p1
-.end method
-
-.method static synthetic access$1100(Lcom/meizu/widget/RoundCornerContactBadge;)Landroid/content/Context;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 66
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1200(Lcom/meizu/widget/RoundCornerContactBadge;)Landroid/graphics/drawable/BitmapDrawable;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 66
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mAnimDrawable:Landroid/graphics/drawable/BitmapDrawable;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1202(Lcom/meizu/widget/RoundCornerContactBadge;Landroid/graphics/drawable/BitmapDrawable;)Landroid/graphics/drawable/BitmapDrawable;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 66
-    iput-object p1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mAnimDrawable:Landroid/graphics/drawable/BitmapDrawable;
-
-    return-object p1
-.end method
-
-.method static synthetic access$1300(Lcom/meizu/widget/RoundCornerContactBadge;)Landroid/view/animation/Animation;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 66
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mHangupCallAnim:Landroid/view/animation/Animation;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1302(Lcom/meizu/widget/RoundCornerContactBadge;Landroid/view/animation/Animation;)Landroid/view/animation/Animation;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 66
-    iput-object p1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mHangupCallAnim:Landroid/view/animation/Animation;
-
-    return-object p1
 .end method
 
 .method static synthetic access$200(Lcom/meizu/widget/RoundCornerContactBadge;)Ljava/lang/String;
@@ -582,7 +490,7 @@
     .parameter "x0"
 
     .prologue
-    .line 66
+    .line 62
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactPhone:Ljava/lang/String;
 
     return-object v0
@@ -594,7 +502,7 @@
     .parameter "x1"
 
     .prologue
-    .line 66
+    .line 62
     invoke-direct {p0, p1, p2}, Lcom/meizu/widget/RoundCornerContactBadge;->queryPhoneNumber(J)Ljava/lang/String;
 
     move-result-object v0
@@ -608,7 +516,7 @@
     .parameter "x1"
 
     .prologue
-    .line 66
+    .line 62
     invoke-direct {p0, p1}, Lcom/meizu/widget/RoundCornerContactBadge;->makeCall(Ljava/lang/String;)V
 
     return-void
@@ -618,7 +526,7 @@
     .locals 1
 
     .prologue
-    .line 66
+    .line 62
     sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge;->sSyncKeyLock:Ljava/lang/Object;
 
     return-object v0
@@ -628,7 +536,7 @@
     .locals 1
 
     .prologue
-    .line 66
+    .line 62
     sget-boolean v0, Lcom/meizu/widget/RoundCornerContactBadge;->sStartActivity:Z
 
     return v0
@@ -639,7 +547,7 @@
     .parameter "x0"
 
     .prologue
-    .line 66
+    .line 62
     sput-boolean p0, Lcom/meizu/widget/RoundCornerContactBadge;->sStartActivity:Z
 
     return p0
@@ -649,7 +557,7 @@
     .locals 1
 
     .prologue
-    .line 66
+    .line 62
     sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge;->sAction:Ljava/lang/Runnable;
 
     return-object v0
@@ -661,59 +569,36 @@
     .parameter "x1"
 
     .prologue
-    .line 66
+    .line 62
     invoke-direct {p0, p1}, Lcom/meizu/widget/RoundCornerContactBadge;->goContactDetail(Landroid/net/Uri;)V
 
     return-void
-.end method
-
-.method static synthetic access$900(Lcom/meizu/widget/RoundCornerContactBadge;)Landroid/view/animation/Animation;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 66
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mMakeCallAnim:Landroid/view/animation/Animation;
-
-    return-object v0
-.end method
-
-.method static synthetic access$902(Lcom/meizu/widget/RoundCornerContactBadge;Landroid/view/animation/Animation;)Landroid/view/animation/Animation;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 66
-    iput-object p1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mMakeCallAnim:Landroid/view/animation/Animation;
-
-    return-object p1
 .end method
 
 .method private drawContactDrawable()V
     .locals 15
 
     .prologue
-    .line 718
+    .line 695
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getDrawable()Landroid/graphics/drawable/Drawable;
 
     move-result-object v9
 
-    .line 719
+    .line 696
     .local v9, drawable:Landroid/graphics/drawable/Drawable;
     instance-of v6, v9, Landroid/graphics/drawable/BitmapDrawable;
 
     if-nez v6, :cond_1
 
-    .line 720
+    .line 697
     iget-object v9, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDefaultDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 781
+    .line 758
     :cond_0
     :goto_0
     return-void
 
-    .line 725
+    .line 702
     :cond_1
     invoke-direct {p0, v9}, Lcom/meizu/widget/RoundCornerContactBadge;->isDefaultDrawable(Landroid/graphics/drawable/Drawable;)Z
 
@@ -721,14 +606,14 @@
 
     if-nez v6, :cond_0
 
-    .line 730
+    .line 707
     iget-object v6, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRectView:Landroid/graphics/Rect;
 
     invoke-virtual {v6}, Landroid/graphics/Rect;->width()I
 
     move-result v11
 
-    .line 731
+    .line 708
     .local v11, dstWidth:I
     iget-object v6, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRectView:Landroid/graphics/Rect;
 
@@ -736,64 +621,64 @@
 
     move-result v10
 
-    .line 732
+    .line 709
     .local v10, dstHeight:I
     iget-boolean v6, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIsUseStyle:Z
 
     if-eqz v6, :cond_2
 
-    .line 733
+    .line 710
     iget v11, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureWidth:I
 
-    .line 734
+    .line 711
     iget v10, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureHeight:I
 
     :cond_2
     move-object v6, v9
 
-    .line 737
+    .line 714
     check-cast v6, Landroid/graphics/drawable/BitmapDrawable;
 
     invoke-virtual {v6}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
 
     move-result-object v0
 
-    .line 738
+    .line 715
     .local v0, contactBmp:Landroid/graphics/Bitmap;
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->getWidth()I
 
     move-result v3
 
-    .line 739
+    .line 716
     .local v3, width:I
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->getHeight()I
 
     move-result v4
 
-    .line 740
+    .line 717
     .local v4, height:I
     const/4 v1, 0x0
 
-    .line 741
+    .line 718
     .local v1, cropLeft:I
     const/4 v2, 0x0
 
-    .line 743
+    .line 720
     .local v2, cropTop:I
     if-eq v3, v4, :cond_3
 
-    .line 745
+    .line 722
     if-le v4, v3, :cond_7
 
-    .line 746
+    .line 723
     sub-int v6, v4, v3
 
     div-int/lit8 v2, v6, 0x2
 
-    .line 747
+    .line 724
     move v4, v3
 
-    .line 755
+    .line 732
     :cond_3
     :goto_1
     int-to-float v6, v11
@@ -802,7 +687,7 @@
 
     div-float v13, v6, v14
 
-    .line 756
+    .line 733
     .local v13, scaleWidth:F
     int-to-float v6, v10
 
@@ -810,11 +695,11 @@
 
     div-float v12, v6, v14
 
-    .line 757
+    .line 734
     .local v12, scaleHeight:F
     move-object v7, v0
 
-    .line 760
+    .line 737
     .local v7, bitmap:Landroid/graphics/Bitmap;
     const/high16 v6, 0x3f80
 
@@ -832,24 +717,24 @@
 
     if-eqz v2, :cond_5
 
-    .line 761
+    .line 738
     :cond_4
     new-instance v5, Landroid/graphics/Matrix;
 
     invoke-direct {v5}, Landroid/graphics/Matrix;-><init>()V
 
-    .line 762
+    .line 739
     .local v5, matrix:Landroid/graphics/Matrix;
     invoke-virtual {v5, v13, v12}, Landroid/graphics/Matrix;->postScale(FF)Z
 
-    .line 763
+    .line 740
     const/4 v6, 0x1
 
     invoke-static/range {v0 .. v6}, Landroid/graphics/Bitmap;->createBitmap(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
 
     move-result-object v7
 
-    .line 767
+    .line 744
     .end local v5           #matrix:Landroid/graphics/Matrix;
     :cond_5
     new-instance v8, Landroid/graphics/drawable/BitmapDrawable;
@@ -866,44 +751,44 @@
 
     invoke-direct {v8, v6, v14}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 768
+    .line 745
     .local v8, contactIcon:Landroid/graphics/drawable/Drawable;
     iput-object v8, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 769
+    .line 746
     iget-object v6, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-super {p0, v6}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 771
+    .line 748
     if-eq v7, v0, :cond_6
 
-    .line 772
+    .line 749
     invoke-virtual {v7}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 773
+    .line 750
     const/4 v7, 0x0
 
-    .line 776
+    .line 753
     :cond_6
     iget-boolean v6, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRecycle:Z
 
     if-eqz v6, :cond_0
 
-    .line 777
+    .line 754
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 778
+    .line 755
     const/4 v0, 0x0
 
-    .line 779
+    .line 756
     const/4 v6, 0x0
 
     iput-boolean v6, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRecycle:Z
 
     goto/16 :goto_0
 
-    .line 749
+    .line 726
     .end local v7           #bitmap:Landroid/graphics/Bitmap;
     .end local v8           #contactIcon:Landroid/graphics/drawable/Drawable;
     .end local v12           #scaleHeight:F
@@ -913,7 +798,7 @@
 
     div-int/lit8 v1, v6, 0x2
 
-    .line 750
+    .line 727
     move v3, v4
 
     goto :goto_1
@@ -928,7 +813,7 @@
 
     const/4 v10, 0x0
 
-    .line 806
+    .line 783
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorderType:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
     sget-object v3, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->BORDER_LIST_CONTACT:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
@@ -939,14 +824,14 @@
 
     if-eqz v1, :cond_1
 
-    .line 807
+    .line 784
     iget v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOffsetRight:I
 
     iget v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOffsetBottom:I
 
     sub-int v8, v1, v3
 
-    .line 809
+    .line 786
     .local v8, offset:I
     new-instance v9, Landroid/graphics/Rect;
 
@@ -988,18 +873,18 @@
 
     invoke-direct {v9, v1, v3, v4, v5}, Landroid/graphics/Rect;-><init>(IIII)V
 
-    .line 813
+    .line 790
     .local v9, rectIc:Landroid/graphics/Rect;
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mSmallIcon:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v1, v9}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
 
-    .line 814
+    .line 791
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mSmallIcon:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v1, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 817
+    .line 794
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIconText:Ljava/lang/CharSequence;
 
     invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
@@ -1020,13 +905,13 @@
 
     if-ne v1, v3, :cond_1
 
-    .line 820
+    .line 797
     :cond_0
     new-instance v2, Landroid/text/TextPaint;
 
     invoke-direct {v2, v7}, Landroid/text/TextPaint;-><init>(I)V
 
-    .line 821
+    .line 798
     .local v2, textPaint:Landroid/text/TextPaint;
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
 
@@ -1040,7 +925,7 @@
 
     iput v1, v2, Landroid/text/TextPaint;->density:F
 
-    .line 822
+    .line 799
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
 
     move-result-object v1
@@ -1053,12 +938,12 @@
 
     invoke-virtual {v2, v1}, Landroid/text/TextPaint;->setCompatibilityScaling(F)V
 
-    .line 824
+    .line 801
     const/high16 v1, 0x41a0
 
     invoke-virtual {v2, v1}, Landroid/text/TextPaint;->setTextSize(F)V
 
-    .line 825
+    .line 802
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
 
     move-result-object v1
@@ -1071,7 +956,7 @@
 
     invoke-virtual {v2, v1}, Landroid/text/TextPaint;->setColor(I)V
 
-    .line 826
+    .line 803
     new-instance v0, Landroid/text/StaticLayout;
 
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIconText:Ljava/lang/CharSequence;
@@ -1090,11 +975,11 @@
 
     invoke-direct/range {v0 .. v7}, Landroid/text/StaticLayout;-><init>(Ljava/lang/CharSequence;Landroid/text/TextPaint;ILandroid/text/Layout$Alignment;FFZ)V
 
-    .line 829
+    .line 806
     .local v0, textLayout:Landroid/text/StaticLayout;
     invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I
 
-    .line 830
+    .line 807
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRectView:Landroid/graphics/Rect;
 
     iget v1, v1, Landroid/graphics/Rect;->right:I
@@ -1127,7 +1012,7 @@
 
     invoke-virtual {p1, v1, v3}, Landroid/graphics/Canvas;->translate(FF)V
 
-    .line 832
+    .line 809
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mSmallIcon:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v1}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
@@ -1142,13 +1027,13 @@
 
     invoke-virtual {p1, v10, v10, v1, v3}, Landroid/graphics/Canvas;->clipRect(IIII)Z
 
-    .line 833
+    .line 810
     invoke-virtual {v0, p1}, Landroid/text/StaticLayout;->draw(Landroid/graphics/Canvas;)V
 
-    .line 834
+    .line 811
     invoke-virtual {p1}, Landroid/graphics/Canvas;->restore()V
 
-    .line 837
+    .line 814
     .end local v0           #textLayout:Landroid/text/StaticLayout;
     .end local v2           #textPaint:Landroid/text/TextPaint;
     .end local v8           #offset:I
@@ -1161,8 +1046,8 @@
     .locals 3
 
     .prologue
-    .line 335
-    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$3;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$BorderType:[I
+    .line 327
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$BorderType:[I
 
     iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorderType:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
@@ -1174,25 +1059,25 @@
 
     packed-switch v1, :pswitch_data_0
 
-    .line 357
+    .line 349
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v1
 
-    const v2, 0x10802a8
+    const v2, 0x10802ac
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
 
-    .line 361
+    .line 353
     .local v0, drawable:Landroid/graphics/drawable/Drawable;
     :goto_0
     return-object v0
 
-    .line 337
+    .line 329
     .end local v0           #drawable:Landroid/graphics/drawable/Drawable;
     :pswitch_0
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
@@ -1201,13 +1086,13 @@
 
     move-result-object v1
 
-    const v2, 0x1080675
+    const v2, 0x108069f
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
 
-    .line 341
+    .line 333
     :pswitch_1
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
@@ -1215,17 +1100,17 @@
 
     move-result-object v1
 
-    const v2, 0x1080674
+    const v2, 0x108069e
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
 
-    .line 343
+    .line 335
     .restart local v0       #drawable:Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 346
+    .line 338
     .end local v0           #drawable:Landroid/graphics/drawable/Drawable;
     :pswitch_2
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
@@ -1234,17 +1119,17 @@
 
     move-result-object v1
 
-    const v2, 0x10802a3
+    const v2, 0x10802a7
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
 
-    .line 348
+    .line 340
     .restart local v0       #drawable:Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 351
+    .line 343
     .end local v0           #drawable:Landroid/graphics/drawable/Drawable;
     :pswitch_3
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
@@ -1253,17 +1138,17 @@
 
     move-result-object v1
 
-    const v2, 0x10802a0
+    const v2, 0x10802a4
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
 
-    .line 353
+    .line 345
     .restart local v0       #drawable:Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 335
+    .line 327
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0
@@ -1282,7 +1167,7 @@
 
     const/4 v7, 0x0
 
-    .line 785
+    .line 762
     invoke-virtual {p1}, Landroid/graphics/Bitmap;->getWidth()I
 
     move-result v4
@@ -1297,13 +1182,13 @@
 
     move-result-object v1
 
-    .line 787
+    .line 764
     .local v1, output:Landroid/graphics/Bitmap;
     new-instance v0, Landroid/graphics/Canvas;
 
     invoke-direct {v0, v1}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
 
-    .line 788
+    .line 765
     .local v0, canvas:Landroid/graphics/Canvas;
     new-instance v2, Landroid/graphics/Rect;
 
@@ -1317,13 +1202,13 @@
 
     invoke-direct {v2, v8, v8, v4, v5}, Landroid/graphics/Rect;-><init>(IIII)V
 
-    .line 789
+    .line 766
     .local v2, rect:Landroid/graphics/Rect;
     new-instance v3, Landroid/graphics/RectF;
 
     invoke-direct {v3, v2}, Landroid/graphics/RectF;-><init>(Landroid/graphics/Rect;)V
 
-    .line 790
+    .line 767
     .local v3, rectF:Landroid/graphics/RectF;
     iget v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCornerRadius:F
 
@@ -1331,33 +1216,33 @@
 
     if-nez v4, :cond_0
 
-    .line 791
+    .line 768
     iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPaint:Landroid/graphics/Paint;
 
     const/4 v5, 0x0
 
     invoke-virtual {v4, v5}, Landroid/graphics/Paint;->setXfermode(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
 
-    .line 792
+    .line 769
     iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPaint:Landroid/graphics/Paint;
 
     invoke-virtual {v0, p1, v7, v7, v4}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
 
-    .line 793
+    .line 770
     iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCoverDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v4, v2}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
 
-    .line 794
+    .line 771
     iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCoverDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v4, v0}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 802
+    .line 779
     :goto_0
     return-object v1
 
-    .line 796
+    .line 773
     :cond_0
     iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPaint:Landroid/graphics/Paint;
 
@@ -1365,7 +1250,7 @@
 
     invoke-virtual {v4, v5}, Landroid/graphics/Paint;->setAntiAlias(Z)V
 
-    .line 797
+    .line 774
     iget v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCornerRadius:F
 
     iget v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCornerRadius:F
@@ -1374,7 +1259,7 @@
 
     invoke-virtual {v0, v3, v4, v5, v6}, Landroid/graphics/Canvas;->drawRoundRect(Landroid/graphics/RectF;FFLandroid/graphics/Paint;)V
 
-    .line 798
+    .line 775
     iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPaint:Landroid/graphics/Paint;
 
     new-instance v5, Landroid/graphics/PorterDuffXfermode;
@@ -1385,7 +1270,7 @@
 
     invoke-virtual {v4, v5}, Landroid/graphics/Paint;->setXfermode(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
 
-    .line 799
+    .line 776
     iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPaint:Landroid/graphics/Paint;
 
     invoke-virtual {v0, p1, v2, v2, v4}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
@@ -1398,14 +1283,20 @@
     .parameter "lookupUri"
 
     .prologue
-    .line 1121
+    .line 1076
     const/4 v1, 0x0
 
-    .line 1122
+    .line 1077
     .local v1, intent:Landroid/content/Intent;
-    if-eqz p1, :cond_3
+    new-instance v0, Landroid/os/Bundle;
 
-    .line 1124
+    invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
+
+    .line 1079
+    .local v0, bundle:Landroid/os/Bundle;
+    if-eqz p1, :cond_5
+
+    .line 1081
     new-instance v1, Landroid/content/Intent;
 
     .end local v1           #intent:Landroid/content/Intent;
@@ -1413,7 +1304,7 @@
 
     invoke-direct {v1, v2, p1}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
 
-    .line 1125
+    .line 1082
     .restart local v1       #intent:Landroid/content/Intent;
     iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactPhone:Ljava/lang/String;
 
@@ -1421,52 +1312,88 @@
 
     move-result v2
 
-    if-nez v2, :cond_2
+    if-nez v2, :cond_4
 
-    .line 1127
+    .line 1084
     const-string v2, "phone"
 
     iget-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactPhone:Ljava/lang/String;
 
-    invoke-virtual {v1, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    invoke-virtual {v0, v2, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1128
+    .line 1085
     const-string v2, "android.intent.action.INSERT"
 
     const-string v3, "vnd.android.cursor.item/phone_v2"
 
-    invoke-virtual {v1, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    invoke-virtual {v0, v2, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1153
+    .line 1107
     :cond_0
     :goto_0
+    iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mTitle:Ljava/lang/CharSequence;
+
+    invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1
+
+    iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mSubtitle:Ljava/lang/CharSequence;
+
+    invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_2
+
+    .line 1108
+    :cond_1
+    const-string v2, "com.android.contacts.extra.TITLE_EXTRA"
+
+    iget-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mTitle:Ljava/lang/CharSequence;
+
+    invoke-virtual {v0, v2, v3}, Landroid/os/Bundle;->putCharSequence(Ljava/lang/String;Ljava/lang/CharSequence;)V
+
+    .line 1109
+    const-string v2, "com.android.contacts.extra.SUB_TITLE_EXTRA"
+
+    iget-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mSubtitle:Ljava/lang/CharSequence;
+
+    invoke-virtual {v0, v2, v3}, Landroid/os/Bundle;->putCharSequence(Ljava/lang/String;Ljava/lang/CharSequence;)V
+
+    .line 1111
+    :cond_2
+    invoke-virtual {v1, v0}, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;
+
+    .line 1113
     const/high16 v2, 0x8
 
     invoke-virtual {v1, v2}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
 
-    .line 1154
+    .line 1114
     iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
     instance-of v2, v2, Landroid/app/Activity;
 
-    if-nez v2, :cond_1
+    if-nez v2, :cond_3
 
-    .line 1155
+    .line 1115
     const/high16 v2, 0x5000
 
     invoke-virtual {v1, v2}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 1157
-    :cond_1
+    .line 1117
+    :cond_3
     iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
     invoke-virtual {v2, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
 
-    .line 1158
+    .line 1118
     return-void
 
-    .line 1129
-    :cond_2
+    .line 1086
+    :cond_4
     iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactEmail:Ljava/lang/String;
 
     invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
@@ -1475,24 +1402,24 @@
 
     if-nez v2, :cond_0
 
-    .line 1131
+    .line 1088
     const-string v2, "email"
 
     iget-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactEmail:Ljava/lang/String;
 
-    invoke-virtual {v1, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    invoke-virtual {v0, v2, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1132
+    .line 1089
     const-string v2, "android.intent.action.INSERT"
 
     const-string v3, "vnd.android.cursor.item/email_v2"
 
-    invoke-virtual {v1, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    invoke-virtual {v0, v2, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
     goto :goto_0
 
-    .line 1136
-    :cond_3
+    .line 1093
+    :cond_5
     new-instance v1, Landroid/content/Intent;
 
     .end local v1           #intent:Landroid/content/Intent;
@@ -1500,90 +1427,79 @@
 
     invoke-direct {v1, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 1137
+    .line 1094
     .restart local v1       #intent:Landroid/content/Intent;
-    new-instance v0, Landroid/os/Bundle;
-
-    invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
-
-    .line 1138
-    .local v0, bundle:Landroid/os/Bundle;
     iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactPhone:Ljava/lang/String;
 
     invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v2
 
-    if-nez v2, :cond_5
+    if-nez v2, :cond_6
 
-    .line 1140
+    .line 1096
     const-string v2, "phone"
 
     iget-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactPhone:Ljava/lang/String;
 
     invoke-virtual {v0, v2, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1141
+    .line 1097
     const-string v2, "android.intent.action.INSERT"
 
     const-string v3, "vnd.android.cursor.item/phone_v2"
 
     invoke-virtual {v0, v2, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1142
+    .line 1098
     const-string v2, "vnd.android.cursor.item/phone_contact"
 
     invoke-virtual {v1, v2}, Landroid/content/Intent;->setType(Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 1150
-    :cond_4
-    :goto_1
-    invoke-virtual {v1, v0}, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;
-
     goto :goto_0
 
-    .line 1143
-    :cond_5
+    .line 1099
+    :cond_6
     iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactEmail:Ljava/lang/String;
 
     invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v2
 
-    if-nez v2, :cond_4
+    if-nez v2, :cond_0
 
-    .line 1145
+    .line 1101
     const-string v2, "email"
 
     iget-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactEmail:Ljava/lang/String;
 
     invoke-virtual {v0, v2, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1146
+    .line 1102
     const-string v2, "android.intent.action.INSERT"
 
     const-string v3, "vnd.android.cursor.item/email_v2"
 
     invoke-virtual {v0, v2, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1147
+    .line 1103
     const-string v2, "vnd.android.cursor.item/email_contact"
 
     invoke-virtual {v1, v2}, Landroid/content/Intent;->setType(Ljava/lang/String;)Landroid/content/Intent;
 
-    goto :goto_1
+    goto/16 :goto_0
 .end method
 
 .method private init()V
     .locals 3
 
     .prologue
-    .line 238
+    .line 232
     sget-object v1, Landroid/widget/ImageView$ScaleType;->FIT_CENTER:Landroid/widget/ImageView$ScaleType;
 
     invoke-super {p0, v1}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
-    .line 239
+    .line 233
     new-instance v1, Lcom/meizu/widget/RoundCornerContactBadge$QueryHandler;
 
     iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
@@ -1596,18 +1512,18 @@
 
     iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mQueryHandler:Lcom/meizu/widget/RoundCornerContactBadge$QueryHandler;
 
-    .line 240
+    .line 234
     invoke-virtual {p0, p0}, Lcom/meizu/widget/RoundCornerContactBadge;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 241
+    .line 235
     invoke-virtual {p0, p0}, Lcom/meizu/widget/RoundCornerContactBadge;->setOnLongClickListener(Landroid/view/View$OnLongClickListener;)V
 
-    .line 242
+    .line 236
     const/4 v1, 0x0
 
     invoke-virtual {p0, v1}, Lcom/meizu/widget/RoundCornerContactBadge;->setDuplicateParentStateEnabled(Z)V
 
-    .line 244
+    .line 238
     iget v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCornerRadius:F
 
     const/4 v2, 0x0
@@ -1616,14 +1532,14 @@
 
     if-eqz v1, :cond_0
 
-    .line 246
+    .line 240
     const/4 v1, 0x1
 
     const/4 v2, 0x0
 
     invoke-virtual {p0, v1, v2}, Lcom/meizu/widget/RoundCornerContactBadge;->setLayerType(ILandroid/graphics/Paint;)V
 
-    .line 249
+    .line 243
     :cond_0
     new-instance v1, Landroid/graphics/Rect;
 
@@ -1631,33 +1547,19 @@
 
     iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRectView:Landroid/graphics/Rect;
 
-    .line 250
+    .line 244
     new-instance v1, Landroid/graphics/Paint;
 
     invoke-direct {v1}, Landroid/graphics/Paint;-><init>()V
 
     iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPaint:Landroid/graphics/Paint;
 
-    .line 251
-    new-instance v1, Landroid/graphics/Path;
-
-    invoke-direct {v1}, Landroid/graphics/Path;-><init>()V
-
-    iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPath:Landroid/graphics/Path;
-
-    .line 252
-    new-instance v1, Landroid/view/animation/Transformation;
-
-    invoke-direct {v1}, Landroid/view/animation/Transformation;-><init>()V
-
-    iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mTransformation:Landroid/view/animation/Transformation;
-
-    .line 254
+    .line 246
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
 
     move-result-object v1
 
-    const v2, 0x10802a6
+    const v2, 0x10802aa
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -1665,14 +1567,14 @@
 
     iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCoverDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 256
+    .line 248
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCoverDrawable:Landroid/graphics/drawable/Drawable;
 
     instance-of v1, v1, Landroid/graphics/drawable/NinePatchDrawable;
 
     if-eqz v1, :cond_1
 
-    .line 257
+    .line 249
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCoverDrawable:Landroid/graphics/drawable/Drawable;
 
     check-cast v1, Landroid/graphics/drawable/NinePatchDrawable;
@@ -1681,7 +1583,7 @@
 
     move-result-object v0
 
-    .line 258
+    .line 250
     .local v0, paint:Landroid/graphics/Paint;
     new-instance v1, Landroid/graphics/PorterDuffXfermode;
 
@@ -1691,14 +1593,14 @@
 
     invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setXfermode(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
 
-    .line 261
+    .line 253
     .end local v0           #paint:Landroid/graphics/Paint;
     :cond_1
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
 
     move-result-object v1
 
-    const v2, 0x105006b
+    const v2, 0x1050076
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -1706,12 +1608,12 @@
 
     iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOffsetRight:I
 
-    .line 263
+    .line 255
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
 
     move-result-object v1
 
-    const v2, 0x105006c
+    const v2, 0x1050077
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -1719,7 +1621,7 @@
 
     iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOffsetBottom:I
 
-    .line 265
+    .line 257
     return-void
 .end method
 
@@ -1728,7 +1630,7 @@
     .parameter "drawable"
 
     .prologue
-    .line 365
+    .line 357
     check-cast p1, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local p1
@@ -1750,10 +1652,10 @@
 
     if-eqz v0, :cond_0
 
-    .line 367
+    .line 359
     const/4 v0, 0x1
 
-    .line 370
+    .line 362
     :goto_0
     return v0
 
@@ -1764,470 +1666,460 @@
 .end method
 
 .method private makeCall(Ljava/lang/String;)V
-    .locals 10
+    .locals 11
     .parameter "phone"
 
     .prologue
-    .line 1045
-    sget-object v5, Lcom/meizu/widget/RoundCornerContactBadge;->sSyncKeyLock:Ljava/lang/Object;
+    .line 998
+    sget-object v6, Lcom/meizu/widget/RoundCornerContactBadge;->sSyncKeyLock:Ljava/lang/Object;
 
-    monitor-enter v5
+    monitor-enter v6
 
-    .line 1046
+    .line 999
     :try_start_0
-    sget-boolean v4, Lcom/meizu/widget/RoundCornerContactBadge;->sStartActivity:Z
+    sget-boolean v5, Lcom/meizu/widget/RoundCornerContactBadge;->sStartActivity:Z
 
-    if-eqz v4, :cond_0
+    if-eqz v5, :cond_0
 
-    .line 1047
-    monitor-exit v5
+    .line 1000
+    monitor-exit v6
 
-    .line 1118
+    .line 1073
     :goto_0
     return-void
 
-    .line 1050
+    .line 1003
     :cond_0
     invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v4
+    move-result v5
 
-    if-nez v4, :cond_4
+    if-nez v5, :cond_4
 
-    const-string v4, "-1"
+    const-string v5, "-1"
 
-    invoke-virtual {p1, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v4
+    move-result v5
 
-    if-nez v4, :cond_4
+    if-nez v5, :cond_4
 
-    const-string v4, "-2"
+    const-string v5, "-2"
 
-    invoke-virtual {p1, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v4
+    move-result v5
 
-    if-nez v4, :cond_4
+    if-nez v5, :cond_4
 
-    const-string v4, "-3"
+    const-string v5, "-3"
 
-    invoke-virtual {p1, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v4
+    move-result v5
 
-    if-nez v4, :cond_4
+    if-nez v5, :cond_4
 
-    .line 1054
-    iget-boolean v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mLongClick:Z
+    .line 1007
+    const/4 v1, 0x0
 
-    if-eqz v4, :cond_a
+    .line 1009
+    .local v1, intent:Landroid/content/Intent;
+    iget-boolean v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mLongClick:Z
 
-    .line 1055
-    const/4 v4, 0x0
+    if-eqz v5, :cond_a
 
-    iput-boolean v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mLongClick:Z
+    .line 1010
+    const/4 v5, 0x0
+
+    iput-boolean v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mLongClick:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1056
-    const/4 v3, 0x0
+    .line 1011
+    const/4 v4, 0x0
 
-    .line 1057
-    .local v3, telUri:Landroid/net/Uri;
-    const/4 v1, 0x0
+    .line 1012
+    .local v4, telUri:Landroid/net/Uri;
+    const/4 v2, 0x0
 
-    .line 1059
-    .local v1, prefixNumber:Ljava/lang/String;
+    .line 1014
+    .local v2, prefixNumber:Ljava/lang/String;
     :try_start_1
-    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
+    iget-object v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v4}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+    invoke-virtual {v5}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
-    move-result-object v4
+    move-result-object v5
 
-    const-string v6, "prefix_dialing_number"
+    const-string v7, "prefix_dialing_number"
 
-    invoke-static {v4, v6}, Landroid/provider/Settings$System;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v5, v7}, Landroid/provider/Settings$System;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
 
-    move-result-object v1
+    move-result-object v2
 
-    .line 1066
+    .line 1021
     :try_start_2
-    invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v4
+    move-result v5
 
-    if-eqz v4, :cond_5
+    if-eqz v5, :cond_5
 
-    .line 1067
-    const-string v4, "tel"
+    .line 1022
+    const-string v5, "tel"
 
-    const/4 v6, 0x0
+    const/4 v7, 0x0
 
-    invoke-static {v4, p1, v6}, Landroid/net/Uri;->fromParts(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri;
+    invoke-static {v5, p1, v7}, Landroid/net/Uri;->fromParts(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri;
 
-    move-result-object v3
+    move-result-object v4
 
-    .line 1068
-    new-instance v4, Landroid/content/Intent;
+    .line 1023
+    new-instance v1, Landroid/content/Intent;
 
-    const-string v6, "android.intent.action.DIAL"
+    .end local v1           #intent:Landroid/content/Intent;
+    const-string v5, "android.intent.action.DIAL"
 
-    invoke-direct {v4, v6, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
+    invoke-direct {v1, v5, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
 
-    iput-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
-
-    .line 1094
-    .end local v1           #prefixNumber:Ljava/lang/String;
-    .end local v3           #telUri:Landroid/net/Uri;
+    .line 1049
+    .end local v2           #prefixNumber:Ljava/lang/String;
+    .end local v4           #telUri:Landroid/net/Uri;
+    .restart local v1       #intent:Landroid/content/Intent;
     :goto_1
-    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mExtras:Landroid/os/Bundle;
+    iget-object v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mExtras:Landroid/os/Bundle;
 
-    if-eqz v4, :cond_d
+    if-eqz v5, :cond_d
 
-    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mExtras:Landroid/os/Bundle;
+    iget-object v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mExtras:Landroid/os/Bundle;
 
-    invoke-virtual {v4}, Landroid/os/Bundle;->isEmpty()Z
+    invoke-virtual {v5}, Landroid/os/Bundle;->isEmpty()Z
 
-    move-result v4
+    move-result v5
 
-    if-nez v4, :cond_d
+    if-nez v5, :cond_d
 
-    .line 1095
-    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
+    .line 1050
+    iget-object v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mExtras:Landroid/os/Bundle;
 
-    iget-object v6, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mExtras:Landroid/os/Bundle;
+    invoke-virtual {v1, v5}, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;
 
-    invoke-virtual {v4, v6}, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;
-
-    .line 1096
-    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
-
-    const-string v6, "android.telephony.HAS_CALLERINFO_FOR_MOCALL"
+    .line 1051
+    const-string v5, "android.telephony.HAS_CALLERINFO_FOR_MOCALL"
 
     const/4 v7, 0x1
 
-    invoke-virtual {v4, v6, v7}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
+    invoke-virtual {v1, v5, v7}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
-    .line 1097
-    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
-
-    const-string v6, "android.telephony.PERSON_ID_FOR_MOCALL"
+    .line 1052
+    const-string v5, "android.telephony.PERSON_ID_FOR_MOCALL"
 
     iget-wide v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactId:J
 
-    invoke-virtual {v4, v6, v7, v8}, Landroid/content/Intent;->putExtra(Ljava/lang/String;J)Landroid/content/Intent;
+    invoke-virtual {v1, v5, v7, v8}, Landroid/content/Intent;->putExtra(Ljava/lang/String;J)Landroid/content/Intent;
 
-    .line 1105
+    .line 1060
     :cond_1
     :goto_2
-    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
+    iget-object v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
-    iget-object v6, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
+    invoke-static {v5, v1}, Lcom/meizu/internal/telephony/SpecialCharSequenceMgr;->isSpecialCharSequenceIntent(Landroid/content/Context;Landroid/content/Intent;)Z
 
-    invoke-static {v4, v6}, Lcom/meizu/internal/telephony/SpecialCharSequenceMgr;->isSpecialCharSequenceIntent(Landroid/content/Context;Landroid/content/Intent;)Z
+    move-result v5
 
-    move-result v4
+    if-nez v5, :cond_4
 
-    if-nez v4, :cond_4
+    .line 1061
+    invoke-virtual {v1}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
-    .line 1106
-    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
+    move-result-object v5
 
-    invoke-virtual {v4}, Landroid/content/Intent;->getAction()Ljava/lang/String;
+    const-string v7, "android.intent.action.CALL"
 
-    move-result-object v4
+    if-eq v5, v7, :cond_2
 
-    const-string v6, "android.intent.action.CALL"
+    invoke-virtual {v1}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
-    if-eq v4, v6, :cond_2
+    move-result-object v5
 
-    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
+    const-string v7, "android.intent.action.CALL_PRIVILEGED"
 
-    invoke-virtual {v4}, Landroid/content/Intent;->getAction()Ljava/lang/String;
+    if-ne v5, v7, :cond_3
 
-    move-result-object v4
-
-    const-string v6, "android.intent.action.CALL_PRIVILEGED"
-
-    if-ne v4, v6, :cond_3
-
-    .line 1108
+    .line 1063
     :cond_2
-    const/4 v4, 0x1
+    const/4 v5, 0x1
 
-    sput-boolean v4, Lcom/meizu/widget/RoundCornerContactBadge;->sStartActivity:Z
+    sput-boolean v5, Lcom/meizu/widget/RoundCornerContactBadge;->sStartActivity:Z
 
-    .line 1109
-    sget-object v4, Lcom/meizu/widget/RoundCornerContactBadge;->sAction:Ljava/lang/Runnable;
+    .line 1064
+    sget-object v5, Lcom/meizu/widget/RoundCornerContactBadge;->sAction:Ljava/lang/Runnable;
 
-    const-wide/16 v6, 0xbb8
+    const-wide/16 v7, 0xbb8
 
-    invoke-virtual {p0, v4, v6, v7}, Lcom/meizu/widget/RoundCornerContactBadge;->postDelayed(Ljava/lang/Runnable;J)Z
+    invoke-virtual {p0, v5, v7, v8}, Lcom/meizu/widget/RoundCornerContactBadge;->postDelayed(Ljava/lang/Runnable;J)Z
 
-    .line 1112
+    .line 1067
     :cond_3
-    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
+    const/high16 v5, 0x1420
 
-    const/high16 v6, 0x1420
+    invoke-virtual {v1, v5}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
 
-    invoke-virtual {v4, v6}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
+    .line 1069
+    iget-object v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
-    .line 1114
-    invoke-direct {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->startMakeCallAnim()V
+    invoke-virtual {v5, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
 
-    .line 1117
+    .line 1072
+    .end local v1           #intent:Landroid/content/Intent;
     :cond_4
-    monitor-exit v5
+    monitor-exit v6
 
     goto/16 :goto_0
 
     :catchall_0
-    move-exception v4
+    move-exception v5
 
-    monitor-exit v5
+    monitor-exit v6
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    throw v4
+    throw v5
 
-    .line 1062
-    .restart local v1       #prefixNumber:Ljava/lang/String;
-    .restart local v3       #telUri:Landroid/net/Uri;
+    .line 1017
+    .restart local v1       #intent:Landroid/content/Intent;
+    .restart local v2       #prefixNumber:Ljava/lang/String;
+    .restart local v4       #telUri:Landroid/net/Uri;
     :catch_0
     move-exception v0
 
-    .line 1063
+    .line 1018
     .local v0, e:Ljava/lang/Exception;
     :try_start_3
-    monitor-exit v5
+    monitor-exit v6
 
     goto/16 :goto_0
 
-    .line 1070
+    .line 1025
     .end local v0           #e:Ljava/lang/Exception;
     :cond_5
-    const-string v2, ""
+    const-string v3, ""
 
-    .line 1071
-    .local v2, tel:Ljava/lang/String;
-    invoke-virtual {p1, v1}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+    .line 1026
+    .local v3, tel:Ljava/lang/String;
+    invoke-virtual {p1, v2}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
-    move-result v4
+    move-result v5
 
-    if-eqz v4, :cond_7
+    if-eqz v5, :cond_7
 
-    .line 1072
-    move-object v2, p1
+    .line 1027
+    move-object v3, p1
 
-    .line 1079
+    .line 1034
     :goto_3
-    const-string v4, "tel"
-
-    const/4 v6, 0x0
-
-    invoke-static {v4, v2, v6}, Landroid/net/Uri;->fromParts(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri;
-
-    move-result-object v3
-
-    .line 1080
-    const-string v4, "112"
-
-    invoke-virtual {p1, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v4
-
-    if-nez v4, :cond_6
-
-    const-string v4, "911"
-
-    invoke-virtual {p1, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_9
-
-    .line 1081
-    :cond_6
-    new-instance v4, Landroid/content/Intent;
-
-    const-string v6, "android.intent.action.CALL_PRIVILEGED"
-
-    invoke-direct {v4, v6, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
-
-    iput-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
-
-    goto/16 :goto_1
-
-    .line 1073
-    :cond_7
-    const-string v4, "+"
-
-    invoke-virtual {p1, v4}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_8
-
-    .line 1074
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v6, "00"
-
-    invoke-virtual {v4, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const/4 v6, 0x1
-
-    invoke-virtual {p1}, Ljava/lang/String;->length()I
-
-    move-result v7
-
-    invoke-virtual {p1, v6, v7}, Ljava/lang/String;->substring(II)Ljava/lang/String;
-
-    move-result-object v6
-
-    invoke-virtual {v4, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    goto :goto_3
-
-    .line 1076
-    :cond_8
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    goto :goto_3
-
-    .line 1083
-    :cond_9
-    new-instance v4, Landroid/content/Intent;
-
-    const-string v6, "android.intent.action.CALL"
-
-    invoke-direct {v4, v6, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
-
-    iput-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
-
-    goto/16 :goto_1
-
-    .line 1087
-    .end local v1           #prefixNumber:Ljava/lang/String;
-    .end local v2           #tel:Ljava/lang/String;
-    .end local v3           #telUri:Landroid/net/Uri;
-    :cond_a
-    const-string v4, "112"
-
-    invoke-virtual {p1, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v4
-
-    if-nez v4, :cond_b
-
-    const-string v4, "911"
-
-    invoke-virtual {p1, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_c
-
-    .line 1088
-    :cond_b
-    new-instance v4, Landroid/content/Intent;
-
-    const-string v6, "android.intent.action.CALL_PRIVILEGED"
-
-    const-string v7, "tel"
-
-    const/4 v8, 0x0
-
-    invoke-static {v7, p1, v8}, Landroid/net/Uri;->fromParts(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri;
-
-    move-result-object v7
-
-    invoke-direct {v4, v6, v7}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
-
-    iput-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
-
-    goto/16 :goto_1
-
-    .line 1090
-    :cond_c
-    new-instance v4, Landroid/content/Intent;
-
-    const-string v6, "android.intent.action.CALL"
-
-    const-string v7, "tel"
-
-    const/4 v8, 0x0
-
-    invoke-static {v7, p1, v8}, Landroid/net/Uri;->fromParts(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri;
-
-    move-result-object v7
-
-    invoke-direct {v4, v6, v7}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
-
-    iput-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
-
-    goto/16 :goto_1
-
-    .line 1099
-    :cond_d
-    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
-
-    const-string v6, "android.telephony.HAS_CALLERINFO_FOR_MOCALL"
+    const-string v5, "tel"
 
     const/4 v7, 0x0
 
-    invoke-virtual {v4, v6, v7}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
+    invoke-static {v5, v3, v7}, Landroid/net/Uri;->fromParts(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri;
 
-    .line 1100
-    iget-wide v6, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactId:J
+    move-result-object v4
 
-    const-wide/16 v8, 0x0
+    .line 1035
+    const-string v5, "112"
 
-    cmp-long v4, v6, v8
+    invoke-virtual {p1, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    if-lez v4, :cond_1
+    move-result v5
 
-    .line 1101
-    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIntent:Landroid/content/Intent;
+    if-nez v5, :cond_6
 
-    const-string v6, "android.telephony.PERSON_ID_FOR_MOCALL"
+    const-string v5, "911"
+
+    invoke-virtual {p1, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_9
+
+    .line 1036
+    :cond_6
+    new-instance v1, Landroid/content/Intent;
+
+    .end local v1           #intent:Landroid/content/Intent;
+    const-string v5, "android.intent.action.CALL_PRIVILEGED"
+
+    invoke-direct {v1, v5, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
+
+    .restart local v1       #intent:Landroid/content/Intent;
+    goto :goto_1
+
+    .line 1028
+    :cond_7
+    const-string v5, "+"
+
+    invoke-virtual {p1, v5}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_8
+
+    .line 1029
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v7, "00"
+
+    invoke-virtual {v5, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const/4 v7, 0x1
+
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
+
+    move-result v8
+
+    invoke-virtual {p1, v7, v8}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+
+    move-result-object v7
+
+    invoke-virtual {v5, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    goto :goto_3
+
+    .line 1031
+    :cond_8
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    goto :goto_3
+
+    .line 1038
+    :cond_9
+    new-instance v1, Landroid/content/Intent;
+
+    .end local v1           #intent:Landroid/content/Intent;
+    const-string v5, "android.intent.action.CALL"
+
+    invoke-direct {v1, v5, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
+
+    .restart local v1       #intent:Landroid/content/Intent;
+    goto/16 :goto_1
+
+    .line 1042
+    .end local v2           #prefixNumber:Ljava/lang/String;
+    .end local v3           #tel:Ljava/lang/String;
+    .end local v4           #telUri:Landroid/net/Uri;
+    :cond_a
+    const-string v5, "112"
+
+    invoke-virtual {p1, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-nez v5, :cond_b
+
+    const-string v5, "911"
+
+    invoke-virtual {p1, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_c
+
+    .line 1043
+    :cond_b
+    new-instance v1, Landroid/content/Intent;
+
+    .end local v1           #intent:Landroid/content/Intent;
+    const-string v5, "android.intent.action.CALL_PRIVILEGED"
+
+    const-string v7, "tel"
+
+    const/4 v8, 0x0
+
+    invoke-static {v7, p1, v8}, Landroid/net/Uri;->fromParts(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri;
+
+    move-result-object v7
+
+    invoke-direct {v1, v5, v7}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
+
+    .restart local v1       #intent:Landroid/content/Intent;
+    goto/16 :goto_1
+
+    .line 1045
+    :cond_c
+    new-instance v1, Landroid/content/Intent;
+
+    .end local v1           #intent:Landroid/content/Intent;
+    const-string v5, "android.intent.action.CALL"
+
+    const-string v7, "tel"
+
+    const/4 v8, 0x0
+
+    invoke-static {v7, p1, v8}, Landroid/net/Uri;->fromParts(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri;
+
+    move-result-object v7
+
+    invoke-direct {v1, v5, v7}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
+
+    .restart local v1       #intent:Landroid/content/Intent;
+    goto/16 :goto_1
+
+    .line 1054
+    :cond_d
+    const-string v5, "android.telephony.HAS_CALLERINFO_FOR_MOCALL"
+
+    const/4 v7, 0x0
+
+    invoke-virtual {v1, v5, v7}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
+
+    .line 1055
+    iget-wide v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactId:J
+
+    const-wide/16 v9, 0x0
+
+    cmp-long v5, v7, v9
+
+    if-lez v5, :cond_1
+
+    .line 1056
+    const-string v5, "android.telephony.PERSON_ID_FOR_MOCALL"
 
     iget-wide v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactId:J
 
-    invoke-virtual {v4, v6, v7, v8}, Landroid/content/Intent;->putExtra(Ljava/lang/String;J)Landroid/content/Intent;
+    invoke-virtual {v1, v5, v7, v8}, Landroid/content/Intent;->putExtra(Ljava/lang/String;J)Landroid/content/Intent;
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
@@ -2243,14 +2135,14 @@
 
     const/4 v10, 0x1
 
-    .line 1161
+    .line 1121
     sget-object v0, Landroid/provider/ContactsContract$Contacts;->CONTENT_URI:Landroid/net/Uri;
 
     invoke-static {v0, p1, p2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
     move-result-object v6
 
-    .line 1162
+    .line 1122
     .local v6, baseUri:Landroid/net/Uri;
     const-string v0, "data"
 
@@ -2258,15 +2150,15 @@
 
     move-result-object v1
 
-    .line 1164
+    .line 1124
     .local v1, dataUri:Landroid/net/Uri;
     const/4 v9, 0x1
 
-    .line 1165
+    .line 1125
     .local v9, phoneNumberIndex:I
     const/4 v7, 0x0
 
-    .line 1166
+    .line 1126
     .local v7, phone:Ljava/lang/String;
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
@@ -2306,7 +2198,7 @@
 
     move-result-object v8
 
-    .line 1170
+    .line 1130
     .local v8, phoneCursor:Landroid/database/Cursor;
     if-eqz v8, :cond_1
 
@@ -2316,19 +2208,19 @@
 
     if-eqz v0, :cond_1
 
-    .line 1171
+    .line 1131
     invoke-interface {v8, v9}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
     move-result-object v7
 
-    .line 1172
+    .line 1132
     invoke-interface {v8}, Landroid/database/Cursor;->getCount()I
 
     move-result v0
 
     if-le v0, v10, :cond_1
 
-    .line 1173
+    .line 1133
     :cond_0
     invoke-interface {v8}, Landroid/database/Cursor;->moveToNext()Z
 
@@ -2336,7 +2228,7 @@
 
     if-eqz v0, :cond_1
 
-    .line 1174
+    .line 1134
     const-string v0, "is_super_primary"
 
     invoke-interface {v8, v0}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
@@ -2349,138 +2241,21 @@
 
     if-eqz v0, :cond_0
 
-    .line 1176
+    .line 1136
     invoke-interface {v8, v9}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
     move-result-object v7
 
-    .line 1183
+    .line 1143
     :cond_1
     if-eqz v8, :cond_2
 
-    .line 1184
+    .line 1144
     invoke-interface {v8}, Landroid/database/Cursor;->close()V
 
-    .line 1187
+    .line 1147
     :cond_2
     return-object v7
-.end method
-
-.method private startHangupCallAnim()V
-    .locals 3
-
-    .prologue
-    const/4 v2, 0x0
-
-    .line 709
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
-
-    const v1, 0x10a001a
-
-    invoke-static {v0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
-
-    move-result-object v0
-
-    iput-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mHangupCallAnim:Landroid/view/animation/Animation;
-
-    .line 711
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mHangupCallAnim:Landroid/view/animation/Animation;
-
-    iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mAnimationListener:Landroid/view/animation/Animation$AnimationListener;
-
-    invoke-virtual {v0, v1}, Landroid/view/animation/Animation;->setAnimationListener(Landroid/view/animation/Animation$AnimationListener;)V
-
-    .line 712
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mHangupCallAnim:Landroid/view/animation/Animation;
-
-    invoke-virtual {v0, v2, v2, v2, v2}, Landroid/view/animation/Animation;->initialize(IIII)V
-
-    .line 713
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mHangupCallAnim:Landroid/view/animation/Animation;
-
-    invoke-virtual {v0}, Landroid/view/animation/Animation;->startNow()V
-
-    .line 714
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->invalidate()V
-
-    .line 715
-    return-void
-.end method
-
-.method private startMakeCallAnim()V
-    .locals 5
-
-    .prologue
-    const/4 v4, 0x0
-
-    .line 696
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getDrawable()Landroid/graphics/drawable/Drawable;
-
-    move-result-object v2
-
-    check-cast v2, Landroid/graphics/drawable/BitmapDrawable;
-
-    invoke-virtual {v2}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
-
-    move-result-object v0
-
-    .line 697
-    .local v0, contactBmp:Landroid/graphics/Bitmap;
-    invoke-virtual {v0}, Landroid/graphics/Bitmap;->getConfig()Landroid/graphics/Bitmap$Config;
-
-    move-result-object v2
-
-    const/4 v3, 0x1
-
-    invoke-virtual {v0, v2, v3}, Landroid/graphics/Bitmap;->copy(Landroid/graphics/Bitmap$Config;Z)Landroid/graphics/Bitmap;
-
-    move-result-object v1
-
-    .line 698
-    .local v1, newContactBmp:Landroid/graphics/Bitmap;
-    new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
-
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v3
-
-    invoke-direct {v2, v3, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
-
-    iput-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mAnimDrawable:Landroid/graphics/drawable/BitmapDrawable;
-
-    .line 700
-    iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
-
-    const v3, 0x10a001b
-
-    invoke-static {v2, v3}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
-
-    move-result-object v2
-
-    iput-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mMakeCallAnim:Landroid/view/animation/Animation;
-
-    .line 702
-    iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mMakeCallAnim:Landroid/view/animation/Animation;
-
-    iget-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mAnimationListener:Landroid/view/animation/Animation$AnimationListener;
-
-    invoke-virtual {v2, v3}, Landroid/view/animation/Animation;->setAnimationListener(Landroid/view/animation/Animation$AnimationListener;)V
-
-    .line 703
-    iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mMakeCallAnim:Landroid/view/animation/Animation;
-
-    invoke-virtual {v2, v4, v4, v4, v4}, Landroid/view/animation/Animation;->initialize(IIII)V
-
-    .line 704
-    iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mMakeCallAnim:Landroid/view/animation/Animation;
-
-    invoke-virtual {v2}, Landroid/view/animation/Animation;->startNow()V
-
-    .line 705
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->invalidate()V
-
-    .line 706
-    return-void
 .end method
 
 .method private startQuery()V
@@ -2489,19 +2264,19 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 1012
+    .line 965
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->hasWindowFocus()Z
 
     move-result v0
 
     if-nez v0, :cond_1
 
-    .line 1042
+    .line 995
     :cond_0
     :goto_0
     return-void
 
-    .line 1016
+    .line 969
     :cond_1
     iget-boolean v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIsClickToCall:Z
 
@@ -2515,7 +2290,7 @@
 
     if-nez v0, :cond_3
 
-    .line 1017
+    .line 970
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactPhone:Ljava/lang/String;
 
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOldPhone:Ljava/lang/String;
@@ -2530,22 +2305,22 @@
 
     if-nez v0, :cond_2
 
-    .line 1018
+    .line 971
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOldPhone:Ljava/lang/String;
 
     iput-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactPhone:Ljava/lang/String;
 
-    .line 1019
+    .line 972
     iget-wide v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOldContactId:J
 
     iput-wide v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactId:J
 
-    .line 1020
+    .line 973
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOldExtras:Landroid/os/Bundle;
 
     iput-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mExtras:Landroid/os/Bundle;
 
-    .line 1022
+    .line 975
     :cond_2
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactPhone:Ljava/lang/String;
 
@@ -2553,7 +2328,7 @@
 
     goto :goto_0
 
-    .line 1023
+    .line 976
     :cond_3
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactPhone:Ljava/lang/String;
 
@@ -2593,7 +2368,7 @@
 
     if-nez v0, :cond_4
 
-    .line 1027
+    .line 980
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mQueryHandler:Lcom/meizu/widget/RoundCornerContactBadge$QueryHandler;
 
     const/4 v1, 0x3
@@ -2622,7 +2397,7 @@
 
     goto :goto_0
 
-    .line 1030
+    .line 983
     :cond_4
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactEmail:Ljava/lang/String;
 
@@ -2632,7 +2407,7 @@
 
     if-nez v0, :cond_5
 
-    .line 1031
+    .line 984
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mQueryHandler:Lcom/meizu/widget/RoundCornerContactBadge$QueryHandler;
 
     const/4 v1, 0x2
@@ -2661,13 +2436,13 @@
 
     goto/16 :goto_0
 
-    .line 1034
+    .line 987
     :cond_5
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactUri:Landroid/net/Uri;
 
     if-eqz v0, :cond_0
 
-    .line 1035
+    .line 988
     iget-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mQueryHandler:Lcom/meizu/widget/RoundCornerContactBadge$QueryHandler;
 
     const/4 v4, 0x4
@@ -2697,27 +2472,27 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 407
+    .line 399
     iput-object p1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactEmail:Ljava/lang/String;
 
-    .line 408
+    .line 400
     iput-object v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactPhone:Ljava/lang/String;
 
-    .line 409
+    .line 401
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactId:J
 
-    .line 410
+    .line 402
     iput-object v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mExtras:Landroid/os/Bundle;
 
-    .line 411
+    .line 403
     iput-object v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactUri:Landroid/net/Uri;
 
-    .line 413
+    .line 405
     if-nez p2, :cond_0
 
-    .line 414
+    .line 406
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mQueryHandler:Lcom/meizu/widget/RoundCornerContactBadge$QueryHandler;
 
     const/4 v1, 0x0
@@ -2744,7 +2519,7 @@
 
     invoke-virtual/range {v0 .. v7}, Lcom/meizu/widget/RoundCornerContactBadge$QueryHandler;->startQuery(ILjava/lang/Object;Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 418
+    .line 410
     :cond_0
     return-void
 .end method
@@ -2757,27 +2532,27 @@
     .prologue
     const-wide/16 v2, 0x0
 
-    .line 470
+    .line 462
     const/4 v0, 0x1
 
     invoke-virtual {p0, p1, v0, v2, v3}, Lcom/meizu/widget/RoundCornerContactBadge;->assignContactFromPhone(Ljava/lang/String;ZJ)V
 
-    .line 472
+    .line 464
     if-eqz p2, :cond_0
 
-    .line 473
+    .line 465
     new-instance v0, Landroid/os/Bundle;
 
     invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
 
     iput-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mExtras:Landroid/os/Bundle;
 
-    .line 474
+    .line 466
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mExtras:Landroid/os/Bundle;
 
     invoke-virtual {v0, p2}, Landroid/os/Bundle;->putAll(Landroid/os/Bundle;)V
 
-    .line 475
+    .line 467
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mExtras:Landroid/os/Bundle;
 
     const-string v1, "android.telephony.PERSON_ID_FOR_MOCALL"
@@ -2788,7 +2563,7 @@
 
     iput-wide v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactId:J
 
-    .line 477
+    .line 469
     :cond_0
     return-void
 .end method
@@ -2799,12 +2574,12 @@
     .parameter "lazyLookup"
 
     .prologue
-    .line 466
+    .line 458
     const-wide/16 v0, 0x0
 
     invoke-virtual {p0, p1, p2, v0, v1}, Lcom/meizu/widget/RoundCornerContactBadge;->assignContactFromPhone(Ljava/lang/String;ZJ)V
 
-    .line 467
+    .line 459
     return-void
 .end method
 
@@ -2821,25 +2596,25 @@
 
     const/4 v5, 0x0
 
-    .line 431
+    .line 423
     iput-object p1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactPhone:Ljava/lang/String;
 
-    .line 432
+    .line 424
     iput-wide p3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactId:J
 
-    .line 433
+    .line 425
     iput-object v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactEmail:Ljava/lang/String;
 
-    .line 434
+    .line 426
     iput-object v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mExtras:Landroid/os/Bundle;
 
-    .line 435
+    .line 427
     iput-object v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactUri:Landroid/net/Uri;
 
-    .line 437
+    .line 429
     if-nez p2, :cond_0
 
-    .line 438
+    .line 430
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mQueryHandler:Lcom/meizu/widget/RoundCornerContactBadge$QueryHandler;
 
     iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactPhone:Ljava/lang/String;
@@ -2864,7 +2639,7 @@
 
     invoke-virtual/range {v0 .. v7}, Lcom/meizu/widget/RoundCornerContactBadge$QueryHandler;->startQuery(ILjava/lang/Object;Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 444
+    .line 436
     :cond_0
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactPhone:Ljava/lang/String;
 
@@ -2904,22 +2679,22 @@
 
     if-eqz v0, :cond_2
 
-    .line 448
+    .line 440
     :cond_1
     invoke-virtual {p0, v8}, Lcom/meizu/widget/RoundCornerContactBadge;->setClickable(Z)V
 
-    .line 449
+    .line 441
     invoke-virtual {p0, v8}, Lcom/meizu/widget/RoundCornerContactBadge;->setLongClickable(Z)V
 
-    .line 454
+    .line 446
     :goto_0
     return-void
 
-    .line 451
+    .line 443
     :cond_2
     invoke-virtual {p0, v1}, Lcom/meizu/widget/RoundCornerContactBadge;->setClickable(Z)V
 
-    .line 452
+    .line 444
     invoke-virtual {p0, v1}, Lcom/meizu/widget/RoundCornerContactBadge;->setLongClickable(Z)V
 
     goto :goto_0
@@ -2932,67 +2707,152 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 390
+    .line 382
     iput-object p1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactUri:Landroid/net/Uri;
 
-    .line 391
+    .line 383
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactId:J
 
-    .line 392
+    .line 384
     iput-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactEmail:Ljava/lang/String;
 
-    .line 393
+    .line 385
     iput-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactPhone:Ljava/lang/String;
 
-    .line 394
+    .line 386
     iput-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mExtras:Landroid/os/Bundle;
 
-    .line 395
+    .line 387
     return-void
 .end method
 
 .method protected drawableStateChanged()V
-    .locals 3
+    .locals 8
 
     .prologue
-    .line 939
+    .line 874
     invoke-super {p0}, Landroid/widget/ImageView;->drawableStateChanged()V
 
-    .line 940
+    .line 875
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getDrawableState()[I
 
-    move-result-object v1
+    move-result-object v5
 
-    .line 942
-    .local v1, states:[I
-    iget-boolean v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIsClickToCall:Z
+    .line 877
+    .local v5, states:[I
+    iget-boolean v6, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIsClickToCall:Z
 
-    if-nez v2, :cond_0
+    if-eqz v6, :cond_5
 
-    .line 943
+    .line 878
+    const/4 v4, 0x0
+
+    .line 879
+    .local v4, state_window_focused:Z
+    const/4 v2, 0x0
+
+    .line 880
+    .local v2, state_enabled:Z
+    const/4 v3, 0x0
+
+    .line 881
+    .local v3, state_pressed:Z
+    const/4 v1, 0x0
+
+    .local v1, i:I
+    :goto_0
+    array-length v6, v5
+
+    if-ge v1, v6, :cond_3
+
+    .line 882
+    aget v6, v5, v1
+
+    const v7, 0x101009d
+
+    if-ne v6, v7, :cond_1
+
+    .line 883
+    const/4 v4, 0x1
+
+    .line 881
+    :cond_0
+    :goto_1
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    .line 884
+    :cond_1
+    aget v6, v5, v1
+
+    const v7, 0x101009e
+
+    if-ne v6, v7, :cond_2
+
+    .line 885
+    const/4 v2, 0x1
+
+    goto :goto_1
+
+    .line 886
+    :cond_2
+    aget v6, v5, v1
+
+    const v7, 0x10100a7
+
+    if-ne v6, v7, :cond_0
+
+    .line 887
+    const/4 v3, 0x1
+
+    goto :goto_1
+
+    .line 891
+    :cond_3
+    if-eqz v4, :cond_4
+
+    if-eqz v2, :cond_4
+
+    if-eqz v3, :cond_4
+
+    .line 892
+    const/4 v6, 0x1
+
+    iput-boolean v6, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mUseCallIcon:Z
+
+    .line 894
+    :cond_4
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->invalidate()V
+
+    .line 897
+    .end local v1           #i:I
+    .end local v2           #state_enabled:Z
+    .end local v3           #state_pressed:Z
+    .end local v4           #state_window_focused:Z
+    :cond_5
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorder:Landroid/graphics/drawable/Drawable;
 
-    .line 944
+    .line 898
     .local v0, d:Landroid/graphics/drawable/Drawable;
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_6
 
     invoke-virtual {v0}, Landroid/graphics/drawable/Drawable;->isStateful()Z
 
-    move-result v2
+    move-result v6
 
-    if-eqz v2, :cond_0
+    if-eqz v6, :cond_6
 
-    .line 945
-    invoke-virtual {v0, v1}, Landroid/graphics/drawable/Drawable;->setState([I)Z
+    .line 899
+    invoke-virtual {v0, v5}, Landroid/graphics/drawable/Drawable;->setState([I)Z
 
-    .line 946
+    .line 900
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->invalidate()V
 
-    .line 949
-    .end local v0           #d:Landroid/graphics/drawable/Drawable;
-    :cond_0
+    .line 902
+    :cond_6
     return-void
 .end method
 
@@ -3000,7 +2860,7 @@
     .locals 1
 
     .prologue
-    .line 681
+    .line 673
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorderType:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
     return-object v0
@@ -3010,7 +2870,7 @@
     .locals 1
 
     .prologue
-    .line 583
+    .line 575
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIconType:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     return-object v0
@@ -3021,10 +2881,10 @@
     .parameter "v"
 
     .prologue
-    .line 995
+    .line 948
     invoke-direct {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->startQuery()V
 
-    .line 996
+    .line 949
     return-void
 .end method
 
@@ -3032,15 +2892,15 @@
     .locals 1
 
     .prologue
-    .line 963
+    .line 916
     invoke-super {p0}, Landroid/widget/ImageView;->onDetachedFromWindow()V
 
-    .line 965
+    .line 918
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
     if-eqz v0, :cond_0
 
-    .line 966
+    .line 919
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
     check-cast v0, Landroid/graphics/drawable/BitmapDrawable;
@@ -3051,435 +2911,237 @@
 
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 967
+    .line 920
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 968
+    .line 921
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDefaultDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-super {p0, v0}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 970
+    .line 923
     :cond_0
     return-void
 .end method
 
 .method protected onDraw(Landroid/graphics/Canvas;)V
-    .locals 14
+    .locals 9
     .parameter "canvas"
 
     .prologue
-    const/4 v13, 0x0
-
-    const/4 v12, 0x0
-
-    .line 841
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
+    .line 818
+    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getDrawable()Landroid/graphics/drawable/Drawable;
 
-    move-result-object v8
+    move-result-object v5
 
-    if-eq v7, v8, :cond_0
+    if-eq v4, v5, :cond_0
 
-    .line 842
-    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
+    .line 819
+    iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 843
-    .local v4, oldDstContact:Landroid/graphics/drawable/Drawable;
-    iput-object v13, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
+    .line 820
+    .local v2, oldDstContact:Landroid/graphics/drawable/Drawable;
+    const/4 v4, 0x0
 
-    .line 844
+    iput-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
+
+    .line 821
     invoke-direct {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->drawContactDrawable()V
 
-    .line 846
-    if-eqz v4, :cond_0
+    .line 823
+    if-eqz v2, :cond_0
 
-    .line 847
-    check-cast v4, Landroid/graphics/drawable/BitmapDrawable;
+    .line 824
+    check-cast v2, Landroid/graphics/drawable/BitmapDrawable;
 
-    .end local v4           #oldDstContact:Landroid/graphics/drawable/Drawable;
-    invoke-virtual {v4}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
+    .end local v2           #oldDstContact:Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v2}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
 
-    move-result-object v7
+    move-result-object v4
 
-    invoke-virtual {v7}, Landroid/graphics/Bitmap;->recycle()V
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 852
+    .line 829
     :cond_0
-    new-instance v2, Landroid/graphics/Rect;
+    new-instance v1, Landroid/graphics/Rect;
 
-    invoke-direct {v2}, Landroid/graphics/Rect;-><init>()V
+    invoke-direct {v1}, Landroid/graphics/Rect;-><init>()V
 
-    .line 853
-    .local v2, drawRect:Landroid/graphics/Rect;
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorderType:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
+    .line 830
+    .local v1, drawRect:Landroid/graphics/Rect;
+    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorderType:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
-    sget-object v8, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->BORDER_LIST_CONTACT:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
+    sget-object v5, Lcom/meizu/widget/RoundCornerContactBadge$BorderType;->BORDER_LIST_CONTACT:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
-    if-ne v7, v8, :cond_8
+    if-ne v4, v5, :cond_1
 
-    .line 854
+    .line 831
+    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRectView:Landroid/graphics/Rect;
+
+    iget v4, v4, Landroid/graphics/Rect;->left:I
+
+    iget v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOffsetRight:I
+
+    add-int/2addr v4, v5
+
+    iget-object v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRectView:Landroid/graphics/Rect;
+
+    iget v5, v5, Landroid/graphics/Rect;->top:I
+
+    iget v6, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOffsetRight:I
+
+    add-int/2addr v5, v6
+
+    iget-object v6, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRectView:Landroid/graphics/Rect;
+
+    iget v6, v6, Landroid/graphics/Rect;->right:I
+
+    iget v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOffsetRight:I
+
+    sub-int/2addr v6, v7
+
     iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRectView:Landroid/graphics/Rect;
 
-    iget v7, v7, Landroid/graphics/Rect;->left:I
+    iget v7, v7, Landroid/graphics/Rect;->bottom:I
 
     iget v8, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOffsetRight:I
 
-    add-int/2addr v7, v8
+    sub-int/2addr v7, v8
 
-    iget-object v8, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRectView:Landroid/graphics/Rect;
+    invoke-virtual {v1, v4, v5, v6, v7}, Landroid/graphics/Rect;->set(IIII)V
 
-    iget v8, v8, Landroid/graphics/Rect;->top:I
-
-    iget v9, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOffsetRight:I
-
-    add-int/2addr v8, v9
-
-    iget-object v9, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRectView:Landroid/graphics/Rect;
-
-    iget v9, v9, Landroid/graphics/Rect;->right:I
-
-    iget v10, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOffsetRight:I
-
-    sub-int/2addr v9, v10
-
-    iget-object v10, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRectView:Landroid/graphics/Rect;
-
-    iget v10, v10, Landroid/graphics/Rect;->bottom:I
-
-    iget v11, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOffsetRight:I
-
-    sub-int/2addr v10, v11
-
-    invoke-virtual {v2, v7, v8, v9, v10}, Landroid/graphics/Rect;->set(IIII)V
-
-    .line 860
+    .line 837
     :goto_0
     invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I
 
-    move-result v5
+    move-result v3
 
-    .line 861
-    .local v5, saveCount:I
-    iget v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPaddingLeft:I
+    .line 838
+    .local v3, saveCount:I
+    iget v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPaddingLeft:I
 
-    int-to-float v7, v7
+    int-to-float v4, v4
 
-    iget v8, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPaddingTop:I
+    iget v5, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPaddingTop:I
 
-    int-to-float v8, v8
+    int-to-float v5, v5
 
-    invoke-virtual {p1, v7, v8}, Landroid/graphics/Canvas;->translate(FF)V
+    invoke-virtual {p1, v4, v5}, Landroid/graphics/Canvas;->translate(FF)V
 
-    .line 863
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mMakeCallAnim:Landroid/view/animation/Animation;
+    .line 841
+    iget-boolean v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mUseCallIcon:Z
 
-    if-nez v7, :cond_1
+    if-eqz v4, :cond_2
 
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mHangupCallAnim:Landroid/view/animation/Animation;
+    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIcon:Landroid/graphics/drawable/Drawable;
 
-    if-eqz v7, :cond_2
+    if-eqz v4, :cond_2
 
-    .line 864
-    :cond_1
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mMakeCallAnim:Landroid/view/animation/Animation;
+    .line 842
+    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIcon:Landroid/graphics/drawable/Drawable;
 
-    if-eqz v7, :cond_9
+    invoke-virtual {v4, v1}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
 
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mMakeCallAnim:Landroid/view/animation/Animation;
+    .line 843
+    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIcon:Landroid/graphics/drawable/Drawable;
 
-    .line 865
-    .local v0, anim:Landroid/view/animation/Animation;
-    :goto_1
-    invoke-static {}, Landroid/view/animation/AnimationUtils;->currentAnimationTimeMillis()J
-
-    move-result-wide v7
-
-    iget-object v9, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mTransformation:Landroid/view/animation/Transformation;
-
-    invoke-virtual {v0, v7, v8, v9}, Landroid/view/animation/Animation;->getTransformation(JLandroid/view/animation/Transformation;)Z
+    invoke-virtual {v4, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
     .line 868
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->invalidate()V
+    :goto_1
+    invoke-virtual {p1, v3}, Landroid/graphics/Canvas;->restoreToCount(I)V
 
-    .line 871
-    .end local v0           #anim:Landroid/view/animation/Animation;
+    .line 869
+    const/4 v4, 0x0
+
+    iput-boolean v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mUseCallIcon:Z
+
+    .line 870
+    return-void
+
+    .line 834
+    .end local v3           #saveCount:I
+    :cond_1
+    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRectView:Landroid/graphics/Rect;
+
+    invoke-virtual {v1, v4}, Landroid/graphics/Rect;->set(Landroid/graphics/Rect;)V
+
+    goto :goto_0
+
+    .line 846
+    .restart local v3       #saveCount:I
     :cond_2
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mAnimDrawable:Landroid/graphics/drawable/BitmapDrawable;
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getDrawable()Landroid/graphics/drawable/Drawable;
 
-    if-eqz v7, :cond_b
+    move-result-object v0
 
-    .line 872
-    new-instance v7, Landroid/graphics/RectF;
+    .line 847
+    .local v0, contact:Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v0, v1}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
 
-    invoke-direct {v7, v2}, Landroid/graphics/RectF;-><init>(Landroid/graphics/Rect;)V
+    .line 848
+    invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    const/16 v8, 0x1f
+    .line 851
+    iget-boolean v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIsClickToCall:Z
 
-    invoke-virtual {p1, v7, v13, v8}, Landroid/graphics/Canvas;->saveLayer(Landroid/graphics/RectF;Landroid/graphics/Paint;I)I
+    if-eqz v4, :cond_3
 
-    move-result v6
+    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
 
-    .line 875
-    .local v6, sc:I
-    iget v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCornerRadius:F
+    if-eqz v4, :cond_3
 
-    cmpl-float v7, v7, v12
+    .line 852
+    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
 
-    if-eqz v7, :cond_3
+    iget v5, v1, Landroid/graphics/Rect;->left:I
 
-    .line 876
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPath:Landroid/graphics/Path;
-
-    invoke-virtual {v7}, Landroid/graphics/Path;->reset()V
-
-    .line 877
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPath:Landroid/graphics/Path;
-
-    new-instance v8, Landroid/graphics/RectF;
-
-    invoke-direct {v8, v2}, Landroid/graphics/RectF;-><init>(Landroid/graphics/Rect;)V
-
-    iget v9, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCornerRadius:F
-
-    iget v10, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCornerRadius:F
-
-    sget-object v11, Landroid/graphics/Path$Direction;->CCW:Landroid/graphics/Path$Direction;
-
-    invoke-virtual {v7, v8, v9, v10, v11}, Landroid/graphics/Path;->addRoundRect(Landroid/graphics/RectF;FFLandroid/graphics/Path$Direction;)V
-
-    .line 879
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPath:Landroid/graphics/Path;
-
-    invoke-virtual {p1, v7}, Landroid/graphics/Canvas;->clipPath(Landroid/graphics/Path;)Z
-
-    .line 883
-    :cond_3
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIcon:Landroid/graphics/drawable/Drawable;
-
-    if-eqz v7, :cond_4
-
-    .line 884
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIcon:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v7, v2}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
-
-    .line 885
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIcon:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v7, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
-
-    .line 889
-    :cond_4
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
-
-    if-eqz v7, :cond_a
+    iget v6, v1, Landroid/graphics/Rect;->bottom:I
 
     iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v7}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
 
-    move-result v3
+    move-result v7
 
-    .line 890
-    .local v3, h:I
-    :goto_2
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mAnimDrawable:Landroid/graphics/drawable/BitmapDrawable;
+    sub-int/2addr v6, v7
 
-    invoke-virtual {v7, v2}, Landroid/graphics/drawable/BitmapDrawable;->setBounds(Landroid/graphics/Rect;)V
+    iget v7, v1, Landroid/graphics/Rect;->right:I
 
-    .line 891
-    invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I
+    iget v8, v1, Landroid/graphics/Rect;->bottom:I
 
-    .line 892
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mTransformation:Landroid/view/animation/Transformation;
+    invoke-virtual {v4, v5, v6, v7, v8}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    invoke-virtual {v7}, Landroid/view/animation/Transformation;->getMatrix()Landroid/graphics/Matrix;
+    .line 856
+    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
 
-    move-result-object v7
+    invoke-virtual {v4, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    invoke-virtual {p1, v7}, Landroid/graphics/Canvas;->concat(Landroid/graphics/Matrix;)V
+    .line 860
+    :cond_3
+    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorder:Landroid/graphics/drawable/Drawable;
 
-    .line 893
-    iget v7, v2, Landroid/graphics/Rect;->left:I
+    if-eqz v4, :cond_4
 
-    iget v8, v2, Landroid/graphics/Rect;->top:I
+    .line 861
+    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorder:Landroid/graphics/drawable/Drawable;
 
-    iget v9, v2, Landroid/graphics/Rect;->right:I
+    invoke-virtual {v4, v1}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
 
-    iget v10, v2, Landroid/graphics/Rect;->bottom:I
+    .line 862
+    iget-object v4, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorder:Landroid/graphics/drawable/Drawable;
 
-    sub-int/2addr v10, v3
+    invoke-virtual {v4, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    invoke-virtual {p1, v7, v8, v9, v10}, Landroid/graphics/Canvas;->clipRect(IIII)Z
-
-    .line 894
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mAnimDrawable:Landroid/graphics/drawable/BitmapDrawable;
-
-    iget-object v8, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mTransformation:Landroid/view/animation/Transformation;
-
-    invoke-virtual {v8}, Landroid/view/animation/Transformation;->getAlpha()F
-
-    move-result v8
-
-    const/high16 v9, 0x437f
-
-    mul-float/2addr v8, v9
-
-    float-to-int v8, v8
-
-    invoke-virtual {v7, v8}, Landroid/graphics/drawable/BitmapDrawable;->setAlpha(I)V
-
-    .line 895
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mAnimDrawable:Landroid/graphics/drawable/BitmapDrawable;
-
-    invoke-virtual {v7, p1}, Landroid/graphics/drawable/BitmapDrawable;->draw(Landroid/graphics/Canvas;)V
-
-    .line 896
-    invoke-virtual {p1}, Landroid/graphics/Canvas;->restore()V
-
-    .line 899
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorder:Landroid/graphics/drawable/Drawable;
-
-    if-eqz v7, :cond_5
-
-    .line 900
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorder:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v7, v2}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
-
-    .line 901
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorder:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v7, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
-
-    .line 905
-    :cond_5
-    iget v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCornerRadius:F
-
-    cmpl-float v7, v7, v12
-
-    if-nez v7, :cond_6
-
-    .line 906
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCoverDrawable:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v7, v2}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
-
-    .line 907
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCoverDrawable:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v7, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
-
-    .line 910
-    :cond_6
-    invoke-virtual {p1, v6}, Landroid/graphics/Canvas;->restoreToCount(I)V
-
-    .line 933
-    .end local v3           #h:I
-    .end local v6           #sc:I
-    :cond_7
-    :goto_3
+    .line 865
+    :cond_4
     invoke-direct {p0, p1}, Lcom/meizu/widget/RoundCornerContactBadge;->drawSmallIcon(Landroid/graphics/Canvas;)V
 
-    .line 934
-    invoke-virtual {p1, v5}, Landroid/graphics/Canvas;->restoreToCount(I)V
-
-    .line 935
-    return-void
-
-    .line 857
-    .end local v5           #saveCount:I
-    :cond_8
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRectView:Landroid/graphics/Rect;
-
-    invoke-virtual {v2, v7}, Landroid/graphics/Rect;->set(Landroid/graphics/Rect;)V
-
-    goto/16 :goto_0
-
-    .line 864
-    .restart local v5       #saveCount:I
-    :cond_9
-    iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mHangupCallAnim:Landroid/view/animation/Animation;
-
-    goto/16 :goto_1
-
-    .line 889
-    .restart local v6       #sc:I
-    :cond_a
-    const/4 v3, 0x0
-
-    goto :goto_2
-
-    .line 913
-    .end local v6           #sc:I
-    :cond_b
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getDrawable()Landroid/graphics/drawable/Drawable;
-
-    move-result-object v1
-
-    .line 914
-    .local v1, contact:Landroid/graphics/drawable/Drawable;
-    invoke-virtual {v1, v2}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
-
-    .line 915
-    invoke-virtual {v1, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
-
-    .line 918
-    iget-boolean v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIsClickToCall:Z
-
-    if-eqz v7, :cond_c
-
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
-
-    if-eqz v7, :cond_c
-
-    .line 919
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
-
-    iget v8, v2, Landroid/graphics/Rect;->left:I
-
-    iget v9, v2, Landroid/graphics/Rect;->bottom:I
-
-    iget-object v10, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v10}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
-
-    move-result v10
-
-    sub-int/2addr v9, v10
-
-    iget v10, v2, Landroid/graphics/Rect;->right:I
-
-    iget v11, v2, Landroid/graphics/Rect;->bottom:I
-
-    invoke-virtual {v7, v8, v9, v10, v11}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
-
-    .line 923
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v7, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
-
-    .line 927
-    :cond_c
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorder:Landroid/graphics/drawable/Drawable;
-
-    if-eqz v7, :cond_7
-
-    .line 928
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorder:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v7, v2}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
-
-    .line 929
-    iget-object v7, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorder:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v7, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
-
-    goto :goto_3
+    goto :goto_1
 .end method
 
 .method protected onLayout(ZIIII)V
@@ -3493,10 +3155,10 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 493
+    .line 485
     invoke-super/range {p0 .. p5}, Landroid/widget/ImageView;->onLayout(ZIIII)V
 
-    .line 494
+    .line 486
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRectView:Landroid/graphics/Rect;
 
     invoke-super {p0}, Landroid/widget/ImageView;->getMeasuredWidth()I
@@ -3525,7 +3187,7 @@
 
     invoke-virtual {v0, v4, v4, v1, v2}, Landroid/graphics/Rect;->set(IIII)V
 
-    .line 497
+    .line 489
     return-void
 .end method
 
@@ -3536,18 +3198,18 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 1002
+    .line 955
     iget-boolean v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIsClickToCall:Z
 
     if-eqz v1, :cond_0
 
-    .line 1003
+    .line 956
     iput-boolean v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mLongClick:Z
 
-    .line 1004
+    .line 957
     invoke-direct {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->startQuery()V
 
-    .line 1008
+    .line 961
     :goto_0
     return v0
 
@@ -3565,12 +3227,12 @@
     .prologue
     const/high16 v4, 0x4000
 
-    .line 481
+    .line 473
     iget-boolean v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIsUseStyle:Z
 
     if-eqz v2, :cond_0
 
-    .line 482
+    .line 474
     iget v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewWidth:I
 
     iget v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPaddingLeft:I
@@ -3581,7 +3243,7 @@
 
     add-int v1, v2, v3
 
-    .line 483
+    .line 475
     .local v1, width:I
     iget v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewHeight:I
 
@@ -3593,24 +3255,24 @@
 
     add-int v0, v2, v3
 
-    .line 484
+    .line 476
     .local v0, height:I
     invoke-static {v1, v4}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
 
     move-result p1
 
-    .line 485
+    .line 477
     invoke-static {v0, v4}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
 
     move-result p2
 
-    .line 488
+    .line 480
     .end local v0           #height:I
     .end local v1           #width:I
     :cond_0
     invoke-super {p0, p1, p2}, Landroid/widget/ImageView;->onMeasure(II)V
 
-    .line 489
+    .line 481
     return-void
 .end method
 
@@ -3619,7 +3281,7 @@
     .parameter "event"
 
     .prologue
-    .line 974
+    .line 927
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->hasWindowFocus()Z
 
     move-result v0
@@ -3630,27 +3292,27 @@
 
     if-nez v0, :cond_0
 
-    .line 975
+    .line 928
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactPhone:Ljava/lang/String;
 
     iput-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOldPhone:Ljava/lang/String;
 
-    .line 976
+    .line 929
     iget-wide v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContactId:J
 
     iput-wide v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOldContactId:J
 
-    .line 977
+    .line 930
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mExtras:Landroid/os/Bundle;
 
     iput-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mOldExtras:Landroid/os/Bundle;
 
-    .line 978
+    .line 931
     invoke-super {p0, p1}, Landroid/widget/ImageView;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
     move-result v0
 
-    .line 980
+    .line 933
     :goto_0
     return v0
 
@@ -3665,33 +3327,33 @@
     .parameter "hasWindowFocus"
 
     .prologue
-    .line 953
+    .line 906
     if-eqz p1, :cond_0
 
-    .line 954
+    .line 907
     sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge;->sSyncKeyLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 955
+    .line 908
     const/4 v0, 0x0
 
     :try_start_0
     sput-boolean v0, Lcom/meizu/widget/RoundCornerContactBadge;->sStartActivity:Z
 
-    .line 956
+    .line 909
     monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 958
+    .line 911
     :cond_0
     invoke-super {p0, p1}, Landroid/widget/ImageView;->onWindowFocusChanged(Z)V
 
-    .line 959
+    .line 912
     return-void
 
-    .line 956
+    .line 909
     :catchall_0
     move-exception v0
 
@@ -3708,49 +3370,49 @@
     .parameter "borderType"
 
     .prologue
-    const v7, 0x10802a5
+    const v7, 0x10802a9
 
-    const v6, 0x10802a2
+    const v6, 0x10802a6
 
-    const v5, 0x1050076
+    const v5, 0x1050081
 
-    const v4, 0x1050075
+    const v4, 0x1050080
 
     const/4 v3, 0x0
 
-    .line 592
+    .line 584
     if-nez p1, :cond_0
 
-    .line 593
+    .line 585
     new-instance v1, Ljava/lang/NullPointerException;
 
     invoke-direct {v1}, Ljava/lang/NullPointerException;-><init>()V
 
     throw v1
 
-    .line 596
+    .line 588
     :cond_0
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorderType:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
     if-ne v1, p1, :cond_1
 
-    .line 678
+    .line 670
     :goto_0
     return-void
 
-    .line 600
+    .line 592
     :cond_1
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIsUseStyle:Z
 
-    .line 601
+    .line 593
     iput-object p1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorderType:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
-    .line 603
+    .line 595
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDefaultDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 604
+    .line 596
     .local v0, oldDefDrawable:Landroid/graphics/drawable/Drawable;
     invoke-direct {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getDefaultDrawable()Landroid/graphics/drawable/Drawable;
 
@@ -3758,19 +3420,19 @@
 
     iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDefaultDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 605
+    .line 597
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getDrawable()Landroid/graphics/drawable/Drawable;
 
     move-result-object v1
 
     if-ne v1, v0, :cond_2
 
-    .line 606
+    .line 598
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDefaultDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {p0, v1}, Lcom/meizu/widget/RoundCornerContactBadge;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 609
+    .line 601
     :cond_2
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
@@ -3778,7 +3440,7 @@
 
     move-result-object v1
 
-    const v2, 0x10802a4
+    const v2, 0x10802a8
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -3786,8 +3448,8 @@
 
     iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorder:Landroid/graphics/drawable/Drawable;
 
-    .line 612
-    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$3;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$BorderType:[I
+    .line 604
+    sget-object v1, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$BorderType:[I
 
     iget-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mBorderType:Lcom/meizu/widget/RoundCornerContactBadge$BorderType;
 
@@ -3799,287 +3461,21 @@
 
     packed-switch v1, :pswitch_data_0
 
-    .line 673
+    .line 665
     iput-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
 
-    .line 674
+    .line 666
     iput-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIcon:Landroid/graphics/drawable/Drawable;
 
-    .line 675
+    .line 667
     const/4 v1, 0x0
 
     iput-boolean v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIsUseStyle:Z
 
     goto :goto_0
 
-    .line 614
+    .line 606
     :pswitch_0
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v2, 0x105006d
-
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v1
-
-    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewWidth:I
-
-    .line 616
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v2, 0x105006e
-
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v1
-
-    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewHeight:I
-
-    .line 618
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    invoke-virtual {v1, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v1
-
-    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureWidth:I
-
-    .line 620
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    invoke-virtual {v1, v5}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v1
-
-    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureHeight:I
-
-    .line 622
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    invoke-virtual {v1, v6}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v1
-
-    iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
-
-    .line 624
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    invoke-virtual {v1, v7}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v1
-
-    iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIcon:Landroid/graphics/drawable/Drawable;
-
-    goto :goto_0
-
-    .line 629
-    :pswitch_1
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v2, 0x105006f
-
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v1
-
-    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewWidth:I
-
-    .line 631
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v2, 0x1050070
-
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v1
-
-    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewHeight:I
-
-    .line 633
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    invoke-virtual {v1, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v1
-
-    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureWidth:I
-
-    .line 635
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    invoke-virtual {v1, v5}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v1
-
-    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureHeight:I
-
-    .line 637
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    invoke-virtual {v1, v6}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v1
-
-    iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
-
-    .line 639
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    invoke-virtual {v1, v7}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v1
-
-    iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIcon:Landroid/graphics/drawable/Drawable;
-
-    goto/16 :goto_0
-
-    .line 644
-    :pswitch_2
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v2, 0x1050071
-
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v1
-
-    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewWidth:I
-
-    .line 646
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v2, 0x1050072
-
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v1
-
-    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewHeight:I
-
-    .line 648
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v2, 0x1050079
-
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v1
-
-    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureWidth:I
-
-    .line 650
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v2, 0x105007a
-
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v1
-
-    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureHeight:I
-
-    .line 652
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v2, 0x10802a9
-
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v1
-
-    iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
-
-    .line 654
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v2, 0x10802aa
-
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v1
-
-    iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIcon:Landroid/graphics/drawable/Drawable;
-
-    goto/16 :goto_0
-
-    .line 660
-    :pswitch_3
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v2, 0x1050073
-
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v1
-
-    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewWidth:I
-
-    .line 662
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v2, 0x1050074
-
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v1
-
-    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewHeight:I
-
-    .line 664
-    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    const v2, 0x1050077
-
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v1
-
-    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureWidth:I
-
-    .line 666
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
 
     move-result-object v1
@@ -4090,17 +3486,283 @@
 
     move-result v1
 
+    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewWidth:I
+
+    .line 608
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    const v2, 0x1050079
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewHeight:I
+
+    .line 610
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureWidth:I
+
+    .line 612
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v5}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
     iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureHeight:I
 
-    .line 668
+    .line 614
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v6}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
+
+    .line 616
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v7}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIcon:Landroid/graphics/drawable/Drawable;
+
+    goto :goto_0
+
+    .line 621
+    :pswitch_1
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    const v2, 0x105007a
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewWidth:I
+
+    .line 623
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    const v2, 0x105007b
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewHeight:I
+
+    .line 625
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureWidth:I
+
+    .line 627
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v5}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureHeight:I
+
+    .line 629
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v6}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
+
+    .line 631
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v7}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIcon:Landroid/graphics/drawable/Drawable;
+
+    goto/16 :goto_0
+
+    .line 636
+    :pswitch_2
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    const v2, 0x105007c
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewWidth:I
+
+    .line 638
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    const v2, 0x105007d
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewHeight:I
+
+    .line 640
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    const v2, 0x1050084
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureWidth:I
+
+    .line 642
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    const v2, 0x1050085
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureHeight:I
+
+    .line 644
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    const v2, 0x10802ad
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
+
+    .line 646
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    const v2, 0x10802ae
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIcon:Landroid/graphics/drawable/Drawable;
+
+    goto/16 :goto_0
+
+    .line 652
+    :pswitch_3
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    const v2, 0x105007e
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewWidth:I
+
+    .line 654
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    const v2, 0x105007f
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mViewHeight:I
+
+    .line 656
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    const v2, 0x1050082
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureWidth:I
+
+    .line 658
+    invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    const v2, 0x1050083
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mPictureHeight:I
+
+    .line 660
     iput-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mListCallIcon:Landroid/graphics/drawable/Drawable;
 
-    .line 669
+    .line 661
     iput-object v3, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mCallIcon:Landroid/graphics/drawable/Drawable;
 
     goto/16 :goto_0
 
-    .line 612
+    .line 604
     nop
 
     :pswitch_data_0
@@ -4118,18 +3780,18 @@
     .parameter "clickToCall"
 
     .prologue
-    .line 688
+    .line 680
     iget-boolean v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIsClickToCall:Z
 
     if-eq v0, p1, :cond_0
 
-    .line 689
+    .line 681
     iput-boolean p1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIsClickToCall:Z
 
-    .line 690
+    .line 682
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->invalidate()V
 
-    .line 692
+    .line 684
     :cond_0
     return-void
 .end method
@@ -4139,7 +3801,7 @@
     .parameter "text"
 
     .prologue
-    .line 503
+    .line 495
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIconText:Ljava/lang/CharSequence;
 
     invoke-static {v0, p1}, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
@@ -4148,13 +3810,13 @@
 
     if-nez v0, :cond_0
 
-    .line 504
+    .line 496
     iput-object p1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIconText:Ljava/lang/CharSequence;
 
-    .line 505
+    .line 497
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->invalidate()V
 
-    .line 507
+    .line 499
     :cond_0
     return-void
 .end method
@@ -4164,32 +3826,32 @@
     .parameter "iconType"
 
     .prologue
-    .line 515
+    .line 507
     if-nez p1, :cond_0
 
-    .line 516
+    .line 508
     new-instance v0, Ljava/lang/NullPointerException;
 
     invoke-direct {v0}, Ljava/lang/NullPointerException;-><init>()V
 
     throw v0
 
-    .line 519
+    .line 511
     :cond_0
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIconType:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
     if-ne v0, p1, :cond_1
 
-    .line 580
+    .line 572
     :goto_0
     return-void
 
-    .line 523
+    .line 515
     :cond_1
     iput-object p1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIconType:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
-    .line 524
-    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$3;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$IconType:[I
+    .line 516
+    sget-object v0, Lcom/meizu/widget/RoundCornerContactBadge$2;->$SwitchMap$com$meizu$widget$RoundCornerContactBadge$IconType:[I
 
     iget-object v1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mIconType:Lcom/meizu/widget/RoundCornerContactBadge$IconType;
 
@@ -4201,18 +3863,18 @@
 
     packed-switch v0, :pswitch_data_0
 
-    .line 576
+    .line 568
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mSmallIcon:Landroid/graphics/drawable/Drawable;
 
-    .line 579
+    .line 571
     :goto_1
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->invalidate()V
 
     goto :goto_0
 
-    .line 526
+    .line 518
     :pswitch_0
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
@@ -4220,7 +3882,7 @@
 
     move-result-object v0
 
-    const v1, 0x1080785
+    const v1, 0x10807b2
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -4230,7 +3892,7 @@
 
     goto :goto_1
 
-    .line 531
+    .line 523
     :pswitch_1
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
@@ -4238,7 +3900,7 @@
 
     move-result-object v0
 
-    const v1, 0x1080783
+    const v1, 0x10807b0
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -4248,7 +3910,7 @@
 
     goto :goto_1
 
-    .line 536
+    .line 528
     :pswitch_2
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
@@ -4256,7 +3918,7 @@
 
     move-result-object v0
 
-    const v1, 0x1080784
+    const v1, 0x10807b1
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -4266,7 +3928,7 @@
 
     goto :goto_1
 
-    .line 541
+    .line 533
     :pswitch_3
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
@@ -4274,7 +3936,7 @@
 
     move-result-object v0
 
-    const v1, 0x1080788
+    const v1, 0x10807b5
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -4284,7 +3946,7 @@
 
     goto :goto_1
 
-    .line 546
+    .line 538
     :pswitch_4
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
@@ -4292,7 +3954,7 @@
 
     move-result-object v0
 
-    const v1, 0x1080789
+    const v1, 0x10807b6
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -4302,7 +3964,7 @@
 
     goto :goto_1
 
-    .line 551
+    .line 543
     :pswitch_5
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
@@ -4310,7 +3972,7 @@
 
     move-result-object v0
 
-    const v1, 0x1080786
+    const v1, 0x10807b3
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -4320,7 +3982,7 @@
 
     goto :goto_1
 
-    .line 556
+    .line 548
     :pswitch_6
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
@@ -4328,7 +3990,7 @@
 
     move-result-object v0
 
-    const v1, 0x1080787
+    const v1, 0x10807b4
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -4338,7 +4000,7 @@
 
     goto :goto_1
 
-    .line 561
+    .line 553
     :pswitch_7
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
@@ -4346,7 +4008,7 @@
 
     move-result-object v0
 
-    const v1, 0x108078a
+    const v1, 0x10807b7
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -4356,7 +4018,7 @@
 
     goto/16 :goto_1
 
-    .line 566
+    .line 558
     :pswitch_8
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
@@ -4364,7 +4026,7 @@
 
     move-result-object v0
 
-    const v1, 0x108044f
+    const v1, 0x1080465
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -4374,7 +4036,7 @@
 
     goto/16 :goto_1
 
-    .line 571
+    .line 563
     :pswitch_9
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mContext:Landroid/content/Context;
 
@@ -4382,7 +4044,7 @@
 
     move-result-object v0
 
-    const v1, 0x108044e
+    const v1, 0x1080464
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -4392,7 +4054,7 @@
 
     goto/16 :goto_1
 
-    .line 524
+    .line 516
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0
@@ -4413,19 +4075,19 @@
     .parameter "bm"
 
     .prologue
-    .line 311
+    .line 303
     if-nez p1, :cond_0
 
-    .line 312
+    .line 304
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/RoundCornerContactBadge;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 316
+    .line 308
     :goto_0
     return-void
 
-    .line 314
+    .line 306
     :cond_0
     invoke-super {p0, p1}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
@@ -4438,23 +4100,23 @@
     .parameter "recycle"
 
     .prologue
-    .line 301
+    .line 293
     if-nez p1, :cond_0
 
-    .line 302
+    .line 294
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/RoundCornerContactBadge;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 307
+    .line 299
     :goto_0
     return-void
 
-    .line 304
+    .line 296
     :cond_0
     invoke-super {p0, p1}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
-    .line 305
+    .line 297
     iput-boolean p2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mRecycle:Z
 
     goto :goto_0
@@ -4465,17 +4127,17 @@
     .parameter "drawable"
 
     .prologue
-    .line 321
+    .line 313
     if-nez p1, :cond_0
 
-    .line 322
+    .line 314
     iget-object p1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDefaultDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 325
+    .line 317
     :cond_0
     invoke-super {p0, p1}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 326
+    .line 318
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
     if-eqz v0, :cond_1
@@ -4488,7 +4150,7 @@
 
     if-eq v0, v1, :cond_1
 
-    .line 328
+    .line 320
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
     check-cast v0, Landroid/graphics/drawable/BitmapDrawable;
@@ -4499,12 +4161,12 @@
 
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 329
+    .line 321
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 331
+    .line 323
     :cond_1
     return-void
 .end method
@@ -4516,22 +4178,22 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 269
+    .line 261
     if-nez p1, :cond_1
 
-    .line 270
+    .line 262
     invoke-virtual {p0, v2}, Lcom/meizu/widget/RoundCornerContactBadge;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 280
+    .line 272
     :cond_0
     :goto_0
     return-void
 
-    .line 272
+    .line 264
     :cond_1
     invoke-super {p0, p1}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    .line 274
+    .line 266
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
     if-eqz v0, :cond_0
@@ -4544,7 +4206,7 @@
 
     if-eq v0, v1, :cond_0
 
-    .line 276
+    .line 268
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
     check-cast v0, Landroid/graphics/drawable/BitmapDrawable;
@@ -4555,7 +4217,7 @@
 
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 277
+    .line 269
     iput-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
     goto :goto_0
@@ -4568,22 +4230,22 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 284
+    .line 276
     if-nez p1, :cond_1
 
-    .line 285
+    .line 277
     invoke-virtual {p0, v2}, Lcom/meizu/widget/RoundCornerContactBadge;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 295
+    .line 287
     :cond_0
     :goto_0
     return-void
 
-    .line 287
+    .line 279
     :cond_1
     invoke-super {p0, p1}, Landroid/widget/ImageView;->setImageURI(Landroid/net/Uri;)V
 
-    .line 289
+    .line 281
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
     if-eqz v0, :cond_0
@@ -4596,7 +4258,7 @@
 
     if-eq v0, v1, :cond_0
 
-    .line 291
+    .line 283
     iget-object v0, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
     check-cast v0, Landroid/graphics/drawable/BitmapDrawable;
@@ -4607,7 +4269,7 @@
 
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 292
+    .line 284
     iput-object v2, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mDstContactDrawable:Landroid/graphics/drawable/Drawable;
 
     goto :goto_0
@@ -4618,7 +4280,7 @@
     .parameter "pressed"
 
     .prologue
-    .line 985
+    .line 938
     invoke-virtual {p0}, Lcom/meizu/widget/RoundCornerContactBadge;->getParent()Landroid/view/ViewParent;
 
     move-result-object v0
@@ -4639,11 +4301,11 @@
 
     if-eqz v0, :cond_0
 
-    .line 989
+    .line 942
     :goto_0
     return-void
 
-    .line 988
+    .line 941
     :cond_0
     invoke-super {p0, p1}, Landroid/widget/ImageView;->setPressed(Z)V
 
@@ -4655,6 +4317,30 @@
     .parameter "scaleType"
 
     .prologue
-    .line 378
+    .line 370
+    return-void
+.end method
+
+.method public setSubtitle(Ljava/lang/CharSequence;)V
+    .locals 0
+    .parameter "subtitle"
+
+    .prologue
+    .line 691
+    iput-object p1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mSubtitle:Ljava/lang/CharSequence;
+
+    .line 692
+    return-void
+.end method
+
+.method public setTilte(Ljava/lang/CharSequence;)V
+    .locals 0
+    .parameter "title"
+
+    .prologue
+    .line 687
+    iput-object p1, p0, Lcom/meizu/widget/RoundCornerContactBadge;->mTitle:Ljava/lang/CharSequence;
+
+    .line 688
     return-void
 .end method

@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 205
+    .line 200
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$4;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
     iput p2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$4;->val$position:I
@@ -47,7 +47,7 @@
     .parameter "v"
 
     .prologue
-    .line 208
+    .line 203
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$4;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
     #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mViewPager:Landroid/support/v4/view/ViewPager;
@@ -59,14 +59,14 @@
 
     invoke-virtual {v0, v1}, Landroid/support/v4/view/ViewPager;->setCurrentItem(I)V
 
-    .line 210
+    .line 205
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$4;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
     iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$4;->val$position:I
 
     invoke-virtual {v0, v1}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->changeTabView(I)V
 
-    .line 211
+    .line 206
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$4;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
     iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$4;->val$position:I
@@ -74,11 +74,11 @@
     #setter for: Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->mSelectedPos:I
     invoke-static {v0, v1}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->access$102(Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;I)I
 
-    .line 212
+    .line 207
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment$4;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
     invoke-virtual {v0}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->checkDataAndUpdateView()V
 
-    .line 213
+    .line 208
     return-void
 .end method

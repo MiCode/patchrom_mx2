@@ -156,6 +156,16 @@
     return-void
 .end method
 
+.method public setBackButtonDrawable(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
+    .locals 0
+    .parameter "backIcon"
+    .parameter "backImeIcon"
+
+    .prologue
+    .line 1061
+    return-void
+.end method
+
 .method public abstract setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
 .end method
 
@@ -335,4 +345,3 @@
     .line 1011
     return-void
 .end method
-

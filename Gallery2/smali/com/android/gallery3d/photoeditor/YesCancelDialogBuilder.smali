@@ -16,7 +16,7 @@
     invoke-direct {p0, p1}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
     .line 16
-    const v0, 0x7f0a00c4
+    const v0, 0x7f0a00cf
 
     new-instance v1, Lcom/android/gallery3d/photoeditor/YesCancelDialogBuilder$3;
 
@@ -26,7 +26,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f0a00c5
+    const v1, 0x7f0a00d0
 
     new-instance v2, Lcom/android/gallery3d/photoeditor/YesCancelDialogBuilder$2;
 
@@ -36,7 +36,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f0a0148
+    const v1, 0x7f0a0153
 
     new-instance v2, Lcom/android/gallery3d/photoeditor/YesCancelDialogBuilder$1;
 

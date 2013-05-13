@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 417
+    .line 418
     invoke-direct {p0}, Lcom/android/gallery3d/ui/SlotView$SlotAnimation;-><init>()V
 
     return-void
@@ -36,7 +36,7 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 422
+    .line 423
     const/high16 v0, 0x4300
 
     const/high16 v1, 0x3f80
@@ -49,6 +49,6 @@
 
     invoke-interface {p1, v3, v3, v0}, Lcom/android/gallery3d/ui/GLCanvas;->translate(FFF)V
 
-    .line 423
+    .line 424
     return-void
 .end method

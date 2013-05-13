@@ -33,6 +33,16 @@
 
 
 # virtual methods
+.method public getOrientation()I
+    .locals 1
+
+    .prologue
+    .line 120
+    iget v0, p0, Lcom/android/camera/ui/RotateLayout;->mOrientation:I
+
+    return v0
+.end method
+
 .method protected onFinishInflate()V
     .locals 2
 

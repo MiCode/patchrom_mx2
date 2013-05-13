@@ -44,7 +44,7 @@
 
     const/high16 v4, 0x3f80
 
-    const v3, 0x3df8f8f9
+    const v3, 0x3dd0d0d1
 
     .line 539
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V

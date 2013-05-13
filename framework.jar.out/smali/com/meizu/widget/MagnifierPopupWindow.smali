@@ -13,7 +13,11 @@
 
 
 # static fields
+.field private static final DEBUG:Z = false
+
 .field private static final OFFSET_RATIO:F = 1.618f
+
+.field private static final TAG:Ljava/lang/String; = "MagnifierPopupWindow"
 
 
 # instance fields
@@ -38,68 +42,68 @@
 
     const/4 v1, 0x0
 
-    .line 37
+    .line 41
     invoke-direct {p0, p1}, Landroid/widget/PopupWindow;-><init>(Landroid/content/Context;)V
 
-    .line 34
+    .line 38
     new-array v0, v3, [I
 
     iput-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mLocationInWindow:[I
 
-    .line 39
+    .line 43
     new-instance v0, Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;
 
     invoke-direct {v0, p0, p1}, Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;-><init>(Lcom/meizu/widget/MagnifierPopupWindow;Landroid/content/Context;)V
 
     iput-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mMagnifierView:Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;
 
-    .line 40
+    .line 44
     iget-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mMagnifierView:Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/MagnifierPopupWindow;->setContentView(Landroid/view/View;)V
 
-    .line 41
+    .line 45
     invoke-virtual {p0, v1}, Lcom/meizu/widget/MagnifierPopupWindow;->setFocusable(Z)V
 
-    .line 42
+    .line 46
     invoke-virtual {p0, v1}, Lcom/meizu/widget/MagnifierPopupWindow;->setTouchable(Z)V
 
-    .line 43
+    .line 47
     invoke-virtual {p0, v1}, Lcom/meizu/widget/MagnifierPopupWindow;->setClippingEnabled(Z)V
 
-    .line 44
+    .line 48
     invoke-virtual {p0, v3}, Lcom/meizu/widget/MagnifierPopupWindow;->setInputMethodMode(I)V
 
-    .line 45
+    .line 49
     new-instance v0, Landroid/graphics/drawable/ColorDrawable;
 
     invoke-direct {v0, v1}, Landroid/graphics/drawable/ColorDrawable;-><init>(I)V
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/MagnifierPopupWindow;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 46
+    .line 50
     const v0, 0x103029f
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/MagnifierPopupWindow;->setAnimationStyle(I)V
 
-    .line 47
+    .line 51
     const/16 v0, 0x3ed
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/MagnifierPopupWindow;->setWindowLayoutType(I)V
 
-    .line 48
+    .line 52
     invoke-virtual {p0, v2, v2}, Lcom/meizu/widget/MagnifierPopupWindow;->setWindowLayoutMode(II)V
 
-    .line 50
+    .line 54
     return-void
 .end method
 
-.method static synthetic access$200(Lcom/meizu/widget/MagnifierPopupWindow;)Landroid/graphics/Rect;
+.method static synthetic access$000(Lcom/meizu/widget/MagnifierPopupWindow;)Landroid/graphics/Rect;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 24
+    .line 25
     iget-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mFrameRect:Landroid/graphics/Rect;
 
     return-object v0
@@ -112,41 +116,41 @@
     .parameter "max"
 
     .prologue
-    .line 198
+    .line 230
     cmpl-float v0, p1, p2
 
     if-lez v0, :cond_1
 
-    .line 199
+    .line 231
     add-float v0, p1, p2
 
     const/high16 v1, 0x4000
 
     div-float p0, v0, v1
 
-    .line 205
+    .line 237
     :cond_0
     :goto_0
     return p0
 
-    .line 200
+    .line 232
     :cond_1
     cmpg-float v0, p0, p1
 
     if-gez v0, :cond_2
 
-    .line 201
+    .line 233
     move p0, p1
 
     goto :goto_0
 
-    .line 202
+    .line 234
     :cond_2
     cmpl-float v0, p0, p2
 
     if-lez v0, :cond_0
 
-    .line 203
+    .line 235
     move p0, p2
 
     goto :goto_0
@@ -160,21 +164,21 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 84
+    .line 88
     iput-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mFrameRect:Landroid/graphics/Rect;
 
-    .line 85
+    .line 89
     iput-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mSmoother:Lcom/meizu/widget/MagnifierPopupWindow$Smoother;
 
-    .line 86
+    .line 90
     iget-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mMagnifierView:Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;->reset()V
 
-    .line 87
+    .line 91
     invoke-super {p0}, Landroid/widget/PopupWindow;->dismiss()V
 
-    .line 88
+    .line 92
     return-void
 .end method
 
@@ -188,25 +192,25 @@
     .prologue
     const/4 v9, -0x1
 
-    .line 53
+    .line 57
     iget-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mSmoother:Lcom/meizu/widget/MagnifierPopupWindow$Smoother;
 
     if-nez v0, :cond_1
 
-    .line 54
+    .line 58
     new-instance v0, Lcom/meizu/widget/MagnifierPopupWindow$Smoother;
 
     invoke-direct {v0, p2, p3}, Lcom/meizu/widget/MagnifierPopupWindow$Smoother;-><init>(FF)V
 
     iput-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mSmoother:Lcom/meizu/widget/MagnifierPopupWindow$Smoother;
 
-    .line 59
+    .line 63
     :goto_0
     iget-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mLocationInWindow:[I
 
     invoke-virtual {p1, v0}, Landroid/view/View;->getLocationInWindow([I)V
 
-    .line 60
+    .line 64
     iget-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mSmoother:Lcom/meizu/widget/MagnifierPopupWindow$Smoother;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MagnifierPopupWindow$Smoother;->getX()F
@@ -223,7 +227,7 @@
 
     add-float p2, v0, v1
 
-    .line 61
+    .line 65
     iget-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mSmoother:Lcom/meizu/widget/MagnifierPopupWindow$Smoother;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MagnifierPopupWindow$Smoother;->getY()F
@@ -240,29 +244,28 @@
 
     add-float p3, v0, v1
 
-    .line 63
+    .line 67
     iget-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mFrameRect:Landroid/graphics/Rect;
 
     if-nez v0, :cond_0
 
-    .line 64
+    .line 68
     new-instance v0, Landroid/graphics/Rect;
 
     invoke-direct {v0}, Landroid/graphics/Rect;-><init>()V
 
     iput-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mFrameRect:Landroid/graphics/Rect;
 
-    .line 65
+    .line 69
     iget-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mFrameRect:Landroid/graphics/Rect;
 
     invoke-virtual {p1, v0}, Landroid/view/View;->getWindowVisibleDisplayFrame(Landroid/graphics/Rect;)V
 
-    .line 68
+    .line 72
     :cond_0
     iget-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mMagnifierView:Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;
 
-    #getter for: Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;->kHeight:I
-    invoke-static {v0}, Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;->access$000(Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;)I
+    invoke-virtual {v0}, Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;->calcHeight()I
 
     move-result v0
 
@@ -274,7 +277,7 @@
 
     div-float v7, v0, v1
 
-    .line 69
+    .line 73
     .local v7, offset:F
     iget-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mFrameRect:Landroid/graphics/Rect;
 
@@ -292,7 +295,7 @@
 
     move-result p2
 
-    .line 70
+    .line 74
     iget-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mFrameRect:Landroid/graphics/Rect;
 
     iget v0, v0, Landroid/graphics/Rect;->bottom:I
@@ -305,7 +308,7 @@
 
     move-result p3
 
-    .line 72
+    .line 76
     iget-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mMagnifierView:Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;
 
     invoke-virtual {p1}, Landroid/view/View;->getRootView()Landroid/view/View;
@@ -324,11 +327,10 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;->updateMagnifier(Landroid/view/View;FFFZ)V
 
-    .line 73
+    .line 77
     iget-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mMagnifierView:Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;
 
-    #getter for: Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;->kWidth:I
-    invoke-static {v0}, Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;->access$100(Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;)I
+    invoke-virtual {v0}, Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;->calcWidth()I
 
     move-result v0
 
@@ -340,12 +342,11 @@
 
     float-to-int v6, v0
 
-    .line 74
+    .line 78
     .local v6, left:I
     iget-object v0, p0, Lcom/meizu/widget/MagnifierPopupWindow;->mMagnifierView:Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;
 
-    #getter for: Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;->kHeight:I
-    invoke-static {v0}, Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;->access$000(Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;)I
+    invoke-virtual {v0}, Lcom/meizu/widget/MagnifierPopupWindow$MagnifierView;->calcHeight()I
 
     move-result v0
 
@@ -365,7 +366,7 @@
 
     float-to-int v8, v0
 
-    .line 75
+    .line 79
     .local v8, top:I
     invoke-virtual {p0}, Lcom/meizu/widget/MagnifierPopupWindow;->isShowing()Z
 
@@ -373,14 +374,14 @@
 
     if-eqz v0, :cond_2
 
-    .line 76
+    .line 80
     invoke-virtual {p0, v6, v8, v9, v9}, Lcom/meizu/widget/MagnifierPopupWindow;->update(IIII)V
 
-    .line 80
+    .line 84
     :goto_1
     return-void
 
-    .line 56
+    .line 60
     .end local v6           #left:I
     .end local v7           #offset:F
     .end local v8           #top:I
@@ -391,7 +392,7 @@
 
     goto/16 :goto_0
 
-    .line 78
+    .line 82
     .restart local v6       #left:I
     .restart local v7       #offset:F
     .restart local v8       #top:I

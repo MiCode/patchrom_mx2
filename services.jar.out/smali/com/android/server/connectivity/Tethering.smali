@@ -1301,9 +1301,9 @@
 
     .line 427
     :cond_8
-    const v13, 0x1080709
+    const v13, 0x1080735
 
-    const v14, 0x10806b8
+    const v14, 0x10806e2
 
     move-object/from16 v0, p0
 
@@ -1313,9 +1313,9 @@
 
     .line 430
     :cond_9
-    const v13, 0x108070b
+    const v13, 0x1080737
 
-    const v14, 0x10806b9
+    const v14, 0x10806e3
 
     move-object/from16 v0, p0
 
@@ -1331,9 +1331,9 @@
     if-eqz v3, :cond_b
 
     .line 435
-    const v13, 0x1080709
+    const v13, 0x1080735
 
-    const v14, 0x10806b8
+    const v14, 0x10806e2
 
     move-object/from16 v0, p0
 
@@ -1350,9 +1350,9 @@
     invoke-static {v13, v14}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 441
-    const v13, 0x108070c
+    const v13, 0x1080738
 
-    const v14, 0x10806ba
+    const v14, 0x10806e4
 
     move-object/from16 v0, p0
 
@@ -1365,9 +1365,9 @@
     if-eqz v3, :cond_d
 
     .line 446
-    const v13, 0x1080708
+    const v13, 0x1080734
 
-    const v14, 0x10806b7
+    const v14, 0x10806e1
 
     move-object/from16 v0, p0
 
@@ -1464,7 +1464,7 @@
 
     .line 474
     .local v4, r:Landroid/content/res/Resources;
-    const v6, 0x10404da
+    const v6, 0x10404de
 
     invoke-virtual {v4, v6}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
 
@@ -1472,7 +1472,7 @@
 
     .line 475
     .local v5, title:Ljava/lang/CharSequence;
-    const v6, 0x10404db
+    const v6, 0x10404df
 
     invoke-virtual {v4, v6}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
 

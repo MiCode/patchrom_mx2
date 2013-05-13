@@ -32,10 +32,10 @@
     .prologue
     const/4 v6, 0x0
 
-    .line 50
+    .line 48
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 51
+    .line 49
     invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
 
     move-result-object v4
@@ -50,8 +50,8 @@
 
     iput-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->inflater:Landroid/view/LayoutInflater;
 
-    .line 55
-    const v4, 0x7f0d0121
+    .line 53
+    const v4, 0x7f0d0138
 
     invoke-virtual {p1, v4}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -59,11 +59,11 @@
 
     check-cast v0, Landroid/view/ViewGroup;
 
-    .line 56
+    .line 54
     .local v0, effectsBar:Landroid/view/ViewGroup;
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->inflater:Landroid/view/LayoutInflater;
 
-    const v5, 0x7f040052
+    const v5, 0x7f040057
 
     invoke-virtual {v4, v5, v0, v6}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
@@ -73,17 +73,17 @@
 
     iput-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolPanel:Landroid/view/ViewGroup;
 
-    .line 59
+    .line 57
     if-eqz p3, :cond_0
 
-    .line 60
+    .line 58
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolPanel:Landroid/view/ViewGroup;
 
     invoke-virtual {v0, v4, v6}, Landroid/view/ViewGroup;->addView(Landroid/view/View;I)V
 
-    .line 65
+    .line 63
     :cond_0
-    const v4, 0x7f0d0120
+    const v4, 0x7f0d0137
 
     invoke-virtual {p1, v4}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -93,7 +93,7 @@
 
     iput-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
 
-    .line 66
+    .line 64
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
 
     invoke-virtual {v4}, Lcom/android/gallery3d/photoeditor/PhotoView;->getParent()Landroid/view/ViewParent;
@@ -102,11 +102,11 @@
 
     check-cast v3, Landroid/view/ViewGroup;
 
-    .line 67
+    .line 65
     .local v3, parent:Landroid/view/ViewGroup;
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->inflater:Landroid/view/LayoutInflater;
 
-    const v5, 0x7f040051
+    const v5, 0x7f040056
 
     invoke-virtual {v4, v5, v3, v6}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
@@ -116,7 +116,7 @@
 
     iput-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolFullscreen:Landroid/view/ViewGroup;
 
-    .line 70
+    .line 68
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
 
     invoke-virtual {v4}, Lcom/android/gallery3d/photoeditor/PhotoView;->getContext()Landroid/content/Context;
@@ -131,7 +131,7 @@
 
     move-result-object v1
 
-    .line 72
+    .line 70
     .local v1, metrics:Landroid/util/DisplayMetrics;
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolFullscreen:Landroid/view/ViewGroup;
 
@@ -141,7 +141,7 @@
 
     check-cast v2, Landroid/widget/RelativeLayout$LayoutParams;
 
-    .line 73
+    .line 71
     .local v2, params:Landroid/widget/RelativeLayout$LayoutParams;
     iget v4, v1, Landroid/util/DisplayMetrics;->widthPixels:I
 
@@ -149,22 +149,35 @@
 
     if-ge v4, v5, :cond_1
 
-    .line 74
+    .line 72
     sget v4, Lcom/android/gallery3d/photoeditor/PhotoEditor;->ACTION_BAR_HEIGHT:I
 
     iput v4, v2, Landroid/widget/RelativeLayout$LayoutParams;->bottomMargin:I
 
-    .line 78
+    .line 76
     :goto_0
-    sget v4, Lcom/android/gallery3d/photoeditor/PhotoEditor;->STATUS_BAR_HEIGHT:I
-
-    sget v5, Lcom/android/gallery3d/photoeditor/PhotoEditor;->ACTION_BAR_HEIGHT:I
-
-    add-int/2addr v4, v5
+    sget v4, Lcom/android/gallery3d/photoeditor/PhotoEditor;->ACTION_BAR_HEIGHT:I
 
     iput v4, v2, Landroid/widget/RelativeLayout$LayoutParams;->topMargin:I
 
-    .line 80
+    .line 77
+    iget v4, v1, Landroid/util/DisplayMetrics;->heightPixels:I
+
+    iget v5, v2, Landroid/widget/RelativeLayout$LayoutParams;->bottomMargin:I
+
+    sub-int/2addr v4, v5
+
+    iget v5, v2, Landroid/widget/RelativeLayout$LayoutParams;->topMargin:I
+
+    sub-int/2addr v4, v5
+
+    sget v5, Lcom/android/gallery3d/photoeditor/PhotoEditor;->STATUS_BAR_HEIGHT:I
+
+    sub-int/2addr v4, v5
+
+    iput v4, v2, Landroid/view/ViewGroup$LayoutParams;->height:I
+
+    .line 79
     iget-object v4, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolFullscreen:Landroid/view/ViewGroup;
 
     iget-object v5, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
@@ -177,10 +190,10 @@
 
     invoke-virtual {v3, v4, v5}, Landroid/view/ViewGroup;->addView(Landroid/view/View;I)V
 
-    .line 81
+    .line 80
     return-void
 
-    .line 76
+    .line 74
     :cond_1
     iput v6, v2, Landroid/widget/RelativeLayout$LayoutParams;->bottomMargin:I
 
@@ -192,7 +205,7 @@
     .parameter "toolId"
 
     .prologue
-    .line 126
+    .line 125
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->inflater:Landroid/view/LayoutInflater;
 
     const/4 v2, 0x0
@@ -205,7 +218,7 @@
 
     check-cast v0, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;
 
-    .line 128
+    .line 127
     .local v0, tool:Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->getPhotoView()Lcom/android/gallery3d/photoeditor/PhotoView;
 
@@ -217,12 +230,12 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/actions/FullscreenToolView;->setPhotoBounds(Landroid/graphics/RectF;)V
 
-    .line 129
+    .line 128
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolFullscreen:Landroid/view/ViewGroup;
 
     invoke-virtual {v1, v0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
 
-    .line 130
+    .line 129
     return-object v0
 .end method
 
@@ -231,7 +244,7 @@
     .parameter "toolId"
 
     .prologue
-    .line 135
+    .line 134
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->inflater:Landroid/view/LayoutInflater;
 
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolPanel:Landroid/view/ViewGroup;
@@ -242,7 +255,7 @@
 
     move-result-object v0
 
-    .line 136
+    .line 135
     .local v0, tool:Landroid/view/View;
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolPanel:Landroid/view/ViewGroup;
 
@@ -250,7 +263,7 @@
 
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolPanel:Landroid/view/ViewGroup;
 
-    const v4, 0x7f0d0113
+    const v4, 0x7f0d0128
 
     invoke-virtual {v3, v4}, Landroid/view/ViewGroup;->findViewById(I)Landroid/view/View;
 
@@ -262,7 +275,7 @@
 
     invoke-virtual {v1, v0, v2}, Landroid/view/ViewGroup;->addView(Landroid/view/View;I)V
 
-    .line 137
+    .line 136
     return-object v0
 .end method
 
@@ -272,7 +285,7 @@
     .parameter "type"
 
     .prologue
-    .line 141
+    .line 140
     sget-object v0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit$2;->$SwitchMap$com$android$gallery3d$photoeditor$actions$EffectToolKit$ScaleType:[I
 
     invoke-virtual {p2}, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit$ScaleType;->ordinal()I
@@ -283,8 +296,8 @@
 
     packed-switch v0, :pswitch_data_0
 
-    .line 154
-    const v0, 0x7f02015f
+    .line 153
+    const v0, 0x7f02015a
 
     invoke-virtual {p1, v0}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -293,9 +306,9 @@
     :goto_0
     return-object v0
 
-    .line 143
+    .line 142
     :pswitch_0
-    const v0, 0x7f020160
+    const v0, 0x7f02015b
 
     invoke-virtual {p1, v0}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -303,9 +316,9 @@
 
     goto :goto_0
 
-    .line 146
+    .line 145
     :pswitch_1
-    const v0, 0x7f020162
+    const v0, 0x7f02015d
 
     invoke-virtual {p1, v0}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -313,9 +326,9 @@
 
     goto :goto_0
 
-    .line 149
+    .line 148
     :pswitch_2
-    const v0, 0x7f02015e
+    const v0, 0x7f020159
 
     invoke-virtual {p1, v0}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -323,9 +336,9 @@
 
     goto :goto_0
 
-    .line 152
+    .line 151
     :pswitch_3
-    const v0, 0x7f020161
+    const v0, 0x7f02015c
 
     invoke-virtual {p1, v0}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -333,7 +346,7 @@
 
     goto :goto_0
 
-    .line 141
+    .line 140
     nop
 
     :pswitch_data_0
@@ -351,8 +364,8 @@
     .locals 1
 
     .prologue
-    .line 166
-    const v0, 0x7f04004d
+    .line 165
+    const v0, 0x7f04004f
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->addPanelTool(I)Landroid/view/View;
 
@@ -367,8 +380,8 @@
     .locals 1
 
     .prologue
-    .line 186
-    const v0, 0x7f04004e
+    .line 185
+    const v0, 0x7f040050
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->addFullscreenTool(I)Landroid/view/View;
 
@@ -383,8 +396,8 @@
     .locals 1
 
     .prologue
-    .line 170
-    const v0, 0x7f040050
+    .line 169
+    const v0, 0x7f040055
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->addFullscreenTool(I)Landroid/view/View;
 
@@ -399,8 +412,8 @@
     .locals 1
 
     .prologue
-    .line 178
-    const v0, 0x7f04005a
+    .line 177
+    const v0, 0x7f04005f
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->addFullscreenTool(I)Landroid/view/View;
 
@@ -415,8 +428,8 @@
     .locals 1
 
     .prologue
-    .line 182
-    const v0, 0x7f04005d
+    .line 181
+    const v0, 0x7f040062
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->addFullscreenTool(I)Landroid/view/View;
 
@@ -432,8 +445,8 @@
     .parameter "type"
 
     .prologue
-    .line 158
-    const v1, 0x7f04005e
+    .line 157
+    const v1, 0x7f040063
 
     invoke-direct {p0, v1}, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->addPanelTool(I)Landroid/view/View;
 
@@ -441,7 +454,7 @@
 
     check-cast v0, Lcom/android/gallery3d/photoeditor/actions/ScaleSeekBar;
 
-    .line 160
+    .line 159
     .local v0, scalePicker:Lcom/android/gallery3d/photoeditor/actions/ScaleSeekBar;
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolPanel:Landroid/view/ViewGroup;
 
@@ -455,7 +468,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/actions/ScaleSeekBar;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 162
+    .line 161
     return-object v0
 .end method
 
@@ -465,12 +478,12 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 95
+    .line 94
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v0
 
-    .line 96
+    .line 95
     .local v0, now:J
     const/4 v4, 0x3
 
@@ -484,37 +497,37 @@
 
     move-result-object v8
 
-    .line 97
+    .line 96
     .local v8, cancelEvent:Landroid/view/MotionEvent;
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolFullscreen:Landroid/view/ViewGroup;
 
     invoke-virtual {v2, v8}, Landroid/view/ViewGroup;->dispatchTouchEvent(Landroid/view/MotionEvent;)Z
 
-    .line 98
+    .line 97
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolPanel:Landroid/view/ViewGroup;
 
     invoke-virtual {v2, v8}, Landroid/view/ViewGroup;->dispatchTouchEvent(Landroid/view/MotionEvent;)Z
 
-    .line 99
+    .line 98
     invoke-virtual {v8}, Landroid/view/MotionEvent;->recycle()V
 
-    .line 100
+    .line 99
     new-instance v9, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit$1;
 
     invoke-direct {v9, p0}, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit$1;-><init>(Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;)V
 
-    .line 108
+    .line 107
     .local v9, listener:Landroid/view/View$OnTouchListener;
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolFullscreen:Landroid/view/ViewGroup;
 
     invoke-virtual {v2, v9}, Landroid/view/ViewGroup;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V
 
-    .line 109
+    .line 108
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolPanel:Landroid/view/ViewGroup;
 
     invoke-virtual {v2, v9}, Landroid/view/ViewGroup;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V
 
-    .line 110
+    .line 109
     return-void
 .end method
 
@@ -522,7 +535,7 @@
     .locals 2
 
     .prologue
-    .line 116
+    .line 115
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolFullscreen:Landroid/view/ViewGroup;
 
     invoke-virtual {v0}, Landroid/view/ViewGroup;->getParent()Landroid/view/ViewParent;
@@ -531,7 +544,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 117
+    .line 116
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolFullscreen:Landroid/view/ViewGroup;
 
     invoke-virtual {v0}, Landroid/view/ViewGroup;->getParent()Landroid/view/ViewParent;
@@ -544,7 +557,7 @@
 
     invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
 
-    .line 119
+    .line 118
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolPanel:Landroid/view/ViewGroup;
 
@@ -554,7 +567,7 @@
 
     if-eqz v0, :cond_1
 
-    .line 120
+    .line 119
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->toolPanel:Landroid/view/ViewGroup;
 
     invoke-virtual {v0}, Landroid/view/ViewGroup;->getParent()Landroid/view/ViewParent;
@@ -567,7 +580,7 @@
 
     invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
 
-    .line 123
+    .line 122
     :cond_1
     return-void
 .end method
@@ -576,7 +589,7 @@
     .locals 1
 
     .prologue
-    .line 84
+    .line 83
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;->photoView:Lcom/android/gallery3d/photoeditor/PhotoView;
 
     return-object v0

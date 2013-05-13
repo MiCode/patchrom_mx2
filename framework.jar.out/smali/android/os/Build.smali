@@ -23,11 +23,15 @@
 
 .field public static final BUILD_MASK:Ljava/lang/String; = null
 
+.field public static final CHINAUNICOM_VALUE:Ljava/lang/String; = null
+
 .field public static final CPU_ABI:Ljava/lang/String; = null
 
 .field public static final CPU_ABI2:Ljava/lang/String; = null
 
 .field public static final CTA:Ljava/lang/String; = null
+
+.field public static final CUSTOMIZE_CHINAUNICOM:Ljava/lang/Boolean; = null
 
 .field public static final CUSTOMIZE_PCCW:Ljava/lang/String; = null
 
@@ -38,6 +42,8 @@
 .field public static final FINGERPRINT:Ljava/lang/String; = null
 
 .field public static final HARDWARE:Ljava/lang/String; = null
+
+.field public static final HAS_PERMANENTKEY:Ljava/lang/Boolean; = null
 
 .field public static final HOST:Ljava/lang/String; = null
 
@@ -74,6 +80,8 @@
 .field public static final MZ_USE_NAVBAR:Z = false
 
 .field public static final MeizuSecurity:Ljava/lang/Boolean; = null
+
+.field public static final PERMANENTKEY:Ljava/lang/String; = null
 
 .field public static final PRODUCT:Ljava/lang/String; = null
 
@@ -281,7 +289,16 @@
 
     sput-object v2, Landroid/os/Build;->CTA:Ljava/lang/String;
 
-    .line 438
+    .line 92
+    const-string/jumbo v2, "ro.meizu.permanentkey"
+
+    invoke-static {v2}, Landroid/os/Build;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    sput-object v2, Landroid/os/Build;->PERMANENTKEY:Ljava/lang/String;
+
+    .line 444
     const-string/jumbo v2, "ro.build.type"
 
     invoke-static {v2}, Landroid/os/Build;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -290,7 +307,7 @@
 
     sput-object v2, Landroid/os/Build;->TYPE:Ljava/lang/String;
 
-    .line 441
+    .line 447
     const-string/jumbo v2, "ro.build.tags"
 
     invoke-static {v2}, Landroid/os/Build;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -299,7 +316,7 @@
 
     sput-object v2, Landroid/os/Build;->TAGS:Ljava/lang/String;
 
-    .line 444
+    .line 450
     const-string/jumbo v2, "ro.build.fingerprint"
 
     invoke-static {v2}, Landroid/os/Build;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -308,7 +325,7 @@
 
     sput-object v2, Landroid/os/Build;->FINGERPRINT:Ljava/lang/String;
 
-    .line 447
+    .line 453
     const-string/jumbo v2, "ro.build.date.utc"
 
     invoke-static {v2}, Landroid/os/Build;->getLong(Ljava/lang/String;)J
@@ -321,7 +338,7 @@
 
     sput-wide v2, Landroid/os/Build;->TIME:J
 
-    .line 448
+    .line 454
     const-string/jumbo v2, "ro.build.user"
 
     invoke-static {v2}, Landroid/os/Build;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -330,7 +347,7 @@
 
     sput-object v2, Landroid/os/Build;->USER:Ljava/lang/String;
 
-    .line 449
+    .line 455
     const-string/jumbo v2, "ro.build.host"
 
     invoke-static {v2}, Landroid/os/Build;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -339,7 +356,7 @@
 
     sput-object v2, Landroid/os/Build;->HOST:Ljava/lang/String;
 
-    .line 451
+    .line 457
     const-string/jumbo v2, "ro.meizu.customize.pccw"
 
     invoke-static {v2}, Landroid/os/Build;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -348,7 +365,7 @@
 
     sput-object v2, Landroid/os/Build;->CUSTOMIZE_PCCW:Ljava/lang/String;
 
-    .line 452
+    .line 458
     const-string/jumbo v2, "ro.meizu.autorecorder"
 
     invoke-static {v2}, Landroid/os/Build;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -357,7 +374,7 @@
 
     sput-object v2, Landroid/os/Build;->AUTORECORDER:Ljava/lang/String;
 
-    .line 453
+    .line 459
     const-string/jumbo v2, "ro.meizu.visualvoicemail"
 
     invoke-static {v2}, Landroid/os/Build;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -366,7 +383,7 @@
 
     sput-object v2, Landroid/os/Build;->VOICEMAIL:Ljava/lang/String;
 
-    .line 454
+    .line 460
     const-string/jumbo v2, "ro.meizu.security"
 
     invoke-static {v2}, Landroid/os/Build;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -375,21 +392,44 @@
 
     sput-object v2, Landroid/os/Build;->MEIZU_SECURITY:Ljava/lang/String;
 
-    .line 457
+    .line 463
     invoke-static {}, Landroid/os/Build;->isPCCW()Ljava/lang/Boolean;
 
     move-result-object v2
 
     sput-object v2, Landroid/os/Build;->IS_PCCW:Ljava/lang/Boolean;
 
-    .line 458
+    .line 464
     invoke-static {}, Landroid/os/Build;->isMeizuSecurity()Ljava/lang/Boolean;
 
     move-result-object v2
 
     sput-object v2, Landroid/os/Build;->MeizuSecurity:Ljava/lang/Boolean;
 
-    .line 464
+    .line 465
+    invoke-static {}, Landroid/os/Build;->hasPermanentKey()Ljava/lang/Boolean;
+
+    move-result-object v2
+
+    sput-object v2, Landroid/os/Build;->HAS_PERMANENTKEY:Ljava/lang/Boolean;
+
+    .line 468
+    const-string/jumbo v2, "ro.customize.isp"
+
+    invoke-static {v2}, Landroid/os/Build;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    sput-object v2, Landroid/os/Build;->CHINAUNICOM_VALUE:Ljava/lang/String;
+
+    .line 469
+    invoke-static {}, Landroid/os/Build;->isChinaUnicom()Ljava/lang/Boolean;
+
+    move-result-object v2
+
+    sput-object v2, Landroid/os/Build;->CUSTOMIZE_CHINAUNICOM:Ljava/lang/Boolean;
+
+    .line 474
     const-string/jumbo v2, "ro.debuggable"
 
     invoke-static {v2, v1}, Landroid/os/SystemProperties;->getInt(Ljava/lang/String;I)I
@@ -416,7 +456,7 @@
     .line 24
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 150
+    .line 156
     return-void
 .end method
 
@@ -438,7 +478,7 @@
     .parameter "property"
 
     .prologue
-    .line 516
+    .line 532
     :try_start_0
     invoke-static {p0}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
 
@@ -450,15 +490,15 @@
 
     move-result-wide v1
 
-    .line 518
+    .line 534
     :goto_0
     return-wide v1
 
-    .line 517
+    .line 533
     :catch_0
     move-exception v0
 
-    .line 518
+    .line 534
     .local v0, e:Ljava/lang/NumberFormatException;
     const-wide/16 v1, -0x1
 
@@ -469,7 +509,7 @@
     .locals 2
 
     .prologue
-    .line 472
+    .line 482
     const-string v0, "gsm.version.baseband"
 
     const/4 v1, 0x0
@@ -486,7 +526,7 @@
     .parameter "property"
 
     .prologue
-    .line 476
+    .line 486
     const-string/jumbo v0, "unknown"
 
     invoke-static {p0, v0}, Landroid/os/SystemProperties;->get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
@@ -496,11 +536,91 @@
     return-object v0
 .end method
 
+.method private static hasPermanentKey()Ljava/lang/Boolean;
+    .locals 2
+
+    .prologue
+    .line 525
+    sget-object v0, Landroid/os/Build;->PERMANENTKEY:Ljava/lang/String;
+
+    if-eqz v0, :cond_0
+
+    sget-object v0, Landroid/os/Build;->PERMANENTKEY:Ljava/lang/String;
+
+    const-string/jumbo v1, "true"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 526
+    const/4 v0, 0x1
+
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v0
+
+    .line 528
+    :goto_0
+    return-object v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v0
+
+    goto :goto_0
+.end method
+
+.method private static isChinaUnicom()Ljava/lang/Boolean;
+    .locals 2
+
+    .prologue
+    .line 561
+    sget-object v0, Landroid/os/Build;->CHINAUNICOM_VALUE:Ljava/lang/String;
+
+    if-eqz v0, :cond_0
+
+    sget-object v0, Landroid/os/Build;->CHINAUNICOM_VALUE:Ljava/lang/String;
+
+    const-string v1, "chinaunicom"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 562
+    const/4 v0, 0x1
+
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v0
+
+    .line 564
+    :goto_0
+    return-object v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v0
+
+    goto :goto_0
+.end method
+
 .method private static isM9()Ljava/lang/Boolean;
     .locals 2
 
     .prologue
-    .line 494
+    .line 504
     sget-object v0, Landroid/os/Build;->DEVICE:Ljava/lang/String;
 
     const-string v1, "m9"
@@ -511,14 +631,14 @@
 
     if-eqz v0, :cond_0
 
-    .line 495
+    .line 505
     const/4 v0, 0x1
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
     move-result-object v0
 
-    .line 497
+    .line 507
     :goto_0
     return-object v0
 
@@ -536,7 +656,7 @@
     .locals 2
 
     .prologue
-    .line 487
+    .line 497
     sget-object v0, Landroid/os/Build;->DEVICE:Ljava/lang/String;
 
     const-string/jumbo v1, "mx"
@@ -547,14 +667,14 @@
 
     if-eqz v0, :cond_0
 
-    .line 488
+    .line 498
     const/4 v0, 0x1
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
     move-result-object v0
 
-    .line 490
+    .line 500
     :goto_0
     return-object v0
 
@@ -572,7 +692,7 @@
     .locals 2
 
     .prologue
-    .line 480
+    .line 490
     sget-object v0, Landroid/os/Build;->DEVICE:Ljava/lang/String;
 
     const-string/jumbo v1, "mx2"
@@ -583,14 +703,14 @@
 
     if-eqz v0, :cond_0
 
-    .line 481
+    .line 491
     const/4 v0, 0x1
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
     move-result-object v0
 
-    .line 483
+    .line 493
     :goto_0
     return-object v0
 
@@ -608,7 +728,7 @@
     .locals 2
 
     .prologue
-    .line 508
+    .line 518
     sget-object v0, Landroid/os/Build;->MEIZU_SECURITY:Ljava/lang/String;
 
     if-eqz v0, :cond_0
@@ -623,14 +743,14 @@
 
     if-eqz v0, :cond_0
 
-    .line 509
+    .line 519
     const/4 v0, 0x1
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
     move-result-object v0
 
-    .line 511
+    .line 521
     :goto_0
     return-object v0
 
@@ -648,7 +768,7 @@
     .locals 2
 
     .prologue
-    .line 501
+    .line 511
     sget-object v0, Landroid/os/Build;->CUSTOMIZE_PCCW:Ljava/lang/String;
 
     if-eqz v0, :cond_0
@@ -663,14 +783,14 @@
 
     if-eqz v0, :cond_0
 
-    .line 502
+    .line 512
     const/4 v0, 0x1
 
     invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
     move-result-object v0
 
-    .line 504
+    .line 514
     :goto_0
     return-object v0
 
@@ -690,7 +810,7 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 529
+    .line 545
     :try_start_0
     const-string/jumbo v2, "ro.product.locale.language"
 
@@ -725,18 +845,18 @@
     :cond_0
     const/4 v1, 0x1
 
-    .line 533
+    .line 549
     .local v0, e:Ljava/lang/Exception;
     :cond_1
     :goto_0
     return v1
 
-    .line 530
+    .line 546
     .end local v0           #e:Ljava/lang/Exception;
     :catch_0
     move-exception v0
 
-    .line 531
+    .line 547
     .restart local v0       #e:Ljava/lang/Exception;
     invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
 

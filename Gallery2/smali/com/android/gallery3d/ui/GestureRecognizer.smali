@@ -34,13 +34,13 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 49
+    .line 50
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 50
+    .line 51
     iput-object p2, p0, Lcom/android/gallery3d/ui/GestureRecognizer;->mListener:Lcom/android/gallery3d/ui/GestureRecognizer$Listener;
 
-    .line 51
+    .line 52
     new-instance v0, Landroid/view/GestureDetector;
 
     new-instance v1, Lcom/android/gallery3d/ui/GestureRecognizer$MyGestureListener;
@@ -53,7 +53,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/GestureRecognizer;->mGestureDetector:Landroid/view/GestureDetector;
 
-    .line 53
+    .line 54
     new-instance v0, Landroid/view/ScaleGestureDetector;
 
     new-instance v1, Lcom/android/gallery3d/ui/GestureRecognizer$MyScaleListener;
@@ -64,7 +64,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/GestureRecognizer;->mScaleDetector:Landroid/view/ScaleGestureDetector;
 
-    .line 55
+    .line 56
     new-instance v0, Lcom/android/gallery3d/ui/DownUpDetector;
 
     new-instance v1, Lcom/android/gallery3d/ui/GestureRecognizer$MyDownUpListener;
@@ -75,7 +75,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/GestureRecognizer;->mDownUpDetector:Lcom/android/gallery3d/ui/DownUpDetector;
 
-    .line 56
+    .line 57
     return-void
 .end method
 
@@ -98,12 +98,12 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 69
+    .line 70
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v0
 
-    .line 70
+    .line 71
     .local v0, now:J
     const/4 v4, 0x3
 
@@ -117,16 +117,16 @@
 
     move-result-object v8
 
-    .line 72
+    .line 73
     .local v8, cancelEvent:Landroid/view/MotionEvent;
     iget-object v2, p0, Lcom/android/gallery3d/ui/GestureRecognizer;->mScaleDetector:Landroid/view/ScaleGestureDetector;
 
     invoke-virtual {v2, v8}, Landroid/view/ScaleGestureDetector;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
-    .line 73
+    .line 74
     invoke-virtual {v8}, Landroid/view/MotionEvent;->recycle()V
 
-    .line 74
+    .line 75
     return-void
 .end method
 
@@ -135,21 +135,21 @@
     .parameter "event"
 
     .prologue
-    .line 59
+    .line 60
     iget-object v0, p0, Lcom/android/gallery3d/ui/GestureRecognizer;->mGestureDetector:Landroid/view/GestureDetector;
 
     invoke-virtual {v0, p1}, Landroid/view/GestureDetector;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
-    .line 60
+    .line 61
     iget-object v0, p0, Lcom/android/gallery3d/ui/GestureRecognizer;->mScaleDetector:Landroid/view/ScaleGestureDetector;
 
     invoke-virtual {v0, p1}, Landroid/view/ScaleGestureDetector;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
-    .line 61
+    .line 62
     iget-object v0, p0, Lcom/android/gallery3d/ui/GestureRecognizer;->mDownUpDetector:Lcom/android/gallery3d/ui/DownUpDetector;
 
     invoke-virtual {v0, p1}, Lcom/android/gallery3d/ui/DownUpDetector;->onTouchEvent(Landroid/view/MotionEvent;)V
 
-    .line 62
+    .line 63
     return-void
 .end method

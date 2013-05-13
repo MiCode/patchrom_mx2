@@ -15,9 +15,15 @@
 
 
 # instance fields
-.field private final kHeight:I
+.field private final ITEM_PADDING:I
 
-.field private final kMaxWidth:I
+.field private final ITEM_WIDTH_MAX:I
+
+.field private final ITEM_WIDTH_MIN:I
+
+.field private final TEXT_SIZE:I
+
+.field private final kHeight:I
 
 .field private final kMinWidth:I
 
@@ -58,357 +64,378 @@
 
 # direct methods
 .method public constructor <init>(Lcom/meizu/widget/OptionPopupWindow;Landroid/content/Context;)V
-    .locals 7
+    .locals 6
     .parameter
     .parameter "c"
 
     .prologue
-    const/4 v6, 0x1
+    const/4 v5, 0x1
 
-    const/4 v3, -0x1
+    const/4 v2, -0x1
 
-    .line 231
+    .line 235
     iput-object p1, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
 
-    .line 232
+    .line 236
     invoke-direct {p0, p2}, Landroid/view/View;-><init>(Landroid/content/Context;)V
 
-    .line 191
-    iput v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActiveIndex:I
-
-    .line 193
-    iput v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActionIndex:I
-
     .line 195
-    const/4 v3, 0x0
+    iput v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActiveIndex:I
 
-    iput-boolean v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mIsArrowUp:Z
+    .line 197
+    iput v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActionIndex:I
 
-    .line 207
-    new-instance v3, Landroid/graphics/Rect;
+    .line 199
+    const/4 v2, 0x0
 
-    invoke-direct {v3}, Landroid/graphics/Rect;-><init>()V
+    iput-boolean v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mIsArrowUp:Z
 
-    iput-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+    .line 211
+    new-instance v2, Landroid/graphics/Rect;
 
-    .line 216
-    new-instance v3, Lcom/meizu/widget/OptionPopupWindow$HandleView$1;
+    invoke-direct {v2}, Landroid/graphics/Rect;-><init>()V
 
-    invoke-direct {v3, p0}, Lcom/meizu/widget/OptionPopupWindow$HandleView$1;-><init>(Lcom/meizu/widget/OptionPopupWindow$HandleView;)V
+    iput-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
 
-    iput-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mClickAction:Ljava/lang/Runnable;
+    .line 220
+    new-instance v2, Lcom/meizu/widget/OptionPopupWindow$HandleView$1;
 
-    .line 233
+    invoke-direct {v2, p0}, Lcom/meizu/widget/OptionPopupWindow$HandleView$1;-><init>(Lcom/meizu/widget/OptionPopupWindow$HandleView;)V
+
+    iput-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mClickAction:Ljava/lang/Runnable;
+
+    .line 237
     invoke-virtual {p2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    .line 238
+    .local v1, r:Landroid/content/res/Resources;
+    const v2, 0x1050125
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v2
+
+    iput v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->TEXT_SIZE:I
+
+    .line 239
+    const v2, 0x1050126
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v2
+
+    iput v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->ITEM_PADDING:I
+
+    .line 240
+    const v2, 0x1050127
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v2
+
+    iput v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->ITEM_WIDTH_MIN:I
+
+    .line 241
+    const v2, 0x1050128
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v2
+
+    iput v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->ITEM_WIDTH_MAX:I
+
+    .line 242
+    const v2, 0x108014f
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v2
 
-    .line 234
-    .local v2, r:Landroid/content/res/Resources;
-    const v3, 0x1080150
-
-    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v3
-
-    iput-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mLeftDrawable:Landroid/graphics/drawable/Drawable;
-
-    .line 235
-    const v3, 0x1080153
-
-    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v3
-
-    iput-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mMiddleDrawable:Landroid/graphics/drawable/Drawable;
-
-    .line 236
-    const v3, 0x1080156
-
-    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v3
-
-    iput-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mRightDrawable:Landroid/graphics/drawable/Drawable;
-
-    .line 237
-    const v3, 0x108014f
-
-    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v3
-
-    iput-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mSepDrawable:Landroid/graphics/drawable/Drawable;
-
-    .line 238
-    invoke-static {p2}, Landroid/view/ViewConfiguration;->get(Landroid/content/Context;)Landroid/view/ViewConfiguration;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Landroid/view/ViewConfiguration;->getScaledTouchSlop()I
-
-    move-result v3
-
-    iput v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mTouchSlop:I
-
-    .line 240
-    new-instance v1, Landroid/graphics/Rect;
-
-    invoke-direct {v1}, Landroid/graphics/Rect;-><init>()V
-
-    .line 241
-    .local v1, padding:Landroid/graphics/Rect;
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mLeftDrawable:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v3, v1}, Landroid/graphics/drawable/Drawable;->getPadding(Landroid/graphics/Rect;)Z
-
-    .line 242
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
-
-    iget v4, v1, Landroid/graphics/Rect;->left:I
-
-    iget-object v5, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
-
-    iget v5, v5, Landroid/graphics/Rect;->left:I
-
-    invoke-static {v4, v5}, Ljava/lang/Math;->max(II)I
-
-    move-result v4
-
-    iput v4, v3, Landroid/graphics/Rect;->left:I
+    iput-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mLeftDrawable:Landroid/graphics/drawable/Drawable;
 
     .line 243
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+    const v2, 0x1080152
 
-    iget v4, v1, Landroid/graphics/Rect;->top:I
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    iget-object v5, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+    move-result-object v2
 
-    iget v5, v5, Landroid/graphics/Rect;->top:I
-
-    invoke-static {v4, v5}, Ljava/lang/Math;->max(II)I
-
-    move-result v4
-
-    iput v4, v3, Landroid/graphics/Rect;->top:I
+    iput-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mMiddleDrawable:Landroid/graphics/drawable/Drawable;
 
     .line 244
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+    const v2, 0x1080155
 
-    iget v4, v1, Landroid/graphics/Rect;->bottom:I
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    iget-object v5, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+    move-result-object v2
 
-    iget v5, v5, Landroid/graphics/Rect;->bottom:I
+    iput-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mRightDrawable:Landroid/graphics/drawable/Drawable;
 
-    invoke-static {v4, v5}, Ljava/lang/Math;->max(II)I
+    .line 245
+    const v2, 0x108014e
 
-    move-result v4
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    iput v4, v3, Landroid/graphics/Rect;->bottom:I
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mSepDrawable:Landroid/graphics/drawable/Drawable;
 
     .line 246
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mMiddleDrawable:Landroid/graphics/drawable/Drawable;
+    invoke-static {p2}, Landroid/view/ViewConfiguration;->get(Landroid/content/Context;)Landroid/view/ViewConfiguration;
 
-    invoke-virtual {v3, v1}, Landroid/graphics/drawable/Drawable;->getPadding(Landroid/graphics/Rect;)Z
+    move-result-object v2
 
-    .line 247
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+    invoke-virtual {v2}, Landroid/view/ViewConfiguration;->getScaledTouchSlop()I
 
-    iget v4, v1, Landroid/graphics/Rect;->top:I
+    move-result v2
 
-    iget-object v5, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
-
-    iget v5, v5, Landroid/graphics/Rect;->top:I
-
-    invoke-static {v4, v5}, Ljava/lang/Math;->max(II)I
-
-    move-result v4
-
-    iput v4, v3, Landroid/graphics/Rect;->top:I
+    iput v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mTouchSlop:I
 
     .line 248
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+    new-instance v0, Landroid/graphics/Rect;
 
-    iget v4, v1, Landroid/graphics/Rect;->bottom:I
+    invoke-direct {v0}, Landroid/graphics/Rect;-><init>()V
 
-    iget-object v5, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+    .line 249
+    .local v0, padding:Landroid/graphics/Rect;
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mLeftDrawable:Landroid/graphics/drawable/Drawable;
 
-    iget v5, v5, Landroid/graphics/Rect;->bottom:I
-
-    invoke-static {v4, v5}, Ljava/lang/Math;->max(II)I
-
-    move-result v4
-
-    iput v4, v3, Landroid/graphics/Rect;->bottom:I
+    invoke-virtual {v2, v0}, Landroid/graphics/drawable/Drawable;->getPadding(Landroid/graphics/Rect;)Z
 
     .line 250
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mRightDrawable:Landroid/graphics/drawable/Drawable;
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
 
-    invoke-virtual {v3, v1}, Landroid/graphics/drawable/Drawable;->getPadding(Landroid/graphics/Rect;)Z
+    iget v3, v0, Landroid/graphics/Rect;->left:I
 
-    .line 251
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+    iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
 
-    iget v4, v1, Landroid/graphics/Rect;->right:I
+    iget v4, v4, Landroid/graphics/Rect;->left:I
 
-    iget-object v5, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
-
-    iget v5, v5, Landroid/graphics/Rect;->right:I
-
-    invoke-static {v4, v5}, Ljava/lang/Math;->max(II)I
-
-    move-result v4
-
-    iput v4, v3, Landroid/graphics/Rect;->right:I
-
-    .line 252
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
-
-    iget v4, v1, Landroid/graphics/Rect;->top:I
-
-    iget-object v5, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
-
-    iget v5, v5, Landroid/graphics/Rect;->top:I
-
-    invoke-static {v4, v5}, Ljava/lang/Math;->max(II)I
-
-    move-result v4
-
-    iput v4, v3, Landroid/graphics/Rect;->top:I
-
-    .line 253
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
-
-    iget v4, v1, Landroid/graphics/Rect;->bottom:I
-
-    iget-object v5, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
-
-    iget v5, v5, Landroid/graphics/Rect;->bottom:I
-
-    invoke-static {v4, v5}, Ljava/lang/Math;->max(II)I
-
-    move-result v4
-
-    iput v4, v3, Landroid/graphics/Rect;->bottom:I
-
-    .line 255
-    invoke-virtual {v2}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
-
-    move-result-object v0
-
-    .line 256
-    .local v0, dm:Landroid/util/DisplayMetrics;
-    iget v3, v0, Landroid/util/DisplayMetrics;->widthPixels:I
-
-    iget v4, v0, Landroid/util/DisplayMetrics;->heightPixels:I
-
-    invoke-static {v3, v4}, Ljava/lang/Math;->min(II)I
+    invoke-static {v3, v4}, Ljava/lang/Math;->max(II)I
 
     move-result v3
 
-    iput v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kMaxWidth:I
+    iput v3, v2, Landroid/graphics/Rect;->left:I
 
-    .line 257
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mLeftDrawable:Landroid/graphics/drawable/Drawable;
+    .line 251
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+
+    iget v3, v0, Landroid/graphics/Rect;->top:I
+
+    iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+
+    iget v4, v4, Landroid/graphics/Rect;->top:I
+
+    invoke-static {v3, v4}, Ljava/lang/Math;->max(II)I
+
+    move-result v3
+
+    iput v3, v2, Landroid/graphics/Rect;->top:I
+
+    .line 252
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+
+    iget v3, v0, Landroid/graphics/Rect;->bottom:I
+
+    iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+
+    iget v4, v4, Landroid/graphics/Rect;->bottom:I
+
+    invoke-static {v3, v4}, Ljava/lang/Math;->max(II)I
+
+    move-result v3
+
+    iput v3, v2, Landroid/graphics/Rect;->bottom:I
+
+    .line 254
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mMiddleDrawable:Landroid/graphics/drawable/Drawable;
+
+    invoke-virtual {v2, v0}, Landroid/graphics/drawable/Drawable;->getPadding(Landroid/graphics/Rect;)Z
+
+    .line 255
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+
+    iget v3, v0, Landroid/graphics/Rect;->top:I
+
+    iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+
+    iget v4, v4, Landroid/graphics/Rect;->top:I
+
+    invoke-static {v3, v4}, Ljava/lang/Math;->max(II)I
+
+    move-result v3
+
+    iput v3, v2, Landroid/graphics/Rect;->top:I
+
+    .line 256
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+
+    iget v3, v0, Landroid/graphics/Rect;->bottom:I
+
+    iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+
+    iget v4, v4, Landroid/graphics/Rect;->bottom:I
+
+    invoke-static {v3, v4}, Ljava/lang/Math;->max(II)I
+
+    move-result v3
+
+    iput v3, v2, Landroid/graphics/Rect;->bottom:I
+
+    .line 258
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mRightDrawable:Landroid/graphics/drawable/Drawable;
+
+    invoke-virtual {v2, v0}, Landroid/graphics/drawable/Drawable;->getPadding(Landroid/graphics/Rect;)Z
+
+    .line 259
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+
+    iget v3, v0, Landroid/graphics/Rect;->right:I
+
+    iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+
+    iget v4, v4, Landroid/graphics/Rect;->right:I
+
+    invoke-static {v3, v4}, Ljava/lang/Math;->max(II)I
+
+    move-result v3
+
+    iput v3, v2, Landroid/graphics/Rect;->right:I
+
+    .line 260
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+
+    iget v3, v0, Landroid/graphics/Rect;->top:I
+
+    iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+
+    iget v4, v4, Landroid/graphics/Rect;->top:I
+
+    invoke-static {v3, v4}, Ljava/lang/Math;->max(II)I
+
+    move-result v3
+
+    iput v3, v2, Landroid/graphics/Rect;->top:I
+
+    .line 261
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+
+    iget v3, v0, Landroid/graphics/Rect;->bottom:I
+
+    iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+
+    iget v4, v4, Landroid/graphics/Rect;->bottom:I
+
+    invoke-static {v3, v4}, Ljava/lang/Math;->max(II)I
+
+    move-result v3
+
+    iput v3, v2, Landroid/graphics/Rect;->bottom:I
+
+    .line 263
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mLeftDrawable:Landroid/graphics/drawable/Drawable;
+
+    invoke-virtual {v2}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
+
+    move-result v2
+
+    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mMiddleDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v3}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
 
     move-result v3
 
-    iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mMiddleDrawable:Landroid/graphics/drawable/Drawable;
+    add-int/2addr v2, v3
 
-    invoke-virtual {v4}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
+    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mRightDrawable:Landroid/graphics/drawable/Drawable;
 
-    move-result v4
-
-    add-int/2addr v3, v4
-
-    iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mRightDrawable:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v4}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
-
-    move-result v4
-
-    add-int/2addr v3, v4
-
-    iput v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kMinWidth:I
-
-    .line 260
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mMiddleDrawable:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v3}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
+    invoke-virtual {v3}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
 
     move-result v3
 
-    iput v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kHeight:I
+    add-int/2addr v2, v3
 
-    .line 262
-    new-instance v3, Landroid/text/TextPaint;
-
-    invoke-direct {v3}, Landroid/text/TextPaint;-><init>()V
-
-    iput-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
-
-    .line 263
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
-
-    invoke-virtual {v3, v6}, Landroid/text/TextPaint;->setAntiAlias(Z)V
-
-    .line 264
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
-
-    const/high16 v4, 0x41c0
-
-    invoke-virtual {v3, v4}, Landroid/text/TextPaint;->setTextSize(F)V
-
-    .line 265
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
-
-    const/high16 v4, -0x100
-
-    invoke-virtual {v3, v4}, Landroid/text/TextPaint;->setColor(I)V
+    iput v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kMinWidth:I
 
     .line 266
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mMiddleDrawable:Landroid/graphics/drawable/Drawable;
 
-    const-string/jumbo v4, "\u2026"
+    invoke-virtual {v2}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
 
-    invoke-virtual {v3, v4}, Landroid/text/TextPaint;->measureText(Ljava/lang/String;)F
+    move-result v2
 
-    move-result v3
+    iput v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kHeight:I
 
-    iput v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mSuspensionPointsWidth:F
+    .line 268
+    new-instance v2, Landroid/text/TextPaint;
 
-    .line 267
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
+    invoke-direct {v2}, Landroid/text/TextPaint;-><init>()V
 
-    invoke-virtual {v3}, Landroid/text/TextPaint;->getFontMetricsInt()Landroid/graphics/Paint$FontMetricsInt;
-
-    move-result-object v3
-
-    iput-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mFmi:Landroid/graphics/Paint$FontMetricsInt;
+    iput-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
 
     .line 269
-    new-instance v3, Landroid/graphics/Paint;
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
 
-    invoke-direct {v3}, Landroid/graphics/Paint;-><init>()V
-
-    iput-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBitmapPaint:Landroid/graphics/Paint;
+    invoke-virtual {v2, v5}, Landroid/text/TextPaint;->setAntiAlias(Z)V
 
     .line 270
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBitmapPaint:Landroid/graphics/Paint;
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
 
-    invoke-virtual {v3, v6}, Landroid/graphics/Paint;->setAntiAlias(Z)V
+    iget v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->TEXT_SIZE:I
+
+    int-to-float v3, v3
+
+    invoke-virtual {v2, v3}, Landroid/text/TextPaint;->setTextSize(F)V
 
     .line 271
-    iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBitmapPaint:Landroid/graphics/Paint;
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
 
-    const v4, -0x333334
+    const/high16 v3, -0x100
 
-    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setColor(I)V
+    invoke-virtual {v2, v3}, Landroid/text/TextPaint;->setColor(I)V
+
+    .line 272
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
+
+    const-string/jumbo v3, "\u2025"
+
+    invoke-virtual {v2, v3}, Landroid/text/TextPaint;->measureText(Ljava/lang/String;)F
+
+    move-result v2
+
+    iput v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mSuspensionPointsWidth:F
 
     .line 273
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
+
+    invoke-virtual {v2}, Landroid/text/TextPaint;->getFontMetricsInt()Landroid/graphics/Paint$FontMetricsInt;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mFmi:Landroid/graphics/Paint$FontMetricsInt;
+
+    .line 275
+    new-instance v2, Landroid/graphics/Paint;
+
+    invoke-direct {v2}, Landroid/graphics/Paint;-><init>()V
+
+    iput-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBitmapPaint:Landroid/graphics/Paint;
+
+    .line 276
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBitmapPaint:Landroid/graphics/Paint;
+
+    invoke-virtual {v2, v5}, Landroid/graphics/Paint;->setAntiAlias(Z)V
+
+    .line 277
+    iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBitmapPaint:Landroid/graphics/Paint;
+
+    const v3, -0x333334
+
+    invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setColor(I)V
+
+    .line 279
     return-void
 .end method
 
@@ -441,10 +468,10 @@
     .parameter "y"
 
     .prologue
-    .line 468
+    .line 485
     iget v0, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActiveIndex:I
 
-    .line 469
+    .line 486
     .local v0, activeIndex:I
     iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
 
@@ -457,13 +484,13 @@
 
     move-result v2
 
-    .line 470
+    .line 487
     .local v2, count:I
     if-ltz v0, :cond_0
 
     if-ge v0, v2, :cond_0
 
-    .line 471
+    .line 488
     iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
 
     #getter for: Lcom/meizu/widget/OptionPopupWindow;->mOptionRects:Ljava/util/ArrayList;
@@ -477,7 +504,7 @@
 
     check-cast v1, Landroid/graphics/Rect;
 
-    .line 472
+    .line 489
     .local v1, clip:Landroid/graphics/Rect;
     iget v4, v1, Landroid/graphics/Rect;->left:I
 
@@ -527,13 +554,13 @@
 
     if-gez v4, :cond_0
 
-    .line 482
+    .line 499
     .end local v0           #activeIndex:I
     .end local v1           #clip:Landroid/graphics/Rect;
     :goto_0
     return v0
 
-    .line 476
+    .line 493
     .restart local v0       #activeIndex:I
     :cond_0
     const/4 v3, 0x0
@@ -542,7 +569,7 @@
     :goto_1
     if-ge v3, v2, :cond_2
 
-    .line 477
+    .line 494
     iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
 
     #getter for: Lcom/meizu/widget/OptionPopupWindow;->mOptionRects:Ljava/util/ArrayList;
@@ -556,7 +583,7 @@
 
     check-cast v1, Landroid/graphics/Rect;
 
-    .line 478
+    .line 495
     .restart local v1       #clip:Landroid/graphics/Rect;
     float-to-int v4, p1
 
@@ -570,16 +597,16 @@
 
     move v0, v3
 
-    .line 479
+    .line 496
     goto :goto_0
 
-    .line 476
+    .line 493
     :cond_1
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_1
 
-    .line 482
+    .line 499
     .end local v1           #clip:Landroid/graphics/Rect;
     :cond_2
     const/4 v0, -0x1
@@ -595,7 +622,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 400
+    .line 417
     if-lez p2, :cond_0
 
     invoke-interface {p1}, Landroid/view/Menu;->size()I
@@ -604,20 +631,20 @@
 
     if-ge p2, v3, :cond_0
 
-    .line 401
+    .line 418
     add-int/lit8 v3, p2, -0x1
 
     invoke-interface {p1, v3}, Landroid/view/Menu;->getItem(I)Landroid/view/MenuItem;
 
     move-result-object v1
 
-    .line 402
+    .line 419
     .local v1, prev:Landroid/view/MenuItem;
     invoke-interface {p1, p2}, Landroid/view/Menu;->getItem(I)Landroid/view/MenuItem;
 
     move-result-object v0
 
-    .line 403
+    .line 420
     .local v0, next:Landroid/view/MenuItem;
     invoke-interface {v1}, Landroid/view/MenuItem;->getGroupId()I
 
@@ -631,7 +658,7 @@
 
     const/4 v2, 0x1
 
-    .line 406
+    .line 423
     .end local v0           #next:Landroid/view/MenuItem;
     .end local v1           #prev:Landroid/view/MenuItem;
     :cond_0
@@ -648,12 +675,12 @@
     .parameter "bottom"
 
     .prologue
-    .line 440
+    .line 457
     invoke-interface {p2}, Landroid/view/MenuItem;->getTitle()Ljava/lang/CharSequence;
 
     move-result-object v6
 
-    .line 441
+    .line 458
     .local v6, s:Ljava/lang/CharSequence;
     invoke-static {v6}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -661,27 +688,27 @@
 
     if-eqz v10, :cond_1
 
-    .line 442
+    .line 459
     invoke-interface {p2}, Landroid/view/MenuItem;->getIcon()Landroid/graphics/drawable/Drawable;
 
     move-result-object v2
 
-    .line 443
+    .line 460
     .local v2, icon:Landroid/graphics/drawable/Drawable;
     if-eqz v2, :cond_0
 
-    .line 444
+    .line 461
     invoke-virtual {v2}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
 
     move-result v7
 
-    .line 445
+    .line 462
     .local v7, w:I
     invoke-virtual {v2}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
 
     move-result v1
 
-    .line 446
+    .line 463
     .local v1, h:I
     add-int v10, p3, p5
 
@@ -689,7 +716,7 @@
 
     div-int/lit8 v8, v10, 0x2
 
-    .line 447
+    .line 464
     .local v8, x:I
     add-int v10, p4, p6
 
@@ -697,7 +724,7 @@
 
     div-int/lit8 v9, v10, 0x2
 
-    .line 448
+    .line 465
     .local v9, y:I
     add-int v10, v8, v7
 
@@ -705,10 +732,10 @@
 
     invoke-virtual {v2, v8, v9, v10, v11}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    .line 449
+    .line 466
     invoke-virtual {v2, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 465
+    .line 482
     .end local v1           #h:I
     .end local v2           #icon:Landroid/graphics/drawable/Drawable;
     .end local v7           #w:I
@@ -718,21 +745,25 @@
     :goto_0
     return-void
 
-    .line 452
+    .line 469
     :cond_1
     invoke-virtual {v6}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     move-result-object v4
 
-    .line 453
+    .line 470
     .local v4, labelToDraw:Ljava/lang/String;
     sub-int v10, p5, p3
 
-    add-int/lit8 v10, v10, -0x30
+    iget v11, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->ITEM_PADDING:I
+
+    mul-int/lit8 v11, v11, 0x2
+
+    sub-int/2addr v10, v11
 
     int-to-float v5, v10
 
-    .line 454
+    .line 471
     .local v5, maxMeasuredWidth:F
     iget-object v10, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
 
@@ -740,25 +771,25 @@
 
     move-result v3
 
-    .line 455
+    .line 472
     .local v3, labelMeasuredWidth:F
     cmpl-float v10, v3, v5
 
     if-lez v10, :cond_2
 
-    .line 456
+    .line 473
     invoke-direct {p0, v4, v5}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->getLimitedLabelForDrawing(Ljava/lang/String;F)Ljava/lang/String;
 
     move-result-object v4
 
-    .line 457
+    .line 474
     iget-object v10, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
 
     invoke-virtual {v10, v4}, Landroid/text/TextPaint;->measureText(Ljava/lang/String;)F
 
     move-result v3
 
-    .line 460
+    .line 477
     :cond_2
     iget-object v10, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mFmi:Landroid/graphics/Paint$FontMetricsInt;
 
@@ -770,7 +801,7 @@
 
     sub-int v0, v10, v11
 
-    .line 461
+    .line 478
     .local v0, fontHeight:I
     add-int v10, p3, p5
 
@@ -782,7 +813,7 @@
 
     div-float v8, v10, v11
 
-    .line 462
+    .line 479
     .local v8, x:F
     add-int v10, p6, p4
 
@@ -802,7 +833,7 @@
 
     sub-float v9, v10, v11
 
-    .line 463
+    .line 480
     .local v9, y:F
     iget-object v10, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
 
@@ -812,35 +843,35 @@
 .end method
 
 .method private getBackgrounds()[Landroid/graphics/Bitmap;
-    .locals 27
+    .locals 28
 
     .prologue
-    .line 358
+    .line 373
     new-instance v20, Landroid/graphics/Canvas;
 
     invoke-direct/range {v20 .. v20}, Landroid/graphics/Canvas;-><init>()V
 
-    .line 359
+    .line 374
     .local v20, canvas:Landroid/graphics/Canvas;
     invoke-virtual/range {p0 .. p0}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->getMeasuredHeight()I
 
     move-result v21
 
-    .line 360
+    .line 375
     .local v21, height:I
     invoke-virtual/range {p0 .. p0}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->getMeasuredWidth()I
 
-    move-result v9
+    move-result v27
 
-    .line 361
-    .local v9, width:I
+    .line 376
+    .local v27, width:I
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mArrowOffsetX:I
 
     move/from16 v24, v0
 
-    .line 362
+    .line 377
     .local v24, midLeft:I
     move-object/from16 v0, p0
 
@@ -856,24 +887,26 @@
 
     add-int v25, v4, v5
 
-    .line 363
+    .line 378
     .local v25, midRight:I
+    invoke-direct/range {p0 .. p0}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->getMaxWidth()I
+
+    move-result v6
+
+    .line 379
+    .local v6, maxWidth:I
     const/4 v4, 0x2
 
     move-object/from16 v0, p0
 
-    iget v5, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kMaxWidth:I
-
-    move-object/from16 v0, p0
-
-    iget v6, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kHeight:I
+    iget v5, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kHeight:I
 
     #calls: Lcom/meizu/widget/OptionPopupWindow;->getBitmaps(III)[Landroid/graphics/Bitmap;
-    invoke-static {v4, v5, v6}, Lcom/meizu/widget/OptionPopupWindow;->access$400(III)[Landroid/graphics/Bitmap;
+    invoke-static {v4, v6, v5}, Lcom/meizu/widget/OptionPopupWindow;->access$400(III)[Landroid/graphics/Bitmap;
 
     move-result-object v19
 
-    .line 364
+    .line 380
     .local v19, bitmaps:[Landroid/graphics/Bitmap;
     const/16 v22, 0x0
 
@@ -883,31 +916,31 @@
 
     move/from16 v0, v22
 
-    if-ge v0, v4, :cond_2
+    if-ge v0, v4, :cond_3
 
-    .line 365
+    .line 381
     invoke-static {}, Lcom/meizu/widget/OptionPopupWindow;->access$500()[[I
 
     move-result-object v4
 
     aget-object v26, v4, v22
 
-    .line 366
+    .line 382
     .local v26, state:[I
     aget-object v3, v19, v22
 
-    .line 367
+    .line 383
     .local v3, bmp:Landroid/graphics/Bitmap;
     const/4 v4, 0x0
 
     invoke-virtual {v3, v4}, Landroid/graphics/Bitmap;->eraseColor(I)V
 
-    .line 368
+    .line 384
     move-object/from16 v0, v20
 
     invoke-virtual {v0, v3}, Landroid/graphics/Canvas;->setBitmap(Landroid/graphics/Bitmap;)V
 
-    .line 369
+    .line 385
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mLeftDrawable:Landroid/graphics/drawable/Drawable;
@@ -916,22 +949,22 @@
 
     invoke-virtual {v4, v0}, Landroid/graphics/drawable/Drawable;->setState([I)Z
 
-    .line 370
+    .line 386
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mLeftDrawable:Landroid/graphics/drawable/Drawable;
 
     const/4 v5, 0x0
 
-    const/4 v6, 0x0
+    const/4 v7, 0x0
 
     move/from16 v0, v24
 
     move/from16 v1, v21
 
-    invoke-virtual {v4, v5, v6, v0, v1}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+    invoke-virtual {v4, v5, v7, v0, v1}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    .line 371
+    .line 387
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mLeftDrawable:Landroid/graphics/drawable/Drawable;
@@ -940,7 +973,7 @@
 
     invoke-virtual {v4, v0}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 373
+    .line 389
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mMiddleDrawable:Landroid/graphics/drawable/Drawable;
@@ -949,7 +982,7 @@
 
     invoke-virtual {v4, v0}, Landroid/graphics/drawable/Drawable;->setState([I)Z
 
-    .line 374
+    .line 390
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mMiddleDrawable:Landroid/graphics/drawable/Drawable;
@@ -964,7 +997,7 @@
 
     invoke-virtual {v4, v0, v5, v1, v2}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    .line 375
+    .line 391
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mMiddleDrawable:Landroid/graphics/drawable/Drawable;
@@ -973,7 +1006,7 @@
 
     invoke-virtual {v4, v0}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 377
+    .line 393
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mRightDrawable:Landroid/graphics/drawable/Drawable;
@@ -982,7 +1015,7 @@
 
     invoke-virtual {v4, v0}, Landroid/graphics/drawable/Drawable;->setState([I)Z
 
-    .line 378
+    .line 394
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mRightDrawable:Landroid/graphics/drawable/Drawable;
@@ -991,11 +1024,13 @@
 
     move/from16 v0, v25
 
-    move/from16 v1, v21
+    move/from16 v1, v27
 
-    invoke-virtual {v4, v0, v5, v9, v1}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+    move/from16 v2, v21
 
-    .line 379
+    invoke-virtual {v4, v0, v5, v1, v2}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+
+    .line 395
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mRightDrawable:Landroid/graphics/drawable/Drawable;
@@ -1004,26 +1039,33 @@
 
     invoke-virtual {v4, v0}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 381
+    .line 397
     move-object/from16 v0, p0
 
     iget-boolean v4, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mIsArrowUp:Z
 
-    if-eqz v4, :cond_1
+    if-eqz v4, :cond_2
 
-    .line 382
+    .line 398
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPixels:[I
 
-    if-nez v4, :cond_0
+    if-eqz v4, :cond_0
 
-    .line 383
     move-object/from16 v0, p0
 
-    iget v4, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kMaxWidth:I
+    iget-object v4, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPixels:[I
 
-    mul-int/lit8 v4, v4, 0x2
+    array-length v4, v4
+
+    mul-int/lit8 v5, v6, 0x2
+
+    if-ge v4, v5, :cond_1
+
+    .line 399
+    :cond_0
+    mul-int/lit8 v4, v6, 0x2
 
     new-array v4, v4, [I
 
@@ -1031,12 +1073,20 @@
 
     iput-object v4, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPixels:[I
 
-    .line 385
-    :cond_0
-    div-int/lit8 v18, v21, 0x2
+    .line 401
+    :cond_1
+    shr-int/lit8 v18, v21, 0x1
 
-    .line 386
-    .local v18, HALF:I
+    .line 402
+    .local v18, MID:I
+    move/from16 v0, v27
+
+    invoke-static {v6, v0}, Ljava/lang/Math;->min(II)I
+
+    move-result v9
+
+    .line 403
+    .local v9, W:I
     const/16 v23, 0x0
 
     .local v23, j:I
@@ -1045,18 +1095,18 @@
 
     move/from16 v1, v18
 
-    if-ge v0, v1, :cond_1
+    if-ge v0, v1, :cond_2
 
-    .line 387
+    .line 404
     move/from16 v8, v23
 
-    .line 388
+    .line 405
     .local v8, top:I
     sub-int v4, v21, v23
 
     add-int/lit8 v15, v4, -0x1
 
-    .line 389
+    .line 406
     .local v15, bottom:I
     move-object/from16 v0, p0
 
@@ -1064,28 +1114,16 @@
 
     const/4 v5, 0x0
 
-    move-object/from16 v0, p0
-
-    iget v6, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kMaxWidth:I
-
     const/4 v7, 0x0
 
     const/4 v10, 0x1
 
     invoke-virtual/range {v3 .. v10}, Landroid/graphics/Bitmap;->getPixels([IIIIIII)V
 
-    .line 390
+    .line 407
     move-object/from16 v0, p0
 
     iget-object v11, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPixels:[I
-
-    move-object/from16 v0, p0
-
-    iget v12, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kMaxWidth:I
-
-    move-object/from16 v0, p0
-
-    iget v13, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kMaxWidth:I
 
     const/4 v14, 0x0
 
@@ -1093,69 +1131,66 @@
 
     move-object v10, v3
 
+    move v12, v6
+
+    move v13, v6
+
     move/from16 v16, v9
 
     invoke-virtual/range {v10 .. v17}, Landroid/graphics/Bitmap;->getPixels([IIIIIII)V
 
-    .line 391
+    .line 408
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPixels:[I
-
-    move-object/from16 v0, p0
-
-    iget v5, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kMaxWidth:I
-
-    move-object/from16 v0, p0
-
-    iget v6, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kMaxWidth:I
 
     const/4 v7, 0x0
 
     const/4 v10, 0x1
 
+    move v5, v6
+
     invoke-virtual/range {v3 .. v10}, Landroid/graphics/Bitmap;->setPixels([IIIIIII)V
 
-    .line 392
+    .line 409
     move-object/from16 v0, p0
 
     iget-object v11, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPixels:[I
 
     const/4 v12, 0x0
 
-    move-object/from16 v0, p0
-
-    iget v13, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kMaxWidth:I
-
     const/4 v14, 0x0
 
     const/16 v17, 0x1
 
     move-object v10, v3
 
+    move v13, v6
+
     move/from16 v16, v9
 
     invoke-virtual/range {v10 .. v17}, Landroid/graphics/Bitmap;->setPixels([IIIIIII)V
 
-    .line 386
+    .line 403
     add-int/lit8 v23, v23, 0x1
 
     goto :goto_1
 
-    .line 364
+    .line 380
     .end local v8           #top:I
+    .end local v9           #W:I
     .end local v15           #bottom:I
-    .end local v18           #HALF:I
+    .end local v18           #MID:I
     .end local v23           #j:I
-    :cond_1
+    :cond_2
     add-int/lit8 v22, v22, 0x1
 
     goto/16 :goto_0
 
-    .line 396
+    .line 413
     .end local v3           #bmp:Landroid/graphics/Bitmap;
     .end local v26           #state:[I
-    :cond_2
+    :cond_3
     return-object v19
 .end method
 
@@ -1169,33 +1204,33 @@
 
     const/4 v3, 0x0
 
-    .line 527
+    .line 544
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
     move-result v0
 
-    .line 528
+    .line 545
     .local v0, subLen:I
     if-gt v0, v4, :cond_0
 
-    .line 533
+    .line 550
     .end local p1
     :goto_0
     return-object p1
 
-    .line 530
+    .line 547
     .restart local p1
     :cond_0
     add-int/lit8 v0, v0, -0x1
 
-    .line 531
+    .line 548
     iget-object v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
 
     invoke-virtual {v2, p1, v3, v0}, Landroid/text/TextPaint;->measureText(Ljava/lang/String;II)F
 
     move-result v1
 
-    .line 532
+    .line 549
     .local v1, width:F
     iget v2, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mSuspensionPointsWidth:F
 
@@ -1207,7 +1242,7 @@
 
     if-lt v4, v0, :cond_0
 
-    .line 533
+    .line 550
     :cond_1
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -1221,7 +1256,7 @@
 
     move-result-object v2
 
-    const-string/jumbo v3, "\u2026"
+    const-string/jumbo v3, "\u2025"
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1234,15 +1269,45 @@
     goto :goto_0
 .end method
 
+.method private getMaxWidth()I
+    .locals 2
+
+    .prologue
+    .line 282
+    invoke-virtual {p0}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    .line 283
+    .local v0, res:Landroid/content/res/Resources;
+    if-nez v0, :cond_0
+
+    .line 284
+    const/4 v1, 0x0
+
+    .line 286
+    :goto_0
+    return v1
+
+    :cond_0
+    invoke-virtual {v0}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    move-result-object v1
+
+    iget v1, v1, Landroid/util/DisplayMetrics;->widthPixels:I
+
+    goto :goto_0
+.end method
+
 .method private measureMenuItem(Landroid/view/MenuItem;)I
     .locals 6
     .parameter "item"
 
     .prologue
-    .line 303
+    .line 317
     const/4 v2, 0x0
 
-    .line 304
+    .line 318
     .local v2, width:I
     invoke-interface {p1}, Landroid/view/MenuItem;->getTitle()Ljava/lang/CharSequence;
 
@@ -1254,33 +1319,33 @@
 
     if-eqz v3, :cond_1
 
-    .line 305
+    .line 319
     invoke-interface {p1}, Landroid/view/MenuItem;->getIcon()Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
 
-    .line 306
+    .line 320
     .local v0, icon:Landroid/graphics/drawable/Drawable;
     if-eqz v0, :cond_0
 
-    .line 307
+    .line 321
     invoke-virtual {v0}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
 
     move-result v2
 
-    .line 313
+    .line 327
     .end local v0           #icon:Landroid/graphics/drawable/Drawable;
     :cond_0
     :goto_0
     return v2
 
-    .line 310
+    .line 324
     :cond_1
     invoke-interface {p1}, Landroid/view/MenuItem;->getTitle()Ljava/lang/CharSequence;
 
     move-result-object v1
 
-    .line 311
+    .line 325
     .local v1, label:Ljava/lang/CharSequence;
     iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mPaintLabel:Landroid/text/TextPaint;
 
@@ -1305,7 +1370,7 @@
     .locals 2
 
     .prologue
-    .line 299
+    .line 313
     iget v0, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mArrowOffsetX:I
 
     iget-object v1, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mMiddleDrawable:Landroid/graphics/drawable/Drawable;
@@ -1326,7 +1391,7 @@
     .parameter "c"
 
     .prologue
-    .line 411
+    .line 428
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
@@ -1338,11 +1403,11 @@
 
     if-nez v1, :cond_1
 
-    .line 437
+    .line 454
     :cond_0
     return-void
 
-    .line 414
+    .line 431
     :cond_1
     move-object/from16 v0, p0
 
@@ -1357,13 +1422,13 @@
 
     move-result-object v15
 
-    .line 415
+    .line 432
     .local v15, menu:Landroid/view/Menu;
     invoke-direct/range {p0 .. p0}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->getBackgrounds()[Landroid/graphics/Bitmap;
 
     move-result-object v10
 
-    .line 416
+    .line 433
     .local v10, bitmaps:[Landroid/graphics/Bitmap;
     move-object/from16 v0, p0
 
@@ -1386,7 +1451,7 @@
 
     move-result v8
 
-    .line 417
+    .line 434
     .local v8, N:I
     const/4 v13, 0x0
 
@@ -1394,7 +1459,7 @@
     :goto_0
     if-ge v13, v8, :cond_0
 
-    .line 418
+    .line 435
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
@@ -1410,7 +1475,7 @@
 
     check-cast v11, Landroid/graphics/Rect;
 
-    .line 419
+    .line 436
     .local v11, clip:Landroid/graphics/Rect;
     move-object/from16 v0, p0
 
@@ -1426,7 +1491,7 @@
 
     const/4 v9, 0x1
 
-    .line 420
+    .line 437
     .local v9, active:Z
     :goto_1
     if-eqz v9, :cond_4
@@ -1444,7 +1509,7 @@
 
     invoke-virtual {v0, v1, v11, v11, v2}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
 
-    .line 421
+    .line 438
     move-object/from16 v0, p0
 
     invoke-direct {v0, v15, v13}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->canDrawDivider(Landroid/view/Menu;I)Z
@@ -1453,7 +1518,7 @@
 
     if-eqz v1, :cond_2
 
-    .line 422
+    .line 439
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mSepDrawable:Landroid/graphics/drawable/Drawable;
@@ -1462,7 +1527,7 @@
 
     move-result v17
 
-    .line 423
+    .line 440
     .local v17, w:I
     move-object/from16 v0, p0
 
@@ -1472,7 +1537,7 @@
 
     move-result v12
 
-    .line 424
+    .line 441
     .local v12, h:I
     iget v1, v11, Landroid/graphics/Rect;->left:I
 
@@ -1480,7 +1545,7 @@
 
     sub-int v14, v1, v2
 
-    .line 425
+    .line 442
     .local v14, l:I
     invoke-virtual {v11}, Landroid/graphics/Rect;->height()I
 
@@ -1506,7 +1571,7 @@
 
     div-int/lit8 v16, v1, 0x2
 
-    .line 426
+    .line 443
     .local v16, t:I
     move-object/from16 v0, p0
 
@@ -1523,7 +1588,7 @@
     :goto_3
     add-int v16, v16, v1
 
-    .line 427
+    .line 444
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mSepDrawable:Landroid/graphics/drawable/Drawable;
@@ -1536,7 +1601,7 @@
 
     invoke-virtual {v1, v14, v0, v2, v3}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    .line 428
+    .line 445
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mSepDrawable:Landroid/graphics/drawable/Drawable;
@@ -1545,7 +1610,7 @@
 
     invoke-virtual {v1, v0}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 431
+    .line 448
     .end local v12           #h:I
     .end local v14           #l:I
     .end local v16           #t:I
@@ -1563,7 +1628,7 @@
 
     iget v5, v1, Landroid/graphics/Rect;->bottom:I
 
-    .line 432
+    .line 449
     .local v5, top:I
     :goto_4
     invoke-virtual/range {p0 .. p0}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->getHeight()I
@@ -1585,7 +1650,7 @@
     :goto_5
     sub-int v7, v2, v1
 
-    .line 433
+    .line 450
     .local v7, bottom:I
     if-nez v13, :cond_8
 
@@ -1599,7 +1664,7 @@
 
     add-int v4, v1, v2
 
-    .line 434
+    .line 451
     .local v4, left:I
     :goto_6
     add-int/lit8 v1, v8, -0x1
@@ -1616,7 +1681,7 @@
 
     sub-int v6, v1, v2
 
-    .line 435
+    .line 452
     .local v6, right:I
     :goto_7
     invoke-interface {v15, v13}, Landroid/view/Menu;->getItem(I)Landroid/view/MenuItem;
@@ -1629,12 +1694,12 @@
 
     invoke-direct/range {v1 .. v7}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->drawOptionItem(Landroid/graphics/Canvas;Landroid/view/MenuItem;IIII)V
 
-    .line 417
+    .line 434
     add-int/lit8 v13, v13, 0x1
 
     goto/16 :goto_0
 
-    .line 419
+    .line 436
     .end local v4           #left:I
     .end local v5           #top:I
     .end local v6           #right:I
@@ -1645,14 +1710,14 @@
 
     goto/16 :goto_1
 
-    .line 420
+    .line 437
     .restart local v9       #active:Z
     :cond_4
     const/4 v1, 0x0
 
     goto/16 :goto_2
 
-    .line 426
+    .line 443
     .restart local v12       #h:I
     .restart local v14       #l:I
     .restart local v16       #t:I
@@ -1666,7 +1731,7 @@
 
     goto :goto_3
 
-    .line 431
+    .line 448
     .end local v12           #h:I
     .end local v14           #l:I
     .end local v16           #t:I
@@ -1680,7 +1745,7 @@
 
     goto :goto_4
 
-    .line 432
+    .line 449
     .restart local v5       #top:I
     :cond_7
     move-object/from16 v0, p0
@@ -1691,14 +1756,14 @@
 
     goto :goto_5
 
-    .line 433
+    .line 450
     .restart local v7       #bottom:I
     :cond_8
     iget v4, v11, Landroid/graphics/Rect;->left:I
 
     goto :goto_6
 
-    .line 434
+    .line 451
     .restart local v4       #left:I
     :cond_9
     iget v6, v11, Landroid/graphics/Rect;->right:I
@@ -1707,173 +1772,146 @@
 .end method
 
 .method public onMeasure(II)V
-    .locals 13
+    .locals 14
     .parameter "widthMeasureSpec"
     .parameter "heightMeasureSpec"
 
     .prologue
-    const/4 v12, 0x0
-
-    .line 319
-    iget-object v8, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
+    .line 333
+    iget-object v9, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
 
     #getter for: Lcom/meizu/widget/OptionPopupWindow;->mActionMode:Lcom/meizu/widget/OptionPopupWindow$OptionActionMode;
-    invoke-static {v8}, Lcom/meizu/widget/OptionPopupWindow;->access$000(Lcom/meizu/widget/OptionPopupWindow;)Lcom/meizu/widget/OptionPopupWindow$OptionActionMode;
+    invoke-static {v9}, Lcom/meizu/widget/OptionPopupWindow;->access$000(Lcom/meizu/widget/OptionPopupWindow;)Lcom/meizu/widget/OptionPopupWindow$OptionActionMode;
 
-    move-result-object v8
+    move-result-object v9
 
-    if-nez v8, :cond_0
+    if-nez v9, :cond_0
 
-    .line 320
-    invoke-virtual {p0, v12, v12}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->setMeasuredDimension(II)V
+    .line 334
+    const/4 v9, 0x0
 
-    .line 355
+    const/4 v10, 0x0
+
+    invoke-virtual {p0, v9, v10}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->setMeasuredDimension(II)V
+
+    .line 370
     :goto_0
     return-void
 
-    .line 324
+    .line 338
     :cond_0
-    iget-object v8, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
-
-    iget v3, v8, Landroid/graphics/Rect;->left:I
-
-    .line 325
-    .local v3, left:I
-    iget-object v8, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
-
-    iget v8, v8, Landroid/graphics/Rect;->left:I
-
     iget-object v9, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
 
-    iget v9, v9, Landroid/graphics/Rect;->right:I
+    iget v3, v9, Landroid/graphics/Rect;->left:I
 
-    add-int v7, v8, v9
+    .line 339
+    .local v3, left:I
+    iget-object v9, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
 
-    .line 326
-    .local v7, width:I
-    iget-object v8, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
+    iget v9, v9, Landroid/graphics/Rect;->left:I
+
+    iget-object v10, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mBGPadding:Landroid/graphics/Rect;
+
+    iget v10, v10, Landroid/graphics/Rect;->right:I
+
+    add-int v8, v9, v10
+
+    .line 340
+    .local v8, width:I
+    iget-object v9, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
 
     #getter for: Lcom/meizu/widget/OptionPopupWindow;->mActionMode:Lcom/meizu/widget/OptionPopupWindow$OptionActionMode;
-    invoke-static {v8}, Lcom/meizu/widget/OptionPopupWindow;->access$000(Lcom/meizu/widget/OptionPopupWindow;)Lcom/meizu/widget/OptionPopupWindow$OptionActionMode;
+    invoke-static {v9}, Lcom/meizu/widget/OptionPopupWindow;->access$000(Lcom/meizu/widget/OptionPopupWindow;)Lcom/meizu/widget/OptionPopupWindow$OptionActionMode;
 
-    move-result-object v8
+    move-result-object v9
 
-    invoke-virtual {v8}, Lcom/meizu/widget/OptionPopupWindow$OptionActionMode;->getMenu()Landroid/view/Menu;
+    invoke-virtual {v9}, Lcom/meizu/widget/OptionPopupWindow$OptionActionMode;->getMenu()Landroid/view/Menu;
 
-    move-result-object v4
+    move-result-object v5
 
-    .line 327
-    .local v4, menu:Landroid/view/Menu;
-    invoke-interface {v4}, Landroid/view/Menu;->size()I
+    .line 341
+    .local v5, menu:Landroid/view/Menu;
+    invoke-interface {v5}, Landroid/view/Menu;->size()I
 
     move-result v0
 
-    .line 328
+    .line 342
     .local v0, N:I
-    iget-object v8, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
+    invoke-direct {p0}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->getMaxWidth()I
+
+    move-result v4
+
+    .line 343
+    .local v4, maxWidth:I
+    iget-object v9, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
 
     #getter for: Lcom/meizu/widget/OptionPopupWindow;->mOptionRects:Ljava/util/ArrayList;
-    invoke-static {v8}, Lcom/meizu/widget/OptionPopupWindow;->access$300(Lcom/meizu/widget/OptionPopupWindow;)Ljava/util/ArrayList;
+    invoke-static {v9}, Lcom/meizu/widget/OptionPopupWindow;->access$300(Lcom/meizu/widget/OptionPopupWindow;)Ljava/util/ArrayList;
 
-    move-result-object v8
+    move-result-object v9
 
-    invoke-virtual {v8}, Ljava/util/ArrayList;->clear()V
+    invoke-virtual {v9}, Ljava/util/ArrayList;->clear()V
 
-    .line 329
+    .line 344
     const/4 v1, 0x0
 
     .local v1, i:I
     :goto_1
     if-ge v1, v0, :cond_3
 
-    .line 330
-    invoke-interface {v4, v1}, Landroid/view/Menu;->getItem(I)Landroid/view/MenuItem;
+    .line 345
+    invoke-interface {v5, v1}, Landroid/view/Menu;->getItem(I)Landroid/view/MenuItem;
 
-    move-result-object v8
+    move-result-object v9
 
-    invoke-direct {p0, v8}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->measureMenuItem(Landroid/view/MenuItem;)I
+    invoke-direct {p0, v9}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->measureMenuItem(Landroid/view/MenuItem;)I
 
-    move-result v8
+    move-result v9
 
-    add-int/lit8 v8, v8, 0x18
+    iget v10, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->ITEM_PADDING:I
 
-    add-int/lit8 v6, v8, 0x18
+    mul-int/lit8 v10, v10, 0x2
 
-    .line 331
-    .local v6, w:I
-    const/16 v8, 0x78
-
-    if-ge v6, v8, :cond_1
-
-    .line 332
-    const/16 v6, 0x78
-
-    .line 334
-    :cond_1
-    const/16 v8, 0xa8
-
-    if-le v6, v8, :cond_2
-
-    .line 335
-    const/16 v6, 0xa8
-
-    .line 337
-    :cond_2
-    add-int v8, v7, v6
-
-    iget v9, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kMaxWidth:I
-
-    if-le v8, v9, :cond_5
+    add-int v7, v9, v10
 
     .line 346
-    .end local v6           #w:I
+    .local v7, w:I
+    iget v9, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->ITEM_WIDTH_MIN:I
+
+    if-ge v7, v9, :cond_1
+
+    .line 347
+    iget v7, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->ITEM_WIDTH_MIN:I
+
+    .line 349
+    :cond_1
+    iget v9, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->ITEM_WIDTH_MAX:I
+
+    if-le v7, v9, :cond_2
+
+    .line 350
+    iget v7, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->ITEM_WIDTH_MAX:I
+
+    .line 352
+    :cond_2
+    add-int v9, v8, v7
+
+    if-le v9, v4, :cond_5
+
+    const/4 v9, 0x4
+
+    if-le v1, v9, :cond_5
+
+    .line 361
+    .end local v7           #w:I
     :cond_3
-    iget v8, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kMinWidth:I
+    iget v9, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kMinWidth:I
 
-    invoke-static {v7, v8}, Ljava/lang/Math;->max(II)I
-
-    move-result v7
-
-    .line 348
-    iget-object v8, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
-
-    #getter for: Lcom/meizu/widget/OptionPopupWindow;->mOptionRects:Ljava/util/ArrayList;
-    invoke-static {v8}, Lcom/meizu/widget/OptionPopupWindow;->access$300(Lcom/meizu/widget/OptionPopupWindow;)Ljava/util/ArrayList;
-
-    move-result-object v8
-
-    invoke-virtual {v8}, Ljava/util/ArrayList;->size()I
+    invoke-static {v8, v9}, Ljava/lang/Math;->max(II)I
 
     move-result v8
 
-    if-lez v8, :cond_4
-
-    .line 349
-    iget-object v8, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
-
-    #getter for: Lcom/meizu/widget/OptionPopupWindow;->mOptionRects:Ljava/util/ArrayList;
-    invoke-static {v8}, Lcom/meizu/widget/OptionPopupWindow;->access$300(Lcom/meizu/widget/OptionPopupWindow;)Ljava/util/ArrayList;
-
-    move-result-object v8
-
-    invoke-virtual {v8, v12}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Landroid/graphics/Rect;
-
-    .line 350
-    .local v2, l:Landroid/graphics/Rect;
-    iput v12, v2, Landroid/graphics/Rect;->left:I
-
-    .line 351
-    iget-object v8, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
-
-    #getter for: Lcom/meizu/widget/OptionPopupWindow;->mOptionRects:Ljava/util/ArrayList;
-    invoke-static {v8}, Lcom/meizu/widget/OptionPopupWindow;->access$300(Lcom/meizu/widget/OptionPopupWindow;)Ljava/util/ArrayList;
-
-    move-result-object v8
-
+    .line 363
     iget-object v9, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
 
     #getter for: Lcom/meizu/widget/OptionPopupWindow;->mOptionRects:Ljava/util/ArrayList;
@@ -1885,55 +1923,100 @@
 
     move-result v9
 
-    add-int/lit8 v9, v9, -0x1
+    if-lez v9, :cond_4
 
-    invoke-virtual {v8, v9}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    .line 364
+    iget-object v9, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
 
-    move-result-object v5
+    #getter for: Lcom/meizu/widget/OptionPopupWindow;->mOptionRects:Ljava/util/ArrayList;
+    invoke-static {v9}, Lcom/meizu/widget/OptionPopupWindow;->access$300(Lcom/meizu/widget/OptionPopupWindow;)Ljava/util/ArrayList;
 
-    check-cast v5, Landroid/graphics/Rect;
+    move-result-object v9
 
-    .line 352
-    .local v5, r:Landroid/graphics/Rect;
-    iput v7, v5, Landroid/graphics/Rect;->right:I
+    const/4 v10, 0x0
 
-    .line 354
+    invoke-virtual {v9, v10}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Landroid/graphics/Rect;
+
+    .line 365
+    .local v2, l:Landroid/graphics/Rect;
+    const/4 v9, 0x0
+
+    iput v9, v2, Landroid/graphics/Rect;->left:I
+
+    .line 366
+    iget-object v9, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
+
+    #getter for: Lcom/meizu/widget/OptionPopupWindow;->mOptionRects:Ljava/util/ArrayList;
+    invoke-static {v9}, Lcom/meizu/widget/OptionPopupWindow;->access$300(Lcom/meizu/widget/OptionPopupWindow;)Ljava/util/ArrayList;
+
+    move-result-object v9
+
+    iget-object v10, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
+
+    #getter for: Lcom/meizu/widget/OptionPopupWindow;->mOptionRects:Ljava/util/ArrayList;
+    invoke-static {v10}, Lcom/meizu/widget/OptionPopupWindow;->access$300(Lcom/meizu/widget/OptionPopupWindow;)Ljava/util/ArrayList;
+
+    move-result-object v10
+
+    invoke-virtual {v10}, Ljava/util/ArrayList;->size()I
+
+    move-result v10
+
+    add-int/lit8 v10, v10, -0x1
+
+    invoke-virtual {v9, v10}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Landroid/graphics/Rect;
+
+    .line 367
+    .local v6, r:Landroid/graphics/Rect;
+    iput v8, v6, Landroid/graphics/Rect;->right:I
+
+    .line 369
     .end local v2           #l:Landroid/graphics/Rect;
-    .end local v5           #r:Landroid/graphics/Rect;
+    .end local v6           #r:Landroid/graphics/Rect;
     :cond_4
-    iget v8, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kHeight:I
+    iget v9, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kHeight:I
 
-    invoke-virtual {p0, v7, v8}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->setMeasuredDimension(II)V
+    invoke-virtual {p0, v8, v9}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->setMeasuredDimension(II)V
 
     goto/16 :goto_0
 
-    .line 341
-    .restart local v6       #w:I
+    .line 356
+    .restart local v7       #w:I
     :cond_5
-    iget-object v8, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
+    iget-object v9, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->this$0:Lcom/meizu/widget/OptionPopupWindow;
 
     #getter for: Lcom/meizu/widget/OptionPopupWindow;->mOptionRects:Ljava/util/ArrayList;
-    invoke-static {v8}, Lcom/meizu/widget/OptionPopupWindow;->access$300(Lcom/meizu/widget/OptionPopupWindow;)Ljava/util/ArrayList;
+    invoke-static {v9}, Lcom/meizu/widget/OptionPopupWindow;->access$300(Lcom/meizu/widget/OptionPopupWindow;)Ljava/util/ArrayList;
 
-    move-result-object v8
+    move-result-object v9
 
-    new-instance v9, Landroid/graphics/Rect;
+    new-instance v10, Landroid/graphics/Rect;
 
-    add-int v10, v3, v6
+    const/4 v11, 0x0
 
-    iget v11, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kHeight:I
+    add-int v12, v3, v7
 
-    invoke-direct {v9, v3, v12, v10, v11}, Landroid/graphics/Rect;-><init>(IIII)V
+    iget v13, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->kHeight:I
 
-    invoke-virtual {v8, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    invoke-direct {v10, v3, v11, v12, v13}, Landroid/graphics/Rect;-><init>(IIII)V
 
-    .line 342
-    add-int/2addr v3, v6
+    invoke-virtual {v9, v10}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 343
-    add-int/2addr v7, v6
+    .line 357
+    add-int/2addr v3, v7
 
-    .line 329
+    .line 358
+    add-int/2addr v8, v7
+
+    .line 344
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_1
@@ -1946,33 +2029,33 @@
     .prologue
     const/4 v4, -0x1
 
-    .line 487
+    .line 504
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getActionMasked()I
 
     move-result v3
 
     packed-switch v3, :pswitch_data_0
 
-    .line 522
+    .line 539
     :cond_0
     :goto_0
     const/4 v3, 0x1
 
     return v3
 
-    .line 489
+    .line 506
     :pswitch_0
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
     move-result v1
 
-    .line 490
+    .line 507
     .local v1, x:F
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
     move-result v2
 
-    .line 491
+    .line 508
     .local v2, y:F
     invoke-direct {p0, v1, v2}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->calcActiveIndex(FF)I
 
@@ -1980,22 +2063,22 @@
 
     iput v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActiveIndex:I
 
-    .line 492
+    .line 509
     iget v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActiveIndex:I
 
     iput v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActionIndex:I
 
-    .line 493
+    .line 510
     iget v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActiveIndex:I
 
     if-ltz v3, :cond_0
 
-    .line 494
+    .line 511
     invoke-virtual {p0}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->invalidate()V
 
     goto :goto_0
 
-    .line 498
+    .line 515
     .end local v1           #x:F
     .end local v2           #y:F
     :pswitch_1
@@ -2003,47 +2086,47 @@
 
     move-result v1
 
-    .line 499
+    .line 516
     .restart local v1       #x:F
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
     move-result v2
 
-    .line 500
+    .line 517
     .restart local v2       #y:F
     invoke-direct {p0, v1, v2}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->calcActiveIndex(FF)I
 
     move-result v0
 
-    .line 501
+    .line 518
     .local v0, activeIndex:I
     iget v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActiveIndex:I
 
     if-eq v3, v0, :cond_0
 
-    .line 502
+    .line 519
     iget v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActiveIndex:I
 
     if-gez v3, :cond_1
 
     if-ltz v0, :cond_2
 
-    .line 503
+    .line 520
     :cond_1
     invoke-virtual {p0}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->invalidate()V
 
-    .line 505
+    .line 522
     :cond_2
     iput v0, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActiveIndex:I
 
-    .line 506
+    .line 523
     iget v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActiveIndex:I
 
     iput v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActionIndex:I
 
     goto :goto_0
 
-    .line 511
+    .line 528
     .end local v0           #activeIndex:I
     .end local v1           #x:F
     .end local v2           #y:F
@@ -2052,27 +2135,27 @@
 
     if-ltz v3, :cond_3
 
-    .line 512
+    .line 529
     iget-object v3, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mClickAction:Ljava/lang/Runnable;
 
     invoke-virtual {p0, v3}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->post(Ljava/lang/Runnable;)Z
 
-    .line 513
+    .line 530
     invoke-virtual {p0}, Lcom/meizu/widget/OptionPopupWindow$HandleView;->invalidate()V
 
-    .line 515
+    .line 532
     :cond_3
     iput v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActiveIndex:I
 
     goto :goto_0
 
-    .line 519
+    .line 536
     :pswitch_3
     iput v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mActiveIndex:I
 
     goto :goto_0
 
-    .line 487
+    .line 504
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -2088,7 +2171,7 @@
     .parameter "width"
 
     .prologue
-    .line 280
+    .line 294
     iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mMiddleDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v4}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
@@ -2097,7 +2180,7 @@
 
     div-int/lit8 v0, v4, 0x2
 
-    .line 281
+    .line 295
     .local v0, half:I
     iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mLeftDrawable:Landroid/graphics/drawable/Drawable;
 
@@ -2107,7 +2190,7 @@
 
     add-int v1, v4, v0
 
-    .line 282
+    .line 296
     .local v1, left:I
     iget-object v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mRightDrawable:Landroid/graphics/drawable/Drawable;
 
@@ -2117,47 +2200,47 @@
 
     add-int v2, v4, v0
 
-    .line 283
+    .line 297
     .local v2, right:I
     iget-boolean v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mIsArrowUp:Z
 
     if-eqz v4, :cond_0
 
-    .line 284
+    .line 298
     move v3, v1
 
-    .line 285
+    .line 299
     .local v3, tmp:I
     move v1, v2
 
-    .line 286
+    .line 300
     move v2, v3
 
-    .line 288
+    .line 302
     .end local v3           #tmp:I
     :cond_0
     sub-int v2, p2, v2
 
-    .line 289
+    .line 303
     if-ge p1, v1, :cond_1
 
-    .line 290
+    .line 304
     move p1, v1
 
-    .line 292
+    .line 306
     :cond_1
     if-le p1, v2, :cond_2
 
-    .line 293
+    .line 307
     move p1, v2
 
-    .line 295
+    .line 309
     :cond_2
     sub-int v4, p1, v0
 
     iput v4, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mArrowOffsetX:I
 
-    .line 296
+    .line 310
     return-void
 .end method
 
@@ -2166,9 +2249,9 @@
     .parameter "up"
 
     .prologue
-    .line 276
+    .line 290
     iput-boolean p1, p0, Lcom/meizu/widget/OptionPopupWindow$HandleView;->mIsArrowUp:Z
 
-    .line 277
+    .line 291
     return-void
 .end method

@@ -332,12 +332,12 @@
     .line 206
     iget-object v0, p0, Lcom/meizu/widget/TimePicker;->mContext:Landroid/content/Context;
 
-    const v1, 0x109009d
+    const v1, 0x10900a3
 
     invoke-static {v0, v1, p0}, Lcom/meizu/widget/TimePicker;->inflate(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
 
     .line 208
-    const v0, 0x10202bd
+    const v0, 0x10202ba
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/TimePicker;->findViewById(I)Landroid/view/View;
 
@@ -350,13 +350,13 @@
     if-eqz v9, :cond_1
 
     .line 210
-    const v0, 0x1040584
+    const v0, 0x104058d
 
     invoke-virtual {v9, v0}, Landroid/widget/TextView;->setText(I)V
 
     .line 213
     :cond_1
-    const v0, 0x10202c1
+    const v0, 0x10202be
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/TimePicker;->findViewById(I)Landroid/view/View;
 
@@ -370,13 +370,13 @@
     if-eqz v9, :cond_2
 
     .line 215
-    const v0, 0x1040585
+    const v0, 0x104058e
 
     invoke-virtual {v9, v0}, Landroid/widget/TextView;->setText(I)V
 
     .line 218
     :cond_2
-    const v0, 0x10202bc
+    const v0, 0x10202b9
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/TimePicker;->findViewById(I)Landroid/view/View;
 
@@ -412,7 +412,7 @@
     invoke-virtual/range {v0 .. v8}, Lcom/meizu/widget/ScrollTextView;->setData(Lcom/meizu/widget/ScrollTextView$IDataAdapter;FIIIIIZ)V
 
     .line 221
-    const v0, 0x10202c0
+    const v0, 0x10202bd
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/TimePicker;->findViewById(I)Landroid/view/View;
 
@@ -474,12 +474,12 @@
     :cond_4
     iget-object v0, p0, Lcom/meizu/widget/TimePicker;->mContext:Landroid/content/Context;
 
-    const v1, 0x109009e
+    const v1, 0x10900a4
 
     invoke-static {v0, v1, p0}, Lcom/meizu/widget/TimePicker;->inflate(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
 
     .line 228
-    const v0, 0x10202bd
+    const v0, 0x10202ba
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/TimePicker;->findViewById(I)Landroid/view/View;
 
@@ -492,13 +492,13 @@
     if-eqz v9, :cond_5
 
     .line 230
-    const v0, 0x1040584
+    const v0, 0x104058d
 
     invoke-virtual {v9, v0}, Landroid/widget/TextView;->setText(I)V
 
     .line 233
     :cond_5
-    const v0, 0x10202c1
+    const v0, 0x10202be
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/TimePicker;->findViewById(I)Landroid/view/View;
 
@@ -512,13 +512,13 @@
     if-eqz v9, :cond_6
 
     .line 235
-    const v0, 0x1040585
+    const v0, 0x104058e
 
     invoke-virtual {v9, v0}, Landroid/widget/TextView;->setText(I)V
 
     .line 238
     :cond_6
-    const v0, 0x10202bc
+    const v0, 0x10202b9
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/TimePicker;->findViewById(I)Landroid/view/View;
 
@@ -554,7 +554,7 @@
     invoke-virtual/range {v0 .. v8}, Lcom/meizu/widget/ScrollTextView;->setData(Lcom/meizu/widget/ScrollTextView$IDataAdapter;FIIIIIZ)V
 
     .line 241
-    const v0, 0x10202c0
+    const v0, 0x10202bd
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/TimePicker;->findViewById(I)Landroid/view/View;
 
@@ -590,7 +590,7 @@
     invoke-virtual/range {v0 .. v8}, Lcom/meizu/widget/ScrollTextView;->setData(Lcom/meizu/widget/ScrollTextView$IDataAdapter;FIIIIIZ)V
 
     .line 244
-    const v0, 0x10202c4
+    const v0, 0x10202c1
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/TimePicker;->findViewById(I)Landroid/view/View;
 

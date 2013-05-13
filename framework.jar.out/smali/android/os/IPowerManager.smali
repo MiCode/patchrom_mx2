@@ -135,6 +135,14 @@
     .end annotation
 .end method
 
+.method public abstract isUsbFastChargerSwitching()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract preventScreenOn(Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -224,6 +232,14 @@
 .end method
 
 .method public abstract setStayOnSetting(I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract switchingUsbFastCharger(I)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

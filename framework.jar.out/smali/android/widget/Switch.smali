@@ -125,7 +125,7 @@
 
     .prologue
     .line 129
-    const v0, 0x10103dc
+    const v0, 0x10103de
 
     invoke-direct {p0, p1, p2, v0}, Landroid/widget/Switch;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
@@ -220,7 +220,7 @@
     if-eqz v4, :cond_3
 
     .line 156
-    const v4, 0x1080772
+    const v4, 0x108079f
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -234,7 +234,7 @@
     iput-object v4, p0, Landroid/widget/Switch;->mThumbDrawable:Landroid/graphics/drawable/Drawable;
 
     .line 158
-    const v4, 0x1080776
+    const v4, 0x10807a3
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -243,7 +243,7 @@
     iput-object v4, p0, Landroid/widget/Switch;->mOnThumbDrawable:Landroid/graphics/drawable/Drawable;
 
     .line 159
-    const v4, 0x108077c
+    const v4, 0x10807a9
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -252,7 +252,7 @@
     iput-object v4, p0, Landroid/widget/Switch;->mOffThumbDrawable:Landroid/graphics/drawable/Drawable;
 
     .line 161
-    const v4, 0x108076f
+    const v4, 0x108079c
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 

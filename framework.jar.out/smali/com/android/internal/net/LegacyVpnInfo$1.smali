@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 54
+    .line 57
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -45,12 +45,12 @@
     .parameter "in"
 
     .prologue
-    .line 57
+    .line 60
     new-instance v0, Lcom/android/internal/net/LegacyVpnInfo;
 
     invoke-direct {v0}, Lcom/android/internal/net/LegacyVpnInfo;-><init>()V
 
-    .line 58
+    .line 61
     .local v0, info:Lcom/android/internal/net/LegacyVpnInfo;
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
@@ -58,14 +58,14 @@
 
     iput-object v1, v0, Lcom/android/internal/net/LegacyVpnInfo;->key:Ljava/lang/String;
 
-    .line 59
+    .line 62
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     iput v1, v0, Lcom/android/internal/net/LegacyVpnInfo;->state:I
 
-    .line 60
+    .line 63
     const/4 v1, 0x0
 
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->readParcelable(Ljava/lang/ClassLoader;)Landroid/os/Parcelable;
@@ -76,7 +76,7 @@
 
     iput-object v1, v0, Lcom/android/internal/net/LegacyVpnInfo;->intent:Landroid/app/PendingIntent;
 
-    .line 61
+    .line 64
     return-object v0
 .end method
 
@@ -85,7 +85,7 @@
     .parameter "x0"
 
     .prologue
-    .line 54
+    .line 57
     invoke-virtual {p0, p1}, Lcom/android/internal/net/LegacyVpnInfo$1;->createFromParcel(Landroid/os/Parcel;)Lcom/android/internal/net/LegacyVpnInfo;
 
     move-result-object v0
@@ -98,7 +98,7 @@
     .parameter "size"
 
     .prologue
-    .line 66
+    .line 69
     new-array v0, p1, [Lcom/android/internal/net/LegacyVpnInfo;
 
     return-object v0
@@ -109,7 +109,7 @@
     .parameter "x0"
 
     .prologue
-    .line 54
+    .line 57
     invoke-virtual {p0, p1}, Lcom/android/internal/net/LegacyVpnInfo$1;->newArray(I)[Lcom/android/internal/net/LegacyVpnInfo;
 
     move-result-object v0

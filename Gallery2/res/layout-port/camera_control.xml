@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.android.camera.ui.ControlPanelLayout android:id="@id/control_panel" android:background="@color/camera_control_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/camera_control_panel_height" android:layout_alignParentBottom="true"
+<com.android.camera.ui.ControlPanelLayout android:id="@id/control_panel" android:background="@android:drawable/tab_background_mz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/camera_control_panel_height" android:layout_alignParentBottom="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include layout="@layout/review_thumbnail" />
     <include layout="@layout/switch_videomode" />
     <include layout="@layout/meizu_capture_finish" />
-    <include layout="@layout/menu_back_control" />
     <com.android.camera.ShutterButton android:id="@id/shutter_button" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/camera_shutter_btn_margin_bottom" android:src="@drawable/btn_shutter" android:layout_alignParentBottom="true" android:layout_centerInParent="true" android:contentDescription="@string/accessibility_shutter_button" />
 </com.android.camera.ui.ControlPanelLayout>

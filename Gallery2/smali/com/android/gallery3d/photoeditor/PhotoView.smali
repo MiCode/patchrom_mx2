@@ -174,62 +174,88 @@
 .end method
 
 .method protected onConfigurationChanged(Landroid/content/res/Configuration;)V
-    .locals 3
+    .locals 5
     .parameter "newConfig"
 
     .prologue
+    const/4 v4, 0x0
+
     .line 132
     invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/PhotoView;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
-    move-result-object v0
+    move-result-object v1
 
-    check-cast v0, Landroid/widget/RelativeLayout$LayoutParams;
+    check-cast v1, Landroid/widget/RelativeLayout$LayoutParams;
 
     .line 133
-    .local v0, params:Landroid/widget/RelativeLayout$LayoutParams;
-    iget v1, p1, Landroid/content/res/Configuration;->orientation:I
+    .local v1, params:Landroid/widget/RelativeLayout$LayoutParams;
+    iget v2, p1, Landroid/content/res/Configuration;->orientation:I
 
-    const/4 v2, 0x1
+    const/4 v3, 0x1
 
-    if-ne v1, v2, :cond_0
+    if-ne v2, v3, :cond_0
 
     .line 134
-    sget v1, Lcom/android/gallery3d/photoeditor/PhotoEditor;->ACTION_BAR_HEIGHT:I
+    sget v2, Lcom/android/gallery3d/photoeditor/PhotoEditor;->ACTION_BAR_HEIGHT:I
 
-    iput v1, v0, Landroid/widget/RelativeLayout$LayoutParams;->bottomMargin:I
+    iput v2, v1, Landroid/widget/RelativeLayout$LayoutParams;->bottomMargin:I
 
     .line 138
     :goto_0
-    iget-boolean v1, p0, Lcom/android/gallery3d/photoeditor/PhotoView;->mIsMarkedMode:Z
+    iget-boolean v2, p0, Lcom/android/gallery3d/photoeditor/PhotoView;->mIsMarkedMode:Z
 
-    if-eqz v1, :cond_1
+    if-eqz v2, :cond_1
 
     .line 139
-    sget v1, Lcom/android/gallery3d/photoeditor/PhotoEditor;->STATUS_BAR_HEIGHT:I
-
     sget v2, Lcom/android/gallery3d/photoeditor/PhotoEditor;->ACTION_BAR_HEIGHT:I
 
-    add-int/2addr v1, v2
-
-    iput v1, v0, Landroid/widget/RelativeLayout$LayoutParams;->topMargin:I
+    iput v2, v1, Landroid/widget/RelativeLayout$LayoutParams;->topMargin:I
 
     .line 143
     :goto_1
+    invoke-virtual {p0}, Lcom/android/gallery3d/photoeditor/PhotoView;->getContext()Landroid/content/Context;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    move-result-object v0
+
+    .line 144
+    .local v0, metrics:Landroid/util/DisplayMetrics;
+    iget v2, v0, Landroid/util/DisplayMetrics;->heightPixels:I
+
+    iget v3, v1, Landroid/widget/RelativeLayout$LayoutParams;->bottomMargin:I
+
+    sub-int/2addr v2, v3
+
+    iget v3, v1, Landroid/widget/RelativeLayout$LayoutParams;->topMargin:I
+
+    sub-int/2addr v2, v3
+
+    sget v3, Lcom/android/gallery3d/photoeditor/PhotoEditor;->STATUS_BAR_HEIGHT:I
+
+    sub-int/2addr v2, v3
+
+    iput v2, v1, Landroid/view/ViewGroup$LayoutParams;->height:I
+
+    .line 145
     return-void
 
     .line 136
+    .end local v0           #metrics:Landroid/util/DisplayMetrics;
     :cond_0
-    const/4 v1, 0x0
-
-    iput v1, v0, Landroid/widget/RelativeLayout$LayoutParams;->bottomMargin:I
+    iput v4, v1, Landroid/widget/RelativeLayout$LayoutParams;->bottomMargin:I
 
     goto :goto_0
 
     .line 141
     :cond_1
-    sget v1, Lcom/android/gallery3d/photoeditor/PhotoEditor;->STATUS_BAR_HEIGHT:I
-
-    iput v1, v0, Landroid/widget/RelativeLayout$LayoutParams;->topMargin:I
+    iput v4, v1, Landroid/widget/RelativeLayout$LayoutParams;->topMargin:I
 
     goto :goto_1
 .end method

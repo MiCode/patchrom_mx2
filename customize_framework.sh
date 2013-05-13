@@ -7,6 +7,20 @@ BUILD_OUT=out
 
 SEP_FRAME="framework2.jar.out"
 
+function removeMzActionBarContainer() {
+	for file in `find $1 -name *.smali`
+	do
+		filename=`basename $file`
+		if [ "$filename" == "MzActionBarContainer.smali" ];then
+			continue
+		fi
+		sed -i 's/MzActionBarContainer/ActionBarContainer/g' $file
+		if [ "$filename" == "ActionBarContainer.smali" ];then
+			cat overlay/ActionBarContainer.part >> $file
+		fi
+	done
+}
+
 if [ $2 = "$BUILD_OUT/framework" ]
 then
     # remove all files at out/framework those exist in framework2.jar.out
@@ -26,8 +40,15 @@ then
     # including: smali/miui smali/android/widget
 	mkdir -p "$BUILD_OUT/$SEP_FRAME/smali/android"
 	rm -rf $BUILD_OUT/$SEP_FRAME/smali/android/widget
+	#overlay
+	cp -f overlay/AbsListView/* $BUILD_OUT/framework/smali/android/widget
+	cp -f overlay/ListView/* $BUILD_OUT/framework/smali/android/widget
+	cp -f overlay/GridView/* $BUILD_OUT/framework/smali/android/widget
+	cp -f overlay/ResolverActivity/* $BUILD_OUT/framework/smali/com/android/internal/app
+
 	mv "$BUILD_OUT/framework/smali/android/widget" "$BUILD_OUT/$SEP_FRAME/smali/android"
 
+    removeMzActionBarContainer $2
 fi
 
 if [ $2 = "$BUILD_OUT/framework2" ]
@@ -54,4 +75,10 @@ if [ $2 = "out/android.policy" ];then
         cat $file >> $dstfile
     done
     cd -
+	removeMzActionBarContainer $2
+fi
+
+if [ $2 = "out/services" ];then
+	#overlay
+	cp -f overlay/InputMethodManagerService\$ImeSubtypeListAdapter.smali $BUILD_OUT/services/smali/com/android/server
 fi

@@ -271,7 +271,7 @@
 
     .prologue
     .line 61
-    const v0, 0x7f0d0095
+    const v0, 0x7f0d009a
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ui/IndicatorControlBarContainer;->findViewById(I)Landroid/view/View;
 
@@ -287,7 +287,7 @@
     invoke-virtual {v0, p0}, Lcom/android/camera/ui/IndicatorControlBar;->setOnIndicatorEventListener(Lcom/android/camera/ui/OnIndicatorEventListener;)V
 
     .line 64
-    const v0, 0x7f0d0098
+    const v0, 0x7f0d009d
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ui/IndicatorControlBarContainer;->findViewById(I)Landroid/view/View;
 

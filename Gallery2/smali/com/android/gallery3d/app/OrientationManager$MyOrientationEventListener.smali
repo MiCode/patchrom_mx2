@@ -25,13 +25,13 @@
     .parameter "context"
 
     .prologue
-    .line 157
+    .line 183
     iput-object p1, p0, Lcom/android/gallery3d/app/OrientationManager$MyOrientationEventListener;->this$0:Lcom/android/gallery3d/app/OrientationManager;
 
-    .line 158
+    .line 184
     invoke-direct {p0, p2}, Landroid/view/OrientationEventListener;-><init>(Landroid/content/Context;)V
 
-    .line 159
+    .line 185
     return-void
 .end method
 
@@ -42,17 +42,17 @@
     .parameter "orientation"
 
     .prologue
-    .line 166
+    .line 192
     const/4 v0, -0x1
 
     if-ne p1, v0, :cond_1
 
-    .line 171
+    .line 197
     :cond_0
     :goto_0
     return-void
 
-    .line 167
+    .line 193
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/OrientationManager$MyOrientationEventListener;->this$0:Lcom/android/gallery3d/app/OrientationManager;
 
@@ -71,7 +71,7 @@
     #setter for: Lcom/android/gallery3d/app/OrientationManager;->mOrientation:I
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/OrientationManager;->access$002(Lcom/android/gallery3d/app/OrientationManager;I)I
 
-    .line 170
+    .line 196
     iget-object v0, p0, Lcom/android/gallery3d/app/OrientationManager$MyOrientationEventListener;->this$0:Lcom/android/gallery3d/app/OrientationManager;
 
     #getter for: Lcom/android/gallery3d/app/OrientationManager;->mOrientationLocked:Z
@@ -83,8 +83,17 @@
 
     iget-object v0, p0, Lcom/android/gallery3d/app/OrientationManager$MyOrientationEventListener;->this$0:Lcom/android/gallery3d/app/OrientationManager;
 
+    #getter for: Lcom/android/gallery3d/app/OrientationManager;->mRotationLockedSetting:Z
+    invoke-static {v0}, Lcom/android/gallery3d/app/OrientationManager;->access$300(Lcom/android/gallery3d/app/OrientationManager;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/gallery3d/app/OrientationManager$MyOrientationEventListener;->this$0:Lcom/android/gallery3d/app/OrientationManager;
+
     #calls: Lcom/android/gallery3d/app/OrientationManager;->updateCompensation()V
-    invoke-static {v0}, Lcom/android/gallery3d/app/OrientationManager;->access$300(Lcom/android/gallery3d/app/OrientationManager;)V
+    invoke-static {v0}, Lcom/android/gallery3d/app/OrientationManager;->access$400(Lcom/android/gallery3d/app/OrientationManager;)V
 
     goto :goto_0
 .end method

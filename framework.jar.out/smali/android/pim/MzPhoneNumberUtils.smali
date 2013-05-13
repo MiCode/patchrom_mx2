@@ -1878,12 +1878,11 @@
     .line 93
     :array_0
     .array-data 0x4
-        0xc4t 0x0t 0x4t 0x1t
-        0xc5t 0x0t 0x4t 0x1t
         0xc5t 0x0t 0x4t 0x1t
         0xc6t 0x0t 0x4t 0x1t
+        0xc6t 0x0t 0x4t 0x1t
         0xc7t 0x0t 0x4t 0x1t
-        0xc7t 0x0t 0x4t 0x1t
+        0xc8t 0x0t 0x4t 0x1t
         0xc8t 0x0t 0x4t 0x1t
         0xc9t 0x0t 0x4t 0x1t
         0xcat 0x0t 0x4t 0x1t
@@ -1900,9 +1899,9 @@
         0xd5t 0x0t 0x4t 0x1t
         0xd6t 0x0t 0x4t 0x1t
         0xd7t 0x0t 0x4t 0x1t
-        0xd7t 0x0t 0x4t 0x1t
         0xd8t 0x0t 0x4t 0x1t
         0xd8t 0x0t 0x4t 0x1t
+        0xd9t 0x0t 0x4t 0x1t
         0xd9t 0x0t 0x4t 0x1t
         0xdat 0x0t 0x4t 0x1t
         0xdbt 0x0t 0x4t 0x1t
@@ -1942,6 +1941,7 @@
         0xfdt 0x0t 0x4t 0x1t
         0xfet 0x0t 0x4t 0x1t
         0xfft 0x0t 0x4t 0x1t
+        0x0t 0x1t 0x4t 0x1t
     .end array-data
 .end method
 
@@ -2013,7 +2013,7 @@
 .end method
 
 .method public static getDescriptionForNumber(Ljava/lang/String;Ljava/lang/String;Ljava/util/Locale;ZZ)Ljava/lang/String;
-    .locals 9
+    .locals 11
     .parameter "number"
     .parameter "countryIso"
     .parameter "languageCode"
@@ -2022,71 +2022,71 @@
 
     .prologue
     .line 234
-    sget-boolean v6, Landroid/pim/MzPhoneNumberUtils;->VDBG:Z
+    sget-boolean v8, Landroid/pim/MzPhoneNumberUtils;->VDBG:Z
 
-    if-eqz v6, :cond_0
+    if-eqz v8, :cond_0
 
-    const-string v6, "MzPhoneNumberUtils"
+    const-string v8, "MzPhoneNumberUtils"
 
-    new-instance v7, Ljava/lang/StringBuilder;
+    new-instance v9, Ljava/lang/StringBuilder;
 
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v8, " getDescriptionForNumber()  number :"
+    const-string v10, " getDescriptionForNumber()  number :"
 
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v9
 
-    invoke-virtual {v7, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v9
 
-    const-string v8, ",countryIso :"
+    const-string v10, ",countryIso :"
 
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v9
 
-    invoke-virtual {v7, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v9
 
-    const-string v8, ",languageCode :"
+    const-string v10, ",languageCode :"
 
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v9
 
-    invoke-virtual {v7, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v9
 
-    const-string v8, ",needRemoveIpPrefix :"
+    const-string v10, ",needRemoveIpPrefix :"
 
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v9
 
-    invoke-virtual {v7, p3}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, p3}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v9
 
-    const-string v8, ",needValidNumber :"
+    const-string v10, ",needValidNumber :"
 
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v9
 
-    invoke-virtual {v7, p4}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, p4}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v9
 
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v7
+    move-result-object v9
 
-    invoke-static {v6, v7}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v8, v9}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 237
     :cond_0
@@ -2095,7 +2095,7 @@
     .line 238
     const-string v0, ""
 
-    .line 289
+    .line 294
     :cond_1
     :goto_0
     return-object v0
@@ -2110,54 +2110,54 @@
     .local v2, geocoder:Lcom/android/i18n/phonenumbers/geocoding/PhoneNumberOfflineGeocoder;
     invoke-static {}, Lcom/android/i18n/phonenumbers/PhoneNumberUtil;->getInstance()Lcom/android/i18n/phonenumbers/PhoneNumberUtil;
 
-    move-result-object v5
+    move-result-object v7
 
     .line 244
-    .local v5, util:Lcom/android/i18n/phonenumbers/PhoneNumberUtil;
-    const/4 v4, 0x0
+    .local v7, util:Lcom/android/i18n/phonenumbers/PhoneNumberUtil;
+    const/4 v6, 0x0
 
     .line 247
-    .local v4, pn:Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;
+    .local v6, pn:Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;
     :try_start_0
-    invoke-virtual {v5, p0, p1}, Lcom/android/i18n/phonenumbers/PhoneNumberUtil;->parse(Ljava/lang/String;Ljava/lang/String;)Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;
+    invoke-virtual {v7, p0, p1}, Lcom/android/i18n/phonenumbers/PhoneNumberUtil;->parse(Ljava/lang/String;Ljava/lang/String;)Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;
     :try_end_0
     .catch Lcom/android/i18n/phonenumbers/NumberParseException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result-object v4
+    move-result-object v6
 
-    .line 253
+    .line 252
     :goto_1
-    sget-boolean v6, Landroid/pim/MzPhoneNumberUtils;->VDBG:Z
+    sget-boolean v8, Landroid/pim/MzPhoneNumberUtils;->VDBG:Z
 
-    if-eqz v6, :cond_3
+    if-eqz v8, :cond_3
 
-    const-string v6, "MzPhoneNumberUtils"
+    const-string v8, "MzPhoneNumberUtils"
 
-    new-instance v7, Ljava/lang/StringBuilder;
+    new-instance v9, Ljava/lang/StringBuilder;
 
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v8, " pn :"
+    const-string v10, " pn :"
 
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v9
 
-    invoke-virtual {v7, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v9
 
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v7
+    move-result-object v9
 
-    invoke-static {v6, v7}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v8, v9}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 254
+    :cond_3
+    if-nez v6, :cond_4
 
     .line 255
-    :cond_3
-    if-nez v4, :cond_4
-
-    .line 256
     const-string v0, ""
 
     goto :goto_0
@@ -2168,204 +2168,247 @@
 
     .line 249
     .local v1, e:Lcom/android/i18n/phonenumbers/NumberParseException;
-    const-string v6, "MzPhoneNumberUtils"
+    const-string v8, "MzPhoneNumberUtils"
 
-    new-instance v7, Ljava/lang/StringBuilder;
+    new-instance v9, Ljava/lang/StringBuilder;
 
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v8, "getDescriptionForNumber: NumberParseException for incoming number \'"
+    const-string v10, "getDescriptionForNumber: NumberParseException for incoming number \'"
 
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v9
 
-    invoke-virtual {v7, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v9
 
-    const-string v8, "\'"
+    const-string v10, "\'"
 
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v9
 
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v7
+    move-result-object v9
 
-    invoke-static {v6, v7}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v8, v9}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_1
 
-    .line 259
+    .line 258
     .end local v1           #e:Lcom/android/i18n/phonenumbers/NumberParseException;
     :cond_4
     const-string v0, ""
 
-    .line 260
+    .line 259
     .local v0, desc:Ljava/lang/String;
-    const/16 v6, 0x56
+    const/16 v8, 0x56
 
-    invoke-virtual {v4}, Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;->getCountryCode()I
+    invoke-virtual {v6}, Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;->getCountryCode()I
 
-    move-result v7
+    move-result v9
 
-    if-eq v6, v7, :cond_5
+    if-eq v8, v9, :cond_5
 
-    invoke-virtual {v4}, Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;->getCountryCode()I
+    invoke-virtual {v6}, Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;->getCountryCode()I
 
-    move-result v6
+    move-result v8
 
-    if-nez v6, :cond_a
+    if-nez v8, :cond_a
+
+    .line 260
+    :cond_5
+    invoke-virtual {v6}, Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;->getNationalNumber()J
+
+    move-result-wide v8
+
+    invoke-static {v8, v9}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+
+    move-result-object v5
 
     .line 261
-    :cond_5
-    invoke-virtual {v4}, Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;->getNationalNumber()J
-
-    move-result-wide v6
-
-    invoke-static {v6, v7}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 262
-    .local v3, nationalNumberStr:Ljava/lang/String;
+    .local v5, nationalNumberStr:Ljava/lang/String;
     if-eqz p3, :cond_6
 
+    .line 262
+    invoke-static {v5}, Landroid/pim/MzPhoneNumberUtils;->removeCNIpPrefix(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v5
+
     .line 263
-    invoke-static {v3}, Landroid/pim/MzPhoneNumberUtils;->removeCNIpPrefix(Ljava/lang/String;)Ljava/lang/String;
+    const-wide/16 v3, 0x0
 
-    move-result-object v3
+    .line 265
+    .local v3, nationalNumber:J
+    :try_start_1
+    invoke-static {v5}, Ljava/lang/Long;->valueOf(Ljava/lang/String;)Ljava/lang/Long;
 
-    .line 264
-    invoke-static {v3}, Ljava/lang/Long;->valueOf(Ljava/lang/String;)Ljava/lang/Long;
+    move-result-object v8
 
-    move-result-object v6
+    invoke-virtual {v8}, Ljava/lang/Long;->longValue()J
+    :try_end_1
+    .catch Ljava/lang/NumberFormatException; {:try_start_1 .. :try_end_1} :catch_1
 
-    invoke-virtual {v6}, Ljava/lang/Long;->longValue()J
+    move-result-wide v3
 
-    move-result-wide v6
+    .line 269
+    :goto_2
+    invoke-virtual {v6, v3, v4}, Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;->setNationalNumber(J)Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;
 
-    invoke-virtual {v4, v6, v7}, Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;->setNationalNumber(J)Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;
-
-    .line 267
+    .line 272
+    .end local v3           #nationalNumber:J
     :cond_6
-    sget-object v6, Ljava/util/Locale;->CHINA:Ljava/util/Locale;
+    sget-object v8, Ljava/util/Locale;->CHINA:Ljava/util/Locale;
 
-    invoke-virtual {v6}, Ljava/util/Locale;->getCountry()Ljava/lang/String;
+    invoke-virtual {v8}, Ljava/util/Locale;->getCountry()Ljava/lang/String;
 
-    move-result-object v6
+    move-result-object v8
 
-    invoke-virtual {v6, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v8, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v6
+    move-result v8
 
-    if-eqz v6, :cond_7
+    if-eqz v8, :cond_7
 
     if-eqz p2, :cond_7
 
-    sget-object v6, Ljava/util/Locale;->CHINA:Ljava/util/Locale;
+    sget-object v8, Ljava/util/Locale;->CHINA:Ljava/util/Locale;
 
-    invoke-virtual {v6}, Ljava/util/Locale;->getLanguage()Ljava/lang/String;
+    invoke-virtual {v8}, Ljava/util/Locale;->getLanguage()Ljava/lang/String;
 
-    move-result-object v6
+    move-result-object v8
 
     invoke-virtual {p2}, Ljava/util/Locale;->getLanguage()Ljava/lang/String;
 
-    move-result-object v7
+    move-result-object v9
 
-    invoke-virtual {v6, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v8, v9}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v6
+    move-result v8
 
-    if-eqz v6, :cond_7
+    if-eqz v8, :cond_7
 
-    .line 269
-    invoke-static {v3}, Landroid/pim/MzPhoneNumberUtils;->getCNSpecailNumberDescription(Ljava/lang/String;)Ljava/lang/String;
+    .line 274
+    invoke-static {v5}, Landroid/pim/MzPhoneNumberUtils;->getCNSpecailNumberDescription(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 272
+    .line 277
     :cond_7
     invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v6
+    move-result v8
 
-    if-eqz v6, :cond_1
+    if-eqz v8, :cond_1
 
-    .line 276
-    const-string v6, "0"
+    .line 281
+    const-string v8, "0"
 
-    invoke-virtual {p0, v6}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+    invoke-virtual {p0, v8}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
-    move-result v6
+    move-result v8
 
-    if-nez v6, :cond_8
+    if-nez v8, :cond_8
 
-    const-string v6, "+"
+    const-string v8, "+"
 
-    invoke-virtual {p0, v6}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+    invoke-virtual {p0, v8}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
-    move-result v6
+    move-result v8
 
-    if-nez v6, :cond_8
+    if-nez v8, :cond_8
 
-    const-string v6, "1"
+    const-string v8, "1"
 
-    invoke-virtual {p0, v6}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+    invoke-virtual {p0, v8}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
-    move-result v6
+    move-result v8
 
-    if-eqz v6, :cond_9
+    if-eqz v8, :cond_9
 
     :cond_8
-    const-string v6, "10"
+    const-string v8, "10"
 
-    invoke-virtual {p0, v6}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+    invoke-virtual {p0, v8}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
-    move-result v6
+    move-result v8
 
-    if-eqz v6, :cond_a
+    if-eqz v8, :cond_a
 
-    .line 278
+    .line 283
     :cond_9
     invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
 
-    move-result-object v6
+    move-result-object v8
 
-    const v7, 0x1040590
+    const v9, 0x1040599
 
-    invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+    invoke-virtual {v8, v9}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
     move-result-object v0
 
     goto/16 :goto_0
 
-    .line 282
-    .end local v3           #nationalNumberStr:Ljava/lang/String;
+    .line 266
+    .restart local v3       #nationalNumber:J
+    :catch_1
+    move-exception v1
+
+    .line 267
+    .local v1, e:Ljava/lang/NumberFormatException;
+    const-string v8, "MzPhoneNumberUtils"
+
+    new-instance v9, Ljava/lang/StringBuilder;
+
+    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v10, "NumberFormatException : nationalNumber:"
+
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
+    invoke-virtual {v9, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v9
+
+    invoke-static {v8, v9}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_2
+
+    .line 287
+    .end local v1           #e:Ljava/lang/NumberFormatException;
+    .end local v3           #nationalNumber:J
+    .end local v5           #nationalNumberStr:Ljava/lang/String;
     :cond_a
     invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v6
+    move-result v8
 
-    if-eqz v6, :cond_1
+    if-eqz v8, :cond_1
 
-    .line 283
+    .line 288
     if-eqz p4, :cond_b
 
-    .line 284
-    invoke-virtual {v2, v4, p2}, Lcom/android/i18n/phonenumbers/geocoding/PhoneNumberOfflineGeocoder;->getDescriptionForNumber(Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;Ljava/util/Locale;)Ljava/lang/String;
+    .line 289
+    invoke-virtual {v2, v6, p2}, Lcom/android/i18n/phonenumbers/geocoding/PhoneNumberOfflineGeocoder;->getDescriptionForNumber(Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;Ljava/util/Locale;)Ljava/lang/String;
 
     move-result-object v0
 
     goto/16 :goto_0
 
-    .line 286
+    .line 291
     :cond_b
-    const/4 v6, 0x1
+    const/4 v8, 0x1
 
-    invoke-virtual {v2, v4, p2, p1, v6}, Lcom/android/i18n/phonenumbers/geocoding/PhoneNumberOfflineGeocoder;->getDescriptionForValidNumber(Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;Ljava/util/Locale;Ljava/lang/String;Z)Ljava/lang/String;
+    invoke-virtual {v2, v6, p2, p1, v8}, Lcom/android/i18n/phonenumbers/geocoding/PhoneNumberOfflineGeocoder;->getDescriptionForValidNumber(Lcom/android/i18n/phonenumbers/Phonenumber$PhoneNumber;Ljava/util/Locale;Ljava/lang/String;Z)Ljava/lang/String;
 
     move-result-object v0
 
@@ -2470,30 +2513,30 @@
 
     const/4 v8, 0x1
 
-    .line 297
+    .line 302
     invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v6
 
     if-eqz v6, :cond_0
 
-    .line 318
+    .line 323
     .end local p0
     :goto_0
     return-object p0
 
-    .line 300
+    .line 305
     .restart local p0
     :cond_0
     new-instance v5, Ljava/lang/String;
 
     invoke-direct {v5, p0}, Ljava/lang/String;-><init>(Ljava/lang/String;)V
 
-    .line 301
+    .line 306
     .local v5, trimedNumber:Ljava/lang/String;
     const/4 v4, 0x0
 
-    .line 302
+    .line 307
     .local v4, needRemove:Z
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
@@ -2509,20 +2552,20 @@
 
     if-ne v6, v7, :cond_3
 
-    .line 303
+    .line 308
     invoke-virtual {p0, v8}, Ljava/lang/String;->substring(I)Ljava/lang/String;
 
     move-result-object v5
 
-    .line 304
+    .line 309
     const/4 v4, 0x1
 
-    .line 310
+    .line 315
     :cond_1
     :goto_1
     if-ne v4, v8, :cond_2
 
-    .line 311
+    .line 316
     sget-object v0, Landroid/pim/MzPhoneNumberUtils;->nationCodeArray:[Ljava/lang/String;
 
     .local v0, arr$:[Ljava/lang/String;
@@ -2537,7 +2580,7 @@
 
     aget-object v1, v0, v2
 
-    .line 312
+    .line 317
     .local v1, cc:Ljava/lang/String;
     invoke-virtual {v5, v1}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
@@ -2545,7 +2588,7 @@
 
     if-eqz v6, :cond_4
 
-    .line 313
+    .line 318
     invoke-virtual {v1}, Ljava/lang/String;->length()I
 
     move-result v6
@@ -2561,10 +2604,10 @@
     :cond_2
     move-object p0, v5
 
-    .line 318
+    .line 323
     goto :goto_0
 
-    .line 305
+    .line 310
     :cond_3
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
@@ -2584,19 +2627,19 @@
 
     if-ne v6, v10, :cond_1
 
-    .line 306
+    .line 311
     const/4 v6, 0x2
 
     invoke-virtual {p0, v6}, Ljava/lang/String;->substring(I)Ljava/lang/String;
 
     move-result-object v5
 
-    .line 307
+    .line 312
     const/4 v4, 0x1
 
     goto :goto_1
 
-    .line 311
+    .line 316
     .restart local v0       #arr$:[Ljava/lang/String;
     .restart local v1       #cc:Ljava/lang/String;
     .restart local v2       #i$:I

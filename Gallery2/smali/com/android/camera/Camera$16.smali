@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/camera/Camera;->onResume()V
+    value = Lcom/android/camera/Camera;->onSwitchCameraClicked(Landroid/view/View;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 3691
+    .line 3510
     iput-object p1, p0, Lcom/android/camera/Camera$16;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,17 +38,21 @@
 
 # virtual methods
 .method public run()V
-    .locals 2
+    .locals 3
 
     .prologue
-    .line 3695
+    .line 3513
     iget-object v0, p0, Lcom/android/camera/Camera$16;->this$0:Lcom/android/camera/Camera;
 
-    const/4 v1, 0x0
+    #getter for: Lcom/android/camera/Camera;->mFlashLightBtn:Lcom/android/camera/ui/RotateImageView;
+    invoke-static {v0}, Lcom/android/camera/Camera;->access$10900(Lcom/android/camera/Camera;)Lcom/android/camera/ui/RotateImageView;
 
-    #setter for: Lcom/android/camera/Camera;->mIsDropFirstProximityCapture:Z
-    invoke-static {v0, v1}, Lcom/android/camera/Camera;->access$5402(Lcom/android/camera/Camera;Z)Z
+    move-result-object v0
 
-    .line 3696
+    const-wide/16 v1, 0x0
+
+    invoke-static {v0, v1, v2}, Lcom/android/camera/Util;->fadeOut(Landroid/view/View;J)V
+
+    .line 3514
     return-void
 .end method

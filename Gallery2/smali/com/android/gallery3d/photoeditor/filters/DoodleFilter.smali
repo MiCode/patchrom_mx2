@@ -360,7 +360,7 @@
 
     move-result v5
 
-    invoke-virtual {v13}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDownPonit()Landroid/graphics/PointF;
+    invoke-virtual {v13}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDownPoint()Landroid/graphics/PointF;
 
     move-result-object v6
 
@@ -456,12 +456,13 @@
 
     move-result-object v18
 
+    :cond_6
     :goto_2
     invoke-interface/range {v18 .. v18}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v8
 
-    if-eqz v8, :cond_8
+    if-eqz v8, :cond_9
 
     invoke-interface/range {v18 .. v18}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -505,7 +506,7 @@
 
     int-to-float v8, v8
 
-    invoke-virtual/range {v21 .. v21}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDownPonit()Landroid/graphics/PointF;
+    invoke-virtual/range {v21 .. v21}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDownPoint()Landroid/graphics/PointF;
 
     move-result-object v9
 
@@ -521,7 +522,9 @@
 
     sub-float/2addr v8, v9
 
-    float-to-int v7, v8
+    invoke-static {v8}, Ljava/lang/Math;->round(F)I
+
+    move-result v7
 
     .line 138
     .local v7, changeLine:I
@@ -533,7 +536,7 @@
 
     move-result v8
 
-    if-lez v8, :cond_7
+    if-lez v8, :cond_8
 
     move-object/from16 v0, p0
 
@@ -552,6 +555,9 @@
     .line 139
     .local v5, str:Ljava/lang/String;
     :goto_3
+    if-eqz v5, :cond_6
+
+    .line 142
     new-instance v4, Landroid/text/StaticLayout;
 
     sget-object v8, Landroid/text/Layout$Alignment;->ALIGN_NORMAL:Landroid/text/Layout$Alignment;
@@ -560,13 +566,13 @@
 
     const/4 v10, 0x0
 
-    const/4 v11, 0x1
+    const/4 v11, 0x0
 
     invoke-direct/range {v4 .. v11}, Landroid/text/StaticLayout;-><init>(Ljava/lang/CharSequence;Landroid/text/TextPaint;ILandroid/text/Layout$Alignment;FFZ)V
 
-    .line 140
+    .line 143
     .local v4, layout:Landroid/text/StaticLayout;
-    invoke-virtual/range {v21 .. v21}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDownPonit()Landroid/graphics/PointF;
+    invoke-virtual/range {v21 .. v21}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDownPoint()Landroid/graphics/PointF;
 
     move-result-object v8
 
@@ -580,7 +586,7 @@
 
     mul-float/2addr v8, v9
 
-    invoke-virtual/range {v21 .. v21}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDownPonit()Landroid/graphics/PointF;
+    invoke-virtual/range {v21 .. v21}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getDownPoint()Landroid/graphics/PointF;
 
     move-result-object v9
 
@@ -596,10 +602,10 @@
 
     invoke-virtual {v3, v8, v9}, Landroid/graphics/Canvas;->translate(FF)V
 
-    .line 141
+    .line 144
     invoke-virtual {v4, v3}, Landroid/text/StaticLayout;->draw(Landroid/graphics/Canvas;)V
 
-    .line 142
+    .line 145
     move-object/from16 v0, p0
 
     iget-object v8, v0, Lcom/android/gallery3d/photoeditor/filters/DoodleFilter;->doodleTextString:Ljava/util/Vector;
@@ -608,9 +614,9 @@
 
     move-result v8
 
-    if-lez v8, :cond_6
+    if-lez v8, :cond_7
 
-    .line 143
+    .line 146
     move-object/from16 v0, p0
 
     iget-object v8, v0, Lcom/android/gallery3d/photoeditor/filters/DoodleFilter;->doodleTextString:Ljava/util/Vector;
@@ -627,7 +633,7 @@
 
     invoke-virtual {v0, v8}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->setTextString(Ljava/lang/String;)V
 
-    .line 144
+    .line 147
     move-object/from16 v0, p0
 
     iget-object v8, v0, Lcom/android/gallery3d/photoeditor/filters/DoodleFilter;->doodleTextString:Ljava/util/Vector;
@@ -636,8 +642,8 @@
 
     invoke-virtual {v8, v9}, Ljava/util/Vector;->remove(I)Ljava/lang/Object;
 
-    .line 146
-    :cond_6
+    .line 149
+    :cond_7
     invoke-virtual {v3}, Landroid/graphics/Canvas;->restore()V
 
     goto/16 :goto_2
@@ -645,18 +651,18 @@
     .line 138
     .end local v4           #layout:Landroid/text/StaticLayout;
     .end local v5           #str:Ljava/lang/String;
-    :cond_7
+    :cond_8
     invoke-virtual/range {v21 .. v21}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->getTextString()Ljava/lang/String;
 
     move-result-object v5
 
     goto :goto_3
 
-    .line 149
+    .line 152
     .end local v6           #textPaint:Landroid/text/TextPaint;
     .end local v7           #changeLine:I
     .end local v21           #textdoodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
-    :cond_8
+    :cond_9
     const-string v8, "android.media.effect.effects.BitmapOverlayEffect"
 
     move-object/from16 v0, p0
@@ -665,7 +671,7 @@
 
     move-result-object v16
 
-    .line 150
+    .line 153
     .local v16, effect:Landroid/media/effect/Effect;
     const-string v8, "bitmap"
 
@@ -673,7 +679,7 @@
 
     invoke-virtual {v0, v8, v12}, Landroid/media/effect/Effect;->setParameter(Ljava/lang/String;Ljava/lang/Object;)V
 
-    .line 151
+    .line 154
     invoke-virtual/range {p1 .. p1}, Lcom/android/gallery3d/photoeditor/Photo;->texture()I
 
     move-result v8
@@ -694,7 +700,7 @@
 
     invoke-virtual {v0, v8, v9, v10, v11}, Landroid/media/effect/Effect;->apply(IIII)V
 
-    .line 152
+    .line 155
     return-void
 .end method
 
@@ -703,12 +709,12 @@
     .parameter
 
     .prologue
-    .line 164
+    .line 167
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v2
 
-    .line 165
+    .line 168
     const/4 v0, 0x0
 
     move v1, v0
@@ -716,7 +722,7 @@
     :goto_0
     if-ge v1, v2, :cond_0
 
-    .line 166
+    .line 169
     iget-object v3, p0, Lcom/android/gallery3d/photoeditor/filters/DoodleFilter;->doodles:Ljava/util/Vector;
 
     const-class v0, Lcom/android/gallery3d/photoeditor/actions/Doodle;
@@ -733,14 +739,14 @@
 
     invoke-virtual {v3, v0}, Ljava/util/Vector;->add(Ljava/lang/Object;)Z
 
-    .line 165
+    .line 168
     add-int/lit8 v0, v1, 0x1
 
     move v1, v0
 
     goto :goto_0
 
-    .line 168
+    .line 171
     :cond_0
     return-void
 .end method
@@ -852,7 +858,7 @@
     .parameter "out"
 
     .prologue
-    .line 156
+    .line 159
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/filters/DoodleFilter;->doodles:Ljava/util/Vector;
 
     invoke-virtual {v2}, Ljava/util/Vector;->size()I
@@ -861,7 +867,7 @@
 
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 157
+    .line 160
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/filters/DoodleFilter;->doodles:Ljava/util/Vector;
 
     invoke-virtual {v2}, Ljava/util/Vector;->iterator()Ljava/util/Iterator;
@@ -882,7 +888,7 @@
 
     check-cast v0, Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
-    .line 158
+    .line 161
     .local v0, doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
     const/4 v2, 0x0
 
@@ -890,7 +896,7 @@
 
     goto :goto_0
 
-    .line 160
+    .line 163
     .end local v0           #doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
     :cond_0
     return-void

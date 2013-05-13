@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 308
+    .line 323
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$2;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -54,7 +54,7 @@
     .end annotation
 
     .prologue
-    .line 312
+    .line 327
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$2;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
     #getter for: Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->mFavoritesDeleteListEntry:Ljava/util/ArrayList;
@@ -77,7 +77,7 @@
 
     if-nez v0, :cond_1
 
-    .line 313
+    .line 328
     :cond_0
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$2;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
@@ -92,30 +92,30 @@
 
     check-cast v0, Lcom/meizu/video/client/ui/entity/FavoriteEntity;
 
-    .line 314
+    .line 329
     if-eqz v0, :cond_1
 
-    .line 315
+    .line 330
     invoke-virtual {v0}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->getChanelProgramName()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 316
+    .line 331
     invoke-virtual {v0}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->getCid()Ljava/lang/String;
 
     move-result-object v2
 
-    .line 317
+    .line 332
     invoke-virtual {v0}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->getVid()Ljava/lang/String;
 
     move-result-object v3
 
-    .line 318
+    .line 333
     invoke-virtual {v0}, Lcom/meizu/video/client/ui/entity/FavoriteEntity;->getMediaDataType()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 320
+    .line 335
     new-instance v4, Landroid/content/Intent;
 
     iget-object v5, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$2;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
@@ -128,32 +128,32 @@
 
     invoke-direct {v4, v5, v6}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
-    .line 321
+    .line 336
     const-string v5, "chanelProgramName"
 
     invoke-virtual {v4, v5, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 322
+    .line 337
     const-string v1, "cid"
 
     invoke-virtual {v4, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 323
+    .line 338
     const-string v1, "vid"
 
     invoke-virtual {v4, v1, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 324
+    .line 339
     const-string v1, "mediaDataType"
 
     invoke-virtual {v4, v1, v0}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 325
+    .line 340
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment$2;->this$0:Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;
 
     invoke-virtual {v0, v4}, Lcom/meizu/video/client/ui/module/favorite/FavoriteFragment;->startActivity(Landroid/content/Intent;)V
 
-    .line 328
+    .line 343
     :cond_1
     return-void
 .end method

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/date_text_size" android:textColor="@color/lock_music_name_foreground" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/musicTips" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="190.0dip" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:singleLine="true" android:shadowColor="@color/lock_music_name_shadow_foreground" android:shadowRadius="0.8" />
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:id="@id/musicPanel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip">
-        <ImageButton android:layout_gravity="center_horizontal" android:id="@id/prev" android:background="@color/transparent" android:layout_width="52.0dip" android:layout_height="52.0dip" android:src="@drawable/ibtn_lock_media_prev" />
-        <LinearLayout android:layout_width="14.0dip" android:layout_height="wrap_content" />
-        <ImageButton android:id="@id/pause" android:background="@color/transparent" android:layout_width="52.0dip" android:layout_height="52.0dip" android:src="@drawable/ibtn_lock_media_pause" />
-        <LinearLayout android:layout_width="14.0dip" android:layout_height="wrap_content" />
-        <ImageButton android:id="@id/next" android:background="@color/transparent" android:layout_width="52.0dip" android:layout_height="52.0dip" android:src="@drawable/ibtn_lock_media_next" />
+    <TextView android:textSize="@dimen/font_size_lock_date" android:textColor="@color/lock_music_name_foreground" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/musicTips" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="@dimen/width_of_music_name" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:singleLine="true" android:shadowColor="@color/lock_music_name_shadow_foreground" android:shadowRadius="0.8" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:id="@id/musicPanel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/music_control_panel_magin_to_top">
+        <ImageButton android:layout_gravity="center_horizontal" android:id="@id/prev" android:background="@color/transparent" android:layout_width="@dimen/clickable_size_of_music_button" android:layout_height="@dimen/clickable_size_of_music_button" android:src="@drawable/ibtn_lock_media_prev" />
+        <LinearLayout android:layout_width="@dimen/gap_between_music_buttons" android:layout_height="wrap_content" />
+        <ImageButton android:id="@id/pause" android:background="@color/transparent" android:layout_width="@dimen/clickable_size_of_music_button" android:layout_height="@dimen/clickable_size_of_music_button" android:src="@drawable/ibtn_lock_media_pause" />
+        <LinearLayout android:layout_width="@dimen/gap_between_music_buttons" android:layout_height="wrap_content" />
+        <ImageButton android:id="@id/next" android:background="@color/transparent" android:layout_width="@dimen/clickable_size_of_music_button" android:layout_height="@dimen/clickable_size_of_music_button" android:src="@drawable/ibtn_lock_media_next" />
     </LinearLayout>
     <TextView android:textSize="14.0sp" android:textColor="@color/white" android:ellipsize="marquee" android:gravity="left|center" android:layout_gravity="left" android:id="@id/artistTips" android:focusable="true" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:shadowColor="@color/lighter_gray" android:shadowRadius="0.8" />
 </LinearLayout>

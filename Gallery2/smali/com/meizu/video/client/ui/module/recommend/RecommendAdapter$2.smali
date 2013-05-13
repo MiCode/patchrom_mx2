@@ -42,7 +42,7 @@
     .parameter
 
     .prologue
-    .line 189
+    .line 186
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter$2;->this$0:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
 
     iput-object p2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter$2;->val$chanelProgramName:Ljava/lang/String;
@@ -67,7 +67,7 @@
     .parameter "v"
 
     .prologue
-    .line 192
+    .line 189
     new-instance v0, Landroid/content/Intent;
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter$2;->this$0:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
@@ -81,7 +81,7 @@
 
     invoke-direct {v0, v1, v2}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
-    .line 194
+    .line 190
     .local v0, intent:Landroid/content/Intent;
     const-string v1, "chanelProgramName"
 
@@ -89,35 +89,35 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 195
+    .line 191
     const-string v1, "cid"
 
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter$2;->val$cid:Ljava/lang/String;
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 196
+    .line 192
     const-string v1, "vid"
 
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter$2;->val$vid:Ljava/lang/String;
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 197
+    .line 193
     const-string v1, "mediaDataType"
 
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter$2;->val$mediaDataType:Ljava/lang/String;
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 198
+    .line 194
     const-string v1, "intro"
 
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter$2;->val$intro:Ljava/lang/String;
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 200
+    .line 196
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter$2;->this$0:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
 
     #getter for: Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;->mContext:Landroid/content/Context;
@@ -127,6 +127,6 @@
 
     invoke-virtual {v1, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
 
-    .line 202
+    .line 198
     return-void
 .end method

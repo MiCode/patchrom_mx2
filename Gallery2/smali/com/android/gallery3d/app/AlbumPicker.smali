@@ -27,7 +27,7 @@
     invoke-super {p0, p1}, Lcom/android/gallery3d/app/PickerActivity;->onCreate(Landroid/os/Bundle;)V
 
     .line 32
-    const v0, 0x7f0a0142
+    const v0, 0x7f0a014d
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/app/AlbumPicker;->setTitle(I)V
 

@@ -38,15 +38,15 @@
     .parameter "lookAtCache"
 
     .prologue
-    .line 311
+    .line 330
     iput-object p1, p0, Lcom/android/camera/ActivityBase$LoadThumbnailTask;->this$0:Lcom/android/camera/ActivityBase;
 
     invoke-direct {p0}, Landroid/os/AsyncTask;-><init>()V
 
-    .line 312
+    .line 331
     iput-boolean p2, p0, Lcom/android/camera/ActivityBase$LoadThumbnailTask;->mLookAtCache:Z
 
-    .line 313
+    .line 332
     return-void
 .end method
 
@@ -59,24 +59,24 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 318
+    .line 337
     iget-object v5, p0, Lcom/android/camera/ActivityBase$LoadThumbnailTask;->this$0:Lcom/android/camera/ActivityBase;
 
     invoke-virtual {v5}, Lcom/android/camera/ActivityBase;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v1
 
-    .line 319
+    .line 338
     .local v1, resolver:Landroid/content/ContentResolver;
     const/4 v3, 0x0
 
-    .line 320
+    .line 339
     .local v3, t:Lcom/android/camera/Thumbnail;
     iget-boolean v5, p0, Lcom/android/camera/ActivityBase$LoadThumbnailTask;->mLookAtCache:Z
 
     if-eqz v5, :cond_0
 
-    .line 321
+    .line 340
     iget-object v5, p0, Lcom/android/camera/ActivityBase$LoadThumbnailTask;->this$0:Lcom/android/camera/ActivityBase;
 
     invoke-virtual {v5}, Lcom/android/camera/ActivityBase;->getFilesDir()Ljava/io/File;
@@ -87,7 +87,7 @@
 
     move-result-object v3
 
-    .line 324
+    .line 343
     :cond_0
     invoke-virtual {p0}, Lcom/android/camera/ActivityBase$LoadThumbnailTask;->isCancelled()Z
 
@@ -97,29 +97,29 @@
 
     move-object v3, v4
 
-    .line 340
+    .line 359
     .end local v3           #t:Lcom/android/camera/Thumbnail;
     :cond_1
     :goto_0
     return-object v3
 
-    .line 326
+    .line 345
     .restart local v3       #t:Lcom/android/camera/Thumbnail;
     :cond_2
     if-nez v3, :cond_1
 
-    .line 327
+    .line 346
     const/4 v5, 0x1
 
     new-array v2, v5, [Lcom/android/camera/Thumbnail;
 
-    .line 329
+    .line 348
     .local v2, result:[Lcom/android/camera/Thumbnail;
     invoke-static {v1, v2}, Lcom/android/camera/Thumbnail;->getLastThumbnailFromContentResolver(Landroid/content/ContentResolver;[Lcom/android/camera/Thumbnail;)I
 
     move-result v0
 
-    .line 331
+    .line 350
     .local v0, code:I
     packed-switch v0, :pswitch_data_0
 
@@ -128,10 +128,10 @@
     :pswitch_0
     move-object v3, v4
 
-    .line 335
+    .line 354
     goto :goto_0
 
-    .line 333
+    .line 352
     :pswitch_1
     const/4 v4, 0x0
 
@@ -142,10 +142,10 @@
     :pswitch_2
     move-object v3, v4
 
-    .line 337
+    .line 356
     goto :goto_0
 
-    .line 331
+    .line 350
     nop
 
     :pswitch_data_0
@@ -161,7 +161,7 @@
     .parameter "x0"
 
     .prologue
-    .line 308
+    .line 327
     check-cast p1, [Ljava/lang/Void;
 
     .end local p1
@@ -177,24 +177,24 @@
     .parameter "thumbnail"
 
     .prologue
-    .line 345
+    .line 364
     invoke-virtual {p0}, Lcom/android/camera/ActivityBase$LoadThumbnailTask;->isCancelled()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 348
+    .line 367
     :goto_0
     return-void
 
-    .line 346
+    .line 365
     :cond_0
     iget-object v0, p0, Lcom/android/camera/ActivityBase$LoadThumbnailTask;->this$0:Lcom/android/camera/ActivityBase;
 
     iput-object p1, v0, Lcom/android/camera/ActivityBase;->mThumbnail:Lcom/android/camera/Thumbnail;
 
-    .line 347
+    .line 366
     iget-object v0, p0, Lcom/android/camera/ActivityBase$LoadThumbnailTask;->this$0:Lcom/android/camera/ActivityBase;
 
     invoke-virtual {v0}, Lcom/android/camera/ActivityBase;->updateThumbnailView()V
@@ -207,7 +207,7 @@
     .parameter "x0"
 
     .prologue
-    .line 308
+    .line 327
     check-cast p1, Lcom/android/camera/Thumbnail;
 
     .end local p1

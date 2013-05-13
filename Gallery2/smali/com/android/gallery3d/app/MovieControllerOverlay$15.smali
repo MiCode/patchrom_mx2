@@ -3,12 +3,12 @@
 .source "MovieControllerOverlay.java"
 
 # interfaces
-.implements Landroid/view/View$OnTouchListener;
+.implements Landroid/widget/PopupMenu$OnDismissListener;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/gallery3d/app/MovieControllerOverlay;->initTopPartWidget()V
+    value = Lcom/android/gallery3d/app/MovieControllerOverlay;->showPopMenu()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1652
+    .line 1324
     iput-object p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$15;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -37,22 +37,41 @@
 
 
 # virtual methods
-.method public onTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
-    .locals 1
-    .parameter "v"
-    .parameter "event"
+.method public onDismiss(Landroid/widget/PopupMenu;)V
+    .locals 2
+    .parameter "menu"
 
     .prologue
-    .line 1655
+    .line 1327
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$15;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    check-cast p1, Landroid/widget/SeekBar;
+    const/4 v1, 0x0
 
-    .end local p1
-    invoke-virtual {v0, p1, p2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->onSeekbarProgressTouch(Landroid/widget/SeekBar;Landroid/view/MotionEvent;)V
+    #setter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuShowing:Z
+    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$1102(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
 
-    .line 1656
-    const/4 v0, 0x1
+    .line 1328
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$15;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    return v0
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->resetVolumeBar()V
+
+    .line 1329
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$15;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
+
+    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$200(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 1330
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$15;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
+
+    #calls: Lcom/android/gallery3d/app/MovieControllerOverlay;->maybeStartHiding()V
+    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$7600(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+
+    .line 1332
+    :cond_0
+    return-void
 .end method

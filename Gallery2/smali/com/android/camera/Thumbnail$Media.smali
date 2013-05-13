@@ -33,21 +33,21 @@
     .parameter "uri"
 
     .prologue
-    .line 223
+    .line 238
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 224
+    .line 239
     iput-wide p1, p0, Lcom/android/camera/Thumbnail$Media;->id:J
 
-    .line 225
+    .line 240
     iput p3, p0, Lcom/android/camera/Thumbnail$Media;->orientation:I
 
-    .line 226
+    .line 241
     iput-wide p4, p0, Lcom/android/camera/Thumbnail$Media;->dateTaken:J
 
-    .line 227
+    .line 242
     iput-object p6, p0, Lcom/android/camera/Thumbnail$Media;->uri:Landroid/net/Uri;
 
-    .line 228
+    .line 243
     return-void
 .end method

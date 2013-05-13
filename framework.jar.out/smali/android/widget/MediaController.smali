@@ -6,7 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/widget/MediaController$MediaPlayerControl;
+        Landroid/widget/MediaController$MediaPlayerControl;,
+        Landroid/widget/MediaController$Injector;
     }
 .end annotation
 
@@ -535,7 +536,7 @@
     const/16 v3, 0x8
 
     .line 244
-    const v1, 0x102035a
+    const v1, 0x1020356
 
     invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -564,7 +565,7 @@
 
     .line 250
     :cond_0
-    const v1, 0x102035e
+    const v1, 0x102035a
 
     invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -605,7 +606,7 @@
 
     .line 258
     :cond_1
-    const v1, 0x102035d
+    const v1, 0x1020359
 
     invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -644,7 +645,7 @@
 
     .line 267
     :cond_2
-    const v1, 0x102035b
+    const v1, 0x1020357
 
     invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -674,7 +675,7 @@
 
     .line 271
     :cond_3
-    const v1, 0x1020359
+    const v1, 0x1020355
 
     invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -704,7 +705,7 @@
 
     .line 276
     :cond_4
-    const v1, 0x1020360
+    const v1, 0x102035c
 
     invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -759,7 +760,7 @@
     iput-object v1, p0, Landroid/widget/MediaController;->mEndTime:Landroid/widget/TextView;
 
     .line 286
-    const v1, 0x102035f
+    const v1, 0x102035b
 
     invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1341,6 +1342,17 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
 
+    :goto_1
+    iget-object v0, p0, Landroid/widget/MediaController;->mPlayer:Landroid/widget/MediaController$MediaPlayerControl;
+
+    invoke-interface {v0}, Landroid/widget/MediaController$MediaPlayerControl;->isPlaying()Z
+
+    move-result v0
+
+    iget-object v1, p0, Landroid/widget/MediaController;->mPauseButton:Landroid/widget/ImageButton;
+
+    invoke-static {v0, v1}, Landroid/widget/MediaController$Injector;->updatePausePlay(ZLandroid/widget/ImageView;)V
+
     goto :goto_0
 
     .line 508
@@ -1351,7 +1363,7 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    goto :goto_0
+    goto :goto_1
 .end method
 
 
@@ -1639,7 +1651,7 @@
 
     .line 236
     .local v0, inflate:Landroid/view/LayoutInflater;
-    const v1, 0x1090081
+    const v1, 0x1090085
 
     const/4 v2, 0x0
 

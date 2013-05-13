@@ -27,21 +27,21 @@
     .locals 1
 
     .prologue
-    .line 1453
+    .line 1457
     new-instance v0, Lcom/meizu/widget/MultiWaveView$Ease$Quad$1;
 
     invoke-direct {v0}, Lcom/meizu/widget/MultiWaveView$Ease$Quad$1;-><init>()V
 
     sput-object v0, Lcom/meizu/widget/MultiWaveView$Ease$Quad;->easeIn:Landroid/animation/TimeInterpolator;
 
-    .line 1458
+    .line 1462
     new-instance v0, Lcom/meizu/widget/MultiWaveView$Ease$Quad$2;
 
     invoke-direct {v0}, Lcom/meizu/widget/MultiWaveView$Ease$Quad$2;-><init>()V
 
     sput-object v0, Lcom/meizu/widget/MultiWaveView$Ease$Quad;->easeOut:Landroid/animation/TimeInterpolator;
 
-    .line 1463
+    .line 1467
     new-instance v0, Lcom/meizu/widget/MultiWaveView$Ease$Quad$3;
 
     invoke-direct {v0}, Lcom/meizu/widget/MultiWaveView$Ease$Quad$3;-><init>()V
@@ -55,7 +55,7 @@
     .locals 0
 
     .prologue
-    .line 1452
+    .line 1456
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void

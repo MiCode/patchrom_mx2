@@ -74,7 +74,7 @@
     invoke-super {p0}, Landroid/widget/LinearLayout;->onFinishInflate()V
 
     .line 48
-    const v0, 0x1020365
+    const v0, 0x1020361
 
     invoke-virtual {p0, v0}, Lcom/android/internal/view/CheckableLinearLayout;->findViewById(I)Landroid/view/View;
 

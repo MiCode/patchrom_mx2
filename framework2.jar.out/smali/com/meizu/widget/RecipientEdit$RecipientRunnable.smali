@@ -33,18 +33,18 @@
     .parameter "name"
 
     .prologue
-    .line 3219
+    .line 3250
     iput-object p1, p0, Lcom/meizu/widget/RecipientEdit$RecipientRunnable;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 3220
+    .line 3251
     iput-object p2, p0, Lcom/meizu/widget/RecipientEdit$RecipientRunnable;->mPhoneOrEmail:Ljava/lang/String;
 
-    .line 3221
+    .line 3252
     iput-object p3, p0, Lcom/meizu/widget/RecipientEdit$RecipientRunnable;->mName:Ljava/lang/String;
 
-    .line 3222
+    .line 3253
     return-void
 .end method
 
@@ -54,11 +54,11 @@
     .locals 7
 
     .prologue
-    .line 3226
+    .line 3257
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientRunnable;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mRecipientDataList:Ljava/util/ArrayList;
-    invoke-static {v4}, Lcom/meizu/widget/RecipientEdit;->access$400(Lcom/meizu/widget/RecipientEdit;)Ljava/util/ArrayList;
+    invoke-static {v4}, Lcom/meizu/widget/RecipientEdit;->access$600(Lcom/meizu/widget/RecipientEdit;)Ljava/util/ArrayList;
 
     move-result-object v4
 
@@ -68,13 +68,13 @@
 
     move-result v0
 
-    .line 3227
+    .line 3258
     .local v0, index:I
     const/4 v4, -0x1
 
     if-le v0, v4, :cond_1
 
-    .line 3228
+    .line 3259
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientRunnable;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mRecipientMap:Ljava/util/HashMap;
@@ -88,10 +88,10 @@
 
     invoke-virtual {v4, v5, v6}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 3230
+    .line 3261
     iget-object v3, p0, Lcom/meizu/widget/RecipientEdit$RecipientRunnable;->mName:Ljava/lang/String;
 
-    .line 3231
+    .line 3262
     .local v3, text:Ljava/lang/String;
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientRunnable;->mName:Ljava/lang/String;
 
@@ -101,10 +101,10 @@
 
     if-eqz v4, :cond_0
 
-    .line 3232
+    .line 3263
     iget-object v3, p0, Lcom/meizu/widget/RecipientEdit$RecipientRunnable;->mPhoneOrEmail:Ljava/lang/String;
 
-    .line 3235
+    .line 3266
     :cond_0
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientRunnable;->this$0:Lcom/meizu/widget/RecipientEdit;
 
@@ -121,11 +121,11 @@
 
     check-cast v1, Lcom/meizu/widget/RecipientEdit$ItemView;
 
-    .line 3236
+    .line 3267
     .local v1, item:Lcom/meizu/widget/RecipientEdit$ItemView;
     invoke-virtual {v1, v3}, Lcom/meizu/widget/RecipientEdit$ItemView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 3237
+    .line 3268
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientRunnable;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$RecipientRunnable;->this$0:Lcom/meizu/widget/RecipientEdit;
@@ -137,7 +137,7 @@
     #calls: Lcom/meizu/widget/RecipientEdit;->refreshLayout(Z)V
     invoke-static {v4, v5}, Lcom/meizu/widget/RecipientEdit;->access$4300(Lcom/meizu/widget/RecipientEdit;Z)V
 
-    .line 3240
+    .line 3271
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientRunnable;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mIsSaveHistory:Z
@@ -147,7 +147,7 @@
 
     if-eqz v4, :cond_1
 
-    .line 3241
+    .line 3272
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientRunnable;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mHistoryHandler:Lcom/meizu/widget/RecipientEdit$HistoryHandler;
@@ -161,7 +161,7 @@
 
     move-result-object v2
 
-    .line 3242
+    .line 3273
     .local v2, msg:Landroid/os/Message;
     const/4 v4, 0x2
 
@@ -181,7 +181,7 @@
 
     iput-object v4, v2, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    .line 3243
+    .line 3274
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientRunnable;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mHistoryHandler:Lcom/meizu/widget/RecipientEdit$HistoryHandler;
@@ -191,7 +191,7 @@
 
     invoke-virtual {v4, v2}, Lcom/meizu/widget/RecipientEdit$HistoryHandler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 3246
+    .line 3277
     .end local v1           #item:Lcom/meizu/widget/RecipientEdit$ItemView;
     .end local v2           #msg:Landroid/os/Message;
     .end local v3           #text:Ljava/lang/String;

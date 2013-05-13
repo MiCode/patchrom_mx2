@@ -30,15 +30,15 @@
     .prologue
     const/4 v0, -0x1
 
-    .line 119
+    .line 125
     iput-object p1, p0, Landroid/widget/VideoView$PendingTrackInfo;->this$0:Landroid/widget/VideoView;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 120
+    .line 126
     iput v0, p0, Landroid/widget/VideoView$PendingTrackInfo;->audioTrackIndex:I
 
-    .line 121
+    .line 127
     iput v0, p0, Landroid/widget/VideoView$PendingTrackInfo;->timeTextIndex:I
 
     return-void
@@ -50,7 +50,7 @@
     .parameter "x1"
 
     .prologue
-    .line 119
+    .line 125
     invoke-direct {p0, p1}, Landroid/widget/VideoView$PendingTrackInfo;-><init>(Landroid/widget/VideoView;)V
 
     return-void

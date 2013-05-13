@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 94
+    .line 95
     iput-object p1, p0, Lcom/android/gallery3d/ui/DialogDetailsView$1;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -39,27 +39,27 @@
     .parameter "message"
 
     .prologue
-    .line 97
+    .line 98
     iget v2, p1, Landroid/os/Message;->what:I
 
     packed-switch v2, :pswitch_data_0
 
-    .line 119
+    .line 120
     :cond_0
     :goto_0
     return-void
 
-    .line 99
+    .line 100
     :pswitch_0
     iget v0, p1, Landroid/os/Message;->arg1:I
 
-    .line 100
+    .line 101
     .local v0, msgId:I
     iget-object v1, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v1, Ljava/lang/String;
 
-    .line 101
+    .line 102
     .local v1, tip:Ljava/lang/String;
     iget-object v2, p0, Lcom/android/gallery3d/ui/DialogDetailsView$1;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
@@ -68,7 +68,7 @@
 
     goto :goto_0
 
-    .line 106
+    .line 107
     .end local v0           #msgId:I
     .end local v1           #tip:Ljava/lang/String;
     :pswitch_1
@@ -81,7 +81,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 107
+    .line 108
     iget-object v2, p0, Lcom/android/gallery3d/ui/DialogDetailsView$1;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     #getter for: Lcom/android/gallery3d/ui/DialogDetailsView;->mProgressDialog:Landroid/app/ProgressDialog;
@@ -93,7 +93,7 @@
 
     goto :goto_0
 
-    .line 113
+    .line 114
     :pswitch_2
     iget-object v2, p0, Lcom/android/gallery3d/ui/DialogDetailsView$1;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
@@ -117,7 +117,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 114
+    .line 115
     iget-object v2, p0, Lcom/android/gallery3d/ui/DialogDetailsView$1;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     #getter for: Lcom/android/gallery3d/ui/DialogDetailsView;->mProgressDialog:Landroid/app/ProgressDialog;
@@ -129,7 +129,7 @@
 
     goto :goto_0
 
-    .line 97
+    .line 98
     :pswitch_data_0
     .packed-switch 0x3e8
         :pswitch_0

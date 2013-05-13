@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 1318
+    .line 1550
     iput-object p1, p0, Lcom/android/gallery3d/app/MoviePlayer$AudioBecomingNoisyReceiver;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -38,7 +38,7 @@
     .parameter "x1"
 
     .prologue
-    .line 1318
+    .line 1550
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MoviePlayer$AudioBecomingNoisyReceiver;-><init>(Lcom/android/gallery3d/app/MoviePlayer;)V
 
     return-void
@@ -52,11 +52,11 @@
     .parameter "intent"
 
     .prologue
-    .line 1331
+    .line 1563
     iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$AudioBecomingNoisyReceiver;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
     #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mVideoView:Landroid/widget/VideoView;
-    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$200(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/widget/VideoView;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$800(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/widget/VideoView;
 
     move-result-object v0
 
@@ -68,10 +68,9 @@
 
     iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$AudioBecomingNoisyReceiver;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    #calls: Lcom/android/gallery3d/app/MoviePlayer;->pauseVideo()V
-    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$1600(Lcom/android/gallery3d/app/MoviePlayer;)V
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MoviePlayer;->pauseVideo()V
 
-    .line 1332
+    .line 1564
     :cond_0
     return-void
 .end method
@@ -80,11 +79,11 @@
     .locals 3
 
     .prologue
-    .line 1321
+    .line 1553
     iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$AudioBecomingNoisyReceiver;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
     #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mContext:Landroid/content/Context;
-    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$500(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/content/Context;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$1300(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/content/Context;
 
     move-result-object v0
 
@@ -96,7 +95,7 @@
 
     invoke-virtual {v0, p0, v1}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
-    .line 1323
+    .line 1555
     return-void
 .end method
 
@@ -104,16 +103,16 @@
     .locals 1
 
     .prologue
-    .line 1326
+    .line 1558
     iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$AudioBecomingNoisyReceiver;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
     #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mContext:Landroid/content/Context;
-    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$500(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/content/Context;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$1300(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/content/Context;
 
     move-result-object v0
 
     invoke-virtual {v0, p0}, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
 
-    .line 1327
+    .line 1559
     return-void
 .end method

@@ -33,22 +33,22 @@
     .parameter "bundle"
 
     .prologue
-    .line 693
+    .line 702
     iput-object p1, p0, Lcom/android/internal/telephony/IccProvider$ReadOnlyCursorWrapper;->this$0:Lcom/android/internal/telephony/IccProvider;
 
-    .line 694
+    .line 703
     invoke-direct {p0, p2}, Landroid/database/CursorWrapper;-><init>(Landroid/database/Cursor;)V
 
-    .line 695
+    .line 704
     check-cast p2, Landroid/database/CrossProcessCursor;
 
     .end local p2
     iput-object p2, p0, Lcom/android/internal/telephony/IccProvider$ReadOnlyCursorWrapper;->mCursor:Landroid/database/CrossProcessCursor;
 
-    .line 696
+    .line 705
     iput-object p3, p0, Lcom/android/internal/telephony/IccProvider$ReadOnlyCursorWrapper;->mBundle:Landroid/os/Bundle;
 
-    .line 697
+    .line 706
     return-void
 .end method
 
@@ -58,7 +58,7 @@
     .locals 2
 
     .prologue
-    .line 704
+    .line 713
     new-instance v0, Ljava/lang/SecurityException;
 
     const-string v1, "Download manager cursors are read-only"
@@ -72,7 +72,7 @@
     .locals 2
 
     .prologue
-    .line 700
+    .line 709
     new-instance v0, Ljava/lang/SecurityException;
 
     const-string v1, "Download manager cursors are read-only"
@@ -88,12 +88,12 @@
     .parameter "window"
 
     .prologue
-    .line 708
+    .line 717
     iget-object v0, p0, Lcom/android/internal/telephony/IccProvider$ReadOnlyCursorWrapper;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v0, p1, p2}, Landroid/database/CrossProcessCursor;->fillWindow(ILandroid/database/CursorWindow;)V
 
-    .line 709
+    .line 718
     return-void
 .end method
 
@@ -101,7 +101,7 @@
     .locals 1
 
     .prologue
-    .line 720
+    .line 729
     iget-object v0, p0, Lcom/android/internal/telephony/IccProvider$ReadOnlyCursorWrapper;->mBundle:Landroid/os/Bundle;
 
     return-object v0
@@ -111,7 +111,7 @@
     .locals 1
 
     .prologue
-    .line 712
+    .line 721
     iget-object v0, p0, Lcom/android/internal/telephony/IccProvider$ReadOnlyCursorWrapper;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v0}, Landroid/database/CrossProcessCursor;->getWindow()Landroid/database/CursorWindow;
@@ -127,7 +127,7 @@
     .parameter "newPosition"
 
     .prologue
-    .line 716
+    .line 725
     iget-object v0, p0, Lcom/android/internal/telephony/IccProvider$ReadOnlyCursorWrapper;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v0, p1, p2}, Landroid/database/CrossProcessCursor;->onMove(II)Z

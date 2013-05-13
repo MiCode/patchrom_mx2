@@ -30,16 +30,16 @@
     .parameter "messageResId"
 
     .prologue
-    .line 637
+    .line 641
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 638
+    .line 642
     iput p1, p0, Lcom/android/internal/policy/impl/GlobalActions$SinglePressAction;->mIconResId:I
 
-    .line 639
+    .line 643
     iput p2, p0, Lcom/android/internal/policy/impl/GlobalActions$SinglePressAction;->mMessageResId:I
 
-    .line 640
+    .line 644
     return-void
 .end method
 
@@ -53,12 +53,12 @@
     .parameter "inflater"
 
     .prologue
-    .line 650
+    .line 654
     if-eqz p2, :cond_0
 
     move-object v2, p2
 
-    .line 653
+    .line 657
     .local v2, v:Landroid/view/View;
     :goto_0
     const v3, 0x1020006
@@ -69,7 +69,7 @@
 
     check-cast v0, Landroid/widget/ImageView;
 
-    .line 654
+    .line 658
     .local v0, icon:Landroid/widget/ImageView;
     const v3, 0x102000b
 
@@ -79,9 +79,9 @@
 
     check-cast v1, Landroid/widget/TextView;
 
-    .line 656
+    .line 660
     .local v1, messageView:Landroid/widget/TextView;
-    const v3, 0x10202e0
+    const v3, 0x10202dc
 
     invoke-virtual {v2, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -91,7 +91,7 @@
 
     invoke-virtual {v3, v4}, Landroid/view/View;->setVisibility(I)V
 
-    .line 658
+    .line 662
     invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v3
@@ -104,20 +104,20 @@
 
     invoke-virtual {v0, v3}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 660
+    .line 664
     iget v3, p0, Lcom/android/internal/policy/impl/GlobalActions$SinglePressAction;->mMessageResId:I
 
     invoke-virtual {v1, v3}, Landroid/widget/TextView;->setText(I)V
 
-    .line 662
+    .line 666
     return-object v2
 
-    .line 650
+    .line 654
     .end local v0           #icon:Landroid/widget/ImageView;
     .end local v1           #messageView:Landroid/widget/TextView;
     .end local v2           #v:Landroid/view/View;
     :cond_0
-    const v3, 0x1090053
+    const v3, 0x1090056
 
     const/4 v4, 0x0
 
@@ -132,7 +132,7 @@
     .locals 1
 
     .prologue
-    .line 643
+    .line 647
     const/4 v0, 0x1
 
     return v0

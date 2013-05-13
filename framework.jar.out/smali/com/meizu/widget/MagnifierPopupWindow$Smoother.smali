@@ -27,10 +27,10 @@
     .parameter "y"
 
     .prologue
-    .line 178
+    .line 210
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 179
+    .line 211
     invoke-static {p1}, Ljava/lang/Math;->round(F)I
 
     move-result v0
@@ -39,7 +39,7 @@
 
     iput v0, p0, Lcom/meizu/widget/MagnifierPopupWindow$Smoother;->mX:F
 
-    .line 180
+    .line 212
     invoke-static {p2}, Ljava/lang/Math;->round(F)I
 
     move-result v0
@@ -48,7 +48,7 @@
 
     iput v0, p0, Lcom/meizu/widget/MagnifierPopupWindow$Smoother;->mY:F
 
-    .line 181
+    .line 213
     return-void
 .end method
 
@@ -60,7 +60,7 @@
     .parameter "y"
 
     .prologue
-    .line 192
+    .line 224
     iget v0, p0, Lcom/meizu/widget/MagnifierPopupWindow$Smoother;->mX:F
 
     add-float/2addr v0, p1
@@ -75,7 +75,7 @@
 
     iput v0, p0, Lcom/meizu/widget/MagnifierPopupWindow$Smoother;->mX:F
 
-    .line 193
+    .line 225
     iget v0, p0, Lcom/meizu/widget/MagnifierPopupWindow$Smoother;->mY:F
 
     add-float/2addr v0, p2
@@ -90,7 +90,7 @@
 
     iput v0, p0, Lcom/meizu/widget/MagnifierPopupWindow$Smoother;->mY:F
 
-    .line 194
+    .line 226
     return-void
 .end method
 
@@ -98,7 +98,7 @@
     .locals 1
 
     .prologue
-    .line 184
+    .line 216
     iget v0, p0, Lcom/meizu/widget/MagnifierPopupWindow$Smoother;->mX:F
 
     return v0
@@ -108,7 +108,7 @@
     .locals 1
 
     .prologue
-    .line 188
+    .line 220
     iget v0, p0, Lcom/meizu/widget/MagnifierPopupWindow$Smoother;->mY:F
 
     return v0

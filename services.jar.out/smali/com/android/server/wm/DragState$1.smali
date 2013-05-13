@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 432
+    .line 436
     iput-object p1, p0, Lcom/android/server/wm/DragState$1;->this$0:Lcom/android/server/wm/DragState;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,19 +41,19 @@
     .locals 4
 
     .prologue
-    .line 436
+    .line 440
     iget-object v0, p0, Lcom/android/server/wm/DragState$1;->this$0:Lcom/android/server/wm/DragState;
 
     iget-object v0, v0, Lcom/android/server/wm/DragState;->mSurface:Landroid/view/Surface;
 
     if-nez v0, :cond_1
 
-    .line 454
+    .line 458
     :cond_0
     :goto_0
     return-void
 
-    .line 440
+    .line 444
     :cond_1
     :try_start_0
     iget-object v0, p0, Lcom/android/server/wm/DragState$1;->this$0:Lcom/android/server/wm/DragState;
@@ -64,7 +64,7 @@
 
     iput v1, v0, Lcom/android/server/wm/DragState;->mUpdateCount:I
 
-    .line 441
+    .line 445
     iget-object v0, p0, Lcom/android/server/wm/DragState$1;->this$0:Lcom/android/server/wm/DragState;
 
     iget v1, v0, Lcom/android/server/wm/DragState;->mThumbOffsetY:F
@@ -75,7 +75,7 @@
 
     iput v1, v0, Lcom/android/server/wm/DragState;->mThumbOffsetY:F
 
-    .line 442
+    .line 446
     iget-object v0, p0, Lcom/android/server/wm/DragState$1;->this$0:Lcom/android/server/wm/DragState;
 
     iget-object v0, v0, Lcom/android/server/wm/DragState;->mSurface:Landroid/view/Surface;
@@ -104,10 +104,10 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 447
+    .line 451
     invoke-static {}, Landroid/view/Surface;->closeTransaction()V
 
-    .line 452
+    .line 456
     iget-object v0, p0, Lcom/android/server/wm/DragState$1;->this$0:Lcom/android/server/wm/DragState;
 
     iget v0, v0, Lcom/android/server/wm/DragState;->mUpdateCount:I
@@ -116,7 +116,7 @@
 
     if-ge v0, v1, :cond_0
 
-    .line 453
+    .line 457
     iget-object v0, p0, Lcom/android/server/wm/DragState$1;->this$0:Lcom/android/server/wm/DragState;
 
     iget-object v0, v0, Lcom/android/server/wm/DragState;->mService:Lcom/android/server/wm/WindowManagerService;
@@ -129,7 +129,7 @@
 
     goto :goto_0
 
-    .line 447
+    .line 451
     :catchall_0
     move-exception v0
 

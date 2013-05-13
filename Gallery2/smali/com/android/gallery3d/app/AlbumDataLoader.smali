@@ -360,24 +360,24 @@
     .prologue
     const-wide/16 v2, -0x1
 
-    .line 149
+    .line 154
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mData:[Lcom/android/gallery3d/data/MediaItem;
 
     const/4 v1, 0x0
 
     aput-object v1, v0, p1
 
-    .line 150
+    .line 155
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mItemVersion:[J
 
     aput-wide v2, v0, p1
 
-    .line 151
+    .line 156
     iget-object v0, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mSetVersion:[J
 
     aput-wide v2, v0, p1
 
-    .line 152
+    .line 157
     return-void
 .end method
 
@@ -395,13 +395,13 @@
     .end annotation
 
     .prologue
-    .line 221
+    .line 226
     .local p1, callable:Ljava/util/concurrent/Callable;,"Ljava/util/concurrent/Callable<TT;>;"
     new-instance v1, Ljava/util/concurrent/FutureTask;
 
     invoke-direct {v1, p1}, Ljava/util/concurrent/FutureTask;-><init>(Ljava/util/concurrent/Callable;)V
 
-    .line 222
+    .line 227
     .local v1, task:Ljava/util/concurrent/FutureTask;,"Ljava/util/concurrent/FutureTask<TT;>;"
     iget-object v2, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mMainHandler:Landroid/os/Handler;
 
@@ -415,7 +415,7 @@
 
     invoke-virtual {v2, v3}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 225
+    .line 230
     :try_start_0
     invoke-virtual {v1}, Ljava/util/concurrent/FutureTask;->get()Ljava/lang/Object;
     :try_end_0
@@ -424,26 +424,26 @@
 
     move-result-object v2
 
-    .line 227
+    .line 232
     :goto_0
     return-object v2
 
-    .line 226
+    .line 231
     :catch_0
     move-exception v0
 
-    .line 227
+    .line 232
     .local v0, e:Ljava/lang/InterruptedException;
     const/4 v2, 0x0
 
     goto :goto_0
 
-    .line 228
+    .line 233
     .end local v0           #e:Ljava/lang/InterruptedException;
     :catch_1
     move-exception v0
 
-    .line 229
+    .line 234
     .local v0, e:Ljava/util/concurrent/ExecutionException;
     new-instance v2, Ljava/lang/RuntimeException;
 
@@ -458,7 +458,7 @@
     .parameter "contentEnd"
 
     .prologue
-    .line 155
+    .line 160
     iget v6, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mContentStart:I
 
     if-ne p1, v6, :cond_1
@@ -467,49 +467,49 @@
 
     if-ne p2, v6, :cond_1
 
-    .line 179
+    .line 184
     :cond_0
     :goto_0
     return-void
 
-    .line 156
+    .line 161
     :cond_1
     iget v0, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mContentEnd:I
 
-    .line 157
+    .line 162
     .local v0, end:I
     iget v5, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mContentStart:I
 
-    .line 160
+    .line 165
     .local v5, start:I
     monitor-enter p0
 
-    .line 161
+    .line 166
     :try_start_0
     iput p1, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mContentStart:I
 
-    .line 162
+    .line 167
     iput p2, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mContentEnd:I
 
-    .line 163
+    .line 168
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 164
+    .line 169
     iget-object v2, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mItemVersion:[J
 
-    .line 165
+    .line 170
     .local v2, itemVersion:[J
     iget-object v4, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mSetVersion:[J
 
-    .line 166
+    .line 171
     .local v4, setVersion:[J
     if-ge p1, v0, :cond_2
 
     if-lt v5, p2, :cond_3
 
-    .line 167
+    .line 172
     :cond_2
     move v1, v5
 
@@ -520,17 +520,17 @@
     :goto_1
     if-ge v1, v3, :cond_5
 
-    .line 168
+    .line 173
     rem-int/lit16 v6, v1, 0x3e8
 
     invoke-direct {p0, v6}, Lcom/android/gallery3d/app/AlbumDataLoader;->clearSlot(I)V
 
-    .line 167
+    .line 172
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_1
 
-    .line 163
+    .line 168
     .end local v1           #i:I
     .end local v2           #itemVersion:[J
     .end local v3           #n:I
@@ -545,7 +545,7 @@
 
     throw v6
 
-    .line 171
+    .line 176
     .restart local v2       #itemVersion:[J
     .restart local v4       #setVersion:[J
     :cond_3
@@ -555,17 +555,17 @@
     :goto_2
     if-ge v1, p1, :cond_4
 
-    .line 172
+    .line 177
     rem-int/lit16 v6, v1, 0x3e8
 
     invoke-direct {p0, v6}, Lcom/android/gallery3d/app/AlbumDataLoader;->clearSlot(I)V
 
-    .line 171
+    .line 176
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_2
 
-    .line 174
+    .line 179
     :cond_4
     move v1, p2
 
@@ -575,17 +575,17 @@
     :goto_3
     if-ge v1, v3, :cond_5
 
-    .line 175
+    .line 180
     rem-int/lit16 v6, v1, 0x3e8
 
     invoke-direct {p0, v6}, Lcom/android/gallery3d/app/AlbumDataLoader;->clearSlot(I)V
 
-    .line 174
+    .line 179
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_3
 
-    .line 178
+    .line 183
     :cond_5
     iget-object v6, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mReloadTask:Lcom/android/gallery3d/app/AlbumDataLoader$ReloadTask;
 
@@ -676,7 +676,7 @@
     .locals 1
 
     .prologue
-    .line 135
+    .line 140
     iget v0, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mActiveStart:I
 
     return v0
@@ -693,12 +693,23 @@
     return-object v0
 .end method
 
+.method public getRowHeight(I)I
+    .locals 1
+    .parameter "index"
+
+    .prologue
+    .line 135
+    const/16 v0, 0xc8
+
+    return v0
+.end method
+
 .method public isActive(I)Z
     .locals 1
     .parameter "index"
 
     .prologue
-    .line 140
+    .line 145
     iget v0, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mActiveStart:I
 
     if-lt p1, v0, :cond_0
@@ -780,7 +791,7 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 183
+    .line 188
     iget v3, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mActiveStart:I
 
     if-ne p1, v3, :cond_1
@@ -789,12 +800,12 @@
 
     if-ne p2, v3, :cond_1
 
-    .line 202
+    .line 207
     :cond_0
     :goto_0
     return-void
 
-    .line 185
+    .line 190
     :cond_1
     if-gt p1, p2, :cond_3
 
@@ -815,22 +826,22 @@
     :goto_1
     invoke-static {v3}, Lcom/android/gallery3d/common/Utils;->assertTrue(Z)V
 
-    .line 188
+    .line 193
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mData:[Lcom/android/gallery3d/data/MediaItem;
 
     array-length v2, v3
 
-    .line 189
+    .line 194
     .local v2, length:I
     iput p1, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mActiveStart:I
 
-    .line 190
+    .line 195
     iput p2, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mActiveEnd:I
 
-    .line 193
+    .line 198
     if-eq p1, p2, :cond_0
 
-    .line 195
+    .line 200
     add-int v3, p1, p2
 
     div-int/lit8 v3, v3, 0x2
@@ -851,7 +862,7 @@
 
     move-result v1
 
-    .line 197
+    .line 202
     .local v1, contentStart:I
     add-int v3, v1, v2
 
@@ -861,7 +872,7 @@
 
     move-result v0
 
-    .line 198
+    .line 203
     .local v0, contentEnd:I
     iget v3, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mContentStart:I
 
@@ -883,7 +894,7 @@
 
     if-le v3, v4, :cond_0
 
-    .line 200
+    .line 205
     :cond_2
     invoke-direct {p0, v1, v0}, Lcom/android/gallery3d/app/AlbumDataLoader;->setContentWindow(II)V
 
@@ -895,7 +906,7 @@
     :cond_3
     move v3, v4
 
-    .line 185
+    .line 190
     goto :goto_1
 .end method
 
@@ -904,10 +915,10 @@
     .parameter "listener"
 
     .prologue
-    .line 212
+    .line 217
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mDataListener:Lcom/android/gallery3d/app/AlbumDataLoader$DataListener;
 
-    .line 213
+    .line 218
     return-void
 .end method
 
@@ -916,10 +927,10 @@
     .parameter "listener"
 
     .prologue
-    .line 217
+    .line 222
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mLoadingListener:Lcom/android/gallery3d/app/LoadingListener;
 
-    .line 218
+    .line 223
     return-void
 .end method
 
@@ -927,7 +938,7 @@
     .locals 1
 
     .prologue
-    .line 145
+    .line 150
     iget v0, p0, Lcom/android/gallery3d/app/AlbumDataLoader;->mSize:I
 
     return v0

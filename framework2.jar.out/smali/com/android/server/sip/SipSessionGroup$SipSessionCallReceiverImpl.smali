@@ -27,18 +27,18 @@
     .parameter "listener"
 
     .prologue
-    .line 610
+    .line 614
     iput-object p1, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionCallReceiverImpl;->this$0:Lcom/android/server/sip/SipSessionGroup;
 
-    .line 611
+    .line 615
     invoke-direct {p0, p1, p2}, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;-><init>(Lcom/android/server/sip/SipSessionGroup;Landroid/net/sip/ISipSessionListener;)V
 
-    .line 613
+    .line 617
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionCallReceiverImpl;->mContext:Landroid/content/Context;
 
-    .line 612
+    .line 616
     return-void
 .end method
 
@@ -48,12 +48,12 @@
     .prologue
     const/4 v2, 0x1
 
-    .line 618
+    .line 622
     iget-object v3, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionCallReceiverImpl;->mContext:Landroid/content/Context;
 
     if-eqz v3, :cond_0
 
-    .line 620
+    .line 624
     :try_start_0
     iget-object v3, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionCallReceiverImpl;->mContext:Landroid/content/Context;
 
@@ -65,7 +65,7 @@
 
     check-cast v0, Landroid/net/ConnectivityManager;
 
-    .line 622
+    .line 626
     .local v0, conMan:Landroid/net/ConnectivityManager;
     const/4 v3, 0x1
 
@@ -73,7 +73,7 @@
 
     move-result-object v1
 
-    .line 623
+    .line 627
     .local v1, wifiInfo:Landroid/net/NetworkInfo;
     invoke-virtual {v1}, Landroid/net/NetworkInfo;->getState()Landroid/net/NetworkInfo$State;
 
@@ -85,17 +85,17 @@
 
     if-eq v3, v4, :cond_0
 
-    .line 624
+    .line 628
     const/4 v2, 0x0
 
-    .line 632
+    .line 636
     .end local v0           #conMan:Landroid/net/ConnectivityManager;
     .end local v1           #wifiInfo:Landroid/net/NetworkInfo;
     :cond_0
     :goto_0
     return v2
 
-    .line 626
+    .line 630
     :catch_0
     move-exception v3
 
@@ -118,7 +118,7 @@
 
     const/4 v8, 0x0
 
-    .line 636
+    .line 640
     #calls: Lcom/android/server/sip/SipSessionGroup;->isLoggable(Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;Ljava/util/EventObject;)Z
     invoke-static {p0, p1}, Lcom/android/server/sip/SipSessionGroup;->access$200(Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;Ljava/util/EventObject;)Z
 
@@ -170,7 +170,7 @@
 
     invoke-static {v9, v10}, Landroid/net/sip/Utility;->WriteLog(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 639
+    .line 643
     :cond_0
     const-string v9, "INVITE"
 
@@ -183,30 +183,30 @@
 
     move-object v2, p1
 
-    .line 640
+    .line 644
     check-cast v2, Ljavax/sip/RequestEvent;
 
-    .line 641
+    .line 645
     .local v2, event:Ljavax/sip/RequestEvent;
     invoke-virtual {v2}, Ljavax/sip/RequestEvent;->getRequest()Ljavax/sip/message/Request;
 
     move-result-object v4
 
-    .line 643
+    .line 647
     .local v4, request:Ljavax/sip/message/Request;
     const/4 v1, 0x0
 
-    .line 644
+    .line 648
     .local v1, SipCallFlag:I
     const/4 v0, 0x0
 
-    .line 645
+    .line 649
     .local v0, EnableSipCall:Z
     iget-object v9, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionCallReceiverImpl;->mContext:Landroid/content/Context;
 
     if-eqz v9, :cond_1
 
-    .line 646
+    .line 650
     iget-object v9, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionCallReceiverImpl;->mContext:Landroid/content/Context;
 
     invoke-virtual {v9}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
@@ -219,7 +219,7 @@
 
     move-result v1
 
-    .line 648
+    .line 652
     #calls: Lcom/android/server/sip/SipSessionGroup;->isSipLogEnable()Z
     invoke-static {}, Lcom/android/server/sip/SipSessionGroup;->access$600()Z
 
@@ -249,18 +249,18 @@
 
     invoke-static {v9, v10}, Landroid/net/sip/Utility;->WriteLog(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 650
+    .line 654
     :cond_1
     if-ne v1, v7, :cond_2
 
-    .line 651
+    .line 655
     const/4 v0, 0x1
 
-    .line 653
+    .line 657
     :cond_2
     if-nez v0, :cond_4
 
-    .line 654
+    .line 658
     iget-object v9, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionCallReceiverImpl;->this$0:Lcom/android/server/sip/SipSessionGroup;
 
     #getter for: Lcom/android/server/sip/SipSessionGroup;->mSipHelper:Lcom/android/server/sip/SipHelper;
@@ -274,7 +274,7 @@
 
     invoke-virtual {v9, v2, v10, v8}, Lcom/android/server/sip/SipHelper;->sendInviteBusyHere(Ljavax/sip/RequestEvent;Ljavax/sip/ServerTransaction;Z)V
 
-    .line 656
+    .line 660
     #calls: Lcom/android/server/sip/SipSessionGroup;->isSipLogEnable()Z
     invoke-static {}, Lcom/android/server/sip/SipSessionGroup;->access$600()Z
 
@@ -288,7 +288,7 @@
 
     invoke-static {v8, v9}, Landroid/net/sip/Utility;->WriteLog(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 696
+    .line 700
     .end local v0           #EnableSipCall:Z
     .end local v1           #SipCallFlag:I
     .end local v2           #event:Ljavax/sip/RequestEvent;
@@ -298,7 +298,7 @@
     :goto_0
     return v7
 
-    .line 659
+    .line 663
     .restart local v0       #EnableSipCall:Z
     .restart local v1       #SipCallFlag:I
     .restart local v2       #event:Ljavax/sip/RequestEvent;
@@ -307,17 +307,17 @@
     :cond_4
     const/4 v6, 0x1
 
-    .line 660
+    .line 664
     .local v6, wifiOnlyFlag:I
     const/4 v5, 0x1
 
-    .line 661
+    .line 665
     .local v5, wifiOnly:Z
     iget-object v9, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionCallReceiverImpl;->mContext:Landroid/content/Context;
 
     if-eqz v9, :cond_5
 
-    .line 662
+    .line 666
     iget-object v9, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionCallReceiverImpl;->mContext:Landroid/content/Context;
 
     invoke-virtual {v9}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
@@ -330,7 +330,7 @@
 
     move-result v6
 
-    .line 664
+    .line 668
     #calls: Lcom/android/server/sip/SipSessionGroup;->isSipLogEnable()Z
     invoke-static {}, Lcom/android/server/sip/SipSessionGroup;->access$600()Z
 
@@ -360,14 +360,14 @@
 
     invoke-static {v9, v10}, Landroid/net/sip/Utility;->WriteLog(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 668
+    .line 672
     :cond_5
     if-nez v6, :cond_6
 
-    .line 669
+    .line 673
     const/4 v5, 0x0
 
-    .line 671
+    .line 675
     :cond_6
     if-eqz v5, :cond_7
 
@@ -377,7 +377,7 @@
 
     if-nez v9, :cond_7
 
-    .line 672
+    .line 676
     iget-object v9, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionCallReceiverImpl;->this$0:Lcom/android/server/sip/SipSessionGroup;
 
     #getter for: Lcom/android/server/sip/SipSessionGroup;->mSipHelper:Lcom/android/server/sip/SipHelper;
@@ -391,7 +391,7 @@
 
     invoke-virtual {v9, v2, v10, v8}, Lcom/android/server/sip/SipHelper;->sendInviteBusyHere(Ljavax/sip/RequestEvent;Ljavax/sip/ServerTransaction;Z)V
 
-    .line 674
+    .line 678
     #calls: Lcom/android/server/sip/SipSessionGroup;->isSipLogEnable()Z
     invoke-static {}, Lcom/android/server/sip/SipSessionGroup;->access$600()Z
 
@@ -407,7 +407,7 @@
 
     goto :goto_0
 
-    .line 679
+    .line 683
     :cond_7
     new-instance v3, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;
 
@@ -417,13 +417,13 @@
 
     invoke-direct {v3, v9, v10}, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;-><init>(Lcom/android/server/sip/SipSessionGroup;Landroid/net/sip/ISipSessionListener;)V
 
-    .line 680
+    .line 684
     .local v3, newSession:Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;
     const/4 v9, 0x3
 
     iput v9, v3, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;->mState:I
 
-    .line 681
+    .line 685
     iget-object v9, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionCallReceiverImpl;->this$0:Lcom/android/server/sip/SipSessionGroup;
 
     #getter for: Lcom/android/server/sip/SipSessionGroup;->mSipHelper:Lcom/android/server/sip/SipHelper;
@@ -441,7 +441,7 @@
 
     iput-object v9, v3, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;->mServerTransaction:Ljavax/sip/ServerTransaction;
 
-    .line 683
+    .line 687
     iget-object v9, v3, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;->mServerTransaction:Ljavax/sip/ServerTransaction;
 
     invoke-interface {v9}, Ljavax/sip/ServerTransaction;->getDialog()Ljavax/sip/Dialog;
@@ -450,10 +450,10 @@
 
     iput-object v9, v3, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;->mDialog:Ljavax/sip/Dialog;
 
-    .line 684
+    .line 688
     iput-object v2, v3, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;->mInviteReceived:Ljavax/sip/RequestEvent;
 
-    .line 685
+    .line 689
     invoke-virtual {v2}, Ljavax/sip/RequestEvent;->getRequest()Ljavax/sip/message/Request;
 
     move-result-object v9
@@ -465,7 +465,7 @@
 
     iput-object v9, v3, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;->mPeerProfile:Landroid/net/sip/SipProfile;
 
-    .line 686
+    .line 690
     iget-object v9, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionCallReceiverImpl;->this$0:Lcom/android/server/sip/SipSessionGroup;
 
     invoke-virtual {v2}, Ljavax/sip/RequestEvent;->getRequest()Ljavax/sip/message/Request;
@@ -479,13 +479,13 @@
 
     iput-object v9, v3, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;->mPeerSessionDescription:Ljava/lang/String;
 
-    .line 688
+    .line 692
     iget-object v9, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionCallReceiverImpl;->this$0:Lcom/android/server/sip/SipSessionGroup;
 
     #calls: Lcom/android/server/sip/SipSessionGroup;->addSipSession(Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;Z)V
     invoke-static {v9, v3, v8}, Lcom/android/server/sip/SipSessionGroup;->access$1000(Lcom/android/server/sip/SipSessionGroup;Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;Z)V
 
-    .line 689
+    .line 693
     iget-object v8, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;->mProxy:Lcom/android/server/sip/SipSessionListenerProxy;
 
     iget-object v9, v3, Lcom/android/server/sip/SipSessionGroup$SipSessionImpl;->mPeerProfile:Landroid/net/sip/SipProfile;
@@ -496,7 +496,7 @@
 
     goto/16 :goto_0
 
-    .line 692
+    .line 696
     .end local v0           #EnableSipCall:Z
     .end local v1           #SipCallFlag:I
     .end local v2           #event:Ljavax/sip/RequestEvent;
@@ -514,7 +514,7 @@
 
     if-eqz v9, :cond_9
 
-    .line 693
+    .line 697
     iget-object v8, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionCallReceiverImpl;->this$0:Lcom/android/server/sip/SipSessionGroup;
 
     #getter for: Lcom/android/server/sip/SipSessionGroup;->mSipHelper:Lcom/android/server/sip/SipHelper;
@@ -535,7 +535,7 @@
     :cond_9
     move v7, v8
 
-    .line 696
+    .line 700
     goto/16 :goto_0
 .end method
 
@@ -544,9 +544,9 @@
     .parameter "context"
 
     .prologue
-    .line 615
+    .line 619
     iput-object p1, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionCallReceiverImpl;->mContext:Landroid/content/Context;
 
-    .line 616
+    .line 620
     return-void
 .end method

@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 2874
+    .line 3102
     iput-object p1, p0, Lcom/android/camera/Camera$14;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,16 +41,16 @@
     .locals 1
 
     .prologue
-    .line 2877
+    .line 3105
     iget-object v0, p0, Lcom/android/camera/Camera$14;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mCameraControl:Lcom/android/camera/ui/ControlPanelLayout;
-    invoke-static {v0}, Lcom/android/camera/Camera;->access$11700(Lcom/android/camera/Camera;)Lcom/android/camera/ui/ControlPanelLayout;
+    invoke-static {v0}, Lcom/android/camera/Camera;->access$12200(Lcom/android/camera/Camera;)Lcom/android/camera/ui/ControlPanelLayout;
 
     move-result-object v0
 
     invoke-static {v0}, Lcom/android/camera/Util;->checkViewVISIBLE(Landroid/view/View;)Z
 
-    .line 2878
+    .line 3106
     return-void
 .end method

@@ -29,7 +29,7 @@
 
     move-result v0
 
-    const v1, 0x7f0d0058
+    const v1, 0x7f0d005d
 
     if-ne v0, v1, :cond_0
 
@@ -75,7 +75,7 @@
 
     .line 49
     :cond_0
-    const v2, 0x7f040024
+    const v2, 0x7f040026
 
     invoke-virtual {p0, v2}, Lcom/android/gallery3d/app/PickerActivity;->setContentView(I)V
 
@@ -83,7 +83,7 @@
     if-eqz v0, :cond_1
 
     .line 54
-    const v2, 0x7f0d0058
+    const v2, 0x7f0d005d
 
     invoke-virtual {p0, v2}, Lcom/android/gallery3d/app/PickerActivity;->findViewById(I)Landroid/view/View;
 
@@ -99,7 +99,7 @@
     invoke-virtual {v1, v2}, Landroid/view/View;->setVisibility(I)V
 
     .line 60
-    const v2, 0x7f0d008e
+    const v2, 0x7f0d0093
 
     invoke-virtual {p0, v2}, Lcom/android/gallery3d/app/PickerActivity;->findViewById(I)Landroid/view/View;
 
@@ -129,7 +129,7 @@
 
     .line 67
     .local v0, inflater:Landroid/view/MenuInflater;
-    const v1, 0x7f110015
+    const v1, 0x7f110016
 
     invoke-virtual {v0, v1, p1}, Landroid/view/MenuInflater;->inflate(ILandroid/view/Menu;)V
 
@@ -149,7 +149,7 @@
 
     move-result v0
 
-    const v1, 0x7f0d01af
+    const v1, 0x7f0d01cf
 
     if-ne v0, v1, :cond_0
 

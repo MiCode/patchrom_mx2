@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/camera/Camera;->showExposureControlBar()V
+    value = Lcom/android/camera/Camera;->onResume()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 4381
+    .line 4029
     iput-object p1, p0, Lcom/android/camera/Camera$18;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,18 +41,20 @@
     .locals 2
 
     .prologue
-    .line 4384
+    .line 4031
     iget-object v0, p0, Lcom/android/camera/Camera$18;->this$0:Lcom/android/camera/Camera;
 
-    #getter for: Lcom/android/camera/Camera;->mExposureTextView:Landroid/widget/TextView;
-    invoke-static {v0}, Lcom/android/camera/Camera;->access$12600(Lcom/android/camera/Camera;)Landroid/widget/TextView;
+    const/4 v1, 0x1
 
-    move-result-object v0
+    #calls: Lcom/android/camera/Camera;->firstPrepareCaptureModeUI(Z)V
+    invoke-static {v0, v1}, Lcom/android/camera/Camera;->access$12900(Lcom/android/camera/Camera;Z)V
 
-    const/4 v1, 0x0
+    .line 4032
+    iget-object v0, p0, Lcom/android/camera/Camera$18;->this$0:Lcom/android/camera/Camera;
 
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setVisibility(I)V
+    #calls: Lcom/android/camera/Camera;->updateFlashLightUI()V
+    invoke-static {v0}, Lcom/android/camera/Camera;->access$13000(Lcom/android/camera/Camera;)V
 
-    .line 4385
+    .line 4033
     return-void
 .end method

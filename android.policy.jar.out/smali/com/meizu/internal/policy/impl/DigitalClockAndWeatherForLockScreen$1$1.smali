@@ -46,8 +46,7 @@
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen$1;->this$0:Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;
 
-    #calls: Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->updateTime()V
-    invoke-static {v0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->access$200(Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;)V
+    invoke-virtual {v0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->updateTime()V
 
     .line 88
     return-void

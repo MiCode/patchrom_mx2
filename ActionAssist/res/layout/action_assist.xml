@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.actionassist.ActionAssistView
+	xmlns:prvandroid="http://schemas.android.com/apk/prv/res/android"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+    <RelativeLayout
+        android:id="@+id/action_bg_protect"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="0dip"
+		>
+	<RelativeLayout
+		android:id="@+id/rot0"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:visibility="gone">
+
+		<com.android.internal.widget.multiwaveview.ActionGlowPadView
+			android:id="@+id/glow_pad_view"
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/action_assist_height"
+			android:layout_alignParentBottom="true"
+			android:gravity="top"
+			android:background="@drawable/ic_action_assist_bg_0"
+
+			prvandroid:targetDrawables="@array/action_assist_targets_0"
+			prvandroid:targetDescriptions="@array/action_assist_target_descriptions"
+			prvandroid:directionDescriptions="@array/action_assist_direction_descriptions"
+			prvandroid:handleDrawable="@android:color/transparent"
+			prvandroid:outerRingDrawable="@drawable/action_assist_outerring"
+			prvandroid:outerRadius="@dimen/action_assist_outerring_radius"
+			prvandroid:innerRadius="@miui:dimen/android_glowpadview_inner_radius"
+			prvandroid:snapMargin="@dimen/action_assist_snap_margin"
+			prvandroid:feedbackCount="0"
+			prvandroid:vibrationDuration="@integer/config_vibration_duration"
+			prvandroid:alwaysTrackFinger="true"
+			prvandroid:glowRadius="@miui:dimen/android_glowpadview_glow_radius"
+			prvandroid:pointDrawable="@miui:drawable/android_ic_lockscreen_glowdot"
+		/>
+
+	</RelativeLayout>
+
+	<RelativeLayout
+            android:id="@+id/rot90"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+			android:visibility="gone">
+
+            <com.android.internal.widget.multiwaveview.ActionGlowPadView
+                android:id="@+id/glow_pad_view"
+                android:orientation="vertical"
+                android:layout_width="@dimen/action_assist_height"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:gravity="left"
+                android:background="@drawable/ic_action_assist_bg_90"
+
+                prvandroid:targetDrawables="@array/action_assist_targets_90"
+                prvandroid:targetDescriptions="@array/action_assist_target_descriptions"
+                prvandroid:directionDescriptions="@array/action_assist_direction_descriptions"
+                prvandroid:handleDrawable="@android:color/transparent"
+                prvandroid:outerRingDrawable="@drawable/action_assist_outerring"
+                prvandroid:outerRadius="@dimen/action_assist_outerring_radius"
+                prvandroid:innerRadius="@miui:dimen/android_glowpadview_inner_radius"
+                prvandroid:snapMargin="@dimen/action_assist_snap_margin"
+                prvandroid:feedbackCount="0"
+                prvandroid:vibrationDuration="@integer/config_vibration_duration"
+                prvandroid:alwaysTrackFinger="true"
+                prvandroid:glowRadius="@miui:dimen/android_glowpadview_glow_radius"
+                prvandroid:pointDrawable="@miui:drawable/android_ic_lockscreen_glowdot"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rot180"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+			android:visibility="gone">
+
+            <com.android.internal.widget.multiwaveview.ActionGlowPadView
+                android:id="@+id/glow_pad_view"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_assist_height"
+                android:layout_alignParentTop="true"
+                android:gravity="bottom"
+				android:background="@drawable/ic_action_assist_bg_180"
+
+                prvandroid:targetDrawables="@array/action_assist_targets_180"
+                prvandroid:targetDescriptions="@array/action_assist_target_descriptions"
+                prvandroid:directionDescriptions="@array/action_assist_direction_descriptions"
+                prvandroid:handleDrawable="@android:color/transparent"
+                prvandroid:outerRingDrawable="@drawable/action_assist_outerring"
+                prvandroid:outerRadius="@dimen/action_assist_outerring_radius"
+                prvandroid:innerRadius="@miui:dimen/android_glowpadview_inner_radius"
+                prvandroid:snapMargin="@dimen/action_assist_snap_margin"
+                prvandroid:feedbackCount="0"
+                prvandroid:vibrationDuration="@integer/config_vibration_duration"
+                prvandroid:alwaysTrackFinger="true"
+                prvandroid:glowRadius="@miui:dimen/android_glowpadview_glow_radius"
+                prvandroid:pointDrawable="@miui:drawable/android_ic_lockscreen_glowdot"
+               />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rot270"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+			android:visibility="gone">
+
+            <com.android.internal.widget.multiwaveview.ActionGlowPadView
+               android:id="@+id/glow_pad_view"
+                android:orientation="vertical"
+                android:layout_width="@dimen/action_assist_height"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:gravity="right"
+                android:background="@drawable/ic_action_assist_bg_270"
+
+                prvandroid:targetDrawables="@array/action_assist_targets_270"
+                prvandroid:targetDescriptions="@array/action_assist_target_descriptions"
+                prvandroid:directionDescriptions="@array/action_assist_direction_descriptions"
+                prvandroid:handleDrawable="@android:color/transparent"
+                prvandroid:outerRingDrawable="@drawable/action_assist_outerring"
+                prvandroid:outerRadius="@dimen/action_assist_outerring_radius"
+                prvandroid:innerRadius="@miui:dimen/android_glowpadview_inner_radius"
+                prvandroid:snapMargin="@dimen/action_assist_snap_margin"
+                prvandroid:feedbackCount="0"
+                prvandroid:vibrationDuration="@integer/config_vibration_duration"
+                prvandroid:alwaysTrackFinger="true"
+                prvandroid:glowRadius="@miui:dimen/android_glowpadview_glow_radius"
+                prvandroid:pointDrawable="@miui:drawable/android_ic_lockscreen_glowdot"
+                />
+
+        </RelativeLayout>
+	</RelativeLayout>
+</com.android.actionassist.ActionAssistView>

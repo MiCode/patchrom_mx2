@@ -722,7 +722,7 @@
     .locals 2
 
     .prologue
-    const v1, 0x3df8f8f9
+    const v1, 0x3dd0d0d1
 
     .line 259
     const/high16 v0, 0x3f80

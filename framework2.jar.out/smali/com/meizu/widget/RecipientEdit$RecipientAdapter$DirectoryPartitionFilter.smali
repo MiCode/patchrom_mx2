@@ -30,18 +30,18 @@
     .parameter "directoryId"
 
     .prologue
-    .line 2554
+    .line 2583
     iput-object p1, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartitionFilter;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientAdapter;
 
     invoke-direct {p0}, Landroid/widget/Filter;-><init>()V
 
-    .line 2555
+    .line 2584
     iput p2, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartitionFilter;->mPartitionIndex:I
 
-    .line 2556
+    .line 2585
     iput-wide p3, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartitionFilter;->mDirectoryId:J
 
-    .line 2557
+    .line 2586
     return-void
 .end method
 
@@ -52,7 +52,7 @@
     .parameter "resultValue"
 
     .prologue
-    .line 2579
+    .line 2608
     const/4 v0, 0x0
 
     return-object v0
@@ -63,19 +63,19 @@
     .parameter "constraint"
 
     .prologue
-    .line 2561
+    .line 2590
     if-nez p1, :cond_1
 
     const-string v1, ""
 
-    .line 2562
+    .line 2591
     .local v1, filter:Ljava/lang/String;
     :goto_0
     new-instance v2, Landroid/widget/Filter$FilterResults;
 
     invoke-direct {v2}, Landroid/widget/Filter$FilterResults;-><init>()V
 
-    .line 2563
+    .line 2592
     .local v2, results:Landroid/widget/Filter$FilterResults;
     invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -83,7 +83,7 @@
 
     if-nez v3, :cond_0
 
-    .line 2564
+    .line 2593
     iget-object v3, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartitionFilter;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientAdapter;
 
     const/4 v4, 0x1
@@ -95,16 +95,16 @@
 
     move-result-object v0
 
-    .line 2565
+    .line 2594
     .local v0, contactCursor:Landroid/database/Cursor;
     iput-object v0, v2, Landroid/widget/Filter$FilterResults;->values:Ljava/lang/Object;
 
-    .line 2567
+    .line 2596
     .end local v0           #contactCursor:Landroid/database/Cursor;
     :cond_0
     return-object v2
 
-    .line 2561
+    .line 2590
     .end local v1           #filter:Ljava/lang/String;
     .end local v2           #results:Landroid/widget/Filter$FilterResults;
     :cond_1
@@ -125,12 +125,12 @@
     .parameter "results"
 
     .prologue
-    .line 2572
+    .line 2601
     iget-object v0, p2, Landroid/widget/Filter$FilterResults;->values:Ljava/lang/Object;
 
     check-cast v0, Landroid/database/Cursor;
 
-    .line 2573
+    .line 2602
     .local v0, cursor:Landroid/database/Cursor;
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartitionFilter;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientAdapter;
 
@@ -139,7 +139,7 @@
     #calls: Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->onDirectoryLoadFinished(Ljava/lang/CharSequence;JLandroid/database/Cursor;)V
     invoke-static {v1, p1, v2, v3, v0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->access$3000(Lcom/meizu/widget/RecipientEdit$RecipientAdapter;Ljava/lang/CharSequence;JLandroid/database/Cursor;)V
 
-    .line 2574
+    .line 2603
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartitionFilter;->this$1:Lcom/meizu/widget/RecipientEdit$RecipientAdapter;
 
     invoke-virtual {v1}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->getCount()I
@@ -148,6 +148,6 @@
 
     iput v1, p2, Landroid/widget/Filter$FilterResults;->count:I
 
-    .line 2575
+    .line 2604
     return-void
 .end method

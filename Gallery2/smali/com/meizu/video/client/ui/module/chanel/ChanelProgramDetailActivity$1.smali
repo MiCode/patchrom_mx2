@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 419
+    .line 460
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -57,10 +57,10 @@
     .local p1, parent:Landroid/widget/AdapterView;,"Landroid/widget/AdapterView<*>;"
     const/4 v6, 0x1
 
-    .line 423
+    .line 464
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
-    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->episodesShowListEntity:Ljava/util/ArrayList;
+    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->mEpisodesShowListEntity:Ljava/util/ArrayList;
     invoke-static {v4}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->access$000(Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;)Ljava/util/ArrayList;
 
     move-result-object v4
@@ -69,7 +69,7 @@
 
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
-    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->episodesShowListEntity:Ljava/util/ArrayList;
+    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->mEpisodesShowListEntity:Ljava/util/ArrayList;
     invoke-static {v4}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->access$000(Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;)Ljava/util/ArrayList;
 
     move-result-object v4
@@ -82,7 +82,7 @@
 
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
-    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->episodesShowListEntity:Ljava/util/ArrayList;
+    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->mEpisodesShowListEntity:Ljava/util/ArrayList;
     invoke-static {v4}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->access$000(Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;)Ljava/util/ArrayList;
 
     move-result-object v4
@@ -93,10 +93,10 @@
 
     if-gt p3, v4, :cond_0
 
-    .line 424
+    .line 465
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
-    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->episodesShowListEntity:Ljava/util/ArrayList;
+    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->mEpisodesShowListEntity:Ljava/util/ArrayList;
     invoke-static {v4}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->access$000(Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;)Ljava/util/ArrayList;
 
     move-result-object v4
@@ -107,11 +107,11 @@
 
     check-cast v1, Lcom/meizu/video/client/ui/entity/EpisodesEntity;
 
-    .line 425
+    .line 466
     .local v1, episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
     if-eqz v1, :cond_0
 
-    .line 426
+    .line 467
     const-string v4, "0"
 
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getFlag()Ljava/lang/String;
@@ -124,33 +124,33 @@
 
     if-eqz v4, :cond_1
 
-    .line 427
+    .line 468
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
-    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->currentEpisodesPage:I
+    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->mCurrentEpisodesPage:I
     invoke-static {v4}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->access$100(Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;)I
 
     move-result v4
 
     if-le v4, v6, :cond_0
 
-    .line 428
+    .line 469
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
     invoke-static {v4}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->access$110(Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;)I
 
-    .line 429
+    .line 470
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
     invoke-virtual {v4}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->showEpisodesTVPartListView()V
 
-    .line 464
+    .line 492
     .end local v1           #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
     :cond_0
     :goto_0
     return-void
 
-    .line 431
+    .line 472
     .restart local v1       #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
     :cond_1
     const-string v4, "1"
@@ -165,48 +165,48 @@
 
     if-eqz v4, :cond_2
 
-    .line 432
+    .line 473
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
-    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->currentEpisodesPage:I
+    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->mCurrentEpisodesPage:I
     invoke-static {v4}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->access$100(Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;)I
 
     move-result v4
 
     iget-object v5, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
-    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->totalEpisodesPage:I
+    #getter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->mTotalEpisodesPage:I
     invoke-static {v5}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->access$200(Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;)I
 
     move-result v5
 
     if-ge v4, v5, :cond_0
 
-    .line 433
+    .line 474
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
     invoke-static {v4}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->access$108(Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;)I
 
-    .line 434
+    .line 475
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
     invoke-virtual {v4}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->showEpisodesTVPartListView()V
 
     goto :goto_0
 
-    .line 438
+    .line 479
     :cond_2
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getPlay_address()Ljava/lang/String;
 
     move-result-object v3
 
-    .line 439
+    .line 480
     .local v3, url:Ljava/lang/String;
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getTitle()Ljava/lang/String;
 
     move-result-object v2
 
-    .line 455
+    .line 484
     .local v2, title:Ljava/lang/String;
     :try_start_0
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
@@ -223,12 +223,12 @@
 
     move-result v5
 
-    #setter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->currentPlayIndex:I
+    #setter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->mCurrentPlayIndex:I
     invoke-static {v4, v5}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->access$302(Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;I)I
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 460
+    .line 488
     :goto_1
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
@@ -236,15 +236,15 @@
 
     goto :goto_0
 
-    .line 456
+    .line 485
     :catch_0
     move-exception v0
 
-    .line 458
+    .line 486
     .local v0, e:Ljava/lang/Exception;
     iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$1;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
-    #setter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->currentPlayIndex:I
+    #setter for: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->mCurrentPlayIndex:I
     invoke-static {v4, v6}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->access$302(Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;I)I
 
     goto :goto_1

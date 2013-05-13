@@ -315,7 +315,7 @@
     .end annotation
 .end method
 
-.method public abstract isRealIncomingCall()Z
+.method public abstract isRealIncomingCallAndFore()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

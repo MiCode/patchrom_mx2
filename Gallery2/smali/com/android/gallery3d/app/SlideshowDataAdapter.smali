@@ -73,38 +73,38 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 69
+    .line 70
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 51
+    .line 52
     iput v2, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mLoadIndex:I
 
-    .line 52
+    .line 53
     iput v2, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mNextOutput:I
 
-    .line 53
+    .line 54
     iput-boolean v2, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mIsActive:Z
 
-    .line 58
+    .line 59
     new-instance v0, Ljava/util/LinkedList;
 
     invoke-direct {v0}, Ljava/util/LinkedList;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mImageQueue:Ljava/util/LinkedList;
 
-    .line 63
+    .line 64
     const-wide/16 v0, -0x1
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mDataVersion:J
 
-    .line 64
+    .line 65
     new-instance v0, Ljava/util/concurrent/atomic/AtomicBoolean;
 
     invoke-direct {v0, v2}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
 
     iput-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mNeedReload:Ljava/util/concurrent/atomic/AtomicBoolean;
 
-    .line 65
+    .line 66
     new-instance v0, Lcom/android/gallery3d/app/SlideshowDataAdapter$SourceListener;
 
     const/4 v1, 0x0
@@ -113,26 +113,26 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mSourceListener:Lcom/android/gallery3d/app/SlideshowDataAdapter$SourceListener;
 
-    .line 70
+    .line 71
     iput-object p2, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mSource:Lcom/android/gallery3d/app/SlideshowDataAdapter$SlideshowSource;
 
-    .line 71
+    .line 72
     iput-object p4, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mInitialPath:Lcom/android/gallery3d/data/Path;
 
-    .line 72
+    .line 73
     iput p3, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mLoadIndex:I
 
-    .line 73
+    .line 74
     iput p3, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mNextOutput:I
 
-    .line 74
+    .line 75
     invoke-interface {p1}, Lcom/android/gallery3d/app/GalleryContext;->getThreadPool()Lcom/android/gallery3d/util/ThreadPool;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mThreadPool:Lcom/android/gallery3d/util/ThreadPool;
 
-    .line 75
+    .line 76
     return-void
 .end method
 
@@ -141,7 +141,7 @@
     .parameter "x0"
 
     .prologue
-    .line 35
+    .line 36
     iget-boolean v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mIsActive:Z
 
     return v0
@@ -152,7 +152,7 @@
     .parameter "x0"
 
     .prologue
-    .line 35
+    .line 36
     iget-boolean v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mDataReady:Z
 
     return v0
@@ -164,7 +164,7 @@
     .parameter "x1"
 
     .prologue
-    .line 35
+    .line 36
     iput-boolean p1, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mDataReady:Z
 
     return p1
@@ -175,7 +175,7 @@
     .parameter "x0"
 
     .prologue
-    .line 35
+    .line 36
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mImageQueue:Ljava/util/LinkedList;
 
     return-object v0
@@ -186,7 +186,7 @@
     .parameter "x0"
 
     .prologue
-    .line 35
+    .line 36
     iget-boolean v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mNeedReset:Z
 
     return v0
@@ -198,7 +198,7 @@
     .parameter "x1"
 
     .prologue
-    .line 35
+    .line 36
     iput-boolean p1, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mNeedReset:Z
 
     return p1
@@ -209,7 +209,7 @@
     .parameter "x0"
 
     .prologue
-    .line 35
+    .line 36
     invoke-direct {p0}, Lcom/android/gallery3d/app/SlideshowDataAdapter;->loadItem()Lcom/android/gallery3d/data/MediaItem;
 
     move-result-object v0
@@ -222,7 +222,7 @@
     .parameter "x0"
 
     .prologue
-    .line 35
+    .line 36
     iget v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mLoadIndex:I
 
     return v0
@@ -234,7 +234,7 @@
     .parameter "x1"
 
     .prologue
-    .line 35
+    .line 36
     iput p1, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mLoadIndex:I
 
     return p1
@@ -245,7 +245,7 @@
     .parameter "x0"
 
     .prologue
-    .line 35
+    .line 36
     iget v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mLoadIndex:I
 
     add-int/lit8 v0, v0, 0x1
@@ -260,7 +260,7 @@
     .parameter "x0"
 
     .prologue
-    .line 35
+    .line 36
     iget v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mNextOutput:I
 
     return v0
@@ -271,7 +271,7 @@
     .parameter "x0"
 
     .prologue
-    .line 35
+    .line 36
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mNeedReload:Ljava/util/concurrent/atomic/AtomicBoolean;
 
     return-object v0
@@ -282,7 +282,7 @@
     .parameter "x0"
 
     .prologue
-    .line 35
+    .line 36
     invoke-direct {p0}, Lcom/android/gallery3d/app/SlideshowDataAdapter;->innerNextBitmap()Lcom/android/gallery3d/app/SlideshowPage$Slide;
 
     move-result-object v0
@@ -294,7 +294,7 @@
     .locals 2
 
     .prologue
-    .line 158
+    .line 162
     monitor-enter p0
 
     :goto_0
@@ -317,7 +317,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 160
+    .line 164
     :try_start_1
     invoke-virtual {p0}, Ljava/lang/Object;->wait()V
     :try_end_1
@@ -326,11 +326,11 @@
 
     goto :goto_0
 
-    .line 161
+    .line 165
     :catch_0
     move-exception v0
 
-    .line 162
+    .line 166
     .local v0, t:Ljava/lang/InterruptedException;
     :try_start_2
     new-instance v1, Ljava/lang/AssertionError;
@@ -341,7 +341,7 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 158
+    .line 162
     .end local v0           #t:Ljava/lang/InterruptedException;
     :catchall_0
     move-exception v1
@@ -350,7 +350,7 @@
 
     throw v1
 
-    .line 165
+    .line 169
     :cond_0
     :try_start_3
     iget-object v1, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mImageQueue:Ljava/util/LinkedList;
@@ -365,13 +365,13 @@
 
     const/4 v1, 0x0
 
-    .line 168
+    .line 172
     :goto_1
     monitor-exit p0
 
     return-object v1
 
-    .line 166
+    .line 170
     :cond_1
     :try_start_4
     iget v1, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mNextOutput:I
@@ -380,10 +380,10 @@
 
     iput v1, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mNextOutput:I
 
-    .line 167
+    .line 171
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
 
-    .line 168
+    .line 172
     iget-object v1, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mImageQueue:Ljava/util/LinkedList;
 
     invoke-virtual {v1}, Ljava/util/LinkedList;->removeFirst()Ljava/lang/Object;
@@ -405,7 +405,7 @@
 
     const/4 v6, 0x1
 
-    .line 78
+    .line 79
     iget-object v4, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mNeedReload:Ljava/util/concurrent/atomic/AtomicBoolean;
 
     const/4 v5, 0x0
@@ -416,14 +416,14 @@
 
     if-eqz v4, :cond_0
 
-    .line 79
+    .line 80
     iget-object v4, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mSource:Lcom/android/gallery3d/app/SlideshowDataAdapter$SlideshowSource;
 
     invoke-interface {v4}, Lcom/android/gallery3d/app/SlideshowDataAdapter$SlideshowSource;->reload()J
 
     move-result-wide v1
 
-    .line 80
+    .line 81
     .local v1, v:J
     iget-wide v4, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mDataVersion:J
 
@@ -431,28 +431,28 @@
 
     if-eqz v4, :cond_0
 
-    .line 81
+    .line 82
     iput-wide v1, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mDataVersion:J
 
-    .line 82
+    .line 83
     iput-boolean v6, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mNeedReset:Z
 
-    .line 91
+    .line 92
     .end local v1           #v:J
     :goto_0
     return-object v3
 
-    .line 86
+    .line 87
     :cond_0
     iget v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mLoadIndex:I
 
-    .line 87
+    .line 88
     .local v0, index:I
     iget-object v4, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mInitialPath:Lcom/android/gallery3d/data/Path;
 
     if-eqz v4, :cond_1
 
-    .line 88
+    .line 89
     iget-object v4, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mSource:Lcom/android/gallery3d/app/SlideshowDataAdapter$SlideshowSource;
 
     iget-object v5, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mInitialPath:Lcom/android/gallery3d/data/Path;
@@ -461,10 +461,10 @@
 
     move-result v0
 
-    .line 89
+    .line 90
     iput-object v3, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mInitialPath:Lcom/android/gallery3d/data/Path;
 
-    .line 91
+    .line 92
     :cond_1
     iget-object v3, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mSource:Lcom/android/gallery3d/app/SlideshowDataAdapter$SlideshowSource;
 
@@ -495,7 +495,7 @@
     .end annotation
 
     .prologue
-    .line 172
+    .line 176
     .local p1, listener:Lcom/android/gallery3d/util/FutureListener;,"Lcom/android/gallery3d/util/FutureListener<Lcom/android/gallery3d/app/SlideshowPage$Slide;>;"
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mThreadPool:Lcom/android/gallery3d/util/ThreadPool;
 
@@ -514,49 +514,49 @@
     .locals 2
 
     .prologue
-    .line 181
+    .line 185
     monitor-enter p0
 
-    .line 182
+    .line 186
     const/4 v0, 0x0
 
     :try_start_0
     iput-boolean v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mIsActive:Z
 
-    .line 183
+    .line 187
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
 
-    .line 184
+    .line 188
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 185
+    .line 189
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mSource:Lcom/android/gallery3d/app/SlideshowDataAdapter$SlideshowSource;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mSourceListener:Lcom/android/gallery3d/app/SlideshowDataAdapter$SourceListener;
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/app/SlideshowDataAdapter$SlideshowSource;->removeContentListener(Lcom/android/gallery3d/data/ContentListener;)V
 
-    .line 186
+    .line 190
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mReloadTask:Lcom/android/gallery3d/util/Future;
 
     invoke-interface {v0}, Lcom/android/gallery3d/util/Future;->cancel()V
 
-    .line 187
+    .line 191
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mReloadTask:Lcom/android/gallery3d/util/Future;
 
     invoke-interface {v0}, Lcom/android/gallery3d/util/Future;->waitDone()V
 
-    .line 188
+    .line 192
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mReloadTask:Lcom/android/gallery3d/util/Future;
 
-    .line 189
+    .line 193
     return-void
 
-    .line 184
+    .line 188
     :catchall_0
     move-exception v0
 
@@ -572,7 +572,7 @@
     .locals 3
 
     .prologue
-    .line 192
+    .line 196
     monitor-enter p0
 
     const/4 v0, 0x1
@@ -580,26 +580,26 @@
     :try_start_0
     iput-boolean v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mIsActive:Z
 
-    .line 193
+    .line 197
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mSource:Lcom/android/gallery3d/app/SlideshowDataAdapter$SlideshowSource;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mSourceListener:Lcom/android/gallery3d/app/SlideshowDataAdapter$SourceListener;
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/app/SlideshowDataAdapter$SlideshowSource;->addContentListener(Lcom/android/gallery3d/data/ContentListener;)V
 
-    .line 194
+    .line 198
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mNeedReload:Ljava/util/concurrent/atomic/AtomicBoolean;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
 
-    .line 195
+    .line 199
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mDataReady:Z
 
-    .line 196
+    .line 200
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter;->mThreadPool:Lcom/android/gallery3d/util/ThreadPool;
 
     new-instance v1, Lcom/android/gallery3d/app/SlideshowDataAdapter$ReloadTask;
@@ -616,12 +616,12 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 197
+    .line 201
     monitor-exit p0
 
     return-void
 
-    .line 192
+    .line 196
     :catchall_0
     move-exception v0
 

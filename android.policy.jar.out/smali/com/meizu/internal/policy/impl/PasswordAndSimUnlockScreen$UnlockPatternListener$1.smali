@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$UnlockPatternListener;->onPatternCellAdded(Ljava/util/List;)V
+    value = Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$UnlockPatternListener;->onPatternDetected(Ljava/util/List;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 533
+    .line 577
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$UnlockPatternListener$1;->this$1:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$UnlockPatternListener;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 2
 
     .prologue
-    .line 536
+    .line 580
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$UnlockPatternListener$1;->this$1:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$UnlockPatternListener;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$UnlockPatternListener;->this$0:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;
@@ -56,8 +56,8 @@
     move-result-object v1
 
     #calls: Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->checkPassword(Ljava/lang/String;)V
-    invoke-static {v0, v1}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->access$1400(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;->access$1600(Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen;Ljava/lang/String;)V
 
-    .line 537
+    .line 581
     return-void
 .end method

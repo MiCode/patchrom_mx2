@@ -27,15 +27,15 @@
     .parameter "text"
 
     .prologue
-    .line 167
+    .line 168
     iput-object p1, p0, Lcom/meizu/widget/FoldableTextView$MoreClickSpan;->this$0:Lcom/meizu/widget/FoldableTextView;
 
     invoke-direct {p0}, Landroid/text/style/ClickableSpan;-><init>()V
 
-    .line 168
+    .line 169
     iput-object p2, p0, Lcom/meizu/widget/FoldableTextView$MoreClickSpan;->mText:Ljava/lang/CharSequence;
 
-    .line 169
+    .line 170
     return-void
 .end method
 
@@ -44,7 +44,7 @@
     .parameter "x0"
 
     .prologue
-    .line 164
+    .line 165
     iget-object v0, p0, Lcom/meizu/widget/FoldableTextView$MoreClickSpan;->mText:Ljava/lang/CharSequence;
 
     return-object v0
@@ -57,7 +57,7 @@
     .parameter "widget"
 
     .prologue
-    .line 179
+    .line 180
     iget-object v0, p0, Lcom/meizu/widget/FoldableTextView$MoreClickSpan;->this$0:Lcom/meizu/widget/FoldableTextView;
 
     #getter for: Lcom/meizu/widget/FoldableTextView;->mListener:Lcom/meizu/widget/FoldableTextView$FoldingListener;
@@ -84,11 +84,11 @@
 
     if-nez v0, :cond_0
 
-    .line 184
+    .line 185
     :goto_0
     return-void
 
-    .line 182
+    .line 183
     :cond_0
     iget-object v0, p0, Lcom/meizu/widget/FoldableTextView$MoreClickSpan;->this$0:Lcom/meizu/widget/FoldableTextView;
 
@@ -97,7 +97,7 @@
     #setter for: Lcom/meizu/widget/FoldableTextView;->mHasUnfolded:Z
     invoke-static {v0, v1}, Lcom/meizu/widget/FoldableTextView;->access$202(Lcom/meizu/widget/FoldableTextView;Z)Z
 
-    .line 183
+    .line 184
     iget-object v0, p0, Lcom/meizu/widget/FoldableTextView$MoreClickSpan;->this$0:Lcom/meizu/widget/FoldableTextView;
 
     iget-object v1, p0, Lcom/meizu/widget/FoldableTextView$MoreClickSpan;->mText:Ljava/lang/CharSequence;
@@ -114,11 +114,11 @@
     .parameter "ds"
 
     .prologue
-    .line 173
+    .line 174
     iget v0, p1, Landroid/text/TextPaint;->linkColor:I
 
     invoke-virtual {p1, v0}, Landroid/text/TextPaint;->setColor(I)V
 
-    .line 174
+    .line 175
     return-void
 .end method

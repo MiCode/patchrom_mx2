@@ -136,6 +136,42 @@
 
 
 # virtual methods
+.method getKeyguardView()Lcom/android/internal/policy/impl/KeyguardViewBase;
+    .locals 1
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardView:Lcom/android/internal/policy/impl/KeyguardViewBase;
+
+    return-object v0
+.end method
+
+.method getKeyguardViewProperties()Lcom/android/internal/policy/impl/KeyguardViewProperties;
+    .locals 1
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardViewProperties:Lcom/android/internal/policy/impl/KeyguardViewProperties;
+
+    return-object v0
+.end method
+
+.method getWindowLayoutParams()Landroid/view/WindowManager$LayoutParams;
+    .locals 1
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mWindowLayoutParams:Landroid/view/WindowManager$LayoutParams;
+
+    return-object v0
+.end method
+
 .method public enableKeyguardDownWithAnim(Z)V
     .locals 3
     .parameter "enable"
@@ -180,7 +216,7 @@
     .locals 1
 
     .prologue
-    .line 508
+    .line 512
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mActivityScreenshot:Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;
 
     return-object v0
@@ -190,7 +226,7 @@
     .locals 1
 
     .prologue
-    .line 512
+    .line 516
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mStatusbarScreenshot:Landroid/widget/ImageView;
 
     return-object v0
@@ -204,7 +240,7 @@
     monitor-enter p0
 
     :try_start_0
-    invoke-static {}, Landroid/os/CPUfreq;->resetCalibration()I
+    invoke-static {}, Landroid/os/MeizuDeviceContorl;->resetCalibration()I
 
     .line 358
     iget-object v3, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardHost:Landroid/widget/FrameLayout;
@@ -264,7 +300,7 @@
 
     invoke-direct {v4, p0, v2, v0, v1}, Lcom/android/internal/policy/impl/KeyguardViewManager$2;-><init>(Lcom/android/internal/policy/impl/KeyguardViewManager;Lcom/android/internal/policy/impl/KeyguardViewBase;Landroid/view/View;Landroid/view/View;)V
 
-    const-wide/16 v5, 0x32
+    const-wide/16 v5, 0x0
 
     invoke-virtual {v3, v4, v5, v6}, Landroid/widget/FrameLayout;->postDelayed(Ljava/lang/Runnable;J)Z
     :try_end_0
@@ -292,17 +328,17 @@
     .locals 1
 
     .prologue
-    .line 491
+    .line 495
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mActivityScreenshot:Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;
 
     if-eqz v0, :cond_0
 
-    .line 492
+    .line 496
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mActivityScreenshot:Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;
 
     invoke-virtual {v0}, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->invalidate()V
 
-    .line 494
+    .line 498
     :cond_0
     return-void
 .end method
@@ -311,19 +347,41 @@
     .locals 1
 
     .prologue
-    .line 484
+    .line 488
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mStatusbarScreenshot:Landroid/widget/ImageView;
 
     if-eqz v0, :cond_0
 
-    .line 485
+    .line 489
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mStatusbarScreenshot:Landroid/widget/ImageView;
 
     invoke-virtual {v0}, Landroid/widget/ImageView;->invalidate()V
 
-    .line 487
+    .line 491
     :cond_0
     return-void
+.end method
+
+.method public isKeyguardAnim()Z
+    .locals 1
+
+    .prologue
+    .line 412
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mWindowLayoutParams:Landroid/view/WindowManager$LayoutParams;
+
+    iget v0, v0, Landroid/view/WindowManager$LayoutParams;->windowAnimations:I
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method
 
 .method public declared-synchronized isShowing()Z
@@ -373,17 +431,17 @@
     .parameter "isKeyguarDown"
 
     .prologue
-    .line 526
+    .line 530
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardView:Lcom/android/internal/policy/impl/KeyguardViewBase;
 
     if-eqz v0, :cond_0
 
-    .line 527
+    .line 531
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardView:Lcom/android/internal/policy/impl/KeyguardViewBase;
 
     invoke-virtual {v0, p1}, Lcom/android/internal/policy/impl/KeyguardViewBase;->onHideMe(Z)V
 
-    .line 528
+    .line 532
     :cond_0
     return-void
 .end method
@@ -511,17 +569,36 @@
     .locals 1
 
     .prologue
-    .line 531
+    .line 535
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardView:Lcom/android/internal/policy/impl/KeyguardViewBase;
 
     if-eqz v0, :cond_0
 
-    .line 532
+    .line 536
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardView:Lcom/android/internal/policy/impl/KeyguardViewBase;
 
     invoke-virtual {v0}, Lcom/android/internal/policy/impl/KeyguardViewBase;->onShowMe()V
 
-    .line 533
+    .line 537
+    :cond_0
+    return-void
+.end method
+
+.method public queryExtraState()V
+    .locals 1
+
+    .prologue
+    .line 540
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardView:Lcom/android/internal/policy/impl/KeyguardViewBase;
+
+    if-eqz v0, :cond_0
+
+    .line 541
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardView:Lcom/android/internal/policy/impl/KeyguardViewBase;
+
+    invoke-virtual {v0}, Lcom/android/internal/policy/impl/KeyguardViewBase;->queryExtraState()V
+
+    .line 543
     :cond_0
     return-void
 .end method
@@ -535,16 +612,16 @@
 
     const/4 v2, 0x0
 
-    .line 516
+    .line 520
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mStatusbarScreenshot:Landroid/widget/ImageView;
 
     if-nez v0, :cond_0
 
-    .line 521
+    .line 525
     :goto_0
     return-void
 
-    .line 518
+    .line 522
     :cond_0
     iget-object v3, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mActivityScreenshot:Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;
 
@@ -555,7 +632,7 @@
     :goto_1
     invoke-virtual {v3, v0}, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->setVisibility(I)V
 
-    .line 519
+    .line 523
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mStatusbarScreenshot:Landroid/widget/ImageView;
 
     if-eqz p1, :cond_2
@@ -563,7 +640,7 @@
     :goto_2
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
 
-    .line 520
+    .line 524
     invoke-virtual {p0, p1}, Lcom/android/internal/policy/impl/KeyguardViewManager;->enableKeyguardDownWithAnim(Z)V
 
     goto :goto_0
@@ -571,13 +648,13 @@
     :cond_1
     move v0, v2
 
-    .line 518
+    .line 522
     goto :goto_1
 
     :cond_2
     move v1, v2
 
-    .line 519
+    .line 523
     goto :goto_2
 .end method
 
@@ -620,20 +697,20 @@
     .parameter "visible"
 
     .prologue
-    .line 497
+    .line 501
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mActivityScreenshot:Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;
 
     if-nez v0, :cond_0
 
-    .line 505
+    .line 509
     :goto_0
     return-void
 
-    .line 500
+    .line 504
     :cond_0
     if-eqz p1, :cond_1
 
-    .line 501
+    .line 505
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mActivityScreenshot:Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;
 
     const/4 v1, 0x0
@@ -642,7 +719,7 @@
 
     goto :goto_0
 
-    .line 503
+    .line 507
     :cond_1
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mActivityScreenshot:Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;
 
@@ -776,14 +853,11 @@
 
     iput-object v2, v0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardHost:Landroid/widget/FrameLayout;
 
-    .line 136
     const/16 v16, -0x1
 
-    .line 137
     .local v16, stretch:I
     const v5, 0x4100900
 
-    .line 142
     .local v5, flags:I
     move-object/from16 v0, p0
 
@@ -884,6 +958,7 @@
 
     iput v2, v1, Landroid/view/WindowManager$LayoutParams;->privateFlags:I
 
+    .line 160
     :cond_3
     const/4 v2, 0x1
 
@@ -986,17 +1061,8 @@
 
     iput v3, v2, Landroid/view/WindowManager$LayoutParams;->screenOrientation:I
 
-    .line 195
-    :goto_1
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mWindowLayoutParams:Landroid/view/WindowManager$LayoutParams;
-
-    const v3, 0x10301de
-
-    iput v3, v2, Landroid/view/WindowManager$LayoutParams;->windowAnimations:I
-
     .line 198
+    :goto_1
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mViewManager:Landroid/view/ViewManager;
@@ -1229,6 +1295,7 @@
 
     invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewManager$Injector;->updateDisplayDesktopFlag(Lcom/android/internal/policy/impl/KeyguardViewManager;)V
 
+    .line 253
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mViewManager:Landroid/view/ViewManager;
@@ -1314,17 +1381,17 @@
     .locals 1
 
     .prologue
-    .line 412
+    .line 416
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardView:Lcom/android/internal/policy/impl/KeyguardViewBase;
 
     if-eqz v0, :cond_0
 
-    .line 413
+    .line 417
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardView:Lcom/android/internal/policy/impl/KeyguardViewBase;
 
     invoke-virtual {v0}, Lcom/android/internal/policy/impl/KeyguardViewBase;->startActivityIfNeed()V
 
-    .line 415
+    .line 419
     :cond_0
     return-void
 .end method
@@ -1336,26 +1403,26 @@
     .parameter "isSuccess"
 
     .prologue
-    .line 467
+    .line 471
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mActivityScreenshot:Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;
 
     if-eqz v0, :cond_0
 
-    .line 468
+    .line 472
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mActivityScreenshot:Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;
 
     invoke-virtual {v0, p1}, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
-    .line 470
+    .line 474
     :cond_0
     if-eqz p2, :cond_1
 
-    .line 471
+    .line 475
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mActivityScreenshot:Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;
 
     invoke-virtual {v0, p2}, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->setBackground(Landroid/graphics/drawable/Drawable;)V
 
-    .line 473
+    .line 477
     :cond_1
     return-void
 .end method
@@ -1365,17 +1432,17 @@
     .parameter "bitmap"
 
     .prologue
-    .line 477
+    .line 481
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mStatusbarScreenshot:Landroid/widget/ImageView;
 
     if-eqz v0, :cond_0
 
-    .line 478
+    .line 482
     iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mStatusbarScreenshot:Landroid/widget/ImageView;
 
     invoke-virtual {v0, p1}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
-    .line 480
+    .line 484
     :cond_0
     return-void
 .end method
@@ -1445,40 +1512,4 @@
     const/4 v0, 0x0
 
     goto :goto_0
-.end method
-
-.method getKeyguardView()Lcom/android/internal/policy/impl/KeyguardViewBase;
-    .locals 1
-    .annotation build Landroid/annotation/MiuiHook;
-        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
-    .end annotation
-
-    .prologue
-    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardView:Lcom/android/internal/policy/impl/KeyguardViewBase;
-
-    return-object v0
-.end method
-
-.method getKeyguardViewProperties()Lcom/android/internal/policy/impl/KeyguardViewProperties;
-    .locals 1
-    .annotation build Landroid/annotation/MiuiHook;
-        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
-    .end annotation
-
-    .prologue
-    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardViewProperties:Lcom/android/internal/policy/impl/KeyguardViewProperties;
-
-    return-object v0
-.end method
-
-.method getWindowLayoutParams()Landroid/view/WindowManager$LayoutParams;
-    .locals 1
-    .annotation build Landroid/annotation/MiuiHook;
-        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
-    .end annotation
-
-    .prologue
-    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mWindowLayoutParams:Landroid/view/WindowManager$LayoutParams;
-
-    return-object v0
 .end method

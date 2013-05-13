@@ -25,13 +25,13 @@
     .parameter "view"
 
     .prologue
-    .line 2356
+    .line 2371
     iput-object p1, p0, Lcom/meizu/widget/RecipientEdit$RecipientDragShadowBuilder;->this$0:Lcom/meizu/widget/RecipientEdit;
 
-    .line 2357
+    .line 2372
     invoke-direct {p0, p2}, Landroid/view/View$DragShadowBuilder;-><init>(Landroid/view/View;)V
 
-    .line 2358
+    .line 2373
     return-void
 .end method
 
@@ -43,18 +43,18 @@
     .parameter "shadowTouchPoint"
 
     .prologue
-    .line 2362
+    .line 2377
     invoke-virtual {p0}, Lcom/meizu/widget/RecipientEdit$RecipientDragShadowBuilder;->getView()Landroid/view/View;
 
     move-result-object v0
 
     check-cast v0, Lcom/meizu/widget/RecipientEdit$ItemView;
 
-    .line 2363
+    .line 2378
     .local v0, view:Lcom/meizu/widget/RecipientEdit$ItemView;
     if-eqz v0, :cond_0
 
-    .line 2364
+    .line 2379
     invoke-virtual {v0}, Lcom/meizu/widget/RecipientEdit$ItemView;->getWidth()I
 
     move-result v1
@@ -65,7 +65,7 @@
 
     invoke-virtual {p1, v1, v2}, Landroid/graphics/Point;->set(II)V
 
-    .line 2365
+    .line 2380
     iget v1, v0, Lcom/meizu/widget/RecipientEdit$ItemView;->mMotionX:I
 
     iget v2, p1, Landroid/graphics/Point;->y:I
@@ -74,7 +74,7 @@
 
     invoke-virtual {p2, v1, v2}, Landroid/graphics/Point;->set(II)V
 
-    .line 2366
+    .line 2381
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$RecipientDragShadowBuilder;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mDragInfo:Lcom/meizu/widget/RecipientEdit$DragInfo;
@@ -86,7 +86,7 @@
 
     iput v2, v1, Lcom/meizu/widget/RecipientEdit$DragInfo;->mOffSetX:I
 
-    .line 2367
+    .line 2382
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$RecipientDragShadowBuilder;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mDragInfo:Lcom/meizu/widget/RecipientEdit$DragInfo;
@@ -102,11 +102,11 @@
 
     iput v2, v1, Lcom/meizu/widget/RecipientEdit$DragInfo;->mOffSetY:I
 
-    .line 2371
+    .line 2386
     :goto_0
     return-void
 
-    .line 2369
+    .line 2384
     :cond_0
     const-string v1, "RecipientEdit"
 

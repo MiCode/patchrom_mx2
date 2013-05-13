@@ -61,17 +61,17 @@
     .locals 1
 
     .prologue
-    .line 4380
+    .line 4394
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->mStart:Z
 
-    .line 4381
+    .line 4395
     iget-object v0, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
 
     invoke-virtual {v0, p0}, Landroid/widget/ListView;->removeCallbacks(Ljava/lang/Runnable;)Z
 
-    .line 4382
+    .line 4396
     return-void
 .end method
 
@@ -79,119 +79,197 @@
     .locals 1
 
     .prologue
-    .line 4376
+    .line 4390
     iget-boolean v0, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->mStart:Z
 
     return v0
 .end method
 
 .method public run()V
-    .locals 5
+    .locals 7
 
     .prologue
     .line 4355
-    const/16 v1, 0x23
+    const/16 v3, 0x23
+
+    .line 4356
+    .local v3, speed:I
+    const/4 v0, 0x0
 
     .line 4357
-    .local v1, speed:I
-    iget-boolean v2, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->mUpSelect:Z
-
-    if-eqz v2, :cond_1
-
-    .line 4358
-    iget-object v2, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
-
-    invoke-virtual {v2, v1, v1}, Landroid/widget/ListView;->trackMotionScroll(II)Z
+    .local v0, atEdge:Z
+    const/4 v1, 0x0
 
     .line 4359
-    iget-object v2, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+    .local v1, atEnd:Z
+    iget-boolean v4, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->mUpSelect:Z
 
-    const/4 v3, 0x1
-
-    #calls: Landroid/widget/ListView;->findCandidateScrollSelection(Z)I
-    invoke-static {v2, v3}, Landroid/widget/ListView;->access$200(Landroid/widget/ListView;Z)I
-
-    move-result v0
+    if-eqz v4, :cond_3
 
     .line 4360
-    .local v0, candidatePosition:I
-    iget-object v2, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+    iget-object v4, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
 
-    #getter for: Landroid/widget/ListView;->mLastUpSelectPosition:I
-    invoke-static {v2}, Landroid/widget/ListView;->access$300(Landroid/widget/ListView;)I
-
-    move-result v2
-
-    if-eq v2, v0, :cond_0
-
-    .line 4361
-    iget-object v2, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
-
-    iget-object v3, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
-
-    #getter for: Landroid/widget/ListView;->mLastUpSelectPosition:I
-    invoke-static {v3}, Landroid/widget/ListView;->access$300(Landroid/widget/ListView;)I
-
-    move-result v3
-
-    #calls: Landroid/widget/ListView;->upSelect(II)V
-    invoke-static {v2, v3, v0}, Landroid/widget/ListView;->access$400(Landroid/widget/ListView;II)V
-
-    .line 4372
-    :cond_0
-    :goto_0
-    iget-object v2, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
-
-    const-wide/16 v3, 0x19
-
-    invoke-virtual {v2, p0, v3, v4}, Landroid/widget/ListView;->postDelayed(Ljava/lang/Runnable;J)Z
-
-    .line 4373
-    return-void
-
-    .line 4364
-    .end local v0           #candidatePosition:I
-    :cond_1
-    mul-int/lit8 v1, v1, -0x1
-
-    .line 4365
-    iget-object v2, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
-
-    invoke-virtual {v2, v1, v1}, Landroid/widget/ListView;->trackMotionScroll(II)Z
-
-    .line 4366
-    iget-object v2, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
-
-    const/4 v3, 0x0
-
-    #calls: Landroid/widget/ListView;->findCandidateScrollSelection(Z)I
-    invoke-static {v2, v3}, Landroid/widget/ListView;->access$200(Landroid/widget/ListView;Z)I
+    invoke-virtual {v4, v3, v3}, Landroid/widget/ListView;->trackMotionScroll(II)Z
 
     move-result v0
 
-    .line 4367
-    .restart local v0       #candidatePosition:I
-    iget-object v2, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+    .line 4361
+    iget-object v4, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
 
-    #getter for: Landroid/widget/ListView;->mLastDownSelectPosition:I
-    invoke-static {v2}, Landroid/widget/ListView;->access$500(Landroid/widget/ListView;)I
+    const/4 v5, 0x1
+
+    #calls: Landroid/widget/ListView;->findCandidateScrollSelection(Z)I
+    invoke-static {v4, v5}, Landroid/widget/ListView;->access$200(Landroid/widget/ListView;Z)I
 
     move-result v2
 
-    if-eq v2, v0, :cond_0
+    .line 4362
+    .local v2, candidatePosition:I
+    iget-object v4, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+
+    #getter for: Landroid/widget/ListView;->mLastUpSelectPosition:I
+    invoke-static {v4}, Landroid/widget/ListView;->access$300(Landroid/widget/ListView;)I
+
+    move-result v4
+
+    if-eq v4, v2, :cond_0
+
+    .line 4363
+    iget-object v4, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+
+    iget-object v5, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+
+    #getter for: Landroid/widget/ListView;->mLastUpSelectPosition:I
+    invoke-static {v5}, Landroid/widget/ListView;->access$300(Landroid/widget/ListView;)I
+
+    move-result v5
+
+    #calls: Landroid/widget/ListView;->upSelect(II)V
+    invoke-static {v4, v5, v2}, Landroid/widget/ListView;->access$400(Landroid/widget/ListView;II)V
+
+    .line 4366
+    :cond_0
+    if-eqz v0, :cond_1
+
+    iget-object v4, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+
+    #getter for: Landroid/widget/ListView;->mLastUpSelectPosition:I
+    invoke-static {v4}, Landroid/widget/ListView;->access$300(Landroid/widget/ListView;)I
+
+    move-result v4
+
+    if-nez v4, :cond_1
+
+    .line 4367
+    const/4 v1, 0x1
 
     .line 4368
-    iget-object v2, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+    iget-object v4, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
 
-    iget-object v3, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+    iget-object v5, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+
+    invoke-virtual {v5}, Landroid/widget/ListView;->getChildCount()I
+
+    move-result v5
+
+    #calls: Landroid/widget/ListView;->correctTooLow(I)V
+    invoke-static {v4, v5}, Landroid/widget/ListView;->access$500(Landroid/widget/ListView;I)V
+
+    .line 4384
+    :cond_1
+    :goto_0
+    if-nez v1, :cond_2
+
+    .line 4385
+    iget-object v4, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+
+    const-wide/16 v5, 0x19
+
+    invoke-virtual {v4, p0, v5, v6}, Landroid/widget/ListView;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    .line 4387
+    :cond_2
+    return-void
+
+    .line 4371
+    .end local v2           #candidatePosition:I
+    :cond_3
+    mul-int/lit8 v3, v3, -0x1
+
+    .line 4372
+    iget-object v4, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+
+    invoke-virtual {v4, v3, v3}, Landroid/widget/ListView;->trackMotionScroll(II)Z
+
+    move-result v0
+
+    .line 4373
+    iget-object v4, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+
+    const/4 v5, 0x0
+
+    #calls: Landroid/widget/ListView;->findCandidateScrollSelection(Z)I
+    invoke-static {v4, v5}, Landroid/widget/ListView;->access$200(Landroid/widget/ListView;Z)I
+
+    move-result v2
+
+    .line 4374
+    .restart local v2       #candidatePosition:I
+    iget-object v4, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
 
     #getter for: Landroid/widget/ListView;->mLastDownSelectPosition:I
-    invoke-static {v3}, Landroid/widget/ListView;->access$500(Landroid/widget/ListView;)I
+    invoke-static {v4}, Landroid/widget/ListView;->access$600(Landroid/widget/ListView;)I
 
-    move-result v3
+    move-result v4
+
+    if-eq v4, v2, :cond_4
+
+    .line 4375
+    iget-object v4, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+
+    iget-object v5, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+
+    #getter for: Landroid/widget/ListView;->mLastDownSelectPosition:I
+    invoke-static {v5}, Landroid/widget/ListView;->access$600(Landroid/widget/ListView;)I
+
+    move-result v5
 
     #calls: Landroid/widget/ListView;->downSelect(II)V
-    invoke-static {v2, v3, v0}, Landroid/widget/ListView;->access$600(Landroid/widget/ListView;II)V
+    invoke-static {v4, v5, v2}, Landroid/widget/ListView;->access$700(Landroid/widget/ListView;II)V
+
+    .line 4378
+    :cond_4
+    if-eqz v0, :cond_1
+
+    iget-object v4, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+
+    #getter for: Landroid/widget/ListView;->mLastDownSelectPosition:I
+    invoke-static {v4}, Landroid/widget/ListView;->access$600(Landroid/widget/ListView;)I
+
+    move-result v4
+
+    iget-object v5, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+
+    iget v5, v5, Landroid/widget/AdapterView;->mItemCount:I
+
+    add-int/lit8 v5, v5, -0x1
+
+    if-ne v4, v5, :cond_1
+
+    .line 4379
+    const/4 v1, 0x1
+
+    .line 4380
+    iget-object v4, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+
+    iget-object v5, p0, Landroid/widget/ListView$ScrollSelectionRunnable;->this$0:Landroid/widget/ListView;
+
+    invoke-virtual {v5}, Landroid/widget/ListView;->getChildCount()I
+
+    move-result v5
+
+    #calls: Landroid/widget/ListView;->correctTooHigh(I)V
+    invoke-static {v4, v5}, Landroid/widget/ListView;->access$800(Landroid/widget/ListView;I)V
 
     goto :goto_0
 .end method

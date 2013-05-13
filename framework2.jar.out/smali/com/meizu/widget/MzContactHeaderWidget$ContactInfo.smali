@@ -30,19 +30,19 @@
     .parameter "address"
 
     .prologue
-    .line 1259
+    .line 1310
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1260
+    .line 1311
     iput-wide p1, p0, Lcom/meizu/widget/MzContactHeaderWidget$ContactInfo;->mContactId:J
 
-    .line 1261
+    .line 1312
     iput-object p3, p0, Lcom/meizu/widget/MzContactHeaderWidget$ContactInfo;->mDisplayName:Ljava/lang/String;
 
-    .line 1262
+    .line 1313
     iput-object p4, p0, Lcom/meizu/widget/MzContactHeaderWidget$ContactInfo;->mAddress:Ljava/lang/String;
 
-    .line 1263
+    .line 1314
     return-void
 .end method
 
@@ -52,7 +52,7 @@
     .locals 1
 
     .prologue
-    .line 1274
+    .line 1325
     iget-object v0, p0, Lcom/meizu/widget/MzContactHeaderWidget$ContactInfo;->mAddress:Ljava/lang/String;
 
     return-object v0
@@ -62,7 +62,7 @@
     .locals 2
 
     .prologue
-    .line 1266
+    .line 1317
     iget-wide v0, p0, Lcom/meizu/widget/MzContactHeaderWidget$ContactInfo;->mContactId:J
 
     return-wide v0
@@ -72,7 +72,7 @@
     .locals 1
 
     .prologue
-    .line 1270
+    .line 1321
     iget-object v0, p0, Lcom/meizu/widget/MzContactHeaderWidget$ContactInfo;->mDisplayName:Ljava/lang/String;
 
     return-object v0

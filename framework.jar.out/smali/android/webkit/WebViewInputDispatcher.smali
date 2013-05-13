@@ -64,7 +64,7 @@
 #the value of this static final field might be set in the static constructor
 .field private static final TAP_TIMEOUT:I = 0x0
 
-.field private static final WEBKIT_TIMEOUT_MILLIS:J = 0x12cL
+.field private static final WEBKIT_TIMEOUT_MILLIS:J = 0x1f4L
 
 
 # instance fields
@@ -74,13 +74,15 @@
 
 .field private mDoubleTapSlopSquared:F
 
-.field private mForceSkipWebKit:Z
+.field private mEnableSinglePointerScale:Z
 
 .field private mInitialDownX:F
 
 .field private mInitialDownY:F
 
 .field private mIsDoubleTapCandidate:Z
+
+.field private mIsSinglePointerScaleTap:Z
 
 .field private mIsTapCandidate:Z
 
@@ -105,6 +107,8 @@
 .field private mPostShowTapHighlightScheduled:Z
 
 .field private final mPostTouchStream:Landroid/webkit/WebViewInputDispatcher$TouchStream;
+
+.field private mSinglePointerScaleSlopSquared:F
 
 .field private mTouchSlopSquared:F
 
@@ -152,14 +156,14 @@
     :goto_0
     sput-boolean v0, Landroid/webkit/WebViewInputDispatcher;->$assertionsDisabled:Z
 
-    .line 135
+    .line 138
     invoke-static {}, Landroid/view/ViewConfiguration;->getTapTimeout()I
 
     move-result v0
 
     sput v0, Landroid/webkit/WebViewInputDispatcher;->TAP_TIMEOUT:I
 
-    .line 136
+    .line 139
     invoke-static {}, Landroid/view/ViewConfiguration;->getLongPressTimeout()I
 
     move-result v0
@@ -170,14 +174,14 @@
 
     sput v0, Landroid/webkit/WebViewInputDispatcher;->LONG_PRESS_TIMEOUT:I
 
-    .line 138
+    .line 141
     invoke-static {}, Landroid/view/ViewConfiguration;->getDoubleTapTimeout()I
 
     move-result v0
 
     sput v0, Landroid/webkit/WebViewInputDispatcher;->DOUBLE_TAP_TIMEOUT:I
 
-    .line 139
+    .line 142
     invoke-static {}, Landroid/view/ViewConfiguration;->getPressedStateDuration()I
 
     move-result v0
@@ -201,7 +205,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 234
+    .line 237
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     .line 89
@@ -218,38 +222,38 @@
 
     iput-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mPostTouchStream:Landroid/webkit/WebViewInputDispatcher$TouchStream;
 
-    .line 117
+    .line 121
     new-instance v1, Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;
 
     invoke-direct {v1, v2}, Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;-><init>(Landroid/webkit/WebViewInputDispatcher$1;)V
 
     iput-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitDispatchEventQueue:Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;
 
-    .line 118
+    .line 122
     new-instance v1, Landroid/webkit/WebViewInputDispatcher$TouchStream;
 
     invoke-direct {v1, v2}, Landroid/webkit/WebViewInputDispatcher$TouchStream;-><init>(Landroid/webkit/WebViewInputDispatcher$1;)V
 
     iput-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitTouchStream:Landroid/webkit/WebViewInputDispatcher$TouchStream;
 
-    .line 126
+    .line 130
     new-instance v1, Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;
 
     invoke-direct {v1, v2}, Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;-><init>(Landroid/webkit/WebViewInputDispatcher$1;)V
 
     iput-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mUiDispatchEventQueue:Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;
 
-    .line 127
+    .line 131
     new-instance v1, Landroid/webkit/WebViewInputDispatcher$TouchStream;
 
     invoke-direct {v1, v2}, Landroid/webkit/WebViewInputDispatcher$TouchStream;-><init>(Landroid/webkit/WebViewInputDispatcher$1;)V
 
     iput-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mUiTouchStream:Landroid/webkit/WebViewInputDispatcher$TouchStream;
 
-    .line 235
+    .line 238
     iput-object p1, p0, Landroid/webkit/WebViewInputDispatcher;->mUiCallbacks:Landroid/webkit/WebViewInputDispatcher$UiCallbacks;
 
-    .line 236
+    .line 239
     new-instance v1, Landroid/webkit/WebViewInputDispatcher$UiHandler;
 
     invoke-interface {p1}, Landroid/webkit/WebViewInputDispatcher$UiCallbacks;->getUiLooper()Landroid/os/Looper;
@@ -260,10 +264,10 @@
 
     iput-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mUiHandler:Landroid/webkit/WebViewInputDispatcher$UiHandler;
 
-    .line 238
+    .line 241
     iput-object p2, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitCallbacks:Landroid/webkit/WebViewInputDispatcher$WebKitCallbacks;
 
-    .line 239
+    .line 242
     new-instance v1, Landroid/webkit/WebViewInputDispatcher$WebKitHandler;
 
     invoke-interface {p2}, Landroid/webkit/WebViewInputDispatcher$WebKitCallbacks;->getWebKitLooper()Landroid/os/Looper;
@@ -274,7 +278,7 @@
 
     iput-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitHandler:Landroid/webkit/WebViewInputDispatcher$WebKitHandler;
 
-    .line 241
+    .line 244
     iget-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mUiCallbacks:Landroid/webkit/WebViewInputDispatcher$UiCallbacks;
 
     invoke-interface {v1}, Landroid/webkit/WebViewInputDispatcher$UiCallbacks;->getContext()Landroid/content/Context;
@@ -285,7 +289,7 @@
 
     move-result-object v0
 
-    .line 242
+    .line 245
     .local v0, config:Landroid/view/ViewConfiguration;
     invoke-virtual {v0}, Landroid/view/ViewConfiguration;->getScaledDoubleTapSlop()I
 
@@ -295,7 +299,7 @@
 
     iput v1, p0, Landroid/webkit/WebViewInputDispatcher;->mDoubleTapSlopSquared:F
 
-    .line 243
+    .line 246
     iget v1, p0, Landroid/webkit/WebViewInputDispatcher;->mDoubleTapSlopSquared:F
 
     iget v2, p0, Landroid/webkit/WebViewInputDispatcher;->mDoubleTapSlopSquared:F
@@ -304,7 +308,7 @@
 
     iput v1, p0, Landroid/webkit/WebViewInputDispatcher;->mDoubleTapSlopSquared:F
 
-    .line 244
+    .line 247
     invoke-virtual {v0}, Landroid/view/ViewConfiguration;->getScaledTouchSlop()I
 
     move-result v1
@@ -313,7 +317,7 @@
 
     iput v1, p0, Landroid/webkit/WebViewInputDispatcher;->mTouchSlopSquared:F
 
-    .line 245
+    .line 248
     iget v1, p0, Landroid/webkit/WebViewInputDispatcher;->mTouchSlopSquared:F
 
     iget v2, p0, Landroid/webkit/WebViewInputDispatcher;->mTouchSlopSquared:F
@@ -322,7 +326,7 @@
 
     iput v1, p0, Landroid/webkit/WebViewInputDispatcher;->mTouchSlopSquared:F
 
-    .line 246
+    .line 249
     return-void
 .end method
 
@@ -401,7 +405,7 @@
     .parameter "tail"
 
     .prologue
-    .line 987
+    .line 1006
     if-eqz p2, :cond_0
 
     iget-object v0, p2, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
@@ -444,7 +448,7 @@
 
     if-nez v0, :cond_0
 
-    .line 993
+    .line 1012
     iget-object v0, p2, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
     iget-object v1, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
@@ -453,7 +457,7 @@
 
     move-result v0
 
-    .line 995
+    .line 1014
     :goto_0
     return v0
 
@@ -464,76 +468,98 @@
 .end method
 
 .method private checkForDoubleTapOnDownLocked(Landroid/view/MotionEvent;)V
-    .locals 4
+    .locals 6
     .parameter "event"
 
     .prologue
-    .line 484
-    const/4 v2, 0x0
+    const/4 v5, 0x1
 
-    iput-boolean v2, p0, Landroid/webkit/WebViewInputDispatcher;->mIsDoubleTapCandidate:Z
+    const/4 v3, 0x0
 
-    .line 485
-    iget-boolean v2, p0, Landroid/webkit/WebViewInputDispatcher;->mPostClickScheduled:Z
-
-    if-nez v2, :cond_1
+    .line 493
+    iput-boolean v3, p0, Landroid/webkit/WebViewInputDispatcher;->mIsDoubleTapCandidate:Z
 
     .line 494
+    iput-boolean v3, p0, Landroid/webkit/WebViewInputDispatcher;->mIsSinglePointerScaleTap:Z
+
+    .line 495
+    iget-boolean v3, p0, Landroid/webkit/WebViewInputDispatcher;->mPostClickScheduled:Z
+
+    if-nez v3, :cond_1
+
+    .line 508
     :cond_0
     :goto_0
     return-void
 
-    .line 488
+    .line 498
     :cond_1
-    iget v2, p0, Landroid/webkit/WebViewInputDispatcher;->mInitialDownX:F
+    iget v3, p0, Landroid/webkit/WebViewInputDispatcher;->mInitialDownX:F
 
-    float-to-int v2, v2
+    float-to-int v3, v3
 
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
-    move-result v3
+    move-result v4
+
+    float-to-int v4, v4
+
+    sub-int v0, v3, v4
+
+    .line 499
+    .local v0, deltaX:I
+    iget v3, p0, Landroid/webkit/WebViewInputDispatcher;->mInitialDownY:F
 
     float-to-int v3, v3
-
-    sub-int v0, v2, v3
-
-    .line 489
-    .local v0, deltaX:I
-    iget v2, p0, Landroid/webkit/WebViewInputDispatcher;->mInitialDownY:F
-
-    float-to-int v2, v2
 
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
-    move-result v3
+    move-result v4
 
-    float-to-int v3, v3
+    float-to-int v4, v4
 
-    sub-int v1, v2, v3
+    sub-int v1, v3, v4
 
-    .line 490
+    .line 500
     .local v1, deltaY:I
-    mul-int v2, v0, v0
+    mul-int v3, v0, v0
 
-    mul-int v3, v1, v1
+    mul-int v4, v1, v1
 
-    add-int/2addr v2, v3
+    add-int v2, v3, v4
 
-    int-to-float v2, v2
+    .line 501
+    .local v2, disSqr:I
+    int-to-float v3, v2
 
-    iget v3, p0, Landroid/webkit/WebViewInputDispatcher;->mDoubleTapSlopSquared:F
+    iget v4, p0, Landroid/webkit/WebViewInputDispatcher;->mDoubleTapSlopSquared:F
 
-    cmpg-float v2, v2, v3
+    cmpg-float v3, v3, v4
 
-    if-gez v2, :cond_0
+    if-gez v3, :cond_2
 
-    .line 491
+    .line 502
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleClickLocked()V
 
-    .line 492
-    const/4 v2, 0x1
+    .line 503
+    iput-boolean v5, p0, Landroid/webkit/WebViewInputDispatcher;->mIsDoubleTapCandidate:Z
 
-    iput-boolean v2, p0, Landroid/webkit/WebViewInputDispatcher;->mIsDoubleTapCandidate:Z
+    .line 505
+    :cond_2
+    iget-boolean v3, p0, Landroid/webkit/WebViewInputDispatcher;->mEnableSinglePointerScale:Z
+
+    if-eqz v3, :cond_0
+
+    int-to-float v3, v2
+
+    iget v4, p0, Landroid/webkit/WebViewInputDispatcher;->mSinglePointerScaleSlopSquared:F
+
+    cmpg-float v3, v3, v4
+
+    if-gez v3, :cond_0
+
+    .line 506
+    iput-boolean v5, p0, Landroid/webkit/WebViewInputDispatcher;->mIsSinglePointerScaleTap:Z
 
     goto :goto_0
 .end method
@@ -543,17 +569,17 @@
     .parameter "event"
 
     .prologue
-    .line 522
+    .line 536
     iget-boolean v2, p0, Landroid/webkit/WebViewInputDispatcher;->mIsTapCandidate:Z
 
     if-nez v2, :cond_1
 
-    .line 532
+    .line 546
     :cond_0
     :goto_0
     return-void
 
-    .line 525
+    .line 539
     :cond_1
     iget v2, p0, Landroid/webkit/WebViewInputDispatcher;->mInitialDownX:F
 
@@ -567,7 +593,7 @@
 
     sub-int v0, v2, v3
 
-    .line 526
+    .line 540
     .local v0, deltaX:I
     iget v2, p0, Landroid/webkit/WebViewInputDispatcher;->mInitialDownY:F
 
@@ -581,7 +607,7 @@
 
     sub-int v1, v2, v3
 
-    .line 527
+    .line 541
     .local v1, deltaY:I
     mul-int v2, v0, v0
 
@@ -597,15 +623,15 @@
 
     if-lez v2, :cond_0
 
-    .line 528
+    .line 542
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleLongPressLocked()V
 
-    .line 529
+    .line 543
     const/4 v2, 0x0
 
     iput-boolean v2, p0, Landroid/webkit/WebViewInputDispatcher;->mIsTapCandidate:Z
 
-    .line 530
+    .line 544
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->hideTapCandidateLocked()V
 
     goto :goto_0
@@ -616,18 +642,18 @@
     .parameter "d"
 
     .prologue
-    .line 1015
+    .line 1038
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->obtainUninitializedDispatchEventLocked()Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
     move-result-object v0
 
-    .line 1016
+    .line 1039
     .local v0, copy:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     iget-object v1, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
     if-eqz v1, :cond_0
 
-    .line 1017
+    .line 1040
     iget-object v1, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
     invoke-virtual {v1}, Landroid/view/MotionEvent;->copy()Landroid/view/MotionEvent;
@@ -636,43 +662,43 @@
 
     iput-object v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
-    .line 1019
+    .line 1042
     :cond_0
     iget v1, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEventType:I
 
     iput v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEventType:I
 
-    .line 1020
+    .line 1043
     iget v1, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
     iput v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
-    .line 1021
+    .line 1044
     iget-wide v1, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mTimeoutTime:J
 
     iput-wide v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mTimeoutTime:J
 
-    .line 1022
+    .line 1045
     iget v1, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitXOffset:I
 
     iput v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitXOffset:I
 
-    .line 1023
+    .line 1046
     iget v1, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitYOffset:I
 
     iput v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitYOffset:I
 
-    .line 1024
+    .line 1047
     iget v1, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitScale:F
 
     iput v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitScale:F
 
-    .line 1025
+    .line 1048
     iget-object v1, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mNext:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
     iput-object v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mNext:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
-    .line 1026
+    .line 1049
     return-object v0
 .end method
 
@@ -683,12 +709,12 @@
     .parameter "flags"
 
     .prologue
-    .line 851
+    .line 876
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiCallbacks:Landroid/webkit/WebViewInputDispatcher$UiCallbacks;
 
     invoke-interface {v0, p1, p2, p3}, Landroid/webkit/WebViewInputDispatcher$UiCallbacks;->dispatchUiEvent(Landroid/view/MotionEvent;II)V
 
-    .line 852
+    .line 877
     return-void
 .end method
 
@@ -697,14 +723,14 @@
     .parameter "calledFromHandler"
 
     .prologue
-    .line 798
+    .line 823
     :cond_0
     :goto_0
     iget-object v5, p0, Landroid/webkit/WebViewInputDispatcher;->mLock:Ljava/lang/Object;
 
     monitor-enter v5
 
-    .line 799
+    .line 824
     :try_start_0
     iget-object v4, p0, Landroid/webkit/WebViewInputDispatcher;->mUiDispatchEventQueue:Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;
 
@@ -712,41 +738,41 @@
 
     move-result-object v0
 
-    .line 800
+    .line 825
     .local v0, d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     if-nez v0, :cond_2
 
-    .line 801
+    .line 826
     iget-boolean v4, p0, Landroid/webkit/WebViewInputDispatcher;->mUiDispatchScheduled:Z
 
     if-eqz v4, :cond_1
 
-    .line 802
+    .line 827
     const/4 v4, 0x0
 
     iput-boolean v4, p0, Landroid/webkit/WebViewInputDispatcher;->mUiDispatchScheduled:Z
 
-    .line 803
+    .line 828
     if-nez p1, :cond_1
 
-    .line 804
+    .line 829
     iget-object v4, p0, Landroid/webkit/WebViewInputDispatcher;->mUiHandler:Landroid/webkit/WebViewInputDispatcher$UiHandler;
 
     const/4 v6, 0x1
 
     invoke-virtual {v4, v6}, Landroid/webkit/WebViewInputDispatcher$UiHandler;->removeMessages(I)V
 
-    .line 807
+    .line 832
     :cond_1
     monitor-exit v5
 
     return-void
 
-    .line 810
+    .line 835
     :cond_2
     iget-object v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
-    .line 811
+    .line 836
     .local v1, event:Landroid/view/MotionEvent;
     if-eqz v1, :cond_3
 
@@ -756,7 +782,7 @@
 
     if-eqz v4, :cond_3
 
-    .line 812
+    .line 837
     const/high16 v4, 0x3f80
 
     iget v6, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitScale:F
@@ -765,7 +791,7 @@
 
     invoke-virtual {v1, v4}, Landroid/view/MotionEvent;->scale(F)V
 
-    .line 813
+    .line 838
     iget v4, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitXOffset:I
 
     neg-int v4, v4
@@ -780,73 +806,73 @@
 
     invoke-virtual {v1, v4, v6}, Landroid/view/MotionEvent;->offsetLocation(FF)V
 
-    .line 814
+    .line 839
     iget v4, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
     and-int/lit8 v4, v4, -0x9
 
     iput v4, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
-    .line 817
+    .line 842
     :cond_3
     iget v2, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEventType:I
 
-    .line 818
+    .line 843
     .local v2, eventType:I
     if-nez v2, :cond_4
 
-    .line 819
+    .line 844
     iget-object v4, p0, Landroid/webkit/WebViewInputDispatcher;->mUiTouchStream:Landroid/webkit/WebViewInputDispatcher$TouchStream;
 
     invoke-virtual {v4, v1}, Landroid/webkit/WebViewInputDispatcher$TouchStream;->update(Landroid/view/MotionEvent;)Landroid/view/MotionEvent;
 
     move-result-object v1
 
-    .line 825
+    .line 850
     :cond_4
     iget v3, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
-    .line 827
+    .line 852
     .local v3, flags:I
     iget-object v4, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
     if-ne v1, v4, :cond_5
 
-    .line 828
+    .line 853
     const/4 v4, 0x0
 
     iput-object v4, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
-    .line 830
+    .line 855
     :cond_5
     invoke-direct {p0, v0}, Landroid/webkit/WebViewInputDispatcher;->recycleDispatchEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 832
+    .line 857
     const/4 v4, 0x4
 
     if-ne v2, v4, :cond_6
 
-    .line 833
+    .line 858
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->scheduleHideTapHighlightLocked()V
 
-    .line 835
+    .line 860
     :cond_6
     monitor-exit v5
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 838
+    .line 863
     if-eqz v1, :cond_0
 
-    .line 839
+    .line 864
     invoke-direct {p0, v1, v2, v3}, Landroid/webkit/WebViewInputDispatcher;->dispatchUiEvent(Landroid/view/MotionEvent;II)V
 
-    .line 840
+    .line 865
     invoke-virtual {v1}, Landroid/view/MotionEvent;->recycle()V
 
     goto :goto_0
 
-    .line 835
+    .line 860
     .end local v0           #d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     .end local v1           #event:Landroid/view/MotionEvent;
     .end local v2           #eventType:I
@@ -869,15 +895,20 @@
     .parameter "flags"
 
     .prologue
-    .line 699
+    .line 721
     iget-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitCallbacks:Landroid/webkit/WebViewInputDispatcher$WebKitCallbacks;
 
     invoke-interface {v1, p0, p1, p2, p3}, Landroid/webkit/WebViewInputDispatcher$WebKitCallbacks;->dispatchWebKitEvent(Landroid/webkit/WebViewInputDispatcher;Landroid/view/MotionEvent;II)Z
 
     move-result v0
 
-    .line 704
+    .line 723
     .local v0, preventDefault:Z
+    iget-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitCallbacks:Landroid/webkit/WebViewInputDispatcher$WebKitCallbacks;
+
+    invoke-interface {v1}, Landroid/webkit/WebViewInputDispatcher$WebKitCallbacks;->resumeWebKitTimer()V
+
+    .line 727
     return v0
 .end method
 
@@ -890,57 +921,57 @@
 
     const/4 v7, 0x0
 
-    .line 609
+    .line 631
     :goto_0
     iget-object v8, p0, Landroid/webkit/WebViewInputDispatcher;->mLock:Ljava/lang/Object;
 
     monitor-enter v8
 
-    .line 613
+    .line 635
     :try_start_0
     iget-object v9, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitDispatchEventQueue:Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;
 
     iget-object v0, v9, Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;->mHead:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
-    .line 614
+    .line 636
     .local v0, d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     if-nez v0, :cond_1
 
-    .line 615
+    .line 637
     iget-boolean v6, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitDispatchScheduled:Z
 
     if-eqz v6, :cond_0
 
-    .line 616
+    .line 638
     const/4 v6, 0x0
 
     iput-boolean v6, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitDispatchScheduled:Z
 
-    .line 617
+    .line 639
     if-nez p1, :cond_0
 
-    .line 618
+    .line 640
     iget-object v6, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitHandler:Landroid/webkit/WebViewInputDispatcher$WebKitHandler;
 
     const/4 v7, 0x1
 
     invoke-virtual {v6, v7}, Landroid/webkit/WebViewInputDispatcher$WebKitHandler;->removeMessages(I)V
 
-    .line 622
+    .line 644
     :cond_0
     monitor-exit v8
 
     return-void
 
-    .line 625
+    .line 647
     :cond_1
     iget-object v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
-    .line 626
+    .line 648
     .local v1, event:Landroid/view/MotionEvent;
     if-eqz v1, :cond_2
 
-    .line 627
+    .line 649
     iget v9, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitXOffset:I
 
     int-to-float v9, v9
@@ -951,34 +982,34 @@
 
     invoke-virtual {v1, v9, v10}, Landroid/view/MotionEvent;->offsetLocation(FF)V
 
-    .line 628
+    .line 650
     iget v9, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitScale:F
 
     invoke-virtual {v1, v9}, Landroid/view/MotionEvent;->scale(F)V
 
-    .line 629
+    .line 651
     iget v9, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
     or-int/lit8 v9, v9, 0x8
 
     iput v9, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
-    .line 632
+    .line 654
     :cond_2
     iget v2, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEventType:I
 
-    .line 633
+    .line 655
     .local v2, eventType:I
     if-nez v2, :cond_3
 
-    .line 634
+    .line 656
     iget-object v9, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitTouchStream:Landroid/webkit/WebViewInputDispatcher$TouchStream;
 
     invoke-virtual {v9, v1}, Landroid/webkit/WebViewInputDispatcher$TouchStream;->update(Landroid/view/MotionEvent;)Landroid/view/MotionEvent;
 
     move-result-object v1
 
-    .line 640
+    .line 662
     :cond_3
     iget v9, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
@@ -986,74 +1017,74 @@
 
     iput v9, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
-    .line 641
+    .line 663
     iget v3, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
-    .line 642
+    .line 664
     .local v3, flags:I
     monitor-exit v8
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 646
+    .line 668
     if-nez v1, :cond_7
 
-    .line 647
+    .line 669
     const/4 v4, 0x0
 
-    .line 652
+    .line 674
     .local v4, preventDefault:Z
     :goto_1
     iget-object v8, p0, Landroid/webkit/WebViewInputDispatcher;->mLock:Ljava/lang/Object;
 
     monitor-enter v8
 
-    .line 653
+    .line 675
     :try_start_1
     iget v3, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
-    .line 654
+    .line 676
     and-int/lit8 v9, v3, -0x3
 
     iput v9, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
-    .line 655
+    .line 677
     iget-object v9, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
     if-eq v1, v9, :cond_8
 
     move v5, v6
 
-    .line 657
+    .line 679
     .local v5, recycleEvent:Z
     :goto_2
     and-int/lit8 v9, v3, 0x4
 
     if-eqz v9, :cond_9
 
-    .line 659
+    .line 681
     invoke-direct {p0, v0}, Landroid/webkit/WebViewInputDispatcher;->recycleDispatchEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 682
+    .line 704
     :cond_4
     :goto_3
     if-eqz v1, :cond_5
 
     if-eqz v5, :cond_5
 
-    .line 683
+    .line 705
     invoke-virtual {v1}, Landroid/view/MotionEvent;->recycle()V
 
-    .line 686
+    .line 708
     :cond_5
     const/4 v9, 0x4
 
     if-ne v2, v9, :cond_6
 
-    .line 687
+    .line 709
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->scheduleHideTapHighlightLocked()V
 
-    .line 689
+    .line 711
     :cond_6
     monitor-exit v8
 
@@ -1069,7 +1100,7 @@
 
     throw v6
 
-    .line 642
+    .line 664
     .end local v0           #d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     .end local v1           #event:Landroid/view/MotionEvent;
     .end local v2           #eventType:I
@@ -1085,7 +1116,7 @@
 
     throw v6
 
-    .line 649
+    .line 671
     .restart local v0       #d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     .restart local v1       #event:Landroid/view/MotionEvent;
     .restart local v2       #eventType:I
@@ -1101,10 +1132,10 @@
     :cond_8
     move v5, v7
 
-    .line 655
+    .line 677
     goto :goto_2
 
-    .line 662
+    .line 684
     .restart local v5       #recycleEvent:Z
     :cond_9
     :try_start_3
@@ -1124,43 +1155,43 @@
 
     throw v6
 
-    .line 663
+    .line 685
     :cond_a
     iget-object v9, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitDispatchEventQueue:Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;
 
     invoke-virtual {v9}, Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;->dequeue()Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
-    .line 665
+    .line 687
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->updateWebKitTimeoutLocked()V
 
-    .line 667
+    .line 689
     and-int/lit8 v9, v3, 0x1
 
     if-eqz v9, :cond_b
 
-    .line 669
+    .line 691
     invoke-direct {p0, v0}, Landroid/webkit/WebViewInputDispatcher;->recycleDispatchEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
     goto :goto_3
 
-    .line 670
+    .line 692
     :cond_b
     if-eqz v4, :cond_c
 
-    .line 672
+    .line 694
     iget v9, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEventType:I
 
     if-nez v9, :cond_4
 
-    .line 673
+    .line 695
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->enqueueUiCancelTouchEventIfNeededLocked()V
 
-    .line 674
+    .line 696
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleLongPressLocked()V
 
     goto :goto_3
 
-    .line 678
+    .line 700
     :cond_c
     invoke-direct {p0, v0}, Landroid/webkit/WebViewInputDispatcher;->enqueueUiEventUnbatchedLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
     :try_end_3
@@ -1173,12 +1204,12 @@
     .locals 3
 
     .prologue
-    .line 713
+    .line 736
     iget-object v2, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitDispatchEventQueue:Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;
 
     iget-object v0, v2, Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;->mHead:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
-    .line 716
+    .line 739
     .local v0, d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     :goto_0
     if-eqz v0, :cond_0
@@ -1201,27 +1232,27 @@
 
     if-eqz v2, :cond_0
 
-    .line 717
+    .line 740
     iget-object v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mNext:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
-    .line 718
+    .line 741
     .local v1, next:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     invoke-direct {p0, v0}, Landroid/webkit/WebViewInputDispatcher;->skipWebKitEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 719
+    .line 742
     move-object v0, v1
 
-    .line 720
+    .line 743
     goto :goto_0
 
-    .line 721
+    .line 744
     .end local v1           #next:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     :cond_0
     iget-object v2, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitDispatchEventQueue:Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;
 
     iput-object v0, v2, Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;->mHead:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
-    .line 722
+    .line 745
     return-void
 .end method
 
@@ -1230,12 +1261,12 @@
     .parameter "event"
 
     .prologue
-    .line 507
+    .line 521
     invoke-static {p1}, Landroid/view/MotionEvent;->obtainNoHistory(Landroid/view/MotionEvent;)Landroid/view/MotionEvent;
 
     move-result-object v1
 
-    .line 508
+    .line 522
     .local v1, eventToEnqueue:Landroid/view/MotionEvent;
     const/4 v2, 0x5
 
@@ -1253,11 +1284,11 @@
 
     move-result-object v7
 
-    .line 510
+    .line 524
     .local v7, d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     invoke-direct {p0, v7}, Landroid/webkit/WebViewInputDispatcher;->enqueueEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 511
+    .line 525
     return-void
 .end method
 
@@ -1266,21 +1297,21 @@
     .parameter "d"
 
     .prologue
-    .line 855
+    .line 880
     invoke-direct {p0, p1}, Landroid/webkit/WebViewInputDispatcher;->shouldSkipWebKit(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 856
+    .line 881
     invoke-direct {p0, p1}, Landroid/webkit/WebViewInputDispatcher;->enqueueWebKitEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 860
+    .line 885
     :goto_0
     return-void
 
-    .line 858
+    .line 883
     :cond_0
     invoke-direct {p0, p1}, Landroid/webkit/WebViewInputDispatcher;->enqueueUiEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
@@ -1292,17 +1323,17 @@
     .parameter "event"
 
     .prologue
-    .line 514
+    .line 528
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiCallbacks:Landroid/webkit/WebViewInputDispatcher$UiCallbacks;
 
     invoke-interface {v0}, Landroid/webkit/WebViewInputDispatcher$UiCallbacks;->clearPreviousHitTest()V
 
-    .line 515
+    .line 529
     invoke-static {p1}, Landroid/view/MotionEvent;->obtainNoHistory(Landroid/view/MotionEvent;)Landroid/view/MotionEvent;
 
     move-result-object v1
 
-    .line 516
+    .line 530
     .local v1, eventToEnqueue:Landroid/view/MotionEvent;
     const/4 v2, 0x6
 
@@ -1320,11 +1351,11 @@
 
     move-result-object v7
 
-    .line 518
+    .line 532
     .local v7, d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     invoke-direct {p0, v7}, Landroid/webkit/WebViewInputDispatcher;->enqueueEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 519
+    .line 533
     return-void
 .end method
 
@@ -1334,7 +1365,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 950
+    .line 969
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiTouchStream:Landroid/webkit/WebViewInputDispatcher$TouchStream;
 
     invoke-virtual {v0}, Landroid/webkit/WebViewInputDispatcher$TouchStream;->isCancelNeeded()Z
@@ -1351,7 +1382,7 @@
 
     if-nez v0, :cond_1
 
-    .line 951
+    .line 970
     :cond_0
     const/4 v1, 0x0
 
@@ -1369,11 +1400,11 @@
 
     move-result-object v7
 
-    .line 953
+    .line 972
     .local v7, d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     invoke-direct {p0, v7}, Landroid/webkit/WebViewInputDispatcher;->enqueueUiEventUnbatchedLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 955
+    .line 974
     .end local v7           #d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     :cond_1
     return-void
@@ -1384,7 +1415,7 @@
     .parameter "d"
 
     .prologue
-    .line 958
+    .line 977
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiDispatchEventQueue:Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;
 
     iget-object v0, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;->mTail:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
@@ -1395,14 +1426,14 @@
 
     if-eqz v0, :cond_0
 
-    .line 962
+    .line 981
     invoke-direct {p0, p1}, Landroid/webkit/WebViewInputDispatcher;->recycleDispatchEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 966
+    .line 985
     :goto_0
     return-void
 
-    .line 964
+    .line 983
     :cond_0
     invoke-direct {p0, p1}, Landroid/webkit/WebViewInputDispatcher;->enqueueUiEventUnbatchedLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
@@ -1414,15 +1445,15 @@
     .parameter "d"
 
     .prologue
-    .line 972
+    .line 991
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiDispatchEventQueue:Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;
 
     invoke-virtual {v0, p1}, Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;->enqueue(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 973
+    .line 992
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->scheduleUiDispatchLocked()V
 
-    .line 974
+    .line 993
     return-void
 .end method
 
@@ -1434,7 +1465,7 @@
 
     const/4 v2, 0x0
 
-    .line 896
+    .line 915
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitTouchStream:Landroid/webkit/WebViewInputDispatcher$TouchStream;
 
     invoke-virtual {v0}, Landroid/webkit/WebViewInputDispatcher$TouchStream;->isCancelNeeded()Z
@@ -1451,7 +1482,7 @@
 
     if-nez v0, :cond_1
 
-    .line 897
+    .line 916
     :cond_0
     const/4 v1, 0x0
 
@@ -1467,14 +1498,14 @@
 
     move-result-object v7
 
-    .line 899
+    .line 918
     .local v7, d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     invoke-direct {p0, v7}, Landroid/webkit/WebViewInputDispatcher;->enqueueWebKitEventUnbatchedLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 900
+    .line 919
     iput-boolean v3, p0, Landroid/webkit/WebViewInputDispatcher;->mPostDoNotSendTouchEventsToWebKitUntilNextGesture:Z
 
-    .line 902
+    .line 921
     .end local v7           #d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     :cond_1
     return-void
@@ -1485,7 +1516,7 @@
     .parameter "d"
 
     .prologue
-    .line 905
+    .line 924
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitDispatchEventQueue:Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;
 
     iget-object v0, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;->mTail:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
@@ -1496,14 +1527,14 @@
 
     if-eqz v0, :cond_0
 
-    .line 909
+    .line 928
     invoke-direct {p0, p1}, Landroid/webkit/WebViewInputDispatcher;->recycleDispatchEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 913
+    .line 932
     :goto_0
     return-void
 
-    .line 911
+    .line 930
     :cond_0
     invoke-direct {p0, p1}, Landroid/webkit/WebViewInputDispatcher;->enqueueWebKitEventUnbatchedLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
@@ -1515,18 +1546,18 @@
     .parameter "d"
 
     .prologue
-    .line 919
+    .line 938
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitDispatchEventQueue:Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;
 
     invoke-virtual {v0, p1}, Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;->enqueue(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 920
+    .line 939
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->scheduleWebKitDispatchLocked()V
 
-    .line 921
+    .line 940
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->updateWebKitTimeoutLocked()V
 
-    .line 922
+    .line 941
     return-void
 .end method
 
@@ -1534,38 +1565,38 @@
     .locals 4
 
     .prologue
-    .line 732
+    .line 755
     iget-object v3, p0, Landroid/webkit/WebViewInputDispatcher;->mLock:Ljava/lang/Object;
 
     monitor-enter v3
 
-    .line 733
+    .line 756
     :try_start_0
     iget-boolean v2, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitTimeoutScheduled:Z
 
     if-nez v2, :cond_0
 
-    .line 734
+    .line 757
     monitor-exit v3
 
-    .line 769
+    .line 794
     :goto_0
     return-void
 
-    .line 736
+    .line 759
     :cond_0
     const/4 v2, 0x0
 
     iput-boolean v2, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitTimeoutScheduled:Z
 
-    .line 743
+    .line 766
     iget-object v2, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitDispatchEventQueue:Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;
 
     invoke-virtual {v2}, Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;->dequeueList()Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
     move-result-object v0
 
-    .line 747
+    .line 770
     .local v0, d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     iget v2, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
@@ -1573,49 +1604,49 @@
 
     if-eqz v2, :cond_1
 
-    .line 748
+    .line 771
     iget v2, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
     or-int/lit8 v2, v2, 0x4
 
     iput v2, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
-    .line 749
+    .line 772
     iget v2, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
     and-int/lit8 v2, v2, 0x1
 
     if-eqz v2, :cond_2
 
-    .line 750
+    .line 773
     iget-object v0, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mNext:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
-    .line 758
+    .line 781
     :cond_1
     :goto_1
     if-eqz v0, :cond_3
 
-    .line 759
+    .line 782
     iget-object v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mNext:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
-    .line 760
+    .line 783
     .local v1, next:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     invoke-direct {p0, v0}, Landroid/webkit/WebViewInputDispatcher;->skipWebKitEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 761
+    .line 784
     move-object v0, v1
 
-    .line 762
+    .line 785
     goto :goto_1
 
-    .line 752
+    .line 775
     .end local v1           #next:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     :cond_2
     invoke-direct {p0, v0}, Landroid/webkit/WebViewInputDispatcher;->copyDispatchEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
     move-result-object v0
 
-    .line 753
+    .line 776
     iget v2, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
     and-int/lit8 v2, v2, -0x3
@@ -1624,7 +1655,7 @@
 
     goto :goto_1
 
-    .line 768
+    .line 793
     .end local v0           #d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     :catchall_0
     move-exception v2
@@ -1635,13 +1666,18 @@
 
     throw v2
 
-    .line 767
+    .line 790
     .restart local v0       #d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     :cond_3
     :try_start_1
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->enqueueWebKitCancelTouchEventIfNeededLocked()V
 
-    .line 768
+    .line 792
+    iget-object v2, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitCallbacks:Landroid/webkit/WebViewInputDispatcher$WebKitCallbacks;
+
+    invoke-interface {v2}, Landroid/webkit/WebViewInputDispatcher$WebKitCallbacks;->resumeWebKitTimer()V
+
+    .line 793
     monitor-exit v3
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
@@ -1653,20 +1689,20 @@
     .locals 2
 
     .prologue
-    .line 394
+    .line 402
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleHideTapHighlightLocked()V
 
-    .line 395
+    .line 403
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleShowTapHighlightLocked()V
 
-    .line 396
+    .line 404
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiCallbacks:Landroid/webkit/WebViewInputDispatcher$UiCallbacks;
 
     const/4 v1, 0x0
 
     invoke-interface {v0, v1}, Landroid/webkit/WebViewInputDispatcher$UiCallbacks;->showTapHighlight(Z)V
 
-    .line 397
+    .line 405
     return-void
 .end method
 
@@ -1679,7 +1715,7 @@
 
     const/4 v3, 0x0
 
-    .line 497
+    .line 511
     if-eqz p1, :cond_0
 
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getActionMasked()I
@@ -1695,12 +1731,12 @@
     :cond_0
     move v2, v3
 
-    .line 503
+    .line 517
     :cond_1
     :goto_0
     return v2
 
-    .line 502
+    .line 516
     :cond_2
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getEventTime()J
 
@@ -1712,7 +1748,7 @@
 
     sub-long v0, v4, v6
 
-    .line 503
+    .line 517
     .local v0, downDuration:J
     sget v4, Landroid/webkit/WebViewInputDispatcher;->LONG_PRESS_TIMEOUT:I
 
@@ -1732,7 +1768,7 @@
     .parameter "d"
 
     .prologue
-    .line 708
+    .line 731
     iget-object v0, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
     if-eqz v0, :cond_0
@@ -1768,43 +1804,63 @@
     .parameter "webKitScale"
 
     .prologue
-    .line 1000
+    .line 1019
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->obtainUninitializedDispatchEventLocked()Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
     move-result-object v0
 
-    .line 1001
+    .line 1020
     .local v0, d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     iput-object p1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
-    .line 1002
+    .line 1021
     iput p2, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEventType:I
 
-    .line 1003
+    .line 1022
     iput p3, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
-    .line 1004
+    .line 1023
+    const/4 v1, 0x4
+
+    if-ne p2, v1, :cond_0
+
+    .line 1024
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v1
 
-    const-wide/16 v3, 0x12c
+    const-wide/16 v3, 0x3e8
 
     add-long/2addr v1, v3
 
     iput-wide v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mTimeoutTime:J
 
-    .line 1005
+    .line 1028
+    :goto_0
     iput p4, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitXOffset:I
 
-    .line 1006
+    .line 1029
     iput p5, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitYOffset:I
 
-    .line 1007
+    .line 1030
     iput p6, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitScale:F
 
-    .line 1011
+    .line 1034
     return-object v0
+
+    .line 1026
+    :cond_0
+    invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
+
+    move-result-wide v1
+
+    const-wide/16 v3, 0x1f4
+
+    add-long/2addr v1, v3
+
+    iput-wide v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mTimeoutTime:J
+
+    goto :goto_0
 .end method
 
 .method private obtainUninitializedDispatchEventLocked()Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
@@ -1813,33 +1869,33 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 1030
+    .line 1053
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mDispatchEventPool:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
-    .line 1031
+    .line 1054
     .local v0, d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     if-eqz v0, :cond_0
 
-    .line 1032
+    .line 1055
     iget v1, p0, Landroid/webkit/WebViewInputDispatcher;->mDispatchEventPoolSize:I
 
     add-int/lit8 v1, v1, -0x1
 
     iput v1, p0, Landroid/webkit/WebViewInputDispatcher;->mDispatchEventPoolSize:I
 
-    .line 1033
+    .line 1056
     iget-object v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mNext:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
     iput-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mDispatchEventPool:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
-    .line 1034
+    .line 1057
     iput-object v2, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mNext:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
-    .line 1038
+    .line 1061
     :goto_0
     return-object v0
 
-    .line 1036
+    .line 1059
     :cond_0
     new-instance v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
@@ -1854,38 +1910,38 @@
     .locals 10
 
     .prologue
-    .line 464
+    .line 472
     iget-object v9, p0, Landroid/webkit/WebViewInputDispatcher;->mLock:Ljava/lang/Object;
 
     monitor-enter v9
 
-    .line 465
+    .line 473
     :try_start_0
     iget-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostClickScheduled:Z
 
     if-nez v0, :cond_0
 
-    .line 466
+    .line 474
     monitor-exit v9
 
-    .line 481
+    .line 490
     :goto_0
     return-void
 
-    .line 468
+    .line 476
     :cond_0
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostClickScheduled:Z
 
-    .line 470
+    .line 478
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostTouchStream:Landroid/webkit/WebViewInputDispatcher$TouchStream;
 
     invoke-virtual {v0}, Landroid/webkit/WebViewInputDispatcher$TouchStream;->getLastEvent()Landroid/view/MotionEvent;
 
     move-result-object v8
 
-    .line 471
+    .line 479
     .local v8, event:Landroid/view/MotionEvent;
     if-eqz v8, :cond_1
 
@@ -1897,13 +1953,13 @@
 
     if-eq v0, v2, :cond_2
 
-    .line 472
+    .line 480
     :cond_1
     monitor-exit v9
 
     goto :goto_0
 
-    .line 480
+    .line 489
     .end local v8           #event:Landroid/view/MotionEvent;
     :catchall_0
     move-exception v0
@@ -1914,18 +1970,23 @@
 
     throw v0
 
-    .line 475
+    .line 483
     .restart local v8       #event:Landroid/view/MotionEvent;
     :cond_2
     :try_start_1
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->showTapCandidateLocked()V
 
-    .line 476
+    .line 484
+    iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitCallbacks:Landroid/webkit/WebViewInputDispatcher$WebKitCallbacks;
+
+    invoke-interface {v0}, Landroid/webkit/WebViewInputDispatcher$WebKitCallbacks;->pauseWebKitTimer()V
+
+    .line 485
     invoke-static {v8}, Landroid/view/MotionEvent;->obtainNoHistory(Landroid/view/MotionEvent;)Landroid/view/MotionEvent;
 
     move-result-object v1
 
-    .line 477
+    .line 486
     .local v1, eventToEnqueue:Landroid/view/MotionEvent;
     const/4 v2, 0x4
 
@@ -1943,11 +2004,11 @@
 
     move-result-object v7
 
-    .line 479
+    .line 488
     .local v7, d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     invoke-direct {p0, v7}, Landroid/webkit/WebViewInputDispatcher;->enqueueEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 480
+    .line 489
     monitor-exit v9
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
@@ -1959,47 +2020,47 @@
     .locals 10
 
     .prologue
-    .line 364
+    .line 372
     iget-object v9, p0, Landroid/webkit/WebViewInputDispatcher;->mLock:Ljava/lang/Object;
 
     monitor-enter v9
 
-    .line 365
+    .line 373
     :try_start_0
     iget-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostLongPressScheduled:Z
 
     if-nez v0, :cond_0
 
-    .line 366
+    .line 374
     monitor-exit v9
 
-    .line 391
+    .line 399
     :goto_0
     return-void
 
-    .line 368
+    .line 376
     :cond_0
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostLongPressScheduled:Z
 
-    .line 370
+    .line 378
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostTouchStream:Landroid/webkit/WebViewInputDispatcher$TouchStream;
 
     invoke-virtual {v0}, Landroid/webkit/WebViewInputDispatcher$TouchStream;->getLastEvent()Landroid/view/MotionEvent;
 
     move-result-object v8
 
-    .line 371
+    .line 379
     .local v8, event:Landroid/view/MotionEvent;
     if-nez v8, :cond_1
 
-    .line 372
+    .line 380
     monitor-exit v9
 
     goto :goto_0
 
-    .line 390
+    .line 398
     .end local v8           #event:Landroid/view/MotionEvent;
     :catchall_0
     move-exception v0
@@ -2010,7 +2071,7 @@
 
     throw v0
 
-    .line 375
+    .line 383
     .restart local v8       #event:Landroid/view/MotionEvent;
     :cond_1
     :try_start_1
@@ -2020,25 +2081,25 @@
 
     packed-switch v0, :pswitch_data_0
 
-    .line 382
+    .line 390
     :pswitch_0
     monitor-exit v9
 
     goto :goto_0
 
-    .line 385
+    .line 393
     :pswitch_1
     invoke-static {v8}, Landroid/view/MotionEvent;->obtainNoHistory(Landroid/view/MotionEvent;)Landroid/view/MotionEvent;
 
     move-result-object v1
 
-    .line 386
+    .line 394
     .local v1, eventToEnqueue:Landroid/view/MotionEvent;
     const/4 v0, 0x2
 
     invoke-virtual {v1, v0}, Landroid/view/MotionEvent;->setAction(I)V
 
-    .line 387
+    .line 395
     const/4 v2, 0x3
 
     const/4 v3, 0x0
@@ -2055,18 +2116,18 @@
 
     move-result-object v7
 
-    .line 389
+    .line 397
     .local v7, d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     invoke-direct {p0, v7}, Landroid/webkit/WebViewInputDispatcher;->enqueueEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 390
+    .line 398
     monitor-exit v9
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
 
-    .line 375
+    .line 383
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_1
@@ -2084,40 +2145,40 @@
     .parameter "show"
 
     .prologue
-    .line 434
+    .line 442
     iget-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 435
+    .line 443
     if-eqz p1, :cond_1
 
-    .line 436
+    .line 444
     :try_start_0
     iget-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostShowTapHighlightScheduled:Z
 
     if-nez v0, :cond_0
 
-    .line 437
+    .line 445
     monitor-exit v1
 
-    .line 448
+    .line 456
     :goto_0
     return-void
 
-    .line 439
+    .line 447
     :cond_0
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostShowTapHighlightScheduled:Z
 
-    .line 446
+    .line 454
     :goto_1
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiCallbacks:Landroid/webkit/WebViewInputDispatcher$UiCallbacks;
 
     invoke-interface {v0, p1}, Landroid/webkit/WebViewInputDispatcher$UiCallbacks;->showTapHighlight(Z)V
 
-    .line 447
+    .line 455
     monitor-exit v1
 
     goto :goto_0
@@ -2131,19 +2192,19 @@
 
     throw v0
 
-    .line 441
+    .line 449
     :cond_1
     :try_start_1
     iget-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostHideTapHighlightScheduled:Z
 
     if-nez v0, :cond_2
 
-    .line 442
+    .line 450
     monitor-exit v1
 
     goto :goto_0
 
-    .line 444
+    .line 452
     :cond_2
     const/4 v0, 0x0
 
@@ -2159,22 +2220,22 @@
     .parameter "d"
 
     .prologue
-    .line 1042
+    .line 1065
     iget-object v0, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
     if-eqz v0, :cond_0
 
-    .line 1043
+    .line 1066
     iget-object v0, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
     invoke-virtual {v0}, Landroid/view/MotionEvent;->recycle()V
 
-    .line 1044
+    .line 1067
     const/4 v0, 0x0
 
     iput-object v0, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
-    .line 1047
+    .line 1070
     :cond_0
     iget v0, p0, Landroid/webkit/WebViewInputDispatcher;->mDispatchEventPoolSize:I
 
@@ -2182,22 +2243,22 @@
 
     if-ge v0, v1, :cond_1
 
-    .line 1048
+    .line 1071
     iget v0, p0, Landroid/webkit/WebViewInputDispatcher;->mDispatchEventPoolSize:I
 
     add-int/lit8 v0, v0, 0x1
 
     iput v0, p0, Landroid/webkit/WebViewInputDispatcher;->mDispatchEventPoolSize:I
 
-    .line 1049
+    .line 1072
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mDispatchEventPool:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
     iput-object v0, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mNext:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
-    .line 1050
+    .line 1073
     iput-object p1, p0, Landroid/webkit/WebViewInputDispatcher;->mDispatchEventPool:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
-    .line 1052
+    .line 1075
     :cond_1
     return-void
 .end method
@@ -2206,15 +2267,15 @@
     .locals 4
 
     .prologue
-    .line 451
+    .line 459
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleClickLocked()V
 
-    .line 452
+    .line 460
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostClickScheduled:Z
 
-    .line 453
+    .line 461
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiHandler:Landroid/webkit/WebViewInputDispatcher$UiHandler;
 
     const/4 v1, 0x4
@@ -2225,7 +2286,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/webkit/WebViewInputDispatcher$UiHandler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 454
+    .line 462
     return-void
 .end method
 
@@ -2233,15 +2294,15 @@
     .locals 4
 
     .prologue
-    .line 420
+    .line 428
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleHideTapHighlightLocked()V
 
-    .line 421
+    .line 429
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostHideTapHighlightScheduled:Z
 
-    .line 422
+    .line 430
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiHandler:Landroid/webkit/WebViewInputDispatcher$UiHandler;
 
     const/4 v1, 0x6
@@ -2252,7 +2313,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/webkit/WebViewInputDispatcher$UiHandler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 424
+    .line 432
     return-void
 .end method
 
@@ -2260,15 +2321,15 @@
     .locals 4
 
     .prologue
-    .line 350
+    .line 358
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleLongPressLocked()V
 
-    .line 351
+    .line 359
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostLongPressScheduled:Z
 
-    .line 352
+    .line 360
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiHandler:Landroid/webkit/WebViewInputDispatcher$UiHandler;
 
     const/4 v1, 0x3
@@ -2279,7 +2340,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/webkit/WebViewInputDispatcher$UiHandler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 354
+    .line 362
     return-void
 .end method
 
@@ -2287,15 +2348,15 @@
     .locals 4
 
     .prologue
-    .line 406
+    .line 414
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleShowTapHighlightLocked()V
 
-    .line 407
+    .line 415
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostShowTapHighlightScheduled:Z
 
-    .line 408
+    .line 416
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiHandler:Landroid/webkit/WebViewInputDispatcher$UiHandler;
 
     const/4 v1, 0x5
@@ -2306,7 +2367,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/webkit/WebViewInputDispatcher$UiHandler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 410
+    .line 418
     return-void
 .end method
 
@@ -2316,20 +2377,20 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 977
+    .line 996
     iget-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiDispatchScheduled:Z
 
     if-nez v0, :cond_0
 
-    .line 978
+    .line 997
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiHandler:Landroid/webkit/WebViewInputDispatcher$UiHandler;
 
     invoke-virtual {v0, v1}, Landroid/webkit/WebViewInputDispatcher$UiHandler;->sendEmptyMessage(I)Z
 
-    .line 979
+    .line 998
     iput-boolean v1, p0, Landroid/webkit/WebViewInputDispatcher;->mUiDispatchScheduled:Z
 
-    .line 981
+    .line 1000
     :cond_0
     return-void
 .end method
@@ -2340,20 +2401,20 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 925
+    .line 944
     iget-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitDispatchScheduled:Z
 
     if-nez v0, :cond_0
 
-    .line 926
+    .line 945
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitHandler:Landroid/webkit/WebViewInputDispatcher$WebKitHandler;
 
     invoke-virtual {v0, v1}, Landroid/webkit/WebViewInputDispatcher$WebKitHandler;->sendEmptyMessage(I)Z
 
-    .line 927
+    .line 946
     iput-boolean v1, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitDispatchScheduled:Z
 
-    .line 929
+    .line 948
     :cond_0
     return-void
 .end method
@@ -2367,34 +2428,41 @@
 
     const/4 v1, 0x1
 
-    .line 867
-    iget-boolean v2, p0, Landroid/webkit/WebViewInputDispatcher;->mForceSkipWebKit:Z
-
-    if-eqz v2, :cond_1
-
-    .line 890
-    :cond_0
-    :goto_0
-    return v1
-
-    .line 870
-    :cond_1
+    .line 888
     iget v2, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEventType:I
 
     packed-switch v2, :pswitch_data_0
 
     :pswitch_0
+    move v0, v1
+
+    .line 909
+    :cond_0
+    :goto_0
+    :pswitch_1
+    return v0
+
+    .line 890
+    :pswitch_2
+    iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiCallbacks:Landroid/webkit/WebViewInputDispatcher$UiCallbacks;
+
+    iget-object v1, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
+
+    invoke-interface {v0, v1}, Landroid/webkit/WebViewInputDispatcher$UiCallbacks;->shouldSkipWebKitClick(Landroid/view/MotionEvent;)Z
+
+    move-result v0
+
     goto :goto_0
 
-    .line 883
-    :pswitch_1
+    .line 902
+    :pswitch_3
     iget-boolean v2, p0, Landroid/webkit/WebViewInputDispatcher;->mIsTapCandidate:Z
 
-    if-eqz v2, :cond_2
+    if-eqz v2, :cond_1
 
     iget-object v2, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
-    if-eqz v2, :cond_2
+    if-eqz v2, :cond_1
 
     iget-object v2, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEvent:Landroid/view/MotionEvent;
 
@@ -2404,44 +2472,40 @@
 
     const/4 v3, 0x2
 
-    if-eq v2, v3, :cond_0
+    if-ne v2, v3, :cond_1
 
-    .line 887
-    :cond_2
+    move v0, v1
+
+    .line 904
+    goto :goto_0
+
+    .line 906
+    :cond_1
     iget-boolean v2, p0, Landroid/webkit/WebViewInputDispatcher;->mPostSendTouchEventsToWebKit:Z
 
-    if-eqz v2, :cond_3
+    if-eqz v2, :cond_2
 
     iget-boolean v2, p0, Landroid/webkit/WebViewInputDispatcher;->mPostDoNotSendTouchEventsToWebKitUntilNextGesture:Z
 
-    if-eqz v2, :cond_4
+    if-eqz v2, :cond_0
 
-    :cond_3
+    :cond_2
     move v0, v1
 
-    :cond_4
-    move v1, v0
-
     goto :goto_0
 
-    :pswitch_2
-    move v1, v0
-
-    .line 875
-    goto :goto_0
-
-    .line 870
+    .line 888
     nop
 
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_3
         :pswitch_1
-        :pswitch_2
-        :pswitch_2
+        :pswitch_1
         :pswitch_0
         :pswitch_2
         :pswitch_0
-        :pswitch_2
+        :pswitch_1
     .end packed-switch
 .end method
 
@@ -2449,20 +2513,20 @@
     .locals 2
 
     .prologue
-    .line 400
+    .line 408
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleHideTapHighlightLocked()V
 
-    .line 401
+    .line 409
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleShowTapHighlightLocked()V
 
-    .line 402
+    .line 410
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiCallbacks:Landroid/webkit/WebViewInputDispatcher$UiCallbacks;
 
     const/4 v1, 0x1
 
     invoke-interface {v0, v1}, Landroid/webkit/WebViewInputDispatcher$UiCallbacks;->showTapHighlight(Z)V
 
-    .line 403
+    .line 411
     return-void
 .end method
 
@@ -2471,26 +2535,26 @@
     .parameter "d"
 
     .prologue
-    .line 772
+    .line 797
     const/4 v0, 0x0
 
     iput-object v0, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mNext:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
-    .line 773
+    .line 798
     iget v0, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
     and-int/lit8 v0, v0, 0x1
 
     if-eqz v0, :cond_0
 
-    .line 774
+    .line 799
     invoke-direct {p0, p1}, Landroid/webkit/WebViewInputDispatcher;->recycleDispatchEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 779
+    .line 804
     :goto_0
     return-void
 
-    .line 776
+    .line 801
     :cond_0
     iget v0, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
@@ -2498,7 +2562,7 @@
 
     iput v0, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mFlags:I
 
-    .line 777
+    .line 802
     invoke-direct {p0, p1}, Landroid/webkit/WebViewInputDispatcher;->enqueueUiEventUnbatchedLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
     goto :goto_0
@@ -2508,24 +2572,24 @@
     .locals 2
 
     .prologue
-    .line 457
+    .line 465
     iget-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostClickScheduled:Z
 
     if-eqz v0, :cond_0
 
-    .line 458
+    .line 466
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostClickScheduled:Z
 
-    .line 459
+    .line 467
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiHandler:Landroid/webkit/WebViewInputDispatcher$UiHandler;
 
     const/4 v1, 0x4
 
     invoke-virtual {v0, v1}, Landroid/webkit/WebViewInputDispatcher$UiHandler;->removeMessages(I)V
 
-    .line 461
+    .line 469
     :cond_0
     return-void
 .end method
@@ -2534,24 +2598,24 @@
     .locals 2
 
     .prologue
-    .line 427
+    .line 435
     iget-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostHideTapHighlightScheduled:Z
 
     if-eqz v0, :cond_0
 
-    .line 428
+    .line 436
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostHideTapHighlightScheduled:Z
 
-    .line 429
+    .line 437
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiHandler:Landroid/webkit/WebViewInputDispatcher$UiHandler;
 
     const/4 v1, 0x6
 
     invoke-virtual {v0, v1}, Landroid/webkit/WebViewInputDispatcher$UiHandler;->removeMessages(I)V
 
-    .line 431
+    .line 439
     :cond_0
     return-void
 .end method
@@ -2560,24 +2624,24 @@
     .locals 2
 
     .prologue
-    .line 357
+    .line 365
     iget-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostLongPressScheduled:Z
 
     if-eqz v0, :cond_0
 
-    .line 358
+    .line 366
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostLongPressScheduled:Z
 
-    .line 359
+    .line 367
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiHandler:Landroid/webkit/WebViewInputDispatcher$UiHandler;
 
     const/4 v1, 0x3
 
     invoke-virtual {v0, v1}, Landroid/webkit/WebViewInputDispatcher$UiHandler;->removeMessages(I)V
 
-    .line 361
+    .line 369
     :cond_0
     return-void
 .end method
@@ -2586,24 +2650,24 @@
     .locals 2
 
     .prologue
-    .line 413
+    .line 421
     iget-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostShowTapHighlightScheduled:Z
 
     if-eqz v0, :cond_0
 
-    .line 414
+    .line 422
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostShowTapHighlightScheduled:Z
 
-    .line 415
+    .line 423
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiHandler:Landroid/webkit/WebViewInputDispatcher$UiHandler;
 
     const/4 v1, 0x5
 
     invoke-virtual {v0, v1}, Landroid/webkit/WebViewInputDispatcher$UiHandler;->removeMessages(I)V
 
-    .line 417
+    .line 425
     :cond_0
     return-void
 .end method
@@ -2620,36 +2684,36 @@
 
     const/4 v3, 0x0
 
-    .line 535
+    .line 549
     iget v2, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitXOffset:I
 
     iput v2, p0, Landroid/webkit/WebViewInputDispatcher;->mPostLastWebKitXOffset:I
 
-    .line 536
+    .line 550
     iget v2, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitYOffset:I
 
     iput v2, p0, Landroid/webkit/WebViewInputDispatcher;->mPostLastWebKitYOffset:I
 
-    .line 537
+    .line 551
     iget v2, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mWebKitScale:F
 
     iput v2, p0, Landroid/webkit/WebViewInputDispatcher;->mPostLastWebKitScale:F
 
-    .line 538
+    .line 552
     if-eqz p2, :cond_1
 
     invoke-virtual {p2}, Landroid/view/MotionEvent;->getAction()I
 
     move-result v0
 
-    .line 539
+    .line 553
     .local v0, action:I
     :goto_0
     iget v2, p1, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mEventType:I
 
     if-eqz v2, :cond_2
 
-    .line 587
+    .line 609
     :cond_0
     :goto_1
     return-void
@@ -2658,10 +2722,10 @@
     :cond_1
     move v0, v1
 
-    .line 538
+    .line 552
     goto :goto_0
 
-    .line 543
+    .line 557
     .restart local v0       #action:I
     :cond_2
     if-eq v0, v1, :cond_3
@@ -2672,46 +2736,49 @@
 
     if-le v1, v4, :cond_4
 
-    .line 545
+    .line 559
     :cond_3
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleLongPressLocked()V
 
-    .line 546
+    .line 560
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleClickLocked()V
 
-    .line 547
+    .line 561
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->hideTapCandidateLocked()V
 
-    .line 548
+    .line 562
     iput-boolean v3, p0, Landroid/webkit/WebViewInputDispatcher;->mIsDoubleTapCandidate:Z
 
-    .line 549
+    .line 563
+    iput-boolean v3, p0, Landroid/webkit/WebViewInputDispatcher;->mIsSinglePointerScaleTap:Z
+
+    .line 564
     iput-boolean v3, p0, Landroid/webkit/WebViewInputDispatcher;->mIsTapCandidate:Z
 
-    .line 550
+    .line 565
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->hideTapCandidateLocked()V
 
     goto :goto_1
 
-    .line 551
+    .line 566
     :cond_4
     if-nez v0, :cond_7
 
-    .line 552
+    .line 567
     invoke-virtual {p2}, Landroid/view/MotionEvent;->getX()F
 
     move-result v1
 
     iput v1, p0, Landroid/webkit/WebViewInputDispatcher;->mInitialDownX:F
 
-    .line 553
+    .line 568
     invoke-virtual {p2}, Landroid/view/MotionEvent;->getY()F
 
     move-result v1
 
     iput v1, p0, Landroid/webkit/WebViewInputDispatcher;->mInitialDownY:F
 
-    .line 554
+    .line 569
     iget-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mUiCallbacks:Landroid/webkit/WebViewInputDispatcher$UiCallbacks;
 
     invoke-interface {v1}, Landroid/webkit/WebViewInputDispatcher$UiCallbacks;->isScrolling()Z
@@ -2720,104 +2787,125 @@
 
     if-eqz v1, :cond_5
 
-    .line 555
+    .line 570
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleLongPressLocked()V
 
-    .line 556
+    .line 571
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleClickLocked()V
 
-    .line 557
+    .line 572
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->hideTapCandidateLocked()V
 
-    .line 558
+    .line 573
     iput-boolean v3, p0, Landroid/webkit/WebViewInputDispatcher;->mIsDoubleTapCandidate:Z
 
-    .line 559
+    .line 574
+    iput-boolean v3, p0, Landroid/webkit/WebViewInputDispatcher;->mIsSinglePointerScaleTap:Z
+
+    .line 575
     iput-boolean v3, p0, Landroid/webkit/WebViewInputDispatcher;->mIsTapCandidate:Z
 
-    .line 560
+    .line 576
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->hideTapCandidateLocked()V
 
     goto :goto_1
 
-    .line 562
+    .line 578
     :cond_5
     invoke-direct {p0, p2}, Landroid/webkit/WebViewInputDispatcher;->checkForDoubleTapOnDownLocked(Landroid/view/MotionEvent;)V
 
-    .line 563
+    .line 579
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->scheduleLongPressLocked()V
 
-    .line 564
+    .line 580
     iput-boolean v4, p0, Landroid/webkit/WebViewInputDispatcher;->mIsTapCandidate:Z
 
-    .line 565
+    .line 581
     invoke-direct {p0, p2}, Landroid/webkit/WebViewInputDispatcher;->enqueueHitTestLocked(Landroid/view/MotionEvent;)V
 
-    .line 566
+    .line 582
     iget-boolean v1, p0, Landroid/webkit/WebViewInputDispatcher;->mIsDoubleTapCandidate:Z
 
     if-eqz v1, :cond_6
 
-    .line 567
+    .line 583
+    invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->hideTapCandidateLocked()V
+
+    .line 587
+    :goto_2
+    iget-boolean v1, p0, Landroid/webkit/WebViewInputDispatcher;->mIsSinglePointerScaleTap:Z
+
+    if-eqz v1, :cond_0
+
+    .line 588
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->hideTapCandidateLocked()V
 
     goto :goto_1
 
-    .line 569
+    .line 585
     :cond_6
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->scheduleShowTapHighlightLocked()V
 
-    goto :goto_1
+    goto :goto_2
 
-    .line 572
+    .line 591
     :cond_7
     if-ne v0, v4, :cond_a
 
-    .line 573
+    .line 592
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleLongPressLocked()V
 
-    .line 574
+    .line 593
     invoke-direct {p0, p2}, Landroid/webkit/WebViewInputDispatcher;->isClickCandidateLocked(Landroid/view/MotionEvent;)Z
 
     move-result v1
 
     if-eqz v1, :cond_9
 
-    .line 575
+    .line 594
     iget-boolean v1, p0, Landroid/webkit/WebViewInputDispatcher;->mIsDoubleTapCandidate:Z
 
     if-eqz v1, :cond_8
 
-    .line 576
+    .line 595
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->hideTapCandidateLocked()V
 
-    .line 577
+    .line 596
     invoke-direct {p0, p2}, Landroid/webkit/WebViewInputDispatcher;->enqueueDoubleTapLocked(Landroid/view/MotionEvent;)V
 
-    goto :goto_1
+    .line 600
+    :goto_3
+    iget-boolean v1, p0, Landroid/webkit/WebViewInputDispatcher;->mIsSinglePointerScaleTap:Z
 
-    .line 579
+    if-eqz v1, :cond_0
+
+    .line 601
+    invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->hideTapCandidateLocked()V
+
+    goto/16 :goto_1
+
+    .line 598
     :cond_8
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->scheduleClickLocked()V
 
-    goto :goto_1
+    goto :goto_3
 
-    .line 582
+    .line 604
     :cond_9
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->hideTapCandidateLocked()V
 
-    goto :goto_1
+    goto/16 :goto_1
 
-    .line 584
+    .line 606
     :cond_a
     const/4 v1, 0x2
 
     if-ne v0, v1, :cond_0
 
-    .line 585
+    .line 607
     invoke-direct {p0, p2}, Landroid/webkit/WebViewInputDispatcher;->checkForSlopLocked(Landroid/view/MotionEvent;)V
 
-    goto :goto_1
+    goto/16 :goto_1
 .end method
 
 .method private updateWebKitTimeoutLocked()V
@@ -2826,12 +2914,12 @@
     .prologue
     const/4 v5, 0x2
 
-    .line 932
+    .line 951
     iget-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitDispatchEventQueue:Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;
 
     iget-object v0, v1, Landroid/webkit/WebViewInputDispatcher$DispatchEventQueue;->mHead:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
 
-    .line 933
+    .line 952
     .local v0, d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     if-eqz v0, :cond_1
 
@@ -2847,44 +2935,44 @@
 
     if-nez v1, :cond_1
 
-    .line 945
+    .line 964
     :cond_0
     :goto_0
     return-void
 
-    .line 936
+    .line 955
     :cond_1
     iget-boolean v1, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitTimeoutScheduled:Z
 
     if-eqz v1, :cond_2
 
-    .line 937
+    .line 956
     iget-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mUiHandler:Landroid/webkit/WebViewInputDispatcher$UiHandler;
 
     invoke-virtual {v1, v5}, Landroid/webkit/WebViewInputDispatcher$UiHandler;->removeMessages(I)V
 
-    .line 938
+    .line 957
     const/4 v1, 0x0
 
     iput-boolean v1, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitTimeoutScheduled:Z
 
-    .line 940
+    .line 959
     :cond_2
     if-eqz v0, :cond_0
 
-    .line 941
+    .line 960
     iget-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mUiHandler:Landroid/webkit/WebViewInputDispatcher$UiHandler;
 
     iget-wide v2, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mTimeoutTime:J
 
     invoke-virtual {v1, v5, v2, v3}, Landroid/webkit/WebViewInputDispatcher$UiHandler;->sendEmptyMessageAtTime(IJ)Z
 
-    .line 942
+    .line 961
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitTimeoutScheduled:Z
 
-    .line 943
+    .line 962
     iget-wide v1, v0, Landroid/webkit/WebViewInputDispatcher$DispatchEvent;->mTimeoutTime:J
 
     iput-wide v1, p0, Landroid/webkit/WebViewInputDispatcher;->mWebKitTimeoutTime:J
@@ -2898,12 +2986,12 @@
     .locals 1
 
     .prologue
-    .line 790
+    .line 815
     const/4 v0, 0x0
 
     invoke-direct {p0, v0}, Landroid/webkit/WebViewInputDispatcher;->dispatchUiEvents(Z)V
 
-    .line 791
+    .line 816
     return-void
 .end method
 
@@ -2911,12 +2999,12 @@
     .locals 1
 
     .prologue
-    .line 598
+    .line 620
     const/4 v0, 0x0
 
     invoke-direct {p0, v0}, Landroid/webkit/WebViewInputDispatcher;->dispatchWebKitEvents(Z)V
 
-    .line 599
+    .line 621
     return-void
 .end method
 
@@ -2932,10 +3020,10 @@
 
     const/4 v0, 0x0
 
-    .line 280
+    .line 288
     if-nez p1, :cond_0
 
-    .line 281
+    .line 289
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v3, "event cannot be null"
@@ -2944,40 +3032,40 @@
 
     throw v0
 
-    .line 288
+    .line 296
     :cond_0
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getActionMasked()I
 
     move-result v7
 
-    .line 290
+    .line 298
     .local v7, action:I
     packed-switch v7, :pswitch_data_0
 
-    .line 346
+    .line 354
     :goto_0
     :pswitch_0
     return v0
 
-    .line 297
+    .line 305
     :pswitch_1
     const/4 v2, 0x0
 
-    .line 311
+    .line 319
     .local v2, eventType:I
     :goto_1
     iget-object v10, p0, Landroid/webkit/WebViewInputDispatcher;->mLock:Ljava/lang/Object;
 
     monitor-enter v10
 
-    .line 313
+    .line 321
     move-object v1, p1
 
-    .line 314
+    .line 322
     .local v1, eventToEnqueue:Landroid/view/MotionEvent;
     if-nez v2, :cond_2
 
-    .line 315
+    .line 323
     :try_start_0
     iget-object v3, p0, Landroid/webkit/WebViewInputDispatcher;->mPostTouchStream:Landroid/webkit/WebViewInputDispatcher$TouchStream;
 
@@ -2985,24 +3073,24 @@
 
     move-result-object v1
 
-    .line 316
+    .line 324
     if-nez v1, :cond_1
 
-    .line 320
+    .line 328
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleLongPressLocked()V
 
-    .line 321
+    .line 329
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->unscheduleClickLocked()V
 
-    .line 322
+    .line 330
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->hideTapCandidateLocked()V
 
-    .line 323
+    .line 331
     monitor-exit v10
 
     goto :goto_0
 
-    .line 345
+    .line 353
     :catchall_0
     move-exception v0
 
@@ -3012,26 +3100,26 @@
 
     throw v0
 
-    .line 300
+    .line 308
     .end local v1           #eventToEnqueue:Landroid/view/MotionEvent;
     .end local v2           #eventType:I
     :pswitch_2
     const/4 v2, 0x2
 
-    .line 301
+    .line 309
     .restart local v2       #eventType:I
     goto :goto_1
 
-    .line 305
+    .line 313
     .end local v2           #eventType:I
     :pswitch_3
     const/4 v2, 0x1
 
-    .line 306
+    .line 314
     .restart local v2       #eventType:I
     goto :goto_1
 
-    .line 326
+    .line 334
     .restart local v1       #eventToEnqueue:Landroid/view/MotionEvent;
     :cond_1
     if-nez v7, :cond_2
@@ -3041,7 +3129,7 @@
 
     if-eqz v0, :cond_2
 
-    .line 327
+    .line 335
     iget-object v0, p0, Landroid/webkit/WebViewInputDispatcher;->mUiCallbacks:Landroid/webkit/WebViewInputDispatcher$UiCallbacks;
 
     invoke-interface {v0, v1}, Landroid/webkit/WebViewInputDispatcher$UiCallbacks;->shouldInterceptTouchEvent(Landroid/view/MotionEvent;)Z
@@ -3050,22 +3138,22 @@
 
     if-eqz v0, :cond_4
 
-    .line 328
+    .line 336
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostDoNotSendTouchEventsToWebKitUntilNextGesture:Z
 
-    .line 337
+    .line 345
     :cond_2
     :goto_2
     if-ne v1, p1, :cond_3
 
-    .line 338
+    .line 346
     invoke-virtual {p1}, Landroid/view/MotionEvent;->copy()Landroid/view/MotionEvent;
 
     move-result-object v1
 
-    .line 341
+    .line 349
     :cond_3
     const/4 v3, 0x0
 
@@ -3081,29 +3169,29 @@
 
     move-result-object v8
 
-    .line 343
+    .line 351
     .local v8, d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     invoke-direct {p0, v8, p1}, Landroid/webkit/WebViewInputDispatcher;->updateStateTrackersLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;Landroid/view/MotionEvent;)V
 
-    .line 344
+    .line 352
     invoke-direct {p0, v8}, Landroid/webkit/WebViewInputDispatcher;->enqueueEventLocked(Landroid/webkit/WebViewInputDispatcher$DispatchEvent;)V
 
-    .line 345
+    .line 353
     monitor-exit v10
 
     move v0, v9
 
-    .line 346
+    .line 354
     goto :goto_0
 
-    .line 329
+    .line 337
     .end local v8           #d:Landroid/webkit/WebViewInputDispatcher$DispatchEvent;
     :cond_4
     iget-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostDoNotSendTouchEventsToWebKitUntilNextGesture:Z
 
     if-eqz v0, :cond_2
 
-    .line 331
+    .line 339
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostDoNotSendTouchEventsToWebKitUntilNextGesture:Z
@@ -3112,7 +3200,7 @@
 
     goto :goto_2
 
-    .line 290
+    .line 298
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_1
@@ -3129,52 +3217,40 @@
     .end packed-switch
 .end method
 
-.method public setSkipWebKit(Z)V
-    .locals 0
-    .parameter "skip"
-
-    .prologue
-    .line 863
-    iput-boolean p1, p0, Landroid/webkit/WebViewInputDispatcher;->mForceSkipWebKit:Z
-
-    .line 864
-    return-void
-.end method
-
 .method public setWebKitWantsTouchEvents(Z)V
     .locals 2
     .parameter "enable"
 
     .prologue
-    .line 258
+    .line 266
     iget-object v1, p0, Landroid/webkit/WebViewInputDispatcher;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 259
+    .line 267
     :try_start_0
     iget-boolean v0, p0, Landroid/webkit/WebViewInputDispatcher;->mPostSendTouchEventsToWebKit:Z
 
     if-eq v0, p1, :cond_1
 
-    .line 260
+    .line 268
     if-nez p1, :cond_0
 
-    .line 261
+    .line 269
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->enqueueWebKitCancelTouchEventIfNeededLocked()V
 
-    .line 263
+    .line 271
     :cond_0
     iput-boolean p1, p0, Landroid/webkit/WebViewInputDispatcher;->mPostSendTouchEventsToWebKit:Z
 
-    .line 265
+    .line 273
     :cond_1
     monitor-exit v1
 
-    .line 266
+    .line 274
     return-void
 
-    .line 265
+    .line 273
     :catchall_0
     move-exception v0
 
@@ -3185,13 +3261,29 @@
     throw v0
 .end method
 
+.method public setupSinglePointerScale(ZF)V
+    .locals 0
+    .parameter "enable"
+    .parameter "slopSquared"
+
+    .prologue
+    .line 252
+    iput-boolean p1, p0, Landroid/webkit/WebViewInputDispatcher;->mEnableSinglePointerScale:Z
+
+    .line 253
+    iput p2, p0, Landroid/webkit/WebViewInputDispatcher;->mSinglePointerScaleSlopSquared:F
+
+    .line 254
+    return-void
+.end method
+
 .method public skipWebkitForRemainingTouchStream()V
     .locals 0
 
     .prologue
-    .line 727
+    .line 750
     invoke-direct {p0}, Landroid/webkit/WebViewInputDispatcher;->handleWebKitTimeout()V
 
-    .line 728
+    .line 751
     return-void
 .end method

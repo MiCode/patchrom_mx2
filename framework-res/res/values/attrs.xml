@@ -1211,7 +1211,7 @@
     </attr>
     <attr name="imeActionLabel" format="string" />
     <attr name="imeActionId" format="integer" />
-    <attr name="textColorSearchUrl" format="reference|color" />
+    <attr name="textColorPrimaryIgnoreDisable" format="reference|color" />
     <attr name="imeExtractEnterAnimation" format="reference" />
     <attr name="imeExtractExitAnimation" format="reference" />
     <attr name="tension" format="float" />
@@ -1663,8 +1663,8 @@
         <enum name="liveAudio" value="1" />
         <enum name="user" value="8388608" />
     </attr>
+    <attr name="textColorSearchUrl" format="reference|color" />
     <attr name="searchWidgetCorpusItemBackground" format="reference|color" />
-    <attr name="textAppearanceAlertMessageMz" format="reference" />
     <attr name="textAppearanceEasyCorrectSuggestion" format="reference" />
     <attr name="textAppearanceMisspelledSuggestion" format="reference" />
     <attr name="textAppearanceAutoCorrectionSuggestion" format="reference" />
@@ -1677,6 +1677,7 @@
     <attr name="windowSplitActionBar" format="boolean" />
     <attr name="alertDialogButtonGroupStyle" format="reference" />
     <attr name="alertDialogCenterButtons" format="boolean" />
+    <attr name="dialogEditTextStyle" format="reference" />
     <attr name="panelMenuIsCompact" format="boolean" />
     <attr name="panelMenuListWidth" format="dimension" />
     <attr name="panelMenuListTheme" format="reference" />
@@ -1687,6 +1688,7 @@
     <attr name="timePickerStyle" format="reference" />
     <attr name="activityChooserViewStyle" format="reference" />
     <attr name="roundCornerContactBadgeStyleList" format="reference" />
+    <attr name="actionBackButtonStyleMz" format="reference" />
     <attr name="actionModeShareDrawable" format="reference" />
     <attr name="actionModeFindDrawable" format="reference" />
     <attr name="actionModeWebSearchDrawable" format="reference" />
@@ -1899,6 +1901,19 @@
         <enum name="delete" value="0" />
         <enum name="ok" value="1" />
     </attr>
+    <attr name="emo_background" format="reference" />
+    <attr name="emo_panel_width" format="dimension" />
+    <attr name="emo_panel_height" format="dimension" />
+    <attr name="emo_padding_left" format="dimension" />
+    <attr name="emo_padding_top" format="dimension" />
+    <attr name="emo_padding_right" format="dimension" />
+    <attr name="emo_padding_bottom" format="dimension" />
+    <attr name="emo_icon_width" format="dimension" />
+    <attr name="emo_icon_height" format="dimension" />
+    <attr name="emo_row_count" format="integer" />
+    <attr name="emo_col_count" format="integer" />
+    <attr name="backIcon" format="reference" />
+    <attr name="backImeIcon" format="reference" />
     <attr name="neverEncrypt" format="boolean" />
     <attr name="cantSaveState" format="boolean" />
     <attr name="supportsRtl" format="boolean" />

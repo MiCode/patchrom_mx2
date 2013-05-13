@@ -30,8 +30,8 @@
        SuplLogFullName="/data/gps/log/supllog.txt"
        LbsEnable="true"
        LbsLocal="false"
-       LbsServer="bcmlbsqa1.broadcom.com"
-       LbsPort="7275"
+       LbsServer="lbs.glpals.com"
+       LbsPort="80"
        LbsSyncLto="false"
        SyncLto="true"
        ltoFileName="lto2.dat"
@@ -39,7 +39,7 @@
        LbsSyncLtoThresholdDays="3"
        acNmeaOutName="/data/gps/nmea_out"
        ctrlPipe="/data/gps/glgpsctrl"
-       LbsTAC="10101222"
+       LbsTAC="10119100"
        LbsWlanEnable="false"
   />
 
@@ -50,7 +50,7 @@
 
   <gll 
        LogPriMask="LOG_DEBUG"
-       LogFacMask="LOG_GLLAPI | LOG_NMEA | LOG_SENS" 
+       LogFacMask="LOG_GLLAPI | LOG_NMEA | LOG_DEBUG" 
        FrqPlan="FRQ_PLAN_26MHZ_2PPM_26MHZ_300PPB"   
        RfType="GL_RF_47511_BRCM_EXT_LNA"   
        WarmStandbyTimeout1Seconds="10"

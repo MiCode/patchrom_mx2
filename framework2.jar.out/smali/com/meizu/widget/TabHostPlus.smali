@@ -276,7 +276,7 @@
 
     .line 104
     .local v0, context:Landroid/content/Context;
-    const v1, 0x10a003e
+    const v1, 0x10a0040
 
     invoke-static {v0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 
@@ -285,7 +285,7 @@
     iput-object v1, p0, Lcom/meizu/widget/TabHostPlus;->anim_left_in:Landroid/view/animation/Animation;
 
     .line 107
-    const v1, 0x10a003f
+    const v1, 0x10a0041
 
     invoke-static {v0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 
@@ -294,7 +294,7 @@
     iput-object v1, p0, Lcom/meizu/widget/TabHostPlus;->anim_left_out:Landroid/view/animation/Animation;
 
     .line 110
-    const v1, 0x10a0040
+    const v1, 0x10a0042
 
     invoke-static {v0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 
@@ -303,7 +303,7 @@
     iput-object v1, p0, Lcom/meizu/widget/TabHostPlus;->anim_right_in:Landroid/view/animation/Animation;
 
     .line 113
-    const v1, 0x10a0041
+    const v1, 0x10a0043
 
     invoke-static {v0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 

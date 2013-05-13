@@ -2,18 +2,18 @@
 <resources>
     <style name="Animation" />
     <style name="Animation.Activity" parent="@style/Animation">
-        <item name="activityOpenEnterAnimation">@anim/activity_open_enter</item>
-        <item name="activityOpenExitAnimation">@anim/activity_open_exit</item>
-        <item name="activityCloseEnterAnimation">@anim/activity_close_enter</item>
-        <item name="activityCloseExitAnimation">@anim/activity_close_exit</item>
-        <item name="taskOpenEnterAnimation">@anim/task_open_enter</item>
-        <item name="taskOpenExitAnimation">@anim/task_open_exit</item>
-        <item name="taskCloseEnterAnimation">@anim/task_close_enter</item>
-        <item name="taskCloseExitAnimation">@anim/task_close_exit</item>
-        <item name="taskToFrontEnterAnimation">@anim/task_open_enter</item>
-        <item name="taskToFrontExitAnimation">@anim/task_open_exit</item>
-        <item name="taskToBackEnterAnimation">@anim/task_close_enter</item>
-        <item name="taskToBackExitAnimation">@anim/task_close_exit</item>
+        <item name="activityOpenEnterAnimation">@null</item>
+        <item name="activityOpenExitAnimation">@null</item>
+        <item name="activityCloseEnterAnimation">@null</item>
+        <item name="activityCloseExitAnimation">@null</item>
+        <item name="taskOpenEnterAnimation">@null</item>
+        <item name="taskOpenExitAnimation">@null</item>
+        <item name="taskCloseEnterAnimation">@null</item>
+        <item name="taskCloseExitAnimation">@null</item>
+        <item name="taskToFrontEnterAnimation">@null</item>
+        <item name="taskToFrontExitAnimation">@null</item>
+        <item name="taskToBackEnterAnimation">@null</item>
+        <item name="taskToBackExitAnimation">@null</item>
         <item name="wallpaperOpenEnterAnimation">@anim/wallpaper_open_enter</item>
         <item name="wallpaperOpenExitAnimation">@anim/wallpaper_open_exit</item>
         <item name="wallpaperCloseEnterAnimation">@anim/wallpaper_close_enter</item>
@@ -155,7 +155,7 @@
         <item name="listChoiceIndicatorMultiple">@drawable/btn_check</item>
         <item name="windowSoftInputMode">stateUnspecified|adjustUnspecified</item>
         <item name="candidatesTextStyleSpans">@string/candidates_style</item>
-        <item name="textColorSearchUrl">@color/search_url_text</item>
+        <item name="textColorPrimaryIgnoreDisable">@color/bright_foreground_dark</item>
         <item name="progressBarStyleInverse">@style/Widget.ProgressBar.Inverse</item>
         <item name="progressBarStyleSmallInverse">@style/Widget.ProgressBar.Small.Inverse</item>
         <item name="progressBarStyleLargeInverse">@style/Widget.ProgressBar.Large.Inverse</item>
@@ -258,6 +258,7 @@
         <item name="listPreferredItemPaddingLeft">6.0dip</item>
         <item name="listPreferredItemPaddingRight">6.0dip</item>
         <item name="mediaRouteButtonStyle">@style/Widget.DeviceDefault.MediaRouteButton</item>
+        <item name="textColorSearchUrl">@color/search_url_text</item>
         <item name="searchWidgetCorpusItemBackground">@color/search_widget_corpus_item_background</item>
         <item name="textAppearanceEasyCorrectSuggestion">@style/TextAppearance.EasyCorrectSuggestion</item>
         <item name="textAppearanceMisspelledSuggestion">@style/TextAppearance.MisspelledSuggestion</item>
@@ -274,6 +275,7 @@
         <item name="numberPickerStyle">@style/Widget.NumberPicker</item>
         <item name="timePickerStyle">@style/Widget.TimePicker</item>
         <item name="activityChooserViewStyle">@style/Widget.ActivityChooserView</item>
+        <item name="actionBackButtonStyleMz">@style/Widget.ActionButton.MzBack</item>
         <item name="actionModeShareDrawable">@drawable/ic_menu_share_holo_dark</item>
         <item name="actionModeFindDrawable">@drawable/ic_menu_find_holo_dark</item>
         <item name="actionModeWebSearchDrawable">@drawable/ic_menu_search</item>
@@ -354,13 +356,14 @@
         <item name="textColorTertiary">@color/tertiary_text_dark</item>
         <item name="textColorTertiaryInverse">@color/tertiary_text_light</item>
         <item name="windowSoftInputMode">adjustPan</item>
-        <item name="textColorSearchUrl">@color/search_url_text</item>
+        <item name="textColorPrimaryIgnoreDisable">@color/bright_foreground_dark</item>
         <item name="textColorPrimaryInverseDisableOnly">@color/primary_text_light_disable_only</item>
         <item name="colorBackgroundCacheHint">@null</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="windowCloseOnTouchOutside">@bool/config_closeDialogWhenTouchOutside</item>
         <item name="listPreferredItemPaddingLeft">10.0dip</item>
         <item name="listPreferredItemPaddingRight">10.0dip</item>
+        <item name="textColorSearchUrl">@color/search_url_text</item>
     </style>
     <style name="Theme.Light" parent="@style/Theme">
         <item name="colorForeground">@color/bright_foreground_light</item>
@@ -392,6 +395,7 @@
         <item name="textColorTertiary">@color/tertiary_text_light</item>
         <item name="textColorTertiaryInverse">@color/tertiary_text_dark</item>
         <item name="listDivider">@drawable/divider_horizontal_bright</item>
+        <item name="textColorPrimaryIgnoreDisable">@color/bright_foreground_light</item>
         <item name="progressBarStyleInverse">@style/Widget.ProgressBar</item>
         <item name="progressBarStyleSmallInverse">@style/Widget.ProgressBar.Small</item>
         <item name="progressBarStyleLargeInverse">@style/Widget.ProgressBar.Large</item>
@@ -411,6 +415,7 @@
         <item name="mediaRouteButtonStyle">@style/Widget.DeviceDefault.Light.MediaRouteButton</item>
         <item name="gestureOverlayViewStyle">@style/Widget.GestureOverlayView.White</item>
         <item name="quickContactBadgeOverlay">@drawable/quickcontact_badge_overlay_light</item>
+        <item name="actionBackButtonStyleMz">@style/Widget.ActionButton.MzBack.Light</item>
         <item name="actionModeShareDrawable">@drawable/ic_menu_share_holo_light</item>
         <item name="actionModeFindDrawable">@drawable/ic_menu_find_holo_light</item>
         <item name="actionModeWebSearchDrawable">@drawable/ic_menu_search_holo_light</item>
@@ -885,12 +890,12 @@
     <style name="TextAppearance.StatusBar.Icon" parent="@style/TextAppearance.StatusBar" />
     <style name="TextAppearance.StatusBar.EventContent" parent="@style/TextAppearance.StatusBar">
         <item name="textSize">@dimen/notification_text_size</item>
-        <item name="textColor">#ff999999</item>
+        <item name="textColor">#ff808080</item>
     </style>
     <style name="TextAppearance.StatusBar.EventContent.Title" parent="@style/TextAppearance.StatusBar.EventContent">
         <item name="textSize">@dimen/notification_title_text_size</item>
         <item name="textStyle">bold</item>
-        <item name="textColor">#ffffffff</item>
+        <item name="textColor">#ffe5e5e5</item>
         <item name="fontFamily">sans-serif-light</item>
     </style>
     <style name="Theme.WithActionBar" parent="@style/Theme">
@@ -1012,7 +1017,7 @@
         <item name="listChoiceIndicatorMultiple">@drawable/btn_check_holo_dark</item>
         <item name="windowSoftInputMode">stateUnspecified|adjustUnspecified</item>
         <item name="candidatesTextStyleSpans">@string/candidates_style</item>
-        <item name="textColorSearchUrl">@color/search_url_text_holo</item>
+        <item name="textColorPrimaryIgnoreDisable">@color/bright_foreground_holo_dark</item>
         <item name="progressBarStyleInverse">@style/Widget.Holo.ProgressBar.Inverse</item>
         <item name="progressBarStyleSmallInverse">@style/Widget.Holo.ProgressBar.Small.Inverse</item>
         <item name="progressBarStyleLargeInverse">@style/Widget.Holo.ProgressBar.Large.Inverse</item>
@@ -1102,6 +1107,7 @@
         <item name="listPreferredItemPaddingLeft">8.0dip</item>
         <item name="listPreferredItemPaddingRight">8.0dip</item>
         <item name="mediaRouteButtonStyle">@style/Widget.Holo.MediaRouteButton</item>
+        <item name="textColorSearchUrl">@color/search_url_text_holo</item>
         <item name="searchWidgetCorpusItemBackground">@color/search_widget_corpus_item_background</item>
         <item name="errorMessageBackground">@drawable/popup_inline_error_holo_dark</item>
         <item name="errorMessageAboveBackground">@drawable/popup_inline_error_above_holo_dark</item>
@@ -1116,6 +1122,7 @@
         <item name="numberPickerStyle">@style/Widget.Holo.NumberPicker</item>
         <item name="timePickerStyle">@style/Widget.Holo.TimePicker</item>
         <item name="activityChooserViewStyle">@style/Widget.Holo.ActivityChooserView</item>
+        <item name="actionBackButtonStyleMz">@style/Widget.Holo.ActionButton.MzBack</item>
         <item name="actionModeShareDrawable">@drawable/ic_menu_share_holo_dark</item>
         <item name="actionModeFindDrawable">@drawable/ic_menu_find_holo_dark</item>
         <item name="actionModeWebSearchDrawable">@drawable/ic_menu_search_holo_dark</item>
@@ -1254,7 +1261,6 @@
         <item name="listChoiceIndicatorMultiple">@drawable/btn_check_holo_light</item>
         <item name="windowSoftInputMode">stateUnspecified|adjustUnspecified</item>
         <item name="candidatesTextStyleSpans">@string/candidates_style</item>
-        <item name="textColorSearchUrl">@color/search_url_text_holo</item>
         <item name="progressBarStyleInverse">@style/Widget.Holo.Light.ProgressBar.Inverse</item>
         <item name="progressBarStyleSmallInverse">@style/Widget.Holo.Light.ProgressBar.Small.Inverse</item>
         <item name="progressBarStyleLargeInverse">@style/Widget.Holo.Light.ProgressBar.Large.Inverse</item>
@@ -1344,6 +1350,7 @@
         <item name="listPreferredItemPaddingLeft">8.0dip</item>
         <item name="listPreferredItemPaddingRight">8.0dip</item>
         <item name="mediaRouteButtonStyle">@style/Widget.Holo.Light.MediaRouteButton</item>
+        <item name="textColorSearchUrl">@color/search_url_text_holo</item>
         <item name="searchWidgetCorpusItemBackground">@color/search_widget_corpus_item_background</item>
         <item name="errorMessageBackground">@drawable/popup_inline_error_holo_light</item>
         <item name="errorMessageAboveBackground">@drawable/popup_inline_error_above_holo_light</item>
@@ -1358,6 +1365,7 @@
         <item name="numberPickerStyle">@style/Widget.Holo.Light.NumberPicker</item>
         <item name="timePickerStyle">@style/Widget.Holo.Light.TimePicker</item>
         <item name="activityChooserViewStyle">@style/Widget.Holo.Light.ActivityChooserView</item>
+        <item name="actionBackButtonStyleMz">@style/Widget.Holo.Light.ActionButton.MzBack</item>
         <item name="actionModeShareDrawable">@drawable/ic_menu_share_holo_light</item>
         <item name="actionModeFindDrawable">@drawable/ic_menu_find_holo_light</item>
         <item name="actionModeWebSearchDrawable">@drawable/ic_menu_search_holo_light</item>
@@ -1680,7 +1688,7 @@
     </style>
     <style name="Widget.Holo.ActionButton.Overflow" parent="@style/Widget.Holo.ActionButton">
         <item name="background">?actionBarItemBackground</item>
-        <item name="src">@drawable/ic_menu_moreoverflow_mz</item>
+        <item name="src">@drawable/ic_menu_moreoverflow_holo_dark</item>
         <item name="contentDescription">@string/action_menu_overflow_description</item>
     </style>
     <style name="Widget.Holo.ActionButton.TextButton" parent="@style/Widget.Holo.ButtonBar.Button" />
@@ -1808,7 +1816,7 @@
     <style name="Widget.Holo.Light.PopupMenu" parent="@style/Widget.Holo.Light.ListPopupWindow" />
     <style name="Widget.Holo.Light.ActionButton" parent="@style/Widget.Holo.ActionButton" />
     <style name="Widget.Holo.Light.ActionButton.Overflow" parent="@style/Widget.Holo.Light.ActionButton">
-        <item name="src">@drawable/ic_menu_moreoverflow_mz</item>
+        <item name="src">@drawable/ic_menu_moreoverflow_holo_light</item>
         <item name="contentDescription">@string/action_menu_overflow_description</item>
     </style>
     <style name="Widget.Holo.Light.ActionMode" parent="@style/Widget.Holo.ActionMode">
@@ -2079,6 +2087,7 @@
         <item name="actionBarDivider">@drawable/list_divider_holo_dark</item>
         <item name="actionBarItemBackground">@drawable/item_background_holo_dark</item>
         <item name="actionModeSplitBackground">@drawable/cab_background_bottom_holo_dark</item>
+        <item name="actionBackButtonStyleMz">@style/Widget.Holo.ActionButton.MzBack</item>
         <item name="actionModeShareDrawable">@drawable/ic_menu_share_holo_dark</item>
         <item name="actionModeFindDrawable">@drawable/ic_menu_find_holo_dark</item>
         <item name="actionModeWebSearchDrawable">@drawable/ic_menu_search_holo_dark</item>
@@ -2166,6 +2175,7 @@
         <item name="buttonStyleSmall">@style/Widget.DeviceDefault.Button.Small</item>
         <item name="buttonStyleInset">@style/Widget.DeviceDefault.Button.Inset</item>
         <item name="buttonStyleToggle">@style/Widget.DeviceDefault.Button.Toggle</item>
+        <item name="windowBackground">@drawable/background_dark_mz</item>
         <item name="windowTitleStyle">@style/WindowTitle.DeviceDefault</item>
         <item name="windowTitleBackgroundStyle">@style/WindowTitleBackground.DeviceDefault</item>
         <item name="alertDialogStyle">@style/AlertDialog.DeviceDefault</item>
@@ -2226,8 +2236,8 @@
         <item name="quickContactBadgeStyleSmallWindowLarge">@style/Widget.DeviceDefault.QuickContactBadgeSmall.WindowLarge</item>
         <item name="expandableListViewWhiteStyle">@style/Widget.DeviceDefault.ExpandableListView.White</item>
         <item name="webTextViewStyle">@style/Widget.DeviceDefault.WebTextView</item>
-        <item name="textSelectHandleLeft">@drawable/text_select_handle_left_mz</item>
-        <item name="textSelectHandleRight">@drawable/text_select_handle_right_mz</item>
+        <item name="textSelectHandleLeft">@drawable/text_select_handle_left</item>
+        <item name="textSelectHandleRight">@drawable/text_select_handle_right</item>
         <item name="textSelectHandle">@null</item>
         <item name="textSelectHandleWindowStyle">@style/Widget.DeviceDefault.TextSelectHandle</item>
         <item name="actionBarStyle">@style/Widget.DeviceDefault.ActionBar</item>
@@ -2257,11 +2267,13 @@
         <item name="textSuggestionsWindowStyle">@style/Widget.DeviceDefault.TextSuggestionsPopupWindow</item>
         <item name="actionModeStyle">@style/Widget.DeviceDefault.ActionMode</item>
         <item name="mediaRouteButtonStyle">@style/Widget.DeviceDefault.MediaRouteButton</item>
+        <item name="dialogEditTextStyle">@style/Widget.DeviceDefault.EditText.Dialog</item>
         <item name="gestureOverlayViewStyle">@style/Widget.DeviceDefault.GestureOverlayView</item>
         <item name="stackViewStyle">@style/Widget.DeviceDefault.StackView</item>
         <item name="numberPickerStyle">@style/Widget.DeviceDefault.NumberPicker</item>
         <item name="timePickerStyle">@style/Widget.DeviceDefault.TimePicker</item>
         <item name="roundCornerContactBadgeStyleList">@style/Widget.RoundCornerContactBadge.List</item>
+        <item name="actionBackButtonStyleMz">@style/Widget.DeviceDefault.ActionButton.MzBack</item>
         <item name="actionModePopupWindowStyle">@style/Widget.DeviceDefault.PopupWindow.ActionMode</item>
         <item name="toastFrameBackground">@drawable/toast_frame_mz</item>
         <item name="searchDialogTheme">@style/Theme.DeviceDefault.SearchBar</item>
@@ -2294,12 +2306,14 @@
         <item name="buttonStyleInset">@style/Widget.DeviceDefault.Light.Button.Inset</item>
         <item name="buttonStyleToggle">@style/Widget.DeviceDefault.Light.Button.Toggle</item>
         <item name="listPreferredItemHeight">@dimen/list_item_height</item>
-        <item name="windowBackground">@color/background_light_mz</item>
+        <item name="windowBackground">@drawable/background_light_mz</item>
         <item name="windowContentOverlay">@null</item>
         <item name="windowTitleStyle">@style/WindowTitle.DeviceDefault</item>
         <item name="windowTitleBackgroundStyle">@style/WindowTitleBackground.DeviceDefault</item>
         <item name="alertDialogStyle">@style/AlertDialog.DeviceDefault.Light</item>
         <item name="panelBackground">@drawable/option_menu_background</item>
+        <item name="scrollbarThumbHorizontal">@drawable/scrollbar_handle_horizontal_mz</item>
+        <item name="scrollbarThumbVertical">@drawable/scrollbar_handle_vertical_mz</item>
         <item name="absListViewStyle">@style/Widget.DeviceDefault.Light.AbsListView</item>
         <item name="autoCompleteTextViewStyle">@style/Widget.DeviceDefault.Light.AutoCompleteTextView</item>
         <item name="checkboxStyle">@style/Widget.DeviceDefault.Light.CompoundButton.CheckBox</item>
@@ -2350,6 +2364,7 @@
         <item name="listDivider">@drawable/list_divider_light_mz</item>
         <item name="listChoiceIndicatorSingle">@drawable/btn_check_single_mz</item>
         <item name="listChoiceIndicatorMultiple">@drawable/btn_check_multiple_mz</item>
+        <item name="textColorPrimaryIgnoreDisable">@color/bright_foreground_light_mz</item>
         <item name="progressBarStyleInverse">@style/Widget.DeviceDefault.Light.ProgressBar.Inverse</item>
         <item name="progressBarStyleSmallInverse">@style/Widget.DeviceDefault.Light.ProgressBar.Small.Inverse</item>
         <item name="progressBarStyleLargeInverse">@style/Widget.DeviceDefault.Light.ProgressBar.Large.Inverse</item>
@@ -2363,8 +2378,8 @@
         <item name="quickContactBadgeStyleSmallWindowLarge">@style/Widget.DeviceDefault.QuickContactBadgeSmall.WindowLarge</item>
         <item name="expandableListViewWhiteStyle">@style/Widget.DeviceDefault.Light.ExpandableListView.White</item>
         <item name="webTextViewStyle">@style/Widget.DeviceDefault.Light.WebTextView</item>
-        <item name="textSelectHandleLeft">@drawable/text_select_handle_left_mz</item>
-        <item name="textSelectHandleRight">@drawable/text_select_handle_right_mz</item>
+        <item name="textSelectHandleLeft">@drawable/text_select_handle_left</item>
+        <item name="textSelectHandleRight">@drawable/text_select_handle_right</item>
         <item name="textSelectHandle">@null</item>
         <item name="textSelectHandleWindowStyle">@style/Widget.DeviceDefault.TextSelectHandle</item>
         <item name="actionBarStyle">@style/Widget.DeviceDefault.Light.ActionBar</item>
@@ -2388,6 +2403,7 @@
         <item name="textColorAlertDialogListItem">@color/dialog_checked_text_mz</item>
         <item name="dialogTheme">@style/Theme.DeviceDefault.Light.Dialog</item>
         <item name="alertDialogTheme">@style/Theme.DeviceDefault.Light.Dialog.Alert</item>
+        <item name="homeAsUpIndicator">@drawable/ic_ab_back_light_mz</item>
         <item name="borderlessButtonStyle">@style/Widget.DeviceDefault.Light.Button.Borderless</item>
         <item name="buttonBarStyle">@style/DeviceDefault.Light.ButtonBar</item>
         <item name="segmentedButtonStyle">@style/DeviceDefault.Light.SegmentedButton</item>
@@ -2414,12 +2430,14 @@
         <item name="actionBarItemBackground">@drawable/menuitem_background_mz</item>
         <item name="actionModeSplitBackground">@null</item>
         <item name="mediaRouteButtonStyle">@style/Widget.DeviceDefault.Light.MediaRouteButton</item>
+        <item name="dialogEditTextStyle">@style/Widget.DeviceDefault.Light.EditText.Dialog</item>
         <item name="panelMenuListWidth">@dimen/option_menu_list_width</item>
         <item name="panelMenuListTheme">@style/Theme.DeviceDefault.Light.CompactMenu</item>
         <item name="gestureOverlayViewStyle">@style/Widget.DeviceDefault.Light.GestureOverlayView</item>
         <item name="stackViewStyle">@style/Widget.DeviceDefault.StackView</item>
         <item name="numberPickerStyle">@style/Widget.DeviceDefault.Light.NumberPicker</item>
         <item name="timePickerStyle">@style/Widget.DeviceDefault.Light.TimePicker</item>
+        <item name="actionBackButtonStyleMz">@style/Widget.DeviceDefault.Light.ActionButton.MzBack</item>
         <item name="actionModePopupWindowStyle">@style/Widget.DeviceDefault.Light.PopupWindow.ActionMode</item>
         <item name="toastFrameBackground">@drawable/toast_frame_mz</item>
         <item name="searchDialogTheme">@style/Theme.DeviceDefault.Light.SearchBar</item>
@@ -2561,6 +2579,7 @@
         <item name="actionBarDivider">@drawable/list_divider_holo_dark</item>
         <item name="actionBarItemBackground">@drawable/item_background_holo_dark</item>
         <item name="actionModeSplitBackground">@drawable/cab_background_bottom_holo_dark</item>
+        <item name="actionBackButtonStyleMz">@style/Widget.DeviceDefault.ActionButton.MzBack</item>
         <item name="actionModeShareDrawable">@drawable/ic_menu_share_holo_dark</item>
         <item name="actionModeFindDrawable">@drawable/ic_menu_find_holo_dark</item>
         <item name="actionModeWebSearchDrawable">@drawable/ic_menu_search_holo_dark</item>
@@ -2627,6 +2646,7 @@
     <style name="Widget.DeviceDefault.Light.Button" parent="@style/Widget.Holo.Light.Button">
         <item name="textSize">@dimen/mz_text_size_normal</item>
         <item name="background">@drawable/btn_default_mz</item>
+        <item name="minHeight">@dimen/button_minHeight_mz</item>
     </style>
     <style name="Widget.DeviceDefault.Light.Button.Small" parent="@style/Widget.DeviceDefault.Light.Button" />
     <style name="Widget.DeviceDefault.Light.Button.Inset" parent="@style/Widget.Holo.Light.Button.Inset" />
@@ -2733,6 +2753,7 @@
         <item name="displayOptions">showTitle</item>
         <item name="titleTextStyle">@style/TextAppearance.DeviceDefault.Widget.ActionBar.Title</item>
         <item name="subtitleTextStyle">@style/TextAppearance.DeviceDefault.Widget.ActionBar.Subtitle</item>
+        <item name="backgroundStacked">@color/background_light_mz</item>
         <item name="backgroundSplit">@drawable/tab_background_mz</item>
     </style>
     <style name="Widget.DeviceDefault.Light.ActionBar.TabView" parent="@style/Widget.Holo.Light.ActionBar.TabView">
@@ -2741,7 +2762,7 @@
         <item name="paddingRight">8.0dip</item>
     </style>
     <style name="Widget.DeviceDefault.Light.ActionBar.TabText" parent="@style/Widget.Holo.Light.ActionBar.TabText">
-        <item name="textSize">12.0sp</item>
+        <item name="textSize">@dimen/mz_text_size_small</item>
         <item name="textStyle">normal</item>
         <item name="textColor">@color/action_bar_right_text_color_mz</item>
     </style>
@@ -2875,7 +2896,6 @@
         <item name="borderRight">0.0dip</item>
     </style>
     <style name="Animation.LockScreen" parent="@style/Animation">
-        <item name="windowEnterAnimation">@anim/lock_screen_enter</item>
         <item name="windowExitAnimation">@anim/lock_screen_exit</item>
     </style>
     <style name="Animation.OptionsPanel" parent="@style/Animation">
@@ -2946,11 +2966,11 @@
     </style>
     <style name="TextAppearance.StatusBar.EventContent.Info" parent="@style/TextAppearance.StatusBar.EventContent">
         <item name="textSize">@dimen/notification_subtext_size</item>
-        <item name="textColor">#ff999999</item>
+        <item name="textColor">#ff808080</item>
     </style>
     <style name="TextAppearance.StatusBar.EventContent.Time" parent="@style/TextAppearance.StatusBar.EventContent">
         <item name="textSize">@dimen/notification_subtext_size</item>
-        <item name="textColor">#ff999999</item>
+        <item name="textColor">#ff808080</item>
     </style>
     <style name="TextAppearance.StatusBar.EventContent.Emphasis" parent="@style/TextAppearance.StatusBar.EventContent">
         <item name="textColor">#ffcccccc</item>
@@ -3040,6 +3060,7 @@
     <style name="Widget.HorizontalScrollView" parent="@style/Widget">
         <item name="scrollbars">horizontal</item>
         <item name="fadingEdge">horizontal</item>
+        <item name="overScrollMode">never</item>
     </style>
     <style name="Widget.WebTextView" parent="@style/Widget">
         <item name="textAppearance">?textAppearanceLargeInverse</item>
@@ -3536,11 +3557,30 @@
     </style>
     <style name="widget.EditTextEx" parent="@style/Widget.EditText">
         <item name="textColorStaticHint">#ff999999</item>
-        <item name="paddingRightStaticHint">12.0dip</item>
+        <item name="paddingRightStaticHint">@dimen/list_item_title_padding_right</item>
     </style>
     <style name="Animation.Magnifier" parent="@style/Animation">
         <item name="windowEnterAnimation">@anim/magnifier_enter</item>
         <item name="windowExitAnimation">@anim/magnifier_exit</item>
+    </style>
+    <style name="Widget.ActionButton.MzBack" parent="@style/Widget.ActionButton">
+        <item name="scaleType">centerInside</item>
+        <item name="minHeight">@dimen/action_button_min_height_mz</item>
+        <item name="backIcon">@drawable/key_button_back</item>
+        <item name="backImeIcon">@drawable/key_button_back</item>
+    </style>
+    <style name="Widget.ActionButton.MzBack.Light" parent="@style/Widget.ActionButton.MzBack">
+        <item name="backIcon">@drawable/key_button_back_holo</item>
+        <item name="backImeIcon">@drawable/key_button_back_holo</item>
+    </style>
+    <style name="Widget.Holo.ActionButton.MzBack" parent="@style/Widget.ActionButton.MzBack">
+        <item name="backIcon">@drawable/key_button_back_holo_dark</item>
+        <item name="backImeIcon">@drawable/key_button_back_holo_dark</item>
+    </style>
+    <style name="Widget.Holo.Light.ActionButton.MzBack" parent="@style/Widget.ActionButton.MzBack.Light" />
+    <style name="Widget.DeviceDefault.ActionButton.MzBack" parent="@style/Widget.Holo.ActionButton.MzBack">
+        <item name="backIcon">@drawable/key_button_back_dark</item>
+        <item name="backImeIcon">@drawable/key_button_back_dark</item>
     </style>
     <style name="Widget.DeviceDefault.AbsListView" parent="@style/Widget.Holo.AbsListView" />
     <style name="Widget.DeviceDefault.Spinner.DropDown.ActionBar" parent="@style/Widget.Holo.Spinner.DropDown.ActionBar" />
@@ -3572,6 +3612,10 @@
     <style name="Widget.DeviceDefault.Light.Button.Meizu" parent="@style/Widget.DeviceDefault.Light.Button">
         <item name="background">@drawable/btn_list_default_mz</item>
     </style>
+    <style name="Widget.DeviceDefault.Light.ActionButton.MzBack" parent="@style/Widget.Holo.Light.ActionButton.MzBack">
+        <item name="backIcon">@drawable/key_button_back</item>
+        <item name="backImeIcon">@drawable/key_button_back</item>
+    </style>
     <style name="Widget.DeviceDefault.Light.AbsListView" parent="@style/Widget.Holo.Light.AbsListView" />
     <style name="Widget.DeviceDefault.Light.Spinner.DropDown.ActionBar" parent="@style/Widget.DeviceDefault.Light.Spinner.DropDown">
         <item name="background">@drawable/topbar_dropdown_ic_arrow</item>
@@ -3592,12 +3636,13 @@
         <item name="popupBackground">@drawable/dialog_full_list_mz_light</item>
     </style>
     <style name="Widget.DeviceDefault.Light.TextView.ListSeparator" parent="@style/Widget.Holo.Light.TextView.ListSeparator">
-        <item name="textSize">@dimen/mz_text_size_small</item>
+        <item name="textSize">@dimen/preference_category_text_size</item>
         <item name="textStyle">bold</item>
         <item name="textColor">@color/mz_secondary_text_color_light</item>
         <item name="background">@drawable/list_section_divider_light_mz</item>
         <item name="paddingTop">5.0dip</item>
-        <item name="layout_height">26.0dip</item>
+        <item name="paddingBottom">2.0dip</item>
+        <item name="minHeight">26.0dip</item>
         <item name="textAllCaps">false</item>
     </style>
     <style name="Widget.DeviceDefault.Light.TimePicker" parent="@style/Widget.Holo.Light.TimePicker" />
@@ -3629,7 +3674,9 @@
         <item name="textSize">@dimen/mz_text_size_small</item>
     </style>
     <style name="TextAppearance.DeviceDefault.Light.Widget.Button" parent="@style/TextAppearance.Holo.Light.Widget.Button" />
-    <style name="TextAppearance.DeviceDefault.Light.Widget.PopupMenu.Large" parent="@style/TextAppearance.Holo.Light.Widget.PopupMenu.Large" />
+    <style name="TextAppearance.DeviceDefault.Light.Widget.PopupMenu.Large" parent="@style/TextAppearance.Holo.Light.Widget.PopupMenu.Large">
+        <item name="textSize">@dimen/mz_text_size_medium</item>
+    </style>
     <style name="TextAppearance.DeviceDefault.Light.Widget.PopupMenu.Small" parent="@style/TextAppearance.Holo.Light.Widget.PopupMenu.Small" />
     <style name="TextAppearance.DeviceDefault.Light.DialogWindowTitle" parent="@style/TextAppearance.Holo.Light.DialogWindowTitle">
         <item name="textSize">@dimen/mz_alert_title_text_size</item>
@@ -3660,7 +3707,7 @@
     </style>
     <style name="Preference.DeviceDefault.Information" parent="@style/Preference.DeviceDefault">
         <item name="enabled">false</item>
-        <item name="layout">@layout/preference_information_holo</item>
+        <item name="layout">@layout/preference_information_mz</item>
         <item name="shouldDisableView">true</item>
     </style>
     <style name="Preference.DeviceDefault.PreferenceScreen" parent="@style/Preference.DeviceDefault">
@@ -3786,6 +3833,38 @@
     </style>
     <style name="TextAppearance.DeviceDefault.Light.Small.Inverse.Enlarge" parent="@style/TextAppearance.DeviceDefault.Light.Small.Inverse">
         <item name="textSize">@dimen/mz_text_size_small_enlarge</item>
+    </style>
+    <style name="TextAppearance.DeviceDefault.Light.Medium.Huge" parent="@style/TextAppearance.DeviceDefault.Light.Medium">
+        <item name="textSize">@dimen/contactbadge_text1_size_huge</item>
+    </style>
+    <style name="TextAppearance.DeviceDefault.Light.Small.Huge" parent="@style/TextAppearance.DeviceDefault.Light.Small">
+        <item name="textSize">@dimen/contactbadge_text2_size_huge</item>
+    </style>
+    <style name="TextAppearance.DeviceDefault.Light.Medium.SuperLarge" parent="@style/TextAppearance.DeviceDefault.Light.Medium">
+        <item name="textSize">@dimen/contactbadge_text1_size_super_large</item>
+    </style>
+    <style name="TextAppearance.DeviceDefault.Light.Small.SuperLarge" parent="@style/TextAppearance.DeviceDefault.Light.Small">
+        <item name="textSize">@dimen/contactbadge_text2_size_super_large</item>
+    </style>
+    <style name="Widget.DeviceDefault.Light.EditText.Dialog" parent="@style/Widget.DeviceDefault.Light.EditText">
+        <item name="textSize">@dimen/alert_dialog_edittext_text_size</item>
+        <item name="gravity">center_vertical</item>
+        <item name="paddingBottom">@dimen/alert_dialog_edittext_content_padding_bottom</item>
+        <item name="layout_width">fill_parent</item>
+        <item name="layout_height">@dimen/alert_dialog_edittext_height</item>
+        <item name="layout_marginLeft">@dimen/alert_dialog_edittext_padding_left</item>
+        <item name="layout_marginRight">@dimen/alert_dialog_edittext_padding_right</item>
+        <item name="singleLine">true</item>
+    </style>
+    <style name="Widget.DeviceDefault.EditText.Dialog" parent="@style/Widget.DeviceDefault.EditText">
+        <item name="textSize">@dimen/alert_dialog_edittext_text_size</item>
+        <item name="gravity">center_vertical</item>
+        <item name="paddingBottom">@dimen/alert_dialog_edittext_content_padding_bottom</item>
+        <item name="layout_width">fill_parent</item>
+        <item name="layout_height">@dimen/alert_dialog_edittext_height</item>
+        <item name="layout_marginLeft">@dimen/alert_dialog_edittext_padding_left</item>
+        <item name="layout_marginRight">@dimen/alert_dialog_edittext_padding_right</item>
+        <item name="singleLine">true</item>
     </style>
     <style name="ActiveWallpaperSettings" />
     <style name="PreviewWallpaperSettings" />
@@ -3962,6 +4041,7 @@
         <item name="windowMinWidthMinor">@dimen/dialog_min_width_minor</item>
         <item name="textAppearanceListItem">@style/TextAppearance.Medium</item>
         <item name="textAppearanceListItemSmall">@style/TextAppearance.Small</item>
+        <item name="dialogEditTextStyle">@style/Widget.DeviceDefault.EditText.Dialog</item>
     </style>
     <style name="Theme.DeviceDefault.Light.Dialog.Alert" parent="@style/Theme.DeviceDefault.Light.Dialog">
         <item name="windowBackground">@color/transparent</item>
@@ -3981,6 +4061,7 @@
         <item name="windowMinWidthMinor">108.5dip</item>
         <item name="textAppearanceListItem">?textAppearanceMedium</item>
         <item name="textAppearanceListItemSmall">?textAppearanceSmall</item>
+        <item name="dialogEditTextStyle">@style/Widget.DeviceDefault.Light.EditText.Dialog</item>
     </style>
     <style name="Theme.DeviceDefault.SearchBar" parent="@style/Theme.DeviceDefault.Panel">
         <item name="actionModeBackground">@drawable/cab_background_top_holo_dark</item>

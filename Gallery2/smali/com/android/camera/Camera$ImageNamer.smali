@@ -47,30 +47,30 @@
     .prologue
     const/16 v1, 0x9
 
-    .line 1751
+    .line 1912
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
 
-    .line 1746
+    .line 1907
     new-array v0, v1, [Landroid/net/Uri;
 
     iput-object v0, p0, Lcom/android/camera/Camera$ImageNamer;->mMultiUri:[Landroid/net/Uri;
 
-    .line 1747
+    .line 1908
     new-array v0, v1, [Ljava/lang/String;
 
     iput-object v0, p0, Lcom/android/camera/Camera$ImageNamer;->mMultiTitle:[Ljava/lang/String;
 
-    .line 1748
+    .line 1909
     const/16 v0, 0x8
 
     new-array v0, v0, [Ljava/lang/String;
 
     iput-object v0, p0, Lcom/android/camera/Camera$ImageNamer;->mMultiFilePath:[Ljava/lang/String;
 
-    .line 1752
+    .line 1913
     invoke-virtual {p0}, Lcom/android/camera/Camera$ImageNamer;->start()V
 
-    .line 1753
+    .line 1914
     return-void
 .end method
 
@@ -78,16 +78,16 @@
     .locals 2
 
     .prologue
-    .line 1876
+    .line 2037
     iget-object v0, p0, Lcom/android/camera/Camera$ImageNamer;->mUri:Landroid/net/Uri;
 
     if-nez v0, :cond_0
 
-    .line 1879
+    .line 2040
     :goto_0
     return-void
 
-    .line 1877
+    .line 2038
     :cond_0
     iget-object v0, p0, Lcom/android/camera/Camera$ImageNamer;->mResolver:Landroid/content/ContentResolver;
 
@@ -95,7 +95,7 @@
 
     invoke-static {v0, v1}, Lcom/android/camera/Storage;->deleteImage(Landroid/content/ContentResolver;Landroid/net/Uri;)V
 
-    .line 1878
+    .line 2039
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/camera/Camera$ImageNamer;->mUri:Landroid/net/Uri;
@@ -108,10 +108,10 @@
     .parameter "dateTaken"
 
     .prologue
-    .line 1838
+    .line 1999
     iput-wide p1, p0, Lcom/android/camera/Camera$ImageNamer;->mDateTaken:J
 
-    .line 1839
+    .line 2000
     invoke-static {}, Lcom/android/camera/Util;->getCurCaptureMode()I
 
     move-result v2
@@ -120,14 +120,14 @@
 
     if-ne v2, v3, :cond_1
 
-    .line 1840
+    .line 2001
     iget-wide v2, p0, Lcom/android/camera/Camera$ImageNamer;->mDateTaken:J
 
     invoke-static {v2, v3}, Lcom/android/camera/Util;->createJpegName(J)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 1841
+    .line 2002
     .local v1, title:Ljava/lang/String;
     const/4 v0, 0x0
 
@@ -137,7 +137,7 @@
 
     if-ge v0, v2, :cond_1
 
-    .line 1842
+    .line 2003
     iget-object v2, p0, Lcom/android/camera/Camera$ImageNamer;->mMultiTitle:[Ljava/lang/String;
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -166,12 +166,12 @@
 
     aput-object v3, v2, v0
 
-    .line 1844
+    .line 2005
     const/16 v2, 0x8
 
     if-ge v0, v2, :cond_0
 
-    .line 1845
+    .line 2006
     iget-object v2, p0, Lcom/android/camera/Camera$ImageNamer;->mMultiFilePath:[Ljava/lang/String;
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -210,13 +210,13 @@
 
     aput-object v3, v2, v0
 
-    .line 1841
+    .line 2002
     :cond_0
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 1849
+    .line 2010
     .end local v0           #i:I
     .end local v1           #title:Ljava/lang/String;
     :cond_1
@@ -227,7 +227,7 @@
     .locals 11
 
     .prologue
-    .line 1853
+    .line 2014
     invoke-static {}, Lcom/android/camera/Util;->getCurCaptureMode()I
 
     move-result v0
@@ -236,7 +236,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 1854
+    .line 2015
     const/4 v9, 0x0
 
     .local v9, i:I
@@ -245,12 +245,12 @@
 
     if-ge v9, v0, :cond_2
 
-    .line 1856
+    .line 2017
     const/16 v0, 0x8
 
     if-ge v9, v0, :cond_0
 
-    .line 1857
+    .line 2018
     new-instance v8, Ljava/io/File;
 
     iget-object v0, p0, Lcom/android/camera/Camera$ImageNamer;->mMultiFilePath:[Ljava/lang/String;
@@ -259,7 +259,7 @@
 
     invoke-direct {v8, v0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 1858
+    .line 2019
     .local v8, f:Ljava/io/File;
     invoke-virtual {v8}, Ljava/io/File;->exists()Z
 
@@ -267,13 +267,13 @@
 
     if-nez v0, :cond_0
 
-    .line 1860
+    .line 2021
     :try_start_0
     invoke-virtual {v8}, Ljava/io/File;->createNewFile()Z
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1866
+    .line 2027
     .end local v8           #f:Ljava/io/File;
     :cond_0
     :goto_1
@@ -305,23 +305,23 @@
 
     aput-object v0, v10, v9
 
-    .line 1854
+    .line 2015
     add-int/lit8 v9, v9, 0x1
 
     goto :goto_0
 
-    .line 1861
+    .line 2022
     .restart local v8       #f:Ljava/io/File;
     :catch_0
     move-exception v7
 
-    .line 1862
+    .line 2023
     .local v7, e:Ljava/io/IOException;
     invoke-virtual {v7}, Ljava/io/IOException;->printStackTrace()V
 
     goto :goto_1
 
-    .line 1869
+    .line 2030
     .end local v7           #e:Ljava/io/IOException;
     .end local v8           #f:Ljava/io/File;
     .end local v9           #i:I
@@ -334,7 +334,7 @@
 
     iput-object v0, p0, Lcom/android/camera/Camera$ImageNamer;->mTitle:Ljava/lang/String;
 
-    .line 1870
+    .line 2031
     iget-object v0, p0, Lcom/android/camera/Camera$ImageNamer;->mResolver:Landroid/content/ContentResolver;
 
     iget-boolean v1, p0, Lcom/android/camera/Camera$ImageNamer;->mIsFlymeMmsIntent:Z
@@ -353,7 +353,7 @@
 
     iput-object v0, p0, Lcom/android/camera/Camera$ImageNamer;->mUri:Landroid/net/Uri;
 
-    .line 1872
+    .line 2033
     :cond_2
     return-void
 .end method
@@ -364,7 +364,7 @@
     .locals 1
 
     .prologue
-    .line 1832
+    .line 1993
     monitor-enter p0
 
     const/4 v0, 0x1
@@ -372,17 +372,17 @@
     :try_start_0
     iput-boolean v0, p0, Lcom/android/camera/Camera$ImageNamer;->mStop:Z
 
-    .line 1833
+    .line 1994
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1834
+    .line 1995
     monitor-exit p0
 
     return-void
 
-    .line 1832
+    .line 1993
     :catchall_0
     move-exception v0
 
@@ -396,13 +396,13 @@
     .parameter "dateTaken"
 
     .prologue
-    .line 1805
+    .line 1966
     monitor-enter p0
 
     :try_start_0
     invoke-direct {p0, p1, p2}, Lcom/android/camera/Camera$ImageNamer;->generateFilePath(J)V
 
-    .line 1806
+    .line 1967
     iget-object v0, p0, Lcom/android/camera/Camera$ImageNamer;->mMultiFilePath:[Ljava/lang/String;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
@@ -411,7 +411,7 @@
 
     return-object v0
 
-    .line 1805
+    .line 1966
     :catchall_0
     move-exception v0
 
@@ -424,7 +424,7 @@
     .locals 1
 
     .prologue
-    .line 1801
+    .line 1962
     monitor-enter p0
 
     :try_start_0
@@ -448,7 +448,7 @@
     .locals 1
 
     .prologue
-    .line 1797
+    .line 1958
     monitor-enter p0
 
     :try_start_0
@@ -472,7 +472,7 @@
     .locals 1
 
     .prologue
-    .line 1793
+    .line 1954
     monitor-enter p0
 
     :try_start_0
@@ -496,7 +496,7 @@
     .locals 2
 
     .prologue
-    .line 1777
+    .line 1938
     monitor-enter p0
 
     :goto_0
@@ -507,7 +507,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 1779
+    .line 1940
     :try_start_1
     invoke-virtual {p0}, Ljava/lang/Object;->wait()V
     :try_end_1
@@ -516,18 +516,18 @@
 
     goto :goto_0
 
-    .line 1780
+    .line 1941
     :catch_0
     move-exception v1
 
     goto :goto_0
 
-    .line 1786
+    .line 1947
     :cond_0
     :try_start_2
     iget-object v0, p0, Lcom/android/camera/Camera$ImageNamer;->mUri:Landroid/net/Uri;
 
-    .line 1787
+    .line 1948
     .local v0, uri:Landroid/net/Uri;
     const/4 v1, 0x0
 
@@ -535,12 +535,12 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 1788
+    .line 1949
     monitor-exit p0
 
     return-object v0
 
-    .line 1777
+    .line 1938
     .end local v0           #uri:Landroid/net/Uri;
     :catchall_0
     move-exception v1
@@ -562,7 +562,7 @@
     .prologue
     const/4 v2, 0x1
 
-    .line 1758
+    .line 1919
     monitor-enter p0
 
     :try_start_0
@@ -570,57 +570,57 @@
 
     if-eqz v1, :cond_0
 
-    .line 1759
+    .line 1920
     move v0, p4
 
-    .line 1760
+    .line 1921
     .local v0, tmp:I
     move p4, p5
 
-    .line 1761
+    .line 1922
     move p5, v0
 
-    .line 1763
+    .line 1924
     .end local v0           #tmp:I
     :cond_0
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/android/camera/Camera$ImageNamer;->mRequestPending:Z
 
-    .line 1764
+    .line 1925
     iput-object p1, p0, Lcom/android/camera/Camera$ImageNamer;->mResolver:Landroid/content/ContentResolver;
 
-    .line 1765
+    .line 1926
     invoke-static {}, Lcom/android/camera/Util;->getCurCaptureMode()I
 
     move-result v1
 
     if-eq v1, v2, :cond_1
 
-    .line 1766
+    .line 1927
     iput-wide p2, p0, Lcom/android/camera/Camera$ImageNamer;->mDateTaken:J
 
-    .line 1768
+    .line 1929
     :cond_1
     iput p4, p0, Lcom/android/camera/Camera$ImageNamer;->mWidth:I
 
-    .line 1769
+    .line 1930
     iput p5, p0, Lcom/android/camera/Camera$ImageNamer;->mHeight:I
 
-    .line 1770
+    .line 1931
     iput-boolean p7, p0, Lcom/android/camera/Camera$ImageNamer;->mIsFlymeMmsIntent:Z
 
-    .line 1771
+    .line 1932
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1772
+    .line 1933
     monitor-exit p0
 
     return-void
 
-    .line 1758
+    .line 1919
     :catchall_0
     move-exception v1
 
@@ -633,7 +633,7 @@
     .locals 1
 
     .prologue
-    .line 1813
+    .line 1974
     monitor-enter p0
 
     :goto_0
@@ -642,17 +642,17 @@
 
     if-eqz v0, :cond_0
 
-    .line 1827
+    .line 1988
     invoke-direct {p0}, Lcom/android/camera/Camera$ImageNamer;->cleanOldUri()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1828
+    .line 1989
     monitor-exit p0
 
     return-void
 
-    .line 1814
+    .line 1975
     :cond_0
     :try_start_1
     iget-boolean v0, p0, Lcom/android/camera/Camera$ImageNamer;->mRequestPending:Z
@@ -661,7 +661,7 @@
 
     if-nez v0, :cond_1
 
-    .line 1816
+    .line 1977
     :try_start_2
     invoke-virtual {p0}, Ljava/lang/Object;->wait()V
     :try_end_2
@@ -670,33 +670,33 @@
 
     goto :goto_0
 
-    .line 1817
+    .line 1978
     :catch_0
     move-exception v0
 
     goto :goto_0
 
-    .line 1822
+    .line 1983
     :cond_1
     :try_start_3
     invoke-direct {p0}, Lcom/android/camera/Camera$ImageNamer;->cleanOldUri()V
 
-    .line 1823
+    .line 1984
     invoke-direct {p0}, Lcom/android/camera/Camera$ImageNamer;->generateUri()V
 
-    .line 1824
+    .line 1985
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/camera/Camera$ImageNamer;->mRequestPending:Z
 
-    .line 1825
+    .line 1986
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     goto :goto_0
 
-    .line 1813
+    .line 1974
     :catchall_0
     move-exception v0
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest android:versionCode="16" android:versionName="4.1.2-eng.mochangming.20130418.104703" package="com.android.actionassist" coreApp="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="16" />
+    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INJECT_EVENTS" />
+	<uses-permission android:name="android.permission.STATUS_BAR_SERVICE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <application android:label="@string/app_label" android:persistent="true">
+        <service android:name="ActionAssist" />
+        <receiver android:name="AssistReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="com.android.action.SHOW_ACTION_ASSIST" />
+                <action android:name="com.android.action.HIDE_ACTION_ASSIST" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

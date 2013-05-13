@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 193
+    .line 195
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$2;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     invoke-direct {p0}, Lcom/meizu/internal/telephony/PhoneStateListenerEx;-><init>()V
@@ -39,14 +39,14 @@
     .parameter "callInfoArray"
 
     .prologue
-    .line 196
+    .line 198
     const/4 v5, 0x0
 
-    .line 197
+    .line 199
     .local v5, isCalling:Z
     const/4 v4, 0x1
 
-    .line 198
+    .line 200
     .local v4, idle:Z
     move-object/from16 v0, p0
 
@@ -57,7 +57,7 @@
 
     move-result v8
 
-    .line 199
+    .line 201
     .local v8, oldPhoneState:I
     const/4 v3, 0x0
 
@@ -69,12 +69,12 @@
 
     if-ge v3, v10, :cond_0
 
-    .line 200
+    .line 202
     aget-object v10, p1, v3
 
     iget v9, v10, Lcom/meizu/internal/telephony/CallInfo;->state:I
 
-    .line 201
+    .line 203
     .local v9, phoneState:I
     move-object/from16 v0, p0
 
@@ -87,7 +87,7 @@
 
     if-eqz v10, :cond_8
 
-    .line 202
+    .line 204
     move-object/from16 v0, p0
 
     iget-object v10, v0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$2;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
@@ -95,7 +95,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mPhoneState:I
     invoke-static {v10, v9}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$802(Lcom/meizu/internal/policy/impl/LockControllerMonitor;I)I
 
-    .line 203
+    .line 205
     move-object/from16 v0, p0
 
     iget-object v10, v0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$2;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
@@ -107,10 +107,10 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mAddress:Ljava/lang/String;
     invoke-static {v10, v11}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$1002(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 204
+    .line 206
     const/4 v4, 0x0
 
-    .line 205
+    .line 207
     move-object/from16 v0, p0
 
     iget-object v10, v0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$2;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
@@ -124,12 +124,12 @@
 
     if-ne v10, v11, :cond_8
 
-    .line 206
+    .line 208
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v6
 
-    .line 207
+    .line 209
     .local v6, now:J
     move-object/from16 v0, p0
 
@@ -148,7 +148,7 @@
 
     iget-wide v1, v10, Lcom/meizu/internal/telephony/CallInfo;->connectTime:J
 
-    .line 208
+    .line 210
     .local v1, calltime:J
     :goto_1
     move-object/from16 v0, p0
@@ -158,12 +158,12 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mCreateTime:J
     invoke-static {v10, v1, v2}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$1102(Lcom/meizu/internal/policy/impl/LockControllerMonitor;J)J
 
-    .line 209
+    .line 211
     cmp-long v10, v6, v1
 
     if-lez v10, :cond_7
 
-    .line 210
+    .line 212
     move-object/from16 v0, p0
 
     iget-object v10, v0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$2;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
@@ -173,11 +173,11 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mCurrentTime:J
     invoke-static {v10, v11, v12}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$1202(Lcom/meizu/internal/policy/impl/LockControllerMonitor;J)J
 
-    .line 213
+    .line 215
     :goto_2
     const/4 v5, 0x1
 
-    .line 214
+    .line 216
     move-object/from16 v0, p0
 
     iget-object v10, v0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$2;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
@@ -212,7 +212,7 @@
 
     invoke-virtual {v10, v11, v12, v13}, Landroid/os/Handler;->sendMessageAtTime(Landroid/os/Message;J)Z
 
-    .line 219
+    .line 221
     .end local v1           #calltime:J
     .end local v6           #now:J
     .end local v9           #phoneState:I
@@ -225,7 +225,7 @@
 
     if-eqz v4, :cond_2
 
-    .line 220
+    .line 222
     :cond_1
     move-object/from16 v0, p0
 
@@ -236,10 +236,10 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mPhoneState:I
     invoke-static {v10, v11}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$802(Lcom/meizu/internal/policy/impl/LockControllerMonitor;I)I
 
-    .line 221
+    .line 223
     const/4 v5, 0x0
 
-    .line 223
+    .line 225
     :cond_2
     const-string v10, "Keyguard"
 
@@ -282,10 +282,10 @@
 
     invoke-static {v10, v11}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 224
+    .line 226
     if-nez v5, :cond_3
 
-    .line 225
+    .line 227
     move-object/from16 v0, p0
 
     iget-object v10, v0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$2;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
@@ -299,7 +299,7 @@
 
     invoke-virtual {v10, v11}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 227
+    .line 229
     :cond_3
     move-object/from16 v0, p1
 
@@ -318,7 +318,7 @@
 
     if-eq v8, v10, :cond_5
 
-    .line 228
+    .line 230
     :cond_4
     move-object/from16 v0, p0
 
@@ -333,7 +333,7 @@
 
     invoke-virtual {v10, v11}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 229
+    .line 231
     move-object/from16 v0, p0
 
     iget-object v10, v0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$2;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
@@ -347,7 +347,7 @@
 
     if-ne v10, v11, :cond_9
 
-    .line 230
+    .line 232
     move-object/from16 v0, p0
 
     iget-object v10, v0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$2;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
@@ -376,12 +376,12 @@
 
     invoke-virtual {v10, v11, v12, v13}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
-    .line 236
+    .line 238
     :cond_5
     :goto_3
     return-void
 
-    .line 207
+    .line 209
     .restart local v6       #now:J
     .restart local v9       #phoneState:I
     :cond_6
@@ -391,7 +391,7 @@
 
     goto/16 :goto_1
 
-    .line 212
+    .line 214
     .restart local v1       #calltime:J
     :cond_7
     move-object/from16 v0, p0
@@ -405,7 +405,7 @@
 
     goto/16 :goto_2
 
-    .line 199
+    .line 201
     .end local v1           #calltime:J
     .end local v6           #now:J
     :cond_8
@@ -413,7 +413,7 @@
 
     goto/16 :goto_0
 
-    .line 232
+    .line 234
     .end local v9           #phoneState:I
     :cond_9
     move-object/from16 v0, p0

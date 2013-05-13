@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 74
+    .line 88
     iput-object p1, p0, Lcom/android/internal/view/menu/KeyBackButton$2;->this$0:Lcom/android/internal/view/menu/KeyBackButton;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,22 +42,22 @@
     .parameter "shown"
 
     .prologue
-    .line 77
+    .line 91
     iget-object v1, p0, Lcom/android/internal/view/menu/KeyBackButton$2;->this$0:Lcom/android/internal/view/menu/KeyBackButton;
 
     invoke-virtual {v1}, Lcom/android/internal/view/menu/KeyBackButton;->getHandler()Landroid/os/Handler;
 
     move-result-object v0
 
-    .line 78
+    .line 92
     .local v0, vh:Landroid/os/Handler;
     if-nez v0, :cond_0
 
-    .line 91
+    .line 105
     :goto_0
     return-void
 
-    .line 81
+    .line 95
     :cond_0
     invoke-virtual {v0}, Landroid/os/Handler;->getLooper()Landroid/os/Looper;
 
@@ -69,7 +69,7 @@
 
     if-ne v1, v2, :cond_1
 
-    .line 82
+    .line 96
     iget-object v1, p0, Lcom/android/internal/view/menu/KeyBackButton$2;->this$0:Lcom/android/internal/view/menu/KeyBackButton;
 
     #calls: Lcom/android/internal/view/menu/KeyBackButton;->updateImageDrawable(Z)V
@@ -77,7 +77,7 @@
 
     goto :goto_0
 
-    .line 84
+    .line 98
     :cond_1
     new-instance v1, Lcom/android/internal/view/menu/KeyBackButton$2$1;
 

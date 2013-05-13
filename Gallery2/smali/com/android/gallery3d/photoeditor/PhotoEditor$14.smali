@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/gallery3d/photoeditor/PhotoEditor;->createEffectsArtisticRunnable()Ljava/lang/Runnable;
+    value = Lcom/android/gallery3d/photoeditor/PhotoEditor;->createApplyRunnable()Ljava/lang/Runnable;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 491
+    .line 712
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$14;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,10 +38,10 @@
 
 # virtual methods
 .method public run()V
-    .locals 3
+    .locals 1
 
     .prologue
-    .line 493
+    .line 715
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$14;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
     #getter for: Lcom/android/gallery3d/photoeditor/PhotoEditor;->effectsBar:Lcom/android/gallery3d/photoeditor/EffectsBar;
@@ -49,12 +49,18 @@
 
     move-result-object v0
 
-    const/4 v1, 0x0
+    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/EffectsBar;->clearEffectsSelected()V
 
-    const v2, 0x7f040053
+    .line 716
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$14;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
-    invoke-virtual {v0, v1, v2}, Lcom/android/gallery3d/photoeditor/EffectsBar;->changeEffectsMenu(ZI)Z
+    #getter for: Lcom/android/gallery3d/photoeditor/PhotoEditor;->filterStack:Lcom/android/gallery3d/photoeditor/FilterStack;
+    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->access$1100(Lcom/android/gallery3d/photoeditor/PhotoEditor;)Lcom/android/gallery3d/photoeditor/FilterStack;
 
-    .line 494
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/FilterStack;->setTopFilterApplied()V
+
+    .line 717
     return-void
 .end method

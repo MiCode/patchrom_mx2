@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 3414
+    .line 3529
     iput-object p1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$7;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 5
 
     .prologue
-    .line 3416
+    .line 3531
     :try_start_0
     iget-object v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$7;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
@@ -49,23 +49,28 @@
 
     move-result-object v1
 
-    .line 3417
+    .line 3532
     .local v1, statusbar:Lcom/android/internal/statusbar/IStatusBarService;
     if-eqz v1, :cond_1
 
-    .line 3418
+    .line 3533
     iget-object v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$7;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     iget-boolean v2, v2, Lcom/android/internal/policy/impl/PhoneWindowManager;->mTopIsFullscreen:Z
 
     if-nez v2, :cond_0
 
-    .line 3419
+    .line 3534
     const/4 v2, 0x0
 
     invoke-interface {v1, v2}, Lcom/android/internal/statusbar/IStatusBarService;->showStatusbarInFullScreen(Z)V
 
-    .line 3421
+    .line 3535
+    const/4 v2, 0x0
+
+    invoke-interface {v1, v2}, Lcom/android/internal/statusbar/IStatusBarService;->setNavButtonVisible(Z)V
+
+    .line 3537
     :cond_0
     const/4 v2, 0x0
 
@@ -88,17 +93,17 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 3427
+    .line 3543
     .end local v1           #statusbar:Lcom/android/internal/statusbar/IStatusBarService;
     :cond_1
     :goto_0
     return-void
 
-    .line 3423
+    .line 3539
     :catch_0
     move-exception v0
 
-    .line 3425
+    .line 3541
     .local v0, ex:Landroid/os/RemoteException;
     iget-object v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$7;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 

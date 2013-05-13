@@ -15,29 +15,29 @@
 
 
 # instance fields
-.field leftMarginNum_land:I
+.field mLeftMarginNumLand:I
 
-.field leftMarginNum_port:I
+.field mLeftMarginNumPort:I
 
-.field smallImageHeight:I
+.field mSmallImageHeight:I
 
-.field smallImageWidth:I
+.field mSmallImageWidth:I
 
-.field spaceBetweenTwoInOneRow_land1:I
+.field mSpaceBetweenTwoInOneRowLand1:I
 
-.field spaceBetweenTwoInOneRow_land2:I
+.field mSpaceBetweenTwoInOneRowLand2:I
 
-.field spaceBetweenTwoInOneRow_port:I
+.field mSpaceBetweenTwoInOneRowPort:I
+
+.field mTopFirstMarginNumLand:I
+
+.field mTopFirstMarginNumPort:I
+
+.field mTopOtherMarginNumLand:I
+
+.field mTopOtherMarginNumPort:I
 
 .field final synthetic this$0:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
-
-.field topFirstMarginNum_land:I
-
-.field topFirstMarginNum_port:I
-
-.field topOtherMarginNum_land:I
-
-.field topOtherMarginNum_port:I
 
 
 # direct methods
@@ -46,7 +46,7 @@
     .parameter
 
     .prologue
-    .line 55
+    .line 60
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter$RecommendBolckPxValue;->this$0:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V

@@ -31,12 +31,12 @@
     .parameter
 
     .prologue
-    .line 2665
+    .line 2782
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoPage$GetBmpForWallPaperTask;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 2667
+    .line 2784
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/gallery3d/app/PhotoPage$GetBmpForWallPaperTask;->mResultReady:Z
@@ -50,7 +50,7 @@
     .parameter "x1"
 
     .prologue
-    .line 2665
+    .line 2782
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/PhotoPage$GetBmpForWallPaperTask;-><init>(Lcom/android/gallery3d/app/PhotoPage;)V
 
     return-void
@@ -62,7 +62,7 @@
     .locals 1
 
     .prologue
-    .line 2670
+    .line 2787
     monitor-enter p0
 
     :goto_0
@@ -71,14 +71,14 @@
 
     if-nez v0, :cond_0
 
-    .line 2671
+    .line 2788
     invoke-static {p0}, Lcom/android/gallery3d/common/Utils;->waitWithoutInterrupt(Ljava/lang/Object;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     goto :goto_0
 
-    .line 2670
+    .line 2787
     :catchall_0
     move-exception v0
 
@@ -86,7 +86,7 @@
 
     throw v0
 
-    .line 2673
+    .line 2790
     :cond_0
     :try_start_1
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$GetBmpForWallPaperTask;->mResult:Landroid/graphics/Bitmap;
@@ -108,7 +108,7 @@
 
     const/4 v5, 0x0
 
-    .line 2678
+    .line 2795
     iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$GetBmpForWallPaperTask;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     iget-object v2, v2, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
@@ -121,7 +121,7 @@
 
     move-result v0
 
-    .line 2680
+    .line 2797
     .local v0, displayRotation:I
     :try_start_0
     iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$GetBmpForWallPaperTask;->this$0:Lcom/android/gallery3d/app/PhotoPage;
@@ -140,32 +140,32 @@
     .catch Ljava/lang/OutOfMemoryError; {:try_start_0 .. :try_end_0} :catch_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
 
-    .line 2690
+    .line 2807
     :goto_0
     monitor-enter p0
 
-    .line 2691
+    .line 2808
     const/4 v2, 0x1
 
     :try_start_1
     iput-boolean v2, p0, Lcom/android/gallery3d/app/PhotoPage$GetBmpForWallPaperTask;->mResultReady:Z
 
-    .line 2692
+    .line 2809
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
 
-    .line 2693
+    .line 2810
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 2694
+    .line 2811
     return v5
 
-    .line 2681
+    .line 2798
     :catch_0
     move-exception v1
 
-    .line 2682
+    .line 2799
     .local v1, e:Ljava/lang/OutOfMemoryError;
     const-string v2, "Gallery2"
 
@@ -173,10 +173,10 @@
 
     invoke-static {v2, v3}, Lcom/android/gallery3d/ui/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2683
+    .line 2800
     iput-object v4, p0, Lcom/android/gallery3d/app/PhotoPage$GetBmpForWallPaperTask;->mResult:Landroid/graphics/Bitmap;
 
-    .line 2684
+    .line 2801
     iget-object v2, p0, Lcom/android/gallery3d/app/PhotoPage$GetBmpForWallPaperTask;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     iget-object v2, v2, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
@@ -189,7 +189,7 @@
 
     check-cast v3, Landroid/app/Activity;
 
-    const v4, 0x7f0a01ef
+    const v4, 0x7f0a01fe
 
     invoke-virtual {v3, v4}, Landroid/app/Activity;->getString(I)Ljava/lang/String;
 
@@ -203,16 +203,16 @@
 
     goto :goto_0
 
-    .line 2685
+    .line 2802
     .end local v1           #e:Ljava/lang/OutOfMemoryError;
     :catch_1
     move-exception v1
 
-    .line 2686
+    .line 2803
     .local v1, e:Ljava/lang/Exception;
     iput-object v4, p0, Lcom/android/gallery3d/app/PhotoPage$GetBmpForWallPaperTask;->mResult:Landroid/graphics/Bitmap;
 
-    .line 2687
+    .line 2804
     const-string v2, "Gallery2"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -241,7 +241,7 @@
 
     goto :goto_0
 
-    .line 2693
+    .line 2810
     .end local v1           #e:Ljava/lang/Exception;
     :catchall_0
     move-exception v2

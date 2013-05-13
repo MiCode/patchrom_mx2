@@ -40,7 +40,7 @@
 
     const/4 v2, 0x0
 
-    .line 70
+    .line 72
     new-instance v0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
 
     const-string v1, "MUSIC_APP"
@@ -49,7 +49,7 @@
 
     sput-object v0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;->MUSIC_APP:Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
 
-    .line 71
+    .line 73
     new-instance v0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
 
     const-string v1, "MUSICONLINE_APP"
@@ -58,7 +58,7 @@
 
     sput-object v0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;->MUSICONLINE_APP:Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
 
-    .line 69
+    .line 71
     const/4 v0, 0x2
 
     new-array v0, v0, [Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
@@ -87,7 +87,7 @@
     .end annotation
 
     .prologue
-    .line 69
+    .line 71
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -98,7 +98,7 @@
     .parameter "name"
 
     .prologue
-    .line 69
+    .line 71
     const-class v0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -114,7 +114,7 @@
     .locals 1
 
     .prologue
-    .line 69
+    .line 71
     sget-object v0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;->$VALUES:[Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;
 
     invoke-virtual {v0}, [Lcom/meizu/internal/policy/impl/LockControllerMonitor$MusicAppName;->clone()Ljava/lang/Object;

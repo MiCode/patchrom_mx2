@@ -33,5 +33,8 @@
 .method public abstract shouldInterceptTouchEvent(Landroid/view/MotionEvent;)Z
 .end method
 
+.method public abstract shouldSkipWebKitClick(Landroid/view/MotionEvent;)Z
+.end method
+
 .method public abstract showTapHighlight(Z)V
 .end method

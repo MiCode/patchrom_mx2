@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="emo_row_count_mz">3</integer>
+    <integer name="emo_col_count_mz">8</integer>
+</resources>

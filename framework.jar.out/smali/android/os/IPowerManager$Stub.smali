@@ -56,6 +56,8 @@
 
 .field static final TRANSACTION_isScreenOn:I = 0xe
 
+.field static final TRANSACTION_isUsbFastChargerSwitching:I = 0x1f
+
 .field static final TRANSACTION_preventScreenOn:I = 0xd
 
 .field static final TRANSACTION_reboot:I = 0xf
@@ -79,6 +81,8 @@
 .field static final TRANSACTION_setScreenDimState:I = 0x19
 
 .field static final TRANSACTION_setStayOnSetting:I = 0xb
+
+.field static final TRANSACTION_switchingUsbFastCharger:I = 0x20
 
 .field static final TRANSACTION_updateWakeLockWorkSource:I = 0x2
 
@@ -180,7 +184,7 @@
     .line 39
     sparse-switch p1, :sswitch_data_0
 
-    .line 356
+    .line 374
     invoke-super {p0, p1, p2, p3, p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v7
@@ -1079,6 +1083,64 @@
 
     goto/16 :goto_0
 
+    .line 357
+    .end local v6           #_result:Z
+    :sswitch_1f
+    const-string v9, "android.os.IPowerManager"
+
+    invoke-virtual {p2, v9}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 358
+    invoke-virtual {p0}, Landroid/os/IPowerManager$Stub;->isUsbFastChargerSwitching()Z
+
+    move-result v6
+
+    .line 359
+    .restart local v6       #_result:Z
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 360
+    if-eqz v6, :cond_a
+
+    move v8, v7
+
+    :cond_a
+    invoke-virtual {p3, v8}, Landroid/os/Parcel;->writeInt(I)V
+
+    goto/16 :goto_0
+
+    .line 365
+    .end local v6           #_result:Z
+    :sswitch_20
+    const-string v9, "android.os.IPowerManager"
+
+    invoke-virtual {p2, v9}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 367
+    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    .line 368
+    .local v0, _arg0:I
+    invoke-virtual {p0, v0}, Landroid/os/IPowerManager$Stub;->switchingUsbFastCharger(I)Z
+
+    move-result v6
+
+    .line 369
+    .restart local v6       #_result:Z
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 370
+    if-eqz v6, :cond_b
+
+    move v8, v7
+
+    :cond_b
+    invoke-virtual {p3, v8}, Landroid/os/Parcel;->writeInt(I)V
+
+    goto/16 :goto_0
+
     .line 39
     nop
 
@@ -1114,6 +1176,8 @@
         0x1c -> :sswitch_1c
         0x1d -> :sswitch_1d
         0x1e -> :sswitch_1e
+        0x1f -> :sswitch_1f
+        0x20 -> :sswitch_20
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method

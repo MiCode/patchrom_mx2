@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 4731
+    .line 4883
     iput-object p1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$19;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,14 +41,14 @@
     .locals 2
 
     .prologue
-    .line 4733
+    .line 4885
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "com.meizu.action.SHOW_GESTURE_BAR"
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 4734
+    .line 4887
     .local v0, i:Landroid/content/Intent;
     iget-object v1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$19;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
@@ -56,6 +56,6 @@
 
     invoke-virtual {v1, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 4735
+    .line 4888
     return-void
 .end method

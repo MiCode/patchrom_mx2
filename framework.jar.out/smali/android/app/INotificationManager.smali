@@ -79,6 +79,14 @@
     .end annotation
 .end method
 
+.method public abstract enqueueToastUnrepeated(Ljava/lang/String;Landroid/app/ITransientNotification;Ljava/lang/CharSequence;I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract setNotificationsEnabledForPackage(Ljava/lang/String;Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {

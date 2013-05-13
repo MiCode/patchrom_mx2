@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources>
+    <string-array name="screen_key_long_press_default_action" translatable="false">
+        <item>voice_assistant</item>
+        <item>none</item>
+        <item>none</item>
+    </string-array>
+</resources>

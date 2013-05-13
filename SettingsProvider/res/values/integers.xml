@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="def_screen_off_timeout">60000</integer>
-    <integer name="def_screen_brightness">180</integer>
+    <integer name="def_screen_brightness">100</integer>
     <integer name="def_button_brightness">50</integer>
     <integer name="def_screen_brightness_hk">255</integer>
-    <integer name="def_button_brightness_hk">100</integer>
+    <integer name="def_button_brightness_hk">125</integer>
     <integer name="def_volume_ring_hk">7</integer>
     <integer name="def_cpu_l">1</integer>
     <integer name="def_network_preference">1</integer>
@@ -30,4 +30,6 @@
     <integer name="def_pointer_speed">0</integer>
     <integer name="def_max_dhcp_retries">9</integer>
     <integer name="def_meizu_app_font_size">0</integer>
+    <integer name="def_fit_brightness_value">100</integer>
+    <integer name="def_fit_sensor_value">180</integer>
 </resources>

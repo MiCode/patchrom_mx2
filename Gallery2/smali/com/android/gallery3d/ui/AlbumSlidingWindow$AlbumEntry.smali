@@ -21,6 +21,8 @@
 
 .field private contentLoader:Lcom/android/gallery3d/ui/BitmapLoader;
 
+.field public fontScale:F
+
 .field public isPanorama:Z
 
 .field public isWaitDisplayed:Z
@@ -40,6 +42,8 @@
 .field private refCount:I
 
 .field public rotation:I
+
+.field public slotIndex:I
 
 .field public version:J
 
@@ -162,7 +166,7 @@
     .parameter "thumbWidth"
 
     .prologue
-    .line 81
+    .line 83
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->item:Lcom/android/gallery3d/data/MediaItem;
 
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->rect:Landroid/graphics/Rect;
@@ -173,7 +177,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->rect:Landroid/graphics/Rect;
 
-    .line 82
+    .line 84
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->rect:Landroid/graphics/Rect;
 
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->rect:Landroid/graphics/Rect;
@@ -196,6 +200,6 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/graphics/Rect;->offset(II)V
 
-    .line 83
+    .line 85
     return-void
 .end method

@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1093
+    .line 1003
     iput-object p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,138 +38,74 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .locals 3
+    .locals 2
     .parameter "v"
 
     .prologue
-    const v2, 0x7f0200de
-
-    const/4 v1, 0x0
-
-    .line 1096
+    .line 1006
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
-    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$800(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    move-result v0
+    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mSysBrightness:I
+    invoke-static {v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6600(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
 
-    if-eqz v0, :cond_1
+    move-result v1
 
-    .line 1097
+    add-int/lit8 v1, v1, -0x2
+
+    mul-int/lit16 v1, v1, 0x2710
+
+    div-int/lit16 v1, v1, 0xfd
+
+    #setter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
+    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6502(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
+
+    .line 1007
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
-    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$7700(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 1098
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
-
-    #setter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$7702(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
-
-    .line 1099
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
-
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
-    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$7800(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/seekbar/VerSeekBar;
+    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBar:Lcom/android/gallery3d/seekbar/VerSeekBar;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6700(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/seekbar/VerSeekBar;
 
     move-result-object v0
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
-    invoke-static {v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$7700(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
+    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
+    invoke-static {v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6500(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
 
     move-result v1
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setProgress(I)V
 
-    .line 1100
+    .line 1008
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
-    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$7900(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/ImageButton;
+    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$2900(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     move-result-object v0
 
-    invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
+    if-eqz v0, :cond_0
 
-    .line 1101
+    .line 1009
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
-    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$2400(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$2900(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     move-result-object v0
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
 
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
-    invoke-static {v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$7700(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
+    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mSysBrightness:I
+    invoke-static {v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$6600(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
 
     move-result v1
 
-    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setDlnaVol(I)V
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->setWinBrightness(I)V
 
-    .line 1111
+    .line 1011
     :cond_0
-    :goto_0
     return-void
-
-    .line 1104
-    :cond_1
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
-
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
-    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$8000(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 1105
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
-
-    #calls: Lcom/android/gallery3d/app/MovieControllerOverlay;->setVolumeLevel(I)V
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$8100(Lcom/android/gallery3d/app/MovieControllerOverlay;I)V
-
-    .line 1106
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
-
-    #setter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$8002(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
-
-    .line 1107
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
-
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
-    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$7800(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/seekbar/VerSeekBar;
-
-    move-result-object v0
-
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
-
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
-    invoke-static {v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$8000(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
-
-    move-result v1
-
-    invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setProgress(I)V
-
-    .line 1108
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay$11;->this$0:Lcom/android/gallery3d/app/MovieControllerOverlay;
-
-    #getter for: Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
-    invoke-static {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->access$7900(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/ImageButton;
-
-    move-result-object v0
-
-    invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
-
-    goto :goto_0
 .end method

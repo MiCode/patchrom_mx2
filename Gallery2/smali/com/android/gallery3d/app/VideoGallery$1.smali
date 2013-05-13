@@ -43,7 +43,7 @@
     .parameter "ft"
 
     .prologue
-    .line 237
+    .line 243
     const-string v6, "Gallery2"
 
     new-instance v7, Ljava/lang/StringBuilder;
@@ -70,14 +70,14 @@
 
     invoke-static {v6, v7}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 238
+    .line 244
     iget-object v6, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     invoke-virtual {v6}, Lcom/android/gallery3d/app/VideoGallery;->getFragmentManager()Landroid/app/FragmentManager;
 
     move-result-object v2
 
-    .line 239
+    .line 245
     .local v2, fm:Landroid/app/FragmentManager;
     invoke-virtual {p1}, Landroid/app/ActionBar$Tab;->getTag()Ljava/lang/Object;
 
@@ -85,17 +85,17 @@
 
     check-cast v5, Ljava/lang/String;
 
-    .line 240
+    .line 246
     .local v5, tag:Ljava/lang/String;
     const/4 v4, 0x0
 
-    .line 241
+    .line 247
     .local v4, isRemove:Z
     invoke-virtual {v2, v5}, Landroid/app/FragmentManager;->findFragmentByTag(Ljava/lang/String;)Landroid/app/Fragment;
 
     move-result-object v3
 
-    .line 242
+    .line 248
     .local v3, fragment:Landroid/app/Fragment;
     invoke-virtual {p1}, Landroid/app/ActionBar$Tab;->getPosition()I
 
@@ -103,13 +103,13 @@
 
     packed-switch v6, :pswitch_data_0
 
-    .line 263
+    .line 268
     :cond_0
     :goto_0
     :pswitch_0
     if-nez v4, :cond_1
 
-    .line 264
+    .line 269
     iget-object v6, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     invoke-virtual {p1}, Landroid/app/ActionBar$Tab;->getPosition()I
@@ -118,11 +118,11 @@
 
     invoke-virtual {v6, v3, v7}, Lcom/android/gallery3d/app/VideoGallery;->chooseTabAgian(Landroid/app/Fragment;I)V
 
-    .line 266
+    .line 271
     :cond_1
     return-void
 
-    .line 244
+    .line 250
     :pswitch_1
     const-string v6, "tag_favorite"
 
@@ -130,11 +130,11 @@
 
     move-result-object v1
 
-    .line 245
+    .line 251
     .local v1, favoritefragment:Landroid/app/Fragment;
     if-eqz v1, :cond_0
 
-    .line 246
+    .line 252
     invoke-virtual {v2}, Landroid/app/FragmentManager;->beginTransaction()Landroid/app/FragmentTransaction;
 
     move-result-object v6
@@ -145,18 +145,18 @@
 
     invoke-virtual {v6}, Landroid/app/FragmentTransaction;->commitAllowingStateLoss()I
 
-    .line 247
-    invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->access$200()Lcom/android/gallery3d/app/GalleryActionBar;
+    .line 253
+    invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->access$400()Lcom/android/gallery3d/app/GalleryActionBar;
 
     move-result-object v6
 
-    const v7, 0x7f0a01d3
+    const v7, 0x7f0a01e2
 
     invoke-virtual {v6, v7}, Lcom/android/gallery3d/app/GalleryActionBar;->setTitle(I)V
 
     goto :goto_0
 
-    .line 251
+    .line 257
     .end local v1           #favoritefragment:Landroid/app/Fragment;
     :pswitch_2
     const-string v6, "chaneldetailtabFragment"
@@ -165,11 +165,11 @@
 
     move-result-object v0
 
-    .line 252
+    .line 258
     .local v0, chaneldetailtabFragment:Landroid/app/Fragment;
     if-eqz v0, :cond_2
 
-    .line 253
+    .line 259
     invoke-virtual {v2}, Landroid/app/FragmentManager;->beginTransaction()Landroid/app/FragmentTransaction;
 
     move-result-object v6
@@ -180,50 +180,29 @@
 
     invoke-virtual {v6}, Landroid/app/FragmentTransaction;->commitAllowingStateLoss()I
 
-    .line 255
+    .line 261
     :cond_2
     const/4 v4, 0x1
 
     move-object v6, v3
 
-    .line 256
+    .line 262
     check-cast v6, Lcom/meizu/video/client/ui/module/chanel/ChanelFragment;
 
     invoke-virtual {v6}, Lcom/meizu/video/client/ui/module/chanel/ChanelFragment;->setActionBar()V
 
-    .line 257
-    invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->access$200()Lcom/android/gallery3d/app/GalleryActionBar;
-
-    move-result-object v6
-
-    invoke-virtual {v6}, Lcom/android/gallery3d/app/GalleryActionBar;->getActionBar()Landroid/app/ActionBar;
-
-    move-result-object v6
-
-    iget-object v7, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
-
-    invoke-virtual {v7}, Lcom/android/gallery3d/app/VideoGallery;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v7
-
-    const/high16 v8, 0x7f02
-
-    invoke-virtual {v7, v8}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v7
-
-    invoke-virtual {v6, v7}, Landroid/app/ActionBar;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
-
     move-object v6, v3
 
-    .line 258
+    .line 263
     check-cast v6, Lcom/meizu/video/client/ui/module/chanel/ChanelFragment;
 
     invoke-virtual {v6}, Lcom/meizu/video/client/ui/module/chanel/ChanelFragment;->checkDataAndUpdateView()V
 
     goto :goto_0
 
-    .line 242
+    .line 248
+    nop
+
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_1
@@ -238,7 +217,7 @@
     .parameter "ft"
 
     .prologue
-    .line 130
+    .line 137
     invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->access$000()Z
 
     move-result v7
@@ -251,12 +230,12 @@
 
     if-eqz v7, :cond_2
 
-    .line 131
+    .line 138
     const/4 v7, 0x1
 
     invoke-static {v7}, Lcom/android/gallery3d/app/VideoGallery;->access$002(Z)Z
 
-    .line 132
+    .line 139
     iget-object v7, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     invoke-virtual {v7}, Lcom/android/gallery3d/app/VideoGallery;->getApplicationContext()Landroid/content/Context;
@@ -269,22 +248,22 @@
 
     if-eqz v7, :cond_1
 
-    .line 133
+    .line 140
     iget-object v7, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     invoke-virtual {v7}, Lcom/android/gallery3d/app/VideoGallery;->goToMstore()V
 
-    .line 134
+    .line 141
     iget-object v7, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     invoke-virtual {v7}, Lcom/android/gallery3d/app/VideoGallery;->finish()V
 
-    .line 233
+    .line 239
     :cond_0
     :goto_0
     return-void
 
-    .line 137
+    .line 144
     :cond_1
     iget-object v7, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
@@ -294,7 +273,7 @@
 
     invoke-static {v7}, Lcom/meizu/video/client/util/CommonUtil;->reportLoginForLS(Landroid/content/Context;)V
 
-    .line 141
+    .line 148
     :cond_2
     const-string v7, "Gallery2"
 
@@ -322,14 +301,14 @@
 
     invoke-static {v7, v8}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 142
+    .line 149
     iget-object v7, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     invoke-virtual {v7}, Lcom/android/gallery3d/app/VideoGallery;->getFragmentManager()Landroid/app/FragmentManager;
 
     move-result-object v2
 
-    .line 143
+    .line 150
     .local v2, fm:Landroid/app/FragmentManager;
     invoke-virtual {p1}, Landroid/app/ActionBar$Tab;->getTag()Ljava/lang/Object;
 
@@ -337,28 +316,28 @@
 
     check-cast v6, Ljava/lang/String;
 
-    .line 144
+    .line 151
     .local v6, tag:Ljava/lang/String;
     invoke-virtual {v2, v6}, Landroid/app/FragmentManager;->findFragmentByTag(Ljava/lang/String;)Landroid/app/Fragment;
 
     move-result-object v3
 
-    .line 145
+    .line 152
     .local v3, fragment:Landroid/app/Fragment;
     const/4 v4, 0x0
 
-    .line 146
+    .line 153
     .local v4, isRemove:Z
     if-nez v3, :cond_6
 
-    .line 147
+    .line 154
     invoke-virtual {p1}, Landroid/app/ActionBar$Tab;->getPosition()I
 
     move-result v7
 
     packed-switch v7, :pswitch_data_0
 
-    .line 149
+    .line 156
     new-instance v7, Ljava/lang/IllegalArgumentException;
 
     new-instance v8, Ljava/lang/StringBuilder;
@@ -387,7 +366,7 @@
 
     throw v7
 
-    .line 151
+    .line 158
     :pswitch_0
     new-instance v3, Lcom/android/gallery3d/app/VideoGalleryFragment;
 
@@ -396,7 +375,7 @@
 
     invoke-direct {v3, v7}, Lcom/android/gallery3d/app/VideoGalleryFragment;-><init>(Lcom/android/gallery3d/app/GalleryActivity;)V
 
-    .line 163
+    .line 170
     .restart local v3       #fragment:Landroid/app/Fragment;
     :goto_1
     invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->access$100()I
@@ -415,25 +394,25 @@
 
     if-eq v7, v8, :cond_3
 
-    .line 164
+    .line 171
     const-string v7, "chaneldetailtabFragment"
 
     invoke-virtual {v2, v7}, Landroid/app/FragmentManager;->findFragmentByTag(Ljava/lang/String;)Landroid/app/Fragment;
 
     move-result-object v0
 
-    .line 165
+    .line 172
     .local v0, chaneldetailtabFragment:Landroid/app/Fragment;
     if-eqz v0, :cond_3
 
     move-object v7, v0
 
-    .line 166
+    .line 173
     check-cast v7, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
     invoke-virtual {v7}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->removeListFragments()V
 
-    .line 167
+    .line 174
     invoke-virtual {v2}, Landroid/app/FragmentManager;->beginTransaction()Landroid/app/FragmentTransaction;
 
     move-result-object v7
@@ -444,7 +423,7 @@
 
     invoke-virtual {v7}, Landroid/app/FragmentTransaction;->commitAllowingStateLoss()I
 
-    .line 170
+    .line 177
     .end local v0           #chaneldetailtabFragment:Landroid/app/Fragment;
     :cond_3
     invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->access$100()I
@@ -463,20 +442,20 @@
 
     if-eq v7, v8, :cond_4
 
-    .line 171
+    .line 178
     const-string v7, "tag_search"
 
     invoke-virtual {v2, v7}, Landroid/app/FragmentManager;->findFragmentByTag(Ljava/lang/String;)Landroid/app/Fragment;
 
     move-result-object v5
 
-    .line 172
+    .line 179
     .local v5, searchfragment:Landroid/app/Fragment;
     instance-of v7, v5, Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     if-eqz v7, :cond_4
 
-    .line 173
+    .line 180
     check-cast v5, Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     .end local v5           #searchfragment:Landroid/app/Fragment;
@@ -484,13 +463,13 @@
 
     invoke-virtual {v5, v7}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->showOrHideInputSoftKeyboard(Z)V
 
-    .line 176
+    .line 183
     :cond_4
     invoke-virtual {v2}, Landroid/app/FragmentManager;->beginTransaction()Landroid/app/FragmentTransaction;
 
     move-result-object v7
 
-    const v8, 0x7f0d0184
+    const v8, 0x7f0d01a2
 
     invoke-virtual {v7, v8, v3, v6}, Landroid/app/FragmentTransaction;->add(ILandroid/app/Fragment;Ljava/lang/String;)Landroid/app/FragmentTransaction;
 
@@ -498,7 +477,7 @@
 
     invoke-virtual {v7}, Landroid/app/FragmentTransaction;->commitAllowingStateLoss()I
 
-    .line 228
+    .line 234
     :cond_5
     :goto_2
     invoke-virtual {p1}, Landroid/app/ActionBar$Tab;->getPosition()I
@@ -507,47 +486,47 @@
 
     invoke-static {v7}, Lcom/android/gallery3d/app/VideoGallery;->access$102(I)I
 
-    .line 230
+    .line 236
     if-nez v4, :cond_0
 
-    .line 231
+    .line 237
     iget-object v7, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     iget-object v8, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     #getter for: Lcom/android/gallery3d/app/VideoGallery;->mUpdateActionBarTitleAfterChanged:Z
-    invoke-static {v8}, Lcom/android/gallery3d/app/VideoGallery;->access$300(Lcom/android/gallery3d/app/VideoGallery;)Z
+    invoke-static {v8}, Lcom/android/gallery3d/app/VideoGallery;->access$200(Lcom/android/gallery3d/app/VideoGallery;)Z
 
     move-result v8
 
     #calls: Lcom/android/gallery3d/app/VideoGallery;->setActionBar(Landroid/app/Fragment;Z)V
-    invoke-static {v7, v3, v8}, Lcom/android/gallery3d/app/VideoGallery;->access$400(Lcom/android/gallery3d/app/VideoGallery;Landroid/app/Fragment;Z)V
+    invoke-static {v7, v3, v8}, Lcom/android/gallery3d/app/VideoGallery;->access$300(Lcom/android/gallery3d/app/VideoGallery;Landroid/app/Fragment;Z)V
 
     goto/16 :goto_0
 
-    .line 154
+    .line 161
     :pswitch_1
     new-instance v3, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;
 
     .end local v3           #fragment:Landroid/app/Fragment;
     invoke-direct {v3}, Lcom/meizu/video/client/ui/module/recommend/RecommendFragment;-><init>()V
 
-    .line 155
+    .line 162
     .restart local v3       #fragment:Landroid/app/Fragment;
     goto :goto_1
 
-    .line 157
+    .line 164
     :pswitch_2
     new-instance v3, Lcom/meizu/video/client/ui/module/chanel/ChanelFragment;
 
     .end local v3           #fragment:Landroid/app/Fragment;
     invoke-direct {v3}, Lcom/meizu/video/client/ui/module/chanel/ChanelFragment;-><init>()V
 
-    .line 158
+    .line 165
     .restart local v3       #fragment:Landroid/app/Fragment;
     goto :goto_1
 
-    .line 160
+    .line 167
     :pswitch_3
     new-instance v3, Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
@@ -557,7 +536,7 @@
     .restart local v3       #fragment:Landroid/app/Fragment;
     goto :goto_1
 
-    .line 179
+    .line 186
     :cond_6
     invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->access$100()I
 
@@ -571,18 +550,18 @@
 
     if-eqz v7, :cond_9
 
-    .line 180
+    .line 187
     const-string v7, "tag_favorite"
 
     invoke-virtual {v2, v7}, Landroid/app/FragmentManager;->findFragmentByTag(Ljava/lang/String;)Landroid/app/Fragment;
 
     move-result-object v1
 
-    .line 181
+    .line 188
     .local v1, favoritefragment:Landroid/app/Fragment;
     if-eqz v1, :cond_7
 
-    .line 182
+    .line 189
     invoke-virtual {v2}, Landroid/app/FragmentManager;->beginTransaction()Landroid/app/FragmentTransaction;
 
     move-result-object v7
@@ -593,7 +572,7 @@
 
     invoke-virtual {v7}, Landroid/app/FragmentTransaction;->commitAllowingStateLoss()I
 
-    .line 197
+    .line 204
     .end local v1           #favoritefragment:Landroid/app/Fragment;
     :cond_7
     :goto_3
@@ -609,18 +588,18 @@
 
     if-nez v7, :cond_b
 
-    .line 198
+    .line 205
     const-string v7, "tag_favorite"
 
     invoke-virtual {v2, v7}, Landroid/app/FragmentManager;->findFragmentByTag(Ljava/lang/String;)Landroid/app/Fragment;
 
     move-result-object v1
 
-    .line 199
+    .line 206
     .restart local v1       #favoritefragment:Landroid/app/Fragment;
     if-eqz v1, :cond_8
 
-    .line 200
+    .line 207
     invoke-virtual {v2}, Landroid/app/FragmentManager;->beginTransaction()Landroid/app/FragmentTransaction;
 
     move-result-object v7
@@ -631,7 +610,7 @@
 
     invoke-virtual {v7}, Landroid/app/FragmentTransaction;->commitAllowingStateLoss()I
 
-    .line 220
+    .line 226
     .end local v1           #favoritefragment:Landroid/app/Fragment;
     :cond_8
     :goto_4
@@ -645,10 +624,10 @@
 
     invoke-virtual {v7}, Landroid/app/FragmentTransaction;->commitAllowingStateLoss()I
 
-    .line 222
+    .line 228
     if-nez v4, :cond_5
 
-    .line 223
+    .line 229
     iget-object v7, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     invoke-virtual {p1}, Landroid/app/ActionBar$Tab;->getPosition()I
@@ -659,7 +638,7 @@
 
     goto :goto_2
 
-    .line 184
+    .line 191
     :cond_9
     invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->access$100()I
 
@@ -677,25 +656,25 @@
 
     if-eq v7, v8, :cond_a
 
-    .line 185
+    .line 192
     const-string v7, "chaneldetailtabFragment"
 
     invoke-virtual {v2, v7}, Landroid/app/FragmentManager;->findFragmentByTag(Ljava/lang/String;)Landroid/app/Fragment;
 
     move-result-object v0
 
-    .line 186
+    .line 193
     .restart local v0       #chaneldetailtabFragment:Landroid/app/Fragment;
     if-eqz v0, :cond_7
 
     move-object v7, v0
 
-    .line 187
+    .line 194
     check-cast v7, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
     invoke-virtual {v7}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->removeListFragments()V
 
-    .line 188
+    .line 195
     invoke-virtual {v2}, Landroid/app/FragmentManager;->beginTransaction()Landroid/app/FragmentTransaction;
 
     move-result-object v7
@@ -708,7 +687,7 @@
 
     goto :goto_3
 
-    .line 190
+    .line 197
     .end local v0           #chaneldetailtabFragment:Landroid/app/Fragment;
     :cond_a
     invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->access$100()I
@@ -727,20 +706,20 @@
 
     if-eq v7, v8, :cond_7
 
-    .line 191
+    .line 198
     const-string v7, "tag_search"
 
     invoke-virtual {v2, v7}, Landroid/app/FragmentManager;->findFragmentByTag(Ljava/lang/String;)Landroid/app/Fragment;
 
     move-result-object v5
 
-    .line 192
+    .line 199
     .restart local v5       #searchfragment:Landroid/app/Fragment;
     instance-of v7, v5, Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     if-eqz v7, :cond_7
 
-    .line 193
+    .line 200
     check-cast v5, Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     .end local v5           #searchfragment:Landroid/app/Fragment;
@@ -750,7 +729,7 @@
 
     goto :goto_3
 
-    .line 202
+    .line 209
     :cond_b
     invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->access$100()I
 
@@ -768,25 +747,25 @@
 
     if-ne v7, v8, :cond_c
 
-    .line 203
+    .line 210
     const-string v7, "chaneldetailtabFragment"
 
     invoke-virtual {v2, v7}, Landroid/app/FragmentManager;->findFragmentByTag(Ljava/lang/String;)Landroid/app/Fragment;
 
     move-result-object v0
 
-    .line 204
+    .line 211
     .restart local v0       #chaneldetailtabFragment:Landroid/app/Fragment;
     if-eqz v0, :cond_8
 
     move-object v7, v0
 
-    .line 205
+    .line 212
     check-cast v7, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;
 
     invoke-virtual {v7}, Lcom/meizu/video/client/ui/module/chanel/ChanelDetailTabFragment;->removeListFragments()V
 
-    .line 206
+    .line 213
     invoke-virtual {v2}, Landroid/app/FragmentManager;->beginTransaction()Landroid/app/FragmentTransaction;
 
     move-result-object v7
@@ -797,54 +776,31 @@
 
     invoke-virtual {v7}, Landroid/app/FragmentTransaction;->commitAllowingStateLoss()I
 
-    .line 207
+    .line 214
     const/4 v4, 0x1
 
-    .line 208
+    .line 215
     instance-of v7, v3, Lcom/meizu/video/client/ui/module/chanel/ChanelFragment;
 
     if-eqz v7, :cond_8
 
     move-object v7, v3
 
-    .line 209
+    .line 216
     check-cast v7, Lcom/meizu/video/client/ui/module/chanel/ChanelFragment;
 
     invoke-virtual {v7}, Lcom/meizu/video/client/ui/module/chanel/ChanelFragment;->setActionBar()V
 
-    .line 210
-    invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->access$200()Lcom/android/gallery3d/app/GalleryActionBar;
-
-    move-result-object v7
-
-    invoke-virtual {v7}, Lcom/android/gallery3d/app/GalleryActionBar;->getActionBar()Landroid/app/ActionBar;
-
-    move-result-object v7
-
-    iget-object v8, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
-
-    invoke-virtual {v8}, Lcom/android/gallery3d/app/VideoGallery;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v8
-
-    const/high16 v9, 0x7f02
-
-    invoke-virtual {v8, v9}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v8
-
-    invoke-virtual {v7, v8}, Landroid/app/ActionBar;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
-
     move-object v7, v3
 
-    .line 211
+    .line 217
     check-cast v7, Lcom/meizu/video/client/ui/module/chanel/ChanelFragment;
 
     invoke-virtual {v7}, Lcom/meizu/video/client/ui/module/chanel/ChanelFragment;->checkDataAndUpdateView()V
 
     goto/16 :goto_4
 
-    .line 214
+    .line 220
     .end local v0           #chaneldetailtabFragment:Landroid/app/Fragment;
     :cond_c
     invoke-static {}, Lcom/android/gallery3d/app/VideoGallery;->access$100()I
@@ -863,14 +819,14 @@
 
     if-ne v7, v8, :cond_8
 
-    .line 215
+    .line 221
     instance-of v7, v3, Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     if-eqz v7, :cond_8
 
     move-object v7, v3
 
-    .line 216
+    .line 222
     check-cast v7, Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     const/4 v8, 0x1
@@ -879,9 +835,7 @@
 
     goto/16 :goto_4
 
-    .line 147
-    nop
-
+    .line 154
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -892,7 +846,7 @@
 .end method
 
 .method public onTabUnselected(Landroid/app/ActionBar$Tab;Landroid/app/FragmentTransaction;)V
-    .locals 3
+    .locals 5
     .parameter "tab"
     .parameter "ft"
 
@@ -900,19 +854,19 @@
     .line 118
     invoke-virtual {p1}, Landroid/app/ActionBar$Tab;->getTag()Ljava/lang/Object;
 
-    move-result-object v1
-
-    check-cast v1, Ljava/lang/String;
-
-    .line 119
-    .local v1, tag:Ljava/lang/String;
-    iget-object v2, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
-
-    invoke-virtual {v2}, Lcom/android/gallery3d/app/VideoGallery;->getFragmentManager()Landroid/app/FragmentManager;
-
     move-result-object v2
 
-    invoke-virtual {v2, v1}, Landroid/app/FragmentManager;->findFragmentByTag(Ljava/lang/String;)Landroid/app/Fragment;
+    check-cast v2, Ljava/lang/String;
+
+    .line 119
+    .local v2, tag:Ljava/lang/String;
+    iget-object v3, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
+
+    invoke-virtual {v3}, Lcom/android/gallery3d/app/VideoGallery;->getFragmentManager()Landroid/app/FragmentManager;
+
+    move-result-object v3
+
+    invoke-virtual {v3, v2}, Landroid/app/FragmentManager;->findFragmentByTag(Ljava/lang/String;)Landroid/app/Fragment;
 
     move-result-object v0
 
@@ -921,23 +875,65 @@
     if-eqz v0, :cond_0
 
     .line 121
-    iget-object v2, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
+    iget-object v3, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
-    invoke-virtual {v2}, Lcom/android/gallery3d/app/VideoGallery;->getFragmentManager()Landroid/app/FragmentManager;
+    invoke-virtual {v3}, Lcom/android/gallery3d/app/VideoGallery;->getFragmentManager()Landroid/app/FragmentManager;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-virtual {v2}, Landroid/app/FragmentManager;->beginTransaction()Landroid/app/FragmentTransaction;
+    invoke-virtual {v3}, Landroid/app/FragmentManager;->beginTransaction()Landroid/app/FragmentTransaction;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-virtual {v2, v0}, Landroid/app/FragmentTransaction;->hide(Landroid/app/Fragment;)Landroid/app/FragmentTransaction;
+    invoke-virtual {v3, v0}, Landroid/app/FragmentTransaction;->hide(Landroid/app/Fragment;)Landroid/app/FragmentTransaction;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-virtual {v2}, Landroid/app/FragmentTransaction;->commitAllowingStateLoss()I
+    invoke-virtual {v3}, Landroid/app/FragmentTransaction;->commitAllowingStateLoss()I
 
-    .line 124
+    .line 123
     :cond_0
+    invoke-virtual {p1}, Landroid/app/ActionBar$Tab;->getPosition()I
+
+    move-result v3
+
+    packed-switch v3, :pswitch_data_0
+
+    .line 131
+    :cond_1
+    :goto_0
     return-void
+
+    .line 125
+    :pswitch_0
+    iget-object v3, p0, Lcom/android/gallery3d/app/VideoGallery$1;->this$0:Lcom/android/gallery3d/app/VideoGallery;
+
+    invoke-virtual {v3}, Lcom/android/gallery3d/app/VideoGallery;->getStateManager()Lcom/android/gallery3d/app/StateManager;
+
+    move-result-object v1
+
+    .line 126
+    .local v1, sm:Lcom/android/gallery3d/app/StateManager;
+    invoke-virtual {v1}, Lcom/android/gallery3d/app/StateManager;->getStateCount()I
+
+    move-result v3
+
+    const/4 v4, 0x2
+
+    if-ne v3, v4, :cond_1
+
+    .line 127
+    invoke-virtual {v1}, Lcom/android/gallery3d/app/StateManager;->getTopState()Lcom/android/gallery3d/app/ActivityState;
+
+    move-result-object v3
+
+    invoke-virtual {v1, v3}, Lcom/android/gallery3d/app/StateManager;->finishState(Lcom/android/gallery3d/app/ActivityState;)V
+
+    goto :goto_0
+
+    .line 123
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method

@@ -31,19 +31,19 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 425
+    .line 429
     iput-object p1, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->this$0:Lcom/android/internal/policy/impl/KeyguardViewManager;
 
-    .line 426
+    .line 430
     invoke-direct {p0, p2}, Landroid/widget/ImageView;-><init>(Landroid/content/Context;)V
 
-    .line 422
+    .line 426
     iput-boolean v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->mRealVisible:Z
 
-    .line 423
+    .line 427
     iput v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->mTopOffset:I
 
-    .line 427
+    .line 431
     return-void
 .end method
 
@@ -56,19 +56,19 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 429
+    .line 433
     iput-object p1, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->this$0:Lcom/android/internal/policy/impl/KeyguardViewManager;
 
-    .line 430
+    .line 434
     invoke-direct {p0, p2, p3}, Landroid/widget/ImageView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 422
+    .line 426
     iput-boolean v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->mRealVisible:Z
 
-    .line 423
+    .line 427
     iput v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->mTopOffset:I
 
-    .line 431
+    .line 435
     return-void
 .end method
 
@@ -82,19 +82,19 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 433
+    .line 437
     iput-object p1, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->this$0:Lcom/android/internal/policy/impl/KeyguardViewManager;
 
-    .line 434
+    .line 438
     invoke-direct {p0, p2, p3, p4}, Landroid/widget/ImageView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 422
+    .line 426
     iput-boolean v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->mRealVisible:Z
 
-    .line 423
+    .line 427
     iput v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->mTopOffset:I
 
-    .line 435
+    .line 439
     return-void
 .end method
 
@@ -104,7 +104,7 @@
     .locals 1
 
     .prologue
-    .line 460
+    .line 464
     iget-boolean v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->mRealVisible:Z
 
     return v0
@@ -117,12 +117,12 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 443
+    .line 447
     iget v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->mTopOffset:I
 
     if-lez v0, :cond_0
 
-    .line 444
+    .line 448
     iget v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->mTopOffset:I
 
     neg-int v0, v0
@@ -131,26 +131,26 @@
 
     invoke-virtual {p1, v1, v0}, Landroid/graphics/Canvas;->translate(FF)V
 
-    .line 445
+    .line 449
     invoke-super {p0, p1}, Landroid/widget/ImageView;->onDraw(Landroid/graphics/Canvas;)V
 
-    .line 446
+    .line 450
     iget v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->mTopOffset:I
 
     int-to-float v0, v0
 
     invoke-virtual {p1, v1, v0}, Landroid/graphics/Canvas;->translate(FF)V
 
-    .line 450
+    .line 454
     :goto_0
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->mRealVisible:Z
 
-    .line 451
+    .line 455
     return-void
 
-    .line 448
+    .line 452
     :cond_0
     invoke-super {p0, p1}, Landroid/widget/ImageView;->onDraw(Landroid/graphics/Canvas;)V
 
@@ -162,10 +162,10 @@
     .parameter "topOffset"
 
     .prologue
-    .line 438
+    .line 442
     iput p1, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->mTopOffset:I
 
-    .line 439
+    .line 443
     return-void
 .end method
 
@@ -174,14 +174,14 @@
     .parameter "visibility"
 
     .prologue
-    .line 455
+    .line 459
     invoke-super {p0, p1}, Landroid/widget/ImageView;->setVisibility(I)V
 
-    .line 456
+    .line 460
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager$ScreenshotImageView;->mRealVisible:Z
 
-    .line 457
+    .line 461
     return-void
 .end method

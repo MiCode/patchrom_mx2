@@ -7,6 +7,9 @@
 
 
 # virtual methods
+.method public abstract cancleKeyguard()V
+.end method
+
 .method public abstract goToUnlockScreen()V
 .end method
 

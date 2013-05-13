@@ -23,7 +23,7 @@
     .locals 1
 
     .prologue
-    .line 1425
+    .line 1429
     new-instance v0, Lcom/meizu/widget/MultiWaveView$Ease$Linear$1;
 
     invoke-direct {v0}, Lcom/meizu/widget/MultiWaveView$Ease$Linear$1;-><init>()V
@@ -37,7 +37,7 @@
     .locals 0
 
     .prologue
-    .line 1424
+    .line 1428
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void

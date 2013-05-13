@@ -28,6 +28,8 @@
 
 .field public static final enum VIDEO_ORIENTATION_LANDSCAPE:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
+.field public static final enum VIDEO_ORIENTATION_LANDSCAPE_SENSOR:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
+
 .field public static final enum VIDEO_ORIENTATION_PORTRAIT:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
 .field public static final enum VIDEO_ORIENTATION_SENSOR:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
@@ -35,16 +37,18 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 5
+    .locals 6
 
     .prologue
+    const/4 v5, 0x3
+
     const/4 v4, 0x2
 
     const/4 v3, 0x1
 
     const/4 v2, 0x0
 
-    .line 63
+    .line 69
     new-instance v0, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
     const-string v1, "VIDEO_ORIENTATION_PORTRAIT"
@@ -53,7 +57,7 @@
 
     sput-object v0, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->VIDEO_ORIENTATION_PORTRAIT:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
-    .line 64
+    .line 70
     new-instance v0, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
     const-string v1, "VIDEO_ORIENTATION_LANDSCAPE"
@@ -62,17 +66,26 @@
 
     sput-object v0, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->VIDEO_ORIENTATION_LANDSCAPE:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
-    .line 65
+    .line 71
+    new-instance v0, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
+
+    const-string v1, "VIDEO_ORIENTATION_LANDSCAPE_SENSOR"
+
+    invoke-direct {v0, v1, v4}, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->VIDEO_ORIENTATION_LANDSCAPE_SENSOR:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
+
+    .line 72
     new-instance v0, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
     const-string v1, "VIDEO_ORIENTATION_SENSOR"
 
-    invoke-direct {v0, v1, v4}, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v1, v5}, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->VIDEO_ORIENTATION_SENSOR:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
-    .line 62
-    const/4 v0, 0x3
+    .line 68
+    const/4 v0, 0x4
 
     new-array v0, v0, [Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
@@ -84,9 +97,13 @@
 
     aput-object v1, v0, v3
 
-    sget-object v1, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->VIDEO_ORIENTATION_SENSOR:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
+    sget-object v1, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->VIDEO_ORIENTATION_LANDSCAPE_SENSOR:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
     aput-object v1, v0, v4
+
+    sget-object v1, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->VIDEO_ORIENTATION_SENSOR:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
+
+    aput-object v1, v0, v5
 
     sput-object v0, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->$VALUES:[Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
@@ -104,7 +121,7 @@
     .end annotation
 
     .prologue
-    .line 62
+    .line 68
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -115,7 +132,7 @@
     .parameter
 
     .prologue
-    .line 62
+    .line 68
     const-class v0, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -131,7 +148,7 @@
     .locals 1
 
     .prologue
-    .line 62
+    .line 68
     sget-object v0, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->$VALUES:[Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
     invoke-virtual {v0}, [Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->clone()Ljava/lang/Object;

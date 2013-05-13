@@ -43,6 +43,12 @@
     .end annotation
 .end field
 
+.field private mAdnCacheManager:Lcom/android/internal/telephony/AdnCacheManager;
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_FIELD:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+.end field
+
 .field private mFh:Lcom/android/internal/telephony/IccFileHandler;
 
 .field mSimPhoneBookManager:Ljava/util/Map;
@@ -69,8 +75,6 @@
         }
     .end annotation
 .end field
-
-.field private mAdnCacheManager:Lcom/android/internal/telephony/AdnCacheManager;
 
 
 # direct methods
@@ -530,6 +534,9 @@
 .method public handleMessage(Landroid/os/Message;)V
     .locals 11
     .parameter "msg"
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_CODE:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
 
     .prologue
     const/4 v10, 0x0
@@ -574,10 +581,16 @@
 
     if-nez v8, :cond_0
 
-    iget-object v8, p0, Lcom/android/internal/telephony/AdnRecordCache;->mAdnCacheManager:Lcom/android/internal/telephony/AdnCacheManager;
+    .line 356
+    iget-object v9, p0, Lcom/android/internal/telephony/AdnRecordCache;->adnLikeFiles:Landroid/util/SparseArray;
 
-    invoke-virtual {v8, v2, v1}, Lcom/android/internal/telephony/AdnCacheManager;->handleLoadAllAdnLike(ILandroid/os/AsyncResult;)V
+    iget-object v8, v1, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
+    check-cast v8, Ljava/util/ArrayList;
+
+    invoke-virtual {v9, v2, v8}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
+
+    .line 358
     :cond_0
     invoke-direct {p0, v7, v1}, Lcom/android/internal/telephony/AdnRecordCache;->notifyWaiters(Ljava/util/ArrayList;Landroid/os/AsyncResult;)V
 
@@ -806,6 +819,62 @@
         :pswitch_2
         :pswitch_3
     .end packed-switch
+.end method
+
+.method public hasAdditionalNumber()Z
+    .locals 1
+
+    .prologue
+    .line 546
+    invoke-direct {p0}, Lcom/android/internal/telephony/AdnRecordCache;->isUsim()Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 547
+    const/4 v0, 0x0
+
+    .line 550
+    :goto_0
+    return v0
+
+    :cond_0
+    iget-object v0, p0, Lcom/android/internal/telephony/AdnRecordCache;->mUsimPhoneBookManager:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;
+
+    invoke-virtual {v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasAdditionalNumber()Z
+
+    move-result v0
+
+    goto :goto_0
+.end method
+
+.method public hasEmail()Z
+    .locals 1
+
+    .prologue
+    .line 561
+    invoke-direct {p0}, Lcom/android/internal/telephony/AdnRecordCache;->isUsim()Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 562
+    const/4 v0, 0x0
+
+    .line 565
+    :goto_0
+    return v0
+
+    :cond_0
+    iget-object v0, p0, Lcom/android/internal/telephony/AdnRecordCache;->mUsimPhoneBookManager:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;
+
+    invoke-virtual {v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasEmail()Z
+
+    move-result v0
+
+    goto :goto_0
 .end method
 
 .method public requestLoadAllAdnLike(IILandroid/os/Message;)V
@@ -1110,23 +1179,18 @@
     .end annotation
 
     .prologue
-    .line 73
     iget-object v0, p0, Lcom/android/internal/telephony/AdnRecordCache;->adnLikeFiles:Landroid/util/SparseArray;
 
     invoke-virtual {v0}, Landroid/util/SparseArray;->clear()V
 
-    .line 74
     iget-object v0, p0, Lcom/android/internal/telephony/AdnRecordCache;->mUsimPhoneBookManager:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;
 
     invoke-virtual {v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->reset()V
 
-    .line 76
     invoke-direct {p0}, Lcom/android/internal/telephony/AdnRecordCache;->clearWaiters()V
 
-    .line 77
     invoke-direct {p0}, Lcom/android/internal/telephony/AdnRecordCache;->clearUserWriters()V
 
-    .line 80
     iget-object v0, p0, Lcom/android/internal/telephony/AdnRecordCache;->mSimPhoneBookManager:Ljava/util/Map;
 
     invoke-interface {v0}, Ljava/util/Map;->clear()V
@@ -1520,10 +1584,6 @@
     goto :goto_2
 
     :cond_5
-    iget-object v1, p0, Lcom/android/internal/telephony/AdnRecordCache;->mAdnCacheManager:Lcom/android/internal/telephony/AdnCacheManager;
-
-    invoke-virtual {v1, p1, p2, p3}, Lcom/android/internal/telephony/AdnCacheManager;->handleUpdateAdnRecord(ILcom/android/internal/telephony/AdnRecord;Lcom/android/internal/telephony/AdnRecord;)V
-
     move-object v0, p0
 
     move v1, p1

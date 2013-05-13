@@ -7,8 +7,8 @@
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Lcom/android/internal/policy/impl/PhoneWindowManager;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/android/internal/policy/impl/PhoneWindowManager;->cancelBackGesture(Landroid/view/MotionEvent;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 4841
+    .line 4969
     iput-object p1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$20;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,30 +38,24 @@
 
 # virtual methods
 .method public run()V
-    .locals 5
+    .locals 2
 
     .prologue
-    .line 4843
-    iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$20;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
+    .line 4971
+    new-instance v0, Landroid/content/Intent;
 
-    iget-boolean v0, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHasBackGesture:Z
+    const-string v1, "com.meizu.action.HIDE_GESTURE_BAR"
 
-    if-eqz v0, :cond_0
+    invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 4844
-    iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$20;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
+    .line 4973
+    .local v0, i:Landroid/content/Intent;
+    iget-object v1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$20;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
-    const/4 v1, 0x0
+    iget-object v1, v1, Lcom/android/internal/policy/impl/PhoneWindowManager;->mContext:Landroid/content/Context;
 
-    const/16 v2, 0x80
+    invoke-virtual {v1, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
-
-    move-result-wide v3
-
-    invoke-virtual {v0, v1, v2, v3, v4}, Lcom/android/internal/policy/impl/PhoneWindowManager;->sendEvent(IIJ)V
-
-    .line 4846
-    :cond_0
+    .line 4974
     return-void
 .end method

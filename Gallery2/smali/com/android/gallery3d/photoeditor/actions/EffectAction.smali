@@ -57,7 +57,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f020167
+    const v1, 0x7f020162
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -124,7 +124,7 @@
     .line 75
     new-instance v1, Lcom/android/gallery3d/photoeditor/actions/EffectToolKit;
 
-    const v0, 0x7f0d0113
+    const v0, 0x7f0d0128
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->findViewById(I)Landroid/view/View;
 
@@ -158,7 +158,7 @@
 
     .prologue
     .line 107
-    const v0, 0x7f0d0114
+    const v0, 0x7f0d0129
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->findViewById(I)Landroid/view/View;
 
@@ -192,7 +192,7 @@
 
     .prologue
     .line 101
-    const v0, 0x7f0d0114
+    const v0, 0x7f0d0129
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->findViewById(I)Landroid/view/View;
 
@@ -338,7 +338,7 @@
 
     .prologue
     .line 89
-    const v0, 0x7f0d0113
+    const v0, 0x7f0d0128
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/photoeditor/actions/EffectAction;->findViewById(I)Landroid/view/View;
 

@@ -89,13 +89,39 @@
 .end method
 
 .method protected renderBackground(Lcom/android/gallery3d/ui/GLCanvas;)V
-    .locals 0
+    .locals 3
     .parameter "canvas"
 
     .prologue
+    const/4 v2, 0x0
+
     .line 122
-    invoke-interface {p1}, Lcom/android/gallery3d/ui/GLCanvas;->clearBuffer()V
+    iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage$1;->this$0:Lcom/android/gallery3d/app/SlideshowPage;
+
+    iget-boolean v0, v0, Lcom/android/gallery3d/app/ActivityState;->mNeedSetClearColor:Z
+
+    if-eqz v0, :cond_0
 
     .line 123
+    invoke-interface {p1}, Lcom/android/gallery3d/ui/GLCanvas;->getGLInstance()Ljavax/microedition/khronos/opengles/GL11;
+
+    move-result-object v0
+
+    const/high16 v1, 0x3f80
+
+    invoke-interface {v0, v2, v2, v2, v1}, Ljavax/microedition/khronos/opengles/GL11;->glClearColor(FFFF)V
+
+    .line 124
+    iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage$1;->this$0:Lcom/android/gallery3d/app/SlideshowPage;
+
+    const/4 v1, 0x0
+
+    iput-boolean v1, v0, Lcom/android/gallery3d/app/ActivityState;->mNeedSetClearColor:Z
+
+    .line 126
+    :cond_0
+    invoke-interface {p1}, Lcom/android/gallery3d/ui/GLCanvas;->clearBuffer()V
+
+    .line 127
     return-void
 .end method

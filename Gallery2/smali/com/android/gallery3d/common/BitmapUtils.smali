@@ -1189,31 +1189,45 @@
 .end method
 
 .method public static isRotationSupported(Ljava/lang/String;)Z
-    .locals 1
+    .locals 2
     .parameter "mimeType"
 
     .prologue
-    .line 302
-    if-nez p0, :cond_0
-
     const/4 v0, 0x0
 
+    .line 302
+    if-nez p0, :cond_1
+
     .line 304
+    :cond_0
     :goto_0
     return v0
 
     .line 303
-    :cond_0
+    :cond_1
     invoke-virtual {p0}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
 
     move-result-object p0
 
     .line 304
-    const-string v0, "image/jpeg"
+    const-string v1, "image/jpeg"
 
-    invoke-virtual {p0, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v0
+    move-result v1
+
+    if-nez v1, :cond_2
+
+    const-string v1, "image/jpg"
+
+    invoke-virtual {p0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    :cond_2
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method
@@ -1285,11 +1299,12 @@
     goto :goto_0
 .end method
 
-.method public static resizeAndCropBySideLength(Landroid/graphics/Bitmap;IZ)Landroid/graphics/Bitmap;
+.method public static resizeAndCropBySideLength(Landroid/graphics/Bitmap;IZZ)Landroid/graphics/Bitmap;
     .locals 16
     .parameter "bitmap"
     .parameter "maxLength"
     .parameter "recycle"
+    .parameter "isVideo"
 
     .prologue
     .line 173
@@ -1359,15 +1374,18 @@
     :goto_1
     move/from16 v0, p1
 
-    int-to-float v14, v0
+    int-to-float v15, v0
+
+    if-eqz p3, :cond_4
 
     invoke-static {v12, v4}, Ljava/lang/Math;->max(II)I
 
-    move-result v15
+    move-result v14
 
-    int-to-float v15, v15
+    :goto_2
+    int-to-float v14, v14
 
-    div-float v8, v14, v15
+    div-float v8, v15, v14
 
     .line 189
     .local v8, scale:F
@@ -1512,6 +1530,12 @@
     move-result v4
 
     goto :goto_1
+
+    :cond_4
+    move v14, v4
+
+    .line 187
+    goto :goto_2
 .end method
 
 .method public static resizeBitmapByScale(Landroid/graphics/Bitmap;FZ)Landroid/graphics/Bitmap;

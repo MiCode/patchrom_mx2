@@ -987,9 +987,7 @@
     invoke-virtual {v0, v3, v4}, Landroid/content/Context;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 212
-    sget-object v3, Landroid/os/Build;->MeizuSecurity:Ljava/lang/Boolean;
-
-    invoke-virtual {v3}, Ljava/lang/Boolean;->booleanValue()Z
+    invoke-static {}, Lcom/android/internal/telephony/SMSDispatcher;->checkIsRequestSuperPermission()Z
 
     move-result v3
 

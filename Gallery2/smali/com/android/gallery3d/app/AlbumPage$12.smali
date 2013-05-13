@@ -3,7 +3,7 @@
 .source "AlbumPage.java"
 
 # interfaces
-.implements Landroid/widget/PopupMenu$OnMenuItemClickListener;
+.implements Lcom/android/gallery3d/ui/MenuExecutor$ProgressListener;
 
 
 # annotations
@@ -20,20 +20,25 @@
 # instance fields
 .field final synthetic this$0:Lcom/android/gallery3d/app/AlbumPage;
 
-.field final synthetic val$res:Landroid/content/res/Resources;
+.field final synthetic val$menuExecutor:Lcom/android/gallery3d/ui/MenuExecutor;
+
+.field final synthetic val$srcRoot:Lcom/android/gallery3d/data/MediaSet;
 
 
 # direct methods
-.method constructor <init>(Lcom/android/gallery3d/app/AlbumPage;Landroid/content/res/Resources;)V
+.method constructor <init>(Lcom/android/gallery3d/app/AlbumPage;Lcom/android/gallery3d/data/MediaSet;Lcom/android/gallery3d/ui/MenuExecutor;)V
     .locals 0
+    .parameter
     .parameter
     .parameter
 
     .prologue
-    .line 1091
+    .line 1137
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
-    iput-object p2, p0, Lcom/android/gallery3d/app/AlbumPage$12;->val$res:Landroid/content/res/Resources;
+    iput-object p2, p0, Lcom/android/gallery3d/app/AlbumPage$12;->val$srcRoot:Lcom/android/gallery3d/data/MediaSet;
+
+    iput-object p3, p0, Lcom/android/gallery3d/app/AlbumPage$12;->val$menuExecutor:Lcom/android/gallery3d/ui/MenuExecutor;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
@@ -42,135 +47,139 @@
 
 
 # virtual methods
-.method public onMenuItemClick(Landroid/view/MenuItem;)Z
-    .locals 6
-    .parameter
+.method public onConfirmDialogDismissed(Z)V
+    .locals 0
+    .parameter "confirmed"
 
     .prologue
-    const/4 v1, 0x1
+    .line 1165
+    return-void
+.end method
 
-    .line 1095
-    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
+.method public onConfirmDialogShown()V
+    .locals 0
 
-    const/4 v2, 0x6
+    .prologue
+    .line 1161
+    return-void
+.end method
 
-    invoke-virtual {v0, v2}, Lcom/android/gallery3d/app/AlbumPage;->popupPasswordPadIfNeeded(I)Z
+.method public onProgressComplete(I)V
+    .locals 5
+    .parameter "result"
 
-    move-result v0
+    .prologue
+    .line 1145
+    iget-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
-    if-eqz v0, :cond_0
+    iget-object v1, v1, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
 
-    .line 1096
-    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
+    check-cast v1, Landroid/app/Activity;
 
-    #setter for: Lcom/android/gallery3d/app/AlbumPage;->mSelectedMenuItem:Landroid/view/MenuItem;
-    invoke-static {v0, p1}, Lcom/android/gallery3d/app/AlbumPage;->access$3302(Lcom/android/gallery3d/app/AlbumPage;Landroid/view/MenuItem;)Landroid/view/MenuItem;
+    new-instance v2, Landroid/content/Intent;
 
-    .line 1115
-    :goto_0
-    return v1
-
-    .line 1099
-    :cond_0
-    invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
-
-    move-result v2
-
-    .line 1100
-    packed-switch v2, :pswitch_data_0
-
-    goto :goto_0
-
-    .line 1105
-    :pswitch_0
-    new-instance v3, Landroid/os/Bundle;
-
-    invoke-direct {v3}, Landroid/os/Bundle;-><init>()V
-
-    .line 1106
-    const-string v0, "media-path"
+    const-string v3, "android.intent.action.MEDIA_SCANNER_SCAN_FILE"
 
     iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
-    iget-object v4, v4, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
-
-    invoke-interface {v4}, Lcom/android/gallery3d/app/GalleryActivity;->getDataManager()Lcom/android/gallery3d/data/DataManager;
-
-    move-result-object v4
-
-    const/16 v5, 0xd
-
-    invoke-virtual {v4, v5}, Lcom/android/gallery3d/data/DataManager;->getTopSetPath(I)Ljava/lang/String;
+    #getter for: Lcom/android/gallery3d/app/AlbumPage;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
+    invoke-static {v4}, Lcom/android/gallery3d/app/AlbumPage;->access$2000(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/data/MediaSet;
 
     move-result-object v4
 
-    invoke-virtual {v3, v0, v4}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 1107
-    iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$12;->val$res:Landroid/content/res/Resources;
-
-    if-nez v2, :cond_1
-
-    const v0, 0x7f0a01d8
-
-    :goto_1
-    invoke-virtual {v4, v0}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
-
-    move-result-object v0
-
-    .line 1108
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v4, " > "
-
-    invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$12;->val$res:Landroid/content/res/Resources;
-
-    const/high16 v5, 0x7f0a
-
-    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+    invoke-virtual {v4}, Lcom/android/gallery3d/data/MediaSet;->getDirectory()Ljava/lang/String;
 
     move-result-object v4
 
-    invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-static {v4}, Landroid/net/Uri;->fromFileName(Ljava/lang/String;)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v4
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-direct {v2, v3, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
 
-    move-result-object v0
+    invoke-virtual {v1, v2}, Landroid/app/Activity;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 1109
-    const-string v4, "set-title"
+    .line 1146
+    iget-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
-    invoke-virtual {v3, v4, v0}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+    iget v1, v1, Lcom/android/gallery3d/app/ActivityState;->mState:I
 
-    .line 1110
-    const-string v4, "key-state"
+    const/4 v2, 0x2
 
-    if-nez v2, :cond_2
+    if-ne v1, v2, :cond_0
 
-    move v0, v1
-
-    :goto_2
-    invoke-virtual {v3, v4, v0}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V
-
-    .line 1111
-    const-string v0, "key-src-root-dir"
+    iget-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$12;->val$srcRoot:Lcom/android/gallery3d/data/MediaSet;
 
     iget-object v2, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
-    invoke-static {v2}, Lcom/android/gallery3d/app/AlbumPage;->access$1700(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/data/MediaSet;
+    invoke-static {v2}, Lcom/android/gallery3d/app/AlbumPage;->access$2000(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/data/MediaSet;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    .line 1147
+    iget-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
+
+    iget-object v1, v1, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
+
+    check-cast v1, Landroid/app/Activity;
+
+    new-instance v2, Landroid/content/Intent;
+
+    const-string v3, "android.intent.action.MEDIA_SCANNER_SCAN_FILE"
+
+    iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$12;->val$srcRoot:Lcom/android/gallery3d/data/MediaSet;
+
+    invoke-virtual {v4}, Lcom/android/gallery3d/data/MediaSet;->getDirectory()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v4}, Landroid/net/Uri;->fromFileName(Ljava/lang/String;)Landroid/net/Uri;
+
+    move-result-object v4
+
+    invoke-direct {v2, v3, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
+
+    invoke-virtual {v1, v2}, Landroid/app/Activity;->sendBroadcast(Landroid/content/Intent;)V
+
+    .line 1149
+    :cond_0
+    new-instance v0, Landroid/content/Intent;
+
+    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
+
+    .line 1150
+    .local v0, data:Landroid/content/Intent;
+    iget-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
+
+    invoke-virtual {v1}, Lcom/android/gallery3d/app/AlbumPage;->getData()Landroid/os/Bundle;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;
+
+    .line 1151
+    const-string v1, "key-state"
+
+    iget-object v2, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
+
+    iget v2, v2, Lcom/android/gallery3d/app/ActivityState;->mState:I
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
+
+    .line 1152
+    const-string v1, "copy-move-set-path"
+
+    iget-object v2, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
+
+    #getter for: Lcom/android/gallery3d/app/AlbumPage;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
+    invoke-static {v2}, Lcom/android/gallery3d/app/AlbumPage;->access$2000(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/data/MediaSet;
 
     move-result-object v2
 
@@ -182,47 +191,63 @@
 
     move-result-object v2
 
-    invoke-virtual {v3, v0, v2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 1112
-    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
+    .line 1153
+    const-string v1, "copy-move-set-name"
 
-    iget-object v0, v0, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
+    iget-object v2, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
-    invoke-interface {v0}, Lcom/android/gallery3d/app/GalleryActivity;->getStateManager()Lcom/android/gallery3d/app/StateManager;
+    #getter for: Lcom/android/gallery3d/app/AlbumPage;->mMediaSet:Lcom/android/gallery3d/data/MediaSet;
+    invoke-static {v2}, Lcom/android/gallery3d/app/AlbumPage;->access$2000(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/data/MediaSet;
 
-    move-result-object v0
+    move-result-object v2
 
-    const-class v2, Lcom/android/gallery3d/app/AlbumSetPage;
+    invoke-virtual {v2}, Lcom/android/gallery3d/data/MediaSet;->getName()Ljava/lang/String;
 
-    const/4 v4, 0x4
+    move-result-object v2
 
-    iget-object v5, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
+    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    iget-object v5, v5, Lcom/android/gallery3d/app/ActivityState;->mSelectionManager:Lcom/android/gallery3d/ui/SelectionManager;
+    .line 1154
+    iget-object v2, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
-    invoke-virtual {v0, v2, v4, v3, v5}, Lcom/android/gallery3d/app/StateManager;->startStateForResult(Ljava/lang/Class;ILandroid/os/Bundle;Lcom/android/gallery3d/ui/SelectionManager;)V
+    const/4 v1, 0x1
+
+    if-ne p1, v1, :cond_1
+
+    const/4 v1, -0x1
+
+    :goto_0
+    invoke-virtual {v2, v1, v0}, Lcom/android/gallery3d/app/AlbumPage;->setStateResult(ILandroid/content/Intent;)V
+
+    .line 1155
+    iget-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$12;->val$menuExecutor:Lcom/android/gallery3d/ui/MenuExecutor;
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v1, v2}, Lcom/android/gallery3d/ui/MenuExecutor;->setRequestArgFetcher(Lcom/android/gallery3d/ui/MenuExecutor$RequestArgFetcher;)V
+
+    .line 1156
+    iget-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$12;->this$0:Lcom/android/gallery3d/app/AlbumPage;
+
+    invoke-virtual {v1}, Lcom/android/gallery3d/app/AlbumPage;->onBackPressed()V
+
+    .line 1157
+    return-void
+
+    .line 1154
+    :cond_1
+    const/4 v1, 0x0
 
     goto :goto_0
+.end method
 
-    .line 1107
-    :cond_1
-    const v0, 0x7f0a01d9
+.method public onProgressUpdate(I)V
+    .locals 0
+    .parameter "index"
 
-    goto :goto_1
-
-    .line 1110
-    :cond_2
-    const/4 v0, 0x2
-
-    goto :goto_2
-
-    .line 1100
-    nop
-
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-        :pswitch_0
-    .end packed-switch
+    .prologue
+    .line 1141
+    return-void
 .end method

@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 185
+    .line 187
     iput-object p1, p0, Lcom/meizu/widget/MzContactHeaderWidget$1;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,7 +42,7 @@
     .parameter "v"
 
     .prologue
-    .line 188
+    .line 190
     iget-object v1, p0, Lcom/meizu/widget/MzContactHeaderWidget$1;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
 
     iget-object v0, p0, Lcom/meizu/widget/MzContactHeaderWidget$1;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
@@ -60,7 +60,7 @@
     #setter for: Lcom/meizu/widget/MzContactHeaderWidget;->mFlymeOn:Z
     invoke-static {v1, v0}, Lcom/meizu/widget/MzContactHeaderWidget;->access$102(Lcom/meizu/widget/MzContactHeaderWidget;Z)Z
 
-    .line 189
+    .line 191
     iget-object v0, p0, Lcom/meizu/widget/MzContactHeaderWidget$1;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
 
     #getter for: Lcom/meizu/widget/MzContactHeaderWidget;->mFlymeView:Lcom/meizu/widget/FlymeButton;
@@ -75,9 +75,15 @@
 
     move-result v1
 
-    invoke-virtual {v0, v1}, Lcom/meizu/widget/FlymeButton;->setFlymeState(Z)V
+    iget-object v2, p0, Lcom/meizu/widget/MzContactHeaderWidget$1;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
 
-    .line 191
+    invoke-virtual {v2}, Lcom/meizu/widget/MzContactHeaderWidget;->containsEmail()Z
+
+    move-result v2
+
+    invoke-virtual {v0, v1, v2}, Lcom/meizu/widget/FlymeButton;->setFlymeState(ZZ)V
+
+    .line 193
     iget-object v0, p0, Lcom/meizu/widget/MzContactHeaderWidget$1;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
 
     #getter for: Lcom/meizu/widget/MzContactHeaderWidget;->mOnSipStateChangedListener:Lcom/meizu/widget/RecipientStateInfo$OnSipStateChangedListener;
@@ -87,7 +93,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 192
+    .line 194
     iget-object v0, p0, Lcom/meizu/widget/MzContactHeaderWidget$1;->this$0:Lcom/meizu/widget/MzContactHeaderWidget;
 
     #getter for: Lcom/meizu/widget/MzContactHeaderWidget;->mOnSipStateChangedListener:Lcom/meizu/widget/RecipientStateInfo$OnSipStateChangedListener;
@@ -105,11 +111,11 @@
 
     invoke-interface {v0, v1, v2}, Lcom/meizu/widget/RecipientStateInfo$OnSipStateChangedListener;->onSipStateChanged(Landroid/view/View;Lcom/meizu/widget/RecipientStateInfo$SipState;)V
 
-    .line 195
+    .line 197
     :cond_0
     return-void
 
-    .line 188
+    .line 190
     :cond_1
     const/4 v0, 0x0
 

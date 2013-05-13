@@ -10,6 +10,9 @@
 # direct methods
 .method protected constructor <init>()V
     .locals 0
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_ACCESS:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
 
     .prologue
     .line 30
@@ -34,7 +37,7 @@
     if-ne v0, v1, :cond_0
 
     .line 103
-    const v0, 0x104012b
+    const v0, 0x104012c
 
     .line 109
     :goto_0
@@ -51,7 +54,7 @@
     if-ne v0, v1, :cond_1
 
     .line 105
-    const v0, 0x104012c
+    const v0, 0x104012d
 
     goto :goto_0
 

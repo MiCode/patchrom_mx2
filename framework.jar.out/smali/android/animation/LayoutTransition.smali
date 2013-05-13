@@ -224,7 +224,7 @@
     iput-wide v8, p0, Landroid/animation/LayoutTransition;->mChangingDisappearingDuration:J
 
     .line 170
-    sget-wide v8, Landroid/animation/LayoutTransition;->DEFAULT_DURATION:J
+    const-wide/16 v8, 0x64
 
     iput-wide v8, p0, Landroid/animation/LayoutTransition;->mChangingDuration:J
 

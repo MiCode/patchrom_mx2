@@ -31,16 +31,16 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 927
+    .line 928
     invoke-direct {p0}, Lcom/android/gallery3d/anim/Animation;-><init>()V
 
-    .line 929
+    .line 930
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mCurrent:I
 
-    .line 930
+    .line 931
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mFrom:I
 
-    .line 931
+    .line 932
     iput-boolean v0, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mEnabled:Z
 
     return-void
@@ -51,7 +51,7 @@
     .parameter "x0"
 
     .prologue
-    .line 927
+    .line 928
     invoke-direct {p0}, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;-><init>()V
 
     return-void
@@ -63,7 +63,7 @@
     .locals 1
 
     .prologue
-    .line 951
+    .line 952
     iget v0, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mCurrent:I
 
     return v0
@@ -73,7 +73,7 @@
     .locals 1
 
     .prologue
-    .line 955
+    .line 956
     iget v0, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mTarget:I
 
     return v0
@@ -84,7 +84,7 @@
     .parameter "progress"
 
     .prologue
-    .line 960
+    .line 961
     iget v0, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mFrom:I
 
     int-to-float v0, v0
@@ -107,7 +107,7 @@
 
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mCurrent:I
 
-    .line 961
+    .line 962
     const/high16 v0, 0x3f80
 
     cmpl-float v0, p1, v0
@@ -118,7 +118,7 @@
 
     iput-boolean v0, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mEnabled:Z
 
-    .line 962
+    .line 963
     :cond_0
     return-void
 .end method
@@ -128,10 +128,10 @@
     .parameter "enabled"
 
     .prologue
-    .line 934
+    .line 935
     iput-boolean p1, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mEnabled:Z
 
-    .line 935
+    .line 936
     return-void
 .end method
 
@@ -140,41 +140,41 @@
     .parameter "target"
 
     .prologue
-    .line 938
+    .line 939
     iget-boolean v0, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mEnabled:Z
 
     if-nez v0, :cond_1
 
-    .line 939
+    .line 940
     iput p1, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mCurrent:I
 
     iput p1, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mTarget:I
 
-    .line 948
+    .line 949
     :cond_0
     :goto_0
     return-void
 
-    .line 942
+    .line 943
     :cond_1
     iget v0, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mTarget:I
 
     if-eq p1, v0, :cond_0
 
-    .line 944
+    .line 945
     iget v0, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mCurrent:I
 
     iput v0, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mFrom:I
 
-    .line 945
+    .line 946
     iput p1, p0, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->mTarget:I
 
-    .line 946
+    .line 947
     const/16 v0, 0xb4
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->setDuration(I)V
 
-    .line 947
+    .line 948
     invoke-virtual {p0}, Lcom/android/gallery3d/ui/SlotView$IntegerAnimation;->start()V
 
     goto :goto_0

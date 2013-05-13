@@ -56,7 +56,7 @@
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieMmsPlayer;->mPlayingChecker:Ljava/lang/Runnable;
 
     .line 52
-    const v0, 0x7f0d00e9
+    const v0, 0x7f0d00eb
 
     invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 

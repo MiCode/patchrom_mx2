@@ -23,10 +23,10 @@
     .locals 1
 
     .prologue
-    .line 1789
+    .line 1802
     invoke-direct {p0}, Ljava/io/Writer;-><init>()V
 
-    .line 1818
+    .line 1831
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -40,7 +40,7 @@
     .locals 3
 
     .prologue
-    .line 1812
+    .line 1825
     iget-object v0, p0, Landroid/opengl/GLSurfaceView$LogWriter;->mBuilder:Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->length()I
@@ -49,7 +49,7 @@
 
     if-lez v0, :cond_0
 
-    .line 1813
+    .line 1826
     const-string v0, "GLSurfaceView"
 
     iget-object v1, p0, Landroid/opengl/GLSurfaceView$LogWriter;->mBuilder:Ljava/lang/StringBuilder;
@@ -60,7 +60,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1814
+    .line 1827
     iget-object v0, p0, Landroid/opengl/GLSurfaceView$LogWriter;->mBuilder:Ljava/lang/StringBuilder;
 
     const/4 v1, 0x0
@@ -73,7 +73,7 @@
 
     invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->delete(II)Ljava/lang/StringBuilder;
 
-    .line 1816
+    .line 1829
     :cond_0
     return-void
 .end method
@@ -84,10 +84,10 @@
     .locals 0
 
     .prologue
-    .line 1792
+    .line 1805
     invoke-direct {p0}, Landroid/opengl/GLSurfaceView$LogWriter;->flushBuilder()V
 
-    .line 1793
+    .line 1806
     return-void
 .end method
 
@@ -95,10 +95,10 @@
     .locals 0
 
     .prologue
-    .line 1796
+    .line 1809
     invoke-direct {p0}, Landroid/opengl/GLSurfaceView$LogWriter;->flushBuilder()V
 
-    .line 1797
+    .line 1810
     return-void
 .end method
 
@@ -109,34 +109,34 @@
     .parameter "count"
 
     .prologue
-    .line 1800
+    .line 1813
     const/4 v1, 0x0
 
     .local v1, i:I
     :goto_0
     if-ge v1, p3, :cond_1
 
-    .line 1801
+    .line 1814
     add-int v2, p2, v1
 
     aget-char v0, p1, v2
 
-    .line 1802
+    .line 1815
     .local v0, c:C
     const/16 v2, 0xa
 
     if-ne v0, v2, :cond_0
 
-    .line 1803
+    .line 1816
     invoke-direct {p0}, Landroid/opengl/GLSurfaceView$LogWriter;->flushBuilder()V
 
-    .line 1800
+    .line 1813
     :goto_1
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 1806
+    .line 1819
     :cond_0
     iget-object v2, p0, Landroid/opengl/GLSurfaceView$LogWriter;->mBuilder:Ljava/lang/StringBuilder;
 
@@ -144,7 +144,7 @@
 
     goto :goto_1
 
-    .line 1809
+    .line 1822
     .end local v0           #c:C
     :cond_1
     return-void

@@ -40,7 +40,7 @@
     .locals 0
 
     .prologue
-    .line 233
+    .line 238
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -51,7 +51,7 @@
     .parameter "x0"
 
     .prologue
-    .line 233
+    .line 238
     invoke-direct {p0}, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;-><init>()V
 
     return-void

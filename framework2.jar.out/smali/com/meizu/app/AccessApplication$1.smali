@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 43
+    .line 47
     iput-object p1, p0, Lcom/meizu/app/AccessApplication$1;->this$0:Lcom/meizu/app/AccessApplication;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -40,7 +40,7 @@
     .parameter "intent"
 
     .prologue
-    .line 45
+    .line 49
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
@@ -53,13 +53,13 @@
 
     if-eqz v0, :cond_0
 
-    .line 46
+    .line 50
     iget-object v0, p0, Lcom/meizu/app/AccessApplication$1;->this$0:Lcom/meizu/app/AccessApplication;
 
     #calls: Lcom/meizu/app/AccessApplication;->update()V
     invoke-static {v0}, Lcom/meizu/app/AccessApplication;->access$000(Lcom/meizu/app/AccessApplication;)V
 
-    .line 48
+    .line 52
     :cond_0
     return-void
 .end method

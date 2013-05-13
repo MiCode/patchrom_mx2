@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/gallery3d/photoeditor/PhotoEditor;->createYesCancelDialog()V
+    value = Lcom/android/gallery3d/photoeditor/PhotoEditor;->createEffectsArtisticRunnable()Ljava/lang/Runnable;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 523
+    .line 774
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$17;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,14 +38,23 @@
 
 # virtual methods
 .method public run()V
-    .locals 1
+    .locals 3
 
     .prologue
-    .line 527
+    .line 776
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$17;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
-    invoke-virtual {v0}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->finish()V
+    #getter for: Lcom/android/gallery3d/photoeditor/PhotoEditor;->effectsBar:Lcom/android/gallery3d/photoeditor/EffectsBar;
+    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->access$100(Lcom/android/gallery3d/photoeditor/PhotoEditor;)Lcom/android/gallery3d/photoeditor/EffectsBar;
 
-    .line 528
+    move-result-object v0
+
+    const/4 v1, 0x0
+
+    const v2, 0x7f040058
+
+    invoke-virtual {v0, v1, v2}, Lcom/android/gallery3d/photoeditor/EffectsBar;->changeEffectsMenu(ZI)Z
+
+    .line 777
     return-void
 .end method

@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 133
+    .line 205
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$1;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,7 +43,7 @@
     .parameter "canRedo"
 
     .prologue
-    .line 137
+    .line 209
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$1;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
     #getter for: Lcom/android/gallery3d/photoeditor/PhotoEditor;->photoeditorActionBar:Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;
@@ -53,7 +53,7 @@
 
     invoke-virtual {v0, p1, p2}, Lcom/android/gallery3d/photoeditor/PhotoEditorActionBar;->updateButtons(ZZ)V
 
-    .line 138
+    .line 210
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$1;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
     #getter for: Lcom/android/gallery3d/photoeditor/PhotoEditor;->effectsBar:Lcom/android/gallery3d/photoeditor/EffectsBar;
@@ -63,7 +63,13 @@
 
     if-eqz v0, :cond_0
 
-    .line 139
+    .line 211
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$1;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
+
+    #setter for: Lcom/android/gallery3d/photoeditor/PhotoEditor;->canSave:Z
+    invoke-static {v0, p1}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->access$202(Lcom/android/gallery3d/photoeditor/PhotoEditor;Z)Z
+
+    .line 212
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$1;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
     #getter for: Lcom/android/gallery3d/photoeditor/PhotoEditor;->effectsBar:Lcom/android/gallery3d/photoeditor/EffectsBar;
@@ -73,7 +79,7 @@
 
     invoke-virtual {v0, p1}, Lcom/android/gallery3d/photoeditor/EffectsBar;->updateSave(Z)V
 
-    .line 141
+    .line 214
     :cond_0
     return-void
 .end method

@@ -87,7 +87,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mRootPane:Lcom/android/gallery3d/ui/GLView;
 
-    .line 471
+    .line 475
     return-void
 .end method
 
@@ -222,7 +222,7 @@
     .locals 3
 
     .prologue
-    .line 190
+    .line 194
     iget-object v1, p0, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
 
     check-cast v1, Landroid/app/Activity;
@@ -233,7 +233,7 @@
 
     check-cast v0, Lcom/android/gallery3d/app/GalleryAppImpl;
 
-    .line 191
+    .line 195
     .local v0, app:Lcom/android/gallery3d/app/GalleryAppImpl;
     invoke-virtual {v0}, Lcom/android/gallery3d/app/GalleryAppImpl;->getRemoteDeviceId()Ljava/lang/String;
 
@@ -241,40 +241,40 @@
 
     if-eqz v1, :cond_0
 
-    .line 193
+    .line 197
     invoke-virtual {v0}, Lcom/android/gallery3d/app/GalleryAppImpl;->getDlnaClient()Landroid/media/dlna/DlnaClient;
 
     move-result-object v1
 
     iput-object v1, p0, Lcom/android/gallery3d/app/SlideshowPage;->mDlnaClient:Landroid/media/dlna/DlnaClient;
 
-    .line 195
+    .line 199
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/android/gallery3d/app/SlideshowPage;->mDlnaMode:Z
 
-    .line 196
+    .line 200
     new-instance v1, Landroid/content/IntentFilter;
 
     invoke-direct {v1}, Landroid/content/IntentFilter;-><init>()V
 
     iput-object v1, p0, Lcom/android/gallery3d/app/SlideshowPage;->mFilter:Landroid/content/IntentFilter;
 
-    .line 197
+    .line 201
     iget-object v1, p0, Lcom/android/gallery3d/app/SlideshowPage;->mFilter:Landroid/content/IntentFilter;
 
     const-string v2, "media.dlnaservice.action.devicesChanged"
 
     invoke-virtual {v1, v2}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 198
+    .line 202
     new-instance v1, Lcom/android/gallery3d/app/SlideshowPage$3;
 
     invoke-direct {v1, p0}, Lcom/android/gallery3d/app/SlideshowPage$3;-><init>(Lcom/android/gallery3d/app/SlideshowPage;)V
 
     iput-object v1, p0, Lcom/android/gallery3d/app/SlideshowPage;->mDlnaReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 212
+    .line 216
     :cond_0
     return-void
 .end method
@@ -285,18 +285,18 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 353
+    .line 357
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mDlnaMode:Z
 
-    .line 354
+    .line 358
     iput-object v1, p0, Lcom/android/gallery3d/app/SlideshowPage;->mDlnaReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 355
+    .line 359
     iput-object v1, p0, Lcom/android/gallery3d/app/SlideshowPage;->mFilter:Landroid/content/IntentFilter;
 
-    .line 356
+    .line 360
     return-void
 .end method
 
@@ -304,35 +304,35 @@
     .locals 3
 
     .prologue
-    .line 301
+    .line 305
     iget-object v1, p0, Lcom/android/gallery3d/app/SlideshowPage;->mDlnaClient:Landroid/media/dlna/DlnaClient;
 
     if-eqz v1, :cond_0
 
-    .line 302
+    .line 306
     iget-object v1, p0, Lcom/android/gallery3d/app/SlideshowPage;->mDlnaClient:Landroid/media/dlna/DlnaClient;
 
     const/4 v2, 0x0
 
     invoke-virtual {v1, v2}, Landroid/media/dlna/DlnaClient;->stop(Landroid/media/dlna/DlnaClient$RemoteCallListener;)Z
 
-    .line 303
+    .line 307
     iget-object v0, p0, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
 
     check-cast v0, Landroid/content/Context;
 
-    .line 304
+    .line 308
     .local v0, context:Landroid/content/Context;
     iget-object v1, p0, Lcom/android/gallery3d/app/SlideshowPage;->mDlnaReceiver:Landroid/content/BroadcastReceiver;
 
     if-eqz v1, :cond_0
 
-    .line 305
+    .line 309
     iget-object v1, p0, Lcom/android/gallery3d/app/SlideshowPage;->mDlnaReceiver:Landroid/content/BroadcastReceiver;
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
 
-    .line 308
+    .line 312
     .end local v0           #context:Landroid/content/Context;
     :cond_0
     return-void
@@ -342,33 +342,33 @@
     .locals 3
 
     .prologue
-    .line 334
+    .line 338
     iget-object v1, p0, Lcom/android/gallery3d/app/SlideshowPage;->mDlnaClient:Landroid/media/dlna/DlnaClient;
 
     if-eqz v1, :cond_0
 
-    .line 335
+    .line 339
     invoke-direct {p0}, Lcom/android/gallery3d/app/SlideshowPage;->updateDLNADevicesList()Z
 
     move-result v1
 
     if-nez v1, :cond_1
 
-    .line 336
+    .line 340
     invoke-direct {p0}, Lcom/android/gallery3d/app/SlideshowPage;->dlnaOnDestroy()V
 
-    .line 344
+    .line 348
     :cond_0
     :goto_0
     return-void
 
-    .line 339
+    .line 343
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
 
     check-cast v0, Landroid/content/Context;
 
-    .line 340
+    .line 344
     .local v0, context:Landroid/content/Context;
     iget-object v1, p0, Lcom/android/gallery3d/app/SlideshowPage;->mDlnaReceiver:Landroid/content/BroadcastReceiver;
 
@@ -378,7 +378,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 341
+    .line 345
     iget-object v1, p0, Lcom/android/gallery3d/app/SlideshowPage;->mDlnaReceiver:Landroid/content/BroadcastReceiver;
 
     iget-object v2, p0, Lcom/android/gallery3d/app/SlideshowPage;->mFilter:Landroid/content/IntentFilter;
@@ -393,7 +393,7 @@
     .parameter "localPath"
 
     .prologue
-    .line 257
+    .line 261
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mDlnaClient:Landroid/media/dlna/DlnaClient;
 
     new-instance v1, Lcom/android/gallery3d/app/SlideshowPage$5;
@@ -402,7 +402,7 @@
 
     invoke-virtual {v0, v1}, Landroid/media/dlna/DlnaClient;->stop(Landroid/media/dlna/DlnaClient$RemoteCallListener;)Z
 
-    .line 277
+    .line 281
     return-void
 .end method
 
@@ -410,15 +410,15 @@
     .locals 1
 
     .prologue
-    .line 525
+    .line 529
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mExiting:Z
 
-    .line 526
+    .line 530
     invoke-super {p0}, Lcom/android/gallery3d/app/ActivityState;->onBackPressed()V
 
-    .line 527
+    .line 531
     return-void
 .end method
 
@@ -428,7 +428,7 @@
     .parameter "index"
 
     .prologue
-    .line 394
+    .line 398
     const/4 v1, 0x0
 
     .local v1, i:I
@@ -440,44 +440,44 @@
     :goto_0
     if-ge v1, v3, :cond_1
 
-    .line 395
+    .line 399
     invoke-virtual {p0, v1}, Lcom/android/gallery3d/data/MediaSet;->getSubMediaSet(I)Lcom/android/gallery3d/data/MediaSet;
 
     move-result-object v4
 
-    .line 396
+    .line 400
     .local v4, subset:Lcom/android/gallery3d/data/MediaSet;
     invoke-virtual {v4}, Lcom/android/gallery3d/data/MediaSet;->getTotalMediaItemCount()I
 
     move-result v0
 
-    .line 397
+    .line 401
     .local v0, count:I
     if-ge p1, v0, :cond_0
 
-    .line 398
+    .line 402
     invoke-static {v4, p1}, Lcom/android/gallery3d/app/SlideshowPage;->findMediaItem(Lcom/android/gallery3d/data/MediaSet;I)Lcom/android/gallery3d/data/MediaItem;
 
     move-result-object v5
 
-    .line 403
+    .line 407
     .end local v0           #count:I
     .end local v4           #subset:Lcom/android/gallery3d/data/MediaSet;
     :goto_1
     return-object v5
 
-    .line 400
+    .line 404
     .restart local v0       #count:I
     .restart local v4       #subset:Lcom/android/gallery3d/data/MediaSet;
     :cond_0
     sub-int/2addr p1, v0
 
-    .line 394
+    .line 398
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 402
+    .line 406
     .end local v0           #count:I
     .end local v4           #subset:Lcom/android/gallery3d/data/MediaSet;
     :cond_1
@@ -487,7 +487,7 @@
 
     move-result-object v2
 
-    .line 403
+    .line 407
     .local v2, list:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/gallery3d/data/MediaItem;>;"
     invoke-virtual {v2}, Ljava/util/ArrayList;->isEmpty()Z
 
@@ -522,14 +522,14 @@
 
     const/4 v11, 0x0
 
-    .line 359
+    .line 363
     const-string v8, "random-order"
 
     invoke-virtual {p1, v8, v11}, Landroid/os/Bundle;->getBoolean(Ljava/lang/String;Z)Z
 
     move-result v5
 
-    .line 362
+    .line 366
     .local v5, random:Z
     const-string v8, "media-set-path"
 
@@ -537,7 +537,7 @@
 
     move-result-object v2
 
-    .line 363
+    .line 367
     .local v2, mediaPath:Ljava/lang/String;
     iget-object v8, p0, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
 
@@ -549,13 +549,13 @@
 
     move-result-object v7
 
-    .line 364
+    .line 368
     .local v7, set:Lcom/android/gallery3d/data/MediaSet;
     instance-of v8, v7, Lcom/android/gallery3d/data/LocalAlbum;
 
     if-eqz v8, :cond_0
 
-    .line 365
+    .line 369
     new-instance v8, Ljava/lang/StringBuilder;
 
     invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
@@ -580,7 +580,7 @@
 
     move-result-object v2
 
-    .line 369
+    .line 373
     :goto_0
     iget-object v8, p0, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
 
@@ -592,18 +592,18 @@
 
     move-result-object v3
 
-    .line 371
+    .line 375
     .local v3, mediaSet:Lcom/android/gallery3d/data/MediaSet;
     if-eqz v5, :cond_1
 
-    .line 372
+    .line 376
     const-string v8, "repeat"
 
     invoke-virtual {p1, v8}, Landroid/os/Bundle;->getBoolean(Ljava/lang/String;)Z
 
     move-result v6
 
-    .line 373
+    .line 377
     .local v6, repeat:Z
     new-instance v8, Lcom/android/gallery3d/app/SlideshowDataAdapter;
 
@@ -617,7 +617,7 @@
 
     iput-object v8, p0, Lcom/android/gallery3d/app/SlideshowPage;->mModel:Lcom/android/gallery3d/app/SlideshowPage$Model;
 
-    .line 375
+    .line 379
     iget-object v8, p0, Lcom/android/gallery3d/app/SlideshowPage;->mResultIntent:Landroid/content/Intent;
 
     const-string v9, "photo-index"
@@ -628,11 +628,11 @@
 
     invoke-virtual {p0, v12, v8}, Lcom/android/gallery3d/app/SlideshowPage;->setStateResult(ILandroid/content/Intent;)V
 
-    .line 385
+    .line 389
     :goto_1
     return-void
 
-    .line 367
+    .line 371
     .end local v3           #mediaSet:Lcom/android/gallery3d/data/MediaSet;
     .end local v6           #repeat:Z
     :cond_0
@@ -644,7 +644,7 @@
 
     goto :goto_0
 
-    .line 377
+    .line 381
     .restart local v3       #mediaSet:Lcom/android/gallery3d/data/MediaSet;
     :cond_1
     const-string v8, "photo-index"
@@ -653,7 +653,7 @@
 
     move-result v0
 
-    .line 378
+    .line 382
     .local v0, index:I
     const-string v8, "media-item-path"
 
@@ -661,7 +661,7 @@
 
     move-result-object v1
 
-    .line 379
+    .line 383
     .local v1, itemPath:Ljava/lang/String;
     if-eqz v1, :cond_2
 
@@ -669,7 +669,7 @@
 
     move-result-object v4
 
-    .line 380
+    .line 384
     .local v4, path:Lcom/android/gallery3d/data/Path;
     :cond_2
     const-string v8, "repeat"
@@ -678,7 +678,7 @@
 
     move-result v6
 
-    .line 381
+    .line 385
     .restart local v6       #repeat:Z
     new-instance v8, Lcom/android/gallery3d/app/SlideshowDataAdapter;
 
@@ -692,7 +692,7 @@
 
     iput-object v8, p0, Lcom/android/gallery3d/app/SlideshowPage;->mModel:Lcom/android/gallery3d/app/SlideshowPage$Model;
 
-    .line 383
+    .line 387
     iget-object v8, p0, Lcom/android/gallery3d/app/SlideshowPage;->mResultIntent:Landroid/content/Intent;
 
     const-string v9, "photo-index"
@@ -710,26 +710,26 @@
     .locals 2
 
     .prologue
-    .line 388
+    .line 392
     new-instance v0, Lcom/android/gallery3d/ui/SlideshowView;
 
     invoke-direct {v0}, Lcom/android/gallery3d/ui/SlideshowView;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mSlideshowView:Lcom/android/gallery3d/ui/SlideshowView;
 
-    .line 389
+    .line 393
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mRootPane:Lcom/android/gallery3d/ui/GLView;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/SlideshowPage;->mSlideshowView:Lcom/android/gallery3d/ui/SlideshowView;
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/ui/GLView;->addComponent(Lcom/android/gallery3d/ui/GLView;)V
 
-    .line 390
+    .line 394
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mRootPane:Lcom/android/gallery3d/ui/GLView;
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/app/SlideshowPage;->setContentPane(Lcom/android/gallery3d/ui/GLView;)V
 
-    .line 391
+    .line 395
     return-void
 .end method
 
@@ -737,7 +737,7 @@
     .locals 2
 
     .prologue
-    .line 215
+    .line 219
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mModel:Lcom/android/gallery3d/app/SlideshowPage$Model;
 
     new-instance v1, Lcom/android/gallery3d/app/SlideshowPage$4;
@@ -746,7 +746,7 @@
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/app/SlideshowPage$Model;->nextSlide(Lcom/android/gallery3d/util/FutureListener;)Lcom/android/gallery3d/util/Future;
 
-    .line 221
+    .line 225
     return-void
 .end method
 
@@ -756,27 +756,27 @@
     .prologue
     const/4 v3, 0x1
 
-    .line 227
+    .line 231
     iget-object v2, p0, Lcom/android/gallery3d/app/SlideshowPage;->mPendingSlide:Lcom/android/gallery3d/app/SlideshowPage$Slide;
 
-    .line 228
+    .line 232
     .local v2, slide:Lcom/android/gallery3d/app/SlideshowPage$Slide;
     if-nez v2, :cond_1
 
-    .line 229
+    .line 233
     iget-boolean v3, p0, Lcom/android/gallery3d/app/SlideshowPage;->mIsActive:Z
 
     if-eqz v3, :cond_0
 
-    .line 230
+    .line 234
     invoke-direct {p0}, Lcom/android/gallery3d/app/SlideshowPage;->exit()V
 
-    .line 253
+    .line 257
     :cond_0
     :goto_0
     return-void
 
-    .line 235
+    .line 239
     :cond_1
     iget-boolean v4, p0, Lcom/android/gallery3d/app/SlideshowPage;->mDlnaMode:Z
 
@@ -798,23 +798,23 @@
 
     move v0, v3
 
-    .line 236
+    .line 240
     .local v0, inDlnaMode:Z
     :goto_1
     if-eqz v0, :cond_2
 
-    .line 237
+    .line 241
     iget-object v1, v2, Lcom/android/gallery3d/app/SlideshowPage$Slide;->item:Lcom/android/gallery3d/data/MediaItem;
 
     check-cast v1, Lcom/android/gallery3d/data/LocalImage;
 
-    .line 238
+    .line 242
     .local v1, item:Lcom/android/gallery3d/data/LocalImage;
     iget-object v4, v1, Lcom/android/gallery3d/data/LocalMediaItem;->filePath:Ljava/lang/String;
 
     invoke-direct {p0, v4}, Lcom/android/gallery3d/app/SlideshowPage;->dlnaPlay(Ljava/lang/String;)V
 
-    .line 241
+    .line 245
     .end local v1           #item:Lcom/android/gallery3d/data/LocalImage;
     :cond_2
     iget-object v4, p0, Lcom/android/gallery3d/app/SlideshowPage;->mSlideshowView:Lcom/android/gallery3d/ui/SlideshowView;
@@ -829,7 +829,7 @@
 
     invoke-virtual {v4, v5, v6}, Lcom/android/gallery3d/ui/SlideshowView;->next(Landroid/graphics/Bitmap;I)V
 
-    .line 243
+    .line 247
     const/4 v4, -0x1
 
     iget-object v5, p0, Lcom/android/gallery3d/app/SlideshowPage;->mResultIntent:Landroid/content/Intent;
@@ -860,10 +860,10 @@
 
     invoke-virtual {p0, v4, v5}, Lcom/android/gallery3d/app/SlideshowPage;->setStateResult(ILandroid/content/Intent;)V
 
-    .line 247
+    .line 251
     if-eqz v0, :cond_4
 
-    .line 248
+    .line 252
     iget-object v4, p0, Lcom/android/gallery3d/app/SlideshowPage;->mHandler:Landroid/os/Handler;
 
     const-wide/16 v5, 0x1388
@@ -872,14 +872,14 @@
 
     goto :goto_0
 
-    .line 235
+    .line 239
     .end local v0           #inDlnaMode:Z
     :cond_3
     const/4 v0, 0x0
 
     goto :goto_1
 
-    .line 251
+    .line 255
     .restart local v0       #inDlnaMode:Z
     :cond_4
     iget-object v4, p0, Lcom/android/gallery3d/app/SlideshowPage;->mHandler:Landroid/os/Handler;
@@ -899,7 +899,7 @@
 
     const/4 v8, 0x0
 
-    .line 160
+    .line 164
     :try_start_0
     iget-object v7, p0, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
 
@@ -911,7 +911,7 @@
 
     check-cast v0, Lcom/android/gallery3d/app/GalleryAppImpl;
 
-    .line 162
+    .line 166
     .local v0, app:Lcom/android/gallery3d/app/GalleryAppImpl;
     iget-object v7, p0, Lcom/android/gallery3d/app/SlideshowPage;->mDlnaClient:Landroid/media/dlna/DlnaClient;
 
@@ -919,7 +919,7 @@
 
     move-result-object v4
 
-    .line 163
+    .line 167
     .local v4, devices:Ljava/util/List;,"Ljava/util/List<Landroid/media/dlna/DlnaDevice;>;"
     invoke-interface {v4}, Ljava/util/List;->size()I
 
@@ -927,20 +927,20 @@
 
     if-ge v7, v9, :cond_0
 
-    .line 164
+    .line 168
     const/4 v7, 0x0
 
     invoke-virtual {v0, v7}, Lcom/android/gallery3d/app/GalleryAppImpl;->setRemoteDeviceId(Ljava/lang/String;)V
 
     move v7, v8
 
-    .line 186
+    .line 190
     .end local v0           #app:Lcom/android/gallery3d/app/GalleryAppImpl;
     .end local v4           #devices:Ljava/util/List;,"Ljava/util/List<Landroid/media/dlna/DlnaDevice;>;"
     :goto_0
     return v7
 
-    .line 168
+    .line 172
     .restart local v0       #app:Lcom/android/gallery3d/app/GalleryAppImpl;
     .restart local v4       #devices:Ljava/util/List;,"Ljava/util/List<Landroid/media/dlna/DlnaDevice;>;"
     :cond_0
@@ -948,11 +948,11 @@
 
     move-result-object v2
 
-    .line 170
+    .line 174
     .local v2, curDevId:Ljava/lang/String;
     const/4 v1, 0x0
 
-    .line 171
+    .line 175
     .local v1, curDevExist:Z
     const/4 v6, 0x0
 
@@ -964,14 +964,14 @@
 
     if-ge v6, v7, :cond_1
 
-    .line 172
+    .line 176
     invoke-interface {v4, v6}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v3
 
     check-cast v3, Landroid/media/dlna/DlnaDevice;
 
-    .line 173
+    .line 177
     .local v3, device:Landroid/media/dlna/DlnaDevice;
     iget-object v7, v3, Landroid/media/dlna/DlnaDevice;->deviceId:Ljava/lang/String;
 
@@ -981,17 +981,17 @@
 
     if-eqz v7, :cond_3
 
-    .line 174
+    .line 178
     const/4 v1, 0x1
 
-    .line 179
+    .line 183
     .end local v3           #device:Landroid/media/dlna/DlnaDevice;
     :cond_1
     if-nez v1, :cond_2
 
     if-eqz v2, :cond_2
 
-    .line 180
+    .line 184
     const/4 v7, 0x0
 
     invoke-virtual {v0, v7}, Lcom/android/gallery3d/app/GalleryAppImpl;->setRemoteDeviceId(Ljava/lang/String;)V
@@ -1001,17 +1001,17 @@
     :cond_2
     move v7, v9
 
-    .line 186
+    .line 190
     goto :goto_0
 
-    .line 171
+    .line 175
     .restart local v3       #device:Landroid/media/dlna/DlnaDevice;
     :cond_3
     add-int/lit8 v6, v6, 0x1
 
     goto :goto_1
 
-    .line 182
+    .line 186
     .end local v0           #app:Lcom/android/gallery3d/app/GalleryAppImpl;
     .end local v1           #curDevExist:Z
     .end local v2           #curDevId:Ljava/lang/String;
@@ -1021,7 +1021,7 @@
     :catch_0
     move-exception v5
 
-    .line 183
+    .line 187
     .local v5, e:Ljava/lang/Exception;
     const-string v7, "SlideshowPage"
 
@@ -1047,7 +1047,7 @@
 
     move v7, v8
 
-    .line 184
+    .line 188
     goto :goto_0
 .end method
 
@@ -1057,10 +1057,10 @@
     .locals 0
 
     .prologue
-    .line 330
+    .line 334
     invoke-direct {p0}, Lcom/android/gallery3d/app/SlideshowPage;->exit()V
 
-    .line 331
+    .line 335
     return-void
 .end method
 
@@ -1070,17 +1070,17 @@
     .parameter "restoreState"
 
     .prologue
-    .line 128
+    .line 132
     invoke-super {p0, p1, p2}, Lcom/android/gallery3d/app/ActivityState;->onCreate(Landroid/os/Bundle;Landroid/os/Bundle;)V
 
-    .line 129
+    .line 133
     iget v0, p0, Lcom/android/gallery3d/app/ActivityState;->mFlags:I
 
     or-int/lit8 v0, v0, 0x3
 
     iput v0, p0, Lcom/android/gallery3d/app/ActivityState;->mFlags:I
 
-    .line 130
+    .line 134
     const-string v0, "dream"
 
     invoke-virtual {p1, v0}, Landroid/os/Bundle;->getBoolean(Ljava/lang/String;)Z
@@ -1089,14 +1089,14 @@
 
     if-eqz v0, :cond_0
 
-    .line 132
+    .line 136
     iget v0, p0, Lcom/android/gallery3d/app/ActivityState;->mFlags:I
 
     or-int/lit8 v0, v0, 0x4
 
     iput v0, p0, Lcom/android/gallery3d/app/ActivityState;->mFlags:I
 
-    .line 138
+    .line 142
     :goto_0
     new-instance v0, Lcom/android/gallery3d/app/SlideshowPage$2;
 
@@ -1110,19 +1110,19 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mHandler:Landroid/os/Handler;
 
-    .line 152
+    .line 156
     invoke-direct {p0}, Lcom/android/gallery3d/app/SlideshowPage;->initializeViews()V
 
-    .line 153
+    .line 157
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/SlideshowPage;->initializeData(Landroid/os/Bundle;)V
 
-    .line 155
+    .line 159
     invoke-direct {p0}, Lcom/android/gallery3d/app/SlideshowPage;->dlnaOnCreate()V
 
-    .line 156
+    .line 160
     return-void
 
-    .line 135
+    .line 139
     :cond_0
     iget v0, p0, Lcom/android/gallery3d/app/ActivityState;->mFlags:I
 
@@ -1137,13 +1137,13 @@
     .locals 0
 
     .prologue
-    .line 348
+    .line 352
     invoke-super {p0}, Lcom/android/gallery3d/app/ActivityState;->onDestroy()V
 
-    .line 349
+    .line 353
     invoke-direct {p0}, Lcom/android/gallery3d/app/SlideshowPage;->dlnaOnDestroy()V
 
-    .line 350
+    .line 354
     return-void
 .end method
 
@@ -1151,20 +1151,20 @@
     .locals 2
 
     .prologue
-    .line 281
+    .line 285
     invoke-super {p0}, Lcom/android/gallery3d/app/ActivityState;->onPause()V
 
-    .line 282
+    .line 286
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mIsActive:Z
 
-    .line 283
+    .line 287
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mModel:Lcom/android/gallery3d/app/SlideshowPage$Model;
 
     invoke-interface {v0}, Lcom/android/gallery3d/app/SlideshowPage$Model;->pause()V
 
-    .line 284
+    .line 288
     iget-object v0, p0, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
 
     invoke-interface {v0}, Lcom/android/gallery3d/app/GalleryActivity;->getGLRoot()Lcom/android/gallery3d/ui/GLRoot;
@@ -1173,7 +1173,7 @@
 
     invoke-interface {v0}, Lcom/android/gallery3d/ui/GLRoot;->lockRenderThread()V
 
-    .line 286
+    .line 290
     :try_start_0
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mSlideshowView:Lcom/android/gallery3d/ui/SlideshowView;
 
@@ -1181,7 +1181,7 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 288
+    .line 292
     iget-object v0, p0, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
 
     invoke-interface {v0}, Lcom/android/gallery3d/app/GalleryActivity;->getGLRoot()Lcom/android/gallery3d/ui/GLRoot;
@@ -1190,36 +1190,36 @@
 
     invoke-interface {v0}, Lcom/android/gallery3d/ui/GLRoot;->unlockRenderThread()V
 
-    .line 291
+    .line 295
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mHandler:Landroid/os/Handler;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 292
+    .line 296
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mHandler:Landroid/os/Handler;
 
     const/4 v1, 0x2
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 294
+    .line 298
     invoke-direct {p0}, Lcom/android/gallery3d/app/SlideshowPage;->dlnaOnPause()V
 
-    .line 295
+    .line 299
     iget-boolean v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mExiting:Z
 
     if-nez v0, :cond_0
 
-    .line 296
+    .line 300
     invoke-direct {p0}, Lcom/android/gallery3d/app/SlideshowPage;->exit()V
 
-    .line 298
+    .line 302
     :cond_0
     return-void
 
-    .line 288
+    .line 292
     :catchall_0
     move-exception v0
 
@@ -1238,20 +1238,20 @@
     .locals 1
 
     .prologue
-    .line 312
+    .line 316
     invoke-super {p0}, Lcom/android/gallery3d/app/ActivityState;->onResume()V
 
-    .line 313
+    .line 317
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mIsActive:Z
 
-    .line 314
+    .line 318
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mModel:Lcom/android/gallery3d/app/SlideshowPage$Model;
 
     invoke-interface {v0}, Lcom/android/gallery3d/app/SlideshowPage$Model;->resume()V
 
-    .line 316
+    .line 320
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage;->mPendingSlide:Lcom/android/gallery3d/app/SlideshowPage$Slide;
 
     if-eqz v0, :cond_0
@@ -1272,17 +1272,17 @@
 
     if-gtz v0, :cond_0
 
-    .line 318
+    .line 322
     invoke-direct {p0}, Lcom/android/gallery3d/app/SlideshowPage;->showPendingBitmap()V
 
-    .line 323
+    .line 327
     :goto_0
     invoke-direct {p0}, Lcom/android/gallery3d/app/SlideshowPage;->dlnaOnResume()V
 
-    .line 324
+    .line 328
     return-void
 
-    .line 320
+    .line 324
     :cond_0
     invoke-direct {p0}, Lcom/android/gallery3d/app/SlideshowPage;->loadNextBitmap()V
 

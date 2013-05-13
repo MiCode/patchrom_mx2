@@ -1,9 +1,6 @@
 .class Lcom/android/internal/policy/impl/PhoneWindowManager$32;
-.super Ljava/lang/Object;
+.super Landroid/content/BroadcastReceiver;
 .source "PhoneWindowManager.java"
-
-# interfaces
-.implements Ljava/lang/Runnable;
 
 
 # annotations
@@ -27,45 +24,29 @@
     .parameter
 
     .prologue
-    .line 5956
+    .line 6116
     iput-object p1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$32;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public run()V
-    .locals 3
+.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+    .locals 2
+    .parameter "context"
+    .parameter "intent"
 
     .prologue
-    .line 5961
-    const-string v1, "WindowManager"
+    .line 6120
+    iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$32;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
-    const-string v2, "mVolumeKeyLongPress"
+    const/4 v1, 0x1
 
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    iput-boolean v1, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mIsShutDowning:Z
 
-    .line 5963
-    invoke-static {}, Lcom/android/internal/policy/impl/PhoneWindowManager;->getTelephonyService()Lcom/android/internal/telephony/ITelephony;
-
-    move-result-object v0
-
-    .line 5964
-    .local v0, telephonyService:Lcom/android/internal/telephony/ITelephony;
-    if-eqz v0, :cond_0
-
-    .line 5965
-    iget-object v1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$32;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
-
-    const/4 v2, 0x1
-
-    #setter for: Lcom/android/internal/policy/impl/PhoneWindowManager;->mVolumeKeyConsumedByLongPress:Z
-    invoke-static {v1, v2}, Lcom/android/internal/policy/impl/PhoneWindowManager;->access$802(Lcom/android/internal/policy/impl/PhoneWindowManager;Z)Z
-
-    .line 5973
-    :cond_0
+    .line 6122
     return-void
 .end method

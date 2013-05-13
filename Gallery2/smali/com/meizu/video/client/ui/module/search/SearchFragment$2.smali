@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 264
+    .line 290
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$2;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,7 +42,7 @@
     .parameter "v"
 
     .prologue
-    .line 266
+    .line 292
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$2;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mQueryText:Landroid/widget/EditText;
@@ -54,6 +54,6 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/EditText;->setText(Ljava/lang/CharSequence;)V
 
-    .line 267
+    .line 293
     return-void
 .end method

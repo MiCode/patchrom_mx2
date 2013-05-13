@@ -37,7 +37,7 @@
     .locals 0
 
     .prologue
-    .line 1534
+    .line 1683
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -48,7 +48,7 @@
     .parameter "x0"
 
     .prologue
-    .line 1534
+    .line 1683
     invoke-direct {p0}, Lcom/android/camera/Camera$SaveRequest;-><init>()V
 
     return-void

@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 280
+    .line 282
     iput-object p1, p0, Lcom/android/gallery3d/ui/PhotoView$1;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,12 +41,12 @@
     .locals 1
 
     .prologue
-    .line 282
+    .line 284
     iget-object v0, p0, Lcom/android/gallery3d/ui/PhotoView$1;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/PhotoView;->invalidate()V
 
-    .line 283
+    .line 285
     return-void
 .end method
 
@@ -54,7 +54,7 @@
     .locals 1
 
     .prologue
-    .line 288
+    .line 290
     iget-object v0, p0, Lcom/android/gallery3d/ui/PhotoView$1;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
     #getter for: Lcom/android/gallery3d/ui/PhotoView;->mHolding:I
@@ -81,7 +81,7 @@
     .locals 1
 
     .prologue
-    .line 285
+    .line 287
     iget-object v0, p0, Lcom/android/gallery3d/ui/PhotoView$1;->this$0:Lcom/android/gallery3d/ui/PhotoView;
 
     #getter for: Lcom/android/gallery3d/ui/PhotoView;->mHolding:I
@@ -110,7 +110,7 @@
     .parameter "direction"
 
     .prologue
-    .line 298
+    .line 300
     return-void
 .end method
 
@@ -120,6 +120,6 @@
     .parameter "direction"
 
     .prologue
-    .line 292
+    .line 294
     return-void
 .end method

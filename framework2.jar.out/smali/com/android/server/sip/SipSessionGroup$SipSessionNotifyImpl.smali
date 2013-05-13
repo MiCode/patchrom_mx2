@@ -237,14 +237,16 @@
 
     move v9, v10
 
-    .line 604
+    .line 608
     .end local v0           #content:Ljava/lang/String;
     .end local v1           #event:Ljavax/sip/RequestEvent;
     .end local v5           #response:Ljavax/sip/message/Request;
+    .end local p1
     :goto_0
     return v9
 
     .line 554
+    .restart local p1
     :cond_2
     const-string v9, "MESSAGE"
 
@@ -253,21 +255,7 @@
 
     move-result v9
 
-    if-eqz v9, :cond_9
-
-    .line 555
-    iget-object v9, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionNotifyImpl;->this$0:Lcom/android/server/sip/SipSessionGroup;
-
-    #getter for: Lcom/android/server/sip/SipSessionGroup;->mSipHelper:Lcom/android/server/sip/SipHelper;
-    invoke-static {v9}, Lcom/android/server/sip/SipSessionGroup;->access$500(Lcom/android/server/sip/SipSessionGroup;)Lcom/android/server/sip/SipHelper;
-
-    move-result-object v11
-
-    move-object v9, p1
-
-    check-cast v9, Ljavax/sip/RequestEvent;
-
-    invoke-virtual {v11, v9, v13}, Lcom/android/server/sip/SipHelper;->sendMessageResponse(Ljavax/sip/RequestEvent;I)V
+    if-eqz v9, :cond_a
 
     move-object v1, p1
 
@@ -433,22 +421,55 @@
 
     .line 582
     :cond_6
-    if-eqz v3, :cond_7
+    iget-object v9, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionNotifyImpl;->this$0:Lcom/android/server/sip/SipSessionGroup;
+
+    #getter for: Lcom/android/server/sip/SipSessionGroup;->mSipHelper:Lcom/android/server/sip/SipHelper;
+    invoke-static {v9}, Lcom/android/server/sip/SipSessionGroup;->access$500(Lcom/android/server/sip/SipSessionGroup;)Lcom/android/server/sip/SipHelper;
+
+    move-result-object v9
+
+    invoke-virtual {v9, v0}, Lcom/android/server/sip/SipHelper;->checkIsFeatureEnable(Ljava/lang/String;)Z
+
+    move-result v9
+
+    if-nez v9, :cond_7
+
+    move v9, v10
 
     .line 583
+    goto/16 :goto_0
+
+    .line 585
+    :cond_7
+    iget-object v9, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionNotifyImpl;->this$0:Lcom/android/server/sip/SipSessionGroup;
+
+    #getter for: Lcom/android/server/sip/SipSessionGroup;->mSipHelper:Lcom/android/server/sip/SipHelper;
+    invoke-static {v9}, Lcom/android/server/sip/SipSessionGroup;->access$500(Lcom/android/server/sip/SipSessionGroup;)Lcom/android/server/sip/SipHelper;
+
+    move-result-object v9
+
+    check-cast p1, Ljavax/sip/RequestEvent;
+
+    .end local p1
+    invoke-virtual {v9, p1, v13}, Lcom/android/server/sip/SipHelper;->sendMessageResponse(Ljavax/sip/RequestEvent;I)V
+
+    .line 586
+    if-eqz v3, :cond_8
+
+    .line 587
     invoke-virtual {p0, v0}, Lcom/android/server/sip/SipSessionGroup$SipSessionNotifyImpl;->onRecvReport(Ljava/lang/String;)V
 
     :goto_1
     move v9, v10
 
-    .line 602
+    .line 606
     goto/16 :goto_0
 
-    .line 594
-    :cond_7
-    if-eqz v8, :cond_8
+    .line 598
+    :cond_8
+    if-eqz v8, :cond_9
 
-    .line 596
+    .line 600
     iget-object v9, p0, Lcom/android/server/sip/SipSessionGroup$SipSessionNotifyImpl;->this$0:Lcom/android/server/sip/SipSessionGroup;
 
     #getter for: Lcom/android/server/sip/SipSessionGroup;->mSipHelper:Lcom/android/server/sip/SipHelper;
@@ -469,13 +490,13 @@
 
     invoke-virtual {v9, v11, v12, v0}, Lcom/android/server/sip/SipHelper;->sendReport(Landroid/net/sip/SipProfile;Ljava/lang/String;Ljava/lang/String;)Ljavax/sip/ClientTransaction;
 
-    .line 600
-    :cond_8
+    .line 604
+    :cond_9
     invoke-virtual {p0, v0}, Lcom/android/server/sip/SipSessionGroup$SipSessionNotifyImpl;->onRecvSms(Ljava/lang/String;)V
 
     goto :goto_1
 
-    .line 604
+    .line 608
     .end local v0           #content:Ljava/lang/String;
     .end local v1           #event:Ljavax/sip/RequestEvent;
     .end local v2           #inReplyToHeader:Ljavax/sip/header/InReplyToHeader;
@@ -483,7 +504,8 @@
     .end local v4           #reportHeader:Ljavax/sip/header/Header;
     .end local v5           #response:Ljavax/sip/message/Request;
     .end local v8           #sendReport:Z
-    :cond_9
+    .restart local p1
+    :cond_a
     const/4 v9, 0x0
 
     goto/16 :goto_0

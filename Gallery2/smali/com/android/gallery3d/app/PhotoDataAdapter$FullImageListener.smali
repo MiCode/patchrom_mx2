@@ -53,19 +53,19 @@
     .parameter "item"
 
     .prologue
-    .line 805
+    .line 808
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoDataAdapter$FullImageListener;->this$0:Lcom/android/gallery3d/app/PhotoDataAdapter;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 806
+    .line 809
     invoke-virtual {p2}, Lcom/android/gallery3d/data/MediaItem;->getPath()Lcom/android/gallery3d/data/Path;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/gallery3d/app/PhotoDataAdapter$FullImageListener;->mPath:Lcom/android/gallery3d/data/Path;
 
-    .line 807
+    .line 810
     return-void
 .end method
 
@@ -85,11 +85,11 @@
     .end annotation
 
     .prologue
-    .line 811
+    .line 814
     .local p1, future:Lcom/android/gallery3d/util/Future;,"Lcom/android/gallery3d/util/Future<Landroid/graphics/BitmapRegionDecoder;>;"
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoDataAdapter$FullImageListener;->mFuture:Lcom/android/gallery3d/util/Future;
 
-    .line 812
+    .line 815
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoDataAdapter$FullImageListener;->this$0:Lcom/android/gallery3d/app/PhotoDataAdapter;
 
     #getter for: Lcom/android/gallery3d/app/PhotoDataAdapter;->mMainHandler:Landroid/os/Handler;
@@ -112,7 +112,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 814
+    .line 817
     return-void
 .end method
 
@@ -120,7 +120,7 @@
     .locals 3
 
     .prologue
-    .line 818
+    .line 821
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoDataAdapter$FullImageListener;->this$0:Lcom/android/gallery3d/app/PhotoDataAdapter;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/PhotoDataAdapter$FullImageListener;->mPath:Lcom/android/gallery3d/data/Path;
@@ -130,6 +130,6 @@
     #calls: Lcom/android/gallery3d/app/PhotoDataAdapter;->updateFullImage(Lcom/android/gallery3d/data/Path;Lcom/android/gallery3d/util/Future;)V
     invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/PhotoDataAdapter;->access$800(Lcom/android/gallery3d/app/PhotoDataAdapter;Lcom/android/gallery3d/data/Path;Lcom/android/gallery3d/util/Future;)V
 
-    .line 819
+    .line 822
     return-void
 .end method

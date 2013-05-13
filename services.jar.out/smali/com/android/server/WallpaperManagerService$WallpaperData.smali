@@ -186,7 +186,7 @@
 
     .line 239
     .local v1, dm:Landroid/util/DisplayMetrics;
-    invoke-virtual {v0, v1}, Landroid/view/Display;->getRealMetrics(Landroid/util/DisplayMetrics;)V
+    invoke-virtual {v0, v1}, Landroid/view/Display;->getMetricsMz(Landroid/util/DisplayMetrics;)V
 
     .line 240
     iget v3, v1, Landroid/util/DisplayMetrics;->widthPixels:I

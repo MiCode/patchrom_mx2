@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 880
+    .line 1067
     iput-object p1, p0, Lcom/android/internal/app/ResolverActivity$ItemLongClickListener;->this$0:Lcom/android/internal/app/ResolverActivity;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -54,7 +54,7 @@
     .end annotation
 
     .prologue
-    .line 884
+    .line 1071
     .local p1, parent:Landroid/widget/AdapterView;,"Landroid/widget/AdapterView<*>;"
     iget-object v1, p0, Lcom/android/internal/app/ResolverActivity$ItemLongClickListener;->this$0:Lcom/android/internal/app/ResolverActivity;
 
@@ -67,7 +67,7 @@
 
     move-result-object v0
 
-    .line 886
+    .line 1073
     .local v0, ri:Landroid/content/pm/ResolveInfo;
     const/4 v1, 0x1
 

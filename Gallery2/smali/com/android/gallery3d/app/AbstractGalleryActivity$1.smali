@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 60
+    .line 62
     iput-object p1, p0, Lcom/android/gallery3d/app/AbstractGalleryActivity$1;->this$0:Lcom/android/gallery3d/app/AbstractGalleryActivity;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -40,7 +40,7 @@
     .parameter "intent"
 
     .prologue
-    .line 63
+    .line 65
     iget-object v0, p0, Lcom/android/gallery3d/app/AbstractGalleryActivity$1;->this$0:Lcom/android/gallery3d/app/AbstractGalleryActivity;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/app/AbstractGalleryActivity;->getExternalCacheDir()Ljava/io/File;
@@ -53,7 +53,7 @@
 
     invoke-virtual {v0}, Lcom/android/gallery3d/app/AbstractGalleryActivity;->onStorageReady()V
 
-    .line 64
+    .line 66
     :cond_0
     return-void
 .end method

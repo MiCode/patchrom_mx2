@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 279
+    .line 286
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoPage$MyMenuVisibilityListener;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .parameter "x1"
 
     .prologue
-    .line 279
+    .line 286
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/PhotoPage$MyMenuVisibilityListener;-><init>(Lcom/android/gallery3d/app/PhotoPage;)V
 
     return-void
@@ -54,18 +54,18 @@
     .parameter "isVisible"
 
     .prologue
-    .line 282
+    .line 289
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$MyMenuVisibilityListener;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #setter for: Lcom/android/gallery3d/app/PhotoPage;->mIsMenuVisible:Z
     invoke-static {v0, p1}, Lcom/android/gallery3d/app/PhotoPage;->access$002(Lcom/android/gallery3d/app/PhotoPage;Z)Z
 
-    .line 283
+    .line 290
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$MyMenuVisibilityListener;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #calls: Lcom/android/gallery3d/app/PhotoPage;->refreshHidingMessage()V
     invoke-static {v0}, Lcom/android/gallery3d/app/PhotoPage;->access$100(Lcom/android/gallery3d/app/PhotoPage;)V
 
-    .line 284
+    .line 291
     return-void
 .end method

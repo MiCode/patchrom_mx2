@@ -118,8 +118,6 @@
     .parameter "i"
 
     .prologue
-    const/4 v5, 0x0
-
     .line 114
     packed-switch p0, :pswitch_data_0
 
@@ -146,7 +144,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 136
+    .line 140
     :goto_0
     return-void
 
@@ -167,35 +165,41 @@
 
     .line 132
     .local v2, intent:Landroid/content/Intent;
-    const-string v3, "LockView"
+    invoke-virtual {p2}, Landroid/content/Intent;->getMeizuFlags()I
 
-    const-string v4, "LockView"
+    move-result v3
 
-    invoke-virtual {p2, v4, v5}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
+    and-int/lit16 v3, v3, 0x80
 
-    move-result v4
-
-    invoke-virtual {v2, v3, v4}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
+    if-eqz v3, :cond_0
 
     .line 133
-    const-string v3, "isSecurity"
+    const/16 v3, 0x80
 
-    const-string v4, "isSecurity"
-
-    invoke-virtual {p2, v4, v5}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
-
-    move-result v4
-
-    invoke-virtual {v2, v3, v4}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
-
-    .line 134
-    const-string v3, "fastStarting"
-
-    const/4 v4, 0x1
-
-    invoke-virtual {v2, v3, v4}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
+    invoke-virtual {v2, v3}, Landroid/content/Intent;->addMeizuFlags(I)Landroid/content/Intent;
 
     .line 135
+    :cond_0
+    invoke-virtual {p2}, Landroid/content/Intent;->getMeizuFlags()I
+
+    move-result v3
+
+    and-int/lit8 v3, v3, 0x10
+
+    if-eqz v3, :cond_1
+
+    .line 136
+    const/16 v3, 0x10
+
+    invoke-virtual {v2, v3}, Landroid/content/Intent;->addMeizuFlags(I)Landroid/content/Intent;
+
+    .line 138
+    :cond_1
+    const/16 v3, 0x20
+
+    invoke-virtual {v2, v3}, Landroid/content/Intent;->addMeizuFlags(I)Landroid/content/Intent;
+
+    .line 139
     invoke-static {p1, v2, v1}, Lcom/android/camera/MenuHelper;->startCameraActivity(Landroid/app/Activity;Landroid/content/Intent;Ljava/lang/String;)V
 
     goto :goto_0
@@ -245,14 +249,10 @@
     .parameter "i"
 
     .prologue
-    .line 139
-    const/4 v0, 0x0
-
-    .line 140
-    .local v0, action:Ljava/lang/String;
+    .line 144
     packed-switch p0, :pswitch_data_0
 
-    .line 150
+    .line 154
     const-string v4, "MenuHelper"
 
     new-instance v5, Ljava/lang/StringBuilder;
@@ -275,33 +275,34 @@
 
     invoke-static {v4, v5}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 161
+    .line 166
     :goto_0
     return-void
 
-    .line 142
+    .line 146
     :pswitch_0
     const-string v0, "android.media.action.MEIZU_CAMERA_VIDEO_APP_MMS_EX"
 
-    .line 143
+    .line 147
+    .local v0, action:Ljava/lang/String;
     const-string v1, "com.android.camera.VideoCamera"
 
-    .line 154
+    .line 158
     .local v1, className:Ljava/lang/String;
     :goto_1
     new-instance v3, Landroid/content/Intent;
 
     invoke-direct {v3, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 155
+    .line 159
     .local v3, intent:Landroid/content/Intent;
     new-instance v2, Landroid/os/Bundle;
 
     invoke-direct {v2}, Landroid/os/Bundle;-><init>()V
 
-    .line 156
+    .line 160
     .local v2, extras:Landroid/os/Bundle;
-    const-string v5, "output"
+    const-string v5, "output_video"
 
     invoke-virtual {p2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
 
@@ -319,10 +320,29 @@
 
     invoke-virtual {v2, v5, v4}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V
 
-    .line 157
+    .line 161
+    const-string v5, "output"
+
+    invoke-virtual {p2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+
+    move-result-object v4
+
+    const-string v6, "output"
+
+    invoke-virtual {v4, v6}, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;
+
+    move-result-object v4
+
+    check-cast v4, Landroid/net/Uri;
+
+    check-cast v4, Landroid/net/Uri;
+
+    invoke-virtual {v2, v5, v4}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V
+
+    .line 162
     invoke-virtual {v3, v2}, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;
 
-    .line 158
+    .line 163
     const-string v4, "meizu_video_record_max_size"
 
     const-string v5, "meizu_video_record_max_size"
@@ -335,7 +355,7 @@
 
     invoke-virtual {v3, v4, v5, v6}, Landroid/content/Intent;->putExtra(Ljava/lang/String;J)Landroid/content/Intent;
 
-    .line 159
+    .line 164
     const-string v4, "isFlymeMms"
 
     const-string v5, "isFlymeMms"
@@ -348,26 +368,28 @@
 
     invoke-virtual {v3, v4, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 160
+    .line 165
     invoke-static {p1, v3, v1}, Lcom/android/camera/MenuHelper;->startCameraActivity(Landroid/app/Activity;Landroid/content/Intent;Ljava/lang/String;)V
 
     goto :goto_0
 
-    .line 146
+    .line 150
+    .end local v0           #action:Ljava/lang/String;
     .end local v1           #className:Ljava/lang/String;
     .end local v2           #extras:Landroid/os/Bundle;
     .end local v3           #intent:Landroid/content/Intent;
     :pswitch_1
     const-string v0, "android.media.action.MEIZU_CAMERA_APP_MMS_EX"
 
-    .line 147
+    .line 151
+    .restart local v0       #action:Ljava/lang/String;
     const-string v1, "com.android.camera.Camera"
 
-    .line 148
+    .line 152
     .restart local v1       #className:Ljava/lang/String;
     goto :goto_1
 
-    .line 140
+    .line 144
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_1

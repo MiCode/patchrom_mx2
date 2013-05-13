@@ -42,7 +42,7 @@
 
 .field private mDateFormatString:Ljava/lang/String;
 
-.field private mDateWeekTextView:Landroid/widget/TextView;
+.field private mDateTextView:Landroid/widget/TextView;
 
 .field private mFormat:Ljava/lang/String;
 
@@ -54,11 +54,11 @@
 
 .field private mLive:Z
 
-.field private mTempCTextView:Landroid/widget/TextView;
-
 .field private mWeatherImageView:Landroid/widget/ImageView;
 
 .field private mWeekFormatString:Ljava/lang/String;
+
+.field private mWeekTextView:Landroid/widget/TextView;
 
 
 # direct methods
@@ -131,18 +131,7 @@
     return-object p1
 .end method
 
-.method static synthetic access$200(Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 39
-    invoke-direct {p0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->updateTime()V
-
-    return-void
-.end method
-
-.method static synthetic access$300(Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;)Landroid/os/Handler;
+.method static synthetic access$200(Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;)Landroid/os/Handler;
     .locals 1
     .parameter "x0"
 
@@ -153,7 +142,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$400(Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;)V
+.method static synthetic access$300(Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;)V
     .locals 0
     .parameter "x0"
 
@@ -284,7 +273,7 @@
 
     .line 272
     :cond_1
-    const v2, 0x108080a
+    const v2, 0x1080835
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setBackgroundResource(I)V
 
@@ -292,7 +281,7 @@
 
     .line 277
     :pswitch_1
-    const v2, 0x108080b
+    const v2, 0x1080836
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setBackgroundResource(I)V
 
@@ -305,7 +294,7 @@
 
     .line 281
     :pswitch_2
-    const v2, 0x108080c
+    const v2, 0x1080837
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setBackgroundResource(I)V
 
@@ -318,7 +307,7 @@
 
     .line 285
     :pswitch_3
-    const v2, 0x108080d
+    const v2, 0x1080838
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setBackgroundResource(I)V
 
@@ -331,7 +320,7 @@
 
     .line 289
     :pswitch_4
-    const v2, 0x108080e
+    const v2, 0x1080839
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setBackgroundResource(I)V
 
@@ -344,7 +333,7 @@
 
     .line 293
     :pswitch_5
-    const v2, 0x108080f
+    const v2, 0x108083a
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setBackgroundResource(I)V
 
@@ -357,7 +346,7 @@
 
     .line 297
     :pswitch_6
-    const v2, 0x1080810
+    const v2, 0x108083b
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setBackgroundResource(I)V
 
@@ -370,7 +359,7 @@
 
     .line 301
     :pswitch_7
-    const v2, 0x1080811
+    const v2, 0x108083c
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setBackgroundResource(I)V
 
@@ -383,7 +372,7 @@
 
     .line 305
     :pswitch_8
-    const v2, 0x1080812
+    const v2, 0x108083d
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setBackgroundResource(I)V
 
@@ -396,7 +385,7 @@
 
     .line 309
     :pswitch_9
-    const v2, 0x1080813
+    const v2, 0x108083e
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setBackgroundResource(I)V
 
@@ -409,7 +398,7 @@
 
     .line 313
     :pswitch_a
-    const v2, 0x1080814
+    const v2, 0x108083f
 
     invoke-virtual {v1, v2}, Landroid/widget/ImageView;->setBackgroundResource(I)V
 
@@ -481,130 +470,6 @@
     .line 328
     :cond_0
     const-string v0, "h:mm"
-
-    goto :goto_0
-.end method
-
-.method private updateTime()V
-    .locals 5
-
-    .prologue
-    .line 243
-    iget-boolean v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mLive:Z
-
-    if-eqz v2, :cond_0
-
-    .line 244
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mCalendar:Ljava/util/Calendar;
-
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
-    move-result-wide v3
-
-    invoke-virtual {v2, v3, v4}, Ljava/util/Calendar;->setTimeInMillis(J)V
-
-    .line 246
-    :cond_0
-    new-instance v2, Ljava/util/ArrayList;
-
-    invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V
-
-    iput-object v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->clockList:Ljava/util/ArrayList;
-
-    .line 247
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mFormat:Ljava/lang/String;
-
-    iget-object v3, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mCalendar:Ljava/util/Calendar;
-
-    invoke-static {v2, v3}, Landroid/text/format/DateFormat;->format(Ljava/lang/CharSequence;Ljava/util/Calendar;)Ljava/lang/CharSequence;
-
-    move-result-object v0
-
-    .line 248
-    .local v0, newTime:Ljava/lang/CharSequence;
-    invoke-direct {p0, v0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->setClockImageList(Ljava/lang/CharSequence;)V
-
-    .line 249
-    invoke-direct {p0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->addImageViewToClock()V
-
-    .line 251
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mWeekFormatString:Ljava/lang/String;
-
-    new-instance v3, Ljava/util/Date;
-
-    invoke-direct {v3}, Ljava/util/Date;-><init>()V
-
-    invoke-static {v2, v3}, Landroid/text/format/DateFormat;->format(Ljava/lang/CharSequence;Ljava/util/Date;)Ljava/lang/CharSequence;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    .line 252
-    .local v1, tempString:Ljava/lang/String;
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mDateWeekTextView:Landroid/widget/TextView;
-
-    iget-object v3, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mDateFormatString:Ljava/lang/String;
-
-    new-instance v4, Ljava/util/Date;
-
-    invoke-direct {v4}, Ljava/util/Date;-><init>()V
-
-    invoke-static {v3, v4}, Landroid/text/format/DateFormat;->format(Ljava/lang/CharSequence;Ljava/util/Date;)Ljava/lang/CharSequence;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 253
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mTempCTextView:Landroid/widget/TextView;
-
-    const-string v3, "("
-
-    invoke-virtual {v1, v3}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
-
-    move-result v3
-
-    add-int/lit8 v3, v3, 0x1
-
-    const-string v4, ")"
-
-    invoke-virtual {v1, v4}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
-
-    move-result v4
-
-    invoke-virtual {v1, v3, v4}, Ljava/lang/String;->substring(II)Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 254
-    iget-object v3, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mAmPm:Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen$AmPm;
-
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mCalendar:Ljava/util/Calendar;
-
-    const/16 v4, 0x9
-
-    invoke-virtual {v2, v4}, Ljava/util/Calendar;->get(I)I
-
-    move-result v2
-
-    if-nez v2, :cond_1
-
-    const/4 v2, 0x1
-
-    :goto_0
-    invoke-virtual {v3, v2}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen$AmPm;->setIsMorning(Z)V
-
-    .line 255
-    return-void
-
-    .line 254
-    :cond_1
-    const/4 v2, 0x0
 
     goto :goto_0
 .end method
@@ -689,7 +554,7 @@
     invoke-virtual {v1, v2, v4, v3}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
     .line 197
-    invoke-direct {p0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->updateTime()V
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->updateTime()V
 
     goto :goto_0
 .end method
@@ -751,7 +616,7 @@
     invoke-super {p0}, Landroid/widget/LinearLayout;->onFinishInflate()V
 
     .line 155
-    const v0, 0x102033c
+    const v0, 0x1020338
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->findViewById(I)Landroid/view/View;
 
@@ -762,7 +627,7 @@
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->linearLayout:Landroid/widget/LinearLayout;
 
     .line 156
-    const v0, 0x1020340
+    const v0, 0x102033c
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->findViewById(I)Landroid/view/View;
 
@@ -770,10 +635,10 @@
 
     check-cast v0, Landroid/widget/TextView;
 
-    iput-object v0, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mDateWeekTextView:Landroid/widget/TextView;
+    iput-object v0, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mDateTextView:Landroid/widget/TextView;
 
     .line 157
-    const v0, 0x102033f
+    const v0, 0x102033b
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->findViewById(I)Landroid/view/View;
 
@@ -781,10 +646,10 @@
 
     check-cast v0, Landroid/widget/TextView;
 
-    iput-object v0, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mTempCTextView:Landroid/widget/TextView;
+    iput-object v0, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mWeekTextView:Landroid/widget/TextView;
 
     .line 158
-    const v0, 0x1020341
+    const v0, 0x102033d
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->findViewById(I)Landroid/view/View;
 
@@ -821,7 +686,7 @@
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mWeekFormatString:Ljava/lang/String;
 
     .line 161
-    const v0, 0x102033d
+    const v0, 0x1020339
 
     invoke-virtual {p0, v0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->findViewById(I)Landroid/view/View;
 
@@ -860,7 +725,7 @@
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mCalendar:Ljava/util/Calendar;
 
     .line 166
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mTempCTextView:Landroid/widget/TextView;
+    iget-object v0, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mWeekTextView:Landroid/widget/TextView;
 
     const-string v1, ""
 
@@ -934,7 +799,7 @@
     .line 346
     .end local v2           #d:Landroid/graphics/drawable/Drawable;
     :cond_1
-    iget-object v5, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mDateWeekTextView:Landroid/widget/TextView;
+    iget-object v5, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mDateTextView:Landroid/widget/TextView;
 
     invoke-virtual {v5}, Landroid/widget/TextView;->getTextColors()Landroid/content/res/ColorStateList;
 
@@ -948,12 +813,12 @@
 
     .line 348
     .local v4, newColorStateList:Landroid/content/res/ColorStateList;
-    iget-object v5, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mDateWeekTextView:Landroid/widget/TextView;
+    iget-object v5, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mDateTextView:Landroid/widget/TextView;
 
     invoke-virtual {v5, v4}, Landroid/widget/TextView;->setTextColor(Landroid/content/res/ColorStateList;)V
 
     .line 349
-    iget-object v5, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mTempCTextView:Landroid/widget/TextView;
+    iget-object v5, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mWeekTextView:Landroid/widget/TextView;
 
     invoke-virtual {v5, v4}, Landroid/widget/TextView;->setTextColor(Landroid/content/res/ColorStateList;)V
 
@@ -1017,6 +882,130 @@
     return-void
 .end method
 
+.method updateTime()V
+    .locals 5
+
+    .prologue
+    .line 243
+    iget-boolean v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mLive:Z
+
+    if-eqz v2, :cond_0
+
+    .line 244
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mCalendar:Ljava/util/Calendar;
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v3
+
+    invoke-virtual {v2, v3, v4}, Ljava/util/Calendar;->setTimeInMillis(J)V
+
+    .line 246
+    :cond_0
+    new-instance v2, Ljava/util/ArrayList;
+
+    invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->clockList:Ljava/util/ArrayList;
+
+    .line 247
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mFormat:Ljava/lang/String;
+
+    iget-object v3, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mCalendar:Ljava/util/Calendar;
+
+    invoke-static {v2, v3}, Landroid/text/format/DateFormat;->format(Ljava/lang/CharSequence;Ljava/util/Calendar;)Ljava/lang/CharSequence;
+
+    move-result-object v0
+
+    .line 248
+    .local v0, newTime:Ljava/lang/CharSequence;
+    invoke-direct {p0, v0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->setClockImageList(Ljava/lang/CharSequence;)V
+
+    .line 249
+    invoke-direct {p0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->addImageViewToClock()V
+
+    .line 251
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mWeekFormatString:Ljava/lang/String;
+
+    new-instance v3, Ljava/util/Date;
+
+    invoke-direct {v3}, Ljava/util/Date;-><init>()V
+
+    invoke-static {v2, v3}, Landroid/text/format/DateFormat;->format(Ljava/lang/CharSequence;Ljava/util/Date;)Ljava/lang/CharSequence;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    .line 252
+    .local v1, tempString:Ljava/lang/String;
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mDateTextView:Landroid/widget/TextView;
+
+    iget-object v3, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mDateFormatString:Ljava/lang/String;
+
+    new-instance v4, Ljava/util/Date;
+
+    invoke-direct {v4}, Ljava/util/Date;-><init>()V
+
+    invoke-static {v3, v4}, Landroid/text/format/DateFormat;->format(Ljava/lang/CharSequence;Ljava/util/Date;)Ljava/lang/CharSequence;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 253
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mWeekTextView:Landroid/widget/TextView;
+
+    const-string v3, "("
+
+    invoke-virtual {v1, v3}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
+
+    move-result v3
+
+    add-int/lit8 v3, v3, 0x1
+
+    const-string v4, ")"
+
+    invoke-virtual {v1, v4}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
+
+    move-result v4
+
+    invoke-virtual {v1, v3, v4}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 254
+    iget-object v3, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mAmPm:Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen$AmPm;
+
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mCalendar:Ljava/util/Calendar;
+
+    const/16 v4, 0x9
+
+    invoke-virtual {v2, v4}, Ljava/util/Calendar;->get(I)I
+
+    move-result v2
+
+    if-nez v2, :cond_1
+
+    const/4 v2, 0x1
+
+    :goto_0
+    invoke-virtual {v3, v2}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen$AmPm;->setIsMorning(Z)V
+
+    .line 255
+    return-void
+
+    .line 254
+    :cond_1
+    const/4 v2, 0x0
+
+    goto :goto_0
+.end method
+
 .method updateTime(Ljava/util/Calendar;)V
     .locals 0
     .parameter "c"
@@ -1026,7 +1015,7 @@
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->mCalendar:Ljava/util/Calendar;
 
     .line 239
-    invoke-direct {p0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->updateTime()V
+    invoke-virtual {p0}, Lcom/meizu/internal/policy/impl/DigitalClockAndWeatherForLockScreen;->updateTime()V
 
     .line 240
     return-void

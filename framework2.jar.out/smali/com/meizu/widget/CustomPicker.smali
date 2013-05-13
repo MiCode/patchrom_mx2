@@ -192,7 +192,7 @@
     :pswitch_0
     iget-object v3, p0, Lcom/meizu/widget/CustomPicker;->mContext:Landroid/content/Context;
 
-    const v4, 0x109009c
+    const v4, 0x10900a2
 
     invoke-static {v3, v4, p0}, Lcom/meizu/widget/CustomPicker;->inflate(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
 
@@ -220,7 +220,7 @@
 
     const/4 v5, 0x0
 
-    const v3, 0x10202bc
+    const v3, 0x10202b9
 
     invoke-virtual {p0, v3}, Lcom/meizu/widget/CustomPicker;->findViewById(I)Landroid/view/View;
 
@@ -233,7 +233,7 @@
     .line 179
     const/4 v4, 0x0
 
-    const v3, 0x10202bd
+    const v3, 0x10202ba
 
     invoke-virtual {p0, v3}, Lcom/meizu/widget/CustomPicker;->findViewById(I)Landroid/view/View;
 
@@ -248,7 +248,7 @@
 
     const/4 v5, 0x1
 
-    const v3, 0x10202c0
+    const v3, 0x10202bd
 
     invoke-virtual {p0, v3}, Lcom/meizu/widget/CustomPicker;->findViewById(I)Landroid/view/View;
 
@@ -261,7 +261,7 @@
     .line 183
     const/4 v4, 0x1
 
-    const v3, 0x10202c1
+    const v3, 0x10202be
 
     invoke-virtual {p0, v3}, Lcom/meizu/widget/CustomPicker;->findViewById(I)Landroid/view/View;
 
@@ -276,7 +276,7 @@
 
     const/4 v5, 0x2
 
-    const v3, 0x10202c4
+    const v3, 0x10202c1
 
     invoke-virtual {p0, v3}, Lcom/meizu/widget/CustomPicker;->findViewById(I)Landroid/view/View;
 
@@ -289,7 +289,7 @@
     .line 187
     const/4 v4, 0x2
 
-    const v3, 0x10202c5
+    const v3, 0x10202c2
 
     invoke-virtual {p0, v3}, Lcom/meizu/widget/CustomPicker;->findViewById(I)Landroid/view/View;
 
@@ -405,7 +405,7 @@
     :pswitch_1
     iget-object v3, p0, Lcom/meizu/widget/CustomPicker;->mContext:Landroid/content/Context;
 
-    const v4, 0x109009d
+    const v4, 0x10900a3
 
     invoke-static {v3, v4, p0}, Lcom/meizu/widget/CustomPicker;->inflate(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
 
@@ -415,7 +415,7 @@
     :pswitch_2
     iget-object v3, p0, Lcom/meizu/widget/CustomPicker;->mContext:Landroid/content/Context;
 
-    const v4, 0x109009e
+    const v4, 0x10900a4
 
     invoke-static {v3, v4, p0}, Lcom/meizu/widget/CustomPicker;->inflate(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
 
@@ -452,7 +452,7 @@
 
     .line 213
     :pswitch_3
-    const v3, 0x1040401
+    const v3, 0x1040402
 
     invoke-virtual {v14, v3}, Landroid/widget/TextView;->setText(I)V
 
@@ -481,7 +481,7 @@
 
     .line 218
     :pswitch_4
-    const v3, 0x1040403
+    const v3, 0x1040404
 
     invoke-virtual {v14, v3}, Landroid/widget/TextView;->setText(I)V
 
@@ -510,7 +510,7 @@
 
     .line 223
     :pswitch_5
-    const v3, 0x1040405
+    const v3, 0x1040406
 
     invoke-virtual {v14, v3}, Landroid/widget/TextView;->setText(I)V
 

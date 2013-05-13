@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 1125
+    .line 1144
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$5;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     iput-object p2, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$5;->val$intent:Landroid/content/Intent;
@@ -46,11 +46,11 @@
     .locals 2
 
     .prologue
-    .line 1128
+    .line 1147
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView$5;->this$0:Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->mContext:Landroid/content/Context;
-    invoke-static {v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2200(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Landroid/content/Context;
+    invoke-static {v0}, Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;->access$2900(Lcom/meizu/internal/policy/impl/LockPasswordKeyguardView;)Landroid/content/Context;
 
     move-result-object v0
 
@@ -58,6 +58,6 @@
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
 
-    .line 1129
+    .line 1148
     return-void
 .end method

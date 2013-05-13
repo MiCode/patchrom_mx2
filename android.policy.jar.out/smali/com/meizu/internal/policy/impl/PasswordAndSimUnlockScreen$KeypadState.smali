@@ -40,7 +40,7 @@
 
     const/4 v2, 0x0
 
-    .line 70
+    .line 64
     new-instance v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
 
     const-string v1, "sim"
@@ -57,7 +57,7 @@
 
     sput-object v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;->password:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
 
-    .line 69
+    .line 63
     const/4 v0, 0x2
 
     new-array v0, v0, [Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
@@ -86,7 +86,7 @@
     .end annotation
 
     .prologue
-    .line 69
+    .line 63
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -97,7 +97,7 @@
     .parameter "name"
 
     .prologue
-    .line 69
+    .line 63
     const-class v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -113,7 +113,7 @@
     .locals 1
 
     .prologue
-    .line 69
+    .line 63
     sget-object v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;->$VALUES:[Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;
 
     invoke-virtual {v0}, [Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$KeypadState;->clone()Ljava/lang/Object;

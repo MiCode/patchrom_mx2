@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 95
+    .line 126
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockScreenMz$2;->this$0:Lcom/meizu/internal/policy/impl/LockScreenMz;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,7 +42,7 @@
     .parameter "v"
 
     .prologue
-    .line 98
+    .line 129
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockScreenMz$2;->this$0:Lcom/meizu/internal/policy/impl/LockScreenMz;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
@@ -53,7 +53,7 @@
 
     if-nez v0, :cond_0
 
-    .line 99
+    .line 130
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/LockScreenMz$2;->this$0:Lcom/meizu/internal/policy/impl/LockScreenMz;
 
     iget-object v0, v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mMusicView:Lcom/meizu/internal/policy/impl/LockMusicView;
@@ -62,7 +62,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/internal/policy/impl/LockMusicView;->showMusicName(Z)V
 
-    .line 101
+    .line 132
     :cond_0
     return-void
 .end method

@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 291
+    .line 240
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper$2;->this$0:Lcom/meizu/internal/policy/impl/ScreenshotHelper;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -35,17 +35,17 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 4
+    .locals 5
     .parameter "context"
     .parameter "intent"
 
     .prologue
-    .line 294
+    .line 244
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 295
+    .line 245
     .local v0, action:Ljava/lang/String;
     const-string v2, "com.meizu.LAUNCHER_WITH_BROUGHT_TO_BACK"
 
@@ -55,57 +55,39 @@
 
     if-eqz v2, :cond_0
 
-    .line 296
+    .line 246
     const-string v2, "package"
 
     invoke-virtual {p2, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 297
+    .line 247
     .local v1, extra:Ljava/lang/String;
-    invoke-static {}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->access$100()Ljava/lang/String;
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper$2;->this$0:Lcom/meizu/internal/policy/impl/ScreenshotHelper;
+
+    #getter for: Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHandler:Landroid/os/Handler;
+    invoke-static {v2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->access$000(Lcom/meizu/internal/policy/impl/ScreenshotHelper;)Landroid/os/Handler;
 
     move-result-object v2
 
-    invoke-virtual {v2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper$2;->this$0:Lcom/meizu/internal/policy/impl/ScreenshotHelper;
 
-    move-result v2
+    #getter for: Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHandler:Landroid/os/Handler;
+    invoke-static {v3}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->access$000(Lcom/meizu/internal/policy/impl/ScreenshotHelper;)Landroid/os/Handler;
 
-    if-eqz v2, :cond_1
+    move-result-object v3
 
-    .line 298
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper$2;->this$0:Lcom/meizu/internal/policy/impl/ScreenshotHelper;
+    const/16 v4, 0x3eb
 
-    const/4 v3, 0x2
+    invoke-virtual {v3, v4, v1}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
 
-    invoke-virtual {v2, v3}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->requestScreenshotAndNoUpdate(I)V
+    move-result-object v3
 
-    .line 303
+    invoke-virtual {v2, v3}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
+
+    .line 249
     .end local v1           #extra:Ljava/lang/String;
     :cond_0
-    :goto_0
     return-void
-
-    .line 299
-    .restart local v1       #extra:Ljava/lang/String;
-    :cond_1
-    invoke-static {}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->access$300()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    .line 300
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper$2;->this$0:Lcom/meizu/internal/policy/impl/ScreenshotHelper;
-
-    const/4 v3, 0x0
-
-    invoke-virtual {v2, v3}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->requestScreenshotAndNoUpdate(I)V
-
-    goto :goto_0
 .end method

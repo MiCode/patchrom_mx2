@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/camera/VideoCamera;->showRotateToast(I)V
+    value = Lcom/android/camera/VideoCamera;->showRecordingUI(Z)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 2524
+    .line 2443
     iput-object p1, p0, Lcom/android/camera/VideoCamera$12;->this$0:Lcom/android/camera/VideoCamera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,21 +38,21 @@
 
 # virtual methods
 .method public run()V
-    .locals 3
+    .locals 2
 
     .prologue
-    .line 2527
+    .line 2446
     iget-object v0, p0, Lcom/android/camera/VideoCamera$12;->this$0:Lcom/android/camera/VideoCamera;
 
-    #getter for: Lcom/android/camera/VideoCamera;->mRotateToastText:Landroid/widget/TextView;
-    invoke-static {v0}, Lcom/android/camera/VideoCamera;->access$5200(Lcom/android/camera/VideoCamera;)Landroid/widget/TextView;
+    #getter for: Lcom/android/camera/VideoCamera;->mVideoControlPaneLayout:Lcom/android/camera/ui/ControlPanelLayout;
+    invoke-static {v0}, Lcom/android/camera/VideoCamera;->access$4000(Lcom/android/camera/VideoCamera;)Lcom/android/camera/ui/ControlPanelLayout;
 
     move-result-object v0
 
-    const-wide/16 v1, 0xc8
+    const v1, 0x7f080049
 
-    invoke-static {v0, v1, v2}, Lcom/android/camera/Util;->fadeOut(Landroid/view/View;J)V
+    invoke-virtual {v0, v1}, Lcom/android/camera/ui/ControlPanelLayout;->setBackgroundResource(I)V
 
-    .line 2528
+    .line 2447
     return-void
 .end method

@@ -52,7 +52,7 @@
 
     const/4 v2, 0x0
 
-    .line 48
+    .line 58
     new-instance v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
     const-string v1, "NONE"
@@ -61,7 +61,7 @@
 
     sput-object v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;->NONE:Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
-    .line 49
+    .line 59
     new-instance v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
     const-string v1, "LOCK_V"
@@ -70,7 +70,7 @@
 
     sput-object v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;->LOCK_V:Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
-    .line 50
+    .line 60
     new-instance v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
     const-string v1, "UNLOCK_V"
@@ -79,7 +79,7 @@
 
     sput-object v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;->UNLOCK_V:Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
-    .line 51
+    .line 61
     new-instance v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
     const-string v1, "LOCK_H"
@@ -88,7 +88,7 @@
 
     sput-object v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;->LOCK_H:Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
-    .line 52
+    .line 62
     new-instance v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
     const-string v1, "UNLOCK_H"
@@ -97,7 +97,7 @@
 
     sput-object v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;->UNLOCK_H:Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
-    .line 47
+    .line 57
     const/4 v0, 0x5
 
     new-array v0, v0, [Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
@@ -138,7 +138,7 @@
     .end annotation
 
     .prologue
-    .line 47
+    .line 57
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -149,7 +149,7 @@
     .parameter "name"
 
     .prologue
-    .line 47
+    .line 57
     const-class v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -165,7 +165,7 @@
     .locals 1
 
     .prologue
-    .line 47
+    .line 57
     sget-object v0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;->$VALUES:[Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;
 
     invoke-virtual {v0}, [Lcom/meizu/internal/policy/impl/LockViewBaseSe$ANIM_MODE;->clone()Ljava/lang/Object;

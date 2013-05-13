@@ -86,7 +86,7 @@
 
     move-result-object v2
 
-    const v3, 0x10900dd
+    const v3, 0x10900e6
 
     invoke-virtual {v2, v3, p0}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
@@ -127,7 +127,7 @@
 
     move-result-object v2
 
-    const v3, 0x1050093
+    const v3, 0x10500a6
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -230,7 +230,7 @@
     check-cast v0, Landroid/graphics/drawable/LayerDrawable;
 
     .end local v0           #background:Landroid/graphics/drawable/Drawable;
-    const v4, 0x1020407
+    const v4, 0x102040a
 
     invoke-virtual {v0, v4}, Landroid/graphics/drawable/LayerDrawable;->findDrawableByLayerId(I)Landroid/graphics/drawable/Drawable;
 

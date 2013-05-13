@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/gallery3d/photoeditor/PhotoEditor;->saveFilter()V
+    value = Lcom/android/gallery3d/photoeditor/PhotoEditor;->createEffectsExposureRunnable()Ljava/lang/Runnable;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 535
+    .line 783
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$18;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,23 +38,23 @@
 
 # virtual methods
 .method public run()V
-    .locals 2
+    .locals 3
 
     .prologue
-    .line 538
+    .line 785
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/PhotoEditor$18;->this$0:Lcom/android/gallery3d/photoeditor/PhotoEditor;
 
-    #getter for: Lcom/android/gallery3d/photoeditor/PhotoEditor;->filterStack:Lcom/android/gallery3d/photoeditor/FilterStack;
-    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->access$800(Lcom/android/gallery3d/photoeditor/PhotoEditor;)Lcom/android/gallery3d/photoeditor/FilterStack;
+    #getter for: Lcom/android/gallery3d/photoeditor/PhotoEditor;->effectsBar:Lcom/android/gallery3d/photoeditor/EffectsBar;
+    invoke-static {v0}, Lcom/android/gallery3d/photoeditor/PhotoEditor;->access$100(Lcom/android/gallery3d/photoeditor/PhotoEditor;)Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     move-result-object v0
 
-    new-instance v1, Lcom/android/gallery3d/photoeditor/PhotoEditor$18$1;
+    const/4 v1, 0x0
 
-    invoke-direct {v1, p0}, Lcom/android/gallery3d/photoeditor/PhotoEditor$18$1;-><init>(Lcom/android/gallery3d/photoeditor/PhotoEditor$18;)V
+    const v2, 0x7f04005b
 
-    invoke-virtual {v0, v1}, Lcom/android/gallery3d/photoeditor/FilterStack;->getOutputBitmap(Lcom/android/gallery3d/photoeditor/OnDoneBitmapCallback;)V
+    invoke-virtual {v0, v1, v2}, Lcom/android/gallery3d/photoeditor/EffectsBar;->changeEffectsMenu(ZI)Z
 
-    .line 556
+    .line 786
     return-void
 .end method

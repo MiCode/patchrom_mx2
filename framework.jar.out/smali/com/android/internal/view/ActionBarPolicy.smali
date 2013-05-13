@@ -99,7 +99,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e0034
+    const v1, 0x10e0035
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -119,7 +119,7 @@
 
     move-result-object v0
 
-    const v1, 0x105005a
+    const v1, 0x1050063
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -172,7 +172,7 @@
     if-nez v3, :cond_0
 
     .line 72
-    const v3, 0x1050059
+    const v3, 0x1050062
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -253,7 +253,7 @@
 
     move-result-object v0
 
-    invoke-virtual {v0}, Landroid/view/ViewConfiguration;->hasPermanentMenuKey()Z
+    invoke-virtual {v0}, Landroid/view/ViewConfiguration;->hasPhysicalMenuKey()Z
 
     move-result v0
 

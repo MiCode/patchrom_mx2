@@ -36,7 +36,7 @@
     .locals 1
 
     .prologue
-    .line 294
+    .line 296
     new-instance v0, Lcom/meizu/preference/EditTextPreference$SavedState$1;
 
     invoke-direct {v0}, Lcom/meizu/preference/EditTextPreference$SavedState$1;-><init>()V
@@ -51,17 +51,17 @@
     .parameter "source"
 
     .prologue
-    .line 280
+    .line 282
     invoke-direct {p0, p1}, Landroid/preference/Preference$BaseSavedState;-><init>(Landroid/os/Parcel;)V
 
-    .line 281
+    .line 283
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/meizu/preference/EditTextPreference$SavedState;->text:Ljava/lang/String;
 
-    .line 282
+    .line 284
     return-void
 .end method
 
@@ -70,10 +70,10 @@
     .parameter "superState"
 
     .prologue
-    .line 291
+    .line 293
     invoke-direct {p0, p1}, Landroid/preference/Preference$BaseSavedState;-><init>(Landroid/os/Parcelable;)V
 
-    .line 292
+    .line 294
     return-void
 .end method
 
@@ -85,14 +85,14 @@
     .parameter "flags"
 
     .prologue
-    .line 286
+    .line 288
     invoke-super {p0, p1, p2}, Landroid/preference/Preference$BaseSavedState;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 287
+    .line 289
     iget-object v0, p0, Lcom/meizu/preference/EditTextPreference$SavedState;->text:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 288
+    .line 290
     return-void
 .end method

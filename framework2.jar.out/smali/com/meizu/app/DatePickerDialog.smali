@@ -51,7 +51,7 @@
     .line 101
     const/4 v2, -0x1
 
-    const v4, 0x1040477
+    const v4, 0x104047b
 
     invoke-virtual {p1, v4}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -80,7 +80,7 @@
     invoke-virtual {p0, v2}, Lcom/meizu/app/DatePickerDialog;->setIcon(I)V
 
     .line 104
-    const v2, 0x1040476
+    const v2, 0x104047a
 
     invoke-virtual {p0, v2}, Lcom/meizu/app/DatePickerDialog;->setTitle(I)V
 
@@ -95,7 +95,7 @@
 
     .line 108
     .local v0, inflater:Landroid/view/LayoutInflater;
-    const v2, 0x1090044
+    const v2, 0x1090047
 
     invoke-virtual {v0, v2, v3}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
@@ -106,7 +106,7 @@
     invoke-virtual {p0, v1}, Lcom/meizu/app/DatePickerDialog;->setView(Landroid/view/View;)V
 
     .line 110
-    const v2, 0x10202b8
+    const v2, 0x10202b5
 
     invoke-virtual {v1, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 

@@ -11,12 +11,21 @@
         <item name="android:background">@android:color/black</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
-    <style name="CustomTabViewStyle" parent="@android:style/Widget.DeviceDefault.Light.ActionBar.TabView">
-        <item name="android:background">@drawable/acitonbar_background_drawable</item>
+    <style name="Holo.ActionBar" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:background">@color/top_actionbar_background</item>
+        <item name="android:displayOptions"></item>
+        <item name="android:titleTextStyle">@style/Holo.ActionBarTitleText</item>
+        <item name="android:subtitleTextStyle">@style/Video.Online.Actionbar.SubTitle</item>
+        <item name="android:backgroundStacked">@null</item>
+        <item name="android:backgroundSplit">@android:drawable/tab_background_mz</item>
+    </style>
+    <style name="Holo.ActionMode" parent="@android:style/Widget.DeviceDefault.Light.ActionMode">
+        <item name="android:titleTextStyle">@style/Holo.ActionBarTitleText</item>
     </style>
     <style name="VideoTheme" parent="@android:style/Theme.DeviceDefault.Light">
+        <item name="android:actionBarStyle">@style/Holo.ActionBar</item>
         <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:actionBarTabStyle">@style/CustomTabViewStyle</item>
+        <item name="android:actionModeStyle">@style/Holo.ActionMode</item>
     </style>
     <style name="Video.Online.Actionbar.Title1" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textSize">@dimen/acitonbar_text_title_size1</item>
@@ -31,12 +40,12 @@
         <item name="android:textColor">@color/acitonbar_text_color</item>
     </style>
     <style name="Video.Online.Download.Button" parent="@android:style/Widget.Holo.Light.Button">
-        <item name="android:textSize">@dimen/channeldetail_button_text_size</item>
+        <item name="android:textSize">@dimen/channeldetailprogram_button_text_size</item>
         <item name="android:textColor">@drawable/ic_button_text_style</item>
         <item name="android:background">@drawable/ic_button_style</item>
     </style>
     <style name="Video.Online.Page.Button" parent="@android:style/Widget.Holo.Light.Button">
-        <item name="android:textSize">@dimen/channeldetail_button_text_size</item>
+        <item name="android:textSize">@dimen/channeldetailprogram_button_text_size</item>
         <item name="android:textColor">@drawable/ic_button_text_style</item>
         <item name="android:background">@drawable/ic_button_style</item>
     </style>
@@ -46,10 +55,20 @@
         <item name="android:clickable">false</item>
         <item name="android:button">@null</item>
     </style>
+    <style name="Video.Online.Tv.Button" parent="@android:style/Widget.Holo.Light.Button">
+        <item name="android:textSize">@dimen/channeldetailprogram_tv_content_size</item>
+        <item name="android:textColor">@drawable/ic_button_text_style</item>
+        <item name="android:background">@drawable/ic_button_style</item>
+    </style>
     <style name="ThemeCamera" parent="@android:style/Theme.Holo.NoActionBar.Fullscreen">
         <item name="android:colorBackground">@android:color/black</item>
         <item name="android:windowBackground">@android:color/black</item>
         <item name="android:colorBackgroundCacheHint">@android:color/black</item>
+    </style>
+    <style name="ThemeCaptureFinish" parent="@android:style/Theme.DeviceDefault.Light">
+        <item name="android:windowBackground">@color/use_camera_bg</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:actionBarStyle">@style/Holo.ActionBar</item>
     </style>
     <style name="OnScreenHintTextAppearance">
         <item name="android:textSize">16.0sp</item>
@@ -141,17 +160,17 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
     <style name="OnScreenIndicators_Vertical">
-        <item name="android:layout_marginLeft">10.0dip</item>
-        <item name="android:layout_marginTop">10.0dip</item>
-        <item name="android:layout_marginRight">10.0dip</item>
-        <item name="android:layout_marginBottom">10.0dip</item>
+        <item name="android:layout_marginLeft">@dimen/style_on_screen_indicators_margin</item>
+        <item name="android:layout_marginTop">@dimen/style_on_screen_indicators_margin</item>
+        <item name="android:layout_marginRight">@dimen/style_on_screen_indicators_margin</item>
+        <item name="android:layout_marginBottom">@dimen/style_on_screen_indicators_margin</item>
         <item name="android:layout_alignParentTop">true</item>
     </style>
     <style name="OnScreenIndicators_Horizontal">
-        <item name="android:layout_marginLeft">10.0dip</item>
-        <item name="android:layout_marginTop">10.0dip</item>
-        <item name="android:layout_marginRight">10.0dip</item>
-        <item name="android:layout_marginBottom">10.0dip</item>
+        <item name="android:layout_marginLeft">@dimen/style_on_screen_indicators_margin</item>
+        <item name="android:layout_marginTop">@dimen/style_on_screen_indicators_margin</item>
+        <item name="android:layout_marginRight">@dimen/style_on_screen_indicators_margin</item>
+        <item name="android:layout_marginBottom">@dimen/style_on_screen_indicators_margin</item>
         <item name="android:layout_alignParentLeft">true</item>
     </style>
     <style name="OnViewfinderLabel">
@@ -378,7 +397,7 @@
     </style>
     <style name="EffectLabel">
         <item name="android:textSize">@dimen/effect_label_text_size</item>
-        <item name="android:textColor">#fffafafa</item>
+        <item name="android:textColor">@color/effect_label_text_color</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:layout_width">@dimen/effect_label_width</item>
@@ -389,7 +408,7 @@
     </style>
     <style name="EffectLabelExtra">
         <item name="android:textSize">@dimen/effect_label_text_size</item>
-        <item name="android:textColor">#fffafafa</item>
+        <item name="android:textColor">@color/effect_label_text_color</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:layout_width">@dimen/effect_label_width</item>
@@ -547,7 +566,7 @@
         <item name="android:visibility">gone</item>
         <item name="android:layout_width">@dimen/actionbar_btn_background_size</item>
         <item name="android:layout_height">@dimen/actionbar_btn_background_size</item>
-        <item name="android:layout_marginRight">5.0dip</item>
+        <item name="android:layout_marginRight">@dimen/actionbar_settingbtn_icon_marginright</item>
         <item name="android:layout_marginBottom">5.0dip</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_alignParentBottom">true</item>
@@ -564,28 +583,22 @@
         <item name="android:actionBarTabStyle">@style/Video.ActionBar.TabView</item>
         <item name="android:actionBarTabBarStyle">@android:style/Widget.DeviceDefault.Light.ActionBar.TabBar</item>
         <item name="android:actionBarTabTextStyle">@android:style/Widget.DeviceDefault.Light.ActionBar.TabText</item>
+        <item name="android:actionModeStyle">@style/Holo.ActionMode</item>
         <item name="android:actionModeSplitBackground">@null</item>
     </style>
     <style name="Theme.Movie" parent="@android:style/Theme.DeviceDefault.Light">
         <item name="android:windowBackground">@color/video_player_background</item>
         <item name="android:windowNoTitle">true</item>
     </style>
-    <style name="Holo.ActionBar" parent="@android:style/Widget.Holo.ActionBar">
-        <item name="android:background">@color/top_actionbar_background</item>
-        <item name="android:displayOptions"></item>
-        <item name="android:titleTextStyle">@style/Holo.ActionBarTitleText</item>
-        <item name="android:backgroundStacked">@null</item>
-        <item name="android:backgroundSplit">@color/bottom_actionbar_background</item>
-    </style>
     <style name="Holo.ActionBarTitleText" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
-        <item name="android:textSize">18.0sp</item>
+        <item name="android:textSize">@dimen/action_bar_title_size</item>
         <item name="android:textColor">@color/gallery_title_color</item>
     </style>
     <style name="PhotoEditor.ActionBar" parent="@android:style/Widget.Holo.ActionBar">
         <item name="android:background">@color/top_actionbar_background</item>
         <item name="android:displayOptions"></item>
         <item name="android:backgroundStacked">@null</item>
-        <item name="android:backgroundSplit">@color/top_actionbar_background</item>
+        <item name="android:backgroundSplit">@android:drawable/tab_background_mz</item>
     </style>
     <style name="Theme.PhotoEditor" parent="@android:style/Theme.DeviceDefault.Light">
         <item name="android:windowBackground">@color/photoeditor_theme_background_color</item>
@@ -619,7 +632,7 @@
     </style>
     <style name="DetailsTextView">
         <item name="android:textSize">@dimen/details_title_textsize</item>
-        <item name="android:textColor">@color/details_gray</item>
+        <item name="android:textColor">@color/details_infor_color</item>
         <item name="android:visibility">gone</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -629,15 +642,16 @@
         <item name="android:background">@color/details_line_color</item>
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">@dimen/details_lineview_height</item>
-        <item name="android:layout_marginLeft">@dimen/details_line_padding</item>
+        <item name="android:layout_marginLeft">@android:dimen/alert_dialog_edittext_padding_left</item>
         <item name="android:layout_marginTop">@dimen/details_line_margintop</item>
-        <item name="android:layout_marginRight">@dimen/details_line_padding</item>
+        <item name="android:layout_marginRight">@android:dimen/alert_dialog_edittext_padding_left</item>
     </style>
     <style name="DetailsEditText" parent="@android:style/Widget.DeviceDefault.Light.EditText">
+        <item name="android:textSize">@dimen/details_edit_textsize</item>
         <item name="android:textColor">#ff000000</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@null</item>
-        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:singleLine">true</item>
         <item name="android:layout_centerVertical">true</item>

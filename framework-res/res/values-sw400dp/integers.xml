@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="notification_big_text_max_line">6</integer>
+    <integer name="chevron_incremental_delay">360</integer>
+    <integer name="chevron_animation_duration">1350</integer>
+    <integer name="max_count_of_edot">6</integer>
+    <integer name="count_of_edot_type">3</integer>
+    <integer name="drag_escape_velocity_down">200</integer>
+    <integer name="drag_escape_velocity_up">2500</integer>
+</resources>

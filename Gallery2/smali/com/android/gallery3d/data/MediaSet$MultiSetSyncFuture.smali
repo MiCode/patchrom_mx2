@@ -61,40 +61,40 @@
     .parameter "listener"
 
     .prologue
-    .line 299
+    .line 305
     iput-object p1, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->this$0:Lcom/android/gallery3d/data/MediaSet;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 294
+    .line 300
     const/4 v2, 0x0
 
     iput-boolean v2, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->mIsCancelled:Z
 
-    .line 295
+    .line 301
     const/4 v2, -0x1
 
     iput v2, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->mResult:I
 
-    .line 300
+    .line 306
     iput-object p3, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->mListener:Lcom/android/gallery3d/data/MediaSet$SyncListener;
 
-    .line 301
+    .line 307
     array-length v2, p2
 
     iput v2, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->mPendingCount:I
 
-    .line 302
+    .line 308
     array-length v2, p2
 
     new-array v2, v2, [Lcom/android/gallery3d/util/Future;
 
     iput-object v2, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->mFutures:[Lcom/android/gallery3d/util/Future;
 
-    .line 304
+    .line 310
     monitor-enter p0
 
-    .line 305
+    .line 311
     const/4 v0, 0x0
 
     .local v0, i:I
@@ -105,7 +105,7 @@
     :goto_0
     if-ge v0, v1, :cond_0
 
-    .line 306
+    .line 312
     iget-object v2, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->mFutures:[Lcom/android/gallery3d/util/Future;
 
     aget-object v3, p2, v0
@@ -116,7 +116,7 @@
 
     aput-object v3, v2, v0
 
-    .line 307
+    .line 313
     const-string v2, "Gallery.MultiSetSync"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -149,19 +149,19 @@
 
     invoke-static {v2, v3}, Lcom/android/gallery3d/data/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 305
+    .line 311
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 309
+    .line 315
     :cond_0
     monitor-exit p0
 
-    .line 310
+    .line 316
     return-void
 
-    .line 309
+    .line 315
     .end local v1           #n:I
     :catchall_0
     move-exception v2
@@ -179,7 +179,7 @@
     .locals 5
 
     .prologue
-    .line 314
+    .line 320
     monitor-enter p0
 
     :try_start_0
@@ -189,21 +189,21 @@
 
     if-eqz v4, :cond_1
 
-    .line 318
+    .line 324
     :cond_0
     :goto_0
     monitor-exit p0
 
     return-void
 
-    .line 315
+    .line 321
     :cond_1
     const/4 v4, 0x1
 
     :try_start_1
     iput-boolean v4, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->mIsCancelled:Z
 
-    .line 316
+    .line 322
     iget-object v0, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->mFutures:[Lcom/android/gallery3d/util/Future;
 
     .local v0, arr$:[Lcom/android/gallery3d/util/Future;
@@ -225,7 +225,7 @@
 
     goto :goto_1
 
-    .line 317
+    .line 323
     .end local v1           #future:Lcom/android/gallery3d/util/Future;,"Lcom/android/gallery3d/util/Future<Ljava/lang/Integer;>;"
     :cond_2
     iget v4, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->mResult:I
@@ -240,7 +240,7 @@
 
     goto :goto_0
 
-    .line 314
+    .line 320
     .end local v0           #arr$:[Lcom/android/gallery3d/util/Future;
     .end local v2           #i$:I
     .end local v3           #len$:I
@@ -256,13 +256,13 @@
     .locals 1
 
     .prologue
-    .line 332
+    .line 338
     monitor-enter p0
 
     :try_start_0
     invoke-virtual {p0}, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->waitDone()V
 
-    .line 333
+    .line 339
     iget v0, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->mResult:I
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -275,7 +275,7 @@
 
     return-object v0
 
-    .line 332
+    .line 338
     :catchall_0
     move-exception v0
 
@@ -288,7 +288,7 @@
     .locals 1
 
     .prologue
-    .line 288
+    .line 294
     invoke-virtual {p0}, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->get()Ljava/lang/Integer;
 
     move-result-object v0
@@ -300,7 +300,7 @@
     .locals 1
 
     .prologue
-    .line 322
+    .line 328
     monitor-enter p0
 
     :try_start_0
@@ -324,7 +324,7 @@
     .locals 1
 
     .prologue
-    .line 327
+    .line 333
     monitor-enter p0
 
     :try_start_0
@@ -362,14 +362,14 @@
     .prologue
     const/4 v1, 0x2
 
-    .line 348
+    .line 354
     const/4 v0, 0x0
 
-    .line 349
+    .line 355
     .local v0, listener:Lcom/android/gallery3d/data/MediaSet$SyncListener;
     monitor-enter p0
 
-    .line 350
+    .line 356
     if-ne p2, v1, :cond_0
 
     const/4 v1, 0x2
@@ -377,7 +377,7 @@
     :try_start_0
     iput v1, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->mResult:I
 
-    .line 351
+    .line 357
     :cond_0
     iget v1, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->mPendingCount:I
 
@@ -385,18 +385,18 @@
 
     iput v1, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->mPendingCount:I
 
-    .line 352
+    .line 358
     iget v1, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->mPendingCount:I
 
     if-nez v1, :cond_1
 
-    .line 353
+    .line 359
     iget-object v0, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->mListener:Lcom/android/gallery3d/data/MediaSet$SyncListener;
 
-    .line 354
+    .line 360
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
 
-    .line 356
+    .line 362
     :cond_1
     const-string v1, "Gallery.MultiSetSync"
 
@@ -440,12 +440,12 @@
 
     invoke-static {v1, v2}, Lcom/android/gallery3d/data/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 358
+    .line 364
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 359
+    .line 365
     if-eqz v0, :cond_2
 
     iget-object v1, p0, Lcom/android/gallery3d/data/MediaSet$MultiSetSyncFuture;->this$0:Lcom/android/gallery3d/data/MediaSet;
@@ -454,11 +454,11 @@
 
     invoke-interface {v0, v1, v2}, Lcom/android/gallery3d/data/MediaSet$SyncListener;->onSyncDone(Lcom/android/gallery3d/data/MediaSet;I)V
 
-    .line 360
+    .line 366
     :cond_2
     return-void
 
-    .line 358
+    .line 364
     :catchall_0
     move-exception v1
 
@@ -474,7 +474,7 @@
     .locals 3
 
     .prologue
-    .line 339
+    .line 345
     monitor-enter p0
 
     :goto_0
@@ -492,11 +492,11 @@
 
     goto :goto_0
 
-    .line 340
+    .line 346
     :catch_0
     move-exception v0
 
-    .line 341
+    .line 347
     .local v0, e:Ljava/lang/InterruptedException;
     :try_start_1
     const-string v1, "Gallery.MultiSetSync"
@@ -507,14 +507,14 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 343
+    .line 349
     .end local v0           #e:Ljava/lang/InterruptedException;
     :cond_0
     monitor-exit p0
 
     return-void
 
-    .line 339
+    .line 345
     :catchall_0
     move-exception v1
 

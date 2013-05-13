@@ -18,9 +18,9 @@
 
 
 # static fields
-.field private static final CHEVRON_ANIMATION_DURATION:I = 0x690
+.field private static CHEVRON_ANIMATION_DURATION:I = 0x0
 
-.field private static final CHEVRON_INCREMENTAL_DELAY:I = 0x140
+.field private static CHEVRON_INCREMENTAL_DELAY:I = 0x0
 
 .field private static final DEBUG:Z = false
 
@@ -216,7 +216,7 @@
     invoke-direct {p0, p1, p2}, Landroid/view/View;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 103
-    sget-object v8, Lcom/meizu/widget/MultiWaveView$Ease$Quad;->easeOut:Landroid/animation/TimeInterpolator;
+    sget-object v8, Lcom/meizu/widget/MultiWaveView$Ease$Linear;->easeNone:Landroid/animation/TimeInterpolator;
 
     iput-object v8, p0, Lcom/meizu/widget/MultiWaveView;->mChevronAnimationInterpolator:Landroid/animation/TimeInterpolator;
 
@@ -342,7 +342,7 @@
 
     iput-boolean v8, p0, Lcom/meizu/widget/MultiWaveView;->mInitialLayout:Z
 
-    .line 870
+    .line 874
     const/4 v8, -0x1
 
     iput v8, p0, Lcom/meizu/widget/MultiWaveView;->mActivePointerId:I
@@ -354,13 +354,31 @@
 
     .line 231
     .local v6, res:Landroid/content/res/Resources;
+    const v8, 0x10e003a
+
+    invoke-virtual {v6, v8}, Landroid/content/res/Resources;->getInteger(I)I
+
+    move-result v8
+
+    sput v8, Lcom/meizu/widget/MultiWaveView;->CHEVRON_INCREMENTAL_DELAY:I
+
+    .line 232
+    const v8, 0x10e003b
+
+    invoke-virtual {v6, v8}, Landroid/content/res/Resources;->getInteger(I)I
+
+    move-result v8
+
+    sput v8, Lcom/meizu/widget/MultiWaveView;->CHEVRON_ANIMATION_DURATION:I
+
+    .line 234
     sget-object v8, Lcom/android/internal/R$styleable;->MultiWaveView:[I
 
     invoke-virtual {p1, p2, v8}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    .line 232
+    .line 235
     .local v0, a:Landroid/content/res/TypedArray;
     const/4 v8, 0x6
 
@@ -372,7 +390,7 @@
 
     iput v8, p0, Lcom/meizu/widget/MultiWaveView;->mOuterRadius:F
 
-    .line 233
+    .line 236
     const/16 v8, 0x8
 
     iget v9, p0, Lcom/meizu/widget/MultiWaveView;->mSnapMargin:F
@@ -383,7 +401,7 @@
 
     iput v8, p0, Lcom/meizu/widget/MultiWaveView;->mSnapMargin:F
 
-    .line 234
+    .line 237
     const/4 v8, 0x7
 
     iget v9, p0, Lcom/meizu/widget/MultiWaveView;->mVibrationDuration:I
@@ -394,7 +412,7 @@
 
     iput v8, p0, Lcom/meizu/widget/MultiWaveView;->mVibrationDuration:I
 
-    .line 236
+    .line 239
     const/16 v8, 0x9
 
     iget v9, p0, Lcom/meizu/widget/MultiWaveView;->mFeedbackCount:I
@@ -405,7 +423,7 @@
 
     iput v8, p0, Lcom/meizu/widget/MultiWaveView;->mFeedbackCount:I
 
-    .line 238
+    .line 241
     new-instance v8, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     const/4 v9, 0x3
@@ -420,7 +438,7 @@
 
     iput-object v8, p0, Lcom/meizu/widget/MultiWaveView;->mHandleDrawable:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 240
+    .line 243
     iget-object v8, p0, Lcom/meizu/widget/MultiWaveView;->mHandleDrawable:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     invoke-virtual {v8}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->getWidth()I
@@ -433,7 +451,7 @@
 
     iput v8, p0, Lcom/meizu/widget/MultiWaveView;->mTapRadius:F
 
-    .line 241
+    .line 244
     new-instance v8, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     const/4 v9, 0x5
@@ -448,7 +466,7 @@
 
     iput-object v8, p0, Lcom/meizu/widget/MultiWaveView;->mOuterRing:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 243
+    .line 246
     const/16 v8, 0xa
 
     const/4 v9, 0x0
@@ -459,12 +477,12 @@
 
     iput-boolean v8, p0, Lcom/meizu/widget/MultiWaveView;->mAlwaysTrackFinger:Z
 
-    .line 246
+    .line 249
     new-instance v5, Landroid/util/TypedValue;
 
     invoke-direct {v5}, Landroid/util/TypedValue;-><init>()V
 
-    .line 247
+    .line 250
     .local v5, outValue:Landroid/util/TypedValue;
     const/4 v8, 0x4
 
@@ -474,14 +492,14 @@
 
     if-eqz v8, :cond_2
 
-    .line 248
+    .line 251
     iget v8, v5, Landroid/util/TypedValue;->resourceId:I
 
     invoke-direct {p0, v8}, Lcom/meizu/widget/MultiWaveView;->loadDrawableArray(I)Ljava/util/ArrayList;
 
     move-result-object v2
 
-    .line 249
+    .line 252
     .local v2, chevrons:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/widget/MultiWaveView$TargetDrawable;>;"
     const/4 v3, 0x0
 
@@ -493,14 +511,14 @@
 
     if-ge v3, v8, :cond_2
 
-    .line 250
+    .line 253
     invoke-virtual {v2, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v1
 
     check-cast v1, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 251
+    .line 254
     .local v1, chevron:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     const/4 v4, 0x0
 
@@ -510,7 +528,7 @@
 
     if-ge v4, v8, :cond_1
 
-    .line 252
+    .line 255
     iget-object v9, p0, Lcom/meizu/widget/MultiWaveView;->mChevronDrawables:Ljava/util/ArrayList;
 
     if-nez v1, :cond_0
@@ -520,12 +538,12 @@
     :goto_2
     invoke-virtual {v9, v8}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 251
+    .line 254
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_1
 
-    .line 252
+    .line 255
     :cond_0
     new-instance v8, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
@@ -533,13 +551,13 @@
 
     goto :goto_2
 
-    .line 249
+    .line 252
     :cond_1
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_0
 
-    .line 258
+    .line 261
     .end local v1           #chevron:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     .end local v2           #chevrons:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/widget/MultiWaveView$TargetDrawable;>;"
     .end local v3           #i:I
@@ -553,12 +571,12 @@
 
     if-eqz v8, :cond_3
 
-    .line 259
+    .line 262
     iget v8, v5, Landroid/util/TypedValue;->resourceId:I
 
     invoke-direct {p0, v8}, Lcom/meizu/widget/MultiWaveView;->internalSetTargetResources(I)V
 
-    .line 261
+    .line 264
     :cond_3
     iget-object v8, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
@@ -572,7 +590,7 @@
 
     if-nez v8, :cond_5
 
-    .line 262
+    .line 265
     :cond_4
     new-instance v8, Ljava/lang/IllegalStateException;
 
@@ -582,7 +600,7 @@
 
     throw v8
 
-    .line 266
+    .line 269
     :cond_5
     const/4 v8, 0x0
 
@@ -592,14 +610,14 @@
 
     if-eqz v8, :cond_7
 
-    .line 267
+    .line 270
     iget v7, v5, Landroid/util/TypedValue;->resourceId:I
 
-    .line 268
+    .line 271
     .local v7, resourceId:I
     if-nez v7, :cond_6
 
-    .line 269
+    .line 272
     new-instance v8, Ljava/lang/IllegalStateException;
 
     const-string v9, "Must specify target descriptions"
@@ -608,11 +626,11 @@
 
     throw v8
 
-    .line 271
+    .line 274
     :cond_6
     invoke-virtual {p0, v7}, Lcom/meizu/widget/MultiWaveView;->setTargetDescriptionsResourceId(I)V
 
-    .line 275
+    .line 278
     .end local v7           #resourceId:I
     :cond_7
     const/4 v8, 0x1
@@ -623,14 +641,14 @@
 
     if-eqz v8, :cond_9
 
-    .line 276
+    .line 279
     iget v7, v5, Landroid/util/TypedValue;->resourceId:I
 
-    .line 277
+    .line 280
     .restart local v7       #resourceId:I
     if-nez v7, :cond_8
 
-    .line 278
+    .line 281
     new-instance v8, Ljava/lang/IllegalStateException;
 
     const-string v9, "Must specify direction descriptions"
@@ -639,23 +657,23 @@
 
     throw v8
 
-    .line 280
+    .line 283
     :cond_8
     invoke-virtual {p0, v7}, Lcom/meizu/widget/MultiWaveView;->setDirectionDescriptionsResourceId(I)V
 
-    .line 283
+    .line 286
     .end local v7           #resourceId:I
     :cond_9
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 286
+    .line 289
     sget-object v8, Landroid/R$styleable;->LinearLayout:[I
 
     invoke-virtual {p1, p2, v8}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    .line 287
+    .line 290
     const/4 v8, 0x0
 
     const/16 v9, 0x30
@@ -666,10 +684,10 @@
 
     iput v8, p0, Lcom/meizu/widget/MultiWaveView;->mGravity:I
 
-    .line 288
+    .line 291
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 290
+    .line 293
     iget v8, p0, Lcom/meizu/widget/MultiWaveView;->mVibrationDuration:I
 
     if-lez v8, :cond_a
@@ -679,13 +697,13 @@
     :goto_3
     invoke-virtual {p0, v8}, Lcom/meizu/widget/MultiWaveView;->setVibrateEnabled(Z)V
 
-    .line 291
+    .line 294
     invoke-direct {p0}, Lcom/meizu/widget/MultiWaveView;->assignDefaultsIfNeeded()V
 
-    .line 292
+    .line 295
     return-void
 
-    .line 290
+    .line 293
     :cond_a
     const/4 v8, 0x0
 
@@ -890,12 +908,12 @@
     .parameter "finishListener"
 
     .prologue
-    .line 400
+    .line 403
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mHandleAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->cancel()V
 
-    .line 401
+    .line 404
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mHandleAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     iget-object v1, p0, Lcom/meizu/widget/MultiWaveView;->mHandleDrawable:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
@@ -974,12 +992,12 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->add(Ljava/lang/Object;)Z
 
-    .line 407
+    .line 410
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mHandleAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->start()V
 
-    .line 408
+    .line 411
     return-void
 .end method
 
@@ -987,12 +1005,12 @@
     .locals 8
 
     .prologue
-    .line 1273
+    .line 1277
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 1274
+    .line 1278
     .local v5, utterance:Ljava/lang/StringBuilder;
     iget-object v6, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
@@ -1000,7 +1018,7 @@
 
     move-result v2
 
-    .line 1275
+    .line 1279
     .local v2, targetCount:I
     const/4 v1, 0x0
 
@@ -1008,18 +1026,18 @@
     :goto_0
     if-ge v1, v2, :cond_2
 
-    .line 1276
+    .line 1280
     invoke-direct {p0, v1}, Lcom/meizu/widget/MultiWaveView;->getTargetDescription(I)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 1277
+    .line 1281
     .local v3, targetDescription:Ljava/lang/String;
     invoke-direct {p0, v1}, Lcom/meizu/widget/MultiWaveView;->getDirectionDescription(I)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 1278
+    .line 1282
     .local v0, directionDescription:Ljava/lang/String;
     invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -1033,7 +1051,7 @@
 
     if-nez v6, :cond_0
 
-    .line 1280
+    .line 1284
     const/4 v6, 0x1
 
     new-array v6, v6, [Ljava/lang/Object;
@@ -1046,11 +1064,11 @@
 
     move-result-object v4
 
-    .line 1281
+    .line 1285
     .local v4, text:Ljava/lang/String;
     invoke-virtual {v5, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 1283
+    .line 1287
     .end local v4           #text:Ljava/lang/String;
     :cond_0
     invoke-virtual {v5}, Ljava/lang/StringBuilder;->length()I
@@ -1059,20 +1077,20 @@
 
     if-lez v6, :cond_1
 
-    .line 1284
+    .line 1288
     invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v6
 
     invoke-direct {p0, v6}, Lcom/meizu/widget/MultiWaveView;->announceText(Ljava/lang/String;)V
 
-    .line 1275
+    .line 1279
     :cond_1
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 1287
+    .line 1291
     .end local v0           #directionDescription:Ljava/lang/String;
     .end local v3           #targetDescription:Ljava/lang/String;
     :cond_2
@@ -1084,20 +1102,20 @@
     .parameter "text"
 
     .prologue
-    .line 1290
+    .line 1294
     invoke-virtual {p0, p1}, Lcom/meizu/widget/MultiWaveView;->setContentDescription(Ljava/lang/CharSequence;)V
 
-    .line 1291
+    .line 1295
     const/16 v0, 0x8
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/MultiWaveView;->sendAccessibilityEvent(I)V
 
-    .line 1292
+    .line 1296
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/MultiWaveView;->setContentDescription(Ljava/lang/CharSequence;)V
 
-    .line 1293
+    .line 1297
     return-void
 .end method
 
@@ -1107,14 +1125,14 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 1116
+    .line 1120
     iget v0, p0, Lcom/meizu/widget/MultiWaveView;->mOuterRadius:F
 
     cmpl-float v0, v0, v2
 
     if-nez v0, :cond_0
 
-    .line 1117
+    .line 1121
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mOuterRing:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->getWidth()I
@@ -1139,7 +1157,7 @@
 
     iput v0, p0, Lcom/meizu/widget/MultiWaveView;->mOuterRadius:F
 
-    .line 1119
+    .line 1123
     :cond_0
     iget v0, p0, Lcom/meizu/widget/MultiWaveView;->mSnapMargin:F
 
@@ -1147,7 +1165,7 @@
 
     if-nez v0, :cond_1
 
-    .line 1120
+    .line 1124
     const/4 v0, 0x1
 
     const/high16 v1, 0x41a0
@@ -1170,7 +1188,7 @@
 
     iput v0, p0, Lcom/meizu/widget/MultiWaveView;->mSnapMargin:F
 
-    .line 1123
+    .line 1127
     :cond_1
     return-void
 .end method
@@ -1183,12 +1201,12 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 1126
+    .line 1130
     invoke-virtual {p0}, Lcom/meizu/widget/MultiWaveView;->getResolvedLayoutDirection()I
 
     move-result v1
 
-    .line 1127
+    .line 1131
     .local v1, layoutDirection:I
     iget v2, p0, Lcom/meizu/widget/MultiWaveView;->mGravity:I
 
@@ -1196,58 +1214,58 @@
 
     move-result v0
 
-    .line 1129
+    .line 1133
     .local v0, absoluteGravity:I
     and-int/lit8 v2, v0, 0x7
 
     packed-switch v2, :pswitch_data_0
 
-    .line 1138
+    .line 1142
     :pswitch_0
     div-int/lit8 v2, p1, 0x2
 
     iput v2, p0, Lcom/meizu/widget/MultiWaveView;->mHorizontalInset:I
 
-    .line 1141
+    .line 1145
     :goto_0
     and-int/lit8 v2, v0, 0x70
 
     sparse-switch v2, :sswitch_data_0
 
-    .line 1150
+    .line 1154
     div-int/lit8 v2, p2, 0x2
 
     iput v2, p0, Lcom/meizu/widget/MultiWaveView;->mVerticalInset:I
 
-    .line 1153
+    .line 1157
     :goto_1
     return-void
 
-    .line 1131
+    .line 1135
     :pswitch_1
     iput v3, p0, Lcom/meizu/widget/MultiWaveView;->mHorizontalInset:I
 
     goto :goto_0
 
-    .line 1134
+    .line 1138
     :pswitch_2
     iput p1, p0, Lcom/meizu/widget/MultiWaveView;->mHorizontalInset:I
 
     goto :goto_0
 
-    .line 1143
+    .line 1147
     :sswitch_0
     iput v3, p0, Lcom/meizu/widget/MultiWaveView;->mVerticalInset:I
 
     goto :goto_1
 
-    .line 1146
+    .line 1150
     :sswitch_1
     iput p2, p0, Lcom/meizu/widget/MultiWaveView;->mVerticalInset:I
 
     goto :goto_1
 
-    .line 1129
+    .line 1133
     :pswitch_data_0
     .packed-switch 0x3
         :pswitch_1
@@ -1255,7 +1273,7 @@
         :pswitch_2
     .end packed-switch
 
-    .line 1141
+    .line 1145
     :sswitch_data_0
     .sparse-switch
         0x30 -> :sswitch_0
@@ -1273,12 +1291,12 @@
     .prologue
     const/4 v7, 0x0
 
-    .line 412
+    .line 415
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mHandleAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->cancel()V
 
-    .line 413
+    .line 416
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mHandleAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     iget-object v1, p0, Lcom/meizu/widget/MultiWaveView;->mHandleDrawable:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
@@ -1383,12 +1401,12 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->add(Ljava/lang/Object;)Z
 
-    .line 421
+    .line 424
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mHandleAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->start()V
 
-    .line 422
+    .line 425
     return-void
 .end method
 
@@ -1396,14 +1414,14 @@
     .locals 4
 
     .prologue
-    .line 469
+    .line 473
     iget-object v3, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
 
     move-result v0
 
-    .line 470
+    .line 474
     .local v0, count:I
     const/4 v1, 0x0
 
@@ -1411,7 +1429,7 @@
     :goto_0
     if-ge v1, v0, :cond_0
 
-    .line 471
+    .line 475
     iget-object v3, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v3, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -1420,25 +1438,25 @@
 
     check-cast v2, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 472
+    .line 476
     .local v2, target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     sget-object v3, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->STATE_INACTIVE:[I
 
     invoke-virtual {v2, v3}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setState([I)V
 
-    .line 470
+    .line 474
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 474
+    .line 478
     .end local v2           #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_0
     const/4 v3, -0x1
 
     iput v3, p0, Lcom/meizu/widget/MultiWaveView;->mActiveTarget:I
 
-    .line 475
+    .line 479
     return-void
 .end method
 
@@ -1446,17 +1464,17 @@
     .locals 1
 
     .prologue
-    .line 505
+    .line 509
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mOnTriggerListener:Lcom/meizu/widget/MultiWaveView$OnTriggerListener;
 
     if-eqz v0, :cond_0
 
-    .line 506
+    .line 510
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mOnTriggerListener:Lcom/meizu/widget/MultiWaveView$OnTriggerListener;
 
     invoke-interface {v0}, Lcom/meizu/widget/MultiWaveView$OnTriggerListener;->onFinishFinalAnimation()V
 
-    .line 508
+    .line 512
     :cond_0
     return-void
 .end method
@@ -1466,20 +1484,20 @@
     .parameter "whichTarget"
 
     .prologue
-    .line 498
+    .line 502
     invoke-direct {p0}, Lcom/meizu/widget/MultiWaveView;->vibrate()V
 
-    .line 499
+    .line 503
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mOnTriggerListener:Lcom/meizu/widget/MultiWaveView$OnTriggerListener;
 
     if-eqz v0, :cond_0
 
-    .line 500
+    .line 504
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mOnTriggerListener:Lcom/meizu/widget/MultiWaveView$OnTriggerListener;
 
     invoke-interface {v0, p0, p1}, Lcom/meizu/widget/MultiWaveView$OnTriggerListener;->onTrigger(Landroid/view/View;I)V
 
-    .line 502
+    .line 506
     :cond_0
     return-void
 .end method
@@ -1490,7 +1508,7 @@
     .parameter "dy"
 
     .prologue
-    .line 1259
+    .line 1263
     mul-float v0, p1, p1
 
     mul-float v1, p2, p2
@@ -1510,10 +1528,10 @@
 
     const/4 v3, 0x0
 
-    .line 574
+    .line 578
     iget v0, p0, Lcom/meizu/widget/MultiWaveView;->mActiveTarget:I
 
-    .line 575
+    .line 579
     .local v0, activeTarget:I
     const/4 v4, -0x1
 
@@ -1521,15 +1539,15 @@
 
     move v1, v2
 
-    .line 577
+    .line 581
     .local v1, targetHit:Z
     :goto_0
     if-eqz v1, :cond_2
 
-    .line 580
+    .line 584
     invoke-direct {p0, v0}, Lcom/meizu/widget/MultiWaveView;->highlightSelected(I)V
 
-    .line 583
+    .line 587
     const/16 v2, 0x4b0
 
     const/4 v4, 0x0
@@ -1538,35 +1556,35 @@
 
     invoke-direct {p0, v6, v2, v4, v5}, Lcom/meizu/widget/MultiWaveView;->deactivateHandle(IIFLandroid/animation/Animator$AnimatorListener;)V
 
-    .line 584
+    .line 588
     invoke-direct {p0, v0}, Lcom/meizu/widget/MultiWaveView;->dispatchTriggerEvent(I)V
 
-    .line 585
+    .line 589
     iget-boolean v2, p0, Lcom/meizu/widget/MultiWaveView;->mAlwaysTrackFinger:Z
 
     if-nez v2, :cond_0
 
-    .line 587
+    .line 591
     iget-object v2, p0, Lcom/meizu/widget/MultiWaveView;->mTargetAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v2}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->stop()V
 
-    .line 596
+    .line 600
     :cond_0
     :goto_1
     invoke-direct {p0, v3}, Lcom/meizu/widget/MultiWaveView;->setGrabbedState(I)V
 
-    .line 597
+    .line 601
     return-void
 
     .end local v1           #targetHit:Z
     :cond_1
     move v1, v3
 
-    .line 575
+    .line 579
     goto :goto_0
 
-    .line 591
+    .line 595
     .restart local v1       #targetHit:Z
     :cond_2
     const/high16 v4, 0x3f80
@@ -1575,7 +1593,7 @@
 
     invoke-direct {p0, v6, v6, v4, v5}, Lcom/meizu/widget/MultiWaveView;->deactivateHandle(IIFLandroid/animation/Animator$AnimatorListener;)V
 
-    .line 593
+    .line 597
     invoke-direct {p0, v2, v3}, Lcom/meizu/widget/MultiWaveView;->hideTargets(ZZ)V
 
     goto :goto_1
@@ -1585,7 +1603,7 @@
     .locals 3
 
     .prologue
-    .line 295
+    .line 298
     const-string v0, "MultiWaveView"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1610,7 +1628,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 296
+    .line 299
     const-string v0, "MultiWaveView"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1635,7 +1653,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 297
+    .line 300
     const-string v0, "MultiWaveView"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1660,7 +1678,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 298
+    .line 301
     const-string v0, "MultiWaveView"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1685,7 +1703,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 299
+    .line 302
     const-string v0, "MultiWaveView"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1710,7 +1728,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 300
+    .line 303
     const-string v0, "MultiWaveView"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1735,7 +1753,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 301
+    .line 304
     const-string v0, "MultiWaveView"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1760,7 +1778,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 302
+    .line 305
     return-void
 .end method
 
@@ -1769,7 +1787,7 @@
     .parameter "index"
 
     .prologue
-    .line 1308
+    .line 1312
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mDirectionDescriptions:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_0
@@ -1782,7 +1800,7 @@
 
     if-eqz v0, :cond_1
 
-    .line 1309
+    .line 1313
     :cond_0
     iget v0, p0, Lcom/meizu/widget/MultiWaveView;->mDirectionDescriptionsResourceId:I
 
@@ -1792,7 +1810,7 @@
 
     iput-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mDirectionDescriptions:Ljava/util/ArrayList;
 
-    .line 1310
+    .line 1314
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
@@ -1807,17 +1825,17 @@
 
     if-eq v0, v1, :cond_1
 
-    .line 1311
+    .line 1315
     const-string v0, "MultiWaveView"
 
     const-string v1, "The number of target drawables must be euqal to the number of direction descriptions."
 
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1313
+    .line 1317
     const/4 v0, 0x0
 
-    .line 1316
+    .line 1320
     :goto_0
     return-object v0
 
@@ -1837,7 +1855,7 @@
     .locals 3
 
     .prologue
-    .line 1264
+    .line 1268
     iget-object v1, p0, Lcom/meizu/widget/MultiWaveView;->mContext:Landroid/content/Context;
 
     invoke-static {v1}, Landroid/view/accessibility/AccessibilityManager;->getInstance(Landroid/content/Context;)Landroid/view/accessibility/AccessibilityManager;
@@ -1850,14 +1868,14 @@
 
     if-eqz v1, :cond_0
 
-    .line 1265
+    .line 1269
     const v1, 0x3fa66666
 
     iget v2, p0, Lcom/meizu/widget/MultiWaveView;->mTapRadius:F
 
     mul-float v0, v1, v2
 
-    .line 1269
+    .line 1273
     .local v0, scaledTapRadius:F
     :goto_0
     invoke-direct {p0, v0}, Lcom/meizu/widget/MultiWaveView;->square(F)F
@@ -1866,7 +1884,7 @@
 
     return v1
 
-    .line 1267
+    .line 1271
     .end local v0           #scaledTapRadius:F
     :cond_0
     iget v0, p0, Lcom/meizu/widget/MultiWaveView;->mTapRadius:F
@@ -1880,7 +1898,7 @@
     .parameter "index"
 
     .prologue
-    .line 1296
+    .line 1300
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDescriptions:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_0
@@ -1893,7 +1911,7 @@
 
     if-eqz v0, :cond_1
 
-    .line 1297
+    .line 1301
     :cond_0
     iget v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDescriptionsResourceId:I
 
@@ -1903,7 +1921,7 @@
 
     iput-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDescriptions:Ljava/util/ArrayList;
 
-    .line 1298
+    .line 1302
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
@@ -1918,17 +1936,17 @@
 
     if-eq v0, v1, :cond_1
 
-    .line 1299
+    .line 1303
     const-string v0, "MultiWaveView"
 
     const-string v1, "The number of target drawables must be euqal to the number of target descriptions."
 
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1301
+    .line 1305
     const/4 v0, 0x0
 
-    .line 1304
+    .line 1308
     :goto_0
     return-object v0
 
@@ -1951,38 +1969,38 @@
     .prologue
     const/4 v5, -0x1
 
-    .line 916
+    .line 920
     iget-boolean v4, p0, Lcom/meizu/widget/MultiWaveView;->mDragging:Z
 
     if-eqz v4, :cond_0
 
-    .line 918
+    .line 922
     :cond_0
     if-nez p1, :cond_3
 
-    .line 919
+    .line 923
     iget v4, p0, Lcom/meizu/widget/MultiWaveView;->mActivePointerId:I
 
     if-eq v4, v5, :cond_2
 
-    .line 942
+    .line 946
     :cond_1
     :goto_0
     return-void
 
-    .line 922
+    .line 926
     :cond_2
     iget-object v4, p0, Lcom/meizu/widget/MultiWaveView;->mMovePoint:Lcom/meizu/widget/MultiWaveView$MyPoint;
 
     iget v2, v4, Lcom/meizu/widget/MultiWaveView$MyPoint;->x:F
 
-    .line 923
+    .line 927
     .local v2, x:F
     iget-object v4, p0, Lcom/meizu/widget/MultiWaveView;->mMovePoint:Lcom/meizu/widget/MultiWaveView$MyPoint;
 
     iget v3, v4, Lcom/meizu/widget/MultiWaveView$MyPoint;->y:F
 
-    .line 941
+    .line 945
     .local v3, y:F
     :goto_1
     const/4 v4, 0x5
@@ -1991,7 +2009,7 @@
 
     goto :goto_0
 
-    .line 925
+    .line 929
     .end local v2           #x:F
     .end local v3           #y:F
     :cond_3
@@ -1999,30 +2017,30 @@
 
     move-result v0
 
-    .line 926
+    .line 930
     .local v0, actionIndex:I
     invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->getPointerId(I)I
 
     move-result v1
 
-    .line 927
+    .line 931
     .local v1, pid:I
     iget v4, p0, Lcom/meizu/widget/MultiWaveView;->mActivePointerId:I
 
     if-ne v1, v4, :cond_1
 
-    .line 930
+    .line 934
     invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->getX(I)F
 
     move-result v2
 
-    .line 931
+    .line 935
     .restart local v2       #x:F
     invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->getY(I)F
 
     move-result v3
 
-    .line 932
+    .line 936
     .restart local v3       #y:F
     iput v5, p0, Lcom/meizu/widget/MultiWaveView;->mActivePointerId:I
 
@@ -2034,58 +2052,58 @@
     .parameter "event"
 
     .prologue
-    .line 873
+    .line 877
     if-nez p1, :cond_2
 
-    .line 874
+    .line 878
     iget v3, p0, Lcom/meizu/widget/MultiWaveView;->mActivePointerId:I
 
     const/4 v4, -0x1
 
     if-eq v3, v4, :cond_1
 
-    .line 891
+    .line 895
     :cond_0
     :goto_0
     return-void
 
-    .line 877
+    .line 881
     :cond_1
     iget-object v3, p0, Lcom/meizu/widget/MultiWaveView;->mMovePoint:Lcom/meizu/widget/MultiWaveView$MyPoint;
 
     iget v1, v3, Lcom/meizu/widget/MultiWaveView$MyPoint;->x:F
 
-    .line 878
+    .line 882
     .local v1, x:F
     iget-object v3, p0, Lcom/meizu/widget/MultiWaveView;->mMovePoint:Lcom/meizu/widget/MultiWaveView$MyPoint;
 
     iget v2, v3, Lcom/meizu/widget/MultiWaveView$MyPoint;->y:F
 
-    .line 886
+    .line 890
     .local v2, y:F
     :goto_1
     const/4 v3, 0x1
 
     invoke-direct {p0, v3, v1, v2}, Lcom/meizu/widget/MultiWaveView;->switchToState(IFF)V
 
-    .line 887
+    .line 891
     invoke-direct {p0, v1, v2}, Lcom/meizu/widget/MultiWaveView;->trySwitchToFirstTouchState(FF)Z
 
     move-result v3
 
     if-nez v3, :cond_0
 
-    .line 888
+    .line 892
     const/4 v3, 0x0
 
     iput-boolean v3, p0, Lcom/meizu/widget/MultiWaveView;->mDragging:Z
 
-    .line 889
+    .line 893
     invoke-virtual {p0}, Lcom/meizu/widget/MultiWaveView;->ping()V
 
     goto :goto_0
 
-    .line 880
+    .line 884
     .end local v1           #x:F
     .end local v2           #y:F
     :cond_2
@@ -2093,7 +2111,7 @@
 
     move-result v0
 
-    .line 881
+    .line 885
     .local v0, actionIndex:I
     invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->getPointerId(I)I
 
@@ -2101,18 +2119,18 @@
 
     iput v3, p0, Lcom/meizu/widget/MultiWaveView;->mActivePointerId:I
 
-    .line 882
+    .line 886
     invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->getX(I)F
 
     move-result v1
 
-    .line 883
+    .line 887
     .restart local v1       #x:F
     invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->getY(I)F
 
     move-result v2
 
-    .line 884
+    .line 888
     .restart local v2       #y:F
     invoke-virtual {p0}, Lcom/meizu/widget/MultiWaveView;->cancelMove2TargetAnimation()V
 
@@ -2124,12 +2142,12 @@
     .parameter "event"
 
     .prologue
-    .line 946
+    .line 950
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Lcom/meizu/widget/MultiWaveView;->handleMove(Landroid/view/MotionEvent;Z)V
 
-    .line 947
+    .line 951
     return-void
 .end method
 
@@ -2139,14 +2157,14 @@
     .parameter "ignorSnap"
 
     .prologue
-    .line 950
+    .line 954
     const/16 v17, 0x0
 
-    .line 951
+    .line 955
     .local v17, pointerIndex:I
     if-nez p1, :cond_1
 
-    .line 952
+    .line 956
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/meizu/widget/MultiWaveView;->mActivePointerId:I
@@ -2161,12 +2179,12 @@
 
     if-eq v0, v1, :cond_2
 
-    .line 1058
+    .line 1062
     :cond_0
     :goto_0
     return-void
 
-    .line 956
+    .line 960
     :cond_1
     move-object/from16 v0, p0
 
@@ -2182,7 +2200,7 @@
 
     if-eq v0, v1, :cond_0
 
-    .line 959
+    .line 963
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/meizu/widget/MultiWaveView;->mActivePointerId:I
@@ -2197,17 +2215,17 @@
 
     move-result v17
 
-    .line 962
+    .line 966
     :cond_2
     const/4 v5, -0x1
 
-    .line 963
+    .line 967
     .local v5, activeTarget:I
     if-nez p1, :cond_7
 
     const/4 v11, 0x0
 
-    .line 964
+    .line 968
     .local v11, historySize:I
     :goto_1
     move-object/from16 v0, p0
@@ -2216,21 +2234,21 @@
 
     move-object/from16 v27, v0
 
-    .line 965
+    .line 969
     .local v27, targets:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/widget/MultiWaveView$TargetDrawable;>;"
     invoke-virtual/range {v27 .. v27}, Ljava/util/ArrayList;->size()I
 
     move-result v16
 
-    .line 966
+    .line 970
     .local v16, ntargets:I
     const/16 v31, 0x0
 
-    .line 967
+    .line 971
     .local v31, x:F
     const/16 v32, 0x0
 
-    .line 968
+    .line 972
     .local v32, y:F
     const/4 v13, 0x0
 
@@ -2242,10 +2260,10 @@
 
     if-ge v13, v0, :cond_f
 
-    .line 970
+    .line 974
     if-nez p1, :cond_8
 
-    .line 971
+    .line 975
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/widget/MultiWaveView;->mMovePoint:Lcom/meizu/widget/MultiWaveView$MyPoint;
@@ -2256,7 +2274,7 @@
 
     iget v9, v0, Lcom/meizu/widget/MultiWaveView$MyPoint;->x:F
 
-    .line 972
+    .line 976
     .local v9, eventX:F
     move-object/from16 v0, p0
 
@@ -2268,7 +2286,7 @@
 
     iget v10, v0, Lcom/meizu/widget/MultiWaveView$MyPoint;->y:F
 
-    .line 978
+    .line 982
     .local v10, eventY:F
     :goto_3
     move-object/from16 v0, p0
@@ -2279,7 +2297,7 @@
 
     sub-float v29, v9, v33
 
-    .line 979
+    .line 983
     .local v29, tx:F
     move-object/from16 v0, p0
 
@@ -2289,7 +2307,7 @@
 
     sub-float v30, v10, v33
 
-    .line 980
+    .line 984
     .local v30, ty:F
     move-object/from16 v0, p0
 
@@ -2317,7 +2335,7 @@
 
     move/from16 v28, v0
 
-    .line 981
+    .line 985
     .local v28, touchRadius:F
     move-object/from16 v0, p0
 
@@ -2337,16 +2355,16 @@
 
     div-float v18, v33, v28
 
-    .line 982
+    .line 986
     .local v18, scale:F
     :goto_4
     mul-float v14, v29, v18
 
-    .line 983
+    .line 987
     .local v14, limitX:F
     mul-float v15, v30, v18
 
-    .line 984
+    .line 988
     .local v15, limitY:F
     move/from16 v0, v30
 
@@ -2370,7 +2388,7 @@
 
     move-result-wide v7
 
-    .line 986
+    .line 990
     .local v7, angleRad:D
     move-object/from16 v0, p0
 
@@ -2380,12 +2398,12 @@
 
     if-nez v33, :cond_3
 
-    .line 987
+    .line 991
     move-object/from16 v0, p0
 
     invoke-direct {v0, v9, v10}, Lcom/meizu/widget/MultiWaveView;->trySwitchToFirstTouchState(FF)Z
 
-    .line 990
+    .line 994
     :cond_3
     move-object/from16 v0, p0
 
@@ -2395,10 +2413,10 @@
 
     if-eqz v33, :cond_e
 
-    .line 993
+    .line 997
     if-eqz p2, :cond_c
 
-    .line 994
+    .line 998
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/meizu/widget/MultiWaveView;->mOuterRadius:F
@@ -2409,12 +2427,12 @@
 
     sub-float v20, v33, v34
 
-    .line 997
+    .line 1001
     .local v20, snapRadius:F
     :goto_5
     mul-float v19, v20, v20
 
-    .line 999
+    .line 1003
     .local v19, snapDistance2:F
     const/4 v12, 0x0
 
@@ -2424,7 +2442,7 @@
 
     if-ge v12, v0, :cond_e
 
-    .line 1000
+    .line 1004
     move-object/from16 v0, v27
 
     invoke-virtual {v0, v12}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -2433,7 +2451,7 @@
 
     check-cast v21, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 1002
+    .line 1006
     .local v21, target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     int-to-double v0, v12
 
@@ -2459,7 +2477,7 @@
 
     div-double v25, v33, v35
 
-    .line 1003
+    .line 1007
     .local v25, targetMinRad:D
     int-to-double v0, v12
 
@@ -2485,7 +2503,7 @@
 
     div-double v23, v33, v35
 
-    .line 1004
+    .line 1008
     .local v23, targetMaxRad:D
     invoke-virtual/range {v21 .. v21}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->isEnabled()Z
 
@@ -2493,7 +2511,7 @@
 
     if-eqz v33, :cond_6
 
-    .line 1005
+    .line 1009
     cmpl-double v33, v7, v25
 
     if-lez v33, :cond_4
@@ -2522,7 +2540,7 @@
     :cond_5
     const/4 v6, 0x1
 
-    .line 1009
+    .line 1013
     .local v6, angleMatches:Z
     :goto_7
     if-eqz v6, :cond_6
@@ -2541,17 +2559,17 @@
 
     if-lez v33, :cond_6
 
-    .line 1010
+    .line 1014
     move v5, v12
 
-    .line 999
+    .line 1003
     .end local v6           #angleMatches:Z
     :cond_6
     add-int/lit8 v12, v12, 0x1
 
     goto :goto_6
 
-    .line 963
+    .line 967
     .end local v7           #angleRad:D
     .end local v9           #eventX:F
     .end local v10           #eventY:F
@@ -2580,7 +2598,7 @@
 
     goto/16 :goto_1
 
-    .line 974
+    .line 978
     .restart local v11       #historySize:I
     .restart local v13       #k:I
     .restart local v16       #ntargets:I
@@ -2598,7 +2616,7 @@
 
     move-result v9
 
-    .line 975
+    .line 979
     .restart local v9       #eventX:F
     :goto_8
     if-ge v13, v11, :cond_a
@@ -2615,7 +2633,7 @@
     :goto_9
     goto/16 :goto_3
 
-    .line 974
+    .line 978
     .end local v9           #eventX:F
     .end local v10           #eventY:F
     :cond_9
@@ -2629,7 +2647,7 @@
 
     goto :goto_8
 
-    .line 975
+    .line 979
     .restart local v9       #eventX:F
     :cond_a
     move-object/from16 v0, p1
@@ -2642,7 +2660,7 @@
 
     goto :goto_9
 
-    .line 981
+    .line 985
     .restart local v10       #eventY:F
     .restart local v28       #touchRadius:F
     .restart local v29       #tx:F
@@ -2652,7 +2670,7 @@
 
     goto/16 :goto_4
 
-    .line 996
+    .line 1000
     .restart local v7       #angleRad:D
     .restart local v14       #limitX:F
     .restart local v15       #limitY:F
@@ -2675,7 +2693,7 @@
     .restart local v20       #snapRadius:F
     goto/16 :goto_5
 
-    .line 1005
+    .line 1009
     .restart local v12       #i:I
     .restart local v19       #snapDistance2:F
     .restart local v21       #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
@@ -2686,7 +2704,7 @@
 
     goto :goto_7
 
-    .line 1015
+    .line 1019
     .end local v12           #i:I
     .end local v19           #snapDistance2:F
     .end local v20           #snapRadius:F
@@ -2696,15 +2714,15 @@
     :cond_e
     move/from16 v31, v14
 
-    .line 1016
+    .line 1020
     move/from16 v32, v15
 
-    .line 968
+    .line 972
     add-int/lit8 v13, v13, 0x1
 
     goto/16 :goto_2
 
-    .line 1019
+    .line 1023
     .end local v7           #angleRad:D
     .end local v9           #eventX:F
     .end local v10           #eventY:F
@@ -2723,14 +2741,14 @@
 
     if-eqz v33, :cond_0
 
-    .line 1023
+    .line 1027
     const/16 v33, -0x1
 
     move/from16 v0, v33
 
     if-eq v5, v0, :cond_14
 
-    .line 1024
+    .line 1028
     const/16 v33, 0x4
 
     move-object/from16 v0, p0
@@ -2743,7 +2761,7 @@
 
     invoke-direct {v0, v1, v2, v3}, Lcom/meizu/widget/MultiWaveView;->switchToState(IFF)V
 
-    .line 1025
+    .line 1029
     const/16 v33, 0x0
 
     move-object/from16 v0, p0
@@ -2756,7 +2774,7 @@
 
     invoke-direct {v0, v1, v2, v3}, Lcom/meizu/widget/MultiWaveView;->moveHandleTo(FFZ)V
 
-    .line 1032
+    .line 1036
     :goto_a
     move-object/from16 v0, p0
 
@@ -2770,7 +2788,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView;->invalidateGlobalRegion(Lcom/meizu/widget/MultiWaveView$TargetDrawable;)V
 
-    .line 1034
+    .line 1038
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/meizu/widget/MultiWaveView;->mActiveTarget:I
@@ -2781,7 +2799,7 @@
 
     if-eq v0, v5, :cond_13
 
-    .line 1036
+    .line 1040
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/meizu/widget/MultiWaveView;->mActiveTarget:I
@@ -2796,7 +2814,7 @@
 
     if-eq v0, v1, :cond_10
 
-    .line 1037
+    .line 1041
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/meizu/widget/MultiWaveView;->mActiveTarget:I
@@ -2813,7 +2831,7 @@
 
     check-cast v21, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 1038
+    .line 1042
     .restart local v21       #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     sget-object v33, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->STATE_FOCUSED:[I
 
@@ -2827,7 +2845,7 @@
 
     if-eqz v33, :cond_10
 
-    .line 1039
+    .line 1043
     sget-object v33, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->STATE_INACTIVE:[I
 
     move-object/from16 v0, v21
@@ -2836,7 +2854,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setState([I)V
 
-    .line 1043
+    .line 1047
     .end local v21           #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_10
     const/16 v33, -0x1
@@ -2845,7 +2863,7 @@
 
     if-eq v5, v0, :cond_15
 
-    .line 1044
+    .line 1048
     move-object/from16 v0, v27
 
     invoke-virtual {v0, v5}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -2854,7 +2872,7 @@
 
     check-cast v21, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 1045
+    .line 1049
     .restart local v21       #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     sget-object v33, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->STATE_FOCUSED:[I
 
@@ -2868,7 +2886,7 @@
 
     if-eqz v33, :cond_11
 
-    .line 1046
+    .line 1050
     sget-object v33, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->STATE_FOCUSED:[I
 
     move-object/from16 v0, v21
@@ -2877,7 +2895,7 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setState([I)V
 
-    .line 1048
+    .line 1052
     :cond_11
     move-object/from16 v0, p0
 
@@ -2895,14 +2913,14 @@
 
     if-eqz v33, :cond_12
 
-    .line 1049
+    .line 1053
     move-object/from16 v0, p0
 
     invoke-direct {v0, v5}, Lcom/meizu/widget/MultiWaveView;->getTargetDescription(I)Ljava/lang/String;
 
     move-result-object v22
 
-    .line 1050
+    .line 1054
     .local v22, targetContentDescription:Ljava/lang/String;
     move-object/from16 v0, p0
 
@@ -2910,7 +2928,7 @@
 
     invoke-direct {v0, v1}, Lcom/meizu/widget/MultiWaveView;->announceText(Ljava/lang/String;)V
 
-    .line 1052
+    .line 1056
     .end local v22           #targetContentDescription:Ljava/lang/String;
     :cond_12
     const/16 v33, 0x0
@@ -2933,7 +2951,7 @@
 
     invoke-direct {v0, v1, v2, v3, v4}, Lcom/meizu/widget/MultiWaveView;->activateHandle(IIFLandroid/animation/Animator$AnimatorListener;)V
 
-    .line 1057
+    .line 1061
     .end local v21           #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_13
     :goto_b
@@ -2943,7 +2961,7 @@
 
     goto/16 :goto_0
 
-    .line 1027
+    .line 1031
     :cond_14
     const/16 v33, 0x3
 
@@ -2957,7 +2975,7 @@
 
     invoke-direct {v0, v1, v2, v3}, Lcom/meizu/widget/MultiWaveView;->switchToState(IFF)V
 
-    .line 1028
+    .line 1032
     const/16 v33, 0x0
 
     move-object/from16 v0, p0
@@ -2972,7 +2990,7 @@
 
     goto/16 :goto_a
 
-    .line 1054
+    .line 1058
     :cond_15
     const/16 v33, 0x0
 
@@ -3004,38 +3022,38 @@
     .prologue
     const/4 v5, -0x1
 
-    .line 894
+    .line 898
     iget-boolean v4, p0, Lcom/meizu/widget/MultiWaveView;->mDragging:Z
 
     if-eqz v4, :cond_0
 
-    .line 896
+    .line 900
     :cond_0
     if-nez p1, :cond_3
 
-    .line 897
+    .line 901
     iget v4, p0, Lcom/meizu/widget/MultiWaveView;->mActivePointerId:I
 
     if-eq v4, v5, :cond_2
 
-    .line 913
+    .line 917
     :cond_1
     :goto_0
     return-void
 
-    .line 900
+    .line 904
     :cond_2
     iget-object v4, p0, Lcom/meizu/widget/MultiWaveView;->mMovePoint:Lcom/meizu/widget/MultiWaveView$MyPoint;
 
     iget v2, v4, Lcom/meizu/widget/MultiWaveView$MyPoint;->x:F
 
-    .line 901
+    .line 905
     .local v2, x:F
     iget-object v4, p0, Lcom/meizu/widget/MultiWaveView;->mMovePoint:Lcom/meizu/widget/MultiWaveView$MyPoint;
 
     iget v3, v4, Lcom/meizu/widget/MultiWaveView$MyPoint;->y:F
 
-    .line 912
+    .line 916
     .local v3, y:F
     :goto_1
     const/4 v4, 0x5
@@ -3044,7 +3062,7 @@
 
     goto :goto_0
 
-    .line 903
+    .line 907
     .end local v2           #x:F
     .end local v3           #y:F
     :cond_3
@@ -3052,30 +3070,30 @@
 
     move-result v0
 
-    .line 904
+    .line 908
     .local v0, actionIndex:I
     invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->getPointerId(I)I
 
     move-result v1
 
-    .line 905
+    .line 909
     .local v1, pid:I
     iget v4, p0, Lcom/meizu/widget/MultiWaveView;->mActivePointerId:I
 
     if-ne v1, v4, :cond_1
 
-    .line 908
+    .line 912
     invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->getX(I)F
 
     move-result v2
 
-    .line 909
+    .line 913
     .restart local v2       #x:F
     invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->getY(I)F
 
     move-result v3
 
-    .line 910
+    .line 914
     .restart local v3       #y:F
     iput v5, p0, Lcom/meizu/widget/MultiWaveView;->mActivePointerId:I
 
@@ -3086,16 +3104,16 @@
     .locals 5
 
     .prologue
-    .line 1220
+    .line 1224
     iget-object v1, p0, Lcom/meizu/widget/MultiWaveView;->mChevronDrawables:Ljava/util/ArrayList;
 
-    .line 1221
+    .line 1225
     .local v1, chevrons:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/widget/MultiWaveView$TargetDrawable;>;"
     invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
 
     move-result v3
 
-    .line 1222
+    .line 1226
     .local v3, size:I
     const/4 v2, 0x0
 
@@ -3103,29 +3121,29 @@
     :goto_0
     if-ge v2, v3, :cond_1
 
-    .line 1223
+    .line 1227
     invoke-virtual {v1, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 1224
+    .line 1228
     .local v0, chevron:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     if-eqz v0, :cond_0
 
-    .line 1225
+    .line 1229
     const/4 v4, 0x0
 
     invoke-virtual {v0, v4}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setAlpha(F)V
 
-    .line 1222
+    .line 1226
     :cond_0
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 1228
+    .line 1232
     .end local v0           #chevron:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_1
     return-void
@@ -3137,34 +3155,34 @@
     .parameter "expanded"
 
     .prologue
-    .line 614
+    .line 618
     iget-object v7, p0, Lcom/meizu/widget/MultiWaveView;->mTargetAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v7}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->cancel()V
 
-    .line 617
+    .line 621
     iput-boolean p1, p0, Lcom/meizu/widget/MultiWaveView;->mAnimatingTargets:Z
 
-    .line 618
+    .line 622
     if-eqz p1, :cond_0
 
     const/16 v1, 0xc8
 
-    .line 619
+    .line 623
     .local v1, duration:I
     :goto_0
     if-eqz p1, :cond_1
 
     const/16 v0, 0xc8
 
-    .line 621
+    .line 625
     .local v0, delay:I
     :goto_1
     if-eqz p2, :cond_2
 
     const/high16 v6, 0x3f80
 
-    .line 622
+    .line 626
     .local v6, targetScale:F
     :goto_2
     iget-object v7, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
@@ -3173,7 +3191,7 @@
 
     move-result v3
 
-    .line 623
+    .line 627
     .local v3, length:I
     const/4 v2, 0x0
 
@@ -3181,7 +3199,7 @@
     :goto_3
     if-ge v2, v3, :cond_3
 
-    .line 624
+    .line 628
     iget-object v7, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v7, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -3190,13 +3208,13 @@
 
     check-cast v5, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 625
+    .line 629
     .local v5, target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     sget-object v7, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->STATE_INACTIVE:[I
 
     invoke-virtual {v5, v7}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setState([I)V
 
-    .line 626
+    .line 630
     iget-object v7, p0, Lcom/meizu/widget/MultiWaveView;->mTargetAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     int-to-long v8, v1
@@ -3293,12 +3311,12 @@
 
     invoke-virtual {v7, v8}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->add(Ljava/lang/Object;)Z
 
-    .line 623
+    .line 627
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_3
 
-    .line 618
+    .line 622
     .end local v0           #delay:I
     .end local v1           #duration:I
     .end local v2           #i:I
@@ -3310,21 +3328,21 @@
 
     goto :goto_0
 
-    .line 619
+    .line 623
     .restart local v1       #duration:I
     :cond_1
     const/4 v0, 0x0
 
     goto :goto_1
 
-    .line 621
+    .line 625
     .restart local v0       #delay:I
     :cond_2
     const v6, 0x3f4ccccd
 
     goto :goto_2
 
-    .line 635
+    .line 639
     .restart local v2       #i:I
     .restart local v3       #length:I
     .restart local v6       #targetScale:F
@@ -3333,7 +3351,7 @@
 
     const/high16 v4, 0x3f80
 
-    .line 636
+    .line 640
     .local v4, ringScaleTarget:F
     :goto_4
     iget-object v7, p0, Lcom/meizu/widget/MultiWaveView;->mTargetAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
@@ -3446,15 +3464,15 @@
 
     invoke-virtual {v7, v8}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->add(Ljava/lang/Object;)Z
 
-    .line 645
+    .line 649
     iget-object v7, p0, Lcom/meizu/widget/MultiWaveView;->mTargetAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v7}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->start()V
 
-    .line 646
+    .line 650
     return-void
 
-    .line 635
+    .line 639
     .end local v4           #ringScaleTarget:F
     :cond_4
     const/high16 v4, 0x3f00
@@ -3467,7 +3485,7 @@
     .parameter "active"
 
     .prologue
-    .line 606
+    .line 610
     const/4 v0, 0x0
 
     .local v0, i:I
@@ -3480,10 +3498,10 @@
 
     if-ge v0, v1, :cond_1
 
-    .line 607
+    .line 611
     if-eq v0, p1, :cond_0
 
-    .line 608
+    .line 612
     iget-object v1, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v1, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -3496,13 +3514,13 @@
 
     invoke-virtual {v1, v2}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setAlpha(F)V
 
-    .line 606
+    .line 610
     :cond_0
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 611
+    .line 615
     :cond_1
     return-void
 .end method
@@ -3512,7 +3530,7 @@
     .parameter "activeTarget"
 
     .prologue
-    .line 601
+    .line 605
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -3525,10 +3543,10 @@
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setState([I)V
 
-    .line 602
+    .line 606
     invoke-direct {p0, p1}, Lcom/meizu/widget/MultiWaveView;->hideUnselected(I)V
 
-    .line 603
+    .line 607
     return-void
 .end method
 
@@ -3537,24 +3555,24 @@
     .parameter "resourceId"
 
     .prologue
-    .line 698
+    .line 702
     invoke-direct {p0, p1}, Lcom/meizu/widget/MultiWaveView;->loadDrawableArray(I)Ljava/util/ArrayList;
 
     move-result-object v5
 
     iput-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
-    .line 699
+    .line 703
     iput p1, p0, Lcom/meizu/widget/MultiWaveView;->mTargetResourceId:I
 
-    .line 700
+    .line 704
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v5}, Ljava/util/ArrayList;->size()I
 
     move-result v0
 
-    .line 701
+    .line 705
     .local v0, count:I
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mHandleDrawable:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
@@ -3562,7 +3580,7 @@
 
     move-result v3
 
-    .line 702
+    .line 706
     .local v3, maxWidth:I
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mHandleDrawable:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
@@ -3570,7 +3588,7 @@
 
     move-result v2
 
-    .line 703
+    .line 707
     .local v2, maxHeight:I
     const/4 v1, 0x0
 
@@ -3578,7 +3596,7 @@
     :goto_0
     if-ge v1, v0, :cond_0
 
-    .line 704
+    .line 708
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v5, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -3587,7 +3605,7 @@
 
     check-cast v4, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 705
+    .line 709
     .local v4, target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     invoke-virtual {v4}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->getWidth()I
 
@@ -3597,7 +3615,7 @@
 
     move-result v3
 
-    .line 706
+    .line 710
     invoke-virtual {v4}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->getHeight()I
 
     move-result v5
@@ -3606,12 +3624,12 @@
 
     move-result v2
 
-    .line 703
+    .line 707
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 708
+    .line 712
     .end local v4           #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_0
     iget v5, p0, Lcom/meizu/widget/MultiWaveView;->mMaxTargetWidth:I
@@ -3622,21 +3640,21 @@
 
     if-eq v5, v2, :cond_2
 
-    .line 709
+    .line 713
     :cond_1
     iput v3, p0, Lcom/meizu/widget/MultiWaveView;->mMaxTargetWidth:I
 
-    .line 710
+    .line 714
     iput v2, p0, Lcom/meizu/widget/MultiWaveView;->mMaxTargetHeight:I
 
-    .line 711
+    .line 715
     invoke-virtual {p0}, Lcom/meizu/widget/MultiWaveView;->requestLayout()V
 
-    .line 716
+    .line 720
     :goto_1
     return-void
 
-    .line 713
+    .line 717
     :cond_2
     iget v5, p0, Lcom/meizu/widget/MultiWaveView;->mWaveCenterX:F
 
@@ -3644,7 +3662,7 @@
 
     invoke-direct {p0, v5, v6}, Lcom/meizu/widget/MultiWaveView;->updateTargetPositions(FF)V
 
-    .line 714
+    .line 718
     iget v5, p0, Lcom/meizu/widget/MultiWaveView;->mWaveCenterX:F
 
     iget v6, p0, Lcom/meizu/widget/MultiWaveView;->mWaveCenterY:F
@@ -3668,7 +3686,7 @@
     .end annotation
 
     .prologue
-    .line 1320
+    .line 1324
     invoke-virtual {p0}, Lcom/meizu/widget/MultiWaveView;->getContext()Landroid/content/Context;
 
     move-result-object v5
@@ -3681,19 +3699,19 @@
 
     move-result-object v0
 
-    .line 1321
+    .line 1325
     .local v0, array:Landroid/content/res/TypedArray;
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->length()I
 
     move-result v2
 
-    .line 1322
+    .line 1326
     .local v2, count:I
     new-instance v4, Ljava/util/ArrayList;
 
     invoke-direct {v4, v2}, Ljava/util/ArrayList;-><init>(I)V
 
-    .line 1323
+    .line 1327
     .local v4, targetContentDescriptions:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/lang/String;>;"
     const/4 v3, 0x0
 
@@ -3701,26 +3719,26 @@
     :goto_0
     if-ge v3, v2, :cond_0
 
-    .line 1324
+    .line 1328
     invoke-virtual {v0, v3}, Landroid/content/res/TypedArray;->getString(I)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 1325
+    .line 1329
     .local v1, contentDescription:Ljava/lang/String;
     invoke-virtual {v4, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1323
+    .line 1327
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_0
 
-    .line 1327
+    .line 1331
     .end local v1           #contentDescription:Ljava/lang/String;
     :cond_0
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 1328
+    .line 1332
     return-object v4
 .end method
 
@@ -3738,7 +3756,7 @@
     .end annotation
 
     .prologue
-    .line 684
+    .line 688
     invoke-virtual {p0}, Lcom/meizu/widget/MultiWaveView;->getContext()Landroid/content/Context;
 
     move-result-object v7
@@ -3747,25 +3765,25 @@
 
     move-result-object v4
 
-    .line 685
+    .line 689
     .local v4, res:Landroid/content/res/Resources;
     invoke-virtual {v4, p1}, Landroid/content/res/Resources;->obtainTypedArray(I)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    .line 686
+    .line 690
     .local v0, array:Landroid/content/res/TypedArray;
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->length()I
 
     move-result v1
 
-    .line 687
+    .line 691
     .local v1, count:I
     new-instance v2, Ljava/util/ArrayList;
 
     invoke-direct {v2, v1}, Ljava/util/ArrayList;-><init>(I)V
 
-    .line 688
+    .line 692
     .local v2, drawables:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/widget/MultiWaveView$TargetDrawable;>;"
     const/4 v3, 0x0
 
@@ -3773,12 +3791,12 @@
     :goto_0
     if-ge v3, v1, :cond_1
 
-    .line 689
+    .line 693
     invoke-virtual {v0, v3}, Landroid/content/res/TypedArray;->peekValue(I)Landroid/util/TypedValue;
 
     move-result-object v6
 
-    .line 690
+    .line 694
     .local v6, value:Landroid/util/TypedValue;
     new-instance v5, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
@@ -3789,28 +3807,28 @@
     :goto_1
     invoke-direct {v5, v4, v7}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;-><init>(Landroid/content/res/Resources;I)V
 
-    .line 691
+    .line 695
     .local v5, target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     invoke-virtual {v2, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 688
+    .line 692
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_0
 
-    .line 690
+    .line 694
     .end local v5           #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_0
     const/4 v7, 0x0
 
     goto :goto_1
 
-    .line 693
+    .line 697
     .end local v6           #value:Landroid/util/TypedValue;
     :cond_1
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 694
+    .line 698
     return-object v2
 .end method
 
@@ -3821,17 +3839,17 @@
     .parameter "animate"
 
     .prologue
-    .line 865
+    .line 869
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mHandleDrawable:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     invoke-virtual {v0, p1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setX(F)V
 
-    .line 866
+    .line 870
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mHandleDrawable:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     invoke-virtual {v0, p2}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setY(F)V
 
-    .line 867
+    .line 871
     return-void
 .end method
 
@@ -3842,35 +3860,35 @@
     .parameter "newResourceId"
 
     .prologue
-    .line 1363
+    .line 1367
     if-eqz p2, :cond_0
 
     if-nez p3, :cond_2
 
-    .line 1364
+    .line 1368
     :cond_0
     const/4 v2, 0x0
 
-    .line 1382
+    .line 1386
     :cond_1
     :goto_0
     return v2
 
-    .line 1367
+    .line 1371
     :cond_2
     const/4 v2, 0x0
 
-    .line 1368
+    .line 1372
     .local v2, result:Z
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
-    .line 1369
+    .line 1373
     .local v0, drawables:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/widget/MultiWaveView$TargetDrawable;>;"
     invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
 
     move-result v3
 
-    .line 1370
+    .line 1374
     .local v3, size:I
     const/4 v1, 0x0
 
@@ -3878,14 +3896,14 @@
     :goto_1
     if-ge v1, v3, :cond_4
 
-    .line 1371
+    .line 1375
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v4
 
     check-cast v4, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 1372
+    .line 1376
     .local v4, target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     if-eqz v4, :cond_3
 
@@ -3895,24 +3913,24 @@
 
     if-ne v5, p2, :cond_3
 
-    .line 1373
+    .line 1377
     invoke-virtual {v4, p1, p3}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setDrawable(Landroid/content/res/Resources;I)V
 
-    .line 1374
+    .line 1378
     const/4 v2, 0x1
 
-    .line 1370
+    .line 1374
     :cond_3
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_1
 
-    .line 1378
+    .line 1382
     .end local v4           #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_4
     if-eqz v2, :cond_1
 
-    .line 1379
+    .line 1383
     invoke-virtual {p0}, Lcom/meizu/widget/MultiWaveView;->requestLayout()V
 
     goto :goto_0
@@ -3924,16 +3942,16 @@
     .parameter "desired"
 
     .prologue
-    .line 335
+    .line 338
     const/4 v0, 0x0
 
-    .line 336
+    .line 339
     .local v0, result:I
     invoke-static {p1}, Landroid/view/View$MeasureSpec;->getSize(I)I
 
     move-result v1
 
-    .line 337
+    .line 340
     .local v1, specSize:I
     invoke-static {p1}, Landroid/view/View$MeasureSpec;->getMode(I)I
 
@@ -3941,30 +3959,30 @@
 
     sparse-switch v2, :sswitch_data_0
 
-    .line 346
+    .line 349
     move v0, v1
 
-    .line 348
+    .line 351
     :goto_0
     return v0
 
-    .line 339
+    .line 342
     :sswitch_0
     move v0, p2
 
-    .line 340
+    .line 343
     goto :goto_0
 
-    .line 342
+    .line 345
     :sswitch_1
     invoke-static {v1, p2}, Ljava/lang/Math;->min(II)I
 
     move-result v0
 
-    .line 343
+    .line 346
     goto :goto_0
 
-    .line 337
+    .line 340
     nop
 
     :sswitch_data_0
@@ -3981,45 +3999,45 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 1086
+    .line 1090
     iget v0, p0, Lcom/meizu/widget/MultiWaveView;->mGrabbedState:I
 
     if-eq p1, v0, :cond_1
 
-    .line 1087
+    .line 1091
     if-eqz p1, :cond_0
 
-    .line 1088
+    .line 1092
     invoke-direct {p0}, Lcom/meizu/widget/MultiWaveView;->vibrate()V
 
-    .line 1090
+    .line 1094
     :cond_0
     iput p1, p0, Lcom/meizu/widget/MultiWaveView;->mGrabbedState:I
 
-    .line 1091
+    .line 1095
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mOnTriggerListener:Lcom/meizu/widget/MultiWaveView$OnTriggerListener;
 
     if-eqz v0, :cond_1
 
-    .line 1092
+    .line 1096
     if-nez p1, :cond_2
 
-    .line 1093
+    .line 1097
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mOnTriggerListener:Lcom/meizu/widget/MultiWaveView$OnTriggerListener;
 
     invoke-interface {v0, p0, v1}, Lcom/meizu/widget/MultiWaveView$OnTriggerListener;->onReleased(Landroid/view/View;I)V
 
-    .line 1097
+    .line 1101
     :goto_0
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mOnTriggerListener:Lcom/meizu/widget/MultiWaveView$OnTriggerListener;
 
     invoke-interface {v0, p0, p1}, Lcom/meizu/widget/MultiWaveView$OnTriggerListener;->onGrabbedStateChange(Landroid/view/View;I)V
 
-    .line 1100
+    .line 1104
     :cond_1
     return-void
 
-    .line 1095
+    .line 1099
     :cond_2
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mOnTriggerListener:Lcom/meizu/widget/MultiWaveView$OnTriggerListener;
 
@@ -4033,27 +4051,27 @@
     .parameter "animate"
 
     .prologue
-    .line 649
+    .line 653
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mTargetAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v5}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->stop()V
 
-    .line 650
+    .line 654
     iput-boolean p1, p0, Lcom/meizu/widget/MultiWaveView;->mAnimatingTargets:Z
 
-    .line 651
+    .line 655
     if-eqz p1, :cond_0
 
     const/16 v0, 0x32
 
-    .line 652
+    .line 656
     .local v0, delay:I
     :goto_0
     if-eqz p1, :cond_1
 
     const/16 v1, 0xc8
 
-    .line 653
+    .line 657
     .local v1, duration:I
     :goto_1
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
@@ -4062,7 +4080,7 @@
 
     move-result v3
 
-    .line 654
+    .line 658
     .local v3, length:I
     const/4 v2, 0x0
 
@@ -4070,7 +4088,7 @@
     :goto_2
     if-ge v2, v3, :cond_2
 
-    .line 655
+    .line 659
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v5, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -4079,13 +4097,13 @@
 
     check-cast v4, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 656
+    .line 660
     .local v4, target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     sget-object v5, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->STATE_INACTIVE:[I
 
     invoke-virtual {v4, v5}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setState([I)V
 
-    .line 657
+    .line 661
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mTargetAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     int-to-long v6, v1
@@ -4186,12 +4204,12 @@
 
     invoke-virtual {v5, v6}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->add(Ljava/lang/Object;)Z
 
-    .line 654
+    .line 658
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_2
 
-    .line 651
+    .line 655
     .end local v0           #delay:I
     .end local v1           #duration:I
     .end local v2           #i:I
@@ -4202,14 +4220,14 @@
 
     goto :goto_0
 
-    .line 652
+    .line 656
     .restart local v0       #delay:I
     :cond_1
     const/4 v1, 0x0
 
     goto :goto_1
 
-    .line 665
+    .line 669
     .restart local v1       #duration:I
     .restart local v2       #i:I
     .restart local v3       #length:I
@@ -4328,12 +4346,12 @@
 
     invoke-virtual {v5, v6}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->add(Ljava/lang/Object;)Z
 
-    .line 674
+    .line 678
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mTargetAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v5}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->start()V
 
-    .line 675
+    .line 679
     return-void
 .end method
 
@@ -4342,7 +4360,7 @@
     .parameter "d"
 
     .prologue
-    .line 1255
+    .line 1259
     mul-float v0, p1, p1
 
     return v0
@@ -4360,12 +4378,12 @@
 
     const/4 v6, 0x0
 
-    .line 818
+    .line 822
     invoke-virtual {p0}, Lcom/meizu/widget/MultiWaveView;->getBackground()Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
 
-    .line 819
+    .line 823
     .local v0, background:Landroid/graphics/drawable/Drawable;
     iget-boolean v1, p0, Lcom/meizu/widget/MultiWaveView;->mAlwaysTrackFinger:Z
 
@@ -4373,19 +4391,19 @@
 
     if-eqz v0, :cond_1
 
-    .line 820
+    .line 824
     iget-object v1, p0, Lcom/meizu/widget/MultiWaveView;->mBackgroundAnimator:Lcom/meizu/widget/MultiWaveView$Tweener;
 
     if-eqz v1, :cond_0
 
-    .line 821
+    .line 825
     iget-object v1, p0, Lcom/meizu/widget/MultiWaveView;->mBackgroundAnimator:Lcom/meizu/widget/MultiWaveView$Tweener;
 
     iget-object v1, v1, Lcom/meizu/widget/MultiWaveView$Tweener;->animator:Landroid/animation/ObjectAnimator;
 
     invoke-virtual {v1}, Landroid/animation/ObjectAnimator;->end()V
 
-    .line 823
+    .line 827
     :cond_0
     int-to-long v1, p1
 
@@ -4443,200 +4461,202 @@
 
     iput-object v1, p0, Lcom/meizu/widget/MultiWaveView;->mBackgroundAnimator:Lcom/meizu/widget/MultiWaveView$Tweener;
 
-    .line 827
+    .line 831
     iget-object v1, p0, Lcom/meizu/widget/MultiWaveView;->mBackgroundAnimator:Lcom/meizu/widget/MultiWaveView$Tweener;
 
     iget-object v1, v1, Lcom/meizu/widget/MultiWaveView$Tweener;->animator:Landroid/animation/ObjectAnimator;
 
     invoke-virtual {v1}, Landroid/animation/ObjectAnimator;->start()V
 
-    .line 829
+    .line 833
     :cond_1
     return-void
 .end method
 
 .method private startChevronAnimation()V
-    .locals 24
+    .locals 25
 
     .prologue
-    .line 430
+    .line 433
+    const/high16 v14, 0x3f00
+
+    .line 434
+    .local v14, startScale:F
+    const/high16 v11, 0x3fc0
+
+    .line 435
+    .local v11, endScale:F
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/widget/MultiWaveView;->mHandleDrawable:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    move-object/from16 v18, v0
+    move-object/from16 v19, v0
 
-    invoke-virtual/range {v18 .. v18}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->getWidth()I
+    invoke-virtual/range {v19 .. v19}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->getWidth()I
 
-    move-result v18
+    move-result v19
 
-    move/from16 v0, v18
+    move/from16 v0, v19
 
     int-to-float v0, v0
 
-    move/from16 v18, v0
+    move/from16 v19, v0
 
-    const v19, 0x3f4ccccd
+    const/high16 v20, 0x4000
 
-    mul-float v5, v18, v19
+    div-float v12, v19, v20
 
-    .line 431
+    .line 436
+    .local v12, handleDrawableWidth:F
+    move v5, v12
+
+    .line 437
     .local v5, chevronStartDistance:F
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/meizu/widget/MultiWaveView;->mOuterRadius:F
 
-    move/from16 v18, v0
+    move/from16 v19, v0
 
-    const v19, 0x3f666666
+    const v20, 0x3f4ccccd
 
-    mul-float v18, v18, v19
+    mul-float v20, v20, v12
 
-    const/high16 v19, 0x4000
+    sub-float v6, v19, v20
 
-    div-float v6, v18, v19
-
-    .line 432
+    .line 438
     .local v6, chevronStopDistance:F
-    const/high16 v13, 0x3f00
-
-    .line 433
-    .local v13, startScale:F
-    const/high16 v11, 0x4000
-
-    .line 434
-    .local v11, endScale:F
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/meizu/widget/MultiWaveView;->mFeedbackCount:I
-
-    move/from16 v18, v0
-
-    if-lez v18, :cond_0
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/meizu/widget/MultiWaveView;->mChevronDrawables:Ljava/util/ArrayList;
-
-    move-object/from16 v18, v0
-
-    invoke-virtual/range {v18 .. v18}, Ljava/util/ArrayList;->size()I
-
-    move-result v18
-
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/meizu/widget/MultiWaveView;->mFeedbackCount:I
 
     move/from16 v19, v0
 
-    div-int v10, v18, v19
+    if-lez v19, :cond_0
 
-    .line 436
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/meizu/widget/MultiWaveView;->mChevronDrawables:Ljava/util/ArrayList;
+
+    move-object/from16 v19, v0
+
+    invoke-virtual/range {v19 .. v19}, Ljava/util/ArrayList;->size()I
+
+    move-result v19
+
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/meizu/widget/MultiWaveView;->mFeedbackCount:I
+
+    move/from16 v20, v0
+
+    div-int v10, v19, v20
+
+    .line 440
     .local v10, directionCount:I
     :goto_0
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/widget/MultiWaveView;->mChevronAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
-    move-object/from16 v18, v0
+    move-object/from16 v19, v0
 
-    invoke-virtual/range {v18 .. v18}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->stop()V
+    invoke-virtual/range {v19 .. v19}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->stop()V
 
-    .line 440
+    .line 444
     const/4 v9, 0x0
 
     .local v9, direction:I
     :goto_1
     if-ge v9, v10, :cond_3
 
-    .line 441
-    const-wide v18, 0x401921fb54442d18L
+    .line 445
+    const-wide v19, 0x401921fb54442d18L
 
     int-to-double v0, v9
 
-    move-wide/from16 v20, v0
+    move-wide/from16 v21, v0
 
-    mul-double v18, v18, v20
+    mul-double v19, v19, v21
 
     int-to-double v0, v10
 
-    move-wide/from16 v20, v0
+    move-wide/from16 v21, v0
 
-    div-double v3, v18, v20
+    div-double v3, v19, v21
 
-    .line 442
+    .line 446
     .local v3, angle:D
     invoke-static {v3, v4}, Ljava/lang/Math;->cos(D)D
-
-    move-result-wide v18
-
-    move-wide/from16 v0, v18
-
-    double-to-float v14, v0
-
-    .line 443
-    .local v14, sx:F
-    const/16 v18, 0x0
-
-    invoke-static {v3, v4}, Ljava/lang/Math;->sin(D)D
 
     move-result-wide v19
 
     move-wide/from16 v0, v19
 
+    double-to-float v15, v0
+
+    .line 447
+    .local v15, sx:F
+    const/16 v19, 0x0
+
+    invoke-static {v3, v4}, Ljava/lang/Math;->sin(D)D
+
+    move-result-wide v20
+
+    move-wide/from16 v0, v20
+
     double-to-float v0, v0
 
-    move/from16 v19, v0
+    move/from16 v20, v0
 
-    sub-float v15, v18, v19
+    sub-float v16, v19, v20
 
-    .line 444
-    .local v15, sy:F
-    const/16 v18, 0x2
+    .line 448
+    .local v16, sy:F
+    const/16 v19, 0x2
 
-    move/from16 v0, v18
-
-    new-array v0, v0, [F
-
-    move-object/from16 v16, v0
-
-    const/16 v18, 0x0
-
-    mul-float v19, v14, v5
-
-    aput v19, v16, v18
-
-    const/16 v18, 0x1
-
-    mul-float v19, v14, v6
-
-    aput v19, v16, v18
-
-    .line 446
-    .local v16, xrange:[F
-    const/16 v18, 0x2
-
-    move/from16 v0, v18
+    move/from16 v0, v19
 
     new-array v0, v0, [F
 
     move-object/from16 v17, v0
 
-    const/16 v18, 0x0
+    const/16 v19, 0x0
 
-    mul-float v19, v15, v5
+    mul-float v20, v15, v5
 
-    aput v19, v17, v18
+    aput v20, v17, v19
 
-    const/16 v18, 0x1
+    const/16 v19, 0x1
 
-    mul-float v19, v15, v6
+    mul-float v20, v15, v6
 
-    aput v19, v17, v18
+    aput v20, v17, v19
 
-    .line 448
-    .local v17, yrange:[F
+    .line 450
+    .local v17, xrange:[F
+    const/16 v19, 0x2
+
+    move/from16 v0, v19
+
+    new-array v0, v0, [F
+
+    move-object/from16 v18, v0
+
+    const/16 v19, 0x0
+
+    mul-float v20, v16, v5
+
+    aput v20, v18, v19
+
+    const/16 v19, 0x1
+
+    mul-float v20, v16, v6
+
+    aput v20, v18, v19
+
+    .line 452
+    .local v18, yrange:[F
     const/4 v7, 0x0
 
     .local v7, count:I
@@ -4645,275 +4665,283 @@
 
     iget v0, v0, Lcom/meizu/widget/MultiWaveView;->mFeedbackCount:I
 
-    move/from16 v18, v0
+    move/from16 v19, v0
 
-    move/from16 v0, v18
+    move/from16 v0, v19
 
     if-ge v7, v0, :cond_2
 
-    .line 449
-    mul-int/lit16 v8, v7, 0x140
+    .line 453
+    sget v19, Lcom/meizu/widget/MultiWaveView;->CHEVRON_INCREMENTAL_DELAY:I
 
-    .line 450
+    mul-int v8, v7, v19
+
+    .line 454
     .local v8, delay:I
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/widget/MultiWaveView;->mChevronDrawables:Ljava/util/ArrayList;
 
-    move-object/from16 v18, v0
+    move-object/from16 v19, v0
 
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/meizu/widget/MultiWaveView;->mFeedbackCount:I
 
-    move/from16 v19, v0
+    move/from16 v20, v0
 
-    mul-int v19, v19, v9
+    mul-int v20, v20, v9
 
-    add-int v19, v19, v7
+    add-int v20, v20, v7
 
-    invoke-virtual/range {v18 .. v19}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    invoke-virtual/range {v19 .. v20}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
-    move-result-object v12
+    move-result-object v13
 
-    check-cast v12, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
+    check-cast v13, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 451
-    .local v12, icon:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
-    if-nez v12, :cond_1
+    .line 455
+    .local v13, icon:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
+    if-nez v13, :cond_1
 
-    .line 448
+    .line 452
     :goto_3
     add-int/lit8 v7, v7, 0x1
 
     goto :goto_2
 
-    .line 434
+    .line 438
     .end local v3           #angle:D
     .end local v7           #count:I
     .end local v8           #delay:I
     .end local v9           #direction:I
     .end local v10           #directionCount:I
-    .end local v12           #icon:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
-    .end local v14           #sx:F
-    .end local v15           #sy:F
-    .end local v16           #xrange:[F
-    .end local v17           #yrange:[F
+    .end local v13           #icon:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
+    .end local v15           #sx:F
+    .end local v16           #sy:F
+    .end local v17           #xrange:[F
+    .end local v18           #yrange:[F
     :cond_0
     const/4 v10, 0x0
 
-    goto :goto_0
+    goto/16 :goto_0
 
-    .line 454
+    .line 458
     .restart local v3       #angle:D
     .restart local v7       #count:I
     .restart local v8       #delay:I
     .restart local v9       #direction:I
     .restart local v10       #directionCount:I
-    .restart local v12       #icon:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
-    .restart local v14       #sx:F
-    .restart local v15       #sy:F
-    .restart local v16       #xrange:[F
-    .restart local v17       #yrange:[F
+    .restart local v13       #icon:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
+    .restart local v15       #sx:F
+    .restart local v16       #sy:F
+    .restart local v17       #xrange:[F
+    .restart local v18       #yrange:[F
     :cond_1
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/widget/MultiWaveView;->mChevronAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
-    move-object/from16 v18, v0
+    move-object/from16 v19, v0
 
-    const-wide/16 v19, 0x690
+    sget v20, Lcom/meizu/widget/MultiWaveView;->CHEVRON_ANIMATION_DURATION:I
 
-    const/16 v21, 0x10
+    move/from16 v0, v20
 
-    move/from16 v0, v21
+    int-to-long v0, v0
+
+    move-wide/from16 v20, v0
+
+    const/16 v22, 0x10
+
+    move/from16 v0, v22
 
     new-array v0, v0, [Ljava/lang/Object;
 
-    move-object/from16 v21, v0
+    move-object/from16 v22, v0
 
-    const/16 v22, 0x0
+    const/16 v23, 0x0
 
-    const-string v23, "ease"
+    const-string v24, "ease"
 
-    aput-object v23, v21, v22
+    aput-object v24, v22, v23
 
-    const/16 v22, 0x1
+    const/16 v23, 0x1
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/widget/MultiWaveView;->mChevronAnimationInterpolator:Landroid/animation/TimeInterpolator;
 
-    move-object/from16 v23, v0
+    move-object/from16 v24, v0
 
-    aput-object v23, v21, v22
+    aput-object v24, v22, v23
 
-    const/16 v22, 0x2
+    const/16 v23, 0x2
 
-    const-string v23, "delay"
+    const-string v24, "delay"
 
-    aput-object v23, v21, v22
+    aput-object v24, v22, v23
 
-    const/16 v22, 0x3
+    const/16 v23, 0x3
 
     invoke-static {v8}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v23
+    move-result-object v24
 
-    aput-object v23, v21, v22
+    aput-object v24, v22, v23
 
-    const/16 v22, 0x4
+    const/16 v23, 0x4
 
-    const-string v23, "x"
+    const-string v24, "x"
 
-    aput-object v23, v21, v22
+    aput-object v24, v22, v23
 
-    const/16 v22, 0x5
+    const/16 v23, 0x5
 
-    aput-object v16, v21, v22
+    aput-object v17, v22, v23
 
-    const/16 v22, 0x6
+    const/16 v23, 0x6
 
-    const-string v23, "y"
+    const-string v24, "y"
 
-    aput-object v23, v21, v22
+    aput-object v24, v22, v23
 
-    const/16 v22, 0x7
+    const/16 v23, 0x7
 
-    aput-object v17, v21, v22
+    aput-object v18, v22, v23
 
-    const/16 v22, 0x8
+    const/16 v23, 0x8
 
-    const-string v23, "alpha"
+    const-string v24, "alpha"
 
-    aput-object v23, v21, v22
+    aput-object v24, v22, v23
 
-    const/16 v22, 0x9
+    const/16 v23, 0x9
 
-    const/16 v23, 0x2
+    const/16 v24, 0x2
 
-    move/from16 v0, v23
-
-    new-array v0, v0, [F
-
-    move-object/from16 v23, v0
-
-    fill-array-data v23, :array_0
-
-    aput-object v23, v21, v22
-
-    const/16 v22, 0xa
-
-    const-string v23, "scaleX"
-
-    aput-object v23, v21, v22
-
-    const/16 v22, 0xb
-
-    const/16 v23, 0x2
-
-    move/from16 v0, v23
+    move/from16 v0, v24
 
     new-array v0, v0, [F
 
-    move-object/from16 v23, v0
+    move-object/from16 v24, v0
 
-    fill-array-data v23, :array_1
+    fill-array-data v24, :array_0
 
-    aput-object v23, v21, v22
+    aput-object v24, v22, v23
 
-    const/16 v22, 0xc
+    const/16 v23, 0xa
 
-    const-string v23, "scaleY"
+    const-string v24, "scaleX"
 
-    aput-object v23, v21, v22
+    aput-object v24, v22, v23
 
-    const/16 v22, 0xd
+    const/16 v23, 0xb
 
-    const/16 v23, 0x2
+    const/16 v24, 0x2
 
-    move/from16 v0, v23
+    move/from16 v0, v24
 
     new-array v0, v0, [F
 
-    move-object/from16 v23, v0
+    move-object/from16 v24, v0
 
-    fill-array-data v23, :array_2
+    fill-array-data v24, :array_1
 
-    aput-object v23, v21, v22
+    aput-object v24, v22, v23
 
-    const/16 v22, 0xe
+    const/16 v23, 0xc
 
-    const-string v23, "onUpdate"
+    const-string v24, "scaleY"
 
-    aput-object v23, v21, v22
+    aput-object v24, v22, v23
 
-    const/16 v22, 0xf
+    const/16 v23, 0xd
+
+    const/16 v24, 0x2
+
+    move/from16 v0, v24
+
+    new-array v0, v0, [F
+
+    move-object/from16 v24, v0
+
+    fill-array-data v24, :array_2
+
+    aput-object v24, v22, v23
+
+    const/16 v23, 0xe
+
+    const-string v24, "onUpdate"
+
+    aput-object v24, v22, v23
+
+    const/16 v23, 0xf
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/widget/MultiWaveView;->mUpdateListener:Landroid/animation/ValueAnimator$AnimatorUpdateListener;
 
-    move-object/from16 v23, v0
+    move-object/from16 v24, v0
 
-    aput-object v23, v21, v22
+    aput-object v24, v22, v23
 
-    move-wide/from16 v0, v19
+    move-wide/from16 v0, v20
 
-    move-object/from16 v2, v21
+    move-object/from16 v2, v22
 
-    invoke-static {v12, v0, v1, v2}, Lcom/meizu/widget/MultiWaveView$Tweener;->to(Ljava/lang/Object;J[Ljava/lang/Object;)Lcom/meizu/widget/MultiWaveView$Tweener;
+    invoke-static {v13, v0, v1, v2}, Lcom/meizu/widget/MultiWaveView$Tweener;->to(Ljava/lang/Object;J[Ljava/lang/Object;)Lcom/meizu/widget/MultiWaveView$Tweener;
 
-    move-result-object v19
+    move-result-object v20
 
-    invoke-virtual/range {v18 .. v19}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->add(Ljava/lang/Object;)Z
+    invoke-virtual/range {v19 .. v20}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->add(Ljava/lang/Object;)Z
 
     goto/16 :goto_3
 
-    .line 440
+    .line 444
     .end local v8           #delay:I
-    .end local v12           #icon:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
+    .end local v13           #icon:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_2
     add-int/lit8 v9, v9, 0x1
 
     goto/16 :goto_1
 
-    .line 465
+    .line 469
     .end local v3           #angle:D
     .end local v7           #count:I
-    .end local v14           #sx:F
-    .end local v15           #sy:F
-    .end local v16           #xrange:[F
-    .end local v17           #yrange:[F
+    .end local v15           #sx:F
+    .end local v16           #sy:F
+    .end local v17           #xrange:[F
+    .end local v18           #yrange:[F
     :cond_3
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/widget/MultiWaveView;->mChevronAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
-    move-object/from16 v18, v0
+    move-object/from16 v19, v0
 
-    invoke-virtual/range {v18 .. v18}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->start()V
+    invoke-virtual/range {v19 .. v19}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->start()V
 
-    .line 466
+    .line 470
     return-void
 
-    .line 454
+    .line 458
     :array_0
     .array-data 0x4
-        0x0t 0x0t 0x80t 0x3ft
+        0x9at 0x99t 0x19t 0x3ft
         0x0t 0x0t 0x0t 0x0t
     .end array-data
 
     :array_1
     .array-data 0x4
         0x0t 0x0t 0x0t 0x3ft
-        0x0t 0x0t 0x0t 0x40t
+        0x0t 0x0t 0xc0t 0x3ft
     .end array-data
 
     :array_2
     .array-data 0x4
         0x0t 0x0t 0x0t 0x3ft
-        0x0t 0x0t 0x0t 0x40t
+        0x0t 0x0t 0xc0t 0x3ft
     .end array-data
 .end method
 
@@ -4932,26 +4960,26 @@
 
     const/4 v1, 0x0
 
-    .line 362
+    .line 365
     packed-switch p1, :pswitch_data_0
 
-    .line 396
+    .line 399
     :cond_0
     :goto_0
     :pswitch_0
     return-void
 
-    .line 364
+    .line 367
     :pswitch_1
     invoke-direct {p0}, Lcom/meizu/widget/MultiWaveView;->deactivateTargets()V
 
-    .line 365
+    .line 368
     invoke-direct {p0, v2, v1}, Lcom/meizu/widget/MultiWaveView;->hideTargets(ZZ)V
 
-    .line 366
+    .line 369
     invoke-direct {p0, v1, v3}, Lcom/meizu/widget/MultiWaveView;->startBackgroundAnimation(IF)V
 
-    .line 367
+    .line 370
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mHandleDrawable:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     sget-object v1, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->STATE_INACTIVE:[I
@@ -4960,40 +4988,40 @@
 
     goto :goto_0
 
-    .line 371
+    .line 374
     :pswitch_2
     const/4 v0, 0x0
 
     invoke-direct {p0, v1, v1, v4, v0}, Lcom/meizu/widget/MultiWaveView;->deactivateHandle(IIFLandroid/animation/Animator$AnimatorListener;)V
 
-    .line 372
+    .line 375
     invoke-direct {p0, v1, v3}, Lcom/meizu/widget/MultiWaveView;->startBackgroundAnimation(IF)V
 
     goto :goto_0
 
-    .line 376
+    .line 379
     :pswitch_3
     invoke-direct {p0}, Lcom/meizu/widget/MultiWaveView;->deactivateTargets()V
 
-    .line 377
+    .line 380
     invoke-direct {p0, v2}, Lcom/meizu/widget/MultiWaveView;->showTargets(Z)V
 
-    .line 378
+    .line 381
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mHandleDrawable:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     sget-object v1, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->STATE_ACTIVE:[I
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setState([I)V
 
-    .line 379
+    .line 382
     const/16 v0, 0xc8
 
     invoke-direct {p0, v0, v4}, Lcom/meizu/widget/MultiWaveView;->startBackgroundAnimation(IF)V
 
-    .line 380
+    .line 383
     invoke-direct {p0, v2}, Lcom/meizu/widget/MultiWaveView;->setGrabbedState(I)V
 
-    .line 381
+    .line 384
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mContext:Landroid/content/Context;
 
     invoke-static {v0}, Landroid/view/accessibility/AccessibilityManager;->getInstance(Landroid/content/Context;)Landroid/view/accessibility/AccessibilityManager;
@@ -5006,18 +5034,18 @@
 
     if-eqz v0, :cond_0
 
-    .line 382
+    .line 385
     invoke-direct {p0}, Lcom/meizu/widget/MultiWaveView;->announceTargets()V
 
     goto :goto_0
 
-    .line 393
+    .line 396
     :pswitch_4
     invoke-direct {p0}, Lcom/meizu/widget/MultiWaveView;->doFinish()V
 
     goto :goto_0
 
-    .line 362
+    .line 365
     nop
 
     :pswitch_data_0
@@ -5041,18 +5069,18 @@
 
     const/4 v2, 0x0
 
-    .line 1103
+    .line 1107
     iget v4, p0, Lcom/meizu/widget/MultiWaveView;->mWaveCenterX:F
 
     sub-float v0, p1, v4
 
-    .line 1104
+    .line 1108
     .local v0, tx:F
     iget v4, p0, Lcom/meizu/widget/MultiWaveView;->mWaveCenterY:F
 
     sub-float v1, p2, v4
 
-    .line 1105
+    .line 1109
     .local v1, ty:F
     iget-boolean v4, p0, Lcom/meizu/widget/MultiWaveView;->mAlwaysTrackFinger:Z
 
@@ -5070,21 +5098,21 @@
 
     if-gtz v4, :cond_1
 
-    .line 1107
+    .line 1111
     :cond_0
     const/4 v4, 0x2
 
     invoke-direct {p0, v4, p1, p2}, Lcom/meizu/widget/MultiWaveView;->switchToState(IFF)V
 
-    .line 1108
+    .line 1112
     invoke-direct {p0, v0, v1, v2}, Lcom/meizu/widget/MultiWaveView;->moveHandleTo(FFZ)V
 
-    .line 1109
+    .line 1113
     iput-boolean v3, p0, Lcom/meizu/widget/MultiWaveView;->mDragging:Z
 
     move v2, v3
 
-    .line 1112
+    .line 1116
     :cond_1
     return v2
 .end method
@@ -5095,16 +5123,16 @@
     .parameter "centerY"
 
     .prologue
-    .line 1208
+    .line 1212
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mChevronDrawables:Ljava/util/ArrayList;
 
-    .line 1209
+    .line 1213
     .local v0, chevrons:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/widget/MultiWaveView$TargetDrawable;>;"
     invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
 
     move-result v2
 
-    .line 1210
+    .line 1214
     .local v2, size:I
     const/4 v1, 0x0
 
@@ -5112,30 +5140,30 @@
     :goto_0
     if-ge v1, v2, :cond_1
 
-    .line 1211
+    .line 1215
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v3
 
     check-cast v3, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 1212
+    .line 1216
     .local v3, target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     if-eqz v3, :cond_0
 
-    .line 1213
+    .line 1217
     invoke-virtual {v3, p1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setPositionX(F)V
 
-    .line 1214
+    .line 1218
     invoke-virtual {v3, p2}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setPositionY(F)V
 
-    .line 1210
+    .line 1214
     :cond_0
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 1217
+    .line 1221
     .end local v3           #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_1
     return-void
@@ -5147,16 +5175,16 @@
     .parameter "centerY"
 
     .prologue
-    .line 1194
+    .line 1198
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
-    .line 1195
+    .line 1199
     .local v5, targets:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/widget/MultiWaveView$TargetDrawable;>;"
     invoke-virtual {v5}, Ljava/util/ArrayList;->size()I
 
     move-result v3
 
-    .line 1196
+    .line 1200
     .local v3, size:I
     const-wide v6, -0x3fe6de04abbbd2e8L
 
@@ -5166,7 +5194,7 @@
 
     double-to-float v0, v6
 
-    .line 1197
+    .line 1201
     .local v0, alpha:F
     const/4 v2, 0x0
 
@@ -5174,27 +5202,27 @@
     :goto_0
     if-ge v2, v3, :cond_0
 
-    .line 1198
+    .line 1202
     invoke-virtual {v5, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v4
 
     check-cast v4, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 1199
+    .line 1203
     .local v4, targetIcon:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     int-to-float v6, v2
 
     mul-float v1, v0, v6
 
-    .line 1200
+    .line 1204
     .local v1, angle:F
     invoke-virtual {v4, p1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setPositionX(F)V
 
-    .line 1201
+    .line 1205
     invoke-virtual {v4, p2}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setPositionY(F)V
 
-    .line 1202
+    .line 1206
     iget v6, p0, Lcom/meizu/widget/MultiWaveView;->mOuterRadius:F
 
     float-to-double v7, v1
@@ -5209,7 +5237,7 @@
 
     invoke-virtual {v4, v6}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setX(F)V
 
-    .line 1203
+    .line 1207
     iget v6, p0, Lcom/meizu/widget/MultiWaveView;->mOuterRadius:F
 
     float-to-double v7, v1
@@ -5224,12 +5252,12 @@
 
     invoke-virtual {v4, v6}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setY(F)V
 
-    .line 1197
+    .line 1201
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 1205
+    .line 1209
     .end local v1           #angle:F
     .end local v4           #targetIcon:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_0
@@ -5240,12 +5268,12 @@
     .locals 3
 
     .prologue
-    .line 678
+    .line 682
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mVibrator:Landroid/os/Vibrator;
 
     if-eqz v0, :cond_0
 
-    .line 679
+    .line 683
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mVibrator:Landroid/os/Vibrator;
 
     iget v1, p0, Lcom/meizu/widget/MultiWaveView;->mVibrationDuration:I
@@ -5254,7 +5282,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/os/Vibrator;->vibrate(J)V
 
-    .line 681
+    .line 685
     :cond_0
     return-void
 .end method
@@ -5265,12 +5293,12 @@
     .locals 1
 
     .prologue
-    .line 570
+    .line 574
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mMoveAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->cancel()V
 
-    .line 571
+    .line 575
     return-void
 .end method
 
@@ -5278,7 +5306,7 @@
     .locals 1
 
     .prologue
-    .line 775
+    .line 779
     iget v0, p0, Lcom/meizu/widget/MultiWaveView;->mDirectionDescriptionsResourceId:I
 
     return v0
@@ -5289,7 +5317,7 @@
     .parameter "index"
 
     .prologue
-    .line 1332
+    .line 1336
     iget-object v1, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v1, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -5298,7 +5326,7 @@
 
     check-cast v0, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 1333
+    .line 1337
     .local v0, drawable:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     if-nez v0, :cond_0
 
@@ -5319,7 +5347,7 @@
     .locals 3
 
     .prologue
-    .line 330
+    .line 333
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mOuterRing:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->getHeight()I
@@ -5353,7 +5381,7 @@
     .locals 3
 
     .prologue
-    .line 323
+    .line 326
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mOuterRing:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->getWidth()I
@@ -5387,7 +5415,7 @@
     .locals 1
 
     .prologue
-    .line 754
+    .line 758
     iget v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDescriptionsResourceId:I
 
     return v0
@@ -5398,7 +5426,7 @@
     .parameter "resourceId"
 
     .prologue
-    .line 1352
+    .line 1356
     const/4 v0, 0x0
 
     .local v0, i:I
@@ -5411,7 +5439,7 @@
 
     if-ge v0, v2, :cond_1
 
-    .line 1353
+    .line 1357
     iget-object v2, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v2, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -5420,7 +5448,7 @@
 
     check-cast v1, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 1354
+    .line 1358
     .local v1, target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     invoke-virtual {v1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->getResourceId()I
 
@@ -5428,13 +5456,13 @@
 
     if-ne v2, p1, :cond_0
 
-    .line 1358
+    .line 1362
     .end local v0           #i:I
     .end local v1           #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :goto_1
     return v0
 
-    .line 1352
+    .line 1356
     .restart local v0       #i:I
     .restart local v1       #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_0
@@ -5442,7 +5470,7 @@
 
     goto :goto_0
 
-    .line 1358
+    .line 1362
     .end local v1           #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_1
     const/4 v0, -0x1
@@ -5454,7 +5482,7 @@
     .locals 1
 
     .prologue
-    .line 733
+    .line 737
     iget v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetResourceId:I
 
     return v0
@@ -5467,18 +5495,18 @@
     .prologue
     const/4 v6, 0x0
 
-    .line 478
+    .line 482
     invoke-virtual {p1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->getWidth()I
 
     move-result v3
 
-    .line 479
+    .line 483
     .local v3, width:I
     invoke-virtual {p1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->getHeight()I
 
     move-result v1
 
-    .line 480
+    .line 484
     .local v1, height:I
     new-instance v0, Landroid/graphics/RectF;
 
@@ -5488,7 +5516,7 @@
 
     invoke-direct {v0, v6, v6, v4, v5}, Landroid/graphics/RectF;-><init>(FFFF)V
 
-    .line 481
+    .line 485
     .local v0, childBounds:Landroid/graphics/RectF;
     invoke-virtual {p1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->getX()F
 
@@ -5512,10 +5540,10 @@
 
     invoke-virtual {v0, v4, v5}, Landroid/graphics/RectF;->offset(FF)V
 
-    .line 482
+    .line 486
     move-object v2, p0
 
-    .line 483
+    .line 487
     .local v2, view:Landroid/view/View;
     :goto_0
     invoke-virtual {v2}, Landroid/view/View;->getParent()Landroid/view/ViewParent;
@@ -5532,7 +5560,7 @@
 
     if-eqz v4, :cond_0
 
-    .line 484
+    .line 488
     invoke-virtual {v2}, Landroid/view/View;->getParent()Landroid/view/ViewParent;
 
     move-result-object v2
@@ -5540,7 +5568,7 @@
     .end local v2           #view:Landroid/view/View;
     check-cast v2, Landroid/view/View;
 
-    .line 485
+    .line 489
     .restart local v2       #view:Landroid/view/View;
     invoke-virtual {v2}, Landroid/view/View;->getMatrix()Landroid/graphics/Matrix;
 
@@ -5548,7 +5576,7 @@
 
     invoke-virtual {v4, v0}, Landroid/graphics/Matrix;->mapRect(Landroid/graphics/RectF;)Z
 
-    .line 486
+    .line 490
     iget v4, v0, Landroid/graphics/RectF;->left:F
 
     float-to-double v4, v4
@@ -5593,7 +5621,7 @@
 
     goto :goto_0
 
-    .line 491
+    .line 495
     :cond_0
     return-void
 .end method
@@ -5603,19 +5631,19 @@
     .parameter "canvas"
 
     .prologue
-    .line 1232
+    .line 1236
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mOuterRing:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     invoke-virtual {v5, p1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 1233
+    .line 1237
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v5}, Ljava/util/ArrayList;->size()I
 
     move-result v3
 
-    .line 1234
+    .line 1238
     .local v3, ntargets:I
     const/4 v1, 0x0
 
@@ -5623,7 +5651,7 @@
     :goto_0
     if-ge v1, v3, :cond_1
 
-    .line 1235
+    .line 1239
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v5, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -5632,20 +5660,20 @@
 
     check-cast v4, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 1236
+    .line 1240
     .local v4, target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     if-eqz v4, :cond_0
 
-    .line 1237
+    .line 1241
     invoke-virtual {v4, p1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 1234
+    .line 1238
     :cond_0
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 1240
+    .line 1244
     .end local v4           #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_1
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mChevronDrawables:Ljava/util/ArrayList;
@@ -5654,14 +5682,14 @@
 
     move-result v2
 
-    .line 1241
+    .line 1245
     .local v2, nchevrons:I
     const/4 v1, 0x0
 
     :goto_1
     if-ge v1, v2, :cond_3
 
-    .line 1242
+    .line 1246
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mChevronDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v5, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -5670,27 +5698,29 @@
 
     check-cast v0, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 1243
+    .line 1247
     .local v0, chevron:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     if-eqz v0, :cond_2
 
-    .line 1244
-    invoke-virtual {v0, p1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->draw(Landroid/graphics/Canvas;)V
+    .line 1248
+    const/4 v5, 0x1
 
-    .line 1241
+    invoke-virtual {v0, p1, v5}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->draw(Landroid/graphics/Canvas;Z)V
+
+    .line 1245
     :cond_2
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_1
 
-    .line 1247
+    .line 1251
     .end local v0           #chevron:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_3
     iget-object v5, p0, Lcom/meizu/widget/MultiWaveView;->mHandleDrawable:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     invoke-virtual {v5, p1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 1248
+    .line 1252
     return-void
 .end method
 
@@ -5699,7 +5729,7 @@
     .parameter "event"
 
     .prologue
-    .line 1062
+    .line 1066
     iget-object v1, p0, Lcom/meizu/widget/MultiWaveView;->mContext:Landroid/content/Context;
 
     invoke-static {v1}, Landroid/view/accessibility/AccessibilityManager;->getInstance(Landroid/content/Context;)Landroid/view/accessibility/AccessibilityManager;
@@ -5712,24 +5742,24 @@
 
     if-eqz v1, :cond_0
 
-    .line 1063
+    .line 1067
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getAction()I
 
     move-result v0
 
-    .line 1064
+    .line 1068
     .local v0, action:I
     packed-switch v0, :pswitch_data_0
 
-    .line 1075
+    .line 1079
     :goto_0
     :pswitch_0
     invoke-virtual {p0, p1}, Lcom/meizu/widget/MultiWaveView;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
-    .line 1076
+    .line 1080
     invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->setAction(I)V
 
-    .line 1078
+    .line 1082
     .end local v0           #action:I
     :cond_0
     invoke-super {p0, p1}, Landroid/view/View;->onHoverEvent(Landroid/view/MotionEvent;)Z
@@ -5738,7 +5768,7 @@
 
     return v1
 
-    .line 1066
+    .line 1070
     .restart local v0       #action:I
     :pswitch_1
     const/4 v1, 0x0
@@ -5747,7 +5777,7 @@
 
     goto :goto_0
 
-    .line 1069
+    .line 1073
     :pswitch_2
     const/4 v1, 0x2
 
@@ -5755,7 +5785,7 @@
 
     goto :goto_0
 
-    .line 1072
+    .line 1076
     :pswitch_3
     const/4 v1, 0x1
 
@@ -5763,7 +5793,7 @@
 
     goto :goto_0
 
-    .line 1064
+    .line 1068
     nop
 
     :pswitch_data_0
@@ -5784,17 +5814,17 @@
     .parameter "bottom"
 
     .prologue
-    .line 1157
+    .line 1161
     invoke-super/range {p0 .. p5}, Landroid/view/View;->onLayout(ZIIII)V
 
-    .line 1158
+    .line 1162
     sub-int v5, p4, p2
 
-    .line 1159
+    .line 1163
     .local v5, width:I
     sub-int v0, p5, p3
 
-    .line 1163
+    .line 1167
     .local v0, height:I
     iget-object v6, p0, Lcom/meizu/widget/MultiWaveView;->mOuterRing:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
@@ -5814,7 +5844,7 @@
 
     move-result v4
 
-    .line 1164
+    .line 1168
     .local v4, placementWidth:F
     iget-object v6, p0, Lcom/meizu/widget/MultiWaveView;->mOuterRing:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
@@ -5834,7 +5864,7 @@
 
     move-result v3
 
-    .line 1165
+    .line 1169
     .local v3, placementHeight:F
     iget v6, p0, Lcom/meizu/widget/MultiWaveView;->mHorizontalInset:I
 
@@ -5858,7 +5888,7 @@
 
     add-float v1, v6, v7
 
-    .line 1167
+    .line 1171
     .local v1, newWaveCenterX:F
     iget v6, p0, Lcom/meizu/widget/MultiWaveView;->mVerticalInset:I
 
@@ -5882,23 +5912,23 @@
 
     add-float v2, v6, v7
 
-    .line 1170
+    .line 1174
     .local v2, newWaveCenterY:F
     iget-boolean v6, p0, Lcom/meizu/widget/MultiWaveView;->mInitialLayout:Z
 
     if-eqz v6, :cond_0
 
-    .line 1171
+    .line 1175
     invoke-direct {p0}, Lcom/meizu/widget/MultiWaveView;->hideChevrons()V
 
-    .line 1172
+    .line 1176
     const/4 v6, 0x0
 
     const/4 v7, 0x0
 
     invoke-direct {p0, v6, v7}, Lcom/meizu/widget/MultiWaveView;->hideTargets(ZZ)V
 
-    .line 1173
+    .line 1177
     const/4 v6, 0x0
 
     const/4 v7, 0x0
@@ -5907,45 +5937,45 @@
 
     invoke-direct {p0, v6, v7, v8}, Lcom/meizu/widget/MultiWaveView;->moveHandleTo(FFZ)V
 
-    .line 1174
+    .line 1178
     const/4 v6, 0x0
 
     iput-boolean v6, p0, Lcom/meizu/widget/MultiWaveView;->mInitialLayout:Z
 
-    .line 1177
+    .line 1181
     :cond_0
     iget-object v6, p0, Lcom/meizu/widget/MultiWaveView;->mOuterRing:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     invoke-virtual {v6, v1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setPositionX(F)V
 
-    .line 1178
+    .line 1182
     iget-object v6, p0, Lcom/meizu/widget/MultiWaveView;->mOuterRing:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     invoke-virtual {v6, v2}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setPositionY(F)V
 
-    .line 1180
+    .line 1184
     iget-object v6, p0, Lcom/meizu/widget/MultiWaveView;->mHandleDrawable:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     invoke-virtual {v6, v1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setPositionX(F)V
 
-    .line 1181
+    .line 1185
     iget-object v6, p0, Lcom/meizu/widget/MultiWaveView;->mHandleDrawable:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
     invoke-virtual {v6, v2}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setPositionY(F)V
 
-    .line 1183
+    .line 1187
     invoke-direct {p0, v1, v2}, Lcom/meizu/widget/MultiWaveView;->updateTargetPositions(FF)V
 
-    .line 1184
+    .line 1188
     invoke-direct {p0, v1, v2}, Lcom/meizu/widget/MultiWaveView;->updateChevronPositions(FF)V
 
-    .line 1186
+    .line 1190
     iput v1, p0, Lcom/meizu/widget/MultiWaveView;->mWaveCenterX:F
 
-    .line 1187
+    .line 1191
     iput v2, p0, Lcom/meizu/widget/MultiWaveView;->mWaveCenterY:F
 
-    .line 1190
+    .line 1194
     return-void
 .end method
 
@@ -5955,30 +5985,30 @@
     .parameter "heightMeasureSpec"
 
     .prologue
-    .line 353
+    .line 356
     invoke-virtual {p0}, Lcom/meizu/widget/MultiWaveView;->getSuggestedMinimumWidth()I
 
     move-result v3
 
-    .line 354
+    .line 357
     .local v3, minimumWidth:I
     invoke-virtual {p0}, Lcom/meizu/widget/MultiWaveView;->getSuggestedMinimumHeight()I
 
     move-result v2
 
-    .line 355
+    .line 358
     .local v2, minimumHeight:I
     invoke-direct {p0, p1, v3}, Lcom/meizu/widget/MultiWaveView;->resolveMeasured(II)I
 
     move-result v1
 
-    .line 356
+    .line 359
     .local v1, computedWidth:I
     invoke-direct {p0, p2, v2}, Lcom/meizu/widget/MultiWaveView;->resolveMeasured(II)I
 
     move-result v0
 
-    .line 357
+    .line 360
     .local v0, computedHeight:I
     sub-int v4, v1, v3
 
@@ -5986,10 +6016,10 @@
 
     invoke-direct {p0, v4, v5}, Lcom/meizu/widget/MultiWaveView;->computeInsets(II)V
 
-    .line 358
+    .line 361
     invoke-virtual {p0, v1, v0}, Lcom/meizu/widget/MultiWaveView;->setMeasuredDimension(II)V
 
-    .line 359
+    .line 362
     return-void
 .end method
 
@@ -5998,61 +6028,61 @@
     .parameter "event"
 
     .prologue
-    .line 833
+    .line 837
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getActionMasked()I
 
     move-result v0
 
     packed-switch v0, :pswitch_data_0
 
-    .line 858
+    .line 862
     :pswitch_0
     invoke-super {p0, p1}, Landroid/view/View;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
     move-result v0
 
-    .line 861
+    .line 865
     :goto_0
     return v0
 
-    .line 836
+    .line 840
     :pswitch_1
     invoke-direct {p0, p1}, Lcom/meizu/widget/MultiWaveView;->handleDown(Landroid/view/MotionEvent;)V
 
-    .line 860
+    .line 864
     :goto_1
     invoke-virtual {p0}, Lcom/meizu/widget/MultiWaveView;->invalidate()V
 
-    .line 861
+    .line 865
     const/4 v0, 0x1
 
     goto :goto_0
 
-    .line 841
+    .line 845
     :pswitch_2
     invoke-direct {p0, p1}, Lcom/meizu/widget/MultiWaveView;->handleMove(Landroid/view/MotionEvent;)V
 
     goto :goto_1
 
-    .line 847
+    .line 851
     :pswitch_3
     invoke-direct {p0, p1}, Lcom/meizu/widget/MultiWaveView;->handleMove(Landroid/view/MotionEvent;)V
 
-    .line 848
+    .line 852
     invoke-direct {p0, p1}, Lcom/meizu/widget/MultiWaveView;->handleUp(Landroid/view/MotionEvent;)V
 
     goto :goto_1
 
-    .line 853
+    .line 857
     :pswitch_4
     invoke-direct {p0, p1}, Lcom/meizu/widget/MultiWaveView;->handleMove(Landroid/view/MotionEvent;)V
 
-    .line 854
+    .line 858
     invoke-direct {p0, p1}, Lcom/meizu/widget/MultiWaveView;->handleCancel(Landroid/view/MotionEvent;)V
 
     goto :goto_1
 
-    .line 833
+    .line 837
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_1
@@ -6069,10 +6099,10 @@
     .locals 0
 
     .prologue
-    .line 797
+    .line 801
     invoke-direct {p0}, Lcom/meizu/widget/MultiWaveView;->startChevronAnimation()V
 
-    .line 798
+    .line 802
     return-void
 .end method
 
@@ -6085,15 +6115,15 @@
     .prologue
     const/4 v6, 0x0
 
-    .line 1395
+    .line 1399
     if-nez p3, :cond_1
 
-    .line 1416
+    .line 1420
     :cond_0
     :goto_0
     return v6
 
-    .line 1398
+    .line 1402
     :cond_1
     :try_start_0
     iget-object v7, p0, Lcom/meizu/widget/MultiWaveView;->mContext:Landroid/content/Context;
@@ -6102,7 +6132,7 @@
 
     move-result-object v4
 
-    .line 1400
+    .line 1404
     .local v4, packageManager:Landroid/content/pm/PackageManager;
     const/16 v7, 0x80
 
@@ -6112,25 +6142,25 @@
 
     iget-object v2, v7, Landroid/content/pm/ActivityInfo;->metaData:Landroid/os/Bundle;
 
-    .line 1402
+    .line 1406
     .local v2, metaData:Landroid/os/Bundle;
     if-eqz v2, :cond_0
 
-    .line 1403
+    .line 1407
     invoke-virtual {v2, p2}, Landroid/os/Bundle;->getInt(Ljava/lang/String;)I
 
     move-result v1
 
-    .line 1404
+    .line 1408
     .local v1, iconResId:I
     if-eqz v1, :cond_0
 
-    .line 1405
+    .line 1409
     invoke-virtual {v4, p1}, Landroid/content/pm/PackageManager;->getResourcesForActivity(Landroid/content/ComponentName;)Landroid/content/res/Resources;
 
     move-result-object v5
 
-    .line 1406
+    .line 1410
     .local v5, res:Landroid/content/res/Resources;
     invoke-direct {p0, v5, p3, v1}, Lcom/meizu/widget/MultiWaveView;->replaceTargetDrawables(Landroid/content/res/Resources;II)Z
     :try_end_0
@@ -6141,7 +6171,7 @@
 
     goto :goto_0
 
-    .line 1409
+    .line 1413
     .end local v1           #iconResId:I
     .end local v2           #metaData:Landroid/os/Bundle;
     .end local v4           #packageManager:Landroid/content/pm/PackageManager;
@@ -6149,7 +6179,7 @@
     :catch_0
     move-exception v0
 
-    .line 1410
+    .line 1414
     .local v0, e:Landroid/content/pm/PackageManager$NameNotFoundException;
     const-string v7, "MultiWaveView"
 
@@ -6185,12 +6215,12 @@
 
     goto :goto_0
 
-    .line 1412
+    .line 1416
     .end local v0           #e:Landroid/content/pm/PackageManager$NameNotFoundException;
     :catch_1
     move-exception v3
 
-    .line 1413
+    .line 1417
     .local v3, nfe:Landroid/content/res/Resources$NotFoundException;
     const-string v7, "MultiWaveView"
 
@@ -6228,43 +6258,43 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 807
+    .line 811
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mChevronAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->stop()V
 
-    .line 808
+    .line 812
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mHandleAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->stop()V
 
-    .line 809
+    .line 813
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->stop()V
 
-    .line 810
+    .line 814
     const/4 v0, 0x0
 
     invoke-direct {p0, v2, v0}, Lcom/meizu/widget/MultiWaveView;->startBackgroundAnimation(IF)V
 
-    .line 811
+    .line 815
     invoke-direct {p0}, Lcom/meizu/widget/MultiWaveView;->hideChevrons()V
 
-    .line 812
+    .line 816
     invoke-direct {p0, p1, v2}, Lcom/meizu/widget/MultiWaveView;->hideTargets(ZZ)V
 
-    .line 813
+    .line 817
     const/high16 v0, 0x3f80
 
     const/4 v1, 0x0
 
     invoke-direct {p0, v2, v2, v0, v1}, Lcom/meizu/widget/MultiWaveView;->deactivateHandle(IIFLandroid/animation/Animator$AnimatorListener;)V
 
-    .line 814
+    .line 818
     invoke-static {}, Lcom/meizu/widget/MultiWaveView$Tweener;->reset()V
 
-    .line 815
+    .line 819
     return-void
 .end method
 
@@ -6274,37 +6304,37 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 311
-    iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mChevronAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
-
-    invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->setSuspended(Z)V
-
-    .line 312
-    iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
-
-    invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->setSuspended(Z)V
-
-    .line 313
-    iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mHandleAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
-
-    invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->setSuspended(Z)V
-
     .line 314
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mChevronAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
-    invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->start()V
+    invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->setSuspended(Z)V
 
     .line 315
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
-    invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->start()V
+    invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->setSuspended(Z)V
 
     .line 316
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mHandleAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
-    invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->start()V
+    invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->setSuspended(Z)V
 
     .line 317
+    iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mChevronAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
+
+    invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->start()V
+
+    .line 318
+    iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
+
+    invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->start()V
+
+    .line 319
+    iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mHandleAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
+
+    invoke-virtual {v0}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->start()V
+
+    .line 320
     return-void
 .end method
 
@@ -6313,20 +6343,20 @@
     .parameter "resourceId"
 
     .prologue
-    .line 763
+    .line 767
     iput p1, p0, Lcom/meizu/widget/MultiWaveView;->mDirectionDescriptionsResourceId:I
 
-    .line 764
+    .line 768
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mDirectionDescriptions:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_0
 
-    .line 765
+    .line 769
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mDirectionDescriptions:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
-    .line 767
+    .line 771
     :cond_0
     return-void
 .end method
@@ -6337,7 +6367,7 @@
     .parameter "enabled"
 
     .prologue
-    .line 1337
+    .line 1341
     const/4 v0, 0x0
 
     .local v0, i:I
@@ -6350,7 +6380,7 @@
 
     if-ge v0, v2, :cond_0
 
-    .line 1338
+    .line 1342
     iget-object v2, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v2, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -6359,7 +6389,7 @@
 
     check-cast v1, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 1339
+    .line 1343
     .local v1, target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     invoke-virtual {v1}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->getResourceId()I
 
@@ -6367,15 +6397,15 @@
 
     if-ne v2, p1, :cond_1
 
-    .line 1340
+    .line 1344
     invoke-virtual {v1, p2}, Lcom/meizu/widget/MultiWaveView$TargetDrawable;->setEnabled(Z)V
 
-    .line 1344
+    .line 1348
     .end local v1           #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_0
     return-void
 
-    .line 1337
+    .line 1341
     .restart local v1       #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_1
     add-int/lit8 v0, v0, 0x1
@@ -6388,10 +6418,10 @@
     .parameter "listener"
 
     .prologue
-    .line 1251
+    .line 1255
     iput-object p1, p0, Lcom/meizu/widget/MultiWaveView;->mOnTriggerListener:Lcom/meizu/widget/MultiWaveView$OnTriggerListener;
 
-    .line 1252
+    .line 1256
     return-void
 .end method
 
@@ -6400,20 +6430,20 @@
     .parameter "resourceId"
 
     .prologue
-    .line 742
+    .line 746
     iput p1, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDescriptionsResourceId:I
 
-    .line 743
+    .line 747
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDescriptions:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_0
 
-    .line 744
+    .line 748
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDescriptions:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
-    .line 746
+    .line 750
     :cond_0
     return-void
 .end method
@@ -6423,19 +6453,19 @@
     .parameter "resourceId"
 
     .prologue
-    .line 724
+    .line 728
     iget-boolean v0, p0, Lcom/meizu/widget/MultiWaveView;->mAnimatingTargets:Z
 
     if-eqz v0, :cond_0
 
-    .line 726
+    .line 730
     iput p1, p0, Lcom/meizu/widget/MultiWaveView;->mNewTargetResources:I
 
-    .line 730
+    .line 734
     :goto_0
     return-void
 
-    .line 728
+    .line 732
     :cond_0
     invoke-direct {p0, p1}, Lcom/meizu/widget/MultiWaveView;->internalSetTargetResources(I)V
 
@@ -6447,14 +6477,14 @@
     .parameter "enabled"
 
     .prologue
-    .line 784
+    .line 788
     if-eqz p1, :cond_1
 
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mVibrator:Landroid/os/Vibrator;
 
     if-nez v0, :cond_1
 
-    .line 785
+    .line 789
     invoke-virtual {p0}, Lcom/meizu/widget/MultiWaveView;->getContext()Landroid/content/Context;
 
     move-result-object v0
@@ -6469,16 +6499,16 @@
 
     iput-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mVibrator:Landroid/os/Vibrator;
 
-    .line 789
+    .line 793
     :cond_0
     :goto_0
     return-void
 
-    .line 786
+    .line 790
     :cond_1
     if-nez p1, :cond_0
 
-    .line 787
+    .line 791
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mVibrator:Landroid/os/Vibrator;
@@ -6497,7 +6527,7 @@
 
     const/4 v1, 0x0
 
-    .line 519
+    .line 523
     iget v3, p0, Lcom/meizu/widget/MultiWaveView;->mActiveTarget:I
 
     if-gez v3, :cond_0
@@ -6516,7 +6546,7 @@
 
     if-ge p1, v3, :cond_0
 
-    .line 521
+    .line 525
     iget-object v3, p0, Lcom/meizu/widget/MultiWaveView;->mTargetDrawables:Ljava/util/ArrayList;
 
     invoke-virtual {v3, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -6525,16 +6555,16 @@
 
     check-cast v0, Lcom/meizu/widget/MultiWaveView$TargetDrawable;
 
-    .line 526
+    .line 530
     .local v0, target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :goto_0
     if-nez v0, :cond_1
 
-    .line 563
+    .line 567
     :goto_1
     return v1
 
-    .line 523
+    .line 527
     .end local v0           #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     :cond_0
     const/4 v0, 0x0
@@ -6542,18 +6572,18 @@
     .restart local v0       #target:Lcom/meizu/widget/MultiWaveView$TargetDrawable;
     goto :goto_0
 
-    .line 530
+    .line 534
     :cond_1
     iget-object v3, p0, Lcom/meizu/widget/MultiWaveView;->mMoveAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v3}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->cancel()V
 
-    .line 531
+    .line 535
     iget-object v3, p0, Lcom/meizu/widget/MultiWaveView;->mMoveUpdateListener:Lcom/meizu/widget/MultiWaveView$MyAnimatorUpdateListener;
 
     iput-boolean p4, v3, Lcom/meizu/widget/MultiWaveView$MyAnimatorUpdateListener;->ignorSnap:Z
 
-    .line 532
+    .line 536
     new-instance v3, Lcom/meizu/widget/MultiWaveView$MyPoint;
 
     iget v4, p0, Lcom/meizu/widget/MultiWaveView;->mWaveCenterX:F
@@ -6564,7 +6594,7 @@
 
     iput-object v3, p0, Lcom/meizu/widget/MultiWaveView;->mMovePoint:Lcom/meizu/widget/MultiWaveView$MyPoint;
 
-    .line 533
+    .line 537
     iget-object v3, p0, Lcom/meizu/widget/MultiWaveView;->mMoveAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     iget-object v4, p0, Lcom/meizu/widget/MultiWaveView;->mMovePoint:Lcom/meizu/widget/MultiWaveView$MyPoint;
@@ -6675,14 +6705,14 @@
 
     invoke-virtual {v3, v1}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->add(Ljava/lang/Object;)Z
 
-    .line 561
+    .line 565
     iget-object v1, p0, Lcom/meizu/widget/MultiWaveView;->mMoveAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v1}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->start()V
 
     move v1, v2
 
-    .line 563
+    .line 567
     goto/16 :goto_1
 .end method
 
@@ -6692,21 +6722,21 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 305
+    .line 308
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mChevronAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->setSuspended(Z)V
 
-    .line 306
+    .line 309
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mTargetAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->setSuspended(Z)V
 
-    .line 307
+    .line 310
     iget-object v0, p0, Lcom/meizu/widget/MultiWaveView;->mHandleAnimations:Lcom/meizu/widget/MultiWaveView$AnimationBundle;
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/MultiWaveView$AnimationBundle;->setSuspended(Z)V
 
-    .line 308
+    .line 311
     return-void
 .end method

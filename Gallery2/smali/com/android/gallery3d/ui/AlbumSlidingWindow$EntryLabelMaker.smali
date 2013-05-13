@@ -42,14 +42,22 @@
     .parameter "spec"
 
     .prologue
-    .line 634
+    .line 666
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 635
+    .line 667
     iput-object p1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mSpec:Lcom/android/gallery3d/ui/AlbumSlotRenderer$LabelSpec;
 
-    .line 636
+    .line 668
     iget v0, p1, Lcom/android/gallery3d/ui/AlbumSlotRenderer$LabelSpec;->titleFontSize:I
+
+    int-to-float v0, v0
+
+    sget v1, Lcom/android/gallery3d/common/Utils;->sFontScale:F
+
+    mul-float/2addr v0, v1
+
+    float-to-int v0, v0
 
     const v1, -0x1a1a1b
 
@@ -59,7 +67,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mTitlePaint:Landroid/text/TextPaint;
 
-    .line 637
+    .line 669
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mTitlePaint:Landroid/text/TextPaint;
 
     invoke-virtual {v0}, Landroid/text/TextPaint;->getFontMetricsInt()Landroid/graphics/Paint$FontMetricsInt;
@@ -68,8 +76,16 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mTitleMetrics:Landroid/graphics/Paint$FontMetricsInt;
 
-    .line 638
+    .line 670
     iget v0, p1, Lcom/android/gallery3d/ui/AlbumSlotRenderer$LabelSpec;->infoFontSize:I
+
+    int-to-float v0, v0
+
+    sget v1, Lcom/android/gallery3d/common/Utils;->sFontScale:F
+
+    mul-float/2addr v0, v1
+
+    float-to-int v0, v0
 
     const v1, -0x7f7f80
 
@@ -79,7 +95,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mInfoPaint:Landroid/text/TextPaint;
 
-    .line 639
+    .line 671
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mInfoPaint:Landroid/text/TextPaint;
 
     invoke-virtual {v0}, Landroid/text/TextPaint;->getFontMetricsInt()Landroid/graphics/Paint$FontMetricsInt;
@@ -88,7 +104,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mInfoMetrics:Landroid/graphics/Paint$FontMetricsInt;
 
-    .line 640
+    .line 672
     return-void
 .end method
 
@@ -97,7 +113,7 @@
     .parameter "x0"
 
     .prologue
-    .line 618
+    .line 650
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mSpec:Lcom/android/gallery3d/ui/AlbumSlotRenderer$LabelSpec;
 
     return-object v0
@@ -108,7 +124,7 @@
     .parameter "x0"
 
     .prologue
-    .line 618
+    .line 650
     iget v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mLabelWidth:I
 
     return v0
@@ -119,7 +135,7 @@
     .parameter "x0"
 
     .prologue
-    .line 618
+    .line 650
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mBitmapPool:Lcom/android/gallery3d/data/BitmapPool;
 
     return-object v0
@@ -130,7 +146,7 @@
     .parameter "x0"
 
     .prologue
-    .line 618
+    .line 650
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mTitlePaint:Landroid/text/TextPaint;
 
     return-object v0
@@ -141,7 +157,7 @@
     .parameter "x0"
 
     .prologue
-    .line 618
+    .line 650
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mTitleMetrics:Landroid/graphics/Paint$FontMetricsInt;
 
     return-object v0
@@ -152,7 +168,7 @@
     .parameter "x0"
 
     .prologue
-    .line 618
+    .line 650
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mInfoPaint:Landroid/text/TextPaint;
 
     return-object v0
@@ -163,7 +179,7 @@
     .parameter "x0"
 
     .prologue
-    .line 618
+    .line 650
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mInfoMetrics:Landroid/graphics/Paint$FontMetricsInt;
 
     return-object v0
@@ -182,13 +198,13 @@
     .parameter "truncated"
 
     .prologue
-    .line 676
+    .line 708
     monitor-enter p5
 
-    .line 677
+    .line 709
     if-nez p8, :cond_0
 
-    .line 678
+    .line 710
     int-to-float v0, p4
 
     :try_start_0
@@ -200,7 +216,7 @@
 
     move-result-object p3
 
-    .line 680
+    .line 712
     :cond_0
     int-to-float v0, p1
 
@@ -212,13 +228,13 @@
 
     invoke-virtual {p0, p3, v0, v1, p5}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
 
-    .line 681
+    .line 713
     monitor-exit p5
 
-    .line 682
+    .line 714
     return-void
 
-    .line 681
+    .line 713
     :catchall_0
     move-exception v0
 
@@ -233,7 +249,7 @@
     .locals 1
 
     .prologue
-    .line 643
+    .line 675
     const/4 v0, 0x1
 
     return v0
@@ -247,33 +263,33 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 651
+    .line 683
     new-instance v0, Landroid/text/TextPaint;
 
     invoke-direct {v0}, Landroid/text/TextPaint;-><init>()V
 
-    .line 652
+    .line 684
     .local v0, paint:Landroid/text/TextPaint;
     int-to-float v1, p0
 
     invoke-virtual {v0, v1}, Landroid/text/TextPaint;->setTextSize(F)V
 
-    .line 653
+    .line 685
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/text/TextPaint;->setAntiAlias(Z)V
 
-    .line 654
+    .line 686
     invoke-virtual {v0, p1}, Landroid/text/TextPaint;->setColor(I)V
 
-    .line 655
+    .line 687
     const/high16 v1, 0x4000
 
     const/high16 v2, -0x100
 
     invoke-virtual {v0, v1, v3, v3, v2}, Landroid/text/TextPaint;->setShadowLayer(FFFI)V
 
-    .line 656
+    .line 688
     return-object v0
 .end method
 
@@ -283,7 +299,7 @@
     .locals 1
 
     .prologue
-    .line 756
+    .line 788
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mBitmapPool:Lcom/android/gallery3d/data/BitmapPool;
 
     if-eqz v0, :cond_0
@@ -292,7 +308,7 @@
 
     invoke-virtual {v0}, Lcom/android/gallery3d/data/BitmapPool;->clear()V
 
-    .line 757
+    .line 789
     :cond_0
     return-void
 .end method
@@ -301,7 +317,7 @@
     .locals 1
 
     .prologue
-    .line 647
+    .line 679
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mSpec:Lcom/android/gallery3d/ui/AlbumSlotRenderer$LabelSpec;
 
     iget v0, v0, Lcom/android/gallery3d/ui/AlbumSlotRenderer$LabelSpec;->labelBackgroundHeight:I
@@ -314,12 +330,12 @@
     .parameter "label"
 
     .prologue
-    .line 752
+    .line 784
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mBitmapPool:Lcom/android/gallery3d/data/BitmapPool;
 
     invoke-virtual {v0, p1}, Lcom/android/gallery3d/data/BitmapPool;->recycle(Landroid/graphics/Bitmap;)V
 
-    .line 753
+    .line 785
     return-void
 .end method
 
@@ -341,7 +357,7 @@
     .end annotation
 
     .prologue
-    .line 669
+    .line 701
     new-instance v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker$EntryLabelJob;
 
     invoke-direct {v0, p0, p1, p2}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker$EntryLabelJob;-><init>(Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;Ljava/lang/String;Ljava/lang/String;)V
@@ -354,7 +370,7 @@
     .parameter "width"
 
     .prologue
-    .line 660
+    .line 692
     monitor-enter p0
 
     :try_start_0
@@ -364,21 +380,21 @@
 
     if-ne v1, p1, :cond_0
 
-    .line 665
+    .line 697
     :goto_0
     monitor-exit p0
 
     return-void
 
-    .line 661
+    .line 693
     :cond_0
     :try_start_1
     iput p1, p0, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->mLabelWidth:I
 
-    .line 662
+    .line 694
     const/4 v0, 0x2
 
-    .line 663
+    .line 695
     .local v0, borders:I
     new-instance v1, Lcom/android/gallery3d/data/BitmapPool;
 
@@ -400,7 +416,7 @@
 
     goto :goto_0
 
-    .line 660
+    .line 692
     .end local v0           #borders:I
     :catchall_0
     move-exception v1

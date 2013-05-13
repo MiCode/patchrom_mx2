@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 599
+    .line 617
     iput-object p1, p0, Landroid/widget/VideoView$6$1;->this$1:Landroid/widget/VideoView$6;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,25 +43,35 @@
     .parameter "whichButton"
 
     .prologue
-    .line 607
+    .line 625
+    iget-object v0, p0, Landroid/widget/VideoView$6$1;->this$1:Landroid/widget/VideoView$6;
+
+    iget-object v0, v0, Landroid/widget/VideoView$6;->this$0:Landroid/widget/VideoView;
+
+    const/4 v1, 0x0
+
+    #setter for: Landroid/widget/VideoView;->mIsDialogShowing:Z
+    invoke-static {v0, v1}, Landroid/widget/VideoView;->access$2902(Landroid/widget/VideoView;Z)Z
+
+    .line 626
     iget-object v0, p0, Landroid/widget/VideoView$6$1;->this$1:Landroid/widget/VideoView$6;
 
     iget-object v0, v0, Landroid/widget/VideoView$6;->this$0:Landroid/widget/VideoView;
 
     #getter for: Landroid/widget/VideoView;->mOnCompletionListener:Landroid/media/MediaPlayer$OnCompletionListener;
-    invoke-static {v0}, Landroid/widget/VideoView;->access$2000(Landroid/widget/VideoView;)Landroid/media/MediaPlayer$OnCompletionListener;
+    invoke-static {v0}, Landroid/widget/VideoView;->access$2200(Landroid/widget/VideoView;)Landroid/media/MediaPlayer$OnCompletionListener;
 
     move-result-object v0
 
     if-eqz v0, :cond_0
 
-    .line 608
+    .line 627
     iget-object v0, p0, Landroid/widget/VideoView$6$1;->this$1:Landroid/widget/VideoView$6;
 
     iget-object v0, v0, Landroid/widget/VideoView$6;->this$0:Landroid/widget/VideoView;
 
     #getter for: Landroid/widget/VideoView;->mOnCompletionListener:Landroid/media/MediaPlayer$OnCompletionListener;
-    invoke-static {v0}, Landroid/widget/VideoView;->access$2000(Landroid/widget/VideoView;)Landroid/media/MediaPlayer$OnCompletionListener;
+    invoke-static {v0}, Landroid/widget/VideoView;->access$2200(Landroid/widget/VideoView;)Landroid/media/MediaPlayer$OnCompletionListener;
 
     move-result-object v0
 
@@ -70,13 +80,13 @@
     iget-object v1, v1, Landroid/widget/VideoView$6;->this$0:Landroid/widget/VideoView;
 
     #getter for: Landroid/widget/VideoView;->mMediaPlayer:Landroid/media/MediaPlayer;
-    invoke-static {v1}, Landroid/widget/VideoView;->access$800(Landroid/widget/VideoView;)Landroid/media/MediaPlayer;
+    invoke-static {v1}, Landroid/widget/VideoView;->access$1000(Landroid/widget/VideoView;)Landroid/media/MediaPlayer;
 
     move-result-object v1
 
     invoke-interface {v0, v1}, Landroid/media/MediaPlayer$OnCompletionListener;->onCompletion(Landroid/media/MediaPlayer;)V
 
-    .line 610
+    .line 629
     :cond_0
     return-void
 .end method

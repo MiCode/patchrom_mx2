@@ -33,21 +33,21 @@
     .parameter "isSelect"
 
     .prologue
-    .line 623
+    .line 615
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;->this$0:Lcom/android/gallery3d/photoeditor/EffectsBar;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 624
+    .line 616
     iput p2, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;->mEffectId:I
 
-    .line 625
+    .line 617
     iput-object p3, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;->mEffectName:Ljava/lang/String;
 
-    .line 626
+    .line 618
     iput-boolean p4, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;->mIsSelect:Z
 
-    .line 627
+    .line 619
     return-void
 .end method
 
@@ -56,7 +56,7 @@
     .parameter "x0"
 
     .prologue
-    .line 618
+    .line 610
     iget v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;->mEffectId:I
 
     return v0
@@ -68,7 +68,7 @@
     .locals 1
 
     .prologue
-    .line 638
+    .line 630
     iget-boolean v0, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;->mIsSelect:Z
 
     return v0
@@ -79,9 +79,9 @@
     .parameter "isSelect"
 
     .prologue
-    .line 634
+    .line 626
     iput-boolean p1, p0, Lcom/android/gallery3d/photoeditor/EffectsBar$EffectState;->mIsSelect:Z
 
-    .line 635
+    .line 627
     return-void
 .end method

@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/meizu/video/client/ui/module/download/SelectDownloadActivity;->showEpisodesView(Ljava/lang/String;)V
+    value = Lcom/meizu/video/client/ui/module/download/SelectDownloadActivity;->showEpisodesView()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 255
+    .line 295
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/download/SelectDownloadActivity$3;->this$0:Lcom/meizu/video/client/ui/module/download/SelectDownloadActivity;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -43,7 +43,7 @@
     .parameter "event"
 
     .prologue
-    .line 259
+    .line 299
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/download/SelectDownloadActivity$3;->this$0:Lcom/meizu/video/client/ui/module/download/SelectDownloadActivity;
 
     #getter for: Lcom/meizu/video/client/ui/module/download/SelectDownloadActivity;->TAG:Ljava/lang/String;
@@ -89,7 +89,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 260
+    .line 300
     const/4 v0, 0x0
 
     return v0

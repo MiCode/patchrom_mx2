@@ -55,6 +55,13 @@
 
     if-eqz v1, :cond_1
 
+    .line 354
+    const-string v1, "GpsLocationProvider"
+
+    const-string v2, "ALARM_WAKEUP"
+
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
     .line 355
     iget-object v1, p0, Lcom/android/server/location/GpsLocationProvider$2;->this$0:Lcom/android/server/location/GpsLocationProvider;
 
@@ -77,6 +84,13 @@
     move-result v1
 
     if-eqz v1, :cond_2
+
+    .line 357
+    const-string v1, "GpsLocationProvider"
+
+    const-string v2, "ALARM_TIMEOUT"
+
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 358
     iget-object v1, p0, Lcom/android/server/location/GpsLocationProvider$2;->this$0:Lcom/android/server/location/GpsLocationProvider;

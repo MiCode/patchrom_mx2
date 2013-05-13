@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 114
+    .line 116
     iput-object p1, p0, Lcom/android/gallery3d/app/MovieMmsController$3;->this$0:Lcom/android/gallery3d/app/MovieMmsController;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,7 +42,7 @@
     .parameter "v"
 
     .prologue
-    .line 118
+    .line 120
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieMmsController$3;->this$0:Lcom/android/gallery3d/app/MovieMmsController;
 
     #getter for: Lcom/android/gallery3d/app/MovieMmsController;->mContext:Landroid/content/Context;
@@ -54,6 +54,6 @@
 
     invoke-virtual {v0}, Lcom/android/gallery3d/app/MovieActivity;->finish()V
 
-    .line 119
+    .line 121
     return-void
 .end method

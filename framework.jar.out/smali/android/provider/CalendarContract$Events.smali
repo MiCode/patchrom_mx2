@@ -47,7 +47,7 @@
 
     const/4 v3, 0x0
 
-    .line 1615
+    .line 1643
     const-string v0, "content://com.android.calendar/events"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
@@ -56,7 +56,7 @@
 
     sput-object v0, Landroid/provider/CalendarContract$Events;->CONTENT_URI:Landroid/net/Uri;
 
-    .line 1623
+    .line 1651
     const-string v0, "content://com.android.calendar/exception"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
@@ -65,7 +65,7 @@
 
     sput-object v0, Landroid/provider/CalendarContract$Events;->CONTENT_EXCEPTION_URI:Landroid/net/Uri;
 
-    .line 1643
+    .line 1671
     const/16 v0, 0x18
 
     new-array v0, v0, [Ljava/lang/String;
@@ -206,8 +206,8 @@
 
     sput-object v0, Landroid/provider/CalendarContract$Events;->PROVIDER_WRITABLE_COLUMNS:[Ljava/lang/String;
 
-    .line 1677
-    const/16 v0, 0xb
+    .line 1705
+    const/16 v0, 0xc
 
     new-array v0, v0, [Ljava/lang/String;
 
@@ -219,49 +219,55 @@
 
     aput-object v1, v0, v4
 
-    const-string/jumbo v1, "sync_data2"
+    const-string/jumbo v1, "sync_data1"
 
     aput-object v1, v0, v5
 
-    const-string/jumbo v1, "sync_data3"
+    const-string/jumbo v1, "sync_data2"
 
     aput-object v1, v0, v6
 
-    const-string/jumbo v1, "sync_data4"
+    const-string/jumbo v1, "sync_data3"
 
     aput-object v1, v0, v7
 
     const/4 v1, 0x5
 
-    const-string/jumbo v2, "sync_data5"
+    const-string/jumbo v2, "sync_data4"
 
     aput-object v2, v0, v1
 
     const/4 v1, 0x6
 
-    const-string/jumbo v2, "sync_data6"
+    const-string/jumbo v2, "sync_data5"
 
     aput-object v2, v0, v1
 
     const/4 v1, 0x7
 
-    const-string/jumbo v2, "sync_data7"
+    const-string/jumbo v2, "sync_data6"
 
     aput-object v2, v0, v1
 
     const/16 v1, 0x8
 
-    const-string/jumbo v2, "sync_data8"
+    const-string/jumbo v2, "sync_data7"
 
     aput-object v2, v0, v1
 
     const/16 v1, 0x9
 
-    const-string/jumbo v2, "sync_data9"
+    const-string/jumbo v2, "sync_data8"
 
     aput-object v2, v0, v1
 
     const/16 v1, 0xa
+
+    const-string/jumbo v2, "sync_data9"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0xb
 
     const-string/jumbo v2, "sync_data10"
 
@@ -276,7 +282,7 @@
     .locals 0
 
     .prologue
-    .line 1629
+    .line 1657
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void

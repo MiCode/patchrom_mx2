@@ -37,7 +37,7 @@
     .parameter
 
     .prologue
-    .line 172
+    .line 176
     iput-object p1, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter$1;->this$0:Lcom/android/gallery3d/app/SlideshowDataAdapter;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -52,12 +52,12 @@
     .parameter "jc"
 
     .prologue
-    .line 174
+    .line 178
     const/4 v0, 0x0
 
     invoke-interface {p1, v0}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->setMode(I)Z
 
-    .line 175
+    .line 179
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowDataAdapter$1;->this$0:Lcom/android/gallery3d/app/SlideshowDataAdapter;
 
     #calls: Lcom/android/gallery3d/app/SlideshowDataAdapter;->innerNextBitmap()Lcom/android/gallery3d/app/SlideshowPage$Slide;
@@ -73,7 +73,7 @@
     .parameter "x0"
 
     .prologue
-    .line 172
+    .line 176
     invoke-virtual {p0, p1}, Lcom/android/gallery3d/app/SlideshowDataAdapter$1;->run(Lcom/android/gallery3d/util/ThreadPool$JobContext;)Lcom/android/gallery3d/app/SlideshowPage$Slide;
 
     move-result-object v0

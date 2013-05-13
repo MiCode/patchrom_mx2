@@ -25,13 +25,13 @@
     .parameter "looper"
 
     .prologue
-    .line 117
+    .line 118
     iput-object p1, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
-    .line 118
+    .line 119
     invoke-direct {p0, p2}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
 
-    .line 119
+    .line 120
     return-void
 .end method
 
@@ -44,7 +44,7 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 124
+    .line 125
     :try_start_0
     iget v2, p1, Landroid/os/Message;->what:I
     :try_end_0
@@ -52,7 +52,7 @@
 
     packed-switch v2, :pswitch_data_0
 
-    .line 321
+    .line 326
     :goto_0
     :pswitch_0
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
@@ -64,11 +64,11 @@
 
     invoke-virtual {v2}, Landroid/os/ConditionVariable;->open()V
 
-    .line 322
+    .line 327
     :goto_1
     return-void
 
-    .line 126
+    .line 127
     :pswitch_1
     :try_start_1
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
@@ -80,7 +80,7 @@
 
     invoke-virtual {v2}, Landroid/hardware/Camera;->release()V
 
-    .line 127
+    .line 128
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
     const/4 v3, 0x0
@@ -88,7 +88,7 @@
     #setter for: Lcom/android/camera/CameraManager;->mCamera:Landroid/hardware/Camera;
     invoke-static {v2, v3}, Lcom/android/camera/CameraManager;->access$002(Lcom/android/camera/CameraManager;Landroid/hardware/Camera;)Landroid/hardware/Camera;
 
-    .line 128
+    .line 129
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
     const/4 v3, 0x0
@@ -100,11 +100,11 @@
 
     goto :goto_0
 
-    .line 309
+    .line 314
     :catch_0
     move-exception v0
 
-    .line 310
+    .line 315
     .local v0, e:Ljava/lang/RuntimeException;
     iget v2, p1, Landroid/os/Message;->what:I
 
@@ -121,7 +121,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 312
+    .line 317
     :try_start_2
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -134,24 +134,24 @@
     :try_end_2
     .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_4
 
-    .line 316
+    .line 321
     :goto_2
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
     #setter for: Lcom/android/camera/CameraManager;->mCamera:Landroid/hardware/Camera;
     invoke-static {v2, v5}, Lcom/android/camera/CameraManager;->access$002(Lcom/android/camera/CameraManager;Landroid/hardware/Camera;)Landroid/hardware/Camera;
 
-    .line 317
+    .line 322
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
     #setter for: Lcom/android/camera/CameraManager;->mCameraProxy:Lcom/android/camera/CameraManager$CameraProxy;
     invoke-static {v2, v5}, Lcom/android/camera/CameraManager;->access$102(Lcom/android/camera/CameraManager;Lcom/android/camera/CameraManager$CameraProxy;)Lcom/android/camera/CameraManager$CameraProxy;
 
-    .line 319
+    .line 324
     :cond_0
     throw v0
 
-    .line 132
+    .line 133
     .end local v0           #e:Ljava/lang/RuntimeException;
     :pswitch_2
     :try_start_3
@@ -164,7 +164,7 @@
     :try_end_3
     .catch Ljava/lang/RuntimeException; {:try_start_3 .. :try_end_3} :catch_0
 
-    .line 134
+    .line 135
     :try_start_4
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -180,11 +180,11 @@
 
     goto :goto_0
 
-    .line 135
+    .line 136
     :catch_1
     move-exception v1
 
-    .line 136
+    .line 137
     .local v1, ex:Ljava/io/IOException;
     :try_start_5
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
@@ -194,7 +194,7 @@
 
     goto :goto_0
 
-    .line 141
+    .line 142
     .end local v1           #ex:Ljava/io/IOException;
     :pswitch_3
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
@@ -208,7 +208,7 @@
 
     goto :goto_0
 
-    .line 145
+    .line 146
     :pswitch_4
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -223,7 +223,7 @@
 
     goto :goto_0
 
-    .line 150
+    .line 151
     :pswitch_5
     :try_start_6
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
@@ -244,11 +244,11 @@
 
     goto :goto_1
 
-    .line 151
+    .line 152
     :catch_2
     move-exception v0
 
-    .line 152
+    .line 153
     .local v0, e:Ljava/io/IOException;
     :try_start_7
     new-instance v2, Ljava/lang/RuntimeException;
@@ -257,7 +257,7 @@
 
     throw v2
 
-    .line 157
+    .line 158
     .end local v0           #e:Ljava/io/IOException;
     :pswitch_6
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
@@ -271,7 +271,7 @@
 
     goto/16 :goto_1
 
-    .line 161
+    .line 162
     :pswitch_7
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -284,7 +284,7 @@
 
     goto/16 :goto_0
 
-    .line 165
+    .line 166
     :pswitch_8
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -301,7 +301,7 @@
 
     goto/16 :goto_0
 
-    .line 170
+    .line 171
     :pswitch_9
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -320,7 +320,7 @@
 
     goto/16 :goto_0
 
-    .line 174
+    .line 175
     :pswitch_a
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -337,7 +337,7 @@
 
     goto/16 :goto_0
 
-    .line 178
+    .line 179
     :pswitch_b
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -350,7 +350,7 @@
 
     goto/16 :goto_0
 
-    .line 182
+    .line 183
     :pswitch_c
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -367,7 +367,7 @@
 
     goto/16 :goto_0
 
-    .line 187
+    .line 188
     :pswitch_d
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -382,7 +382,7 @@
 
     goto/16 :goto_0
 
-    .line 191
+    .line 192
     :pswitch_e
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -399,7 +399,7 @@
 
     goto/16 :goto_0
 
-    .line 196
+    .line 197
     :pswitch_f
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -416,7 +416,7 @@
 
     goto/16 :goto_0
 
-    .line 201
+    .line 202
     :pswitch_10
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -429,7 +429,7 @@
 
     goto/16 :goto_0
 
-    .line 205
+    .line 206
     :pswitch_11
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -442,7 +442,7 @@
 
     goto/16 :goto_0
 
-    .line 209
+    .line 210
     :pswitch_12
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -459,7 +459,7 @@
 
     goto/16 :goto_0
 
-    .line 213
+    .line 214
     :pswitch_13
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -476,7 +476,7 @@
 
     goto/16 :goto_0
 
-    .line 217
+    .line 218
     :pswitch_14
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -496,7 +496,7 @@
 
     goto/16 :goto_0
 
-    .line 221
+    .line 222
     :pswitch_15
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -513,7 +513,7 @@
 
     goto/16 :goto_1
 
-    .line 229
+    .line 230
     :pswitch_16
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -533,7 +533,7 @@
 
     goto/16 :goto_0
 
-    .line 233
+    .line 234
     :pswitch_17
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -548,7 +548,7 @@
 
     goto/16 :goto_0
 
-    .line 237
+    .line 238
     :pswitch_18
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -568,7 +568,7 @@
 
     goto/16 :goto_0
 
-    .line 241
+    .line 242
     :pswitch_19
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -590,7 +590,7 @@
 
     goto/16 :goto_0
 
-    .line 245
+    .line 246
     :pswitch_1a
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -610,7 +610,7 @@
 
     goto/16 :goto_0
 
-    .line 249
+    .line 250
     :pswitch_1b
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -632,7 +632,7 @@
 
     goto/16 :goto_0
 
-    .line 253
+    .line 254
     :pswitch_1c
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -645,7 +645,7 @@
 
     goto/16 :goto_0
 
-    .line 257
+    .line 258
     :pswitch_1d
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -658,7 +658,7 @@
 
     goto/16 :goto_0
 
-    .line 261
+    .line 262
     :pswitch_1e
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -671,7 +671,7 @@
 
     goto/16 :goto_0
 
-    .line 265
+    .line 266
     :pswitch_1f
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -686,7 +686,7 @@
 
     goto/16 :goto_0
 
-    .line 269
+    .line 270
     :pswitch_20
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -701,7 +701,7 @@
 
     goto/16 :goto_0
 
-    .line 273
+    .line 274
     :pswitch_21
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -718,7 +718,7 @@
 
     goto/16 :goto_0
 
-    .line 278
+    .line 279
     :pswitch_22
     :try_start_8
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
@@ -741,18 +741,18 @@
 
     goto/16 :goto_0
 
-    .line 279
+    .line 280
     :catch_3
     move-exception v0
 
-    .line 280
+    .line 281
     .restart local v0       #e:Ljava/io/IOException;
     :try_start_9
     invoke-virtual {v0}, Ljava/io/IOException;->printStackTrace()V
 
     goto/16 :goto_0
 
-    .line 285
+    .line 286
     .end local v0           #e:Ljava/io/IOException;
     :pswitch_23
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
@@ -770,7 +770,7 @@
 
     goto/16 :goto_0
 
-    .line 289
+    .line 290
     :pswitch_24
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -785,7 +785,7 @@
 
     goto/16 :goto_0
 
-    .line 293
+    .line 294
     :pswitch_25
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -800,7 +800,7 @@
 
     goto/16 :goto_0
 
-    .line 297
+    .line 298
     :pswitch_26
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -815,7 +815,7 @@
 
     goto/16 :goto_0
 
-    .line 301
+    .line 302
     :pswitch_27
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -835,7 +835,7 @@
 
     goto/16 :goto_0
 
-    .line 305
+    .line 306
     :pswitch_28
     iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
 
@@ -852,17 +852,30 @@
 
     #setter for: Lcom/android/camera/CameraManager;->mFlashStatus:I
     invoke-static {v2, v3}, Lcom/android/camera/CameraManager;->access$1002(Lcom/android/camera/CameraManager;I)I
+
+    goto/16 :goto_0
+
+    .line 310
+    :pswitch_29
+    iget-object v2, p0, Lcom/android/camera/CameraManager$CameraHandler;->this$0:Lcom/android/camera/CameraManager;
+
+    #getter for: Lcom/android/camera/CameraManager;->mCamera:Landroid/hardware/Camera;
+    invoke-static {v2}, Lcom/android/camera/CameraManager;->access$000(Lcom/android/camera/CameraManager;)Landroid/hardware/Camera;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/hardware/Camera;->cancelFocus()V
     :try_end_9
     .catch Ljava/lang/RuntimeException; {:try_start_9 .. :try_end_9} :catch_0
 
     goto/16 :goto_0
 
-    .line 313
+    .line 318
     .local v0, e:Ljava/lang/RuntimeException;
     :catch_4
     move-exception v1
 
-    .line 314
+    .line 319
     .local v1, ex:Ljava/lang/Exception;
     const-string v2, "CameraManager"
 
@@ -872,9 +885,7 @@
 
     goto/16 :goto_2
 
-    .line 124
-    nop
-
+    .line 125
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_1
@@ -918,5 +929,6 @@
         :pswitch_26
         :pswitch_27
         :pswitch_28
+        :pswitch_29
     .end packed-switch
 .end method

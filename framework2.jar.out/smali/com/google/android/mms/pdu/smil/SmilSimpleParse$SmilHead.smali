@@ -24,18 +24,18 @@
     .parameter "headXml"
 
     .prologue
-    .line 703
+    .line 711
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 702
+    .line 710
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilHead;->mHeadXml:Ljava/lang/String;
 
-    .line 704
+    .line 712
     iput-object p1, p0, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilHead;->mHeadXml:Ljava/lang/String;
 
-    .line 705
+    .line 713
     return-void
 .end method
 
@@ -43,12 +43,12 @@
     .locals 1
 
     .prologue
-    .line 707
+    .line 715
     const-string v0, "<head><layout><root-layout width=\"320px\" height=\"480px\" /></layout></head>"
 
     iput-object v0, p0, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilHead;->mHeadXml:Ljava/lang/String;
 
-    .line 708
+    .line 716
     return-void
 .end method
 
@@ -58,7 +58,7 @@
     .locals 1
 
     .prologue
-    .line 711
+    .line 719
     iget-object v0, p0, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilHead;->mHeadXml:Ljava/lang/String;
 
     invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
@@ -67,10 +67,10 @@
 
     if-eqz v0, :cond_0
 
-    .line 712
+    .line 720
     invoke-direct {p0}, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilHead;->makeDefaultHead()V
 
-    .line 713
+    .line 721
     :cond_0
     iget-object v0, p0, Lcom/google/android/mms/pdu/smil/SmilSimpleParse$SmilHead;->mHeadXml:Ljava/lang/String;
 

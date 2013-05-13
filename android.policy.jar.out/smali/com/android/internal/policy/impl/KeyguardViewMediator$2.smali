@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 964
+    .line 966
     iput-object p1, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator$2;->this$0:Lcom/android/internal/policy/impl/KeyguardViewMediator;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -42,12 +42,12 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 967
+    .line 969
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 968
+    .line 970
     .local v0, action:Ljava/lang/String;
     const-string v1, "android.intent.action.USER_SWITCHED"
 
@@ -57,7 +57,7 @@
 
     if-eqz v1, :cond_1
 
-    .line 969
+    .line 971
     iget-object v1, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator$2;->this$0:Lcom/android/internal/policy/impl/KeyguardViewMediator;
 
     const-string v2, "android.intent.extra.user_id"
@@ -69,12 +69,12 @@
     #calls: Lcom/android/internal/policy/impl/KeyguardViewMediator;->onUserSwitched(I)V
     invoke-static {v1, v2}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->access$300(Lcom/android/internal/policy/impl/KeyguardViewMediator;I)V
 
-    .line 973
+    .line 975
     :cond_0
     :goto_0
     return-void
 
-    .line 970
+    .line 972
     :cond_1
     const-string v1, "android.intent.action.USER_REMOVED"
 
@@ -84,7 +84,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 971
+    .line 973
     iget-object v1, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator$2;->this$0:Lcom/android/internal/policy/impl/KeyguardViewMediator;
 
     const-string v2, "android.intent.extra.user_id"

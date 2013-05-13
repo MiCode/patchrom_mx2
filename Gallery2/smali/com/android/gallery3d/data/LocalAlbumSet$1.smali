@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 749
+    .line 760
     iput-object p1, p0, Lcom/android/gallery3d/data/LocalAlbumSet$1;->this$0:Lcom/android/gallery3d/data/LocalAlbumSet;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,11 +41,11 @@
     .locals 1
 
     .prologue
-    .line 752
+    .line 763
     iget-object v0, p0, Lcom/android/gallery3d/data/LocalAlbumSet$1;->this$0:Lcom/android/gallery3d/data/LocalAlbumSet;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/data/LocalAlbumSet;->notifyContentChanged()V
 
-    .line 753
+    .line 764
     return-void
 .end method

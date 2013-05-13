@@ -103,7 +103,7 @@
     if-eqz v1, :cond_1
 
     .line 3260
-    and-int/lit8 v0, v0, -0x9
+    or-int/lit8 v0, v0, 0x8
 
     .line 3264
     :goto_0

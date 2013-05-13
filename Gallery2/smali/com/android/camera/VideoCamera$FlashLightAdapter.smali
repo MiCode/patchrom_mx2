@@ -38,24 +38,24 @@
     .parameter "unSelIconId"
 
     .prologue
-    .line 3374
+    .line 3638
     iput-object p1, p0, Lcom/android/camera/VideoCamera$FlashLightAdapter;->this$0:Lcom/android/camera/VideoCamera;
 
     invoke-direct {p0}, Landroid/widget/BaseAdapter;-><init>()V
 
-    .line 3369
+    .line 3633
     const/4 v0, 0x1
 
     iput v0, p0, Lcom/android/camera/VideoCamera$FlashLightAdapter;->mCurSel:I
 
-    .line 3375
+    .line 3639
     invoke-static {p2}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/camera/VideoCamera$FlashLightAdapter;->mInflater:Landroid/view/LayoutInflater;
 
-    .line 3376
+    .line 3640
     invoke-virtual {p2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -66,13 +66,13 @@
 
     iput-object v0, p0, Lcom/android/camera/VideoCamera$FlashLightAdapter;->mItemData:[Ljava/lang/String;
 
-    .line 3377
+    .line 3641
     iput-object p4, p0, Lcom/android/camera/VideoCamera$FlashLightAdapter;->mIconId:[I
 
-    .line 3378
+    .line 3642
     iput-object p5, p0, Lcom/android/camera/VideoCamera$FlashLightAdapter;->mUnSelIconId:[I
 
-    .line 3379
+    .line 3643
     return-void
 .end method
 
@@ -81,9 +81,9 @@
     .parameter "position"
 
     .prologue
-    const v0, 0x7f020123
+    const v0, 0x7f02011b
 
-    .line 3386
+    .line 3650
     invoke-virtual {p0}, Lcom/android/camera/VideoCamera$FlashLightAdapter;->getCount()I
 
     move-result v1
@@ -94,21 +94,21 @@
 
     if-nez p1, :cond_1
 
-    .line 3393
+    .line 3657
     :cond_0
     :goto_0
     return v0
 
-    .line 3388
+    .line 3652
     :cond_1
     if-nez p1, :cond_2
 
-    .line 3389
-    const v0, 0x7f020194
+    .line 3653
+    const v0, 0x7f020190
 
     goto :goto_0
 
-    .line 3390
+    .line 3654
     :cond_2
     invoke-virtual {p0}, Lcom/android/camera/VideoCamera$FlashLightAdapter;->getCount()I
 
@@ -118,8 +118,8 @@
 
     if-ne v1, p1, :cond_0
 
-    .line 3391
-    const v0, 0x7f020016
+    .line 3655
+    const v0, 0x7f020014
 
     goto :goto_0
 .end method
@@ -130,7 +130,7 @@
     .locals 1
 
     .prologue
-    .line 3398
+    .line 3662
     const/4 v0, 0x2
 
     return v0
@@ -141,7 +141,7 @@
     .parameter "position"
 
     .prologue
-    .line 3403
+    .line 3667
     const/4 v0, 0x0
 
     return-object v0
@@ -152,7 +152,7 @@
     .parameter "position"
 
     .prologue
-    .line 3408
+    .line 3672
     int-to-long v0, p1
 
     return-wide v0
@@ -165,13 +165,13 @@
     .parameter "parent"
 
     .prologue
-    .line 3413
+    .line 3677
     if-nez p2, :cond_0
 
-    .line 3414
+    .line 3678
     iget-object v2, p0, Lcom/android/camera/VideoCamera$FlashLightAdapter;->mInflater:Landroid/view/LayoutInflater;
 
-    const v3, 0x7f04002b
+    const v3, 0x7f04002c
 
     const/4 v4, 0x0
 
@@ -179,16 +179,16 @@
 
     move-result-object p2
 
-    .line 3415
+    .line 3679
     invoke-direct {p0, p1}, Lcom/android/camera/VideoCamera$FlashLightAdapter;->getItemBg(I)I
 
     move-result v2
 
     invoke-virtual {p2, v2}, Landroid/view/View;->setBackgroundResource(I)V
 
-    .line 3417
+    .line 3681
     :cond_0
-    const v2, 0x7f0d0088
+    const v2, 0x7f0d008d
 
     invoke-virtual {p2, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -196,9 +196,9 @@
 
     check-cast v0, Landroid/widget/ImageView;
 
-    .line 3418
+    .line 3682
     .local v0, icon:Landroid/widget/ImageView;
-    const v2, 0x7f0d0089
+    const v2, 0x7f0d008e
 
     invoke-virtual {p2, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -206,20 +206,20 @@
 
     check-cast v1, Landroid/widget/TextView;
 
-    .line 3419
+    .line 3683
     .local v1, text:Landroid/widget/TextView;
     iget v2, p0, Lcom/android/camera/VideoCamera$FlashLightAdapter;->mCurSel:I
 
     if-ne p1, v2, :cond_1
 
-    .line 3420
+    .line 3684
     iget-object v2, p0, Lcom/android/camera/VideoCamera$FlashLightAdapter;->mIconId:[I
 
     aget v2, v2, p1
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    .line 3424
+    .line 3688
     :goto_0
     iget-object v2, p0, Lcom/android/camera/VideoCamera$FlashLightAdapter;->mItemData:[Ljava/lang/String;
 
@@ -227,10 +227,10 @@
 
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 3425
+    .line 3689
     return-object p2
 
-    .line 3422
+    .line 3686
     :cond_1
     iget-object v2, p0, Lcom/android/camera/VideoCamera$FlashLightAdapter;->mUnSelIconId:[I
 
@@ -246,9 +246,9 @@
     .parameter "index"
 
     .prologue
-    .line 3382
+    .line 3646
     iput p1, p0, Lcom/android/camera/VideoCamera$FlashLightAdapter;->mCurSel:I
 
-    .line 3383
+    .line 3647
     return-void
 .end method

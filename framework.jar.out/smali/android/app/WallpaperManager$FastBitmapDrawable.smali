@@ -102,11 +102,11 @@
 
 # virtual methods
 .method public draw(Landroid/graphics/Canvas;)V
-    .locals 6
+    .locals 7
     .parameter "canvas"
 
     .prologue
-    const/4 v5, 0x0
+    const/4 v6, 0x0
 
     .line 158
     iget-object v1, p0, Landroid/app/WallpaperManager$FastBitmapDrawable;->mBitmap:Landroid/graphics/Bitmap;
@@ -134,9 +134,21 @@
 
     iget v2, p0, Landroid/app/WallpaperManager$FastBitmapDrawable;->mDstTop:I
 
-    iget v3, p0, Landroid/app/WallpaperManager$FastBitmapDrawable;->mDstRight:I
+    iget v3, p0, Landroid/app/WallpaperManager$FastBitmapDrawable;->mDstLeft:I
 
-    iget v4, p0, Landroid/app/WallpaperManager$FastBitmapDrawable;->mDstBottom:I
+    invoke-virtual {p1}, Landroid/graphics/Canvas;->getWidth()I
+
+    move-result v4
+
+    add-int/2addr v3, v4
+
+    iget v4, p0, Landroid/app/WallpaperManager$FastBitmapDrawable;->mDstTop:I
+
+    invoke-virtual {p1}, Landroid/graphics/Canvas;->getHeight()I
+
+    move-result v5
+
+    add-int/2addr v4, v5
 
     invoke-direct {v0, v1, v2, v3, v4}, Landroid/graphics/Rect;-><init>(IIII)V
 
@@ -146,7 +158,7 @@
 
     iget-object v2, p0, Landroid/app/WallpaperManager$FastBitmapDrawable;->mSrcRect:Landroid/graphics/Rect;
 
-    invoke-virtual {p1, v1, v2, v0, v5}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
+    invoke-virtual {p1, v1, v2, v0, v6}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
 
     goto :goto_0
 
@@ -163,7 +175,7 @@
 
     int-to-float v3, v3
 
-    invoke-virtual {p1, v1, v2, v3, v5}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
+    invoke-virtual {p1, v1, v2, v3, v6}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
 
     goto :goto_0
 .end method

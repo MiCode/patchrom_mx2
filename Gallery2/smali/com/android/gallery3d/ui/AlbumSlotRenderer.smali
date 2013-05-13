@@ -64,43 +64,43 @@
 
     const/4 v2, 0x1
 
-    .line 87
+    .line 88
     move-object v0, p1
 
     check-cast v0, Landroid/content/Context;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/ui/AbstractSlotRenderer;-><init>(Landroid/content/Context;)V
 
-    .line 66
+    .line 67
     const/4 v0, -0x1
 
     iput v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mPressedIndex:I
 
-    .line 68
+    .line 69
     iput-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mHighlightItemPath:Lcom/android/gallery3d/data/Path;
 
-    .line 69
+    .line 70
     iput-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDragItemPath:Lcom/android/gallery3d/data/Path;
 
-    .line 88
+    .line 89
     iput-object p1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
 
-    .line 89
+    .line 90
     iput-object p2, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSlotView:Lcom/android/gallery3d/ui/SlotView;
 
-    .line 90
+    .line 91
     iput-object p3, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
-    .line 91
+    .line 92
     iput-object p4, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mLabelSpec:Lcom/android/gallery3d/ui/AlbumSlotRenderer$LabelSpec;
 
-    .line 92
+    .line 93
     iput-object p5, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSelectionManager:Lcom/android/gallery3d/ui/SelectionManager;
 
-    .line 93
+    .line 94
     iput-boolean p6, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mIsVideo:Z
 
-    .line 95
+    .line 96
     new-instance v0, Lcom/android/gallery3d/ui/ColorTexture;
 
     const v1, -0xddddde
@@ -109,12 +109,12 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mWaitLoadingTexture:Lcom/android/gallery3d/ui/ColorTexture;
 
-    .line 96
+    .line 97
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mWaitLoadingTexture:Lcom/android/gallery3d/ui/ColorTexture;
 
     invoke-virtual {v0, v2, v2}, Lcom/android/gallery3d/ui/ColorTexture;->setSize(II)V
 
-    .line 97
+    .line 98
     return-void
 .end method
 
@@ -130,7 +130,7 @@
 .end method
 
 .method private renderHeader(Lcom/android/gallery3d/ui/GLCanvas;III)V
-    .locals 9
+    .locals 10
     .parameter "canvas"
     .parameter "index"
     .parameter "x"
@@ -139,31 +139,31 @@
     .prologue
     const/4 v5, 0x1
 
-    .line 222
+    .line 236
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     invoke-virtual {v0, p2}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->getHeaderTexture(I)Lcom/android/gallery3d/ui/StringTexture;
 
-    move-result-object v7
+    move-result-object v8
 
-    .line 223
-    .local v7, texture:Lcom/android/gallery3d/ui/StringTexture;
-    if-eqz v7, :cond_1
+    .line 237
+    .local v8, texture:Lcom/android/gallery3d/ui/StringTexture;
+    if-eqz v8, :cond_1
 
-    .line 224
+    .line 238
     neg-int v6, p3
 
-    .line 225
+    .line 239
     .local v6, left:I
-    const/4 v8, 0x0
+    const/4 v9, 0x0
 
-    .line 226
-    .local v8, top:I
+    .line 240
+    .local v9, top:I
     iget-boolean v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mIsVideo:Z
 
     if-eqz v0, :cond_2
 
-    .line 227
+    .line 241
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
     iget v0, v0, Lcom/android/gallery3d/ui/SlotView$Spec;->slotGapV:I
@@ -174,9 +174,9 @@
 
     iget v1, v1, Lcom/android/gallery3d/ui/SlotView$Spec;->headerHeight:I
 
-    sub-int v8, v0, v1
+    sub-int v9, v0, v1
 
-    .line 232
+    .line 247
     :goto_0
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
@@ -188,13 +188,13 @@
 
     iget v1, v1, Lcom/android/gallery3d/ui/SlotView$Spec;->headerTextMarginTop:I
 
-    add-int/2addr v1, v8
+    add-int/2addr v1, v9
 
     iget-object v2, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
     iget v2, v2, Lcom/android/gallery3d/ui/SlotView$Spec;->headerTextHeight:I
 
-    invoke-virtual {v7}, Lcom/android/gallery3d/ui/StringTexture;->getHeight()I
+    invoke-virtual {v8}, Lcom/android/gallery3d/ui/StringTexture;->getHeight()I
 
     move-result v4
 
@@ -204,14 +204,14 @@
 
     add-int/2addr v1, v2
 
-    invoke-virtual {v7, p1, v0, v1}, Lcom/android/gallery3d/ui/StringTexture;->draw(Lcom/android/gallery3d/ui/GLCanvas;II)V
+    invoke-virtual {v8, p1, v0, v1}, Lcom/android/gallery3d/ui/StringTexture;->draw(Lcom/android/gallery3d/ui/GLCanvas;II)V
 
-    .line 235
+    .line 250
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSperatorTexture:Lcom/android/gallery3d/ui/ColorTexture;
 
     if-nez v0, :cond_0
 
-    .line 236
+    .line 251
     new-instance v0, Lcom/android/gallery3d/ui/ColorTexture;
 
     const v1, -0xc9c9ca
@@ -220,18 +220,18 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSperatorTexture:Lcom/android/gallery3d/ui/ColorTexture;
 
-    .line 237
+    .line 252
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSperatorTexture:Lcom/android/gallery3d/ui/ColorTexture;
 
     invoke-virtual {v0, v5, v5}, Lcom/android/gallery3d/ui/ColorTexture;->setSize(II)V
 
-    .line 239
+    .line 254
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
     iget v0, v0, Lcom/android/gallery3d/ui/SlotView$Spec;->headerTextMarginTop:I
 
-    add-int/2addr v0, v8
+    add-int/2addr v0, v9
 
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
@@ -239,7 +239,7 @@
 
     add-int v3, v0, v1
 
-    .line 240
+    .line 255
     .local v3, seperatorTop:I
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSperatorTexture:Lcom/android/gallery3d/ui/ColorTexture;
 
@@ -259,22 +259,26 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/android/gallery3d/ui/ColorTexture;->draw(Lcom/android/gallery3d/ui/GLCanvas;IIII)V
 
-    .line 242
+    .line 257
     .end local v3           #seperatorTop:I
     .end local v6           #left:I
-    .end local v8           #top:I
+    .end local v9           #top:I
     :cond_1
     return-void
 
-    .line 229
+    .line 243
     .restart local v6       #left:I
-    .restart local v8       #top:I
+    .restart local v9       #top:I
     :cond_2
-    iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
+    iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
-    iget v0, v0, Lcom/android/gallery3d/ui/SlotView$Spec;->slotHeight:I
+    invoke-virtual {v0, p2}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->getRowHeight(I)I
 
-    sub-int v0, p4, v0
+    move-result v7
+
+    .line 244
+    .local v7, rowHeight:I
+    sub-int v0, p4, v7
 
     div-int/lit8 v0, v0, 0x2
 
@@ -288,7 +292,7 @@
 
     iget v1, v1, Lcom/android/gallery3d/ui/SlotView$Spec;->headerHeight:I
 
-    sub-int v8, v0, v1
+    sub-int v9, v0, v1
 
     goto :goto_0
 .end method
@@ -302,76 +306,58 @@
     .parameter "height"
 
     .prologue
-    .line 246
+    .line 261
     const/4 v0, 0x0
 
-    .line 247
+    .line 262
     .local v0, renderRequestFlags:I
     iget v1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mPressedIndex:I
 
-    if-ne v1, p2, :cond_2
+    if-ne v1, p2, :cond_1
 
-    .line 248
+    .line 263
     iget-boolean v1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mAnimatePressedUp:Z
-
-    if-eqz v1, :cond_1
-
-    .line 249
-    invoke-virtual {p0, p1, p4, p5}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->drawPressedUpFrame(Lcom/android/gallery3d/ui/GLCanvas;II)V
-
-    .line 250
-    or-int/lit8 v0, v0, 0x2
-
-    .line 251
-    invoke-virtual {p0}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->isPressedUpFrameFinished()Z
-
-    move-result v1
 
     if-eqz v1, :cond_0
 
-    .line 252
-    const/4 v1, 0x0
+    .line 264
+    invoke-virtual {p0, p1, p4, p5}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->drawPressedUpFrame(Lcom/android/gallery3d/ui/GLCanvas;II)V
 
-    iput-boolean v1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mAnimatePressedUp:Z
+    .line 265
+    or-int/lit8 v0, v0, 0x2
 
-    .line 253
-    const/4 v1, -0x1
-
-    iput v1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mPressedIndex:I
-
-    .line 263
-    :cond_0
+    .line 280
     :goto_0
     return v0
 
-    .line 256
-    :cond_1
+    .line 271
+    :cond_0
     invoke-virtual {p0, p1, p4, p5}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->drawPressedFrame(Lcom/android/gallery3d/ui/GLCanvas;II)V
 
     goto :goto_0
 
-    .line 258
-    :cond_2
+    .line 273
+    :cond_1
     iget-object v1, p3, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->path:Lcom/android/gallery3d/data/Path;
 
-    if-eqz v1, :cond_3
+    if-eqz v1, :cond_2
 
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mHighlightItemPath:Lcom/android/gallery3d/data/Path;
 
     iget-object v2, p3, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->path:Lcom/android/gallery3d/data/Path;
 
-    if-ne v1, v2, :cond_3
+    if-ne v1, v2, :cond_2
 
-    .line 259
+    .line 274
     invoke-virtual {p0, p1, p4, p5}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->drawSelectedFrame(Lcom/android/gallery3d/ui/GLCanvas;II)V
 
     goto :goto_0
 
-    .line 260
-    :cond_3
+    .line 275
+    :cond_2
     iget-boolean v1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mInSelectionMode:Z
 
-    if-eqz v1, :cond_0
+    if-eqz v1, :cond_3
 
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSelectionManager:Lcom/android/gallery3d/ui/SelectionManager;
 
@@ -381,10 +367,16 @@
 
     move-result v1
 
-    if-eqz v1, :cond_0
+    if-eqz v1, :cond_3
 
-    .line 261
+    .line 276
     invoke-virtual {p0, p1, p4, p5}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->drawSelectedFrame(Lcom/android/gallery3d/ui/GLCanvas;II)V
+
+    goto :goto_0
+
+    .line 278
+    :cond_3
+    invoke-virtual {p0, p1, p4, p5}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->drawNormalFrame(Lcom/android/gallery3d/ui/GLCanvas;II)V
 
     goto :goto_0
 .end method
@@ -395,12 +387,12 @@
     .locals 1
 
     .prologue
-    .line 287
+    .line 304
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->destroy()V
 
-    .line 288
+    .line 305
     return-void
 .end method
 
@@ -409,7 +401,7 @@
     .parameter "index"
 
     .prologue
-    .line 141
+    .line 142
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     if-eqz v0, :cond_0
@@ -433,7 +425,7 @@
     .locals 1
 
     .prologue
-    .line 124
+    .line 125
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDragItemPath:Lcom/android/gallery3d/data/Path;
 
     return-object v0
@@ -443,17 +435,17 @@
     .locals 1
 
     .prologue
-    .line 323
+    .line 340
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     if-eqz v0, :cond_0
 
-    .line 324
+    .line 341
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->onContentChangeEnded()V
 
-    .line 326
+    .line 343
     :cond_0
     return-void
 .end method
@@ -464,17 +456,17 @@
     .parameter "height"
 
     .prologue
-    .line 304
+    .line 321
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     if-eqz v0, :cond_0
 
-    .line 305
+    .line 322
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     invoke-virtual {v0, p1, p2}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->onSlotSizeChanged(II)V
 
-    .line 307
+    .line 324
     :cond_0
     return-void
 .end method
@@ -485,7 +477,7 @@
     .parameter "height"
 
     .prologue
-    .line 311
+    .line 328
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSpec:Lcom/android/gallery3d/ui/SlotView$Spec;
 
     iget v0, v0, Lcom/android/gallery3d/ui/SlotView$Spec;->headerSeperatorMargin:I
@@ -496,17 +488,17 @@
 
     iput v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSeperatorWidth:I
 
-    .line 312
+    .line 329
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     if-eqz v0, :cond_0
 
-    .line 313
+    .line 330
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     invoke-virtual {v0, p1, p2}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->onViewSizeChanged(II)V
 
-    .line 315
+    .line 332
     :cond_0
     return-void
 .end method
@@ -517,17 +509,17 @@
     .parameter "visibleEnd"
 
     .prologue
-    .line 297
+    .line 314
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     if-eqz v0, :cond_0
 
-    .line 298
+    .line 315
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     invoke-virtual {v0, p1, p2}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->setActiveWindow(II)V
 
-    .line 300
+    .line 317
     :cond_0
     return-void
 .end method
@@ -536,12 +528,12 @@
     .locals 1
 
     .prologue
-    .line 283
+    .line 300
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->pause()V
 
-    .line 284
+    .line 301
     return-void
 .end method
 
@@ -549,7 +541,7 @@
     .locals 1
 
     .prologue
-    .line 292
+    .line 309
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSelectionManager:Lcom/android/gallery3d/ui/SelectionManager;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/SelectionManager;->inSelectionMode()Z
@@ -558,12 +550,12 @@
 
     iput-boolean v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mInSelectionMode:Z
 
-    .line 293
+    .line 310
     return-void
 .end method
 
 .method public renderSlot(Lcom/android/gallery3d/ui/GLCanvas;IIIIII)I
-    .locals 17
+    .locals 18
     .parameter "canvas"
     .parameter "index"
     .parameter "pass"
@@ -573,7 +565,7 @@
     .parameter "height"
 
     .prologue
-    .line 146
+    .line 147
     move-object/from16 v0, p0
 
     iget-object v5, v0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSlotFilter:Lcom/android/gallery3d/ui/AlbumSlotRenderer$SlotFilter;
@@ -592,13 +584,13 @@
 
     if-nez v5, :cond_0
 
-    const/16 v16, 0x0
+    const/16 v17, 0x0
 
-    .line 218
+    .line 232
     :goto_0
-    return v16
+    return v17
 
-    .line 150
+    .line 151
     :cond_0
     move-object/from16 v0, p0
 
@@ -610,15 +602,15 @@
 
     move-result-object v11
 
-    .line 151
+    .line 152
     .local v11, entry:Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;
     if-nez v11, :cond_1
 
-    const/16 v16, 0x0
+    const/16 v17, 0x0
 
     goto :goto_0
 
-    .line 153
+    .line 154
     :cond_1
     iget-object v5, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->path:Lcom/android/gallery3d/data/Path;
 
@@ -628,7 +620,7 @@
 
     if-ne v5, v6, :cond_2
 
-    .line 154
+    .line 155
     move-object/from16 v0, p0
 
     move-object/from16 v1, p1
@@ -641,36 +633,36 @@
 
     invoke-direct {v0, v1, v2, v3, v4}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->renderHeader(Lcom/android/gallery3d/ui/GLCanvas;III)V
 
-    .line 155
-    const/16 v16, 0x0
+    .line 156
+    const/16 v17, 0x0
 
     goto :goto_0
 
-    .line 158
+    .line 159
     :cond_2
-    const/16 v16, 0x0
+    const/16 v17, 0x0
 
-    .line 160
-    .local v16, renderRequestFlags:I
+    .line 161
+    .local v17, renderRequestFlags:I
     move-object/from16 v0, p0
 
     iget-boolean v5, v0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mIsVideo:Z
 
     if-eqz v5, :cond_4
 
-    .line 161
+    .line 162
     const/4 v5, 0x2
 
     move-object/from16 v0, p1
 
     invoke-interface {v0, v5}, Lcom/android/gallery3d/ui/GLCanvas;->save(I)V
 
-    .line 162
+    .line 163
     iget-object v5, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
     if-eqz v5, :cond_3
 
-    .line 163
+    .line 164
     iget-object v7, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->labelTexture:Lcom/android/gallery3d/ui/BitmapTexture;
 
     invoke-static {}, Lcom/android/gallery3d/ui/AlbumSlidingWindow$EntryLabelMaker;->getBorderSize()I
@@ -689,24 +681,30 @@
 
     move-result v5
 
-    or-int v16, v16, v5
+    or-int v17, v17, v5
 
-    .line 166
+    .line 167
     :cond_3
     iget-object v5, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->rect:Landroid/graphics/Rect;
 
     if-eqz v5, :cond_4
 
-    .line 167
-    iget-object v15, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->rect:Landroid/graphics/Rect;
-
     .line 168
-    .local v15, rect:Landroid/graphics/Rect;
-    iget v5, v15, Landroid/graphics/Rect;->left:I
+    iget-object v0, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->rect:Landroid/graphics/Rect;
+
+    move-object/from16 v16, v0
+
+    .line 169
+    .local v16, rect:Landroid/graphics/Rect;
+    move-object/from16 v0, v16
+
+    iget v5, v0, Landroid/graphics/Rect;->left:I
 
     int-to-float v5, v5
 
-    iget v6, v15, Landroid/graphics/Rect;->top:I
+    move-object/from16 v0, v16
+
+    iget v6, v0, Landroid/graphics/Rect;->top:I
 
     int-to-float v6, v6
 
@@ -714,18 +712,18 @@
 
     invoke-interface {v0, v5, v6}, Lcom/android/gallery3d/ui/GLCanvas;->translate(FF)V
 
-    .line 169
-    invoke-virtual {v15}, Landroid/graphics/Rect;->width()I
+    .line 170
+    invoke-virtual/range {v16 .. v16}, Landroid/graphics/Rect;->width()I
 
     move-result p6
 
-    .line 170
-    invoke-virtual {v15}, Landroid/graphics/Rect;->height()I
+    .line 171
+    invoke-virtual/range {v16 .. v16}, Landroid/graphics/Rect;->height()I
 
     move-result p7
 
-    .line 174
-    .end local v15           #rect:Landroid/graphics/Rect;
+    .line 175
+    .end local v16           #rect:Landroid/graphics/Rect;
     :cond_4
     iget-object v5, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->content:Lcom/android/gallery3d/ui/Texture;
 
@@ -733,35 +731,35 @@
 
     move-result-object v7
 
-    .line 175
-    .local v7, content:Lcom/android/gallery3d/ui/Texture;
-    if-nez v7, :cond_8
-
     .line 176
+    .local v7, content:Lcom/android/gallery3d/ui/Texture;
+    if-nez v7, :cond_a
+
+    .line 177
     move-object/from16 v0, p0
 
     iget-object v7, v0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mWaitLoadingTexture:Lcom/android/gallery3d/ui/ColorTexture;
 
-    .line 177
+    .line 178
     const/4 v5, 0x1
 
     iput-boolean v5, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->isWaitDisplayed:Z
 
-    .line 184
+    .line 185
     :cond_5
     :goto_1
     iget-object v5, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->item:Lcom/android/gallery3d/data/MediaItem;
 
-    if-nez v5, :cond_9
+    if-nez v5, :cond_b
 
-    const/4 v14, 0x0
-
-    .line 185
-    .local v14, lockState:I
-    :goto_2
-    if-lez v14, :cond_b
+    const/4 v15, 0x0
 
     .line 186
+    .local v15, lockState:I
+    :goto_2
+    if-lez v15, :cond_d
+
+    .line 187
     move-object/from16 v0, p0
 
     iget-object v5, v0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mWaitLoadingTexture:Lcom/android/gallery3d/ui/ColorTexture;
@@ -776,12 +774,12 @@
 
     invoke-virtual {v0, v1, v5, v2, v3}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->drawContentStretched(Lcom/android/gallery3d/ui/GLCanvas;Lcom/android/gallery3d/ui/Texture;II)V
 
-    .line 187
+    .line 188
     const/16 v5, 0x10
 
-    if-eq v14, v5, :cond_a
+    if-eq v15, v5, :cond_c
 
-    .line 188
+    .line 189
     move-object/from16 v0, p0
 
     move-object/from16 v1, p1
@@ -792,7 +790,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->drawLockIcon(Lcom/android/gallery3d/ui/GLCanvas;II)V
 
-    .line 197
+    .line 198
     :goto_3
     instance-of v5, v7, Lcom/android/gallery3d/ui/FadeInTexture;
 
@@ -807,10 +805,52 @@
 
     if-eqz v5, :cond_6
 
-    .line 199
-    or-int/lit8 v16, v16, 0x2
+    .line 200
+    or-int/lit8 v17, v17, 0x2
 
+    .line 211
     :cond_6
+    move-object/from16 v0, p0
+
+    iget v5, v0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mPressedIndex:I
+
+    move/from16 v0, p2
+
+    if-ne v5, v0, :cond_f
+
+    move-object/from16 v0, p0
+
+    iget-boolean v5, v0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mAnimatePressedUp:Z
+
+    if-eqz v5, :cond_f
+
+    const/4 v14, 0x1
+
+    .line 212
+    .local v14, drawAnimPressedUp:Z
+    :goto_4
+    if-eqz v14, :cond_7
+
+    move-object/from16 v0, p0
+
+    iget-object v5, v0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFramePressedUp:Lcom/android/gallery3d/ui/FadeOutTexture;
+
+    if-nez v5, :cond_7
+
+    .line 213
+    new-instance v5, Lcom/android/gallery3d/ui/FadeOutTexture;
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFramePressed:Lcom/android/gallery3d/ui/NinePatchTexture;
+
+    invoke-direct {v5, v6}, Lcom/android/gallery3d/ui/FadeOutTexture;-><init>(Lcom/android/gallery3d/ui/BasicTexture;)V
+
+    move-object/from16 v0, p0
+
+    iput-object v5, v0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFramePressedUp:Lcom/android/gallery3d/ui/FadeOutTexture;
+
+    :cond_7
     move-object/from16 v8, p0
 
     move-object/from16 v9, p1
@@ -821,25 +861,57 @@
 
     move/from16 v13, p7
 
-    .line 210
+    .line 216
     invoke-direct/range {v8 .. v13}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->renderOverlay(Lcom/android/gallery3d/ui/GLCanvas;ILcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;II)I
 
     move-result v5
 
-    or-int v16, v16, v5
+    or-int v17, v17, v5
 
-    .line 212
+    .line 218
+    if-eqz v14, :cond_8
+
+    .line 219
+    invoke-virtual/range {p0 .. p0}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->isPressedUpFrameFinished()Z
+
+    move-result v5
+
+    if-eqz v5, :cond_8
+
+    .line 220
+    const/4 v5, 0x0
+
+    move-object/from16 v0, p0
+
+    iput-boolean v5, v0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mAnimatePressedUp:Z
+
+    .line 221
+    const/4 v5, -0x1
+
+    move-object/from16 v0, p0
+
+    iput v5, v0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mPressedIndex:I
+
+    .line 222
+    const/4 v5, 0x0
+
+    move-object/from16 v0, p0
+
+    iput-object v5, v0, Lcom/android/gallery3d/ui/AbstractSlotRenderer;->mFramePressedUp:Lcom/android/gallery3d/ui/FadeOutTexture;
+
+    .line 226
+    :cond_8
     move-object/from16 v0, p0
 
     iget-boolean v5, v0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mIsVideo:Z
 
-    if-eqz v5, :cond_7
+    if-eqz v5, :cond_9
 
-    .line 213
+    .line 227
     invoke-interface/range {p1 .. p1}, Lcom/android/gallery3d/ui/GLCanvas;->restore()V
 
-    .line 216
-    :cond_7
+    .line 230
+    :cond_9
     move-object/from16 v0, p0
 
     move-object/from16 v1, p1
@@ -854,20 +926,21 @@
 
     goto/16 :goto_0
 
-    .line 178
-    .end local v14           #lockState:I
+    .line 179
+    .end local v14           #drawAnimPressedUp:Z
+    .end local v15           #lockState:I
     .restart local v7       #content:Lcom/android/gallery3d/ui/Texture;
-    :cond_8
+    :cond_a
     iget-boolean v5, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->isWaitDisplayed:Z
 
     if-eqz v5, :cond_5
 
-    .line 179
+    .line 180
     const/4 v5, 0x0
 
     iput-boolean v5, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->isWaitDisplayed:Z
 
-    .line 180
+    .line 181
     new-instance v7, Lcom/android/gallery3d/ui/FadeInTexture;
 
     .end local v7           #content:Lcom/android/gallery3d/ui/Texture;
@@ -877,36 +950,36 @@
 
     invoke-direct {v7, v5, v6}, Lcom/android/gallery3d/ui/FadeInTexture;-><init>(ILcom/android/gallery3d/ui/BasicTexture;)V
 
-    .line 181
+    .line 182
     .restart local v7       #content:Lcom/android/gallery3d/ui/Texture;
     iput-object v7, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->content:Lcom/android/gallery3d/ui/Texture;
 
-    goto :goto_1
+    goto/16 :goto_1
 
-    .line 184
-    :cond_9
+    .line 185
+    :cond_b
     iget-object v5, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->item:Lcom/android/gallery3d/data/MediaItem;
 
     invoke-virtual {v5}, Lcom/android/gallery3d/data/MediaItem;->getLockState()I
 
-    move-result v14
+    move-result v15
 
-    goto :goto_2
+    goto/16 :goto_2
 
-    .line 190
-    .restart local v14       #lockState:I
-    :cond_a
-    or-int/lit8 v16, v16, 0x2
+    .line 191
+    .restart local v15       #lockState:I
+    :cond_c
+    or-int/lit8 v17, v17, 0x2
 
-    goto :goto_3
-
-    .line 192
-    :cond_b
-    iget-boolean v5, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->isWaitDisplayed:Z
-
-    if-eqz v5, :cond_c
+    goto/16 :goto_3
 
     .line 193
+    :cond_d
+    iget-boolean v5, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->isWaitDisplayed:Z
+
+    if-eqz v5, :cond_e
+
+    .line 194
     move-object/from16 v0, p0
 
     move-object/from16 v1, p1
@@ -917,10 +990,10 @@
 
     invoke-virtual {v0, v1, v7, v2, v3}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->drawContentStretched(Lcom/android/gallery3d/ui/GLCanvas;Lcom/android/gallery3d/ui/Texture;II)V
 
-    goto :goto_3
+    goto/16 :goto_3
 
-    .line 195
-    :cond_c
+    .line 196
+    :cond_e
     iget v10, v11, Lcom/android/gallery3d/ui/AlbumSlidingWindow$AlbumEntry;->rotation:I
 
     move-object/from16 v5, p0
@@ -933,19 +1006,26 @@
 
     invoke-virtual/range {v5 .. v10}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->drawContent(Lcom/android/gallery3d/ui/GLCanvas;Lcom/android/gallery3d/ui/Texture;III)V
 
-    goto :goto_3
+    goto/16 :goto_3
+
+    .line 211
+    .end local v7           #content:Lcom/android/gallery3d/ui/Texture;
+    :cond_f
+    const/4 v14, 0x0
+
+    goto/16 :goto_4
 .end method
 
 .method public resume()V
     .locals 1
 
     .prologue
-    .line 279
+    .line 296
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->resume()V
 
-    .line 280
+    .line 297
     return-void
 .end method
 
@@ -954,20 +1034,20 @@
     .parameter "path"
 
     .prologue
-    .line 118
+    .line 119
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDragItemPath:Lcom/android/gallery3d/data/Path;
 
     if-ne v0, p1, :cond_0
 
-    .line 121
+    .line 122
     :goto_0
     return-void
 
-    .line 119
+    .line 120
     :cond_0
     iput-object p1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDragItemPath:Lcom/android/gallery3d/data/Path;
 
-    .line 120
+    .line 121
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSlotView:Lcom/android/gallery3d/ui/SlotView;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/SlotView;->invalidate()V
@@ -980,20 +1060,20 @@
     .parameter "path"
 
     .prologue
-    .line 112
+    .line 113
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mHighlightItemPath:Lcom/android/gallery3d/data/Path;
 
     if-ne v0, p1, :cond_0
 
-    .line 115
+    .line 116
     :goto_0
     return-void
 
-    .line 113
+    .line 114
     :cond_0
     iput-object p1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mHighlightItemPath:Lcom/android/gallery3d/data/Path;
 
-    .line 114
+    .line 115
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSlotView:Lcom/android/gallery3d/ui/SlotView;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/SlotView;->invalidate()V
@@ -1008,31 +1088,31 @@
     .prologue
     const/4 v7, 0x0
 
-    .line 128
+    .line 129
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     if-eqz v0, :cond_0
 
-    .line 129
+    .line 130
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     invoke-virtual {v0, v7}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->setListener(Lcom/android/gallery3d/ui/AlbumSlidingWindow$Listener;)V
 
-    .line 130
+    .line 131
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSlotView:Lcom/android/gallery3d/ui/SlotView;
 
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/ui/SlotView;->setSlotCount(I)Z
 
-    .line 131
+    .line 132
     iput-object v7, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
-    .line 133
+    .line 134
     :cond_0
     if-eqz p1, :cond_1
 
-    .line 134
+    .line 135
     new-instance v0, Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     iget-object v1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
@@ -1051,7 +1131,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
-    .line 135
+    .line 136
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mDataWindow:Lcom/android/gallery3d/ui/AlbumSlidingWindow;
 
     new-instance v1, Lcom/android/gallery3d/ui/AlbumSlotRenderer$MyDataModelListener;
@@ -1060,7 +1140,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/ui/AlbumSlidingWindow;->setListener(Lcom/android/gallery3d/ui/AlbumSlidingWindow$Listener;)V
 
-    .line 136
+    .line 137
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSlotView:Lcom/android/gallery3d/ui/SlotView;
 
     invoke-interface {p1}, Lcom/android/gallery3d/ui/AlbumSlotRenderer$DataLoader;->size()I
@@ -1069,7 +1149,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/ui/SlotView;->setSlotCount(I)Z
 
-    .line 138
+    .line 139
     :cond_1
     return-void
 .end method
@@ -1079,20 +1159,20 @@
     .parameter "index"
 
     .prologue
-    .line 100
+    .line 101
     iget v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mPressedIndex:I
 
     if-ne v0, p1, :cond_0
 
-    .line 103
+    .line 104
     :goto_0
     return-void
 
-    .line 101
+    .line 102
     :cond_0
     iput p1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mPressedIndex:I
 
-    .line 102
+    .line 103
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSlotView:Lcom/android/gallery3d/ui/SlotView;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/SlotView;->invalidate()V
@@ -1104,24 +1184,24 @@
     .locals 2
 
     .prologue
-    .line 106
+    .line 107
     iget v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mPressedIndex:I
 
     const/4 v1, -0x1
 
     if-ne v0, v1, :cond_0
 
-    .line 109
+    .line 110
     :goto_0
     return-void
 
-    .line 107
+    .line 108
     :cond_0
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mAnimatePressedUp:Z
 
-    .line 108
+    .line 109
     iget-object v0, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSlotView:Lcom/android/gallery3d/ui/SlotView;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/ui/SlotView;->invalidate()V
@@ -1134,9 +1214,9 @@
     .parameter "slotFilter"
 
     .prologue
-    .line 318
+    .line 335
     iput-object p1, p0, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->mSlotFilter:Lcom/android/gallery3d/ui/AlbumSlotRenderer$SlotFilter;
 
-    .line 319
+    .line 336
     return-void
 .end method

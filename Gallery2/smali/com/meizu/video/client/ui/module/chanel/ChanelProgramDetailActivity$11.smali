@@ -1,11 +1,14 @@
 .class Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$11;
-.super Landroid/content/BroadcastReceiver;
+.super Ljava/lang/Object;
 .source "ChanelProgramDetailActivity.java"
+
+# interfaces
+.implements Ljava/lang/Runnable;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->onOptionsItemSelected(Landroid/view/MenuItem;)Z
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -17,48 +20,40 @@
 # instance fields
 .field final synthetic this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
+.field final synthetic val$mitem:Landroid/view/MenuItem;
+
 
 # direct methods
-.method constructor <init>(Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;)V
+.method constructor <init>(Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;Landroid/view/MenuItem;)V
     .locals 0
+    .parameter
     .parameter
 
     .prologue
-    .line 1668
+    .line 2095
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$11;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
-    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
+    iput-object p2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$11;->val$mitem:Landroid/view/MenuItem;
+
+    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+.method public run()V
     .locals 2
-    .parameter "context"
-    .parameter "intent"
 
     .prologue
-    .line 1672
-    invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
-
-    move-result-object v0
-
-    const-string v1, "android.net.conn.CONNECTIVITY_CHANGE"
-
-    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 1673
+    .line 2097
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$11;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
-    invoke-virtual {v0}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->checkDataAndUpdateView()V
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$11;->val$mitem:Landroid/view/MenuItem;
 
-    .line 1675
-    :cond_0
+    #calls: Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->onMenuItemSelect(Landroid/view/MenuItem;)V
+    invoke-static {v0, v1}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;->access$3800(Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;Landroid/view/MenuItem;)V
+
+    .line 2098
     return-void
 .end method

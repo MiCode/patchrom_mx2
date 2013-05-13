@@ -6,7 +6,6 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lcom/meizu/internal/policy/impl/ScreenshotHelper$LockScreenShotInfo;,
         Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenShotStub;,
         Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
     }
@@ -17,6 +16,8 @@
 .field private static final ACTION_LAUNCHER_BROUGHT_TO_BACK:Ljava/lang/String; = "com.meizu.LAUNCHER_WITH_BROUGHT_TO_BACK"
 
 .field private static final SCREENSHOT_FAILED:I = 0x0
+
+.field private static final SCREENSHOT_NO_UPDATE:I = 0x3eb
 
 .field private static final SCREENSHOT_SUCCESSFUL:I = 0x1
 
@@ -31,6 +32,8 @@
 .field private static contactsClassName:Ljava/lang/String; = null
 
 .field private static contactsPackageName:Ljava/lang/String; = null
+
+.field private static emailClassName:Ljava/lang/String; = null
 
 .field private static emailPackageName:Ljava/lang/String; = null
 
@@ -94,8 +97,6 @@
 
 .field private mKeyguardViewMediator:Lcom/android/internal/policy/impl/KeyguardViewMediator;
 
-.field private mLockScreenShotInfo:Lcom/meizu/internal/policy/impl/ScreenshotHelper$LockScreenShotInfo;
-
 .field private mMmsBitmapCopy:Landroid/graphics/Bitmap;
 
 .field private mMmsShareBitmap:Landroid/graphics/Bitmap;
@@ -129,13 +130,15 @@
 
 .field private mStatusbarFileName:Ljava/lang/String;
 
-.field private final mStatusbarHeight:I
+.field private mStatusbarHeight:I
 
 .field private mStatusbarMemoryFile:Landroid/os/MemoryFile;
 
-.field private final mStatusbarSize:I
+.field private mStatusbarSize:I
 
-.field private final mStatusbarWidth:I
+.field private mStatusbarWidth:I
+
+.field private mSystemReady:Z
 
 .field private mUpdateWhich:I
 
@@ -151,7 +154,7 @@
     .locals 3
 
     .prologue
-    .line 62
+    .line 59
     new-instance v0, Landroid/content/ComponentName;
 
     const-string v1, "com.android.launcher"
@@ -162,620 +165,234 @@
 
     sput-object v0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->launcherComponentName:Landroid/content/ComponentName;
 
-    .line 64
+    .line 61
     const-string v0, "com.android.mms"
 
     sput-object v0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mmsPackageName:Ljava/lang/String;
 
-    .line 65
+    .line 62
     const-string v0, "com.android.contacts"
 
     sput-object v0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->contactsPackageName:Ljava/lang/String;
 
-    .line 66
+    .line 63
     const-string v0, "com.android.phone"
 
     sput-object v0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->phonePackageName:Ljava/lang/String;
 
-    .line 67
+    .line 64
     const-string v0, "com.android.mms.ui.ConversationList"
 
     sput-object v0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mmsClassName:Ljava/lang/String;
 
-    .line 68
+    .line 65
     const-string v0, "com.android.email"
 
     sput-object v0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->emailPackageName:Ljava/lang/String;
 
-    .line 69
+    .line 66
     const-string v0, "com.android.contacts.activities.DialtactsActivity"
 
     sput-object v0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->contactsClassName:Ljava/lang/String;
+
+    .line 67
+    const-string v0, "com.android.email.activity.ShowEmailShortCut"
+
+    sput-object v0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->emailClassName:Ljava/lang/String;
 
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Lcom/meizu/internal/policy/impl/LockControllerMonitor;Lcom/android/internal/policy/impl/KeyguardViewMediator;)V
-    .locals 8
+    .locals 5
     .parameter "context"
     .parameter "lockControllerMonitor"
     .parameter "keyguardViewMediator"
 
     .prologue
-    const/4 v6, 0x0
+    const/4 v4, 0x0
 
-    const/4 v5, 0x0
-
-    .line 215
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
-
-    .line 85
-    const/4 v4, -0x1
-
-    iput v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mUpdateWhich:I
-
-    .line 88
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWallpaperManager:Landroid/app/WallpaperManager;
-
-    .line 90
-    iput-boolean v6, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mIsNeedUpdateLauncherWallpaper:Z
-
-    .line 91
-    iput-boolean v6, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mIsUseCaptureScreenBitmap:Z
-
-    .line 92
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCaptureScreen:Landroid/graphics/Bitmap;
-
-    .line 95
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareBitmap:Landroid/graphics/Bitmap;
-
-    .line 96
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareFd:Landroid/os/ParcelFileDescriptor;
-
-    .line 97
-    const-string v4, "MmsScreenshotShare.png"
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareFileName:Ljava/lang/String;
-
-    .line 100
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareBitmap:Landroid/graphics/Bitmap;
-
-    .line 101
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareFd:Landroid/os/ParcelFileDescriptor;
-
-    .line 102
-    const-string v4, "ContactsScreenshotShare.png"
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareFileName:Ljava/lang/String;
-
-    .line 105
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmap:Landroid/graphics/Bitmap;
-
-    .line 106
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
-
-    .line 107
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFd:Landroid/os/ParcelFileDescriptor;
-
-    .line 108
-    const-string v4, "ActivityShotShare.png"
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFileName:Ljava/lang/String;
-
-    .line 111
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareBitmap:Landroid/graphics/Bitmap;
-
-    .line 112
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareFd:Landroid/os/ParcelFileDescriptor;
-
-    .line 113
-    const-string v4, "EmailShotShare.png"
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareFileName:Ljava/lang/String;
-
-    .line 115
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mLockScreenShotInfo:Lcom/meizu/internal/policy/impl/ScreenshotHelper$LockScreenShotInfo;
-
-    .line 117
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailBitmapCopy:Landroid/graphics/Bitmap;
-
-    .line 118
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsBitmapCopy:Landroid/graphics/Bitmap;
-
-    .line 119
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsBitmapCopy:Landroid/graphics/Bitmap;
-
-    .line 126
-    iput-boolean v6, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mScreenshotFinish:Z
-
-    .line 128
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mActivityManager:Landroid/app/ActivityManager;
-
-    .line 130
-    iput-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
-
-    .line 170
-    new-instance v4, Lcom/meizu/internal/policy/impl/ScreenshotHelper$1;
-
-    invoke-direct {v4, p0}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$1;-><init>(Lcom/meizu/internal/policy/impl/ScreenshotHelper;)V
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHandler:Landroid/os/Handler;
-
-    .line 216
-    iput-object p1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
-
-    .line 217
-    iput-object p2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
-
-    .line 219
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
-
-    const-string v5, "activity"
-
-    invoke-virtual {v4, v5}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/app/ActivityManager;
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mActivityManager:Landroid/app/ActivityManager;
-
-    .line 221
-    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
-
-    move-result-object v3
-
-    .line 222
-    .local v3, metrics:Landroid/util/DisplayMetrics;
-    iget v4, v3, Landroid/util/DisplayMetrics;->widthPixels:I
-
-    iput v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
-
-    .line 223
-    iget v4, v3, Landroid/util/DisplayMetrics;->heightPixels:I
-
-    iput v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
+    const/4 v3, 0x0
 
     .line 224
-    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
+    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    iget v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
+    .line 83
+    const/4 v2, -0x1
 
-    mul-int/2addr v4, v5
+    iput v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mUpdateWhich:I
 
-    mul-int/lit8 v4, v4, 0x4
+    .line 86
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWallpaperManager:Landroid/app/WallpaperManager;
 
-    add-int/lit8 v4, v4, 0x10
+    .line 88
+    iput-boolean v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mIsNeedUpdateLauncherWallpaper:Z
 
-    iput v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
+    .line 89
+    iput-boolean v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mIsUseCaptureScreenBitmap:Z
+
+    .line 90
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCaptureScreen:Landroid/graphics/Bitmap;
+
+    .line 93
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareBitmap:Landroid/graphics/Bitmap;
+
+    .line 94
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareFd:Landroid/os/ParcelFileDescriptor;
+
+    .line 95
+    const-string v2, "MmsScreenshotShare.png"
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareFileName:Ljava/lang/String;
+
+    .line 98
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareBitmap:Landroid/graphics/Bitmap;
+
+    .line 99
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareFd:Landroid/os/ParcelFileDescriptor;
+
+    .line 100
+    const-string v2, "ContactsScreenshotShare.png"
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareFileName:Ljava/lang/String;
+
+    .line 103
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmap:Landroid/graphics/Bitmap;
+
+    .line 104
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
+
+    .line 105
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFd:Landroid/os/ParcelFileDescriptor;
+
+    .line 106
+    const-string v2, "ActivityShotShare.png"
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFileName:Ljava/lang/String;
+
+    .line 109
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareBitmap:Landroid/graphics/Bitmap;
+
+    .line 110
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareFd:Landroid/os/ParcelFileDescriptor;
+
+    .line 111
+    const-string v2, "EmailShotShare.png"
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareFileName:Ljava/lang/String;
+
+    .line 113
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailBitmapCopy:Landroid/graphics/Bitmap;
+
+    .line 114
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsBitmapCopy:Landroid/graphics/Bitmap;
+
+    .line 115
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsBitmapCopy:Landroid/graphics/Bitmap;
+
+    .line 122
+    iput-boolean v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mScreenshotFinish:Z
+
+    .line 124
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mActivityManager:Landroid/app/ActivityManager;
+
+    .line 126
+    iput-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
+
+    .line 130
+    iput-boolean v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSystemReady:Z
+
+    .line 167
+    new-instance v2, Lcom/meizu/internal/policy/impl/ScreenshotHelper$1;
+
+    invoke-direct {v2, p0}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$1;-><init>(Lcom/meizu/internal/policy/impl/ScreenshotHelper;)V
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHandler:Landroid/os/Handler;
+
+    .line 225
+    iput-object p1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
 
     .line 226
-    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
-
-    iput v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarWidth:I
-
-    .line 227
-    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v4
-
-    const v5, 0x105000d
-
-    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v4
-
-    iput v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarHeight:I
+    iput-object p2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     .line 228
-    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarWidth:I
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
 
-    iget v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarHeight:I
+    const-string v3, "activity"
 
-    mul-int/2addr v4, v5
+    invoke-virtual {v2, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
-    mul-int/lit8 v4, v4, 0x4
+    move-result-object v2
 
-    add-int/lit8 v4, v4, 0x10
+    check-cast v2, Landroid/app/ActivityManager;
 
-    iput v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarSize:I
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mActivityManager:Landroid/app/ActivityManager;
 
     .line 230
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    invoke-virtual {v4}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    move-result-object v2
 
-    move-result-object v4
+    invoke-virtual {v2}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
 
-    const v5, 0x1080581
-
-    invoke-static {v4, v5}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-
-    move-result-object v4
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mpkgPasswordScreenshot:Landroid/graphics/Bitmap;
+    move-result-object v1
 
     .line 231
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
+    .local v1, metrics:Landroid/util/DisplayMetrics;
+    iget v2, v1, Landroid/util/DisplayMetrics;->widthPixels:I
 
-    invoke-virtual {v4}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v4
-
-    const v5, 0x1080289
-
-    invoke-static {v4, v5}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-
-    move-result-object v4
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCameraScreenshot:Landroid/graphics/Bitmap;
+    iput v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
 
     .line 232
-    iput-object p3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mKeyguardViewMediator:Lcom/android/internal/policy/impl/KeyguardViewMediator;
+    iget v2, v1, Landroid/util/DisplayMetrics;->heightPixels:I
+
+    iput v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
 
     .line 233
-    new-instance v4, Lcom/meizu/internal/policy/impl/ScreenshotHelper$LockScreenShotInfo;
+    iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
 
-    invoke-direct {v4, p0}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$LockScreenShotInfo;-><init>(Lcom/meizu/internal/policy/impl/ScreenshotHelper;)V
+    iget v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
 
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mLockScreenShotInfo:Lcom/meizu/internal/policy/impl/ScreenshotHelper$LockScreenShotInfo;
+    mul-int/2addr v2, v3
 
-    .line 234
-    new-instance v4, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenShotStub;
+    mul-int/lit8 v2, v2, 0x4
 
-    iget-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
+    add-int/lit8 v2, v2, 0x10
 
-    invoke-direct {v4, p0, v5}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenShotStub;-><init>(Lcom/meizu/internal/policy/impl/ScreenshotHelper;Landroid/content/Context;)V
+    iput v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
 
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mBinder:Landroid/os/IBinder;
+    .line 235
+    iput-object p3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mKeyguardViewMediator:Lcom/android/internal/policy/impl/KeyguardViewMediator;
 
     .line 236
-    :try_start_0
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareMemoryFile:Landroid/os/MemoryFile;
+    new-instance v2, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenShotStub;
 
-    if-nez v4, :cond_0
+    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
 
-    .line 237
-    new-instance v4, Landroid/os/MemoryFile;
+    invoke-direct {v2, p0, v3}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenShotStub;-><init>(Lcom/meizu/internal/policy/impl/ScreenshotHelper;Landroid/content/Context;)V
 
-    iget-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareFileName:Ljava/lang/String;
-
-    iget v6, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
-
-    invoke-direct {v4, v5, v6}, Landroid/os/MemoryFile;-><init>(Ljava/lang/String;I)V
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareMemoryFile:Landroid/os/MemoryFile;
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mBinder:Landroid/os/IBinder;
 
     .line 238
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareMemoryFile:Landroid/os/MemoryFile;
+    new-instance v0, Landroid/content/IntentFilter;
 
-    invoke-virtual {v4}, Landroid/os/MemoryFile;->getFileDescriptor()Ljava/io/FileDescriptor;
-
-    move-result-object v1
+    invoke-direct {v0}, Landroid/content/IntentFilter;-><init>()V
 
     .line 239
-    .local v1, fd:Ljava/io/FileDescriptor;
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareMemoryFile:Landroid/os/MemoryFile;
+    .local v0, filter:Landroid/content/IntentFilter;
+    const-string v2, "com.meizu.LAUNCHER_WITH_BROUGHT_TO_BACK"
 
-    invoke-virtual {v4}, Landroid/os/MemoryFile;->getParcelFileDescriptor()Landroid/os/ParcelFileDescriptor;
-
-    move-result-object v4
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareFd:Landroid/os/ParcelFileDescriptor;
+    invoke-virtual {v0, v2}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
     .line 240
-    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
+    new-instance v2, Lcom/meizu/internal/policy/impl/ScreenshotHelper$2;
 
-    iget v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
+    invoke-direct {v2, p0}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$2;-><init>(Lcom/meizu/internal/policy/impl/ScreenshotHelper;)V
 
-    iget v6, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
-
-    sget-object v7, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
-
-    invoke-static {v1, v4, v5, v6, v7}, Landroid/graphics/Bitmap;->createShareBitmap(Ljava/io/FileDescriptor;IIILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-
-    move-result-object v4
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareBitmap:Landroid/graphics/Bitmap;
-
-    .line 242
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareBitmap:Landroid/graphics/Bitmap;
-
-    const/4 v5, 0x0
-
-    invoke-virtual {v4, v5}, Landroid/graphics/Bitmap;->eraseColor(I)V
-
-    .line 245
-    .end local v1           #fd:Ljava/io/FileDescriptor;
-    :cond_0
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareMemoryFile:Landroid/os/MemoryFile;
-
-    if-nez v4, :cond_1
-
-    .line 246
-    new-instance v4, Landroid/os/MemoryFile;
-
-    iget-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareFileName:Ljava/lang/String;
-
-    iget v6, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
-
-    invoke-direct {v4, v5, v6}, Landroid/os/MemoryFile;-><init>(Ljava/lang/String;I)V
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareMemoryFile:Landroid/os/MemoryFile;
-
-    .line 247
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareMemoryFile:Landroid/os/MemoryFile;
-
-    invoke-virtual {v4}, Landroid/os/MemoryFile;->getFileDescriptor()Ljava/io/FileDescriptor;
-
-    move-result-object v1
-
-    .line 248
-    .restart local v1       #fd:Ljava/io/FileDescriptor;
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareMemoryFile:Landroid/os/MemoryFile;
-
-    invoke-virtual {v4}, Landroid/os/MemoryFile;->getParcelFileDescriptor()Landroid/os/ParcelFileDescriptor;
-
-    move-result-object v4
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareFd:Landroid/os/ParcelFileDescriptor;
-
-    .line 249
-    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
-
-    iget v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
-
-    iget v6, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
-
-    sget-object v7, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
-
-    invoke-static {v1, v4, v5, v6, v7}, Landroid/graphics/Bitmap;->createShareBitmap(Ljava/io/FileDescriptor;IIILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-
-    move-result-object v4
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareBitmap:Landroid/graphics/Bitmap;
+    invoke-virtual {p1, v2, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
     .line 251
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareBitmap:Landroid/graphics/Bitmap;
-
-    const/4 v5, 0x0
-
-    invoke-virtual {v4, v5}, Landroid/graphics/Bitmap;->eraseColor(I)V
-
-    .line 254
-    .end local v1           #fd:Ljava/io/FileDescriptor;
-    :cond_1
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarMemoryFile:Landroid/os/MemoryFile;
-
-    if-nez v4, :cond_2
-
-    .line 255
-    new-instance v4, Landroid/os/MemoryFile;
-
-    iget-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFileName:Ljava/lang/String;
-
-    iget v6, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarSize:I
-
-    invoke-direct {v4, v5, v6}, Landroid/os/MemoryFile;-><init>(Ljava/lang/String;I)V
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarMemoryFile:Landroid/os/MemoryFile;
-
-    .line 256
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarMemoryFile:Landroid/os/MemoryFile;
-
-    invoke-virtual {v4}, Landroid/os/MemoryFile;->getFileDescriptor()Ljava/io/FileDescriptor;
-
-    move-result-object v1
-
-    .line 257
-    .restart local v1       #fd:Ljava/io/FileDescriptor;
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarMemoryFile:Landroid/os/MemoryFile;
-
-    invoke-virtual {v4}, Landroid/os/MemoryFile;->getParcelFileDescriptor()Landroid/os/ParcelFileDescriptor;
-
-    move-result-object v4
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFd:Landroid/os/ParcelFileDescriptor;
-
-    .line 258
-    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarSize:I
-
-    iget v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarWidth:I
-
-    iget v6, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarHeight:I
-
-    sget-object v7, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
-
-    invoke-static {v1, v4, v5, v6, v7}, Landroid/graphics/Bitmap;->createShareBitmap(Ljava/io/FileDescriptor;IIILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-
-    move-result-object v4
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmap:Landroid/graphics/Bitmap;
-
-    .line 260
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmap:Landroid/graphics/Bitmap;
-
-    const/4 v5, 0x0
-
-    invoke-virtual {v4, v5}, Landroid/graphics/Bitmap;->eraseColor(I)V
-
-    .line 263
-    .end local v1           #fd:Ljava/io/FileDescriptor;
-    :cond_2
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareMemoryFile:Landroid/os/MemoryFile;
-
-    if-nez v4, :cond_3
-
-    .line 264
-    new-instance v4, Landroid/os/MemoryFile;
-
-    iget-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareFileName:Ljava/lang/String;
-
-    iget v6, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
-
-    invoke-direct {v4, v5, v6}, Landroid/os/MemoryFile;-><init>(Ljava/lang/String;I)V
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareMemoryFile:Landroid/os/MemoryFile;
-
-    .line 265
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareMemoryFile:Landroid/os/MemoryFile;
-
-    invoke-virtual {v4}, Landroid/os/MemoryFile;->getFileDescriptor()Ljava/io/FileDescriptor;
-
-    move-result-object v1
-
-    .line 266
-    .restart local v1       #fd:Ljava/io/FileDescriptor;
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareMemoryFile:Landroid/os/MemoryFile;
-
-    invoke-virtual {v4}, Landroid/os/MemoryFile;->getParcelFileDescriptor()Landroid/os/ParcelFileDescriptor;
-
-    move-result-object v4
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareFd:Landroid/os/ParcelFileDescriptor;
-
-    .line 267
-    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
-
-    iget v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
-
-    iget v6, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
-
-    sget-object v7, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
-
-    invoke-static {v1, v4, v5, v6, v7}, Landroid/graphics/Bitmap;->createShareBitmap(Ljava/io/FileDescriptor;IIILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-
-    move-result-object v4
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareBitmap:Landroid/graphics/Bitmap;
-
-    .line 269
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareBitmap:Landroid/graphics/Bitmap;
-
-    const/4 v5, 0x0
-
-    invoke-virtual {v4, v5}, Landroid/graphics/Bitmap;->eraseColor(I)V
-
-    .line 272
-    .end local v1           #fd:Ljava/io/FileDescriptor;
-    :cond_3
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
-
-    if-nez v4, :cond_4
-
-    .line 273
-    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarWidth:I
-
-    iget v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarHeight:I
-
-    sget-object v6, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
-
-    invoke-static {v4, v5, v6}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-
-    move-result-object v4
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
-
-    .line 276
-    :cond_4
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsBitmapCopy:Landroid/graphics/Bitmap;
-
-    if-nez v4, :cond_5
-
-    .line 277
-    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
-
-    iget v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
-
-    sget-object v6, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
-
-    invoke-static {v4, v5, v6}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-
-    move-result-object v4
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsBitmapCopy:Landroid/graphics/Bitmap;
-
-    .line 279
-    :cond_5
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsBitmapCopy:Landroid/graphics/Bitmap;
-
-    if-nez v4, :cond_6
-
-    .line 280
-    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
-
-    iget v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
-
-    sget-object v6, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
-
-    invoke-static {v4, v5, v6}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-
-    move-result-object v4
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsBitmapCopy:Landroid/graphics/Bitmap;
-
-    .line 282
-    :cond_6
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailBitmapCopy:Landroid/graphics/Bitmap;
-
-    if-nez v4, :cond_7
-
-    .line 283
-    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
-
-    iget v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
-
-    sget-object v6, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
-
-    invoke-static {v4, v5, v6}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-
-    move-result-object v4
-
-    iput-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailBitmapCopy:Landroid/graphics/Bitmap;
-    :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 289
-    :cond_7
-    :goto_0
-    new-instance v2, Landroid/content/IntentFilter;
-
-    invoke-direct {v2}, Landroid/content/IntentFilter;-><init>()V
-
-    .line 290
-    .local v2, filter:Landroid/content/IntentFilter;
-    const-string v4, "com.meizu.LAUNCHER_WITH_BROUGHT_TO_BACK"
-
-    invoke-virtual {v2, v4}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
-
-    .line 291
-    new-instance v4, Lcom/meizu/internal/policy/impl/ScreenshotHelper$2;
-
-    invoke-direct {v4, p0}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$2;-><init>(Lcom/meizu/internal/policy/impl/ScreenshotHelper;)V
-
-    invoke-virtual {p1, v4, v2}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
-
-    .line 305
     return-void
-
-    .line 285
-    .end local v2           #filter:Landroid/content/IntentFilter;
-    :catch_0
-    move-exception v0
-
-    .line 286
-    .local v0, ex:Ljava/io/IOException;
-    const-string v4, "Keyguard"
-
-    const-string v5, "KeyguardViewManager IOException"
-
-    invoke-static {v4, v5}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_0
 .end method
 
 .method static synthetic access$000(Lcom/meizu/internal/policy/impl/ScreenshotHelper;)Landroid/os/Handler;
@@ -783,7 +400,7 @@
     .parameter "x0"
 
     .prologue
-    .line 46
+    .line 41
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHandler:Landroid/os/Handler;
 
     return-object v0
@@ -793,7 +410,7 @@
     .locals 1
 
     .prologue
-    .line 46
+    .line 41
     sget-object v0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mmsPackageName:Ljava/lang/String;
 
     return-object v0
@@ -806,8 +423,8 @@
     .parameter "x2"
 
     .prologue
-    .line 46
-    invoke-direct {p0, p1, p2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->copyStatusbar(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
+    .line 41
+    invoke-direct {p0, p1, p2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->copyBitmap(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
 
     return-void
 .end method
@@ -817,7 +434,7 @@
     .parameter "x0"
 
     .prologue
-    .line 46
+    .line 41
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareBitmap:Landroid/graphics/Bitmap;
 
     return-object v0
@@ -828,7 +445,7 @@
     .parameter "x0"
 
     .prologue
-    .line 46
+    .line 41
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsBitmapCopy:Landroid/graphics/Bitmap;
 
     return-object v0
@@ -839,7 +456,7 @@
     .parameter "x0"
 
     .prologue
-    .line 46
+    .line 41
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareBitmap:Landroid/graphics/Bitmap;
 
     return-object v0
@@ -850,7 +467,7 @@
     .parameter "x0"
 
     .prologue
-    .line 46
+    .line 41
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailBitmapCopy:Landroid/graphics/Bitmap;
 
     return-object v0
@@ -861,7 +478,7 @@
     .parameter "x0"
 
     .prologue
-    .line 46
+    .line 41
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmap:Landroid/graphics/Bitmap;
 
     return-object v0
@@ -872,17 +489,28 @@
     .parameter "x0"
 
     .prologue
-    .line 46
+    .line 41
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
 
     return-object v0
+.end method
+
+.method static synthetic access$1700(Lcom/meizu/internal/policy/impl/ScreenshotHelper;)Z
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 41
+    iget-boolean v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSystemReady:Z
+
+    return v0
 .end method
 
 .method static synthetic access$200()Ljava/lang/String;
     .locals 1
 
     .prologue
-    .line 46
+    .line 41
     sget-object v0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->emailPackageName:Ljava/lang/String;
 
     return-object v0
@@ -892,7 +520,7 @@
     .locals 1
 
     .prologue
-    .line 46
+    .line 41
     sget-object v0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->contactsPackageName:Ljava/lang/String;
 
     return-object v0
@@ -902,7 +530,7 @@
     .locals 1
 
     .prologue
-    .line 46
+    .line 41
     sget-object v0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->phonePackageName:Ljava/lang/String;
 
     return-object v0
@@ -913,7 +541,7 @@
     .parameter "x0"
 
     .prologue
-    .line 46
+    .line 41
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
 
     return-object v0
@@ -925,7 +553,7 @@
     .parameter "x1"
 
     .prologue
-    .line 46
+    .line 41
     iput-boolean p1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mScreenshotFinish:Z
 
     return p1
@@ -937,7 +565,7 @@
     .parameter "x1"
 
     .prologue
-    .line 46
+    .line 41
     iput-boolean p1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mIsNeedUpdateLauncherWallpaper:Z
 
     return p1
@@ -948,7 +576,7 @@
     .parameter "x0"
 
     .prologue
-    .line 46
+    .line 41
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareBitmap:Landroid/graphics/Bitmap;
 
     return-object v0
@@ -959,50 +587,50 @@
     .parameter "x0"
 
     .prologue
-    .line 46
+    .line 41
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsBitmapCopy:Landroid/graphics/Bitmap;
 
     return-object v0
 .end method
 
-.method public static copyBitmap(Landroid/graphics/Bitmap;Ljava/lang/String;)V
+.method public static bitmapToFile(Landroid/graphics/Bitmap;Ljava/lang/String;)V
     .locals 9
     .parameter "bitmap"
     .parameter "fileName"
 
     .prologue
-    .line 629
+    .line 522
     if-nez p0, :cond_1
 
-    .line 651
+    .line 544
     :cond_0
     :goto_0
     return-void
 
-    .line 631
+    .line 524
     :cond_1
     const-string v0, "Test_copyBitmap"
 
-    .line 633
+    .line 526
     .local v0, TAG:Ljava/lang/String;
     :try_start_0
     const-string v6, "/data/anr"
 
-    .line 634
+    .line 527
     .local v6, saveDirectory:Ljava/lang/String;
     move-object v4, p1
 
-    .line 635
+    .line 528
     .local v4, fileNameString:Ljava/lang/String;
     const/4 v5, 0x0
 
-    .line 636
+    .line 529
     .local v5, outputStream:Ljava/io/OutputStream;
     new-instance v1, Ljava/io/File;
 
     invoke-direct {v1, v6}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 637
+    .line 530
     .local v1, dir:Ljava/io/File;
     invoke-virtual {v1}, Ljava/io/File;->exists()Z
 
@@ -1010,27 +638,27 @@
 
     if-nez v7, :cond_2
 
-    .line 638
+    .line 531
     invoke-virtual {v1}, Ljava/io/File;->mkdirs()Z
 
-    .line 639
+    .line 532
     :cond_2
     new-instance v3, Ljava/io/File;
 
     invoke-direct {v3, v6, v4}, Ljava/io/File;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 640
+    .line 533
     .local v3, file:Ljava/io/File;
     new-instance v5, Ljava/io/FileOutputStream;
 
     .end local v5           #outputStream:Ljava/io/OutputStream;
     invoke-direct {v5, v3}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
 
-    .line 641
+    .line 534
     .restart local v5       #outputStream:Ljava/io/OutputStream;
     if-eqz v5, :cond_0
 
-    .line 642
+    .line 535
     sget-object v7, Landroid/graphics/Bitmap$CompressFormat;->JPEG:Landroid/graphics/Bitmap$CompressFormat;
 
     const/16 v8, 0x64
@@ -1041,7 +669,7 @@
 
     if-nez v7, :cond_0
 
-    .line 643
+    .line 536
     const-string v7, "Test_copyBitmap"
 
     const-string v8, "print screen to file Failed!"
@@ -1053,7 +681,7 @@
 
     goto :goto_0
 
-    .line 646
+    .line 539
     .end local v1           #dir:Ljava/io/File;
     .end local v3           #file:Ljava/io/File;
     .end local v4           #fileNameString:Ljava/lang/String;
@@ -1062,7 +690,7 @@
     :catch_0
     move-exception v2
 
-    .line 647
+    .line 540
     .local v2, ex:Ljava/io/FileNotFoundException;
     const-string v7, "Test_copyBitmap"
 
@@ -1070,12 +698,12 @@
 
     goto :goto_0
 
-    .line 648
+    .line 541
     .end local v2           #ex:Ljava/io/FileNotFoundException;
     :catch_1
     move-exception v2
 
-    .line 649
+    .line 542
     .local v2, ex:Ljava/lang/Exception;
     const-string v7, "Test_copyBitmap"
 
@@ -1084,7 +712,7 @@
     goto :goto_0
 .end method
 
-.method private copyStatusbar(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
+.method private copyBitmap(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
     .locals 3
     .parameter "srcBitmap"
     .parameter "dstBitmap"
@@ -1092,29 +720,29 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 621
+    .line 514
     const/4 v1, 0x0
 
     invoke-virtual {p2, v1}, Landroid/graphics/Bitmap;->eraseColor(I)V
 
-    .line 622
+    .line 515
     new-instance v0, Landroid/graphics/Canvas;
 
     invoke-direct {v0, p2}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
 
-    .line 623
+    .line 516
     .local v0, cv:Landroid/graphics/Canvas;
     invoke-virtual {v0}, Landroid/graphics/Canvas;->save()I
 
-    .line 624
+    .line 517
     const/4 v1, 0x0
 
     invoke-virtual {v0, p1, v2, v2, v1}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
 
-    .line 625
+    .line 518
     invoke-virtual {v0}, Landroid/graphics/Canvas;->restore()V
 
-    .line 626
+    .line 519
     return-void
 .end method
 
@@ -1123,35 +751,16 @@
     .parameter "which"
 
     .prologue
-    .line 413
+    .line 357
+    if-nez p1, :cond_7
+
+    .line 358
     :try_start_0
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareFd:Landroid/os/ParcelFileDescriptor;
 
     if-nez v2, :cond_0
 
-    .line 414
-    iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarWidth:I
-
-    iget v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarHeight:I
-
-    sget-object v4, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
-
-    invoke-static {v2, v3, v4}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-
-    move-result-object v2
-
-    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
-
-    .line 416
-    :cond_0
-    if-nez p1, :cond_7
-
-    .line 417
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareFd:Landroid/os/ParcelFileDescriptor;
-
-    if-nez v2, :cond_1
-
-    .line 418
+    .line 359
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareMemoryFile:Landroid/os/MemoryFile;
 
     invoke-virtual {v2}, Landroid/os/MemoryFile;->getParcelFileDescriptor()Landroid/os/ParcelFileDescriptor;
@@ -1160,8 +769,8 @@
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareFd:Landroid/os/ParcelFileDescriptor;
 
-    .line 420
-    :cond_1
+    .line 361
+    :cond_0
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareFd:Landroid/os/ParcelFileDescriptor;
 
     invoke-virtual {v2}, Landroid/os/ParcelFileDescriptor;->getFileDescriptor()Ljava/io/FileDescriptor;
@@ -1172,37 +781,37 @@
 
     move-result v2
 
-    if-nez v2, :cond_3
+    if-nez v2, :cond_2
 
-    .line 423
+    .line 362
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareMemoryFile:Landroid/os/MemoryFile;
 
     invoke-virtual {v2}, Landroid/os/MemoryFile;->close()V
 
-    .line 424
+    .line 363
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareBitmap:Landroid/graphics/Bitmap;
 
     invoke-virtual {v2}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 425
+    .line 364
     const/4 v2, 0x0
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareMemoryFile:Landroid/os/MemoryFile;
 
-    .line 426
+    .line 365
     const/4 v2, 0x0
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareBitmap:Landroid/graphics/Bitmap;
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_1
 
-    .line 428
+    .line 367
     :try_start_1
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareMemoryFile:Landroid/os/MemoryFile;
 
-    if-nez v2, :cond_2
+    if-nez v2, :cond_1
 
-    .line 429
+    .line 368
     new-instance v2, Landroid/os/MemoryFile;
 
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareFileName:Ljava/lang/String;
@@ -1213,14 +822,14 @@
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareMemoryFile:Landroid/os/MemoryFile;
 
-    .line 430
+    .line 369
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareMemoryFile:Landroid/os/MemoryFile;
 
     invoke-virtual {v2}, Landroid/os/MemoryFile;->getFileDescriptor()Ljava/io/FileDescriptor;
 
     move-result-object v1
 
-    .line 431
+    .line 370
     .local v1, fd:Ljava/io/FileDescriptor;
     iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
 
@@ -1236,7 +845,7 @@
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareBitmap:Landroid/graphics/Bitmap;
 
-    .line 433
+    .line 372
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareBitmap:Landroid/graphics/Bitmap;
 
     const/4 v3, 0x0
@@ -1245,9 +854,9 @@
     :try_end_1
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0
 
-    .line 438
+    .line 377
     .end local v1           #fd:Ljava/io/FileDescriptor;
-    :cond_2
+    :cond_1
     :goto_0
     :try_start_2
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareMemoryFile:Landroid/os/MemoryFile;
@@ -1258,14 +867,47 @@
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareFd:Landroid/os/ParcelFileDescriptor;
 
-    .line 465
-    :cond_3
+    .line 403
+    :cond_2
     :goto_1
+    iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
+
+    iput v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarWidth:I
+
+    .line 404
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    const v3, 0x1050016
+
+    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v2
+
+    iput v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarHeight:I
+
+    .line 405
+    iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarWidth:I
+
+    iget v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarHeight:I
+
+    mul-int/2addr v2, v3
+
+    mul-int/lit8 v2, v2, 0x4
+
+    add-int/lit8 v2, v2, 0x10
+
+    iput v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarSize:I
+
+    .line 407
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFd:Landroid/os/ParcelFileDescriptor;
 
-    if-nez v2, :cond_4
+    if-nez v2, :cond_3
 
-    .line 466
+    .line 408
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarMemoryFile:Landroid/os/MemoryFile;
 
     invoke-virtual {v2}, Landroid/os/MemoryFile;->getParcelFileDescriptor()Landroid/os/ParcelFileDescriptor;
@@ -1274,8 +916,8 @@
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFd:Landroid/os/ParcelFileDescriptor;
 
-    .line 468
-    :cond_4
+    .line 410
+    :cond_3
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFd:Landroid/os/ParcelFileDescriptor;
 
     invoke-virtual {v2}, Landroid/os/ParcelFileDescriptor;->getFileDescriptor()Ljava/io/FileDescriptor;
@@ -1286,37 +928,37 @@
 
     move-result v2
 
-    if-nez v2, :cond_6
+    if-nez v2, :cond_5
 
-    .line 471
+    .line 411
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarMemoryFile:Landroid/os/MemoryFile;
 
     invoke-virtual {v2}, Landroid/os/MemoryFile;->close()V
 
-    .line 472
+    .line 412
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmap:Landroid/graphics/Bitmap;
 
     invoke-virtual {v2}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 473
+    .line 413
     const/4 v2, 0x0
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarMemoryFile:Landroid/os/MemoryFile;
 
-    .line 474
+    .line 414
     const/4 v2, 0x0
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmap:Landroid/graphics/Bitmap;
     :try_end_2
     .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_1
 
-    .line 476
+    .line 418
     :try_start_3
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarMemoryFile:Landroid/os/MemoryFile;
 
-    if-nez v2, :cond_5
+    if-nez v2, :cond_4
 
-    .line 477
+    .line 419
     new-instance v2, Landroid/os/MemoryFile;
 
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFileName:Ljava/lang/String;
@@ -1327,14 +969,14 @@
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarMemoryFile:Landroid/os/MemoryFile;
 
-    .line 478
+    .line 420
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarMemoryFile:Landroid/os/MemoryFile;
 
     invoke-virtual {v2}, Landroid/os/MemoryFile;->getFileDescriptor()Ljava/io/FileDescriptor;
 
     move-result-object v1
 
-    .line 479
+    .line 421
     .restart local v1       #fd:Ljava/io/FileDescriptor;
     iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarSize:I
 
@@ -1350,7 +992,7 @@
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmap:Landroid/graphics/Bitmap;
 
-    .line 481
+    .line 423
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmap:Landroid/graphics/Bitmap;
 
     const/4 v3, 0x0
@@ -1359,9 +1001,9 @@
     :try_end_3
     .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_3
 
-    .line 486
+    .line 428
     .end local v1           #fd:Ljava/io/FileDescriptor;
-    :cond_5
+    :cond_4
     :goto_2
     :try_start_4
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarMemoryFile:Landroid/os/MemoryFile;
@@ -1372,16 +1014,35 @@
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFd:Landroid/os/ParcelFileDescriptor;
 
-    .line 491
+    .line 430
+    :cond_5
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
+
+    if-nez v2, :cond_6
+
+    .line 431
+    iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarWidth:I
+
+    iget v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarHeight:I
+
+    sget-object v4, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    invoke-static {v2, v3, v4}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
+
+    .line 436
     :cond_6
     :goto_3
     return-void
 
-    .line 435
+    .line 374
     :catch_0
     move-exception v0
 
-    .line 436
+    .line 375
     .local v0, ex:Ljava/io/IOException;
     const-string v2, "Keyguard"
 
@@ -1391,14 +1052,14 @@
     :try_end_4
     .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_1
 
-    goto :goto_0
+    goto/16 :goto_0
 
-    .line 488
+    .line 433
     .end local v0           #ex:Ljava/io/IOException;
     :catch_1
     move-exception v0
 
-    .line 489
+    .line 434
     .restart local v0       #ex:Ljava/io/IOException;
     const-string v2, "Screenshot error"
 
@@ -1424,20 +1085,20 @@
 
     goto :goto_3
 
-    .line 440
+    .line 379
     .end local v0           #ex:Ljava/io/IOException;
     :cond_7
     const/4 v2, 0x2
 
-    if-ne p1, v2, :cond_3
+    if-ne p1, v2, :cond_2
 
-    .line 441
+    .line 380
     :try_start_5
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareFd:Landroid/os/ParcelFileDescriptor;
 
     if-nez v2, :cond_8
 
-    .line 442
+    .line 381
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareMemoryFile:Landroid/os/MemoryFile;
 
     invoke-virtual {v2}, Landroid/os/MemoryFile;->getParcelFileDescriptor()Landroid/os/ParcelFileDescriptor;
@@ -1446,7 +1107,7 @@
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareFd:Landroid/os/ParcelFileDescriptor;
 
-    .line 444
+    .line 383
     :cond_8
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareFd:Landroid/os/ParcelFileDescriptor;
 
@@ -1458,37 +1119,37 @@
 
     move-result v2
 
-    if-nez v2, :cond_3
+    if-nez v2, :cond_2
 
-    .line 447
+    .line 384
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareMemoryFile:Landroid/os/MemoryFile;
 
     invoke-virtual {v2}, Landroid/os/MemoryFile;->close()V
 
-    .line 448
+    .line 385
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareBitmap:Landroid/graphics/Bitmap;
 
     invoke-virtual {v2}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 449
+    .line 386
     const/4 v2, 0x0
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareMemoryFile:Landroid/os/MemoryFile;
 
-    .line 450
+    .line 387
     const/4 v2, 0x0
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareBitmap:Landroid/graphics/Bitmap;
     :try_end_5
     .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_1
 
-    .line 452
+    .line 389
     :try_start_6
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareMemoryFile:Landroid/os/MemoryFile;
 
     if-nez v2, :cond_9
 
-    .line 453
+    .line 390
     new-instance v2, Landroid/os/MemoryFile;
 
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareFileName:Ljava/lang/String;
@@ -1499,14 +1160,14 @@
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareMemoryFile:Landroid/os/MemoryFile;
 
-    .line 454
+    .line 391
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareMemoryFile:Landroid/os/MemoryFile;
 
     invoke-virtual {v2}, Landroid/os/MemoryFile;->getFileDescriptor()Ljava/io/FileDescriptor;
 
     move-result-object v1
 
-    .line 455
+    .line 392
     .restart local v1       #fd:Ljava/io/FileDescriptor;
     iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
 
@@ -1522,7 +1183,7 @@
 
     iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareBitmap:Landroid/graphics/Bitmap;
 
-    .line 457
+    .line 394
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareBitmap:Landroid/graphics/Bitmap;
 
     const/4 v3, 0x0
@@ -1531,7 +1192,7 @@
     :try_end_6
     .catch Ljava/io/IOException; {:try_start_6 .. :try_end_6} :catch_2
 
-    .line 462
+    .line 399
     .end local v1           #fd:Ljava/io/FileDescriptor;
     :cond_9
     :goto_4
@@ -1546,11 +1207,11 @@
 
     goto/16 :goto_1
 
-    .line 459
+    .line 396
     :catch_2
     move-exception v0
 
-    .line 460
+    .line 397
     .restart local v0       #ex:Ljava/io/IOException;
     const-string v2, "Keyguard"
 
@@ -1560,12 +1221,12 @@
 
     goto :goto_4
 
-    .line 483
+    .line 425
     .end local v0           #ex:Ljava/io/IOException;
     :catch_3
     move-exception v0
 
-    .line 484
+    .line 426
     .restart local v0       #ex:Ljava/io/IOException;
     const-string v2, "Keyguard"
 
@@ -1578,29 +1239,26 @@
     goto/16 :goto_2
 .end method
 
-.method private reloadRecentApp(IZ)V
-    .locals 10
+.method private reloadRecentApp(IZZ)V
+    .locals 8
     .parameter "which"
     .parameter "updateStatusbar"
+    .parameter "screenshotApp"
 
     .prologue
-    const/4 v9, 0x2
+    const/4 v7, 0x2
 
-    const/4 v8, 0x1
-
-    const/4 v7, 0x0
-
-    .line 494
+    .line 439
     iput p1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mUpdateWhich:I
 
-    .line 495
+    .line 440
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mBinder:Landroid/os/IBinder;
 
     invoke-static {v3}, Landroid/app/IUnlockScreenShotReceiver$Stub;->asInterface(Landroid/os/IBinder;)Landroid/app/IUnlockScreenShotReceiver;
 
     move-result-object v2
 
-    .line 497
+    .line 442
     .local v2, receiver:Landroid/app/IUnlockScreenShotReceiver;
     const-string v3, "Keyguard"
 
@@ -1654,13 +1312,22 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 499
-    if-nez p1, :cond_2
+    .line 444
+    const/4 v1, 0x0
 
-    .line 500
-    invoke-direct {p0, v7}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->makeSureFdValid(I)V
+    .line 446
+    .local v1, isLauncher:Z
+    if-eqz p3, :cond_0
 
-    .line 503
+    .line 447
+    if-nez p1, :cond_4
+
+    .line 448
+    const/4 v3, 0x0
+
+    invoke-direct {p0, v3}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->makeSureFdValid(I)V
+
+    .line 451
     :try_start_0
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
@@ -1668,9 +1335,9 @@
 
     move-result v3
 
-    if-eqz v3, :cond_1
+    if-eqz v3, :cond_3
 
-    .line 504
+    .line 452
     invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
 
     move-result-object v3
@@ -1683,24 +1350,39 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 514
+    .line 486
+    :cond_0
     :goto_0
-    if-eqz p2, :cond_0
+    const/4 v3, 0x1
 
-    .line 515
+    if-ne p1, v3, :cond_1
+
+    if-eqz p2, :cond_1
+
+    .line 487
+    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mActivityManager:Landroid/app/ActivityManager;
+
+    invoke-virtual {v3}, Landroid/app/ActivityManager;->isHomeScreenVisibility()Z
+
+    move-result v1
+
+    .line 490
+    :cond_1
+    if-eqz p2, :cond_2
+
+    .line 491
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mKeyguardViewMediator:Lcom/android/internal/policy/impl/KeyguardViewMediator;
 
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFd:Landroid/os/ParcelFileDescriptor;
 
-    invoke-virtual {v3, v7, v4, v2}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->requestScreenshotOfStatusbar(ZLandroid/os/ParcelFileDescriptor;Landroid/app/IUnlockScreenShotReceiver;)V
+    invoke-virtual {v3, v1, v4, v2}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->requestScreenshotOfStatusbar(ZLandroid/os/ParcelFileDescriptor;Landroid/app/IUnlockScreenShotReceiver;)V
 
-    .line 565
-    :cond_0
-    :goto_1
+    .line 493
+    :cond_2
     return-void
 
-    .line 507
-    :cond_1
+    .line 455
+    :cond_3
     :try_start_1
     invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
 
@@ -1716,11 +1398,11 @@
 
     goto :goto_0
 
-    .line 510
+    .line 458
     :catch_0
     move-exception v0
 
-    .line 511
+    .line 459
     .local v0, e:Landroid/os/RemoteException;
     const-string v3, "Keyguard"
 
@@ -1746,15 +1428,19 @@
 
     goto :goto_0
 
-    .line 518
+    .line 464
     .end local v0           #e:Landroid/os/RemoteException;
-    :cond_2
-    if-ne p1, v9, :cond_3
+    :cond_4
+    if-ne p1, v7, :cond_6
 
-    .line 519
-    invoke-direct {p0, v9}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->makeSureFdValid(I)V
+    .line 465
+    invoke-direct {p0, v7}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->makeSureFdValid(I)V
 
-    .line 522
+    .line 467
+    if-eqz p3, :cond_5
+
+    .line 471
+    :cond_5
     :try_start_2
     invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
 
@@ -1768,24 +1454,13 @@
     :try_end_2
     .catch Landroid/os/RemoteException; {:try_start_2 .. :try_end_2} :catch_1
 
-    .line 528
-    :goto_2
-    if-eqz p2, :cond_0
+    goto :goto_0
 
-    .line 529
-    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mKeyguardViewMediator:Lcom/android/internal/policy/impl/KeyguardViewMediator;
-
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFd:Landroid/os/ParcelFileDescriptor;
-
-    invoke-virtual {v3, v7, v4, v2}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->requestScreenshotOfStatusbar(ZLandroid/os/ParcelFileDescriptor;Landroid/app/IUnlockScreenShotReceiver;)V
-
-    goto :goto_1
-
-    .line 524
+    .line 473
     :catch_1
     move-exception v0
 
-    .line 525
+    .line 474
     .restart local v0       #e:Landroid/os/RemoteException;
     const-string v3, "Keyguard"
 
@@ -1809,22 +1484,22 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto :goto_2
+    goto :goto_0
 
-    .line 532
+    .line 476
     .end local v0           #e:Landroid/os/RemoteException;
-    :cond_3
+    :cond_6
     const/4 v3, 0x3
 
-    if-ne p1, v3, :cond_4
+    if-ne p1, v3, :cond_0
 
-    .line 537
+    .line 479
     :try_start_3
     invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
 
     move-result-object v3
 
-    const-string v4, "com.android.email.activity.ShowEmailShortCut"
+    sget-object v4, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->emailClassName:Ljava/lang/String;
 
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareFd:Landroid/os/ParcelFileDescriptor;
 
@@ -1832,24 +1507,13 @@
     :try_end_3
     .catch Landroid/os/RemoteException; {:try_start_3 .. :try_end_3} :catch_2
 
-    .line 543
-    :goto_3
-    if-eqz p2, :cond_0
+    goto :goto_0
 
-    .line 544
-    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mKeyguardViewMediator:Lcom/android/internal/policy/impl/KeyguardViewMediator;
-
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFd:Landroid/os/ParcelFileDescriptor;
-
-    invoke-virtual {v3, v7, v4, v2}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->requestScreenshotOfStatusbar(ZLandroid/os/ParcelFileDescriptor;Landroid/app/IUnlockScreenShotReceiver;)V
-
-    goto :goto_1
-
-    .line 539
+    .line 481
     :catch_2
     move-exception v0
 
-    .line 540
+    .line 482
     .restart local v0       #e:Landroid/os/RemoteException;
     const-string v3, "Keyguard"
 
@@ -1873,44 +1537,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto :goto_3
-
-    .line 546
-    .end local v0           #e:Landroid/os/RemoteException;
-    :cond_4
-    if-ne p1, v8, :cond_0
-
-    if-eqz p2, :cond_0
-
-    .line 548
-    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mActivityManager:Landroid/app/ActivityManager;
-
-    invoke-virtual {v3}, Landroid/app/ActivityManager;->isHomeScreenVisibility()Z
-
-    move-result v1
-
-    .line 549
-    .local v1, isUnlockHome:Z
-    if-eqz v1, :cond_5
-
-    .line 550
-    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mKeyguardViewMediator:Lcom/android/internal/policy/impl/KeyguardViewMediator;
-
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFd:Landroid/os/ParcelFileDescriptor;
-
-    invoke-virtual {v3, v8, v4, v2}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->requestScreenshotOfStatusbar(ZLandroid/os/ParcelFileDescriptor;Landroid/app/IUnlockScreenShotReceiver;)V
-
-    goto/16 :goto_1
-
-    .line 552
-    :cond_5
-    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mKeyguardViewMediator:Lcom/android/internal/policy/impl/KeyguardViewMediator;
-
-    iget-object v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFd:Landroid/os/ParcelFileDescriptor;
-
-    invoke-virtual {v3, v7, v4, v2}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->requestScreenshotOfStatusbar(ZLandroid/os/ParcelFileDescriptor;Landroid/app/IUnlockScreenShotReceiver;)V
-
-    goto/16 :goto_1
+    goto/16 :goto_0
 .end method
 
 
@@ -1920,30 +1547,20 @@
     .parameter "fileName"
 
     .prologue
-    .line 654
+    .line 547
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsBitmapCopy:Landroid/graphics/Bitmap;
 
-    invoke-static {v0, p1}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->copyBitmap(Landroid/graphics/Bitmap;Ljava/lang/String;)V
+    invoke-static {v0, p1}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->bitmapToFile(Landroid/graphics/Bitmap;Ljava/lang/String;)V
 
-    .line 655
+    .line 548
     return-void
-.end method
-
-.method public getLockScreenShotInfo()Lcom/meizu/internal/policy/impl/ScreenshotHelper$LockScreenShotInfo;
-    .locals 1
-
-    .prologue
-    .line 579
-    iget-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mLockScreenShotInfo:Lcom/meizu/internal/policy/impl/ScreenshotHelper$LockScreenShotInfo;
-
-    return-object v0
 .end method
 
 .method public getStatusScreenshot()Landroid/graphics/Bitmap;
     .locals 1
 
     .prologue
-    .line 613
+    .line 506
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmap:Landroid/graphics/Bitmap;
 
     return-object v0
@@ -1953,7 +1570,7 @@
     .locals 3
 
     .prologue
-    .line 568
+    .line 496
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mRunTasks:Ljava/util/List;
 
     if-eqz v1, :cond_0
@@ -1968,7 +1585,7 @@
 
     if-lt v1, v2, :cond_0
 
-    .line 569
+    .line 497
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mRunTasks:Ljava/util/List;
 
     const/4 v2, 0x0
@@ -1979,18 +1596,18 @@
 
     check-cast v0, Landroid/app/ActivityManager$RunningTaskInfo;
 
-    .line 570
+    .line 498
     .local v0, info:Landroid/app/ActivityManager$RunningTaskInfo;
     if-eqz v0, :cond_0
 
-    .line 571
+    .line 499
     iget-object v1, v0, Landroid/app/ActivityManager$RunningTaskInfo;->topActivity:Landroid/content/ComponentName;
 
     invoke-virtual {v1}, Landroid/content/ComponentName;->getClassName()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 574
+    .line 502
     .end local v0           #info:Landroid/app/ActivityManager$RunningTaskInfo;
     :goto_0
     return-object v1
@@ -2005,50 +1622,474 @@
     .locals 1
 
     .prologue
-    .line 617
+    .line 510
     iget-boolean v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mScreenshotFinish:Z
 
     return v0
+.end method
+
+.method public onSystemReady()V
+    .locals 6
+
+    .prologue
+    .line 552
+    iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
+
+    iput v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarWidth:I
+
+    .line 553
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    const v3, 0x1050016
+
+    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v2
+
+    iput v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarHeight:I
+
+    .line 554
+    iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarWidth:I
+
+    iget v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarHeight:I
+
+    mul-int/2addr v2, v3
+
+    mul-int/lit8 v2, v2, 0x4
+
+    add-int/lit8 v2, v2, 0x10
+
+    iput v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarSize:I
+
+    .line 556
+    :try_start_0
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareMemoryFile:Landroid/os/MemoryFile;
+
+    if-nez v2, :cond_0
+
+    .line 557
+    new-instance v2, Landroid/os/MemoryFile;
+
+    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareFileName:Ljava/lang/String;
+
+    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
+
+    invoke-direct {v2, v3, v4}, Landroid/os/MemoryFile;-><init>(Ljava/lang/String;I)V
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareMemoryFile:Landroid/os/MemoryFile;
+
+    .line 558
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareMemoryFile:Landroid/os/MemoryFile;
+
+    invoke-virtual {v2}, Landroid/os/MemoryFile;->getFileDescriptor()Ljava/io/FileDescriptor;
+
+    move-result-object v1
+
+    .line 559
+    .local v1, fd:Ljava/io/FileDescriptor;
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareMemoryFile:Landroid/os/MemoryFile;
+
+    invoke-virtual {v2}, Landroid/os/MemoryFile;->getParcelFileDescriptor()Landroid/os/ParcelFileDescriptor;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareFd:Landroid/os/ParcelFileDescriptor;
+
+    .line 560
+    iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
+
+    iget v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
+
+    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
+
+    sget-object v5, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    invoke-static {v1, v2, v3, v4, v5}, Landroid/graphics/Bitmap;->createShareBitmap(Ljava/io/FileDescriptor;IIILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareBitmap:Landroid/graphics/Bitmap;
+
+    .line 562
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareBitmap:Landroid/graphics/Bitmap;
+
+    const/4 v3, 0x0
+
+    invoke-virtual {v2, v3}, Landroid/graphics/Bitmap;->eraseColor(I)V
+
+    .line 565
+    .end local v1           #fd:Ljava/io/FileDescriptor;
+    :cond_0
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareMemoryFile:Landroid/os/MemoryFile;
+
+    if-nez v2, :cond_1
+
+    .line 566
+    new-instance v2, Landroid/os/MemoryFile;
+
+    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareFileName:Ljava/lang/String;
+
+    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
+
+    invoke-direct {v2, v3, v4}, Landroid/os/MemoryFile;-><init>(Ljava/lang/String;I)V
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareMemoryFile:Landroid/os/MemoryFile;
+
+    .line 567
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareMemoryFile:Landroid/os/MemoryFile;
+
+    invoke-virtual {v2}, Landroid/os/MemoryFile;->getFileDescriptor()Ljava/io/FileDescriptor;
+
+    move-result-object v1
+
+    .line 568
+    .restart local v1       #fd:Ljava/io/FileDescriptor;
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareMemoryFile:Landroid/os/MemoryFile;
+
+    invoke-virtual {v2}, Landroid/os/MemoryFile;->getParcelFileDescriptor()Landroid/os/ParcelFileDescriptor;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareFd:Landroid/os/ParcelFileDescriptor;
+
+    .line 569
+    iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
+
+    iget v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
+
+    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
+
+    sget-object v5, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    invoke-static {v1, v2, v3, v4, v5}, Landroid/graphics/Bitmap;->createShareBitmap(Ljava/io/FileDescriptor;IIILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareBitmap:Landroid/graphics/Bitmap;
+
+    .line 571
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareBitmap:Landroid/graphics/Bitmap;
+
+    const/4 v3, 0x0
+
+    invoke-virtual {v2, v3}, Landroid/graphics/Bitmap;->eraseColor(I)V
+
+    .line 574
+    .end local v1           #fd:Ljava/io/FileDescriptor;
+    :cond_1
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarMemoryFile:Landroid/os/MemoryFile;
+
+    if-nez v2, :cond_2
+
+    .line 575
+    new-instance v2, Landroid/os/MemoryFile;
+
+    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFileName:Ljava/lang/String;
+
+    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarSize:I
+
+    invoke-direct {v2, v3, v4}, Landroid/os/MemoryFile;-><init>(Ljava/lang/String;I)V
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarMemoryFile:Landroid/os/MemoryFile;
+
+    .line 576
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarMemoryFile:Landroid/os/MemoryFile;
+
+    invoke-virtual {v2}, Landroid/os/MemoryFile;->getFileDescriptor()Ljava/io/FileDescriptor;
+
+    move-result-object v1
+
+    .line 577
+    .restart local v1       #fd:Ljava/io/FileDescriptor;
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarMemoryFile:Landroid/os/MemoryFile;
+
+    invoke-virtual {v2}, Landroid/os/MemoryFile;->getParcelFileDescriptor()Landroid/os/ParcelFileDescriptor;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarFd:Landroid/os/ParcelFileDescriptor;
+
+    .line 578
+    iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarSize:I
+
+    iget v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarWidth:I
+
+    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarHeight:I
+
+    sget-object v5, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    invoke-static {v1, v2, v3, v4, v5}, Landroid/graphics/Bitmap;->createShareBitmap(Ljava/io/FileDescriptor;IIILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmap:Landroid/graphics/Bitmap;
+
+    .line 580
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmap:Landroid/graphics/Bitmap;
+
+    const/4 v3, 0x0
+
+    invoke-virtual {v2, v3}, Landroid/graphics/Bitmap;->eraseColor(I)V
+
+    .line 583
+    .end local v1           #fd:Ljava/io/FileDescriptor;
+    :cond_2
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareMemoryFile:Landroid/os/MemoryFile;
+
+    if-nez v2, :cond_3
+
+    .line 584
+    new-instance v2, Landroid/os/MemoryFile;
+
+    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareFileName:Ljava/lang/String;
+
+    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
+
+    invoke-direct {v2, v3, v4}, Landroid/os/MemoryFile;-><init>(Ljava/lang/String;I)V
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareMemoryFile:Landroid/os/MemoryFile;
+
+    .line 585
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareMemoryFile:Landroid/os/MemoryFile;
+
+    invoke-virtual {v2}, Landroid/os/MemoryFile;->getFileDescriptor()Ljava/io/FileDescriptor;
+
+    move-result-object v1
+
+    .line 586
+    .restart local v1       #fd:Ljava/io/FileDescriptor;
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareMemoryFile:Landroid/os/MemoryFile;
+
+    invoke-virtual {v2}, Landroid/os/MemoryFile;->getParcelFileDescriptor()Landroid/os/ParcelFileDescriptor;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareFd:Landroid/os/ParcelFileDescriptor;
+
+    .line 587
+    iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSize:I
+
+    iget v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
+
+    iget v4, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
+
+    sget-object v5, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    invoke-static {v1, v2, v3, v4, v5}, Landroid/graphics/Bitmap;->createShareBitmap(Ljava/io/FileDescriptor;IIILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareBitmap:Landroid/graphics/Bitmap;
+
+    .line 589
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareBitmap:Landroid/graphics/Bitmap;
+
+    const/4 v3, 0x0
+
+    invoke-virtual {v2, v3}, Landroid/graphics/Bitmap;->eraseColor(I)V
+
+    .line 592
+    .end local v1           #fd:Ljava/io/FileDescriptor;
+    :cond_3
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
+
+    if-nez v2, :cond_4
+
+    .line 593
+    iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarWidth:I
+
+    iget v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarHeight:I
+
+    sget-object v4, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    invoke-static {v2, v3, v4}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
+
+    .line 596
+    :cond_4
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsBitmapCopy:Landroid/graphics/Bitmap;
+
+    if-nez v2, :cond_5
+
+    .line 597
+    iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
+
+    iget v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
+
+    sget-object v4, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    invoke-static {v2, v3, v4}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsBitmapCopy:Landroid/graphics/Bitmap;
+
+    .line 599
+    :cond_5
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsBitmapCopy:Landroid/graphics/Bitmap;
+
+    if-nez v2, :cond_6
+
+    .line 600
+    iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
+
+    iget v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
+
+    sget-object v4, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    invoke-static {v2, v3, v4}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsBitmapCopy:Landroid/graphics/Bitmap;
+
+    .line 602
+    :cond_6
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailBitmapCopy:Landroid/graphics/Bitmap;
+
+    if-nez v2, :cond_7
+
+    .line 603
+    iget v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mWidth:I
+
+    iget v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mHeight:I
+
+    sget-object v4, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    invoke-static {v2, v3, v4}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailBitmapCopy:Landroid/graphics/Bitmap;
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 609
+    :cond_7
+    :goto_0
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    const v3, 0x10805a4
+
+    invoke-static {v2, v3}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mpkgPasswordScreenshot:Landroid/graphics/Bitmap;
+
+    .line 610
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    const v3, 0x108028d
+
+    invoke-static {v2, v3}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCameraScreenshot:Landroid/graphics/Bitmap;
+
+    .line 612
+    const/4 v2, 0x1
+
+    iput-boolean v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mSystemReady:Z
+
+    .line 613
+    return-void
+
+    .line 605
+    :catch_0
+    move-exception v0
+
+    .line 606
+    .local v0, ex:Ljava/io/IOException;
+    const-string v2, "Keyguard"
+
+    const-string v3, "KeyguardViewManager IOException"
+
+    invoke-static {v2, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_0
 .end method
 
 .method public removeCallback()V
     .locals 1
 
     .prologue
-    .line 312
+    .line 258
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
 
-    .line 313
+    .line 259
     return-void
 .end method
 
 .method public requestScreenshotAndNoUpdate(I)V
-    .locals 1
+    .locals 4
     .parameter "status"
 
     .prologue
-    .line 406
-    if-eqz p1, :cond_0
+    const/4 v3, 0x0
 
-    const/4 v0, 0x2
+    const/4 v2, 0x1
 
-    if-eq p1, v0, :cond_0
+    .line 347
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
 
-    const/4 v0, 0x3
+    invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    if-ne p1, v0, :cond_1
+    move-result-object v1
 
-    .line 407
+    invoke-virtual {v1}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+
+    move-result-object v1
+
+    iget v0, v1, Landroid/content/res/Configuration;->orientation:I
+
+    .line 348
+    .local v0, orientation:I
+    const/4 v1, 0x3
+
+    if-ne p1, v1, :cond_1
+
+    if-ne v0, v2, :cond_1
+
+    .line 349
+    invoke-direct {p0, p1, v3, v2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->reloadRecentApp(IZZ)V
+
+    .line 353
     :cond_0
-    const/4 v0, 0x0
-
-    invoke-direct {p0, p1, v0}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->reloadRecentApp(IZ)V
-
-    .line 409
-    :cond_1
+    :goto_0
     return-void
+
+    .line 350
+    :cond_1
+    if-eqz p1, :cond_2
+
+    const/4 v1, 0x2
+
+    if-ne p1, v1, :cond_0
+
+    .line 351
+    :cond_2
+    invoke-direct {p0, p1, v3, v2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->reloadRecentApp(IZZ)V
+
+    goto :goto_0
 .end method
 
 .method public requestUpdateScreenshot(I)Landroid/graphics/Bitmap;
@@ -2060,42 +2101,42 @@
 
     const/4 v6, 0x2
 
-    const/4 v5, 0x0
+    const/4 v3, 0x0
 
-    const/4 v2, 0x0
+    const/4 v4, 0x0
 
-    const/4 v4, 0x1
+    const/4 v2, 0x1
 
-    .line 316
+    .line 262
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mActivityManager:Landroid/app/ActivityManager;
 
-    invoke-virtual {v1, v4}, Landroid/app/ActivityManager;->getRunningTasks(I)Ljava/util/List;
+    invoke-virtual {v1, v2}, Landroid/app/ActivityManager;->getRunningTasks(I)Ljava/util/List;
 
     move-result-object v1
 
     iput-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mRunTasks:Ljava/util/List;
 
-    .line 317
+    .line 263
     const/4 v0, 0x0
 
-    .line 318
+    .line 264
     .local v0, pkgPasswordLock:Z
-    if-nez p1, :cond_5
+    if-nez p1, :cond_6
 
-    .line 319
-    iput-boolean v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mScreenshotFinish:Z
+    .line 265
+    iput-boolean v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mScreenshotFinish:Z
 
-    .line 320
+    .line 266
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
 
     if-nez v1, :cond_0
 
-    .line 321
+    .line 267
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
 
-    const-string v3, "access_control"
+    const-string v5, "access_control"
 
-    invoke-virtual {v1, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    invoke-virtual {v1, v5}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v1
 
@@ -2103,7 +2144,7 @@
 
     iput-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
 
-    .line 323
+    .line 269
     :cond_0
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mControllerMonitor:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
@@ -2113,67 +2154,72 @@
 
     if-eqz v1, :cond_3
 
-    .line 324
+    .line 270
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
 
-    sget-object v3, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->phonePackageName:Ljava/lang/String;
+    sget-object v5, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->phonePackageName:Ljava/lang/String;
 
-    invoke-virtual {v1, v3}, Landroid/content/pm/AccessControlManager;->checkControlPackageType(Ljava/lang/String;)I
+    invoke-virtual {v1, v5}, Landroid/content/pm/AccessControlManager;->checkControlPackageType(Ljava/lang/String;)I
 
     move-result v1
 
-    if-ne v1, v4, :cond_1
+    if-ne v1, v2, :cond_1
 
-    .line 325
+    .line 271
     const/4 v0, 0x1
 
-    .line 332
+    .line 278
     :cond_1
     :goto_0
-    invoke-direct {p0, v5, v4}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->reloadRecentApp(IZ)V
+    if-nez v0, :cond_4
 
-    .line 335
+    move v1, v2
+
+    :goto_1
+    invoke-direct {p0, v3, v2, v1}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->reloadRecentApp(IZZ)V
+
+    .line 279
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
 
     if-eqz v1, :cond_2
 
-    .line 336
-    if-eqz v0, :cond_4
+    .line 280
+    if-eqz v0, :cond_5
 
-    .line 337
+    .line 281
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
 
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mpkgPasswordScreenshot:Landroid/graphics/Bitmap;
 
-    invoke-interface {v1, v3, v2, v4}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshot(Landroid/graphics/Bitmap;Landroid/graphics/drawable/Drawable;Z)V
+    invoke-interface {v1, v3, v4, v2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshot(Landroid/graphics/Bitmap;Landroid/graphics/drawable/Drawable;Z)V
 
-    .line 342
-    :goto_1
+    .line 286
+    :goto_2
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
 
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
 
     invoke-interface {v1, v2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshotOfStatusbar(Landroid/graphics/Bitmap;)V
 
-    .line 344
+    .line 288
     :cond_2
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsShareBitmap:Landroid/graphics/Bitmap;
 
-    .line 402
-    :goto_2
+    .line 343
+    :goto_3
     return-object v1
 
-    .line 327
+    .line 273
     :cond_3
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
 
-    sget-object v3, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->contactsPackageName:Ljava/lang/String;
+    sget-object v5, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->contactsPackageName:Ljava/lang/String;
 
-    invoke-virtual {v1, v3}, Landroid/content/pm/AccessControlManager;->checkControlPackageType(Ljava/lang/String;)I
+    invoke-virtual {v1, v5}, Landroid/content/pm/AccessControlManager;->checkControlPackageType(Ljava/lang/String;)I
 
     move-result v1
 
-    if-ne v1, v4, :cond_1
+    if-ne v1, v2, :cond_1
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
 
@@ -2183,36 +2229,42 @@
 
     if-eqz v1, :cond_1
 
-    .line 329
+    .line 275
     const/4 v0, 0x1
 
     goto :goto_0
 
-    .line 339
     :cond_4
+    move v1, v3
+
+    .line 278
+    goto :goto_1
+
+    .line 283
+    :cond_5
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
 
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContactsBitmapCopy:Landroid/graphics/Bitmap;
 
-    invoke-interface {v1, v3, v2, v4}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshot(Landroid/graphics/Bitmap;Landroid/graphics/drawable/Drawable;Z)V
+    invoke-interface {v1, v3, v4, v2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshot(Landroid/graphics/Bitmap;Landroid/graphics/drawable/Drawable;Z)V
 
-    goto :goto_1
+    goto :goto_2
 
-    .line 345
-    :cond_5
-    if-ne p1, v6, :cond_a
+    .line 289
+    :cond_6
+    if-ne p1, v6, :cond_c
 
-    .line 346
+    .line 290
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
 
-    if-nez v1, :cond_6
+    if-nez v1, :cond_7
 
-    .line 347
+    .line 291
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
 
-    const-string v3, "access_control"
+    const-string v5, "access_control"
 
-    invoke-virtual {v1, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    invoke-virtual {v1, v5}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v1
 
@@ -2220,168 +2272,57 @@
 
     iput-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
 
-    .line 349
-    :cond_6
+    .line 293
+    :cond_7
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
 
-    sget-object v3, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mmsPackageName:Ljava/lang/String;
+    sget-object v5, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mmsPackageName:Ljava/lang/String;
 
-    invoke-virtual {v1, v3}, Landroid/content/pm/AccessControlManager;->checkControlPackageType(Ljava/lang/String;)I
+    invoke-virtual {v1, v5}, Landroid/content/pm/AccessControlManager;->checkControlPackageType(Ljava/lang/String;)I
 
     move-result v1
 
-    if-ne v1, v4, :cond_7
+    if-ne v1, v2, :cond_8
 
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
 
     invoke-virtual {v1}, Landroid/content/pm/AccessControlManager;->isAccessControlPasswordEnable()Z
 
     move-result v1
-
-    if-eqz v1, :cond_7
-
-    .line 351
-    const/4 v0, 0x1
-
-    .line 353
-    :cond_7
-    iput-boolean v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mScreenshotFinish:Z
-
-    .line 355
-    invoke-direct {p0, v6, v4}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->reloadRecentApp(IZ)V
-
-    .line 358
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
 
     if-eqz v1, :cond_8
 
-    .line 359
-    if-eqz v0, :cond_9
-
-    .line 360
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
-
-    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mpkgPasswordScreenshot:Landroid/graphics/Bitmap;
-
-    invoke-interface {v1, v3, v2, v4}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshot(Landroid/graphics/Bitmap;Landroid/graphics/drawable/Drawable;Z)V
-
-    .line 365
-    :goto_3
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
-
-    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
-
-    invoke-interface {v1, v2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshotOfStatusbar(Landroid/graphics/Bitmap;)V
-
-    .line 367
-    :cond_8
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareBitmap:Landroid/graphics/Bitmap;
-
-    goto :goto_2
-
-    .line 362
-    :cond_9
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
-
-    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsBitmapCopy:Landroid/graphics/Bitmap;
-
-    invoke-interface {v1, v3, v2, v4}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshot(Landroid/graphics/Bitmap;Landroid/graphics/drawable/Drawable;Z)V
-
-    goto :goto_3
-
-    .line 368
-    :cond_a
-    if-ne p1, v4, :cond_c
-
-    .line 369
-    invoke-direct {p0, v4, v4}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->reloadRecentApp(IZ)V
-
-    .line 370
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
-
-    if-eqz v1, :cond_b
-
-    .line 371
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
-
-    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
-
-    invoke-interface {v1, v3}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshotOfStatusbar(Landroid/graphics/Bitmap;)V
-
-    :cond_b
-    move-object v1, v2
-
-    .line 373
-    goto :goto_2
-
-    .line 374
-    :cond_c
-    if-ne p1, v7, :cond_11
-
-    .line 375
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
-
-    if-nez v1, :cond_d
-
-    .line 376
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
-
-    const-string v3, "access_control"
-
-    invoke-virtual {v1, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Landroid/content/pm/AccessControlManager;
-
-    iput-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
-
-    .line 378
-    :cond_d
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
-
-    sget-object v3, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->emailPackageName:Ljava/lang/String;
-
-    invoke-virtual {v1, v3}, Landroid/content/pm/AccessControlManager;->checkControlPackageType(Ljava/lang/String;)I
-
-    move-result v1
-
-    if-ne v1, v4, :cond_e
-
-    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
-
-    invoke-virtual {v1}, Landroid/content/pm/AccessControlManager;->isAccessControlPasswordEnable()Z
-
-    move-result v1
-
-    if-eqz v1, :cond_e
-
-    .line 380
+    .line 295
     const/4 v0, 0x1
 
-    .line 382
-    :cond_e
-    iput-boolean v5, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mScreenshotFinish:Z
+    .line 297
+    :cond_8
+    iput-boolean v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mScreenshotFinish:Z
 
-    .line 384
-    invoke-direct {p0, v7, v4}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->reloadRecentApp(IZ)V
+    .line 299
+    if-nez v0, :cond_9
 
-    .line 387
+    move v3, v2
+
+    :cond_9
+    invoke-direct {p0, v6, v2, v3}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->reloadRecentApp(IZZ)V
+
+    .line 300
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
 
-    if-eqz v1, :cond_f
+    if-eqz v1, :cond_a
 
-    .line 388
-    if-eqz v0, :cond_10
+    .line 301
+    if-eqz v0, :cond_b
 
-    .line 389
+    .line 302
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
 
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mpkgPasswordScreenshot:Landroid/graphics/Bitmap;
 
-    invoke-interface {v1, v3, v2, v4}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshot(Landroid/graphics/Bitmap;Landroid/graphics/drawable/Drawable;Z)V
+    invoke-interface {v1, v3, v4, v2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshot(Landroid/graphics/Bitmap;Landroid/graphics/drawable/Drawable;Z)V
 
-    .line 395
+    .line 307
     :goto_4
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
 
@@ -2389,50 +2330,171 @@
 
     invoke-interface {v1, v2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshotOfStatusbar(Landroid/graphics/Bitmap;)V
 
-    .line 397
+    .line 309
+    :cond_a
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsShareBitmap:Landroid/graphics/Bitmap;
+
+    goto :goto_3
+
+    .line 304
+    :cond_b
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
+
+    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mMmsBitmapCopy:Landroid/graphics/Bitmap;
+
+    invoke-interface {v1, v3, v4, v2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshot(Landroid/graphics/Bitmap;Landroid/graphics/drawable/Drawable;Z)V
+
+    goto :goto_4
+
+    .line 310
+    :cond_c
+    if-ne p1, v2, :cond_e
+
+    .line 311
+    invoke-direct {p0, v2, v2, v3}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->reloadRecentApp(IZZ)V
+
+    .line 312
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
+
+    if-eqz v1, :cond_d
+
+    .line 313
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
+
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
+
+    invoke-interface {v1, v2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshotOfStatusbar(Landroid/graphics/Bitmap;)V
+
+    :cond_d
+    move-object v1, v4
+
+    .line 315
+    goto :goto_3
+
+    .line 316
+    :cond_e
+    if-ne p1, v7, :cond_14
+
+    .line 317
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
+
+    if-nez v1, :cond_f
+
+    .line 318
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mContext:Landroid/content/Context;
+
+    const-string v5, "access_control"
+
+    invoke-virtual {v1, v5}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Landroid/content/pm/AccessControlManager;
+
+    iput-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
+
+    .line 320
     :cond_f
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
+
+    sget-object v5, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->emailPackageName:Ljava/lang/String;
+
+    invoke-virtual {v1, v5}, Landroid/content/pm/AccessControlManager;->checkControlPackageType(Ljava/lang/String;)I
+
+    move-result v1
+
+    if-ne v1, v2, :cond_10
+
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mAcm:Landroid/content/pm/AccessControlManager;
+
+    invoke-virtual {v1}, Landroid/content/pm/AccessControlManager;->isAccessControlPasswordEnable()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_10
+
+    .line 322
+    const/4 v0, 0x1
+
+    .line 324
+    :cond_10
+    iput-boolean v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mScreenshotFinish:Z
+
+    .line 326
+    if-nez v0, :cond_11
+
+    move v3, v2
+
+    :cond_11
+    invoke-direct {p0, v7, v2, v3}, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->reloadRecentApp(IZZ)V
+
+    .line 328
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
+
+    if-eqz v1, :cond_12
+
+    .line 329
+    if-eqz v0, :cond_13
+
+    .line 330
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
+
+    iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mpkgPasswordScreenshot:Landroid/graphics/Bitmap;
+
+    invoke-interface {v1, v3, v4, v2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshot(Landroid/graphics/Bitmap;Landroid/graphics/drawable/Drawable;Z)V
+
+    .line 336
+    :goto_5
+    iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
+
+    iget-object v2, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mStatusbarBitmapCopy:Landroid/graphics/Bitmap;
+
+    invoke-interface {v1, v2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshotOfStatusbar(Landroid/graphics/Bitmap;)V
+
+    .line 338
+    :cond_12
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailShareBitmap:Landroid/graphics/Bitmap;
 
-    goto/16 :goto_2
+    goto/16 :goto_3
 
-    .line 391
-    :cond_10
+    .line 332
+    :cond_13
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
 
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mEmailBitmapCopy:Landroid/graphics/Bitmap;
 
-    invoke-interface {v1, v3, v2, v4}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshot(Landroid/graphics/Bitmap;Landroid/graphics/drawable/Drawable;Z)V
+    invoke-interface {v1, v3, v4, v2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshot(Landroid/graphics/Bitmap;Landroid/graphics/drawable/Drawable;Z)V
 
-    .line 392
+    .line 333
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
 
     invoke-interface {v1}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->invalidateActivity()V
 
-    goto :goto_4
+    goto :goto_5
 
-    .line 398
-    :cond_11
+    .line 339
+    :cond_14
     const/4 v1, 0x4
 
-    if-ne p1, v1, :cond_12
+    if-ne p1, v1, :cond_15
 
-    .line 399
+    .line 340
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
 
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCameraScreenshot:Landroid/graphics/Bitmap;
 
-    invoke-interface {v1, v3, v2, v4}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshot(Landroid/graphics/Bitmap;Landroid/graphics/drawable/Drawable;Z)V
+    invoke-interface {v1, v3, v4, v2}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->updateScreenshot(Landroid/graphics/Bitmap;Landroid/graphics/drawable/Drawable;Z)V
 
-    .line 400
+    .line 341
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
 
     invoke-interface {v1}, Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;->invalidateActivity()V
 
-    :cond_12
-    move-object v1, v2
+    :cond_15
+    move-object v1, v4
 
-    .line 402
-    goto/16 :goto_2
+    .line 343
+    goto/16 :goto_3
 .end method
 
 .method public setCallback(Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;)V
@@ -2440,9 +2502,9 @@
     .parameter "callback"
 
     .prologue
-    .line 308
+    .line 254
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/ScreenshotHelper;->mCallback:Lcom/meizu/internal/policy/impl/ScreenshotHelper$ScreenshotCallback;
 
-    .line 309
+    .line 255
     return-void
 .end method

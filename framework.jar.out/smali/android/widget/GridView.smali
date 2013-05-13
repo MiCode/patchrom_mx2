@@ -2441,7 +2441,11 @@
     .line 367
     iget-object v3, p0, Landroid/widget/AbsListView;->mListPadding:Landroid/graphics/Rect;
 
-    iget v0, v3, Landroid/graphics/Rect;->top:I
+    iget v3, v3, Landroid/graphics/Rect;->top:I
+
+    iget v4, p0, Landroid/widget/AbsListView;->mTopSpacing:I
+
+    sub-int v0, v3, v4
 
     .line 370
     :cond_0

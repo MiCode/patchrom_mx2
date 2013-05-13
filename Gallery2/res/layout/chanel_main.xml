@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/chanel_whole" android:background="@color/content_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:orientation="vertical" android:id="@id/chanel_whole" android:background="@color/content_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <GridView android:gravity="center" android:id="@id/channel_gridview" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/actionbar_top_bottom_bg" android:background="@color/actionbar_top_bottombackground_color" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <GridView android:gravity="center" android:id="@id/channel_gridview" android:background="@null" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:drawSelectorOnTop="true" />
     <include layout="@layout/no_available_network" />
     <include layout="@layout/list_load_progressbar" />
-</RelativeLayout>
+</FrameLayout>

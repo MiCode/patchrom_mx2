@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/content_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:orientation="vertical" android:background="@color/content_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/actionbar_top_bottom_bg" android:background="@color/actionbar_top_bottombackground_color" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <GridView android:gravity="center" android:id="@id/chanelDetail_gridview" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:drawSelectorOnTop="true" />
+        <GridView android:gravity="center" android:id="@id/chanelDetail_gridview" android:background="@null" android:paddingLeft="@dimen/channeldetail_gridview_leftPaddingNum" android:paddingRight="@dimen/channeldetail_gridview_rightPaddingNum" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:drawSelectorOnTop="true" />
     </LinearLayout>
     <include layout="@layout/no_available_network" />
     <include layout="@layout/list_load_progressbar" />
-</RelativeLayout>
+</FrameLayout>

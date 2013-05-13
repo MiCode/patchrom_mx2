@@ -48,7 +48,7 @@
 
     const/4 v2, 0x0
 
-    .line 63
+    .line 57
     new-instance v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
     const-string v1, "checkPin"
@@ -81,7 +81,7 @@
 
     sput-object v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;->checkPuk:Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
-    .line 62
+    .line 56
     const/4 v0, 0x4
 
     new-array v0, v0, [Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
@@ -118,7 +118,7 @@
     .end annotation
 
     .prologue
-    .line 62
+    .line 56
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -129,7 +129,7 @@
     .parameter "name"
 
     .prologue
-    .line 62
+    .line 56
     const-class v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -145,7 +145,7 @@
     .locals 1
 
     .prologue
-    .line 62
+    .line 56
     sget-object v0, Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;->$VALUES:[Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;
 
     invoke-virtual {v0}, [Lcom/meizu/internal/policy/impl/PasswordAndSimUnlockScreen$SimState;->clone()Ljava/lang/Object;

@@ -327,6 +327,16 @@
     return-void
 .end method
 
+.method public getForceLockSet()I
+    .locals 1
+
+    .prologue
+    .line 171
+    iget v0, p0, Lcom/android/gallery3d/data/FilterLockSet;->mForceLockSet:I
+
+    return v0
+.end method
+
 .method public getMediaItem(II)Ljava/util/ArrayList;
     .locals 2
     .parameter "start"
@@ -495,10 +505,10 @@
     .parameter "force"
 
     .prologue
-    .line 171
+    .line 175
     iput-boolean p1, p0, Lcom/android/gallery3d/data/FilterLockSet;->mForceReload:Z
 
-    .line 172
+    .line 176
     return-void
 .end method
 

@@ -1,0 +1,26 @@
+
+.method public setBackButtonEnable(ZZ)V
+    .locals 0
+    .parameter "enable"
+    .parameter "addBackButton"
+
+    .prologue
+    return-void
+.end method
+
+.method public setMenu(Landroid/view/View;)V
+    .locals 0
+    .parameter "menu"
+
+    .prologue
+    return-void
+.end method
+
+.method public setBackButtonDrawable(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
+    .locals 0
+    .parameter "backIcon"
+    .parameter "backImeIcon"
+
+    .prologue
+    return-void
+.end method

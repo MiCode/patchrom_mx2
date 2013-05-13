@@ -87,7 +87,7 @@
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
     .line 46
-    const v1, 0x10900b6
+    const v1, 0x10900bf
 
     invoke-virtual {p0, v1}, Landroid/preference/SeekBarPreference;->setLayoutResource(I)V
 

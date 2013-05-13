@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 162
+    .line 168
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -49,40 +49,40 @@
 
     const/4 v4, 0x0
 
-    .line 166
+    .line 172
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
-    .line 167
+    .line 173
     .local v1, color:I
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v13
 
-    .line 168
+    .line 174
     .local v13, size:I
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v2
 
-    .line 169
+    .line 175
     .local v2, doodleMode:I
     invoke-virtual {p1}, Landroid/os/Parcel;->readFloat()F
 
     move-result v3
 
-    .line 170
+    .line 176
     .local v3, paintSize:F
     invoke-virtual {p1}, Landroid/os/Parcel;->readFloat()F
 
     move-result v5
 
-    .line 171
+    .line 177
     .local v5, paintScaleSize:F
     if-lez v13, :cond_0
 
-    .line 172
+    .line 178
     new-instance v0, Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
     invoke-virtual {p1, v6}, Landroid/os/Parcel;->readParcelable(Ljava/lang/ClassLoader;)Landroid/os/Parcelable;
@@ -93,7 +93,7 @@
 
     invoke-direct/range {v0 .. v5}, Lcom/android/gallery3d/photoeditor/actions/Doodle;-><init>(IIFLandroid/graphics/PointF;F)V
 
-    .line 173
+    .line 179
     .local v0, doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
     const/4 v12, 0x1
 
@@ -101,7 +101,7 @@
     :goto_0
     if-ge v12, v13, :cond_1
 
-    .line 174
+    .line 180
     invoke-virtual {p1, v6}, Landroid/os/Parcel;->readParcelable(Ljava/lang/ClassLoader;)Landroid/os/Parcelable;
 
     move-result-object v4
@@ -110,12 +110,12 @@
 
     invoke-virtual {v0, v4}, Lcom/android/gallery3d/photoeditor/actions/Doodle;->addControlPoint(Landroid/graphics/PointF;)Z
 
-    .line 173
+    .line 179
     add-int/lit8 v12, v12, 0x1
 
     goto :goto_0
 
-    .line 178
+    .line 184
     .end local v0           #doodle:Lcom/android/gallery3d/photoeditor/actions/Doodle;
     .end local v12           #i:I
     :cond_0
@@ -146,7 +146,7 @@
     .parameter "x0"
 
     .prologue
-    .line 162
+    .line 168
     invoke-virtual {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/Doodle$1;->createFromParcel(Landroid/os/Parcel;)Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
     move-result-object v0
@@ -159,7 +159,7 @@
     .parameter "size"
 
     .prologue
-    .line 183
+    .line 189
     new-array v0, p1, [Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
     return-object v0
@@ -170,7 +170,7 @@
     .parameter "x0"
 
     .prologue
-    .line 162
+    .line 168
     invoke-virtual {p0, p1}, Lcom/android/gallery3d/photoeditor/actions/Doodle$1;->newArray(I)[Lcom/android/gallery3d/photoeditor/actions/Doodle;
 
     move-result-object v0

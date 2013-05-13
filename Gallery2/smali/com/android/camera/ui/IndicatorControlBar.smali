@@ -103,7 +103,7 @@
 
     .prologue
     .line 49
-    const v0, 0x7f0d0097
+    const v0, 0x7f0d009c
 
     invoke-virtual {p0, v0}, Lcom/android/camera/ui/IndicatorControlBar;->findViewById(I)Landroid/view/View;
 

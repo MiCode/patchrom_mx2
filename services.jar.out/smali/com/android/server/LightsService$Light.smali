@@ -41,15 +41,15 @@
     .parameter "id"
 
     .prologue
-    .line 66
+    .line 68
     iput-object p1, p0, Lcom/android/server/LightsService$Light;->this$0:Lcom/android/server/LightsService;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 67
+    .line 69
     iput p2, p0, Lcom/android/server/LightsService$Light;->mId:I
 
-    .line 68
+    .line 70
     return-void
 .end method
 
@@ -75,7 +75,7 @@
     .parameter "x2"
 
     .prologue
-    .line 64
+    .line 66
     invoke-direct {p0, p1, p2}, Lcom/android/server/LightsService$Light;-><init>(Lcom/android/server/LightsService;I)V
 
     return-void
@@ -86,7 +86,7 @@
     .parameter "x0"
 
     .prologue
-    .line 64
+    .line 66
     invoke-direct {p0}, Lcom/android/server/LightsService$Light;->stopFlashing()V
 
     return-void
@@ -101,7 +101,7 @@
     .parameter "brightnessMode"
 
     .prologue
-    .line 121
+    .line 146
     iget v0, p0, Lcom/android/server/LightsService$Light;->mColor:I
 
     if-ne p1, v0, :cond_0
@@ -118,20 +118,20 @@
 
     if-eq p4, v0, :cond_1
 
-    .line 124
+    .line 149
     :cond_0
     iput p1, p0, Lcom/android/server/LightsService$Light;->mColor:I
 
-    .line 125
+    .line 150
     iput p2, p0, Lcom/android/server/LightsService$Light;->mMode:I
 
-    .line 126
+    .line 151
     iput p3, p0, Lcom/android/server/LightsService$Light;->mOnMS:I
 
-    .line 127
+    .line 152
     iput p4, p0, Lcom/android/server/LightsService$Light;->mOffMS:I
 
-    .line 128
+    .line 153
     iget-object v0, p0, Lcom/android/server/LightsService$Light;->this$0:Lcom/android/server/LightsService;
 
     #getter for: Lcom/android/server/LightsService;->mNativePointer:I
@@ -154,7 +154,7 @@
     #calls: Lcom/android/server/LightsService;->setLight_native(IIIIIII)V
     invoke-static/range {v0 .. v6}, Lcom/android/server/LightsService;->access$200(IIIIIII)V
 
-    .line 130
+    .line 155
     :cond_1
     return-void
 .end method
@@ -163,10 +163,10 @@
     .locals 6
 
     .prologue
-    .line 115
+    .line 140
     monitor-enter p0
 
-    .line 116
+    .line 141
     :try_start_0
     iget v1, p0, Lcom/android/server/LightsService$Light;->mColor:I
 
@@ -182,13 +182,13 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/android/server/LightsService$Light;->setLightLocked(IIIII)V
 
-    .line 117
+    .line 142
     monitor-exit p0
 
-    .line 118
+    .line 143
     return-void
 
-    .line 117
+    .line 142
     :catchall_0
     move-exception v0
 
@@ -205,14 +205,14 @@
     .locals 2
 
     .prologue
-    .line 96
+    .line 121
     const v0, 0xffffff
 
     const/4 v1, 0x7
 
     invoke-virtual {p0, v0, v1}, Lcom/android/server/LightsService$Light;->pulse(II)V
 
-    .line 97
+    .line 122
     return-void
 .end method
 
@@ -222,10 +222,10 @@
     .parameter "onMS"
 
     .prologue
-    .line 100
+    .line 125
     monitor-enter p0
 
-    .line 101
+    .line 126
     :try_start_0
     iget v0, p0, Lcom/android/server/LightsService$Light;->mColor:I
 
@@ -235,7 +235,7 @@
 
     if-nez v0, :cond_0
 
-    .line 102
+    .line 127
     const/4 v2, 0x2
 
     const/16 v4, 0x3e8
@@ -250,7 +250,7 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/android/server/LightsService$Light;->setLightLocked(IIIII)V
 
-    .line 103
+    .line 128
     iget-object v0, p0, Lcom/android/server/LightsService$Light;->this$0:Lcom/android/server/LightsService;
 
     #getter for: Lcom/android/server/LightsService;->mH:Landroid/os/Handler;
@@ -275,14 +275,14 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
-    .line 105
+    .line 130
     :cond_0
     monitor-exit p0
 
-    .line 106
+    .line 131
     return-void
 
-    .line 105
+    .line 130
     :catchall_0
     move-exception v0
 
@@ -298,28 +298,168 @@
     .parameter "brightness"
 
     .prologue
-    .line 71
+    .line 73
     const/4 v0, 0x0
 
     invoke-virtual {p0, p1, v0}, Lcom/android/server/LightsService$Light;->setBrightness(II)V
 
-    .line 72
+    .line 74
     return-void
 .end method
 
 .method public setBrightness(II)V
-    .locals 6
+    .locals 9
     .parameter "brightness"
     .parameter "brightnessMode"
 
     .prologue
-    .line 75
-    monitor-enter p0
-
-    .line 76
-    and-int/lit16 v1, p1, 0xff
+    const/4 v6, 0x0
 
     .line 77
+    monitor-enter p0
+
+    .line 78
+    :try_start_0
+    iget v0, p0, Lcom/android/server/LightsService$Light;->mId:I
+
+    const/4 v2, 0x2
+
+    if-ne v0, v2, :cond_4
+
+    .line 79
+    sget-object v0, Landroid/os/Build;->IS_MX2:Ljava/lang/Boolean;
+
+    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    invoke-static {}, Lcom/android/server/LightsService;->getAdjustBrightness()I
+
+    move-result v6
+
+    .line 80
+    .local v6, adjust:I
+    :cond_0
+    add-int/2addr p1, v6
+
+    .line 81
+    const-string v0, "led.button.brightness"
+
+    invoke-static {v0}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v7
+
+    .line 82
+    .local v7, ratio:Ljava/lang/String;
+    const v8, 0x3ea8f5c3
+
+    .line 83
+    .local v8, ratioBrightness:F
+    if-eqz v7, :cond_1
+
+    const-string v0, ""
+
+    invoke-virtual {v0, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    .line 84
+    invoke-static {v7}, Ljava/lang/Float;->parseFloat(Ljava/lang/String;)F
+
+    move-result v8
+
+    .line 85
+    const-string v0, "LightsService"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "ratioBrightness "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v8}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 87
+    :cond_1
+    int-to-float v0, p1
+
+    mul-float/2addr v0, v8
+
+    float-to-int p1, v0
+
+    .line 88
+    const/4 v0, 0x5
+
+    if-ge p1, v0, :cond_2
+
+    if-lez p1, :cond_2
+
+    .line 89
+    const/4 p1, 0x5
+
+    .line 91
+    :cond_2
+    const-string v0, "LightsService"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "brightness "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 92
+    if-gez p1, :cond_3
+
+    .line 93
+    const/4 p1, 0x0
+
+    .line 96
+    :cond_3
+    const/16 v0, 0xff
+
+    if-le p1, v0, :cond_4
+
+    .line 97
+    const/16 p1, 0xff
+
+    .line 101
+    .end local v6           #adjust:I
+    .end local v7           #ratio:Ljava/lang/String;
+    .end local v8           #ratioBrightness:F
+    :cond_4
+    and-int/lit16 v1, p1, 0xff
+
+    .line 102
     .local v1, color:I
     const/high16 v0, -0x100
 
@@ -333,7 +473,7 @@
 
     or-int/2addr v1, v0
 
-    .line 78
+    .line 103
     const/4 v2, 0x0
 
     const/4 v3, 0x0
@@ -344,16 +484,16 @@
 
     move v5, p2
 
-    :try_start_0
     invoke-virtual/range {v0 .. v5}, Lcom/android/server/LightsService$Light;->setLightLocked(IIIII)V
 
-    .line 79
+    .line 104
     monitor-exit p0
 
-    .line 80
+    .line 105
     return-void
 
-    .line 79
+    .line 104
+    .end local v1           #color:I
     :catchall_0
     move-exception v0
 
@@ -369,10 +509,10 @@
     .parameter "color"
 
     .prologue
-    .line 83
+    .line 108
     monitor-enter p0
 
-    .line 84
+    .line 109
     const/4 v2, 0x0
 
     const/4 v3, 0x0
@@ -388,13 +528,13 @@
     :try_start_0
     invoke-virtual/range {v0 .. v5}, Lcom/android/server/LightsService$Light;->setLightLocked(IIIII)V
 
-    .line 85
+    .line 110
     monitor-exit p0
 
-    .line 86
+    .line 111
     return-void
 
-    .line 85
+    .line 110
     :catchall_0
     move-exception v0
 
@@ -413,10 +553,10 @@
     .parameter "offMS"
 
     .prologue
-    .line 89
+    .line 114
     monitor-enter p0
 
-    .line 90
+    .line 115
     const/4 v5, 0x0
 
     move-object v0, p0
@@ -432,13 +572,13 @@
     :try_start_0
     invoke-virtual/range {v0 .. v5}, Lcom/android/server/LightsService$Light;->setLightLocked(IIIII)V
 
-    .line 91
+    .line 116
     monitor-exit p0
 
-    .line 92
+    .line 117
     return-void
 
-    .line 91
+    .line 116
     :catchall_0
     move-exception v0
 
@@ -455,7 +595,7 @@
     .parameter "brightness"
 
     .prologue
-    .line 142
+    .line 167
     iget-object v0, p0, Lcom/android/server/LightsService$Light;->this$0:Lcom/android/server/LightsService;
 
     #getter for: Lcom/android/server/LightsService;->mNativePointer:I
@@ -466,7 +606,7 @@
     #calls: Lcom/android/server/LightsService;->setLightButton_native(III)V
     invoke-static {v0, p1, p2}, Lcom/android/server/LightsService;->access$500(III)V
 
-    .line 143
+    .line 168
     return-void
 .end method
 
@@ -475,7 +615,7 @@
     .parameter "type"
 
     .prologue
-    .line 133
+    .line 158
     iget-object v0, p0, Lcom/android/server/LightsService$Light;->this$0:Lcom/android/server/LightsService;
 
     #getter for: Lcom/android/server/LightsService;->mNativePointer:I
@@ -486,7 +626,7 @@
     #calls: Lcom/android/server/LightsService;->setLightButtonScrollType_native(II)V
     invoke-static {v0, p1}, Lcom/android/server/LightsService;->access$300(II)V
 
-    .line 134
+    .line 159
     return-void
 .end method
 
@@ -495,7 +635,7 @@
     .parameter "slope"
 
     .prologue
-    .line 137
+    .line 162
     const-string v0, "LightsService"
 
     invoke-static {}, Landroid/os/Debug;->getCaller()Ljava/lang/String;
@@ -504,7 +644,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 138
+    .line 163
     iget-object v0, p0, Lcom/android/server/LightsService$Light;->this$0:Lcom/android/server/LightsService;
 
     #getter for: Lcom/android/server/LightsService;->mNativePointer:I
@@ -515,7 +655,7 @@
     #calls: Lcom/android/server/LightsService;->setLightButtonSlope_native(II)V
     invoke-static {v0, p1}, Lcom/android/server/LightsService;->access$400(II)V
 
-    .line 139
+    .line 164
     return-void
 .end method
 
@@ -524,7 +664,7 @@
     .parameter "state"
 
     .prologue
-    .line 146
+    .line 171
     iget-object v0, p0, Lcom/android/server/LightsService$Light;->this$0:Lcom/android/server/LightsService;
 
     #getter for: Lcom/android/server/LightsService;->mNativePointer:I
@@ -535,7 +675,7 @@
     #calls: Lcom/android/server/LightsService;->setLightButtonState_native(II)V
     invoke-static {v0, p1}, Lcom/android/server/LightsService;->access$600(II)V
 
-    .line 147
+    .line 172
     return-void
 .end method
 
@@ -543,10 +683,10 @@
     .locals 6
 
     .prologue
-    .line 109
+    .line 134
     monitor-enter p0
 
-    .line 110
+    .line 135
     const/4 v1, 0x0
 
     const/4 v2, 0x0
@@ -562,13 +702,13 @@
     :try_start_0
     invoke-virtual/range {v0 .. v5}, Lcom/android/server/LightsService$Light;->setLightLocked(IIIII)V
 
-    .line 111
+    .line 136
     monitor-exit p0
 
-    .line 112
+    .line 137
     return-void
 
-    .line 111
+    .line 136
     :catchall_0
     move-exception v0
 

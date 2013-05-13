@@ -30,6 +30,10 @@
 
 .field static final TRANSACTION_getAdnRecordsSize:I = 0x4
 
+.field static final TRANSACTION_hasAdditionalNumber:I = 0x7
+
+.field static final TRANSACTION_hasEmail:I = 0x8
+
 .field static final TRANSACTION_isUsim:I = 0x6
 
 .field static final TRANSACTION_updateAdnRecordsInEfByIndex:I = 0x3
@@ -38,9 +42,9 @@
 
 .field static final TRANSACTION_updateAdnRecordsInEfBySearch:I = 0x2
 
-.field static final TRANSACTION_getFreeAdn:I = 0x7
+.field static final TRANSACTION_getFreeAdn:I = 0x9
 
-.field static final TRANSACTION_getAdnCapacity:I = 0x8
+.field static final TRANSACTION_getAdnCapacity:I = 0xa
 
 
 # direct methods
@@ -132,7 +136,7 @@
     .line 51
     sparse-switch p1, :sswitch_data_0
 
-    .line 147
+    .line 163
     invoke-super {p0, p1, p2, p3, p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v0
@@ -484,9 +488,77 @@
 
     goto :goto_4
 
+    .line 148
+    .end local v8           #_result:Z
+    :sswitch_7
+    const-string v0, "com.android.internal.telephony.IIccPhoneBook"
+
+    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 149
+    invoke-virtual {p0}, Lcom/android/internal/telephony/IIccPhoneBook$Stub;->hasAdditionalNumber()Z
+
+    move-result v8
+
+    .line 150
+    .restart local v8       #_result:Z
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 151
+    if-eqz v8, :cond_4
+
+    const/4 v0, 0x1
+
+    :goto_5
+    invoke-virtual {p3, v0}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 152
+    const/4 v0, 0x1
+
+    goto/16 :goto_0
+
+    .line 151
+    :cond_4
+    const/4 v0, 0x0
+
+    goto :goto_5
+
+    .line 156
+    .end local v8           #_result:Z
+    :sswitch_8
+    const-string v0, "com.android.internal.telephony.IIccPhoneBook"
+
+    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 157
+    invoke-virtual {p0}, Lcom/android/internal/telephony/IIccPhoneBook$Stub;->hasEmail()Z
+
+    move-result v8
+
+    .line 158
+    .restart local v8       #_result:Z
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 159
+    if-eqz v8, :cond_5
+
+    const/4 v0, 0x1
+
+    :goto_6
+    invoke-virtual {p3, v0}, Landroid/os/Parcel;->writeInt(I)V
+
+    const/4 v0, 0x1
+
+    goto/16 :goto_0
+
+    :cond_5
+    const/4 v0, 0x0
+
+    goto :goto_6
+
     .end local v1           #_arg0:I
     .end local v8           #_result:[I
-    :sswitch_7
+    :sswitch_9
     const-string v0, "com.android.internal.telephony.IIccPhoneBook"
 
     invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
@@ -505,7 +577,7 @@
     goto/16 :goto_0
 
     .end local v8           #_result:I
-    :sswitch_8
+    :sswitch_a
     const-string v0, "com.android.internal.telephony.IIccPhoneBook"
 
     invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
@@ -533,6 +605,8 @@
         0x6 -> :sswitch_6
         0x7 -> :sswitch_7
         0x8 -> :sswitch_8
+        0x9 -> :sswitch_9
+        0xa -> :sswitch_a
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method

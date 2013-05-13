@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 196
+    .line 194
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$WallpaperObserver;->this$0:Lcom/meizu/internal/policy/impl/LockViewBaseSe;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -40,24 +40,24 @@
     .parameter "intent"
 
     .prologue
-    .line 198
+    .line 196
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$WallpaperObserver;->this$0:Lcom/meizu/internal/policy/impl/LockViewBaseSe;
 
     iget-object v1, v1, Lcom/meizu/internal/policy/impl/LockViewBaseSe;->mWallpaperManager:Landroid/app/WallpaperManager;
 
     if-nez v1, :cond_0
 
-    .line 211
+    .line 209
     :goto_0
     return-void
 
-    .line 200
+    .line 198
     :cond_0
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 201
+    .line 199
     .local v0, action:Ljava/lang/String;
     iget-object v1, p0, Lcom/meizu/internal/policy/impl/LockViewBaseSe$WallpaperObserver;->this$0:Lcom/meizu/internal/policy/impl/LockViewBaseSe;
 

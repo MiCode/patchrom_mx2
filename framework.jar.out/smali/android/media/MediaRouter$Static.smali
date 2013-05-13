@@ -147,7 +147,7 @@
     .line 87
     new-instance v1, Landroid/media/MediaRouter$RouteCategory;
 
-    const v2, 0x1040558
+    const v2, 0x104055c
 
     const/4 v3, 0x1
 
@@ -180,7 +180,7 @@
     .line 95
     iget-object v1, p0, Landroid/media/MediaRouter$Static;->mDefaultAudio:Landroid/media/MediaRouter$RouteInfo;
 
-    const v2, 0x1040554
+    const v2, 0x1040558
 
     iput v2, v1, Landroid/media/MediaRouter$RouteInfo;->mNameResId:I
 
@@ -281,7 +281,7 @@
 
     .line 118
     :cond_0
-    const v3, 0x1040555
+    const v3, 0x1040559
 
     .line 126
     .local v3, name:I
@@ -420,7 +420,7 @@
     if-eqz v4, :cond_5
 
     .line 120
-    const v3, 0x1040556
+    const v3, 0x104055a
 
     .restart local v3       #name:I
     goto :goto_0
@@ -435,7 +435,7 @@
     if-eqz v4, :cond_6
 
     .line 122
-    const v3, 0x1040557
+    const v3, 0x104055b
 
     .restart local v3       #name:I
     goto :goto_0
@@ -443,7 +443,7 @@
     .line 124
     .end local v3           #name:I
     :cond_6
-    const v3, 0x1040554
+    const v3, 0x1040558
 
     .restart local v3       #name:I
     goto :goto_0

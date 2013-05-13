@@ -868,7 +868,7 @@
     .end local v25           #rotation:I
     :cond_3
     :goto_1
-    if-eqz p8, :cond_a
+    if-eqz p8, :cond_b
 
     .line 162
     :try_start_2
@@ -1039,7 +1039,7 @@
 
     .line 175
     .local v18, format:Landroid/graphics/Bitmap$CompressFormat;
-    if-eqz v14, :cond_11
+    if-eqz v14, :cond_13
 
     .line 176
     const/16 v4, 0x5a
@@ -1050,7 +1050,7 @@
 
     move-result v4
 
-    if-nez v4, :cond_b
+    if-nez v4, :cond_c
 
     .line 177
     invoke-virtual/range {v20 .. v20}, Ljava/io/File;->delete()Z
@@ -1078,7 +1078,7 @@
 
     .line 204
     :cond_6
-    if-eqz v20, :cond_9
+    if-eqz v20, :cond_a
 
     .line 205
     const-string v5, "image/jpeg"
@@ -1095,9 +1095,26 @@
 
     move-result v5
 
-    if-eqz v5, :cond_7
+    if-nez v5, :cond_7
+
+    const-string v5, "image/jpg"
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
+
+    invoke-virtual {v6}, Lcom/android/gallery3d/data/MediaItem;->getMimeType()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_8
 
     .line 206
+    :cond_7
     throw v20
 
     move-result-object v5
@@ -1113,8 +1130,8 @@
     invoke-static {v0, v5, v1, v2, v3}, Lcom/android/gallery3d/app/CropImage;->copyExif(Ljava/lang/String;Ljava/lang/String;IIZ)V
 
     .line 208
-    :cond_7
-    if-eqz p8, :cond_9
+    :cond_8
+    if-eqz p8, :cond_a
 
     .line 209
     new-instance v22, Ljava/io/File;
@@ -1131,13 +1148,13 @@
 
     move-result v5
 
-    if-eqz v5, :cond_8
+    if-eqz v5, :cond_9
 
     .line 211
     invoke-virtual/range {v22 .. v22}, Ljava/io/File;->delete()Z
 
     .line 213
-    :cond_8
+    :cond_9
     new-instance v29, Ljava/io/File;
 
     move-object/from16 v0, v29
@@ -1164,7 +1181,7 @@
     .line 219
     .end local v22           #oldFile:Ljava/io/File;
     .end local v29           #tempFie:Ljava/io/File;
-    :cond_9
+    :cond_a
     :goto_5
     return v4
 
@@ -1173,7 +1190,7 @@
     .restart local v14       #bitmap:Landroid/graphics/Bitmap;
     .restart local v24       #os:Ljava/io/OutputStream;
     .restart local v26       #sample:I
-    :cond_a
+    :cond_b
     :try_start_6
     new-instance v21, Ljava/io/File;
 
@@ -1199,7 +1216,7 @@
     .end local v24           #os:Ljava/io/OutputStream;
     .restart local v12       #os:Ljava/io/OutputStream;
     .restart local v18       #format:Landroid/graphics/Bitmap$CompressFormat;
-    :cond_b
+    :cond_c
     :try_start_7
     invoke-virtual {v14}, Landroid/graphics/Bitmap;->recycle()V
     :try_end_7
@@ -1208,8 +1225,8 @@
     .catch Ljava/io/IOException; {:try_start_7 .. :try_end_7} :catch_4
 
     .line 201
-    :cond_c
-    if-eqz v12, :cond_d
+    :cond_d
+    if-eqz v12, :cond_e
 
     .line 202
     move-object/from16 v0, p0
@@ -1217,8 +1234,8 @@
     invoke-virtual {v0, v12}, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->closeOutputStream(Ljava/io/OutputStream;)V
 
     .line 204
-    :cond_d
-    if-eqz v20, :cond_10
+    :cond_e
+    if-eqz v20, :cond_12
 
     .line 205
     const-string v4, "image/jpeg"
@@ -1235,9 +1252,26 @@
 
     move-result v4
 
-    if-eqz v4, :cond_e
+    if-nez v4, :cond_f
+
+    const-string v4, "image/jpg"
+
+    move-object/from16 v0, p0
+
+    iget-object v5, v0, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
+
+    invoke-virtual {v5}, Lcom/android/gallery3d/data/MediaItem;->getMimeType()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v4, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_10
 
     .line 206
+    :cond_f
     invoke-virtual/range {v20 .. v20}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
 
     move-result-object v4
@@ -1253,8 +1287,8 @@
     invoke-static {v0, v4, v1, v2, v3}, Lcom/android/gallery3d/app/CropImage;->copyExif(Ljava/lang/String;Ljava/lang/String;IIZ)V
 
     .line 208
-    :cond_e
-    if-eqz p8, :cond_10
+    :cond_10
+    if-eqz p8, :cond_12
 
     .line 209
     new-instance v22, Ljava/io/File;
@@ -1271,13 +1305,13 @@
 
     move-result v4
 
-    if-eqz v4, :cond_f
+    if-eqz v4, :cond_11
 
     .line 211
     invoke-virtual/range {v22 .. v22}, Ljava/io/File;->delete()Z
 
     .line 213
-    :cond_f
+    :cond_11
     new-instance v29, Ljava/io/File;
 
     move-object/from16 v0, v29
@@ -1300,13 +1334,13 @@
     .line 219
     .end local v22           #oldFile:Ljava/io/File;
     .end local v29           #tempFie:Ljava/io/File;
-    :cond_10
+    :cond_12
     const/4 v4, 0x1
 
     goto :goto_5
 
     .line 184
-    :cond_11
+    :cond_13
     const/4 v5, 0x0
 
     const/4 v8, 0x0
@@ -1328,7 +1362,7 @@
 
     move-result v4
 
-    if-eqz v4, :cond_15
+    if-eqz v4, :cond_18
 
     const/4 v10, 0x1
 
@@ -1349,7 +1383,7 @@
 
     move-result v4
 
-    if-nez v4, :cond_c
+    if-nez v4, :cond_d
 
     .line 189
     invoke-virtual/range {v20 .. v20}, Ljava/io/File;->delete()Z
@@ -1365,7 +1399,7 @@
     const/4 v4, 0x0
 
     .line 201
-    if-eqz v12, :cond_12
+    if-eqz v12, :cond_14
 
     .line 202
     move-object/from16 v0, p0
@@ -1373,8 +1407,8 @@
     invoke-virtual {v0, v12}, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->closeOutputStream(Ljava/io/OutputStream;)V
 
     .line 204
-    :cond_12
-    if-eqz v20, :cond_9
+    :cond_14
+    if-eqz v20, :cond_a
 
     .line 205
     const-string v5, "image/jpeg"
@@ -1391,9 +1425,26 @@
 
     move-result v5
 
-    if-eqz v5, :cond_13
+    if-nez v5, :cond_15
+
+    const-string v5, "image/jpg"
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
+
+    invoke-virtual {v6}, Lcom/android/gallery3d/data/MediaItem;->getMimeType()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_16
 
     .line 206
+    :cond_15
     throw v20
 
     move-result-object v5
@@ -1409,8 +1460,8 @@
     invoke-static {v0, v5, v1, v2, v3}, Lcom/android/gallery3d/app/CropImage;->copyExif(Ljava/lang/String;Ljava/lang/String;IIZ)V
 
     .line 208
-    :cond_13
-    if-eqz p8, :cond_9
+    :cond_16
+    if-eqz p8, :cond_a
 
     .line 209
     new-instance v22, Ljava/io/File;
@@ -1427,13 +1478,13 @@
 
     move-result v5
 
-    if-eqz v5, :cond_14
+    if-eqz v5, :cond_17
 
     .line 211
     invoke-virtual/range {v22 .. v22}, Ljava/io/File;->delete()Z
 
     .line 213
-    :cond_14
+    :cond_17
     new-instance v29, Ljava/io/File;
 
     move-object/from16 v0, v29
@@ -1455,7 +1506,7 @@
     .line 184
     .end local v22           #oldFile:Ljava/io/File;
     .end local v29           #tempFie:Ljava/io/File;
-    :cond_15
+    :cond_18
     const/4 v10, 0x0
 
     goto :goto_6
@@ -1482,7 +1533,7 @@
     const/4 v4, 0x0
 
     .line 201
-    if-eqz v12, :cond_16
+    if-eqz v12, :cond_19
 
     .line 202
     move-object/from16 v0, p0
@@ -1490,8 +1541,8 @@
     invoke-virtual {v0, v12}, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->closeOutputStream(Ljava/io/OutputStream;)V
 
     .line 204
-    :cond_16
-    if-eqz v20, :cond_9
+    :cond_19
+    if-eqz v20, :cond_a
 
     .line 205
     const-string v5, "image/jpeg"
@@ -1508,9 +1559,26 @@
 
     move-result v5
 
-    if-eqz v5, :cond_17
+    if-nez v5, :cond_1a
+
+    const-string v5, "image/jpg"
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
+
+    invoke-virtual {v6}, Lcom/android/gallery3d/data/MediaItem;->getMimeType()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_1b
 
     .line 206
+    :cond_1a
     throw v20
 
     move-result-object v5
@@ -1526,8 +1594,8 @@
     invoke-static {v0, v5, v1, v2, v3}, Lcom/android/gallery3d/app/CropImage;->copyExif(Ljava/lang/String;Ljava/lang/String;IIZ)V
 
     .line 208
-    :cond_17
-    if-eqz p8, :cond_9
+    :cond_1b
+    if-eqz p8, :cond_a
 
     .line 209
     new-instance v22, Ljava/io/File;
@@ -1544,13 +1612,13 @@
 
     move-result v5
 
-    if-eqz v5, :cond_18
+    if-eqz v5, :cond_1c
 
     .line 211
     invoke-virtual/range {v22 .. v22}, Ljava/io/File;->delete()Z
 
     .line 213
-    :cond_18
+    :cond_1c
     new-instance v29, Ljava/io/File;
 
     move-object/from16 v0, v29
@@ -1591,7 +1659,7 @@
     const/4 v4, 0x0
 
     .line 201
-    if-eqz v12, :cond_19
+    if-eqz v12, :cond_1d
 
     .line 202
     move-object/from16 v0, p0
@@ -1599,8 +1667,8 @@
     invoke-virtual {v0, v12}, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->closeOutputStream(Ljava/io/OutputStream;)V
 
     .line 204
-    :cond_19
-    if-eqz v20, :cond_9
+    :cond_1d
+    if-eqz v20, :cond_a
 
     .line 205
     const-string v5, "image/jpeg"
@@ -1617,9 +1685,26 @@
 
     move-result v5
 
-    if-eqz v5, :cond_1a
+    if-nez v5, :cond_1e
+
+    const-string v5, "image/jpg"
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
+
+    invoke-virtual {v6}, Lcom/android/gallery3d/data/MediaItem;->getMimeType()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_1f
 
     .line 206
+    :cond_1e
     throw v20
 
     move-result-object v5
@@ -1635,8 +1720,8 @@
     invoke-static {v0, v5, v1, v2, v3}, Lcom/android/gallery3d/app/CropImage;->copyExif(Ljava/lang/String;Ljava/lang/String;IIZ)V
 
     .line 208
-    :cond_1a
-    if-eqz p8, :cond_9
+    :cond_1f
+    if-eqz p8, :cond_a
 
     .line 209
     new-instance v22, Ljava/io/File;
@@ -1653,13 +1738,13 @@
 
     move-result v5
 
-    if-eqz v5, :cond_1b
+    if-eqz v5, :cond_20
 
     .line 211
     invoke-virtual/range {v22 .. v22}, Ljava/io/File;->delete()Z
 
     .line 213
-    :cond_1b
+    :cond_20
     new-instance v29, Ljava/io/File;
 
     move-object/from16 v0, v29
@@ -1692,7 +1777,7 @@
     .end local v24           #os:Ljava/io/OutputStream;
     .restart local v12       #os:Ljava/io/OutputStream;
     :goto_9
-    if-eqz v12, :cond_1c
+    if-eqz v12, :cond_21
 
     .line 202
     move-object/from16 v0, p0
@@ -1700,8 +1785,8 @@
     invoke-virtual {v0, v12}, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->closeOutputStream(Ljava/io/OutputStream;)V
 
     .line 204
-    :cond_1c
-    if-eqz v20, :cond_1f
+    :cond_21
+    if-eqz v20, :cond_25
 
     .line 205
     const-string v5, "image/jpeg"
@@ -1718,9 +1803,26 @@
 
     move-result v5
 
-    if-eqz v5, :cond_1d
+    if-nez v5, :cond_22
+
+    const-string v5, "image/jpg"
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/gallery3d/ui/DetailsSaveFileHelper;->mMediaItem:Lcom/android/gallery3d/data/MediaItem;
+
+    invoke-virtual {v6}, Lcom/android/gallery3d/data/MediaItem;->getMimeType()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_23
 
     .line 206
+    :cond_22
     invoke-virtual/range {v20 .. v20}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
 
     move-result-object v5
@@ -1736,8 +1838,8 @@
     invoke-static {v0, v5, v1, v2, v3}, Lcom/android/gallery3d/app/CropImage;->copyExif(Ljava/lang/String;Ljava/lang/String;IIZ)V
 
     .line 208
-    :cond_1d
-    if-eqz p8, :cond_1f
+    :cond_23
+    if-eqz p8, :cond_25
 
     .line 209
     new-instance v22, Ljava/io/File;
@@ -1754,13 +1856,13 @@
 
     move-result v5
 
-    if-eqz v5, :cond_1e
+    if-eqz v5, :cond_24
 
     .line 211
     invoke-virtual/range {v22 .. v22}, Ljava/io/File;->delete()Z
 
     .line 213
-    :cond_1e
+    :cond_24
     new-instance v29, Ljava/io/File;
 
     move-object/from16 v0, v29
@@ -1783,7 +1885,7 @@
     .line 201
     .end local v22           #oldFile:Ljava/io/File;
     .end local v29           #tempFie:Ljava/io/File;
-    :cond_1f
+    :cond_25
     throw v4
 
     .end local v12           #os:Ljava/io/OutputStream;

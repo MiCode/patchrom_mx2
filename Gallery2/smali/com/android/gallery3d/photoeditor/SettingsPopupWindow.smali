@@ -91,7 +91,7 @@
     .locals 4
 
     .prologue
-    .line 50
+    .line 49
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/SettingsPopupWindow;->mAnchor:Landroid/view/View;
 
     if-eqz v0, :cond_0
@@ -104,7 +104,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 51
+    .line 50
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/SettingsPopupWindow;->mAnchor:Landroid/view/View;
 
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/SettingsPopupWindow;->mDismissRunnable:Ljava/lang/Runnable;
@@ -113,7 +113,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/view/View;->postDelayed(Ljava/lang/Runnable;J)Z
 
-    .line 53
+    .line 52
     :cond_0
     return-void
 .end method
@@ -130,4 +130,38 @@
     move-result v0
 
     return v0
+.end method
+
+.method public showAsDropDown(Landroid/view/View;)V
+    .locals 3
+    .parameter "anchor"
+
+    .prologue
+    const/4 v2, 0x0
+
+    .line 41
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/SettingsPopupWindow;->mAnchor:Landroid/view/View;
+
+    if-eqz v0, :cond_0
+
+    .line 42
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/SettingsPopupWindow;->mAnchor:Landroid/view/View;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/SettingsPopupWindow;->mDismissRunnable:Ljava/lang/Runnable;
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->removeCallbacks(Ljava/lang/Runnable;)Z
+
+    .line 44
+    :cond_0
+    iput-object p1, p0, Lcom/android/gallery3d/photoeditor/SettingsPopupWindow;->mAnchor:Landroid/view/View;
+
+    .line 45
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/SettingsPopupWindow;->mPopupWindow:Landroid/widget/PopupWindow;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/SettingsPopupWindow;->mAnchor:Landroid/view/View;
+
+    invoke-virtual {v0, v1, v2, v2}, Landroid/widget/PopupWindow;->showAsDropDown(Landroid/view/View;II)V
+
+    .line 46
+    return-void
 .end method

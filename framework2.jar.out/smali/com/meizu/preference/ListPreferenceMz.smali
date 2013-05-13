@@ -28,7 +28,7 @@
     invoke-direct {p0, p1, p2}, Landroid/preference/ListPreference;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 23
-    const v0, 0x10900ab
+    const v0, 0x10900b3
 
     invoke-virtual {p0, v0}, Lcom/meizu/preference/ListPreferenceMz;->setLayoutResource(I)V
 

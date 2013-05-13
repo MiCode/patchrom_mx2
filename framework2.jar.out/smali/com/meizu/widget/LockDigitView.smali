@@ -119,6 +119,7 @@
 
     :array_0
     .array-data 0x4
+        0xcbt 0x1t 0x8t 0x1t
         0xcct 0x1t 0x8t 0x1t
         0xcdt 0x1t 0x8t 0x1t
         0xcet 0x1t 0x8t 0x1t
@@ -127,9 +128,8 @@
         0xd1t 0x1t 0x8t 0x1t
         0xd2t 0x1t 0x8t 0x1t
         0xd3t 0x1t 0x8t 0x1t
-        0xd4t 0x1t 0x8t 0x1t
         0x0t 0x0t 0x0t 0x0t
-        0xcbt 0x1t 0x8t 0x1t
+        0xcat 0x1t 0x8t 0x1t
         0x0t 0x0t 0x0t 0x0t
     .end array-data
 .end method
@@ -205,10 +205,10 @@
 
     iput v0, p0, Lcom/meizu/widget/LockDigitView;->mHitFactor:F
 
-    .line 617
+    .line 619
     iput-boolean v2, p0, Lcom/meizu/widget/LockDigitView;->mKeyAsPoint:Z
 
-    .line 618
+    .line 620
     new-instance v0, Landroid/util/SparseArray;
 
     invoke-direct {v0}, Landroid/util/SparseArray;-><init>()V
@@ -261,15 +261,15 @@
     .parameter "newCell"
 
     .prologue
-    .line 384
+    .line 385
     iget-object v0, p0, Lcom/meizu/widget/LockDigitView;->mPattern:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 385
+    .line 386
     invoke-direct {p0}, Lcom/meizu/widget/LockDigitView;->notifyCellAdded()V
 
-    .line 386
+    .line 387
     return-void
 .end method
 
@@ -281,12 +281,12 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 766
+    .line 768
     invoke-static {p1, p2}, Lcom/meizu/widget/LockDigitView$Cell;->indexOf(II)I
 
     move-result v1
 
-    .line 767
+    .line 769
     .local v1, key:I
     iget-object v3, p0, Lcom/meizu/widget/LockDigitView;->mCellInfoArray:Landroid/util/SparseArray;
 
@@ -296,11 +296,11 @@
 
     check-cast v0, Lcom/meizu/widget/LockDigitView$CellInfo;
 
-    .line 768
+    .line 770
     .local v0, info:Lcom/meizu/widget/LockDigitView$CellInfo;
     if-eqz v0, :cond_2
 
-    .line 769
+    .line 771
     iget-object v3, v0, Lcom/meizu/widget/LockDigitView$CellInfo;->icon:Landroid/graphics/drawable/Drawable;
 
     if-nez v3, :cond_1
@@ -313,18 +313,18 @@
 
     if-eqz v3, :cond_1
 
-    .line 775
+    .line 777
     :cond_0
     :goto_0
     return v2
 
-    .line 772
+    .line 774
     :cond_1
     iget-boolean v2, v0, Lcom/meizu/widget/LockDigitView$CellInfo;->enabled:Z
 
     goto :goto_0
 
-    .line 774
+    .line 776
     :cond_2
     sget-object v3, Lcom/meizu/widget/LockDigitView;->DEF_ICONS:[I
 
@@ -332,7 +332,7 @@
 
     if-eqz v3, :cond_0
 
-    .line 775
+    .line 777
     const/4 v2, 0x1
 
     goto :goto_0
@@ -345,10 +345,10 @@
     .parameter "moving"
 
     .prologue
-    .line 391
+    .line 392
     iget v8, p0, Lcom/meizu/widget/LockDigitView;->mSquareWidth:F
 
-    .line 392
+    .line 393
     .local v8, squareWidth:F
     iget v9, p0, Lcom/meizu/widget/LockDigitView;->mHitFactor:F
 
@@ -368,15 +368,15 @@
 
     double-to-float v3, v9
 
-    .line 394
+    .line 395
     .local v3, hitRadius:F
     const/4 v7, -0x1
 
-    .line 395
+    .line 396
     .local v7, rowHit:I
     const/4 v0, -0x1
 
-    .line 397
+    .line 398
     .local v0, columnHit:I
     const/4 v4, 0x0
 
@@ -386,7 +386,7 @@
 
     if-ge v4, v9, :cond_2
 
-    .line 398
+    .line 399
     const/4 v5, 0x0
 
     .local v5, j:I
@@ -395,14 +395,14 @@
 
     if-ge v5, v9, :cond_1
 
-    .line 399
+    .line 400
     invoke-direct {p0, v4}, Lcom/meizu/widget/LockDigitView;->getCenterXForColumn(I)F
 
     move-result v9
 
     sub-float v1, p1, v9
 
-    .line 400
+    .line 401
     .local v1, cx:F
     invoke-direct {p0, v5}, Lcom/meizu/widget/LockDigitView;->getCenterYForRow(I)F
 
@@ -410,7 +410,7 @@
 
     sub-float v2, p2, v9
 
-    .line 401
+    .line 402
     .local v2, cy:F
     mul-float v9, v1, v1
 
@@ -422,19 +422,19 @@
 
     if-gez v9, :cond_0
 
-    .line 402
+    .line 403
     move v7, v5
 
-    .line 403
+    .line 404
     move v0, v4
 
-    .line 398
+    .line 399
     :cond_0
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_1
 
-    .line 397
+    .line 398
     .end local v1           #cx:F
     .end local v2           #cy:F
     :cond_1
@@ -442,7 +442,7 @@
 
     goto :goto_0
 
-    .line 408
+    .line 409
     .end local v5           #j:I
     :cond_2
     const/4 v9, -0x1
@@ -453,15 +453,15 @@
 
     if-ne v0, v9, :cond_4
 
-    .line 409
+    .line 410
     :cond_3
     const/4 v9, 0x0
 
-    .line 422
+    .line 423
     :goto_2
     return-object v9
 
-    .line 411
+    .line 412
     :cond_4
     if-eqz p3, :cond_5
 
@@ -473,7 +473,7 @@
 
     if-nez v9, :cond_5
 
-    .line 412
+    .line 413
     iget-object v9, p0, Lcom/meizu/widget/LockDigitView;->mPattern:Ljava/util/ArrayList;
 
     iget-object v10, p0, Lcom/meizu/widget/LockDigitView;->mPattern:Ljava/util/ArrayList;
@@ -490,7 +490,7 @@
 
     check-cast v6, Lcom/meizu/widget/LockDigitView$Cell;
 
-    .line 413
+    .line 414
     .local v6, last:Lcom/meizu/widget/LockDigitView$Cell;
     iget v9, v6, Lcom/meizu/widget/LockDigitView$Cell;->row:I
 
@@ -500,12 +500,12 @@
 
     if-ne v9, v0, :cond_5
 
-    .line 414
+    .line 415
     const/4 v9, 0x0
 
     goto :goto_2
 
-    .line 418
+    .line 419
     .end local v6           #last:Lcom/meizu/widget/LockDigitView$Cell;
     :cond_5
     invoke-direct {p0, v7, v0}, Lcom/meizu/widget/LockDigitView;->canAdd2Pattern(II)Z
@@ -514,14 +514,14 @@
 
     if-eqz v9, :cond_6
 
-    .line 420
+    .line 421
     invoke-static {v7, v0}, Lcom/meizu/widget/LockDigitView$Cell;->of(II)Lcom/meizu/widget/LockDigitView$Cell;
 
     move-result-object v9
 
     goto :goto_2
 
-    .line 422
+    .line 423
     :cond_6
     const/4 v9, 0x0
 
@@ -535,31 +535,31 @@
     .parameter "moving"
 
     .prologue
-    .line 370
+    .line 371
     invoke-direct {p0, p1, p2, p3}, Lcom/meizu/widget/LockDigitView;->checkForNewHit(FFZ)Lcom/meizu/widget/LockDigitView$Cell;
 
     move-result-object v0
 
-    .line 371
+    .line 372
     .local v0, cell:Lcom/meizu/widget/LockDigitView$Cell;
     if-eqz v0, :cond_1
 
-    .line 372
+    .line 373
     invoke-direct {p0, v0}, Lcom/meizu/widget/LockDigitView;->addCellToPattern(Lcom/meizu/widget/LockDigitView$Cell;)V
 
-    .line 373
+    .line 374
     iget-boolean v1, p0, Lcom/meizu/widget/LockDigitView;->mEnableHapticFeedback:Z
 
     if-eqz v1, :cond_0
 
-    .line 374
+    .line 375
     const/4 v1, 0x1
 
     const/4 v2, 0x3
 
     invoke-virtual {p0, v1, v2}, Lcom/meizu/widget/LockDigitView;->performHapticFeedback(II)Z
 
-    .line 380
+    .line 381
     .end local v0           #cell:Lcom/meizu/widget/LockDigitView$Cell;
     :cond_0
     :goto_0
@@ -580,18 +580,18 @@
     .parameter "active"
 
     .prologue
-    .line 673
+    .line 675
     const/4 v13, 0x0
 
-    .line 674
+    .line 676
     .local v13, label:Ljava/lang/String;
     const/4 v10, 0x0
 
-    .line 675
+    .line 677
     .local v10, icon:Landroid/graphics/drawable/Drawable;
     const/4 v8, 0x1
 
-    .line 677
+    .line 679
     .local v8, enabled:Z
     move-object/from16 v0, p0
 
@@ -601,7 +601,7 @@
 
     move-result v6
 
-    .line 678
+    .line 680
     .local v6, cx:F
     move-object/from16 v0, p0
 
@@ -611,13 +611,13 @@
 
     move-result v7
 
-    .line 689
+    .line 691
     .local v7, cy:F
     invoke-static/range {p2 .. p3}, Lcom/meizu/widget/LockDigitView$Cell;->indexOf(II)I
 
     move-result v12
 
-    .line 690
+    .line 692
     .local v12, key:I
     move-object/from16 v0, p0
 
@@ -633,20 +633,20 @@
 
     check-cast v11, Lcom/meizu/widget/LockDigitView$CellInfo;
 
-    .line 691
+    .line 693
     .local v11, info:Lcom/meizu/widget/LockDigitView$CellInfo;
     if-eqz v11, :cond_1
 
-    .line 692
+    .line 694
     iget-object v10, v11, Lcom/meizu/widget/LockDigitView$CellInfo;->icon:Landroid/graphics/drawable/Drawable;
 
-    .line 693
+    .line 695
     iget-object v13, v11, Lcom/meizu/widget/LockDigitView$CellInfo;->label:Ljava/lang/String;
 
-    .line 694
+    .line 696
     iget-boolean v8, v11, Lcom/meizu/widget/LockDigitView$CellInfo;->enabled:Z
 
-    .line 701
+    .line 703
     :cond_0
     :goto_0
     if-nez v10, :cond_2
@@ -657,14 +657,14 @@
 
     if-eqz v20, :cond_2
 
-    .line 702
+    .line 704
     const/16 v20, 0x0
 
-    .line 762
+    .line 764
     :goto_1
     return v20
 
-    .line 696
+    .line 698
     :cond_1
     sget-object v20, Lcom/meizu/widget/LockDigitView;->DEF_ICONS:[I
 
@@ -672,7 +672,7 @@
 
     if-eqz v20, :cond_0
 
-    .line 697
+    .line 699
     invoke-virtual/range {p0 .. p0}, Lcom/meizu/widget/LockDigitView;->getResources()Landroid/content/res/Resources;
 
     move-result-object v20
@@ -687,7 +687,7 @@
 
     goto :goto_0
 
-    .line 704
+    .line 706
     :cond_2
     move-object/from16 v0, p0
 
@@ -697,10 +697,10 @@
 
     if-eqz v20, :cond_5
 
-    .line 705
+    .line 707
     if-eqz v8, :cond_4
 
-    .line 706
+    .line 708
     move-object/from16 v0, p0
 
     move/from16 v1, p2
@@ -713,7 +713,7 @@
 
     if-eqz v20, :cond_5
 
-    .line 707
+    .line 709
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/widget/LockDigitView;->mCellPointDrawable:Landroid/graphics/drawable/Drawable;
@@ -722,12 +722,12 @@
 
     if-nez v20, :cond_3
 
-    .line 708
+    .line 710
     invoke-virtual/range {p0 .. p0}, Lcom/meizu/widget/LockDigitView;->getResources()Landroid/content/res/Resources;
 
     move-result-object v20
 
-    const v21, 0x10801d7
+    const v21, 0x10801e6
 
     invoke-virtual/range {v20 .. v21}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -739,7 +739,7 @@
 
     iput-object v0, v1, Lcom/meizu/widget/LockDigitView;->mCellPointDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 710
+    .line 712
     :cond_3
     move-object/from16 v0, p0
 
@@ -775,18 +775,18 @@
 
     invoke-direct {v0, v1, v2, v3, v4}, Lcom/meizu/widget/LockDigitView;->drawIcon(Landroid/graphics/Canvas;Landroid/graphics/drawable/Drawable;FF)V
 
-    .line 711
+    .line 713
     const/16 v20, 0x1
 
     goto :goto_1
 
-    .line 715
+    .line 717
     :cond_4
     const/16 v20, 0x0
 
     goto :goto_1
 
-    .line 719
+    .line 721
     :cond_5
     if-eqz p4, :cond_8
 
@@ -812,7 +812,7 @@
 
     const/16 v16, 0x1
 
-    .line 720
+    .line 722
     .local v16, touched:Z
     :goto_2
     if-eqz v11, :cond_6
@@ -823,11 +823,11 @@
 
     if-nez v20, :cond_b
 
-    .line 722
+    .line 724
     :cond_6
     if-eqz v16, :cond_9
 
-    .line 723
+    .line 725
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/widget/LockDigitView;->mCellPressedBackgroundDrawable:Landroid/graphics/drawable/Drawable;
@@ -836,12 +836,12 @@
 
     if-nez v20, :cond_7
 
-    .line 724
+    .line 726
     invoke-virtual/range {p0 .. p0}, Lcom/meizu/widget/LockDigitView;->getResources()Landroid/content/res/Resources;
 
     move-result-object v20
 
-    const v21, 0x10801d6
+    const v21, 0x10801d5
 
     invoke-virtual/range {v20 .. v21}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -853,13 +853,13 @@
 
     iput-object v0, v1, Lcom/meizu/widget/LockDigitView;->mCellPressedBackgroundDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 725
+    .line 727
     :cond_7
     move-object/from16 v0, p0
 
     iget-object v5, v0, Lcom/meizu/widget/LockDigitView;->mCellPressedBackgroundDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 731
+    .line 733
     .local v5, background:Landroid/graphics/drawable/Drawable;
     :goto_3
     move-object/from16 v0, p0
@@ -868,23 +868,23 @@
 
     invoke-direct {v0, v1, v5, v6, v7}, Lcom/meizu/widget/LockDigitView;->drawIcon(Landroid/graphics/Canvas;Landroid/graphics/drawable/Drawable;FF)V
 
-    .line 740
+    .line 742
     .end local v5           #background:Landroid/graphics/drawable/Drawable;
     :goto_4
     if-eqz v10, :cond_d
 
-    .line 741
+    .line 743
     invoke-virtual {v10}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
 
     move-result v17
 
-    .line 742
+    .line 744
     .local v17, w:I
     invoke-virtual {v10}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
 
     move-result v9
 
-    .line 743
+    .line 745
     .local v9, h:I
     shr-int/lit8 v20, v17, 0x1
 
@@ -902,7 +902,7 @@
 
     move/from16 v18, v0
 
-    .line 744
+    .line 746
     .local v18, x:I
     shr-int/lit8 v20, v9, 0x1
 
@@ -920,7 +920,7 @@
 
     move/from16 v19, v0
 
-    .line 745
+    .line 747
     .local v19, y:I
     add-int v20, v18, v17
 
@@ -936,12 +936,12 @@
 
     invoke-virtual {v10, v0, v1, v2, v3}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    .line 746
+    .line 748
     move-object/from16 v0, p1
 
     invoke-virtual {v10, v0}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 762
+    .line 764
     .end local v9           #h:I
     .end local v17           #w:I
     .end local v18           #x:I
@@ -951,14 +951,14 @@
 
     goto/16 :goto_1
 
-    .line 719
+    .line 721
     .end local v16           #touched:Z
     :cond_8
     const/16 v16, 0x0
 
     goto :goto_2
 
-    .line 727
+    .line 729
     .restart local v16       #touched:Z
     :cond_9
     move-object/from16 v0, p0
@@ -969,12 +969,12 @@
 
     if-nez v20, :cond_a
 
-    .line 728
+    .line 730
     invoke-virtual/range {p0 .. p0}, Lcom/meizu/widget/LockDigitView;->getResources()Landroid/content/res/Resources;
 
     move-result-object v20
 
-    const v21, 0x10801d5
+    const v21, 0x10801d4
 
     invoke-virtual/range {v20 .. v21}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -986,7 +986,7 @@
 
     iput-object v0, v1, Lcom/meizu/widget/LockDigitView;->mCellNormalBackgroundDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 729
+    .line 731
     :cond_a
     move-object/from16 v0, p0
 
@@ -995,12 +995,12 @@
     .restart local v5       #background:Landroid/graphics/drawable/Drawable;
     goto :goto_3
 
-    .line 733
+    .line 735
     .end local v5           #background:Landroid/graphics/drawable/Drawable;
     :cond_b
     if-eqz v16, :cond_c
 
-    .line 734
+    .line 736
     iget-object v0, v11, Lcom/meizu/widget/LockDigitView$CellInfo;->icon:Landroid/graphics/drawable/Drawable;
 
     move-object/from16 v20, v0
@@ -1011,7 +1011,7 @@
 
     goto :goto_4
 
-    .line 736
+    .line 738
     :cond_c
     iget-object v0, v11, Lcom/meizu/widget/LockDigitView$CellInfo;->icon:Landroid/graphics/drawable/Drawable;
 
@@ -1023,13 +1023,13 @@
 
     goto :goto_4
 
-    .line 748
+    .line 750
     :cond_d
     if-eqz v16, :cond_e
 
     const v14, -0x323233
 
-    .line 749
+    .line 751
     .local v14, textColor:I
     :goto_6
     invoke-virtual {v13}, Ljava/lang/String;->length()I
@@ -1046,7 +1046,7 @@
 
     const/16 v15, 0x48
 
-    .line 750
+    .line 752
     .local v15, textSize:I
     :goto_7
     move-object/from16 v0, p0
@@ -1059,7 +1059,7 @@
 
     invoke-virtual {v0, v14}, Landroid/graphics/Paint;->setColor(I)V
 
-    .line 751
+    .line 753
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/widget/LockDigitView;->mTextPaint:Landroid/graphics/Paint;
@@ -1072,7 +1072,7 @@
 
     invoke-virtual/range {v20 .. v21}, Landroid/graphics/Paint;->setTextSize(F)V
 
-    .line 752
+    .line 754
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/widget/LockDigitView;->mFMI:Landroid/graphics/Paint$FontMetricsInt;
@@ -1081,7 +1081,7 @@
 
     if-nez v20, :cond_10
 
-    .line 753
+    .line 755
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/meizu/widget/LockDigitView;->mTextPaint:Landroid/graphics/Paint;
@@ -1098,7 +1098,7 @@
 
     iput-object v0, v1, Lcom/meizu/widget/LockDigitView;->mFMI:Landroid/graphics/Paint$FontMetricsInt;
 
-    .line 757
+    .line 759
     :goto_8
     move-object/from16 v0, p0
 
@@ -1118,7 +1118,7 @@
 
     sub-float v18, v6, v20
 
-    .line 758
+    .line 760
     .local v18, x:F
     move-object/from16 v0, p0
 
@@ -1156,7 +1156,7 @@
 
     sub-float v19, v7, v20
 
-    .line 759
+    .line 761
     .local v19, y:F
     move-object/from16 v0, p0
 
@@ -1176,7 +1176,7 @@
 
     goto/16 :goto_5
 
-    .line 748
+    .line 750
     .end local v14           #textColor:I
     .end local v15           #textSize:I
     .end local v18           #x:F
@@ -1186,14 +1186,14 @@
 
     goto/16 :goto_6
 
-    .line 749
+    .line 751
     .restart local v14       #textColor:I
     :cond_f
     const/16 v15, 0x24
 
     goto :goto_7
 
-    .line 755
+    .line 757
     .restart local v15       #textSize:I
     :cond_10
     move-object/from16 v0, p0
@@ -1221,18 +1221,18 @@
     .parameter "y"
 
     .prologue
-    .line 664
+    .line 666
     invoke-virtual {p2}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
 
     move-result v3
 
-    .line 665
+    .line 667
     .local v3, w:I
     invoke-virtual {p2}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
 
     move-result v0
 
-    .line 666
+    .line 668
     .local v0, h:I
     div-int/lit8 v4, v3, 0x2
 
@@ -1242,7 +1242,7 @@
 
     float-to-int v1, v4
 
-    .line 667
+    .line 669
     .local v1, l:I
     div-int/lit8 v4, v0, 0x2
 
@@ -1252,7 +1252,7 @@
 
     float-to-int v2, v4
 
-    .line 668
+    .line 670
     .local v2, t:I
     add-int v4, v1, v3
 
@@ -1260,10 +1260,10 @@
 
     invoke-virtual {p2, v1, v2, v4, v5}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    .line 669
+    .line 671
     invoke-virtual {p2, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 670
+    .line 672
     return-void
 .end method
 
@@ -1272,7 +1272,7 @@
     .parameter "column"
 
     .prologue
-    .line 581
+    .line 583
     iget v0, p0, Lcom/meizu/widget/LockDigitView;->mPaddingLeft:I
 
     int-to-float v0, v0
@@ -1301,7 +1301,7 @@
     .parameter "row"
 
     .prologue
-    .line 585
+    .line 587
     iget v0, p0, Lcom/meizu/widget/LockDigitView;->mPaddingTop:I
 
     int-to-float v0, v0
@@ -1330,16 +1330,16 @@
     .parameter "x"
 
     .prologue
-    .line 454
+    .line 455
     iget v4, p0, Lcom/meizu/widget/LockDigitView;->mSquareWidth:F
 
-    .line 455
+    .line 456
     .local v4, squareWidth:F
     iget v5, p0, Lcom/meizu/widget/LockDigitView;->mHitFactor:F
 
     mul-float v1, v4, v5
 
-    .line 457
+    .line 458
     .local v1, hitSize:F
     iget v5, p0, Lcom/meizu/widget/LockDigitView;->mPaddingLeft:I
 
@@ -1353,7 +1353,7 @@
 
     add-float v3, v5, v6
 
-    .line 458
+    .line 459
     .local v3, offset:F
     const/4 v2, 0x0
 
@@ -1363,14 +1363,14 @@
 
     if-ge v2, v5, :cond_1
 
-    .line 460
+    .line 461
     int-to-float v5, v2
 
     mul-float/2addr v5, v4
 
     add-float v0, v3, v5
 
-    .line 461
+    .line 462
     .local v0, hitLeft:F
     cmpl-float v5, p1, v0
 
@@ -1382,13 +1382,13 @@
 
     if-gtz v5, :cond_0
 
-    .line 465
+    .line 466
     .end local v0           #hitLeft:F
     .end local v2           #i:I
     :goto_1
     return v2
 
-    .line 458
+    .line 459
     .restart local v0       #hitLeft:F
     .restart local v2       #i:I
     :cond_0
@@ -1396,7 +1396,7 @@
 
     goto :goto_0
 
-    .line 465
+    .line 466
     .end local v0           #hitLeft:F
     :cond_1
     const/4 v2, -0x1
@@ -1409,16 +1409,16 @@
     .parameter "y"
 
     .prologue
-    .line 433
+    .line 434
     iget v4, p0, Lcom/meizu/widget/LockDigitView;->mSquareHeight:F
 
-    .line 434
+    .line 435
     .local v4, squareHeight:F
     iget v5, p0, Lcom/meizu/widget/LockDigitView;->mHitFactor:F
 
     mul-float v0, v4, v5
 
-    .line 436
+    .line 437
     .local v0, hitSize:F
     iget v5, p0, Lcom/meizu/widget/LockDigitView;->mPaddingTop:I
 
@@ -1432,7 +1432,7 @@
 
     add-float v3, v5, v6
 
-    .line 437
+    .line 438
     .local v3, offset:F
     const/4 v2, 0x0
 
@@ -1442,14 +1442,14 @@
 
     if-ge v2, v5, :cond_1
 
-    .line 439
+    .line 440
     int-to-float v5, v2
 
     mul-float/2addr v5, v4
 
     add-float v1, v3, v5
 
-    .line 440
+    .line 441
     .local v1, hitTop:F
     cmpl-float v5, p1, v1
 
@@ -1461,13 +1461,13 @@
 
     if-gtz v5, :cond_0
 
-    .line 444
+    .line 445
     .end local v1           #hitTop:F
     .end local v2           #i:I
     :goto_1
     return v2
 
-    .line 437
+    .line 438
     .restart local v1       #hitTop:F
     .restart local v2       #i:I
     :cond_0
@@ -1475,7 +1475,7 @@
 
     goto :goto_0
 
-    .line 444
+    .line 445
     .end local v1           #hitTop:F
     :cond_1
     const/4 v2, -0x1
@@ -1492,54 +1492,54 @@
 
     const/4 v3, 0x0
 
-    .line 564
+    .line 566
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
     move-result v1
 
-    .line 565
+    .line 567
     .local v1, x:F
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
     move-result v2
 
-    .line 566
+    .line 568
     .local v2, y:F
     invoke-direct {p0, v1, v2, v3}, Lcom/meizu/widget/LockDigitView;->detectAndAddHit(FFZ)Lcom/meizu/widget/LockDigitView$Cell;
 
     move-result-object v0
 
-    .line 567
+    .line 569
     .local v0, hitCell:Lcom/meizu/widget/LockDigitView$Cell;
     if-eqz v0, :cond_0
 
-    .line 568
+    .line 570
     iput-boolean v4, p0, Lcom/meizu/widget/LockDigitView;->mPatternInProgress:Z
 
-    .line 569
+    .line 571
     invoke-direct {p0}, Lcom/meizu/widget/LockDigitView;->notifyPatternStarted()V
 
-    .line 570
+    .line 572
     invoke-virtual {p0}, Lcom/meizu/widget/LockDigitView;->invalidate()V
 
-    .line 575
+    .line 577
     :goto_0
     iput v1, p0, Lcom/meizu/widget/LockDigitView;->mInProgressX:F
 
-    .line 576
+    .line 578
     iput v2, p0, Lcom/meizu/widget/LockDigitView;->mInProgressY:F
 
-    .line 577
+    .line 579
     iput-boolean v4, p0, Lcom/meizu/widget/LockDigitView;->mPatternDown:Z
 
-    .line 578
+    .line 580
     return-void
 
-    .line 572
+    .line 574
     :cond_0
     iput-boolean v3, p0, Lcom/meizu/widget/LockDigitView;->mPatternInProgress:Z
 
-    .line 573
+    .line 575
     invoke-direct {p0}, Lcom/meizu/widget/LockDigitView;->notifyPatternCleared()V
 
     goto :goto_0
@@ -1552,22 +1552,22 @@
     .prologue
     const/4 v11, 0x1
 
-    .line 515
+    .line 517
     iget-boolean v8, p0, Lcom/meizu/widget/LockDigitView;->mPatternDown:Z
 
     if-nez v8, :cond_1
 
-    .line 545
+    .line 547
     :cond_0
     return-void
 
-    .line 519
+    .line 521
     :cond_1
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getHistorySize()I
 
     move-result v2
 
-    .line 520
+    .line 522
     .local v2, historySize:I
     const/4 v4, 0x0
 
@@ -1577,19 +1577,19 @@
 
     if-ge v4, v8, :cond_0
 
-    .line 521
+    .line 523
     iget-boolean v8, p0, Lcom/meizu/widget/LockDigitView;->mPatternDown:Z
 
     if-eqz v8, :cond_0
 
-    .line 522
+    .line 524
     if-ge v4, v2, :cond_5
 
     invoke-virtual {p1, v4}, Landroid/view/MotionEvent;->getHistoricalX(I)F
 
     move-result v6
 
-    .line 523
+    .line 525
     .local v6, x:F
     :goto_1
     if-ge v4, v2, :cond_6
@@ -1598,14 +1598,14 @@
 
     move-result v7
 
-    .line 524
+    .line 526
     .local v7, y:F
     :goto_2
     invoke-direct {p0, v6, v7, v11}, Lcom/meizu/widget/LockDigitView;->detectAndAddHit(FFZ)Lcom/meizu/widget/LockDigitView$Cell;
 
     move-result-object v3
 
-    .line 525
+    .line 527
     .local v3, hitCell:Lcom/meizu/widget/LockDigitView$Cell;
     iget-object v8, p0, Lcom/meizu/widget/LockDigitView;->mPattern:Ljava/util/ArrayList;
 
@@ -1613,26 +1613,26 @@
 
     move-result v5
 
-    .line 526
+    .line 528
     .local v5, patternSize:I
     if-eqz v3, :cond_2
 
     if-ne v5, v11, :cond_2
 
-    .line 527
+    .line 529
     iput-boolean v11, p0, Lcom/meizu/widget/LockDigitView;->mPatternInProgress:Z
 
-    .line 528
+    .line 530
     invoke-direct {p0}, Lcom/meizu/widget/LockDigitView;->notifyPatternStarted()V
 
-    .line 530
+    .line 532
     :cond_2
     if-eqz v3, :cond_3
 
-    .line 531
+    .line 533
     invoke-virtual {p0}, Lcom/meizu/widget/LockDigitView;->invalidate()V
 
-    .line 534
+    .line 536
     :cond_3
     iget v8, p0, Lcom/meizu/widget/LockDigitView;->mInProgressX:F
 
@@ -1642,7 +1642,7 @@
 
     move-result v0
 
-    .line 535
+    .line 537
     .local v0, dx:F
     iget v8, p0, Lcom/meizu/widget/LockDigitView;->mInProgressY:F
 
@@ -1652,7 +1652,7 @@
 
     move-result v1
 
-    .line 536
+    .line 538
     .local v1, dy:F
     add-float v8, v0, v1
 
@@ -1666,25 +1666,25 @@
 
     if-lez v8, :cond_4
 
-    .line 537
+    .line 539
     iput v6, p0, Lcom/meizu/widget/LockDigitView;->mInProgressX:F
 
-    .line 538
+    .line 540
     iput v7, p0, Lcom/meizu/widget/LockDigitView;->mInProgressY:F
 
-    .line 540
+    .line 542
     if-eqz v3, :cond_4
 
-    .line 541
+    .line 543
     invoke-virtual {p0}, Lcom/meizu/widget/LockDigitView;->invalidate()V
 
-    .line 520
+    .line 522
     :cond_4
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_0
 
-    .line 522
+    .line 524
     .end local v0           #dx:F
     .end local v1           #dy:F
     .end local v3           #hitCell:Lcom/meizu/widget/LockDigitView$Cell;
@@ -1698,7 +1698,7 @@
 
     goto :goto_1
 
-    .line 523
+    .line 525
     .restart local v6       #x:F
     :cond_6
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
@@ -1715,10 +1715,10 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 555
+    .line 557
     iput-boolean v1, p0, Lcom/meizu/widget/LockDigitView;->mPatternDown:Z
 
-    .line 556
+    .line 558
     iget-object v0, p0, Lcom/meizu/widget/LockDigitView;->mPattern:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->isEmpty()Z
@@ -1727,16 +1727,16 @@
 
     if-nez v0, :cond_0
 
-    .line 557
+    .line 559
     iput-boolean v1, p0, Lcom/meizu/widget/LockDigitView;->mPatternInProgress:Z
 
-    .line 558
+    .line 560
     invoke-direct {p0}, Lcom/meizu/widget/LockDigitView;->notifyPatternDetected()V
 
-    .line 559
+    .line 561
     invoke-virtual {p0}, Lcom/meizu/widget/LockDigitView;->invalidate()V
 
-    .line 561
+    .line 563
     :cond_0
     return-void
 .end method
@@ -1747,7 +1747,7 @@
     .parameter "column"
 
     .prologue
-    .line 780
+    .line 782
     const/4 v0, 0x3
 
     if-ne p1, v0, :cond_1
@@ -1758,11 +1758,11 @@
 
     if-ne p2, v0, :cond_1
 
-    .line 781
+    .line 783
     :cond_0
     const/4 v0, 0x0
 
-    .line 783
+    .line 785
     :goto_0
     return v0
 
@@ -1790,7 +1790,7 @@
 
     .line 248
     :cond_0
-    const v0, 0x1040381
+    const v0, 0x1040382
 
     invoke-direct {p0, v0}, Lcom/meizu/widget/LockDigitView;->sendAccessEvent(I)V
 
@@ -1814,7 +1814,7 @@
 
     .line 269
     :cond_0
-    const v0, 0x1040380
+    const v0, 0x1040381
 
     invoke-direct {p0, v0}, Lcom/meizu/widget/LockDigitView;->sendAccessEvent(I)V
 
@@ -1840,7 +1840,7 @@
 
     .line 262
     :cond_0
-    const v0, 0x1040382
+    const v0, 0x1040383
 
     invoke-direct {p0, v0}, Lcom/meizu/widget/LockDigitView;->sendAccessEvent(I)V
 
@@ -1864,7 +1864,7 @@
 
     .line 255
     :cond_0
-    const v0, 0x104037f
+    const v0, 0x1040380
 
     invoke-direct {p0, v0}, Lcom/meizu/widget/LockDigitView;->sendAccessEvent(I)V
 
@@ -1878,16 +1878,16 @@
     .parameter "desired"
 
     .prologue
-    .line 308
+    .line 309
     const/4 v0, 0x0
 
-    .line 309
+    .line 310
     .local v0, result:I
     invoke-static {p1}, Landroid/view/View$MeasureSpec;->getSize(I)I
 
     move-result v1
 
-    .line 310
+    .line 311
     .local v1, specSize:I
     invoke-static {p1}, Landroid/view/View$MeasureSpec;->getMode(I)I
 
@@ -1895,30 +1895,30 @@
 
     sparse-switch v2, :sswitch_data_0
 
-    .line 319
+    .line 320
     move v0, v1
 
-    .line 321
+    .line 322
     :goto_0
     return v0
 
-    .line 312
+    .line 313
     :sswitch_0
     move v0, p2
 
-    .line 313
+    .line 314
     goto :goto_0
 
-    .line 315
+    .line 316
     :sswitch_1
     invoke-static {v1, p2}, Ljava/lang/Math;->max(II)I
 
     move-result v0
 
-    .line 316
+    .line 317
     goto :goto_0
 
-    .line 310
+    .line 311
     nop
 
     :sswitch_data_0
@@ -1933,7 +1933,7 @@
     .parameter "resId"
 
     .prologue
-    .line 548
+    .line 550
     iget-object v0, p0, Lcom/meizu/widget/LockDigitView;->mContext:Landroid/content/Context;
 
     invoke-virtual {v0, p1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
@@ -1942,17 +1942,17 @@
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/LockDigitView;->setContentDescription(Ljava/lang/CharSequence;)V
 
-    .line 549
+    .line 551
     const/4 v0, 0x4
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/LockDigitView;->sendAccessibilityEvent(I)V
 
-    .line 550
+    .line 552
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/LockDigitView;->setContentDescription(Ljava/lang/CharSequence;)V
 
-    .line 551
+    .line 553
     return-void
 .end method
 
@@ -1962,25 +1962,25 @@
     .locals 3
 
     .prologue
-    .line 787
+    .line 789
     iget-object v1, p0, Lcom/meizu/widget/LockDigitView;->mPattern:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
 
     move-result v0
 
-    .line 788
+    .line 790
     .local v0, size:I
     if-lez v0, :cond_0
 
-    .line 789
+    .line 791
     iget-object v1, p0, Lcom/meizu/widget/LockDigitView;->mPattern:Ljava/util/ArrayList;
 
     add-int/lit8 v2, v0, -0x1
 
     invoke-virtual {v1, v2}, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
 
-    .line 790
+    .line 792
     :cond_0
     return-void
 .end method
@@ -2015,7 +2015,7 @@
     .locals 1
 
     .prologue
-    .line 661
+    .line 663
     const/4 v0, 0x0
 
     return v0
@@ -2025,7 +2025,7 @@
     .locals 1
 
     .prologue
-    .line 333
+    .line 334
     const/16 v0, 0x280
 
     return v0
@@ -2035,7 +2035,7 @@
     .locals 1
 
     .prologue
-    .line 327
+    .line 328
     const/16 v0, 0x1e0
 
     return v0
@@ -2055,7 +2055,7 @@
     .locals 1
 
     .prologue
-    .line 651
+    .line 653
     iget-boolean v0, p0, Lcom/meizu/widget/LockDigitView;->mKeyAsPoint:Z
 
     return v0
@@ -2076,20 +2076,20 @@
     .parameter "canvas"
 
     .prologue
-    .line 590
+    .line 592
     iget-object v4, p0, Lcom/meizu/widget/LockDigitView;->mPattern:Ljava/util/ArrayList;
 
-    .line 591
+    .line 593
     .local v4, pattern:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/widget/LockDigitView$Cell;>;"
     const/4 v3, 0x0
 
-    .line 593
+    .line 595
     .local v3, lastPattern:Lcom/meizu/widget/LockDigitView$Cell;
     invoke-virtual {v4}, Ljava/util/ArrayList;->size()I
 
     move-result v0
 
-    .line 594
+    .line 596
     .local v0, N:I
     if-lez v0, :cond_0
 
@@ -2097,7 +2097,7 @@
 
     if-eqz v5, :cond_0
 
-    .line 595
+    .line 597
     add-int/lit8 v5, v0, -0x1
 
     invoke-virtual {v4, v5}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -2107,7 +2107,7 @@
     .end local v3           #lastPattern:Lcom/meizu/widget/LockDigitView$Cell;
     check-cast v3, Lcom/meizu/widget/LockDigitView$Cell;
 
-    .line 598
+    .line 600
     .restart local v3       #lastPattern:Lcom/meizu/widget/LockDigitView$Cell;
     :cond_0
     const/4 v1, 0x0
@@ -2118,7 +2118,7 @@
 
     if-ge v1, v5, :cond_2
 
-    .line 599
+    .line 601
     const/4 v2, 0x0
 
     .local v2, j:I
@@ -2127,21 +2127,21 @@
 
     if-ge v2, v5, :cond_1
 
-    .line 600
+    .line 602
     invoke-direct {p0, p1, v1, v2, v3}, Lcom/meizu/widget/LockDigitView;->drawCell(Landroid/graphics/Canvas;IILcom/meizu/widget/LockDigitView$Cell;)Z
 
-    .line 599
+    .line 601
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_1
 
-    .line 598
+    .line 600
     :cond_1
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 603
+    .line 605
     .end local v2           #j:I
     :cond_2
     return-void
@@ -2152,7 +2152,7 @@
     .parameter "event"
 
     .prologue
-    .line 470
+    .line 471
     iget-object v1, p0, Lcom/meizu/widget/LockDigitView;->mContext:Landroid/content/Context;
 
     invoke-static {v1}, Landroid/view/accessibility/AccessibilityManager;->getInstance(Landroid/content/Context;)Landroid/view/accessibility/AccessibilityManager;
@@ -2165,24 +2165,24 @@
 
     if-eqz v1, :cond_0
 
-    .line 471
+    .line 472
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getAction()I
 
     move-result v0
 
-    .line 472
+    .line 473
     .local v0, action:I
     packed-switch v0, :pswitch_data_0
 
-    .line 483
+    .line 484
     :goto_0
     :pswitch_0
     invoke-virtual {p0, p1}, Lcom/meizu/widget/LockDigitView;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
-    .line 484
+    .line 485
     invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->setAction(I)V
 
-    .line 486
+    .line 487
     .end local v0           #action:I
     :cond_0
     invoke-super {p0, p1}, Landroid/view/View;->onHoverEvent(Landroid/view/MotionEvent;)Z
@@ -2191,7 +2191,7 @@
 
     return v1
 
-    .line 474
+    .line 475
     .restart local v0       #action:I
     :pswitch_1
     const/4 v1, 0x0
@@ -2200,7 +2200,7 @@
 
     goto :goto_0
 
-    .line 477
+    .line 478
     :pswitch_2
     const/4 v1, 0x2
 
@@ -2208,7 +2208,7 @@
 
     goto :goto_0
 
-    .line 480
+    .line 481
     :pswitch_3
     const/4 v1, 0x1
 
@@ -2216,7 +2216,7 @@
 
     goto :goto_0
 
-    .line 472
+    .line 473
     nop
 
     :pswitch_data_0
@@ -2234,30 +2234,30 @@
     .parameter "heightMeasureSpec"
 
     .prologue
-    .line 338
+    .line 339
     invoke-virtual {p0}, Lcom/meizu/widget/LockDigitView;->getSuggestedMinimumWidth()I
 
     move-result v2
 
-    .line 339
+    .line 340
     .local v2, minimumWidth:I
     invoke-virtual {p0}, Lcom/meizu/widget/LockDigitView;->getSuggestedMinimumHeight()I
 
     move-result v1
 
-    .line 340
+    .line 341
     .local v1, minimumHeight:I
     invoke-direct {p0, p1, v2}, Lcom/meizu/widget/LockDigitView;->resolveMeasured(II)I
 
     move-result v4
 
-    .line 341
+    .line 342
     .local v4, viewWidth:I
     invoke-direct {p0, p2, v1}, Lcom/meizu/widget/LockDigitView;->resolveMeasured(II)I
 
     move-result v3
 
-    .line 342
+    .line 343
     .local v3, viewHeight:I
     mul-int/lit8 v5, v4, 0x4
 
@@ -2267,39 +2267,39 @@
 
     move-result v0
 
-    .line 344
+    .line 345
     .local v0, minSize:I
     iget v5, p0, Lcom/meizu/widget/LockDigitView;->mAspect:I
 
     packed-switch v5, :pswitch_data_0
 
-    .line 358
+    .line 359
     :goto_0
     invoke-virtual {p0, v4, v3}, Lcom/meizu/widget/LockDigitView;->setMeasuredDimension(II)V
 
-    .line 359
+    .line 360
     return-void
 
-    .line 346
+    .line 347
     :pswitch_0
     move v3, v0
 
-    .line 347
+    .line 348
     mul-int/lit8 v5, v0, 0x3
 
     div-int/lit8 v4, v5, 0x4
 
-    .line 348
+    .line 349
     goto :goto_0
 
-    .line 350
+    .line 351
     :pswitch_1
     move v3, v0
 
-    .line 351
+    .line 352
     goto :goto_0
 
-    .line 353
+    .line 354
     :pswitch_2
     mul-int/lit8 v5, v0, 0x3
 
@@ -2307,7 +2307,7 @@
 
     goto :goto_0
 
-    .line 344
+    .line 345
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -2317,60 +2317,76 @@
 .end method
 
 .method protected onSizeChanged(IIII)V
-    .locals 4
+    .locals 5
     .parameter "w"
     .parameter "h"
     .parameter "oldw"
     .parameter "oldh"
 
     .prologue
-    const/16 v2, -0x1e
-
     .line 298
-    iput v2, p0, Lcom/meizu/widget/LockDigitView;->mPaddingLeft:I
+    iget-object v3, p0, Lcom/meizu/widget/LockDigitView;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x1050165
+
+    invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
 
     .line 299
-    iput v2, p0, Lcom/meizu/widget/LockDigitView;->mPaddingRight:I
+    .local v1, paddingOffset:I
+    neg-int v3, v1
+
+    iput v3, p0, Lcom/meizu/widget/LockDigitView;->mPaddingLeft:I
 
     .line 300
-    iget v2, p0, Lcom/meizu/widget/LockDigitView;->mPaddingLeft:I
+    neg-int v3, v1
 
-    sub-int v2, p1, v2
-
-    iget v3, p0, Lcom/meizu/widget/LockDigitView;->mPaddingRight:I
-
-    sub-int v1, v2, v3
+    iput v3, p0, Lcom/meizu/widget/LockDigitView;->mPaddingRight:I
 
     .line 301
-    .local v1, width:I
-    int-to-float v2, v1
+    iget v3, p0, Lcom/meizu/widget/LockDigitView;->mPaddingLeft:I
 
-    const/high16 v3, 0x4040
+    sub-int v3, p1, v3
 
-    div-float/2addr v2, v3
+    iget v4, p0, Lcom/meizu/widget/LockDigitView;->mPaddingRight:I
 
-    iput v2, p0, Lcom/meizu/widget/LockDigitView;->mSquareWidth:F
+    sub-int v2, v3, v4
 
-    .line 303
-    iget v2, p0, Lcom/meizu/widget/LockDigitView;->mPaddingTop:I
+    .line 302
+    .local v2, width:I
+    int-to-float v3, v2
 
-    sub-int v2, p2, v2
+    const/high16 v4, 0x4040
 
-    iget v3, p0, Lcom/meizu/widget/LockDigitView;->mPaddingBottom:I
+    div-float/2addr v3, v4
 
-    sub-int v0, v2, v3
+    iput v3, p0, Lcom/meizu/widget/LockDigitView;->mSquareWidth:F
 
     .line 304
-    .local v0, height:I
-    int-to-float v2, v0
+    iget v3, p0, Lcom/meizu/widget/LockDigitView;->mPaddingTop:I
 
-    const/high16 v3, 0x4080
+    sub-int v3, p2, v3
 
-    div-float/2addr v2, v3
+    iget v4, p0, Lcom/meizu/widget/LockDigitView;->mPaddingBottom:I
 
-    iput v2, p0, Lcom/meizu/widget/LockDigitView;->mSquareHeight:F
+    sub-int v0, v3, v4
 
     .line 305
+    .local v0, height:I
+    int-to-float v3, v0
+
+    const/high16 v4, 0x4080
+
+    div-float/2addr v3, v4
+
+    iput v3, p0, Lcom/meizu/widget/LockDigitView;->mSquareHeight:F
+
+    .line 306
     return-void
 .end method
 
@@ -2383,7 +2399,7 @@
 
     const/4 v0, 0x1
 
-    .line 491
+    .line 492
     iget-boolean v2, p0, Lcom/meizu/widget/LockDigitView;->mInputEnabled:Z
 
     if-eqz v2, :cond_0
@@ -2397,11 +2413,11 @@
     :cond_0
     move v0, v1
 
-    .line 511
+    .line 513
     :goto_0
     return v0
 
-    .line 495
+    .line 496
     :cond_1
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getAction()I
 
@@ -2411,40 +2427,45 @@
 
     move v0, v1
 
-    .line 511
+    .line 513
     goto :goto_0
 
-    .line 497
+    .line 498
     :pswitch_0
     invoke-direct {p0, p1}, Lcom/meizu/widget/LockDigitView;->handleActionDown(Landroid/view/MotionEvent;)V
 
     goto :goto_0
 
-    .line 500
+    .line 501
     :pswitch_1
     invoke-direct {p0, p1}, Lcom/meizu/widget/LockDigitView;->handleActionUp(Landroid/view/MotionEvent;)V
 
     goto :goto_0
 
-    .line 503
+    .line 504
     :pswitch_2
     invoke-direct {p0, p1}, Lcom/meizu/widget/LockDigitView;->handleActionMove(Landroid/view/MotionEvent;)V
 
     goto :goto_0
 
-    .line 506
-    :pswitch_3
-    invoke-virtual {p0}, Lcom/meizu/widget/LockDigitView;->resetPattern()V
-
     .line 507
-    iput-boolean v1, p0, Lcom/meizu/widget/LockDigitView;->mPatternInProgress:Z
+    :pswitch_3
+    invoke-direct {p0, p1}, Lcom/meizu/widget/LockDigitView;->handleActionUp(Landroid/view/MotionEvent;)V
 
     .line 508
+    invoke-virtual {p0}, Lcom/meizu/widget/LockDigitView;->resetPattern()V
+
+    .line 509
+    iput-boolean v1, p0, Lcom/meizu/widget/LockDigitView;->mPatternInProgress:Z
+
+    .line 510
     invoke-direct {p0}, Lcom/meizu/widget/LockDigitView;->notifyPatternCleared()V
 
     goto :goto_0
 
-    .line 495
+    .line 496
+    nop
+
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -2475,6 +2496,22 @@
     return-void
 .end method
 
+.method public setCellBackgroundDrawable(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
+    .locals 0
+    .parameter "normal"
+    .parameter "pressed"
+
+    .prologue
+    .line 795
+    iput-object p1, p0, Lcom/meizu/widget/LockDigitView;->mCellNormalBackgroundDrawable:Landroid/graphics/drawable/Drawable;
+
+    .line 796
+    iput-object p2, p0, Lcom/meizu/widget/LockDigitView;->mCellPressedBackgroundDrawable:Landroid/graphics/drawable/Drawable;
+
+    .line 797
+    return-void
+.end method
+
 .method public setCellInfo(IILjava/lang/String;Landroid/graphics/drawable/Drawable;Z)V
     .locals 6
     .parameter "row"
@@ -2484,12 +2521,12 @@
     .parameter "enabled"
 
     .prologue
-    .line 629
+    .line 631
     invoke-static {p1, p2}, Lcom/meizu/widget/LockDigitView$Cell;->indexOf(II)I
 
     move-result v0
 
-    .line 630
+    .line 632
     .local v0, index:I
     if-nez p3, :cond_0
 
@@ -2499,12 +2536,12 @@
 
     if-ne p5, v3, :cond_0
 
-    .line 631
+    .line 633
     iget-object v3, p0, Lcom/meizu/widget/LockDigitView;->mCellInfoArray:Landroid/util/SparseArray;
 
     invoke-virtual {v3, v0}, Landroid/util/SparseArray;->remove(I)V
 
-    .line 635
+    .line 637
     :goto_0
     iget v3, p0, Lcom/meizu/widget/LockDigitView;->mPaddingLeft:I
 
@@ -2520,7 +2557,7 @@
 
     float-to-int v1, v3
 
-    .line 636
+    .line 638
     .local v1, x:I
     iget v3, p0, Lcom/meizu/widget/LockDigitView;->mPaddingTop:I
 
@@ -2536,7 +2573,7 @@
 
     float-to-int v2, v3
 
-    .line 637
+    .line 639
     .local v2, y:I
     int-to-float v3, v1
 
@@ -2556,10 +2593,10 @@
 
     invoke-virtual {p0, v1, v2, v3, v4}, Lcom/meizu/widget/LockDigitView;->invalidate(IIII)V
 
-    .line 638
+    .line 640
     return-void
 
-    .line 633
+    .line 635
     .end local v1           #x:I
     .end local v2           #y:I
     :cond_0
@@ -2591,18 +2628,18 @@
     .parameter "keyAsPoint"
 
     .prologue
-    .line 644
+    .line 646
     iget-boolean v0, p0, Lcom/meizu/widget/LockDigitView;->mKeyAsPoint:Z
 
     if-eq v0, p1, :cond_0
 
-    .line 645
+    .line 647
     iput-boolean p1, p0, Lcom/meizu/widget/LockDigitView;->mKeyAsPoint:Z
 
-    .line 646
+    .line 648
     invoke-virtual {p0}, Lcom/meizu/widget/LockDigitView;->invalidate()V
 
-    .line 648
+    .line 650
     :cond_0
     return-void
 .end method
@@ -2656,7 +2693,7 @@
     .parameter "showPointIfEmpty"
 
     .prologue
-    .line 657
+    .line 659
     return-void
 .end method
 

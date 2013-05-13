@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 120
+    .line 122
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     invoke-direct {p0}, Landroid/os/storage/StorageEventListener;-><init>()V
@@ -51,18 +51,18 @@
 
     const/16 v9, 0x138
 
-    .line 123
+    .line 125
     invoke-virtual {p3, p2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v5
 
     if-eqz v5, :cond_0
 
-    .line 159
+    .line 161
     :goto_0
     return-void
 
-    .line 125
+    .line 127
     :cond_0
     const-string v5, "shared"
 
@@ -70,7 +70,7 @@
 
     move-result v1
 
-    .line 126
+    .line 128
     .local v1, isOn:Z
     const-string v5, "mounted"
 
@@ -78,7 +78,7 @@
 
     move-result v0
 
-    .line 127
+    .line 129
     .local v0, isOff:Z
     const-string v5, "removed"
 
@@ -99,7 +99,7 @@
     :cond_1
     move v2, v4
 
-    .line 128
+    .line 130
     .local v2, isRemoved:Z
     :goto_1
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
@@ -107,7 +107,7 @@
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mUsbMassState:Ljava/lang/String;
     invoke-static {v5, p3}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$002(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 129
+    .line 131
     const-string v5, "USB Test"
 
     new-instance v6, Ljava/lang/StringBuilder;
@@ -154,7 +154,7 @@
 
     invoke-static {v5, v6}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 130
+    .line 132
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -166,7 +166,7 @@
 
     invoke-virtual {v5, v6}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 131
+    .line 133
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -189,34 +189,34 @@
 
     invoke-virtual {v5, v6}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 133
+    .line 135
     if-eqz v1, :cond_2
 
-    .line 134
+    .line 136
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mMusicName:Ljava/lang/String;
     invoke-static {v5, v10}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$202(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 135
+    .line 137
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mArtistName:Ljava/lang/String;
     invoke-static {v5, v10}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$302(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 136
+    .line 138
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mOnlineMusicName:Ljava/lang/String;
     invoke-static {v5, v10}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$402(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 137
+    .line 139
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mOnlineArtistName:Ljava/lang/String;
     invoke-static {v5, v10}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$502(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 138
+    .line 140
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -228,7 +228,7 @@
 
     invoke-virtual {v5, v6}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 139
+    .line 141
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -251,7 +251,7 @@
 
     invoke-virtual {v5, v6}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 142
+    .line 144
     :cond_2
     iget-object v5, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
@@ -280,13 +280,13 @@
 
     if-eqz v5, :cond_6
 
-    .line 143
+    .line 145
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsUsbMassConnected:Z
     invoke-static {v3, v4}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$602(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Z)Z
 
-    .line 144
+    .line 146
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -296,7 +296,7 @@
 
     invoke-virtual {v3, v9}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 145
+    .line 147
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -317,7 +317,7 @@
 
     invoke-virtual {v3, v4}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 152
+    .line 154
     :cond_4
     :goto_2
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
@@ -335,7 +335,7 @@
 
     if-eqz v3, :cond_7
 
-    .line 153
+    .line 155
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -345,7 +345,7 @@
 
     invoke-virtual {v3, v11}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 154
+    .line 156
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -380,21 +380,21 @@
     :cond_5
     move v2, v3
 
-    .line 127
+    .line 129
     goto/16 :goto_1
 
-    .line 146
+    .line 148
     .restart local v2       #isRemoved:Z
     :cond_6
     if-eqz v2, :cond_4
 
-    .line 147
+    .line 149
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsUsbMassConnected:Z
     invoke-static {v4, v3}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$602(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Z)Z
 
-    .line 148
+    .line 150
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -404,7 +404,7 @@
 
     invoke-virtual {v3, v9}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 149
+    .line 151
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -427,7 +427,7 @@
 
     goto :goto_2
 
-    .line 156
+    .line 158
     :cond_7
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
@@ -454,12 +454,12 @@
 
     const/4 v2, 0x0
 
-    .line 163
+    .line 165
     invoke-static {}, Landroid/os/Environment;->getExternalStorageState()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 164
+    .line 166
     .local v1, state:Ljava/lang/String;
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
@@ -470,13 +470,13 @@
 
     if-eq v4, v1, :cond_0
 
-    .line 165
+    .line 167
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mUsbMassState:Ljava/lang/String;
     invoke-static {v4, v1}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$002(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 166
+    .line 168
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -486,7 +486,7 @@
 
     invoke-virtual {v4, v6}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 167
+    .line 169
     iget-object v4, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -507,7 +507,7 @@
 
     invoke-virtual {v4, v5}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 170
+    .line 172
     :cond_0
     const-string v4, "removed"
 
@@ -536,7 +536,7 @@
     :cond_1
     move v0, v3
 
-    .line 172
+    .line 174
     .local v0, isRemoved:Z
     :goto_0
     const-string v4, "USB Test"
@@ -588,18 +588,18 @@
 
     invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 173
+    .line 175
     if-eqz p1, :cond_3
 
     if-nez v0, :cond_3
 
-    .line 174
+    .line 176
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #setter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mIsUsbMassConnected:Z
     invoke-static {v2, v3}, Lcom/meizu/internal/policy/impl/LockControllerMonitor;->access$602(Lcom/meizu/internal/policy/impl/LockControllerMonitor;Z)Z
 
-    .line 178
+    .line 180
     :goto_1
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
@@ -610,7 +610,7 @@
 
     invoke-virtual {v2, v7}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 179
+    .line 181
     iget-object v2, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;
 
     #getter for: Lcom/meizu/internal/policy/impl/LockControllerMonitor;->mHandler:Landroid/os/Handler;
@@ -631,17 +631,17 @@
 
     invoke-virtual {v2, v3}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 182
+    .line 184
     return-void
 
     .end local v0           #isRemoved:Z
     :cond_2
     move v0, v2
 
-    .line 170
+    .line 172
     goto :goto_0
 
-    .line 176
+    .line 178
     .restart local v0       #isRemoved:Z
     :cond_3
     iget-object v3, p0, Lcom/meizu/internal/policy/impl/LockControllerMonitor$1;->this$0:Lcom/meizu/internal/policy/impl/LockControllerMonitor;

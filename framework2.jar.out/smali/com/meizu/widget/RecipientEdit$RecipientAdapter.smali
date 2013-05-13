@@ -88,41 +88,41 @@
     .parameter "context"
 
     .prologue
-    .line 2593
+    .line 2622
     iput-object p1, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->this$0:Lcom/meizu/widget/RecipientEdit;
 
-    .line 2594
+    .line 2623
     invoke-direct {p0, p2}, Lcom/meizu/widget/CompositeCursorAdapterMz;-><init>(Landroid/content/Context;)V
 
-    .line 2595
+    .line 2624
     invoke-virtual {p2}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mContentResolver:Landroid/content/ContentResolver;
 
-    .line 2596
+    .line 2625
     new-instance v0, Ljava/util/LinkedHashMap;
 
     invoke-direct {v0}, Ljava/util/LinkedHashMap;-><init>()V
 
     iput-object v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDefaultData:Ljava/util/LinkedHashMap;
 
-    .line 2597
+    .line 2626
     new-instance v0, Ljava/util/HashSet;
 
     invoke-direct {v0}, Ljava/util/HashSet;-><init>()V
 
     iput-object v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDirectoryData:Ljava/util/HashSet;
 
-    .line 2598
+    .line 2627
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
     iput-object v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDirectories:Ljava/util/HashMap;
 
-    .line 2599
+    .line 2628
     return-void
 .end method
 
@@ -131,7 +131,7 @@
     .parameter "x0"
 
     .prologue
-    .line 2485
+    .line 2514
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDefaultData:Ljava/util/LinkedHashMap;
 
     return-object v0
@@ -143,7 +143,7 @@
     .parameter "x1"
 
     .prologue
-    .line 2485
+    .line 2514
     invoke-direct {p0, p1}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->getGroupData(Ljava/lang/String;)Landroid/database/Cursor;
 
     move-result-object v0
@@ -159,7 +159,7 @@
     .parameter "x3"
 
     .prologue
-    .line 2485
+    .line 2514
     invoke-direct {p0, p1, p2, p3, p4}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->onFiltering(Ljava/lang/String;ZJ)Landroid/database/Cursor;
 
     move-result-object v0
@@ -175,7 +175,7 @@
     .parameter "x3"
 
     .prologue
-    .line 2485
+    .line 2514
     invoke-direct {p0, p1, p2, p3}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->onDefaultLoadFinished(Ljava/lang/CharSequence;Landroid/database/Cursor;Landroid/database/Cursor;)V
 
     return-void
@@ -189,7 +189,7 @@
     .parameter "x3"
 
     .prologue
-    .line 2485
+    .line 2514
     invoke-direct {p0, p1, p2, p3, p4}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->onDirectoryLoadFinished(Ljava/lang/CharSequence;JLandroid/database/Cursor;)V
 
     return-void
@@ -199,7 +199,7 @@
     .locals 1
 
     .prologue
-    .line 3039
+    .line 3070
     iget-boolean v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mShowLoading:Z
 
     if-eqz v0, :cond_0
@@ -210,7 +210,7 @@
 
     if-lez v0, :cond_0
 
-    .line 3040
+    .line 3071
     invoke-virtual {p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->getPartitionCount()I
 
     move-result v0
@@ -219,13 +219,13 @@
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->removePartition(I)V
 
-    .line 3042
+    .line 3073
     :cond_0
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mShowLoading:Z
 
-    .line 3043
+    .line 3074
     return-void
 .end method
 
@@ -242,7 +242,7 @@
 
     const/4 v10, 0x1
 
-    .line 2755
+    .line 2784
     sget-object v0, Landroid/provider/ContactsContract$Groups;->CONTENT_SUMMARY_FILTER_URI:Landroid/net/Uri;
 
     invoke-static {p1}, Landroid/net/Uri;->encode(Ljava/lang/String;)Ljava/lang/String;
@@ -253,7 +253,7 @@
 
     move-result-object v1
 
-    .line 2756
+    .line 2785
     .local v1, uri:Landroid/net/Uri;
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->this$0:Lcom/meizu/widget/RecipientEdit;
 
@@ -264,7 +264,7 @@
 
     packed-switch v0, :pswitch_data_0
 
-    .line 2775
+    .line 2804
     :goto_0
     const/4 v0, 0x3
 
@@ -282,7 +282,7 @@
 
     aput-object v0, v2, v12
 
-    .line 2777
+    .line 2806
     .local v2, projection:[Ljava/lang/String;
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mContentResolver:Landroid/content/ContentResolver;
 
@@ -294,7 +294,7 @@
 
     move-result-object v6
 
-    .line 2779
+    .line 2808
     .local v6, groupCursor:Landroid/database/Cursor;
     if-eqz v6, :cond_7
 
@@ -305,18 +305,18 @@
 
     if-lez v0, :cond_7
 
-    .line 2780
+    .line 2809
     new-instance v8, Landroid/database/MatrixCursor;
 
     invoke-direct {v8, v2}, Landroid/database/MatrixCursor;-><init>([Ljava/lang/String;)V
 
-    .line 2781
+    .line 2810
     .local v8, newCursor:Landroid/database/MatrixCursor;
     const/4 v0, -0x1
 
     invoke-interface {v6, v0}, Landroid/database/Cursor;->moveToPosition(I)Z
 
-    .line 2782
+    .line 2811
     :cond_0
     invoke-interface {v6}, Landroid/database/Cursor;->moveToNext()Z
 
@@ -324,7 +324,7 @@
 
     if-eqz v0, :cond_5
 
-    .line 2783
+    .line 2812
     const/4 v0, 0x1
 
     invoke-interface {v6, v0}, Landroid/database/Cursor;->getInt(I)I
@@ -333,12 +333,12 @@
 
     if-lez v0, :cond_0
 
-    .line 2784
+    .line 2813
     invoke-virtual {v8}, Landroid/database/MatrixCursor;->newRow()Landroid/database/MatrixCursor$RowBuilder;
 
     move-result-object v9
 
-    .line 2785
+    .line 2814
     .local v9, row:Landroid/database/MatrixCursor$RowBuilder;
     const/4 v7, 0x0
 
@@ -348,7 +348,7 @@
 
     if-ge v7, v0, :cond_0
 
-    .line 2786
+    .line 2815
     const-string v0, "title"
 
     aget-object v3, v2, v7
@@ -359,7 +359,7 @@
 
     if-eqz v0, :cond_2
 
-    .line 2787
+    .line 2816
     const/4 v0, 0x0
 
     invoke-interface {v6, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
@@ -370,14 +370,14 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 2785
+    .line 2814
     :cond_1
     :goto_2
     add-int/lit8 v7, v7, 0x1
 
     goto :goto_1
 
-    .line 2759
+    .line 2788
     .end local v2           #projection:[Ljava/lang/String;
     .end local v6           #groupCursor:Landroid/database/Cursor;
     .end local v7           #i:I
@@ -410,10 +410,10 @@
 
     move-result-object v1
 
-    .line 2763
+    .line 2792
     goto :goto_0
 
-    .line 2766
+    .line 2795
     :pswitch_1
     invoke-virtual {v1}, Landroid/net/Uri;->buildUpon()Landroid/net/Uri$Builder;
 
@@ -431,10 +431,10 @@
 
     move-result-object v1
 
-    .line 2769
+    .line 2798
     goto :goto_0
 
-    .line 2788
+    .line 2817
     .restart local v2       #projection:[Ljava/lang/String;
     .restart local v6       #groupCursor:Landroid/database/Cursor;
     .restart local v7       #i:I
@@ -452,7 +452,7 @@
 
     if-eqz v0, :cond_4
 
-    .line 2789
+    .line 2818
     const/4 v0, 0x1
 
     invoke-interface {v6, v0}, Landroid/database/Cursor;->getInt(I)I
@@ -469,7 +469,7 @@
 
     goto :goto_2
 
-    .line 2800
+    .line 2829
     .end local v7           #i:I
     .end local v8           #newCursor:Landroid/database/MatrixCursor;
     .end local v9           #row:Landroid/database/MatrixCursor$RowBuilder;
@@ -478,13 +478,13 @@
 
     if-eqz v6, :cond_3
 
-    .line 2801
+    .line 2830
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
     :cond_3
     throw v0
 
-    .line 2790
+    .line 2819
     .restart local v7       #i:I
     .restart local v8       #newCursor:Landroid/database/MatrixCursor;
     .restart local v9       #row:Landroid/database/MatrixCursor$RowBuilder;
@@ -500,7 +500,7 @@
 
     if-eqz v0, :cond_1
 
-    .line 2791
+    .line 2820
     const/4 v0, 0x2
 
     invoke-interface {v6, v0}, Landroid/database/Cursor;->getLong(I)J
@@ -517,13 +517,13 @@
 
     goto :goto_2
 
-    .line 2800
+    .line 2829
     .end local v7           #i:I
     .end local v9           #row:Landroid/database/MatrixCursor$RowBuilder;
     :cond_5
     if-eqz v6, :cond_6
 
-    .line 2801
+    .line 2830
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
     .end local v8           #newCursor:Landroid/database/MatrixCursor;
@@ -531,11 +531,11 @@
     :goto_3
     return-object v8
 
-    .line 2800
+    .line 2829
     :cond_7
     if-eqz v6, :cond_8
 
-    .line 2801
+    .line 2830
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
     :cond_8
@@ -543,7 +543,7 @@
 
     goto :goto_3
 
-    .line 2756
+    .line 2785
     nop
 
     :pswitch_data_0
@@ -561,7 +561,7 @@
     .prologue
     const/4 v8, 0x0
 
-    .line 2734
+    .line 2763
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mDbLock:Ljava/lang/Object;
@@ -571,7 +571,7 @@
 
     monitor-enter v10
 
-    .line 2735
+    .line 2764
     :try_start_0
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->this$0:Lcom/meizu/widget/RecipientEdit;
 
@@ -582,18 +582,18 @@
 
     if-eqz v1, :cond_0
 
-    .line 2736
+    .line 2765
     new-instance v9, Ljava/lang/StringBuilder;
 
     invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 2737
+    .line 2766
     .local v9, selection:Ljava/lang/StringBuilder;
     const-string v1, "email LIKE "
 
     invoke-virtual {v9, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 2738
+    .line 2767
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -614,10 +614,10 @@
 
     invoke-static {v9, v1}, Landroid/database/DatabaseUtils;->appendEscapedSQLString(Ljava/lang/StringBuilder;Ljava/lang/String;)V
 
-    .line 2739
+    .line 2768
     const-string v7, "frequence DESC, last_time DESC"
 
-    .line 2741
+    .line 2770
     .local v7, orderBy:Ljava/lang/String;
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->this$0:Lcom/meizu/widget/RecipientEdit;
 
@@ -630,7 +630,7 @@
 
     move-result-object v0
 
-    .line 2742
+    .line 2771
     .local v0, db:Landroid/database/sqlite/SQLiteDatabase;
     const-string v1, "email"
 
@@ -664,11 +664,11 @@
 
     move-result-object v8
 
-    .line 2746
+    .line 2775
     .local v8, cursor:Landroid/database/Cursor;
     monitor-exit v10
 
-    .line 2750
+    .line 2779
     .end local v0           #db:Landroid/database/sqlite/SQLiteDatabase;
     .end local v7           #orderBy:Ljava/lang/String;
     .end local v8           #cursor:Landroid/database/Cursor;
@@ -676,7 +676,7 @@
     :goto_0
     return-object v8
 
-    .line 2748
+    .line 2777
     :cond_0
     monitor-exit v10
 
@@ -697,12 +697,12 @@
     .parameter "id"
 
     .prologue
-    .line 3011
+    .line 3042
     invoke-virtual {p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->getPartitionCount()I
 
     move-result v0
 
-    .line 3012
+    .line 3043
     .local v0, count:I
     const/4 v1, 0x0
 
@@ -710,12 +710,12 @@
     :goto_0
     if-ge v1, v0, :cond_1
 
-    .line 3013
+    .line 3044
     invoke-virtual {p0, v1}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->getPartition(I)Lcom/meizu/widget/CompositeCursorAdapterMz$Partition;
 
     move-result-object v2
 
-    .line 3014
+    .line 3045
     .local v2, partition:Lcom/meizu/widget/CompositeCursorAdapterMz$Partition;
     instance-of v3, v2, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
 
@@ -723,7 +723,7 @@
 
     move-object v3, v2
 
-    .line 3015
+    .line 3046
     check-cast v3, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
 
     iget-wide v3, v3, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;->directoryId:J
@@ -732,22 +732,22 @@
 
     if-nez v3, :cond_0
 
-    .line 3016
+    .line 3047
     check-cast v2, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
 
-    .line 3020
+    .line 3051
     .end local v2           #partition:Lcom/meizu/widget/CompositeCursorAdapterMz$Partition;
     :goto_1
     return-object v2
 
-    .line 3012
+    .line 3043
     .restart local v2       #partition:Lcom/meizu/widget/CompositeCursorAdapterMz$Partition;
     :cond_0
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 3020
+    .line 3051
     .end local v2           #partition:Lcom/meizu/widget/CompositeCursorAdapterMz$Partition;
     :cond_1
     const/4 v2, 0x0
@@ -762,12 +762,12 @@
     .parameter "contactCursor"
 
     .prologue
-    .line 2821
+    .line 2850
     if-nez p1, :cond_3
 
     const-string v11, ""
 
-    .line 2822
+    .line 2851
     .local v11, filter:Ljava/lang/String;
     :goto_0
     if-eqz p2, :cond_0
@@ -787,7 +787,7 @@
 
     if-lez v2, :cond_4
 
-    .line 2824
+    .line 2853
     :cond_1
     const/4 v2, 0x0
 
@@ -795,31 +795,31 @@
 
     iput-boolean v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mGlobalSearch:Z
 
-    .line 2825
+    .line 2854
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDirectories:Ljava/util/HashMap;
 
     invoke-virtual {v2}, Ljava/util/HashMap;->clear()V
 
-    .line 2826
+    .line 2855
     const/4 v2, 0x0
 
     move-object/from16 v0, p0
 
     iput-boolean v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mShowLoading:Z
 
-    .line 2828
+    .line 2857
     const/4 v2, 0x0
 
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v2}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->setNotificationsEnabled(Z)V
 
-    .line 2829
+    .line 2858
     invoke-virtual/range {p0 .. p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->close()V
 
-    .line 2831
+    .line 2860
     new-instance v2, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$GroupPartition;
 
     move-object/from16 v0, p0
@@ -830,7 +830,7 @@
 
     invoke-virtual {v0, v2}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->addPartition(Lcom/meizu/widget/CompositeCursorAdapterMz$Partition;)V
 
-    .line 2832
+    .line 2861
     const/4 v2, 0x0
 
     move-object/from16 v0, p0
@@ -839,7 +839,7 @@
 
     invoke-virtual {v0, v2, v1}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->changeCursor(ILandroid/database/Cursor;)V
 
-    .line 2834
+    .line 2863
     const/4 v2, 0x0
 
     const/4 v3, 0x0
@@ -848,7 +848,7 @@
 
     invoke-virtual {v0, v2, v3}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->addPartition(ZZ)V
 
-    .line 2835
+    .line 2864
     const/4 v2, 0x1
 
     move-object/from16 v0, p0
@@ -857,19 +857,19 @@
 
     invoke-virtual {v0, v2, v1}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->changeCursor(ILandroid/database/Cursor;)V
 
-    .line 2836
+    .line 2865
     const/4 v2, 0x1
 
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v2}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->setNotificationsEnabled(Z)V
 
-    .line 2939
+    .line 2970
     :cond_2
     :goto_1
     return-void
 
-    .line 2821
+    .line 2850
     .end local v11           #filter:Ljava/lang/String;
     :cond_3
     invoke-virtual/range {p1 .. p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
@@ -882,7 +882,7 @@
 
     goto :goto_0
 
-    .line 2837
+    .line 2866
     .restart local v11       #filter:Ljava/lang/String;
     :cond_4
     move-object/from16 v0, p0
@@ -894,27 +894,27 @@
 
     move-result v2
 
-    if-eqz v2, :cond_11
+    if-eqz v2, :cond_12
 
     invoke-static {v11}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v2
 
-    if-nez v2, :cond_11
+    if-nez v2, :cond_12
 
-    .line 2838
+    .line 2867
     const/4 v2, 0x0
 
     move-object/from16 v0, p0
 
     iput-boolean v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mStartLoading:Z
 
-    .line 2839
+    .line 2868
     new-instance v16, Ljava/util/HashMap;
 
     invoke-direct/range {v16 .. v16}, Ljava/util/HashMap;-><init>()V
 
-    .line 2840
+    .line 2869
     .local v16, oldDirectories:Ljava/util/HashMap;,"Ljava/util/HashMap<Ljava/lang/Long;Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;>;"
     move-object/from16 v0, p0
 
@@ -924,28 +924,28 @@
 
     invoke-virtual {v0, v2}, Ljava/util/HashMap;->putAll(Ljava/util/Map;)V
 
-    .line 2841
+    .line 2870
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDirectories:Ljava/util/HashMap;
 
     invoke-virtual {v2}, Ljava/util/HashMap;->clear()V
 
-    .line 2842
+    .line 2871
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDirectoryData:Ljava/util/HashSet;
 
     invoke-virtual {v2}, Ljava/util/HashSet;->clear()V
 
-    .line 2843
+    .line 2872
     const/4 v2, 0x0
 
     move-object/from16 v0, p0
 
     iput-object v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mPreferredDirectory:Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
 
-    .line 2846
+    .line 2875
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->this$0:Lcom/meizu/widget/RecipientEdit;
@@ -963,13 +963,13 @@
 
     check-cast v8, Landroid/net/ConnectivityManager;
 
-    .line 2848
+    .line 2877
     .local v8, connManager:Landroid/net/ConnectivityManager;
     invoke-virtual {v8}, Landroid/net/ConnectivityManager;->getActiveNetworkInfo()Landroid/net/NetworkInfo;
 
     move-result-object v15
 
-    .line 2849
+    .line 2878
     .local v15, info:Landroid/net/NetworkInfo;
     if-eqz v15, :cond_5
 
@@ -979,7 +979,7 @@
 
     if-nez v2, :cond_6
 
-    .line 2850
+    .line 2879
     :cond_5
     const/4 v2, 0x0
 
@@ -987,12 +987,12 @@
 
     iput-boolean v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mShowLoading:Z
 
-    .line 2851
+    .line 2880
     invoke-virtual/range {p0 .. p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->close()V
 
     goto :goto_1
 
-    .line 2855
+    .line 2884
     :cond_6
     move-object/from16 v0, p0
 
@@ -1012,7 +1012,7 @@
 
     move-result-object v9
 
-    .line 2859
+    .line 2888
     .local v9, directoryCursor:Landroid/database/Cursor;
     if-eqz v9, :cond_10
 
@@ -1022,7 +1022,7 @@
 
     if-lez v2, :cond_10
 
-    .line 2860
+    .line 2889
     invoke-virtual/range {p0 .. p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->getContext()Landroid/content/Context;
 
     move-result-object v2
@@ -1031,13 +1031,13 @@
 
     move-result-object v17
 
-    .line 2861
+    .line 2890
     .local v17, packageManager:Landroid/content/pm/PackageManager;
     const/4 v2, -0x1
 
     invoke-interface {v9, v2}, Landroid/database/Cursor;->moveToPosition(I)Z
 
-    .line 2862
+    .line 2891
     :cond_7
     :goto_2
     invoke-interface {v9}, Landroid/database/Cursor;->moveToNext()Z
@@ -1046,7 +1046,7 @@
 
     if-eqz v2, :cond_c
 
-    .line 2864
+    .line 2893
     const/4 v2, 0x6
 
     invoke-interface {v9, v2}, Landroid/database/Cursor;->getInt(I)I
@@ -1057,14 +1057,14 @@
 
     if-ne v2, v3, :cond_7
 
-    .line 2865
+    .line 2894
     const/4 v2, 0x0
 
     invoke-interface {v9, v2}, Landroid/database/Cursor;->getLong(I)J
 
     move-result-wide v13
 
-    .line 2866
+    .line 2895
     .local v13, id:J
     move-object/from16 v0, p0
 
@@ -1072,11 +1072,11 @@
 
     move-result-object v19
 
-    .line 2867
+    .line 2896
     .local v19, partition:Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
     if-nez v19, :cond_8
 
-    .line 2868
+    .line 2897
     invoke-static {v13, v14}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
     move-result-object v2
@@ -1090,12 +1090,12 @@
     .end local v19           #partition:Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
     check-cast v19, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
 
-    .line 2870
+    .line 2899
     .restart local v19       #partition:Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
     :cond_8
     if-nez v19, :cond_9
 
-    .line 2871
+    .line 2900
     new-instance v19, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
 
     .end local v19           #partition:Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
@@ -1105,21 +1105,21 @@
 
     invoke-direct {v0, v1}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;-><init>(Lcom/meizu/widget/RecipientEdit$RecipientAdapter;)V
 
-    .line 2874
+    .line 2903
     .restart local v19       #partition:Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
     :cond_9
     move-object/from16 v0, v19
 
     iput-wide v13, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;->directoryId:J
 
-    .line 2875
+    .line 2904
     move-object/from16 v0, p1
 
     move-object/from16 v1, v19
 
     iput-object v0, v1, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;->constraint:Ljava/lang/CharSequence;
 
-    .line 2876
+    .line 2905
     const/4 v2, 0x3
 
     invoke-interface {v9, v2}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
@@ -1130,7 +1130,7 @@
 
     iput-object v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;->displayName:Ljava/lang/String;
 
-    .line 2877
+    .line 2906
     const/4 v2, 0x1
 
     invoke-interface {v9, v2}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
@@ -1141,7 +1141,7 @@
 
     iput-object v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;->accountName:Ljava/lang/String;
 
-    .line 2878
+    .line 2907
     const/4 v2, 0x2
 
     invoke-interface {v9, v2}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
@@ -1152,14 +1152,14 @@
 
     iput-object v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;->accountType:Ljava/lang/String;
 
-    .line 2879
+    .line 2908
     const/4 v2, 0x4
 
     invoke-interface {v9, v2}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
     move-result-object v18
 
-    .line 2880
+    .line 2909
     .local v18, packageName:Ljava/lang/String;
     const/4 v2, 0x5
 
@@ -1167,19 +1167,19 @@
 
     move-result v20
 
-    .line 2881
+    .line 2910
     .local v20, resourceId:I
     if-eqz v18, :cond_a
 
     if-eqz v20, :cond_a
 
-    .line 2883
+    .line 2912
     :try_start_0
     invoke-virtual/range {v17 .. v18}, Landroid/content/pm/PackageManager;->getResourcesForApplication(Ljava/lang/String;)Landroid/content/res/Resources;
 
     move-result-object v21
 
-    .line 2885
+    .line 2914
     .local v21, resources:Landroid/content/res/Resources;
     move-object/from16 v0, v21
 
@@ -1193,14 +1193,14 @@
 
     iput-object v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;->directoryType:Ljava/lang/String;
 
-    .line 2886
+    .line 2915
     move-object/from16 v0, v19
 
     iget-object v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;->directoryType:Ljava/lang/String;
 
     if-nez v2, :cond_a
 
-    .line 2887
+    .line 2916
     const-string v2, "RecipientEdit"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -1239,7 +1239,7 @@
     :try_end_0
     .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 2899
+    .line 2928
     .end local v21           #resources:Landroid/content/res/Resources;
     :cond_a
     :goto_3
@@ -1281,14 +1281,14 @@
 
     if-eqz v2, :cond_b
 
-    .line 2901
+    .line 2930
     move-object/from16 v0, v19
 
     move-object/from16 v1, p0
 
     iput-object v0, v1, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mPreferredDirectory:Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
 
-    .line 2903
+    .line 2932
     :cond_b
     move-object/from16 v0, p0
 
@@ -1304,11 +1304,11 @@
 
     goto/16 :goto_2
 
-    .line 2890
+    .line 2919
     :catch_0
     move-exception v10
 
-    .line 2891
+    .line 2920
     .local v10, e:Landroid/content/pm/PackageManager$NameNotFoundException;
     const-string v2, "RecipientEdit"
 
@@ -1348,7 +1348,7 @@
 
     goto :goto_3
 
-    .line 2907
+    .line 2936
     .end local v10           #e:Landroid/content/pm/PackageManager$NameNotFoundException;
     .end local v13           #id:J
     .end local v18           #packageName:Ljava/lang/String;
@@ -1371,7 +1371,7 @@
 
     if-nez v2, :cond_e
 
-    .line 2908
+    .line 2937
     :cond_d
     const/4 v2, 0x1
 
@@ -1379,17 +1379,17 @@
 
     iput-boolean v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mGlobalSearch:Z
 
-    .line 2909
+    .line 2938
     const/4 v2, 0x0
 
     move-object/from16 v0, p0
 
     iput-boolean v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mShowLoading:Z
 
-    .line 2910
+    .line 2939
     invoke-virtual/range {p0 .. p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->close()V
 
-    .line 2913
+    .line 2942
     :cond_e
     move-object/from16 v0, p0
 
@@ -1399,33 +1399,33 @@
 
     move-result v2
 
-    if-lez v2, :cond_10
+    if-lez v2, :cond_11
 
-    .line 2914
+    .line 2943
     const/4 v2, 0x1
 
     move-object/from16 v0, p0
 
     iput-boolean v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mStartLoading:Z
 
-    .line 2915
+    .line 2944
     const/4 v2, 0x0
 
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v2}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->setNotificationsEnabled(Z)V
 
-    .line 2916
+    .line 2945
     invoke-direct/range {p0 .. p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->showLoading()V
 
-    .line 2917
+    .line 2946
     const/4 v2, 0x1
 
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v2}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->setNotificationsEnabled(Z)V
 
-    .line 2920
+    .line 2949
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDirectories:Ljava/util/HashMap;
@@ -1444,7 +1444,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_10
+    if-eqz v2, :cond_11
 
     invoke-interface {v12}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -1452,7 +1452,7 @@
 
     check-cast v19, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
 
-    .line 2921
+    .line 2950
     .restart local v19       #partition:Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
     move-object/from16 v0, v19
 
@@ -1460,7 +1460,7 @@
 
     if-nez v2, :cond_f
 
-    .line 2922
+    .line 2951
     new-instance v2, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartitionFilter;
 
     const/4 v3, -0x1
@@ -1477,7 +1477,7 @@
 
     iput-object v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;->filter:Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartitionFilter;
 
-    .line 2925
+    .line 2954
     :cond_f
     move-object/from16 v0, v19
 
@@ -1489,45 +1489,49 @@
 
     goto :goto_4
 
-    .line 2930
+    .line 2958
     .end local v12           #i$:Ljava/util/Iterator;
     .end local v17           #packageManager:Landroid/content/pm/PackageManager;
     .end local v19           #partition:Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
     :cond_10
-    if-eqz v9, :cond_2
-
-    .line 2931
-    invoke-interface {v9}, Landroid/database/Cursor;->close()V
-
-    goto/16 :goto_1
-
-    .line 2934
-    .end local v8           #connManager:Landroid/net/ConnectivityManager;
-    .end local v9           #directoryCursor:Landroid/database/Cursor;
-    .end local v15           #info:Landroid/net/NetworkInfo;
-    .end local v16           #oldDirectories:Ljava/util/HashMap;,"Ljava/util/HashMap<Ljava/lang/Long;Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;>;"
-    :cond_11
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p0
-
-    iput-boolean v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mGlobalSearch:Z
-
-    .line 2935
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDirectories:Ljava/util/HashMap;
-
-    invoke-virtual {v2}, Ljava/util/HashMap;->clear()V
-
-    .line 2936
     const/4 v2, 0x0
 
     move-object/from16 v0, p0
 
     iput-boolean v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mShowLoading:Z
 
-    .line 2937
+    .line 2959
+    invoke-virtual/range {p0 .. p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->close()V
+
+    .line 2962
+    :cond_11
+    if-eqz v9, :cond_2
+
+    .line 2963
+    invoke-interface {v9}, Landroid/database/Cursor;->close()V
+
+    goto/16 :goto_1
+
+    .line 2966
+    .end local v8           #connManager:Landroid/net/ConnectivityManager;
+    .end local v9           #directoryCursor:Landroid/database/Cursor;
+    .end local v15           #info:Landroid/net/NetworkInfo;
+    .end local v16           #oldDirectories:Ljava/util/HashMap;,"Ljava/util/HashMap<Ljava/lang/Long;Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;>;"
+    :cond_12
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDirectories:Ljava/util/HashMap;
+
+    invoke-virtual {v2}, Ljava/util/HashMap;->clear()V
+
+    .line 2967
+    const/4 v2, 0x0
+
+    move-object/from16 v0, p0
+
+    iput-boolean v2, v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mShowLoading:Z
+
+    .line 2968
     invoke-virtual/range {p0 .. p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->close()V
 
     goto/16 :goto_1
@@ -1544,7 +1548,7 @@
 
     const/4 v7, 0x0
 
-    .line 2943
+    .line 2974
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDirectories:Ljava/util/HashMap;
 
     invoke-static {p2, p3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
@@ -1557,11 +1561,11 @@
 
     check-cast v3, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
 
-    .line 2944
+    .line 2975
     .local v3, partition:Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
     if-eqz v3, :cond_4
 
-    .line 2948
+    .line 2979
     iget-object v5, v3, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;->constraint:Ljava/lang/CharSequence;
 
     invoke-static {p1, v5}, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
@@ -1570,7 +1574,7 @@
 
     if-eqz v5, :cond_4
 
-    .line 2949
+    .line 2980
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDirectories:Ljava/util/HashMap;
 
     invoke-static {p2, p3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
@@ -1579,7 +1583,7 @@
 
     invoke-virtual {v5, v6}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 2950
+    .line 2981
     new-instance v2, Landroid/database/MatrixCursor;
 
     invoke-static {}, Lcom/meizu/widget/RecipientEdit;->access$3300()[Ljava/lang/String;
@@ -1588,7 +1592,7 @@
 
     invoke-direct {v2, v5}, Landroid/database/MatrixCursor;-><init>([Ljava/lang/String;)V
 
-    .line 2951
+    .line 2982
     .local v2, newCursor:Landroid/database/MatrixCursor;
     if-eqz p4, :cond_1
 
@@ -1598,12 +1602,12 @@
 
     if-lez v5, :cond_1
 
-    .line 2952
+    .line 2983
     const/4 v5, -0x1
 
     invoke-interface {p4, v5}, Landroid/database/Cursor;->moveToPosition(I)Z
 
-    .line 2953
+    .line 2984
     :cond_0
     :goto_0
     invoke-interface {p4}, Landroid/database/Cursor;->moveToNext()Z
@@ -1612,18 +1616,18 @@
 
     if-eqz v5, :cond_1
 
-    .line 2954
+    .line 2985
     invoke-interface {p4, v7}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 2955
+    .line 2986
     .local v1, name:Ljava/lang/String;
     invoke-interface {p4, v8}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 2957
+    .line 2988
     .local v0, data:Ljava/lang/String;
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDirectoryData:Ljava/util/HashSet;
 
@@ -1633,26 +1637,26 @@
 
     if-nez v5, :cond_0
 
-    .line 2958
+    .line 2989
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDirectoryData:Ljava/util/HashSet;
 
     invoke-virtual {v5, v0}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
 
-    .line 2959
+    .line 2990
     invoke-virtual {v2}, Landroid/database/MatrixCursor;->newRow()Landroid/database/MatrixCursor$RowBuilder;
 
     move-result-object v4
 
-    .line 2960
+    .line 2991
     .local v4, row:Landroid/database/MatrixCursor$RowBuilder;
     invoke-virtual {v4, v1}, Landroid/database/MatrixCursor$RowBuilder;->add(Ljava/lang/Object;)Landroid/database/MatrixCursor$RowBuilder;
 
-    .line 2961
+    .line 2992
     invoke-virtual {v4, v0}, Landroid/database/MatrixCursor$RowBuilder;->add(Ljava/lang/Object;)Landroid/database/MatrixCursor$RowBuilder;
 
     goto :goto_0
 
-    .line 2966
+    .line 2997
     .end local v0           #data:Ljava/lang/String;
     .end local v1           #name:Ljava/lang/String;
     .end local v4           #row:Landroid/database/MatrixCursor$RowBuilder;
@@ -1663,43 +1667,43 @@
 
     if-lez v5, :cond_7
 
-    .line 2967
+    .line 2998
     invoke-virtual {p0, v7}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->setNotificationsEnabled(Z)V
 
-    .line 2968
+    .line 2999
     invoke-direct {p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->cancelLoading()V
 
-    .line 2969
+    .line 3000
     iget-boolean v5, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mStartLoading:Z
 
     if-eqz v5, :cond_2
 
-    .line 2970
+    .line 3001
     iput-boolean v7, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mStartLoading:Z
 
-    .line 2971
+    .line 3002
     invoke-virtual {p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->close()V
 
-    .line 2972
+    .line 3003
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mPreferredDirectory:Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
 
     if-eqz v5, :cond_2
 
-    .line 2973
+    .line 3004
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mPreferredDirectory:Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
 
     invoke-virtual {p0, v5}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->addPartition(Lcom/meizu/widget/CompositeCursorAdapterMz$Partition;)V
 
-    .line 2977
+    .line 3008
     :cond_2
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mPreferredDirectory:Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DirectoryPartition;
 
     if-ne v3, v5, :cond_6
 
-    .line 2978
+    .line 3009
     invoke-virtual {p0, v7, v2}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->changeCursor(ILandroid/database/Cursor;)V
 
-    .line 2985
+    .line 3016
     :goto_1
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDirectories:Ljava/util/HashMap;
 
@@ -1709,32 +1713,32 @@
 
     if-nez v5, :cond_3
 
-    .line 2986
+    .line 3017
     invoke-direct {p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->showLoading()V
 
-    .line 2988
+    .line 3019
     :cond_3
     invoke-virtual {p0, v8}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->setNotificationsEnabled(Z)V
 
-    .line 3005
+    .line 3036
     .end local v2           #newCursor:Landroid/database/MatrixCursor;
     :cond_4
     :goto_2
     if-eqz p4, :cond_5
 
-    .line 3006
+    .line 3037
     invoke-interface {p4}, Landroid/database/Cursor;->close()V
 
-    .line 3008
+    .line 3039
     :cond_5
     return-void
 
-    .line 2980
+    .line 3011
     .restart local v2       #newCursor:Landroid/database/MatrixCursor;
     :cond_6
     invoke-virtual {p0, v3}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->addPartition(Lcom/meizu/widget/CompositeCursorAdapterMz$Partition;)V
 
-    .line 2981
+    .line 3012
     invoke-virtual {p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->getPartitionCount()I
 
     move-result v5
@@ -1745,7 +1749,7 @@
 
     goto :goto_1
 
-    .line 2991
+    .line 3022
     :cond_7
     iget-object v5, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDirectories:Ljava/util/HashMap;
 
@@ -1755,23 +1759,23 @@
 
     if-eqz v5, :cond_4
 
-    .line 2992
+    .line 3023
     iget-boolean v5, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mStartLoading:Z
 
     if-eqz v5, :cond_8
 
-    .line 2993
+    .line 3024
     iput-boolean v7, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mStartLoading:Z
 
-    .line 2994
+    .line 3025
     iput-boolean v7, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mShowLoading:Z
 
-    .line 2995
+    .line 3026
     invoke-virtual {p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->close()V
 
     goto :goto_2
 
-    .line 2997
+    .line 3028
     :cond_8
     invoke-direct {p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->cancelLoading()V
 
@@ -1785,22 +1789,22 @@
     .parameter "directoryId"
 
     .prologue
-    .line 2655
+    .line 2684
     const/4 v1, 0x0
 
-    .line 2656
+    .line 2685
     .local v1, uri:Landroid/net/Uri;
     new-instance v12, Ljava/lang/StringBuilder;
 
     invoke-direct {v12}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 2657
+    .line 2686
     .local v12, sortOrder:Ljava/lang/StringBuilder;
     const-string v0, "sort_key"
 
     invoke-virtual {v12, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 2659
+    .line 2688
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mInputType:I
@@ -1810,11 +1814,11 @@
 
     packed-switch v0, :pswitch_data_0
 
-    .line 2684
+    .line 2713
     :goto_0
     if-eqz p2, :cond_0
 
-    .line 2685
+    .line 2714
     invoke-virtual {v1}, Landroid/net/Uri;->buildUpon()Landroid/net/Uri$Builder;
 
     move-result-object v0
@@ -1845,13 +1849,13 @@
 
     move-result-object v1
 
-    .line 2690
+    .line 2719
     :cond_0
     const-string v0, " ,is_primary DESC"
 
     invoke-virtual {v12, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 2691
+    .line 2720
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mContentResolver:Landroid/content/ContentResolver;
 
     invoke-static {}, Lcom/meizu/widget/RecipientEdit;->access$3300()[Ljava/lang/String;
@@ -1870,25 +1874,25 @@
 
     move-result-object v6
 
-    .line 2694
+    .line 2723
     .local v6, contactCursor:Landroid/database/Cursor;
     if-nez p2, :cond_6
 
-    .line 2696
+    .line 2725
     invoke-direct {p0, p1}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->getHistoryData(Ljava/lang/String;)Landroid/database/Cursor;
 
     move-result-object v8
 
-    .line 2697
+    .line 2726
     .local v8, historyCursor:Landroid/database/Cursor;
     if-eqz v8, :cond_2
 
-    .line 2698
+    .line 2727
     const/4 v0, -0x1
 
     invoke-interface {v8, v0}, Landroid/database/Cursor;->moveToPosition(I)Z
 
-    .line 2699
+    .line 2728
     :goto_1
     invoke-interface {v8}, Landroid/database/Cursor;->moveToNext()Z
 
@@ -1896,7 +1900,7 @@
 
     if-eqz v0, :cond_1
 
-    .line 2700
+    .line 2729
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDefaultData:Ljava/util/LinkedHashMap;
 
     const/4 v2, 0x0
@@ -1915,7 +1919,7 @@
 
     goto :goto_1
 
-    .line 2661
+    .line 2690
     .end local v6           #contactCursor:Landroid/database/Cursor;
     .end local v8           #historyCursor:Landroid/database/Cursor;
     :pswitch_0
@@ -1923,7 +1927,7 @@
 
     invoke-virtual {v12, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 2662
+    .line 2691
     sget-object v0, Landroid/provider/ContactsContract$CommonDataKinds$PhoneAndEmail;->CONTENT_FILTER_URI:Landroid/net/Uri;
 
     invoke-virtual {v0}, Landroid/net/Uri;->buildUpon()Landroid/net/Uri$Builder;
@@ -1950,10 +1954,10 @@
 
     move-result-object v1
 
-    .line 2666
+    .line 2695
     goto :goto_0
 
-    .line 2669
+    .line 2698
     :pswitch_1
     sget-object v0, Landroid/provider/ContactsContract$CommonDataKinds$Phone;->CONTENT_FILTER_URI:Landroid/net/Uri;
 
@@ -1981,10 +1985,10 @@
 
     move-result-object v1
 
-    .line 2673
+    .line 2702
     goto/16 :goto_0
 
-    .line 2676
+    .line 2705
     :pswitch_2
     sget-object v0, Landroid/provider/ContactsContract$CommonDataKinds$Email;->CONTENT_FILTER_URI:Landroid/net/Uri;
 
@@ -2026,22 +2030,22 @@
 
     goto/16 :goto_0
 
-    .line 2703
+    .line 2732
     .restart local v6       #contactCursor:Landroid/database/Cursor;
     .restart local v8       #historyCursor:Landroid/database/Cursor;
     :cond_1
     invoke-interface {v8}, Landroid/database/Cursor;->close()V
 
-    .line 2706
+    .line 2735
     :cond_2
     if-eqz v6, :cond_4
 
-    .line 2707
+    .line 2736
     const/4 v0, -0x1
 
     invoke-interface {v6, v0}, Landroid/database/Cursor;->moveToPosition(I)Z
 
-    .line 2708
+    .line 2737
     :goto_2
     invoke-interface {v6}, Landroid/database/Cursor;->moveToNext()Z
 
@@ -2049,7 +2053,7 @@
 
     if-eqz v0, :cond_3
 
-    .line 2709
+    .line 2738
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDefaultData:Ljava/util/LinkedHashMap;
 
     const/4 v2, 0x1
@@ -2068,11 +2072,11 @@
 
     goto :goto_2
 
-    .line 2714
+    .line 2743
     :cond_3
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
-    .line 2717
+    .line 2746
     :cond_4
     new-instance v10, Landroid/database/MatrixCursor;
 
@@ -2082,7 +2086,7 @@
 
     invoke-direct {v10, v0}, Landroid/database/MatrixCursor;-><init>([Ljava/lang/String;)V
 
-    .line 2718
+    .line 2747
     .local v10, newCursor:Landroid/database/MatrixCursor;
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mDefaultData:Ljava/util/LinkedHashMap;
 
@@ -2094,7 +2098,7 @@
 
     move-result-object v9
 
-    .line 2719
+    .line 2748
     .local v9, it:Ljava/util/Iterator;
     :goto_3
     invoke-interface {v9}, Ljava/util/Iterator;->hasNext()Z
@@ -2103,20 +2107,20 @@
 
     if-eqz v0, :cond_5
 
-    .line 2720
+    .line 2749
     invoke-interface {v9}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v7
 
     check-cast v7, Ljava/util/Map$Entry;
 
-    .line 2721
+    .line 2750
     .local v7, e:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/String;>;"
     invoke-virtual {v10}, Landroid/database/MatrixCursor;->newRow()Landroid/database/MatrixCursor$RowBuilder;
 
     move-result-object v11
 
-    .line 2722
+    .line 2751
     .local v11, row:Landroid/database/MatrixCursor$RowBuilder;
     invoke-interface {v7}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
@@ -2124,7 +2128,7 @@
 
     invoke-virtual {v11, v0}, Landroid/database/MatrixCursor$RowBuilder;->add(Ljava/lang/Object;)Landroid/database/MatrixCursor$RowBuilder;
 
-    .line 2723
+    .line 2752
     invoke-interface {v7}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
     move-result-object v0
@@ -2133,20 +2137,20 @@
 
     goto :goto_3
 
-    .line 2726
+    .line 2755
     .end local v7           #e:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/String;>;"
     .end local v11           #row:Landroid/database/MatrixCursor$RowBuilder;
     :cond_5
     move-object v6, v10
 
-    .line 2729
+    .line 2758
     .end local v8           #historyCursor:Landroid/database/Cursor;
     .end local v9           #it:Ljava/util/Iterator;
     .end local v10           #newCursor:Landroid/database/MatrixCursor;
     :cond_6
     return-object v6
 
-    .line 2659
+    .line 2688
     nop
 
     :pswitch_data_0
@@ -2163,17 +2167,17 @@
     .prologue
     const/4 v2, 0x1
 
-    .line 3025
+    .line 3056
     iput-boolean v2, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mShowLoading:Z
 
-    .line 3026
+    .line 3057
     invoke-virtual {p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->getPartitionCount()I
 
     move-result v1
 
     if-lez v1, :cond_0
 
-    .line 3027
+    .line 3058
     invoke-virtual {p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->getPartitionCount()I
 
     move-result v1
@@ -2184,7 +2188,7 @@
 
     move-result-object v0
 
-    .line 3028
+    .line 3059
     .local v0, partition:Lcom/meizu/widget/CompositeCursorAdapterMz$Partition;
     invoke-virtual {v0}, Lcom/meizu/widget/CompositeCursorAdapterMz$Partition;->getHasHeader()Z
 
@@ -2198,16 +2202,16 @@
 
     if-eqz v1, :cond_0
 
-    .line 3035
+    .line 3066
     .end local v0           #partition:Lcom/meizu/widget/CompositeCursorAdapterMz$Partition;
     :goto_0
     return-void
 
-    .line 3033
+    .line 3064
     :cond_0
     invoke-virtual {p0, v2, v2}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->addPartition(ZZ)V
 
-    .line 3034
+    .line 3065
     invoke-virtual {p0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->getPartitionCount()I
 
     move-result v1
@@ -2235,7 +2239,7 @@
 
     const/4 v7, 0x1
 
-    .line 2631
+    .line 2660
     const v4, 0x1020014
 
     invoke-virtual {p1, v4}, Landroid/view/View;->findViewById(I)Landroid/view/View;
@@ -2244,7 +2248,7 @@
 
     check-cast v2, Landroid/widget/TextView;
 
-    .line 2632
+    .line 2661
     .local v2, text1:Landroid/widget/TextView;
     const v4, 0x1020015
 
@@ -2254,20 +2258,20 @@
 
     check-cast v3, Landroid/widget/TextView;
 
-    .line 2634
+    .line 2663
     .local v3, text2:Landroid/widget/TextView;
     invoke-interface {p3, v8}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 2635
+    .line 2664
     .local v0, name:Ljava/lang/String;
     invoke-virtual {v2, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 2636
+    .line 2665
     invoke-virtual {v3, v8}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 2637
+    .line 2666
     if-nez p2, :cond_0
 
     invoke-virtual {p0, p2}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->getPartition(I)Lcom/meizu/widget/CompositeCursorAdapterMz$Partition;
@@ -2278,7 +2282,7 @@
 
     if-eqz v4, :cond_0
 
-    .line 2639
+    .line 2668
     iget-object v4, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->this$0:Lcom/meizu/widget/RecipientEdit;
 
     #getter for: Lcom/meizu/widget/RecipientEdit;->mContext:Landroid/content/Context;
@@ -2286,7 +2290,7 @@
 
     move-result-object v4
 
-    const v5, 0x1040576
+    const v5, 0x104057c
 
     new-array v6, v7, [Ljava/lang/Object;
 
@@ -2304,16 +2308,16 @@
 
     move-result-object v1
 
-    .line 2641
+    .line 2670
     .local v1, str:Ljava/lang/String;
     invoke-virtual {v3, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 2651
+    .line 2680
     .end local v1           #str:Ljava/lang/String;
     :goto_0
     return-void
 
-    .line 2643
+    .line 2672
     :cond_0
     invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -2321,26 +2325,26 @@
 
     if-eqz v4, :cond_1
 
-    .line 2644
+    .line 2673
     invoke-interface {p3, v7}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
     move-result-object v4
 
     invoke-virtual {v2, v4}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 2645
+    .line 2674
     const-string v4, ""
 
     invoke-virtual {v3, v4}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 2646
+    .line 2675
     const/16 v4, 0x8
 
     invoke-virtual {v3, v4}, Landroid/widget/TextView;->setVisibility(I)V
 
     goto :goto_0
 
-    .line 2648
+    .line 2677
     :cond_1
     invoke-interface {p3, v7}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
@@ -2355,7 +2359,7 @@
     .locals 2
 
     .prologue
-    .line 2603
+    .line 2632
     new-instance v0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter$DefaultPartitionFilter;
 
     const/4 v1, 0x0
@@ -2370,12 +2374,12 @@
     .parameter "position"
 
     .prologue
-    .line 2808
+    .line 2837
     invoke-virtual {p0, p1}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->getPartitionForPosition(I)I
 
     move-result v0
 
-    .line 2809
+    .line 2838
     .local v0, partitionIndex:I
     invoke-virtual {p0, v0}, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->getPartition(I)Lcom/meizu/widget/CompositeCursorAdapterMz$Partition;
 
@@ -2385,10 +2389,10 @@
 
     if-eqz v1, :cond_0
 
-    .line 2810
+    .line 2839
     const/4 v1, 0x1
 
-    .line 2812
+    .line 2841
     :goto_0
     return v1
 
@@ -2406,14 +2410,14 @@
     .parameter "parent"
 
     .prologue
-    .line 2616
+    .line 2645
     invoke-static {p1}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
     move-result-object v0
 
-    .line 2617
+    .line 2646
     .local v0, inflate:Landroid/view/LayoutInflater;
-    const v1, 0x10900c1
+    const v1, 0x10900ca
 
     const/4 v2, 0x0
 
@@ -2433,14 +2437,14 @@
     .parameter "parent"
 
     .prologue
-    .line 2624
+    .line 2653
     invoke-static {p1}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
     move-result-object v0
 
-    .line 2625
+    .line 2654
     .local v0, inflate:Landroid/view/LayoutInflater;
-    const v1, 0x10900c0
+    const v1, 0x10900c9
 
     const/4 v2, 0x0
 
@@ -2456,9 +2460,9 @@
     .parameter "account"
 
     .prologue
-    .line 2611
+    .line 2640
     iput-object p1, p0, Lcom/meizu/widget/RecipientEdit$RecipientAdapter;->mAccount:Landroid/accounts/Account;
 
-    .line 2612
+    .line 2641
     return-void
 .end method

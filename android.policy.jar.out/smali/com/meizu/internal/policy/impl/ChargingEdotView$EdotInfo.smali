@@ -62,46 +62,46 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 191
+    .line 192
     iput-object p1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->this$0:Lcom/meizu/internal/policy/impl/ChargingEdotView;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 173
+    .line 174
     new-instance v0, Landroid/graphics/Point;
 
     invoke-direct {v0}, Landroid/graphics/Point;-><init>()V
 
     iput-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
-    .line 177
+    .line 178
     iput-boolean v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->toRight:Z
 
-    .line 178
+    .line 179
     iput v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->radius:I
 
-    .line 192
+    .line 193
     iget-object v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->mEdotPosition:Landroid/graphics/Point;
 
     invoke-virtual {v0, v1, v1}, Landroid/graphics/Point;->set(II)V
 
-    .line 193
+    .line 194
     iput-boolean v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->isLive:Z
 
-    .line 195
+    .line 196
     iput v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alphaDuration:I
 
-    .line 196
+    .line 197
     iput v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->verticalDuration:I
 
-    .line 197
+    .line 198
     iput v1, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->horizontalDuration:I
 
-    .line 199
+    .line 200
     const/16 v0, 0xff
 
     iput v0, p0, Lcom/meizu/internal/policy/impl/ChargingEdotView$EdotInfo;->alpha:I
 
-    .line 200
+    .line 201
     return-void
 .end method

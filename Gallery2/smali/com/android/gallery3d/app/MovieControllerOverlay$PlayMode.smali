@@ -48,7 +48,7 @@
 
     const/4 v2, 0x0
 
-    .line 82
+    .line 91
     new-instance v0, Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
     const-string v1, "NOMODE"
@@ -57,7 +57,7 @@
 
     sput-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;->NOMODE:Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
-    .line 83
+    .line 92
     new-instance v0, Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
     const-string v1, "SINGLECYCLE"
@@ -66,7 +66,7 @@
 
     sput-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;->SINGLECYCLE:Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
-    .line 84
+    .line 93
     new-instance v0, Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
     const-string v1, "LISTCYCLE"
@@ -75,7 +75,7 @@
 
     sput-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;->LISTCYCLE:Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
-    .line 85
+    .line 94
     new-instance v0, Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
     const-string v1, "ALLCYCLE"
@@ -84,7 +84,7 @@
 
     sput-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;->ALLCYCLE:Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
-    .line 81
+    .line 90
     const/4 v0, 0x4
 
     new-array v0, v0, [Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
@@ -121,7 +121,7 @@
     .end annotation
 
     .prologue
-    .line 81
+    .line 90
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -132,7 +132,7 @@
     .parameter
 
     .prologue
-    .line 81
+    .line 90
     const-class v0, Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -148,7 +148,7 @@
     .locals 1
 
     .prologue
-    .line 81
+    .line 90
     sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;->$VALUES:[Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
     invoke-virtual {v0}, [Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;->clone()Ljava/lang/Object;

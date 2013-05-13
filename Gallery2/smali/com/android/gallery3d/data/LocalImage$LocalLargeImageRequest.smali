@@ -37,13 +37,13 @@
     .parameter "localFilePath"
 
     .prologue
-    .line 215
+    .line 216
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 216
+    .line 217
     iput-object p1, p0, Lcom/android/gallery3d/data/LocalImage$LocalLargeImageRequest;->mLocalFilePath:Ljava/lang/String;
 
-    .line 217
+    .line 218
     return-void
 .end method
 
@@ -54,7 +54,7 @@
     .parameter "jc"
 
     .prologue
-    .line 220
+    .line 221
     iget-object v0, p0, Lcom/android/gallery3d/data/LocalImage$LocalLargeImageRequest;->mLocalFilePath:Ljava/lang/String;
 
     const/4 v1, 0x0
@@ -71,7 +71,7 @@
     .parameter "x0"
 
     .prologue
-    .line 211
+    .line 212
     invoke-virtual {p0, p1}, Lcom/android/gallery3d/data/LocalImage$LocalLargeImageRequest;->run(Lcom/android/gallery3d/util/ThreadPool$JobContext;)Landroid/graphics/BitmapRegionDecoder;
 
     move-result-object v0

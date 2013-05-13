@@ -3,12 +3,12 @@
 .source "BluetoothService.java"
 
 # interfaces
-.implements Landroid/bluetooth/BluetoothProfile$ServiceListener;
+.implements Landroid/content/DialogInterface$OnClickListener;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Landroid/server/BluetoothService;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Landroid/server/BluetoothService;->runBluetooth()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 2079
+    .line 747
     iput-object p1, p0, Landroid/server/BluetoothService$3;->this$0:Landroid/server/BluetoothService;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -37,116 +37,116 @@
 
 
 # virtual methods
-.method public onServiceConnected(ILandroid/bluetooth/BluetoothProfile;)V
-    .locals 1
-    .parameter "profile"
-    .parameter "proxy"
+.method public onClick(Landroid/content/DialogInterface;I)V
+    .locals 3
+    .parameter "dialog"
+    .parameter "which"
 
     .prologue
-    .line 2081
-    const/4 v0, 0x1
+    .line 750
+    const-string v0, "BluetoothService"
 
-    if-ne p1, v0, :cond_1
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    .line 2082
-    iget-object v0, p0, Landroid/server/BluetoothService$3;->this$0:Landroid/server/BluetoothService;
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    check-cast p2, Landroid/bluetooth/BluetoothHeadset;
+    const-string/jumbo v2, "setPositiveButton, onClick(), which="
 
-    .end local p2
-    #setter for: Landroid/server/BluetoothService;->mHeadsetProxy:Landroid/bluetooth/BluetoothHeadset;
-    invoke-static {v0, p2}, Landroid/server/BluetoothService;->access$802(Landroid/server/BluetoothService;Landroid/bluetooth/BluetoothHeadset;)Landroid/bluetooth/BluetoothHeadset;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 2088
-    :cond_0
+    move-result-object v1
+
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 751
+    packed-switch p2, :pswitch_data_0
+
+    .line 763
     :goto_0
-    return-void
+    invoke-interface {p1}, Landroid/content/DialogInterface;->dismiss()V
 
-    .line 2083
-    .restart local p2
-    :cond_1
-    const/4 v0, 0x4
-
-    if-ne p1, v0, :cond_2
-
-    .line 2084
+    .line 764
     iget-object v0, p0, Landroid/server/BluetoothService$3;->this$0:Landroid/server/BluetoothService;
 
-    check-cast p2, Landroid/bluetooth/BluetoothInputDevice;
-
-    .end local p2
-    #setter for: Landroid/server/BluetoothService;->mInputDevice:Landroid/bluetooth/BluetoothInputDevice;
-    invoke-static {v0, p2}, Landroid/server/BluetoothService;->access$902(Landroid/server/BluetoothService;Landroid/bluetooth/BluetoothInputDevice;)Landroid/bluetooth/BluetoothInputDevice;
-
-    goto :goto_0
-
-    .line 2085
-    .restart local p2
-    :cond_2
-    const/4 v0, 0x5
-
-    if-ne p1, v0, :cond_0
-
-    .line 2086
-    iget-object v0, p0, Landroid/server/BluetoothService$3;->this$0:Landroid/server/BluetoothService;
-
-    check-cast p2, Landroid/bluetooth/BluetoothPan;
-
-    .end local p2
-    #setter for: Landroid/server/BluetoothService;->mPan:Landroid/bluetooth/BluetoothPan;
-    invoke-static {v0, p2}, Landroid/server/BluetoothService;->access$1002(Landroid/server/BluetoothService;Landroid/bluetooth/BluetoothPan;)Landroid/bluetooth/BluetoothPan;
-
-    goto :goto_0
-.end method
-
-.method public onServiceDisconnected(I)V
-    .locals 2
-    .parameter "profile"
-
-    .prologue
     const/4 v1, 0x0
 
-    .line 2090
-    const/4 v0, 0x1
+    #setter for: Landroid/server/BluetoothService;->mEnableBluetoothVisibilityDialog:Landroid/app/AlertDialog;
+    invoke-static {v0, v1}, Landroid/server/BluetoothService;->access$202(Landroid/server/BluetoothService;Landroid/app/AlertDialog;)Landroid/app/AlertDialog;
 
-    if-ne p1, v0, :cond_1
-
-    .line 2091
-    iget-object v0, p0, Landroid/server/BluetoothService$3;->this$0:Landroid/server/BluetoothService;
-
-    #setter for: Landroid/server/BluetoothService;->mHeadsetProxy:Landroid/bluetooth/BluetoothHeadset;
-    invoke-static {v0, v1}, Landroid/server/BluetoothService;->access$802(Landroid/server/BluetoothService;Landroid/bluetooth/BluetoothHeadset;)Landroid/bluetooth/BluetoothHeadset;
-
-    .line 2097
-    :cond_0
-    :goto_0
+    .line 765
     return-void
 
-    .line 2092
-    :cond_1
-    const/4 v0, 0x4
+    .line 753
+    :pswitch_0
+    const-string v0, "BluetoothService"
 
-    if-ne p1, v0, :cond_2
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    .line 2093
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "Begin open bluetooth visibility, which="
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 754
     iget-object v0, p0, Landroid/server/BluetoothService$3;->this$0:Landroid/server/BluetoothService;
 
-    #setter for: Landroid/server/BluetoothService;->mInputDevice:Landroid/bluetooth/BluetoothInputDevice;
-    invoke-static {v0, v1}, Landroid/server/BluetoothService;->access$902(Landroid/server/BluetoothService;Landroid/bluetooth/BluetoothInputDevice;)Landroid/bluetooth/BluetoothInputDevice;
+    #getter for: Landroid/server/BluetoothService;->mContext:Landroid/content/Context;
+    invoke-static {v0}, Landroid/server/BluetoothService;->access$300(Landroid/server/BluetoothService;)Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v0
+
+    const-string v1, "bluetooth_discoverability"
+
+    const/4 v2, 0x1
+
+    invoke-static {v0, v1, v2}, Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
+
+    .line 755
+    iget-object v0, p0, Landroid/server/BluetoothService$3;->this$0:Landroid/server/BluetoothService;
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Landroid/server/BluetoothService;->setDiscoverableTimeout(I)Z
+
+    .line 756
+    iget-object v0, p0, Landroid/server/BluetoothService$3;->this$0:Landroid/server/BluetoothService;
+
+    const/16 v1, 0x17
+
+    const/16 v2, 0x78
+
+    invoke-virtual {v0, v1, v2}, Landroid/server/BluetoothService;->setScanMode(II)Z
 
     goto :goto_0
 
-    .line 2094
-    :cond_2
-    const/4 v0, 0x5
-
-    if-ne p1, v0, :cond_0
-
-    .line 2095
-    iget-object v0, p0, Landroid/server/BluetoothService$3;->this$0:Landroid/server/BluetoothService;
-
-    #setter for: Landroid/server/BluetoothService;->mPan:Landroid/bluetooth/BluetoothPan;
-    invoke-static {v0, v1}, Landroid/server/BluetoothService;->access$1002(Landroid/server/BluetoothService;Landroid/bluetooth/BluetoothPan;)Landroid/bluetooth/BluetoothPan;
-
-    goto :goto_0
+    .line 751
+    :pswitch_data_0
+    .packed-switch -0x1
+        :pswitch_0
+    .end packed-switch
 .end method

@@ -26,12 +26,12 @@
     .parameter
 
     .prologue
-    .line 225
+    .line 234
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     invoke-direct {p0}, Lcom/android/gallery3d/ui/GLView;-><init>()V
 
-    .line 226
+    .line 235
     const/16 v0, 0x10
 
     new-array v0, v0, [F
@@ -54,14 +54,14 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 236
+    .line 249
     sub-int v3, p4, p2
 
-    .line 237
+    .line 250
     .local v3, width:I
     sub-int v0, p5, p3
 
-    .line 240
+    .line 253
     .local v0, height:I
     iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
@@ -77,19 +77,28 @@
     :goto_0
     add-int v2, p3, v4
 
-    .line 241
+    .line 254
     .local v2, slotViewTop:I
     sget v4, Lcom/android/gallery3d/util/GalleryUtils;->INFOBAR_HEIGHT:I
 
     add-int/2addr v2, v4
 
-    .line 242
-    if-le v3, v0, :cond_2
+    .line 255
+    if-gt v3, v0, :cond_2
 
-    .line 243
-    move v1, v0
+    iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
-    .line 248
+    invoke-virtual {v4}, Lcom/android/gallery3d/app/AlbumPage;->hasPermanentMenuKey()Z
+
+    move-result v4
+
+    if-nez v4, :cond_2
+
+    sget v4, Lcom/android/gallery3d/util/GalleryUtils;->BOTTOMBAR_HEIGHT:I
+
+    sub-int v1, v0, v4
+
+    .line 257
     .local v1, slotViewBottom:I
     :goto_1
     iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
@@ -101,7 +110,7 @@
 
     if-eqz v4, :cond_3
 
-    .line 249
+    .line 258
     iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mDetailsHelper:Lcom/android/gallery3d/ui/DetailsHelper;
@@ -111,7 +120,7 @@
 
     invoke-virtual {v4, p2, v2, p4, p5}, Lcom/android/gallery3d/ui/DetailsHelper;->layout(IIII)V
 
-    .line 255
+    .line 264
     :goto_2
     iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
@@ -122,7 +131,7 @@
 
     if-nez v4, :cond_0
 
-    .line 256
+    .line 265
     iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mOpenCenter:Lcom/android/gallery3d/ui/RelativePosition;
@@ -132,7 +141,7 @@
 
     invoke-virtual {v4, v5, v2}, Lcom/android/gallery3d/ui/RelativePosition;->setReferencePosition(II)V
 
-    .line 257
+    .line 266
     :cond_0
     iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
@@ -143,7 +152,7 @@
 
     invoke-virtual {v4, v2}, Lcom/android/gallery3d/ui/SlotView;->setActionBarHeight(I)V
 
-    .line 258
+    .line 267
     iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mSlotView:Lcom/android/gallery3d/ui/SlotView;
@@ -155,7 +164,7 @@
 
     invoke-virtual {v4, v6}, Lcom/android/gallery3d/ui/SlotView;->setBottomBarHeight(I)V
 
-    .line 259
+    .line 268
     iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mSlotView:Lcom/android/gallery3d/ui/SlotView;
@@ -165,7 +174,7 @@
 
     invoke-virtual {v4, v5, v2, v3, v1}, Lcom/android/gallery3d/ui/SlotView;->layout(IIII)V
 
-    .line 262
+    .line 271
     iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$2;->mMatrix:[F
 
     div-int/lit8 v5, v3, 0x2
@@ -187,10 +196,24 @@
 
     invoke-static {v4, v5, v6, v7}, Lcom/android/gallery3d/util/GalleryUtils;->setViewPointMatrix([FFFF)V
 
-    .line 263
+    .line 273
+    iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
+
+    #getter for: Lcom/android/gallery3d/app/AlbumPage;->mHandler:Landroid/os/Handler;
+    invoke-static {v4}, Lcom/android/gallery3d/app/AlbumPage;->access$900(Lcom/android/gallery3d/app/AlbumPage;)Landroid/os/Handler;
+
+    move-result-object v4
+
+    new-instance v5, Lcom/android/gallery3d/app/AlbumPage$2$1;
+
+    invoke-direct {v5, p0}, Lcom/android/gallery3d/app/AlbumPage$2$1;-><init>(Lcom/android/gallery3d/app/AlbumPage$2;)V
+
+    invoke-virtual {v4, v5}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 281
     return-void
 
-    .line 240
+    .line 253
     .end local v1           #slotViewBottom:I
     .end local v2           #slotViewTop:I
     :cond_1
@@ -198,17 +221,15 @@
 
     goto :goto_0
 
-    .line 245
     .restart local v2       #slotViewTop:I
     :cond_2
-    sget v4, Lcom/android/gallery3d/util/GalleryUtils;->BOTTOMBAR_HEIGHT:I
+    move v1, v0
 
-    sub-int v1, v0, v4
-
-    .restart local v1       #slotViewBottom:I
+    .line 255
     goto :goto_1
 
-    .line 251
+    .line 260
+    .restart local v1       #slotViewBottom:I
     :cond_3
     iget-object v4, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
@@ -231,36 +252,36 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 267
+    .line 285
     const/4 v1, 0x2
 
     invoke-interface {p1, v1}, Lcom/android/gallery3d/ui/GLCanvas;->save(I)V
 
-    .line 268
+    .line 286
     iget-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$2;->mMatrix:[F
 
     const/4 v2, 0x0
 
     invoke-interface {p1, v1, v2}, Lcom/android/gallery3d/ui/GLCanvas;->multiplyMatrix([FI)V
 
-    .line 269
+    .line 287
     invoke-super {p0, p1}, Lcom/android/gallery3d/ui/GLView;->render(Lcom/android/gallery3d/ui/GLCanvas;)V
 
-    .line 271
+    .line 289
     iget-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mResumeEffect:Lcom/android/gallery3d/ui/PhotoFallbackEffect;
-    invoke-static {v1}, Lcom/android/gallery3d/app/AlbumPage;->access$900(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/ui/PhotoFallbackEffect;
+    invoke-static {v1}, Lcom/android/gallery3d/app/AlbumPage;->access$1000(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/ui/PhotoFallbackEffect;
 
     move-result-object v1
 
     if-eqz v1, :cond_1
 
-    .line 272
+    .line 290
     iget-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mResumeEffect:Lcom/android/gallery3d/ui/PhotoFallbackEffect;
-    invoke-static {v1}, Lcom/android/gallery3d/app/AlbumPage;->access$900(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/ui/PhotoFallbackEffect;
+    invoke-static {v1}, Lcom/android/gallery3d/app/AlbumPage;->access$1000(Lcom/android/gallery3d/app/AlbumPage;)Lcom/android/gallery3d/ui/PhotoFallbackEffect;
 
     move-result-object v1
 
@@ -268,17 +289,17 @@
 
     move-result v0
 
-    .line 273
+    .line 291
     .local v0, more:Z
     if-nez v0, :cond_0
 
-    .line 274
+    .line 292
     iget-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #setter for: Lcom/android/gallery3d/app/AlbumPage;->mResumeEffect:Lcom/android/gallery3d/ui/PhotoFallbackEffect;
-    invoke-static {v1, v3}, Lcom/android/gallery3d/app/AlbumPage;->access$902(Lcom/android/gallery3d/app/AlbumPage;Lcom/android/gallery3d/ui/PhotoFallbackEffect;)Lcom/android/gallery3d/ui/PhotoFallbackEffect;
+    invoke-static {v1, v3}, Lcom/android/gallery3d/app/AlbumPage;->access$1002(Lcom/android/gallery3d/app/AlbumPage;Lcom/android/gallery3d/ui/PhotoFallbackEffect;)Lcom/android/gallery3d/ui/PhotoFallbackEffect;
 
-    .line 275
+    .line 293
     iget-object v1, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
 
     #getter for: Lcom/android/gallery3d/app/AlbumPage;->mAlbumView:Lcom/android/gallery3d/ui/AlbumSlotRenderer;
@@ -288,27 +309,53 @@
 
     invoke-virtual {v1, v3}, Lcom/android/gallery3d/ui/AlbumSlotRenderer;->setSlotFilter(Lcom/android/gallery3d/ui/AlbumSlotRenderer$SlotFilter;)V
 
-    .line 280
+    .line 298
     :cond_0
     invoke-virtual {p0}, Lcom/android/gallery3d/app/AlbumPage$2;->invalidate()V
 
-    .line 282
+    .line 300
     .end local v0           #more:Z
     :cond_1
     invoke-interface {p1}, Lcom/android/gallery3d/ui/GLCanvas;->restore()V
 
-    .line 283
+    .line 301
     return-void
 .end method
 
 .method protected renderBackground(Lcom/android/gallery3d/ui/GLCanvas;)V
-    .locals 0
+    .locals 3
     .parameter "view"
 
     .prologue
-    .line 230
+    const v2, 0x3dd0d0d1
+
+    .line 239
+    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
+
+    iget-boolean v0, v0, Lcom/android/gallery3d/app/ActivityState;->mNeedSetClearColor:Z
+
+    if-eqz v0, :cond_0
+
+    .line 240
+    invoke-interface {p1}, Lcom/android/gallery3d/ui/GLCanvas;->getGLInstance()Ljavax/microedition/khronos/opengles/GL11;
+
+    move-result-object v0
+
+    const/high16 v1, 0x3f80
+
+    invoke-interface {v0, v2, v2, v2, v1}, Ljavax/microedition/khronos/opengles/GL11;->glClearColor(FFFF)V
+
+    .line 241
+    iget-object v0, p0, Lcom/android/gallery3d/app/AlbumPage$2;->this$0:Lcom/android/gallery3d/app/AlbumPage;
+
+    const/4 v1, 0x0
+
+    iput-boolean v1, v0, Lcom/android/gallery3d/app/ActivityState;->mNeedSetClearColor:Z
+
+    .line 243
+    :cond_0
     invoke-interface {p1}, Lcom/android/gallery3d/ui/GLCanvas;->clearBuffer()V
 
-    .line 231
+    .line 244
     return-void
 .end method

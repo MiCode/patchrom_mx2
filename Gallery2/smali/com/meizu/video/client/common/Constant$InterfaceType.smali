@@ -54,7 +54,7 @@
 
     const/4 v3, 0x0
 
-    .line 41
+    .line 45
     new-instance v0, Lcom/meizu/video/client/common/Constant$InterfaceType;
 
     const-string v1, "CHANNEL"
@@ -63,7 +63,7 @@
 
     sput-object v0, Lcom/meizu/video/client/common/Constant$InterfaceType;->CHANNEL:Lcom/meizu/video/client/common/Constant$InterfaceType;
 
-    .line 42
+    .line 46
     new-instance v0, Lcom/meizu/video/client/common/Constant$InterfaceType;
 
     const-string v1, "CHANNELDETAIL"
@@ -72,7 +72,7 @@
 
     sput-object v0, Lcom/meizu/video/client/common/Constant$InterfaceType;->CHANNELDETAIL:Lcom/meizu/video/client/common/Constant$InterfaceType;
 
-    .line 43
+    .line 47
     new-instance v0, Lcom/meizu/video/client/common/Constant$InterfaceType;
 
     const-string v1, "CHANNELPROGRAMDETAIL"
@@ -81,7 +81,7 @@
 
     sput-object v0, Lcom/meizu/video/client/common/Constant$InterfaceType;->CHANNELPROGRAMDETAIL:Lcom/meizu/video/client/common/Constant$InterfaceType;
 
-    .line 44
+    .line 48
     new-instance v0, Lcom/meizu/video/client/common/Constant$InterfaceType;
 
     const-string v1, "RECOMMEND"
@@ -90,7 +90,7 @@
 
     sput-object v0, Lcom/meizu/video/client/common/Constant$InterfaceType;->RECOMMEND:Lcom/meizu/video/client/common/Constant$InterfaceType;
 
-    .line 45
+    .line 49
     new-instance v0, Lcom/meizu/video/client/common/Constant$InterfaceType;
 
     const-string v1, "SEARCH"
@@ -99,7 +99,7 @@
 
     sput-object v0, Lcom/meizu/video/client/common/Constant$InterfaceType;->SEARCH:Lcom/meizu/video/client/common/Constant$InterfaceType;
 
-    .line 46
+    .line 50
     new-instance v0, Lcom/meizu/video/client/common/Constant$InterfaceType;
 
     const-string v1, "AREAYEARORDERTYPE"
@@ -110,7 +110,7 @@
 
     sput-object v0, Lcom/meizu/video/client/common/Constant$InterfaceType;->AREAYEARORDERTYPE:Lcom/meizu/video/client/common/Constant$InterfaceType;
 
-    .line 40
+    .line 44
     const/4 v0, 0x6
 
     new-array v0, v0, [Lcom/meizu/video/client/common/Constant$InterfaceType;
@@ -157,7 +157,7 @@
     .end annotation
 
     .prologue
-    .line 40
+    .line 44
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -168,7 +168,7 @@
     .parameter
 
     .prologue
-    .line 40
+    .line 44
     const-class v0, Lcom/meizu/video/client/common/Constant$InterfaceType;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -184,7 +184,7 @@
     .locals 1
 
     .prologue
-    .line 40
+    .line 44
     sget-object v0, Lcom/meizu/video/client/common/Constant$InterfaceType;->$VALUES:[Lcom/meizu/video/client/common/Constant$InterfaceType;
 
     invoke-virtual {v0}, [Lcom/meizu/video/client/common/Constant$InterfaceType;->clone()Ljava/lang/Object;

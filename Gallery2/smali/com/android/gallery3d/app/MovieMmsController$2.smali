@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 107
+    .line 109
     iput-object p1, p0, Lcom/android/gallery3d/app/MovieMmsController$2;->this$0:Lcom/android/gallery3d/app/MovieMmsController;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,7 +42,7 @@
     .parameter "v"
 
     .prologue
-    .line 110
+    .line 112
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieMmsController$2;->this$0:Lcom/android/gallery3d/app/MovieMmsController;
 
     #getter for: Lcom/android/gallery3d/app/MovieMmsController;->playerListener:Lcom/android/gallery3d/app/MovieMmsController$MmsPlayerListener;
@@ -52,12 +52,12 @@
 
     invoke-interface {v0}, Lcom/android/gallery3d/app/MovieMmsController$MmsPlayerListener;->onPlayPause()V
 
-    .line 111
+    .line 113
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieMmsController$2;->this$0:Lcom/android/gallery3d/app/MovieMmsController;
 
     #calls: Lcom/android/gallery3d/app/MovieMmsController;->updatePlayPasue()V
     invoke-static {v0}, Lcom/android/gallery3d/app/MovieMmsController;->access$500(Lcom/android/gallery3d/app/MovieMmsController;)V
 
-    .line 112
+    .line 114
     return-void
 .end method

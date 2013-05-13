@@ -40,15 +40,15 @@
     .parameter "info"
 
     .prologue
-    .line 271
+    .line 276
     iput-object p1, p0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 272
+    .line 277
     iput-object p2, p0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->mUpdateInfo:Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;
 
-    .line 273
+    .line 278
     return-void
 .end method
 
@@ -63,7 +63,7 @@
     .end annotation
 
     .prologue
-    .line 267
+    .line 272
     invoke-virtual {p0}, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->call()Ljava/lang/Void;
 
     move-result-object v0
@@ -82,10 +82,10 @@
     .prologue
     const/4 v12, 0x0
 
-    .line 277
+    .line 282
     iget-object v3, p0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->mUpdateInfo:Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;
 
-    .line 278
+    .line 283
     .local v3, info:Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;
     iget-object v9, p0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
@@ -94,7 +94,7 @@
     #setter for: Lcom/android/gallery3d/app/AlbumDataLoader;->mSourceVersion:J
     invoke-static {v9, v10, v11}, Lcom/android/gallery3d/app/AlbumDataLoader;->access$502(Lcom/android/gallery3d/app/AlbumDataLoader;J)J
 
-    .line 279
+    .line 284
     iget-object v9, p0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumDataLoader;->mSize:I
@@ -106,7 +106,7 @@
 
     if-eq v9, v10, :cond_2
 
-    .line 280
+    .line 285
     iget-object v9, p0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     iget v10, v3, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;->size:I
@@ -114,7 +114,7 @@
     #setter for: Lcom/android/gallery3d/app/AlbumDataLoader;->mSize:I
     invoke-static {v9, v10}, Lcom/android/gallery3d/app/AlbumDataLoader;->access$602(Lcom/android/gallery3d/app/AlbumDataLoader;I)I
 
-    .line 281
+    .line 286
     iget-object v9, p0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumDataLoader;->mDataListener:Lcom/android/gallery3d/app/AlbumDataLoader$DataListener;
@@ -140,7 +140,7 @@
 
     invoke-interface {v9, v10}, Lcom/android/gallery3d/app/AlbumDataLoader$DataListener;->onSizeChanged(I)V
 
-    .line 282
+    .line 287
     :cond_0
     iget-object v9, p0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
@@ -170,7 +170,7 @@
     #setter for: Lcom/android/gallery3d/app/AlbumDataLoader;->mContentEnd:I
     invoke-static {v9, v10}, Lcom/android/gallery3d/app/AlbumDataLoader;->access$902(Lcom/android/gallery3d/app/AlbumDataLoader;I)I
 
-    .line 283
+    .line 288
     :cond_1
     iget-object v9, p0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
@@ -200,19 +200,19 @@
     #setter for: Lcom/android/gallery3d/app/AlbumDataLoader;->mActiveEnd:I
     invoke-static {v9, v10}, Lcom/android/gallery3d/app/AlbumDataLoader;->access$1102(Lcom/android/gallery3d/app/AlbumDataLoader;I)I
 
-    .line 286
+    .line 291
     :cond_2
     iget-object v6, v3, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;->items:Ljava/util/ArrayList;
 
-    .line 288
+    .line 293
     .local v6, items:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/gallery3d/data/MediaItem;>;"
     if-nez v6, :cond_4
 
-    .line 305
+    .line 310
     :cond_3
     return-object v12
 
-    .line 289
+    .line 294
     :cond_4
     iget v9, v3, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;->reloadStart:I
 
@@ -227,7 +227,7 @@
 
     move-result v7
 
-    .line 290
+    .line 295
     .local v7, start:I
     iget v9, v3, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;->reloadStart:I
 
@@ -248,7 +248,7 @@
 
     move-result v0
 
-    .line 292
+    .line 297
     .local v0, end:I
     move v1, v7
 
@@ -256,10 +256,10 @@
     :goto_0
     if-ge v1, v0, :cond_3
 
-    .line 293
+    .line 298
     rem-int/lit16 v2, v1, 0x3e8
 
-    .line 294
+    .line 299
     .local v2, index:I
     iget-object v9, p0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
@@ -272,7 +272,7 @@
 
     aput-wide v10, v9, v2
 
-    .line 295
+    .line 300
     iget v9, v3, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateInfo;->reloadStart:I
 
     sub-int v9, v1, v9
@@ -283,13 +283,13 @@
 
     check-cast v8, Lcom/android/gallery3d/data/MediaItem;
 
-    .line 296
+    .line 301
     .local v8, updateItem:Lcom/android/gallery3d/data/MediaItem;
     invoke-virtual {v8}, Lcom/android/gallery3d/data/MediaItem;->getDataVersion()J
 
     move-result-wide v4
 
-    .line 297
+    .line 302
     .local v4, itemVersion:J
     iget-object v9, p0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
@@ -304,7 +304,7 @@
 
     if-eqz v9, :cond_5
 
-    .line 298
+    .line 303
     iget-object v9, p0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumDataLoader;->mItemVersion:[J
@@ -314,7 +314,7 @@
 
     aput-wide v4, v9, v2
 
-    .line 299
+    .line 304
     iget-object v9, p0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumDataLoader;->mData:[Lcom/android/gallery3d/data/MediaItem;
@@ -324,7 +324,7 @@
 
     aput-object v8, v9, v2
 
-    .line 300
+    .line 305
     iget-object v9, p0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumDataLoader;->mDataListener:Lcom/android/gallery3d/app/AlbumDataLoader$DataListener;
@@ -352,7 +352,7 @@
 
     if-ge v1, v9, :cond_5
 
-    .line 301
+    .line 306
     iget-object v9, p0, Lcom/android/gallery3d/app/AlbumDataLoader$UpdateContent;->this$0:Lcom/android/gallery3d/app/AlbumDataLoader;
 
     #getter for: Lcom/android/gallery3d/app/AlbumDataLoader;->mDataListener:Lcom/android/gallery3d/app/AlbumDataLoader$DataListener;
@@ -362,7 +362,7 @@
 
     invoke-interface {v9, v1}, Lcom/android/gallery3d/app/AlbumDataLoader$DataListener;->onContentChanged(I)V
 
-    .line 292
+    .line 297
     :cond_5
     add-int/lit8 v1, v1, 0x1
 

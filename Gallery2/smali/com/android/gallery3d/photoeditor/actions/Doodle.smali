@@ -55,7 +55,7 @@
     .locals 1
 
     .prologue
-    .line 162
+    .line 168
     new-instance v0, Lcom/android/gallery3d/photoeditor/actions/Doodle$1;
 
     invoke-direct {v0}, Lcom/android/gallery3d/photoeditor/actions/Doodle$1;-><init>()V
@@ -359,11 +359,47 @@
     return-void
 .end method
 
+.method public changeDoodleLastPoint(Landroid/graphics/PointF;)V
+    .locals 2
+    .parameter "point"
+
+    .prologue
+    .line 121
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->points:Ljava/util/Vector;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->points:Ljava/util/Vector;
+
+    invoke-virtual {v0}, Ljava/util/Vector;->isEmpty()Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 122
+    iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->points:Ljava/util/Vector;
+
+    iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->points:Ljava/util/Vector;
+
+    invoke-virtual {v1}, Ljava/util/Vector;->size()I
+
+    move-result v1
+
+    add-int/lit8 v1, v1, -0x1
+
+    invoke-virtual {v0, v1, p1}, Ljava/util/Vector;->set(ILjava/lang/Object;)Ljava/lang/Object;
+
+    .line 124
+    :cond_0
+    return-void
+.end method
+
 .method public describeContents()I
     .locals 1
 
     .prologue
-    .line 147
+    .line 153
     const/4 v0, 0x0
 
     return v0
@@ -373,7 +409,7 @@
     .locals 1
 
     .prologue
-    .line 125
+    .line 131
     iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->color:I
 
     return v0
@@ -383,7 +419,7 @@
     .locals 1
 
     .prologue
-    .line 192
+    .line 198
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->doodleContext:Landroid/content/Context;
 
     return-object v0
@@ -393,17 +429,17 @@
     .locals 1
 
     .prologue
-    .line 210
+    .line 216
     iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->doodleMode:I
 
     return v0
 .end method
 
-.method public getDownPonit()Landroid/graphics/PointF;
+.method public getDownPoint()Landroid/graphics/PointF;
     .locals 1
 
     .prologue
-    .line 196
+    .line 202
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->points:Ljava/util/Vector;
 
     invoke-virtual {v0}, Ljava/util/Vector;->firstElement()Ljava/lang/Object;
@@ -421,15 +457,15 @@
     .parameter "path"
 
     .prologue
-    .line 141
+    .line 147
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->normalizedPath:Landroid/graphics/Path;
 
     invoke-virtual {p2, v0}, Landroid/graphics/Path;->set(Landroid/graphics/Path;)V
 
-    .line 142
+    .line 148
     invoke-virtual {p2, p1}, Landroid/graphics/Path;->transform(Landroid/graphics/Matrix;)V
 
-    .line 143
+    .line 149
     return-void
 .end method
 
@@ -437,7 +473,7 @@
     .locals 1
 
     .prologue
-    .line 200
+    .line 206
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->points:Ljava/util/Vector;
 
     invoke-virtual {v0}, Ljava/util/Vector;->lastElement()Ljava/lang/Object;
@@ -453,7 +489,7 @@
     .locals 1
 
     .prologue
-    .line 121
+    .line 127
     iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->paintScaleSize:F
 
     return v0
@@ -463,7 +499,7 @@
     .locals 1
 
     .prologue
-    .line 129
+    .line 135
     iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->paintSize:F
 
     return v0
@@ -473,7 +509,7 @@
     .locals 1
 
     .prologue
-    .line 205
+    .line 211
     iget v0, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->shapeselectedId:I
 
     return v0
@@ -483,7 +519,7 @@
     .locals 1
 
     .prologue
-    .line 218
+    .line 224
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->textString:Ljava/lang/String;
 
     return-object v0
@@ -522,7 +558,7 @@
     .locals 1
 
     .prologue
-    .line 134
+    .line 140
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->normalizedPath:Landroid/graphics/Path;
 
     invoke-virtual {v0}, Landroid/graphics/Path;->isEmpty()Z
@@ -537,10 +573,10 @@
     .parameter "context"
 
     .prologue
-    .line 188
+    .line 194
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->doodleContext:Landroid/content/Context;
 
-    .line 189
+    .line 195
     return-void
 .end method
 
@@ -549,10 +585,10 @@
     .parameter "str"
 
     .prologue
-    .line 214
+    .line 220
     iput-object p1, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->textString:Ljava/lang/String;
 
-    .line 215
+    .line 221
     return-void
 .end method
 
@@ -562,12 +598,12 @@
     .parameter "flags"
 
     .prologue
-    .line 152
+    .line 158
     iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->color:I
 
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 153
+    .line 159
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->points:Ljava/util/Vector;
 
     invoke-virtual {v2}, Ljava/util/Vector;->size()I
@@ -576,22 +612,22 @@
 
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 154
+    .line 160
     iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->doodleMode:I
 
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 155
+    .line 161
     iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->paintSize:F
 
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeFloat(F)V
 
-    .line 156
+    .line 162
     iget v2, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->paintScaleSize:F
 
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeFloat(F)V
 
-    .line 157
+    .line 163
     iget-object v2, p0, Lcom/android/gallery3d/photoeditor/actions/Doodle;->points:Ljava/util/Vector;
 
     invoke-virtual {v2}, Ljava/util/Vector;->iterator()Ljava/util/Iterator;
@@ -612,7 +648,7 @@
 
     check-cast v1, Landroid/graphics/PointF;
 
-    .line 158
+    .line 164
     .local v1, point:Landroid/graphics/PointF;
     const/4 v2, 0x0
 
@@ -620,7 +656,7 @@
 
     goto :goto_0
 
-    .line 160
+    .line 166
     .end local v1           #point:Landroid/graphics/PointF;
     :cond_0
     return-void

@@ -45,9 +45,9 @@
 
     .prologue
     .line 64
-    const v6, 0x1090064
+    const v6, 0x1090068
 
-    const v7, 0x1090064
+    const v7, 0x1090068
 
     move-object v0, p0
 

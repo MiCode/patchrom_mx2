@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 373
+    .line 399
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -47,18 +47,18 @@
 
     const/4 v4, 0x0
 
-    .line 377
+    .line 403
     invoke-super {p0, p1}, Landroid/os/Handler;->handleMessage(Landroid/os/Message;)V
 
-    .line 378
+    .line 404
     if-nez p1, :cond_1
 
-    .line 445
+    .line 470
     :cond_0
     :goto_0
     return-void
 
-    .line 381
+    .line 407
     :cond_1
     iget v1, p1, Landroid/os/Message;->what:I
 
@@ -66,46 +66,46 @@
 
     goto :goto_0
 
-    .line 383
+    .line 409
     :pswitch_0
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->chanelDetail_progressbar_layout:Landroid/widget/LinearLayout;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mChanelDetailProgressbarLayout:Landroid/widget/LinearLayout;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$1600(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Landroid/widget/LinearLayout;
 
     move-result-object v1
 
     invoke-virtual {v1, v6}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 384
+    .line 410
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #setter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->isLoading:Z
+    #setter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mIsLoading:Z
     invoke-static {v1, v4}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$1702(Lcom/meizu/video/client/ui/module/search/SearchFragment;Z)Z
 
-    .line 385
+    .line 411
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->InitAdapter()V
 
-    .line 386
+    .line 412
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->searchAdapter:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mSearchAdapter:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$1800(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Lcom/meizu/video/client/ui/module/search/SearchAdapter;
 
     move-result-object v1
 
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->searchListEntity:Ljava/util/ArrayList;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mSearchListEntity:Ljava/util/ArrayList;
     invoke-static {v2}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$300(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Ljava/util/ArrayList;
 
     move-result-object v2
 
     invoke-virtual {v1, v2}, Lcom/meizu/video/client/ui/module/search/SearchAdapter;->setList(Ljava/util/ArrayList;)V
 
-    .line 387
+    .line 413
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->TAG:Ljava/lang/String;
@@ -117,7 +117,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, " totalPage="
+    const-string v3, " mTotalPage="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -125,7 +125,7 @@
 
     iget-object v3, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->totalPage:I
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mTotalPage:I
     invoke-static {v3}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$1400(Lcom/meizu/video/client/ui/module/search/SearchFragment;)I
 
     move-result v3
@@ -134,7 +134,7 @@
 
     move-result-object v2
 
-    const-string v3, " currentSearchPage="
+    const-string v3, " mCurrentSearchPage="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -142,7 +142,7 @@
 
     iget-object v3, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->currentSearchPage:I
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mCurrentSearchPage:I
     invoke-static {v3}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$400(Lcom/meizu/video/client/ui/module/search/SearchFragment;)I
 
     move-result v3
@@ -157,64 +157,64 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 388
+    .line 414
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->totalPage:I
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mTotalPage:I
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$1400(Lcom/meizu/video/client/ui/module/search/SearchFragment;)I
 
     move-result v1
 
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->currentSearchPage:I
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mCurrentSearchPage:I
     invoke-static {v2}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$400(Lcom/meizu/video/client/ui/module/search/SearchFragment;)I
 
     move-result v2
 
     if-lt v1, v2, :cond_3
 
-    .line 389
+    .line 415
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->searchAdapter:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mSearchAdapter:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$1800(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Lcom/meizu/video/client/ui/module/search/SearchAdapter;
 
     move-result-object v1
 
     invoke-virtual {v1, v4}, Lcom/meizu/video/client/ui/module/search/SearchAdapter;->setMLastFlag(Z)V
 
-    .line 393
+    .line 419
     :goto_1
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->searchAdapter:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mSearchAdapter:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$1800(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Lcom/meizu/video/client/ui/module/search/SearchAdapter;
 
     move-result-object v1
 
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/module/search/SearchAdapter;->notifyDataSetChanged()V
 
-    .line 394
+    .line 420
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     #setter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mPreTimeOut:Z
     invoke-static {v1, v4}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$1902(Lcom/meizu/video/client/ui/module/search/SearchFragment;Z)Z
 
-    .line 395
+    .line 421
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->totalPage:I
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mTotalPage:I
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$1400(Lcom/meizu/video/client/ui/module/search/SearchFragment;)I
 
     move-result v1
 
     if-nez v1, :cond_6
 
-    .line 396
+    .line 422
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->msgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$1000(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     move-result-object v1
@@ -223,7 +223,7 @@
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->msgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$1000(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     move-result-object v1
@@ -240,16 +240,16 @@
 
     if-eqz v1, :cond_4
 
-    .line 397
+    .line 423
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     #setter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mPreTimeOut:Z
     invoke-static {v1, v5}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$1902(Lcom/meizu/video/client/ui/module/search/SearchFragment;Z)Z
 
-    .line 398
+    .line 424
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->no_network_title:Landroid/widget/TextView;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mNoNetworkTitle:Landroid/widget/TextView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$2000(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Landroid/widget/TextView;
 
     move-result-object v1
@@ -258,11 +258,11 @@
 
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(I)V
 
-    .line 403
+    .line 429
     :goto_2
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->searchListEntity:Ljava/util/ArrayList;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mSearchListEntity:Ljava/util/ArrayList;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$300(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Ljava/util/ArrayList;
 
     move-result-object v1
@@ -271,7 +271,7 @@
 
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->searchListEntity:Ljava/util/ArrayList;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mSearchListEntity:Ljava/util/ArrayList;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$300(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Ljava/util/ArrayList;
 
     move-result-object v1
@@ -282,11 +282,16 @@
 
     if-nez v1, :cond_5
 
-    .line 404
+    .line 430
     :cond_2
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->no_available_network:Landroid/widget/LinearLayout;
+    invoke-virtual {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->setNoNetWorkStyle()V
+
+    .line 431
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
+
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mNoAvailableNetwork:Landroid/widget/LinearLayout;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$2200(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Landroid/widget/LinearLayout;
 
     move-result-object v1
@@ -295,11 +300,11 @@
 
     goto/16 :goto_0
 
-    .line 391
+    .line 417
     :cond_3
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->searchAdapter:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mSearchAdapter:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$1800(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Lcom/meizu/video/client/ui/module/search/SearchAdapter;
 
     move-result-object v1
@@ -308,17 +313,17 @@
 
     goto :goto_1
 
-    .line 400
+    .line 426
     :cond_4
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     #setter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mNoSearchResult:Z
     invoke-static {v1, v5}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$2102(Lcom/meizu/video/client/ui/module/search/SearchFragment;Z)Z
 
-    .line 401
+    .line 427
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->no_network_title:Landroid/widget/TextView;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mNoNetworkTitle:Landroid/widget/TextView;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$2000(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Landroid/widget/TextView;
 
     move-result-object v1
@@ -329,11 +334,11 @@
 
     goto :goto_2
 
-    .line 406
+    .line 433
     :cond_5
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->no_available_network:Landroid/widget/LinearLayout;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mNoAvailableNetwork:Landroid/widget/LinearLayout;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$2200(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Landroid/widget/LinearLayout;
 
     move-result-object v1
@@ -342,17 +347,17 @@
 
     goto/16 :goto_0
 
-    .line 409
+    .line 436
     :cond_6
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     #setter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mNoSearchResult:Z
     invoke-static {v1, v4}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$2102(Lcom/meizu/video/client/ui/module/search/SearchFragment;Z)Z
 
-    .line 410
+    .line 437
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->no_available_network:Landroid/widget/LinearLayout;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mNoAvailableNetwork:Landroid/widget/LinearLayout;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$2200(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Landroid/widget/LinearLayout;
 
     move-result-object v1
@@ -361,51 +366,51 @@
 
     goto/16 :goto_0
 
-    .line 415
+    .line 441
     :pswitch_1
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->searchListEntity:Ljava/util/ArrayList;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mSearchListEntity:Ljava/util/ArrayList;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$300(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Ljava/util/ArrayList;
 
     move-result-object v1
 
     if-eqz v1, :cond_7
 
-    .line 416
+    .line 442
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->searchListEntity:Ljava/util/ArrayList;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mSearchListEntity:Ljava/util/ArrayList;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$300(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Ljava/util/ArrayList;
 
     move-result-object v2
 
     monitor-enter v2
 
-    .line 417
+    .line 443
     :try_start_0
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->searchListEntity:Ljava/util/ArrayList;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mSearchListEntity:Ljava/util/ArrayList;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$300(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Ljava/util/ArrayList;
 
     move-result-object v1
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->clear()V
 
-    .line 418
+    .line 444
     monitor-exit v2
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 421
+    .line 446
     :cond_7
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #setter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->currentSearchPage:I
+    #setter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mCurrentSearchPage:I
     invoke-static {v1, v5}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$402(Lcom/meizu/video/client/ui/module/search/SearchFragment;I)I
 
-    .line 422
+    .line 447
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     #calls: Lcom/meizu/video/client/ui/module/search/SearchFragment;->initData(I)V
@@ -413,7 +418,7 @@
 
     goto/16 :goto_0
 
-    .line 418
+    .line 444
     :catchall_0
     move-exception v1
 
@@ -424,33 +429,33 @@
 
     throw v1
 
-    .line 425
+    .line 450
     :pswitch_2
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->InitAdapter()V
 
-    .line 426
+    .line 451
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->searchAdapter:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mSearchAdapter:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$1800(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Lcom/meizu/video/client/ui/module/search/SearchAdapter;
 
     move-result-object v1
 
     iget-object v2, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->searchListEntity:Ljava/util/ArrayList;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mSearchListEntity:Ljava/util/ArrayList;
     invoke-static {v2}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$300(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Ljava/util/ArrayList;
 
     move-result-object v2
 
     invoke-virtual {v1, v2}, Lcom/meizu/video/client/ui/module/search/SearchAdapter;->setList(Ljava/util/ArrayList;)V
 
-    .line 427
+    .line 452
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
-    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->searchAdapter:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
+    #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mSearchAdapter:Lcom/meizu/video/client/ui/module/search/SearchAdapter;
     invoke-static {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->access$1800(Lcom/meizu/video/client/ui/module/search/SearchFragment;)Lcom/meizu/video/client/ui/module/search/SearchAdapter;
 
     move-result-object v1
@@ -459,7 +464,7 @@
 
     goto/16 :goto_0
 
-    .line 430
+    .line 455
     :pswitch_3
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
@@ -470,7 +475,7 @@
 
     if-eqz v1, :cond_8
 
-    .line 431
+    .line 456
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->getActivity()Landroid/app/Activity;
@@ -485,11 +490,11 @@
 
     check-cast v0, Landroid/view/inputmethod/InputMethodManager;
 
-    .line 432
+    .line 457
     .local v0, imm:Landroid/view/inputmethod/InputMethodManager;
     invoke-virtual {v0, v3, v3}, Landroid/view/inputmethod/InputMethodManager;->toggleSoftInput(II)V
 
-    .line 433
+    .line 458
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mQueryText:Landroid/widget/EditText;
@@ -501,7 +506,7 @@
 
     goto/16 :goto_0
 
-    .line 435
+    .line 460
     .end local v0           #imm:Landroid/view/inputmethod/InputMethodManager;
     :cond_8
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
@@ -513,7 +518,7 @@
 
     invoke-virtual {v1}, Landroid/widget/EditText;->clearFocus()V
 
-    .line 436
+    .line 461
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     invoke-virtual {v1}, Lcom/meizu/video/client/ui/module/search/SearchFragment;->getActivity()Landroid/app/Activity;
@@ -528,7 +533,7 @@
 
     check-cast v0, Landroid/view/inputmethod/InputMethodManager;
 
-    .line 437
+    .line 462
     .restart local v0       #imm:Landroid/view/inputmethod/InputMethodManager;
     invoke-virtual {v0}, Landroid/view/inputmethod/InputMethodManager;->isActive()Z
 
@@ -536,7 +541,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 438
+    .line 463
     iget-object v1, p0, Lcom/meizu/video/client/ui/module/search/SearchFragment$3;->this$0:Lcom/meizu/video/client/ui/module/search/SearchFragment;
 
     #getter for: Lcom/meizu/video/client/ui/module/search/SearchFragment;->mQueryText:Landroid/widget/EditText;
@@ -552,7 +557,9 @@
 
     goto/16 :goto_0
 
-    .line 381
+    .line 407
+    nop
+
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0

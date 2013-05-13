@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/camera/VideoCamera;->onSizeChanged(II)V
+    value = Lcom/android/camera/VideoCamera;->onRestorePreferencesClicked()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 3435
+    .line 3248
     iput-object p1, p0, Lcom/android/camera/VideoCamera$15;->this$0:Lcom/android/camera/VideoCamera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,16 +38,15 @@
 
 # virtual methods
 .method public run()V
-    .locals 2
+    .locals 1
 
     .prologue
-    .line 3438
+    .line 3251
     iget-object v0, p0, Lcom/android/camera/VideoCamera$15;->this$0:Lcom/android/camera/VideoCamera;
 
-    const/4 v1, 0x0
+    #calls: Lcom/android/camera/VideoCamera;->restorePreferences()V
+    invoke-static {v0}, Lcom/android/camera/VideoCamera;->access$5300(Lcom/android/camera/VideoCamera;)V
 
-    invoke-virtual {v0, v1}, Lcom/android/camera/VideoCamera;->setIsDropFullScreenChanged(Z)V
-
-    .line 3439
+    .line 3252
     return-void
 .end method

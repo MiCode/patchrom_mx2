@@ -15,13 +15,13 @@
 
 
 # instance fields
-.field earliest:Landroid/widget/Button;
+.field mEarliest:Landroid/widget/Button;
 
-.field latest:Landroid/widget/Button;
+.field mLatest:Landroid/widget/Button;
 
-.field next:Landroid/widget/Button;
+.field mNext:Landroid/widget/Button;
 
-.field prev:Landroid/widget/Button;
+.field mPrev:Landroid/widget/Button;
 
 .field final synthetic this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
@@ -32,7 +32,7 @@
     .parameter
 
     .prologue
-    .line 1097
+    .line 1111
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity$EpisodesViewHolder;->this$0:Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailActivity;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V

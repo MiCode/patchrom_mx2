@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 119
+    .line 124
     iput-object p1, p0, Lcom/android/server/am/BroadcastQueue$1;->this$0:Lcom/android/server/am/BroadcastQueue;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -41,16 +41,16 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 125
+    .line 130
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 137
+    .line 142
     :goto_0
     return-void
 
-    .line 129
+    .line 134
     :pswitch_0
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue$1;->this$0:Lcom/android/server/am/BroadcastQueue;
 
@@ -58,7 +58,7 @@
 
     goto :goto_0
 
-    .line 132
+    .line 137
     :pswitch_1
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue$1;->this$0:Lcom/android/server/am/BroadcastQueue;
 
@@ -66,7 +66,7 @@
 
     monitor-enter v1
 
-    .line 133
+    .line 138
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/BroadcastQueue$1;->this$0:Lcom/android/server/am/BroadcastQueue;
 
@@ -74,7 +74,7 @@
 
     invoke-virtual {v0, v2}, Lcom/android/server/am/BroadcastQueue;->broadcastTimeoutLocked(Z)V
 
-    .line 134
+    .line 139
     monitor-exit v1
 
     goto :goto_0
@@ -88,7 +88,7 @@
 
     throw v0
 
-    .line 125
+    .line 130
     nop
 
     :pswitch_data_0

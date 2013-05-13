@@ -31,19 +31,19 @@
     .parameter
 
     .prologue
-    .line 2124
+    .line 2232
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoPage$PreparePhotoFallback;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 2125
+    .line 2233
     new-instance v0, Lcom/android/gallery3d/ui/PhotoFallbackEffect;
 
     invoke-direct {v0}, Lcom/android/gallery3d/ui/PhotoFallbackEffect;-><init>()V
 
     iput-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$PreparePhotoFallback;->mPhotoFallback:Lcom/android/gallery3d/ui/PhotoFallbackEffect;
 
-    .line 2126
+    .line 2234
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/gallery3d/app/PhotoPage$PreparePhotoFallback;->mResultReady:Z
@@ -57,7 +57,7 @@
     .parameter "x1"
 
     .prologue
-    .line 2124
+    .line 2232
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/PhotoPage$PreparePhotoFallback;-><init>(Lcom/android/gallery3d/app/PhotoPage;)V
 
     return-void
@@ -69,7 +69,7 @@
     .locals 1
 
     .prologue
-    .line 2129
+    .line 2237
     monitor-enter p0
 
     :goto_0
@@ -78,14 +78,14 @@
 
     if-nez v0, :cond_0
 
-    .line 2130
+    .line 2238
     invoke-static {p0}, Lcom/android/gallery3d/common/Utils;->waitWithoutInterrupt(Ljava/lang/Object;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     goto :goto_0
 
-    .line 2129
+    .line 2237
     :catchall_0
     move-exception v0
 
@@ -93,7 +93,7 @@
 
     throw v0
 
-    .line 2132
+    .line 2240
     :cond_0
     :try_start_1
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$PreparePhotoFallback;->mPhotoFallback:Lcom/android/gallery3d/ui/PhotoFallbackEffect;
@@ -111,7 +111,7 @@
     .parameter "renderRequested"
 
     .prologue
-    .line 2137
+    .line 2245
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$PreparePhotoFallback;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mPhotoView:Lcom/android/gallery3d/ui/PhotoView;
@@ -122,7 +122,7 @@
     iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$PreparePhotoFallback;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mRootPane:Lcom/android/gallery3d/ui/GLView;
-    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$2800(Lcom/android/gallery3d/app/PhotoPage;)Lcom/android/gallery3d/ui/GLView;
+    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$3200(Lcom/android/gallery3d/app/PhotoPage;)Lcom/android/gallery3d/ui/GLView;
 
     move-result-object v1
 
@@ -132,27 +132,27 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$PreparePhotoFallback;->mPhotoFallback:Lcom/android/gallery3d/ui/PhotoFallbackEffect;
 
-    .line 2138
+    .line 2246
     monitor-enter p0
 
-    .line 2139
+    .line 2247
     const/4 v0, 0x1
 
     :try_start_0
     iput-boolean v0, p0, Lcom/android/gallery3d/app/PhotoPage$PreparePhotoFallback;->mResultReady:Z
 
-    .line 2140
+    .line 2248
     invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
 
-    .line 2141
+    .line 2249
     monitor-exit p0
 
-    .line 2142
+    .line 2250
     const/4 v0, 0x0
 
     return v0
 
-    .line 2141
+    .line 2249
     :catchall_0
     move-exception v0
 

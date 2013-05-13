@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 512
+    .line 521
     iput-object p1, p0, Lcom/android/gallery3d/ui/DialogDetailsView$9;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,7 +42,7 @@
     .parameter "s"
 
     .prologue
-    .line 543
+    .line 552
     return-void
 .end method
 
@@ -54,7 +54,7 @@
     .parameter "after"
 
     .prologue
-    .line 517
+    .line 526
     return-void
 .end method
 
@@ -66,7 +66,7 @@
     .parameter "count"
 
     .prologue
-    .line 522
+    .line 531
     iget-object v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView$9;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     #getter for: Lcom/android/gallery3d/ui/DialogDetailsView;->mWidthEdit:Landroid/widget/EditText;
@@ -80,11 +80,11 @@
 
     if-nez v1, :cond_0
 
-    .line 539
+    .line 548
     :goto_0
     return-void
 
-    .line 527
+    .line 536
     :cond_0
     :try_start_0
     iget-object v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView$9;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
@@ -99,7 +99,7 @@
     #setter for: Lcom/android/gallery3d/ui/DialogDetailsView;->mNewHeight:I
     invoke-static {v1, v2}, Lcom/android/gallery3d/ui/DialogDetailsView;->access$902(Lcom/android/gallery3d/ui/DialogDetailsView;I)I
 
-    .line 528
+    .line 537
     iget-object v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView$9;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
@@ -113,7 +113,7 @@
     #setter for: Lcom/android/gallery3d/ui/DialogDetailsView;->mNewWidth:I
     invoke-static {v1, v2}, Lcom/android/gallery3d/ui/DialogDetailsView;->access$1102(Lcom/android/gallery3d/ui/DialogDetailsView;I)I
 
-    .line 530
+    .line 539
     iget-object v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView$9;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     #getter for: Lcom/android/gallery3d/ui/DialogDetailsView;->mNewWidth:I
@@ -130,7 +130,7 @@
 
     if-gt v1, v2, :cond_1
 
-    .line 531
+    .line 540
     iget-object v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView$9;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
     iget-object v2, p0, Lcom/android/gallery3d/ui/DialogDetailsView$9;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
@@ -161,7 +161,7 @@
     #setter for: Lcom/android/gallery3d/ui/DialogDetailsView;->mNewHeight:I
     invoke-static {v1, v2}, Lcom/android/gallery3d/ui/DialogDetailsView;->access$902(Lcom/android/gallery3d/ui/DialogDetailsView;I)I
 
-    .line 534
+    .line 543
     :cond_1
     iget-object v1, p0, Lcom/android/gallery3d/ui/DialogDetailsView$9;->this$0:Lcom/android/gallery3d/ui/DialogDetailsView;
 
@@ -189,11 +189,11 @@
 
     goto :goto_0
 
-    .line 535
+    .line 544
     :catch_0
     move-exception v0
 
-    .line 536
+    .line 545
     .local v0, e:Ljava/lang/Exception;
     goto :goto_0
 .end method

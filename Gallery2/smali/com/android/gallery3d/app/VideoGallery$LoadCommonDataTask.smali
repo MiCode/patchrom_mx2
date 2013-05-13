@@ -35,7 +35,7 @@
     .parameter
 
     .prologue
-    .line 537
+    .line 546
     iput-object p1, p0, Lcom/android/gallery3d/app/VideoGallery$LoadCommonDataTask;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     invoke-direct {p0}, Landroid/os/AsyncTask;-><init>()V
@@ -49,7 +49,7 @@
     .parameter "x1"
 
     .prologue
-    .line 537
+    .line 546
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/VideoGallery$LoadCommonDataTask;-><init>(Lcom/android/gallery3d/app/VideoGallery;)V
 
     return-void
@@ -64,29 +64,29 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 541
+    .line 550
     invoke-virtual {p0}, Lcom/android/gallery3d/app/VideoGallery$LoadCommonDataTask;->isCancelled()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 552
+    .line 561
     :goto_0
     return-object v2
 
-    .line 545
+    .line 554
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/VideoGallery$LoadCommonDataTask;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     #getter for: Lcom/android/gallery3d/app/VideoGallery;->channelMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
-    invoke-static {v0}, Lcom/android/gallery3d/app/VideoGallery;->access$700(Lcom/android/gallery3d/app/VideoGallery;)Lcom/meizu/video/client/ui/entity/MsgEntity;
+    invoke-static {v0}, Lcom/android/gallery3d/app/VideoGallery;->access$600(Lcom/android/gallery3d/app/VideoGallery;)Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     move-result-object v0
 
     if-nez v0, :cond_1
 
-    .line 546
+    .line 555
     iget-object v0, p0, Lcom/android/gallery3d/app/VideoGallery$LoadCommonDataTask;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     new-instance v1, Lcom/meizu/video/client/ui/entity/MsgEntity;
@@ -94,20 +94,20 @@
     invoke-direct {v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;-><init>()V
 
     #setter for: Lcom/android/gallery3d/app/VideoGallery;->channelMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/VideoGallery;->access$702(Lcom/android/gallery3d/app/VideoGallery;Lcom/meizu/video/client/ui/entity/MsgEntity;)Lcom/meizu/video/client/ui/entity/MsgEntity;
+    invoke-static {v0, v1}, Lcom/android/gallery3d/app/VideoGallery;->access$602(Lcom/android/gallery3d/app/VideoGallery;Lcom/meizu/video/client/ui/entity/MsgEntity;)Lcom/meizu/video/client/ui/entity/MsgEntity;
 
-    .line 548
+    .line 557
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/VideoGallery$LoadCommonDataTask;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     #getter for: Lcom/android/gallery3d/app/VideoGallery;->typeMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
-    invoke-static {v0}, Lcom/android/gallery3d/app/VideoGallery;->access$800(Lcom/android/gallery3d/app/VideoGallery;)Lcom/meizu/video/client/ui/entity/MsgEntity;
+    invoke-static {v0}, Lcom/android/gallery3d/app/VideoGallery;->access$700(Lcom/android/gallery3d/app/VideoGallery;)Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     move-result-object v0
 
     if-nez v0, :cond_2
 
-    .line 549
+    .line 558
     iget-object v0, p0, Lcom/android/gallery3d/app/VideoGallery$LoadCommonDataTask;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     new-instance v1, Lcom/meizu/video/client/ui/entity/MsgEntity;
@@ -115,21 +115,21 @@
     invoke-direct {v1}, Lcom/meizu/video/client/ui/entity/MsgEntity;-><init>()V
 
     #setter for: Lcom/android/gallery3d/app/VideoGallery;->typeMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/VideoGallery;->access$802(Lcom/android/gallery3d/app/VideoGallery;Lcom/meizu/video/client/ui/entity/MsgEntity;)Lcom/meizu/video/client/ui/entity/MsgEntity;
+    invoke-static {v0, v1}, Lcom/android/gallery3d/app/VideoGallery;->access$702(Lcom/android/gallery3d/app/VideoGallery;Lcom/meizu/video/client/ui/entity/MsgEntity;)Lcom/meizu/video/client/ui/entity/MsgEntity;
 
-    .line 551
+    .line 560
     :cond_2
     iget-object v0, p0, Lcom/android/gallery3d/app/VideoGallery$LoadCommonDataTask;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     #getter for: Lcom/android/gallery3d/app/VideoGallery;->channelMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
-    invoke-static {v0}, Lcom/android/gallery3d/app/VideoGallery;->access$700(Lcom/android/gallery3d/app/VideoGallery;)Lcom/meizu/video/client/ui/entity/MsgEntity;
+    invoke-static {v0}, Lcom/android/gallery3d/app/VideoGallery;->access$600(Lcom/android/gallery3d/app/VideoGallery;)Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     move-result-object v0
 
     iget-object v1, p0, Lcom/android/gallery3d/app/VideoGallery$LoadCommonDataTask;->this$0:Lcom/android/gallery3d/app/VideoGallery;
 
     #getter for: Lcom/android/gallery3d/app/VideoGallery;->typeMsgEntity:Lcom/meizu/video/client/ui/entity/MsgEntity;
-    invoke-static {v1}, Lcom/android/gallery3d/app/VideoGallery;->access$800(Lcom/android/gallery3d/app/VideoGallery;)Lcom/meizu/video/client/ui/entity/MsgEntity;
+    invoke-static {v1}, Lcom/android/gallery3d/app/VideoGallery;->access$700(Lcom/android/gallery3d/app/VideoGallery;)Lcom/meizu/video/client/ui/entity/MsgEntity;
 
     move-result-object v1
 
@@ -143,6 +143,6 @@
     .parameter "result"
 
     .prologue
-    .line 557
+    .line 566
     return-void
 .end method

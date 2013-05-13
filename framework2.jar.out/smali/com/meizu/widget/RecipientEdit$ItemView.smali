@@ -28,10 +28,10 @@
     .parameter "context"
 
     .prologue
-    .line 2389
+    .line 2404
     invoke-direct {p0, p1}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
 
-    .line 2390
+    .line 2405
     return-void
 .end method
 
@@ -41,10 +41,10 @@
     .parameter "attrs"
 
     .prologue
-    .line 2393
+    .line 2408
     invoke-direct {p0, p1, p2}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 2394
+    .line 2409
     return-void
 .end method
 
@@ -55,10 +55,10 @@
     .parameter "defStyle"
 
     .prologue
-    .line 2397
+    .line 2412
     invoke-direct {p0, p1, p2, p3}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 2398
+    .line 2413
     return-void
 .end method
 
@@ -68,7 +68,7 @@
     .locals 1
 
     .prologue
-    .line 2412
+    .line 2427
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$ItemView;->mTextView:Landroid/widget/TextView;
 
     return-object v0
@@ -78,10 +78,10 @@
     .locals 1
 
     .prologue
-    .line 2402
+    .line 2417
     invoke-super {p0}, Landroid/widget/LinearLayout;->onFinishInflate()V
 
-    .line 2403
+    .line 2418
     const v0, 0x1020046
 
     invoke-virtual {p0, v0}, Lcom/meizu/widget/RecipientEdit$ItemView;->findViewById(I)Landroid/view/View;
@@ -92,7 +92,7 @@
 
     iput-object v0, p0, Lcom/meizu/widget/RecipientEdit$ItemView;->mTextView:Landroid/widget/TextView;
 
-    .line 2404
+    .line 2419
     return-void
 .end method
 
@@ -101,14 +101,14 @@
     .parameter "event"
 
     .prologue
-    .line 2421
+    .line 2436
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getAction()I
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 2422
+    .line 2437
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
     move-result v0
@@ -117,7 +117,7 @@
 
     iput v0, p0, Lcom/meizu/widget/RecipientEdit$ItemView;->mMotionX:I
 
-    .line 2423
+    .line 2438
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
     move-result v0
@@ -126,7 +126,7 @@
 
     iput v0, p0, Lcom/meizu/widget/RecipientEdit$ItemView;->mMotionY:I
 
-    .line 2426
+    .line 2441
     :cond_0
     invoke-super {p0, p1}, Landroid/widget/LinearLayout;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
@@ -140,12 +140,12 @@
     .parameter "selected"
 
     .prologue
-    .line 2408
+    .line 2423
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$ItemView;->mTextView:Landroid/widget/TextView;
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setSelected(Z)V
 
-    .line 2409
+    .line 2424
     return-void
 .end method
 
@@ -154,11 +154,11 @@
     .parameter "text"
 
     .prologue
-    .line 2416
+    .line 2431
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$ItemView;->mTextView:Landroid/widget/TextView;
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 2417
+    .line 2432
     return-void
 .end method

@@ -106,7 +106,7 @@
 
 .field public static final MAX_SIM_CONTACT_NUMBER_LENGTH:I = 0x30
 
-.field public static final MAX_SIM_CONTACT_TAG_LENGTH:I = 0xe
+.field public static final MAX_SIM_CONTACT_TAG_LENGTH:I = 0x13
 
 .field public static final MF_SIM:Ljava/lang/String; = "3F00"
 

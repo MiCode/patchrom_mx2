@@ -43,7 +43,7 @@
     if-nez v0, :cond_0
 
     .line 127
-    const v0, 0x10900ea
+    const v0, 0x10900f3
 
     invoke-virtual {p0, v0}, Lcom/meizu/app/TabActivityPlus;->setContentView(I)V
 

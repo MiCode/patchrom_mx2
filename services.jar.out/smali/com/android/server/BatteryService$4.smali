@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 257
+    .line 259
     iput-object p1, p0, Lcom/android/server/BatteryService$4;->this$0:Lcom/android/server/BatteryService;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,10 +41,10 @@
     .locals 2
 
     .prologue
-    .line 259
+    .line 261
     monitor-enter p0
 
-    .line 260
+    .line 262
     :try_start_0
     iget-object v0, p0, Lcom/android/server/BatteryService$4;->this$0:Lcom/android/server/BatteryService;
 
@@ -57,13 +57,13 @@
 
     invoke-static {v0, v1}, Lcom/android/server/pm/ShutdownThread;->shutdown(Landroid/content/Context;Z)V
 
-    .line 261
+    .line 263
     monitor-exit p0
 
-    .line 262
+    .line 264
     return-void
 
-    .line 261
+    .line 263
     :catchall_0
     move-exception v0
 

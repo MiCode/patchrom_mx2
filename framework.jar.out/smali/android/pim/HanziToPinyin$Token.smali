@@ -37,10 +37,10 @@
     .locals 0
 
     .prologue
-    .line 362
+    .line 363
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 363
+    .line 364
     return-void
 .end method
 
@@ -51,18 +51,18 @@
     .parameter "target"
 
     .prologue
-    .line 365
+    .line 366
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 366
+    .line 367
     iput p1, p0, Landroid/pim/HanziToPinyin$Token;->type:I
 
-    .line 367
+    .line 368
     iput-object p2, p0, Landroid/pim/HanziToPinyin$Token;->source:Ljava/lang/String;
 
-    .line 368
+    .line 369
     iput-object p3, p0, Landroid/pim/HanziToPinyin$Token;->target:Ljava/lang/String;
 
-    .line 369
+    .line 370
     return-void
 .end method

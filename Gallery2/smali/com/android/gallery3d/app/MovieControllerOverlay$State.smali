@@ -52,7 +52,7 @@
 
     const/4 v2, 0x0
 
-    .line 75
+    .line 84
     new-instance v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     const-string v1, "PLAYING"
@@ -61,7 +61,7 @@
 
     sput-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PLAYING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
-    .line 76
+    .line 85
     new-instance v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     const-string v1, "PAUSED"
@@ -70,7 +70,7 @@
 
     sput-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PAUSED:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
-    .line 77
+    .line 86
     new-instance v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     const-string v1, "ENDED"
@@ -79,7 +79,7 @@
 
     sput-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->ENDED:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
-    .line 78
+    .line 87
     new-instance v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     const-string v1, "ERROR"
@@ -88,7 +88,7 @@
 
     sput-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->ERROR:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
-    .line 79
+    .line 88
     new-instance v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     const-string v1, "LOADING"
@@ -97,7 +97,7 @@
 
     sput-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->LOADING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
-    .line 74
+    .line 83
     const/4 v0, 0x5
 
     new-array v0, v0, [Lcom/android/gallery3d/app/MovieControllerOverlay$State;
@@ -138,7 +138,7 @@
     .end annotation
 
     .prologue
-    .line 74
+    .line 83
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -149,7 +149,7 @@
     .parameter
 
     .prologue
-    .line 74
+    .line 83
     const-class v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -165,7 +165,7 @@
     .locals 1
 
     .prologue
-    .line 74
+    .line 83
     sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->$VALUES:[Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     invoke-virtual {v0}, [Lcom/android/gallery3d/app/MovieControllerOverlay$State;->clone()Ljava/lang/Object;

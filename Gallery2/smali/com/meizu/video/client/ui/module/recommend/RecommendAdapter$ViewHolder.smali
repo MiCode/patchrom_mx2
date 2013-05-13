@@ -15,9 +15,9 @@
 
 
 # instance fields
-.field recommend_image:Landroid/widget/ImageView;
+.field mRecommendImage:Landroid/widget/ImageView;
 
-.field recommend_title:Landroid/widget/TextView;
+.field mRecommendTitle:Landroid/widget/TextView;
 
 .field final synthetic this$0:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
 
@@ -28,7 +28,7 @@
     .parameter
 
     .prologue
-    .line 73
+    .line 76
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter$ViewHolder;->this$0:Lcom/meizu/video/client/ui/module/recommend/RecommendAdapter;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V

@@ -4,7 +4,6 @@
 
 # interfaces
 .implements Landroid/view/animation/Animation$AnimationListener;
-.implements Landroid/widget/AdapterView$OnItemClickListener;
 .implements Lcom/android/gallery3d/app/ControllerOverlay;
 
 
@@ -12,16 +11,13 @@
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
         Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;,
+        Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;,
+        Lcom/android/gallery3d/app/MovieControllerOverlay$MyOrientationEventListener;,
         Lcom/android/gallery3d/app/MovieControllerOverlay$GestureListener;,
-        Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;,
         Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;,
         Lcom/android/gallery3d/app/MovieControllerOverlay$State;
     }
 .end annotation
-
-
-# static fields
-.field private static final MIN_WIN_BRIGHNESS:I
 
 
 # instance fields
@@ -32,6 +28,12 @@
 .field private hideAnimation:Landroid/view/animation/Animation;
 
 .field private loadingView:Landroid/view/View;
+
+.field private m03XPopMenuRightBottomAnchorView:Landroid/widget/ImageView;
+
+.field private m03XPopMenuRightTopAnchorView:Landroid/widget/ImageView;
+
+.field private mAlertDialogTitle:Ljava/lang/String;
 
 .field private mAlreadyPlayTime:J
 
@@ -91,25 +93,23 @@
 
 .field private mGestureAlreadyPlayTimeText:Landroid/widget/TextView;
 
-.field private mGestureClickCount:I
-
 .field private mGestureControllProgress:Landroid/widget/SeekBar;
 
 .field private mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
 .field private mGestureRemainPlayTimeText:Landroid/widget/TextView;
 
-.field private mGestureSpeedTime:I
-
 .field private mGestureZoomMode:Z
 
-.field private mGuestureListenr:Landroid/view/GestureDetector;
+.field private mGuestureListenr:Lcom/android/gallery3d/app/VideoGestureListener;
 
 .field private mHandler:Landroid/os/Handler;
 
 .field private mHorizontalBackButton:Lcom/meizu/widget/GlowImageButton;
 
 .field private mHorizontalMenuButton:Lcom/meizu/widget/GlowImageButton;
+
+.field private mIsAnimationStarting:Z
 
 .field private mIsAudioTrackListShow:Z
 
@@ -128,6 +128,8 @@
 .field private mIsDlnaMode:Z
 
 .field private mIsHdmiOn:Z
+
+.field private mIsM040:Z
 
 .field private mIsNativeCompleteMode:I
 
@@ -151,13 +153,11 @@
 
 .field private mIsSetVol:Z
 
+.field private mIsSilent:Z
+
+.field private mIsSystemSensorOn:Z
+
 .field private mIsTimeTextListShow:Z
-
-.field private mIsZoomClick:Z
-
-.field private mLastDownTime:J
-
-.field private mLastListSize:I
 
 .field private mLetvLogo:Landroid/widget/ImageView;
 
@@ -173,17 +173,27 @@
 
 .field private mLightSeekListener:Lcom/android/gallery3d/seekbar/VerSeekBar$OnVerSeekBarChangeListener;
 
+.field private mMaxTextSize:I
+
 .field private mMaxVolume:I
 
 .field private mMaxZoomValue:D
 
 .field private mMenuIconListener:Landroid/view/View$OnClickListener;
 
+.field private mMinTextSize:I
+
 .field private mMinZoomValue:D
+
+.field private mMoveTime:J
+
+.field private mMovieActivity:Lcom/android/gallery3d/app/MovieActivity;
 
 .field private mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
 .field private mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+.field private mMyOrientationEventListener:Lcom/android/gallery3d/app/MovieControllerOverlay$MyOrientationEventListener;
 
 .field private mNextButton:Landroid/widget/ImageButton;
 
@@ -237,17 +247,24 @@
 
 .field private mScreenHeight:I
 
+.field private mScreenRotation:I
+
 .field private mScreenWidth:I
 
 .field private mSeekBarPosition:I
 
-.field private mSelectList:Landroid/widget/ListView;
+.field private mSelectDialog:Landroid/app/AlertDialog;
 
-.field private mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-.field private mSelectTitle:Landroid/widget/TextView;
-
-.field private mSelectView:Landroid/widget/RelativeLayout;
+.field private mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private mSysBrightness:I
 
@@ -266,8 +283,6 @@
 .field private mTotalTime:J
 
 .field private mTrackButton:Landroid/widget/ImageButton;
-
-.field private mVelocity:Landroid/view/VelocityTracker;
 
 .field private mVerticalBackButton:Lcom/meizu/widget/GlowImageButton;
 
@@ -322,18 +337,6 @@
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 1
-
-    .prologue
-    .line 113
-    sget v0, Landroid/os/PowerManager;->BRIGHTNESS_DIM:I
-
-    sput v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->MIN_WIN_BRIGHNESS:I
-
-    return-void
-.end method
-
 .method public constructor <init>(Landroid/content/Context;ZZ)V
     .locals 9
     .parameter "context"
@@ -343,466 +346,564 @@
     .prologue
     const-wide/16 v7, 0x0
 
-    const/4 v6, 0x1
+    const/4 v6, -0x1
 
-    const/4 v5, -0x1
+    const/4 v5, 0x1
 
-    const/high16 v4, -0x4080
+    const/high16 v3, -0x4080
 
-    const/4 v3, 0x0
+    const/4 v4, 0x0
 
-    .line 311
+    .line 289
     invoke-direct {p0, p1}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
 
-    .line 221
+    .line 191
     iput-wide v7, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
 
-    .line 222
-    const/4 v1, 0x2
+    .line 192
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioTrackCount:I
 
-    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLastListSize:I
+    .line 193
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextCount:I
 
-    .line 223
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioTrackCount:I
+    .line 194
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioTrackSelect:I
 
-    .line 224
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextCount:I
+    .line 195
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateCount:I
 
-    .line 225
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioTrackSelect:I
+    .line 196
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextSelect:I
 
-    .line 226
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateCount:I
+    .line 197
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceSelect:I
 
-    .line 227
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextSelect:I
+    .line 198
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateSelect:I
 
-    .line 228
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceSelect:I
+    .line 199
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomScaleMode:I
 
-    .line 229
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateSelect:I
+    .line 200
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIndex:I
 
-    .line 230
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomScaleMode:I
+    .line 201
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxVolume:I
 
-    .line 231
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIndex:I
+    .line 202
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
-    .line 232
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxVolume:I
+    .line 203
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomCount:I
 
-    .line 233
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
+    .line 204
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
 
-    .line 234
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomCount:I
+    .line 205
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSysBrightness:I
 
-    .line 235
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureClickCount:I
+    .line 206
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoRotation:I
 
-    .line 236
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
+    .line 207
+    iput v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenRotation:I
 
-    .line 237
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSysBrightness:I
-
-    .line 238
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoRotation:I
-
-    .line 239
+    .line 208
     const/16 v1, 0x320
 
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
 
-    .line 240
+    .line 209
     const/16 v1, 0x500
 
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
 
-    .line 241
+    .line 210
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
 
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenWidth:I
 
-    .line 242
+    .line 211
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
 
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenHeight:I
 
-    .line 243
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
+    .line 212
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
 
-    .line 244
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
+    .line 213
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
-    .line 245
-    iput v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldVolumeProgress:I
+    .line 214
+    iput v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldVolumeProgress:I
 
-    .line 246
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
+    .line 215
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
 
-    .line 247
-    iput v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldLightProgress:I
+    .line 216
+    iput v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldLightProgress:I
 
-    .line 248
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceCount:I
+    .line 217
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceCount:I
 
-    .line 249
-    const/16 v1, 0x5a
+    .line 218
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
-    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureSpeedTime:I
+    .line 219
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnTouchDownPosition:I
 
-    .line 250
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
+    .line 220
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnTouchDownThumbAlpha:I
 
-    .line 251
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnTouchDownPosition:I
+    .line 221
+    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mThumbAlpha:I
 
-    .line 252
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnTouchDownThumbAlpha:I
+    .line 222
+    const/16 v1, 0xf
 
-    .line 253
-    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mThumbAlpha:I
+    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxTextSize:I
 
-    .line 254
+    .line 223
+    const/16 v1, 0xc
+
+    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMinTextSize:I
+
+    .line 224
     const-wide/16 v1, 0x0
 
     iput-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRecZoom:D
 
-    .line 255
+    .line 225
     const-wide/high16 v1, 0x3ff0
 
     iput-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
-    .line 256
+    .line 226
     const-wide/high16 v1, -0x4010
 
     iput-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldLevel:D
 
-    .line 257
+    .line 227
     const-wide/16 v1, 0x0
 
     iput-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxZoomValue:D
 
-    .line 258
+    .line 228
     const-wide/16 v1, 0x0
 
     iput-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMinZoomValue:D
 
-    .line 259
+    .line 229
     const/4 v1, 0x0
 
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomScale:F
 
-    .line 260
-    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownDist:F
+    .line 230
+    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownDist:F
 
-    .line 261
-    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownX:F
+    .line 231
+    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownX:F
 
-    .line 262
-    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownY:F
+    .line 232
+    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownY:F
 
-    .line 263
-    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldY:F
+    .line 233
+    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldY:F
 
-    .line 264
-    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldX:F
+    .line 234
+    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldX:F
 
-    .line 265
-    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentY:F
+    .line 235
+    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentY:F
 
-    .line 266
-    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentX:F
+    .line 236
+    iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentX:F
 
-    .line 267
+    .line 237
     iput-wide v7, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
 
-    .line 268
-    iput-wide v7, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLastDownTime:J
+    .line 238
+    iput-wide v7, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoveTime:J
 
-    .line 269
+    .line 239
     iput-wide v7, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnTouchDownTime:J
 
-    .line 270
+    .line 240
     iput-wide v7, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnTouchUpTime:J
 
+    .line 241
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDragging:Z
+
+    .line 242
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+
+    .line 243
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuShowing:Z
+
+    .line 244
+    iput-boolean v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
+
+    .line 245
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAudioTrackListShow:Z
+
+    .line 246
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsTimeTextListShow:Z
+
+    .line 247
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsBitrateListShow:Z
+
+    .line 248
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
+
+    .line 249
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAnimationStarting:Z
+
+    .line 251
+    iput v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsNativeCompleteMode:I
+
+    .line 252
+    iput v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineCompleteMode:I
+
+    .line 253
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
+
+    .line 254
+    iput-boolean v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAutoVerScreen:Z
+
+    .line 255
+    iput-boolean v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSystemSensorOn:Z
+
+    .line 256
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsRepeatplay:Z
+
+    .line 257
+    iput-boolean v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsQueueplay:Z
+
+    .line 259
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureZoomMode:Z
+
+    .line 260
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSilent:Z
+
+    .line 261
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
+
+    .line 262
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
+
+    .line 263
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetBright:Z
+
+    .line 264
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
+
+    .line 265
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsPreNext:Z
+
+    .line 266
+    iput-boolean v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCanGesture:Z
+
+    .line 267
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScaleMode:Z
+
+    .line 268
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
+
+    .line 269
+    iput-boolean v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsConfigChange:Z
+
+    .line 270
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineVideo:Z
+
     .line 271
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDragging:Z
+    sget-object v1, Landroid/os/Build;->IS_MX2:Ljava/lang/Boolean;
 
-    .line 272
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+    invoke-virtual {v1}, Ljava/lang/Boolean;->booleanValue()Z
 
-    .line 273
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuShowing:Z
+    move-result v1
 
-    .line 274
-    iput-boolean v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
-
-    .line 275
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAudioTrackListShow:Z
+    iput-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsM040:Z
 
     .line 276
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsTimeTextListShow:Z
-
-    .line 277
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsBitrateListShow:Z
-
-    .line 278
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
-
-    .line 280
-    iput v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsNativeCompleteMode:I
-
-    .line 281
-    iput v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineCompleteMode:I
-
-    .line 282
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
-
-    .line 283
-    iput-boolean v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAutoVerScreen:Z
-
-    .line 284
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsRepeatplay:Z
-
-    .line 285
-    iput-boolean v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsQueueplay:Z
-
-    .line 287
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureZoomMode:Z
-
-    .line 288
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
-
-    .line 289
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
-
-    .line 290
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetBright:Z
-
-    .line 291
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsZoomClick:Z
-
-    .line 292
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
-
-    .line 293
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsPreNext:Z
-
-    .line 294
-    iput-boolean v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCanGesture:Z
-
-    .line 295
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScaleMode:Z
-
-    .line 296
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
-
-    .line 297
-    iput-boolean v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsConfigChange:Z
-
-    .line 298
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineVideo:Z
-
-    .line 304
     new-instance v1, Landroid/graphics/PointF;
 
     invoke-direct {v1}, Landroid/graphics/PointF;-><init>()V
 
     iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomScaleMidPoint:Landroid/graphics/PointF;
 
-    .line 305
+    .line 277
     new-instance v1, Ljava/util/ArrayList;
 
     invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
 
-    .line 309
+    .line 280
+    const/4 v1, 0x0
+
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlertDialogTitle:Ljava/lang/String;
+
+    .line 282
     sget-object v1, Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;->LISTCYCLE:Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
     iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPlayMode:Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
-    .line 562
-    new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$1;
+    .line 285
+    const/4 v1, 0x0
 
-    invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$1;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
 
-    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+    .line 286
+    const/4 v1, 0x0
 
-    .line 838
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
+
+    .line 629
     new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$2;
 
     invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$2;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
 
-    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseListener:Landroid/view/View$OnClickListener;
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    .line 859
+    .line 853
     new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$3;
 
     invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$3;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
 
-    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPrevNextListener:Landroid/view/View$OnClickListener;
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseListener:Landroid/view/View$OnClickListener;
 
-    .line 885
+    .line 873
     new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$4;
 
     invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$4;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
 
-    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mChangeTrackListener:Landroid/view/View$OnClickListener;
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPrevNextListener:Landroid/view/View$OnClickListener;
 
-    .line 904
+    .line 899
     new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$5;
 
     invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$5;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
 
-    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaBtnListener:Landroid/view/View$OnClickListener;
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mChangeTrackListener:Landroid/view/View$OnClickListener;
 
-    .line 922
+    .line 910
     new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$6;
 
     invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$6;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
 
-    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mChangeBitrateListener:Landroid/view/View$OnClickListener;
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaBtnListener:Landroid/view/View$OnClickListener;
 
-    .line 941
+    .line 921
     new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$7;
 
     invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$7;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
 
-    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mChangeTimeTextListener:Landroid/view/View$OnClickListener;
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mChangeBitrateListener:Landroid/view/View$OnClickListener;
 
-    .line 959
+    .line 932
     new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$8;
 
     invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$8;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
 
-    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMenuIconListener:Landroid/view/View$OnClickListener;
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mChangeTimeTextListener:Landroid/view/View$OnClickListener;
 
-    .line 1073
+    .line 943
     new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$9;
 
     invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$9;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
 
-    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mBackIconListener:Landroid/view/View$OnClickListener;
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMenuIconListener:Landroid/view/View$OnClickListener;
 
-    .line 1082
+    .line 994
     new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$10;
 
     invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$10;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
 
-    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightButtonListener:Landroid/view/View$OnClickListener;
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mBackIconListener:Landroid/view/View$OnClickListener;
 
-    .line 1093
+    .line 1003
     new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$11;
 
     invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$11;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
 
-    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButtonListener:Landroid/view/View$OnClickListener;
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightButtonListener:Landroid/view/View$OnClickListener;
 
-    .line 1114
+    .line 1014
     new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$12;
 
     invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$12;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
 
-    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumSeekListener:Lcom/android/gallery3d/seekbar/VerSeekBar$OnVerSeekBarChangeListener;
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButtonListener:Landroid/view/View$OnClickListener;
 
-    .line 1142
+    .line 1036
     new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$13;
 
     invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$13;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
 
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumSeekListener:Lcom/android/gallery3d/seekbar/VerSeekBar$OnVerSeekBarChangeListener;
+
+    .line 1074
+    new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$14;
+
+    invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$14;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+
     iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightSeekListener:Lcom/android/gallery3d/seekbar/VerSeekBar$OnVerSeekBarChangeListener;
 
-    .line 312
+    .line 290
     sget-object v1, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->LOADING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
-    .line 313
+    .line 291
     iput-boolean p3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineVideo:Z
 
-    .line 314
+    .line 292
     iput-boolean p2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
 
-    .line 315
+    .line 293
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->getSystemSensor()Z
+
+    move-result v1
+
+    iput-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSystemSensorOn:Z
+
+    move-object v1, p1
+
+    .line 294
+    check-cast v1, Lcom/android/gallery3d/app/MovieActivity;
+
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivity:Lcom/android/gallery3d/app/MovieActivity;
+
+    .line 295
+    new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$MyOrientationEventListener;
+
+    invoke-direct {v1, p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MyOrientationEventListener;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/content/Context;)V
+
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMyOrientationEventListener:Lcom/android/gallery3d/app/MovieControllerOverlay$MyOrientationEventListener;
+
+    .line 296
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMyOrientationEventListener:Lcom/android/gallery3d/app/MovieControllerOverlay$MyOrientationEventListener;
+
+    invoke-virtual {v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MyOrientationEventListener;->enable()V
+
+    .line 297
+    new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
+
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivity:Lcom/android/gallery3d/app/MovieActivity;
+
+    new-array v3, v4, [Ljava/lang/String;
+
+    invoke-direct {v1, v2, v3, v4}, Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;-><init>(Landroid/content/Context;[Ljava/lang/Object;I)V
+
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
+
+    .line 299
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    const v2, 0x7f090274
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMinTextSize:I
+
+    .line 300
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    const v2, 0x7f090275
+
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v1
+
+    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxTextSize:I
+
+    .line 301
     new-instance v0, Landroid/widget/RelativeLayout$LayoutParams;
 
-    invoke-direct {v0, v5, v5}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
+    invoke-direct {v0, v6, v6}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
 
-    .line 316
+    .line 302
     .local v0, params:Landroid/widget/RelativeLayout$LayoutParams;
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 317
+    .line 303
     const/16 v1, 0x202
 
     invoke-virtual {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setSystemUiVisibility(I)V
 
-    .line 319
-    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initScreenSize(Landroid/content/Context;)V
+    .line 304
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initSelectAlertDialog()V
 
-    .line 320
+    .line 305
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initSharePreferences()V
 
-    .line 321
+    .line 306
+    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initScreenSize(Landroid/content/Context;)V
+
+    .line 307
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initWindowView(Landroid/content/Context;)V
 
-    .line 322
+    .line 308
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initWidget()V
 
-    .line 323
+    .line 309
     return-void
 .end method
 
-.method static synthetic access$000(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mThumbAlpha:I
-
-    return v0
-.end method
-
-.method static synthetic access$002(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
+.method static synthetic access$000(Lcom/android/gallery3d/app/MovieControllerOverlay;I)V
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
-    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mThumbAlpha:I
+    .line 79
+    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->onDialogItemClick(I)V
 
-    return p1
+    return-void
 .end method
 
-.method static synthetic access$100(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
+.method static synthetic access$100(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+    .line 79
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mThumbAlpha:I
 
     return v0
 .end method
 
-.method static synthetic access$1000(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/view/View;)Z
+.method static synthetic access$1000(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/app/AlertDialog;
     .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    return-object v0
+.end method
+
+.method static synthetic access$102(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
+    .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
-    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+    .line 79
+    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mThumbAlpha:I
 
-    move-result v0
-
-    return v0
+    return p1
 .end method
 
 .method static synthetic access$1100(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
@@ -810,7 +911,7 @@
     .parameter "x0"
 
     .prologue
-    .line 69
+    .line 79
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuShowing:Z
 
     return v0
@@ -822,7 +923,7 @@
     .parameter "x1"
 
     .prologue
-    .line 69
+    .line 79
     iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuShowing:Z
 
     return p1
@@ -834,123 +935,100 @@
     .parameter "x1"
 
     .prologue
-    .line 69
+    .line 79
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideControllAni(Z)V
 
     return-void
 .end method
 
-.method static synthetic access$1300(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
+.method static synthetic access$1302(Lcom/android/gallery3d/app/MovieControllerOverlay;Ljava/lang/String;)Ljava/lang/String;
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
+    iput-object p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlertDialogTitle:Ljava/lang/String;
+
+    return-object p1
+.end method
+
+.method static synthetic access$1400(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
+    .line 79
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     return-object v0
 .end method
 
-.method static synthetic access$1400(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAudioTrackListShow:Z
-
-    return v0
-.end method
-
-.method static synthetic access$1402(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
+.method static synthetic access$1500(Lcom/android/gallery3d/app/MovieControllerOverlay;Ljava/util/ArrayList;)V
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
-    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAudioTrackListShow:Z
-
-    return p1
-.end method
-
-.method static synthetic access$1500(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/TextView;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectTitle:Landroid/widget/TextView;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1600(Lcom/android/gallery3d/app/MovieControllerOverlay;Ljava/util/ArrayList;)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 69
+    .line 79
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setAudioTrackType(Ljava/util/ArrayList;)V
 
     return-void
 .end method
 
-.method static synthetic access$1700(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
+.method static synthetic access$1600(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
 
     return-object v0
 .end method
 
-.method static synthetic access$1800(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
+.method static synthetic access$1700(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1900(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsTimeTextListShow:Z
+    .line 79
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioTrackSelect:I
 
     return v0
 .end method
 
-.method static synthetic access$1902(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
+.method static synthetic access$1800(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
     .locals 0
     .parameter "x0"
-    .parameter "x1"
 
     .prologue
-    .line 69
-    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsTimeTextListShow:Z
+    .line 79
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showSelectDialog()V
 
-    return p1
+    return-void
 .end method
 
-.method static synthetic access$200(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/SeekBar;
+.method static synthetic access$1900(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     return-object v0
+.end method
+
+.method static synthetic access$200(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+
+    return v0
 .end method
 
 .method static synthetic access$2000(Lcom/android/gallery3d/app/MovieControllerOverlay;Ljava/util/ArrayList;)V
@@ -959,21 +1037,21 @@
     .parameter "x1"
 
     .prologue
-    .line 69
+    .line 79
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setTimeTextType(Ljava/util/ArrayList;)V
 
     return-void
 .end method
 
-.method static synthetic access$2100(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
+.method static synthetic access$2100(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    .line 79
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextSelect:I
 
-    return-object v0
+    return v0
 .end method
 
 .method static synthetic access$2200(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
@@ -981,44 +1059,32 @@
     .parameter "x0"
 
     .prologue
-    .line 69
+    .line 79
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     return-object v0
 .end method
 
-.method static synthetic access$2300(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
+.method static synthetic access$2300(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/app/ControllerOverlay$Listener;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
-
-    return v0
-.end method
-
-.method static synthetic access$2302(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 69
-    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
-
-    return p1
-.end method
-
-.method static synthetic access$2400(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/app/ControllerOverlay$Listener;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
+    .line 79
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     return-object v0
+.end method
+
+.method static synthetic access$2400(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceSelect:I
+
+    return v0
 .end method
 
 .method static synthetic access$2500(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
@@ -1026,64 +1092,52 @@
     .parameter "x0"
 
     .prologue
-    .line 69
+    .line 79
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     return-object v0
 .end method
 
-.method static synthetic access$2600(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
+.method static synthetic access$2600(Lcom/android/gallery3d/app/MovieControllerOverlay;)[Ljava/lang/String;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsBitrateListShow:Z
-
-    return v0
-.end method
-
-.method static synthetic access$2602(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 69
-    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsBitrateListShow:Z
-
-    return p1
-.end method
-
-.method static synthetic access$2700(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
-    return-object v0
-.end method
-
-.method static synthetic access$2800(Lcom/android/gallery3d/app/MovieControllerOverlay;)[Ljava/lang/String;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
+    .line 79
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mBitrateInfo:[Ljava/lang/String;
 
     return-object v0
 .end method
 
-.method static synthetic access$2900(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
+.method static synthetic access$2700(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    .line 79
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateSelect:I
+
+    return v0
+.end method
+
+.method static synthetic access$2800(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+    .locals 0
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hide()V
+
+    return-void
+.end method
+
+.method static synthetic access$2900(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     return-object v0
 .end method
@@ -1093,54 +1147,57 @@
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
 
     return-object v0
 .end method
 
-.method static synthetic access$3000(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hide()V
-
-    return-void
-.end method
-
-.method static synthetic access$3100(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+.method static synthetic access$3000(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/RelativeLayout;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
-
-    return-object v0
-.end method
-
-.method static synthetic access$3200(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/RelativeLayout;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
+    .line 79
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
     return-object v0
 .end method
 
-.method static synthetic access$3300(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
+.method static synthetic access$3100(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/view/View;)Z
     .locals 1
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
+    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic access$3200(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+    .locals 0
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    .line 79
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initTouchParams()V
 
-    return-object v0
+    return-void
+.end method
+
+.method static synthetic access$3300(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+    .locals 0
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setHdmiScreenLight()V
+
+    return-void
 .end method
 
 .method static synthetic access$3400(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
@@ -1148,7 +1205,7 @@
     .parameter "x0"
 
     .prologue
-    .line 69
+    .line 79
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     return-object v0
@@ -1159,7 +1216,7 @@
     .parameter "x0"
 
     .prologue
-    .line 69
+    .line 79
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
 
     return-object v0
@@ -1174,7 +1231,7 @@
     .parameter "x4"
 
     .prologue
-    .line 69
+    .line 79
     invoke-direct {p0, p1, p2, p3, p4}, Lcom/android/gallery3d/app/MovieControllerOverlay;->translateAni(IIII)Landroid/view/animation/TranslateAnimation;
 
     move-result-object v0
@@ -1187,22 +1244,21 @@
     .parameter "x0"
 
     .prologue
-    .line 69
+    .line 79
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
 
     return-object v0
 .end method
 
-.method static synthetic access$3802(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
-    .locals 0
+.method static synthetic access$3800(Lcom/android/gallery3d/app/MovieControllerOverlay;)Ljava/util/ArrayList;
+    .locals 1
     .parameter "x0"
-    .parameter "x1"
 
     .prologue
-    .line 69
-    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCanGesture:Z
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
 
-    return p1
+    return-object v0
 .end method
 
 .method static synthetic access$3900(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
@@ -1210,116 +1266,102 @@
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureClickCount:I
-
-    return v0
-.end method
-
-.method static synthetic access$3902(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 69
-    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureClickCount:I
-
-    return p1
-.end method
-
-.method static synthetic access$3908(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
-    .locals 2
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureClickCount:I
-
-    add-int/lit8 v1, v0, 0x1
-
-    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureClickCount:I
-
-    return v0
-.end method
-
-.method static synthetic access$400(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/os/Handler;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    return-object v0
-.end method
-
-.method static synthetic access$4000(Lcom/android/gallery3d/app/MovieControllerOverlay;)Ljava/util/ArrayList;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
-
-    return-object v0
-.end method
-
-.method static synthetic access$4100(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
+    .line 79
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIndex:I
 
     return v0
 .end method
 
-.method static synthetic access$4200(Lcom/android/gallery3d/app/MovieControllerOverlay;)D
+.method static synthetic access$400(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/SeekBar;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
+
+    return-object v0
+.end method
+
+.method static synthetic access$4000(Lcom/android/gallery3d/app/MovieControllerOverlay;)D
     .locals 2
     .parameter "x0"
 
     .prologue
-    .line 69
+    .line 79
     iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     return-wide v0
 .end method
 
-.method static synthetic access$4202(Lcom/android/gallery3d/app/MovieControllerOverlay;D)D
+.method static synthetic access$4002(Lcom/android/gallery3d/app/MovieControllerOverlay;D)D
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
+    .line 79
     iput-wide p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     return-wide p1
 .end method
 
-.method static synthetic access$4300(Lcom/android/gallery3d/app/MovieControllerOverlay;)D
+.method static synthetic access$4100(Lcom/android/gallery3d/app/MovieControllerOverlay;)D
     .locals 2
     .parameter "x0"
 
     .prologue
-    .line 69
+    .line 79
     iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRecZoom:D
 
     return-wide v0
 .end method
 
-.method static synthetic access$4302(Lcom/android/gallery3d/app/MovieControllerOverlay;D)D
+.method static synthetic access$4102(Lcom/android/gallery3d/app/MovieControllerOverlay;D)D
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
+    .line 79
     iput-wide p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRecZoom:D
 
     return-wide p1
+.end method
+
+.method static synthetic access$4200(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
+
+    return v0
+.end method
+
+.method static synthetic access$4202(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
+
+    return p1
+.end method
+
+.method static synthetic access$4300(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/view/MotionEvent;)V
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
+    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->changeVideoProgress(Landroid/view/MotionEvent;)V
+
+    return-void
 .end method
 
 .method static synthetic access$4400(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
@@ -1327,10 +1369,22 @@
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
+    .line 79
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
 
     return v0
+.end method
+
+.method static synthetic access$4402(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
+
+    return p1
 .end method
 
 .method static synthetic access$4500(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/view/MotionEvent;)V
@@ -1339,8 +1393,8 @@
     .parameter "x1"
 
     .prologue
-    .line 69
-    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->changeVideoProgress(Landroid/view/MotionEvent;)V
+    .line 79
+    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->changeVolume(Landroid/view/MotionEvent;)V
 
     return-void
 .end method
@@ -1350,89 +1404,98 @@
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
-
-    return v0
-.end method
-
-.method static synthetic access$4700(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/view/MotionEvent;)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 69
-    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->changeVolume(Landroid/view/MotionEvent;)V
-
-    return-void
-.end method
-
-.method static synthetic access$4800(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
+    .line 79
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetBright:Z
 
     return v0
 .end method
 
-.method static synthetic access$4900(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
-
-    return v0
-.end method
-
-.method static synthetic access$500(Lcom/android/gallery3d/app/MovieControllerOverlay;)J
-    .locals 2
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setProgress()J
-
-    move-result-wide v0
-
-    return-wide v0
-.end method
-
-.method static synthetic access$5000(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/view/MotionEvent;)V
+.method static synthetic access$4602(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
+    .line 79
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetBright:Z
+
+    return p1
+.end method
+
+.method static synthetic access$4700(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
+
+    return v0
+.end method
+
+.method static synthetic access$4800(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/view/MotionEvent;)V
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->changeBrigtness(Landroid/view/MotionEvent;)V
 
     return-void
 .end method
 
-.method static synthetic access$5100(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/TextView;
+.method static synthetic access$4900(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/TextView;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
+    .line 79
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
     return-object v0
 .end method
 
-.method static synthetic access$5200(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
+.method static synthetic access$500(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/os/Handler;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    return-object v0
+.end method
+
+.method static synthetic access$5000(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/ImageButton;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTrackButton:Landroid/widget/ImageButton;
+
+    return-object v0
+.end method
+
+.method static synthetic access$5100(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/ImageButton;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextButton:Landroid/widget/ImageButton;
+
+    return-object v0
+.end method
+
+.method static synthetic access$5200(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/ImageButton;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
     return-object v0
 .end method
@@ -1442,8 +1505,8 @@
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTrackButton:Landroid/widget/ImageButton;
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
 
     return-object v0
 .end method
@@ -1453,8 +1516,8 @@
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextButton:Landroid/widget/ImageButton;
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreButton:Landroid/widget/ImageButton;
 
     return-object v0
 .end method
@@ -1464,8 +1527,8 @@
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mNextButton:Landroid/widget/ImageButton;
 
     return-object v0
 .end method
@@ -1475,282 +1538,276 @@
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
-
-    return-object v0
-.end method
-
-.method static synthetic access$5700(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/ImageButton;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreButton:Landroid/widget/ImageButton;
-
-    return-object v0
-.end method
-
-.method static synthetic access$5800(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/ImageButton;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mNextButton:Landroid/widget/ImageButton;
-
-    return-object v0
-.end method
-
-.method static synthetic access$5900(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/ImageButton;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
+    .line 79
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseButton:Landroid/widget/ImageButton;
 
     return-object v0
 .end method
 
-.method static synthetic access$600(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDragging:Z
-
-    return v0
-.end method
-
-.method static synthetic access$6000(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/PopupMenu;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
-
-    return-object v0
-.end method
-
-.method static synthetic access$6002(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/widget/PopupMenu;)Landroid/widget/PopupMenu;
+.method static synthetic access$5702(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
+    .line 79
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAudioTrackListShow:Z
+
+    return p1
+.end method
+
+.method static synthetic access$5802(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsTimeTextListShow:Z
+
+    return p1
+.end method
+
+.method static synthetic access$5902(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
+
+    return p1
+.end method
+
+.method static synthetic access$600(Lcom/android/gallery3d/app/MovieControllerOverlay;)J
+    .locals 2
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setProgress()J
+
+    move-result-wide v0
+
+    return-wide v0
+.end method
+
+.method static synthetic access$6002(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsBitrateListShow:Z
+
+    return p1
+.end method
+
+.method static synthetic access$6100(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCanGesture:Z
+
+    return v0
+.end method
+
+.method static synthetic access$6102(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCanGesture:Z
+
+    return p1
+.end method
+
+.method static synthetic access$6202(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/widget/PopupMenu;)Landroid/widget/PopupMenu;
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
     iput-object p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
 
     return-object p1
 .end method
 
-.method static synthetic access$6100(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
+.method static synthetic access$6300(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/content/Context;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
+    .line 79
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     return-object v0
 .end method
 
-.method static synthetic access$6200(Lcom/android/gallery3d/app/MovieControllerOverlay;)[Ljava/lang/String;
+.method static synthetic access$6400(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+    .locals 0
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showPopMenu()V
+
+    return-void
+.end method
+
+.method static synthetic access$6500(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuInfo:[Ljava/lang/String;
+    .line 79
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
+
+    return v0
+.end method
+
+.method static synthetic access$6502(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
+    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
+
+    return p1
+.end method
+
+.method static synthetic access$6600(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSysBrightness:I
+
+    return v0
+.end method
+
+.method static synthetic access$6700(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/seekbar/VerSeekBar;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBar:Lcom/android/gallery3d/seekbar/VerSeekBar;
 
     return-object v0
 .end method
 
-.method static synthetic access$6300(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setMenuItemCheck()V
-
-    return-void
-.end method
-
-.method static synthetic access$6400(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
+.method static synthetic access$6800(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
+    .line 79
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
     return v0
 .end method
 
-.method static synthetic access$6402(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
+.method static synthetic access$6802(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
-    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
+    .line 79
+    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
     return p1
 .end method
 
-.method static synthetic access$6500(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
+.method static synthetic access$6900(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/seekbar/VerSeekBar;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineVideo:Z
-
-    return v0
-.end method
-
-.method static synthetic access$6602(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 69
-    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineCompleteMode:I
-
-    return p1
-.end method
-
-.method static synthetic access$6702(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 69
-    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsNativeCompleteMode:I
-
-    return p1
-.end method
-
-.method static synthetic access$6800(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAutoVerScreen:Z
-
-    return v0
-.end method
-
-.method static synthetic access$6802(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 69
-    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAutoVerScreen:Z
-
-    return p1
-.end method
-
-.method static synthetic access$6900(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setScreenSensor()V
-
-    return-void
-.end method
-
-.method static synthetic access$700(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/app/MovieControllerOverlay$State;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
 
     return-object v0
 .end method
 
-.method static synthetic access$7000(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
+.method static synthetic access$700(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsRepeatplay:Z
+    .line 79
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDragging:Z
 
     return v0
 .end method
 
-.method static synthetic access$7002(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
+.method static synthetic access$7000(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/ImageButton;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
+
+    return-object v0
+.end method
+
+.method static synthetic access$702(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
-    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsRepeatplay:Z
+    .line 79
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDragging:Z
 
     return p1
 .end method
 
-.method static synthetic access$702(Lcom/android/gallery3d/app/MovieControllerOverlay;Lcom/android/gallery3d/app/MovieControllerOverlay$State;)Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+.method static synthetic access$7100(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
+
+    return v0
+.end method
+
+.method static synthetic access$7102(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
-    iput-object p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+    .line 79
+    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
 
-    return-object p1
+    return p1
 .end method
 
-.method static synthetic access$7100(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+.method static synthetic access$7200(Lcom/android/gallery3d/app/MovieControllerOverlay;I)V
     .locals 0
     .parameter "x0"
+    .parameter "x1"
 
     .prologue
-    .line 69
-    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setPlayMode()V
+    .line 79
+    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setVolumeLevel(I)V
 
     return-void
-.end method
-
-.method static synthetic access$7200(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsQueueplay:Z
-
-    return v0
-.end method
-
-.method static synthetic access$7202(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 69
-    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsQueueplay:Z
-
-    return p1
 .end method
 
 .method static synthetic access$7300(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
@@ -1758,8 +1815,8 @@
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
+    .line 79
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
     return v0
 .end method
@@ -1770,8 +1827,8 @@
     .parameter "x1"
 
     .prologue
-    .line 69
-    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
+    .line 79
+    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
     return p1
 .end method
@@ -1781,98 +1838,101 @@
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSysBrightness:I
+    .line 79
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxVolume:I
 
     return v0
 .end method
 
-.method static synthetic access$7500()I
-    .locals 1
-
-    .prologue
-    .line 69
-    sget v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->MIN_WIN_BRIGHNESS:I
-
-    return v0
-.end method
-
-.method static synthetic access$7600(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/seekbar/VerSeekBar;
+.method static synthetic access$7500(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBar:Lcom/android/gallery3d/seekbar/VerSeekBar;
-
-    return-object v0
-.end method
-
-.method static synthetic access$7700(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
+    .line 79
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
 
     return v0
 .end method
 
-.method static synthetic access$7702(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
+.method static synthetic access$7502(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
-    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
+    .line 79
+    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
 
     return p1
 .end method
 
-.method static synthetic access$7800(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/seekbar/VerSeekBar;
-    .locals 1
+.method static synthetic access$7600(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+    .locals 0
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
+    .line 79
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->maybeStartHiding()V
 
-    return-object v0
+    return-void
 .end method
 
-.method static synthetic access$7900(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/ImageButton;
+.method static synthetic access$7700(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
-
-    return-object v0
-.end method
-
-.method static synthetic access$800(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
+    .line 79
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
 
     return v0
 .end method
 
-.method static synthetic access$8000(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
+.method static synthetic access$7702(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
+
+    return p1
+.end method
+
+.method static synthetic access$7800(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
+    .line 79
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineVideo:Z
 
     return v0
+.end method
+
+.method static synthetic access$7902(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
+    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineCompleteMode:I
+
+    return p1
+.end method
+
+.method static synthetic access$800(Lcom/android/gallery3d/app/MovieControllerOverlay;)Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+
+    return-object v0
 .end method
 
 .method static synthetic access$8002(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
@@ -1881,288 +1941,411 @@
     .parameter "x1"
 
     .prologue
-    .line 69
-    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
+    .line 79
+    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsNativeCompleteMode:I
 
     return p1
 .end method
 
-.method static synthetic access$8100(Lcom/android/gallery3d/app/MovieControllerOverlay;I)V
+.method static synthetic access$802(Lcom/android/gallery3d/app/MovieControllerOverlay;Lcom/android/gallery3d/app/MovieControllerOverlay$State;)Lcom/android/gallery3d/app/MovieControllerOverlay$State;
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
-    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setVolumeLevel(I)V
+    .line 79
+    iput-object p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+
+    return-object p1
+.end method
+
+.method static synthetic access$8100(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAutoVerScreen:Z
+
+    return v0
+.end method
+
+.method static synthetic access$8102(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAutoVerScreen:Z
+
+    return p1
+.end method
+
+.method static synthetic access$8200(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+    .locals 0
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setScreenSensor()V
 
     return-void
 .end method
 
-.method static synthetic access$8200(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
+.method static synthetic access$8300(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
+    .line 79
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsRepeatplay:Z
 
     return v0
 .end method
 
-.method static synthetic access$8202(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
+.method static synthetic access$8302(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
-    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
+    .line 79
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsRepeatplay:Z
 
     return p1
 .end method
 
-.method static synthetic access$8300(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
+.method static synthetic access$8400(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+    .locals 0
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setPlayMode()V
+
+    return-void
+.end method
+
+.method static synthetic access$8500(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxVolume:I
+    .line 79
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsQueueplay:Z
 
     return v0
 .end method
 
-.method static synthetic access$8400(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
+.method static synthetic access$8502(Lcom/android/gallery3d/app/MovieControllerOverlay;Z)Z
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsQueueplay:Z
+
+    return p1
+.end method
+
+.method static synthetic access$8600(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+    .locals 0
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setMenuItemCheck()V
+
+    return-void
+.end method
+
+.method static synthetic access$8800(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
+    .line 79
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAnimationStarting:Z
 
     return v0
 .end method
 
-.method static synthetic access$8402(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
+.method static synthetic access$8900(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/view/MotionEvent;)V
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
-    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
+    .line 79
+    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->onTouchClick(Landroid/view/MotionEvent;)V
 
-    return p1
+    return-void
 .end method
 
-.method static synthetic access$8600(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
+.method static synthetic access$900(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsZoomClick:Z
+    .line 79
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
 
     return v0
 .end method
 
-.method static synthetic access$8702(Lcom/android/gallery3d/app/MovieControllerOverlay;F)F
-    .locals 0
+.method static synthetic access$9000(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
+    .locals 1
     .parameter "x0"
-    .parameter "x1"
 
     .prologue
-    .line 69
-    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownX:F
+    .line 79
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenWidth:I
 
-    return p1
+    return v0
 .end method
 
-.method static synthetic access$8802(Lcom/android/gallery3d/app/MovieControllerOverlay;F)F
-    .locals 0
+.method static synthetic access$9100(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/view/MotionEvent;)Z
+    .locals 1
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
-    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownY:F
+    .line 79
+    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->onTouchDoubleClick(Landroid/view/MotionEvent;)Z
 
-    return p1
+    move-result v0
+
+    return v0
 .end method
 
-.method static synthetic access$8902(Lcom/android/gallery3d/app/MovieControllerOverlay;J)J
+.method static synthetic access$9200(Lcom/android/gallery3d/app/MovieControllerOverlay;)J
+    .locals 2
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoveTime:J
+
+    return-wide v0
+.end method
+
+.method static synthetic access$9202(Lcom/android/gallery3d/app/MovieControllerOverlay;J)J
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
-    iput-wide p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLastDownTime:J
+    .line 79
+    iput-wide p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoveTime:J
 
     return-wide p1
 .end method
 
-.method static synthetic access$900(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/widget/RelativeLayout;
-    .locals 1
+.method static synthetic access$9300(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/view/MotionEvent;)V
+    .locals 0
     .parameter "x0"
+    .parameter "x1"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
+    .line 79
+    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->onTouchUp(Landroid/view/MotionEvent;)V
 
-    return-object v0
+    return-void
 .end method
 
-.method static synthetic access$9000(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
+.method static synthetic access$9400(Lcom/android/gallery3d/app/MovieControllerOverlay;)Z
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
+    .line 79
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
 
     return v0
 .end method
 
-.method static synthetic access$9100(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 69
-    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setZoomChange()V
-
-    return-void
-.end method
-
-.method static synthetic access$9200(Lcom/android/gallery3d/app/MovieControllerOverlay;)Landroid/view/VelocityTracker;
+.method static synthetic access$9500(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 69
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVelocity:Landroid/view/VelocityTracker;
+    .line 79
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenRotation:I
 
-    return-object v0
+    return v0
 .end method
 
-.method static synthetic access$9302(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
+.method static synthetic access$9502(Lcom/android/gallery3d/app/MovieControllerOverlay;I)I
     .locals 0
     .parameter "x0"
     .parameter "x1"
 
     .prologue
-    .line 69
-    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureSpeedTime:I
+    .line 79
+    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenRotation:I
 
     return p1
 .end method
 
+.method static synthetic access$9600(Lcom/android/gallery3d/app/MovieControllerOverlay;)I
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
+
+    return v0
+.end method
+
+.method static synthetic access$9702(Lcom/android/gallery3d/app/MovieControllerOverlay;J)J
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 79
+    iput-wide p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    return-wide p1
+.end method
+
+.method static synthetic access$9800(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+    .locals 0
+    .parameter "x0"
+
+    .prologue
+    .line 79
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->onScreenOrientationChanged()V
+
+    return-void
+.end method
+
 .method private calculateTitle(Ljava/lang/String;)Ljava/lang/String;
-    .locals 8
+    .locals 9
     .parameter
 
     .prologue
-    const/high16 v7, 0x430b
+    const/high16 v8, 0x4000
 
-    .line 453
+    .line 501
     const-string v1, ""
 
-    .line 456
-    new-instance v2, Landroid/graphics/Paint;
+    .line 503
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
-    invoke-direct {v2}, Landroid/graphics/Paint;-><init>()V
+    invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    .line 457
-    const/high16 v0, 0x4170
+    move-result-object v0
 
-    invoke-virtual {v2, v0}, Landroid/graphics/Paint;->setTextSize(F)V
+    const v2, 0x7f090234
 
-    .line 458
-    invoke-virtual {v2, p1}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
+    invoke-virtual {v0, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
     move-result v0
 
-    float-to-double v3, v0
+    int-to-float v2, v0
 
-    .line 459
-    const-wide v5, 0x4071700000000000L
+    .line 505
+    new-instance v3, Landroid/graphics/Paint;
 
-    cmpg-double v0, v3, v5
+    invoke-direct {v3}, Landroid/graphics/Paint;-><init>()V
+
+    .line 506
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxTextSize:I
+
+    int-to-float v0, v0
+
+    invoke-virtual {v3, v0}, Landroid/graphics/Paint;->setTextSize(F)V
+
+    .line 508
+    invoke-virtual {v3, p1}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
+
+    move-result v0
+
+    float-to-double v4, v0
+
+    .line 509
+    float-to-double v6, v2
+
+    cmpg-double v0, v4, v6
 
     if-gtz v0, :cond_0
 
-    .line 479
+    .line 529
     :goto_0
     return-object p1
 
-    .line 462
+    .line 512
     :cond_0
     const/4 v0, 0x0
 
     :goto_1
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
-    move-result v3
+    move-result v4
 
-    add-int/lit8 v3, v3, -0x2
+    add-int/lit8 v4, v4, -0x2
 
-    if-ge v0, v3, :cond_1
+    if-ge v0, v4, :cond_1
 
-    .line 463
-    add-int/lit8 v3, v0, 0x1
+    .line 513
+    add-int/lit8 v4, v0, 0x1
 
-    invoke-virtual {p1, v0, v3}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+    invoke-virtual {p1, v0, v4}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v4
 
-    .line 464
+    .line 514
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
+
+    move-result v5
+
+    div-float v6, v2, v8
+
+    const-string v7, ".."
+
+    invoke-virtual {v3, v7}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
+
+    move-result v7
+
+    sub-float/2addr v6, v7
+
+    cmpl-float v5, v5, v6
+
+    if-lez v5, :cond_2
+
+    .line 519
+    :cond_1
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
     invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v4
-
-    invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-virtual {v2, v4}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
-
-    move-result v4
-
-    const-string v5, ".."
-
-    invoke-virtual {v2, v5}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
-
-    move-result v5
-
-    sub-float v5, v7, v5
-
-    cmpl-float v4, v4, v5
-
-    if-lez v4, :cond_2
-
-    .line 469
-    :cond_1
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     move-result-object v1
 
-    const-string v3, ".."
+    const-string v4, ".."
 
-    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -2170,40 +2353,42 @@
 
     move-result-object v1
 
-    .line 470
+    .line 520
     invoke-virtual {p1}, Ljava/lang/String;->length()I
-
-    move-result v3
-
-    if-eq v0, v3, :cond_4
-
-    .line 471
-    :goto_2
-    invoke-virtual {p1}, Ljava/lang/String;->length()I
-
-    move-result v3
-
-    if-ge v0, v3, :cond_4
-
-    .line 472
-    invoke-virtual {p1}, Ljava/lang/String;->length()I
-
-    move-result v3
-
-    invoke-virtual {p1, v0, v3}, Ljava/lang/String;->substring(II)Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 473
-    invoke-virtual {v2, v3}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
 
     move-result v4
 
-    cmpg-float v4, v4, v7
+    if-eq v0, v4, :cond_4
 
-    if-gtz v4, :cond_3
+    .line 521
+    :goto_2
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
 
-    .line 474
+    move-result v4
+
+    if-ge v0, v4, :cond_4
+
+    .line 522
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
+
+    move-result v4
+
+    invoke-virtual {p1, v0, v4}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 523
+    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
+
+    move-result v5
+
+    div-float v6, v2, v8
+
+    cmpg-float v5, v5, v6
+
+    if-gtz v5, :cond_3
+
+    .line 524
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -2212,7 +2397,7 @@
 
     move-result-object v0
 
-    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
@@ -2223,20 +2408,20 @@
     :goto_3
     move-object p1, v0
 
-    .line 479
+    .line 529
     goto :goto_0
 
-    .line 467
+    .line 517
     :cond_2
-    new-instance v4, Ljava/lang/StringBuilder;
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -2244,12 +2429,12 @@
 
     move-result-object v1
 
-    .line 462
+    .line 512
     add-int/lit8 v0, v0, 0x1
 
     goto/16 :goto_1
 
-    .line 471
+    .line 521
     :cond_3
     add-int/lit8 v0, v0, 0x1
 
@@ -2270,14 +2455,14 @@
 
     const/4 v5, 0x0
 
-    .line 2331
+    .line 2421
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
     move-result v3
 
     float-to-int v2, v3
 
-    .line 2332
+    .line 2422
     .local v2, y:I
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenHeight:I
 
@@ -2285,30 +2470,30 @@
 
     if-ne v3, v4, :cond_4
 
-    .line 2333
+    .line 2423
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenHeight:I
 
     add-int/lit8 v1, v3, -0x50
 
-    .line 2334
+    .line 2424
     .local v1, setProgressRange:I
     add-int/lit8 v2, v2, -0x28
 
-    .line 2339
+    .line 2429
     :goto_0
     if-gez v2, :cond_0
 
-    .line 2340
+    .line 2430
     const/4 v2, 0x0
 
-    .line 2342
+    .line 2432
     :cond_0
     if-le v2, v1, :cond_1
 
-    .line 2343
+    .line 2433
     move v2, v1
 
-    .line 2345
+    .line 2435
     :cond_1
     sub-int v3, v1, v2
 
@@ -2324,7 +2509,7 @@
 
     double-to-int v0, v3
 
-    .line 2346
+    .line 2436
     .local v0, progress:I
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldLightProgress:I
 
@@ -2336,12 +2521,12 @@
 
     if-eq v3, v4, :cond_2
 
-    .line 2347
+    .line 2437
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldLightProgress:I
 
     if-le v0, v3, :cond_5
 
-    .line 2348
+    .line 2438
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
 
     iget v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldLightProgress:I
@@ -2352,40 +2537,40 @@
 
     iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
 
-    .line 2349
+    .line 2439
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
 
     if-lt v3, v6, :cond_2
 
-    .line 2350
+    .line 2440
     iput v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
 
-    .line 2359
+    .line 2449
     :cond_2
     :goto_1
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldLightProgress:I
 
-    .line 2360
+    .line 2450
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setLightBarProgress()V
 
-    .line 2361
+    .line 2451
     iget-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
 
     if-eqz v3, :cond_3
 
-    .line 2362
+    .line 2452
     const/4 v3, 0x1
 
     invoke-direct {p0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideControllAni(Z)V
 
-    .line 2364
+    .line 2454
     :cond_3
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->updateLightUI()V
 
-    .line 2365
+    .line 2455
     return-void
 
-    .line 2336
+    .line 2426
     .end local v0           #progress:I
     .end local v1           #setProgressRange:I
     :cond_4
@@ -2393,13 +2578,13 @@
 
     add-int/lit16 v1, v3, -0xdc
 
-    .line 2337
+    .line 2427
     .restart local v1       #setProgressRange:I
     add-int/lit8 v2, v2, -0x6e
 
     goto :goto_0
 
-    .line 2353
+    .line 2443
     .restart local v0       #progress:I
     :cond_5
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
@@ -2412,12 +2597,12 @@
 
     iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
 
-    .line 2354
+    .line 2444
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
 
     if-gtz v3, :cond_2
 
-    .line 2355
+    .line 2445
     iput v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
 
     goto :goto_1
@@ -2425,37 +2610,36 @@
 
 .method private changeVideoProgress(Landroid/view/MotionEvent;)V
     .locals 5
-    .parameter
+    .parameter "event"
 
     .prologue
     const/4 v4, 0x4
 
-    const/high16 v3, 0x4170
+    const/4 v3, 0x0
 
-    const/4 v2, 0x0
+    .line 2515
+    iget-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
 
-    .line 2423
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+    if-eqz v1, :cond_0
 
-    if-eqz v0, :cond_0
+    .line 2516
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
 
-    .line 2424
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
+    invoke-virtual {p0, v1, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->onSeekbarProgressTouch(Landroid/widget/SeekBar;Landroid/view/MotionEvent;)V
 
-    invoke-virtual {p0, v0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->onSeekbarProgressTouch(Landroid/widget/SeekBar;Landroid/view/MotionEvent;)V
-
-    .line 2455
+    .line 2547
     :goto_0
     return-void
 
-    .line 2426
+    .line 2518
     :cond_0
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->hidden:Z
 
-    .line 2427
-    iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->hidden:Z
+    .line 2519
+    .local v0, wasHidden:Z
+    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->hidden:Z
 
-    .line 2428
+    .line 2520
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     if-eqz v1, :cond_1
@@ -2464,149 +2648,148 @@
 
     if-eq v0, v1, :cond_1
 
-    .line 2429
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+    .line 2521
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
-    invoke-interface {v0}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->onShown()V
+    invoke-interface {v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->onShown()V
 
-    .line 2431
+    .line 2523
     :cond_1
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
-    invoke-interface {v0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->showSystemTitle(Z)V
+    invoke-interface {v1, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->showSystemTitle(Z)V
 
-    .line 2432
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+    .line 2524
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3f2
+    const/16 v2, 0x3f0
 
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2433
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureAlreadyPlayTimeText:Landroid/widget/TextView;
+    .line 2525
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxTextSize:I
 
-    invoke-virtual {v0, v3}, Landroid/widget/TextView;->setTextSize(F)V
+    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setTextSize(I)V
 
-    .line 2434
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureRemainPlayTimeText:Landroid/widget/TextView;
+    .line 2526
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
-    invoke-virtual {v0, v3}, Landroid/widget/TextView;->setTextSize(F)V
+    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
 
-    .line 2435
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
+    move-result v1
 
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+    if-nez v1, :cond_5
 
-    move-result v0
+    .line 2527
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    if-nez v0, :cond_6
+    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
 
-    .line 2436
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
+    move-result v1
 
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+    if-nez v1, :cond_2
 
-    move-result v0
+    .line 2528
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    if-nez v0, :cond_2
+    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showMainView(Landroid/view/View;)V
 
-    .line 2437
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
-
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showMainView(Landroid/view/View;)V
-
-    .line 2439
+    .line 2530
     :cond_2
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
-
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_3
-
-    .line 2440
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const/16 v1, 0x3f6
-
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 2441
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
-
-    const/16 v1, 0x8
-
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setVisibility(I)V
-
-    .line 2442
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->hideViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
+    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
 
-    .line 2444
+    move-result v1
+
+    if-eqz v1, :cond_3
+
+    .line 2531
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v2, 0x3f4
+
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2532
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+
+    const/16 v2, 0x8
+
+    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setVisibility(I)V
+
+    .line 2533
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+
+    invoke-static {v1, v2}, Lcom/android/gallery3d/app/MovieActivityUtils;->hideViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
+
+    .line 2535
     :cond_3
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
 
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
 
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_4
+    if-eqz v1, :cond_6
 
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
+    .line 2536
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+    const/16 v2, 0x3f1
 
-    move-result v0
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->removeMessages(I)V
 
-    if-eqz v0, :cond_5
+    .line 2537
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
 
-    .line 2445
+    invoke-virtual {v1, v4}, Landroid/widget/LinearLayout;->setVisibility(I)V
+
+    .line 2542
     :cond_4
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+    :goto_1
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
-    const/16 v1, 0x3f1
+    invoke-virtual {v1, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+    .line 2543
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
-    .line 2446
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+    invoke-virtual {v1, v3}, Landroid/widget/SeekBar;->setVisibility(I)V
 
-    const/16 v1, 0x3f3
-
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 2447
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v0, v4}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    .line 2448
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
-
-    invoke-virtual {v0, v4}, Landroid/widget/LinearLayout;->setVisibility(I)V
-
-    .line 2450
+    .line 2545
     :cond_5
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
-    invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+    invoke-virtual {p0, v1, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->onSeekbarProgressTouch(Landroid/widget/SeekBar;Landroid/view/MotionEvent;)V
 
-    .line 2451
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
+    goto :goto_0
 
-    invoke-virtual {v0, v2}, Landroid/widget/SeekBar;->setVisibility(I)V
-
-    .line 2453
+    .line 2538
     :cond_6
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
 
-    invoke-virtual {p0, v0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->onSeekbarProgressTouch(Landroid/widget/SeekBar;Landroid/view/MotionEvent;)V
+    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
 
-    goto/16 :goto_0
+    move-result v1
+
+    if-eqz v1, :cond_4
+
+    .line 2539
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v2, 0x3f9
+
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2540
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
+
+    invoke-virtual {v1, v4}, Landroid/widget/LinearLayout;->setVisibility(I)V
+
+    goto :goto_1
 .end method
 
 .method private changeVolume(Landroid/view/MotionEvent;)V
@@ -2620,45 +2803,45 @@
 
     const/16 v5, 0x2710
 
-    .line 2370
+    .line 2460
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
     move-result v3
 
     float-to-int v2, v3
 
-    .line 2371
+    .line 2461
     .local v2, y:I
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenHeight:I
 
     iget v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
 
-    if-ne v3, v4, :cond_4
+    if-ne v3, v4, :cond_5
 
-    .line 2372
+    .line 2462
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenHeight:I
 
     add-int/lit8 v1, v3, -0x50
 
-    .line 2373
+    .line 2463
     .local v1, setProgressRange:I
     add-int/lit8 v2, v2, -0x28
 
-    .line 2378
+    .line 2468
     :goto_0
     if-gez v2, :cond_0
 
-    .line 2379
+    .line 2469
     const/4 v2, 0x0
 
-    .line 2381
+    .line 2471
     :cond_0
     if-le v2, v1, :cond_1
 
-    .line 2382
+    .line 2472
     move v2, v1
 
-    .line 2384
+    .line 2474
     :cond_1
     sub-int v3, v1, v2
 
@@ -2674,29 +2857,42 @@
 
     double-to-int v0, v3
 
-    .line 2385
+    .line 2475
     .local v0, progress:I
+    iget-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSilent:Z
+
+    if-eqz v3, :cond_2
+
+    iget-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
+
+    if-nez v3, :cond_2
+
+    .line 2476
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldVolumeProgress:I
+
+    .line 2478
+    :cond_2
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldVolumeProgress:I
 
-    if-eq v0, v3, :cond_2
+    if-eq v0, v3, :cond_3
 
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldVolumeProgress:I
 
     const/4 v4, -0x1
 
-    if-eq v3, v4, :cond_2
+    if-eq v3, v4, :cond_3
 
-    .line 2386
+    .line 2479
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldVolumeProgress:I
 
-    if-le v0, v3, :cond_6
+    if-le v0, v3, :cond_7
 
-    .line 2387
+    .line 2480
     iget-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
 
-    if-eqz v3, :cond_5
+    if-eqz v3, :cond_6
 
-    .line 2388
+    .line 2481
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
     iget v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldVolumeProgress:I
@@ -2707,54 +2903,54 @@
 
     iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
-    .line 2389
+    .line 2482
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
-    if-lt v3, v5, :cond_2
+    if-lt v3, v5, :cond_3
 
-    .line 2390
+    .line 2483
     iput v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
-    .line 2413
-    :cond_2
+    .line 2506
+    :cond_3
     :goto_1
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldVolumeProgress:I
 
-    .line 2414
+    .line 2507
     iget-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
 
-    if-eqz v3, :cond_3
+    if-eqz v3, :cond_4
 
-    .line 2415
+    .line 2508
     invoke-direct {p0, v7}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideControllAni(Z)V
 
-    .line 2417
-    :cond_3
+    .line 2510
+    :cond_4
     invoke-direct {p0, v7}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setVolumBarProgress(Z)V
 
-    .line 2418
+    .line 2511
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->updateVolumeUI()V
 
-    .line 2419
+    .line 2512
     return-void
 
-    .line 2375
+    .line 2465
     .end local v0           #progress:I
     .end local v1           #setProgressRange:I
-    :cond_4
+    :cond_5
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenHeight:I
 
     add-int/lit16 v1, v3, -0xdc
 
-    .line 2376
+    .line 2466
     .restart local v1       #setProgressRange:I
     add-int/lit8 v2, v2, -0x6e
 
     goto :goto_0
 
-    .line 2393
+    .line 2486
     .restart local v0       #progress:I
-    :cond_5
+    :cond_6
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
 
     iget v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldVolumeProgress:I
@@ -2765,23 +2961,23 @@
 
     iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
 
-    .line 2394
+    .line 2487
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
 
-    if-lt v3, v5, :cond_2
+    if-lt v3, v5, :cond_3
 
-    .line 2395
+    .line 2488
     iput v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
 
     goto :goto_1
 
-    .line 2399
-    :cond_6
+    .line 2492
+    :cond_7
     iget-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
 
-    if-eqz v3, :cond_7
+    if-eqz v3, :cond_8
 
-    .line 2400
+    .line 2493
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
     iget v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldVolumeProgress:I
@@ -2792,18 +2988,18 @@
 
     iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
-    .line 2401
+    .line 2494
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
-    if-gtz v3, :cond_2
+    if-gtz v3, :cond_3
 
-    .line 2402
+    .line 2495
     iput v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
     goto :goto_1
 
-    .line 2405
-    :cond_7
+    .line 2498
+    :cond_8
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
 
     iget v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldVolumeProgress:I
@@ -2814,15 +3010,166 @@
 
     iput v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
 
-    .line 2406
+    .line 2499
     iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
 
-    if-gtz v3, :cond_2
+    if-gtz v3, :cond_3
 
-    .line 2407
+    .line 2500
     iput v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
 
     goto :goto_1
+.end method
+
+.method private configurationChangedStopDragging()V
+    .locals 7
+
+    .prologue
+    const-wide/16 v5, 0x0
+
+    const/16 v4, 0x3e8
+
+    const/16 v1, 0x3e7
+
+    const/high16 v0, -0x4080
+
+    .line 2680
+    iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldX:F
+
+    .line 2681
+    iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldY:F
+
+    .line 2682
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMinTextSize:I
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setTextSize(I)V
+
+    .line 2683
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2684
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    .line 2685
+    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
+
+    iget v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
+
+    int-to-long v2, v2
+
+    mul-long/2addr v0, v2
+
+    const-wide/16 v2, 0x2710
+
+    div-long/2addr v0, v2
+
+    iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    .line 2686
+    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    iget-wide v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
+
+    cmp-long v0, v0, v2
+
+    if-ltz v0, :cond_1
+
+    .line 2687
+    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
+
+    long-to-int v0, v0
+
+    int-to-long v0, v0
+
+    iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    .line 2691
+    :cond_0
+    :goto_0
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDragging:Z
+
+    .line 2692
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
+
+    if-eqz v0, :cond_2
+
+    .line 2693
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    invoke-interface {v0, v1, v2}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->doDlnaSeek(J)V
+
+    .line 2697
+    :goto_1
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+
+    if-eqz v0, :cond_3
+
+    .line 2698
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3e9
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2699
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v4}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    .line 2704
+    :goto_2
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initTouchParams()V
+
+    .line 2705
+    return-void
+
+    .line 2688
+    :cond_1
+    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    cmp-long v0, v0, v5
+
+    if-gez v0, :cond_0
+
+    .line 2689
+    iput-wide v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    goto :goto_0
+
+    .line 2695
+    :cond_2
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    long-to-int v1, v1
+
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->onSeekEnd(I)V
+
+    goto :goto_1
+
+    .line 2701
+    :cond_3
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f0
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2702
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v4}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    goto :goto_2
 .end method
 
 .method private enableMediaControl(Z)V
@@ -2830,35 +3177,83 @@
     .parameter "enable"
 
     .prologue
-    .line 2204
+    .line 2288
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
     if-eqz v0, :cond_0
 
-    .line 2205
+    .line 2289
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, p1}, Landroid/widget/RelativeLayout;->setEnabled(Z)V
 
-    .line 2207
+    .line 2291
     :cond_0
     return-void
+.end method
+
+.method private getSystemSensor()Z
+    .locals 3
+
+    .prologue
+    const/4 v0, 0x0
+
+    .line 449
+    invoke-virtual {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->getContext()Landroid/content/Context;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v1
+
+    .line 452
+    :try_start_0
+    const-string v2, "accelerometer_rotation"
+
+    invoke-static {v1, v2}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;)I
+    :try_end_0
+    .catch Landroid/provider/Settings$SettingNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result v1
+
+    .line 454
+    if-nez v1, :cond_0
+
+    .line 462
+    :goto_0
+    return v0
+
+    .line 457
+    :cond_0
+    const/4 v0, 0x1
+
+    goto :goto_0
+
+    .line 459
+    :catch_0
+    move-exception v1
+
+    .line 460
+    invoke-virtual {v1}, Landroid/provider/Settings$SettingNotFoundException;->printStackTrace()V
+
+    goto :goto_0
 .end method
 
 .method private hide()V
     .locals 2
 
     .prologue
-    .line 1406
+    .line 1469
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->hidden:Z
 
-    .line 1407
+    .line 1470
     .local v0, wasHidden:Z
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->hidden:Z
 
-    .line 1408
+    .line 1471
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     if-eqz v1, :cond_0
@@ -2867,28 +3262,30 @@
 
     if-eq v0, v1, :cond_0
 
-    .line 1409
+    .line 1472
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     invoke-interface {v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->onHidden()V
 
-    .line 1411
+    .line 1474
     :cond_0
     return-void
 .end method
 
 .method private hideControllAni(Z)V
-    .locals 4
+    .locals 6
     .parameter "showAni"
 
     .prologue
-    const/16 v1, 0x3f9
+    const/16 v5, 0x3f7
+
+    const/16 v4, 0x8
 
     const/4 v3, 0x0
 
     const/4 v2, 0x4
 
-    .line 1868
+    .line 2011
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
 
     if-eqz v0, :cond_1
@@ -2897,76 +3294,86 @@
 
     if-eqz v0, :cond_1
 
-    .line 1869
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+    .line 2012
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    invoke-interface {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->turnOffLed()V
+    const/16 v1, 0x3f5
 
-    .line 1870
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    .line 2013
     invoke-direct {p0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay;->enableMediaControl(Z)V
 
-    .line 1871
+    .line 2014
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     invoke-interface {v0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->showSystemTitle(Z)V
 
-    .line 1872
-    if-eqz p1, :cond_3
+    .line 2015
+    if-eqz p1, :cond_2
 
-    .line 1873
+    .line 2016
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsM040:Z
+
+    if-eqz v0, :cond_0
+
+    .line 2017
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
 
     if-nez v0, :cond_0
 
-    .line 1874
+    .line 2018
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
 
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->hideViewTranslateAniDown(Landroid/content/Context;Landroid/view/View;)V
+    invoke-direct {p0, v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideViewTranslateAniDown(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 1876
+    .line 2021
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
 
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->hideViewTranslateAniUp(Landroid/content/Context;Landroid/view/View;)V
+    invoke-direct {p0, v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideViewTranslateAniUp(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 1877
+    .line 2022
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
 
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->hideViewTranslateAniDown(Landroid/content/Context;Landroid/view/View;)V
+    invoke-direct {p0, v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideViewTranslateAniDown(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 1878
+    .line 2023
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideSelectItemAni()V
 
-    .line 1883
+    .line 2028
     :goto_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 1884
+    .line 2029
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 1885
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
+    .line 2030
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsM040:Z
 
     if-eqz v0, :cond_4
 
-    .line 1886
+    .line 2031
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
+
+    if-eqz v0, :cond_3
+
+    .line 2032
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
 
-    const/16 v1, 0x8
+    invoke-virtual {v0, v4}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    invoke-virtual {v0, v1}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    .line 1890
+    .line 2039
     :goto_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRightBottomlayout:Landroid/widget/LinearLayout;
 
@@ -2976,57 +3383,50 @@
 
     if-eqz v0, :cond_1
 
-    .line 1891
+    .line 2040
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRightBottomlayout:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 1894
+    .line 2043
     :cond_1
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
-
-    if-eqz v0, :cond_2
-
-    .line 1895
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
-
-    if-eqz v0, :cond_2
-
-    .line 1896
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
-
-    sget v1, Lcom/android/gallery3d/app/MovieControllerOverlay;->MIN_WIN_BRIGHNESS:I
-
-    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->setWinBrightness(I)V
-
-    .line 1899
-    :cond_2
     iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
 
-    .line 1900
+    .line 2044
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setHdmiScreenLight()V
+
+    .line 2045
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hide()V
 
-    .line 1901
+    .line 2046
     return-void
 
-    .line 1880
-    :cond_3
+    .line 2025
+    :cond_2
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+    invoke-virtual {v0, v5}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1881
+    .line 2026
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+    invoke-virtual {v0, v5}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
     goto :goto_0
 
-    .line 1888
-    :cond_4
+    .line 2034
+    :cond_3
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    goto :goto_1
+
+    .line 2037
+    :cond_4
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v0, v4}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
     goto :goto_1
 .end method
@@ -3035,16 +3435,16 @@
     .locals 4
 
     .prologue
-    const/16 v3, 0x3f9
+    const/16 v3, 0x3f7
 
     const/16 v2, 0x8
 
-    .line 1904
+    .line 2049
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v3}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1905
+    .line 2050
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTrackButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0}, Landroid/widget/ImageButton;->getVisibility()I
@@ -3053,14 +3453,14 @@
 
     if-eq v0, v2, :cond_0
 
-    .line 1906
+    .line 2051
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTrackButton:Landroid/widget/ImageButton;
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->hideViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 1908
+    .line 2053
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextButton:Landroid/widget/ImageButton;
 
@@ -3070,14 +3470,14 @@
 
     if-eq v0, v2, :cond_1
 
-    .line 1909
+    .line 2054
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextButton:Landroid/widget/ImageButton;
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->hideViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 1911
+    .line 2056
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
@@ -3087,14 +3487,14 @@
 
     if-eq v0, v2, :cond_2
 
-    .line 1912
+    .line 2057
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->hideViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 1914
+    .line 2059
     :cond_2
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
 
@@ -3104,14 +3504,14 @@
 
     if-eq v0, v2, :cond_3
 
-    .line 1915
+    .line 2060
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->hideViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 1917
+    .line 2062
     :cond_3
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
@@ -3119,22 +3519,83 @@
 
     invoke-virtual {v0, v3, v1, v2}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 1918
+    .line 2063
+    return-void
+.end method
+
+.method private hideViewTranslateAniDown(Landroid/content/Context;Landroid/view/View;)V
+    .locals 1
+    .parameter
+    .parameter
+
+    .prologue
+    .line 1785
+    const v0, 0x7f050009
+
+    invoke-static {p1, v0}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
+
+    move-result-object v0
+
+    .line 1786
+    invoke-virtual {v0, p0}, Landroid/view/animation/Animation;->setAnimationListener(Landroid/view/animation/Animation$AnimationListener;)V
+
+    .line 1787
+    invoke-virtual {p2, v0}, Landroid/view/View;->startAnimation(Landroid/view/animation/Animation;)V
+
+    .line 1788
+    return-void
+.end method
+
+.method private hideViewTranslateAniUp(Landroid/content/Context;Landroid/view/View;)V
+    .locals 1
+    .parameter
+    .parameter
+
+    .prologue
+    .line 1780
+    const v0, 0x7f05000a
+
+    invoke-static {p1, v0}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
+
+    move-result-object v0
+
+    .line 1781
+    invoke-virtual {v0, p0}, Landroid/view/animation/Animation;->setAnimationListener(Landroid/view/animation/Animation$AnimationListener;)V
+
+    .line 1782
+    invoke-virtual {p2, v0}, Landroid/view/View;->startAnimation(Landroid/view/animation/Animation;)V
+
+    .line 1783
     return-void
 .end method
 
 .method private initBottomPartWidget()V
-    .locals 4
+    .locals 5
 
     .prologue
-    const/4 v3, 0x0
+    const/4 v4, 0x0
+
+    const/16 v3, 0x8
 
     const/4 v2, 0x4
 
-    .line 1661
+    .line 1742
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00ba
+    const v1, 0x7f0d00cc
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/ImageView;
+
+    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->m03XPopMenuRightBottomAnchorView:Landroid/widget/ImageView;
+
+    .line 1743
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
+
+    const v1, 0x7f0d00bf
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3144,10 +3605,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
 
-    .line 1662
+    .line 1744
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00be
+    const v1, 0x7f0d00c3
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3157,10 +3618,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
 
-    .line 1663
+    .line 1745
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00b5
+    const v1, 0x7f0d00ba
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3170,10 +3631,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRightBottomlayout:Landroid/widget/LinearLayout;
 
-    .line 1664
+    .line 1746
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00bb
+    const v1, 0x7f0d00c0
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3183,10 +3644,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseButton:Landroid/widget/ImageButton;
 
-    .line 1665
+    .line 1747
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00bd
+    const v1, 0x7f0d00c2
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3196,10 +3657,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mNextButton:Landroid/widget/ImageButton;
 
-    .line 1666
+    .line 1748
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00bc
+    const v1, 0x7f0d00c1
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3209,22 +3670,22 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreButton:Landroid/widget/ImageButton;
 
-    .line 1667
+    .line 1749
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
 
     if-eqz v0, :cond_0
 
-    .line 1668
+    .line 1750
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mNextButton:Landroid/widget/ImageButton;
 
-    invoke-virtual {v0, v3}, Landroid/widget/ImageButton;->setVisibility(I)V
+    invoke-virtual {v0, v4}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1669
+    .line 1751
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreButton:Landroid/widget/ImageButton;
 
-    invoke-virtual {v0, v3}, Landroid/widget/ImageButton;->setVisibility(I)V
+    invoke-virtual {v0, v4}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1674
+    .line 1756
     :goto_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseButton:Landroid/widget/ImageButton;
 
@@ -3232,24 +3693,24 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 1675
+    .line 1757
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mNextButton:Landroid/widget/ImageButton;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPrevNextListener:Landroid/view/View$OnClickListener;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 1676
+    .line 1758
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreButton:Landroid/widget/ImageButton;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPrevNextListener:Landroid/view/View$OnClickListener;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 1677
+    .line 1759
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00c0
+    const v1, 0x7f0d00c5
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3259,17 +3720,17 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalMenuButton:Lcom/meizu/widget/GlowImageButton;
 
-    .line 1678
+    .line 1760
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalMenuButton:Lcom/meizu/widget/GlowImageButton;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMenuIconListener:Landroid/view/View$OnClickListener;
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/GlowImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 1680
+    .line 1762
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00bf
+    const v1, 0x7f0d00c4
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3279,57 +3740,78 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackButton:Lcom/meizu/widget/GlowImageButton;
 
-    .line 1681
+    .line 1763
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackButton:Lcom/meizu/widget/GlowImageButton;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mBackIconListener:Landroid/view/View$OnClickListener;
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/GlowImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 1683
+    .line 1764
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsM040:Z
+
+    if-eqz v0, :cond_2
+
+    .line 1765
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
 
     if-eqz v0, :cond_1
 
-    .line 1684
+    .line 1766
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
 
-    const/16 v1, 0x8
+    invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    invoke-virtual {v0, v1}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    .line 1690
+    .line 1778
     :goto_1
     return-void
 
-    .line 1671
+    .line 1753
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mNextButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1672
+    .line 1754
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
     goto :goto_0
 
-    .line 1686
+    .line 1768
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 1687
+    .line 1769
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackButton:Lcom/meizu/widget/GlowImageButton;
 
     invoke-virtual {v0, v2}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
-    .line 1688
+    .line 1770
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalMenuButton:Lcom/meizu/widget/GlowImageButton;
 
     invoke-virtual {v0, v2}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
+
+    goto :goto_1
+
+    .line 1773
+    :cond_2
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    .line 1774
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackButton:Lcom/meizu/widget/GlowImageButton;
+
+    invoke-virtual {v0, v3}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
+
+    .line 1775
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalMenuButton:Lcom/meizu/widget/GlowImageButton;
+
+    invoke-virtual {v0, v3}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
     goto :goto_1
 .end method
@@ -3338,10 +3820,10 @@
     .locals 2
 
     .prologue
-    .line 1720
+    .line 1812
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00c6
+    const v1, 0x7f0d00c7
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3351,10 +3833,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
 
-    .line 1721
+    .line 1813
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00c7
+    const v1, 0x7f0d00c8
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3364,17 +3846,17 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
 
-    .line 1722
+    .line 1814
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButtonListener:Landroid/view/View$OnClickListener;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 1723
+    .line 1815
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00c8
+    const v1, 0x7f0d00c9
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3384,21 +3866,21 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
 
-    .line 1724
+    .line 1816
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumSeekListener:Lcom/android/gallery3d/seekbar/VerSeekBar$OnVerSeekBarChangeListener;
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setOnSeekBarChangeListener(Lcom/android/gallery3d/seekbar/VerSeekBar$OnVerSeekBarChangeListener;)V
 
-    .line 1725
+    .line 1817
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
 
     const/16 v1, 0x2710
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setMax(I)V
 
-    .line 1726
+    .line 1818
     return-void
 .end method
 
@@ -3406,7 +3888,7 @@
     .locals 2
 
     .prologue
-    .line 1711
+    .line 1803
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     const v1, 0x7f0d000e
@@ -3419,10 +3901,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
 
-    .line 1712
+    .line 1804
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00c5
+    const v1, 0x7f0d00c6
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3432,7 +3914,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightButton:Landroid/widget/ImageButton;
 
-    .line 1713
+    .line 1805
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     const v1, 0x7f0d000f
@@ -3445,28 +3927,28 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBar:Lcom/android/gallery3d/seekbar/VerSeekBar;
 
-    .line 1714
+    .line 1806
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBar:Lcom/android/gallery3d/seekbar/VerSeekBar;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightSeekListener:Lcom/android/gallery3d/seekbar/VerSeekBar$OnVerSeekBarChangeListener;
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setOnSeekBarChangeListener(Lcom/android/gallery3d/seekbar/VerSeekBar$OnVerSeekBarChangeListener;)V
 
-    .line 1715
+    .line 1807
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBar:Lcom/android/gallery3d/seekbar/VerSeekBar;
 
     const/16 v1, 0x2710
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setMax(I)V
 
-    .line 1716
+    .line 1808
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightButton:Landroid/widget/ImageButton;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightButtonListener:Landroid/view/View$OnClickListener;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 1717
+    .line 1809
     return-void
 .end method
 
@@ -3475,12 +3957,12 @@
     .parameter "context"
 
     .prologue
-    .line 380
+    .line 408
     new-instance v0, Landroid/graphics/Point;
 
     invoke-direct {v0}, Landroid/graphics/Point;-><init>()V
 
-    .line 381
+    .line 409
     .local v0, outSize:Landroid/graphics/Point;
     check-cast p1, Lcom/android/gallery3d/app/MovieActivity;
 
@@ -3495,7 +3977,7 @@
 
     invoke-virtual {v1, v0}, Landroid/view/Display;->getSize(Landroid/graphics/Point;)V
 
-    .line 382
+    .line 410
     iget v1, v0, Landroid/graphics/Point;->x:I
 
     iget v2, v0, Landroid/graphics/Point;->y:I
@@ -3507,7 +3989,7 @@
     :goto_0
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
 
-    .line 383
+    .line 411
     iget v1, v0, Landroid/graphics/Point;->x:I
 
     iget v2, v0, Landroid/graphics/Point;->y:I
@@ -3519,17 +4001,7 @@
     :goto_1
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
 
-    .line 384
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
-
-    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenWidth:I
-
-    .line 385
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
-
-    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenHeight:I
-
-    .line 386
+    .line 412
     iget v1, v0, Landroid/graphics/Point;->x:I
 
     iget v2, v0, Landroid/graphics/Point;->y:I
@@ -3541,49 +4013,99 @@
     :goto_2
     iput-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
 
-    .line 387
+    .line 413
+    iget-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
+
+    if-eqz v1, :cond_3
+
+    .line 414
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
+
+    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenWidth:I
+
+    .line 415
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
+
+    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenHeight:I
+
+    .line 420
+    :goto_3
     return-void
 
-    .line 382
+    .line 410
     :cond_0
     iget v1, v0, Landroid/graphics/Point;->x:I
 
     goto :goto_0
 
-    .line 383
+    .line 411
     :cond_1
     iget v1, v0, Landroid/graphics/Point;->y:I
 
     goto :goto_1
 
-    .line 386
+    .line 412
     :cond_2
     const/4 v1, 0x0
 
     goto :goto_2
+
+    .line 417
+    :cond_3
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
+
+    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenWidth:I
+
+    .line 418
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
+
+    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenHeight:I
+
+    goto :goto_3
+.end method
+
+.method private initSelectAlertDialog()V
+    .locals 3
+
+    .prologue
+    .line 325
+    new-instance v0, Landroid/app/AlertDialog$Builder;
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivity:Lcom/android/gallery3d/app/MovieActivity;
+
+    const v2, 0x1030323
+
+    invoke-direct {v0, v1, v2}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;I)V
+
+    .line 328
+    .local v0, builder:Landroid/app/AlertDialog$Builder;
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
+
+    new-instance v2, Lcom/android/gallery3d/app/MovieControllerOverlay$1;
+
+    invoke-direct {v2, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$1;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+
+    invoke-virtual {v0, v1, v2}, Landroid/app/AlertDialog$Builder;->setAdapter(Landroid/widget/ListAdapter;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+
+    .line 335
+    invoke-virtual {v0}, Landroid/app/AlertDialog$Builder;->create()Landroid/app/AlertDialog;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    .line 336
+    return-void
 .end method
 
 .method private initSelectView()V
     .locals 2
 
     .prologue
-    .line 1693
+    .line 1790
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00c2
-
-    invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/TextView;
-
-    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectTitle:Landroid/widget/TextView;
-
-    .line 1694
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
-
-    const v1, 0x7f0d00b0
+    const v1, 0x7f0d00b5
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3593,36 +4115,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTitle_view:Landroid/widget/TextView;
 
-    .line 1695
+    .line 1791
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00c4
-
-    invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/ListView;
-
-    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectList:Landroid/widget/ListView;
-
-    .line 1696
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
-
-    const v1, 0x7f0d00c1
-
-    invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/RelativeLayout;
-
-    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    .line 1697
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
-
-    const v1, 0x7f0d00b6
+    const v1, 0x7f0d00bb
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3632,10 +4128,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTrackButton:Landroid/widget/ImageButton;
 
-    .line 1698
+    .line 1792
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00b7
+    const v1, 0x7f0d00bc
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3645,10 +4141,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextButton:Landroid/widget/ImageButton;
 
-    .line 1699
+    .line 1793
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00b8
+    const v1, 0x7f0d00bd
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3658,10 +4154,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
 
-    .line 1700
+    .line 1794
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00b9
+    const v1, 0x7f0d00be
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3671,49 +4167,35 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
-    .line 1702
-    new-instance v0, Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
-    invoke-direct {v0, p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;Landroid/content/Context;)V
-
-    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-    .line 1703
+    .line 1796
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTrackButton:Landroid/widget/ImageButton;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mChangeTrackListener:Landroid/view/View$OnClickListener;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 1704
+    .line 1797
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextButton:Landroid/widget/ImageButton;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mChangeTimeTextListener:Landroid/view/View$OnClickListener;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 1705
+    .line 1798
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mChangeBitrateListener:Landroid/view/View$OnClickListener;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 1706
+    .line 1799
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaBtnListener:Landroid/view/View$OnClickListener;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 1707
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectList:Landroid/widget/ListView;
-
-    invoke-virtual {v0, p0}, Landroid/widget/ListView;->setOnItemClickListener(Landroid/widget/AdapterView$OnItemClickListener;)V
-
-    .line 1708
+    .line 1800
     return-void
 .end method
 
@@ -3723,40 +4205,40 @@
     .prologue
     const/4 v4, -0x1
 
-    const/4 v3, 0x1
+    const/4 v3, 0x0
 
-    const/4 v2, 0x0
+    const/4 v2, 0x1
 
-    .line 417
+    .line 465
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     const-string v1, "com.meizu.videoplayer"
 
-    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    invoke-virtual {v0, v1, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
 
-    .line 418
+    .line 466
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
 
     if-nez v0, :cond_0
 
-    .line 419
+    .line 467
     iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAutoVerScreen:Z
 
-    .line 420
-    iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsRepeatplay:Z
+    .line 468
+    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsRepeatplay:Z
 
-    .line 421
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsQueueplay:Z
+    .line 469
+    iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsQueueplay:Z
 
-    .line 443
+    .line 491
     :goto_0
     return-void
 
-    .line 423
+    .line 471
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
 
@@ -3768,12 +4250,12 @@
 
     iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAutoVerScreen:Z
 
-    .line 424
+    .line 472
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineVideo:Z
 
     if-eqz v0, :cond_3
 
-    .line 425
+    .line 473
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
 
     const-string v1, "online-complete-mode"
@@ -3784,33 +4266,33 @@
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineCompleteMode:I
 
-    .line 426
+    .line 474
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineCompleteMode:I
 
     if-nez v0, :cond_2
 
-    .line 427
-    iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
+    .line 475
+    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
 
-    .line 439
+    .line 487
     :cond_1
     :goto_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
 
     const-string v1, "queue-mode"
 
-    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
 
     move-result v0
 
     iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsQueueplay:Z
 
-    .line 440
+    .line 488
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
 
     const-string v1, "replay-mode"
 
-    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
 
     move-result v0
 
@@ -3818,18 +4300,18 @@
 
     goto :goto_0
 
-    .line 428
+    .line 476
     :cond_2
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineCompleteMode:I
 
-    if-ne v0, v3, :cond_1
+    if-ne v0, v2, :cond_1
 
-    .line 429
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
+    .line 477
+    iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
 
     goto :goto_1
 
-    .line 432
+    .line 480
     :cond_3
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
 
@@ -3841,42 +4323,57 @@
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsNativeCompleteMode:I
 
-    .line 433
+    .line 481
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsNativeCompleteMode:I
 
     if-nez v0, :cond_4
 
-    .line 434
-    iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
+    .line 482
+    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
 
     goto :goto_1
 
-    .line 435
+    .line 483
     :cond_4
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsNativeCompleteMode:I
 
-    if-ne v0, v3, :cond_1
+    if-ne v0, v2, :cond_1
 
-    .line 436
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
+    .line 484
+    iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
 
     goto :goto_1
 .end method
 
 .method private initTopPartWidget()V
-    .locals 5
+    .locals 6
 
     .prologue
-    const/16 v4, 0x2710
+    const/16 v5, 0x2710
+
+    const/16 v4, 0x8
 
     const/4 v3, 0x4
 
     const/4 v2, 0x0
 
-    .line 1616
+    .line 1692
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00ad
+    const v1, 0x7f0d00cb
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/ImageView;
+
+    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->m03XPopMenuRightTopAnchorView:Landroid/widget/ImageView;
+
+    .line 1693
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
+
+    const v1, 0x7f0d00b2
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3886,10 +4383,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
 
-    .line 1617
+    .line 1694
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00a9
+    const v1, 0x7f0d00ae
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3899,10 +4396,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
-    .line 1618
+    .line 1695
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00b3
+    const v1, 0x7f0d00b8
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3912,10 +4409,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTimeText:Landroid/widget/TextView;
 
-    .line 1619
+    .line 1696
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00b4
+    const v1, 0x7f0d00b9
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3925,10 +4422,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRemainPlayTimeText:Landroid/widget/TextView;
 
-    .line 1620
+    .line 1697
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00b2
+    const v1, 0x7f0d00b7
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3938,12 +4435,12 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
 
-    .line 1621
+    .line 1698
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
 
-    invoke-virtual {v0, v4}, Landroid/widget/SeekBar;->setMax(I)V
+    invoke-virtual {v0, v5}, Landroid/widget/SeekBar;->setMax(I)V
 
-    .line 1622
+    .line 1699
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
 
     invoke-virtual {v0}, Landroid/widget/SeekBar;->getThumb()Landroid/graphics/drawable/Drawable;
@@ -3952,10 +4449,10 @@
 
     invoke-virtual {v0, v2}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 1624
+    .line 1701
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00ab
+    const v1, 0x7f0d00b0
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3965,10 +4462,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureAlreadyPlayTimeText:Landroid/widget/TextView;
 
-    .line 1625
+    .line 1702
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00ac
+    const v1, 0x7f0d00b1
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3978,10 +4475,10 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureRemainPlayTimeText:Landroid/widget/TextView;
 
-    .line 1626
+    .line 1703
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00aa
+    const v1, 0x7f0d00af
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3991,12 +4488,12 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
-    .line 1627
+    .line 1704
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
-    invoke-virtual {v0, v4}, Landroid/widget/SeekBar;->setMax(I)V
+    invoke-virtual {v0, v5}, Landroid/widget/SeekBar;->setMax(I)V
 
-    .line 1628
+    .line 1705
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
     invoke-virtual {v0}, Landroid/widget/SeekBar;->getThumb()Landroid/graphics/drawable/Drawable;
@@ -4005,10 +4502,10 @@
 
     invoke-virtual {v0, v2}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 1630
+    .line 1707
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00af
+    const v1, 0x7f0d00b4
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -4018,17 +4515,17 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalMenuButton:Lcom/meizu/widget/GlowImageButton;
 
-    .line 1631
+    .line 1708
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalMenuButton:Lcom/meizu/widget/GlowImageButton;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMenuIconListener:Landroid/view/View$OnClickListener;
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/GlowImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 1633
+    .line 1710
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00ae
+    const v1, 0x7f0d00b3
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -4038,33 +4535,38 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalBackButton:Lcom/meizu/widget/GlowImageButton;
 
-    .line 1634
+    .line 1711
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalBackButton:Lcom/meizu/widget/GlowImageButton;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mBackIconListener:Landroid/view/View$OnClickListener;
 
     invoke-virtual {v0, v1}, Lcom/meizu/widget/GlowImageButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 1636
+    .line 1712
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsM040:Z
+
+    if-eqz v0, :cond_1
+
+    .line 1713
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
 
     if-eqz v0, :cond_0
 
-    .line 1637
+    .line 1714
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalBackButton:Lcom/meizu/widget/GlowImageButton;
 
     invoke-virtual {v0, v2}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
-    .line 1638
+    .line 1715
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalMenuButton:Lcom/meizu/widget/GlowImageButton;
 
     invoke-virtual {v0, v2}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
-    .line 1643
+    .line 1724
     :goto_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    const v1, 0x7f0d00c9
+    const v1, 0x7f0d00ca
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -4074,37 +4576,50 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
-    .line 1644
+    .line 1725
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
-    new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$14;
+    new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$17;
 
-    invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$14;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+    invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$17;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
 
     invoke-virtual {v0, v1}, Landroid/widget/SeekBar;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V
 
-    .line 1652
+    .line 1733
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
 
-    new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$15;
+    new-instance v1, Lcom/android/gallery3d/app/MovieControllerOverlay$18;
 
-    invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$15;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+    invoke-direct {v1, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$18;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
 
     invoke-virtual {v0, v1}, Landroid/widget/SeekBar;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V
 
-    .line 1659
+    .line 1740
     return-void
 
-    .line 1640
+    .line 1717
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalBackButton:Lcom/meizu/widget/GlowImageButton;
 
     invoke-virtual {v0, v3}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
-    .line 1641
+    .line 1718
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalMenuButton:Lcom/meizu/widget/GlowImageButton;
 
     invoke-virtual {v0, v3}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
+
+    goto :goto_0
+
+    .line 1721
+    :cond_1
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalBackButton:Lcom/meizu/widget/GlowImageButton;
+
+    invoke-virtual {v0, v4}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
+
+    .line 1722
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalMenuButton:Lcom/meizu/widget/GlowImageButton;
+
+    invoke-virtual {v0, v4}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
     goto :goto_0
 .end method
@@ -4119,34 +4634,31 @@
 
     const/4 v0, 0x0
 
-    .line 2587
+    .line 2670
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldY:F
 
-    .line 2588
+    .line 2671
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldX:F
 
-    .line 2589
+    .line 2672
     iput v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldLightProgress:I
 
-    .line 2590
+    .line 2673
     iput v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldVolumeProgress:I
 
-    .line 2591
+    .line 2674
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomCount:I
 
-    .line 2592
-    iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsZoomClick:Z
-
-    .line 2593
+    .line 2675
     iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
 
-    .line 2594
+    .line 2676
     iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
 
-    .line 2595
+    .line 2677
     iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetBright:Z
 
-    .line 2596
+    .line 2678
     return-void
 .end method
 
@@ -4154,23 +4666,23 @@
     .locals 4
 
     .prologue
-    .line 1478
+    .line 1539
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initTopPartWidget()V
 
-    .line 1479
+    .line 1540
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initBottomPartWidget()V
 
-    .line 1480
+    .line 1541
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initLeftWidget()V
 
-    .line 1481
+    .line 1542
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initRightWidget()V
 
-    .line 1482
+    .line 1543
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initSelectView()V
 
-    .line 1483
-    new-instance v0, Landroid/view/GestureDetector;
+    .line 1544
+    new-instance v0, Lcom/android/gallery3d/app/VideoGestureListener;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
@@ -4180,11 +4692,11 @@
 
     invoke-direct {v2, p0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay$GestureListener;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;Lcom/android/gallery3d/app/MovieControllerOverlay$1;)V
 
-    invoke-direct {v0, v1, v2}, Landroid/view/GestureDetector;-><init>(Landroid/content/Context;Landroid/view/GestureDetector$OnGestureListener;)V
+    invoke-direct {v0, v1, v2}, Lcom/android/gallery3d/app/VideoGestureListener;-><init>(Landroid/content/Context;Lcom/android/gallery3d/app/VideoGestureListener$OnGestureListener;)V
 
-    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGuestureListenr:Landroid/view/GestureDetector;
+    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGuestureListenr:Lcom/android/gallery3d/app/VideoGestureListener;
 
-    .line 1484
+    .line 1545
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
@@ -4199,7 +4711,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuInfo:[Ljava/lang/String;
 
-    .line 1485
+    .line 1546
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
@@ -4214,14 +4726,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mBitrateInfo:[Ljava/lang/String;
 
-    .line 1486
-    invoke-static {}, Landroid/view/VelocityTracker;->obtain()Landroid/view/VelocityTracker;
-
-    move-result-object v0
-
-    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVelocity:Landroid/view/VelocityTracker;
-
-    .line 1487
+    .line 1547
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     const-string v1, "audio"
@@ -4234,177 +4739,173 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioManager:Landroid/media/AudioManager;
 
-    .line 1488
+    .line 1548
     const/4 v0, 0x1
 
     invoke-static {v0}, Landroid/graphics/Typeface;->defaultFromStyle(I)Landroid/graphics/Typeface;
 
     move-result-object v0
 
-    .line 1489
+    .line 1549
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
     invoke-virtual {v1, v0}, Landroid/widget/TextView;->setTypeface(Landroid/graphics/Typeface;)V
 
-    .line 1490
+    .line 1550
     return-void
 .end method
 
 .method private initWindowView(Landroid/content/Context;)V
-    .locals 8
-    .parameter "context"
+    .locals 7
+    .parameter
 
     .prologue
-    const/4 v7, 0x0
+    const/4 v6, 0x0
 
-    const/4 v5, -0x2
+    const/4 v1, -0x2
 
-    const/4 v6, -0x1
+    const/4 v5, -0x1
 
-    .line 390
-    const-string v4, "layout_inflater"
+    .line 423
+    const-string v0, "layout_inflater"
 
-    invoke-virtual {p1, v4}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Landroid/view/LayoutInflater;
 
-    .line 391
-    .local v0, controlInflate:Landroid/view/LayoutInflater;
+    .line 424
+    new-instance v2, Landroid/widget/FrameLayout$LayoutParams;
+
+    invoke-direct {v2, v1, v1}, Landroid/widget/FrameLayout$LayoutParams;-><init>(II)V
+
+    .line 425
     new-instance v3, Landroid/widget/FrameLayout$LayoutParams;
 
     invoke-direct {v3, v5, v5}, Landroid/widget/FrameLayout$LayoutParams;-><init>(II)V
 
-    .line 392
-    .local v3, wrapContent:Landroid/widget/FrameLayout$LayoutParams;
-    new-instance v1, Landroid/widget/FrameLayout$LayoutParams;
+    .line 426
+    const-string v1, "layout_inflater"
 
-    invoke-direct {v1, v6, v6}, Landroid/widget/FrameLayout$LayoutParams;-><init>(II)V
+    invoke-virtual {p1, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
-    .line 393
-    .local v1, matchParent:Landroid/widget/FrameLayout$LayoutParams;
-    const-string v4, "layout_inflater"
+    move-result-object v1
 
-    invoke-virtual {p1, v4}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    check-cast v1, Landroid/view/LayoutInflater;
 
-    move-result-object v2
+    .line 427
+    const v4, 0x7f04003c
 
-    check-cast v2, Landroid/view/LayoutInflater;
+    invoke-virtual {v1, v4, v6}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
-    .line 394
-    .local v2, spinnerInflate:Landroid/view/LayoutInflater;
-    const v4, 0x7f04003b
+    move-result-object v1
 
-    invoke-virtual {v2, v4, v7}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->loadingView:Landroid/view/View;
 
-    move-result-object v4
+    .line 428
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->loadingView:Landroid/view/View;
 
-    iput-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->loadingView:Landroid/view/View;
+    const v4, 0x7f0d00d1
 
-    .line 395
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->loadingView:Landroid/view/View;
+    invoke-virtual {v1, v4}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
-    const v5, 0x7f0d00cf
+    move-result-object v1
 
-    invoke-virtual {v4, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    check-cast v1, Landroid/widget/ImageView;
 
-    move-result-object v4
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLetvLogo:Landroid/widget/ImageView;
 
-    check-cast v4, Landroid/widget/ImageView;
+    .line 429
+    iget-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineVideo:Z
 
-    iput-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLetvLogo:Landroid/widget/ImageView;
+    if-eqz v1, :cond_0
 
-    .line 396
-    iget-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineVideo:Z
+    .line 430
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLetvLogo:Landroid/widget/ImageView;
 
-    if-eqz v4, :cond_0
+    const/4 v4, 0x0
 
-    .line 397
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLetvLogo:Landroid/widget/ImageView;
+    invoke-virtual {v1, v4}, Landroid/widget/ImageView;->setVisibility(I)V
 
-    const/4 v5, 0x0
-
-    invoke-virtual {v4, v5}, Landroid/widget/ImageView;->setVisibility(I)V
-
-    .line 401
+    .line 434
     :goto_0
-    new-instance v4, Landroid/widget/TextView;
+    new-instance v1, Landroid/widget/TextView;
 
-    invoke-direct {v4, p1}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
+    invoke-direct {v1, p1}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    iput-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->errorView:Landroid/widget/TextView;
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->errorView:Landroid/widget/TextView;
 
-    .line 402
-    const v4, 0x7f050012
+    .line 435
+    const v1, 0x7f050012
 
-    invoke-static {p1, v4}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
+    invoke-static {p1, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 
-    move-result-object v4
+    move-result-object v1
 
-    iput-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideAnimation:Landroid/view/animation/Animation;
+    iput-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideAnimation:Landroid/view/animation/Animation;
 
-    .line 403
-    const v4, 0x7f040039
+    .line 436
+    const v1, 0x7f04003a
 
-    invoke-virtual {v0, v4, v7}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
+    invoke-virtual {v0, v1, v6}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
-    move-result-object v4
+    move-result-object v0
 
-    iput-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
+    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    .line 404
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->errorView:Landroid/widget/TextView;
+    .line 437
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->errorView:Landroid/widget/TextView;
 
-    const/16 v5, 0x11
+    const/16 v1, 0x11
 
-    invoke-virtual {v4, v5}, Landroid/widget/TextView;->setGravity(I)V
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setGravity(I)V
 
-    .line 405
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->errorView:Landroid/widget/TextView;
+    .line 438
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->errorView:Landroid/widget/TextView;
 
-    const/high16 v5, -0x3400
+    const/high16 v1, -0x3400
 
-    invoke-virtual {v4, v5}, Landroid/widget/TextView;->setBackgroundColor(I)V
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setBackgroundColor(I)V
 
-    .line 406
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->errorView:Landroid/widget/TextView;
+    .line 439
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->errorView:Landroid/widget/TextView;
 
-    invoke-virtual {v4, v6}, Landroid/widget/TextView;->setTextColor(I)V
+    invoke-virtual {v0, v5}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 407
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideAnimation:Landroid/view/animation/Animation;
+    .line 440
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideAnimation:Landroid/view/animation/Animation;
 
-    invoke-virtual {v4, p0}, Landroid/view/animation/Animation;->setAnimationListener(Landroid/view/animation/Animation$AnimationListener;)V
+    invoke-virtual {v0, p0}, Landroid/view/animation/Animation;->setAnimationListener(Landroid/view/animation/Animation$AnimationListener;)V
 
-    .line 408
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
+    .line 441
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
-    invoke-virtual {p0, v4, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    invoke-virtual {p0, v0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 409
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->loadingView:Landroid/view/View;
+    .line 442
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->loadingView:Landroid/view/View;
 
-    invoke-virtual {p0, v4, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    invoke-virtual {p0, v0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 410
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->errorView:Landroid/widget/TextView;
+    .line 443
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->errorView:Landroid/widget/TextView;
 
-    invoke-virtual {p0, v4, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    invoke-virtual {p0, v0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 412
+    .line 445
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hide()V
 
-    .line 414
+    .line 447
     return-void
 
-    .line 399
+    .line 432
     :cond_0
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLetvLogo:Landroid/widget/ImageView;
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLetvLogo:Landroid/widget/ImageView;
 
-    const/16 v5, 0x8
+    const/16 v4, 0x8
 
-    invoke-virtual {v4, v5}, Landroid/widget/ImageView;->setVisibility(I)V
+    invoke-virtual {v1, v4}, Landroid/widget/ImageView;->setVisibility(I)V
 
     goto :goto_0
 .end method
@@ -4415,7 +4916,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 2574
+    .line 2657
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->isEmpty()Z
@@ -4428,7 +4929,7 @@
 
     if-eqz v0, :cond_1
 
-    .line 2575
+    .line 2658
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
@@ -4438,7 +4939,7 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
 
-    .line 2576
+    .line 2659
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->isEmpty()Z
@@ -4447,7 +4948,7 @@
 
     if-nez v0, :cond_2
 
-    .line 2577
+    .line 2660
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
 
     const/4 v1, 0x3
@@ -4464,7 +4965,7 @@
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxZoomValue:D
 
-    .line 2578
+    .line 2661
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
 
     invoke-virtual {v0, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -4479,15 +4980,15 @@
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMinZoomValue:D
 
-    .line 2582
+    .line 2665
     :goto_0
     iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsPreNext:Z
 
-    .line 2584
+    .line 2667
     :cond_1
     return-void
 
-    .line 2580
+    .line 2663
     :cond_2
     const-wide/high16 v0, 0x3ff0
 
@@ -4503,7 +5004,7 @@
     .parameter "v"
 
     .prologue
-    .line 1794
+    .line 1931
     invoke-virtual {p1}, Landroid/view/View;->getVisibility()I
 
     move-result v0
@@ -4530,18 +5031,18 @@
     .parameter "b"
 
     .prologue
-    .line 2799
+    .line 2948
     invoke-virtual {p1}, Landroid/view/View;->getMeasuredWidth()I
 
     move-result v3
 
-    .line 2800
+    .line 2949
     .local v3, cw:I
     invoke-virtual {p1}, Landroid/view/View;->getMeasuredHeight()I
 
     move-result v0
 
-    .line 2801
+    .line 2950
     .local v0, ch:I
     sub-int v4, p4, p2
 
@@ -4549,7 +5050,7 @@
 
     div-int/lit8 v1, v4, 0x2
 
-    .line 2802
+    .line 2951
     .local v1, cl:I
     sub-int v4, p5, p3
 
@@ -4557,7 +5058,7 @@
 
     div-int/lit8 v2, v4, 0x2
 
-    .line 2803
+    .line 2952
     .local v2, ct:I
     add-int v4, v1, v3
 
@@ -4565,7 +5066,7 @@
 
     invoke-virtual {p1, v1, v2, v4, v5}, Landroid/view/View;->layout(IIII)V
 
-    .line 2804
+    .line 2953
     return-void
 .end method
 
@@ -4573,22 +5074,38 @@
     .locals 4
 
     .prologue
-    .line 1783
+    .line 1915
     const/4 v0, 0x1
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->cancelHiding(Z)V
 
-    .line 1784
+    .line 1916
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+
+    if-eqz v0, :cond_0
+
+    .line 1917
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0x3e9
 
-    const-wide/16 v2, 0xbb8
+    const-wide/16 v2, 0x1388
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 1785
+    .line 1921
+    :goto_0
     return-void
+
+    .line 1919
+    :cond_0
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f5
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    goto :goto_0
 .end method
 
 .method private midPoint(Landroid/graphics/PointF;Landroid/view/MotionEvent;)V
@@ -4603,7 +5120,7 @@
 
     const/high16 v4, 0x4000
 
-    .line 2463
+    .line 2555
     invoke-virtual {p2, v5}, Landroid/view/MotionEvent;->getX(I)F
 
     move-result v2
@@ -4614,7 +5131,7 @@
 
     add-float v0, v2, v3
 
-    .line 2464
+    .line 2556
     .local v0, x:F
     invoke-virtual {p2, v5}, Landroid/view/MotionEvent;->getY(I)F
 
@@ -4626,7 +5143,7 @@
 
     add-float v1, v2, v3
 
-    .line 2465
+    .line 2557
     .local v1, y:F
     div-float v2, v0, v4
 
@@ -4634,401 +5151,1582 @@
 
     invoke-virtual {p1, v2, v3}, Landroid/graphics/PointF;->set(FF)V
 
-    .line 2466
+    .line 2558
     return-void
 .end method
 
-.method private resetLayoutSize()V
-    .locals 14
+.method private onDialogItemClick(I)V
+    .locals 2
+    .parameter
 
     .prologue
-    const/high16 v13, 0x4108
+    .line 1501
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsBitrateListShow:Z
 
-    const/high16 v10, 0x43c4
+    if-eqz v0, :cond_1
 
-    const v9, 0x438b8000
+    .line 1502
+    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateSelect:I
 
-    const/high16 v11, 0x41b4
+    .line 1503
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
 
-    const/4 v12, 0x0
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateSelect:I
 
-    .line 326
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
+    invoke-virtual {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;->setSelection(I)V
 
-    invoke-virtual {v8}, Landroid/widget/SeekBar;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+    .line 1504
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateSelect:I
 
-    move-result-object v8
+    if-nez v0, :cond_0
 
-    check-cast v8, Landroid/widget/RelativeLayout$LayoutParams;
+    .line 1505
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
 
-    move-object v0, v8
+    const v1, 0x7f0200a3
 
-    check-cast v0, Landroid/widget/RelativeLayout$LayoutParams;
+    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 328
-    .local v0, gestureProgressLp:Landroid/widget/RelativeLayout$LayoutParams;
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
+    .line 1509
+    :goto_0
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
 
-    invoke-virtual {v8}, Landroid/widget/SeekBar;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;->notifyDataSetChanged()V
 
-    move-result-object v8
+    .line 1510
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
-    check-cast v8, Landroid/widget/RelativeLayout$LayoutParams;
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateSelect:I
 
-    move-object v3, v8
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setBitrateIndex(I)V
 
-    check-cast v3, Landroid/widget/RelativeLayout$LayoutParams;
+    .line 1511
+    const/4 v0, 0x0
 
-    .line 329
-    .local v3, progressLp:Landroid/widget/RelativeLayout$LayoutParams;
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTitle_view:Landroid/widget/TextView;
+    iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
 
-    invoke-virtual {v8}, Landroid/widget/TextView;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+    .line 1537
+    :goto_1
+    return-void
 
-    move-result-object v8
+    .line 1507
+    :cond_0
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
 
-    check-cast v8, Landroid/widget/RelativeLayout$LayoutParams;
+    const v1, 0x7f0200d3
 
-    move-object v4, v8
+    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    check-cast v4, Landroid/widget/RelativeLayout$LayoutParams;
+    goto :goto_0
 
-    .line 331
-    .local v4, titleLp:Landroid/widget/RelativeLayout$LayoutParams;
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
+    .line 1514
+    :cond_1
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAudioTrackListShow:Z
 
-    invoke-virtual {v8}, Landroid/widget/LinearLayout;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+    if-eqz v0, :cond_2
 
-    move-result-object v8
+    .line 1515
+    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioTrackSelect:I
 
-    check-cast v8, Landroid/widget/RelativeLayout$LayoutParams;
+    .line 1516
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
 
-    move-object v6, v8
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioTrackSelect:I
 
-    check-cast v6, Landroid/widget/RelativeLayout$LayoutParams;
+    invoke-virtual {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;->setSelection(I)V
 
-    .line 332
-    .local v6, volumeLp:Landroid/widget/RelativeLayout$LayoutParams;
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
+    .line 1517
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
-    invoke-virtual {v8}, Lcom/android/gallery3d/seekbar/VerSeekBar;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioTrackSelect:I
 
-    move-result-object v8
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setAudioTrackIndex(I)V
 
-    check-cast v8, Landroid/widget/LinearLayout$LayoutParams;
+    .line 1519
+    :cond_2
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsTimeTextListShow:Z
 
-    move-object v7, v8
+    if-eqz v0, :cond_3
 
-    check-cast v7, Landroid/widget/LinearLayout$LayoutParams;
+    .line 1520
+    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextSelect:I
 
-    .line 334
-    .local v7, volumeSeekbarLp:Landroid/widget/LinearLayout$LayoutParams;
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
+    .line 1521
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
 
-    invoke-virtual {v8}, Landroid/widget/LinearLayout;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextSelect:I
 
-    move-result-object v8
+    invoke-virtual {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;->setSelection(I)V
 
-    check-cast v8, Landroid/widget/RelativeLayout$LayoutParams;
+    .line 1522
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
-    move-object v1, v8
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextSelect:I
 
-    check-cast v1, Landroid/widget/RelativeLayout$LayoutParams;
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setTimeTextIndex(I)V
 
-    .line 335
-    .local v1, lightLp:Landroid/widget/RelativeLayout$LayoutParams;
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBar:Lcom/android/gallery3d/seekbar/VerSeekBar;
+    .line 1524
+    :cond_3
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
 
-    invoke-virtual {v8}, Lcom/android/gallery3d/seekbar/VerSeekBar;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+    if-eqz v0, :cond_4
 
-    move-result-object v8
+    .line 1525
+    iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceSelect:I
 
-    check-cast v8, Landroid/widget/LinearLayout$LayoutParams;
+    .line 1526
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
 
-    move-object v2, v8
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceSelect:I
 
-    check-cast v2, Landroid/widget/LinearLayout$LayoutParams;
+    invoke-virtual {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;->setSelection(I)V
 
-    .line 337
-    .local v2, lightSeekbarLp:Landroid/widget/LinearLayout$LayoutParams;
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
+    .line 1527
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
-    invoke-virtual {v8}, Landroid/widget/RelativeLayout;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+    invoke-interface {v0, p1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->selectDlnaDevice(I)V
 
-    move-result-object v8
+    .line 1528
+    if-lez p1, :cond_5
 
-    check-cast v8, Landroid/widget/RelativeLayout$LayoutParams;
+    .line 1529
+    sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PAUSED:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
-    move-object v5, v8
+    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+
+    .line 1536
+    :cond_4
+    :goto_2
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;->notifyDataSetChanged()V
+
+    goto :goto_1
+
+    .line 1531
+    :cond_5
+    sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PLAYING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+
+    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+
+    .line 1532
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseButton:Landroid/widget/ImageButton;
+
+    const v1, 0x7f02019a
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
+
+    .line 1533
+    invoke-virtual {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->resetVolumeBar()V
+
+    goto :goto_2
+.end method
+
+.method private onScreenOrientationChanged()V
+    .locals 7
+
+    .prologue
+    const/16 v6, 0x3f1
+
+    const/16 v5, 0x8
+
+    const/4 v4, 0x1
+
+    const/4 v3, 0x4
+
+    const/4 v2, 0x0
+
+    .line 2842
+    const-string v0, "ontouch"
+
+    const-string v1, "video onScreenOrientationChanged"
+
+    invoke-static {v0, v1}, Lcom/android/gallery3d/ui/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 2843
+    invoke-virtual {p0, v4}, Lcom/android/gallery3d/app/MovieControllerOverlay;->cancelHiding(Z)V
+
+    .line 2844
+    invoke-direct {p0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideControllAni(Z)V
+
+    .line 2845
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsConfigChange:Z
+
+    .line 2846
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+
+    if-eqz v0, :cond_0
+
+    .line 2847
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+
+    invoke-interface {v0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->showSystemTitle(Z)V
+
+    .line 2848
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+
+    invoke-interface {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->turnOffLed()V
+
+    .line 2850
+    :cond_0
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDragging:Z
+
+    if-ne v0, v4, :cond_6
+
+    .line 2851
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setVolumeLevel(I)V
+
+    .line 2852
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->configurationChangedStopDragging()V
+
+    .line 2856
+    :goto_0
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    if-eqz v0, :cond_1
+
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    invoke-virtual {v0}, Landroid/app/AlertDialog;->isShowing()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 2857
+    iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAudioTrackListShow:Z
+
+    .line 2858
+    iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsTimeTextListShow:Z
+
+    .line 2859
+    iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsBitrateListShow:Z
+
+    .line 2860
+    iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
+
+    .line 2861
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    invoke-virtual {v0}, Landroid/app/AlertDialog;->dismiss()V
+
+    .line 2863
+    :cond_1
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_2
+
+    .line 2864
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v6}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2865
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
+
+    invoke-virtual {v0, v3}, Landroid/widget/LinearLayout;->setVisibility(I)V
+
+    .line 2867
+    :cond_2
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_3
+
+    .line 2868
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v6}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2869
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
+
+    invoke-virtual {v0, v3}, Landroid/widget/LinearLayout;->setVisibility(I)V
+
+    .line 2871
+    :cond_3
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_4
+
+    .line 2872
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    .line 2873
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
+
+    invoke-virtual {v0, v3}, Landroid/widget/SeekBar;->setVisibility(I)V
+
+    .line 2875
+    :cond_4
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_5
+
+    .line 2876
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f4
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2877
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+
+    invoke-virtual {v0, v5}, Landroid/widget/TextView;->setVisibility(I)V
+
+    .line 2879
+    :cond_5
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    .line 2880
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    .line 2881
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRightBottomlayout:Landroid/widget/LinearLayout;
+
+    invoke-virtual {v0, v5}, Landroid/widget/LinearLayout;->setVisibility(I)V
+
+    .line 2882
+    return-void
+
+    .line 2854
+    :cond_6
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initTouchParams()V
+
+    goto :goto_0
+.end method
+
+.method private onTouchClick(Landroid/view/MotionEvent;)V
+    .locals 6
+    .parameter "event"
+
+    .prologue
+    const/16 v5, 0x3f1
+
+    const/16 v1, 0x3f0
+
+    const/4 v4, 0x0
+
+    const/16 v3, 0x3ea
+
+    const/4 v2, 0x1
+
+    .line 2766
+    invoke-virtual {p0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->cancelHiding(Z)V
+
+    .line 2767
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuShowing:Z
+
+    if-eqz v0, :cond_0
+
+    .line 2768
+    invoke-virtual {p0, v4}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hidePopMenu(Z)V
+
+    .line 2793
+    :goto_0
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+
+    sget-object v1, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PLAYING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+
+    if-ne v0, v1, :cond_6
+
+    .line 2794
+    invoke-virtual {p0, v4}, Lcom/android/gallery3d/app/MovieControllerOverlay;->cancelHiding(Z)V
+
+    .line 2798
+    :goto_1
+    return-void
+
+    .line 2770
+    :cond_0
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+
+    if-eqz v0, :cond_1
+
+    .line 2771
+    invoke-direct {p0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideControllAni(Z)V
+
+    goto :goto_0
+
+    .line 2773
+    :cond_1
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_2
+
+    .line 2774
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v5}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2775
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v3}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2776
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v5}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    goto :goto_0
+
+    .line 2777
+    :cond_2
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_3
+
+    .line 2778
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f9
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2779
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v3}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2780
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f9
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    goto :goto_0
+
+    .line 2781
+    :cond_3
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_4
+
+    .line 2782
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v3}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2783
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2784
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    goto :goto_0
+
+    .line 2785
+    :cond_4
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_5
+
+    .line 2786
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f4
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2787
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+
+    const/16 v1, 0x8
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setVisibility(I)V
+
+    goto :goto_0
+
+    .line 2789
+    :cond_5
+    invoke-virtual {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showController()V
+
+    goto :goto_0
+
+    .line 2796
+    :cond_6
+    invoke-virtual {p0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->cancelHiding(Z)V
+
+    goto :goto_1
+.end method
+
+.method private onTouchDoubleClick(Landroid/view/MotionEvent;)Z
+    .locals 1
+    .parameter "event"
+
+    .prologue
+    .line 2801
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
+
+    if-eqz v0, :cond_0
+
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
+
+    if-nez v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    invoke-interface {v0}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->getZoomLevelList()Ljava/util/ArrayList;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/util/ArrayList;->isEmpty()Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 2802
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setZoomChange()V
+
+    .line 2804
+    :cond_0
+    const/4 v0, 0x1
+
+    return v0
+.end method
+
+.method private onTouchUp(Landroid/view/MotionEvent;)V
+    .locals 8
+    .parameter "event"
+
+    .prologue
+    const/16 v7, 0x3f0
+
+    const/16 v6, 0x3e8
+
+    const/16 v2, 0x3e7
+
+    const/4 v5, 0x1
+
+    const/4 v4, 0x0
+
+    .line 2707
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDragging:Z
+
+    .line 2708
+    iput-boolean v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCanGesture:Z
+
+    .line 2709
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMinTextSize:I
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setTextSize(I)V
+
+    .line 2710
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
+
+    if-eqz v0, :cond_3
+
+    .line 2711
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
+
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setDlnaVol(I)V
+
+    .line 2715
+    :goto_0
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v2}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2716
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v2}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    .line 2717
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
+
+    if-eqz v0, :cond_8
+
+    .line 2718
+    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
+
+    iget v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
+
+    int-to-long v2, v2
+
+    mul-long/2addr v0, v2
+
+    const-wide/16 v2, 0x2710
+
+    div-long/2addr v0, v2
+
+    iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    .line 2719
+    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    iget-wide v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
+
+    cmp-long v0, v0, v2
+
+    if-ltz v0, :cond_4
+
+    .line 2720
+    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
+
+    long-to-int v0, v0
+
+    int-to-long v0, v0
+
+    iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    .line 2724
+    :cond_0
+    :goto_1
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
+
+    if-eqz v0, :cond_5
+
+    .line 2725
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    invoke-interface {v0, v1, v2}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->doDlnaSeek(J)V
+
+    .line 2729
+    :goto_2
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+
+    if-eqz v0, :cond_7
+
+    .line 2730
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3e9
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2731
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v6}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    .line 2732
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+
+    sget-object v1, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PLAYING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+
+    if-ne v0, v1, :cond_6
+
+    .line 2733
+    invoke-virtual {p0, v4}, Lcom/android/gallery3d/app/MovieControllerOverlay;->cancelHiding(Z)V
+
+    .line 2754
+    :cond_1
+    :goto_3
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+
+    if-eqz v0, :cond_2
+
+    .line 2755
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+
+    sget-object v1, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PLAYING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+
+    if-ne v0, v1, :cond_a
+
+    .line 2756
+    invoke-virtual {p0, v4}, Lcom/android/gallery3d/app/MovieControllerOverlay;->cancelHiding(Z)V
+
+    .line 2761
+    :cond_2
+    :goto_4
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initTouchParams()V
+
+    .line 2763
+    return-void
+
+    .line 2713
+    :cond_3
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setVolumeLevel(I)V
+
+    goto :goto_0
+
+    .line 2721
+    :cond_4
+    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    const-wide/16 v2, 0x0
+
+    cmp-long v0, v0, v2
+
+    if-gez v0, :cond_0
+
+    .line 2722
+    const-wide/16 v0, 0x0
+
+    iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    goto :goto_1
+
+    .line 2727
+    :cond_5
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    long-to-int v1, v1
+
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->onSeekEnd(I)V
+
+    goto :goto_2
+
+    .line 2735
+    :cond_6
+    invoke-virtual {p0, v5}, Lcom/android/gallery3d/app/MovieControllerOverlay;->cancelHiding(Z)V
+
+    goto :goto_3
+
+    .line 2738
+    :cond_7
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v7}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2739
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v6}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    .line 2740
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const-wide/16 v1, 0x1388
+
+    invoke-virtual {v0, v7, v1, v2}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
+
+    goto :goto_3
+
+    .line 2743
+    :cond_8
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
+
+    if-eqz v0, :cond_9
+
+    .line 2744
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 2745
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f9
+
+    const-wide/16 v2, 0x3e8
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
+
+    goto :goto_3
+
+    .line 2748
+    :cond_9
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetBright:Z
+
+    if-eqz v0, :cond_1
+
+    .line 2749
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 2750
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f1
+
+    const-wide/16 v2, 0x3e8
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
+
+    goto :goto_3
+
+    .line 2758
+    :cond_a
+    invoke-virtual {p0, v5}, Lcom/android/gallery3d/app/MovieControllerOverlay;->cancelHiding(Z)V
+
+    goto :goto_4
+.end method
+
+.method private resetLayoutSize()V
+    .locals 26
+
+    .prologue
+    .line 338
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/widget/SeekBar;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+
+    move-result-object v23
+
+    check-cast v23, Landroid/widget/RelativeLayout$LayoutParams;
+
+    move-object/from16 v5, v23
 
     check-cast v5, Landroid/widget/RelativeLayout$LayoutParams;
 
     .line 340
-    .local v5, videoControllLp:Landroid/widget/RelativeLayout$LayoutParams;
-    iget-boolean v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
+    .local v5, gestureProgressLp:Landroid/widget/RelativeLayout$LayoutParams;
+    move-object/from16 v0, p0
 
-    if-eqz v8, :cond_0
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/widget/SeekBar;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+
+    move-result-object v23
+
+    check-cast v23, Landroid/widget/RelativeLayout$LayoutParams;
+
+    move-object/from16 v14, v23
+
+    check-cast v14, Landroid/widget/RelativeLayout$LayoutParams;
 
     .line 341
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    .local v14, progressLp:Landroid/widget/RelativeLayout$LayoutParams;
+    move-object/from16 v0, p0
 
-    invoke-static {v8, v10}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTitle_view:Landroid/widget/TextView;
 
-    move-result v8
+    move-object/from16 v23, v0
 
-    iput v8, v0, Landroid/view/ViewGroup$LayoutParams;->width:I
+    invoke-virtual/range {v23 .. v23}, Landroid/widget/TextView;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
-    .line 342
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    move-result-object v23
 
-    invoke-static {v8, v10}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
+    check-cast v23, Landroid/widget/RelativeLayout$LayoutParams;
 
-    move-result v8
+    move-object/from16 v16, v23
 
-    iput v8, v3, Landroid/view/ViewGroup$LayoutParams;->width:I
+    check-cast v16, Landroid/widget/RelativeLayout$LayoutParams;
 
     .line 343
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    .local v16, titleLp:Landroid/widget/RelativeLayout$LayoutParams;
+    move-object/from16 v0, p0
 
-    invoke-static {v8, v10}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
 
-    move-result v8
+    move-object/from16 v23, v0
 
-    iput v8, v4, Landroid/view/ViewGroup$LayoutParams;->width:I
+    invoke-virtual/range {v23 .. v23}, Landroid/widget/LinearLayout;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
-    .line 345
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    move-result-object v23
 
-    invoke-static {v8, v11}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
+    check-cast v23, Landroid/widget/RelativeLayout$LayoutParams;
 
-    move-result v8
+    move-object/from16 v18, v23
 
-    iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    check-cast v18, Landroid/widget/RelativeLayout$LayoutParams;
 
-    const/high16 v10, 0x4252
+    .line 344
+    .local v18, volumeLp:Landroid/widget/RelativeLayout$LayoutParams;
+    move-object/from16 v0, p0
 
-    invoke-static {v9, v10}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
 
-    move-result v9
+    move-object/from16 v23, v0
 
-    invoke-virtual {v6, v8, v9, v12, v12}, Landroid/widget/RelativeLayout$LayoutParams;->setMargins(IIII)V
+    invoke-virtual/range {v23 .. v23}, Lcom/android/gallery3d/seekbar/VerSeekBar;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+
+    move-result-object v23
+
+    check-cast v23, Landroid/widget/LinearLayout$LayoutParams;
+
+    move-object/from16 v19, v23
+
+    check-cast v19, Landroid/widget/LinearLayout$LayoutParams;
 
     .line 346
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    .local v19, volumeSeekbarLp:Landroid/widget/LinearLayout$LayoutParams;
+    move-object/from16 v0, p0
 
-    invoke-static {v8, v13}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
 
-    move-result v8
+    move-object/from16 v23, v0
 
-    invoke-virtual {v7, v12, v8, v12, v12}, Landroid/widget/LinearLayout$LayoutParams;->setMargins(IIII)V
+    invoke-virtual/range {v23 .. v23}, Landroid/widget/LinearLayout;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
-    .line 348
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    move-result-object v23
 
-    const/high16 v9, 0x4252
+    check-cast v23, Landroid/widget/RelativeLayout$LayoutParams;
 
-    invoke-static {v8, v9}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
+    move-object/from16 v6, v23
 
-    move-result v8
+    check-cast v6, Landroid/widget/RelativeLayout$LayoutParams;
 
-    iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    .line 347
+    .local v6, lightLp:Landroid/widget/RelativeLayout$LayoutParams;
+    move-object/from16 v0, p0
 
-    invoke-static {v9, v11}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBar:Lcom/android/gallery3d/seekbar/VerSeekBar;
 
-    move-result v9
+    move-object/from16 v23, v0
 
-    invoke-virtual {v1, v12, v8, v9, v12}, Landroid/widget/RelativeLayout$LayoutParams;->setMargins(IIII)V
+    invoke-virtual/range {v23 .. v23}, Lcom/android/gallery3d/seekbar/VerSeekBar;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+
+    move-result-object v23
+
+    check-cast v23, Landroid/widget/LinearLayout$LayoutParams;
+
+    move-object/from16 v7, v23
+
+    check-cast v7, Landroid/widget/LinearLayout$LayoutParams;
 
     .line 349
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    .local v7, lightSeekbarLp:Landroid/widget/LinearLayout$LayoutParams;
+    move-object/from16 v0, p0
 
-    invoke-static {v8, v13}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
 
-    move-result v8
+    move-object/from16 v23, v0
 
-    invoke-virtual {v2, v12, v8, v12, v12}, Landroid/widget/LinearLayout$LayoutParams;->setMargins(IIII)V
+    invoke-virtual/range {v23 .. v23}, Landroid/widget/RelativeLayout;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+
+    move-result-object v23
+
+    check-cast v23, Landroid/widget/RelativeLayout$LayoutParams;
+
+    move-object/from16 v17, v23
+
+    check-cast v17, Landroid/widget/RelativeLayout$LayoutParams;
 
     .line 351
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    .local v17, videoControllLp:Landroid/widget/RelativeLayout$LayoutParams;
+    const/16 v15, 0x310
 
-    const/high16 v9, 0x434a
+    .line 352
+    .local v15, progress_seekbar_width:I
+    const/16 v20, 0x2d
 
-    invoke-static {v8, v9}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
+    .line 353
+    .local v20, volume_layout_left_padding:I
+    const/16 v21, 0x69
 
-    move-result v8
-
-    iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
-    const/high16 v10, 0x434a
-
-    invoke-static {v9, v10}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
-
-    move-result v9
-
-    iget-object v10, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
-    const/high16 v11, 0x41a0
-
-    invoke-static {v10, v11}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
-
-    move-result v10
-
-    invoke-virtual {v5, v8, v12, v9, v10}, Landroid/widget/RelativeLayout$LayoutParams;->setMargins(IIII)V
-
-    .line 370
-    :goto_0
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
-
-    invoke-virtual {v8, v0}, Landroid/widget/SeekBar;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
-
-    .line 371
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTitle_view:Landroid/widget/TextView;
-
-    invoke-virtual {v8, v4}, Landroid/widget/TextView;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
-
-    .line 372
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
-
-    invoke-virtual {v8, v3}, Landroid/widget/SeekBar;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
-
-    .line 373
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
-
-    invoke-virtual {v8, v6}, Landroid/widget/LinearLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
-
-    .line 374
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
-
-    invoke-virtual {v8, v7}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
-
-    .line 375
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
-
-    invoke-virtual {v8, v1}, Landroid/widget/LinearLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
-
-    .line 376
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBar:Lcom/android/gallery3d/seekbar/VerSeekBar;
-
-    invoke-virtual {v8, v2}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
-
-    .line 377
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v8, v5}, Landroid/widget/RelativeLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
-
-    .line 378
-    return-void
+    .line 354
+    .local v21, volume_layout_top_padding:I
+    const/16 v22, 0x11
 
     .line 355
-    :cond_0
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
-    invoke-static {v8, v9}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
-
-    move-result v8
-
-    iput v8, v0, Landroid/view/ViewGroup$LayoutParams;->width:I
+    .local v22, volume_seekbar_top_padding:I
+    const/16 v8, 0x2d
 
     .line 356
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
-    invoke-static {v8, v9}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
-
-    move-result v8
-
-    iput v8, v3, Landroid/view/ViewGroup$LayoutParams;->width:I
+    .local v8, light_layout_right_padding:I
+    const/16 v9, 0x69
 
     .line 357
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    .local v9, light_layout_top_padding:I
+    const/16 v10, 0x11
 
-    invoke-static {v8, v9}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
-
-    move-result v8
-
-    iput v8, v4, Landroid/view/ViewGroup$LayoutParams;->width:I
+    .line 358
+    .local v10, light_seekbar_top_padding:I
+    const/16 v12, 0x194
 
     .line 359
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
-    invoke-static {v8, v11}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
-
-    move-result v8
-
-    iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
-    const/high16 v10, 0x4302
-
-    invoke-static {v9, v10}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
-
-    move-result v9
-
-    invoke-virtual {v6, v8, v9, v12, v12}, Landroid/widget/RelativeLayout$LayoutParams;->setMargins(IIII)V
+    .local v12, movie_controller_layout_left_padding:I
+    const/16 v13, 0x194
 
     .line 360
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
-    const/high16 v9, 0x4120
-
-    invoke-static {v8, v9}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
-
-    move-result v8
-
-    invoke-virtual {v7, v12, v8, v12, v12}, Landroid/widget/LinearLayout$LayoutParams;->setMargins(IIII)V
+    .local v13, movie_controller_layout_right_padding:I
+    const/16 v11, 0x28
 
     .line 362
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    .local v11, movie_controller_layout_bottom_padding:I
+    move-object/from16 v0, p0
 
-    const/high16 v9, 0x4302
+    iget-boolean v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
 
-    invoke-static {v8, v9}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
+    move/from16 v23, v0
 
-    move-result v8
-
-    iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
-    invoke-static {v9, v11}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
-
-    move-result v9
-
-    invoke-virtual {v1, v12, v8, v9, v12}, Landroid/widget/RelativeLayout$LayoutParams;->setMargins(IIII)V
+    if-eqz v23, :cond_0
 
     .line 363
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    move-object/from16 v0, p0
 
-    const/high16 v9, 0x4120
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
-    invoke-static {v8, v9}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
+    move-object/from16 v23, v0
 
-    move-result v8
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    invoke-virtual {v2, v12, v8, v12, v12}, Landroid/widget/LinearLayout$LayoutParams;->setMargins(IIII)V
+    move-result-object v23
+
+    const v24, 0x7f090233
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v15
+
+    .line 364
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f090261
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v20
 
     .line 365
-    iget-object v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    move-object/from16 v0, p0
 
-    const/high16 v9, 0x42a5
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
-    invoke-static {v8, v9}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f090260
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v21
+
+    .line 366
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f090262
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v22
+
+    .line 367
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f09025a
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
     move-result v8
 
-    iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    .line 368
+    move-object/from16 v0, p0
 
-    const/high16 v10, 0x42a5
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
-    invoke-static {v9, v10}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f090259
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
     move-result v9
 
-    iget-object v10, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+    .line 369
+    move-object/from16 v0, p0
 
-    const/high16 v11, 0x4288
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
-    invoke-static {v10, v11}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f09025b
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
     move-result v10
 
-    invoke-virtual {v5, v8, v12, v9, v10}, Landroid/widget/RelativeLayout$LayoutParams;->setMargins(IIII)V
+    .line 370
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f090244
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v12
+
+    .line 371
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f090245
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v13
+
+    .line 372
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f090246
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v11
+
+    .line 385
+    :goto_0
+    iput v15, v5, Landroid/view/ViewGroup$LayoutParams;->width:I
+
+    .line 386
+    iput v15, v14, Landroid/view/ViewGroup$LayoutParams;->width:I
+
+    .line 387
+    move-object/from16 v0, v16
+
+    iput v15, v0, Landroid/view/ViewGroup$LayoutParams;->width:I
+
+    .line 389
+    const/16 v23, 0x0
+
+    const/16 v24, 0x0
+
+    move-object/from16 v0, v18
+
+    move/from16 v1, v20
+
+    move/from16 v2, v21
+
+    move/from16 v3, v23
+
+    move/from16 v4, v24
+
+    invoke-virtual {v0, v1, v2, v3, v4}, Landroid/widget/RelativeLayout$LayoutParams;->setMargins(IIII)V
+
+    .line 390
+    const/16 v23, 0x0
+
+    const/16 v24, 0x0
+
+    const/16 v25, 0x0
+
+    move-object/from16 v0, v19
+
+    move/from16 v1, v23
+
+    move/from16 v2, v22
+
+    move/from16 v3, v24
+
+    move/from16 v4, v25
+
+    invoke-virtual {v0, v1, v2, v3, v4}, Landroid/widget/LinearLayout$LayoutParams;->setMargins(IIII)V
+
+    .line 392
+    const/16 v23, 0x0
+
+    const/16 v24, 0x0
+
+    move/from16 v0, v23
+
+    move/from16 v1, v24
+
+    invoke-virtual {v6, v0, v9, v8, v1}, Landroid/widget/RelativeLayout$LayoutParams;->setMargins(IIII)V
+
+    .line 393
+    const/16 v23, 0x0
+
+    const/16 v24, 0x0
+
+    const/16 v25, 0x0
+
+    move/from16 v0, v23
+
+    move/from16 v1, v24
+
+    move/from16 v2, v25
+
+    invoke-virtual {v7, v0, v10, v1, v2}, Landroid/widget/LinearLayout$LayoutParams;->setMargins(IIII)V
+
+    .line 395
+    const/16 v23, 0x0
+
+    move-object/from16 v0, v17
+
+    move/from16 v1, v23
+
+    invoke-virtual {v0, v12, v1, v13, v11}, Landroid/widget/RelativeLayout$LayoutParams;->setMargins(IIII)V
+
+    .line 398
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
+
+    move-object/from16 v23, v0
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v5}, Landroid/widget/SeekBar;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 399
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTitle_view:Landroid/widget/TextView;
+
+    move-object/from16 v23, v0
+
+    move-object/from16 v0, v23
+
+    move-object/from16 v1, v16
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 400
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
+
+    move-object/from16 v23, v0
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v14}, Landroid/widget/SeekBar;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 401
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
+
+    move-object/from16 v23, v0
+
+    move-object/from16 v0, v23
+
+    move-object/from16 v1, v18
+
+    invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 402
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
+
+    move-object/from16 v23, v0
+
+    move-object/from16 v0, v23
+
+    move-object/from16 v1, v19
+
+    invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 403
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
+
+    move-object/from16 v23, v0
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v6}, Landroid/widget/LinearLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 404
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBar:Lcom/android/gallery3d/seekbar/VerSeekBar;
+
+    move-object/from16 v23, v0
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v7}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 405
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
+
+    move-object/from16 v23, v0
+
+    move-object/from16 v0, v23
+
+    move-object/from16 v1, v17
+
+    invoke-virtual {v0, v1}, Landroid/widget/RelativeLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 406
+    return-void
+
+    .line 374
+    :cond_0
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f090234
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v15
+
+    .line 375
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f090264
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v20
+
+    .line 376
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f090263
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v21
+
+    .line 377
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f090265
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v22
+
+    .line 378
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f09025d
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v8
+
+    .line 379
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f09025c
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v9
+
+    .line 380
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f09025e
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v10
+
+    .line 381
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f090247
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v12
+
+    .line 382
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f090248
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v13
+
+    .line 383
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    const v24, 0x7f090249
+
+    invoke-virtual/range {v23 .. v24}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v11
 
     goto/16 :goto_0
 .end method
@@ -5037,7 +6735,7 @@
     .locals 3
 
     .prologue
-    .line 1744
+    .line 1876
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
 
     invoke-static {v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->getAppScreenBrightness(Landroid/content/SharedPreferences;)I
@@ -5046,14 +6744,14 @@
 
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
 
-    .line 1745
+    .line 1877
     invoke-static {}, Lcom/android/gallery3d/app/MovieActivityUtils;->getCurScreenBrightness()I
 
     move-result v1
 
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSysBrightness:I
 
-    .line 1746
+    .line 1878
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
 
     iget v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSysBrightness:I
@@ -5064,55 +6762,43 @@
 
     if-gez v1, :cond_1
 
-    .line 1747
+    .line 1879
     :cond_0
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSysBrightness:I
 
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
 
-    .line 1749
+    .line 1881
     :cond_1
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSysBrightness:I
 
-    sget v2, Lcom/android/gallery3d/app/MovieControllerOverlay;->MIN_WIN_BRIGHNESS:I
-
-    sub-int/2addr v1, v2
+    add-int/lit8 v1, v1, -0x2
 
     mul-int/lit16 v1, v1, 0x2710
 
-    sget v2, Lcom/android/gallery3d/app/MovieControllerOverlay;->MIN_WIN_BRIGHNESS:I
+    div-int/lit16 v0, v1, 0xfd
 
-    rsub-int v2, v2, 0xff
-
-    div-int v0, v1, v2
-
-    .line 1750
+    .line 1882
     .local v0, sysProgress:I
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
 
-    sget v2, Lcom/android/gallery3d/app/MovieControllerOverlay;->MIN_WIN_BRIGHNESS:I
-
-    sub-int/2addr v1, v2
+    add-int/lit8 v1, v1, -0x2
 
     mul-int/lit16 v1, v1, 0x2710
 
-    sget v2, Lcom/android/gallery3d/app/MovieControllerOverlay;->MIN_WIN_BRIGHNESS:I
-
-    rsub-int v2, v2, 0xff
-
-    div-int/2addr v1, v2
+    div-int/lit16 v1, v1, 0xfd
 
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
 
-    .line 1751
+    .line 1883
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBar:Lcom/android/gallery3d/seekbar/VerSeekBar;
 
     invoke-virtual {v1, v0}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setBreakPointLevel(I)V
 
-    .line 1752
+    .line 1884
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setLightBarProgress()V
 
-    .line 1753
+    .line 1885
     return-void
 .end method
 
@@ -5130,7 +6816,7 @@
     .end annotation
 
     .prologue
-    .line 2283
+    .line 2371
     const/4 v0, 0x0
 
     :goto_0
@@ -5138,28 +6824,28 @@
 
     if-ge v0, v1, :cond_1
 
-    .line 2284
+    .line 2372
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     invoke-interface {v1, v0}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->getAudioTrackName(I)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 2285
+    .line 2373
     invoke-virtual {v1}, Ljava/lang/String;->isEmpty()Z
 
     move-result v2
 
     if-eqz v2, :cond_0
 
-    .line 2286
+    .line 2374
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
     iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
-    const v3, 0x7f0a01b1
+    const v3, 0x7f0a01bc
 
     invoke-static {v2, v3}, Lcom/android/gallery3d/app/MovieActivityUtils;->getStringFromRes(Landroid/content/Context;I)Ljava/lang/String;
 
@@ -5181,64 +6867,133 @@
 
     invoke-virtual {p1, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2283
+    .line 2371
     :goto_1
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 2289
+    .line 2377
     :cond_0
     invoke-virtual {p1, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     goto :goto_1
 
-    .line 2293
+    .line 2381
     :cond_1
     return-void
 .end method
 
-.method private setLightBarProgress()V
-    .locals 3
+.method private setHdmiScreenLight()V
+    .locals 2
 
     .prologue
-    .line 2151
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBar:Lcom/android/gallery3d/seekbar/VerSeekBar;
+    .line 1859
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
 
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
+    if-eqz v0, :cond_3
 
-    invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setProgress(I)V
+    .line 1860
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
 
-    .line 2152
-    sget v0, Lcom/android/gallery3d/app/MovieControllerOverlay;->MIN_WIN_BRIGHNESS:I
+    if-nez v0, :cond_0
 
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
 
-    sget v2, Lcom/android/gallery3d/app/MovieControllerOverlay;->MIN_WIN_BRIGHNESS:I
+    if-nez v0, :cond_0
 
-    rsub-int v2, v2, 0xff
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
 
-    mul-int/2addr v1, v2
+    if-nez v0, :cond_0
 
-    div-int/lit16 v1, v1, 0x2710
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetBright:Z
 
-    add-int/2addr v0, v1
+    if-eqz v0, :cond_2
 
-    iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
-
-    .line 2153
+    .line 1861
+    :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
-    .line 2154
+    .line 1862
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->setWinBrightness(I)V
 
-    .line 2156
+    .line 1874
+    :cond_1
+    :goto_0
+    return-void
+
+    .line 1865
+    :cond_2
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+
+    if-eqz v0, :cond_1
+
+    .line 1866
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+
+    const/4 v1, 0x2
+
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->setWinBrightness(I)V
+
+    goto :goto_0
+
+    .line 1870
+    :cond_3
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+
+    if-eqz v0, :cond_1
+
+    .line 1871
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
+
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->setWinBrightness(I)V
+
+    goto :goto_0
+.end method
+
+.method private setLightBarProgress()V
+    .locals 2
+
+    .prologue
+    .line 2234
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBar:Lcom/android/gallery3d/seekbar/VerSeekBar;
+
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
+
+    invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setProgress(I)V
+
+    .line 2235
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightProgress:I
+
+    mul-int/lit16 v0, v0, 0xfd
+
+    div-int/lit16 v0, v0, 0x2710
+
+    add-int/lit8 v0, v0, 0x2
+
+    iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
+
+    .line 2236
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+
+    if-eqz v0, :cond_0
+
+    .line 2237
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
+
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->setWinBrightness(I)V
+
+    .line 2239
     :cond_0
     return-void
 .end method
@@ -5251,10 +7006,10 @@
 
     const/4 v5, 0x0
 
-    .line 1030
+    .line 951
     iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
 
-    .line 1031
+    .line 952
     .local v2, pmenu:Landroid/widget/PopupMenu;
     invoke-virtual {v2}, Landroid/widget/PopupMenu;->getMenu()Landroid/view/Menu;
 
@@ -5264,7 +7019,7 @@
 
     move-result v3
 
-    .line 1032
+    .line 953
     .local v3, size:I
     const/4 v0, 0x0
 
@@ -5272,7 +7027,7 @@
     :goto_0
     if-ge v0, v3, :cond_4
 
-    .line 1033
+    .line 954
     invoke-virtual {v2}, Landroid/widget/PopupMenu;->getMenu()Landroid/view/Menu;
 
     move-result-object v4
@@ -5281,90 +7036,90 @@
 
     move-result-object v1
 
-    .line 1034
+    .line 955
     .local v1, item:Landroid/view/MenuItem;
     packed-switch v0, :pswitch_data_0
 
-    .line 1032
+    .line 953
     :goto_1
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 1036
+    .line 957
     :pswitch_0
     iget-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCompleteMode:Z
 
     if-eqz v4, :cond_0
 
-    .line 1037
+    .line 958
     invoke-interface {v1, v6}, Landroid/view/MenuItem;->setChecked(Z)Landroid/view/MenuItem;
 
     goto :goto_1
 
-    .line 1039
+    .line 960
     :cond_0
     invoke-interface {v1, v5}, Landroid/view/MenuItem;->setChecked(Z)Landroid/view/MenuItem;
 
     goto :goto_1
 
-    .line 1044
+    .line 965
     :pswitch_1
     iget-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAutoVerScreen:Z
 
     if-eqz v4, :cond_1
 
-    .line 1045
+    .line 966
     invoke-interface {v1, v6}, Landroid/view/MenuItem;->setChecked(Z)Landroid/view/MenuItem;
 
     goto :goto_1
 
-    .line 1047
+    .line 968
     :cond_1
     invoke-interface {v1, v5}, Landroid/view/MenuItem;->setChecked(Z)Landroid/view/MenuItem;
 
     goto :goto_1
 
-    .line 1052
+    .line 973
     :pswitch_2
     iget-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsRepeatplay:Z
 
     if-eqz v4, :cond_2
 
-    .line 1053
+    .line 974
     invoke-interface {v1, v6}, Landroid/view/MenuItem;->setChecked(Z)Landroid/view/MenuItem;
 
     goto :goto_1
 
-    .line 1055
+    .line 976
     :cond_2
     invoke-interface {v1, v5}, Landroid/view/MenuItem;->setChecked(Z)Landroid/view/MenuItem;
 
     goto :goto_1
 
-    .line 1060
+    .line 981
     :pswitch_3
     iget-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsQueueplay:Z
 
     if-eqz v4, :cond_3
 
-    .line 1061
+    .line 982
     invoke-interface {v1, v6}, Landroid/view/MenuItem;->setChecked(Z)Landroid/view/MenuItem;
 
     goto :goto_1
 
-    .line 1063
+    .line 984
     :cond_3
     invoke-interface {v1, v5}, Landroid/view/MenuItem;->setChecked(Z)Landroid/view/MenuItem;
 
     goto :goto_1
 
-    .line 1071
+    .line 992
     .end local v1           #item:Landroid/view/MenuItem;
     :cond_4
     return-void
 
-    .line 1034
+    .line 955
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -5378,7 +7133,7 @@
     .locals 2
 
     .prologue
-    .line 1168
+    .line 1100
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsQueueplay:Z
 
     if-eqz v0, :cond_2
@@ -5387,52 +7142,52 @@
 
     if-eqz v0, :cond_2
 
-    .line 1169
+    .line 1101
     sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;->ALLCYCLE:Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPlayMode:Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
-    .line 1181
+    .line 1113
     :cond_0
     :goto_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     if-eqz v0, :cond_1
 
-    .line 1182
+    .line 1114
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPlayMode:Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setPlayMode(Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;)V
 
-    .line 1184
+    .line 1116
     :cond_1
     return-void
 
-    .line 1171
+    .line 1103
     :cond_2
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsQueueplay:Z
 
     if-eqz v0, :cond_3
 
-    .line 1172
+    .line 1104
     sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;->LISTCYCLE:Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPlayMode:Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
-    .line 1174
+    .line 1106
     :cond_3
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsRepeatplay:Z
 
     if-eqz v0, :cond_4
 
-    .line 1175
+    .line 1107
     sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;->SINGLECYCLE:Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPlayMode:Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
-    .line 1177
+    .line 1109
     :cond_4
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsRepeatplay:Z
 
@@ -5442,7 +7197,7 @@
 
     if-nez v0, :cond_0
 
-    .line 1178
+    .line 1110
     sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;->NOMODE:Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPlayMode:Lcom/android/gallery3d/app/MovieControllerOverlay$PlayMode;
@@ -5456,31 +7211,40 @@
     .prologue
     const-wide/16 v9, 0x0
 
-    .line 2159
+    .line 2242
     iget-boolean v11, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDragging:Z
 
-    if-eqz v11, :cond_1
+    if-nez v11, :cond_0
 
+    iget-object v11, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    invoke-interface {v11}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->isSeeking()Z
+
+    move-result v11
+
+    if-eqz v11, :cond_2
+
+    :cond_0
     move-wide v6, v9
 
-    .line 2200
-    :cond_0
+    .line 2284
+    :cond_1
     :goto_0
     return-wide v6
 
-    .line 2162
-    :cond_1
+    .line 2245
+    :cond_2
     const-wide/16 v6, 0x0
 
-    .line 2164
+    .line 2247
     .local v6, position:J
     iget-wide v11, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
 
     cmp-long v11, v11, v9
 
-    if-nez v11, :cond_2
+    if-nez v11, :cond_3
 
-    .line 2165
+    .line 2248
     iget-object v11, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     invoke-interface {v11}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->getVideoDuration()J
@@ -5489,17 +7253,17 @@
 
     iput-wide v11, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
 
-    .line 2167
-    :cond_2
+    .line 2250
+    :cond_3
     iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
 
-    .line 2168
+    .line 2251
     .local v0, duration:J
     iget-boolean v11, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
 
-    if-eqz v11, :cond_8
+    if-eqz v11, :cond_9
 
-    .line 2169
+    .line 2252
     iget-object v11, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     invoke-interface {v11}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->getDlnaClientPos()I
@@ -5508,33 +7272,33 @@
 
     int-to-long v6, v11
 
-    .line 2170
+    .line 2253
     cmp-long v11, v6, v9
 
-    if-nez v11, :cond_3
+    if-nez v11, :cond_4
 
     iget-wide v11, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
 
     cmp-long v11, v11, v9
 
-    if-eqz v11, :cond_3
+    if-eqz v11, :cond_4
 
-    .line 2171
+    .line 2254
     iget-wide v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
 
-    .line 2176
-    :cond_3
+    .line 2259
+    :cond_4
     :goto_1
     iget-object v11, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
 
-    if-eqz v11, :cond_5
+    if-eqz v11, :cond_6
 
-    .line 2177
+    .line 2260
     cmp-long v9, v0, v9
 
-    if-lez v9, :cond_4
+    if-lez v9, :cond_5
 
-    .line 2179
+    .line 2262
     const-wide v9, 0x40c3880000000000L
 
     long-to-double v11, v6
@@ -5547,7 +7311,7 @@
 
     double-to-long v4, v9
 
-    .line 2180
+    .line 2263
     .local v4, pos:J
     iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
 
@@ -5555,77 +7319,88 @@
 
     invoke-virtual {v9, v10}, Landroid/widget/SeekBar;->setProgress(I)V
 
-    .line 2181
+    .line 2264
     iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
     long-to-int v10, v4
 
     invoke-virtual {v9, v10}, Landroid/widget/SeekBar;->setProgress(I)V
 
-    .line 2183
+    .line 2266
     .end local v4           #pos:J
-    :cond_4
+    :cond_5
     iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     invoke-interface {v9}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->getBufferPercentage()I
 
     move-result v3
 
-    .line 2184
+    .line 2267
     .local v3, percent:I
     iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
 
-    mul-int/lit8 v10, v3, 0xa
+    mul-int/lit16 v10, v3, 0x2710
+
+    div-int/lit8 v10, v10, 0x64
 
     invoke-virtual {v9, v10}, Landroid/widget/SeekBar;->setSecondaryProgress(I)V
 
-    .line 2187
+    .line 2268
+    iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
+
+    mul-int/lit16 v10, v3, 0x2710
+
+    div-int/lit8 v10, v10, 0x64
+
+    invoke-virtual {v9, v10}, Landroid/widget/SeekBar;->setSecondaryProgress(I)V
+
+    .line 2271
     .end local v3           #percent:I
-    :cond_5
+    :cond_6
     iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRemainPlayTimeText:Landroid/widget/TextView;
 
-    if-eqz v9, :cond_7
+    if-eqz v9, :cond_8
 
-    .line 2188
+    .line 2272
     sub-long v9, v0, v6
 
     long-to-int v2, v9
 
-    .line 2189
+    .line 2273
     .local v2, iTime:I
-    if-gez v2, :cond_6
+    if-gez v2, :cond_7
 
-    .line 2190
+    .line 2274
     const/4 v2, 0x0
 
-    .line 2192
-    :cond_6
+    .line 2276
+    :cond_7
     int-to-long v9, v2
 
     invoke-direct {p0, v9, v10}, Lcom/android/gallery3d/app/MovieControllerOverlay;->stringForTime(J)Ljava/lang/String;
 
     move-result-object v8
 
-    .line 2193
+    .line 2277
     .local v8, str:Ljava/lang/String;
     iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureRemainPlayTimeText:Landroid/widget/TextView;
 
     invoke-virtual {v9, v8}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 2194
+    .line 2278
     iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRemainPlayTimeText:Landroid/widget/TextView;
 
     invoke-virtual {v9, v8}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 2196
+    .line 2280
     .end local v2           #iTime:I
     .end local v8           #str:Ljava/lang/String;
-    :cond_7
+    :cond_8
     iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTimeText:Landroid/widget/TextView;
 
-    if-eqz v9, :cond_0
+    if-eqz v9, :cond_1
 
-    .line 2197
+    .line 2281
     iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureAlreadyPlayTimeText:Landroid/widget/TextView;
 
     invoke-direct {p0, v6, v7}, Lcom/android/gallery3d/app/MovieControllerOverlay;->stringForTime(J)Ljava/lang/String;
@@ -5634,7 +7409,7 @@
 
     invoke-virtual {v9, v10}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 2198
+    .line 2282
     iget-object v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTimeText:Landroid/widget/TextView;
 
     invoke-direct {p0, v6, v7}, Lcom/android/gallery3d/app/MovieControllerOverlay;->stringForTime(J)Ljava/lang/String;
@@ -5645,8 +7420,8 @@
 
     goto/16 :goto_0
 
-    .line 2174
-    :cond_8
+    .line 2257
+    :cond_9
     iget-wide v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
 
     goto :goto_1
@@ -5656,12 +7431,12 @@
     .locals 2
 
     .prologue
-    .line 484
+    .line 534
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     if-eqz v0, :cond_0
 
-    .line 485
+    .line 535
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     invoke-interface {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->getHdmiState()Z
@@ -5670,26 +7445,19 @@
 
     if-eqz v0, :cond_1
 
-    .line 486
+    .line 536
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     sget-object v1, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->VIDEO_ORIENTATION_LANDSCAPE:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->lockScreenSensor(Lcom/android/gallery3d/app/MovieActivity$SensorRotation;)V
 
-    .line 487
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
-
-    sget v1, Lcom/android/gallery3d/app/MovieControllerOverlay;->MIN_WIN_BRIGHNESS:I
-
-    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->setWinBrightness(I)V
-
-    .line 500
+    .line 551
     :cond_0
     :goto_0
     return-void
 
-    .line 488
+    .line 537
     :cond_1
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoRotation:I
 
@@ -5703,7 +7471,7 @@
 
     if-ne v0, v1, :cond_3
 
-    .line 489
+    .line 538
     :cond_2
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
@@ -5711,29 +7479,30 @@
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->lockScreenSensor(Lcom/android/gallery3d/app/MovieActivity$SensorRotation;)V
 
-    .line 490
+    goto :goto_0
+
+    .line 540
+    :cond_3
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSystemSensorOn:Z
+
+    if-nez v0, :cond_4
+
+    .line 541
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
+    sget-object v1, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->VIDEO_ORIENTATION_LANDSCAPE:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
-    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->setWinBrightness(I)V
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->lockScreenSensor(Lcom/android/gallery3d/app/MovieActivity$SensorRotation;)V
 
     goto :goto_0
 
-    .line 492
-    :cond_3
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
-
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
-
-    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->setWinBrightness(I)V
-
-    .line 493
+    .line 543
+    :cond_4
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAutoVerScreen:Z
 
-    if-eqz v0, :cond_4
+    if-eqz v0, :cond_5
 
-    .line 494
+    .line 544
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     sget-object v1, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->VIDEO_ORIENTATION_SENSOR:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
@@ -5742,11 +7511,11 @@
 
     goto :goto_0
 
-    .line 496
-    :cond_4
+    .line 546
+    :cond_5
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
-    sget-object v1, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->VIDEO_ORIENTATION_LANDSCAPE:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
+    sget-object v1, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->VIDEO_ORIENTATION_LANDSCAPE_SENSOR:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->lockScreenSensor(Lcom/android/gallery3d/app/MovieActivity$SensorRotation;)V
 
@@ -5754,39 +7523,41 @@
 .end method
 
 .method private setTextSize(I)V
-    .locals 2
+    .locals 3
     .parameter "size"
 
     .prologue
-    .line 446
+    const/4 v2, 0x0
+
+    .line 494
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureAlreadyPlayTimeText:Landroid/widget/TextView;
 
     int-to-float v1, p1
 
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setTextSize(F)V
+    invoke-virtual {v0, v2, v1}, Landroid/widget/TextView;->setTextSize(IF)V
 
-    .line 447
+    .line 495
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureRemainPlayTimeText:Landroid/widget/TextView;
 
     int-to-float v1, p1
 
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setTextSize(F)V
+    invoke-virtual {v0, v2, v1}, Landroid/widget/TextView;->setTextSize(IF)V
 
-    .line 448
+    .line 496
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTimeText:Landroid/widget/TextView;
 
     int-to-float v1, p1
 
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setTextSize(F)V
+    invoke-virtual {v0, v2, v1}, Landroid/widget/TextView;->setTextSize(IF)V
 
-    .line 449
+    .line 497
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRemainPlayTimeText:Landroid/widget/TextView;
 
     int-to-float v1, p1
 
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setTextSize(F)V
+    invoke-virtual {v0, v2, v1}, Landroid/widget/TextView;->setTextSize(IF)V
 
-    .line 450
+    .line 498
     return-void
 .end method
 
@@ -5804,7 +7575,7 @@
     .end annotation
 
     .prologue
-    .line 2257
+    .line 2345
     const/4 v0, 0x0
 
     :goto_0
@@ -5816,14 +7587,14 @@
 
     if-ge v0, v1, :cond_5
 
-    .line 2258
+    .line 2346
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     invoke-interface {v1, v0}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->getTimeTextName(I)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 2259
+    .line 2347
     invoke-virtual {v1}, Ljava/lang/String;->isEmpty()Z
 
     move-result v2
@@ -5838,7 +7609,7 @@
 
     if-eqz v2, :cond_1
 
-    .line 2260
+    .line 2348
     :cond_0
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -5846,7 +7617,7 @@
 
     iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
-    const v3, 0x7f0a01b0
+    const v3, 0x7f0a01bb
 
     invoke-static {v2, v3}, Lcom/android/gallery3d/app/MovieActivityUtils;->getStringFromRes(Landroid/content/Context;I)Ljava/lang/String;
 
@@ -5866,16 +7637,16 @@
 
     move-result-object v1
 
-    .line 2262
+    .line 2350
     invoke-virtual {p1, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2257
+    .line 2345
     :goto_1
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 2264
+    .line 2352
     :cond_1
     const-string v2, "chs"
 
@@ -5885,10 +7656,10 @@
 
     if-eqz v2, :cond_2
 
-    .line 2265
+    .line 2353
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
-    const v2, 0x7f0a01b2
+    const v2, 0x7f0a01bd
 
     invoke-static {v1, v2}, Lcom/android/gallery3d/app/MovieActivityUtils;->getStringFromRes(Landroid/content/Context;I)Ljava/lang/String;
 
@@ -5898,7 +7669,7 @@
 
     goto :goto_1
 
-    .line 2267
+    .line 2355
     :cond_2
     const-string v2, "cht"
 
@@ -5908,10 +7679,10 @@
 
     if-eqz v2, :cond_3
 
-    .line 2268
+    .line 2356
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
-    const v2, 0x7f0a01b3
+    const v2, 0x7f0a01be
 
     invoke-static {v1, v2}, Lcom/android/gallery3d/app/MovieActivityUtils;->getStringFromRes(Landroid/content/Context;I)Ljava/lang/String;
 
@@ -5921,7 +7692,7 @@
 
     goto :goto_1
 
-    .line 2270
+    .line 2358
     :cond_3
     const-string v2, "eng"
 
@@ -5931,10 +7702,10 @@
 
     if-eqz v2, :cond_4
 
-    .line 2271
+    .line 2359
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
-    const v2, 0x7f0a01b4
+    const v2, 0x7f0a01bf
 
     invoke-static {v1, v2}, Lcom/android/gallery3d/app/MovieActivityUtils;->getStringFromRes(Landroid/content/Context;I)Ljava/lang/String;
 
@@ -5944,17 +7715,17 @@
 
     goto :goto_1
 
-    .line 2274
+    .line 2362
     :cond_4
     invoke-virtual {p1, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     goto :goto_1
 
-    .line 2278
+    .line 2366
     :cond_5
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
-    const v1, 0x7f0a0151
+    const v1, 0x7f0a015c
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->getStringFromRes(Landroid/content/Context;I)Ljava/lang/String;
 
@@ -5962,43 +7733,65 @@
 
     invoke-virtual {p1, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2279
+    .line 2367
     return-void
 .end method
 
 .method private setVolumBarProgress(Z)V
     .locals 2
-    .parameter "isSetProgress"
+    .parameter
 
     .prologue
-    .line 2136
+    .line 2214
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
 
     if-eqz v0, :cond_0
 
-    .line 2137
+    .line 2215
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
 
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setProgress(I)V
 
-    .line 2138
+    .line 2216
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setDlnaVol(I)V
 
-    .line 2148
+    .line 2231
     :goto_0
     return-void
 
-    .line 2140
+    .line 2218
     :cond_0
-    if-eqz p1, :cond_1
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSilent:Z
 
-    .line 2141
+    if-eqz v0, :cond_1
+
+    .line 2219
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setProgress(I)V
+
+    .line 2220
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
+
+    const v1, 0x7f0200db
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
+
+    goto :goto_0
+
+    .line 2222
+    :cond_1
+    if-eqz p1, :cond_2
+
+    .line 2223
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
 
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxVolume:I
@@ -6009,7 +7802,7 @@
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
-    .line 2145
+    .line 2227
     :goto_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
 
@@ -6017,15 +7810,15 @@
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setProgress(I)V
 
-    .line 2146
+    .line 2228
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setVolumeLevel(I)V
 
     goto :goto_0
 
-    .line 2143
-    :cond_1
+    .line 2225
+    :cond_2
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
     mul-int/lit16 v0, v0, 0x2710
@@ -6044,7 +7837,7 @@
     .parameter "iLevel"
 
     .prologue
-    .line 2296
+    .line 2384
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioManager:Landroid/media/AudioManager;
 
     const/4 v1, 0x3
@@ -6053,32 +7846,34 @@
 
     invoke-virtual {v0, v1, p1, v2}, Landroid/media/AudioManager;->setStreamVolume(III)V
 
-    .line 2298
+    .line 2386
     return-void
 .end method
 
 .method private setZoomChange()V
-    .locals 9
+    .locals 10
 
     .prologue
-    const/16 v8, 0x3f6
+    const/16 v9, 0x3f4
 
-    const/16 v7, 0x3f0
+    const/16 v8, 0x3f0
+
+    const/16 v7, 0x3ee
 
     const/4 v6, 0x0
 
-    .line 2223
+    .line 2307
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initZoomParams()V
 
-    .line 2224
+    .line 2308
     iget-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureZoomMode:Z
 
     if-eqz v1, :cond_0
 
-    .line 2225
+    .line 2309
     iput-boolean v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureZoomMode:Z
 
-    .line 2226
+    .line 2310
     const/4 v0, 0x0
 
     .local v0, i:I
@@ -6091,7 +7886,7 @@
 
     if-ge v0, v1, :cond_0
 
-    .line 2227
+    .line 2311
     iget-wide v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
@@ -6108,14 +7903,14 @@
 
     cmpg-double v1, v2, v4
 
-    if-gez v1, :cond_4
+    if-gez v1, :cond_5
 
-    .line 2228
+    .line 2312
     add-int/lit8 v1, v0, -0x1
 
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIndex:I
 
-    .line 2236
+    .line 2320
     .end local v0           #i:I
     :cond_0
     :goto_1
@@ -6125,23 +7920,23 @@
 
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIndex:I
 
-    .line 2237
+    .line 2321
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIndex:I
 
     const/4 v2, 0x3
 
     if-lt v1, v2, :cond_1
 
-    .line 2238
+    .line 2322
     iput v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIndex:I
 
-    .line 2240
+    .line 2324
     :cond_1
     iget-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
 
-    if-nez v1, :cond_3
+    if-nez v1, :cond_4
 
-    .line 2241
+    .line 2325
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
     invoke-virtual {v1}, Landroid/widget/TextView;->getVisibility()I
@@ -6150,65 +7945,85 @@
 
     const/16 v2, 0x8
 
-    if-ne v1, v2, :cond_2
+    if-ne v1, v2, :cond_3
 
-    .line 2242
+    .line 2326
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
+
+    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    .line 2327
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v1, v8}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2328
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v1, v8}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    .line 2330
+    :cond_2
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
     invoke-virtual {v1, v6}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 2243
+    .line 2331
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
     invoke-virtual {v1}, Landroid/widget/TextView;->invalidate()V
 
-    .line 2244
+    .line 2332
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
     invoke-virtual {v1}, Landroid/widget/TextView;->requestLayout()V
 
-    .line 2245
+    .line 2333
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
     invoke-static {v1, v2}, Lcom/android/gallery3d/app/MovieActivityUtils;->showViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 2247
-    :cond_2
+    .line 2335
+    :cond_3
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    invoke-virtual {v1, v8}, Landroid/os/Handler;->removeMessages(I)V
+    invoke-virtual {v1, v9}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2248
+    .line 2336
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     const-wide/16 v2, 0x3e8
 
-    invoke-virtual {v1, v8, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
+    invoke-virtual {v1, v9, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 2250
-    :cond_3
+    .line 2338
+    :cond_4
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v1, v7}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2251
+    .line 2339
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     const-wide/16 v2, 0x32
 
     invoke-virtual {v1, v7, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 2252
+    .line 2340
     invoke-direct {p0, v6}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setZoomIcon(Z)V
 
-    .line 2253
+    .line 2341
     return-void
 
-    .line 2230
+    .line 2314
     .restart local v0       #i:I
-    :cond_4
+    :cond_5
     iget-wide v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
@@ -6225,15 +8040,15 @@
 
     cmpl-double v1, v2, v4
 
-    if-nez v1, :cond_5
+    if-nez v1, :cond_6
 
-    .line 2231
+    .line 2315
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIndex:I
 
     goto :goto_1
 
-    .line 2226
-    :cond_5
+    .line 2310
+    :cond_6
     add-int/lit8 v0, v0, 0x1
 
     goto/16 :goto_0
@@ -6244,14 +8059,14 @@
     .parameter "stepLess"
 
     .prologue
-    .line 1756
+    .line 1888
     const-wide/16 v1, 0x0
 
-    .line 1757
+    .line 1889
     .local v1, value:D
     if-nez p1, :cond_0
 
-    .line 1758
+    .line 1890
     iget-object v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
 
     iget v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIndex:I
@@ -6266,7 +8081,7 @@
 
     move-result-wide v1
 
-    .line 1778
+    .line 1910
     :goto_0
     const/4 v3, 0x1
 
@@ -6274,7 +8089,7 @@
 
     move-result-wide v1
 
-    .line 1779
+    .line 1911
     iget-object v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
     invoke-static {v1, v2}, Ljava/lang/Double;->toString(D)Ljava/lang/String;
@@ -6283,14 +8098,14 @@
 
     invoke-virtual {v3, v4}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 1780
+    .line 1912
     return-void
 
-    .line 1760
+    .line 1892
     :cond_0
     const/4 v0, 0x0
 
-    .line 1761
+    .line 1893
     .local v0, index:I
     :goto_1
     iget-object v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
@@ -6301,7 +8116,7 @@
 
     if-ge v0, v3, :cond_1
 
-    .line 1762
+    .line 1894
     iget-wide v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     iget-object v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
@@ -6320,11 +8135,11 @@
 
     if-gez v3, :cond_2
 
-    .line 1766
+    .line 1898
     :cond_1
     if-nez v0, :cond_4
 
-    .line 1767
+    .line 1899
     iget-wide v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     iget-wide v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMinZoomValue:D
@@ -6333,24 +8148,24 @@
 
     if-nez v3, :cond_3
 
-    .line 1768
+    .line 1900
     iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMinZoomValue:D
 
     goto :goto_0
 
-    .line 1761
+    .line 1893
     :cond_2
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_1
 
-    .line 1770
+    .line 1902
     :cond_3
     const-wide v1, 0x3feccccccccccccdL
 
     goto :goto_0
 
-    .line 1772
+    .line 1904
     :cond_4
     iget-object v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
 
@@ -6360,7 +8175,7 @@
 
     if-ge v0, v3, :cond_5
 
-    .line 1773
+    .line 1905
     iget-object v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
 
     add-int/lit8 v4, v0, -0x1
@@ -6377,7 +8192,7 @@
 
     goto :goto_0
 
-    .line 1775
+    .line 1907
     :cond_5
     iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxZoomValue:D
 
@@ -6385,28 +8200,30 @@
 .end method
 
 .method private showControllAni()V
-    .locals 4
+    .locals 5
 
     .prologue
-    const/4 v3, 0x1
+    const/4 v4, 0x1
+
+    const/16 v3, 0x8
 
     const/4 v2, 0x0
 
-    .line 1798
+    .line 1935
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3f1
+    const/16 v1, 0x3ef
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1799
+    .line 1936
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3f2
+    const/16 v1, 0x3f0
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1800
+    .line 1937
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
 
     if-eqz v0, :cond_0
@@ -6419,48 +8236,57 @@
 
     if-nez v0, :cond_0
 
-    .line 1801
+    .line 1938
+    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+
+    .line 1939
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     invoke-interface {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->turnOnLed()V
 
-    .line 1802
+    .line 1940
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setHdmiScreenLight()V
+
+    .line 1941
     invoke-direct {p0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->updateTopPartUI(Z)V
 
-    .line 1803
+    .line 1942
     invoke-direct {p0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->updateGestureProgress(Z)V
 
-    .line 1804
-    invoke-direct {p0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay;->enableMediaControl(Z)V
+    .line 1943
+    invoke-direct {p0, v4}, Lcom/android/gallery3d/app/MovieControllerOverlay;->enableMediaControl(Z)V
 
-    .line 1805
+    .line 1944
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
-    invoke-interface {v0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->showSystemTitle(Z)V
+    invoke-interface {v0, v4}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->showSystemTitle(Z)V
 
-    .line 1806
+    .line 1945
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 1807
+    .line 1946
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 1808
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
+    .line 1947
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsM040:Z
 
     if-eqz v0, :cond_2
 
-    .line 1809
+    .line 1948
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
+
+    if-eqz v0, :cond_1
+
+    .line 1949
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
 
-    const/16 v1, 0x8
+    invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    invoke-virtual {v0, v1}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    .line 1817
+    .line 1961
     :goto_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
@@ -6468,60 +8294,60 @@
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->showViewTranslateAniUp(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 1818
+    .line 1962
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->showViewTranslateAniDown(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 1819
+    .line 1963
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showSelectItemAni()V
 
-    .line 1821
+    .line 1966
     :cond_0
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
-
-    if-eqz v0, :cond_1
-
-    .line 1822
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
-
-    if-eqz v0, :cond_1
-
-    .line 1823
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
-
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
-
-    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->setWinBrightness(I)V
-
-    .line 1827
-    :cond_1
     return-void
 
-    .line 1811
-    :cond_2
+    .line 1951
+    :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 1812
+    .line 1952
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackButton:Lcom/meizu/widget/GlowImageButton;
 
     invoke-virtual {v0, v2}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
-    .line 1813
+    .line 1953
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalMenuButton:Lcom/meizu/widget/GlowImageButton;
 
     invoke-virtual {v0, v2}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
-    .line 1814
+    .line 1954
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->showViewTranslateAniUp(Landroid/content/Context;Landroid/view/View;)V
+
+    goto :goto_0
+
+    .line 1957
+    :cond_2
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    .line 1958
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackButton:Lcom/meizu/widget/GlowImageButton;
+
+    invoke-virtual {v0, v3}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
+
+    .line 1959
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalMenuButton:Lcom/meizu/widget/GlowImageButton;
+
+    invoke-virtual {v0, v3}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
     goto :goto_0
 .end method
@@ -6535,10 +8361,10 @@
 
     const/4 v1, 0x0
 
-    .line 2320
+    .line 2410
     iput-object p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mainView:Landroid/view/View;
 
-    .line 2321
+    .line 2411
     iget-object v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->errorView:Landroid/widget/TextView;
 
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mainView:Landroid/view/View;
@@ -6552,7 +8378,7 @@
     :goto_0
     invoke-virtual {v3, v0}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 2323
+    .line 2413
     iget-object v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->loadingView:Landroid/view/View;
 
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mainView:Landroid/view/View;
@@ -6566,7 +8392,7 @@
     :goto_1
     invoke-virtual {v3, v0}, Landroid/view/View;->setVisibility(I)V
 
-    .line 2325
+    .line 2415
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     iget-object v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mainView:Landroid/view/View;
@@ -6578,161 +8404,289 @@
     :goto_2
     invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
 
-    .line 2327
+    .line 2417
     return-void
 
     :cond_0
     move v0, v2
 
-    .line 2321
+    .line 2411
     goto :goto_0
 
     :cond_1
     move v0, v2
 
-    .line 2323
+    .line 2413
     goto :goto_1
 
     :cond_2
     move v1, v2
 
-    .line 2325
+    .line 2415
     goto :goto_2
 .end method
 
-.method private showSelectItemAni()V
-    .locals 5
+.method private showPopMenu()V
+    .locals 6
 
     .prologue
+    const/4 v5, 0x1
+
+    const/4 v4, 0x0
+
+    .line 1324
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
+
+    new-instance v3, Lcom/android/gallery3d/app/MovieControllerOverlay$15;
+
+    invoke-direct {v3, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$15;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+
+    invoke-virtual {v2, v3}, Landroid/widget/PopupMenu;->setOnDismissListener(Landroid/widget/PopupMenu$OnDismissListener;)V
+
+    .line 1334
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
+
+    invoke-virtual {v2}, Landroid/widget/PopupMenu;->getMenu()Landroid/view/Menu;
+
+    move-result-object v1
+
+    .line 1335
+    .local v1, menu:Landroid/view/Menu;
+    const/4 v0, 0x0
+
+    .local v0, i:I
+    :goto_0
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuInfo:[Ljava/lang/String;
+
+    array-length v2, v2
+
+    if-ge v0, v2, :cond_0
+
+    .line 1336
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuInfo:[Ljava/lang/String;
+
+    aget-object v2, v2, v0
+
+    invoke-interface {v1, v4, v0, v4, v2}, Landroid/view/Menu;->add(IIILjava/lang/CharSequence;)Landroid/view/MenuItem;
+
+    .line 1335
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_0
+
+    .line 1338
+    :cond_0
+    iput-boolean v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuShowing:Z
+
+    .line 1339
+    invoke-interface {v1, v4, v5, v4}, Landroid/view/Menu;->setGroupCheckable(IZZ)V
+
+    .line 1340
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setMenuItemCheck()V
+
+    .line 1341
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
+
+    new-instance v3, Lcom/android/gallery3d/app/MovieControllerOverlay$16;
+
+    invoke-direct {v3, p0}, Lcom/android/gallery3d/app/MovieControllerOverlay$16;-><init>(Lcom/android/gallery3d/app/MovieControllerOverlay;)V
+
+    invoke-virtual {v2, v3}, Landroid/widget/PopupMenu;->setOnMenuItemClickListener(Landroid/widget/PopupMenu$OnMenuItemClickListener;)V
+
+    .line 1396
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
+
+    invoke-virtual {v2}, Landroid/widget/PopupMenu;->show()V
+
+    .line 1397
+    return-void
+.end method
+
+.method private showSelectDialog()V
+    .locals 2
+
+    .prologue
+    .line 3284
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    if-eqz v0, :cond_0
+
+    .line 3285
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlertDialogTitle:Ljava/lang/String;
+
+    invoke-virtual {v0, v1}, Landroid/app/AlertDialog;->setTitle(Ljava/lang/CharSequence;)V
+
+    .line 3286
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    invoke-virtual {v0}, Landroid/app/AlertDialog;->isShowing()Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 3287
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    invoke-virtual {v0}, Landroid/app/AlertDialog;->show()V
+
+    .line 3290
+    :cond_0
+    return-void
+.end method
+
+.method private showSelectItemAni()V
+    .locals 6
+
+    .prologue
+    const v5, 0x7f020068
+
     const/4 v4, 0x1
 
     const/16 v3, 0x8
 
     const/4 v2, 0x0
 
-    .line 1830
+    .line 1969
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    if-eqz v0, :cond_0
+
+    .line 1970
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    invoke-interface {v0}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->getDlnaDeviceCount()I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceCount:I
+
+    .line 1972
+    :cond_0
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
 
-    if-eqz v0, :cond_4
+    if-eqz v0, :cond_5
 
-    .line 1831
+    .line 1973
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTrackButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v3}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1832
+    .line 1974
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v3}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1833
+    .line 1975
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceCount:I
 
-    if-lez v0, :cond_3
+    if-lez v0, :cond_4
 
-    .line 1834
+    .line 1976
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1848
-    :cond_0
+    .line 1990
+    :cond_1
     :goto_0
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateCount:I
 
-    if-le v0, v4, :cond_1
+    if-le v0, v4, :cond_2
 
-    .line 1849
+    .line 1991
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1850
+    .line 1992
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->showViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 1852
-    :cond_1
+    .line 1994
+    :cond_2
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceCount:I
 
-    if-lez v0, :cond_7
+    if-lez v0, :cond_8
 
-    .line 1853
+    .line 1995
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
 
-    if-nez v0, :cond_2
+    if-nez v0, :cond_3
 
-    .line 1854
+    .line 1996
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
 
-    if-eqz v0, :cond_6
+    if-eqz v0, :cond_7
 
-    .line 1855
+    .line 1997
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
-    const v1, 0x7f02006c
+    const v1, 0x7f020069
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 1859
+    .line 2001
     :goto_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1860
+    .line 2002
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->showViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 1865
-    :cond_2
+    .line 2008
+    :cond_3
     :goto_2
     return-void
 
-    .line 1836
-    :cond_3
+    .line 1978
+    :cond_4
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v3}, Landroid/widget/ImageButton;->setVisibility(I)V
 
     goto :goto_0
 
-    .line 1839
-    :cond_4
+    .line 1981
+    :cond_5
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioTrackCount:I
 
-    if-le v0, v4, :cond_5
+    if-le v0, v4, :cond_6
 
-    .line 1840
+    .line 1982
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTrackButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1841
+    .line 1983
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTrackButton:Landroid/widget/ImageButton;
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->showViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 1843
-    :cond_5
+    .line 1985
+    :cond_6
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextCount:I
 
-    if-lez v0, :cond_0
+    if-lez v0, :cond_1
 
-    .line 1844
+    .line 1986
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1845
+    .line 1987
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextButton:Landroid/widget/ImageButton;
@@ -6741,21 +8695,24 @@
 
     goto :goto_0
 
-    .line 1857
-    :cond_6
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
-
-    const v1, 0x7f02006b
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
-
-    goto :goto_1
-
-    .line 1863
+    .line 1999
     :cond_7
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
+    invoke-virtual {v0, v5}, Landroid/widget/ImageButton;->setImageResource(I)V
+
+    goto :goto_1
+
+    .line 2005
+    :cond_8
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
+
     invoke-virtual {v0, v3}, Landroid/widget/ImageButton;->setVisibility(I)V
+
+    .line 2006
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
+
+    invoke-virtual {v0, v5}, Landroid/widget/ImageButton;->setImageResource(I)V
 
     goto :goto_2
 .end method
@@ -6769,7 +8726,7 @@
 
     const/4 v4, 0x0
 
-    .line 2457
+    .line 2549
     invoke-virtual {p1, v4}, Landroid/view/MotionEvent;->getX(I)F
 
     move-result v2
@@ -6780,7 +8737,7 @@
 
     sub-float v0, v2, v3
 
-    .line 2458
+    .line 2550
     .local v0, x:F
     invoke-virtual {p1, v4}, Landroid/view/MotionEvent;->getY(I)F
 
@@ -6792,7 +8749,7 @@
 
     sub-float v1, v2, v3
 
-    .line 2459
+    .line 2551
     .local v1, y:F
     mul-float v2, v0, v0
 
@@ -6818,26 +8775,26 @@
 
     const/4 v5, 0x0
 
-    .line 2210
+    .line 2294
     long-to-int v0, p1
 
     div-int/lit16 v0, v0, 0x3e8
 
-    .line 2211
+    .line 2295
     rem-int/lit8 v1, v0, 0x3c
 
-    .line 2212
+    .line 2296
     div-int/lit8 v2, v0, 0x3c
 
     rem-int/lit8 v2, v2, 0x3c
 
-    .line 2213
+    .line 2297
     div-int/lit16 v0, v0, 0xe10
 
-    .line 2214
+    .line 2298
     if-lez v0, :cond_0
 
-    .line 2215
+    .line 2299
     const-string v3, "%d:%02d:%02d"
 
     const/4 v4, 0x3
@@ -6870,7 +8827,7 @@
 
     move-result-object v0
 
-    .line 2218
+    .line 2302
     :goto_0
     return-object v0
 
@@ -6910,7 +8867,7 @@
     .parameter "toY"
 
     .prologue
-    .line 1788
+    .line 1924
     new-instance v0, Landroid/view/animation/TranslateAnimation;
 
     int-to-float v1, p1
@@ -6923,48 +8880,145 @@
 
     invoke-direct {v0, v1, v2, v3, v4}, Landroid/view/animation/TranslateAnimation;-><init>(FFFF)V
 
-    .line 1789
+    .line 1925
     .local v0, tran_ani:Landroid/view/animation/TranslateAnimation;
+    invoke-virtual {v0, p0}, Landroid/view/animation/TranslateAnimation;->setAnimationListener(Landroid/view/animation/Animation$AnimationListener;)V
+
+    .line 1926
     const-wide/16 v1, 0x12c
 
     invoke-virtual {v0, v1, v2}, Landroid/view/animation/TranslateAnimation;->setDuration(J)V
 
-    .line 1790
+    .line 1927
     return-object v0
 .end method
 
-.method private updateGestureProgress(Z)V
-    .locals 5
-    .parameter
+.method private updateDLNADevicesList()Z
+    .locals 4
 
     .prologue
-    const/4 v4, 0x0
+    const/4 v1, 0x1
 
-    const/high16 v3, 0x4170
+    const/4 v0, 0x0
+
+    .line 3293
+    :try_start_0
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    invoke-interface {v2}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->getDeviceListName()Ljava/util/ArrayList;
+
+    move-result-object v2
+
+    .line 3294
+    invoke-interface {v2}, Ljava/util/List;->size()I
+
+    move-result v3
+
+    if-gt v3, v1, :cond_1
+
+    .line 3295
+    const/4 v1, 0x0
+
+    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceCount:I
+
+    .line 3296
+    const/4 v1, 0x0
+
+    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceSelect:I
+
+    .line 3297
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
+
+    const v2, 0x7f020068
+
+    invoke-virtual {v1, v2}, Landroid/widget/ImageButton;->setImageResource(I)V
+
+    .line 3298
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    if-eqz v1, :cond_0
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    invoke-virtual {v1}, Landroid/app/AlertDialog;->isShowing()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    .line 3299
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    invoke-virtual {v1}, Landroid/app/AlertDialog;->dismiss()V
+
+    .line 3311
+    :cond_0
+    :goto_0
+    return v0
+
+    .line 3303
+    :cond_1
+    iget-object v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
+
+    if-eqz v3, :cond_2
+
+    .line 3304
+    iget-object v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
+
+    invoke-virtual {v3, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;->setObjects(Ljava/util/List;)V
+
+    .line 3305
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
+
+    iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceSelect:I
+
+    invoke-virtual {v2, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;->setSelection(I)V
+
+    .line 3306
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
+
+    invoke-virtual {v2}, Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;->notifyDataSetChanged()V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    :cond_2
+    move v0, v1
+
+    .line 3311
+    goto :goto_0
+
+    .line 3308
+    :catch_0
+    move-exception v1
+
+    goto :goto_0
+.end method
+
+.method private updateGestureProgress(Z)V
+    .locals 4
+    .parameter "isChangeSeek"
+
+    .prologue
+    const/4 v3, 0x0
 
     const/4 v2, 0x4
 
-    .line 2047
+    .line 2184
     if-eqz p1, :cond_5
 
-    .line 2048
+    .line 2185
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3f2
+    const/16 v1, 0x3f0
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2049
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureAlreadyPlayTimeText:Landroid/widget/TextView;
+    .line 2186
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxTextSize:I
 
-    invoke-virtual {v0, v3}, Landroid/widget/TextView;->setTextSize(F)V
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setTextSize(I)V
 
-    .line 2050
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureRemainPlayTimeText:Landroid/widget/TextView;
-
-    invoke-virtual {v0, v3}, Landroid/widget/TextView;->setTextSize(F)V
-
-    .line 2051
+    .line 2187
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
@@ -6973,7 +9027,7 @@
 
     if-nez v0, :cond_4
 
-    .line 2052
+    .line 2188
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
@@ -6982,12 +9036,12 @@
 
     if-nez v0, :cond_0
 
-    .line 2053
+    .line 2189
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showMainView(Landroid/view/View;)V
 
-    .line 2055
+    .line 2191
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
@@ -6997,28 +9051,28 @@
 
     if-eqz v0, :cond_1
 
-    .line 2056
+    .line 2192
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3f6
+    const/16 v1, 0x3f4
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2057
+    .line 2193
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
     const/16 v1, 0x8
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 2058
+    .line 2194
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->hideViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 2060
+    .line 2196
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
 
@@ -7036,57 +9090,57 @@
 
     if-eqz v0, :cond_3
 
-    .line 2061
+    .line 2197
     :cond_2
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3ef
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2198
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0x3f1
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2062
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const/16 v1, 0x3f3
-
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 2063
+    .line 2199
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 2064
+    .line 2200
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 2066
+    .line 2202
     :cond_3
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setProgress()J
 
-    .line 2067
+    .line 2203
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
-    invoke-virtual {v0, v4}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+    invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 2068
+    .line 2204
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
-    invoke-virtual {v0, v4}, Landroid/widget/SeekBar;->setVisibility(I)V
+    invoke-virtual {v0, v3}, Landroid/widget/SeekBar;->setVisibility(I)V
 
-    .line 2074
+    .line 2210
     :cond_4
     :goto_0
     return-void
 
-    .line 2071
+    .line 2207
     :cond_5
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 2072
+    .line 2208
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
     invoke-virtual {v0, v2}, Landroid/widget/SeekBar;->setVisibility(I)V
@@ -7095,35 +9149,35 @@
 .end method
 
 .method private updateLightUI()V
-    .locals 5
+    .locals 4
 
     .prologue
-    const/16 v4, 0x3f3
-
     const/4 v3, 0x4
 
     const/16 v2, 0x8
 
-    .line 1922
+    .line 2067
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    invoke-virtual {v0, v4}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 1923
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const/16 v1, 0x3f2
+    const/16 v1, 0x3f1
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1924
+    .line 2068
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3fb
+    const/16 v1, 0x3f0
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1925
+    .line 2069
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f9
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2070
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
@@ -7132,42 +9186,42 @@
 
     if-nez v0, :cond_0
 
-    .line 1926
+    .line 2071
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showMainView(Landroid/view/View;)V
 
-    .line 1927
+    .line 2072
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 1928
+    .line 2073
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 1929
+    .line 2074
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1930
+    .line 2075
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1931
+    .line 2076
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1932
+    .line 2077
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTrackButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1934
+    .line 2079
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
 
@@ -7177,12 +9231,12 @@
 
     if-eqz v0, :cond_1
 
-    .line 1935
+    .line 2080
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 1937
+    .line 2082
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
@@ -7192,26 +9246,19 @@
 
     if-eqz v0, :cond_2
 
-    .line 1938
+    .line 2083
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3f6
+    const/16 v1, 0x3f4
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1939
+    .line 2084
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
     invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 1940
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
-
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->hideViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
-
-    .line 1942
+    .line 2086
     :cond_2
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
@@ -7219,58 +9266,37 @@
 
     move-result v0
 
-    if-nez v0, :cond_3
+    if-eqz v0, :cond_3
 
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
-
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_4
-
-    .line 1943
-    :cond_3
+    .line 2087
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 1944
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    .line 1945
+    .line 2088
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
     invoke-virtual {v0, v3}, Landroid/widget/SeekBar;->setVisibility(I)V
 
-    .line 1947
-    :cond_4
+    .line 2090
+    :cond_3
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
 
     move-result v0
 
-    if-nez v0, :cond_5
+    if-nez v0, :cond_4
 
-    .line 1948
+    .line 2091
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3f4
+    const/16 v1, 0x3f2
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 1950
-    :cond_5
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const-wide/16 v1, 0x3e8
-
-    invoke-virtual {v0, v4, v1, v2}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
-
-    .line 1951
+    .line 2093
+    :cond_4
     return-void
 .end method
 
@@ -7279,9 +9305,9 @@
     .parameter
 
     .prologue
-    const/16 v5, 0x3f3
+    const/16 v5, 0x3f1
 
-    const/16 v4, 0x3f2
+    const/16 v4, 0x3f0
 
     const/16 v3, 0x8
 
@@ -7289,10 +9315,10 @@
 
     const/4 v2, 0x4
 
-    .line 1998
+    .line 2138
     if-eqz p1, :cond_9
 
-    .line 1999
+    .line 2139
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
@@ -7301,12 +9327,12 @@
 
     if-nez v0, :cond_0
 
-    .line 2000
+    .line 2140
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showMainView(Landroid/view/View;)V
 
-    .line 2002
+    .line 2142
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
@@ -7316,26 +9342,26 @@
 
     if-eqz v0, :cond_1
 
-    .line 2003
+    .line 2143
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3f6
+    const/16 v1, 0x3f4
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2004
+    .line 2144
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
     invoke-virtual {v0, v3}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 2005
+    .line 2145
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->hideViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 2007
+    .line 2147
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
@@ -7353,62 +9379,62 @@
 
     if-eqz v0, :cond_5
 
-    .line 2008
+    .line 2148
     :cond_2
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v4}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2009
+    .line 2149
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v5}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2010
+    .line 2150
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 2011
+    .line 2151
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 2012
+    .line 2152
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
     invoke-virtual {v0, v2}, Landroid/widget/SeekBar;->setVisibility(I)V
 
-    .line 2020
+    .line 2160
     :cond_3
     :goto_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 2021
+    .line 2161
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
 
     if-eqz v0, :cond_7
 
-    .line 2022
+    .line 2162
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
     if-eqz v0, :cond_6
 
-    .line 2023
+    .line 2163
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
 
-    const v1, 0x7f0200dd
+    const v1, 0x7f0200da
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
 
-    .line 2044
+    .line 2181
     :cond_4
     :goto_1
     return-void
 
-    .line 2013
+    .line 2153
     :cond_5
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
 
@@ -7418,85 +9444,89 @@
 
     if-eqz v0, :cond_3
 
-    .line 2014
+    .line 2154
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v4}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2015
+    .line 2155
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v5}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2016
+    .line 2156
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 2017
+    .line 2157
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 2018
+    .line 2158
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
     invoke-virtual {v0, v2}, Landroid/widget/SeekBar;->setVisibility(I)V
 
     goto :goto_0
 
-    .line 2025
+    .line 2165
     :cond_6
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
 
-    const v1, 0x7f0200de
+    const v1, 0x7f0200db
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
 
     goto :goto_1
 
-    .line 2028
+    .line 2168
     :cond_7
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
 
     if-eqz v0, :cond_8
 
-    .line 2029
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSilent:Z
+
+    if-nez v0, :cond_8
+
+    .line 2169
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
 
-    const v1, 0x7f0200dd
+    const v1, 0x7f0200da
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
 
     goto :goto_1
 
-    .line 2031
+    .line 2171
     :cond_8
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
 
-    const v1, 0x7f0200de
+    const v1, 0x7f0200db
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
 
     goto :goto_1
 
-    .line 2036
+    .line 2175
     :cond_9
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v1}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 2037
+    .line 2176
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, v3}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 2038
+    .line 2177
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsConfigChange:Z
 
     if-eqz v0, :cond_4
 
-    .line 2039
+    .line 2178
     iput-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsConfigChange:Z
 
     goto :goto_1
@@ -7506,16 +9536,16 @@
     .locals 1
 
     .prologue
-    .line 2814
+    .line 2963
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->hidden:Z
 
     if-eqz v0, :cond_0
 
-    .line 2818
+    .line 2967
     :goto_0
     return-void
 
-    .line 2817
+    .line 2966
     :cond_0
     invoke-virtual {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->requestLayout()V
 
@@ -7523,39 +9553,39 @@
 .end method
 
 .method private updateVolumeUI()V
-    .locals 7
+    .locals 6
 
     .prologue
-    const v6, 0x7f0200de
+    const v5, 0x7f0200db
 
-    const v5, 0x7f0200dd
-
-    const/16 v4, 0x3fb
+    const v4, 0x7f0200da
 
     const/4 v3, 0x4
 
     const/16 v2, 0x8
 
-    .line 1953
+    .line 2095
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3f3
+    const/16 v1, 0x3f1
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1954
+    .line 2096
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3f2
+    const/16 v1, 0x3f0
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1955
+    .line 2097
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    invoke-virtual {v0, v4}, Landroid/os/Handler;->removeMessages(I)V
+    const/16 v1, 0x3f9
 
-    .line 1956
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2098
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
@@ -7564,42 +9594,42 @@
 
     if-nez v0, :cond_0
 
-    .line 1957
+    .line 2099
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showMainView(Landroid/view/View;)V
 
-    .line 1958
+    .line 2100
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 1959
+    .line 2101
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 1960
+    .line 2102
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1961
+    .line 2103
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1962
+    .line 2104
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1963
+    .line 2105
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTrackButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1965
+    .line 2107
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
 
@@ -7609,28 +9639,28 @@
 
     if-eqz v0, :cond_1
 
-    .line 1966
+    .line 2108
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 1968
+    .line 2110
     :cond_1
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
 
-    if-eqz v0, :cond_7
-
-    .line 1969
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
-
     if-eqz v0, :cond_6
 
-    .line 1970
+    .line 2111
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
+
+    if-eqz v0, :cond_5
+
+    .line 2112
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
 
-    invoke-virtual {v0, v5}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
+    invoke-virtual {v0, v4}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
 
-    .line 1981
+    .line 2123
     :goto_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
@@ -7640,26 +9670,26 @@
 
     if-eqz v0, :cond_2
 
-    .line 1982
+    .line 2124
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3f6
+    const/16 v1, 0x3f4
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1983
+    .line 2125
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
     invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 1984
+    .line 2126
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->hideViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 1986
+    .line 2128
     :cond_2
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
@@ -7667,105 +9697,88 @@
 
     move-result v0
 
-    if-nez v0, :cond_3
+    if-eqz v0, :cond_3
 
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
-
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_4
-
-    .line 1987
-    :cond_3
+    .line 2129
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 1988
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    .line 1989
+    .line 2130
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
     invoke-virtual {v0, v3}, Landroid/widget/SeekBar;->setVisibility(I)V
 
-    .line 1991
-    :cond_4
+    .line 2132
+    :cond_3
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
 
     move-result v0
 
-    if-nez v0, :cond_5
+    if-nez v0, :cond_4
 
-    .line 1992
+    .line 2133
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3fa
+    const/16 v1, 0x3f8
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 1994
-    :cond_5
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const-wide/16 v1, 0x3e8
-
-    invoke-virtual {v0, v4, v1, v2}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
-
-    .line 1995
+    .line 2135
+    :cond_4
     return-void
 
-    .line 1972
-    :cond_6
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
-
-    invoke-virtual {v0, v6}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
-
-    goto :goto_0
-
-    .line 1975
-    :cond_7
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
-
-    if-eqz v0, :cond_8
-
-    .line 1976
+    .line 2114
+    :cond_5
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v5}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
 
     goto :goto_0
 
-    .line 1978
-    :cond_8
+    .line 2117
+    :cond_6
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
+
+    if-eqz v0, :cond_7
+
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSilent:Z
+
+    if-nez v0, :cond_7
+
+    .line 2118
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
 
-    invoke-virtual {v0, v6}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
+    invoke-virtual {v0, v4}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
+
+    goto :goto_0
+
+    .line 2120
+    :cond_7
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
+
+    invoke-virtual {v0, v5}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
 
     goto :goto_0
 .end method
 
 .method private zoomScaleEvent(Landroid/view/MotionEvent;)V
     .locals 7
-    .parameter "event"
+    .parameter
 
     .prologue
-    const/16 v6, 0x3f6
+    const/16 v6, 0x3f4
 
     const/4 v5, 0x1
 
     const/4 v4, 0x0
 
-    .line 2468
+    .line 2560
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initZoomParams()V
 
-    .line 2469
+    .line 2561
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getAction()I
 
     move-result v0
@@ -7774,103 +9787,78 @@
 
     packed-switch v0, :pswitch_data_0
 
-    .line 2510
+    .line 2597
     :cond_0
     :goto_0
     :pswitch_0
     return-void
 
-    .line 2471
+    .line 2563
     :pswitch_1
     iput v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomScaleMode:I
 
     goto :goto_0
 
-    .line 2476
+    .line 2568
     :pswitch_2
     iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomScaleMode:I
 
-    .line 2477
+    .line 2569
     iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomCount:I
 
-    .line 2478
+    .line 2570
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScaleMode:Z
 
     if-eqz v0, :cond_0
 
-    .line 2479
-    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
-
-    iget-wide v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxZoomValue:D
-
-    cmpl-double v0, v0, v2
-
-    if-ltz v0, :cond_1
-
-    .line 2480
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
-
-    iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
-
-    invoke-interface {v0, v1, v2}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setVideoZoomDamp(D)V
-
-    .line 2481
-    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxZoomValue:D
-
-    iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
-
-    .line 2482
-    invoke-direct {p0, v5}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setZoomIcon(Z)V
-
-    .line 2484
-    :cond_1
+    .line 2571
     iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     iget-wide v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMinZoomValue:D
 
     cmpg-double v0, v0, v2
 
-    if-gtz v0, :cond_2
+    if-gtz v0, :cond_1
 
-    .line 2485
+    .line 2572
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     invoke-interface {v0, v1, v2}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setVideoZoomDamp(D)V
 
-    .line 2486
+    .line 2573
     iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMinZoomValue:D
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
-    .line 2487
+    .line 2575
+    :cond_1
     invoke-direct {p0, v5}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setZoomIcon(Z)V
 
-    .line 2489
-    :cond_2
+    .line 2576
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v6}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2490
+    .line 2577
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     const-wide/16 v1, 0x3e8
 
     invoke-virtual {v0, v6, v1, v2}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 2491
+    .line 2578
     iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScaleMode:Z
 
-    .line 2492
+    .line 2579
     const-wide/high16 v0, -0x4010
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldLevel:D
 
     goto :goto_0
 
-    .line 2498
+    .line 2585
     :pswitch_3
     invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->spacing(Landroid/view/MotionEvent;)F
 
@@ -7878,7 +9866,7 @@
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownDist:F
 
-    .line 2499
+    .line 2586
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownDist:F
 
     const/high16 v1, 0x4120
@@ -7887,25 +9875,25 @@
 
     if-lez v0, :cond_0
 
-    .line 2500
+    .line 2587
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomScaleMidPoint:Landroid/graphics/PointF;
 
     invoke-direct {p0, v0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->midPoint(Landroid/graphics/PointF;Landroid/view/MotionEvent;)V
 
-    .line 2501
+    .line 2588
     const/4 v0, 0x2
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomScaleMode:I
 
     goto :goto_0
 
-    .line 2506
+    .line 2593
     :pswitch_4
     invoke-virtual {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->onMoveEvent(Landroid/view/MotionEvent;)V
 
     goto :goto_0
 
-    .line 2469
+    .line 2561
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_1
@@ -7927,23 +9915,23 @@
     .prologue
     const/16 v3, 0x3e9
 
-    .line 1372
+    .line 1450
     if-eqz p1, :cond_0
 
-    .line 1373
+    .line 1451
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v3}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1378
+    .line 1456
     :goto_0
     return-void
 
-    .line 1375
+    .line 1453
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const-wide/16 v1, 0xbb8
+    const-wide/16 v1, 0x1388
 
     invoke-virtual {v0, v3, v1, v2}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
@@ -7956,12 +9944,12 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 2825
+    .line 2977
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     if-eqz v0, :cond_0
 
-    .line 2826
+    .line 2978
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     invoke-interface {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->getHdmiState()Z
@@ -7970,7 +9958,7 @@
 
     iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
 
-    .line 2828
+    .line 2980
     :cond_0
     const-string v0, "hdmi"
 
@@ -7994,63 +9982,75 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v1}, Lcom/android/gallery3d/ui/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2829
+    .line 2981
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setHdmiScreenLight()V
+
+    .line 2982
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
 
     if-eqz v0, :cond_2
 
-    .line 2830
+    .line 2983
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v3}, Landroid/widget/ImageButton;->setEnabled(Z)V
 
-    .line 2831
+    .line 2984
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     sget-object v1, Lcom/android/gallery3d/app/MovieActivity$SensorRotation;->VIDEO_ORIENTATION_LANDSCAPE:Lcom/android/gallery3d/app/MovieActivity$SensorRotation;
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->lockScreenSensor(Lcom/android/gallery3d/app/MovieActivity$SensorRotation;)V
 
-    .line 2833
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
-
-    invoke-interface {v0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->setWinBrightness(I)V
-
-    .line 2834
+    .line 2986
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     sget-object v1, Landroid/widget/VideoView$ZoomType;->ZOOM_HDMI:Landroid/widget/VideoView$ZoomType;
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setVideoZoomType(Landroid/widget/VideoView$ZoomType;)V
 
-    .line 2835
+    .line 2987
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
 
     if-nez v0, :cond_1
 
-    .line 2836
+    .line 2988
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
     const/16 v1, 0x8
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 2837
+    .line 2989
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
 
     if-eqz v0, :cond_1
 
-    .line 2838
-    invoke-virtual {p0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideSelectList(Z)V
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
 
-    .line 2857
+    if-eqz v0, :cond_1
+
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    invoke-virtual {v0}, Landroid/app/AlertDialog;->isShowing()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 2990
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    invoke-virtual {v0}, Landroid/app/AlertDialog;->dismiss()V
+
+    .line 3009
     :cond_1
     :goto_0
     return-void
 
-    .line 2842
+    .line 2994
     :cond_2
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightButton:Landroid/widget/ImageButton;
 
@@ -8058,47 +10058,47 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setEnabled(Z)V
 
-    .line 2843
+    .line 2995
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setScreenSensor()V
 
-    .line 2844
+    .line 2996
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
 
     if-eqz v0, :cond_3
 
-    .line 2845
+    .line 2997
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     sget-object v1, Landroid/widget/VideoView$ZoomType;->ZOOM_LEVEL:Landroid/widget/VideoView$ZoomType;
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setVideoZoomType(Landroid/widget/VideoView$ZoomType;)V
 
-    .line 2846
+    .line 2998
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     invoke-interface {v0, v1, v2, v3}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setVideoZoomLevel(DZ)V
 
-    .line 2850
+    .line 3002
     :goto_1
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceCount:I
 
     if-lez v0, :cond_1
 
-    .line 2851
+    .line 3003
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
 
     if-eqz v0, :cond_1
 
-    .line 2852
+    .line 3004
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v3}, Landroid/widget/ImageButton;->setVisibility(I)V
 
     goto :goto_0
 
-    .line 2848
+    .line 3000
     :cond_3
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
@@ -8110,61 +10110,163 @@
 .end method
 
 .method public finishLoading()V
-    .locals 2
+    .locals 4
 
     .prologue
-    .line 1261
+    const/4 v3, 0x4
+
+    const/16 v2, 0x8
+
+    .line 1222
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    invoke-interface {v0}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->isPlaying()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 1223
     sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PLAYING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
-    .line 1262
+    .line 1224
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseButton:Landroid/widget/ImageButton;
 
-    const v1, 0x7f0201a0
+    const v1, 0x7f02019a
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
 
-    .line 1263
-    const/4 v0, 0x0
+    .line 1229
+    :goto_0
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showMainView(Landroid/view/View;)V
 
-    .line 1264
+    .line 1230
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    .line 1231
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    .line 1232
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsM040:Z
+
+    if-eqz v0, :cond_3
+
+    .line 1233
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
+
+    if-eqz v0, :cond_2
+
+    .line 1234
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    .line 1241
+    :goto_1
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRightBottomlayout:Landroid/widget/LinearLayout;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 1242
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRightBottomlayout:Landroid/widget/LinearLayout;
+
+    invoke-virtual {v0, v3}, Landroid/widget/LinearLayout;->setVisibility(I)V
+
+    .line 1244
+    :cond_0
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTrackButton:Landroid/widget/ImageButton;
+
+    invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
+
+    .line 1245
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextButton:Landroid/widget/ImageButton;
+
+    invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
+
+    .line 1246
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
+
+    invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
+
+    .line 1247
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
+
+    invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
+
+    .line 1248
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     const/4 v1, 0x0
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->showSystemTitle(Z)V
 
-    .line 1265
+    .line 1249
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0x3e9
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1266
+    .line 1250
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0x3ea
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1268
+    .line 1252
     return-void
+
+    .line 1226
+    :cond_1
+    sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PAUSED:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+
+    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+
+    .line 1227
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseButton:Landroid/widget/ImageButton;
+
+    const v1, 0x7f02019b
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
+
+    goto :goto_0
+
+    .line 1236
+    :cond_2
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    goto :goto_1
+
+    .line 1239
+    :cond_3
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    goto :goto_1
 .end method
 
-.method public getSelectListShow()Z
+.method public getShowingFlag()Z
     .locals 1
 
     .prologue
-    .line 1403
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
-
-    move-result v0
+    .line 3012
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
 
     return v0
 .end method
@@ -8173,36 +10275,8 @@
     .locals 0
 
     .prologue
-    .line 1258
+    .line 1219
     return-object p0
-.end method
-
-.method public hideDlnaButton()V
-    .locals 2
-
-    .prologue
-    .line 1199
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
-
-    if-eqz v0, :cond_0
-
-    .line 1200
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectList:Landroid/widget/ListView;
-
-    const/4 v1, 0x4
-
-    invoke-virtual {v0, v1}, Landroid/widget/ListView;->setVisibility(I)V
-
-    .line 1202
-    :cond_0
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
-
-    const/16 v1, 0x8
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setVisibility(I)V
-
-    .line 1203
-    return-void
 .end method
 
 .method public hidePopMenu(Z)V
@@ -8212,29 +10286,29 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 1380
+    .line 1458
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCanGesture:Z
 
-    .line 1381
+    .line 1459
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
 
     invoke-virtual {v0}, Landroid/widget/PopupMenu;->dismiss()V
 
-    .line 1382
+    .line 1460
     iput-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsTimeTextListShow:Z
 
-    .line 1383
+    .line 1461
     iput-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAudioTrackListShow:Z
 
-    .line 1384
+    .line 1462
     iput-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
 
-    .line 1385
+    .line 1463
     iput-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuShowing:Z
 
-    .line 1386
+    .line 1464
     if-eqz p1, :cond_0
 
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
@@ -8243,149 +10317,115 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 1387
+    .line 1465
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->maybeStartHiding()V
 
-    .line 1389
-    :cond_0
-    return-void
-.end method
-
-.method public hideSelectList(Z)V
-    .locals 3
-    .parameter "isFromPlayer"
-
-    .prologue
-    const/4 v2, 0x0
-
-    .line 1391
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCanGesture:Z
-
-    .line 1392
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->hideAlphaAndScale(Landroid/content/Context;Landroid/view/View;)V
-
-    .line 1393
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    const/4 v1, 0x4
-
-    invoke-virtual {v0, v1}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    .line 1394
-    iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsTimeTextListShow:Z
-
-    .line 1395
-    iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAudioTrackListShow:Z
-
-    .line 1396
-    iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
-
-    .line 1397
-    if-eqz p1, :cond_0
-
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
-
-    sget-object v1, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PLAYING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
-
-    if-ne v0, v1, :cond_0
-
-    .line 1398
-    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->maybeStartHiding()V
-
-    .line 1400
+    .line 1467
     :cond_0
     return-void
 .end method
 
 .method public initPreNextVideo()V
-    .locals 4
+    .locals 3
 
     .prologue
-    const/4 v3, 0x1
-
     const/4 v2, 0x0
 
     const/16 v1, 0x8
 
-    .line 1236
+    .line 1194
     iput v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIndex:I
 
-    .line 1237
+    .line 1195
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     invoke-interface {v0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->showSystemTitle(Z)V
 
-    .line 1238
-    invoke-direct {p0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideControllAni(Z)V
+    .line 1196
+    invoke-direct {p0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideControllAni(Z)V
 
-    .line 1239
-    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsPreNext:Z
+    .line 1197
+    const/4 v0, 0x1
 
-    .line 1240
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
+    iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsPreNext:Z
 
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+    .line 1198
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    invoke-virtual {v0}, Landroid/app/AlertDialog;->isShowing()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 1241
-    invoke-virtual {p0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideSelectList(Z)V
+    .line 1199
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
 
-    .line 1243
+    invoke-virtual {v0}, Landroid/app/AlertDialog;->dismiss()V
+
+    .line 1201
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1244
+    .line 1202
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTrackButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1245
+    .line 1203
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1246
+    .line 1204
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
 
     if-nez v0, :cond_1
 
-    .line 1247
+    .line 1205
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 1249
+    .line 1207
     :cond_1
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRecZoom:D
 
-    .line 1250
+    .line 1208
     const-wide/high16 v0, 0x3ff0
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
-    .line 1251
+    .line 1209
     return-void
 .end method
 
 .method public onAnimationEnd(Landroid/view/animation/Animation;)V
-    .locals 0
+    .locals 2
     .parameter "animation"
 
     .prologue
-    .line 1434
+    .line 1497
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3ea
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 1498
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAnimationStarting:Z
+
+    .line 1499
     return-void
 .end method
 
@@ -8394,306 +10434,166 @@
     .parameter "animation"
 
     .prologue
-    .line 1431
+    .line 1494
     return-void
 .end method
 
 .method public onAnimationStart(Landroid/view/animation/Animation;)V
-    .locals 0
+    .locals 2
     .parameter "animation"
 
     .prologue
-    .line 1427
+    .line 1489
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3ea
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 1490
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAnimationStarting:Z
+
+    .line 1491
     return-void
 .end method
 
 .method public onConfigurationChanged(Landroid/content/res/Configuration;)V
-    .locals 8
+    .locals 7
     .parameter
 
     .prologue
-    const/16 v3, 0x3f3
-
-    const/16 v7, 0x8
-
     const/4 v6, 0x1
 
     const/4 v5, 0x4
 
     const/4 v4, 0x0
 
-    .line 2727
-    invoke-virtual {p0, v6}, Lcom/android/gallery3d/app/MovieControllerOverlay;->cancelHiding(Z)V
+    const/16 v3, 0x8
 
-    .line 2728
-    invoke-direct {p0, v4}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideControllAni(Z)V
+    .line 2890
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
 
-    .line 2729
-    iput-boolean v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsConfigChange:Z
+    if-eqz v0, :cond_0
 
-    .line 2730
-    new-instance v0, Landroid/widget/RelativeLayout$LayoutParams;
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
 
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
+    invoke-virtual {v0}, Landroid/app/AlertDialog;->isShowing()Z
 
-    invoke-virtual {v1}, Landroid/widget/RelativeLayout;->getWidth()I
+    move-result v0
 
-    move-result v1
+    if-eqz v0, :cond_0
 
-    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
+    .line 2891
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
 
-    invoke-virtual {v2}, Landroid/widget/RelativeLayout;->getHeight()I
+    invoke-virtual {v0}, Landroid/app/AlertDialog;->dismiss()V
 
-    move-result v2
-
-    invoke-direct {v0, v1, v2}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
-
-    .line 2731
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
-
-    if-eqz v1, :cond_0
-
-    .line 2732
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
-
-    invoke-interface {v1, v4}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->showSystemTitle(Z)V
-
-    .line 2733
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
-
-    invoke-interface {v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->turnOffLed()V
-
-    .line 2735
+    .line 2893
     :cond_0
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
+    iget v0, p1, Landroid/content/res/Configuration;->orientation:I
 
-    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+    const/4 v1, 0x2
 
-    move-result v1
+    if-ne v0, v1, :cond_1
 
-    if-eqz v1, :cond_1
-
-    .line 2736
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v1, v5}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    .line 2738
-    :cond_1
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
-
-    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    .line 2739
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    invoke-virtual {v1, v3}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 2740
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
-
-    invoke-virtual {v1, v5}, Landroid/widget/LinearLayout;->setVisibility(I)V
-
-    .line 2742
-    :cond_2
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
-
-    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_3
-
-    .line 2743
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    invoke-virtual {v1, v3}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 2744
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
-
-    invoke-virtual {v1, v5}, Landroid/widget/LinearLayout;->setVisibility(I)V
-
-    .line 2746
-    :cond_3
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v1, v5}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    .line 2747
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v1, v5}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    .line 2748
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRightBottomlayout:Landroid/widget/LinearLayout;
-
-    invoke-virtual {v1, v7}, Landroid/widget/LinearLayout;->setVisibility(I)V
-
-    .line 2750
-    iget v1, p1, Landroid/content/res/Configuration;->orientation:I
-
-    const/4 v2, 0x2
-
-    if-ne v1, v2, :cond_4
-
-    .line 2751
+    .line 2894
     iput-boolean v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
 
-    .line 2752
-    iget-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
+    .line 2895
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
 
-    if-eqz v1, :cond_7
+    if-eqz v0, :cond_3
 
-    .line 2753
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+    .line 2896
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
-    sget-object v2, Landroid/widget/VideoView$ZoomType;->ZOOM_HDMI:Landroid/widget/VideoView$ZoomType;
+    sget-object v1, Landroid/widget/VideoView$ZoomType;->ZOOM_HDMI:Landroid/widget/VideoView$ZoomType;
 
-    invoke-interface {v1, v2}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setVideoZoomType(Landroid/widget/VideoView$ZoomType;)V
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setVideoZoomType(Landroid/widget/VideoView$ZoomType;)V
 
-    .line 2758
+    .line 2901
     :goto_0
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
 
-    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
+    iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenWidth:I
 
-    invoke-virtual {v2}, Landroid/widget/RelativeLayout;->getWidth()I
+    .line 2902
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
 
-    move-result v2
+    iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenHeight:I
 
-    sub-int/2addr v1, v2
+    .line 2903
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
 
-    div-int/lit8 v1, v1, 0x2
+    invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    iget v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
+    .line 2904
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsM040:Z
 
-    iget-object v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
+    if-eqz v0, :cond_4
 
-    invoke-virtual {v3}, Landroid/widget/RelativeLayout;->getHeight()I
+    .line 2905
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalMenuButton:Lcom/meizu/widget/GlowImageButton;
 
-    move-result v3
+    invoke-virtual {v0, v4}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
-    sub-int/2addr v2, v3
+    .line 2906
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalBackButton:Lcom/meizu/widget/GlowImageButton;
 
-    div-int/lit8 v2, v2, 0x2
+    invoke-virtual {v0, v4}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
-    invoke-virtual {v0, v1, v2, v4, v4}, Landroid/widget/RelativeLayout$LayoutParams;->setMargins(IIII)V
+    .line 2913
+    :cond_1
+    :goto_1
+    iget v0, p1, Landroid/content/res/Configuration;->orientation:I
 
-    .line 2759
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
+    if-ne v0, v6, :cond_2
 
-    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenWidth:I
-
-    .line 2760
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
-
-    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenHeight:I
-
-    .line 2761
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v1, v7}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    .line 2762
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalMenuButton:Lcom/meizu/widget/GlowImageButton;
-
-    invoke-virtual {v1, v4}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
-
-    .line 2763
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalBackButton:Lcom/meizu/widget/GlowImageButton;
-
-    invoke-virtual {v1, v4}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
-
-    .line 2766
-    :cond_4
-    iget v1, p1, Landroid/content/res/Configuration;->orientation:I
-
-    if-ne v1, v6, :cond_5
-
-    .line 2767
+    .line 2914
     iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
 
-    .line 2768
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+    .line 2915
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
-    sget-object v2, Landroid/widget/VideoView$ZoomType;->ZOOM_VERTICAL:Landroid/widget/VideoView$ZoomType;
+    sget-object v1, Landroid/widget/VideoView$ZoomType;->ZOOM_VERTICAL:Landroid/widget/VideoView$ZoomType;
 
-    invoke-interface {v1, v2}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setVideoZoomType(Landroid/widget/VideoView$ZoomType;)V
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setVideoZoomType(Landroid/widget/VideoView$ZoomType;)V
 
-    .line 2769
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
+    .line 2916
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
 
-    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
+    iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenWidth:I
 
-    invoke-virtual {v2}, Landroid/widget/RelativeLayout;->getWidth()I
+    .line 2917
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
 
-    move-result v2
+    iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenHeight:I
 
-    sub-int/2addr v1, v2
+    .line 2918
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsM040:Z
 
-    div-int/lit8 v1, v1, 0x2
+    if-eqz v0, :cond_5
 
-    iget v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
+    .line 2919
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalMenuButton:Lcom/meizu/widget/GlowImageButton;
 
-    iget-object v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
+    invoke-virtual {v0, v5}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
-    invoke-virtual {v3}, Landroid/widget/RelativeLayout;->getHeight()I
+    .line 2920
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalBackButton:Lcom/meizu/widget/GlowImageButton;
 
-    move-result v3
+    invoke-virtual {v0, v5}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
-    sub-int/2addr v2, v3
+    .line 2921
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
 
-    div-int/lit8 v2, v2, 0x2
+    invoke-virtual {v0, v5}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    invoke-virtual {v0, v1, v2, v4, v4}, Landroid/widget/RelativeLayout$LayoutParams;->setMargins(IIII)V
-
-    .line 2770
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
-
-    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenWidth:I
-
-    .line 2771
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
-
-    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenHeight:I
-
-    .line 2772
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalMenuButton:Lcom/meizu/widget/GlowImageButton;
-
-    invoke-virtual {v1, v5}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
-
-    .line 2773
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalBackButton:Lcom/meizu/widget/GlowImageButton;
-
-    invoke-virtual {v1, v5}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
-
-    .line 2774
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v1, v5}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    .line 2776
-    :cond_5
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_6
-
-    .line 2777
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v1, v0}, Landroid/widget/RelativeLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
-
-    .line 2779
-    :cond_6
+    .line 2928
+    :cond_2
+    :goto_2
     const-string v0, "onConfigurationChanged"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -8716,217 +10616,59 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v1}, Lcom/android/gallery3d/ui/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2780
+    .line 2929
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->resetLayoutSize()V
 
-    .line 2781
+    .line 2930
     return-void
 
-    .line 2755
-    :cond_7
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
-
-    sget-object v2, Landroid/widget/VideoView$ZoomType;->ZOOM_LEVEL:Landroid/widget/VideoView$ZoomType;
-
-    invoke-interface {v1, v2}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setVideoZoomType(Landroid/widget/VideoView$ZoomType;)V
-
-    .line 2756
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
-
-    iget-wide v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
-
-    invoke-interface {v1, v2, v3, v4}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setVideoZoomLevel(DZ)V
-
-    goto/16 :goto_0
-.end method
-
-.method public onItemClick(Landroid/widget/AdapterView;Landroid/view/View;IJ)V
-    .locals 2
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Landroid/widget/AdapterView",
-            "<*>;",
-            "Landroid/view/View;",
-            "IJ)V"
-        }
-    .end annotation
-
-    .prologue
-    .line 1437
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsBitrateListShow:Z
-
-    if-eqz v0, :cond_1
-
-    .line 1438
-    iput p3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateSelect:I
-
-    .line 1439
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateSelect:I
-
-    invoke-virtual {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;->setSelect(I)V
-
-    .line 1440
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateSelect:I
-
-    if-nez v0, :cond_0
-
-    .line 1441
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
-
-    const v1, 0x7f0200a4
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
-
-    .line 1445
-    :goto_0
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-    invoke-virtual {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;->notifyDataSetChanged()V
-
-    .line 1446
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    const/4 v1, 0x4
-
-    invoke-virtual {v0, v1}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    .line 1447
+    .line 2898
+    :cond_3
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateSelect:I
+    sget-object v1, Landroid/widget/VideoView$ZoomType;->ZOOM_LEVEL:Landroid/widget/VideoView$ZoomType;
 
-    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setBitrateIndex(I)V
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setVideoZoomType(Landroid/widget/VideoView$ZoomType;)V
 
-    .line 1448
-    const/4 v0, 0x0
+    .line 2899
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
-    iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+    iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
-    .line 1475
-    :goto_1
-    return-void
-
-    .line 1443
-    :cond_0
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
-
-    const v1, 0x7f0200d6
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
+    invoke-interface {v0, v1, v2, v4}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setVideoZoomLevel(DZ)V
 
     goto :goto_0
 
-    .line 1451
-    :cond_1
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAudioTrackListShow:Z
-
-    if-eqz v0, :cond_2
-
-    .line 1452
-    iput p3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioTrackSelect:I
-
-    .line 1453
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioTrackSelect:I
-
-    invoke-virtual {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;->setSelect(I)V
-
-    .line 1454
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
-
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioTrackSelect:I
-
-    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setAudioTrackIndex(I)V
-
-    .line 1456
-    :cond_2
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsTimeTextListShow:Z
-
-    if-eqz v0, :cond_3
-
-    .line 1457
-    iput p3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextSelect:I
-
-    .line 1458
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextSelect:I
-
-    invoke-virtual {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;->setSelect(I)V
-
-    .line 1459
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
-
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextSelect:I
-
-    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setTimeTextIndex(I)V
-
-    .line 1461
-    :cond_3
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
-
-    if-eqz v0, :cond_4
-
-    .line 1462
-    iput p3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceSelect:I
-
-    .line 1463
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-    invoke-virtual {v0, p3}, Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;->setSelect(I)V
-
-    .line 1464
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
-
-    invoke-interface {v0, p3}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->selectDlnaDevice(I)V
-
-    .line 1465
-    if-lez p3, :cond_5
-
-    .line 1466
-    sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PAUSED:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
-
-    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
-
-    .line 1473
+    .line 2908
     :cond_4
-    :goto_2
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalMenuButton:Lcom/meizu/widget/GlowImageButton;
 
-    invoke-virtual {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;->notifyDataSetChanged()V
+    invoke-virtual {v0, v3}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
-    .line 1474
-    const/4 v0, 0x1
+    .line 2909
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalBackButton:Lcom/meizu/widget/GlowImageButton;
 
-    invoke-virtual {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideSelectList(Z)V
+    invoke-virtual {v0, v3}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
     goto :goto_1
 
-    .line 1468
+    .line 2923
     :cond_5
-    sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PLAYING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalMenuButton:Lcom/meizu/widget/GlowImageButton;
 
-    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+    invoke-virtual {v0, v3}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
-    .line 1469
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseButton:Landroid/widget/ImageButton;
+    .line 2924
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHorizontalBackButton:Lcom/meizu/widget/GlowImageButton;
 
-    const v1, 0x7f0201a0
+    invoke-virtual {v0, v3}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
 
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
+    .line 2925
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
 
-    .line 1470
-    invoke-virtual {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->resetVolumeBar()V
+    invoke-virtual {v0, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
     goto :goto_2
 .end method
@@ -8942,17 +10684,17 @@
     .prologue
     const/4 v6, 0x0
 
-    .line 2786
+    .line 2935
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineVideo:Z
 
     if-eqz v0, :cond_1
 
-    .line 2787
+    .line 2936
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLetvLogo:Landroid/widget/ImageView;
 
     invoke-virtual {v0, v6}, Landroid/widget/ImageView;->setVisibility(I)V
 
-    .line 2791
+    .line 2940
     :goto_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->loadingView:Landroid/view/View;
 
@@ -9006,17 +10748,17 @@
 
     invoke-virtual {v0, v1, v2, v3, v4}, Landroid/view/View;->layout(IIII)V
 
-    .line 2792
+    .line 2941
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     invoke-virtual {v0, v6, v6, p4, p5}, Landroid/view/View;->layout(IIII)V
 
-    .line 2793
+    .line 2942
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mainView:Landroid/view/View;
 
     if-eqz v0, :cond_0
 
-    .line 2794
+    .line 2943
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mainView:Landroid/view/View;
 
     move-object v0, p0
@@ -9031,11 +10773,11 @@
 
     invoke-direct/range {v0 .. v5}, Lcom/android/gallery3d/app/MovieControllerOverlay;->layoutCenteredView(Landroid/view/View;IIII)V
 
-    .line 2796
+    .line 2945
     :cond_0
     return-void
 
-    .line 2789
+    .line 2938
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLetvLogo:Landroid/widget/ImageView;
 
@@ -9052,149 +10794,165 @@
     .parameter "heightMeasureSpec"
 
     .prologue
-    .line 2809
+    .line 2958
     invoke-super {p0, p1, p2}, Landroid/widget/FrameLayout;->onMeasure(II)V
 
-    .line 2810
+    .line 2959
     invoke-virtual {p0, p1, p2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->measureChildren(II)V
 
-    .line 2811
+    .line 2960
     return-void
 .end method
 
 .method public onMoveEvent(Landroid/view/MotionEvent;)V
-    .locals 10
+    .locals 13
     .parameter
 
     .prologue
-    .line 2512
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomScaleMode:I
+    const/high16 v4, 0x4248
 
-    const/4 v1, 0x2
+    const-wide/16 v8, 0x0
 
-    if-ne v0, v1, :cond_3
+    const-wide v11, 0x3fecccccc0000000L
 
-    .line 2513
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureZoomMode:Z
-
-    .line 2514
     const/4 v0, 0x0
 
+    const/4 v10, 0x1
+
+    .line 2599
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomScaleMode:I
+
+    const/4 v2, 0x2
+
+    if-ne v1, v2, :cond_3
+
+    .line 2600
+    iput-boolean v10, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureZoomMode:Z
+
+    .line 2601
     invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->getX(I)F
 
-    move-result v0
-
-    const/4 v1, 0x1
-
-    invoke-virtual {p1, v1}, Landroid/view/MotionEvent;->getX(I)F
-
     move-result v1
 
-    sub-float/2addr v0, v1
-
-    .line 2515
-    const/4 v1, 0x0
-
-    invoke-virtual {p1, v1}, Landroid/view/MotionEvent;->getY(I)F
-
-    move-result v1
-
-    const/4 v2, 0x1
-
-    invoke-virtual {p1, v2}, Landroid/view/MotionEvent;->getY(I)F
+    invoke-virtual {p1, v10}, Landroid/view/MotionEvent;->getX(I)F
 
     move-result v2
 
     sub-float/2addr v1, v2
 
-    .line 2516
-    mul-float/2addr v0, v0
+    .line 2602
+    invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->getY(I)F
 
-    mul-float/2addr v1, v1
+    move-result v2
 
-    add-float/2addr v0, v1
-
-    invoke-static {v0}, Landroid/util/FloatMath;->sqrt(F)F
+    invoke-virtual {p1, v10}, Landroid/view/MotionEvent;->getY(I)F
 
     move-result v3
 
-    .line 2517
-    const/high16 v0, 0x4248
+    sub-float/2addr v2, v3
 
-    cmpl-float v0, v3, v0
+    .line 2603
+    mul-float/2addr v1, v1
 
-    if-lez v0, :cond_3
+    mul-float/2addr v2, v2
 
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownDist:F
+    add-float/2addr v1, v2
 
-    sub-float v0, v3, v0
+    invoke-static {v1}, Landroid/util/FloatMath;->sqrt(F)F
 
-    invoke-static {v0}, Ljava/lang/Math;->abs(F)F
+    move-result v3
 
-    move-result v0
+    .line 2604
+    cmpl-float v1, v3, v4
 
-    const/high16 v1, 0x4248
+    if-lez v1, :cond_3
 
-    cmpl-float v0, v0, v1
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownDist:F
 
-    if-lez v0, :cond_3
+    sub-float v1, v3, v1
 
-    .line 2518
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+    invoke-static {v1}, Ljava/lang/Math;->abs(F)F
 
-    const/16 v1, 0x3f6
+    move-result v1
 
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+    cmpl-float v1, v1, v4
 
-    .line 2519
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+    if-lez v1, :cond_3
 
-    invoke-virtual {v0}, Landroid/widget/TextView;->getVisibility()I
+    .line 2605
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    move-result v0
+    const/16 v2, 0x3f4
 
-    const/16 v1, 0x8
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->removeMessages(I)V
 
-    if-ne v0, v1, :cond_0
-
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
-
-    if-nez v0, :cond_0
-
-    .line 2520
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
-
-    const/4 v1, 0x0
-
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setVisibility(I)V
-
-    .line 2521
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
-
-    invoke-virtual {v0}, Landroid/widget/TextView;->invalidate()V
-
-    .line 2522
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
-
-    invoke-virtual {v0}, Landroid/widget/TextView;->requestLayout()V
-
-    .line 2523
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
+    .line 2606
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->showViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
+    invoke-virtual {v1}, Landroid/widget/TextView;->getVisibility()I
 
-    .line 2525
+    move-result v1
+
+    const/16 v2, 0x8
+
+    if-ne v1, v2, :cond_1
+
+    iget-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+
+    if-nez v1, :cond_1
+
+    .line 2607
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
+
+    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    .line 2608
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v2, 0x3f0
+
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 2609
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v2, 0x3f0
+
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    .line 2611
     :cond_0
-    const/4 v0, 0x1
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
-    iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScaleMode:Z
+    invoke-virtual {v1, v0}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 2526
-    float-to-double v0, v3
+    .line 2612
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+
+    invoke-virtual {v1}, Landroid/widget/TextView;->invalidate()V
+
+    .line 2613
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+
+    invoke-virtual {v1}, Landroid/widget/TextView;->requestLayout()V
+
+    .line 2614
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+
+    invoke-static {v1, v2}, Lcom/android/gallery3d/app/MovieActivityUtils;->showViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
+
+    .line 2616
+    :cond_1
+    iput-boolean v10, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScaleMode:Z
+
+    .line 2617
+    float-to-double v1, v3
 
     iget-wide v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxZoomValue:D
 
@@ -9202,33 +10960,31 @@
 
     sub-double/2addr v4, v6
 
-    mul-double/2addr v0, v4
+    mul-double/2addr v1, v4
 
     const-wide v4, 0x4082c00000000000L
 
-    div-double v4, v0, v4
+    div-double v4, v1, v4
 
-    .line 2527
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownDist:F
+    .line 2618
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownDist:F
 
-    div-float v0, v3, v0
+    div-float v1, v3, v1
 
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomScale:F
+    iget v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomScale:F
 
-    cmpl-float v0, v0, v1
+    cmpl-float v1, v1, v2
 
-    if-lez v0, :cond_6
+    if-lez v1, :cond_5
 
-    .line 2528
+    .line 2619
     iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldLevel:D
 
-    const-wide/16 v6, 0x0
-
-    cmpl-double v0, v0, v6
+    cmpl-double v0, v0, v8
 
     if-lez v0, :cond_2
 
-    .line 2529
+    .line 2620
     iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevelList:Ljava/util/ArrayList;
@@ -9249,7 +11005,7 @@
 
     if-gez v0, :cond_4
 
-    .line 2530
+    .line 2621
     iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     iget-wide v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldLevel:D
@@ -9264,7 +11020,7 @@
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
-    .line 2531
+    .line 2622
     iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     const/4 v2, 0x4
@@ -9275,123 +11031,59 @@
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
-    .line 2543
-    :cond_1
+    .line 2626
     :goto_0
-    const/4 v0, 0x1
+    invoke-direct {p0, v10}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setZoomIcon(Z)V
 
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setZoomIcon(Z)V
-
-    .line 2566
+    .line 2649
     :cond_2
     :goto_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
-    const/4 v6, 0x1
+    invoke-interface {v0, v1, v2, v10}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setVideoZoomLevel(DZ)V
 
-    invoke-interface {v0, v1, v2, v6}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setVideoZoomLevel(DZ)V
-
-    .line 2567
+    .line 2650
     iput-wide v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldLevel:D
 
-    .line 2568
+    .line 2651
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownDist:F
 
     div-float v0, v3, v0
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomScale:F
 
-    .line 2572
+    .line 2655
     :cond_3
     return-void
 
-    .line 2533
+    .line 2624
     :cond_4
-    const-wide v1, 0x3f50624dd2f1a9fcL
-
-    .line 2534
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomCount:I
-
-    add-int/lit8 v0, v0, 0x1
-
-    iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomCount:I
-
-    .line 2535
-    const/4 v0, 0x0
-
-    :goto_2
-    iget v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomCount:I
-
-    if-ge v0, v6, :cond_5
-
-    .line 2536
-    const-wide/high16 v6, 0x4024
-
-    div-double/2addr v1, v6
-
-    .line 2535
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_2
-
-    .line 2538
-    :cond_5
-    iget-wide v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
-
-    const-wide v8, 0x3f50624dd2f1a9fcL
-
-    add-double v0, v8, v1
-
-    add-double/2addr v0, v6
-
-    iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
-
-    .line 2539
-    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
-
-    iget-wide v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxZoomValue:D
-
-    const-wide v8, 0x3fb99999a0000000L
-
-    add-double/2addr v6, v8
-
-    cmpl-double v0, v0, v6
-
-    if-ltz v0, :cond_1
-
-    .line 2540
     iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxZoomValue:D
-
-    const-wide v6, 0x3fb99999a0000000L
-
-    add-double/2addr v0, v6
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     goto :goto_0
 
-    .line 2546
-    :cond_6
-    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldLevel:D
+    .line 2629
+    :cond_5
+    iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldLevel:D
 
-    const-wide/16 v6, 0x0
+    cmpl-double v1, v1, v8
 
-    cmpl-double v0, v0, v6
+    if-lez v1, :cond_2
 
-    if-lez v0, :cond_2
-
-    .line 2547
-    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
+    .line 2630
+    iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     iget-wide v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMinZoomValue:D
 
-    cmpl-double v0, v0, v6
+    cmpl-double v1, v1, v6
 
-    if-lez v0, :cond_8
+    if-lez v1, :cond_7
 
-    .line 2548
+    .line 2631
     iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     iget-wide v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldLevel:D
@@ -9406,7 +11098,7 @@
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
-    .line 2549
+    .line 2632
     iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     const/4 v2, 0x4
@@ -9417,55 +11109,49 @@
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
-    .line 2563
-    :cond_7
-    :goto_3
-    const/4 v0, 0x1
-
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setZoomIcon(Z)V
+    .line 2646
+    :cond_6
+    :goto_2
+    invoke-direct {p0, v10}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setZoomIcon(Z)V
 
     goto :goto_1
 
-    .line 2551
-    :cond_8
-    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
+    .line 2634
+    :cond_7
+    iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
-    const-wide v6, 0x3fecccccc0000000L
+    cmpl-double v1, v1, v11
 
-    cmpl-double v0, v0, v6
+    if-eqz v1, :cond_6
 
-    if-eqz v0, :cond_7
+    .line 2635
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomCount:I
 
-    .line 2552
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomCount:I
+    add-int/lit8 v1, v1, 0x1
 
-    add-int/lit8 v0, v0, 0x1
+    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomCount:I
 
-    iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomCount:I
-
-    .line 2553
+    .line 2636
     const-wide v1, 0x3f847ae147ae147bL
 
-    .line 2554
-    const/4 v0, 0x0
-
-    :goto_4
+    .line 2637
+    :goto_3
     iget v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomCount:I
 
-    if-ge v0, v6, :cond_9
+    if-ge v0, v6, :cond_8
 
-    .line 2555
+    .line 2638
     const-wide/high16 v6, 0x4024
 
     div-double/2addr v1, v6
 
-    .line 2554
+    .line 2637
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_4
+    goto :goto_3
 
-    .line 2557
-    :cond_9
+    .line 2640
+    :cond_8
     iget-wide v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
     const-wide v8, 0x3f50624dd2f1a9fcL
@@ -9476,46 +11162,44 @@
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
-    .line 2558
+    .line 2641
     iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
-    const-wide v6, 0x3fecccccc0000000L
+    cmpg-double v0, v0, v11
 
-    cmpg-double v0, v0, v6
+    if-gtz v0, :cond_6
 
-    if-gtz v0, :cond_7
+    .line 2642
+    iput-wide v11, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
 
-    .line 2559
-    const-wide v0, 0x3fecccccc0000000L
-
-    iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomLevel:D
-
-    goto :goto_3
+    goto :goto_2
 .end method
 
 .method public onPause()V
-    .locals 4
+    .locals 5
 
     .prologue
+    const/16 v4, 0x8
+
     const/4 v3, 0x0
 
     const/4 v2, 0x4
 
-    .line 529
+    .line 579
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
 
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSysBrightness:I
 
-    if-le v0, v1, :cond_4
+    if-le v0, v1, :cond_6
 
-    .line 530
+    .line 580
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
 
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->saveAppScreenBrightness(Landroid/content/SharedPreferences;I)V
 
-    .line 534
+    .line 584
     :cond_0
     :goto_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
@@ -9524,19 +11208,19 @@
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->saveScreenSensor(Landroid/content/SharedPreferences;Z)V
 
-    .line 535
+    .line 585
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineVideo:Z
 
-    if-eqz v0, :cond_5
+    if-eqz v0, :cond_7
 
-    .line 536
+    .line 586
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
 
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineCompleteMode:I
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->saveOnLineCompleteMode(Landroid/content/SharedPreferences;I)V
 
-    .line 540
+    .line 590
     :goto_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
 
@@ -9544,36 +11228,52 @@
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->saveQueuePlay(Landroid/content/SharedPreferences;Z)V
 
-    .line 541
+    .line 591
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
 
     iget-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsRepeatplay:Z
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->saveReplay(Landroid/content/SharedPreferences;Z)V
 
-    .line 542
+    .line 592
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
 
     if-eqz v0, :cond_1
 
-    .line 543
+    .line 593
     sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PLAYING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
-    .line 544
+    .line 594
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseButton:Landroid/widget/ImageButton;
 
-    const v1, 0x7f0201a0
+    const v1, 0x7f02019a
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
 
-    .line 545
+    .line 595
     iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
 
-    .line 547
+    .line 597
     :cond_1
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsM040:Z
+
+    if-eqz v0, :cond_9
+
+    .line 598
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
+
+    if-eqz v0, :cond_8
+
+    .line 599
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v0, v4}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    .line 607
+    :goto_2
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRightBottomlayout:Landroid/widget/LinearLayout;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
 
@@ -9581,12 +11281,12 @@
 
     if-eqz v0, :cond_2
 
-    .line 548
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
+    .line 608
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRightBottomlayout:Landroid/widget/LinearLayout;
 
-    invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+    invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 551
+    .line 610
     :cond_2
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
 
@@ -9596,168 +11296,215 @@
 
     if-eqz v0, :cond_3
 
-    .line 552
+    .line 611
     invoke-direct {p0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay;->enableMediaControl(Z)V
 
-    .line 553
+    .line 612
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVideoControll:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 554
+    .line 613
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTopPartLayout:Landroid/widget/RelativeLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 556
+    .line 615
     :cond_3
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuShowing:Z
+
+    if-eqz v0, :cond_4
+
+    .line 616
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
+
+    invoke-virtual {v0}, Landroid/widget/PopupMenu;->dismiss()V
+
+    .line 617
+    iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopMenuShowing:Z
+
+    .line 619
+    :cond_4
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    if-eqz v0, :cond_5
+
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    invoke-virtual {v0}, Landroid/app/AlertDialog;->isShowing()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_5
+
+    .line 620
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    invoke-virtual {v0}, Landroid/app/AlertDialog;->dismiss()V
+
+    .line 622
+    :cond_5
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     invoke-virtual {v0, v2}, Landroid/view/View;->setVisibility(I)V
 
-    .line 557
+    .line 623
     iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
 
-    .line 558
+    .line 624
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f7
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    .line 625
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacksAndMessages(Ljava/lang/Object;)V
 
-    .line 559
+    .line 626
     return-void
 
-    .line 531
-    :cond_4
+    .line 581
+    :cond_6
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
 
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSysBrightness:I
 
     if-ge v0, v1, :cond_0
 
-    .line 532
+    .line 582
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
 
     const/4 v1, -0x1
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->saveAppScreenBrightness(Landroid/content/SharedPreferences;I)V
 
-    goto :goto_0
+    goto/16 :goto_0
 
-    .line 538
-    :cond_5
+    .line 588
+    :cond_7
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
 
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsNativeCompleteMode:I
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->saveNativeCompleteMode(Landroid/content/SharedPreferences;I)V
 
-    goto :goto_1
+    goto/16 :goto_1
+
+    .line 601
+    :cond_8
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    goto :goto_2
+
+    .line 604
+    :cond_9
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v0, v4}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    goto :goto_2
 .end method
 
 .method public onPrepared()V
     .locals 2
 
     .prologue
-    .line 503
+    const/16 v1, 0x3e9
+
+    .line 554
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 555
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    .line 556
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setScreenSensor()V
 
-    .line 504
+    .line 557
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setPlayMode()V
 
-    .line 505
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
+    .line 558
+    const/4 v0, 0x0
 
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSysBrightness:I
+    iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAnimationStarting:Z
 
-    if-le v0, v1, :cond_1
+    .line 559
+    invoke-virtual {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->resetVolumeBar()V
 
-    .line 506
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
-
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
-
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->saveAppScreenBrightness(Landroid/content/SharedPreferences;I)V
-
-    .line 510
-    :cond_0
-    :goto_0
-    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->resetScreenLight()V
-
-    .line 511
+    .line 560
     return-void
-
-    .line 507
-    :cond_1
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
-
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSysBrightness:I
-
-    if-ge v0, v1, :cond_0
-
-    .line 508
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPreferences:Landroid/content/SharedPreferences;
-
-    const/4 v1, -0x1
-
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->saveAppScreenBrightness(Landroid/content/SharedPreferences;I)V
-
-    goto :goto_0
 .end method
 
 .method public onResume()V
     .locals 2
 
     .prologue
-    .line 514
+    .line 563
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     sget-object v1, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PLAYING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     if-ne v0, v1, :cond_1
 
-    .line 515
+    .line 564
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseButton:Landroid/widget/ImageButton;
 
-    const v1, 0x7f0201a0
+    const v1, 0x7f02019a
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
 
-    .line 519
+    .line 568
     :goto_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     if-eqz v0, :cond_0
 
-    .line 520
+    .line 569
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     const/4 v1, 0x0
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->showSystemTitle(Z)V
 
-    .line 522
+    .line 571
     :cond_0
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->getSystemSensor()Z
+
+    move-result v0
+
+    iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSystemSensorOn:Z
+
+    .line 572
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setPlayMode()V
 
-    .line 523
+    .line 573
     invoke-virtual {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->resetVolumeBar()V
 
-    .line 524
+    .line 574
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->resetScreenLight()V
 
-    .line 525
+    .line 575
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->resetLayoutSize()V
 
-    .line 526
+    .line 576
     return-void
 
-    .line 517
+    .line 566
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseButton:Landroid/widget/ImageButton;
 
-    const v1, 0x7f0201a1
+    const v1, 0x7f02019b
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
 
@@ -9776,60 +11523,51 @@
 
     const/16 v10, 0x2710
 
-    const/4 v1, 0x0
-
     const/16 v9, 0xff
 
-    .line 1493
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTimeText:Landroid/widget/TextView;
+    const/4 v1, 0x0
 
-    const/high16 v2, 0x4170
+    .line 1553
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxTextSize:I
 
-    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setTextSize(F)V
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setTextSize(I)V
 
-    .line 1494
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRemainPlayTimeText:Landroid/widget/TextView;
-
-    const/high16 v2, 0x4170
-
-    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setTextSize(F)V
-
-    .line 1496
+    .line 1555
     const/high16 v2, 0x4348
 
-    .line 1497
+    .line 1556
     const/high16 v3, 0x43af
 
-    .line 1498
+    .line 1557
     const/high16 v4, 0x43fa
 
-    .line 1499
+    .line 1558
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     const/16 v5, 0x3e8
 
     invoke-virtual {v0, v5}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1500
+    .line 1559
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v12}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1501
+    .line 1560
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v5, 0x3f2
+    const/16 v5, 0x3f0
 
     invoke-virtual {v0, v5}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1503
+    .line 1562
     invoke-virtual {p1}, Landroid/widget/SeekBar;->getProgress()I
 
     move-result v0
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
-    .line 1504
+    .line 1563
     iget-wide v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
 
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
@@ -9844,16 +11582,16 @@
 
     iput-wide v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
 
-    .line 1505
+    .line 1564
     iget-wide v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
 
     iget-wide v7, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
 
     cmp-long v0, v5, v7
 
-    if-ltz v0, :cond_7
+    if-ltz v0, :cond_9
 
-    .line 1506
+    .line 1565
     iget-wide v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
 
     long-to-int v0, v5
@@ -9862,14 +11600,14 @@
 
     iput-wide v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
 
-    .line 1511
+    .line 1570
     :cond_0
     :goto_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureAlreadyPlayTimeText:Landroid/widget/TextView;
 
     if-eqz v0, :cond_1
 
-    .line 1512
+    .line 1571
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureAlreadyPlayTimeText:Landroid/widget/TextView;
 
     iget-wide v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
@@ -9884,7 +11622,7 @@
 
     invoke-virtual {v0, v5}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 1513
+    .line 1572
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTimeText:Landroid/widget/TextView;
 
     iget-wide v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
@@ -9899,13 +11637,13 @@
 
     invoke-virtual {v0, v5}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 1516
+    .line 1575
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureRemainPlayTimeText:Landroid/widget/TextView;
 
     if-eqz v0, :cond_3
 
-    .line 1517
+    .line 1576
     iget-wide v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
 
     iget-wide v7, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
@@ -9914,12 +11652,12 @@
 
     long-to-int v0, v5
 
-    .line 1518
+    .line 1577
     if-gez v0, :cond_2
 
     move v0, v1
 
-    .line 1521
+    .line 1580
     :cond_2
     int-to-long v5, v0
 
@@ -9927,17 +11665,17 @@
 
     move-result-object v0
 
-    .line 1522
+    .line 1581
     iget-object v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureRemainPlayTimeText:Landroid/widget/TextView;
 
     invoke-virtual {v5, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 1523
+    .line 1582
     iget-object v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRemainPlayTimeText:Landroid/widget/TextView;
 
     invoke-virtual {v5, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 1525
+    .line 1584
     :cond_3
     invoke-virtual {p2}, Landroid/view/MotionEvent;->getAction()I
 
@@ -9945,49 +11683,49 @@
 
     const/4 v5, 0x2
 
-    if-ne v0, v5, :cond_c
+    if-ne v0, v5, :cond_f
 
-    .line 1526
+    .line 1585
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDragging:Z
 
-    .line 1527
+    .line 1586
     invoke-virtual {p2}, Landroid/view/MotionEvent;->getX()F
 
     move-result v0
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentX:F
 
-    .line 1528
+    .line 1587
     invoke-virtual {p2}, Landroid/view/MotionEvent;->getY()F
 
     move-result v0
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentY:F
 
-    .line 1529
+    .line 1588
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldX:F
 
     cmpl-float v0, v0, v11
 
     if-nez v0, :cond_4
 
-    .line 1530
+    .line 1589
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentX:F
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldX:F
 
-    .line 1531
+    .line 1590
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentY:F
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldY:F
 
-    .line 1533
+    .line 1592
     :cond_4
     iput v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mThumbAlpha:I
 
-    .line 1534
+    .line 1593
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
 
     invoke-virtual {v0}, Landroid/widget/SeekBar;->getThumb()Landroid/graphics/drawable/Drawable;
@@ -9996,7 +11734,7 @@
 
     invoke-virtual {v0, v9}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 1535
+    .line 1594
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
     invoke-virtual {v0}, Landroid/widget/SeekBar;->getThumb()Landroid/graphics/drawable/Drawable;
@@ -10005,25 +11743,25 @@
 
     invoke-virtual {v0, v9}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 1536
+    .line 1595
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentY:F
 
     const/4 v5, 0x0
 
     cmpl-float v0, v0, v5
 
-    if-lez v0, :cond_8
+    if-lez v0, :cond_a
 
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentY:F
 
     cmpg-float v0, v0, v2
 
-    if-gtz v0, :cond_8
+    if-gtz v0, :cond_a
 
-    .line 1537
+    .line 1596
     const-wide/high16 v2, 0x3ff0
 
-    .line 1545
+    .line 1604
     :goto_1
     const-wide v4, 0x40c3880000000000L
 
@@ -10047,7 +11785,7 @@
 
     div-double/2addr v2, v4
 
-    .line 1546
+    .line 1605
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
     int-to-double v4, v0
@@ -10058,47 +11796,104 @@
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
-    .line 1547
+    .line 1606
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
-    if-le v0, v10, :cond_b
+    if-le v0, v10, :cond_d
 
-    .line 1548
+    .line 1607
     iput v10, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
-    .line 1552
+    .line 1611
     :cond_5
     :goto_2
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
 
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
+    iget v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
-    invoke-virtual {v0, v1}, Landroid/widget/SeekBar;->setProgress(I)V
+    invoke-virtual {v0, v2}, Landroid/widget/SeekBar;->setProgress(I)V
 
-    .line 1553
+    .line 1612
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
+    iget v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
-    invoke-virtual {v0, v1}, Landroid/widget/SeekBar;->setProgress(I)V
+    invoke-virtual {v0, v2}, Landroid/widget/SeekBar;->setProgress(I)V
 
-    .line 1554
+    .line 1613
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    if-eqz v0, :cond_7
+
+    .line 1614
+    iget-wide v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
+
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
+
+    int-to-long v4, v0
+
+    mul-long/2addr v2, v4
+
+    const-wide/16 v4, 0x2710
+
+    div-long/2addr v2, v4
+
+    iput-wide v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    .line 1615
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
+
+    if-nez v0, :cond_7
+
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsOnLineVideo:Z
+
+    if-eqz v0, :cond_6
+
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    invoke-interface {v0}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->isPlaying()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_7
+
+    .line 1616
+    :cond_6
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
+
+    if-eqz v0, :cond_e
+
+    .line 1617
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setDlnaVol(I)V
+
+    .line 1618
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    invoke-interface {v0, v1, v2}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->doDlnaSeek(J)V
+
+    .line 1625
+    :cond_7
+    :goto_3
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentX:F
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldX:F
 
-    .line 1555
+    .line 1626
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentY:F
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldY:F
 
-    .line 1614
-    :cond_6
-    :goto_3
+    .line 1690
+    :cond_8
+    :goto_4
     return-void
 
-    .line 1507
-    :cond_7
+    .line 1566
+    :cond_9
     iget-wide v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
 
     const-wide/16 v7, 0x0
@@ -10107,94 +11902,122 @@
 
     if-gez v0, :cond_0
 
-    .line 1508
+    .line 1567
     const-wide/16 v5, 0x0
 
     iput-wide v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
 
     goto/16 :goto_0
 
-    .line 1538
-    :cond_8
+    .line 1597
+    :cond_a
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentY:F
 
     cmpl-float v0, v0, v2
 
-    if-lez v0, :cond_9
+    if-lez v0, :cond_b
 
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentY:F
 
     cmpg-float v0, v0, v3
 
-    if-gtz v0, :cond_9
+    if-gtz v0, :cond_b
 
-    .line 1539
+    .line 1598
     const-wide/high16 v2, 0x3fe0
 
-    goto :goto_1
+    goto/16 :goto_1
 
-    .line 1540
-    :cond_9
+    .line 1599
+    :cond_b
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentY:F
 
     cmpl-float v0, v0, v3
 
-    if-lez v0, :cond_a
+    if-lez v0, :cond_c
 
     cmpg-float v0, v3, v4
 
-    if-gtz v0, :cond_a
+    if-gtz v0, :cond_c
 
-    .line 1541
+    .line 1600
     const-wide/high16 v2, 0x3fd0
 
-    goto :goto_1
+    goto/16 :goto_1
 
-    .line 1543
-    :cond_a
+    .line 1602
+    :cond_c
     const-wide v2, 0x3f847ae147ae147bL
 
-    goto :goto_1
+    goto/16 :goto_1
 
-    .line 1549
-    :cond_b
+    .line 1608
+    :cond_d
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
     if-gez v0, :cond_5
 
-    .line 1550
+    .line 1609
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
     goto :goto_2
 
-    .line 1556
-    :cond_c
+    .line 1620
+    :cond_e
+    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setVolumeLevel(I)V
+
+    .line 1621
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
+
+    long-to-int v1, v1
+
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->onSeekMove(I)V
+
+    goto :goto_3
+
+    .line 1627
+    :cond_f
     invoke-virtual {p2}, Landroid/view/MotionEvent;->getAction()I
 
     move-result v0
 
     const/4 v2, 0x1
 
-    if-ne v0, v2, :cond_13
+    if-ne v0, v2, :cond_17
 
-    .line 1557
+    .line 1628
     iput v11, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldX:F
 
-    .line 1558
+    .line 1629
     iput v11, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldY:F
 
-    .line 1559
-    const/16 v0, 0xc
+    .line 1630
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMinTextSize:I
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setTextSize(I)V
 
-    .line 1560
+    .line 1631
     iput-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDragging:Z
 
-    .line 1561
+    .line 1632
     iput v9, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mThumbAlpha:I
 
-    .line 1562
+    .line 1633
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
+
+    if-eqz v0, :cond_13
+
+    .line 1634
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
+
+    iget v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
+
+    invoke-interface {v0, v2}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->setDlnaVol(I)V
+
+    .line 1638
+    :goto_5
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
 
     invoke-virtual {v0}, Landroid/widget/SeekBar;->getThumb()Landroid/graphics/drawable/Drawable;
@@ -10203,7 +12026,7 @@
 
     invoke-virtual {v0, v9}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 1563
+    .line 1639
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
     invoke-virtual {v0}, Landroid/widget/SeekBar;->getThumb()Landroid/graphics/drawable/Drawable;
@@ -10212,46 +12035,46 @@
 
     invoke-virtual {v0, v9}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 1564
+    .line 1640
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v2
 
     iput-wide v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnTouchUpTime:J
 
-    .line 1565
+    .line 1641
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     const/16 v2, 0x3e7
 
     invoke-virtual {v0, v2}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1566
+    .line 1642
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     const/16 v2, 0x3e7
 
     invoke-virtual {v0, v2}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 1567
+    .line 1643
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnTouchDownThumbAlpha:I
 
-    if-lez v0, :cond_e
+    if-lez v0, :cond_11
 
-    .line 1568
+    .line 1644
     iget-wide v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnTouchUpTime:J
 
     iget-wide v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnTouchDownTime:J
 
     sub-long/2addr v2, v4
 
-    const-wide/16 v4, 0x96
+    const-wide/16 v4, 0xb4
 
     cmp-long v0, v2, v4
 
-    if-gez v0, :cond_e
+    if-gez v0, :cond_11
 
-    .line 1569
+    .line 1645
     invoke-virtual {p2}, Landroid/view/MotionEvent;->getX()F
 
     move-result v0
@@ -10264,7 +12087,7 @@
 
     move-result v0
 
-    .line 1570
+    .line 1646
     invoke-virtual {p2}, Landroid/view/MotionEvent;->getY()F
 
     move-result v2
@@ -10277,7 +12100,7 @@
 
     move-result v2
 
-    .line 1571
+    .line 1647
     mul-float/2addr v0, v0
 
     mul-float/2addr v2, v2
@@ -10292,21 +12115,21 @@
 
     cmpg-float v0, v0, v2
 
-    if-gtz v0, :cond_e
+    if-gtz v0, :cond_11
 
-    .line 1572
+    .line 1648
     invoke-virtual {p1}, Landroid/widget/SeekBar;->getWidth()I
 
     move-result v0
 
-    .line 1573
+    .line 1649
     iget v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
     mul-int/2addr v0, v2
 
     div-int/lit16 v0, v0, 0x2710
 
-    .line 1574
+    .line 1650
     int-to-float v0, v0
 
     invoke-virtual {p2}, Landroid/view/MotionEvent;->getX()F
@@ -10315,53 +12138,53 @@
 
     cmpg-float v0, v0, v2
 
-    if-gez v0, :cond_10
+    if-gez v0, :cond_14
 
-    .line 1575
+    .line 1651
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
     add-int/lit16 v0, v0, 0x1f4
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
-    .line 1576
+    .line 1652
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
-    if-le v0, v10, :cond_d
+    if-le v0, v10, :cond_10
 
-    .line 1577
+    .line 1653
     iput v10, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
-    .line 1585
-    :cond_d
-    :goto_4
+    .line 1661
+    :cond_10
+    :goto_6
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
 
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
     invoke-virtual {v0, v1}, Landroid/widget/SeekBar;->setProgress(I)V
 
-    .line 1586
+    .line 1662
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
     invoke-virtual {v0, v1}, Landroid/widget/SeekBar;->setProgress(I)V
 
-    .line 1590
-    :cond_e
+    .line 1666
+    :cond_11
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnTouchDownPosition:I
 
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
-    if-eq v0, v1, :cond_f
+    if-eq v0, v1, :cond_12
 
-    .line 1591
+    .line 1667
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
-    if-eqz v0, :cond_f
+    if-eqz v0, :cond_12
 
-    .line 1592
+    .line 1668
     iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
 
     iget v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
@@ -10376,59 +12199,67 @@
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
 
-    .line 1593
+    .line 1669
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
 
-    if-eqz v0, :cond_11
+    if-eqz v0, :cond_15
 
-    .line 1594
+    .line 1670
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
 
     invoke-interface {v0, v1, v2}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->doDlnaSeek(J)V
 
-    .line 1600
-    :cond_f
-    :goto_5
+    .line 1676
+    :cond_12
+    :goto_7
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllProgress:Landroid/widget/SeekBar;
 
-    if-ne p1, v0, :cond_12
+    if-ne p1, v0, :cond_16
 
-    .line 1601
+    .line 1677
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v12}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1602
+    .line 1678
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const-wide/16 v1, 0xbb8
+    const-wide/16 v1, 0x1388
 
     invoke-virtual {v0, v12, v1, v2}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    goto/16 :goto_3
+    goto/16 :goto_4
 
-    .line 1580
-    :cond_10
+    .line 1636
+    :cond_13
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setVolumeLevel(I)V
+
+    goto/16 :goto_5
+
+    .line 1656
+    :cond_14
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
     add-int/lit16 v0, v0, -0x1f4
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
-    .line 1581
+    .line 1657
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
-    if-gez v0, :cond_d
+    if-gez v0, :cond_10
 
-    .line 1582
+    .line 1658
     iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
-    goto :goto_4
+    goto :goto_6
 
-    .line 1596
-    :cond_11
+    .line 1672
+    :cond_15
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
@@ -10437,72 +12268,72 @@
 
     invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->onSeekEnd(I)V
 
-    goto :goto_5
+    goto :goto_7
 
-    .line 1603
-    :cond_12
+    .line 1679
+    :cond_16
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
-    if-ne p1, v0, :cond_6
+    if-ne p1, v0, :cond_8
 
-    .line 1604
+    .line 1680
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3f2
+    const/16 v1, 0x3f0
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1605
+    .line 1681
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3f2
+    const/16 v1, 0x3f0
 
-    const-wide/16 v2, 0xbb8
+    const-wide/16 v2, 0x1388
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    goto/16 :goto_3
+    goto/16 :goto_4
 
-    .line 1607
-    :cond_13
+    .line 1683
+    :cond_17
     invoke-virtual {p2}, Landroid/view/MotionEvent;->getAction()I
 
     move-result v0
 
-    if-nez v0, :cond_6
+    if-nez v0, :cond_8
 
-    .line 1608
+    .line 1684
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnTouchDownTime:J
 
-    .line 1609
+    .line 1685
     invoke-virtual {p2}, Landroid/view/MotionEvent;->getX()F
 
     move-result v0
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownX:F
 
-    .line 1610
+    .line 1686
     invoke-virtual {p2}, Landroid/view/MotionEvent;->getY()F
 
     move-result v0
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownY:F
 
-    .line 1611
+    .line 1687
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnTouchDownPosition:I
 
-    .line 1612
+    .line 1688
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mThumbAlpha:I
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnTouchDownThumbAlpha:I
 
-    goto/16 :goto_3
+    goto/16 :goto_4
 .end method
 
 .method protected onSizeChanged(IIII)V
@@ -10513,79 +12344,55 @@
     .parameter "oldh"
 
     .prologue
-    .line 2722
+    .line 2885
     invoke-super {p0, p1, p2, p3, p4}, Landroid/widget/FrameLayout;->onSizeChanged(IIII)V
 
-    .line 2723
+    .line 2886
     return-void
 .end method
 
 .method public onTouchEvent(Landroid/view/MotionEvent;)Z
-    .locals 10
-    .parameter
+    .locals 3
+    .parameter "event"
 
     .prologue
-    const-wide/16 v8, 0x0
+    const/4 v1, 0x4
 
-    const/16 v7, 0x3f5
+    const/4 v2, 0x1
 
-    const/high16 v6, 0x4140
-
-    const/4 v5, 0x1
-
-    const/4 v4, 0x0
-
-    .line 2600
+    .line 2809
     invoke-super {p0, p1}, Landroid/widget/FrameLayout;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
     move-result v0
 
     if-eqz v0, :cond_1
 
-    .line 2717
+    .line 2839
     :cond_0
     :goto_0
-    return v5
+    return v2
 
-    .line 2603
+    .line 2812
     :cond_1
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
-
-    invoke-interface {v0}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->getIsPrepareFinish()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 2606
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getPointerCount()I
 
     move-result v0
 
-    if-le v0, v5, :cond_2
+    if-le v0, v2, :cond_2
 
-    .line 2607
+    .line 2813
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCanGesture:Z
+
+    .line 2814
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v1, 0x3ee
+    const/16 v1, 0x3f3
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2608
-    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureClickCount:I
-
-    .line 2609
-    iput-boolean v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsZoomClick:Z
-
-    .line 2610
-    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCanGesture:Z
-
-    .line 2611
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    invoke-virtual {v0, v7}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 2612
+    .line 2815
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
 
     if-nez v0, :cond_0
@@ -10606,31 +12413,43 @@
 
     if-nez v0, :cond_0
 
-    .line 2615
-    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->zoomScaleEvent(Landroid/view/MotionEvent;)V
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
-    goto :goto_0
+    invoke-interface {v0}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->getZoomLevelList()Ljava/util/ArrayList;
 
-    .line 2619
-    :cond_2
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVelocity:Landroid/view/VelocityTracker;
+    move-result-object v0
 
-    invoke-virtual {v0, p1}, Landroid/view/VelocityTracker;->addMovement(Landroid/view/MotionEvent;)V
-
-    .line 2620
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGuestureListenr:Landroid/view/GestureDetector;
-
-    if-eqz v0, :cond_3
-
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGuestureListenr:Landroid/view/GestureDetector;
-
-    invoke-virtual {v0, p1}, Landroid/view/GestureDetector;->onTouchEvent(Landroid/view/MotionEvent;)Z
+    invoke-virtual {v0}, Ljava/util/ArrayList;->isEmpty()Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 2623
+    .line 2818
+    invoke-direct {p0, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->zoomScaleEvent(Landroid/view/MotionEvent;)V
+
+    goto :goto_0
+
+    .line 2822
+    :cond_2
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAnimationStarting:Z
+
+    if-nez v0, :cond_0
+
+    .line 2825
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGuestureListenr:Lcom/android/gallery3d/app/VideoGestureListener;
+
+    if-eqz v0, :cond_3
+
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGuestureListenr:Lcom/android/gallery3d/app/VideoGestureListener;
+
+    invoke-virtual {v0, p1}, Lcom/android/gallery3d/app/VideoGestureListener;->onTouchEvent(Landroid/view/MotionEvent;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 2828
     :cond_3
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getAction()I
 
@@ -10640,462 +12459,97 @@
 
     goto :goto_0
 
-    .line 2625
+    .line 2830
     :pswitch_0
-    const/high16 v0, -0x4080
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
-    iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldX:F
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setVolumeLevel(I)V
 
-    .line 2626
-    const/high16 v0, -0x4080
+    .line 2831
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
-    iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOldY:F
-
-    .line 2627
-    const/16 v0, 0xc
-
-    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setTextSize(I)V
-
-    .line 2628
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const/16 v1, 0x3e7
-
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 2629
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const/16 v1, 0x3e7
-
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
-
-    .line 2630
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
-    move-result-wide v0
-
-    iget-wide v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLastDownTime:J
-
-    sub-long/2addr v0, v2
-
-    const-wide/16 v2, 0xc8
-
-    cmp-long v0, v0, v2
-
-    if-gez v0, :cond_4
-
-    .line 2631
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    invoke-virtual {v0, v7}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 2635
-    :cond_4
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
-
-    if-eqz v0, :cond_6
-
-    .line 2636
-    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
-
-    iget v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSeekBarPosition:I
-
-    int-to-long v2, v2
-
-    mul-long/2addr v0, v2
-
-    const-wide/16 v2, 0x2710
-
-    div-long/2addr v0, v2
-
-    iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
-
-    .line 2637
-    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
-
-    iget-wide v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
-
-    cmp-long v0, v0, v2
-
-    if-ltz v0, :cond_7
-
-    .line 2638
-    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
-
-    long-to-int v0, v0
-
-    int-to-long v0, v0
-
-    iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
-
-    .line 2642
-    :cond_5
-    :goto_1
-    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDragging:Z
-
-    .line 2643
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
-
-    if-eqz v0, :cond_8
-
-    .line 2644
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
-
-    iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
-
-    invoke-interface {v0, v1, v2}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->doDlnaSeek(J)V
-
-    .line 2648
-    :goto_2
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
-
-    if-eqz v0, :cond_9
-
-    .line 2649
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTimeText:Landroid/widget/TextView;
-
-    invoke-virtual {v0, v6}, Landroid/widget/TextView;->setTextSize(F)V
-
-    .line 2650
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRemainPlayTimeText:Landroid/widget/TextView;
-
-    invoke-virtual {v0, v6}, Landroid/widget/TextView;->setTextSize(F)V
-
-    .line 2651
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const/16 v1, 0x3e9
-
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 2652
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const/16 v1, 0x3e8
-
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
-
-    .line 2653
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const/16 v1, 0x3e9
-
-    const-wide/16 v2, 0xbb8
-
-    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
-
-    .line 2662
-    :cond_6
-    :goto_3
-    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->initTouchParams()V
-
-    .line 2664
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const/16 v1, 0x3ef
-
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 2665
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const/16 v1, 0x3ef
-
-    const-wide/16 v2, 0x15e
-
-    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
-
-    goto/16 :goto_0
-
-    .line 2639
-    :cond_7
-    iget-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
-
-    cmp-long v0, v0, v8
-
-    if-gez v0, :cond_5
-
-    .line 2640
-    iput-wide v8, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
-
-    goto :goto_1
-
-    .line 2646
-    :cond_8
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
-
-    iget-wide v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
-
-    long-to-int v1, v1
-
-    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->onSeekMove(I)V
-
-    goto :goto_2
-
-    .line 2655
-    :cond_9
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureAlreadyPlayTimeText:Landroid/widget/TextView;
-
-    invoke-virtual {v0, v6}, Landroid/widget/TextView;->setTextSize(F)V
-
-    .line 2656
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureRemainPlayTimeText:Landroid/widget/TextView;
-
-    invoke-virtual {v0, v6}, Landroid/widget/TextView;->setTextSize(F)V
-
-    .line 2657
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const/16 v1, 0x3f2
-
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 2658
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const/16 v1, 0x3e8
-
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
-
-    .line 2659
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const/16 v1, 0x3f2
-
-    const-wide/16 v2, 0xbb8
-
-    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
-
-    goto :goto_3
-
-    .line 2670
-    :pswitch_1
-    invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
 
     move-result v0
 
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownX:F
+    if-eqz v0, :cond_0
 
-    sub-float/2addr v0, v1
+    .line 2832
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
 
-    invoke-static {v0}, Ljava/lang/Math;->abs(F)F
+    invoke-virtual {v0, v1}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    move-result v0
+    .line 2833
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
 
-    .line 2671
-    invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
+    invoke-virtual {v0, v1}, Landroid/widget/SeekBar;->setVisibility(I)V
 
-    move-result v1
+    goto :goto_0
 
-    iget v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownY:F
-
-    sub-float/2addr v1, v2
-
-    invoke-static {v1}, Ljava/lang/Math;->abs(F)F
-
-    move-result v1
-
-    .line 2672
-    iget-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
-
-    if-eqz v2, :cond_a
-
-    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
-
-    if-eqz v2, :cond_a
-
-    .line 2673
-    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
-
-    iget v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAppBrightness:I
-
-    invoke-interface {v2, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->setWinBrightness(I)V
-
-    .line 2675
-    :cond_a
-    mul-float v2, v0, v0
-
-    mul-float v3, v1, v1
-
-    add-float/2addr v2, v3
-
-    invoke-static {v2}, Landroid/util/FloatMath;->sqrt(F)F
-
-    move-result v2
-
-    const/high16 v3, 0x40a0
-
-    cmpl-float v2, v2, v3
-
-    if-ltz v2, :cond_0
-
-    .line 2676
-    iget-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
-
-    if-eqz v2, :cond_b
-
-    .line 2677
-    invoke-virtual {p0, v5}, Lcom/android/gallery3d/app/MovieControllerOverlay;->cancelHiding(Z)V
-
-    .line 2679
-    :cond_b
-    iput v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureClickCount:I
-
-    .line 2680
-    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const/16 v3, 0x3ee
-
-    invoke-virtual {v2, v3}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 2681
-    iget-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCanGesture:Z
-
-    if-eqz v2, :cond_0
-
-    .line 2682
-    iget-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
-
-    if-nez v2, :cond_c
-
-    iget-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
-
-    if-nez v2, :cond_c
-
-    iget-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetBright:Z
-
-    if-nez v2, :cond_c
-
-    .line 2683
-    div-float v0, v1, v0
-
-    float-to-double v0, v0
-
-    const-wide v2, 0x3fe38c35418a5bf6L
-
-    invoke-static {v2, v3}, Ljava/lang/Math;->tan(D)D
-
-    move-result-wide v2
-
-    cmpg-double v0, v0, v2
-
-    if-gez v0, :cond_d
-
-    .line 2684
-    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
-
-    .line 2685
-    iput-boolean v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
-
-    .line 2686
-    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
-
-    .line 2687
-    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetBright:Z
-
-    .line 2688
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
-
-    invoke-interface {v0}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->getVideoCurPosition()J
-
-    move-result-wide v0
-
-    long-to-int v0, v0
-
-    int-to-long v0, v0
-
-    iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
-
-    .line 2689
-    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setProgress()J
-
-    .line 2706
-    :cond_c
-    :goto_4
-    invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;
-
-    move-result-object v0
-
-    .line 2707
-    iput v7, v0, Landroid/os/Message;->what:I
-
-    .line 2708
-    iput-object p1, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    .line 2709
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    invoke-virtual {v1, v0, v8, v9}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
-
-    goto/16 :goto_0
-
-    .line 2691
-    :cond_d
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownX:F
-
-    const/high16 v1, 0x4348
-
-    cmpg-float v0, v0, v1
-
-    if-gez v0, :cond_e
-
-    .line 2692
-    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
-
-    .line 2693
-    iput-boolean v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
-
-    .line 2694
-    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetBright:Z
-
-    goto :goto_4
-
-    .line 2695
-    :cond_e
-    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDownX:F
-
-    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenWidth:I
-
-    add-int/lit16 v1, v1, -0xc8
-
-    int-to-float v1, v1
-
-    cmpl-float v0, v0, v1
-
-    if-lez v0, :cond_f
-
-    .line 2696
-    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
-
-    .line 2697
-    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
-
-    .line 2698
-    iput-boolean v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetBright:Z
-
-    goto :goto_4
-
-    .line 2700
-    :cond_f
-    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
-
-    .line 2701
-    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
-
-    .line 2702
-    iput-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetBright:Z
-
-    goto :goto_4
-
-    .line 2623
+    .line 2828
     nop
 
     :pswitch_data_0
-    .packed-switch 0x1
+    .packed-switch 0x3
         :pswitch_0
-        :pswitch_1
     .end packed-switch
+.end method
+
+.method public onWindowFocusChanged(Z)V
+    .locals 2
+    .parameter "hasWindowFocus"
+
+    .prologue
+    const/4 v1, 0x4
+
+    .line 312
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setVolumeLevel(I)V
+
+    .line 313
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 314
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v0, v1}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    .line 315
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureControllProgress:Landroid/widget/SeekBar;
+
+    invoke-virtual {v0, v1}, Landroid/widget/SeekBar;->setVisibility(I)V
+
+    .line 317
+    :cond_0
+    if-eqz p1, :cond_1
+
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+
+    sget-object v1, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PLAYING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
+
+    if-ne v0, v1, :cond_1
+
+    .line 318
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->maybeStartHiding()V
+
+    .line 322
+    :goto_0
+    return-void
+
+    .line 320
+    :cond_1
+    const/4 v0, 0x1
+
+    invoke-virtual {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->cancelHiding(Z)V
+
+    goto :goto_0
 .end method
 
 .method public playStateChangeUpdateProgress()V
@@ -11104,38 +12558,38 @@
     .prologue
     const/16 v3, 0x3e9
 
-    .line 849
+    .line 863
     const/4 v0, 0x1
 
     invoke-virtual {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->cancelHiding(Z)V
 
-    .line 850
+    .line 864
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     sget-object v1, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PLAYING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     if-ne v0, v1, :cond_1
 
-    .line 851
+    .line 865
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const-wide/16 v1, 0xbb8
+    const-wide/16 v1, 0x1388
 
     invoke-virtual {v0, v3, v1, v2}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 852
+    .line 866
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0x3e8
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 857
+    .line 871
     :cond_0
     :goto_0
     return-void
 
-    .line 853
+    .line 867
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
@@ -11143,7 +12597,7 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 854
+    .line 868
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     const-wide/32 v1, 0x36ee80
@@ -11159,7 +12613,7 @@
     .prologue
     const/4 v1, 0x3
 
-    .line 1728
+    .line 1820
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioManager:Landroid/media/AudioManager;
 
     invoke-virtual {v0, v1}, Landroid/media/AudioManager;->getStreamMaxVolume(I)I
@@ -11168,7 +12622,7 @@
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxVolume:I
 
-    .line 1729
+    .line 1821
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioManager:Landroid/media/AudioManager;
 
     invoke-virtual {v0, v1}, Landroid/media/AudioManager;->getStreamVolume(I)I
@@ -11177,7 +12631,7 @@
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
-    .line 1730
+    .line 1822
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
     mul-int/lit16 v0, v0, 0x2710
@@ -11188,19 +12642,19 @@
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
 
-    .line 1731
+    .line 1823
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
 
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setProgress(I)V
 
-    .line 1732
+    .line 1824
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setVolumeLevel(I)V
 
-    .line 1733
+    .line 1825
     return-void
 .end method
 
@@ -11209,10 +12663,10 @@
     .parameter "position"
 
     .prologue
-    .line 1196
+    .line 1149
     iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceSelect:I
 
-    .line 1197
+    .line 1150
     return-void
 .end method
 
@@ -11221,10 +12675,10 @@
     .parameter "count"
 
     .prologue
-    .line 1226
+    .line 1184
     iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioTrackCount:I
 
-    .line 1227
+    .line 1185
     return-void
 .end method
 
@@ -11233,30 +12687,30 @@
     .parameter
 
     .prologue
-    .line 1308
+    .line 1294
     iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateSelect:I
 
-    .line 1309
+    .line 1295
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateSelect:I
 
     if-nez v0, :cond_0
 
-    .line 1310
+    .line 1296
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
 
-    const v1, 0x7f0200a4
+    const v1, 0x7f0200a3
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
 
-    .line 1314
+    .line 1300
     :goto_0
     return-void
 
-    .line 1312
+    .line 1298
     :cond_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateButton:Landroid/widget/ImageButton;
 
-    const v1, 0x7f0200d6
+    const v1, 0x7f0200d3
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
 
@@ -11268,25 +12722,46 @@
     .parameter "canGesture"
 
     .prologue
-    .line 2885
+    .line 3063
     iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsCanGesture:Z
 
-    .line 2886
+    .line 3064
     return-void
 .end method
 
 .method public setDlnaDeviceCount(I)V
-    .locals 0
+    .locals 1
     .parameter "count"
 
     .prologue
-    .line 1221
+    .line 1176
     iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceCount:I
 
-    .line 1222
+    .line 1177
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    invoke-virtual {v0}, Landroid/app/AlertDialog;->isShowing()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 1178
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->updateDLNADevicesList()Z
+
+    .line 1180
+    :cond_0
     invoke-virtual {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setDlnaVisable()V
 
-    .line 1223
+    .line 1181
     return-void
 .end method
 
@@ -11295,34 +12770,34 @@
     .parameter
 
     .prologue
-    .line 1212
+    .line 1167
     if-nez p1, :cond_1
 
-    .line 1213
+    .line 1168
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseButton:Landroid/widget/ImageButton;
 
-    const v1, 0x7f0201a0
+    const v1, 0x7f02019a
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
 
-    .line 1217
+    .line 1172
     :cond_0
     :goto_0
     invoke-virtual {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->invalidate()V
 
-    .line 1218
+    .line 1173
     return-void
 
-    .line 1214
+    .line 1169
     :cond_1
     const/4 v0, 0x1
 
     if-ne p1, v0, :cond_0
 
-    .line 1215
+    .line 1170
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseButton:Landroid/widget/ImageButton;
 
-    const v1, 0x7f0201a1
+    const v1, 0x7f02019b
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
 
@@ -11330,17 +12805,19 @@
 .end method
 
 .method public setDlnaVisable()V
-    .locals 2
+    .locals 3
 
     .prologue
-    const/16 v1, 0x8
+    const/4 v1, 0x0
 
-    .line 2301
+    const/16 v2, 0x8
+
+    .line 2389
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
     if-eqz v0, :cond_0
 
-    .line 2302
+    .line 2390
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsHdmiOn:Z
 
     if-eqz v0, :cond_1
@@ -11349,61 +12826,74 @@
 
     if-nez v0, :cond_1
 
-    .line 2303
+    .line 2391
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setVisibility(I)V
+    invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 2317
+    .line 2407
     :cond_0
     :goto_0
     return-void
 
-    .line 2306
+    .line 2394
     :cond_1
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceCount:I
 
     if-lez v0, :cond_3
 
-    .line 2307
+    .line 2395
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
 
     if-eqz v0, :cond_2
 
-    .line 2308
+    .line 2396
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
-
-    const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setVisibility(I)V
 
     goto :goto_0
 
-    .line 2310
+    .line 2398
     :cond_2
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
-    const/4 v1, 0x4
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setVisibility(I)V
+    invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
     goto :goto_0
 
-    .line 2314
+    .line 2402
     :cond_3
+    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceSelect:I
+
+    .line 2403
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
 
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setVisibility(I)V
+    const v1, 0x7f020068
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
+
+    .line 2404
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
+
+    invoke-virtual {v0, v2}, Landroid/widget/ImageButton;->setVisibility(I)V
 
     goto :goto_0
 .end method
 
-.method public setDlnaVolumeProgress(F)V
-    .locals 2
+.method public setDlnaVolumeProgress(FZ)V
+    .locals 5
+    .parameter
     .parameter
 
     .prologue
-    .line 1740
+    const/16 v4, 0x3f0
+
+    const/16 v3, 0x3ea
+
+    const/4 v2, 0x0
+
+    .line 1832
     const v0, 0x461c4000
 
     mul-float/2addr v0, p1
@@ -11412,69 +12902,366 @@
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
-    .line 1741
+    .line 1833
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
 
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaVolumeProgress:I
 
     invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setProgress(I)V
 
-    .line 1742
-    return-void
-.end method
+    .line 1834
+    if-eqz p2, :cond_1
 
-.method public setIsDlnaMode(Z)V
-    .locals 1
-    .parameter "isDlnaMode"
+    .line 1835
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
 
-    .prologue
-    .line 1190
-    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
 
-    .line 1191
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 1836
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f8
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 1837
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+
+    if-eqz v0, :cond_2
+
+    .line 1838
+    invoke-direct {p0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideControllAni(Z)V
+
+    .line 1854
+    :cond_0
+    :goto_0
+    invoke-direct {p0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setVolumBarProgress(Z)V
+
+    .line 1855
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->updateVolumeUI()V
+
+    .line 1857
+    :cond_1
+    return-void
+
+    .line 1840
+    :cond_2
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_3
+
+    .line 1841
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f1
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 1842
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v3}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 1843
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
+
+    const/4 v1, 0x4
+
+    invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setVisibility(I)V
+
+    goto :goto_0
+
+    .line 1844
+    :cond_3
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_4
+
+    .line 1845
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v3}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 1846
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v4}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 1847
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v4}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    goto :goto_0
+
+    .line 1848
+    :cond_4
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 1192
+    .line 1849
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f4
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 1850
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+
+    const/16 v1, 0x8
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setVisibility(I)V
+
+    goto :goto_0
+.end method
+
+.method public setIsDlnaMode(Z)V
+    .locals 2
+    .parameter
+
+    .prologue
+    .line 1134
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
+
+    .line 1135
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
+
+    if-nez v0, :cond_1
+
+    .line 1136
+    const/4 v0, 0x0
+
+    iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceSelect:I
+
+    .line 1137
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
+
+    const v1, 0x7f020068
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setImageResource(I)V
+
+    .line 1138
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialog:Landroid/app/AlertDialog;
+
+    invoke-virtual {v0}, Landroid/app/AlertDialog;->isShowing()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 1139
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
+
+    iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceSelect:I
+
+    invoke-virtual {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;->setSelection(I)V
+
+    .line 1140
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectDialogAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay$SingleChoiceAdapter;->notifyDataSetChanged()V
+
+    .line 1142
+    :cond_0
+    invoke-virtual {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->resetVolumeBar()V
+
+    .line 1144
+    :cond_1
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+
+    if-eqz v0, :cond_2
+
+    .line 1145
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showSelectItemAni()V
 
-    .line 1194
-    :cond_0
+    .line 1147
+    :cond_2
     return-void
 .end method
 
+.method public setIsSilentMode(Z)V
+    .locals 2
+    .parameter
+
+    .prologue
+    .line 1121
+    iput-boolean p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSilent:Z
+
+    .line 1122
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSilent:Z
+
+    if-eqz v0, :cond_0
+
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
+
+    if-nez v0, :cond_0
+
+    .line 1123
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
+
+    const v1, 0x7f0200db
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
+
+    .line 1124
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setEnabled(Z)V
+
+    .line 1132
+    :goto_0
+    return-void
+
+    .line 1126
+    :cond_0
+    iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeProgress:I
+
+    if-eqz v0, :cond_1
+
+    .line 1127
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeButton:Landroid/widget/ImageButton;
+
+    const v1, 0x7f0200da
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
+
+    .line 1129
+    :cond_1
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeTouchSeek:Lcom/android/gallery3d/seekbar/VerSeekBar;
+
+    const/4 v1, 0x1
+
+    invoke-virtual {v0, v1}, Lcom/android/gallery3d/seekbar/VerSeekBar;->setEnabled(Z)V
+
+    .line 1130
+    invoke-virtual {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->resetVolumeBar()V
+
+    goto :goto_0
+.end method
+
 .method public setKeyVolumChange(Z)V
-    .locals 3
+    .locals 5
     .parameter "isUp"
 
     .prologue
+    const/16 v4, 0x3f0
+
+    const/16 v3, 0x3ea
+
     const/4 v2, 0x0
 
-    .line 2868
-    if-eqz p1, :cond_1
+    .line 3020
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSilent:Z
 
-    .line 2869
+    if-eqz v0, :cond_0
+
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
+
+    if-eqz v0, :cond_1
+
+    .line 3021
+    :cond_0
+    if-eqz p1, :cond_4
+
+    .line 3022
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
     iget v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxVolume:I
 
-    if-le v0, v1, :cond_0
+    if-le v0, v1, :cond_3
 
-    .line 2870
+    .line 3023
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMaxVolume:I
 
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
-    .line 2881
+    .line 3035
+    :cond_1
     :goto_0
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_2
+
+    .line 3036
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f8
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 3037
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+
+    if-eqz v0, :cond_6
+
+    .line 3038
+    invoke-direct {p0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->hideControllAni(Z)V
+
+    .line 3054
+    :cond_2
+    :goto_1
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
+
+    .line 3055
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setHdmiScreenLight()V
+
+    .line 3056
+    iput-boolean v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetVol:Z
+
+    .line 3057
     invoke-direct {p0, v2}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setVolumBarProgress(Z)V
 
-    .line 2882
+    .line 3058
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->updateVolumeUI()V
+
+    .line 3059
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f9
+
+    const-wide/16 v2, 0x3e8
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
+
+    .line 3060
     return-void
 
-    .line 2872
-    :cond_0
+    .line 3025
+    :cond_3
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
     add-int/lit8 v0, v0, 0x1
@@ -11483,19 +13270,19 @@
 
     goto :goto_0
 
-    .line 2875
-    :cond_1
+    .line 3028
+    :cond_4
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
-    if-gez v0, :cond_2
+    if-gtz v0, :cond_5
 
-    .line 2876
+    .line 3029
     iput v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
     goto :goto_0
 
-    .line 2878
-    :cond_2
+    .line 3031
+    :cond_5
     iget v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
     add-int/lit8 v0, v0, -0x1
@@ -11503,17 +13290,116 @@
     iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mCurrentVolume:I
 
     goto :goto_0
+
+    .line 3040
+    :cond_6
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_7
+
+    .line 3041
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f1
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 3042
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v3}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 3043
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
+
+    const/4 v1, 0x4
+
+    invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setVisibility(I)V
+
+    goto :goto_1
+
+    .line 3044
+    :cond_7
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mGestureProgressLayout:Landroid/widget/RelativeLayout;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_8
+
+    .line 3045
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v3}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 3046
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v4}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 3047
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v0, v4}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    goto :goto_1
+
+    .line 3048
+    :cond_8
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+
+    invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_2
+
+    .line 3049
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v1, 0x3f4
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 3050
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+
+    const/16 v1, 0x8
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setVisibility(I)V
+
+    goto :goto_1
 .end method
 
 .method public setListener(Lcom/android/gallery3d/app/ControllerOverlay$Listener;)V
-    .locals 0
+    .locals 1
     .parameter "listener"
 
     .prologue
-    .line 1254
+    .line 1212
     iput-object p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
-    .line 1255
+    .line 1213
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+
+    if-eqz v0, :cond_0
+
+    .line 1214
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+
+    invoke-interface {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->getScreenRotation()I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mScreenRotation:I
+
+    .line 1216
+    :cond_0
     return-void
 .end method
 
@@ -11522,10 +13408,10 @@
     .parameter "ext"
 
     .prologue
-    .line 1186
+    .line 1118
     iput-object p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
-    .line 1187
+    .line 1119
     return-void
 .end method
 
@@ -11534,10 +13420,10 @@
     .parameter "count"
 
     .prologue
-    .line 1233
+    .line 1191
     iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateCount:I
 
-    .line 1234
+    .line 1192
     return-void
 .end method
 
@@ -11546,10 +13432,10 @@
     .parameter "count"
 
     .prologue
-    .line 1230
+    .line 1188
     iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextCount:I
 
-    .line 1231
+    .line 1189
     return-void
 .end method
 
@@ -11558,10 +13444,10 @@
     .parameter "timeTextSelect"
 
     .prologue
-    .line 1317
+    .line 1303
     iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextSelect:I
 
-    .line 1319
+    .line 1305
     return-void
 .end method
 
@@ -11571,25 +13457,25 @@
     .parameter "totalTime"
 
     .prologue
-    .line 1299
+    .line 1286
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSetSeek:Z
 
     if-nez v0, :cond_0
 
-    .line 1300
+    .line 1287
     int-to-long v0, p2
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTotalTime:J
 
-    .line 1301
+    .line 1288
     int-to-long v0, p1
 
     iput-wide v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAlreadyPlayTime:J
 
-    .line 1302
+    .line 1289
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setProgress()J
 
-    .line 1305
+    .line 1291
     :cond_0
     return-void
 .end method
@@ -11599,10 +13485,10 @@
     .parameter "trackSelect"
 
     .prologue
-    .line 1322
+    .line 1308
     iput p1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioTrackSelect:I
 
-    .line 1323
+    .line 1309
     return-void
 .end method
 
@@ -11610,22 +13496,22 @@
     .locals 3
 
     .prologue
-    .line 1413
+    .line 1476
     const/4 v0, 0x0
 
-    .line 1414
+    .line 1477
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     if-eqz v1, :cond_0
 
-    .line 1415
+    .line 1478
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
 
     invoke-interface {v0}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->getVideoTitle()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 1417
+    .line 1480
     :cond_0
     if-eqz v0, :cond_1
 
@@ -11639,7 +13525,7 @@
 
     if-eqz v1, :cond_1
 
-    .line 1418
+    .line 1481
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTitle_view:Landroid/widget/TextView;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->calculateTitle(Ljava/lang/String;)Ljava/lang/String;
@@ -11648,17 +13534,17 @@
 
     invoke-virtual {v1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 1423
+    .line 1486
     :goto_0
     return-void
 
-    .line 1420
+    .line 1483
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTitle_view:Landroid/widget/TextView;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
 
-    const v2, 0x7f0a012e
+    const v2, 0x7f0a0139
 
     invoke-static {v1, v2}, Lcom/android/gallery3d/app/MovieActivityUtils;->getStringFromRes(Landroid/content/Context;I)Ljava/lang/String;
 
@@ -11675,25 +13561,25 @@
     .prologue
     const-wide/16 v7, 0x64
 
-    const/16 v6, 0x8
+    const/4 v6, 0x4
 
-    const/4 v5, 0x4
+    const/16 v5, 0x3ea
 
-    const/16 v4, 0x3ea
+    const/16 v4, 0x8
 
     const/4 v3, 0x0
 
-    .line 1326
+    .line 1399
     iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->hidden:Z
 
-    .line 1327
+    .line 1400
     .local v0, wasHidden:Z
     iput-boolean v3, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->hidden:Z
 
-    .line 1328
+    .line 1401
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->updateViews()V
 
-    .line 1329
+    .line 1402
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
@@ -11702,84 +13588,35 @@
 
     if-nez v1, :cond_0
 
-    .line 1330
+    .line 1403
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     invoke-virtual {v1, v3}, Landroid/view/View;->setVisibility(I)V
 
-    .line 1331
+    .line 1404
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     invoke-virtual {v1}, Landroid/view/View;->invalidate()V
 
-    .line 1333
+    .line 1406
     :cond_0
+    iget-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsM040:Z
+
+    if-eqz v1, :cond_2
+
+    .line 1407
     iget-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
 
     if-eqz v1, :cond_1
 
-    .line 1334
+    .line 1408
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
 
-    invoke-virtual {v1, v6}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+    invoke-virtual {v1, v4}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    .line 1340
+    .line 1419
     :goto_0
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
-
-    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    .line 1341
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    const/16 v2, 0x3f3
-
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 1342
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    invoke-virtual {v1, v4}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 1343
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
-
-    invoke-virtual {v1, v5}, Landroid/widget/LinearLayout;->setVisibility(I)V
-
-    .line 1344
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
-
-    invoke-virtual {v1, v4, v7, v8}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
-
-    .line 1370
-    :goto_1
-    return-void
-
-    .line 1336
-    :cond_1
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v1, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    .line 1337
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackButton:Lcom/meizu/widget/GlowImageButton;
-
-    invoke-virtual {v1, v3}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
-
-    .line 1338
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalMenuButton:Lcom/meizu/widget/GlowImageButton;
-
-    invoke-virtual {v1, v3}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
-
-    goto :goto_0
-
-    .line 1347
-    :cond_2
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
 
     invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
 
@@ -11787,33 +13624,71 @@
 
     if-eqz v1, :cond_3
 
-    .line 1348
+    .line 1420
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v2, 0x3fb
+    const/16 v2, 0x3f1
 
     invoke-virtual {v1, v2}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1349
+    .line 1421
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    invoke-virtual {v1, v4}, Landroid/os/Handler;->removeMessages(I)V
+    invoke-virtual {v1, v5}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1350
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
+    .line 1422
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLightBarLayout:Landroid/widget/LinearLayout;
 
-    invoke-virtual {v1, v5}, Landroid/widget/LinearLayout;->setVisibility(I)V
+    invoke-virtual {v1, v6}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 1351
+    .line 1423
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    invoke-virtual {v1, v4, v7, v8}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
+    invoke-virtual {v1, v5, v7, v8}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    goto :goto_1
+    .line 1448
+    :goto_1
+    return-void
 
-    .line 1354
+    .line 1410
+    :cond_1
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v1, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    .line 1411
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackButton:Lcom/meizu/widget/GlowImageButton;
+
+    invoke-virtual {v1, v3}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
+
+    .line 1412
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalMenuButton:Lcom/meizu/widget/GlowImageButton;
+
+    invoke-virtual {v1, v3}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
+
+    goto :goto_0
+
+    .line 1415
+    :cond_2
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackMenu:Landroid/widget/RelativeLayout;
+
+    invoke-virtual {v1, v4}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    .line 1416
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalBackButton:Lcom/meizu/widget/GlowImageButton;
+
+    invoke-virtual {v1, v4}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
+
+    .line 1417
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVerticalMenuButton:Lcom/meizu/widget/GlowImageButton;
+
+    invoke-virtual {v1, v4}, Lcom/meizu/widget/GlowImageButton;->setVisibility(I)V
+
+    goto :goto_0
+
+    .line 1426
     :cond_3
-    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
 
     invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
 
@@ -11821,105 +13696,103 @@
 
     if-eqz v1, :cond_4
 
-    .line 1355
+    .line 1427
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
-    const/16 v2, 0x3f6
+    const/16 v2, 0x3f9
 
     invoke-virtual {v1, v2}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1356
+    .line 1428
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v1, v5}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 1429
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mVolumeLayout:Landroid/widget/LinearLayout;
+
+    invoke-virtual {v1, v6}, Landroid/widget/LinearLayout;->setVisibility(I)V
+
+    .line 1430
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v1, v5, v7, v8}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
+
+    goto :goto_1
+
+    .line 1433
+    :cond_4
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
 
-    invoke-virtual {v1, v6}, Landroid/widget/TextView;->setVisibility(I)V
+    invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
 
-    .line 1358
-    :cond_4
+    move-result v1
+
+    if-eqz v1, :cond_5
+
+    .line 1434
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
+
+    const/16 v2, 0x3f4
+
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->removeMessages(I)V
+
+    .line 1435
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mZoomIcon:Landroid/widget/TextView;
+
+    invoke-virtual {v1, v4}, Landroid/widget/TextView;->setVisibility(I)V
+
+    .line 1437
+    :cond_5
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRightBottomlayout:Landroid/widget/LinearLayout;
 
     invoke-direct {p0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay;->isViewVisiable(Landroid/view/View;)Z
 
     move-result v1
 
-    if-nez v1, :cond_5
+    if-nez v1, :cond_6
 
-    .line 1359
+    .line 1438
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRightBottomlayout:Landroid/widget/LinearLayout;
 
     invoke-virtual {v1, v3}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 1361
-    :cond_5
+    .line 1440
+    :cond_6
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showControllAni()V
 
-    .line 1362
+    .line 1441
     invoke-virtual {p0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setVisibility(I)V
 
-    .line 1363
+    .line 1442
     invoke-virtual {p0, v3}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setFocusable(Z)V
 
-    .line 1364
+    .line 1443
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
-    if-eqz v1, :cond_6
+    if-eqz v1, :cond_7
 
     iget-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->hidden:Z
 
-    if-eq v0, v1, :cond_6
+    if-eq v0, v1, :cond_7
 
-    .line 1365
+    .line 1444
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMoviePlayerListener:Lcom/android/gallery3d/app/ControllerOverlay$Listener;
 
     invoke-interface {v1}, Lcom/android/gallery3d/app/ControllerOverlay$Listener;->onShown()V
 
-    .line 1367
-    :cond_6
+    .line 1446
+    :cond_7
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mHandler:Landroid/os/Handler;
 
     const/16 v2, 0x3e8
 
     invoke-virtual {v1, v2}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 1368
-    const/4 v1, 0x1
-
-    iput-boolean v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
-
-    .line 1369
+    .line 1447
     invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->maybeStartHiding()V
 
-    goto :goto_1
-.end method
-
-.method public showDlnaButton()V
-    .locals 2
-
-    .prologue
-    .line 1205
-    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
-
-    if-eqz v0, :cond_0
-
-    .line 1206
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
-
-    const/4 v1, 0x0
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setVisibility(I)V
-
-    .line 1210
-    :goto_0
-    return-void
-
-    .line 1208
-    :cond_0
-    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaButton:Landroid/widget/ImageButton;
-
-    const/16 v1, 0x8
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setVisibility(I)V
-
-    goto :goto_0
+    goto/16 :goto_1
 .end method
 
 .method public showErrorMessage(Ljava/lang/String;)V
@@ -11929,12 +13802,12 @@
     .prologue
     const/16 v2, 0xa
 
-    .line 1291
+    .line 1278
     sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->ERROR:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
-    .line 1292
+    .line 1279
     invoke-virtual {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->getMeasuredWidth()I
 
     move-result v0
@@ -11947,60 +13820,134 @@
 
     float-to-int v0, v0
 
-    .line 1293
+    .line 1280
     iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->errorView:Landroid/widget/TextView;
 
     invoke-virtual {v1, v0, v2, v0, v2}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 1294
+    .line 1281
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->errorView:Landroid/widget/TextView;
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 1295
+    .line 1282
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->errorView:Landroid/widget/TextView;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showMainView(Landroid/view/View;)V
 
-    .line 1296
+    .line 1283
     return-void
 .end method
 
 .method public showLoading()V
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 1286
+    .line 1270
     sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->LOADING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
-    .line 1287
+    .line 1271
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->loadingView:Landroid/view/View;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showMainView(Landroid/view/View;)V
 
-    .line 1288
+    .line 1272
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+
+    if-eqz v0, :cond_0
+
+    .line 1273
+    iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mMovieActivityExtend:Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;
+
+    const/4 v1, 0x0
+
+    invoke-interface {v0, v1}, Lcom/android/gallery3d/app/MovieControllerOverlay$MovieActivityExtend;->showSystemTitle(Z)V
+
+    .line 1275
+    :cond_0
     return-void
+.end method
+
+.method public showM03XPopMenu()V
+    .locals 3
+
+    .prologue
+    .line 1312
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
+
+    if-eqz v0, :cond_1
+
+    .line 1313
+    iget-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllShowing:Z
+
+    if-eqz v0, :cond_0
+
+    .line 1314
+    new-instance v0, Landroid/widget/PopupMenu;
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mRemainPlayTimeText:Landroid/widget/TextView;
+
+    invoke-direct {v0, v1, v2}, Landroid/widget/PopupMenu;-><init>(Landroid/content/Context;Landroid/view/View;)V
+
+    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
+
+    .line 1321
+    :goto_0
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showPopMenu()V
+
+    .line 1322
+    return-void
+
+    .line 1316
+    :cond_0
+    new-instance v0, Landroid/widget/PopupMenu;
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->m03XPopMenuRightTopAnchorView:Landroid/widget/ImageView;
+
+    invoke-direct {v0, v1, v2}, Landroid/widget/PopupMenu;-><init>(Landroid/content/Context;Landroid/view/View;)V
+
+    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
+
+    goto :goto_0
+
+    .line 1319
+    :cond_1
+    new-instance v0, Landroid/widget/PopupMenu;
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
+
+    iget-object v2, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->m03XPopMenuRightBottomAnchorView:Landroid/widget/ImageView;
+
+    invoke-direct {v0, v1, v2}, Landroid/widget/PopupMenu;-><init>(Landroid/content/Context;Landroid/view/View;)V
+
+    iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPopupMenu:Landroid/widget/PopupMenu;
+
+    goto :goto_0
 .end method
 
 .method public showPaused()V
     .locals 2
 
     .prologue
-    .line 1276
+    .line 1260
     sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PAUSED:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
-    .line 1277
+    .line 1261
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseButton:Landroid/widget/ImageButton;
 
-    const v1, 0x7f0201a1
+    const v1, 0x7f02019b
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
 
-    .line 1278
+    .line 1262
     return-void
 .end method
 
@@ -12008,362 +13955,41 @@
     .locals 2
 
     .prologue
-    .line 1270
+    .line 1254
     sget-object v0, Lcom/android/gallery3d/app/MovieControllerOverlay$State;->PLAYING:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
     iput-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->state:Lcom/android/gallery3d/app/MovieControllerOverlay$State;
 
-    .line 1271
+    .line 1255
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mPauseButton:Landroid/widget/ImageButton;
 
-    const v1, 0x7f0201a0
+    const v1, 0x7f02019a
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setBackgroundResource(I)V
 
-    .line 1272
+    .line 1256
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mControllView:Landroid/view/View;
 
     invoke-direct {p0, v0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->showMainView(Landroid/view/View;)V
 
-    .line 1273
+    .line 1257
     return-void
 .end method
 
-.method public updateSelectList(Ljava/util/ArrayList;)V
-    .locals 9
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Ljava/util/ArrayList",
-            "<",
-            "Ljava/lang/String;",
-            ">;)V"
-        }
-    .end annotation
+.method public systemSensorSettingChange()V
+    .locals 1
 
     .prologue
-    .local p1, array:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/lang/String;>;"
-    const/4 v8, 0x0
+    .line 2973
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->getSystemSensor()Z
 
-    .line 2076
-    const/4 v0, 0x0
+    move-result v0
 
-    .line 2077
-    .local v0, addHeight:I
-    invoke-virtual {p1}, Ljava/util/ArrayList;->size()I
+    iput-boolean v0, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsSystemSensorOn:Z
 
-    move-result v1
+    .line 2974
+    invoke-direct {p0}, Lcom/android/gallery3d/app/MovieControllerOverlay;->setScreenSensor()V
 
-    .line 2078
-    .local v1, arraySize:I
-    const/4 v4, 0x3
-
-    if-le v1, v4, :cond_0
-
-    .line 2079
-    const/4 v1, 0x3
-
-    .line 2082
-    :cond_0
-    iget v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLastListSize:I
-
-    if-eq v1, v4, :cond_7
-
-    .line 2083
-    const/16 v2, 0x35
-
-    .line 2084
-    .local v2, dpValue:I
-    iget v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLastListSize:I
-
-    if-ge v4, v1, :cond_5
-
-    .line 2085
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v4}, Landroid/widget/RelativeLayout;->getHeight()I
-
-    move-result v4
-
-    iget v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLastListSize:I
-
-    sub-int v5, v1, v5
-
-    iget-object v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
-    int-to-float v7, v2
-
-    invoke-static {v6, v7}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
-
-    move-result v6
-
-    mul-int/2addr v5, v6
-
-    add-int v0, v4, v5
-
-    .line 2093
-    :goto_0
-    new-instance v3, Landroid/widget/RelativeLayout$LayoutParams;
-
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v4}, Landroid/widget/RelativeLayout;->getWidth()I
-
-    move-result v4
-
-    invoke-direct {v3, v4, v0}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
-
-    .line 2094
-    .local v3, lp:Landroid/widget/RelativeLayout$LayoutParams;
-    iget-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
-
-    if-eqz v4, :cond_6
-
-    .line 2095
-    iget v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
-
-    iget-object v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v5}, Landroid/widget/RelativeLayout;->getWidth()I
-
-    move-result v5
-
-    sub-int/2addr v4, v5
-
-    div-int/lit8 v4, v4, 0x2
-
-    iget v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
-
-    sub-int/2addr v5, v0
-
-    div-int/lit8 v5, v5, 0x2
-
-    invoke-virtual {v3, v4, v5, v8, v8}, Landroid/widget/RelativeLayout$LayoutParams;->setMargins(IIII)V
-
-    .line 2111
-    .end local v2           #dpValue:I
-    :goto_1
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v4, v3}, Landroid/widget/RelativeLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
-
-    .line 2112
-    iput v1, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLastListSize:I
-
-    .line 2113
-    iget-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsAudioTrackListShow:Z
-
-    if-eqz v4, :cond_1
-
-    .line 2114
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-    iget v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mAudioTrackSelect:I
-
-    invoke-virtual {v4, v5}, Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;->setSelect(I)V
-
-    .line 2116
-    :cond_1
-    iget-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsTimeTextListShow:Z
-
-    if-eqz v4, :cond_2
-
-    .line 2117
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-    iget v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mTimeTextSelect:I
-
-    invoke-virtual {v4, v5}, Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;->setSelect(I)V
-
-    .line 2119
-    :cond_2
-    iget-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaListShow:Z
-
-    if-eqz v4, :cond_3
-
-    .line 2120
-    iget-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsDlnaMode:Z
-
-    if-nez v4, :cond_9
-
-    .line 2121
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-    invoke-virtual {v4, v8}, Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;->setSelect(I)V
-
-    .line 2126
-    :cond_3
-    :goto_2
-    iget-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsBitrateListShow:Z
-
-    if-eqz v4, :cond_4
-
-    .line 2127
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-    iget v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mOnLineBitrateSelect:I
-
-    invoke-virtual {v4, v5}, Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;->setSelect(I)V
-
-    .line 2129
-    :cond_4
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-    invoke-virtual {v4, p1}, Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;->setItemList(Ljava/util/ArrayList;)V
-
-    .line 2130
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-    invoke-virtual {v4}, Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;->notifyDataSetChanged()V
-
-    .line 2131
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectList:Landroid/widget/ListView;
-
-    iget-object v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-    invoke-virtual {v4, v5}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V
-
-    .line 2132
+    .line 2975
     return-void
-
-    .line 2089
-    .end local v3           #lp:Landroid/widget/RelativeLayout$LayoutParams;
-    .restart local v2       #dpValue:I
-    :cond_5
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v4}, Landroid/widget/RelativeLayout;->getHeight()I
-
-    move-result v4
-
-    iget v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mLastListSize:I
-
-    sub-int/2addr v5, v1
-
-    iget-object v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mContext:Landroid/content/Context;
-
-    int-to-float v7, v2
-
-    invoke-static {v6, v7}, Lcom/android/gallery3d/app/MovieActivityUtils;->dip2px(Landroid/content/Context;F)I
-
-    move-result v6
-
-    mul-int/2addr v5, v6
-
-    sub-int v0, v4, v5
-
-    goto :goto_0
-
-    .line 2098
-    .restart local v3       #lp:Landroid/widget/RelativeLayout$LayoutParams;
-    :cond_6
-    iget v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
-
-    iget-object v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v5}, Landroid/widget/RelativeLayout;->getWidth()I
-
-    move-result v5
-
-    sub-int/2addr v4, v5
-
-    div-int/lit8 v4, v4, 0x2
-
-    iget v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
-
-    sub-int/2addr v5, v0
-
-    div-int/lit8 v5, v5, 0x2
-
-    invoke-virtual {v3, v4, v5, v8, v8}, Landroid/widget/RelativeLayout$LayoutParams;->setMargins(IIII)V
-
-    goto :goto_1
-
-    .line 2102
-    .end local v2           #dpValue:I
-    .end local v3           #lp:Landroid/widget/RelativeLayout$LayoutParams;
-    :cond_7
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v4}, Landroid/widget/RelativeLayout;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
-
-    move-result-object v3
-
-    check-cast v3, Landroid/widget/RelativeLayout$LayoutParams;
-
-    .line 2103
-    .restart local v3       #lp:Landroid/widget/RelativeLayout$LayoutParams;
-    iget-boolean v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mIsScreenHorizontal:Z
-
-    if-eqz v4, :cond_8
-
-    .line 2104
-    iget v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
-
-    iget-object v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v5}, Landroid/widget/RelativeLayout;->getWidth()I
-
-    move-result v5
-
-    sub-int/2addr v4, v5
-
-    div-int/lit8 v4, v4, 0x2
-
-    iget v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
-
-    iget-object v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v6}, Landroid/widget/RelativeLayout;->getHeight()I
-
-    move-result v6
-
-    sub-int/2addr v5, v6
-
-    div-int/lit8 v5, v5, 0x2
-
-    invoke-virtual {v3, v4, v5, v8, v8}, Landroid/widget/RelativeLayout$LayoutParams;->setMargins(IIII)V
-
-    goto/16 :goto_1
-
-    .line 2107
-    :cond_8
-    iget v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayWidth:I
-
-    iget-object v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v5}, Landroid/widget/RelativeLayout;->getWidth()I
-
-    move-result v5
-
-    sub-int/2addr v4, v5
-
-    div-int/lit8 v4, v4, 0x2
-
-    iget v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDisplayHeight:I
-
-    iget-object v6, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectView:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v6}, Landroid/widget/RelativeLayout;->getHeight()I
-
-    move-result v6
-
-    sub-int/2addr v5, v6
-
-    div-int/lit8 v5, v5, 0x2
-
-    invoke-virtual {v3, v4, v5, v8, v8}, Landroid/widget/RelativeLayout$LayoutParams;->setMargins(IIII)V
-
-    goto/16 :goto_1
-
-    .line 2123
-    :cond_9
-    iget-object v4, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mSelectListAdapter:Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;
-
-    iget v5, p0, Lcom/android/gallery3d/app/MovieControllerOverlay;->mDlnaDeviceSelect:I
-
-    invoke-virtual {v4, v5}, Lcom/android/gallery3d/app/MovieControllerOverlay$SelectAdapter;->setSelect(I)V
-
-    goto/16 :goto_2
 .end method

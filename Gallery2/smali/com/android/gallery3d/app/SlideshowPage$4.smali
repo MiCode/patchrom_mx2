@@ -37,7 +37,7 @@
     .parameter
 
     .prologue
-    .line 215
+    .line 219
     iput-object p1, p0, Lcom/android/gallery3d/app/SlideshowPage$4;->this$0:Lcom/android/gallery3d/app/SlideshowPage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -61,7 +61,7 @@
     .end annotation
 
     .prologue
-    .line 217
+    .line 221
     .local p1, future:Lcom/android/gallery3d/util/Future;,"Lcom/android/gallery3d/util/Future<Lcom/android/gallery3d/app/SlideshowPage$Slide;>;"
     iget-object v1, p0, Lcom/android/gallery3d/app/SlideshowPage$4;->this$0:Lcom/android/gallery3d/app/SlideshowPage;
 
@@ -74,7 +74,7 @@
     #setter for: Lcom/android/gallery3d/app/SlideshowPage;->mPendingSlide:Lcom/android/gallery3d/app/SlideshowPage$Slide;
     invoke-static {v1, v0}, Lcom/android/gallery3d/app/SlideshowPage;->access$702(Lcom/android/gallery3d/app/SlideshowPage;Lcom/android/gallery3d/app/SlideshowPage$Slide;)Lcom/android/gallery3d/app/SlideshowPage$Slide;
 
-    .line 218
+    .line 222
     iget-object v0, p0, Lcom/android/gallery3d/app/SlideshowPage$4;->this$0:Lcom/android/gallery3d/app/SlideshowPage;
 
     #getter for: Lcom/android/gallery3d/app/SlideshowPage;->mHandler:Landroid/os/Handler;
@@ -86,6 +86,6 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 219
+    .line 223
     return-void
 .end method

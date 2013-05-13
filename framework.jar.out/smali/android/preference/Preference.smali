@@ -173,7 +173,7 @@
     iput-boolean v5, p0, Landroid/preference/Preference;->mShouldDisableView:Z
 
     .line 117
-    const v3, 0x10900a2
+    const v3, 0x10900a9
 
     iput v3, p0, Landroid/preference/Preference;->mLayoutResId:I
 
@@ -1745,13 +1745,13 @@
     .parameter "view"
 
     .prologue
-    invoke-static {p0, p1}, Landroid/preference/Preference$Injector;->onBindView(Landroid/preference/Preference;Landroid/view/View;)V
-
     const/4 v9, 0x1
 
     const/16 v5, 0x8
 
     const/4 v6, 0x0
+
+    invoke-static {p0, p1}, Landroid/preference/Preference$Injector;->onBindView(Landroid/preference/Preference;Landroid/view/View;)V
 
     .line 500
     const v7, 0x1020016

@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1006
+    .line 1103
     iput-object p1, p0, Lcom/android/camera/Camera$ZoomSeekBarListener;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .parameter "x1"
 
     .prologue
-    .line 1006
+    .line 1103
     invoke-direct {p0, p1}, Lcom/android/camera/Camera$ZoomSeekBarListener;-><init>(Lcom/android/camera/Camera;)V
 
     return-void
@@ -56,64 +56,64 @@
     .parameter "fromUser"
 
     .prologue
-    .line 1011
+    .line 1108
     iget-object v0, p0, Lcom/android/camera/Camera$ZoomSeekBarListener;->this$0:Lcom/android/camera/Camera;
 
     #calls: Lcom/android/camera/Camera;->isZoomBarVisible()Z
-    invoke-static {v0}, Lcom/android/camera/Camera;->access$5700(Lcom/android/camera/Camera;)Z
+    invoke-static {v0}, Lcom/android/camera/Camera;->access$6000(Lcom/android/camera/Camera;)Z
 
     move-result v0
 
     if-eqz v0, :cond_1
 
-    .line 1012
+    .line 1109
     iget-object v0, p0, Lcom/android/camera/Camera$ZoomSeekBarListener;->this$0:Lcom/android/camera/Camera;
 
     iget-object v0, v0, Lcom/android/camera/ActivityBase;->mCameraDevice:Lcom/android/camera/CameraManager$CameraProxy;
 
     if-eqz v0, :cond_1
 
-    .line 1013
+    .line 1110
     iget-object v0, p0, Lcom/android/camera/Camera$ZoomSeekBarListener;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mZoomMax:I
-    invoke-static {v0}, Lcom/android/camera/Camera;->access$5800(Lcom/android/camera/Camera;)I
+    invoke-static {v0}, Lcom/android/camera/Camera;->access$6100(Lcom/android/camera/Camera;)I
 
     move-result v0
 
     if-le p2, v0, :cond_0
 
-    .line 1014
+    .line 1111
     iget-object v0, p0, Lcom/android/camera/Camera$ZoomSeekBarListener;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mZoomMax:I
-    invoke-static {v0}, Lcom/android/camera/Camera;->access$5800(Lcom/android/camera/Camera;)I
+    invoke-static {v0}, Lcom/android/camera/Camera;->access$6100(Lcom/android/camera/Camera;)I
 
     move-result v0
 
     add-int/lit8 p2, v0, -0x1
 
-    .line 1016
+    .line 1113
     :cond_0
     iget-object v0, p0, Lcom/android/camera/Camera$ZoomSeekBarListener;->this$0:Lcom/android/camera/Camera;
 
     #setter for: Lcom/android/camera/Camera;->mZoomValue:I
-    invoke-static {v0, p2}, Lcom/android/camera/Camera;->access$5902(Lcom/android/camera/Camera;I)I
+    invoke-static {v0, p2}, Lcom/android/camera/Camera;->access$6202(Lcom/android/camera/Camera;I)I
 
-    .line 1017
+    .line 1114
     iget-object v0, p0, Lcom/android/camera/Camera$ZoomSeekBarListener;->this$0:Lcom/android/camera/Camera;
 
     iget-object v0, v0, Lcom/android/camera/ActivityBase;->mCameraDevice:Lcom/android/camera/CameraManager$CameraProxy;
 
     invoke-virtual {v0, p2}, Lcom/android/camera/CameraManager$CameraProxy;->startSmoothZoom(I)V
 
-    .line 1018
+    .line 1115
     iget-object v0, p0, Lcom/android/camera/Camera$ZoomSeekBarListener;->this$0:Lcom/android/camera/Camera;
 
     #calls: Lcom/android/camera/Camera;->timeToHideZoomBar()V
-    invoke-static {v0}, Lcom/android/camera/Camera;->access$6000(Lcom/android/camera/Camera;)V
+    invoke-static {v0}, Lcom/android/camera/Camera;->access$6300(Lcom/android/camera/Camera;)V
 
-    .line 1021
+    .line 1118
     :cond_1
     return-void
 .end method
@@ -123,7 +123,7 @@
     .parameter "seekBar"
 
     .prologue
-    .line 1026
+    .line 1123
     return-void
 .end method
 
@@ -132,6 +132,6 @@
     .parameter "seekBar"
 
     .prologue
-    .line 1031
+    .line 1128
     return-void
 .end method

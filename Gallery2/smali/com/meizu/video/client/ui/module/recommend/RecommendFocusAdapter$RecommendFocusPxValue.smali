@@ -15,27 +15,15 @@
 
 
 # instance fields
-.field bigImageHeight_land:I
+.field mBigImageHeightLand:I
 
-.field bigImageHeight_port:I
+.field mBigImageHeightPort:I
 
-.field bigImageTitleHeight_land:I
+.field mBigImageWidthLand:I
 
-.field bigImageTitleHeight_port:I
-
-.field bigImageWidth_land:I
-
-.field bigImageWidth_port:I
-
-.field leftMarginNum_land:I
-
-.field leftMarginNum_port:I
+.field mBigImageWidthPort:I
 
 .field final synthetic this$0:Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
-
-.field topFirstMarginNum_land:I
-
-.field topFirstMarginNum_port:I
 
 
 # direct methods
@@ -52,22 +40,16 @@
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     .line 57
-    iput v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter$RecommendFocusPxValue;->bigImageWidth_land:I
+    iput v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter$RecommendFocusPxValue;->mBigImageWidthLand:I
 
     .line 58
-    iput v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter$RecommendFocusPxValue;->bigImageHeight_land:I
+    iput v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter$RecommendFocusPxValue;->mBigImageHeightLand:I
 
     .line 59
-    iput v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter$RecommendFocusPxValue;->bigImageWidth_port:I
+    iput v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter$RecommendFocusPxValue;->mBigImageWidthPort:I
 
     .line 60
-    iput v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter$RecommendFocusPxValue;->bigImageHeight_port:I
-
-    .line 62
-    iput v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter$RecommendFocusPxValue;->bigImageTitleHeight_port:I
-
-    .line 63
-    iput v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter$RecommendFocusPxValue;->bigImageTitleHeight_land:I
+    iput v0, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter$RecommendFocusPxValue;->mBigImageHeightPort:I
 
     return-void
 .end method

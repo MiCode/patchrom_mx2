@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 418
+    .line 445
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoPage$2;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,72 @@
     .locals 3
 
     .prologue
-    .line 432
+    .line 459
+    invoke-static {}, Lcom/android/gallery3d/data/MediaObject;->isLockEnabled()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$2;->this$0:Lcom/android/gallery3d/app/PhotoPage;
+
+    #getter for: Lcom/android/gallery3d/app/PhotoPage;->mItem:Lcom/android/gallery3d/data/MediaObject;
+    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$900(Lcom/android/gallery3d/app/PhotoPage;)Lcom/android/gallery3d/data/MediaObject;
+
+    move-result-object v1
+
+    if-eqz v1, :cond_1
+
+    .line 460
+    iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$2;->this$0:Lcom/android/gallery3d/app/PhotoPage;
+
+    #getter for: Lcom/android/gallery3d/app/PhotoPage;->mLockSet:Lcom/android/gallery3d/data/FilterLockSet;
+    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$1000(Lcom/android/gallery3d/app/PhotoPage;)Lcom/android/gallery3d/data/FilterLockSet;
+
+    move-result-object v1
+
+    if-eqz v1, :cond_1
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$2;->this$0:Lcom/android/gallery3d/app/PhotoPage;
+
+    #getter for: Lcom/android/gallery3d/app/PhotoPage;->mItem:Lcom/android/gallery3d/data/MediaObject;
+    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$900(Lcom/android/gallery3d/app/PhotoPage;)Lcom/android/gallery3d/data/MediaObject;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lcom/android/gallery3d/data/MediaObject;->getLockState()I
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$2;->this$0:Lcom/android/gallery3d/app/PhotoPage;
+
+    #getter for: Lcom/android/gallery3d/app/PhotoPage;->mLockSet:Lcom/android/gallery3d/data/FilterLockSet;
+    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$1000(Lcom/android/gallery3d/app/PhotoPage;)Lcom/android/gallery3d/data/FilterLockSet;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lcom/android/gallery3d/data/FilterLockSet;->getForceLockSet()I
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    .line 461
+    iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$2;->this$0:Lcom/android/gallery3d/app/PhotoPage;
+
+    const/4 v2, 0x7
+
+    invoke-virtual {v1, v2}, Lcom/android/gallery3d/app/PhotoPage;->popupPasswordPad(I)V
+
+    .line 475
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 465
+    :cond_1
     iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$2;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mModel:Lcom/android/gallery3d/app/PhotoPage$Model;
@@ -53,9 +118,9 @@
 
     move-result v1
 
-    if-nez v1, :cond_1
+    if-nez v1, :cond_2
 
-    .line 433
+    .line 466
     iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$2;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mModel:Lcom/android/gallery3d/app/PhotoPage$Model;
@@ -69,7 +134,7 @@
 
     move-result-object v0
 
-    .line 434
+    .line 467
     .local v0, photo:Lcom/android/gallery3d/data/MediaItem;
     if-eqz v0, :cond_0
 
@@ -78,28 +143,25 @@
     #calls: Lcom/android/gallery3d/app/PhotoPage;->updateCurrentPhoto(Lcom/android/gallery3d/data/MediaItem;)V
     invoke-static {v1, v0}, Lcom/android/gallery3d/app/PhotoPage;->access$800(Lcom/android/gallery3d/app/PhotoPage;Lcom/android/gallery3d/data/MediaItem;)V
 
-    .line 443
-    .end local v0           #photo:Lcom/android/gallery3d/data/MediaItem;
-    :cond_0
-    :goto_0
-    return-void
+    goto :goto_0
 
-    .line 435
-    :cond_1
+    .line 468
+    .end local v0           #photo:Lcom/android/gallery3d/data/MediaItem;
+    :cond_2
     iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$2;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mIsActive:Z
-    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$900(Lcom/android/gallery3d/app/PhotoPage;)Z
+    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$1100(Lcom/android/gallery3d/app/PhotoPage;)Z
 
     move-result v1
 
     if-eqz v1, :cond_0
 
-    .line 438
+    .line 471
     iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$2;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mMediaSet:Lcom/android/gallery3d/data/FilterDeleteSet;
-    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$1000(Lcom/android/gallery3d/app/PhotoPage;)Lcom/android/gallery3d/data/FilterDeleteSet;
+    invoke-static {v1}, Lcom/android/gallery3d/app/PhotoPage;->access$1200(Lcom/android/gallery3d/app/PhotoPage;)Lcom/android/gallery3d/data/FilterDeleteSet;
 
     move-result-object v1
 
@@ -109,7 +171,7 @@
 
     if-nez v1, :cond_0
 
-    .line 439
+    .line 472
     iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$2;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     iget-object v1, v1, Lcom/android/gallery3d/app/ActivityState;->mActivity:Lcom/android/gallery3d/app/GalleryActivity;
@@ -129,7 +191,7 @@
     .locals 0
 
     .prologue
-    .line 447
+    .line 479
     return-void
 .end method
 
@@ -139,16 +201,16 @@
     .parameter "item"
 
     .prologue
-    .line 422
+    .line 449
     iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$2;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #setter for: Lcom/android/gallery3d/app/PhotoPage;->mCurrentIndex:I
     invoke-static {v1, p1}, Lcom/android/gallery3d/app/PhotoPage;->access$602(Lcom/android/gallery3d/app/PhotoPage;I)I
 
-    .line 423
+    .line 450
     if-eqz p2, :cond_0
 
-    .line 424
+    .line 451
     iget-object v1, p0, Lcom/android/gallery3d/app/PhotoPage$2;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mModel:Lcom/android/gallery3d/app/PhotoPage$Model;
@@ -162,7 +224,7 @@
 
     move-result-object v0
 
-    .line 425
+    .line 452
     .local v0, photo:Lcom/android/gallery3d/data/MediaItem;
     if-eqz v0, :cond_0
 
@@ -171,7 +233,7 @@
     #calls: Lcom/android/gallery3d/app/PhotoPage;->updateCurrentPhoto(Lcom/android/gallery3d/data/MediaItem;)V
     invoke-static {v1, v0}, Lcom/android/gallery3d/app/PhotoPage;->access$800(Lcom/android/gallery3d/app/PhotoPage;Lcom/android/gallery3d/data/MediaItem;)V
 
-    .line 428
+    .line 455
     .end local v0           #photo:Lcom/android/gallery3d/data/MediaItem;
     :cond_0
     return-void

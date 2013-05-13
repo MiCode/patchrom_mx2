@@ -39,7 +39,7 @@
 
     sput-boolean v0, Lcom/android/providers/settings/RestoreSettings;->WRITE_LOG:Z
 
-    .line 282
+    .line 285
     new-instance v0, Ljava/text/SimpleDateFormat;
 
     const-string v1, "yyyy-MM-dd HH:mm:ss"
@@ -824,15 +824,39 @@
 
     move-result v2
 
+    if-nez v2, :cond_0
+
+    const-string v2, "mms_max_pdu_size"
+
+    invoke-virtual {p0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_0
+
+    const-string v2, "mms_max_pdu_size_in_2g"
+
+    invoke-virtual {p0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_0
+
+    const-string v2, "enable_sip_feature"
+
+    invoke-virtual {p0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
     if-eqz v2, :cond_2
 
-    .line 203
+    .line 206
     :cond_0
     sget-boolean v2, Lcom/android/providers/settings/RestoreSettings;->DEBUG:Z
 
     if-eqz v2, :cond_1
 
-    .line 204
+    .line 207
     const-string v2, "RestoreSettings"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -865,12 +889,12 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 239
+    .line 242
     :cond_1
     :goto_0
     return-void
 
-    .line 208
+    .line 211
     :cond_2
     const-string v2, "LOCAL_BACKUP"
 
@@ -880,15 +904,15 @@
 
     if-eqz v2, :cond_3
 
-    .line 209
+    .line 212
     if-eqz p1, :cond_1
 
-    .line 210
+    .line 213
     sget-boolean v2, Lcom/android/providers/settings/RestoreSettings;->DEBUG:Z
 
     if-eqz v2, :cond_1
 
-    .line 211
+    .line 214
     const-string v2, "RestoreSettings"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -923,13 +947,13 @@
 
     goto :goto_0
 
-    .line 217
+    .line 220
     :cond_3
     new-instance v0, Landroid/content/ContentValues;
 
     invoke-direct {v0}, Landroid/content/ContentValues;-><init>()V
 
-    .line 218
+    .line 221
     .local v0, values:Landroid/content/ContentValues;
     invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -937,12 +961,12 @@
 
     if-nez v2, :cond_4
 
-    .line 219
+    .line 222
     const-string v2, "name"
 
     invoke-virtual {v0, v2, p0}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 222
+    .line 225
     :cond_4
     invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -950,18 +974,18 @@
 
     if-nez v2, :cond_5
 
-    .line 223
+    .line 226
     const-string v2, "value"
 
     invoke-virtual {v0, v2, p1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 225
+    .line 228
     :cond_5
     sget-boolean v2, Lcom/android/providers/settings/RestoreSettings;->DEBUG:Z
 
     if-eqz v2, :cond_6
 
-    .line 226
+    .line 229
     const-string v2, "RestoreSettings"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -994,13 +1018,13 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 228
+    .line 231
     :cond_6
     sget-boolean v2, Lcom/android/providers/settings/RestoreSettings;->WRITE_LOG:Z
 
     if-eqz v2, :cond_7
 
-    .line 229
+    .line 232
     sget-object v2, Lcom/android/providers/settings/RestoreSettings;->mContext:Landroid/content/Context;
 
     invoke-virtual {v2}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
@@ -1015,7 +1039,7 @@
 
     invoke-static {p0, p1, v2, v3}, Lcom/android/providers/settings/RestoreSettings;->writeRestoreLog(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
 
-    .line 231
+    .line 234
     :cond_7
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -1051,7 +1075,7 @@
 
     move-result-object v1
 
-    .line 237
+    .line 240
     .local v1, where:Ljava/lang/String;
     sget-object v2, Lcom/android/providers/settings/RestoreSettings;->mContext:Landroid/content/Context;
 
@@ -1180,7 +1204,7 @@
     .parameter "isSystem"
 
     .prologue
-    .line 286
+    .line 289
     :try_start_0
     sget-object v2, Lcom/android/providers/settings/RestoreSettings;->sdf:Ljava/text/SimpleDateFormat;
 
@@ -1192,24 +1216,24 @@
 
     move-result-object v0
 
-    .line 288
+    .line 291
     .local v0, date:Ljava/lang/String;
     sget-boolean v2, Lcom/android/providers/settings/RestoreSettings;->DEBUG:Z
 
     if-eqz v2, :cond_0
 
-    .line 289
+    .line 292
     const-string v2, "RestoreSettings"
 
     const-string v3, "\u8bb0\u5f55\u6062\u590dLOG\u4fe1\u606f...."
 
     invoke-static {v2, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 291
+    .line 294
     :cond_0
     if-nez p3, :cond_1
 
-    .line 292
+    .line 295
     sget-object v2, Lcom/android/providers/settings/RestoreSettings;->mContext:Landroid/content/Context;
 
     const-string v3, "RestoreSecureSharedPreferencesLog"
@@ -1220,7 +1244,7 @@
 
     move-result-object v1
 
-    .line 298
+    .line 301
     .local v1, prefs:Landroid/content/SharedPreferences;
     :goto_0
     invoke-interface {v1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
@@ -1251,7 +1275,7 @@
 
     invoke-interface {v2}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 299
+    .line 302
     invoke-interface {v1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
     move-result-object v2
@@ -1280,7 +1304,7 @@
 
     invoke-interface {v2}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 300
+    .line 303
     invoke-interface {v1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
     move-result-object v2
@@ -1309,13 +1333,13 @@
 
     invoke-interface {v2}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 303
+    .line 306
     .end local v0           #date:Ljava/lang/String;
     .end local v1           #prefs:Landroid/content/SharedPreferences;
     :goto_1
     return-void
 
-    .line 295
+    .line 298
     .restart local v0       #date:Ljava/lang/String;
     :cond_1
     sget-object v2, Lcom/android/providers/settings/RestoreSettings;->mContext:Landroid/content/Context;
@@ -1333,7 +1357,7 @@
     .restart local v1       #prefs:Landroid/content/SharedPreferences;
     goto :goto_0
 
-    .line 301
+    .line 304
     .end local v0           #date:Ljava/lang/String;
     .end local v1           #prefs:Landroid/content/SharedPreferences;
     :catch_0

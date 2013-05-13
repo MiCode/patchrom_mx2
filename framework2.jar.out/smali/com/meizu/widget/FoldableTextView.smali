@@ -135,18 +135,18 @@
     .parameter "text"
 
     .prologue
-    .line 122
+    .line 123
     invoke-virtual {p0}, Lcom/meizu/widget/FoldableTextView;->getLayout()Landroid/text/Layout;
 
     move-result-object v11
 
-    .line 123
+    .line 124
     .local v11, layout:Landroid/text/Layout;
     new-instance v1, Landroid/text/SpannableStringBuilder;
 
     invoke-direct {v1, p1}, Landroid/text/SpannableStringBuilder;-><init>(Ljava/lang/CharSequence;)V
 
-    .line 124
+    .line 125
     .local v1, sb:Landroid/text/SpannableStringBuilder;
     new-instance v0, Landroid/text/DynamicLayout;
 
@@ -170,7 +170,7 @@
 
     invoke-direct/range {v0 .. v7}, Landroid/text/DynamicLayout;-><init>(Ljava/lang/CharSequence;Landroid/text/TextPaint;ILandroid/text/Layout$Alignment;FFZ)V
 
-    .line 126
+    .line 127
     .local v0, tmpLayout:Landroid/text/DynamicLayout;
     invoke-virtual {v0}, Landroid/text/DynamicLayout;->getLineCount()I
 
@@ -180,12 +180,12 @@
 
     if-gt v2, v3, :cond_0
 
-    .line 161
+    .line 162
     .end local p1
     :goto_0
     return-object p1
 
-    .line 131
+    .line 132
     .restart local p1
     :cond_0
     iget v2, p0, Lcom/meizu/widget/FoldableTextView;->mFoldLineMax:I
@@ -196,7 +196,7 @@
 
     move-result v10
 
-    .line 132
+    .line 133
     .local v10, en:I
     iget-object v2, p0, Lcom/meizu/widget/FoldableTextView;->mEllipseText:Ljava/lang/String;
 
@@ -206,31 +206,31 @@
 
     if-eqz v2, :cond_3
 
-    .line 133
+    .line 134
     invoke-virtual {v1}, Landroid/text/SpannableStringBuilder;->length()I
 
     move-result v2
 
     invoke-virtual {v1, v10, v2}, Landroid/text/SpannableStringBuilder;->delete(II)Landroid/text/SpannableStringBuilder;
 
-    .line 137
+    .line 138
     :goto_1
     const/16 v2, 0x20
 
     invoke-virtual {v1, v2}, Landroid/text/SpannableStringBuilder;->append(C)Landroid/text/SpannableStringBuilder;
 
-    .line 139
+    .line 140
     invoke-virtual {v1}, Landroid/text/SpannableStringBuilder;->length()I
 
     move-result v8
 
-    .line 140
+    .line 141
     .local v8, addIndex:I
     iget-object v2, p0, Lcom/meizu/widget/FoldableTextView;->mUnfoldText:Ljava/lang/String;
 
     invoke-virtual {v1, v2}, Landroid/text/SpannableStringBuilder;->append(Ljava/lang/CharSequence;)Landroid/text/SpannableStringBuilder;
 
-    .line 141
+    .line 142
     new-instance v2, Lcom/meizu/widget/FoldableTextView$MoreClickSpan;
 
     invoke-direct {v2, p0, p1}, Lcom/meizu/widget/FoldableTextView$MoreClickSpan;-><init>(Lcom/meizu/widget/FoldableTextView;Ljava/lang/CharSequence;)V
@@ -243,7 +243,7 @@
 
     invoke-virtual {v1, v2, v8, v3, v4}, Landroid/text/SpannableStringBuilder;->setSpan(Ljava/lang/Object;III)V
 
-    .line 144
+    .line 145
     if-lez v10, :cond_4
 
     invoke-virtual {v0}, Landroid/text/DynamicLayout;->getLineCount()I
@@ -254,20 +254,20 @@
 
     if-le v2, v3, :cond_4
 
-    .line 145
+    .line 146
     move v9, v10
 
-    .line 147
+    .line 148
     .local v9, delIndex:I
     :cond_1
     add-int/lit8 v9, v9, -0x1
 
-    .line 148
+    .line 149
     add-int/lit8 v2, v9, 0x1
 
     invoke-virtual {v1, v9, v2}, Landroid/text/SpannableStringBuilder;->delete(II)Landroid/text/SpannableStringBuilder;
 
-    .line 149
+    .line 150
     if-lez v9, :cond_2
 
     invoke-virtual {v0}, Landroid/text/DynamicLayout;->getLineCount()I
@@ -283,10 +283,10 @@
     :goto_2
     move-object p1, v1
 
-    .line 161
+    .line 162
     goto :goto_0
 
-    .line 135
+    .line 136
     .end local v8           #addIndex:I
     :cond_3
     invoke-virtual {v1}, Landroid/text/SpannableStringBuilder;->length()I
@@ -299,14 +299,14 @@
 
     goto :goto_1
 
-    .line 150
+    .line 151
     .restart local v8       #addIndex:I
     :cond_4
     iget-boolean v2, p0, Lcom/meizu/widget/FoldableTextView;->mAlignViewEdge:Z
 
     if-eqz v2, :cond_2
 
-    .line 151
+    .line 152
     :goto_3
     invoke-virtual {v0}, Landroid/text/DynamicLayout;->getLineCount()I
 
@@ -316,12 +316,12 @@
 
     if-ne v2, v3, :cond_2
 
-    .line 152
+    .line 153
     const-string v2, " "
 
     invoke-virtual {v1, v8, v8, v2}, Landroid/text/SpannableStringBuilder;->replace(IILjava/lang/CharSequence;)Landroid/text/SpannableStringBuilder;
 
-    .line 153
+    .line 154
     invoke-virtual {v0}, Landroid/text/DynamicLayout;->getLineCount()I
 
     move-result v2
@@ -330,14 +330,14 @@
 
     if-le v2, v3, :cond_5
 
-    .line 154
+    .line 155
     add-int/lit8 v2, v8, 0x1
 
     invoke-virtual {v1, v8, v2}, Landroid/text/SpannableStringBuilder;->delete(II)Landroid/text/SpannableStringBuilder;
 
     goto :goto_2
 
-    .line 157
+    .line 158
     :cond_5
     add-int/lit8 v8, v8, 0x1
 
@@ -367,7 +367,7 @@
 
     move-result-object v0
 
-    const v1, 0x10403ec
+    const v1, 0x10403ed
 
     invoke-virtual {p1, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -409,7 +409,7 @@
 
     if-gtz v4, :cond_1
 
-    .line 119
+    .line 120
     :cond_0
     :goto_0
     return-void
@@ -500,6 +500,9 @@
     sget-object v4, Landroid/widget/TextView$BufferType;->SPANNABLE:Landroid/widget/TextView$BufferType;
 
     invoke-virtual {p0, v0, v4}, Lcom/meizu/widget/FoldableTextView;->setText(Ljava/lang/CharSequence;Landroid/widget/TextView$BufferType;)V
+
+    .line 118
+    invoke-super {p0, p1, p2}, Landroid/widget/TextView;->onMeasure(II)V
 
     goto :goto_0
 .end method

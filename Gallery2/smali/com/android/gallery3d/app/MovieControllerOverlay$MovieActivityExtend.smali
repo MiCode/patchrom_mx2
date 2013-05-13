@@ -21,6 +21,12 @@
 .method public abstract getHdmiState()Z
 .end method
 
+.method public abstract getLedBrightness()I
+.end method
+
+.method public abstract getScreenRotation()I
+.end method
+
 .method public abstract getVideoTitle()Ljava/lang/String;
 .end method
 
@@ -37,4 +43,7 @@
 .end method
 
 .method public abstract turnOnLed()V
+.end method
+
+.method public abstract turnOnM03XLed()V
 .end method

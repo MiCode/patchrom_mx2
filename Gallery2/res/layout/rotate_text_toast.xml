@@ -2,6 +2,6 @@
 <com.android.camera.ui.RotateLayout android:layout_gravity="center" android:id="@id/rotate_toast" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <FrameLayout android:gravity="center" android:background="@drawable/video_time_background" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/toast_text_size" android:textColor="@color/menu_item_unsel_text_color" android:gravity="center" android:id="@id/message" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="@dimen/toast_text_size" android:textColor="@color/menu_item_unsel_text_color" android:layout_gravity="center" android:id="@id/message" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
     </FrameLayout>
 </com.android.camera.ui.RotateLayout>

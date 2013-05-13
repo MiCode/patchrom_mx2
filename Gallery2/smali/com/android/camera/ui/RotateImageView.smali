@@ -36,32 +36,32 @@
 
     const/4 v0, 0x0
 
-    .line 58
+    .line 57
     invoke-direct {p0, p1}, Lcom/android/camera/ui/TwoStateImageView;-><init>(Landroid/content/Context;)V
 
-    .line 44
+    .line 43
     iput v0, p0, Lcom/android/camera/ui/RotateImageView;->mCurrentDegree:I
 
-    .line 45
+    .line 44
     iput v0, p0, Lcom/android/camera/ui/RotateImageView;->mStartDegree:I
 
-    .line 46
+    .line 45
     iput v0, p0, Lcom/android/camera/ui/RotateImageView;->mTargetDegree:I
 
-    .line 48
+    .line 47
     iput-boolean v0, p0, Lcom/android/camera/ui/RotateImageView;->mClockwise:Z
 
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/camera/ui/RotateImageView;->mEnableAnimation:Z
 
-    .line 50
+    .line 49
     iput-wide v1, p0, Lcom/android/camera/ui/RotateImageView;->mAnimationStartTime:J
 
-    .line 51
+    .line 50
     iput-wide v1, p0, Lcom/android/camera/ui/RotateImageView;->mAnimationEndTime:J
 
-    .line 59
+    .line 58
     return-void
 .end method
 
@@ -75,42 +75,42 @@
 
     const/4 v0, 0x0
 
-    .line 54
+    .line 53
     invoke-direct {p0, p1, p2}, Lcom/android/camera/ui/TwoStateImageView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 44
+    .line 43
     iput v0, p0, Lcom/android/camera/ui/RotateImageView;->mCurrentDegree:I
 
-    .line 45
+    .line 44
     iput v0, p0, Lcom/android/camera/ui/RotateImageView;->mStartDegree:I
 
-    .line 46
+    .line 45
     iput v0, p0, Lcom/android/camera/ui/RotateImageView;->mTargetDegree:I
 
-    .line 48
+    .line 47
     iput-boolean v0, p0, Lcom/android/camera/ui/RotateImageView;->mClockwise:Z
 
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/camera/ui/RotateImageView;->mEnableAnimation:Z
 
-    .line 50
+    .line 49
     iput-wide v1, p0, Lcom/android/camera/ui/RotateImageView;->mAnimationStartTime:J
 
-    .line 51
+    .line 50
     iput-wide v1, p0, Lcom/android/camera/ui/RotateImageView;->mAnimationEndTime:J
 
-    .line 55
+    .line 54
     return-void
 .end method
 
 
 # virtual methods
-.method protected getDegree()I
+.method public getDegree()I
     .locals 1
 
     .prologue
-    .line 62
+    .line 61
     iget v0, p0, Lcom/android/camera/ui/RotateImageView;->mTargetDegree:I
 
     return v0
@@ -121,27 +121,27 @@
     .parameter "canvas"
 
     .prologue
-    .line 97
+    .line 96
     invoke-virtual/range {p0 .. p0}, Lcom/android/camera/ui/RotateImageView;->getDrawable()Landroid/graphics/drawable/Drawable;
 
     move-result-object v7
 
-    .line 98
+    .line 97
     .local v7, drawable:Landroid/graphics/drawable/Drawable;
     if-nez v7, :cond_1
 
-    .line 140
+    .line 139
     :cond_0
     :goto_0
     return-void
 
-    .line 100
+    .line 99
     :cond_1
     invoke-virtual {v7}, Landroid/graphics/drawable/Drawable;->getBounds()Landroid/graphics/Rect;
 
     move-result-object v4
 
-    .line 101
+    .line 100
     .local v4, bounds:Landroid/graphics/Rect;
     iget v0, v4, Landroid/graphics/Rect;->right:I
 
@@ -153,7 +153,7 @@
 
     sub-int v17, v19, v20
 
-    .line 102
+    .line 101
     .local v17, w:I
     iget v0, v4, Landroid/graphics/Rect;->bottom:I
 
@@ -165,13 +165,13 @@
 
     sub-int v8, v19, v20
 
-    .line 104
+    .line 103
     .local v8, h:I
     if-eqz v17, :cond_0
 
     if-eqz v8, :cond_0
 
-    .line 106
+    .line 105
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/camera/ui/RotateImageView;->mCurrentDegree:I
@@ -190,12 +190,12 @@
 
     if-eq v0, v1, :cond_2
 
-    .line 107
+    .line 106
     invoke-static {}, Landroid/view/animation/AnimationUtils;->currentAnimationTimeMillis()J
 
     move-result-wide v14
 
-    .line 108
+    .line 107
     .local v14, time:J
     move-object/from16 v0, p0
 
@@ -207,7 +207,7 @@
 
     if-gez v19, :cond_7
 
-    .line 109
+    .line 108
     move-object/from16 v0, p0
 
     iget-wide v0, v0, Lcom/android/camera/ui/RotateImageView;->mAnimationStartTime:J
@@ -220,7 +220,7 @@
 
     long-to-int v6, v0
 
-    .line 110
+    .line 109
     .local v6, deltaTime:I
     move-object/from16 v0, p0
 
@@ -250,22 +250,22 @@
 
     add-int v5, v19, v20
 
-    .line 112
+    .line 111
     .local v5, degree:I
     if-ltz v5, :cond_6
 
     rem-int/lit16 v5, v5, 0x168
 
-    .line 113
+    .line 112
     :goto_2
     move-object/from16 v0, p0
 
     iput v5, v0, Lcom/android/camera/ui/RotateImageView;->mCurrentDegree:I
 
-    .line 114
+    .line 113
     invoke-virtual/range {p0 .. p0}, Lcom/android/camera/ui/RotateImageView;->invalidate()V
 
-    .line 120
+    .line 119
     .end local v5           #degree:I
     .end local v14           #time:J
     :cond_2
@@ -274,25 +274,25 @@
 
     move-result v10
 
-    .line 121
+    .line 120
     .local v10, left:I
     invoke-virtual/range {p0 .. p0}, Lcom/android/camera/ui/RotateImageView;->getPaddingTop()I
 
     move-result v16
 
-    .line 122
+    .line 121
     .local v16, top:I
     invoke-virtual/range {p0 .. p0}, Lcom/android/camera/ui/RotateImageView;->getPaddingRight()I
 
     move-result v12
 
-    .line 123
+    .line 122
     .local v12, right:I
     invoke-virtual/range {p0 .. p0}, Lcom/android/camera/ui/RotateImageView;->getPaddingBottom()I
 
     move-result v3
 
-    .line 124
+    .line 123
     .local v3, bottom:I
     invoke-virtual/range {p0 .. p0}, Lcom/android/camera/ui/RotateImageView;->getWidth()I
 
@@ -302,7 +302,7 @@
 
     sub-int v18, v19, v12
 
-    .line 125
+    .line 124
     .local v18, width:I
     invoke-virtual/range {p0 .. p0}, Lcom/android/camera/ui/RotateImageView;->getHeight()I
 
@@ -312,13 +312,13 @@
 
     sub-int v9, v19, v3
 
-    .line 127
+    .line 126
     .local v9, height:I
     invoke-virtual/range {p1 .. p1}, Landroid/graphics/Canvas;->getSaveCount()I
 
     move-result v13
 
-    .line 130
+    .line 129
     .local v13, saveCount:I
     invoke-virtual/range {p0 .. p0}, Lcom/android/camera/ui/RotateImageView;->getScaleType()Landroid/widget/ImageView$ScaleType;
 
@@ -340,7 +340,7 @@
 
     if-ge v9, v8, :cond_4
 
-    .line 132
+    .line 131
     :cond_3
     move/from16 v0, v18
 
@@ -370,7 +370,7 @@
 
     move-result v11
 
-    .line 133
+    .line 132
     .local v11, ratio:F
     move/from16 v0, v18
 
@@ -398,7 +398,7 @@
 
     invoke-virtual {v0, v11, v11, v1, v2}, Landroid/graphics/Canvas;->scale(FFFF)V
 
-    .line 135
+    .line 134
     .end local v11           #ratio:F
     :cond_4
     div-int/lit8 v19, v18, 0x2
@@ -429,7 +429,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/graphics/Canvas;->translate(FF)V
 
-    .line 136
+    .line 135
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/camera/ui/RotateImageView;->mCurrentDegree:I
@@ -454,7 +454,7 @@
 
     invoke-virtual {v0, v1}, Landroid/graphics/Canvas;->rotate(F)V
 
-    .line 137
+    .line 136
     move/from16 v0, v17
 
     neg-int v0, v0
@@ -489,19 +489,19 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/graphics/Canvas;->translate(FF)V
 
-    .line 138
+    .line 137
     move-object/from16 v0, p1
 
     invoke-virtual {v7, v0}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 139
+    .line 138
     move-object/from16 v0, p1
 
     invoke-virtual {v0, v13}, Landroid/graphics/Canvas;->restoreToCount(I)V
 
     goto/16 :goto_0
 
-    .line 110
+    .line 109
     .end local v3           #bottom:I
     .end local v9           #height:I
     .end local v10           #left:I
@@ -516,7 +516,7 @@
 
     goto/16 :goto_1
 
-    .line 112
+    .line 111
     .end local v6           #deltaTime:I
     .restart local v5       #degree:I
     :cond_6
@@ -530,7 +530,7 @@
 
     goto/16 :goto_2
 
-    .line 116
+    .line 115
     .end local v5           #degree:I
     :cond_7
     move-object/from16 v0, p0
@@ -559,34 +559,34 @@
 
     const/4 v7, 0x1
 
-    .line 148
+    .line 147
     if-nez p1, :cond_0
 
-    .line 149
+    .line 148
     iput-object v3, p0, Lcom/android/camera/ui/RotateImageView;->mThumb:Landroid/graphics/Bitmap;
 
-    .line 150
+    .line 149
     iput-object v3, p0, Lcom/android/camera/ui/RotateImageView;->mThumbs:[Landroid/graphics/drawable/Drawable;
 
-    .line 151
+    .line 150
     invoke-virtual {p0, v3}, Lcom/android/camera/ui/RotateImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 152
+    .line 151
     const/16 v3, 0x8
 
     invoke-virtual {p0, v3}, Lcom/android/camera/ui/RotateImageView;->setVisibility(I)V
 
-    .line 176
+    .line 175
     :goto_0
     return-void
 
-    .line 156
+    .line 155
     :cond_0
     invoke-virtual {p0}, Lcom/android/camera/ui/RotateImageView;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
     move-result-object v2
 
-    .line 157
+    .line 156
     .local v2, param:Landroid/view/ViewGroup$LayoutParams;
     iget v3, v2, Landroid/view/ViewGroup$LayoutParams;->width:I
 
@@ -602,7 +602,7 @@
 
     sub-int v1, v3, v4
 
-    .line 159
+    .line 158
     .local v1, miniThumbWidth:I
     iget v3, v2, Landroid/view/ViewGroup$LayoutParams;->height:I
 
@@ -618,7 +618,7 @@
 
     sub-int v0, v3, v4
 
-    .line 161
+    .line 160
     .local v0, miniThumbHeight:I
     invoke-static {p1, v1, v0}, Landroid/media/ThumbnailUtils;->extractThumbnail(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
 
@@ -626,7 +626,7 @@
 
     iput-object v3, p0, Lcom/android/camera/ui/RotateImageView;->mThumb:Landroid/graphics/Bitmap;
 
-    .line 164
+    .line 163
     iget-object v3, p0, Lcom/android/camera/ui/RotateImageView;->mThumb:Landroid/graphics/Bitmap;
 
     const/4 v4, 0x4
@@ -637,7 +637,7 @@
 
     iput-object v3, p0, Lcom/android/camera/ui/RotateImageView;->mThumb:Landroid/graphics/Bitmap;
 
-    .line 166
+    .line 165
     iget-object v3, p0, Lcom/android/camera/ui/RotateImageView;->mThumbs:[Landroid/graphics/drawable/Drawable;
 
     if-eqz v3, :cond_1
@@ -646,7 +646,7 @@
 
     if-nez v3, :cond_2
 
-    .line 167
+    .line 166
     :cond_1
     const/4 v3, 0x2
 
@@ -654,7 +654,7 @@
 
     iput-object v3, p0, Lcom/android/camera/ui/RotateImageView;->mThumbs:[Landroid/graphics/drawable/Drawable;
 
-    .line 168
+    .line 167
     iget-object v3, p0, Lcom/android/camera/ui/RotateImageView;->mThumbs:[Landroid/graphics/drawable/Drawable;
 
     new-instance v4, Landroid/graphics/drawable/BitmapDrawable;
@@ -673,20 +673,20 @@
 
     aput-object v4, v3, v7
 
-    .line 169
+    .line 168
     iget-object v3, p0, Lcom/android/camera/ui/RotateImageView;->mThumbs:[Landroid/graphics/drawable/Drawable;
 
     aget-object v3, v3, v7
 
     invoke-virtual {p0, v3}, Lcom/android/camera/ui/RotateImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 175
+    .line 174
     :goto_1
     invoke-virtual {p0, v8}, Lcom/android/camera/ui/RotateImageView;->setVisibility(I)V
 
     goto :goto_0
 
-    .line 171
+    .line 170
     :cond_2
     iget-object v3, p0, Lcom/android/camera/ui/RotateImageView;->mThumbs:[Landroid/graphics/drawable/Drawable;
 
@@ -696,7 +696,7 @@
 
     aput-object v4, v3, v8
 
-    .line 172
+    .line 171
     iget-object v3, p0, Lcom/android/camera/ui/RotateImageView;->mThumbs:[Landroid/graphics/drawable/Drawable;
 
     new-instance v4, Landroid/graphics/drawable/BitmapDrawable;
@@ -715,7 +715,7 @@
 
     aput-object v4, v3, v7
 
-    .line 173
+    .line 172
     iget-object v3, p0, Lcom/android/camera/ui/RotateImageView;->mThumbs:[Landroid/graphics/drawable/Drawable;
 
     aget-object v3, v3, v7
@@ -731,25 +731,25 @@
     .parameter "animation"
 
     .prologue
-    .line 68
+    .line 67
     iput-boolean p2, p0, Lcom/android/camera/ui/RotateImageView;->mEnableAnimation:Z
 
-    .line 70
+    .line 69
     if-ltz p1, :cond_0
 
     rem-int/lit16 p1, p1, 0x168
 
-    .line 71
+    .line 70
     :goto_0
     iget v1, p0, Lcom/android/camera/ui/RotateImageView;->mTargetDegree:I
 
     if-ne p1, v1, :cond_1
 
-    .line 93
+    .line 92
     :goto_1
     return-void
 
-    .line 70
+    .line 69
     :cond_0
     rem-int/lit16 v1, p1, 0x168
 
@@ -757,39 +757,39 @@
 
     goto :goto_0
 
-    .line 73
+    .line 72
     :cond_1
     iput p1, p0, Lcom/android/camera/ui/RotateImageView;->mTargetDegree:I
 
-    .line 74
+    .line 73
     iget-boolean v1, p0, Lcom/android/camera/ui/RotateImageView;->mEnableAnimation:Z
 
     if-eqz v1, :cond_5
 
-    .line 75
+    .line 74
     iget v1, p0, Lcom/android/camera/ui/RotateImageView;->mCurrentDegree:I
 
     iput v1, p0, Lcom/android/camera/ui/RotateImageView;->mStartDegree:I
 
-    .line 76
+    .line 75
     invoke-static {}, Landroid/view/animation/AnimationUtils;->currentAnimationTimeMillis()J
 
     move-result-wide v1
 
     iput-wide v1, p0, Lcom/android/camera/ui/RotateImageView;->mAnimationStartTime:J
 
-    .line 78
+    .line 77
     iget v1, p0, Lcom/android/camera/ui/RotateImageView;->mTargetDegree:I
 
     iget v2, p0, Lcom/android/camera/ui/RotateImageView;->mCurrentDegree:I
 
     sub-int v0, v1, v2
 
-    .line 79
+    .line 78
     .local v0, diff:I
     if-ltz v0, :cond_3
 
-    .line 83
+    .line 82
     :goto_2
     const/16 v1, 0xb4
 
@@ -797,7 +797,7 @@
 
     add-int/lit16 v0, v0, -0x168
 
-    .line 85
+    .line 84
     :cond_2
     if-ltz v0, :cond_4
 
@@ -806,7 +806,7 @@
     :goto_3
     iput-boolean v1, p0, Lcom/android/camera/ui/RotateImageView;->mClockwise:Z
 
-    .line 86
+    .line 85
     iget-wide v1, p0, Lcom/android/camera/ui/RotateImageView;->mAnimationStartTime:J
 
     invoke-static {v0}, Ljava/lang/Math;->abs(I)I
@@ -823,27 +823,27 @@
 
     iput-wide v1, p0, Lcom/android/camera/ui/RotateImageView;->mAnimationEndTime:J
 
-    .line 92
+    .line 91
     .end local v0           #diff:I
     :goto_4
     invoke-virtual {p0}, Lcom/android/camera/ui/RotateImageView;->invalidate()V
 
     goto :goto_1
 
-    .line 79
+    .line 78
     .restart local v0       #diff:I
     :cond_3
     add-int/lit16 v0, v0, 0x168
 
     goto :goto_2
 
-    .line 85
+    .line 84
     :cond_4
     const/4 v1, 0x0
 
     goto :goto_3
 
-    .line 89
+    .line 88
     .end local v0           #diff:I
     :cond_5
     iget v1, p0, Lcom/android/camera/ui/RotateImageView;->mTargetDegree:I

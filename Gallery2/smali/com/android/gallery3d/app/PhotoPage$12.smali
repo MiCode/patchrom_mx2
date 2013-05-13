@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1404
+    .line 1462
     iput-object p1, p0, Lcom/android/gallery3d/app/PhotoPage$12;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,13 +42,13 @@
     .parameter "confirmed"
 
     .prologue
-    .line 1418
+    .line 1476
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$12;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #calls: Lcom/android/gallery3d/app/PhotoPage;->refreshHidingMessage()V
     invoke-static {v0}, Lcom/android/gallery3d/app/PhotoPage;->access$100(Lcom/android/gallery3d/app/PhotoPage;)V
 
-    .line 1419
+    .line 1477
     return-void
 .end method
 
@@ -56,7 +56,7 @@
     .locals 2
 
     .prologue
-    .line 1413
+    .line 1471
     iget-object v0, p0, Lcom/android/gallery3d/app/PhotoPage$12;->this$0:Lcom/android/gallery3d/app/PhotoPage;
 
     #getter for: Lcom/android/gallery3d/app/PhotoPage;->mHandler:Landroid/os/Handler;
@@ -68,7 +68,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 1414
+    .line 1472
     return-void
 .end method
 
@@ -77,7 +77,7 @@
     .parameter "result"
 
     .prologue
-    .line 1409
+    .line 1467
     return-void
 .end method
 
@@ -86,6 +86,6 @@
     .parameter "index"
 
     .prologue
-    .line 1406
+    .line 1464
     return-void
 .end method

@@ -37,6 +37,77 @@
         <item>Другой</item>
         <item>Создать свой ярлык</item>
     </string-array>
+    <string-array name="system_ringtone_name_list">
+        <item>Beep-Beep-Beep Alarm</item>
+        <item>Cadence Blues</item>
+        <item>Commander</item>
+        <item>Dream City</item>
+        <item>Drifting</item>
+        <item>Hometown</item>
+        <item>Life</item>
+        <item>Meiying</item>
+        <item>Moonlight over Jiangnan</item>
+        <item>Pouring Rain</item>
+        <item>Street Zone</item>
+        <item>The Autumn</item>
+        <item>Wind Knight</item>
+        <item>BeeBeep Alarm</item>
+        <item>Movement</item>
+        <item>Cute Call</item>
+        <item>Code Word</item>
+        <item>Empire</item>
+        <item>Flower Fairies</item>
+        <item>Laputa</item>
+        <item>Little Crystal</item>
+        <item>Matrix</item>
+        <item>Mysterious Journey</item>
+        <item>The Shepherd</item>
+        <item>Pure</item>
+        <item>Playfulness</item>
+        <item>Shining</item>
+        <item>Silent Night</item>
+        <item>Link</item>
+        <item>Piezo Alarm</item>
+        <item>Buzzer Alarm</item>
+        <item>Ringing Alarm</item>
+        <item>Rooster Alarm</item>
+        <item>Waking</item>
+        <item>Dawn</item>
+        <item>Elegance</item>
+        <item>Waltz</item>
+        <item>Dazzling Joy</item>
+        <item>Morning Dew</item>
+        <item>Guitar Riff</item>
+        <item>After School</item>
+        <item>Celtic</item>
+        <item>Classic Ring</item>
+        <item>Freshness</item>
+        <item>Level Cleared!</item>
+        <item>Twilight Dance</item>
+        <item>Crystal</item>
+        <item>Good Night</item>
+        <item>Tumbler</item>
+        <item>Sunshine</item>
+        <item>Interstellar</item>
+        <item>Midnight Stroll</item>
+        <item>Mermaid in Moonlight</item>
+        <item>Polestar</item>
+        <item>Silence of Night</item>
+        <item>Birthday Present</item>
+        <item>Ripple</item>
+        <item>Meteor</item>
+        <item>Chocolate Box</item>
+        <item>Tunnel</item>
+        <item>Grasshopper</item>
+        <item>Joker</item>
+        <item>Connor</item>
+        <item>Drop</item>
+        <item>Flyme Tune Dream</item>
+        <item>Flyme Tune Guitar</item>
+        <item>Flyme Tune Piano</item>
+        <item>Flyme Tune Synth</item>
+        <item>Flyme Tune Theme</item>
+    </string-array>
     <string-array name="imAddressTypes">
         <item>Домашний</item>
         <item>Рабочий</item>

@@ -35,7 +35,7 @@
     .parameter
 
     .prologue
-    .line 1027
+    .line 1038
     iput-object p1, p0, Landroid/accounts/AccountManagerService$3;->this$0:Landroid/accounts/AccountManagerService;
 
     iput-object p7, p0, Landroid/accounts/AccountManagerService$3;->val$accountType:Ljava/lang/String;
@@ -54,38 +54,38 @@
     .parameter "result"
 
     .prologue
-    .line 1039
+    .line 1050
     if-eqz p1, :cond_0
 
-    .line 1040
+    .line 1051
     const-string v2, "authTokenLabelKey"
 
     invoke-virtual {p1, v2}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 1041
+    .line 1052
     .local v1, label:Ljava/lang/String;
     new-instance v0, Landroid/os/Bundle;
 
     invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
 
-    .line 1042
+    .line 1053
     .local v0, bundle:Landroid/os/Bundle;
     const-string v2, "authTokenLabelKey"
 
     invoke-virtual {v0, v2, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1043
+    .line 1054
     invoke-super {p0, v0}, Landroid/accounts/AccountManagerService$Session;->onResult(Landroid/os/Bundle;)V
 
-    .line 1048
+    .line 1059
     .end local v0           #bundle:Landroid/os/Bundle;
     .end local v1           #label:Ljava/lang/String;
     :goto_0
     return-void
 
-    .line 1046
+    .line 1057
     :cond_0
     invoke-super {p0, p1}, Landroid/accounts/AccountManagerService$Session;->onResult(Landroid/os/Bundle;)V
 
@@ -101,14 +101,14 @@
     .end annotation
 
     .prologue
-    .line 1035
+    .line 1046
     iget-object v0, p0, Landroid/accounts/AccountManagerService$Session;->mAuthenticator:Landroid/accounts/IAccountAuthenticator;
 
     iget-object v1, p0, Landroid/accounts/AccountManagerService$3;->val$authTokenType:Ljava/lang/String;
 
     invoke-interface {v0, p0, v1}, Landroid/accounts/IAccountAuthenticator;->getAuthTokenLabel(Landroid/accounts/IAccountAuthenticatorResponse;Ljava/lang/String;)V
 
-    .line 1036
+    .line 1047
     return-void
 .end method
 
@@ -117,7 +117,7 @@
     .parameter "now"
 
     .prologue
-    .line 1029
+    .line 1040
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V

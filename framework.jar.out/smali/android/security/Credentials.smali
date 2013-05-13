@@ -231,28 +231,28 @@
     .parameter "context"
 
     .prologue
-    .line 175
+    .line 176
     :try_start_0
     invoke-static {}, Landroid/security/KeyChain;->createInstallIntent()Landroid/content/Intent;
 
     move-result-object v1
 
-    .line 176
+    .line 177
     .local v1, intent:Landroid/content/Intent;
     invoke-virtual {p1, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
     :try_end_0
     .catch Landroid/content/ActivityNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 180
+    .line 181
     .end local v1           #intent:Landroid/content/Intent;
     :goto_0
     return-void
 
-    .line 177
+    .line 178
     :catch_0
     move-exception v0
 
-    .line 178
+    .line 179
     .local v0, e:Landroid/content/ActivityNotFoundException;
     const-string v2, "Credentials"
 
@@ -272,31 +272,31 @@
     .parameter "value"
 
     .prologue
-    .line 195
+    .line 196
     :try_start_0
     invoke-static {}, Landroid/security/KeyChain;->createInstallIntent()Landroid/content/Intent;
 
     move-result-object v1
 
-    .line 196
+    .line 197
     .local v1, intent:Landroid/content/Intent;
     invoke-virtual {v1, p2, p3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;[B)Landroid/content/Intent;
 
-    .line 197
+    .line 198
     invoke-virtual {p1, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
     :try_end_0
     .catch Landroid/content/ActivityNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 201
+    .line 202
     .end local v1           #intent:Landroid/content/Intent;
     :goto_0
     return-void
 
-    .line 198
+    .line 199
     :catch_0
     move-exception v0
 
-    .line 199
+    .line 200
     .local v0, e:Landroid/content/ActivityNotFoundException;
     const-string v2, "Credentials"
 
@@ -315,13 +315,13 @@
     .parameter "pair"
 
     .prologue
-    .line 184
+    .line 185
     :try_start_0
     invoke-static {}, Landroid/security/KeyChain;->createInstallIntent()Landroid/content/Intent;
 
     move-result-object v1
 
-    .line 185
+    .line 186
     .local v1, intent:Landroid/content/Intent;
     const-string v2, "PKEY"
 
@@ -335,7 +335,7 @@
 
     invoke-virtual {v1, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;[B)Landroid/content/Intent;
 
-    .line 186
+    .line 187
     const-string v2, "KEY"
 
     invoke-virtual {p2}, Ljava/security/KeyPair;->getPublic()Ljava/security/PublicKey;
@@ -348,21 +348,21 @@
 
     invoke-virtual {v1, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;[B)Landroid/content/Intent;
 
-    .line 187
+    .line 188
     invoke-virtual {p1, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
     :try_end_0
     .catch Landroid/content/ActivityNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 191
+    .line 192
     .end local v1           #intent:Landroid/content/Intent;
     :goto_0
     return-void
 
-    .line 188
+    .line 189
     :catch_0
     move-exception v0
 
-    .line 189
+    .line 190
     .local v0, e:Landroid/content/ActivityNotFoundException;
     const-string v2, "Credentials"
 
@@ -390,20 +390,27 @@
 
     .line 167
     .local v1, intent:Landroid/content/Intent;
+    const-string v2, "NO_NEED_ENSURE_KEYGUARD"
+
+    const/4 v3, 0x1
+
+    invoke-virtual {v1, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
+
+    .line 168
     invoke-virtual {p1, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
     :try_end_0
     .catch Landroid/content/ActivityNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 171
+    .line 172
     .end local v1           #intent:Landroid/content/Intent;
     :goto_0
     return-void
 
-    .line 168
+    .line 169
     :catch_0
     move-exception v0
 
-    .line 169
+    .line 170
     .local v0, e:Landroid/content/ActivityNotFoundException;
     const-string v2, "Credentials"
 

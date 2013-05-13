@@ -4,9 +4,9 @@
 
 
 # instance fields
-.field private asyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
+.field private mAsyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
 
-.field private channelProgramDetailCommentListEntity:Ljava/util/ArrayList;
+.field private mChannelProgramDetailCommentListEntity:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/util/ArrayList",
@@ -17,7 +17,7 @@
     .end annotation
 .end field
 
-.field private channelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
+.field private mChannelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/util/ArrayList",
@@ -28,7 +28,7 @@
     .end annotation
 .end field
 
-.field private channelProgramDetailSimilarVideoListEntity:Ljava/util/ArrayList;
+.field private mChannelProgramDetailSimilarVideoListEntity:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/util/ArrayList",
@@ -39,13 +39,13 @@
     .end annotation
 .end field
 
-.field private freshViewType:I
-
-.field private listView:Landroid/widget/ListView;
-
 .field private mContext:Landroid/content/Context;
 
-.field private viewType:I
+.field private mFreshViewType:I
+
+.field private mListView:Landroid/widget/ListView;
+
+.field private mViewType:I
 
 
 # direct methods
@@ -58,38 +58,38 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 58
+    .line 37
     invoke-direct {p0}, Landroid/widget/BaseAdapter;-><init>()V
 
-    .line 36
+    .line 22
     iput-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
 
-    .line 37
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->asyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
+    .line 23
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mAsyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
 
-    .line 38
+    .line 24
     const/4 v0, -0x1
 
-    iput v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->freshViewType:I
+    iput v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mFreshViewType:I
 
-    .line 39
+    .line 25
     const/4 v0, 0x1
 
-    iput v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->viewType:I
+    iput v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mViewType:I
 
-    .line 45
-    iput-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->listView:Landroid/widget/ListView;
+    .line 31
+    iput-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mListView:Landroid/widget/ListView;
 
-    .line 59
+    .line 38
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
 
-    .line 60
-    iput-object p2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->asyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
+    .line 39
+    iput-object p2, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mAsyncImageLoader:Lcom/meizu/video/client/util/AsyncImageLoader;
 
-    .line 61
-    iput p3, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->viewType:I
+    .line 40
+    iput p3, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mViewType:I
 
-    .line 62
+    .line 41
     return-void
 .end method
 
@@ -99,30 +99,30 @@
     .locals 3
 
     .prologue
-    .line 69
+    .line 48
     const/4 v0, 0x0
 
-    .line 70
+    .line 49
     .local v0, count:I
-    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->freshViewType:I
+    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mFreshViewType:I
 
     const/4 v2, 0x1
 
     if-eq v1, v2, :cond_0
 
-    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->freshViewType:I
+    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mFreshViewType:I
 
     const/16 v2, 0xa
 
     if-ne v1, v2, :cond_2
 
-    .line 71
+    .line 50
     :cond_0
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
 
     if-eqz v1, :cond_1
 
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
 
@@ -130,32 +130,32 @@
 
     if-lez v1, :cond_1
 
-    .line 72
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
+    .line 51
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
 
     move-result v0
 
-    .line 83
+    .line 62
     :cond_1
     :goto_0
     return v0
 
-    .line 74
+    .line 53
     :cond_2
-    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->freshViewType:I
+    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mFreshViewType:I
 
     const/4 v2, 0x2
 
     if-ne v1, v2, :cond_3
 
-    .line 75
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailCommentListEntity:Ljava/util/ArrayList;
+    .line 54
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailCommentListEntity:Ljava/util/ArrayList;
 
     if-eqz v1, :cond_1
 
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailCommentListEntity:Ljava/util/ArrayList;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailCommentListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
 
@@ -163,8 +163,8 @@
 
     if-lez v1, :cond_1
 
-    .line 76
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailCommentListEntity:Ljava/util/ArrayList;
+    .line 55
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailCommentListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
 
@@ -172,20 +172,20 @@
 
     goto :goto_0
 
-    .line 78
+    .line 57
     :cond_3
-    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->freshViewType:I
+    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mFreshViewType:I
 
     const/4 v2, 0x3
 
     if-ne v1, v2, :cond_1
 
-    .line 79
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailSimilarVideoListEntity:Ljava/util/ArrayList;
+    .line 58
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailSimilarVideoListEntity:Ljava/util/ArrayList;
 
     if-eqz v1, :cond_1
 
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailSimilarVideoListEntity:Ljava/util/ArrayList;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailSimilarVideoListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
 
@@ -193,8 +193,8 @@
 
     if-lez v1, :cond_1
 
-    .line 80
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailSimilarVideoListEntity:Ljava/util/ArrayList;
+    .line 59
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailSimilarVideoListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
 
@@ -208,30 +208,30 @@
     .parameter "position"
 
     .prologue
-    .line 87
+    .line 66
     const/4 v0, 0x0
 
-    .line 88
+    .line 67
     .local v0, obj:Ljava/lang/Object;
-    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->freshViewType:I
+    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mFreshViewType:I
 
     const/4 v2, 0x1
 
     if-eq v1, v2, :cond_0
 
-    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->freshViewType:I
+    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mFreshViewType:I
 
     const/16 v2, 0xa
 
     if-ne v1, v2, :cond_2
 
-    .line 89
+    .line 68
     :cond_0
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
 
     if-eqz v1, :cond_1
 
-    .line 90
+    .line 69
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->getCount()I
 
     move-result v1
@@ -244,34 +244,34 @@
 
     if-ge p1, v1, :cond_1
 
-    .line 91
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
+    .line 70
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v1, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v0
 
-    .line 107
+    .line 86
     .end local v0           #obj:Ljava/lang/Object;
     :cond_1
     :goto_0
     return-object v0
 
-    .line 94
+    .line 73
     .restart local v0       #obj:Ljava/lang/Object;
     :cond_2
-    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->freshViewType:I
+    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mFreshViewType:I
 
     const/4 v2, 0x2
 
     if-ne v1, v2, :cond_3
 
-    .line 95
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailCommentListEntity:Ljava/util/ArrayList;
+    .line 74
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailCommentListEntity:Ljava/util/ArrayList;
 
     if-eqz v1, :cond_1
 
-    .line 96
+    .line 75
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->getCount()I
 
     move-result v1
@@ -284,8 +284,8 @@
 
     if-ge p1, v1, :cond_1
 
-    .line 97
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailCommentListEntity:Ljava/util/ArrayList;
+    .line 76
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailCommentListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v1, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
@@ -293,20 +293,20 @@
 
     goto :goto_0
 
-    .line 100
+    .line 79
     :cond_3
-    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->freshViewType:I
+    iget v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mFreshViewType:I
 
     const/4 v2, 0x3
 
     if-ne v1, v2, :cond_1
 
-    .line 101
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailSimilarVideoListEntity:Ljava/util/ArrayList;
+    .line 80
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailSimilarVideoListEntity:Ljava/util/ArrayList;
 
     if-eqz v1, :cond_1
 
-    .line 102
+    .line 81
     invoke-virtual {p0}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->getCount()I
 
     move-result v1
@@ -319,8 +319,8 @@
 
     if-ge p1, v1, :cond_1
 
-    .line 103
-    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailSimilarVideoListEntity:Ljava/util/ArrayList;
+    .line 82
+    iget-object v1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailSimilarVideoListEntity:Ljava/util/ArrayList;
 
     invoke-virtual {v1, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
@@ -334,587 +334,552 @@
     .parameter "position"
 
     .prologue
-    .line 112
+    .line 91
     int-to-long v0, p1
 
     return-wide v0
 .end method
 
 .method public getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
-    .locals 10
+    .locals 11
     .parameter "position"
     .parameter "convertView"
     .parameter "parent"
 
     .prologue
-    .line 117
-    iget v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->freshViewType:I
+    const/4 v10, 0x2
 
-    const/4 v7, 0x1
-
-    if-ne v6, v7, :cond_8
-
-    .line 119
-    if-nez p2, :cond_2
-
-    .line 120
-    iget-object v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
-
-    invoke-static {v6}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
-
-    move-result-object v6
-
-    const v7, 0x7f040016
+    const v9, 0x7f080014
 
     const/4 v8, 0x0
 
-    const/4 v9, 0x0
+    const/4 v7, 0x1
 
-    invoke-virtual {v6, v7, v8, v9}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
+    const/4 v6, 0x0
+
+    .line 96
+    iget v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mFreshViewType:I
+
+    if-ne v4, v7, :cond_9
+
+    .line 98
+    if-nez p2, :cond_2
+
+    .line 99
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
+
+    invoke-static {v4}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+
+    move-result-object v4
+
+    const v5, 0x7f040018
+
+    invoke-virtual {v4, v5, v8, v6}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
     move-result-object p2
 
-    .line 121
-    const v6, 0x7f0d0041
+    .line 100
+    const v4, 0x7f0d0045
 
-    invoke-virtual {p2, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v5
-
-    check-cast v5, Landroid/widget/TextView;
-
-    .line 122
-    .local v5, tv1:Landroid/widget/TextView;
-    const/4 v6, 0x1
-
-    invoke-virtual {v5, v6}, Landroid/widget/TextView;->setEllipsisSmall(Z)V
-
-    .line 123
-    invoke-virtual {p2, v5}, Landroid/view/View;->setTag(Ljava/lang/Object;)V
-
-    .line 127
-    :goto_0
-    invoke-virtual {p0, p1}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->getItem(I)Ljava/lang/Object;
+    invoke-virtual {p2, v4}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v3
 
-    .line 128
-    .local v3, obj:Ljava/lang/Object;
-    const/4 v2, 0x0
+    check-cast v3, Landroid/widget/TextView;
 
-    .line 129
-    .local v2, episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
-    if-eqz v3, :cond_0
+    .line 101
+    .local v3, tv1:Landroid/widget/TextView;
+    invoke-virtual {v3, v7}, Landroid/widget/TextView;->setEllipsisSmall(Z)V
 
-    instance-of v6, v3, Lcom/meizu/video/client/ui/entity/EpisodesEntity;
+    .line 102
+    invoke-virtual {p2, v3}, Landroid/view/View;->setTag(Ljava/lang/Object;)V
 
-    if-eqz v6, :cond_0
+    .line 106
+    :goto_0
+    invoke-virtual {p0, p1}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->getItem(I)Ljava/lang/Object;
 
-    move-object v2, v3
+    move-result-object v2
 
-    .line 130
-    check-cast v2, Lcom/meizu/video/client/ui/entity/EpisodesEntity;
+    .line 107
+    .local v2, obj:Ljava/lang/Object;
+    const/4 v1, 0x0
 
-    .line 131
-    invoke-virtual {v2}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getTitle()Ljava/lang/String;
+    .line 108
+    .local v1, episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
+    if-eqz v2, :cond_0
 
-    move-result-object v6
+    instance-of v4, v2, Lcom/meizu/video/client/ui/entity/EpisodesEntity;
 
-    invoke-virtual {v5, v6}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    if-eqz v4, :cond_0
 
-    .line 133
+    move-object v1, v2
+
+    .line 109
+    check-cast v1, Lcom/meizu/video/client/ui/entity/EpisodesEntity;
+
+    .line 110
+    invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getTitle()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 112
     :cond_0
-    const v6, 0x1020001
+    const v4, 0x1020001
 
-    invoke-virtual {p2, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p2, v4}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
     check-cast v0, Landroid/widget/CheckBox;
 
-    .line 134
+    .line 113
     .local v0, check:Landroid/widget/CheckBox;
-    iget v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->viewType:I
+    iget v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mViewType:I
 
-    const/4 v7, 0x1
+    if-ne v4, v7, :cond_4
 
-    if-ne v6, v7, :cond_4
+    .line 114
+    const/16 v4, 0x8
 
-    .line 135
-    const/16 v6, 0x8
+    invoke-virtual {v0, v4}, Landroid/widget/CheckBox;->setVisibility(I)V
 
-    invoke-virtual {v0, v6}, Landroid/widget/CheckBox;->setVisibility(I)V
+    .line 115
+    if-eqz v1, :cond_3
 
-    .line 136
-    if-eqz v2, :cond_3
+    invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isLastPlayPosition()Z
 
-    invoke-virtual {v2}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isLastPlayPosition()Z
+    move-result v4
 
-    move-result v6
+    if-eqz v4, :cond_3
 
-    if-eqz v6, :cond_3
+    .line 116
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
 
-    .line 137
-    iget-object v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
+    invoke-virtual {v4}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    invoke-virtual {v6}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    move-result-object v4
 
-    move-result-object v6
+    const v5, 0x7f080016
 
-    const v7, 0x7f08001d
+    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getColor(I)I
 
-    invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getColor(I)I
+    move-result v4
 
-    move-result v6
+    invoke-virtual {v3, v4}, Landroid/widget/TextView;->setTextColor(I)V
 
-    invoke-virtual {v5, v6}, Landroid/widget/TextView;->setTextColor(I)V
-
-    .line 218
+    .line 197
     .end local v0           #check:Landroid/widget/CheckBox;
-    .end local v2           #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
-    .end local v3           #obj:Ljava/lang/Object;
-    .end local v5           #tv1:Landroid/widget/TextView;
+    .end local v1           #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
+    .end local v2           #obj:Ljava/lang/Object;
+    .end local v3           #tv1:Landroid/widget/TextView;
     :cond_1
     :goto_1
     return-object p2
 
-    .line 125
+    .line 104
     :cond_2
     invoke-virtual {p2}, Landroid/view/View;->getTag()Ljava/lang/Object;
 
-    move-result-object v5
+    move-result-object v3
 
-    check-cast v5, Landroid/widget/TextView;
+    check-cast v3, Landroid/widget/TextView;
 
-    .restart local v5       #tv1:Landroid/widget/TextView;
+    .restart local v3       #tv1:Landroid/widget/TextView;
     goto :goto_0
 
-    .line 139
+    .line 118
     .restart local v0       #check:Landroid/widget/CheckBox;
-    .restart local v2       #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
-    .restart local v3       #obj:Ljava/lang/Object;
+    .restart local v1       #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
+    .restart local v2       #obj:Ljava/lang/Object;
     :cond_3
-    iget-object v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v6}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {v4}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v6
+    move-result-object v4
 
-    const v7, 0x7f08001c
+    invoke-virtual {v4, v9}, Landroid/content/res/Resources;->getColor(I)I
 
-    invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getColor(I)I
+    move-result v4
 
-    move-result v6
-
-    invoke-virtual {v5, v6}, Landroid/widget/TextView;->setTextColor(I)V
+    invoke-virtual {v3, v4}, Landroid/widget/TextView;->setTextColor(I)V
 
     goto :goto_1
 
-    .line 142
+    .line 121
     :cond_4
-    if-eqz v2, :cond_1
+    if-eqz v1, :cond_1
 
-    iget-object v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->listView:Landroid/widget/ListView;
+    .line 122
+    invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getDownload_address()Ljava/lang/String;
 
-    if-eqz v6, :cond_1
+    move-result-object v4
+
+    if-eqz v4, :cond_5
+
+    const-string v4, ""
+
+    invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getDownload_address()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/String;->trim()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v4, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_6
+
+    .line 123
+    :cond_5
+    invoke-virtual {p2, v8}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
+
+    .line 124
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v4}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v4
+
+    const v5, 0x7f080015
+
+    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getColor(I)I
+
+    move-result v4
+
+    invoke-virtual {v3, v4}, Landroid/widget/TextView;->setTextColor(I)V
+
+    goto :goto_1
+
+    .line 126
+    :cond_6
+    invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isExistOrDownload()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_7
+
+    .line 127
+    invoke-virtual {p2, v8}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
+
+    .line 128
+    const/4 v4, 0x4
+
+    invoke-virtual {v0, v4}, Landroid/widget/CheckBox;->setVisibility(I)V
+
+    .line 129
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v4}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v4
+
+    const v5, 0x7f080015
+
+    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getColor(I)I
+
+    move-result v4
+
+    invoke-virtual {v3, v4}, Landroid/widget/TextView;->setTextColor(I)V
+
+    goto :goto_1
+
+    .line 131
+    :cond_7
+    invoke-virtual {v0, v6}, Landroid/widget/CheckBox;->setVisibility(I)V
+
+    .line 132
+    invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isSelected()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_8
+
+    .line 133
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v4}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v4
+
+    const v5, 0x7f080026
+
+    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getColor(I)I
+
+    move-result v4
+
+    invoke-virtual {p2, v4}, Landroid/view/View;->setBackgroundColor(I)V
+
+    .line 134
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v4}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v4
+
+    invoke-virtual {v4, v9}, Landroid/content/res/Resources;->getColor(I)I
+
+    move-result v4
+
+    invoke-virtual {v3, v4}, Landroid/widget/TextView;->setTextColor(I)V
+
+    goto/16 :goto_1
+
+    .line 136
+    :cond_8
+    invoke-virtual {p2, v8}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
+
+    .line 137
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v4}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v4
+
+    invoke-virtual {v4, v9}, Landroid/content/res/Resources;->getColor(I)I
+
+    move-result v4
+
+    invoke-virtual {v3, v4}, Landroid/widget/TextView;->setTextColor(I)V
+
+    goto/16 :goto_1
 
     .line 143
-    invoke-virtual {v2}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isSelected()Z
+    .end local v0           #check:Landroid/widget/CheckBox;
+    .end local v1           #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
+    .end local v2           #obj:Ljava/lang/Object;
+    .end local v3           #tv1:Landroid/widget/TextView;
+    :cond_9
+    iget v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mFreshViewType:I
 
-    move-result v6
+    const/16 v5, 0xa
 
-    if-eqz v6, :cond_5
+    if-ne v4, v5, :cond_12
 
-    .line 144
-    iget-object v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->listView:Landroid/widget/ListView;
-
-    const/4 v7, 0x1
-
-    invoke-virtual {v6, p1, v7}, Landroid/widget/ListView;->setItemChecked(IZ)V
-
-    .line 148
-    :goto_2
-    const/4 v4, 0x0
-
-    .line 149
-    .local v4, topSpace:I
-    iget-object v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
-
-    check-cast v6, Landroid/app/Activity;
-
-    invoke-virtual {v6}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v6
-
-    invoke-virtual {v6}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
-
-    move-result-object v6
-
-    iget v6, v6, Landroid/content/res/Configuration;->orientation:I
-
-    const/4 v7, 0x2
-
-    if-ne v6, v7, :cond_6
-
-    .line 150
-    const/16 v4, 0x62
-
-    .line 154
-    :goto_3
-    if-nez p1, :cond_7
-
-    .line 159
-    :goto_4
-    const/4 v6, 0x0
-
-    const/4 v7, 0x0
-
-    const/4 v8, 0x0
-
-    invoke-virtual {p2, v6, v4, v7, v8}, Landroid/view/View;->setPadding(IIII)V
-
-    goto :goto_1
+    .line 145
+    if-nez p2, :cond_c
 
     .line 146
-    .end local v4           #topSpace:I
-    :cond_5
-    iget-object v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->listView:Landroid/widget/ListView;
+    iget-object v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
 
-    const/4 v7, 0x0
+    invoke-static {v4}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
-    invoke-virtual {v6, p1, v7}, Landroid/widget/ListView;->setItemChecked(IZ)V
+    move-result-object v4
 
-    goto :goto_2
+    const v5, 0x7f040016
 
-    .line 152
-    .restart local v4       #topSpace:I
-    :cond_6
-    const/16 v4, 0x62
-
-    goto :goto_3
-
-    .line 157
-    :cond_7
-    const/4 v4, 0x0
-
-    goto :goto_4
-
-    .line 162
-    .end local v0           #check:Landroid/widget/CheckBox;
-    .end local v2           #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
-    .end local v3           #obj:Ljava/lang/Object;
-    .end local v4           #topSpace:I
-    .end local v5           #tv1:Landroid/widget/TextView;
-    :cond_8
-    iget v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->freshViewType:I
-
-    const/16 v7, 0xa
-
-    if-ne v6, v7, :cond_11
-
-    .line 164
-    if-nez p2, :cond_b
-
-    .line 165
-    iget-object v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
-
-    invoke-static {v6}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
-
-    move-result-object v6
-
-    const v7, 0x7f040014
-
-    const/4 v8, 0x0
-
-    const/4 v9, 0x0
-
-    invoke-virtual {v6, v7, v8, v9}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
+    invoke-virtual {v4, v5, v8, v6}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
     move-result-object p2
 
-    .line 166
-    const v6, 0x7f0d0036
+    .line 147
+    const v4, 0x7f0d003a
 
-    invoke-virtual {p2, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v5
-
-    check-cast v5, Landroid/widget/TextView;
-
-    .line 167
-    .restart local v5       #tv1:Landroid/widget/TextView;
-    const/4 v6, 0x1
-
-    invoke-virtual {v5, v6}, Landroid/widget/TextView;->setEllipsisSmall(Z)V
-
-    .line 168
-    invoke-virtual {p2, v5}, Landroid/view/View;->setTag(Ljava/lang/Object;)V
-
-    .line 173
-    :goto_5
-    invoke-virtual {p0, p1}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->getItem(I)Ljava/lang/Object;
+    invoke-virtual {p2, v4}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v3
 
-    .line 174
-    .restart local v3       #obj:Ljava/lang/Object;
-    const/4 v2, 0x0
+    check-cast v3, Landroid/widget/Button;
 
-    .line 175
-    .restart local v2       #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
-    if-eqz v3, :cond_9
+    .line 148
+    .local v3, tv1:Landroid/widget/Button;
+    invoke-virtual {v3, v7}, Landroid/widget/Button;->setEllipsisSmall(Z)V
 
-    instance-of v6, v3, Lcom/meizu/video/client/ui/entity/EpisodesEntity;
+    .line 149
+    invoke-virtual {p2, v3}, Landroid/view/View;->setTag(Ljava/lang/Object;)V
 
-    if-eqz v6, :cond_9
+    .line 153
+    :goto_2
+    invoke-virtual {v3, v7}, Landroid/widget/Button;->setEnabled(Z)V
 
-    move-object v2, v3
+    .line 155
+    invoke-virtual {v3, v6}, Landroid/widget/Button;->setFocusable(Z)V
 
-    .line 176
-    check-cast v2, Lcom/meizu/video/client/ui/entity/EpisodesEntity;
+    .line 156
+    invoke-virtual {v3, v6}, Landroid/widget/Button;->setClickable(Z)V
 
-    .line 177
-    invoke-virtual {v2}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getProgression()Ljava/lang/String;
+    .line 158
+    invoke-virtual {p0, p1}, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->getItem(I)Ljava/lang/Object;
 
-    move-result-object v6
+    move-result-object v2
 
-    invoke-virtual {v5, v6}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 180
-    :cond_9
-    iget v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->viewType:I
-
-    const/4 v7, 0x2
-
-    if-ne v6, v7, :cond_f
-
-    .line 181
-    const/4 v4, 0x0
-
-    .line 182
-    .restart local v4       #topSpace:I
+    .line 159
+    .restart local v2       #obj:Ljava/lang/Object;
     const/4 v1, 0x0
 
-    .line 183
-    .local v1, colNum:I
-    iget-object v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
+    .line 160
+    .restart local v1       #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
+    if-eqz v2, :cond_a
 
-    check-cast v6, Landroid/app/Activity;
+    instance-of v4, v2, Lcom/meizu/video/client/ui/entity/EpisodesEntity;
 
-    invoke-virtual {v6}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
+    if-eqz v4, :cond_a
 
-    move-result-object v6
+    move-object v1, v2
 
-    invoke-virtual {v6}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+    .line 161
+    check-cast v1, Lcom/meizu/video/client/ui/entity/EpisodesEntity;
 
-    move-result-object v6
+    .line 162
+    invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getProgression()Ljava/lang/String;
 
-    iget v6, v6, Landroid/content/res/Configuration;->orientation:I
+    move-result-object v4
 
-    const/4 v7, 0x2
+    invoke-virtual {v3, v4}, Landroid/widget/Button;->setText(Ljava/lang/CharSequence;)V
 
-    if-ne v6, v7, :cond_c
-
-    .line 184
-    const/16 v1, 0x8
-
-    .line 185
-    const/16 v4, 0x62
-
-    .line 190
-    :goto_6
-    div-int v6, p1, v1
-
-    if-nez v6, :cond_d
-
-    .line 191
-    iget-object v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
-
-    const/16 v7, 0x19
-
-    invoke-static {v6, v7}, Lcom/meizu/video/client/util/CommonUtil;->dip2px(Landroid/content/Context;I)I
-
-    move-result v6
-
-    add-int/lit8 v4, v6, 0x62
-
-    .line 195
-    :goto_7
-    const/4 v6, 0x0
-
-    const/4 v7, 0x0
-
-    const/4 v8, 0x0
-
-    invoke-virtual {p2, v6, v4, v7, v8}, Landroid/view/View;->setPadding(IIII)V
-
-    .line 197
-    if-eqz v2, :cond_e
-
-    invoke-virtual {v2}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isSelected()Z
-
-    move-result v6
-
-    if-eqz v6, :cond_e
-
-    .line 198
-    iget-object v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v6}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v6
-
-    const v7, 0x7f08001f
-
-    invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getColor(I)I
-
-    move-result v6
-
-    invoke-virtual {v5, v6}, Landroid/widget/TextView;->setBackgroundColor(I)V
-
-    .line 202
-    :goto_8
-    if-eqz v2, :cond_1
-
-    invoke-virtual {v2}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getDownload_address()Ljava/lang/String;
-
-    move-result-object v6
-
-    if-eqz v6, :cond_a
-
-    const-string v6, ""
-
-    invoke-virtual {v2}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getDownload_address()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v7}, Ljava/lang/String;->trim()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v6, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v6
-
-    if-eqz v6, :cond_1
-
-    .line 203
+    .line 165
     :cond_a
-    const/4 v6, 0x0
+    iget v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mViewType:I
 
-    invoke-virtual {v5, v6}, Landroid/widget/TextView;->setEnabled(Z)V
+    if-ne v4, v10, :cond_10
 
-    goto/16 :goto_1
+    .line 166
+    if-eqz v1, :cond_d
 
-    .line 170
-    .end local v1           #colNum:I
-    .end local v2           #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
-    .end local v3           #obj:Ljava/lang/Object;
-    .end local v4           #topSpace:I
-    .end local v5           #tv1:Landroid/widget/TextView;
-    :cond_b
-    invoke-virtual {p2}, Landroid/view/View;->getTag()Ljava/lang/Object;
+    invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isSelected()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_d
+
+    .line 167
+    const v4, 0x7f02002a
+
+    invoke-virtual {v3, v4}, Landroid/widget/Button;->setBackgroundResource(I)V
+
+    .line 172
+    :goto_3
+    if-eqz v1, :cond_1
+
+    .line 173
+    invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getDownload_address()Ljava/lang/String;
+
+    move-result-object v4
+
+    if-eqz v4, :cond_b
+
+    const-string v4, ""
+
+    invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getDownload_address()Ljava/lang/String;
 
     move-result-object v5
 
-    check-cast v5, Landroid/widget/TextView;
+    invoke-virtual {v5}, Ljava/lang/String;->trim()Ljava/lang/String;
 
-    .restart local v5       #tv1:Landroid/widget/TextView;
-    goto/16 :goto_5
+    move-result-object v5
 
-    .line 187
-    .restart local v1       #colNum:I
-    .restart local v2       #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
-    .restart local v3       #obj:Ljava/lang/Object;
-    .restart local v4       #topSpace:I
+    invoke-virtual {v4, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_e
+
+    .line 174
+    :cond_b
+    invoke-virtual {v3, v6}, Landroid/widget/Button;->setEnabled(Z)V
+
+    goto/16 :goto_1
+
+    .line 151
+    .end local v1           #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
+    .end local v2           #obj:Ljava/lang/Object;
+    .end local v3           #tv1:Landroid/widget/Button;
     :cond_c
-    const/4 v1, 0x5
+    invoke-virtual {p2}, Landroid/view/View;->getTag()Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Landroid/widget/Button;
+
+    .restart local v3       #tv1:Landroid/widget/Button;
+    goto :goto_2
+
+    .line 169
+    .restart local v1       #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
+    .restart local v2       #obj:Ljava/lang/Object;
+    :cond_d
+    const v4, 0x7f020028
+
+    invoke-virtual {v3, v4}, Landroid/widget/Button;->setBackgroundResource(I)V
+
+    goto :goto_3
+
+    .line 176
+    :cond_e
+    invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isExistOrDownload()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_f
+
+    .line 177
+    invoke-virtual {v3, v6}, Landroid/widget/Button;->setEnabled(Z)V
+
+    goto/16 :goto_1
+
+    .line 179
+    :cond_f
+    invoke-virtual {v3, v7}, Landroid/widget/Button;->setEnabled(Z)V
+
+    goto/16 :goto_1
+
+    .line 185
+    :cond_10
+    if-eqz v1, :cond_11
+
+    invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isLastPlayPosition()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_11
+
+    invoke-virtual {v1}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getProgression()Ljava/lang/String;
+
+    move-result-object v4
+
+    const-string v5, "..."
+
+    invoke-virtual {v4, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-nez v4, :cond_11
+
+    .line 186
+    const v4, 0x7f02002a
+
+    invoke-virtual {v3, v4}, Landroid/widget/Button;->setBackgroundResource(I)V
+
+    goto/16 :goto_1
 
     .line 188
-    const/16 v4, 0x62
+    :cond_11
+    const v4, 0x7f020028
 
-    goto :goto_6
+    invoke-virtual {v3, v4}, Landroid/widget/Button;->setBackgroundResource(I)V
+
+    goto/16 :goto_1
+
+    .line 191
+    .end local v1           #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
+    .end local v2           #obj:Ljava/lang/Object;
+    .end local v3           #tv1:Landroid/widget/Button;
+    :cond_12
+    iget v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mFreshViewType:I
+
+    if-eq v4, v10, :cond_1
 
     .line 193
-    :cond_d
-    const/4 v4, 0x0
+    iget v4, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mFreshViewType:I
 
-    goto :goto_7
+    const/4 v5, 0x3
 
-    .line 200
-    :cond_e
-    const v6, 0x7f020086
-
-    invoke-virtual {v5, v6}, Landroid/widget/TextView;->setBackgroundResource(I)V
-
-    goto :goto_8
-
-    .line 206
-    .end local v1           #colNum:I
-    .end local v4           #topSpace:I
-    :cond_f
-    if-eqz v2, :cond_10
-
-    invoke-virtual {v2}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->isLastPlayPosition()Z
-
-    move-result v6
-
-    if-eqz v6, :cond_10
-
-    invoke-virtual {v2}, Lcom/meizu/video/client/ui/entity/EpisodesEntity;->getProgression()Ljava/lang/String;
-
-    move-result-object v6
-
-    const-string v7, "..."
-
-    invoke-virtual {v6, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v6
-
-    if-nez v6, :cond_10
-
-    .line 207
-    iget-object v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v6}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v6
-
-    const v7, 0x7f08001f
-
-    invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getColor(I)I
-
-    move-result v6
-
-    invoke-virtual {v5, v6}, Landroid/widget/TextView;->setBackgroundColor(I)V
-
-    goto/16 :goto_1
-
-    .line 209
-    :cond_10
-    const v6, 0x7f020086
-
-    invoke-virtual {v5, v6}, Landroid/widget/TextView;->setBackgroundResource(I)V
-
-    goto/16 :goto_1
-
-    .line 212
-    .end local v2           #episodesEntity:Lcom/meizu/video/client/ui/entity/EpisodesEntity;
-    .end local v3           #obj:Ljava/lang/Object;
-    .end local v5           #tv1:Landroid/widget/TextView;
-    :cond_11
-    iget v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->freshViewType:I
-
-    const/4 v7, 0x2
-
-    if-eq v6, v7, :cond_1
-
-    .line 214
-    iget v6, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->freshViewType:I
-
-    const/4 v7, 0x3
-
-    if-ne v6, v7, :cond_1
+    if-ne v4, v5, :cond_1
 
     goto/16 :goto_1
 .end method
@@ -933,24 +898,24 @@
     .end annotation
 
     .prologue
-    .line 223
+    .line 202
     .local p1, list:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/meizu/video/client/ui/entity/EpisodesEntity;>;"
     if-eqz p1, :cond_0
 
-    .line 225
-    iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
+    .line 204
+    iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
 
-    .line 231
+    .line 210
     :goto_0
     return-void
 
-    .line 229
+    .line 208
     :cond_0
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    iput-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->channelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
+    iput-object v0, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mChannelProgramDetailEpisodesListEntity:Ljava/util/ArrayList;
 
     goto :goto_0
 .end method
@@ -960,10 +925,10 @@
     .parameter "freshType"
 
     .prologue
-    .line 258
-    iput p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->freshViewType:I
+    .line 237
+    iput p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mFreshViewType:I
 
-    .line 259
+    .line 238
     return-void
 .end method
 
@@ -972,9 +937,9 @@
     .parameter "listView"
 
     .prologue
-    .line 65
-    iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->listView:Landroid/widget/ListView;
+    .line 44
+    iput-object p1, p0, Lcom/meizu/video/client/ui/module/chanel/ChanelProgramDetailEpisodesAdapter;->mListView:Landroid/widget/ListView;
 
-    .line 66
+    .line 45
     return-void
 .end method

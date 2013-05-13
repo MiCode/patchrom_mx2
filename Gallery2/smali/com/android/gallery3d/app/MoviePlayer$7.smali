@@ -3,12 +3,12 @@
 .source "MoviePlayer.java"
 
 # interfaces
-.implements Landroid/view/View$OnSystemUiVisibilityChangeListener;
+.implements Ljava/lang/Runnable;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/gallery3d/app/MoviePlayer;->initMoviePlayer()V
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/android/gallery3d/app/MoviePlayer;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 297
+    .line 306
     iput-object p1, p0, Lcom/android/gallery3d/app/MoviePlayer$7;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -37,17 +37,44 @@
 
 
 # virtual methods
-.method public onSystemUiVisibilityChange(I)V
+.method public run()V
     .locals 1
-    .parameter "visibility"
 
     .prologue
-    .line 299
-    and-int/lit8 v0, p1, 0x2
+    .line 308
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$7;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    if-nez v0, :cond_0
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mRemoteBuffering:Landroid/app/ProgressDialog;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$2100(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/app/ProgressDialog;
 
-    .line 301
+    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$7;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mRemoteBuffering:Landroid/app/ProgressDialog;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$2100(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/app/ProgressDialog;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/app/ProgressDialog;->isShowing()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 309
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$7;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mRemoteBuffering:Landroid/app/ProgressDialog;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$2100(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/app/ProgressDialog;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/app/ProgressDialog;->dismiss()V
+
+    .line 311
     :cond_0
     return-void
 .end method

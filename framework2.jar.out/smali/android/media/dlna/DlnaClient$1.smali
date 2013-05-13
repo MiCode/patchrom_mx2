@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 237
+    .line 319
     iput-object p1, p0, Landroid/media/dlna/DlnaClient$1;->this$0:Landroid/media/dlna/DlnaClient;
 
     iput-object p2, p0, Landroid/media/dlna/DlnaClient$1;->val$listener:Landroid/media/dlna/DlnaClient$RemoteCallListener;
@@ -48,7 +48,7 @@
     .parameter "msg"
 
     .prologue
-    .line 240
+    .line 322
     iget-object v0, p0, Landroid/media/dlna/DlnaClient$1;->this$0:Landroid/media/dlna/DlnaClient;
 
     const/4 v1, 0x0
@@ -56,17 +56,49 @@
     #setter for: Landroid/media/dlna/DlnaClient;->mTryingToPlay:Z
     invoke-static {v0, v1}, Landroid/media/dlna/DlnaClient;->access$002(Landroid/media/dlna/DlnaClient;Z)Z
 
-    .line 241
+    .line 323
     iget-object v0, p0, Landroid/media/dlna/DlnaClient$1;->val$listener:Landroid/media/dlna/DlnaClient$RemoteCallListener;
 
     if-eqz v0, :cond_0
 
-    .line 242
+    .line 324
     iget-object v0, p0, Landroid/media/dlna/DlnaClient$1;->val$listener:Landroid/media/dlna/DlnaClient$RemoteCallListener;
 
     invoke-interface {v0, p1, p2}, Landroid/media/dlna/DlnaClient$RemoteCallListener;->onActionEnd(ILjava/lang/String;)V
 
-    .line 244
+    .line 326
     :cond_0
+    if-nez p1, :cond_1
+
+    .line 327
+    const-string v0, "DlnaClient"
+
+    const-string v1, "DLNA PLAY OK !!!!!!!!!!!!!!!!!!! "
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 328
+    invoke-static {}, Landroid/media/dlna/DlnaClient;->access$100()I
+
+    move-result v0
+
+    add-int/lit8 v0, v0, -0x1
+
+    invoke-static {v0}, Landroid/media/dlna/DlnaClient;->access$102(I)I
+
+    .line 329
+    invoke-static {}, Landroid/media/dlna/DlnaClient;->access$100()I
+
+    move-result v0
+
+    if-gez v0, :cond_1
+
+    .line 330
+    const/4 v0, 0x1
+
+    invoke-static {v0}, Landroid/media/dlna/DlnaClient;->access$102(I)I
+
+    .line 332
+    :cond_1
     return-void
 .end method

@@ -88,7 +88,7 @@
     .line 88
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/CropView;->resources:Landroid/content/res/Resources;
 
-    const v2, 0x7f080059
+    const v2, 0x7f080060
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getColor(I)I
 
@@ -98,7 +98,7 @@
     .local v0, borderColor:I
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/CropView;->resources:Landroid/content/res/Resources;
 
-    const v2, 0x7f020063
+    const v2, 0x7f020061
 
     invoke-static {v1, v2}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
@@ -109,7 +109,7 @@
     .line 90
     iget-object v1, p0, Lcom/android/gallery3d/photoeditor/actions/CropView;->resources:Landroid/content/res/Resources;
 
-    const v2, 0x7f020062
+    const v2, 0x7f020060
 
     invoke-static {v1, v2}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
@@ -1309,7 +1309,7 @@
     .line 343
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/CropView;->resources:Landroid/content/res/Resources;
 
-    const v2, 0x7f020066
+    const v2, 0x7f020064
 
     invoke-static {v0, v2}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
@@ -1557,7 +1557,7 @@
     .line 348
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/CropView;->resources:Landroid/content/res/Resources;
 
-    const v2, 0x7f020065
+    const v2, 0x7f020063
 
     invoke-static {v0, v2}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
@@ -1591,7 +1591,7 @@
     .line 353
     iget-object v0, p0, Lcom/android/gallery3d/photoeditor/actions/CropView;->resources:Landroid/content/res/Resources;
 
-    const v2, 0x7f020064
+    const v2, 0x7f020062
 
     invoke-static {v0, v2}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 

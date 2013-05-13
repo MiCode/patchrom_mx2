@@ -50,36 +50,6 @@
     return-void
 .end method
 
-.method public static dip2px(Landroid/content/Context;F)I
-    .locals 3
-    .parameter "context"
-    .parameter "dpValue"
-
-    .prologue
-    .line 43
-    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
-
-    move-result-object v1
-
-    iget v0, v1, Landroid/util/DisplayMetrics;->density:F
-
-    .line 44
-    .local v0, scale:F
-    mul-float v1, p1, v0
-
-    const/high16 v2, 0x3f00
-
-    add-float/2addr v1, v2
-
-    float-to-int v1, v1
-
-    return v1
-.end method
-
 .method private static findFilePathInDir(Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;)V
     .locals 7
     .parameter "dir"
@@ -104,17 +74,17 @@
     .end annotation
 
     .prologue
-    .line 180
+    .line 172
     .local p2, resultList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/lang/String;>;"
     new-instance v1, Ljava/io/File;
 
     invoke-direct {v1, p0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 181
+    .line 173
     .local v1, file:Ljava/io/File;
     const-string v2, ""
 
-    .line 182
+    .line 174
     .local v2, fileName:Ljava/lang/String;
     if-eqz p2, :cond_0
 
@@ -126,7 +96,7 @@
 
     if-ne v5, v6, :cond_0
 
-    .line 183
+    .line 175
     const/4 v5, 0x0
 
     invoke-virtual {p2, v5}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -136,7 +106,7 @@
     .end local v2           #fileName:Ljava/lang/String;
     check-cast v2, Ljava/lang/String;
 
-    .line 185
+    .line 177
     .restart local v2       #fileName:Ljava/lang/String;
     :cond_0
     invoke-virtual {v1}, Ljava/io/File;->exists()Z
@@ -145,12 +115,12 @@
 
     if-eqz v5, :cond_2
 
-    .line 186
+    .line 178
     invoke-virtual {v1}, Ljava/io/File;->list()[Ljava/lang/String;
 
     move-result-object v3
 
-    .line 187
+    .line 179
     .local v3, fileNames:[Ljava/lang/String;
     const/4 v4, 0x0
 
@@ -160,14 +130,14 @@
 
     if-ge v4, v5, :cond_2
 
-    .line 188
+    .line 180
     new-instance v0, Ljava/io/File;
 
     aget-object v5, v3, v4
 
     invoke-direct {v0, v5}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 189
+    .line 181
     .local v0, f:Ljava/io/File;
     invoke-virtual {v0}, Ljava/io/File;->getName()Ljava/lang/String;
 
@@ -179,7 +149,7 @@
 
     if-eqz v5, :cond_1
 
-    .line 190
+    .line 182
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
@@ -212,7 +182,7 @@
 
     if-eq v5, p1, :cond_1
 
-    .line 191
+    .line 183
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
@@ -239,7 +209,7 @@
 
     if-nez v5, :cond_1
 
-    .line 192
+    .line 184
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
@@ -262,13 +232,13 @@
 
     invoke-virtual {p2, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 187
+    .line 179
     :cond_1
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_0
 
-    .line 198
+    .line 190
     .end local v0           #f:Ljava/io/File;
     .end local v3           #fileNames:[Ljava/lang/String;
     .end local v4           #i:I
@@ -304,38 +274,38 @@
     .local p2, timeTextType:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/lang/String;>;"
     const/4 v8, 0x0
 
-    .line 128
+    .line 120
     sget v6, Lcom/android/gallery3d/app/MovieActivityUtils;->sFindCount:I
 
     add-int/lit8 v6, v6, 0x1
 
     sput v6, Lcom/android/gallery3d/app/MovieActivityUtils;->sFindCount:I
 
-    .line 129
+    .line 121
     const/4 v5, 0x0
 
-    .line 130
+    .line 122
     .local v5, videoPath:Ljava/lang/String;
     new-instance v4, Ljava/util/ArrayList;
 
     invoke-direct {v4}, Ljava/util/ArrayList;-><init>()V
 
-    .line 131
+    .line 123
     .local v4, timeTextPath:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/lang/String;>;"
     invoke-virtual {p3}, Landroid/net/Uri;->getScheme()Ljava/lang/String;
 
     move-result-object v2
 
-    .line 132
+    .line 124
     .local v2, scheme:Ljava/lang/String;
     if-nez v2, :cond_1
 
-    .line 133
+    .line 125
     invoke-virtual {p3}, Landroid/net/Uri;->getPath()Ljava/lang/String;
 
     move-result-object v5
 
-    .line 150
+    .line 142
     :goto_0
     invoke-static {v5}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -351,11 +321,11 @@
 
     if-nez v6, :cond_4
 
-    .line 177
+    .line 169
     :cond_0
     return-void
 
-    .line 135
+    .line 127
     :cond_1
     const-string v6, "file"
 
@@ -365,17 +335,17 @@
 
     if-eqz v6, :cond_3
 
-    .line 136
+    .line 128
     sget v6, Lcom/android/gallery3d/app/MovieActivityUtils;->sFindCount:I
 
     if-gtz v6, :cond_2
 
-    .line 137
+    .line 129
     const/4 v6, 0x1
 
     sput-boolean v6, Lcom/android/gallery3d/app/MovieActivityUtils;->sIsFromFile:Z
 
-    .line 139
+    .line 131
     :cond_2
     invoke-virtual {p3}, Landroid/net/Uri;->getPath()Ljava/lang/String;
 
@@ -383,7 +353,7 @@
 
     goto :goto_0
 
-    .line 140
+    .line 132
     :cond_3
     const-string v6, "content"
 
@@ -393,10 +363,10 @@
 
     if-eqz v6, :cond_0
 
-    .line 141
+    .line 133
     sput-boolean v8, Lcom/android/gallery3d/app/MovieActivityUtils;->sIsFromFile:Z
 
-    .line 142
+    .line 134
     invoke-virtual {p3}, Landroid/net/Uri;->toString()Ljava/lang/String;
 
     move-result-object v6
@@ -415,14 +385,14 @@
 
     if-nez v6, :cond_0
 
-    .line 145
+    .line 137
     invoke-static {p0, p3}, Lcom/android/gallery3d/app/MovieActivityUtils;->getFilePathFromUri(Landroid/content/Context;Landroid/net/Uri;)Ljava/lang/String;
 
     move-result-object v5
 
     goto :goto_0
 
-    .line 153
+    .line 145
     :cond_4
     const-string v6, "."
 
@@ -432,7 +402,7 @@
 
     if-gez v6, :cond_6
 
-    .line 154
+    .line 146
     invoke-virtual {v5}, Ljava/lang/String;->length()I
 
     move-result v6
@@ -443,7 +413,7 @@
 
     sput-object v6, Lcom/android/gallery3d/app/MovieActivityUtils;->sFileName:Ljava/lang/String;
 
-    .line 155
+    .line 147
     const-string v6, "/"
 
     invoke-virtual {v5, v6}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
@@ -462,7 +432,7 @@
 
     sput-object v6, Lcom/android/gallery3d/app/MovieActivityUtils;->sVidoeName:Ljava/lang/String;
 
-    .line 156
+    .line 148
     const-string v6, "/"
 
     invoke-virtual {v5, v6}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
@@ -477,7 +447,7 @@
 
     sput-object v6, Lcom/android/gallery3d/app/MovieActivityUtils;->sFilePath:Ljava/lang/String;
 
-    .line 163
+    .line 155
     :goto_1
     :try_start_0
     sget-object v6, Lcom/android/gallery3d/app/MovieActivityUtils;->sFilePath:Ljava/lang/String;
@@ -488,7 +458,7 @@
     :try_end_0
     .catch Ljava/io/FileNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 167
+    .line 159
     :goto_2
     const/4 v1, 0x0
 
@@ -500,7 +470,7 @@
 
     if-ge v1, v6, :cond_0
 
-    .line 168
+    .line 160
     invoke-virtual {v4, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v6
@@ -515,18 +485,18 @@
 
     if-eqz v6, :cond_5
 
-    .line 169
+    .line 161
     invoke-virtual {v4, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v3
 
     check-cast v3, Ljava/lang/String;
 
-    .line 170
+    .line 162
     .local v3, str:Ljava/lang/String;
     invoke-virtual {p1, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 171
+    .line 163
     sget-object v6, Lcom/android/gallery3d/app/MovieActivityUtils;->sFileName:Ljava/lang/String;
 
     invoke-virtual {v6}, Ljava/lang/String;->length()I
@@ -541,7 +511,7 @@
 
     move-result-object v3
 
-    .line 172
+    .line 164
     const-string v6, "."
 
     invoke-virtual {v3, v6}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
@@ -552,22 +522,22 @@
 
     move-result-object v3
 
-    .line 173
+    .line 165
     invoke-virtual {v3}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
 
     move-result-object v3
 
-    .line 174
+    .line 166
     invoke-virtual {p2, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 167
+    .line 159
     .end local v3           #str:Ljava/lang/String;
     :cond_5
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_3
 
-    .line 158
+    .line 150
     .end local v1           #i:I
     :cond_6
     const-string v6, "."
@@ -582,7 +552,7 @@
 
     sput-object v6, Lcom/android/gallery3d/app/MovieActivityUtils;->sFileName:Ljava/lang/String;
 
-    .line 159
+    .line 151
     const-string v6, "/"
 
     invoke-virtual {v5, v6}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
@@ -603,7 +573,7 @@
 
     sput-object v6, Lcom/android/gallery3d/app/MovieActivityUtils;->sVidoeName:Ljava/lang/String;
 
-    .line 160
+    .line 152
     const-string v6, "/"
 
     invoke-virtual {v5, v6}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
@@ -620,11 +590,11 @@
 
     goto :goto_1
 
-    .line 164
+    .line 156
     :catch_0
     move-exception v0
 
-    .line 165
+    .line 157
     .local v0, e:Ljava/io/FileNotFoundException;
     invoke-virtual {v0}, Ljava/io/FileNotFoundException;->printStackTrace()V
 
@@ -639,39 +609,39 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 90
+    .line 82
     if-nez p1, :cond_0
 
     move-object v3, v5
 
-    .line 124
+    .line 116
     :goto_0
     return-object v3
 
-    .line 93
+    .line 85
     :cond_0
     const/4 v4, 0x0
 
-    .line 94
+    .line 86
     .local v4, videoPath:Ljava/lang/String;
     invoke-virtual {p1}, Landroid/net/Uri;->getScheme()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 95
+    .line 87
     .local v0, scheme:Ljava/lang/String;
     const/4 v3, 0x0
 
-    .line 96
+    .line 88
     .local v3, videoName:Ljava/lang/String;
     if-nez v0, :cond_2
 
-    .line 97
+    .line 89
     invoke-virtual {p1}, Landroid/net/Uri;->getPath()Ljava/lang/String;
 
     move-result-object v4
 
-    .line 107
+    .line 99
     :goto_1
     if-eqz v4, :cond_1
 
@@ -684,10 +654,10 @@
     :cond_1
     move-object v3, v5
 
-    .line 108
+    .line 100
     goto :goto_0
 
-    .line 99
+    .line 91
     :cond_2
     const-string v6, "file"
 
@@ -697,14 +667,14 @@
 
     if-eqz v6, :cond_3
 
-    .line 100
+    .line 92
     invoke-virtual {p1}, Landroid/net/Uri;->getPath()Ljava/lang/String;
 
     move-result-object v4
 
     goto :goto_1
 
-    .line 101
+    .line 93
     :cond_3
     const-string v6, "content"
 
@@ -714,7 +684,7 @@
 
     if-eqz v6, :cond_4
 
-    .line 102
+    .line 94
     invoke-static {p0, p1}, Lcom/android/gallery3d/app/MovieActivityUtils;->getFilePathFromUri(Landroid/content/Context;Landroid/net/Uri;)Ljava/lang/String;
 
     move-result-object v4
@@ -724,18 +694,18 @@
     :cond_4
     move-object v3, v5
 
-    .line 104
+    .line 96
     goto :goto_0
 
-    .line 110
+    .line 102
     :cond_5
     const/4 v1, 0x0
 
-    .line 111
+    .line 103
     .local v1, subStringBegin:I
     const/4 v2, 0x0
 
-    .line 112
+    .line 104
     .local v2, subStringEnd:I
     const-string v5, "."
 
@@ -745,7 +715,7 @@
 
     if-gez v5, :cond_6
 
-    .line 113
+    .line 105
     const-string v5, "/"
 
     invoke-virtual {v4, v5}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
@@ -754,23 +724,23 @@
 
     add-int/lit8 v1, v5, 0x1
 
-    .line 114
+    .line 106
     invoke-virtual {v4}, Ljava/lang/String;->length()I
 
     move-result v2
 
-    .line 119
+    .line 111
     :goto_2
     if-ge v1, v2, :cond_7
 
-    .line 120
+    .line 112
     invoke-virtual {v4, v1, v2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v3
 
     goto :goto_0
 
-    .line 116
+    .line 108
     :cond_6
     const-string v5, "/"
 
@@ -780,7 +750,7 @@
 
     add-int/lit8 v1, v5, 0x1
 
-    .line 117
+    .line 109
     const-string v5, "."
 
     invoke-virtual {v4, v5}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
@@ -789,9 +759,9 @@
 
     goto :goto_2
 
-    .line 122
+    .line 114
     :cond_7
-    const v5, 0x7f0a01d3
+    const v5, 0x7f0a01e2
 
     invoke-static {p0, v5}, Lcom/android/gallery3d/app/MovieActivityUtils;->getStringFromRes(Landroid/content/Context;I)Ljava/lang/String;
 
@@ -807,14 +777,14 @@
     .prologue
     const/4 v0, -0x1
 
-    .line 272
+    .line 264
     if-nez p0, :cond_0
 
-    .line 276
+    .line 268
     :goto_0
     return v0
 
-    .line 275
+    .line 267
     :cond_0
     const-string v1, "video-light"
 
@@ -822,7 +792,7 @@
 
     move-result v0
 
-    .line 276
+    .line 268
     .local v0, brightness:I
     goto :goto_0
 .end method
@@ -833,7 +803,7 @@
     .prologue
     const/16 v2, 0xff
 
-    .line 259
+    .line 251
     :try_start_0
     const-string v3, "power"
 
@@ -845,27 +815,27 @@
 
     move-result-object v1
 
-    .line 261
+    .line 253
     .local v1, power:Landroid/os/IPowerManager;
     if-eqz v1, :cond_0
 
-    .line 262
+    .line 254
     invoke-interface {v1}, Landroid/os/IPowerManager;->getSettingsBrightnessMeizu()I
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
     move-result v2
 
-    .line 267
+    .line 259
     :cond_0
     :goto_0
     return v2
 
-    .line 266
+    .line 258
     :catch_0
     move-exception v0
 
-    .line 267
+    .line 259
     .local v0, doe:Landroid/os/RemoteException;
     goto :goto_0
 .end method
@@ -878,16 +848,16 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 210
+    .line 202
     const/4 v7, 0x0
 
-    .line 211
+    .line 203
     .local v7, str:Ljava/lang/String;
     invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v0
 
-    .line 212
+    .line 204
     .local v0, resolver:Landroid/content/ContentResolver;
     const/4 v1, 0x1
 
@@ -906,16 +876,16 @@
 
     move-object v5, v3
 
-    .line 213
+    .line 205
     invoke-virtual/range {v0 .. v5}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
     move-result-object v6
 
-    .line 215
+    .line 207
     .local v6, cursor:Landroid/database/Cursor;
     if-eqz v6, :cond_0
 
-    .line 216
+    .line 208
     :try_start_0
     invoke-interface {v6}, Landroid/database/Cursor;->moveToFirst()Z
 
@@ -923,7 +893,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 217
+    .line 209
     const-string v1, "_data"
 
     invoke-interface {v6, v1}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
@@ -936,24 +906,24 @@
 
     move-result-object v7
 
-    .line 220
+    .line 212
     :cond_0
     if-eqz v6, :cond_1
 
-    .line 221
+    .line 213
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
-    .line 224
+    .line 216
     :cond_1
     return-object v7
 
-    .line 220
+    .line 212
     :catchall_0
     move-exception v1
 
     if-eqz v6, :cond_2
 
-    .line 221
+    .line 213
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
     :cond_2
@@ -990,27 +960,6 @@
     goto :goto_0
 .end method
 
-.method public static hideAlphaAndScale(Landroid/content/Context;Landroid/view/View;)V
-    .locals 2
-    .parameter "context"
-    .parameter "view"
-
-    .prologue
-    .line 85
-    const v1, 0x7f050016
-
-    invoke-static {p0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
-
-    move-result-object v0
-
-    .line 86
-    .local v0, animation:Landroid/view/animation/Animation;
-    invoke-virtual {p1, v0}, Landroid/view/View;->startAnimation(Landroid/view/animation/Animation;)V
-
-    .line 87
-    return-void
-.end method
-
 .method public static hideViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
     .locals 2
     .parameter "context"
@@ -1032,55 +981,13 @@
     return-void
 .end method
 
-.method public static hideViewTranslateAniDown(Landroid/content/Context;Landroid/view/View;)V
-    .locals 2
-    .parameter "context"
-    .parameter "view"
-
-    .prologue
-    .line 63
-    const v1, 0x7f050009
-
-    invoke-static {p0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
-
-    move-result-object v0
-
-    .line 64
-    .local v0, alpha_ani:Landroid/view/animation/Animation;
-    invoke-virtual {p1, v0}, Landroid/view/View;->startAnimation(Landroid/view/animation/Animation;)V
-
-    .line 65
-    return-void
-.end method
-
-.method public static hideViewTranslateAniUp(Landroid/content/Context;Landroid/view/View;)V
-    .locals 2
-    .parameter "context"
-    .parameter "view"
-
-    .prologue
-    .line 59
-    const v1, 0x7f05000a
-
-    invoke-static {p0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
-
-    move-result-object v0
-
-    .line 60
-    .local v0, alpha_ani:Landroid/view/animation/Animation;
-    invoke-virtual {p1, v0}, Landroid/view/View;->startAnimation(Landroid/view/animation/Animation;)V
-
-    .line 61
-    return-void
-.end method
-
 .method public static isAlmostEqual(DD)Z
     .locals 4
     .parameter "a"
     .parameter "b"
 
     .prologue
-    .line 306
+    .line 298
     sub-double v0, p0, p2
 
     invoke-static {v0, v1}, Ljava/lang/Math;->abs(D)D
@@ -1109,25 +1016,25 @@
     .parameter "filePath"
 
     .prologue
-    .line 201
+    .line 193
     invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    .line 202
+    .line 194
     new-instance v0, Ljava/io/File;
 
     invoke-direct {v0, p0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 203
+    .line 195
     .local v0, f:Ljava/io/File;
     invoke-virtual {v0}, Ljava/io/File;->exists()Z
 
     move-result v1
 
-    .line 205
+    .line 197
     .end local v0           #f:Ljava/io/File;
     :goto_0
     return v1
@@ -1144,12 +1051,12 @@
     .parameter "newScale"
 
     .prologue
-    .line 301
+    .line 293
     new-instance v0, Ljava/math/BigDecimal;
 
     invoke-direct {v0, p0, p1}, Ljava/math/BigDecimal;-><init>(D)V
 
-    .line 302
+    .line 294
     .local v0, b:Ljava/math/BigDecimal;
     const/4 v1, 0x4
 
@@ -1170,14 +1077,14 @@
     .parameter "brightness"
 
     .prologue
-    .line 280
+    .line 272
     if-nez p0, :cond_0
 
-    .line 284
+    .line 276
     :goto_0
     return-void
 
-    .line 283
+    .line 275
     :cond_0
     invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
@@ -1200,7 +1107,7 @@
     .parameter "complete"
 
     .prologue
-    .line 313
+    .line 305
     invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
     move-result-object v0
@@ -1213,7 +1120,7 @@
 
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 314
+    .line 306
     return-void
 .end method
 
@@ -1223,7 +1130,7 @@
     .parameter "complete"
 
     .prologue
-    .line 316
+    .line 308
     invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
     move-result-object v0
@@ -1236,7 +1143,7 @@
 
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 317
+    .line 309
     return-void
 .end method
 
@@ -1246,7 +1153,7 @@
     .parameter "isqueue"
 
     .prologue
-    .line 319
+    .line 311
     invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
     move-result-object v0
@@ -1259,7 +1166,7 @@
 
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 320
+    .line 312
     return-void
 .end method
 
@@ -1269,7 +1176,7 @@
     .parameter "isreplay"
 
     .prologue
-    .line 322
+    .line 314
     invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
     move-result-object v0
@@ -1282,7 +1189,7 @@
 
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 323
+    .line 315
     return-void
 .end method
 
@@ -1292,7 +1199,7 @@
     .parameter "isScreenHor"
 
     .prologue
-    .line 310
+    .line 302
     invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
     move-result-object v0
@@ -1305,7 +1212,7 @@
 
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 311
+    .line 303
     return-void
 .end method
 
@@ -1314,13 +1221,13 @@
     .parameter "brightness"
 
     .prologue
-    .line 243
+    .line 235
     :try_start_0
     sget-object v0, Lcom/android/gallery3d/app/MovieActivityUtils;->sLedPower:Landroid/os/IPowerManager;
 
     if-nez v0, :cond_0
 
-    .line 244
+    .line 236
     const-string v0, "power"
 
     invoke-static {v0}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
@@ -1333,21 +1240,21 @@
 
     sput-object v0, Lcom/android/gallery3d/app/MovieActivityUtils;->sLedPower:Landroid/os/IPowerManager;
 
-    .line 247
+    .line 239
     :cond_0
     sget-object v0, Lcom/android/gallery3d/app/MovieActivityUtils;->sLedPower:Landroid/os/IPowerManager;
 
     if-eqz v0, :cond_2
 
-    .line 248
+    .line 240
     const/16 v0, 0xff
 
     if-le p0, v0, :cond_1
 
-    .line 249
+    .line 241
     const/16 p0, 0xff
 
-    .line 251
+    .line 243
     :cond_1
     sget-object v0, Lcom/android/gallery3d/app/MovieActivityUtils;->sLedPower:Landroid/os/IPowerManager;
 
@@ -1355,12 +1262,12 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 256
+    .line 248
     :cond_2
     :goto_0
     return-void
 
-    .line 253
+    .line 245
     :catch_0
     move-exception v0
 
@@ -1373,25 +1280,25 @@
     .parameter "brightness"
 
     .prologue
-    .line 228
+    .line 220
     if-eqz p0, :cond_2
 
-    .line 229
+    .line 221
     const/16 v2, 0xff
 
     if-le p1, v2, :cond_0
 
-    .line 230
+    .line 222
     const/16 p1, 0xff
 
-    .line 232
+    .line 224
     :cond_0
     if-gez p1, :cond_1
 
-    .line 233
+    .line 225
     const/4 p1, 0x0
 
-    .line 235
+    .line 227
     :cond_1
     int-to-float v2, p1
 
@@ -1399,44 +1306,23 @@
 
     div-float v0, v2, v3
 
-    .line 236
+    .line 228
     .local v0, brightnessRatio:F
     invoke-virtual {p0}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
 
     move-result-object v1
 
-    .line 237
+    .line 229
     .local v1, winParams:Landroid/view/WindowManager$LayoutParams;
     iput v0, v1, Landroid/view/WindowManager$LayoutParams;->screenBrightness:F
 
-    .line 238
+    .line 230
     invoke-virtual {p0, v1}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
 
-    .line 240
+    .line 232
     .end local v0           #brightnessRatio:F
     .end local v1           #winParams:Landroid/view/WindowManager$LayoutParams;
     :cond_2
-    return-void
-.end method
-
-.method public static showAlphaAndScale(Landroid/content/Context;Landroid/view/View;)V
-    .locals 2
-    .parameter "context"
-    .parameter "view"
-
-    .prologue
-    .line 80
-    const v1, 0x7f050015
-
-    invoke-static {p0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
-
-    move-result-object v0
-
-    .line 81
-    .local v0, animation:Landroid/view/animation/Animation;
-    invoke-virtual {p1, v0}, Landroid/view/View;->startAnimation(Landroid/view/animation/Animation;)V
-
-    .line 82
     return-void
 .end method
 
@@ -1446,8 +1332,29 @@
     .parameter "view"
 
     .prologue
-    .line 68
+    .line 60
     const v1, 0x7f05000b
+
+    invoke-static {p0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
+
+    move-result-object v0
+
+    .line 61
+    .local v0, alpha_ani:Landroid/view/animation/Animation;
+    invoke-virtual {p1, v0}, Landroid/view/View;->startAnimation(Landroid/view/animation/Animation;)V
+
+    .line 62
+    return-void
+.end method
+
+.method public static showViewTranslateAniDown(Landroid/content/Context;Landroid/view/View;)V
+    .locals 2
+    .parameter "context"
+    .parameter "view"
+
+    .prologue
+    .line 68
+    const v1, 0x7f05000c
 
     invoke-static {p0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 
@@ -1461,44 +1368,23 @@
     return-void
 .end method
 
-.method public static showViewTranslateAniDown(Landroid/content/Context;Landroid/view/View;)V
-    .locals 2
-    .parameter "context"
-    .parameter "view"
-
-    .prologue
-    .line 76
-    const v1, 0x7f05000c
-
-    invoke-static {p0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
-
-    move-result-object v0
-
-    .line 77
-    .local v0, alpha_ani:Landroid/view/animation/Animation;
-    invoke-virtual {p1, v0}, Landroid/view/View;->startAnimation(Landroid/view/animation/Animation;)V
-
-    .line 78
-    return-void
-.end method
-
 .method public static showViewTranslateAniUp(Landroid/content/Context;Landroid/view/View;)V
     .locals 2
     .parameter "context"
     .parameter "view"
 
     .prologue
-    .line 72
+    .line 64
     const v1, 0x7f05000d
 
     invoke-static {p0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 
     move-result-object v0
 
-    .line 73
+    .line 65
     .local v0, alpha_ani:Landroid/view/animation/Animation;
     invoke-virtual {p1, v0}, Landroid/view/View;->startAnimation(Landroid/view/animation/Animation;)V
 
-    .line 74
+    .line 66
     return-void
 .end method

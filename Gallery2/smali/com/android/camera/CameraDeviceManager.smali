@@ -54,52 +54,52 @@
 
     const/4 v2, 0x0
 
-    .line 9
+    .line 10
     const/4 v0, -0x1
 
     sput v0, Lcom/android/camera/CameraDeviceManager;->DEVICE_UNKNOWN:I
 
-    .line 10
+    .line 11
     sput v2, Lcom/android/camera/CameraDeviceManager;->DEVICE_MX:I
 
-    .line 11
+    .line 12
     sput v3, Lcom/android/camera/CameraDeviceManager;->DEVICE_MX2:I
 
-    .line 14
+    .line 15
     sput v3, Lcom/android/camera/CameraDeviceManager;->DEVICE_MX_FRONT:I
 
-    .line 15
+    .line 16
     sput v2, Lcom/android/camera/CameraDeviceManager;->DEVICE_MX_BACK:I
 
-    .line 30
+    .line 38
     new-array v0, v5, [I
 
     fill-array-data v0, :array_0
 
     sput-object v0, Lcom/android/camera/CameraDeviceManager;->CAMERA_FLASH_LIGHT_ICON:[I
 
-    .line 36
+    .line 44
     new-array v0, v5, [I
 
     fill-array-data v0, :array_1
 
     sput-object v0, Lcom/android/camera/CameraDeviceManager;->CAMERA_FLASH_LIGHT_UNSEL_ICON:[I
 
-    .line 42
+    .line 50
     new-array v0, v4, [I
 
     fill-array-data v0, :array_2
 
     sput-object v0, Lcom/android/camera/CameraDeviceManager;->VIDEO_FLASH_LIGHT_ICON:[I
 
-    .line 47
+    .line 55
     new-array v0, v4, [I
 
     fill-array-data v0, :array_3
 
     sput-object v0, Lcom/android/camera/CameraDeviceManager;->VIDEO_FLASH_LIGHT_UNSEL_ICON:[I
 
-    .line 52
+    .line 60
     new-array v0, v6, [Ljava/lang/String;
 
     const-string v1, "pref_camera_whitebalance_key"
@@ -120,7 +120,7 @@
 
     sput-object v0, Lcom/android/camera/CameraDeviceManager;->DEVICE_MX_CAMERA_SETTING_KEYS:[Ljava/lang/String;
 
-    .line 59
+    .line 67
     new-array v0, v4, [Ljava/lang/String;
 
     const-string v1, "pref_camera_whitebalance_key"
@@ -133,7 +133,7 @@
 
     sput-object v0, Lcom/android/camera/CameraDeviceManager;->DEVICE_MX_VIDEO_SETTING_KEYS:[Ljava/lang/String;
 
-    .line 64
+    .line 72
     new-array v0, v6, [Ljava/lang/String;
 
     const-string v1, "pref_camera_picturesize_key"
@@ -156,36 +156,36 @@
 
     return-void
 
-    .line 30
+    .line 38
     nop
 
     :array_0
     .array-data 0x4
-        0x9bt 0x0t 0x2t 0x7ft
-        0x9dt 0x0t 0x2t 0x7ft
+        0x9at 0x0t 0x2t 0x7ft
         0x9ct 0x0t 0x2t 0x7ft
+        0x9bt 0x0t 0x2t 0x7ft
     .end array-data
 
-    .line 36
+    .line 44
     :array_1
     .array-data 0x4
-        0x9bt 0x0t 0x2t 0x7ft
-        0x9dt 0x0t 0x2t 0x7ft
+        0x9at 0x0t 0x2t 0x7ft
         0x9ct 0x0t 0x2t 0x7ft
+        0x9bt 0x0t 0x2t 0x7ft
     .end array-data
 
-    .line 42
+    .line 50
     :array_2
     .array-data 0x4
-        0x9dt 0x0t 0x2t 0x7ft
         0x9ct 0x0t 0x2t 0x7ft
+        0x9bt 0x0t 0x2t 0x7ft
     .end array-data
 
-    .line 47
+    .line 55
     :array_3
     .array-data 0x4
-        0x9dt 0x0t 0x2t 0x7ft
         0x9ct 0x0t 0x2t 0x7ft
+        0x9bt 0x0t 0x2t 0x7ft
     .end array-data
 .end method
 
@@ -193,7 +193,7 @@
     .locals 2
 
     .prologue
-    .line 236
+    .line 248
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
     move-result v0
@@ -202,7 +202,7 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 237
+    .line 249
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;-><init>()V
@@ -211,11 +211,11 @@
 
     move-result-object v0
 
-    .line 241
+    .line 253
     :goto_0
     return-object v0
 
-    .line 238
+    .line 250
     :cond_0
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
@@ -225,7 +225,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 239
+    .line 251
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX2;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;-><init>()V
@@ -236,7 +236,7 @@
 
     goto :goto_0
 
-    .line 241
+    .line 253
     :cond_1
     const/4 v0, 0x0
 
@@ -247,7 +247,7 @@
     .locals 2
 
     .prologue
-    .line 164
+    .line 176
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
     move-result v0
@@ -256,7 +256,7 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 165
+    .line 177
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;-><init>()V
@@ -265,11 +265,11 @@
 
     move-result v0
 
-    .line 169
+    .line 181
     :goto_0
     return v0
 
-    .line 166
+    .line 178
     :cond_0
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
@@ -279,7 +279,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 167
+    .line 179
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX2;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;-><init>()V
@@ -290,18 +290,18 @@
 
     goto :goto_0
 
-    .line 169
+    .line 181
     :cond_1
     const/4 v0, -0x1
 
     goto :goto_0
 .end method
 
-.method public static getIsCameraEVSupport()Z
+.method public static getEachExposureValue()F
     .locals 2
 
     .prologue
-    .line 227
+    .line 284
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
     move-result v0
@@ -310,20 +310,20 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 228
+    .line 285
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;-><init>()V
 
-    invoke-virtual {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;->getIsCameraEVSupport()Z
+    invoke-virtual {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;->getEachExposureValue()F
 
     move-result v0
 
-    .line 232
+    .line 289
     :goto_0
     return v0
 
-    .line 229
+    .line 286
     :cond_0
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
@@ -333,7 +333,61 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 230
+    .line 287
+    new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX2;
+
+    invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;-><init>()V
+
+    invoke-virtual {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;->getEachExposureValue()F
+
+    move-result v0
+
+    goto :goto_0
+
+    .line 289
+    :cond_1
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public static getIsCameraEVSupport()Z
+    .locals 2
+
+    .prologue
+    .line 239
+    invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
+
+    move-result v0
+
+    sget v1, Lcom/android/camera/CameraDeviceManager;->DEVICE_MX:I
+
+    if-ne v0, v1, :cond_0
+
+    .line 240
+    new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX;
+
+    invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;-><init>()V
+
+    invoke-virtual {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;->getIsCameraEVSupport()Z
+
+    move-result v0
+
+    .line 244
+    :goto_0
+    return v0
+
+    .line 241
+    :cond_0
+    invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
+
+    move-result v0
+
+    sget v1, Lcom/android/camera/CameraDeviceManager;->DEVICE_MX2:I
+
+    if-ne v0, v1, :cond_1
+
+    .line 242
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX2;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;-><init>()V
@@ -344,7 +398,7 @@
 
     goto :goto_0
 
-    .line 232
+    .line 244
     :cond_1
     const/4 v0, 0x0
 
@@ -355,7 +409,7 @@
     .locals 2
 
     .prologue
-    .line 209
+    .line 221
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
     move-result v0
@@ -364,7 +418,7 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 210
+    .line 222
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;-><init>()V
@@ -373,11 +427,11 @@
 
     move-result v0
 
-    .line 214
+    .line 226
     :goto_0
     return v0
 
-    .line 211
+    .line 223
     :cond_0
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
@@ -387,7 +441,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 212
+    .line 224
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX2;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;-><init>()V
@@ -398,7 +452,61 @@
 
     goto :goto_0
 
-    .line 214
+    .line 226
+    :cond_1
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public static getIsSupportComprehensivePano()Z
+    .locals 2
+
+    .prologue
+    .line 293
+    invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
+
+    move-result v0
+
+    sget v1, Lcom/android/camera/CameraDeviceManager;->DEVICE_MX:I
+
+    if-ne v0, v1, :cond_0
+
+    .line 294
+    new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX;
+
+    invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;-><init>()V
+
+    invoke-virtual {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;->getIsSupportComprehensivePano()Z
+
+    move-result v0
+
+    .line 298
+    :goto_0
+    return v0
+
+    .line 295
+    :cond_0
+    invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
+
+    move-result v0
+
+    sget v1, Lcom/android/camera/CameraDeviceManager;->DEVICE_MX2:I
+
+    if-ne v0, v1, :cond_1
+
+    .line 296
+    new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX2;
+
+    invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;-><init>()V
+
+    invoke-virtual {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;->getIsSupportComprehensivePano()Z
+
+    move-result v0
+
+    goto :goto_0
+
+    .line 298
     :cond_1
     const/4 v0, 0x0
 
@@ -409,7 +517,7 @@
     .locals 2
 
     .prologue
-    .line 254
+    .line 266
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
     move-result v0
@@ -418,7 +526,7 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 255
+    .line 267
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;-><init>()V
@@ -427,11 +535,11 @@
 
     move-result v0
 
-    .line 259
+    .line 271
     :goto_0
     return v0
 
-    .line 256
+    .line 268
     :cond_0
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
@@ -441,7 +549,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 257
+    .line 269
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX2;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;-><init>()V
@@ -452,7 +560,7 @@
 
     goto :goto_0
 
-    .line 259
+    .line 271
     :cond_1
     const/4 v0, 0x0
 
@@ -463,7 +571,7 @@
     .locals 2
 
     .prologue
-    .line 146
+    .line 158
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
     move-result v0
@@ -472,7 +580,7 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 147
+    .line 159
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;-><init>()V
@@ -481,11 +589,11 @@
 
     move-result v0
 
-    .line 151
+    .line 163
     :goto_0
     return v0
 
-    .line 148
+    .line 160
     :cond_0
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
@@ -495,7 +603,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 149
+    .line 161
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX2;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;-><init>()V
@@ -506,7 +614,7 @@
 
     goto :goto_0
 
-    .line 151
+    .line 163
     :cond_1
     const/4 v0, 0x0
 
@@ -517,7 +625,7 @@
     .locals 2
 
     .prologue
-    .line 245
+    .line 257
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
     move-result v0
@@ -526,7 +634,7 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 246
+    .line 258
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;-><init>()V
@@ -535,11 +643,11 @@
 
     move-result v0
 
-    .line 250
+    .line 262
     :goto_0
     return v0
 
-    .line 247
+    .line 259
     :cond_0
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
@@ -549,7 +657,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 248
+    .line 260
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX2;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;-><init>()V
@@ -560,7 +668,7 @@
 
     goto :goto_0
 
-    .line 250
+    .line 262
     :cond_1
     const/4 v0, 0x0
 
@@ -571,7 +679,7 @@
     .locals 2
 
     .prologue
-    .line 200
+    .line 212
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
     move-result v0
@@ -580,7 +688,7 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 201
+    .line 213
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;-><init>()V
@@ -589,11 +697,11 @@
 
     move-result v0
 
-    .line 205
+    .line 217
     :goto_0
     return v0
 
-    .line 202
+    .line 214
     :cond_0
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
@@ -603,7 +711,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 203
+    .line 215
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX2;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;-><init>()V
@@ -614,7 +722,115 @@
 
     goto :goto_0
 
-    .line 205
+    .line 217
+    :cond_1
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public static getIsSupportNavigationBar()Z
+    .locals 2
+
+    .prologue
+    .line 275
+    invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
+
+    move-result v0
+
+    sget v1, Lcom/android/camera/CameraDeviceManager;->DEVICE_MX:I
+
+    if-ne v0, v1, :cond_0
+
+    .line 276
+    new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX;
+
+    invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;-><init>()V
+
+    invoke-virtual {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;->getIsSupportNavigationBar()Z
+
+    move-result v0
+
+    .line 280
+    :goto_0
+    return v0
+
+    .line 277
+    :cond_0
+    invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
+
+    move-result v0
+
+    sget v1, Lcom/android/camera/CameraDeviceManager;->DEVICE_MX2:I
+
+    if-ne v0, v1, :cond_1
+
+    .line 278
+    new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX2;
+
+    invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;-><init>()V
+
+    invoke-virtual {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;->getIsSupportNavigationBar()Z
+
+    move-result v0
+
+    goto :goto_0
+
+    .line 280
+    :cond_1
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public static getPanoraMaxValue()I
+    .locals 2
+
+    .prologue
+    .line 302
+    invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
+
+    move-result v0
+
+    sget v1, Lcom/android/camera/CameraDeviceManager;->DEVICE_MX:I
+
+    if-ne v0, v1, :cond_0
+
+    .line 303
+    new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX;
+
+    invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;-><init>()V
+
+    invoke-virtual {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;->getPanoraMaxValue()I
+
+    move-result v0
+
+    .line 307
+    :goto_0
+    return v0
+
+    .line 304
+    :cond_0
+    invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
+
+    move-result v0
+
+    sget v1, Lcom/android/camera/CameraDeviceManager;->DEVICE_MX2:I
+
+    if-ne v0, v1, :cond_1
+
+    .line 305
+    new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX2;
+
+    invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;-><init>()V
+
+    invoke-virtual {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;->getPanoraMaxValue()I
+
+    move-result v0
+
+    goto :goto_0
+
+    .line 307
     :cond_1
     const/4 v0, 0x0
 
@@ -629,7 +845,7 @@
     .parameter "previewHeight"
 
     .prologue
-    .line 191
+    .line 203
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
     move-result v0
@@ -638,7 +854,7 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 192
+    .line 204
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX;-><init>()V
@@ -647,11 +863,11 @@
 
     move-result v0
 
-    .line 196
+    .line 208
     :goto_0
     return v0
 
-    .line 193
+    .line 205
     :cond_0
     invoke-static {}, Lcom/android/camera/Util;->getDeviceType()I
 
@@ -661,7 +877,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 194
+    .line 206
     new-instance v0, Lcom/android/camera/CameraDeviceManager$DeviceMX2;
 
     invoke-direct {v0}, Lcom/android/camera/CameraDeviceManager$DeviceMX2;-><init>()V
@@ -672,7 +888,7 @@
 
     goto :goto_0
 
-    .line 196
+    .line 208
     :cond_1
     const/4 v0, 0x0
 

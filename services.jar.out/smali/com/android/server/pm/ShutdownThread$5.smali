@@ -1,5 +1,5 @@
 .class Lcom/android/server/pm/ShutdownThread$5;
-.super Landroid/content/BroadcastReceiver;
+.super Landroid/os/storage/IMountShutdownObserver$Stub;
 .source "ShutdownThread.java"
 
 
@@ -24,27 +24,60 @@
     .parameter
 
     .prologue
-    .line 320
+    .line 398
     iput-object p1, p0, Lcom/android/server/pm/ShutdownThread$5;->this$0:Lcom/android/server/pm/ShutdownThread;
 
-    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
+    invoke-direct {p0}, Landroid/os/storage/IMountShutdownObserver$Stub;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 1
-    .parameter "context"
-    .parameter "intent"
+.method public onShutDownComplete(I)V
+    .locals 3
+    .parameter "statusCode"
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
     .prologue
-    .line 323
+    .line 400
+    const-string v0, "ShutdownThread"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "Result code "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, " from MountService.shutdown"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 401
     iget-object v0, p0, Lcom/android/server/pm/ShutdownThread$5;->this$0:Lcom/android/server/pm/ShutdownThread;
 
     invoke-virtual {v0}, Lcom/android/server/pm/ShutdownThread;->actionDone()V
 
-    .line 324
+    .line 402
     return-void
 .end method

@@ -285,7 +285,7 @@
 
     div-int/lit8 v4, v4, 0x2
 
-    const v5, 0x1050009
+    const v5, 0x1050012
 
     invoke-virtual {v3, v5}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -682,7 +682,7 @@
 
     iget-object v6, p0, Landroid/view/View;->mContext:Landroid/content/Context;
 
-    const v7, 0x1040515
+    const v7, 0x1040519
 
     invoke-virtual {v6, v7}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 

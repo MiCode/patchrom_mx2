@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 192
+    .line 217
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/download/SelectDownloadActivity$2;->this$0:Lcom/meizu/video/client/ui/module/download/SelectDownloadActivity;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -42,11 +42,11 @@
     .parameter "v"
 
     .prologue
-    .line 194
+    .line 219
     iget-object v0, p0, Lcom/meizu/video/client/ui/module/download/SelectDownloadActivity$2;->this$0:Lcom/meizu/video/client/ui/module/download/SelectDownloadActivity;
 
     invoke-virtual {v0}, Lcom/meizu/video/client/ui/module/download/SelectDownloadActivity;->checkAllOrUnall()V
 
-    .line 195
+    .line 220
     return-void
 .end method

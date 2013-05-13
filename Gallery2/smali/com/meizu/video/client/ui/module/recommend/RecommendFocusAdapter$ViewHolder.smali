@@ -15,13 +15,7 @@
 
 
 # instance fields
-.field image_cover:Landroid/widget/ImageView;
-
-.field recommend_image:Landroid/widget/ImageView;
-
-.field recommend_image_cover:Landroid/widget/ImageView;
-
-.field recommend_title:Landroid/widget/TextView;
+.field mRecommendImage:Landroid/widget/ImageView;
 
 .field final synthetic this$0:Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
 
@@ -32,7 +26,7 @@
     .parameter
 
     .prologue
-    .line 71
+    .line 63
     iput-object p1, p0, Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter$ViewHolder;->this$0:Lcom/meizu/video/client/ui/module/recommend/RecommendFocusAdapter;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V

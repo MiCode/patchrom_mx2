@@ -80,7 +80,7 @@
 
     .line 763
     .local v2, inflater:Landroid/view/LayoutInflater;
-    const v5, 0x10900eb
+    const v5, 0x10900f4
 
     iget-object v6, p0, Lcom/meizu/widget/TabHostPlus$IconIndicatorStrategy;->this$0:Lcom/meizu/widget/TabHostPlus;
 

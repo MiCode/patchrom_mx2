@@ -48,7 +48,7 @@
     invoke-virtual {p0, v0}, Lcom/meizu/app/CustomPickerDialog;->setIcon(I)V
 
     .line 62
-    const v0, 0x1040475
+    const v0, 0x1040479
 
     invoke-virtual {p0, v0}, Lcom/meizu/app/CustomPickerDialog;->setTitle(I)V
 

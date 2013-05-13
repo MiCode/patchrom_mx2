@@ -1,9 +1,6 @@
 .class Lcom/android/gallery3d/app/MoviePlayer$13;
-.super Ljava/lang/Object;
+.super Landroid/os/Handler;
 .source "MoviePlayer.java"
-
-# interfaces
-.implements Landroid/media/dlna/DlnaClient$PlaybackInfoListener;
 
 
 # annotations
@@ -27,532 +24,599 @@
     .parameter
 
     .prologue
-    .line 1376
+    .line 554
     iput-object p1, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Landroid/os/Handler;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onPlaybackStateMessage(I)V
-    .locals 9
-    .parameter "playbackStateEnum"
+.method public handleMessage(Landroid/os/Message;)V
+    .locals 10
+    .parameter "msg"
 
     .prologue
-    const/16 v4, 0x8
+    const-wide v8, 0x3fa99999a0000000L
 
-    const/4 v8, 0x3
+    const-wide/16 v6, 0x0
+
+    const/4 v5, 0x3
 
     const/4 v3, 0x0
 
-    const/4 v7, 0x4
+    const-wide/16 v1, 0x0
 
-    const/4 v6, 0x1
+    .line 557
+    iget v0, p1, Landroid/os/Message;->what:I
 
-    .line 1396
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+    packed-switch v0, :pswitch_data_0
 
-    invoke-virtual {v2}, Lcom/android/gallery3d/app/MoviePlayer;->isCurrentDlna()Z
-
-    move-result v2
-
-    if-nez v2, :cond_1
-
-    .line 1437
+    .line 655
     :cond_0
     :goto_0
     return-void
 
-    .line 1399
-    :cond_1
-    if-ne v4, p1, :cond_5
-
-    .line 1400
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaIsPlaying:Z
-    invoke-static {v2, v6}, Lcom/android/gallery3d/app/MoviePlayer;->access$1402(Lcom/android/gallery3d/app/MoviePlayer;Z)Z
-
-    .line 1401
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mController:Lcom/android/gallery3d/app/ControllerOverlay;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$400(Lcom/android/gallery3d/app/MoviePlayer;)Lcom/android/gallery3d/app/ControllerOverlay;
-
-    move-result-object v2
-
-    invoke-interface {v2, v3}, Lcom/android/gallery3d/app/ControllerOverlay;->setDlnaVideoState(I)V
-
-    .line 1406
-    :goto_1
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaPlayState:I
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1000(Lcom/android/gallery3d/app/MoviePlayer;)I
-
-    move-result v1
-
-    .line 1407
-    .local v1, oldState:I
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaPlayState:I
-    invoke-static {v2, p1}, Lcom/android/gallery3d/app/MoviePlayer;->access$1002(Lcom/android/gallery3d/app/MoviePlayer;I)I
-
-    .line 1409
-    if-ne v1, v4, :cond_3
-
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaPlayState:I
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1000(Lcom/android/gallery3d/app/MoviePlayer;)I
-
-    move-result v2
-
-    const/4 v3, 0x2
-
-    if-ne v2, v3, :cond_3
-
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+    .line 559
+    :pswitch_0
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
     #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mVideoView:Landroid/widget/VideoView;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$200(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/widget/VideoView;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$800(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/widget/VideoView;
 
-    move-result-object v2
+    move-result-object v0
 
-    invoke-virtual {v2}, Landroid/widget/VideoView;->getDuration()I
-
-    move-result v2
-
-    iget-object v3, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    invoke-virtual {v3}, Lcom/android/gallery3d/app/MoviePlayer;->getDlnaClientPos()I
-
-    move-result v3
-
-    sub-int/2addr v2, v3
-
-    invoke-static {v2}, Ljava/lang/Math;->abs(I)I
-
-    move-result v2
-
-    const/16 v3, 0x320
-
-    if-lt v2, v3, :cond_2
-
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    invoke-virtual {v2}, Lcom/android/gallery3d/app/MoviePlayer;->getDlnaClientPos()I
-
-    move-result v2
-
-    iget-object v3, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mVideoView:Landroid/widget/VideoView;
-    invoke-static {v3}, Lcom/android/gallery3d/app/MoviePlayer;->access$200(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/widget/VideoView;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Landroid/widget/VideoView;->getDuration()I
-
-    move-result v3
-
-    if-gt v2, v3, :cond_2
-
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mCachedPosition:J
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4700(Lcom/android/gallery3d/app/MoviePlayer;)J
-
-    move-result-wide v2
-
-    iget-object v4, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mVideoView:Landroid/widget/VideoView;
-    invoke-static {v4}, Lcom/android/gallery3d/app/MoviePlayer;->access$200(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/widget/VideoView;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Landroid/widget/VideoView;->getDuration()I
-
-    move-result v4
-
-    int-to-long v4, v4
-
-    sub-long/2addr v2, v4
-
-    invoke-static {v2, v3}, Ljava/lang/Math;->abs(J)J
-
-    move-result-wide v2
-
-    const-wide/16 v4, 0x7d0
-
-    cmp-long v2, v2, v4
-
-    if-gez v2, :cond_3
-
-    .line 1414
-    :cond_2
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #calls: Lcom/android/gallery3d/app/MoviePlayer;->dlnaPlayComplete()V
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4800(Lcom/android/gallery3d/app/MoviePlayer;)V
-
-    .line 1416
-    :cond_3
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaPlayState:I
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1000(Lcom/android/gallery3d/app/MoviePlayer;)I
-
-    move-result v2
-
-    if-ne v2, v7, :cond_6
-
-    if-eq v1, v7, :cond_6
-
-    .line 1417
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaHandler:Landroid/os/Handler;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1200(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/os/Handler;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v8}, Landroid/os/Handler;->removeMessages(I)V
-
-    .line 1418
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaHandler:Landroid/os/Handler;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1200(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/os/Handler;
-
-    move-result-object v2
-
-    const-wide/16 v3, 0x7530
-
-    invoke-virtual {v2, v8, v3, v4}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
-
-    .line 1420
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaHandler:Landroid/os/Handler;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1200(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/os/Handler;
-
-    move-result-object v2
-
-    iget-object v3, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mShowRemoteBuffering:Ljava/lang/Runnable;
-    invoke-static {v3}, Lcom/android/gallery3d/app/MoviePlayer;->access$4900(Lcom/android/gallery3d/app/MoviePlayer;)Ljava/lang/Runnable;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
-
-    .line 1421
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaHandler:Landroid/os/Handler;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1200(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/os/Handler;
-
-    move-result-object v2
-
-    iget-object v3, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mShowRemoteBuffering:Ljava/lang/Runnable;
-    invoke-static {v3}, Lcom/android/gallery3d/app/MoviePlayer;->access$4900(Lcom/android/gallery3d/app/MoviePlayer;)Ljava/lang/Runnable;
-
-    move-result-object v3
-
-    const-wide/16 v4, 0x0
-
-    invoke-virtual {v2, v3, v4, v5}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
-
-    .line 1429
-    :cond_4
-    :goto_2
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlna:Landroid/media/dlna/DlnaClient;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1300(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/media/dlna/DlnaClient;
-
-    move-result-object v2
-
-    if-eqz v2, :cond_0
-
-    .line 1430
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlna:Landroid/media/dlna/DlnaClient;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1300(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/media/dlna/DlnaClient;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Landroid/media/dlna/DlnaClient;->isPlaying()Z
+    invoke-virtual {v0}, Landroid/widget/VideoView;->isPlaying()Z
 
     move-result v0
 
-    .line 1431
-    .local v0, isPlaying:Z
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+    if-eqz v0, :cond_0
 
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mCachedRemotePlaying:Z
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$900(Lcom/android/gallery3d/app/MoviePlayer;)Z
+    .line 560
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    move-result v2
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MoviePlayer;->pauseVideo()V
 
-    if-eq v2, v0, :cond_0
+    goto :goto_0
 
-    .line 1432
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+    .line 566
+    :pswitch_1
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mCachedRemotePlaying:Z
-    invoke-static {v2, v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$902(Lcom/android/gallery3d/app/MoviePlayer;Z)Z
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mVideoView:Landroid/widget/VideoView;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$800(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/widget/VideoView;
 
-    .line 1433
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+    move-result-object v0
 
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaHandler:Landroid/os/Handler;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1200(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/os/Handler;
+    invoke-virtual {v0}, Landroid/widget/VideoView;->isPlaying()Z
 
-    move-result-object v2
+    move-result v0
 
-    invoke-virtual {v2, v6}, Landroid/os/Handler;->removeMessages(I)V
+    if-nez v0, :cond_0
 
-    .line 1434
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+    .line 567
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaHandler:Landroid/os/Handler;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1200(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/os/Handler;
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MoviePlayer;->playVideo()V
 
-    move-result-object v2
+    goto :goto_0
 
-    const-wide/16 v3, 0x12c
+    .line 573
+    :pswitch_2
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    invoke-virtual {v2, v6, v3, v4}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mIsPrepared:Z
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$300(Lcom/android/gallery3d/app/MoviePlayer;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 574
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MoviePlayer;->videoNext()V
+
+    goto :goto_0
+
+    .line 580
+    :pswitch_3
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mIsPrepared:Z
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$300(Lcom/android/gallery3d/app/MoviePlayer;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 581
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MoviePlayer;->videoPrev()V
+
+    goto :goto_0
+
+    .line 587
+    :pswitch_4
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MoviePlayer;->isCurrentDlna()Z
+
+    move-result v0
+
+    if-nez v0, :cond_2
+
+    .line 588
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mVideoView:Landroid/widget/VideoView;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$800(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/widget/VideoView;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/widget/VideoView;->isPlaying()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 589
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MoviePlayer;->pauseVideo()V
+
+    .line 597
+    :goto_1
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mHeadSetHookClick:I
+    invoke-static {v0, v3}, Lcom/android/gallery3d/app/MoviePlayer;->access$4102(Lcom/android/gallery3d/app/MoviePlayer;I)I
+
+    .line 598
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mFirHeadSetClick:J
+    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4202(Lcom/android/gallery3d/app/MoviePlayer;J)J
+
+    goto :goto_0
+
+    .line 591
+    :cond_1
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MoviePlayer;->playVideo()V
+
+    goto :goto_1
+
+    .line 594
+    :cond_2
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #calls: Lcom/android/gallery3d/app/MoviePlayer;->setDlnaPlayState()V
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$4000(Lcom/android/gallery3d/app/MoviePlayer;)V
+
+    goto :goto_1
+
+    .line 603
+    :pswitch_5
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MoviePlayer;->videoNext()V
+
+    .line 604
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mHeadSetHookClick:I
+    invoke-static {v0, v3}, Lcom/android/gallery3d/app/MoviePlayer;->access$4102(Lcom/android/gallery3d/app/MoviePlayer;I)I
+
+    .line 605
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mFirHeadSetClick:J
+    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4202(Lcom/android/gallery3d/app/MoviePlayer;J)J
+
+    .line 606
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mSecHeadSetClick:J
+    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4302(Lcom/android/gallery3d/app/MoviePlayer;J)J
 
     goto/16 :goto_0
 
-    .line 1403
-    .end local v0           #isPlaying:Z
-    .end local v1           #oldState:I
+    .line 611
+    :pswitch_6
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MoviePlayer;->videoPrev()V
+
+    .line 612
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mHeadSetHookClick:I
+    invoke-static {v0, v3}, Lcom/android/gallery3d/app/MoviePlayer;->access$4102(Lcom/android/gallery3d/app/MoviePlayer;I)I
+
+    .line 613
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mHeadSetHookClick:I
+    invoke-static {v0, v3}, Lcom/android/gallery3d/app/MoviePlayer;->access$4102(Lcom/android/gallery3d/app/MoviePlayer;I)I
+
+    .line 614
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mFirHeadSetClick:J
+    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4202(Lcom/android/gallery3d/app/MoviePlayer;J)J
+
+    .line 615
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mSecHeadSetClick:J
+    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4302(Lcom/android/gallery3d/app/MoviePlayer;J)J
+
+    goto/16 :goto_0
+
+    .line 620
+    :pswitch_7
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mReboundLevel:D
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$4400(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v0
+
+    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mMaxZoomLevel:D
+    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4500(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v2
+
+    cmpl-double v0, v0, v2
+
+    if-lez v0, :cond_5
+
+    .line 621
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mLoopValue:D
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$4600(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v0
+
+    cmpl-double v0, v0, v6
+
+    if-nez v0, :cond_3
+
+    .line 622
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mReboundLevel:D
+    invoke-static {v1}, Lcom/android/gallery3d/app/MoviePlayer;->access$4400(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v1
+
+    iget-object v3, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mMaxZoomLevel:D
+    invoke-static {v3}, Lcom/android/gallery3d/app/MoviePlayer;->access$4500(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v3
+
+    sub-double/2addr v1, v3
+
+    const-wide/high16 v3, 0x4014
+
+    div-double/2addr v1, v3
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mLoopValue:D
+    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4602(Lcom/android/gallery3d/app/MoviePlayer;D)D
+
+    .line 623
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mLoopValue:D
+    invoke-static {v1}, Lcom/android/gallery3d/app/MoviePlayer;->access$4600(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v1
+
+    invoke-static {v1, v2, v5}, Lcom/android/gallery3d/app/MovieActivityUtils;->roundingLevel(DI)D
+
+    move-result-wide v1
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mLoopValue:D
+    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4602(Lcom/android/gallery3d/app/MoviePlayer;D)D
+
+    .line 625
+    :cond_3
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mLoopValue:D
+    invoke-static {v1}, Lcom/android/gallery3d/app/MoviePlayer;->access$4600(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v1
+
+    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4426(Lcom/android/gallery3d/app/MoviePlayer;D)D
+
+    .line 626
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mReboundLevel:D
+    invoke-static {v1}, Lcom/android/gallery3d/app/MoviePlayer;->access$4400(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v1
+
+    invoke-static {v1, v2, v5}, Lcom/android/gallery3d/app/MovieActivityUtils;->roundingLevel(DI)D
+
+    move-result-wide v1
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mReboundLevel:D
+    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4402(Lcom/android/gallery3d/app/MoviePlayer;D)D
+
+    .line 627
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mReboundLevel:D
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$4400(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v0
+
+    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mMaxZoomLevel:D
+    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4500(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v2
+
+    sub-double/2addr v0, v2
+
+    cmpg-double v0, v0, v8
+
+    if-gtz v0, :cond_4
+
+    .line 628
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mMaxZoomLevel:D
+    invoke-static {v1}, Lcom/android/gallery3d/app/MoviePlayer;->access$4500(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v1
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mReboundLevel:D
+    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4402(Lcom/android/gallery3d/app/MoviePlayer;D)D
+
+    goto/16 :goto_0
+
+    .line 630
+    :cond_4
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mReboundLevel:D
+    invoke-static {v1}, Lcom/android/gallery3d/app/MoviePlayer;->access$4400(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v1
+
+    const/4 v3, 0x1
+
+    invoke-virtual {v0, v1, v2, v3}, Lcom/android/gallery3d/app/MoviePlayer;->setVideoZoomLevel(DZ)V
+
+    .line 631
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mMsgHandler:Landroid/os/Handler;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$3800(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/os/Handler;
+
+    move-result-object v0
+
+    const/16 v1, 0x3f0
+
+    const-wide/16 v2, 0x5
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
+
+    goto/16 :goto_0
+
+    .line 633
     :cond_5
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mReboundLevel:D
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$4400(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v0
+
     iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaIsPlaying:Z
-    invoke-static {v2, v3}, Lcom/android/gallery3d/app/MoviePlayer;->access$1402(Lcom/android/gallery3d/app/MoviePlayer;Z)Z
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mMinZoomLevel:D
+    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4700(Lcom/android/gallery3d/app/MoviePlayer;)D
 
-    .line 1404
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+    move-result-wide v2
 
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mController:Lcom/android/gallery3d/app/ControllerOverlay;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$400(Lcom/android/gallery3d/app/MoviePlayer;)Lcom/android/gallery3d/app/ControllerOverlay;
+    cmpg-double v0, v0, v2
 
-    move-result-object v2
+    if-gez v0, :cond_0
 
-    invoke-interface {v2, v6}, Lcom/android/gallery3d/app/ControllerOverlay;->setDlnaVideoState(I)V
+    .line 634
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    goto/16 :goto_1
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mLoopValue:D
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$4600(Lcom/android/gallery3d/app/MoviePlayer;)D
 
-    .line 1422
-    .restart local v1       #oldState:I
+    move-result-wide v0
+
+    cmpl-double v0, v0, v6
+
+    if-nez v0, :cond_6
+
+    .line 635
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mMinZoomLevel:D
+    invoke-static {v1}, Lcom/android/gallery3d/app/MoviePlayer;->access$4700(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v1
+
+    iget-object v3, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mReboundLevel:D
+    invoke-static {v3}, Lcom/android/gallery3d/app/MoviePlayer;->access$4400(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v3
+
+    sub-double/2addr v1, v3
+
+    const-wide/high16 v3, 0x4008
+
+    div-double/2addr v1, v3
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mLoopValue:D
+    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4602(Lcom/android/gallery3d/app/MoviePlayer;D)D
+
+    .line 636
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mLoopValue:D
+    invoke-static {v1}, Lcom/android/gallery3d/app/MoviePlayer;->access$4600(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v1
+
+    invoke-static {v1, v2, v5}, Lcom/android/gallery3d/app/MovieActivityUtils;->roundingLevel(DI)D
+
+    move-result-wide v1
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mLoopValue:D
+    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4602(Lcom/android/gallery3d/app/MoviePlayer;D)D
+
+    .line 638
     :cond_6
-    if-ne v1, v7, :cond_4
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mLoopValue:D
+    invoke-static {v1}, Lcom/android/gallery3d/app/MoviePlayer;->access$4600(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v1
+
+    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4418(Lcom/android/gallery3d/app/MoviePlayer;D)D
+
+    .line 639
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    iget-object v1, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mReboundLevel:D
+    invoke-static {v1}, Lcom/android/gallery3d/app/MoviePlayer;->access$4400(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v1
+
+    invoke-static {v1, v2, v5}, Lcom/android/gallery3d/app/MovieActivityUtils;->roundingLevel(DI)D
+
+    move-result-wide v1
+
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mReboundLevel:D
+    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4402(Lcom/android/gallery3d/app/MoviePlayer;D)D
+
+    .line 640
+    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mMinZoomLevel:D
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$4700(Lcom/android/gallery3d/app/MoviePlayer;)D
+
+    move-result-wide v0
 
     iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaPlayState:I
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1000(Lcom/android/gallery3d/app/MoviePlayer;)I
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mReboundLevel:D
+    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4400(Lcom/android/gallery3d/app/MoviePlayer;)D
 
-    move-result v2
+    move-result-wide v2
 
-    if-eq v2, v7, :cond_4
+    sub-double/2addr v0, v2
 
-    .line 1424
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
+    cmpg-double v0, v0, v8
 
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaHandler:Landroid/os/Handler;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1200(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/os/Handler;
+    if-gtz v0, :cond_7
 
-    move-result-object v2
-
-    iget-object v3, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mShowRemoteBuffering:Ljava/lang/Runnable;
-    invoke-static {v3}, Lcom/android/gallery3d/app/MoviePlayer;->access$4900(Lcom/android/gallery3d/app/MoviePlayer;)Ljava/lang/Runnable;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
-
-    .line 1425
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mRemoteBuffering:Landroid/app/ProgressDialog;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1800(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/app/ProgressDialog;
-
-    move-result-object v2
-
-    if-eqz v2, :cond_4
-
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mRemoteBuffering:Landroid/app/ProgressDialog;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1800(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/app/ProgressDialog;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Landroid/app/ProgressDialog;->isShowing()Z
-
-    move-result v2
-
-    if-eqz v2, :cond_4
-
-    .line 1426
-    iget-object v2, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaHandler:Landroid/os/Handler;
-    invoke-static {v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$1200(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/os/Handler;
-
-    move-result-object v2
-
-    iget-object v3, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDimissRemoteBuffering:Ljava/lang/Runnable;
-    invoke-static {v3}, Lcom/android/gallery3d/app/MoviePlayer;->access$1100(Lcom/android/gallery3d/app/MoviePlayer;)Ljava/lang/Runnable;
-
-    move-result-object v3
-
-    const-wide/16 v4, 0x0
-
-    invoke-virtual {v2, v3, v4, v5}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
-
-    goto/16 :goto_2
-.end method
-
-.method public onPlayerTrackUriChanged(Ljava/lang/String;)V
-    .locals 1
-    .parameter "uri"
-
-    .prologue
-    .line 1441
+    .line 641
     iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    #calls: Lcom/android/gallery3d/app/MoviePlayer;->stopDlnaPlay()V
-    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$4600(Lcom/android/gallery3d/app/MoviePlayer;)V
+    const-wide/high16 v1, 0x3ff0
 
-    .line 1442
-    return-void
-.end method
+    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mReboundLevel:D
+    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4402(Lcom/android/gallery3d/app/MoviePlayer;D)D
 
-.method public onPositionMessage(J)V
-    .locals 3
-    .parameter "position"
-
-    .prologue
-    .line 1388
-    const-wide/16 v0, 0x0
-
-    cmp-long v0, p1, v0
-
-    if-eqz v0, :cond_0
-
+    .line 645
+    :goto_2
     iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaIsPlaying:Z
-    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$1400(Lcom/android/gallery3d/app/MoviePlayer;)Z
+    iget-object v1, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    move-result v0
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mReboundLevel:D
+    invoke-static {v1}, Lcom/android/gallery3d/app/MoviePlayer;->access$4400(Lcom/android/gallery3d/app/MoviePlayer;)D
 
-    if-eqz v0, :cond_0
+    move-result-wide v1
 
-    .line 1389
+    const/4 v3, 0x1
+
+    invoke-virtual {v0, v1, v2, v3}, Lcom/android/gallery3d/app/MoviePlayer;->setVideoZoomLevel(DZ)V
+
+    goto/16 :goto_0
+
+    .line 643
+    :cond_7
     iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    long-to-int v1, p1
-
-    mul-int/lit16 v1, v1, 0x3e8
-
-    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mVideoPosition:I
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/MoviePlayer;->access$3102(Lcom/android/gallery3d/app/MoviePlayer;I)I
-
-    .line 1391
-    :cond_0
-    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    const-wide/16 v1, 0x3e8
-
-    mul-long/2addr v1, p1
-
-    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mCachedPosition:J
-    invoke-static {v0, v1, v2}, Lcom/android/gallery3d/app/MoviePlayer;->access$4702(Lcom/android/gallery3d/app/MoviePlayer;J)J
-
-    .line 1392
-    return-void
-.end method
-
-.method public onVolumeMessage(F)V
-    .locals 4
-    .parameter "volume"
-
-    .prologue
-    const/4 v3, 0x4
-
-    .line 1380
-    const-string v0, "dlna"
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "volume --->"
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {v0, v1}, Lcom/android/gallery3d/app/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 1381
-    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #setter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaVolume:F
-    invoke-static {v0, p1}, Lcom/android/gallery3d/app/MoviePlayer;->access$1702(Lcom/android/gallery3d/app/MoviePlayer;F)F
-
-    .line 1382
-    iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
-
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaHandler:Landroid/os/Handler;
-    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$1200(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/os/Handler;
+    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mMsgHandler:Landroid/os/Handler;
+    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$3800(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/os/Handler;
 
     move-result-object v0
 
-    invoke-virtual {v0, v3}, Landroid/os/Handler;->removeMessages(I)V
+    const/16 v1, 0x3f0
 
-    .line 1383
+    const-wide/16 v2, 0x5
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
+
+    goto :goto_2
+
+    .line 651
+    :pswitch_8
     iget-object v0, p0, Lcom/android/gallery3d/app/MoviePlayer$13;->this$0:Lcom/android/gallery3d/app/MoviePlayer;
 
-    #getter for: Lcom/android/gallery3d/app/MoviePlayer;->mDlnaHandler:Landroid/os/Handler;
-    invoke-static {v0}, Lcom/android/gallery3d/app/MoviePlayer;->access$1200(Lcom/android/gallery3d/app/MoviePlayer;)Landroid/os/Handler;
+    invoke-virtual {v0}, Lcom/android/gallery3d/app/MoviePlayer;->checkHdmiState()V
 
-    move-result-object v0
+    goto/16 :goto_0
 
-    const-wide/16 v1, 0x12c
-
-    invoke-virtual {v0, v3, v1, v2}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
-
-    .line 1384
-    return-void
+    .line 557
+    :pswitch_data_0
+    .packed-switch 0x3e9
+        :pswitch_0
+        :pswitch_1
+        :pswitch_2
+        :pswitch_3
+        :pswitch_4
+        :pswitch_5
+        :pswitch_6
+        :pswitch_7
+        :pswitch_8
+    .end packed-switch
 .end method

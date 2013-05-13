@@ -70,9 +70,11 @@
 
 .field static final TRANSACTION_topAppWindowChanged:I = 0x7
 
+.field static final TRANSACTION_updateKeyguardStatusBar:I = 0x18
+
 .field static final TRANSACTION_updateStatusbarPos:I = 0x17
 
-.field static final TRANSACTION_setStatus:I = 0x18
+.field static final TRANSACTION_setStatus:I = 0x19
 
 # direct methods
 .method public constructor <init>()V
@@ -163,7 +165,7 @@
     .line 39
     sparse-switch p1, :sswitch_data_0
 
-    .line 316
+    .line 325
     invoke-super/range {p0 .. p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v1
@@ -1116,7 +1118,43 @@
     .restart local v2       #_arg0:Landroid/view/MotionEvent;
     goto :goto_8
 
+    .line 317
+    .end local v2           #_arg0:Landroid/view/MotionEvent;
     :sswitch_18
+    const-string v1, "com.android.internal.statusbar.IStatusBarService"
+
+    move-object/from16 v0, p2
+
+    invoke-virtual {v0, v1}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 319
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v1
+
+    if-eqz v1, :cond_8
+
+    const/4 v2, 0x1
+
+    .local v2, _arg0:Z
+    :goto_9
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v2}, Lcom/android/internal/statusbar/IStatusBarService$Stub;->updateKeyguardStatusBar(Z)V
+
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    const/4 v1, 0x1
+
+    goto/16 :goto_0
+
+    .end local v2           #_arg0:Z
+    :cond_8
+    const/4 v2, 0x0
+
+    goto :goto_9
+
+    :sswitch_19
     const-string v1, "com.android.internal.statusbar.IStatusBarService"
 
     move-object/from16 v0, p2
@@ -1173,7 +1211,6 @@
     .restart local v5       #_arg3:Landroid/os/Bundle;
     goto :goto_miui_0
 
-    .line 39
     :sswitch_data_0
     .sparse-switch
         0x1 -> :sswitch_1
@@ -1200,6 +1237,7 @@
         0x16 -> :sswitch_16
         0x17 -> :sswitch_17
         0x18 -> :sswitch_18
+        0x19 -> :sswitch_19
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method

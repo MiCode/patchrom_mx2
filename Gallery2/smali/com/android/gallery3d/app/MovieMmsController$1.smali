@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 42
+    .line 44
     iput-object p1, p0, Lcom/android/gallery3d/app/MovieMmsController$1;->this$0:Lcom/android/gallery3d/app/MovieMmsController;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -39,16 +39,16 @@
     .parameter "msg"
 
     .prologue
-    .line 45
+    .line 47
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 54
+    .line 56
     :goto_0
     return-void
 
-    .line 47
+    .line 49
     :pswitch_0
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieMmsController$1;->this$0:Lcom/android/gallery3d/app/MovieMmsController;
 
@@ -61,7 +61,7 @@
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
 
-    .line 48
+    .line 50
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieMmsController$1;->this$0:Lcom/android/gallery3d/app/MovieMmsController;
 
     #getter for: Lcom/android/gallery3d/app/MovieMmsController;->mPlayIcon:Landroid/widget/ImageButton;
@@ -73,7 +73,7 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageButton;->setVisibility(I)V
 
-    .line 49
+    .line 51
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieMmsController$1;->this$0:Lcom/android/gallery3d/app/MovieMmsController;
 
     #getter for: Lcom/android/gallery3d/app/MovieMmsController;->mContext:Landroid/content/Context;
@@ -90,7 +90,7 @@
 
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieActivityUtils;->hideViewAlphaAni(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 50
+    .line 52
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieMmsController$1;->this$0:Lcom/android/gallery3d/app/MovieMmsController;
 
     const/4 v1, 0x0
@@ -98,7 +98,7 @@
     #setter for: Lcom/android/gallery3d/app/MovieMmsController;->mIsShowing:Z
     invoke-static {v0, v1}, Lcom/android/gallery3d/app/MovieMmsController;->access$302(Lcom/android/gallery3d/app/MovieMmsController;Z)Z
 
-    .line 51
+    .line 53
     iget-object v0, p0, Lcom/android/gallery3d/app/MovieMmsController$1;->this$0:Lcom/android/gallery3d/app/MovieMmsController;
 
     #getter for: Lcom/android/gallery3d/app/MovieMmsController;->mContext:Landroid/content/Context;
@@ -112,7 +112,7 @@
 
     goto :goto_0
 
-    .line 45
+    .line 47
     :pswitch_data_0
     .packed-switch 0x3e8
         :pswitch_0

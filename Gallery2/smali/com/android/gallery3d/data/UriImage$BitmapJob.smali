@@ -43,18 +43,18 @@
     .parameter "supportFullImage"
 
     .prologue
-    .line 185
+    .line 186
     iput-object p1, p0, Lcom/android/gallery3d/data/UriImage$BitmapJob;->this$0:Lcom/android/gallery3d/data/UriImage;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
-    .line 186
+    .line 187
     iput p2, p0, Lcom/android/gallery3d/data/UriImage$BitmapJob;->mType:I
 
-    .line 187
+    .line 188
     iput-boolean p3, p0, Lcom/android/gallery3d/data/UriImage$BitmapJob;->mSupportFullImage:Z
 
-    .line 188
+    .line 189
     return-void
 .end method
 
@@ -69,7 +69,7 @@
 
     const/4 v6, 0x1
 
-    .line 192
+    .line 193
     iget-object v4, p0, Lcom/android/gallery3d/data/UriImage$BitmapJob;->this$0:Lcom/android/gallery3d/data/UriImage;
 
     #calls: Lcom/android/gallery3d/data/UriImage;->prepareInputFile(Lcom/android/gallery3d/util/ThreadPool$JobContext;)Z
@@ -81,11 +81,11 @@
 
     move-object v0, v3
 
-    .line 214
+    .line 215
     :goto_0
     return-object v0
 
-    .line 193
+    .line 194
     :cond_0
     iget v4, p0, Lcom/android/gallery3d/data/UriImage$BitmapJob;->mType:I
 
@@ -95,19 +95,19 @@
 
     move-result v2
 
-    .line 194
+    .line 195
     .local v2, targetSize:I
     new-instance v1, Landroid/graphics/BitmapFactory$Options;
 
     invoke-direct {v1}, Landroid/graphics/BitmapFactory$Options;-><init>()V
 
-    .line 195
+    .line 196
     .local v1, options:Landroid/graphics/BitmapFactory$Options;
     sget-object v4, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
     iput-object v4, v1, Landroid/graphics/BitmapFactory$Options;->inPreferredConfig:Landroid/graphics/Bitmap$Config;
 
-    .line 196
+    .line 197
     iget-object v4, p0, Lcom/android/gallery3d/data/UriImage$BitmapJob;->this$0:Lcom/android/gallery3d/data/UriImage;
 
     #getter for: Lcom/android/gallery3d/data/UriImage;->mFileDescriptor:Landroid/os/ParcelFileDescriptor;
@@ -125,7 +125,7 @@
 
     move-result-object v0
 
-    .line 199
+    .line 200
     .local v0, bitmap:Landroid/graphics/Bitmap;
     invoke-interface {p1}, Lcom/android/gallery3d/util/ThreadPool$JobContext;->isCancelled()Z
 
@@ -138,10 +138,10 @@
     :cond_1
     move-object v0, v3
 
-    .line 200
+    .line 201
     goto :goto_0
 
-    .line 203
+    .line 204
     :cond_2
     iget v3, p0, Lcom/android/gallery3d/data/UriImage$BitmapJob;->mType:I
 
@@ -149,12 +149,14 @@
 
     if-ne v3, v4, :cond_3
 
-    .line 205
-    invoke-static {v0, v2, v6}, Lcom/android/gallery3d/common/BitmapUtils;->resizeAndCropBySideLength(Landroid/graphics/Bitmap;IZ)Landroid/graphics/Bitmap;
+    .line 206
+    const/4 v3, 0x0
+
+    invoke-static {v0, v2, v6, v3}, Lcom/android/gallery3d/common/BitmapUtils;->resizeAndCropBySideLength(Landroid/graphics/Bitmap;IZZ)Landroid/graphics/Bitmap;
 
     move-result-object v0
 
-    .line 212
+    .line 213
     :goto_1
     iget-object v3, p0, Lcom/android/gallery3d/data/UriImage$BitmapJob;->this$0:Lcom/android/gallery3d/data/UriImage;
 
@@ -165,7 +167,7 @@
     #setter for: Lcom/android/gallery3d/data/UriImage;->mWidth:I
     invoke-static {v3, v4}, Lcom/android/gallery3d/data/UriImage;->access$302(Lcom/android/gallery3d/data/UriImage;I)I
 
-    .line 213
+    .line 214
     iget-object v3, p0, Lcom/android/gallery3d/data/UriImage$BitmapJob;->this$0:Lcom/android/gallery3d/data/UriImage;
 
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->getHeight()I
@@ -177,7 +179,7 @@
 
     goto :goto_0
 
-    .line 210
+    .line 211
     :cond_3
     invoke-static {v0, v2, v6}, Lcom/android/gallery3d/common/BitmapUtils;->resizeDownBySideLength(Landroid/graphics/Bitmap;IZ)Landroid/graphics/Bitmap;
 
@@ -191,7 +193,7 @@
     .parameter "x0"
 
     .prologue
-    .line 181
+    .line 182
     invoke-virtual {p0, p1}, Lcom/android/gallery3d/data/UriImage$BitmapJob;->run(Lcom/android/gallery3d/util/ThreadPool$JobContext;)Landroid/graphics/Bitmap;
 
     move-result-object v0

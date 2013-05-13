@@ -650,7 +650,7 @@
     .line 246
     iget-object v3, p0, Lcom/android/camera/CameraMainMenuAdapter;->mInflater:Landroid/view/LayoutInflater;
 
-    const v4, 0x7f040037
+    const v4, 0x7f040038
 
     invoke-virtual {v3, v4, v5}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
@@ -663,7 +663,7 @@
     if-ne v3, p1, :cond_2
 
     .line 249
-    const v3, 0x7f020121
+    const v3, 0x7f02011a
 
     invoke-virtual {p2, v3}, Landroid/view/View;->setBackgroundResource(I)V
 
@@ -684,7 +684,7 @@
 
     move-result-object v3
 
-    const v4, 0x7f090053
+    const v4, 0x7f090151
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelOffset(I)I
 
@@ -694,7 +694,7 @@
 
     .line 260
     :goto_1
-    const v3, 0x7f0d00a2
+    const v3, 0x7f0d00a7
 
     invoke-virtual {p2, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -704,7 +704,7 @@
 
     .line 261
     .local v0, t1:Landroid/widget/TextView;
-    const v3, 0x7f0d00a3
+    const v3, 0x7f0d00a8
 
     invoke-virtual {p2, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -714,7 +714,7 @@
 
     .line 262
     .local v1, t2:Landroid/widget/TextView;
-    const v3, 0x7f0d00a4
+    const v3, 0x7f0d00a9
 
     invoke-virtual {p2, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -753,7 +753,7 @@
 
     move-result-object v3
 
-    const v4, 0x7f080037
+    const v4, 0x7f08003c
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getColor(I)I
 
@@ -796,7 +796,7 @@
 
     move-result-object v3
 
-    const v4, 0x7f090052
+    const v4, 0x7f090150
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getDimensionPixelOffset(I)I
 
@@ -811,7 +811,7 @@
     .restart local v1       #t2:Landroid/widget/TextView;
     .restart local v2       #v1:Landroid/view/View;
     :cond_4
-    const v3, 0x7f02011e
+    const v3, 0x7f020117
 
     invoke-virtual {v2, v3}, Landroid/view/View;->setBackgroundResource(I)V
 

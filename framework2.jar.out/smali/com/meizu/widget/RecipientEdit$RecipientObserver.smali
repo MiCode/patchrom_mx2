@@ -29,23 +29,23 @@
     .parameter "handler"
 
     .prologue
-    .line 3183
+    .line 3214
     iput-object p1, p0, Lcom/meizu/widget/RecipientEdit$RecipientObserver;->this$0:Lcom/meizu/widget/RecipientEdit;
 
-    .line 3184
+    .line 3215
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
 
-    .line 3194
+    .line 3225
     new-instance v0, Lcom/meizu/widget/RecipientEdit$RecipientObserver$1;
 
     invoke-direct {v0, p0}, Lcom/meizu/widget/RecipientEdit$RecipientObserver$1;-><init>(Lcom/meizu/widget/RecipientEdit$RecipientObserver;)V
 
     iput-object v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientObserver;->mObserverRunnable:Ljava/lang/Runnable;
 
-    .line 3185
+    .line 3216
     iput-object p2, p0, Lcom/meizu/widget/RecipientEdit$RecipientObserver;->mHandler:Landroid/os/Handler;
 
-    .line 3186
+    .line 3217
     return-void
 .end method
 
@@ -56,14 +56,14 @@
     .parameter "selfChange"
 
     .prologue
-    .line 3190
+    .line 3221
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientObserver;->mHandler:Landroid/os/Handler;
 
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$RecipientObserver;->mObserverRunnable:Ljava/lang/Runnable;
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
-    .line 3191
+    .line 3222
     iget-object v0, p0, Lcom/meizu/widget/RecipientEdit$RecipientObserver;->mHandler:Landroid/os/Handler;
 
     iget-object v1, p0, Lcom/meizu/widget/RecipientEdit$RecipientObserver;->mObserverRunnable:Ljava/lang/Runnable;
@@ -72,6 +72,6 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
-    .line 3192
+    .line 3223
     return-void
 .end method

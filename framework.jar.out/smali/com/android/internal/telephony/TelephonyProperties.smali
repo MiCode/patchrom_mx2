@@ -26,6 +26,8 @@
 
 .field public static final PROPERTY_ICC_OPERATOR_NUMERIC:Ljava/lang/String; = "gsm.sim.operator.numeric"
 
+.field public static final PROPERTY_ICC_SIM_REGION_CUSTOM:Ljava/lang/String; = "gsm.sim.region.custom"
+
 .field public static final PROPERTY_IDP_STRING:Ljava/lang/String; = "ro.cdma.idpstring"
 
 .field public static final PROPERTY_IGNORE_NITZ:Ljava/lang/String; = "telephony.test.ignore.nitz"

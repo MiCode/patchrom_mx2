@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1631
+    .line 1642
     iput-object p1, p0, Landroid/widget/Editor$1;->this$0:Landroid/widget/Editor;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,11 +41,11 @@
     .locals 1
 
     .prologue
-    .line 1634
+    .line 1645
     iget-object v0, p0, Landroid/widget/Editor$1;->this$0:Landroid/widget/Editor;
 
     invoke-virtual {v0}, Landroid/widget/Editor;->startSelectionActionMode()Z
 
-    .line 1635
+    .line 1646
     return-void
 .end method

@@ -20,3 +20,9 @@
 
 .method public abstract getWebKitLooper()Landroid/os/Looper;
 .end method
+
+.method public abstract pauseWebKitTimer()V
+.end method
+
+.method public abstract resumeWebKitTimer()V
+.end method

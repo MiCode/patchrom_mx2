@@ -2,31 +2,31 @@
 <LinearLayout android:orientation="vertical" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/title_layout" android:layout_marginTop="@dimen/details_title_margintop" style="@style/DetailsEditRelativeLayout">
-        <TextView android:id="@id/details_title" android:visibility="visible" android:text="@string/details_titlename" android:layout_centerVertical="true" style="@style/DetailsTextView" />
-        <EditText android:id="@id/details_title_edit" android:layout_width="@dimen/details_edit_width" android:maxWidth="@dimen/details_edit_width" android:layout_centerHorizontal="true" style="@style/DetailsEditText" />
+        <TextView android:id="@id/details_title" android:visibility="visible" android:maxWidth="@dimen/details_title_text_maxwidth" android:text="@string/details_titlename" android:layout_centerVertical="true" style="@style/DetailsTextView" />
         <TextView android:id="@id/details_picture_extension" android:visibility="visible" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/DetailsTextView" />
+        <EditText android:id="@id/details_title_edit" android:layout_width="@dimen/details_edit_width" android:layout_marginLeft="@dimen/details_edit_marginleft" android:maxWidth="@dimen/details_edit_width" android:singleLine="true" android:layout_toLeftOf="@id/details_picture_extension" android:layout_toRightOf="@id/details_title" style="@style/DetailsEditText" />
     </RelativeLayout>
     <View style="@style/DetailslineView" />
     <RelativeLayout android:id="@id/size_layout" android:layout_marginTop="@dimen/details_size_margintop" style="@style/DetailsEditRelativeLayout">
-        <TextView android:id="@id/details_size" android:visibility="visible" android:text="@string/details_sizename" android:layout_centerVertical="true" style="@style/DetailsTextView" />
-        <RelativeLayout android:orientation="horizontal" android:layout_width="@dimen/details_size_edit_layout_width" android:layout_height="fill_parent" android:layout_centerHorizontal="true">
-            <TextView android:textSize="@dimen/details_title_textsize" android:textColor="@color/details_gray" android:id="@id/center_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/size_connect" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-            <EditText android:id="@id/details_edit_width" android:layout_width="@dimen/details_size_edit_width" android:layout_marginRight="@dimen/details_size_edit_margin" android:maxLength="6" android:layout_toLeftOf="@id/center_text" android:inputType="number" style="@style/DetailsEditText" />
-            <EditText android:id="@id/details_edit_height" android:layout_width="@dimen/details_size_edit_width" android:layout_marginLeft="@dimen/details_size_edit_margin" android:maxLength="6" android:layout_toRightOf="@id/center_text" android:inputType="number" style="@style/DetailsEditText" />
+        <TextView android:id="@id/details_size" android:visibility="visible" android:maxWidth="@dimen/details_title_text_maxwidth" android:text="@string/details_sizename" android:layout_centerVertical="true" style="@style/DetailsTextView" />
+        <RelativeLayout android:layout_width="@dimen/details_size_edit_layout_width" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/details_size_layout_marginleft" android:layout_toRightOf="@id/details_size">
+            <EditText android:id="@id/details_edit_width" android:layout_width="@dimen/details_size_edit_width" android:layout_marginRight="@dimen/details_size_edit_margin" android:maxLength="5" android:inputType="number" style="@style/DetailsEditText" />
+            <TextView android:textSize="@dimen/details_title_textsize" android:textColor="@color/details_gray" android:id="@id/center_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/details_edit_marginleft" android:text="@string/size_connect" android:layout_toRightOf="@id/details_edit_width" android:layout_centerVertical="true" />
+            <EditText android:id="@id/details_edit_height" android:layout_width="@dimen/details_size_edit_width" android:layout_marginLeft="@dimen/details_edit_marginleft" android:maxLength="5" android:layout_toRightOf="@id/center_text" android:inputType="number" style="@style/DetailsEditText" />
         </RelativeLayout>
         <TextView android:id="@id/details_picture_size" android:visibility="visible" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/DetailsTextView" />
     </RelativeLayout>
     <View style="@style/DetailslineView" />
     <LinearLayout android:layout_marginTop="@dimen/details_information_margintop" style="@style/DetailsLinearLayout">
-        <TextView android:id="@id/details_data" style="@style/DetailsTextView" />
+        <TextView android:textSize="@dimen/details_infor_textsize" android:id="@id/details_data" style="@style/DetailsTextView" />
     </LinearLayout>
     <RelativeLayout style="@style/DetailsLinearLayout">
-        <TextView android:id="@id/details_machine" style="@style/DetailsTextView" />
-        <TextView android:id="@id/details_focal" android:layout_marginLeft="@dimen/details_information_marginleft" android:layout_toRightOf="@id/details_machine" style="@style/DetailsTextView" />
-        <TextView android:id="@id/details_aperture" android:layout_marginLeft="@dimen/details_information_marginleft" android:layout_toRightOf="@id/details_focal" style="@style/DetailsTextView" />
-        <TextView android:id="@id/details_iso" android:layout_marginLeft="@dimen/details_information_marginleft" android:layout_toRightOf="@id/details_aperture" style="@style/DetailsTextView" />
+        <TextView android:textSize="@dimen/details_infor_textsize" android:id="@id/details_machine" style="@style/DetailsTextView" />
+        <TextView android:textSize="@dimen/details_infor_textsize" android:id="@id/details_focal" android:layout_marginLeft="@dimen/details_information_marginleft" android:layout_toRightOf="@id/details_machine" style="@style/DetailsTextView" />
+        <TextView android:textSize="@dimen/details_infor_textsize" android:id="@id/details_aperture" android:layout_marginLeft="@dimen/details_information_marginleft" android:layout_toRightOf="@id/details_focal" style="@style/DetailsTextView" />
+        <TextView android:textSize="@dimen/details_infor_textsize" android:id="@id/details_iso" android:layout_marginLeft="@dimen/details_information_marginleft" android:layout_toRightOf="@id/details_aperture" style="@style/DetailsTextView" />
     </RelativeLayout>
-    <LinearLayout style="@style/DetailsLinearLayout">
-        <TextView android:id="@id/details_location" style="@style/DetailsTextView" />
+    <LinearLayout android:paddingRight="@dimen/details_title_paddingleft" style="@style/DetailsLinearLayout">
+        <TextView android:textSize="@dimen/details_infor_textsize" android:id="@id/details_location" android:singleLine="false" style="@style/DetailsTextView" />
     </LinearLayout>
 </LinearLayout>

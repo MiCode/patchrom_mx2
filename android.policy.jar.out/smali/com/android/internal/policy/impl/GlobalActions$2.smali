@@ -1,5 +1,5 @@
 .class Lcom/android/internal/policy/impl/GlobalActions$2;
-.super Landroid/os/Handler;
+.super Landroid/content/BroadcastReceiver;
 .source "GlobalActions.java"
 
 
@@ -24,42 +24,75 @@
     .parameter
 
     .prologue
-    .line 157
+    .line 171
     iput-object p1, p0, Lcom/android/internal/policy/impl/GlobalActions$2;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
-    invoke-direct {p0}, Landroid/os/Handler;-><init>()V
+    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public handleMessage(Landroid/os/Message;)V
-    .locals 1
-    .parameter "msg"
+.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+    .locals 3
+    .parameter "context"
+    .parameter "intent"
 
     .prologue
-    .line 160
-    iget v0, p1, Landroid/os/Message;->what:I
+    .line 174
+    invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
-    packed-switch v0, :pswitch_data_0
+    move-result-object v0
 
-    .line 165
-    :goto_0
-    return-void
+    const-string v1, "android.media.RINGER_MODE_CHANGED"
 
-    .line 162
-    :pswitch_0
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 176
+    const-string v0, "GlobalActions"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "onReceive:"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 177
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$2;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
-    #calls: Lcom/android/internal/policy/impl/GlobalActions;->updateState()V
-    invoke-static {v0}, Lcom/android/internal/policy/impl/GlobalActions;->access$100(Lcom/android/internal/policy/impl/GlobalActions;)V
+    #getter for: Lcom/android/internal/policy/impl/GlobalActions;->mHandlerSetting:Landroid/os/Handler;
+    invoke-static {v0}, Lcom/android/internal/policy/impl/GlobalActions;->access$100(Lcom/android/internal/policy/impl/GlobalActions;)Landroid/os/Handler;
 
-    goto :goto_0
+    move-result-object v0
 
-    .line 160
-    :pswitch_data_0
-    .packed-switch 0x4
-        :pswitch_0
-    .end packed-switch
+    const/4 v1, 0x4
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
+
+    .line 179
+    :cond_0
+    return-void
 .end method

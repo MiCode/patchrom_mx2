@@ -101,7 +101,7 @@
     const/4 v3, -0x1
 
     .line 100
-    const v1, 0x10900d2
+    const v1, 0x10900db
 
     const/4 v2, 0x0
 
@@ -251,7 +251,7 @@
 
     move-result-object v0
 
-    const v3, 0x1010267
+    const v3, 0x10103af
 
     const/4 v4, 0x1
 
@@ -380,8 +380,10 @@
 
     .line 668
     .local v4, pkg:Ljava/lang/String;
-    invoke-static {v5, v4, v3, v0}, Landroid/widget/SuggestionsAdapter$Injector;->getDrawable(Landroid/content/pm/PackageManager;Ljava/lang/String;ILandroid/content/pm/ActivityInfo;)Landroid/graphics/drawable/Drawable;
+    iget-object v7, v0, Landroid/content/pm/ComponentInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
+    invoke-static {v5, v4, v3, v0}, Landroid/widget/SuggestionsAdapter$Injector;->getDrawable(Landroid/content/pm/PackageManager;Ljava/lang/String;ILandroid/content/pm/ActivityInfo;)Landroid/graphics/drawable/Drawable;
+    
     move-result-object v1
 
     .line 669

@@ -280,23 +280,30 @@
     if-nez v0, :cond_0
 
     .line 132
+    const-string v2, "@@@"
+
+    const-string v3, "on Decode thumb complete fail..."
+
+    invoke-static {v2, v3}, Lcom/android/gallery3d/app/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 133
     const/4 v2, 0x2
 
     iput v2, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mLoadingState:I
 
-    .line 142
+    .line 143
     .end local v0           #backup:Lcom/android/gallery3d/ui/ScreenNail;
     :goto_0
     return-void
 
-    .line 135
+    .line 136
     .restart local v0       #backup:Lcom/android/gallery3d/ui/ScreenNail;
     :cond_0
     const/4 v2, 0x1
 
     iput v2, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mLoadingState:I
 
-    .line 137
+    .line 138
     invoke-interface {v0}, Lcom/android/gallery3d/ui/ScreenNail;->getWidth()I
 
     move-result v2
@@ -307,7 +314,7 @@
 
     invoke-virtual {p0, v0, v2, v3}, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->setScreenNail(Lcom/android/gallery3d/ui/ScreenNail;II)V
 
-    .line 138
+    .line 139
     iget-object v2, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mPhotoView:Lcom/android/gallery3d/ui/PhotoView;
 
     const/4 v3, 0x0
@@ -318,12 +325,12 @@
 
     goto :goto_0
 
-    .line 139
+    .line 140
     .end local v0           #backup:Lcom/android/gallery3d/ui/ScreenNail;
     :catch_0
     move-exception v1
 
-    .line 140
+    .line 141
     .local v1, t:Ljava/lang/Throwable;
     const-string v2, "SinglePhotoDataAdapter"
 
@@ -340,7 +347,7 @@
     .locals 1
 
     .prologue
-    .line 248
+    .line 249
     const/4 v0, 0x0
 
     return v0
@@ -350,7 +357,7 @@
     .locals 1
 
     .prologue
-    .line 272
+    .line 273
     iget-object v0, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mItem:Lcom/android/gallery3d/data/MediaItem;
 
     return-object v0
@@ -361,7 +368,7 @@
     .parameter "offset"
 
     .prologue
-    .line 208
+    .line 209
     if-nez p1, :cond_0
 
     iget-object v0, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mItem:Lcom/android/gallery3d/data/MediaItem;
@@ -387,10 +394,10 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 197
+    .line 198
     if-nez p1, :cond_0
 
-    .line 198
+    .line 199
     iget-object v0, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mItem:Lcom/android/gallery3d/data/MediaItem;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/data/MediaItem;->getWidth()I
@@ -399,7 +406,7 @@
 
     iput v0, p2, Lcom/android/gallery3d/ui/PhotoView$Size;->width:I
 
-    .line 199
+    .line 200
     iget-object v0, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mItem:Lcom/android/gallery3d/data/MediaItem;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/data/MediaItem;->getHeight()I
@@ -408,15 +415,15 @@
 
     iput v0, p2, Lcom/android/gallery3d/ui/PhotoView$Size;->height:I
 
-    .line 204
+    .line 205
     :goto_0
     return-void
 
-    .line 201
+    .line 202
     :cond_0
     iput v0, p2, Lcom/android/gallery3d/ui/PhotoView$Size;->width:I
 
-    .line 202
+    .line 203
     iput v0, p2, Lcom/android/gallery3d/ui/PhotoView$Size;->height:I
 
     goto :goto_0
@@ -427,7 +434,7 @@
     .parameter "offset"
 
     .prologue
-    .line 268
+    .line 269
     iget v0, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mLoadingState:I
 
     return v0
@@ -438,7 +445,7 @@
     .parameter "offset"
 
     .prologue
-    .line 243
+    .line 244
     if-nez p1, :cond_0
 
     iget-object v0, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mItem:Lcom/android/gallery3d/data/MediaItem;
@@ -457,7 +464,7 @@
     .parameter "offset"
 
     .prologue
-    .line 213
+    .line 214
     if-nez p1, :cond_0
 
     invoke-virtual {p0}, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->getScreenNail()Lcom/android/gallery3d/ui/ScreenNail;
@@ -478,7 +485,7 @@
     .parameter "offset"
 
     .prologue
-    .line 223
+    .line 224
     const/4 v0, 0x0
 
     return v0
@@ -489,7 +496,7 @@
     .parameter "offset"
 
     .prologue
-    .line 238
+    .line 239
     iget-object v0, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mItem:Lcom/android/gallery3d/data/MediaItem;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/data/MediaItem;->getSupportedOperations()I
@@ -526,7 +533,7 @@
     .parameter "offset"
 
     .prologue
-    .line 228
+    .line 229
     const/4 v0, 0x0
 
     return v0
@@ -537,7 +544,7 @@
     .parameter "offset"
 
     .prologue
-    .line 233
+    .line 234
     iget-object v0, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mItem:Lcom/android/gallery3d/data/MediaItem;
 
     invoke-virtual {v0}, Lcom/android/gallery3d/data/MediaItem;->getMediaType()I
@@ -564,7 +571,7 @@
     .parameter "index"
 
     .prologue
-    .line 192
+    .line 193
     new-instance v0, Ljava/lang/UnsupportedOperationException;
 
     invoke-direct {v0}, Ljava/lang/UnsupportedOperationException;-><init>()V
@@ -576,29 +583,29 @@
     .locals 2
 
     .prologue
-    .line 182
+    .line 183
     iget-object v0, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mTask:Lcom/android/gallery3d/util/Future;
 
-    .line 183
+    .line 184
     .local v0, task:Lcom/android/gallery3d/util/Future;,"Lcom/android/gallery3d/util/Future<*>;"
     invoke-interface {v0}, Lcom/android/gallery3d/util/Future;->cancel()V
 
-    .line 184
+    .line 185
     invoke-interface {v0}, Lcom/android/gallery3d/util/Future;->waitDone()V
 
-    .line 185
+    .line 186
     invoke-interface {v0}, Lcom/android/gallery3d/util/Future;->get()Ljava/lang/Object;
 
     move-result-object v1
 
     if-nez v1, :cond_0
 
-    .line 186
+    .line 187
     const/4 v1, 0x0
 
     iput-object v1, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mTask:Lcom/android/gallery3d/util/Future;
 
-    .line 188
+    .line 189
     :cond_0
     return-void
 .end method
@@ -607,17 +614,17 @@
     .locals 3
 
     .prologue
-    .line 169
+    .line 170
     iget-object v0, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mTask:Lcom/android/gallery3d/util/Future;
 
     if-nez v0, :cond_0
 
-    .line 170
+    .line 171
     iget-boolean v0, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mHasFullImage:Z
 
     if-eqz v0, :cond_1
 
-    .line 171
+    .line 172
     iget-object v0, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mThreadPool:Lcom/android/gallery3d/util/ThreadPool;
 
     iget-object v1, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mItem:Lcom/android/gallery3d/data/MediaItem;
@@ -634,12 +641,12 @@
 
     iput-object v0, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mTask:Lcom/android/gallery3d/util/Future;
 
-    .line 179
+    .line 180
     :cond_0
     :goto_0
     return-void
 
-    .line 174
+    .line 175
     :cond_1
     iget-object v0, p0, Lcom/android/gallery3d/app/SinglePhotoDataAdapter;->mThreadPool:Lcom/android/gallery3d/util/ThreadPool;
 
@@ -666,7 +673,7 @@
     .parameter "indexHint"
 
     .prologue
-    .line 254
+    .line 255
     return-void
 .end method
 
@@ -675,7 +682,7 @@
     .parameter "direction"
 
     .prologue
-    .line 259
+    .line 260
     return-void
 .end method
 
@@ -684,6 +691,6 @@
     .parameter "enabled"
 
     .prologue
-    .line 219
+    .line 220
     return-void
 .end method

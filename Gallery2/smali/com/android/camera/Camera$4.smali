@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 253
+    .line 260
     iput-object p1, p0, Lcom/android/camera/Camera$4;->this$0:Lcom/android/camera/Camera;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 1
 
     .prologue
-    .line 256
+    .line 263
     iget-object v0, p0, Lcom/android/camera/Camera$4;->this$0:Lcom/android/camera/Camera;
 
     #getter for: Lcom/android/camera/Camera;->mFocusManager:Lcom/android/camera/FocusManager;
@@ -51,6 +51,6 @@
 
     invoke-virtual {v0}, Lcom/android/camera/FocusManager;->onShutterUp()V
 
-    .line 257
+    .line 264
     return-void
 .end method

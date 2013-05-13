@@ -3,12 +3,12 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:internal="http://schemas.android.com/apk/prv/res/android">
     <ImageView android:id="@id/icon" android:background="@drawable/status_icon_background" android:layout_width="@dimen/notification_large_icon_width" android:layout_height="@dimen/notification_large_icon_height" android:scaleType="center" />
-    <LinearLayout android:gravity="top" android:layout_gravity="fill_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/notification_large_icon_height">
-        <LinearLayout android:orientation="vertical" android:paddingTop="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/notification_large_icon_width" android:minHeight="@dimen/notification_large_icon_height">
+    <LinearLayout android:gravity="top" android:layout_gravity="fill_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/notification_large_icon_width" android:minHeight="@dimen/notification_large_icon_height">
+        <LinearLayout android:orientation="vertical" android:paddingTop="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/notification_large_icon_height">
             <LinearLayout android:orientation="horizontal" android:id="@id/line1" android:paddingTop="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip">
                 <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
                     <TextView android:textAppearance="@style/TextAppearance.StatusBar.EventContent.Title" android:ellipsize="marquee" android:id="@id/title" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-                    <TextView android:textSize="16.0sp" android:textColor="#ff808080" android:ellipsize="marquee" android:id="@id/subTitle" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:singleLine="true" android:includeFontPadding="false" />
+                    <TextView android:textSize="16.0dip" android:textColor="#ff808080" android:ellipsize="marquee" android:id="@id/subTitle" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:singleLine="true" android:includeFontPadding="false" />
                 </LinearLayout>
                 <ViewStub android:layout_gravity="center" android:id="@id/time" android:visibility="gone" android:layout="@layout/notification_template_part_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.0" />
                 <ViewStub android:layout_gravity="center" android:id="@id/chronometer" android:visibility="gone" android:layout="@layout/notification_template_part_chronometer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.0" />
@@ -23,6 +23,6 @@
             <ProgressBar android:id="@id/progress" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="12.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" style="?android:attr/progressBarStyleHorizontal" />
         </LinearLayout>
         <ImageView android:id="@id/action_divider" android:background="?dividerHorizontal" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/notification_large_icon_width" layout="@layout/notification_action_list" />
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/notification_action_list" />
     </LinearLayout>
 </FrameLayout>

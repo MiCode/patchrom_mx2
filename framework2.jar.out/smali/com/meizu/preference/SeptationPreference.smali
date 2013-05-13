@@ -44,7 +44,7 @@
     invoke-direct {p0, p1, p2, p3}, Landroid/preference/Preference;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
     .line 23
-    const v0, 0x10900b3
+    const v0, 0x10900bc
 
     invoke-virtual {p0, v0}, Lcom/meizu/preference/SeptationPreference;->setLayoutResource(I)V
 

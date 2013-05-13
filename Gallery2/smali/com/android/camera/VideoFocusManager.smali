@@ -1104,7 +1104,7 @@
     if-ge v2, v5, :cond_7
 
     .line 324
-    const/16 v11, 0xa8c
+    const/16 v11, 0xdac
 
     .line 326
     :cond_7
@@ -1207,7 +1207,7 @@
     iput-object v0, p0, Lcom/android/camera/VideoFocusManager;->mFocusIndicatorRotateLayout:Lcom/android/camera/ui/FocusIndicatorRotateLayout;
 
     .line 156
-    const v0, 0x7f0d008d
+    const v0, 0x7f0d0092
 
     invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1280,20 +1280,21 @@
     goto :goto_0
 .end method
 
-.method public setPreviewSize(II)V
-    .locals 4
+.method public setPreviewSize(III)V
+    .locals 2
     .parameter "previewWidth"
     .parameter "previewHeight"
+    .parameter "len"
 
     .prologue
     .line 180
-    iget v2, p0, Lcom/android/camera/VideoFocusManager;->mPreviewWidth:I
+    iget v1, p0, Lcom/android/camera/VideoFocusManager;->mPreviewWidth:I
 
-    if-ne v2, p1, :cond_0
+    if-ne v1, p1, :cond_0
 
-    iget v2, p0, Lcom/android/camera/VideoFocusManager;->mPreviewHeight:I
+    iget v1, p0, Lcom/android/camera/VideoFocusManager;->mPreviewHeight:I
 
-    if-eq v2, p2, :cond_1
+    if-eq v1, p2, :cond_1
 
     .line 181
     :cond_0
@@ -1305,35 +1306,22 @@
     .line 183
     invoke-direct {p0}, Lcom/android/camera/VideoFocusManager;->setMatrix()V
 
-    .line 185
-    iget v2, p0, Lcom/android/camera/VideoFocusManager;->mPreviewWidth:I
-
-    iget v3, p0, Lcom/android/camera/VideoFocusManager;->mPreviewHeight:I
-
-    invoke-static {v2, v3}, Ljava/lang/Math;->min(II)I
-
-    move-result v2
-
-    div-int/lit8 v1, v2, 0x6
-
     .line 186
-    .local v1, len:I
-    iget-object v2, p0, Lcom/android/camera/VideoFocusManager;->mFocusIndicator:Landroid/view/View;
+    iget-object v1, p0, Lcom/android/camera/VideoFocusManager;->mFocusIndicator:Landroid/view/View;
 
-    invoke-virtual {v2}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+    invoke-virtual {v1}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
     move-result-object v0
 
     .line 187
     .local v0, layout:Landroid/view/ViewGroup$LayoutParams;
-    iput v1, v0, Landroid/view/ViewGroup$LayoutParams;->width:I
+    iput p3, v0, Landroid/view/ViewGroup$LayoutParams;->width:I
 
     .line 188
-    iput v1, v0, Landroid/view/ViewGroup$LayoutParams;->height:I
+    iput p3, v0, Landroid/view/ViewGroup$LayoutParams;->height:I
 
     .line 190
     .end local v0           #layout:Landroid/view/ViewGroup$LayoutParams;
-    .end local v1           #len:I
     :cond_1
     return-void
 .end method

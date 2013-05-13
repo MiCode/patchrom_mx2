@@ -27,7 +27,7 @@
     .locals 0
 
     .prologue
-    .line 1376
+    .line 1381
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -38,7 +38,7 @@
     .parameter "x0"
 
     .prologue
-    .line 1376
+    .line 1381
     invoke-direct {p0}, Lcom/android/gallery3d/ui/PositionController$Animatable;-><init>()V
 
     return-void
@@ -52,34 +52,34 @@
     .prologue
     const/high16 v2, 0x3f80
 
-    .line 1422
+    .line 1427
     sub-float v0, v2, p1
 
-    .line 1423
+    .line 1428
     .local v0, f:F
     packed-switch p0, :pswitch_data_0
 
-    .line 1443
+    .line 1448
     :goto_0
     return p1
 
-    .line 1429
+    .line 1434
     :pswitch_0
     sub-float p1, v2, v0
 
-    .line 1430
+    .line 1435
     goto :goto_0
 
-    .line 1433
+    .line 1438
     :pswitch_1
     mul-float v1, v0, v0
 
     sub-float p1, v2, v1
 
-    .line 1434
+    .line 1439
     goto :goto_0
 
-    .line 1436
+    .line 1441
     :pswitch_2
     mul-float v1, v0, v0
 
@@ -87,10 +87,10 @@
 
     sub-float p1, v2, v1
 
-    .line 1437
+    .line 1442
     goto :goto_0
 
-    .line 1440
+    .line 1445
     :pswitch_3
     mul-float v1, v0, v0
 
@@ -104,7 +104,7 @@
 
     goto :goto_0
 
-    .line 1423
+    .line 1428
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -130,21 +130,21 @@
 
     const-wide/16 v6, -0x2
 
-    .line 1389
+    .line 1394
     iget-wide v4, p0, Lcom/android/gallery3d/ui/PositionController$Animatable;->mAnimationStartTime:J
 
     cmp-long v4, v4, v8
 
     if-nez v4, :cond_0
 
-    .line 1390
+    .line 1395
     const/4 v4, 0x0
 
-    .line 1418
+    .line 1423
     :goto_0
     return v4
 
-    .line 1392
+    .line 1397
     :cond_0
     iget-wide v4, p0, Lcom/android/gallery3d/ui/PositionController$Animatable;->mAnimationStartTime:J
 
@@ -152,26 +152,26 @@
 
     if-nez v4, :cond_1
 
-    .line 1393
+    .line 1398
     iput-wide v8, p0, Lcom/android/gallery3d/ui/PositionController$Animatable;->mAnimationStartTime:J
 
-    .line 1394
+    .line 1399
     invoke-virtual {p0}, Lcom/android/gallery3d/ui/PositionController$Animatable;->startSnapback()Z
 
     move-result v4
 
     goto :goto_0
 
-    .line 1398
+    .line 1403
     :cond_1
     iget v4, p0, Lcom/android/gallery3d/ui/PositionController$Animatable;->mAnimationDuration:I
 
     if-nez v4, :cond_3
 
-    .line 1399
+    .line 1404
     const/high16 v3, 0x3f80
 
-    .line 1406
+    .line 1411
     .local v3, progress:F
     :goto_1
     const/high16 v4, 0x3f80
@@ -180,29 +180,29 @@
 
     if-ltz v4, :cond_4
 
-    .line 1407
+    .line 1412
     const/high16 v3, 0x3f80
 
-    .line 1412
+    .line 1417
     :goto_2
     invoke-virtual {p0, v3}, Lcom/android/gallery3d/ui/PositionController$Animatable;->interpolate(F)Z
 
     move-result v0
 
-    .line 1414
+    .line 1419
     .local v0, done:Z
     if-eqz v0, :cond_2
 
-    .line 1415
+    .line 1420
     iput-wide v6, p0, Lcom/android/gallery3d/ui/PositionController$Animatable;->mAnimationStartTime:J
 
-    .line 1418
+    .line 1423
     :cond_2
     const/4 v4, 0x1
 
     goto :goto_0
 
-    .line 1401
+    .line 1406
     .end local v0           #done:Z
     .end local v3           #progress:F
     :cond_3
@@ -210,7 +210,7 @@
 
     move-result-wide v1
 
-    .line 1402
+    .line 1407
     .local v1, now:J
     iget-wide v4, p0, Lcom/android/gallery3d/ui/PositionController$Animatable;->mAnimationStartTime:J
 
@@ -227,7 +227,7 @@
     .restart local v3       #progress:F
     goto :goto_1
 
-    .line 1409
+    .line 1414
     .end local v1           #now:J
     :cond_4
     iget v4, p0, Lcom/android/gallery3d/ui/PositionController$Animatable;->mAnimationKind:I

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.camera.ui.ControlPanelLayout android:id="@id/video_control_panel" android:background="@color/video_control_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/camera_control_panel_height" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/review_thumbnail" />
+    <include layout="@layout/video_record_pause" />
+    <include layout="@layout/video_record_capture" />
+    <include layout="@layout/switch_cameramode" />
+    <include layout="@layout/meizu_capture_finish" />
+    <include layout="@layout/menu_back_control" />
+    <com.android.camera.ShutterButton android:id="@id/record_button" android:background="@drawable/btn_shutter_video" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/camera_shutter_btn_margin_bottom" android:layout_alignParentBottom="true" android:layout_centerInParent="true" />
+</com.android.camera.ui.ControlPanelLayout>

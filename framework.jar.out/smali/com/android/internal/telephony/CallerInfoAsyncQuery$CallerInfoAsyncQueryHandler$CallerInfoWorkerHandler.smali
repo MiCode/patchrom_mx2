@@ -25,13 +25,13 @@
     .parameter "looper"
 
     .prologue
-    .line 145
+    .line 147
     iput-object p1, p0, Lcom/android/internal/telephony/CallerInfoAsyncQuery$CallerInfoAsyncQueryHandler$CallerInfoWorkerHandler;->this$1:Lcom/android/internal/telephony/CallerInfoAsyncQuery$CallerInfoAsyncQueryHandler;
 
-    .line 146
+    .line 148
     invoke-direct {p0, p1, p2}, Landroid/content/AsyncQueryHandler$WorkerHandler;-><init>(Landroid/content/AsyncQueryHandler;Landroid/os/Looper;)V
 
-    .line 147
+    .line 149
     return-void
 .end method
 
@@ -42,22 +42,22 @@
     .parameter "msg"
 
     .prologue
-    .line 158
+    .line 160
     iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v0, Landroid/content/AsyncQueryHandler$WorkerArgs;
 
-    .line 159
+    .line 161
     .local v0, args:Landroid/content/AsyncQueryHandler$WorkerArgs;
     iget-object v1, v0, Landroid/content/AsyncQueryHandler$WorkerArgs;->cookie:Ljava/lang/Object;
 
     check-cast v1, Lcom/android/internal/telephony/CallerInfoAsyncQuery$CookieWrapper;
 
-    .line 161
+    .line 163
     .local v1, cw:Lcom/android/internal/telephony/CallerInfoAsyncQuery$CookieWrapper;
     if-nez v1, :cond_0
 
-    .line 167
+    .line 169
     const-string v3, "CallerInfoAsyncQuery"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -88,14 +88,14 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 170
+    .line 172
     invoke-super {p0, p1}, Landroid/content/AsyncQueryHandler$WorkerHandler;->handleMessage(Landroid/os/Message;)V
 
-    .line 201
+    .line 203
     :goto_0
     return-void
 
-    .line 176
+    .line 178
     :cond_0
     iget v3, v1, Lcom/android/internal/telephony/CallerInfoAsyncQuery$CookieWrapper;->event:I
 
@@ -103,13 +103,13 @@
 
     goto :goto_0
 
-    .line 179
+    .line 181
     :pswitch_0
     invoke-super {p0, p1}, Landroid/content/AsyncQueryHandler$WorkerHandler;->handleMessage(Landroid/os/Message;)V
 
     goto :goto_0
 
-    .line 191
+    .line 193
     :pswitch_1
     iget-object v3, v0, Landroid/content/AsyncQueryHandler$WorkerArgs;->handler:Landroid/os/Handler;
 
@@ -119,21 +119,21 @@
 
     move-result-object v2
 
-    .line 192
+    .line 194
     .local v2, reply:Landroid/os/Message;
     iput-object v0, v2, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    .line 193
+    .line 195
     iget v3, p1, Landroid/os/Message;->arg1:I
 
     iput v3, v2, Landroid/os/Message;->arg1:I
 
-    .line 195
+    .line 197
     invoke-virtual {v2}, Landroid/os/Message;->sendToTarget()V
 
     goto :goto_0
 
-    .line 176
+    .line 178
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0
