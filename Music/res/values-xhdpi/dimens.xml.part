@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="volume_seek_bar_margin">20.0dip</dimen>
+    <dimen name="first_equalizer_seek_bar_margin">50.0dip</dimen>
+    <dimen name="equalizer_seek_bar_margin">18.0dip</dimen>
+    <dimen name="mainpage_video_width">400.0dip</dimen>
+</resources>

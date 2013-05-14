@@ -23,7 +23,7 @@ function applyPatch () {
     done
 }
 
-function appendPart() {
+function appendSmaliPart() {
     for file in `find $1/smali -name *.part`
     do
 		filepath=`dirname $file`
@@ -33,24 +33,33 @@ function appendPart() {
     done
 }
 
-function mergyResValues() {
-	$XMLMERGYTOOL $1/res/values $2/res/values
+function mergyXmlPart() {
+	for file in `find $1/res -name *.xml.part`
+	do
+		src=`dirname $file`
+		dst=${src/$1/$2}
+		$XMLMERGYTOOL $src $dst
+	done
 }
 
 if [ $1 = "MiuiSystemUI" ];then
-	appendPart $1
-	mergyResValues $1 $2
+	appendSmaliPart $1
+	mergyXmlPart $1 $2
 fi
 
 if [ $1 = "Phone" ];then
-	appendPart $1
+	appendSmaliPart $1
 fi
 
 if [ $1 = "Settings" ];then
 	applyPatch $1 $2
-	mergyResValues $1 $2
+	mergyXmlPart $1 $2
 fi
 
 if [ $1 = "MiuiGallery" ];then
-	mergyResValues $1 $2
+	mergyXmlPart $1 $2
+fi
+
+if [ $1 = "Music" ];then
+    mergyXmlPart $1 $2
 fi
