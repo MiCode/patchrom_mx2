@@ -1591,22 +1591,40 @@
     .prologue
     if-eqz p0, :cond_0
 
-    const-string v0, "recovery"
+    const-string v1, "recovery"
 
-    invoke-virtual {p0, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v0
+    move-result v1
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
-    const-string v0, "mkdir /cache/recovery; cat > /cache/recovery/command"
+    new-instance v0, Ljava/io/File;
 
-    const/4 v1, 0x0
+    const-string v1, "/cache/recovery/command"
 
-    new-array v1, v1, [Ljava/lang/Object;
+    invoke-direct {v0, v1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    invoke-static {v0, v1}, Lmiui/os/Shell;->runShell(Ljava/lang/String;[Ljava/lang/Object;)Z
+    .local v0, file:Ljava/io/File;
+    invoke-virtual {v0}, Ljava/io/File;->exists()Z
 
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    :try_start_0
+    invoke-virtual {v0}, Ljava/io/File;->createNewFile()Z
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .end local v0           #file:Ljava/io/File;
     :cond_0
+    :goto_0
     return-void
+
+    .restart local v0       #file:Ljava/io/File;
+    :catch_0
+    move-exception v1
+
+    goto :goto_0
 .end method
