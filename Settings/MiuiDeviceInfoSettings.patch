@@ -1,0 +1,47 @@
+From f1a0cc59b6bad8762ca6f8f88a6d72831e784262 Mon Sep 17 00:00:00 2001
+From: mochangming <mochangming@xiaomi.com>
+Date: Wed, 15 May 2013 12:47:21 +0800
+Subject: [PATCH] adjust device model
+
+---
+ .../android/settings/MiuiDeviceInfoSettings.smali  |   26 +++++++++++++++++++-
+ 1 file changed, 25 insertions(+), 1 deletion(-)
+
+--- a/Settings/smali/com/android/settings/MiuiDeviceInfoSettings.smali
++++ b/Settings/smali/com/android/settings/MiuiDeviceInfoSettings.smali
+@@ -1460,6 +1460,8 @@
+ 
+     invoke-virtual {v15, v0}, Lmiui/preference/ValuePreference;->setValue(Ljava/lang/String;)V
+ 
++    invoke-direct/range {p0 .. p0}, Lcom/android/settings/MiuiDeviceInfoSettings;->reSetModel()V
++
+     const-string v22, "firmware_version"
+ 
+     move-object/from16 v0, p0
+@@ -2441,3 +2443,23 @@
+ 
+     goto :goto_0
+ .end method
++
++.method private reSetModel()V
++    .locals 2
++
++    .prologue
++    const-string v1, "model_number"
++
++    invoke-virtual {p0, v1}, Lcom/android/settings/MiuiDeviceInfoSettings;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
++
++    move-result-object v0
++
++    check-cast v0, Lmiui/preference/ValuePreference;
++
++    .local v0, modeNumber:Lmiui/preference/ValuePreference;
++    const-string v1, "MX2"
++
++    invoke-virtual {v0, v1}, Lmiui/preference/ValuePreference;->setValue(Ljava/lang/String;)V
++
++    return-void
++.end method
+-- 
+1.7.9.5
+
