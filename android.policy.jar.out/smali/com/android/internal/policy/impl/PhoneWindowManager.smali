@@ -10105,7 +10105,7 @@
     invoke-static/range {v34 .. v35}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 2041
-    invoke-direct/range {p0 .. p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->sendHomeDoubleClick()V
+    #invoke-direct/range {p0 .. p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->sendHomeDoubleClick()V
 
     .line 2042
     const/16 v34, 0x0
@@ -10135,9 +10135,9 @@
     iput-boolean v0, v1, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHomeKeyDown:Z
 
     .line 2045
-    const-wide/16 v34, -0x1
+    #const-wide/16 v34, -0x1
 
-    goto/16 :goto_1
+    #goto/16 :goto_1
 
     .line 2050
     :cond_13
