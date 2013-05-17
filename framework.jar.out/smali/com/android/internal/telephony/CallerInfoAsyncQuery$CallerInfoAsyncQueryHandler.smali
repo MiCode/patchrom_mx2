@@ -623,7 +623,9 @@
 
     iget-object v5, v1, Lcom/android/internal/telephony/CallerInfoAsyncQuery$CookieWrapper;->number:Ljava/lang/String;
 
-    invoke-static {v4, p3, v5}, Lcom/android/internal/telephony/CallerInfo;->getCallerInfoViaNumber(Landroid/net/Uri;Landroid/database/Cursor;Ljava/lang/String;)Lcom/android/internal/telephony/CallerInfo;
+    iget-object v3, p0, Lcom/android/internal/telephony/CallerInfoAsyncQuery$CallerInfoAsyncQueryHandler;->mQueryContext:Landroid/content/Context;
+
+    invoke-static {v4, p3, v5, v3}, Lcom/android/internal/telephony/CallerInfo;->getCallerInfoViaNumber(Landroid/net/Uri;Landroid/database/Cursor;Ljava/lang/String;Landroid/content/Context;)Lcom/android/internal/telephony/CallerInfo;
 
     move-result-object v0
 
