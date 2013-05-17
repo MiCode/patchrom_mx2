@@ -38586,7 +38586,7 @@
     .line 5276
     iget-object v0, p0, Lcom/android/server/wm/WindowManagerService;->mContext:Landroid/content/Context;
 
-    const/4 v1, 0x0
+    const/4 v1, 0x1
 
     invoke-static {v0, v1}, Lcom/android/server/pm/ShutdownThread;->shutdown(Landroid/content/Context;Z)V
 
