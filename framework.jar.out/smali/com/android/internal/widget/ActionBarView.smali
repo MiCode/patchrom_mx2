@@ -1538,6 +1538,8 @@
     .locals 4
 
     .prologue
+    return-void
+
     const/4 v1, 0x1
 
     const/4 v0, 0x0
@@ -1650,7 +1652,9 @@
     invoke-virtual {v3}, Ljava/lang/Boolean;->booleanValue()Z
 
     move-result v3
-
+    
+    const/4 v3, 0x0
+    
     if-eqz v3, :cond_7
 
     .line 1900
@@ -5639,6 +5643,8 @@
     .locals 15
 
     .prologue
+    return-void
+    
     const/4 v14, 0x0
 
     const/4 v13, 0x4
@@ -7921,6 +7927,8 @@
     .locals 9
 
     .prologue
+    return-void
+
     const/16 v6, 0x8
 
     const/4 v4, 0x1
@@ -8206,3 +8214,4 @@
     :cond_1
     return-void
 .end method
+

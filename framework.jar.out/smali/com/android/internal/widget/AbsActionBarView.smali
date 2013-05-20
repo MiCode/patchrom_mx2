@@ -1297,6 +1297,8 @@
     .locals 5
 
     .prologue
+    return-void
+
     const/4 v4, 0x0
 
     .line 421
