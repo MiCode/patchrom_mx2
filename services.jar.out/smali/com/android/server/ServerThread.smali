@@ -2762,7 +2762,8 @@
     :try_end_56
     .catch Ljava/lang/Throwable; {:try_start_56 .. :try_end_56} :catch_35
 
-    .line 819
+    goto :goto_ignore_clear_lock
+
     :try_start_57
     invoke-virtual {v4}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -2801,6 +2802,7 @@
     .line 834
     .end local v77           #len:I
     .end local v84           #mLockPasswordUtils:Lcom/android/internal/widget/LockPatternUtils;
+    :goto_ignore_clear_lock
     :cond_12
     :goto_3e
     const-string v3, "SystemServer"
