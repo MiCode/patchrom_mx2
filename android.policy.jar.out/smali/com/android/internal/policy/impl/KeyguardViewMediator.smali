@@ -4845,13 +4845,13 @@
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 602
-    iget-object v1, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mKeyguardViewProperties:Lcom/android/internal/policy/impl/KeyguardViewProperties;
+    #iget-object v1, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mKeyguardViewProperties:Lcom/android/internal/policy/impl/KeyguardViewProperties;
 
-    invoke-interface {v1}, Lcom/android/internal/policy/impl/KeyguardViewProperties;->disableExternalExit()Z
+    #invoke-interface {v1}, Lcom/android/internal/policy/impl/KeyguardViewProperties;->disableExternalExit()Z
 
-    move-result v1
+    #move-result v1
 
-    if-nez v1, :cond_1
+    #if-nez v1, :cond_1
 
     .line 603
     const/4 v1, 0x1
