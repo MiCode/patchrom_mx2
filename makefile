@@ -47,6 +47,8 @@ local-zip-misc:
 	cp -f other/build.prop $(ZIP_DIR)/system
 	@echo replace bootanimation
 	cp -f other/bootanimation $(ZIP_DIR)/system/bin
+	@echo replace LiveWallpapersPicker
+	cp -f other/LiveWallpapersPicker.apk $(ZIP_DIR)/system/app
 
 out/framework2.jar : out/framework.jar
 
