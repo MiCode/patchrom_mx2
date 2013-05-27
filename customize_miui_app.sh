@@ -49,6 +49,7 @@ fi
 
 if [ $1 = "Phone" ];then
 	appendSmaliPart $1
+	mergyXmlPart $1 $2
 fi
 
 if [ $1 = "Settings" ];then
