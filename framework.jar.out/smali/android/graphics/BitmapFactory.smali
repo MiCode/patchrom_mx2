@@ -607,7 +607,7 @@
     return-object v0
 .end method
 
-.method public static decodeStream(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+.method public static decodeStream_old(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     .locals 12
     .parameter "is"
     .parameter "outPadding"
@@ -1115,4 +1115,490 @@
 .end method
 
 .method private static native nativeScaleNinePatch([BFLandroid/graphics/Rect;)[B
+.end method
+
+#    public static Bitmap decodeStream(InputStream is, Rect outPadding, Options opts) {
+#        // we don't throw in this case, thus allowing the caller to only check
+#        // the cache, and not force the image to be decoded.
+#        if (is == null) {
+#            return null;
+#        }
+#
+#        // we need mark/reset to work properly
+#
+#        if (!is.markSupported()) {
+#            is = new BufferedInputStream(is, DECODE_BUFFER_SIZE);
+#        }
+#
+#        // so we can call reset() if a given codec gives up after reading up to
+#        // this many bytes. FIXME: need to find out from the codecs what this
+#        // value should be.
+#        is.mark(1024);
+#
+#        Bitmap bm;
+#        boolean finish = true;
+#
+#        if (is instanceof AssetManager.AssetInputStream) {
+#            final int asset = ((AssetManager.AssetInputStream) is).getAssetInt();
+#
+#            if (opts == null || (opts.inScaled && opts.inBitmap == null)) {
+#                float scale = 1.0f;
+#                int targetDensity = 0;
+#                if (opts != null) {
+#                    final int density = opts.inDensity;
+#                    targetDensity = opts.inTargetDensity;
+#                   if (density != 0 && targetDensity != 0) {
+#                       scale = targetDensity / (float) density;
+#                   }
+#               }
+#
+#                bm = nativeDecodeAsset(asset, outPadding, opts, true, scale);
+#                if (bm != null && targetDensity != 0) bm.setDensity(targetDensity);
+#
+#                finish = false;
+#            } else {
+#                bm = nativeDecodeAsset(asset, outPadding, opts);
+#            }
+#        } else {
+#            // pass some temp storage down to the native code. 1024 is made up,
+#            // but should be large enough to avoid too many small calls back
+#            // into is.read(...) This number is not related to the value passed
+#            // to mark(...) above.
+#            byte [] tempStorage = null;
+#            if (opts != null) tempStorage = opts.inTempStorage;
+#            if (tempStorage == null) tempStorage = new byte[16 * 1024];
+#
+#            if (opts == null || (opts.inScaled && opts.inBitmap == null)) {
+#                float scale = 1.0f;
+#                int targetDensity = 0;
+#                if (opts != null) {
+#                    final int density = opts.inDensity;
+#                    targetDensity = opts.inTargetDensity;
+#                    if (density != 0 && targetDensity != 0) {
+#                        scale = targetDensity / (float) density;
+#                    }
+#                }
+#
+#                bm = nativeDecodeStream(is, tempStorage, outPadding, opts, true, scale);
+#                if (bm != null && targetDensity != 0) bm.setDensity(targetDensity);
+#
+#                finish = false;
+#            } else {
+#                bm = nativeDecodeStream(is, tempStorage, outPadding, opts);
+#            }
+#        }
+#
+#        if (bm == null && opts != null && opts.inBitmap != null) {
+#            throw new IllegalArgumentException("Problem decoding into existing bitmap");
+#        }
+#
+#        if(finish) {
+#        	bm = finishDecode(bm, outPadding, opts);
+#        }
+#        
+#        if(bm != null) {
+#            int width = bm.getWidth();
+#            
+#            if(width >= 720 && width<=730) {
+#                final Bitmap oldBitmap = bm;
+#                bm = Bitmap.createScaledBitmap(oldBitmap, width+80, bm.getHeight(), true);
+#                bm.setNinePatchChunk(oldBitmap.getNinePatchChunk());
+#                bm.setDensity(oldBitmap.getDensity());
+#                bm.setLayoutBounds(oldBitmap.getLayoutBounds());
+#                if (bm != oldBitmap) oldBitmap.recycle();
+#            }
+#        }
+#        
+#        return bm;
+#    }
+
+.method public static decodeStream(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    .locals 17
+    .parameter "is"
+    .parameter "outPadding"
+    .parameter "opts"
+
+    .prologue
+    .line 471
+    if-nez p0, :cond_1
+
+    .line 472
+    const/4 v10, 0x0
+
+    .line 560
+    .end local p0
+    :cond_0
+    :goto_0
+    return-object v10
+
+    .line 477
+    .restart local p0
+    :cond_1
+    invoke-virtual/range {p0 .. p0}, Ljava/io/InputStream;->markSupported()Z
+
+    move-result v3
+
+    if-nez v3, :cond_2
+
+    .line 478
+    new-instance v13, Ljava/io/BufferedInputStream;
+
+    const/16 v3, 0x4000
+
+    move-object/from16 v0, p0
+
+    invoke-direct {v13, v0, v3}, Ljava/io/BufferedInputStream;-><init>(Ljava/io/InputStream;I)V
+
+    .end local p0
+    .local v13, is:Ljava/io/InputStream;
+    move-object/from16 p0, v13
+
+    .line 484
+    .end local v13           #is:Ljava/io/InputStream;
+    .restart local p0
+    :cond_2
+    const/16 v3, 0x400
+
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v3}, Ljava/io/InputStream;->mark(I)V
+
+    .line 487
+    const/4 v12, 0x1
+
+    .line 489
+    .local v12, finish:Z
+    move-object/from16 v0, p0
+
+    instance-of v3, v0, Landroid/content/res/AssetManager$AssetInputStream;
+
+    if-eqz v3, :cond_7
+
+    .line 490
+    check-cast p0, Landroid/content/res/AssetManager$AssetInputStream;
+
+    .end local p0
+    invoke-virtual/range {p0 .. p0}, Landroid/content/res/AssetManager$AssetInputStream;->getAssetInt()I
+
+    move-result v9
+
+    .line 492
+    .local v9, asset:I
+    if-eqz p2, :cond_3
+
+    move-object/from16 v0, p2
+
+    iget-boolean v3, v0, Landroid/graphics/BitmapFactory$Options;->inScaled:Z
+
+    if-eqz v3, :cond_6
+
+    move-object/from16 v0, p2
+
+    iget-object v3, v0, Landroid/graphics/BitmapFactory$Options;->inBitmap:Landroid/graphics/Bitmap;
+
+    if-nez v3, :cond_6
+
+    .line 493
+    :cond_3
+    const/high16 v8, 0x3f80
+
+    .line 494
+    .local v8, scale:F
+    const/4 v15, 0x0
+
+    .line 495
+    .local v15, targetDensity:I
+    if-eqz p2, :cond_4
+
+    .line 496
+    move-object/from16 v0, p2
+
+    iget v11, v0, Landroid/graphics/BitmapFactory$Options;->inDensity:I
+
+    .line 497
+    .local v11, density:I
+    move-object/from16 v0, p2
+
+    iget v15, v0, Landroid/graphics/BitmapFactory$Options;->inTargetDensity:I
+
+    .line 498
+    if-eqz v11, :cond_4
+
+    if-eqz v15, :cond_4
+
+    .line 499
+    int-to-float v3, v15
+
+    int-to-float v5, v11
+
+    div-float v8, v3, v5
+
+    .line 503
+    .end local v11           #density:I
+    :cond_4
+    const/4 v3, 0x1
+
+    move-object/from16 v0, p1
+
+    move-object/from16 v1, p2
+
+    invoke-static {v9, v0, v1, v3, v8}, Landroid/graphics/BitmapFactory;->nativeDecodeAsset(ILandroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;ZF)Landroid/graphics/Bitmap;
+
+    move-result-object v10
+
+    .line 504
+    .local v10, bm:Landroid/graphics/Bitmap;
+    if-eqz v10, :cond_5
+
+    if-eqz v15, :cond_5
+
+    invoke-virtual {v10, v15}, Landroid/graphics/Bitmap;->setDensity(I)V
+
+    .line 506
+    :cond_5
+    const/4 v12, 0x0
+
+    .line 539
+    .end local v8           #scale:F
+    .end local v9           #asset:I
+    .end local v15           #targetDensity:I
+    :goto_1
+    if-nez v10, :cond_e
+
+    if-eqz p2, :cond_e
+
+    move-object/from16 v0, p2
+
+    iget-object v3, v0, Landroid/graphics/BitmapFactory$Options;->inBitmap:Landroid/graphics/Bitmap;
+
+    if-eqz v3, :cond_e
+
+    .line 540
+    new-instance v3, Ljava/lang/IllegalArgumentException;
+
+    const-string v5, "Problem decoding into existing bitmap"
+
+    invoke-direct {v3, v5}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v3
+
+    .line 508
+    .end local v10           #bm:Landroid/graphics/Bitmap;
+    .restart local v9       #asset:I
+    :cond_6
+    move-object/from16 v0, p1
+
+    move-object/from16 v1, p2
+
+    invoke-static {v9, v0, v1}, Landroid/graphics/BitmapFactory;->nativeDecodeAsset(ILandroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+
+    move-result-object v10
+
+    .restart local v10       #bm:Landroid/graphics/Bitmap;
+    goto :goto_1
+
+    .line 515
+    .end local v9           #asset:I
+    .end local v10           #bm:Landroid/graphics/Bitmap;
+    .restart local p0
+    :cond_7
+    const/4 v4, 0x0
+
+    .line 516
+    .local v4, tempStorage:[B
+    if-eqz p2, :cond_8
+
+    move-object/from16 v0, p2
+
+    iget-object v4, v0, Landroid/graphics/BitmapFactory$Options;->inTempStorage:[B
+
+    .line 517
+    :cond_8
+    if-nez v4, :cond_9
+
+    const/16 v3, 0x4000
+
+    new-array v4, v3, [B
+
+    .line 519
+    :cond_9
+    if-eqz p2, :cond_a
+
+    move-object/from16 v0, p2
+
+    iget-boolean v3, v0, Landroid/graphics/BitmapFactory$Options;->inScaled:Z
+
+    if-eqz v3, :cond_d
+
+    move-object/from16 v0, p2
+
+    iget-object v3, v0, Landroid/graphics/BitmapFactory$Options;->inBitmap:Landroid/graphics/Bitmap;
+
+    if-nez v3, :cond_d
+
+    .line 520
+    :cond_a
+    const/high16 v8, 0x3f80
+
+    .line 521
+    .restart local v8       #scale:F
+    const/4 v15, 0x0
+
+    .line 522
+    .restart local v15       #targetDensity:I
+    if-eqz p2, :cond_b
+
+    .line 523
+    move-object/from16 v0, p2
+
+    iget v11, v0, Landroid/graphics/BitmapFactory$Options;->inDensity:I
+
+    .line 524
+    .restart local v11       #density:I
+    move-object/from16 v0, p2
+
+    iget v15, v0, Landroid/graphics/BitmapFactory$Options;->inTargetDensity:I
+
+    .line 525
+    if-eqz v11, :cond_b
+
+    if-eqz v15, :cond_b
+
+    .line 526
+    int-to-float v3, v15
+
+    int-to-float v5, v11
+
+    div-float v8, v3, v5
+
+    .line 530
+    .end local v11           #density:I
+    :cond_b
+    const/4 v7, 0x1
+
+    move-object/from16 v3, p0
+
+    move-object/from16 v5, p1
+
+    move-object/from16 v6, p2
+
+    invoke-static/range {v3 .. v8}, Landroid/graphics/BitmapFactory;->nativeDecodeStream(Ljava/io/InputStream;[BLandroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;ZF)Landroid/graphics/Bitmap;
+
+    move-result-object v10
+
+    .line 531
+    .restart local v10       #bm:Landroid/graphics/Bitmap;
+    if-eqz v10, :cond_c
+
+    if-eqz v15, :cond_c
+
+    invoke-virtual {v10, v15}, Landroid/graphics/Bitmap;->setDensity(I)V
+
+    .line 533
+    :cond_c
+    const/4 v12, 0x0
+
+    .line 534
+    goto :goto_1
+
+    .line 535
+    .end local v8           #scale:F
+    .end local v10           #bm:Landroid/graphics/Bitmap;
+    .end local v15           #targetDensity:I
+    :cond_d
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p1
+
+    move-object/from16 v2, p2
+
+    invoke-static {v0, v4, v1, v2}, Landroid/graphics/BitmapFactory;->nativeDecodeStream(Ljava/io/InputStream;[BLandroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+
+    move-result-object v10
+
+    .restart local v10       #bm:Landroid/graphics/Bitmap;
+    goto :goto_1
+
+    .line 543
+    .end local v4           #tempStorage:[B
+    .end local p0
+    :cond_e
+    if-eqz v12, :cond_f
+
+    .line 544
+    move-object/from16 v0, p1
+
+    move-object/from16 v1, p2
+
+    invoke-static {v10, v0, v1}, Landroid/graphics/BitmapFactory;->finishDecode(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+
+    move-result-object v10
+
+    .line 547
+    :cond_f
+    if-eqz v10, :cond_0
+
+    .line 548
+    invoke-virtual {v10}, Landroid/graphics/Bitmap;->getWidth()I
+
+    move-result v16
+
+    .line 550
+    .local v16, width:I
+    const/16 v3, 0x2d0
+
+    move/from16 v0, v16
+
+    if-lt v0, v3, :cond_0
+
+    const/16 v3, 0x2da
+
+    move/from16 v0, v16
+
+    if-gt v0, v3, :cond_0
+
+    .line 551
+    move-object v14, v10
+
+    .line 552
+    .local v14, oldBitmap:Landroid/graphics/Bitmap;
+    add-int/lit8 v3, v16, 0x50
+
+    invoke-virtual {v10}, Landroid/graphics/Bitmap;->getHeight()I
+
+    move-result v5
+
+    const/4 v6, 0x1
+
+    invoke-static {v14, v3, v5, v6}, Landroid/graphics/Bitmap;->createScaledBitmap(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+
+    move-result-object v10
+
+    .line 553
+    invoke-virtual {v14}, Landroid/graphics/Bitmap;->getNinePatchChunk()[B
+
+    move-result-object v3
+
+    invoke-virtual {v10, v3}, Landroid/graphics/Bitmap;->setNinePatchChunk([B)V
+
+    .line 554
+    invoke-virtual {v14}, Landroid/graphics/Bitmap;->getDensity()I
+
+    move-result v3
+
+    invoke-virtual {v10, v3}, Landroid/graphics/Bitmap;->setDensity(I)V
+
+    .line 555
+    invoke-virtual {v14}, Landroid/graphics/Bitmap;->getLayoutBounds()[I
+
+    move-result-object v3
+
+    invoke-virtual {v10, v3}, Landroid/graphics/Bitmap;->setLayoutBounds([I)V
+
+    .line 556
+    if-eq v10, v14, :cond_0
+
+    invoke-virtual {v14}, Landroid/graphics/Bitmap;->recycle()V
+
+    goto/16 :goto_0
 .end method
