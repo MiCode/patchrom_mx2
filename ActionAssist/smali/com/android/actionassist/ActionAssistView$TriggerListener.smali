@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 54
+    .line 50
     iput-object p1, p0, Lcom/android/actionassist/ActionAssistView$TriggerListener;->this$0:Lcom/android/actionassist/ActionAssistView;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 0
 
     .prologue
-    .line 121
+    .line 117
     return-void
 .end method
 
@@ -53,30 +53,30 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 81
+    .line 77
     invoke-static {}, Lcom/android/actionassist/ActionAssistView;->access$200()I
 
     move-result v1
 
     if-eqz v1, :cond_0
 
-    .line 82
+    .line 78
     invoke-static {}, Lcom/android/actionassist/ActionAssistView$KeyTrigger;->cancelKeyTrigger()V
 
-    .line 85
+    .line 81
     :cond_0
     const/4 v1, -0x1
 
     if-ne p2, v1, :cond_1
 
-    .line 86
+    .line 82
     invoke-static {v2}, Lcom/android/actionassist/ActionAssistView;->access$202(I)I
 
-    .line 105
+    .line 101
     :goto_0
     return-void
 
-    .line 90
+    .line 86
     :cond_1
     iget-object v1, p0, Lcom/android/actionassist/ActionAssistView$TriggerListener;->this$0:Lcom/android/actionassist/ActionAssistView;
 
@@ -89,42 +89,42 @@
 
     move-result v0
 
-    .line 91
+    .line 87
     .local v0, resId:I
     packed-switch v0, :pswitch_data_0
 
     :pswitch_0
     goto :goto_0
 
-    .line 93
+    .line 89
     :pswitch_1
     const/4 v1, 0x4
 
     invoke-static {v1}, Lcom/android/actionassist/ActionAssistView;->access$202(I)I
 
-    .line 94
+    .line 90
     invoke-static {}, Lcom/android/actionassist/ActionAssistView$KeyTrigger;->downKeyTrigger()V
 
     goto :goto_0
 
-    .line 97
+    .line 93
     :pswitch_2
     invoke-static {v2}, Lcom/android/actionassist/ActionAssistView;->access$202(I)I
 
     goto :goto_0
 
-    .line 100
+    .line 96
     :pswitch_3
     const/16 v1, 0x52
 
     invoke-static {v1}, Lcom/android/actionassist/ActionAssistView;->access$202(I)I
 
-    .line 101
+    .line 97
     invoke-static {}, Lcom/android/actionassist/ActionAssistView$KeyTrigger;->downKeyTrigger()V
 
     goto :goto_0
 
-    .line 91
+    .line 87
     :pswitch_data_0
     .packed-switch 0x7f020000
         :pswitch_1
@@ -140,7 +140,7 @@
     .parameter "handle"
 
     .prologue
-    .line 59
+    .line 55
     return-void
 .end method
 
@@ -152,16 +152,16 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 109
+    .line 105
     if-ne p2, v1, :cond_1
 
-    .line 110
+    .line 106
     iget-object v0, p0, Lcom/android/actionassist/ActionAssistView$TriggerListener;->this$0:Lcom/android/actionassist/ActionAssistView;
 
     #setter for: Lcom/android/actionassist/ActionAssistView;->handled:Z
     invoke-static {v0, v1}, Lcom/android/actionassist/ActionAssistView;->access$302(Lcom/android/actionassist/ActionAssistView;Z)Z
 
-    .line 111
+    .line 107
     iget-object v0, p0, Lcom/android/actionassist/ActionAssistView$TriggerListener;->this$0:Lcom/android/actionassist/ActionAssistView;
 
     #getter for: Lcom/android/actionassist/ActionAssistView;->mGlowPadView:Lcom/android/internal/widget/multiwaveview/ActionGlowPadView;
@@ -177,19 +177,19 @@
 
     invoke-virtual {v0, v1}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 112
-    invoke-static {}, Lcom/android/actionassist/AssistReceiver;->dismissUserGuide()V
+    .line 108
+    invoke-static {}, Lcom/android/actionassist/ActionAssist;->dismissUserGuide()V
 
-    .line 117
+    .line 113
     :cond_0
     :goto_0
     return-void
 
-    .line 113
+    .line 109
     :cond_1
     if-nez p2, :cond_0
 
-    .line 114
+    .line 110
     iget-object v0, p0, Lcom/android/actionassist/ActionAssistView$TriggerListener;->this$0:Lcom/android/actionassist/ActionAssistView;
 
     const/4 v1, 0x0
@@ -197,7 +197,7 @@
     #setter for: Lcom/android/actionassist/ActionAssistView;->handled:Z
     invoke-static {v0, v1}, Lcom/android/actionassist/ActionAssistView;->access$302(Lcom/android/actionassist/ActionAssistView;Z)Z
 
-    .line 115
+    .line 111
     iget-object v0, p0, Lcom/android/actionassist/ActionAssistView$TriggerListener;->this$0:Lcom/android/actionassist/ActionAssistView;
 
     invoke-virtual {v0}, Lcom/android/actionassist/ActionAssistView;->hide()V
@@ -211,7 +211,7 @@
     .parameter "handle"
 
     .prologue
-    .line 63
+    .line 59
     return-void
 .end method
 
@@ -221,7 +221,7 @@
     .parameter "target"
 
     .prologue
-    .line 67
+    .line 63
     iget-object v1, p0, Lcom/android/actionassist/ActionAssistView$TriggerListener;->this$0:Lcom/android/actionassist/ActionAssistView;
 
     #getter for: Lcom/android/actionassist/ActionAssistView;->mGlowPadView:Lcom/android/internal/widget/multiwaveview/ActionGlowPadView;
@@ -233,22 +233,22 @@
 
     move-result v0
 
-    .line 68
+    .line 64
     .local v0, resId:I
     packed-switch v0, :pswitch_data_0
 
-    .line 77
+    .line 73
     :goto_0
     :pswitch_0
     return-void
 
-    .line 71
+    .line 67
     :pswitch_1
     invoke-static {}, Lcom/android/actionassist/ActionAssistView$KeyTrigger;->upKeyTrigger()V
 
     goto :goto_0
 
-    .line 74
+    .line 70
     :pswitch_2
     iget-object v1, p0, Lcom/android/actionassist/ActionAssistView$TriggerListener;->this$0:Lcom/android/actionassist/ActionAssistView;
 
@@ -257,7 +257,7 @@
 
     goto :goto_0
 
-    .line 68
+    .line 64
     :pswitch_data_0
     .packed-switch 0x7f020000
         :pswitch_1

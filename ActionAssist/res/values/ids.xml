@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="action_bg_protect">false</item>
+    <item type="id" name="rot0">false</item>
+    <item type="id" name="glow_pad_view">false</item>
+    <item type="id" name="rot90">false</item>
+    <item type="id" name="rot180">false</item>
+    <item type="id" name="rot270">false</item>
+</resources>

@@ -231,6 +231,53 @@
     goto :goto_2
 .end method
 
+.method static final startActionAssist(Landroid/content/Context;)V
+    .locals 4
+    .parameter "context"
+
+    .prologue
+    new-instance v0, Landroid/content/Intent;
+
+    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
+
+    .local v0, intent:Landroid/content/Intent;
+    new-instance v1, Landroid/content/ComponentName;
+
+    const-string v2, "com.android.actionassist"
+
+    const-string v3, "com.android.actionassist.ActionAssist"
+
+    invoke-direct {v1, v2, v3}, Landroid/content/ComponentName;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
+
+    const-string v1, "SystemServer"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "Starting service: "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    invoke-virtual {p0, v0}, Landroid/content/Context;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
+
+    return-void
+.end method
+
 .method static final startSystemUi(Landroid/content/Context;)V
     .locals 4
     .parameter "context"
@@ -279,7 +326,8 @@
     .line 1077
     invoke-virtual {p0, v0}, Landroid/content/Context;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
 
-    .line 1078
+    invoke-static {p0}, Lcom/android/server/ServerThread;->startActionAssist(Landroid/content/Context;)V
+
     return-void
 .end method
 

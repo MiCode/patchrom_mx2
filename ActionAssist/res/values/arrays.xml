@@ -3,8 +3,8 @@
     <array name="action_assist_targets_0">
         <item>@null</item>
         <item>@drawable/action_assist_menu</item>
-        <item>@drawable/action_assist_recent</item>
         <item>@drawable/action_assist_back</item>
+        <item>@drawable/action_assist_recent</item>
         <item>@null</item>
         <item>@null</item>
         <item>@null</item>
@@ -15,8 +15,8 @@
         <item>@null</item>
         <item>@null</item>
         <item>@drawable/action_assist_menu</item>
-        <item>@drawable/action_assist_recent</item>
         <item>@drawable/action_assist_back</item>
+        <item>@drawable/action_assist_recent</item>
         <item>@null</item>
         <item>@null</item>
     </array>
@@ -27,12 +27,12 @@
         <item>@null</item>
         <item>@null</item>
         <item>@drawable/action_assist_menu</item>
-        <item>@drawable/action_assist_recent</item>
         <item>@drawable/action_assist_back</item>
+        <item>@drawable/action_assist_recent</item>
     </array>
     <array name="action_assist_targets_270">
-        <item>@drawable/action_assist_recent</item>
         <item>@drawable/action_assist_back</item>
+        <item>@drawable/action_assist_recent</item>
         <item>@null</item>
         <item>@null</item>
         <item>@null</item>
