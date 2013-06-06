@@ -1198,8 +1198,8 @@
 #        
 #        if(bm != null) {
 #            int width = bm.getWidth();
-#            
-#            if(width >= 720 && width<=730) {
+#            int height = bm.getHeight();
+#            if(width>=720 && width<=730 && height<=200) {
 #                final Bitmap oldBitmap = bm;
 #                bm = Bitmap.createScaledBitmap(oldBitmap, width+80, bm.getHeight(), true);
 #                bm.setNinePatchChunk(oldBitmap.getNinePatchChunk());
@@ -1213,25 +1213,25 @@
 #    }
 
 .method public static decodeStream(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    .locals 17
+    .locals 18
     .parameter "is"
     .parameter "outPadding"
     .parameter "opts"
 
     .prologue
-    .line 471
+    .line 468
     if-nez p0, :cond_1
 
-    .line 472
+    .line 469
     const/4 v10, 0x0
 
-    .line 560
+    .line 557
     .end local p0
     :cond_0
     :goto_0
     return-object v10
 
-    .line 477
+    .line 474
     .restart local p0
     :cond_1
     invoke-virtual/range {p0 .. p0}, Ljava/io/InputStream;->markSupported()Z
@@ -1240,21 +1240,21 @@
 
     if-nez v3, :cond_2
 
-    .line 478
-    new-instance v13, Ljava/io/BufferedInputStream;
+    .line 475
+    new-instance v14, Ljava/io/BufferedInputStream;
 
     const/16 v3, 0x4000
 
     move-object/from16 v0, p0
 
-    invoke-direct {v13, v0, v3}, Ljava/io/BufferedInputStream;-><init>(Ljava/io/InputStream;I)V
+    invoke-direct {v14, v0, v3}, Ljava/io/BufferedInputStream;-><init>(Ljava/io/InputStream;I)V
 
     .end local p0
-    .local v13, is:Ljava/io/InputStream;
-    move-object/from16 p0, v13
+    .local v14, is:Ljava/io/InputStream;
+    move-object/from16 p0, v14
 
-    .line 484
-    .end local v13           #is:Ljava/io/InputStream;
+    .line 481
+    .end local v14           #is:Ljava/io/InputStream;
     .restart local p0
     :cond_2
     const/16 v3, 0x400
@@ -1263,10 +1263,10 @@
 
     invoke-virtual {v0, v3}, Ljava/io/InputStream;->mark(I)V
 
-    .line 487
+    .line 484
     const/4 v12, 0x1
 
-    .line 489
+    .line 486
     .local v12, finish:Z
     move-object/from16 v0, p0
 
@@ -1274,7 +1274,7 @@
 
     if-eqz v3, :cond_7
 
-    .line 490
+    .line 487
     check-cast p0, Landroid/content/res/AssetManager$AssetInputStream;
 
     .end local p0
@@ -1282,7 +1282,7 @@
 
     move-result v9
 
-    .line 492
+    .line 489
     .local v9, asset:I
     if-eqz p2, :cond_3
 
@@ -1298,42 +1298,46 @@
 
     if-nez v3, :cond_6
 
-    .line 493
+    .line 490
     :cond_3
     const/high16 v8, 0x3f80
 
-    .line 494
+    .line 491
     .local v8, scale:F
-    const/4 v15, 0x0
+    const/16 v16, 0x0
 
-    .line 495
-    .local v15, targetDensity:I
+    .line 492
+    .local v16, targetDensity:I
     if-eqz p2, :cond_4
 
-    .line 496
+    .line 493
     move-object/from16 v0, p2
 
     iget v11, v0, Landroid/graphics/BitmapFactory$Options;->inDensity:I
 
-    .line 497
+    .line 494
     .local v11, density:I
     move-object/from16 v0, p2
 
-    iget v15, v0, Landroid/graphics/BitmapFactory$Options;->inTargetDensity:I
+    iget v0, v0, Landroid/graphics/BitmapFactory$Options;->inTargetDensity:I
 
-    .line 498
+    move/from16 v16, v0
+
+    .line 495
     if-eqz v11, :cond_4
 
-    if-eqz v15, :cond_4
+    if-eqz v16, :cond_4
 
-    .line 499
-    int-to-float v3, v15
+    .line 496
+    move/from16 v0, v16
+
+    int-to-float v3, v0
 
     int-to-float v5, v11
 
     div-float v8, v3, v5
 
-    .line 503
+    .line 500
     .end local v11           #density:I
     :cond_4
     const/4 v3, 0x1
@@ -1346,22 +1350,24 @@
 
     move-result-object v10
 
-    .line 504
+    .line 501
     .local v10, bm:Landroid/graphics/Bitmap;
     if-eqz v10, :cond_5
 
-    if-eqz v15, :cond_5
+    if-eqz v16, :cond_5
 
-    invoke-virtual {v10, v15}, Landroid/graphics/Bitmap;->setDensity(I)V
+    move/from16 v0, v16
 
-    .line 506
+    invoke-virtual {v10, v0}, Landroid/graphics/Bitmap;->setDensity(I)V
+
+    .line 503
     :cond_5
     const/4 v12, 0x0
 
-    .line 539
+    .line 536
     .end local v8           #scale:F
     .end local v9           #asset:I
-    .end local v15           #targetDensity:I
+    .end local v16           #targetDensity:I
     :goto_1
     if-nez v10, :cond_e
 
@@ -1373,7 +1379,7 @@
 
     if-eqz v3, :cond_e
 
-    .line 540
+    .line 537
     new-instance v3, Ljava/lang/IllegalArgumentException;
 
     const-string v5, "Problem decoding into existing bitmap"
@@ -1382,7 +1388,7 @@
 
     throw v3
 
-    .line 508
+    .line 505
     .end local v10           #bm:Landroid/graphics/Bitmap;
     .restart local v9       #asset:I
     :cond_6
@@ -1397,14 +1403,14 @@
     .restart local v10       #bm:Landroid/graphics/Bitmap;
     goto :goto_1
 
-    .line 515
+    .line 512
     .end local v9           #asset:I
     .end local v10           #bm:Landroid/graphics/Bitmap;
     .restart local p0
     :cond_7
     const/4 v4, 0x0
 
-    .line 516
+    .line 513
     .local v4, tempStorage:[B
     if-eqz p2, :cond_8
 
@@ -1412,7 +1418,7 @@
 
     iget-object v4, v0, Landroid/graphics/BitmapFactory$Options;->inTempStorage:[B
 
-    .line 517
+    .line 514
     :cond_8
     if-nez v4, :cond_9
 
@@ -1420,7 +1426,7 @@
 
     new-array v4, v3, [B
 
-    .line 519
+    .line 516
     :cond_9
     if-eqz p2, :cond_a
 
@@ -1436,42 +1442,46 @@
 
     if-nez v3, :cond_d
 
-    .line 520
+    .line 517
     :cond_a
     const/high16 v8, 0x3f80
 
-    .line 521
+    .line 518
     .restart local v8       #scale:F
-    const/4 v15, 0x0
+    const/16 v16, 0x0
 
-    .line 522
-    .restart local v15       #targetDensity:I
+    .line 519
+    .restart local v16       #targetDensity:I
     if-eqz p2, :cond_b
 
-    .line 523
+    .line 520
     move-object/from16 v0, p2
 
     iget v11, v0, Landroid/graphics/BitmapFactory$Options;->inDensity:I
 
-    .line 524
+    .line 521
     .restart local v11       #density:I
     move-object/from16 v0, p2
 
-    iget v15, v0, Landroid/graphics/BitmapFactory$Options;->inTargetDensity:I
+    iget v0, v0, Landroid/graphics/BitmapFactory$Options;->inTargetDensity:I
 
-    .line 525
+    move/from16 v16, v0
+
+    .line 522
     if-eqz v11, :cond_b
 
-    if-eqz v15, :cond_b
+    if-eqz v16, :cond_b
 
-    .line 526
-    int-to-float v3, v15
+    .line 523
+    move/from16 v0, v16
+
+    int-to-float v3, v0
 
     int-to-float v5, v11
 
     div-float v8, v3, v5
 
-    .line 530
+    .line 527
     .end local v11           #density:I
     :cond_b
     const/4 v7, 0x1
@@ -1486,25 +1496,27 @@
 
     move-result-object v10
 
-    .line 531
+    .line 528
     .restart local v10       #bm:Landroid/graphics/Bitmap;
     if-eqz v10, :cond_c
 
-    if-eqz v15, :cond_c
+    if-eqz v16, :cond_c
 
-    invoke-virtual {v10, v15}, Landroid/graphics/Bitmap;->setDensity(I)V
+    move/from16 v0, v16
 
-    .line 533
+    invoke-virtual {v10, v0}, Landroid/graphics/Bitmap;->setDensity(I)V
+
+    .line 530
     :cond_c
     const/4 v12, 0x0
 
-    .line 534
+    .line 531
     goto :goto_1
 
-    .line 535
+    .line 532
     .end local v8           #scale:F
     .end local v10           #bm:Landroid/graphics/Bitmap;
-    .end local v15           #targetDensity:I
+    .end local v16           #targetDensity:I
     :cond_d
     move-object/from16 v0, p0
 
@@ -1519,13 +1531,13 @@
     .restart local v10       #bm:Landroid/graphics/Bitmap;
     goto :goto_1
 
-    .line 543
+    .line 540
     .end local v4           #tempStorage:[B
     .end local p0
     :cond_e
     if-eqz v12, :cond_f
 
-    .line 544
+    .line 541
     move-object/from16 v0, p1
 
     move-object/from16 v1, p2
@@ -1534,35 +1546,45 @@
 
     move-result-object v10
 
-    .line 547
+    .line 544
     :cond_f
     if-eqz v10, :cond_0
 
-    .line 548
+    .line 545
     invoke-virtual {v10}, Landroid/graphics/Bitmap;->getWidth()I
 
-    move-result v16
+    move-result v17
 
-    .line 550
-    .local v16, width:I
+    .line 546
+    .local v17, width:I
+    invoke-virtual {v10}, Landroid/graphics/Bitmap;->getHeight()I
+
+    move-result v13
+
+    .line 547
+    .local v13, height:I
     const/16 v3, 0x2d0
 
-    move/from16 v0, v16
+    move/from16 v0, v17
 
     if-lt v0, v3, :cond_0
 
     const/16 v3, 0x2da
 
-    move/from16 v0, v16
+    move/from16 v0, v17
 
     if-gt v0, v3, :cond_0
 
-    .line 551
-    move-object v14, v10
+    const/16 v3, 0xc8
 
-    .line 552
-    .local v14, oldBitmap:Landroid/graphics/Bitmap;
-    add-int/lit8 v3, v16, 0x50
+    if-gt v13, v3, :cond_0
+
+    .line 548
+    move-object v15, v10
+
+    .line 549
+    .local v15, oldBitmap:Landroid/graphics/Bitmap;
+    add-int/lit8 v3, v17, 0x50
 
     invoke-virtual {v10}, Landroid/graphics/Bitmap;->getHeight()I
 
@@ -1570,35 +1592,35 @@
 
     const/4 v6, 0x1
 
-    invoke-static {v14, v3, v5, v6}, Landroid/graphics/Bitmap;->createScaledBitmap(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    invoke-static {v15, v3, v5, v6}, Landroid/graphics/Bitmap;->createScaledBitmap(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
 
     move-result-object v10
 
-    .line 553
-    invoke-virtual {v14}, Landroid/graphics/Bitmap;->getNinePatchChunk()[B
+    .line 550
+    invoke-virtual {v15}, Landroid/graphics/Bitmap;->getNinePatchChunk()[B
 
     move-result-object v3
 
     invoke-virtual {v10, v3}, Landroid/graphics/Bitmap;->setNinePatchChunk([B)V
 
-    .line 554
-    invoke-virtual {v14}, Landroid/graphics/Bitmap;->getDensity()I
+    .line 551
+    invoke-virtual {v15}, Landroid/graphics/Bitmap;->getDensity()I
 
     move-result v3
 
     invoke-virtual {v10, v3}, Landroid/graphics/Bitmap;->setDensity(I)V
 
-    .line 555
-    invoke-virtual {v14}, Landroid/graphics/Bitmap;->getLayoutBounds()[I
+    .line 552
+    invoke-virtual {v15}, Landroid/graphics/Bitmap;->getLayoutBounds()[I
 
     move-result-object v3
 
     invoke-virtual {v10, v3}, Landroid/graphics/Bitmap;->setLayoutBounds([I)V
 
-    .line 556
-    if-eq v10, v14, :cond_0
+    .line 553
+    if-eq v10, v15, :cond_0
 
-    invoke-virtual {v14}, Landroid/graphics/Bitmap;->recycle()V
+    invoke-virtual {v15}, Landroid/graphics/Bitmap;->recycle()V
 
     goto/16 :goto_0
 .end method
