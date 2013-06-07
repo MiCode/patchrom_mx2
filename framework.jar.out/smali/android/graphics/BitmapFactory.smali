@@ -1199,7 +1199,7 @@
 #        if(bm != null) {
 #            int width = bm.getWidth();
 #            int height = bm.getHeight();
-#            if(width>=720 && width<=730 && height<=200) {
+#            if(width>=720 && width<=730 && height<=150) {
 #                final Bitmap oldBitmap = bm;
 #                bm = Bitmap.createScaledBitmap(oldBitmap, width+80, bm.getHeight(), true);
 #                bm.setNinePatchChunk(oldBitmap.getNinePatchChunk());
@@ -1575,7 +1575,7 @@
 
     if-gt v0, v3, :cond_0
 
-    const/16 v3, 0xc8
+    const/16 v3, 0x96
 
     if-gt v13, v3, :cond_0
 
