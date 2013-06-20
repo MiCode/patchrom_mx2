@@ -118,6 +118,8 @@
 
 .field private mLoadsImagesAutomatically:Z
 
+.field private mLoadsImagesOnDemand:Z
+
 .field private mMaximumDecodedImageSize:J
 
 .field private mMinimumFontSize:I
@@ -212,236 +214,172 @@
 
     const/4 v3, 0x0
 
-    .line 277
     invoke-direct {p0}, Landroid/webkit/WebSettings;-><init>()V
 
-    .line 44
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mSyncPending:Z
 
-    .line 54
     sget-object v1, Landroid/webkit/WebSettings$LayoutAlgorithm;->NARROW_COLUMNS:Landroid/webkit/WebSettings$LayoutAlgorithm;
 
     iput-object v1, p0, Landroid/webkit/WebSettingsClassic;->mLayoutAlgorithm:Landroid/webkit/WebSettings$LayoutAlgorithm;
 
-    .line 56
     iput v6, p0, Landroid/webkit/WebSettingsClassic;->mTextSize:I
 
-    .line 57
-    const-string/jumbo v1, "sans-serif"
+    const-string v1, "sans-serif"
 
     iput-object v1, p0, Landroid/webkit/WebSettingsClassic;->mStandardFontFamily:Ljava/lang/String;
 
-    .line 58
-    const-string/jumbo v1, "monospace"
+    const-string v1, "monospace"
 
     iput-object v1, p0, Landroid/webkit/WebSettingsClassic;->mFixedFontFamily:Ljava/lang/String;
 
-    .line 59
-    const-string/jumbo v1, "sans-serif"
+    const-string v1, "sans-serif"
 
     iput-object v1, p0, Landroid/webkit/WebSettingsClassic;->mSansSerifFontFamily:Ljava/lang/String;
 
-    .line 60
-    const-string/jumbo v1, "serif"
+    const-string v1, "serif"
 
     iput-object v1, p0, Landroid/webkit/WebSettingsClassic;->mSerifFontFamily:Ljava/lang/String;
 
-    .line 61
     const-string v1, "cursive"
 
     iput-object v1, p0, Landroid/webkit/WebSettingsClassic;->mCursiveFontFamily:Ljava/lang/String;
 
-    .line 62
     const-string v1, "fantasy"
 
     iput-object v1, p0, Landroid/webkit/WebSettingsClassic;->mFantasyFontFamily:Ljava/lang/String;
 
-    .line 67
     iput v4, p0, Landroid/webkit/WebSettingsClassic;->mMinimumFontSize:I
 
-    .line 68
     iput v4, p0, Landroid/webkit/WebSettingsClassic;->mMinimumLogicalFontSize:I
 
-    .line 69
     iput v7, p0, Landroid/webkit/WebSettingsClassic;->mDefaultFontSize:I
 
-    .line 70
     const/16 v1, 0xd
 
     iput v1, p0, Landroid/webkit/WebSettingsClassic;->mDefaultFixedFontSize:I
 
-    .line 71
     iput v3, p0, Landroid/webkit/WebSettingsClassic;->mPageCacheCapacity:I
 
-    .line 72
     iput-boolean v2, p0, Landroid/webkit/WebSettingsClassic;->mLoadsImagesAutomatically:Z
 
-    .line 73
+    iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mLoadsImagesOnDemand:Z
+
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mBlockNetworkImage:Z
 
-    .line 75
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mJavaScriptEnabled:Z
 
-    .line 76
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mAllowUniversalAccessFromFileURLs:Z
 
-    .line 77
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mAllowFileAccessFromFileURLs:Z
 
-    .line 78
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mHardwareAccelSkia:Z
 
-    .line 79
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mShowVisualIndicator:Z
 
-    .line 80
     sget-object v1, Landroid/webkit/WebSettings$PluginState;->OFF:Landroid/webkit/WebSettings$PluginState;
 
     iput-object v1, p0, Landroid/webkit/WebSettingsClassic;->mPluginState:Landroid/webkit/WebSettings$PluginState;
 
-    .line 81
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mJavaScriptCanOpenWindowsAutomatically:Z
 
-    .line 82
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mUseDoubleTree:Z
 
-    .line 83
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mUseWideViewport:Z
 
-    .line 84
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mUseNewRender:Z
 
-    .line 85
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mIsBrowserApp:Z
 
-    .line 86
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mSupportMultipleWindows:Z
 
-    .line 87
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mShrinksStandaloneImagesToFit:Z
 
-    .line 88
     const-wide/16 v4, 0x0
 
     iput-wide v4, p0, Landroid/webkit/WebSettingsClassic;->mMaximumDecodedImageSize:J
 
-    .line 89
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mPrivateBrowsingEnabled:Z
 
-    .line 90
     iput-boolean v2, p0, Landroid/webkit/WebSettingsClassic;->mSyntheticLinksEnabled:Z
 
-    .line 92
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mAppCacheEnabled:Z
 
-    .line 93
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mDatabaseEnabled:Z
 
-    .line 94
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mDomStorageEnabled:Z
 
-    .line 95
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mWorkersEnabled:Z
 
-    .line 96
     iput-boolean v2, p0, Landroid/webkit/WebSettingsClassic;->mGeolocationEnabled:Z
 
-    .line 97
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mXSSAuditorEnabled:Z
 
-    .line 98
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mLinkPrefetchEnabled:Z
 
-    .line 100
     const-wide v4, 0x7fffffffffffffffL
 
     iput-wide v4, p0, Landroid/webkit/WebSettingsClassic;->mAppCacheMaxSize:J
 
-    .line 101
     const/4 v1, 0x0
 
     iput-object v1, p0, Landroid/webkit/WebSettingsClassic;->mAppCachePath:Ljava/lang/String;
 
-    .line 102
     const-string v1, ""
 
     iput-object v1, p0, Landroid/webkit/WebSettingsClassic;->mDatabasePath:Ljava/lang/String;
 
-    .line 105
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mDatabasePathHasBeenSet:Z
 
-    .line 106
     const-string v1, ""
 
     iput-object v1, p0, Landroid/webkit/WebSettingsClassic;->mGeolocationDatabasePath:Ljava/lang/String;
 
-    .line 110
     sget-object v1, Landroid/webkit/WebSettings$ZoomDensity;->MEDIUM:Landroid/webkit/WebSettings$ZoomDensity;
 
     iput-object v1, p0, Landroid/webkit/WebSettingsClassic;->mDefaultZoom:Landroid/webkit/WebSettings$ZoomDensity;
 
-    .line 111
     sget-object v1, Landroid/webkit/WebSettings$RenderPriority;->NORMAL:Landroid/webkit/WebSettings$RenderPriority;
 
     iput-object v1, p0, Landroid/webkit/WebSettingsClassic;->mRenderPriority:Landroid/webkit/WebSettings$RenderPriority;
 
-    .line 112
     const/4 v1, -0x1
 
     iput v1, p0, Landroid/webkit/WebSettingsClassic;->mOverrideCacheMode:I
 
-    .line 113
     iput v6, p0, Landroid/webkit/WebSettingsClassic;->mDoubleTapZoom:I
 
-    .line 114
     iput-boolean v2, p0, Landroid/webkit/WebSettingsClassic;->mSaveFormData:Z
 
-    .line 115
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mAutoFillEnabled:Z
 
-    .line 116
     iput-boolean v2, p0, Landroid/webkit/WebSettingsClassic;->mSavePassword:Z
 
-    .line 117
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mLightTouchEnabled:Z
 
-    .line 118
     iput-boolean v2, p0, Landroid/webkit/WebSettingsClassic;->mNeedInitialFocus:Z
 
-    .line 119
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mNavDump:Z
 
-    .line 120
     iput-boolean v2, p0, Landroid/webkit/WebSettingsClassic;->mSupportZoom:Z
 
-    .line 121
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mBuiltInZoomControls:Z
 
-    .line 122
     iput-boolean v2, p0, Landroid/webkit/WebSettingsClassic;->mDisplayZoomControls:Z
 
-    .line 123
     iput-boolean v2, p0, Landroid/webkit/WebSettingsClassic;->mAllowFileAccess:Z
 
-    .line 124
     iput-boolean v2, p0, Landroid/webkit/WebSettingsClassic;->mAllowContentAccess:Z
 
-    .line 125
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mLoadWithOverviewMode:Z
 
-    .line 126
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mEnableSmoothTransition:Z
 
-    .line 127
     iput-boolean v3, p0, Landroid/webkit/WebSettingsClassic;->mForceUserScalable:Z
 
-    .line 128
     iput-boolean v2, p0, Landroid/webkit/WebSettingsClassic;->mPasswordEchoEnabled:Z
 
-    .line 177
     iput-boolean v2, p0, Landroid/webkit/WebSettingsClassic;->mUseWebViewBackgroundForOverscroll:Z
 
-    .line 278
     new-instance v1, Landroid/webkit/WebSettingsClassic$EventHandler;
 
     const/4 v4, 0x0
@@ -3884,6 +3822,37 @@
     return-void
 
     .line 860
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
+
+    throw v0
+.end method
+
+.method public declared-synchronized setLoadsImagesOnDemand(Z)V
+    .locals 1
+    .parameter "flag"
+
+    .prologue
+    monitor-enter p0
+
+    :try_start_0
+    iget-boolean v0, p0, Landroid/webkit/WebSettingsClassic;->mLoadsImagesOnDemand:Z
+
+    if-eq v0, p1, :cond_0
+
+    iput-boolean p1, p0, Landroid/webkit/WebSettingsClassic;->mLoadsImagesOnDemand:Z
+
+    invoke-direct {p0}, Landroid/webkit/WebSettingsClassic;->postSync()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    :cond_0
+    monitor-exit p0
+
+    return-void
+
     :catchall_0
     move-exception v0
 
