@@ -169,22 +169,22 @@
     .locals 1
 
     .prologue
-    .line 110
+    .line 109
     sget-object v0, Lcom/android/actionassist/ActionAssist;->mGuideWindow:Lmiui/widget/GuidePopupWindow;
 
     if-eqz v0, :cond_0
 
-    .line 111
+    .line 110
     sget-object v0, Lcom/android/actionassist/ActionAssist;->mGuideWindow:Lmiui/widget/GuidePopupWindow;
 
     invoke-virtual {v0}, Lmiui/widget/GuidePopupWindow;->dismiss()V
 
-    .line 112
+    .line 111
     const/4 v0, 0x0
 
     sput-object v0, Lcom/android/actionassist/ActionAssist;->mGuideWindow:Lmiui/widget/GuidePopupWindow;
 
-    .line 114
+    .line 113
     :cond_0
     return-void
 .end method
@@ -321,38 +321,35 @@
     const/4 v3, 0x0
 
     .line 99
-    invoke-static {}, Lcom/android/actionassist/ActionAssist;->dismissUserGuide()V
-
-    .line 100
     sget-object v0, Lcom/android/actionassist/ActionAssist;->mActionPanelView:Lcom/android/actionassist/ActionAssistView;
 
     if-eqz v0, :cond_0
 
-    .line 101
+    .line 100
     sget-object v0, Lcom/android/actionassist/ActionAssist;->mActionPanelView:Lcom/android/actionassist/ActionAssistView;
 
     invoke-virtual {v0, v3}, Lcom/android/actionassist/ActionAssistView;->setVisibility(I)V
 
-    .line 102
+    .line 101
     sget-object v0, Lcom/android/actionassist/ActionAssist;->mGuideWindow:Lmiui/widget/GuidePopupWindow;
 
     invoke-virtual {v0, v4}, Lmiui/widget/GuidePopupWindow;->setArrowMode(I)V
 
-    .line 103
+    .line 102
     sget-object v0, Lcom/android/actionassist/ActionAssist;->mGuideWindow:Lmiui/widget/GuidePopupWindow;
 
     const v1, 0x7f070001
 
     invoke-virtual {v0, v1}, Lmiui/widget/GuidePopupWindow;->setGuideText(I)V
 
-    .line 104
+    .line 103
     sget-object v0, Lcom/android/actionassist/ActionAssist;->mGuideWindow:Lmiui/widget/GuidePopupWindow;
 
     const/16 v1, 0x7de
 
     invoke-virtual {v0, v1}, Lmiui/widget/GuidePopupWindow;->setWindowLayoutType(I)V
 
-    .line 105
+    .line 104
     sget-object v0, Lcom/android/actionassist/ActionAssist;->mGuideWindow:Lmiui/widget/GuidePopupWindow;
 
     sget-object v1, Lcom/android/actionassist/ActionAssist;->mActionPanelView:Lcom/android/actionassist/ActionAssistView;
@@ -371,7 +368,7 @@
 
     invoke-virtual {v0, v1, v3, v2, v4}, Lmiui/widget/GuidePopupWindow;->show(Landroid/view/View;IIZ)V
 
-    .line 107
+    .line 106
     :cond_0
     return-void
 .end method
