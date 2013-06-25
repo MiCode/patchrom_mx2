@@ -44,8 +44,6 @@
 
 .field private mContext:Landroid/content/Context;
 
-.field private mCustomizedIcon:Z
-
 .field private mDefaults:I
 
 .field private mDeleteIntent:Landroid/app/PendingIntent;
@@ -1262,10 +1260,6 @@
 
     .line 1763
     :goto_1
-    iget-boolean v1, p0, Landroid/app/Notification$Builder;->mCustomizedIcon:Z
-
-    iput-boolean v1, v0, Landroid/app/Notification;->customizedIcon:Z
-
     return-object v0
 
     .line 1747
@@ -1657,16 +1651,6 @@
     iput-object p1, p0, Landroid/app/Notification$Builder;->mContentTitle:Ljava/lang/CharSequence;
 
     .line 1133
-    return-object p0
-.end method
-
-.method public setCustomizedIcon(Z)Landroid/app/Notification$Builder;
-    .locals 0
-    .parameter "customizedIcon"
-
-    .prologue
-    iput-boolean p1, p0, Landroid/app/Notification$Builder;->mCustomizedIcon:Z
-
     return-object p0
 .end method
 
