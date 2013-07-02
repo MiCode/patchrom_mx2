@@ -648,8 +648,6 @@
 
     .line 407
     :cond_7
-    invoke-direct {p0, v1, p1, v0}, Lcom/android/internal/telephony/CallerInfoAsyncQuery$CallerInfoAsyncQueryHandler;->doSpNumberAndAntiSpamQuery(Lcom/android/internal/telephony/CallerInfoAsyncQuery$CookieWrapper;ILcom/android/internal/telephony/CallerInfo;)V
-
     iget-object v4, v1, Lcom/android/internal/telephony/CallerInfoAsyncQuery$CookieWrapper;->number:Ljava/lang/String;
 
     invoke-static {v4}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
@@ -859,20 +857,4 @@
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_1
-.end method
-
-.method private doSpNumberAndAntiSpamQuery(Lcom/android/internal/telephony/CallerInfoAsyncQuery$CookieWrapper;ILcom/android/internal/telephony/CallerInfo;)V
-    .locals 3
-    .parameter "cw"
-    .parameter "token"
-    .parameter "callerInfo"
-
-    .prologue
-    iget-object v0, p0, Lcom/android/internal/telephony/CallerInfoAsyncQuery$CallerInfoAsyncQueryHandler;->mQueryContext:Landroid/content/Context;
-
-    iget-object v1, p1, Lcom/android/internal/telephony/CallerInfoAsyncQuery$CookieWrapper;->number:Ljava/lang/String;
-
-    invoke-static {v0, v1, p3}, Lmiui/telephony/CallerInfo;->doSpNumberQuery(Landroid/content/Context;Ljava/lang/String;Lcom/android/internal/telephony/CallerInfo;)Lcom/android/internal/telephony/CallerInfo;
-
-    return-void
 .end method
