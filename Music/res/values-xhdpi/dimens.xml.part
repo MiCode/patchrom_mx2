@@ -3,5 +3,7 @@
     <dimen name="volume_seek_bar_margin">20.0dip</dimen>
     <dimen name="first_equalizer_seek_bar_margin">50.0dip</dimen>
     <dimen name="equalizer_seek_bar_margin">18.0dip</dimen>
-    <dimen name="mainpage_video_width">400.0dip</dimen>
+    <dimen name="mainpage_album_init_translation_x">-45.5dp</dimen>
+    <dimen name="mainpage_album_base_translation_x">15.17dp</dimen>
+    <dimen name="mainpage_tab_indicator_width">700dp</dimen>
 </resources>
