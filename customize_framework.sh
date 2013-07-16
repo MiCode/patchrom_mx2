@@ -66,8 +66,7 @@ then
 	mv "$BUILD_OUT/$SEP_FRAME/smali/android/widget/"  "$BUILD_OUT/framework2/smali/android/widget"
 
 	#replace mms
-	rm -rf "$BUILD_OUT/framework2/smali/com/google/android/mms"
-	cp -r "$BUILD_OUT/framework_miui/smali/com/google/android/mms" "$BUILD_OUT/framework2/smali/com/google/android"
+	cp -rf "$BUILD_OUT/framework_miui/smali/com/google/android/mms" "$BUILD_OUT/framework2/smali/com/google/android"
    
 fi
 
