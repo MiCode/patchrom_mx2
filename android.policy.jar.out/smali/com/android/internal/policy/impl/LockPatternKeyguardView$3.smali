@@ -460,33 +460,27 @@
 
     move-result v2
 
-    .line 384
     .local v2, failedAttemptsBeforeWipe:I
-    const/16 v0, 0xf
+    const/16 v0, 0x8
 
-    .line 387
     .local v0, failedAttemptWarning:I
     if-lez v2, :cond_2
 
     sub-int v3, v2, v1
 
-    .line 391
     .local v3, remainingBeforeWipe:I
     :goto_1
     const/4 v8, 0x5
 
     if-ge v3, v8, :cond_4
 
-    .line 396
     if-lez v3, :cond_3
 
-    .line 397
     iget-object v6, p0, Lcom/android/internal/policy/impl/LockPatternKeyguardView$3;->this$0:Lcom/android/internal/policy/impl/LockPatternKeyguardView;
 
     #calls: Lcom/android/internal/policy/impl/LockPatternKeyguardView;->showAlmostAtWipeDialog(II)V
     invoke-static {v6, v1, v3}, Lcom/android/internal/policy/impl/LockPatternKeyguardView;->access$1500(Lcom/android/internal/policy/impl/LockPatternKeyguardView;II)V
 
-    .line 421
     :cond_0
     :goto_2
     iget-object v6, p0, Lcom/android/internal/policy/impl/LockPatternKeyguardView$3;->this$0:Lcom/android/internal/policy/impl/LockPatternKeyguardView;
@@ -590,17 +584,14 @@
     :cond_6
     move v4, v7
 
-    .line 404
     goto :goto_3
 
-    .line 410
     .restart local v4       #showTimeout:Z
     :cond_7
-    const/16 v8, 0x14
+    const/16 v8, 0x9
 
     if-lt v1, v8, :cond_5
 
-    .line 411
     iget-object v8, p0, Lcom/android/internal/policy/impl/LockPatternKeyguardView$3;->this$0:Lcom/android/internal/policy/impl/LockPatternKeyguardView;
 
     #getter for: Lcom/android/internal/policy/impl/LockPatternKeyguardView;->mLockPatternUtils:Lcom/android/internal/widget/LockPatternUtils;
