@@ -1884,7 +1884,15 @@
     .locals 6
 
     .prologue
-    .line 3962
+    invoke-direct {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->isHomeKeyScreenOn()Z
+
+    move-result v0
+
+    if-nez v0, :cond_miui_0
+
+    return-void
+
+    :cond_miui_0
     iget-boolean v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mProximitySensorEnabled:Z
 
     if-nez v2, :cond_1
@@ -22296,4 +22304,42 @@
     move v5, v6
 
     goto :goto_3
+.end method
+
+.method private isHomeKeyScreenOn()Z
+    .locals 3
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v1
+
+    const-string v2, "home_key_screen_on"
+
+    invoke-static {v1, v2}, Landroid/provider/Settings$System;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    .local v0, homeKeyScreenOn:Ljava/lang/String;
+    if-eqz v0, :cond_0
+
+    const-string v1, "1"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    const/4 v1, 0x1
+
+    :goto_0
+    return v1
+
+    :cond_0
+    const/4 v1, 0x0
+
+    goto :goto_0
 .end method

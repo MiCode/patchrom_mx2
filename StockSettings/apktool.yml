@@ -1,0 +1,14 @@
+version: 1.5.3.2c5f176a94
+apkFileName: StockSettings.apk
+isFrameworkApk: false
+usesFramework:
+  ids:
+  - 1
+  - 6
+sdkInfo:
+  minSdkVersion: '16'
+  targetSdkVersion: '16'
+packageInfo:
+  cur_package: com.android.stocksettings
+  orig_package: com.android.stocksettings
+compressionType: false

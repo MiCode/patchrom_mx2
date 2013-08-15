@@ -13,7 +13,7 @@ local-miui-modified-apps := MiuiSystemUI Phone Bluetooth Settings MiuiHome MiuiG
 		VpnDialogs PackageInstaller
 
 # All apps from original ZIP, but has smali files chanded
-local-modified-apps := SettingsProvider Gallery2 ActionAssist
+local-modified-apps := SettingsProvider Gallery2 ActionAssist StockSettings
 
 # All apks from MIUI
 local-miui-removed-apps := SettingsProvider MediaProvider

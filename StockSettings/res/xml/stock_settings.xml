@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/stock_settings"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+    
+    <CheckBoxPreference
+        android:key="home_key_screen_on"
+        android:title="@string/home_key_screen_on"
+        android:persistent="true" />
+    
+</PreferenceScreen>
