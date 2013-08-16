@@ -2,4 +2,5 @@
 <resources>
     <string name="stock_settings">Stock Settings</string>
     <string name="home_key_screen_on">Double Home Key Click Screen On</string>
+    <string name="cpufreq_title">CPU level</string>
 </resources>

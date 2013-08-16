@@ -2,4 +2,5 @@
 <resources>
     <string name="stock_settings">附加设置</string>
     <string name="home_key_screen_on">双击HOME键点亮屏幕</string>
+    <string name="cpufreq_title">CPU性能调节</string>
 </resources>

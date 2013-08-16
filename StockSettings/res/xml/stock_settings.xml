@@ -8,4 +8,6 @@
         android:title="@string/home_key_screen_on"
         android:persistent="true" />
     
+    <ListPreference android:entries="@array/cpufreq_entries" android:title="@string/cpufreq_title" android:key="cpufreq" android:entryValues="@array/cpufreq_values" />
+
 </PreferenceScreen>

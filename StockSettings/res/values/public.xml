@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="mipmap" name="ic_launcher_settings" id="0x7f020000" />
+    <public type="xml" name="stock_settings" id="0x7f030000" />
+    <public type="array" name="cpufreq_entries" id="0x7f040000" />
+    <public type="array" name="cpufreq_values" id="0x7f040001" />
+    <public type="string" name="stock_settings" id="0x7f050000" />
+    <public type="string" name="home_key_screen_on" id="0x7f050001" />
+    <public type="string" name="cpufreq_title" id="0x7f050002" />
+</resources>

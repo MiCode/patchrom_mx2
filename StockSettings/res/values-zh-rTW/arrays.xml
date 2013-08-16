@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cpufreq_entries">
+        <item>性能優先</item>
+        <item>性能均衡</item>
+        <item>省電優先</item>
+    </string-array>
+</resources>
