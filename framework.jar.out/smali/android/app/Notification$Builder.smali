@@ -1278,6 +1278,78 @@
 .end method
 
 .method private generateActionButton(Landroid/app/Notification$Action;)Landroid/widget/RemoteViews;
+    .locals 7
+    .parameter "action"
+
+    .prologue
+    const v1, 0x102036b
+
+    const/4 v3, 0x0
+
+    iget-object v2, p1, Landroid/app/Notification$Action;->actionIntent:Landroid/app/PendingIntent;
+
+    if-nez v2, :cond_1
+
+    const/4 v6, 0x1
+
+    .local v6, tombstone:Z
+    :goto_0
+    new-instance v0, Landroid/widget/RemoteViews;
+
+    iget-object v2, p0, Landroid/app/Notification$Builder;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v2}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+
+    move-result-object v4
+
+    if-eqz v6, :cond_2
+
+    const v2, 0x1090093
+
+    :goto_1
+    invoke-direct {v0, v4, v2}, Landroid/widget/RemoteViews;-><init>(Ljava/lang/String;I)V
+
+    .local v0, button:Landroid/widget/RemoteViews;
+    iget v2, p1, Landroid/app/Notification$Action;->icon:I
+
+    move v4, v3
+
+    move v5, v3
+
+    invoke-virtual/range {v0 .. v5}, Landroid/widget/RemoteViews;->setTextViewCompoundDrawables(IIIII)V
+
+    iget-object v2, p1, Landroid/app/Notification$Action;->title:Ljava/lang/CharSequence;
+
+    invoke-virtual {v0, v1, v2}, Landroid/widget/RemoteViews;->setTextViewText(ILjava/lang/CharSequence;)V
+
+    if-nez v6, :cond_0
+
+    iget-object v2, p1, Landroid/app/Notification$Action;->actionIntent:Landroid/app/PendingIntent;
+
+    invoke-virtual {v0, v1, v2}, Landroid/widget/RemoteViews;->setOnClickPendingIntent(ILandroid/app/PendingIntent;)V
+
+    :cond_0
+    iget-object v2, p1, Landroid/app/Notification$Action;->title:Ljava/lang/CharSequence;
+
+    invoke-virtual {v0, v1, v2}, Landroid/widget/RemoteViews;->setContentDescription(ILjava/lang/CharSequence;)V
+
+    return-object v0
+
+    .end local v0           #button:Landroid/widget/RemoteViews;
+    .end local v6           #tombstone:Z
+    :cond_1
+    move v6, v3
+
+    goto :goto_0
+
+    .restart local v6       #tombstone:Z
+    :cond_2
+    const v2, 0x1090091
+
+    goto :goto_1
+.end method
+
+.method private generateActionButton_meizu(Landroid/app/Notification$Action;)Landroid/widget/RemoteViews;
     .locals 5
     .parameter "action"
 
