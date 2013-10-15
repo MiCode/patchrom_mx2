@@ -232,6 +232,24 @@
     return-object v0
 .end method
 
+.method getViewManager()Landroid/view/ViewManager;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mViewManager:Landroid/view/ViewManager;
+
+    return-object v0
+.end method
+
+.method getKeyguardHost()Landroid/widget/FrameLayout;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardHost:Landroid/widget/FrameLayout;
+
+    return-object v0
+.end method
+
 .method public declared-synchronized hide()V
     .locals 7
 
@@ -856,7 +874,7 @@
     const/16 v16, -0x1
 
     .local v16, stretch:I
-    const v5, 0x4100900
+    const v5, 0x4100800
 
     .local v5, flags:I
     move-object/from16 v0, p0
@@ -1293,11 +1311,6 @@
 
     move-object/from16 v0, p0
 
-    invoke-static {v0}, Lcom/android/internal/policy/impl/KeyguardViewManager$Injector;->updateDisplayDesktopFlag(Lcom/android/internal/policy/impl/KeyguardViewManager;)V
-
-    .line 253
-    move-object/from16 v0, p0
-
     iget-object v2, v0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mViewManager:Landroid/view/ViewManager;
 
     move-object/from16 v0, p0
@@ -1358,7 +1371,7 @@
 
     iget-object v2, v0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mWindowLayoutParams:Landroid/view/WindowManager$LayoutParams;
 
-    const/4 v3, 0x1
+    const/4 v3, 0x5
 
     iput v3, v2, Landroid/view/WindowManager$LayoutParams;->screenOrientation:I
     :try_end_1
