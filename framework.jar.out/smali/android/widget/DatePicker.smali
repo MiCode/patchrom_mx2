@@ -1687,7 +1687,7 @@
 .end method
 
 .method private updateSpinners()V
-    .locals 8
+    .locals 10
 
     .prologue
     const/4 v3, 0x0
@@ -1772,6 +1772,18 @@
 
     .line 650
     :goto_0
+    iget-object v1, p0, Landroid/widget/DatePicker;->mCurrentDate:Ljava/util/Calendar;
+
+    iget-object v2, p0, Landroid/widget/DatePicker;->mMinDate:Ljava/util/Calendar;
+
+    iget-object v3, p0, Landroid/widget/DatePicker;->mMaxDate:Ljava/util/Calendar;
+
+    iget-object v8, p0, Landroid/widget/DatePicker;->mMonthSpinner:Landroid/widget/NumberPicker;
+
+    iget-object v9, p0, Landroid/widget/DatePicker;->mDaySpinner:Landroid/widget/NumberPicker;
+
+    invoke-static {v1, v2, v3, v8, v9}, Landroid/widget/DatePicker$Injector;->updateSpinners(Ljava/util/Calendar;Ljava/util/Calendar;Ljava/util/Calendar;Landroid/widget/NumberPicker;Landroid/widget/NumberPicker;)V
+
     iget-object v1, p0, Landroid/widget/DatePicker;->mShortMonths:[Ljava/lang/String;
 
     iget-object v2, p0, Landroid/widget/DatePicker;->mMonthSpinner:Landroid/widget/NumberPicker;
