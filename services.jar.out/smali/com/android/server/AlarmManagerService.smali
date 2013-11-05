@@ -2405,68 +2405,74 @@
 .end method
 
 .method public setRepeating(IJJLandroid/app/PendingIntent;)V
-    .locals 4
+    .locals 7
     .parameter "type"
     .parameter "triggerAtTime"
     .parameter "interval"
     .parameter "operation"
 
     .prologue
-    .line 175
     if-nez p6, :cond_0
 
-    .line 176
     const-string v2, "AlarmManager"
 
     const-string v3, "set/setRepeating ignored because there is no intent"
 
     invoke-static {v2, v3}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 196
     :goto_0
     return-void
 
-    .line 179
     :cond_0
+    iget-object v0, p0, Lcom/android/server/AlarmManagerService;->mContext:Landroid/content/Context;
+
+    move v1, p1
+
+    move-wide v2, p2
+
+    move-wide v4, p4
+
+    invoke-static/range {v0 .. v5}, Lcom/android/server/ExtraAlarmManagerService;->alignAlarm(Landroid/content/Context;IJJ)[J
+
+    move-result-object v2
+
+    const/4 v0, 0x0
+
+    aget-wide p2, v2, v0
+
+    const/4 v0, 0x1
+
+    aget-wide p4, v2, v0
+
     iget-object v3, p0, Lcom/android/server/AlarmManagerService;->mLock:Ljava/lang/Object;
 
     monitor-enter v3
 
-    .line 180
     :try_start_0
     new-instance v0, Lcom/android/server/AlarmManagerService$Alarm;
 
     invoke-direct {v0}, Lcom/android/server/AlarmManagerService$Alarm;-><init>()V
 
-    .line 181
     .local v0, alarm:Lcom/android/server/AlarmManagerService$Alarm;
     iput p1, v0, Lcom/android/server/AlarmManagerService$Alarm;->type:I
 
-    .line 182
     iput-wide p2, v0, Lcom/android/server/AlarmManagerService$Alarm;->when:J
 
-    .line 183
     iput-wide p4, v0, Lcom/android/server/AlarmManagerService$Alarm;->repeatInterval:J
 
-    .line 184
     iput-object p6, v0, Lcom/android/server/AlarmManagerService$Alarm;->operation:Landroid/app/PendingIntent;
 
-    .line 187
     invoke-virtual {p0, p6}, Lcom/android/server/AlarmManagerService;->removeLocked(Landroid/app/PendingIntent;)V
 
-    .line 191
     invoke-direct {p0, v0}, Lcom/android/server/AlarmManagerService;->addAlarmLocked(Lcom/android/server/AlarmManagerService$Alarm;)I
 
     move-result v1
 
-    .line 192
     .local v1, index:I
     if-nez v1, :cond_1
 
-    .line 193
     invoke-direct {p0, v0}, Lcom/android/server/AlarmManagerService;->setLocked(Lcom/android/server/AlarmManagerService$Alarm;)V
 
-    .line 195
     :cond_1
     monitor-exit v3
 

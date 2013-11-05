@@ -32493,20 +32493,35 @@
 
     invoke-direct {v0, v4, v1}, Lcom/android/server/am/ActivityManagerService;->checkValidCaller(II)V
 
-    .line 12147
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p3
+
+    move-object/from16 v2, p4
+
+    move/from16 v3, p7
+
+    invoke-direct {v0, v1, v2, v3}, Lcom/android/server/am/ActivityManagerService;->checkRunningCompatibility(Landroid/content/Intent;Ljava/lang/String;I)Z
+
+    move-result v6
+
+    if-nez v6, :cond_miui_0
+
+    const/4 v6, -0x1
+
+    return v6
+
+    :cond_miui_0
     monitor-enter p0
 
-    .line 12154
     :try_start_0
     invoke-virtual/range {p0 .. p1}, Lcom/android/server/am/ActivityManagerService;->getRecordForAppLocked(Landroid/app/IApplicationThread;)Lcom/android/server/am/ProcessRecord;
 
     move-result-object v11
 
-    .line 12155
     .local v11, callerApp:Lcom/android/server/am/ProcessRecord;
     if-nez v11, :cond_1
 
-    .line 12156
     new-instance v4, Ljava/lang/SecurityException;
 
     new-instance v5, Ljava/lang/StringBuilder;
@@ -68427,23 +68442,30 @@
 
     throw v0
 
-    .line 11910
     :cond_0
+    invoke-direct {p0, p2, p3}, Lcom/android/server/am/ActivityManagerService;->checkRunningCompatibility(Landroid/content/Intent;Ljava/lang/String;)Z
+
+    move-result v8
+
+    if-nez v8, :cond_miui_0
+
+    const/4 v8, 0x0
+
+    return-object v8
+
+    :cond_miui_0
     monitor-enter p0
 
-    .line 11911
     :try_start_0
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
     move-result v4
 
-    .line 11912
     .local v4, callingPid:I
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v5
 
-    .line 11913
     .local v5, callingUid:I
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
@@ -75438,4 +75460,71 @@
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_1
+.end method
+
+.method private checkRunningCompatibility(Landroid/content/Intent;Ljava/lang/String;)Z
+    .locals 2
+    .parameter "service"
+    .parameter "resolvedType"
+
+    .prologue
+    iget-boolean v0, p0, Lcom/android/server/am/ActivityManagerService;->mSystemReady:Z
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
+
+    invoke-static {}, Landroid/os/Binder;->getCallingUid()I
+
+    move-result v1
+
+    invoke-static {v1}, Landroid/os/UserId;->getUserId(I)I
+
+    move-result v1
+
+    invoke-static {v0, p1, p2, v1}, Lcom/android/server/am/ExtraActivityManagerService;->checkRunningCompatibility(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;I)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    const/4 v0, 0x0
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x1
+
+    goto :goto_0
+.end method
+
+.method private checkRunningCompatibility(Landroid/content/Intent;Ljava/lang/String;I)Z
+    .locals 1
+    .parameter "service"
+    .parameter "resolvedType"
+    .parameter "userId"
+
+    .prologue
+    iget-boolean v0, p0, Lcom/android/server/am/ActivityManagerService;->mSystemReady:Z
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
+
+    invoke-static {v0, p1, p2, p3}, Lcom/android/server/am/ExtraActivityManagerService;->checkRunningCompatibility(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;I)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    const/4 v0, 0x0
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x1
+
+    goto :goto_0
 .end method
