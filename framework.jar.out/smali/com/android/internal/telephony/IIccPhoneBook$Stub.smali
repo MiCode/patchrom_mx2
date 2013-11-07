@@ -42,10 +42,6 @@
 
 .field static final TRANSACTION_updateAdnRecordsInEfBySearch:I = 0x2
 
-.field static final TRANSACTION_getFreeAdn:I = 0x9
-
-.field static final TRANSACTION_getAdnCapacity:I = 0xa
-
 
 # direct methods
 .method public constructor <init>()V
@@ -547,53 +543,19 @@
     :goto_6
     invoke-virtual {p3, v0}, Landroid/os/Parcel;->writeInt(I)V
 
+    .line 160
     const/4 v0, 0x1
 
     goto/16 :goto_0
 
+    .line 159
     :cond_5
     const/4 v0, 0x0
 
     goto :goto_6
 
-    .end local v1           #_arg0:I
-    .end local v8           #_result:[I
-    :sswitch_9
-    const-string v0, "com.android.internal.telephony.IIccPhoneBook"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    invoke-virtual {p0}, Lcom/android/internal/telephony/IIccPhoneBook$Stub;->getFreeAdn()I
-
-    move-result v8
-
-    .local v8, _result:I
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    invoke-virtual {p3, v8}, Landroid/os/Parcel;->writeInt(I)V
-
-    const/4 v0, 0x1
-
-    goto/16 :goto_0
-
-    .end local v8           #_result:I
-    :sswitch_a
-    const-string v0, "com.android.internal.telephony.IIccPhoneBook"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    invoke-virtual {p0}, Lcom/android/internal/telephony/IIccPhoneBook$Stub;->getAdnCapacity()I
-
-    move-result v8
-
-    .restart local v8       #_result:I
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    invoke-virtual {p3, v8}, Landroid/os/Parcel;->writeInt(I)V
-
-    const/4 v0, 0x1
-
-    goto/16 :goto_0
+    .line 51
+    nop
 
     :sswitch_data_0
     .sparse-switch
@@ -605,8 +567,6 @@
         0x6 -> :sswitch_6
         0x7 -> :sswitch_7
         0x8 -> :sswitch_8
-        0x9 -> :sswitch_9
-        0xa -> :sswitch_a
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method
