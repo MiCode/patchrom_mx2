@@ -328,25 +328,20 @@
 
     invoke-virtual {p0, v5}, Landroid/widget/ProgressBar;->setSecondaryProgress(I)V
 
-    .line 298
     const/4 v5, 0x7
 
     invoke-virtual {v0, v5}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v1
 
-    .line 299
     if-eqz v1, :cond_2
 
-    .line 300
-    invoke-direct {p0, v1}, Landroid/widget/ProgressBar;->tileifyIndeterminate(Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
+    invoke-virtual {p0, v1}, Landroid/widget/ProgressBar;->tileifyIndeterminate(Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
 
     move-result-object v1
 
-    .line 301
     invoke-virtual {p0, v1}, Landroid/widget/ProgressBar;->setIndeterminateDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 304
     :cond_2
     const/4 v5, 0x6
 
@@ -1015,39 +1010,36 @@
     goto :goto_4
 .end method
 
-.method private tileifyIndeterminate(Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
+.method protected tileifyIndeterminate(Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
     .locals 8
     .parameter "drawable"
 
     .prologue
-
-    invoke-virtual {p0, p1}, Landroid/widget/ProgressBar;->tileifyIndeterminateMiui(Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v0
-
-    return-object v0
-    ####### end ################
-
     const/16 v7, 0x2710
 
+    .line 385
     instance-of v5, p1, Landroid/graphics/drawable/AnimationDrawable;
 
     if-eqz v5, :cond_1
 
     move-object v1, p1
 
+    .line 386
     check-cast v1, Landroid/graphics/drawable/AnimationDrawable;
 
+    .line 387
     .local v1, background:Landroid/graphics/drawable/AnimationDrawable;
     invoke-virtual {v1}, Landroid/graphics/drawable/AnimationDrawable;->getNumberOfFrames()I
 
     move-result v0
 
+    .line 388
     .local v0, N:I
     new-instance v4, Landroid/graphics/drawable/AnimationDrawable;
 
     invoke-direct {v4}, Landroid/graphics/drawable/AnimationDrawable;-><init>()V
 
+    .line 389
     .local v4, newBg:Landroid/graphics/drawable/AnimationDrawable;
     invoke-virtual {v1}, Landroid/graphics/drawable/AnimationDrawable;->isOneShot()Z
 
@@ -1055,12 +1047,14 @@
 
     invoke-virtual {v4, v5}, Landroid/graphics/drawable/AnimationDrawable;->setOneShot(Z)V
 
+    .line 391
     const/4 v3, 0x0
 
     .local v3, i:I
     :goto_0
     if-ge v3, v0, :cond_0
 
+    .line 392
     invoke-virtual {v1, v3}, Landroid/graphics/drawable/AnimationDrawable;->getFrame(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v5
@@ -1071,25 +1065,31 @@
 
     move-result-object v2
 
+    .line 393
     .local v2, frame:Landroid/graphics/drawable/Drawable;
     invoke-virtual {v2, v7}, Landroid/graphics/drawable/Drawable;->setLevel(I)Z
 
+    .line 394
     invoke-virtual {v1, v3}, Landroid/graphics/drawable/AnimationDrawable;->getDuration(I)I
 
     move-result v5
 
     invoke-virtual {v4, v2, v5}, Landroid/graphics/drawable/AnimationDrawable;->addFrame(Landroid/graphics/drawable/Drawable;I)V
 
+    .line 391
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_0
 
+    .line 396
     .end local v2           #frame:Landroid/graphics/drawable/Drawable;
     :cond_0
     invoke-virtual {v4, v7}, Landroid/graphics/drawable/AnimationDrawable;->setLevel(I)Z
 
+    .line 397
     move-object p1, v4
 
+    .line 399
     .end local v0           #N:I
     .end local v1           #background:Landroid/graphics/drawable/AnimationDrawable;
     .end local v3           #i:I
@@ -1484,6 +1484,8 @@
     .parameter "who"
 
     .prologue
+    .line 507
+    .line 993
     iget-object v0, p0, Landroid/widget/ProgressBar;->mProgressDrawable:Landroid/graphics/drawable/Drawable;
 
     if-eq p1, v0, :cond_0
@@ -2915,104 +2917,11 @@
     return-void
 .end method
 
-.method public tileifyIndeterminateMiui(Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
-    .locals 8
-    .parameter "drawable"
-    .annotation build Landroid/annotation/MiuiHook;
-        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
-    .end annotation
-
-    .prologue
-    const/16 v7, 0x2710
-
-    .line 385
-    instance-of v5, p1, Landroid/graphics/drawable/AnimationDrawable;
-
-    if-eqz v5, :cond_1
-
-    move-object v1, p1
-
-    .line 386
-    check-cast v1, Landroid/graphics/drawable/AnimationDrawable;
-
-    .line 387
-    .local v1, background:Landroid/graphics/drawable/AnimationDrawable;
-    invoke-virtual {v1}, Landroid/graphics/drawable/AnimationDrawable;->getNumberOfFrames()I
-
-    move-result v0
-
-    .line 388
-    .local v0, N:I
-    new-instance v4, Landroid/graphics/drawable/AnimationDrawable;
-
-    invoke-direct {v4}, Landroid/graphics/drawable/AnimationDrawable;-><init>()V
-
-    .line 389
-    .local v4, newBg:Landroid/graphics/drawable/AnimationDrawable;
-    invoke-virtual {v1}, Landroid/graphics/drawable/AnimationDrawable;->isOneShot()Z
-
-    move-result v5
-
-    invoke-virtual {v4, v5}, Landroid/graphics/drawable/AnimationDrawable;->setOneShot(Z)V
-
-    .line 391
-    const/4 v3, 0x0
-
-    .local v3, i:I
-    :goto_0
-    if-ge v3, v0, :cond_0
-
-    .line 392
-    invoke-virtual {v1, v3}, Landroid/graphics/drawable/AnimationDrawable;->getFrame(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v5
-
-    const/4 v6, 0x1
-
-    invoke-direct {p0, v5, v6}, Landroid/widget/ProgressBar;->tileify(Landroid/graphics/drawable/Drawable;Z)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v2
-
-    .line 393
-    .local v2, frame:Landroid/graphics/drawable/Drawable;
-    invoke-virtual {v2, v7}, Landroid/graphics/drawable/Drawable;->setLevel(I)Z
-
-    .line 394
-    invoke-virtual {v1, v3}, Landroid/graphics/drawable/AnimationDrawable;->getDuration(I)I
-
-    move-result v5
-
-    invoke-virtual {v4, v2, v5}, Landroid/graphics/drawable/AnimationDrawable;->addFrame(Landroid/graphics/drawable/Drawable;I)V
-
-    .line 391
-    add-int/lit8 v3, v3, 0x1
-
-    goto :goto_0
-
-    .line 396
-    .end local v2           #frame:Landroid/graphics/drawable/Drawable;
-    :cond_0
-    invoke-virtual {v4, v7}, Landroid/graphics/drawable/AnimationDrawable;->setLevel(I)Z
-
-    .line 397
-    move-object p1, v4
-
-    .line 399
-    .end local v0           #N:I
-    .end local v1           #background:Landroid/graphics/drawable/AnimationDrawable;
-    .end local v3           #i:I
-    .end local v4           #newBg:Landroid/graphics/drawable/AnimationDrawable;
-    :cond_1
-    return-object p1
-.end method
-
 .method protected verifyDrawable(Landroid/graphics/drawable/Drawable;)Z
     .locals 1
     .parameter "who"
 
     .prologue
-    .line 507
-    .line 993
     iget-object v0, p0, Landroid/widget/ProgressBar;->mProgressDrawable:Landroid/graphics/drawable/Drawable;
 
     if-eq p1, v0, :cond_0
