@@ -4357,17 +4357,17 @@
 
     .line 2421
     :cond_6
-    move-object v0, p0
+    move-object/from16 v0, p0
 
     iget-object v6, v0, Lcom/android/server/pm/PackageManagerService;->mResolveInfo:Landroid/content/pm/ResolveInfo;
 
     move-object/from16 v1, p4
 
-    move-object v2, p1
+    move-object/from16 v2, p1
 
-    move-object v3, p2
+    move-object/from16 v3, p2
 
-    move v4, p3
+    move/from16 v4, p3
 
     move/from16 v5, p5
 
