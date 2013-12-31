@@ -9,7 +9,7 @@ local-zip-file := stockrom.zip
 local-out-zip-file := MIUI_mx2.zip
 
 #
-local-miui-modified-apps := MiuiSystemUI Phone Bluetooth Settings MiuiHome MiuiGallery Notes Mms Music \
+local-miui-modified-apps := MiuiSystemUI Phone Bluetooth Settings MiuiHome MiuiGallery Notes Mms  \
 		VpnDialogs PackageInstaller
 
 # All apps from original ZIP, but has smali files chanded
