@@ -63,6 +63,7 @@ fi
 
 if [ $1 = "Music" ];then
     mergyXmlPart $1 $2
+    sed -i 's#@string/app_class#com.miui.player.Application#g' $2/AndroidManifest.xml
 fi
 
 if [ $1 = "MiuiHome" ];then

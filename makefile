@@ -10,7 +10,7 @@ local-out-zip-file := MIUI_mx2.zip
 
 #
 local-miui-modified-apps := MiuiSystemUI Phone Bluetooth Settings MiuiHome MiuiGallery Notes Mms  \
-		VpnDialogs PackageInstaller
+		VpnDialogs PackageInstaller Music
 
 # All apps from original ZIP, but has smali files chanded
 local-modified-apps := SettingsProvider Gallery2 ActionAssist StockSettings
