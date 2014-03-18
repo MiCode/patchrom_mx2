@@ -939,7 +939,7 @@
 .end method
 
 .method public static getSystem()Landroid/content/res/Resources;
-    .locals 4
+    .locals 5
 
     .prologue
     sget-object v2, Landroid/content/res/Resources;->mSync:Ljava/lang/Object;
@@ -966,6 +966,13 @@
 
     invoke-virtual {v1, v3}, Landroid/content/res/Resources;->setThemeResource(Ljava/lang/String;)V
 
+    move-object v1, v0
+
+    check-cast v1, Landroid/content/res/MiuiResources;
+
+    const/4 v4, 0x0
+
+    invoke-virtual {v1, v4}, Landroid/content/res/MiuiResources;->init(Ljava/lang/String;)V
     :cond_0
     monitor-exit v2
 
