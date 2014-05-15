@@ -81,6 +81,12 @@ if [ $2 = "out/android.policy" ];then
         cat $file >> $dstfile
     done
     cd -
+    cd out
+    for patch in `find ../overlay/android.policy.jar.out -name "*.patch"`
+    do
+        git.apply $patch
+    done
+    cd -
 	removeMzActionBarContainer $2
 fi
 

@@ -1,0 +1,22 @@
+From 503c6ec9e570956e5e936738abe327c328853fb5 Mon Sep 17 00:00:00 2001
+From: mochangming <mochangming@xiaomi.com>
+Date: Thu, 15 May 2014 15:22:50 +0800
+Subject: [PATCH] BaseMiuiPhoneWindowManager.patch
+
+---
+ .../policy/impl/BaseMiuiPhoneWindowManager.smali   |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/android.policy/smali/com/android/internal/policy/impl/BaseMiuiPhoneWindowManager.smali
++++ b/android.policy/smali/com/android/internal/policy/impl/BaseMiuiPhoneWindowManager.smali
+@@ -1390,6 +1390,7 @@
+     sparse-switch v4, :sswitch_data_0
+ 
+     :cond_4
++    goto :cond_b
+     const/4 v10, 0x3
+ 
+     if-ne v4, v10, :cond_b
+-- 
+1.7.9.5
+
