@@ -1,56 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest android:sharedUserId="android.uid.system" android:versionCode="16" android:versionName="4.1.1-M040.Flyme_2.2.1363336295" package="com.android.providers.settings" coreApp="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <permission android:name="com.android.providers.settings.permission.MIPUSH_RECEIVE" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
-    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
-    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
-    <uses-permission android:name="com.android.providers.settings.permission.MIPUSH_RECEIVE" />
     <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="16" />
-    <application android:label="@string/app_label" android:icon="@drawable/ic_launcher_settings" android:name="com.android.providers.settings.SettingsApplication" android:allowClearUserData="false" android:process="system" android:backupAgent="SettingsBackupAgent" android:allowBackup="true" android:killAfterRestore="false">
+    <application android:label="@string/app_label" android:icon="@drawable/ic_launcher_settings" android:allowClearUserData="false" android:process="system" android:backupAgent="SettingsBackupAgent" android:killAfterRestore="false">
         <provider android:name="SettingsProvider" android:writePermission="android.permission.WRITE_SETTINGS" android:multiprocess="false" android:authorities="settings" android:initOrder="100" />
         <provider android:name="ShareListProvider" android:authorities="meizu_share" />
-        <provider android:name="com.android.providers.settings.cloud.CloudSettingsProvider" android:multiprocess="false" android:authorities="com.android.providers.settings.cloud.CloudSettings" />
-        <service android:name="com.android.providers.settings.cloud.CloudSettingsService" />
-        <receiver android:name="com.android.providers.settings.cloud.ConnectivityChangeReceiver">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-        <provider android:name="com.android.providers.settings.cloud.push.ExistCompatibilityProvider" android:authorities="com.android.providers.settings.cloud.compatibility.exist" />
-        <provider android:name="com.android.providers.settings.cloud.push.InstallCompatibilityProvider" android:authorities="com.android.providers.settings.cloud.compatibility.install" />
-        <provider android:name="com.android.providers.settings.cloud.push.RunningCompatibilityProvider" android:authorities="com.android.providers.settings.cloud.compatibility.running" />
-        <service android:name="com.android.providers.settings.cloud.push.CloudService" />
-        <service android:name="com.xiaomi.miui.pushads.sdk.MiPushRelayTraceService" android:enabled="true" android:exported="true" />
-        <service android:name="com.xiaomi.push.service.XMPushService" android:enabled="true" android:exported="true" android:process=":pushservice" />
-        <service android:name="com.xiaomi.mipush.sdk.PushMessageHandler" android:enabled="true" android:exported="false" />
-        <receiver android:name="com.xiaomi.mipush.sdk.PushServiceReceiver">
-            <intent-filter>
-                <action android:name="com.xiaomi.mipush.RECEIVE_MESSAGE" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="com.xiaomi.mipush.ERROR" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name="com.xiaomi.push.service.receivers.NetworkStatusReceiver">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name="com.xiaomi.push.service.receivers.PingReceiver">
-            <intent-filter>
-                <action android:name="com.xiaomi.push.PING_TIMER" />
-            </intent-filter>
-        </receiver>
     </application>
 </manifest>
