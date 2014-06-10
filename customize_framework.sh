@@ -85,6 +85,11 @@ if [ $2 = "out/android.policy" ];then
     for patch in `find ../overlay/android.policy.jar.out -name "*.patch"`
     do
         git.apply $patch
+        for rej in `find android.policy -name "*.rej"`
+        do
+            echo "Patch $patch fail"
+            exit 1
+        done
     done
     cd -
 	removeMzActionBarContainer $2

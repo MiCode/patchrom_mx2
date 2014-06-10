@@ -9,14 +9,14 @@ Subject: [PATCH] BaseMiuiPhoneWindowManager.patch
 
 --- a/android.policy/smali/com/android/internal/policy/impl/BaseMiuiPhoneWindowManager.smali
 +++ b/android.policy/smali/com/android/internal/policy/impl/BaseMiuiPhoneWindowManager.smali
-@@ -1390,6 +1390,7 @@
-     sparse-switch v4, :sswitch_data_0
- 
+@@ -1473,6 +1473,7 @@
+     sparse-switch v5, :sswitch_data_0
+
      :cond_4
-+    goto :cond_b
++    goto :cond_d
      const/4 v10, 0x3
- 
-     if-ne v4, v10, :cond_b
--- 
+
+     if-ne v5, v10, :cond_d
+--
 1.7.9.5
 
