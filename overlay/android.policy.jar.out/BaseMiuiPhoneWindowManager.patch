@@ -12,11 +12,11 @@ Subject: [PATCH] BaseMiuiPhoneWindowManager.patch
 @@ -1473,6 +1473,7 @@
      sparse-switch v5, :sswitch_data_0
 
-     :cond_4
-+    goto :cond_d
+     :cond_3
++    goto :cond_c
      const/4 v10, 0x3
 
-     if-ne v5, v10, :cond_d
+     if-ne v5, v10, :cond_c
 --
 1.7.9.5
 
