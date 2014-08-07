@@ -51,6 +51,7 @@ local-zip-misc:
 	@echo replace LiveWallpapersPicker
 	cp -f other/LiveWallpapersPicker.apk $(ZIP_DIR)/system/app
 	cp -f other/system_fonts.xml $(ZIP_DIR)/system/etc
+	rm $(ZIP_DIR)/system/media/.music/*.mp4
 
 out/framework2.jar : out/framework.jar
 
